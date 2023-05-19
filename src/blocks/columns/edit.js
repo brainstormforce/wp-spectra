@@ -5,7 +5,6 @@
 import styling from './styling';
 import { __ } from '@wordpress/i18n';
 import scrollBlockToView from '@Controls/scrollBlockToView';
-import { useDeviceType } from '@Controls/getPreviewType';
 import { useEffect, useLayoutEffect, useMemo } from '@wordpress/element';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
@@ -23,7 +22,6 @@ import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const ColumnsComponent = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		attributes,
 		attributes: {
@@ -59,6 +57,7 @@ const ColumnsComponent = ( props ) => {
 		isSelected,
 		clientId,
 		name,
+		deviceType
 	} = props;
 
 	const {

@@ -75,8 +75,98 @@ class UAGB_Init_Blocks {
 		if ( current_user_can( 'edit_posts' ) ) {
 			add_action( 'wp_ajax_uagb_svg_confirmation', array( $this, 'confirm_svg_upload' ) );
 		}
+
+		add_action( 'init', array( $this, 'register_popup_builder' ) );
 	}
 
+	/**
+	 * Register the Popup Builder CPT.
+	 * 
+	 * @return void
+	 *
+	 * @since 2.6.0
+	 */
+	public function register_popup_builder() {
+		$supports = array(
+			'title',
+			'editor',
+			'custom-fields',
+			'author',
+		);
+
+		$labels = array(
+			'name'               => _x( 'Popup Builder', 'plural', 'ultimate-addons-for-gutenberg' ),
+			'singular_name'      => _x( 'Popup', 'singular', 'ultimate-addons-for-gutenberg' ),
+			'view_item'          => __( 'View Popup', 'ultimate-addons-for-gutenberg' ),
+			'add_new_item'       => __( 'Create New Popup', 'ultimate-addons-for-gutenberg' ),
+			'add_new'            => __( 'Create Popup', 'ultimate-addons-for-gutenberg' ),
+			'edit_item'          => __( 'Edit Popup', 'ultimate-addons-for-gutenberg' ),
+			'search_items'       => __( 'Search Popups', 'ultimate-addons-for-gutenberg' ),
+			'update_item'        => __( 'Update Popup', 'ultimate-addons-for-gutenberg' ),
+			'item_updated'       => __( 'Popup Updated', 'ultimate-addons-for-gutenberg' ),
+			'not_found'          => __( 'No Popups Found', 'ultimate-addons-for-gutenberg' ),
+			'not_found_in_trash' => __( 'No Popups in Trash', 'ultimate-addons-for-gutenberg' ),
+		);
+
+		$type_args = array(
+			'supports'      => $supports,
+			'labels'        => $labels,
+			'public'        => false,
+			'show_in_menu'  => false,
+			'show_ui'       => true,
+			'show_in_rest'  => true,
+			'template_lock' => 'all',
+			'template'      => array(
+				array( 'uagb/popup-builder', array() ),
+			),
+			'rewrite'       => array(
+				'slug'       => 'spectra-popup',
+				'with-front' => false,
+				'pages'      => false,
+			),
+		);
+
+		$meta_args_popup_type = array(
+			'single'        => true,
+			'type'          => 'string', 
+			'default'       => 'unset',
+			'auth_callback' => '__return_true',
+			'show_in_rest'  => true,
+		);
+
+		$meta_args_popup_enabled = array(
+			'single'        => true,
+			'type'          => 'boolean',
+			'default'       => false,
+			'auth_callback' => '__return_true',
+			'show_in_rest'  => true,
+		);
+
+		$meta_args_popup_repetition = array(
+			'single'        => true,
+			'type'          => 'number',
+			'default'       => 1,
+			'auth_callback' => '__return_true',
+			'show_in_rest'  => true,
+		);
+
+		register_post_type( 'spectra-popup', $type_args );
+
+		register_post_meta( 'spectra-popup', 'spectra-popup-type', $meta_args_popup_type );
+		register_post_meta( 'spectra-popup', 'spectra-popup-enabled', $meta_args_popup_enabled );
+		register_post_meta( 'spectra-popup', 'spectra-popup-repetition', $meta_args_popup_repetition );
+		do_action( 'register_spectra_pro_popup_meta' );
+
+		$spectra_popup_dashboard = UAGB_Popup_Builder::create_for_admin();
+
+		add_action( 'admin_enqueue_scripts', array( $spectra_popup_dashboard, 'popup_toggle_scripts' ) );
+
+		add_action( 'wp_ajax_uag_update_popup_status', array( $spectra_popup_dashboard, 'update_popup_status' ) );
+
+		add_filter( 'manage_spectra-popup_posts_columns', array( $spectra_popup_dashboard, 'popup_builder_admin_headings' ) );
+		add_action( 'manage_spectra-popup_posts_custom_column', array( $spectra_popup_dashboard, 'popup_builder_admin_content' ), 10, 2 );
+	}
+	
 	/**
 	 * Render block.
 	 *
@@ -112,6 +202,29 @@ class UAGB_Init_Blocks {
 					break;
 			}
 		}
+
+		// Check if animations extension is enabled and an animation type is selected.
+		if (
+			'enabled' === \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_animations_extension', 'enabled' ) &&
+			! empty( $block['attrs']['UAGAnimationType'] ) &&
+			$block['attrs']['UAGAnimationType']
+		) {
+
+			$attrs = $block['attrs'];
+
+			// Defaults aren't received here, hence we set them.
+			// Without these defaults, empty data is sent to markup (which doesn't affect the functionality at all but still it's a good practice to follow).
+			$attrs['UAGAnimationTime']   = isset( $attrs['UAGAnimationTime'] ) ? $attrs['UAGAnimationTime'] : 400;
+			$attrs['UAGAnimationDelay']  = isset( $attrs['UAGAnimationDelay'] ) ? $attrs['UAGAnimationDelay'] : 0;
+			$attrs['UAGAnimationEasing'] = isset( $attrs['UAGAnimationEasing'] ) ? $attrs['UAGAnimationEasing'] : 'ease';
+			$attrs['UAGAnimationRepeat'] = isset( $attrs['UAGAnimationRepeat'] ) ? 'false' : 'true';
+
+			$aos_attributes = '<div data-aos= "' . esc_attr( $attrs['UAGAnimationType'] ) . '" data-aos-duration="' . esc_attr( $attrs['UAGAnimationTime'] ) . '" data-aos-delay="' . esc_attr( $attrs['UAGAnimationDelay'] ) . '" data-aos-easing="' . esc_attr( $attrs['UAGAnimationEasing'] ) . '" data-aos-once="' . esc_attr( $attrs['UAGAnimationRepeat'] ) . '" ';
+
+			$block_content = preg_replace( '/<div /', $aos_attributes, $block_content, 1 );
+
+		}
+
 		return $block_content;
 	}
 
@@ -603,6 +716,7 @@ class UAGB_Init_Blocks {
 				'enableConditionsForCoreBlocks'           => apply_filters( 'enable_block_condition_for_core', true ),
 				'enableResponsiveConditionsForCoreBlocks' => apply_filters( 'enable_responsive_condition_for_core', true ),
 				'enableMasonryGallery'                    => apply_filters( 'uag_enable_masonry_gallery', UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_masonry_gallery', 'enabled' ) ),
+				'enableAnimationsExtension'               => apply_filters( 'uag_enable_animations_extension', UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_animations_extension', 'enabled' ) ),
 				'enableResponsiveConditions'              => apply_filters( 'enable_block_responsive', UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_responsive', 'enabled' ) ),
 				'uagb_svg_icons'                          => UAGB_Helper::backend_load_font_awesome_icons(),
 				'uagb_enable_extensions_for_blocks'       => apply_filters( 'uagb_enable_extensions_for_blocks', array() ),
@@ -636,6 +750,7 @@ class UAGB_Init_Blocks {
 				'insta_linked_accounts'                   => UAGB_Admin_Helper::get_admin_settings_option( 'uag_insta_linked_accounts', array() ),
 				'insta_all_users_media'                   => apply_filters( 'uag_instagram_transients', array() ),
 				'is_site_editor'                          => $screen->id,
+				'current_post_id'                         => get_the_ID(),
 			)
 		);
 		// To match the editor with frontend.

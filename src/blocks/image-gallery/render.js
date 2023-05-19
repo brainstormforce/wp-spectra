@@ -3,7 +3,6 @@ import { useLayoutEffect, memo } from '@wordpress/element';
 import InitialSelector from './components/InitialSelector';
 import ImageGallery from './components/ImageGallery';
 import Lightbox from './components/LightBox';
-import { useDeviceType } from '@Controls/getPreviewType';
 import styles from './editor.lazy.scss';
 
 const Render = ( props ) => {
@@ -15,9 +14,8 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	const { lightboxPreview, setLightboxPreview, attributes, setAttributes, className, name } = props;
+	const { lightboxPreview, setLightboxPreview, attributes, setAttributes, className, name, deviceType } = props;
 	const { block_id, readyToRender } = attributes;
-	const deviceType = useDeviceType();
 
 	return (
 		<div

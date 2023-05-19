@@ -80,29 +80,52 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 			if ( version_compare( $saved_version, '2.0.5', '<' ) ) {
 				UAGB_Admin_Helper::update_admin_settings_option( 'uag_enable_legacy_blocks', 'yes' );
 			}
-			// If user is older than 2.0.16 then enable all the Core Spectra Blocks, As we have removed option to disable core blocks from 2.0.16.
-			if ( version_compare( $saved_version, '2.0.16', '<' ) ) {
-				$blocks_status = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks' );
 
-				if ( isset( $blocks_status ) && is_array( $blocks_status ) ) {
+			// Create a Core Block Array for all versions in which a Core Spectra Block was added.
+			$core_blocks   = array();
+			$blocks_status = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks' );
 
-					$core_blocks = array(
+			// If Block Statuses exists and is not empty, enable the required Core Spectra Blocks.
+			if ( is_array( $blocks_status ) && ! empty( $blocks_status ) ) {
+
+				// If user is older than 2.0.16 then enable all the Core Spectra Blocks, as we have removed option to disable core blocks from 2.0.16.
+				if ( version_compare( $saved_version, '2.0.16', '<' ) ) {
+					array_push(
+						$core_blocks,
 						'container',
 						'advanced-heading',
 						'image',
-						'icon',
 						'buttons',
 						'info-box',
-						'call-to-action',
+						'call-to-action'
 					);
-
-					foreach ( $core_blocks as $block ) {
-
-						$blocks_status[ $block ] = $block;
-					}
-
-					UAGB_Admin_Helper::update_admin_settings_option( '_uagb_blocks', $blocks_status );
 				}
+
+				// If user is older than 2.4.0 then enable the Icon Block that was added to the Core Blocks in this release.
+				if ( version_compare( $saved_version, '2.4.0', '<' ) ) {
+					array_push(
+						$core_blocks,
+						'icon'
+					);
+				}
+
+				// If user is older than 2.6.0 then enable the Countdown Block that was added to the Core Blocks in this release.
+				if ( version_compare( $saved_version, '2.6.0', '<' ) ) {
+					array_push(
+						$core_blocks,
+						'countdown'
+					);
+				}
+			}
+
+			// If the core block array is not empty, update the enabled blocks option.
+			if ( ! empty( $core_blocks ) ) {
+
+				foreach ( $core_blocks as $block ) {
+					$blocks_status[ $block ] = $block;
+				}
+
+				UAGB_Admin_Helper::update_admin_settings_option( '_uagb_blocks', $blocks_status );
 			}
 
 			// Create file if not present.

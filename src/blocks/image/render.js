@@ -14,7 +14,6 @@ import {
 } from '@wordpress/block-editor';
 import { store as coreStore } from '@wordpress/core-data';
 import { __ } from '@wordpress/i18n';
-import { useDeviceType } from '@Controls/getPreviewType';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import Image from './image';
 import Layout from './layout';
@@ -43,7 +42,7 @@ const defaultProps = {};
 const Render = ( parentProps ) => {
 	const { parentProps: props } = parentProps;
 	let { attributes } = props;
-	const { setAttributes, className, isSelected, insertBlocksAfter, onReplace, context, clientId } = props;
+	const { setAttributes, className, isSelected, insertBlocksAfter, onReplace, context, clientId, deviceType } = props;
 
 	if ( props?.loopUrl ) {
 		attributes = { ...attributes, url: props.loopUrl };
@@ -79,7 +78,6 @@ const Render = ( parentProps ) => {
 		};
 	}, [] );
 
-	const deviceType = useDeviceType();
 	const { createNotice } = useDispatch( 'core/notices' );
 	const [ temporaryURL, setTemporaryURL ] = useState();
 	const [ externalBlob, setExternalBlob ] = useState();

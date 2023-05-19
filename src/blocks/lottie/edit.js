@@ -4,7 +4,6 @@
 
 import styling from './styling';
 import { useEffect, useState, useRef, useMemo } from '@wordpress/element';
-import { useDeviceType } from '@Controls/getPreviewType';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
@@ -14,9 +13,8 @@ import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBLottie = ( props ) => {
-	const deviceType = useDeviceType();
 
-	const { setAttributes, attributes, isSelected, clientId, name } = props;
+	const { setAttributes, attributes, isSelected, clientId, name, deviceType } = props;
 
 	const { UAGHideDesktop, UAGHideTab, UAGHideMob, loop, reverse } = attributes;
 	const lottieplayer = useRef();

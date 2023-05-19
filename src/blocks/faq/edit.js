@@ -4,7 +4,6 @@
 
 import styling from './styling';
 import { useEffect, useMemo } from '@wordpress/element';
-import { useDeviceType } from '@Controls/getPreviewType';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import { select } from '@wordpress/data';
@@ -17,7 +16,6 @@ import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const FaqComponent = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		isSelected,
 		setAttributes,
@@ -46,6 +44,7 @@ const FaqComponent = ( props ) => {
 		},
 		clientId,
 		name,
+		deviceType
 	} = props;
 
 	const updatePageSchema = () => {

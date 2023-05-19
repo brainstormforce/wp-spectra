@@ -52,6 +52,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			add_action( 'init', array( $this, 'register_blocks' ) );
 			add_action( 'wp_ajax_uagb_post_pagination', array( $this, 'post_pagination' ) );
 			add_action( 'wp_ajax_nopriv_uagb_post_pagination', array( $this, 'post_pagination' ) );
+			add_action( 'wp_ajax_uagb_post_pagination_grid', array( $this, 'post_grid_pagination_ajax_callback' ) );
+			add_action( 'wp_ajax_nopriv_uagb_post_pagination_grid', array( $this, 'post_grid_pagination_ajax_callback' ) );
 			add_action( 'wp_ajax_uagb_get_posts', array( $this, 'masonry_pagination' ) );
 			add_action( 'wp_ajax_nopriv_uagb_get_posts', array( $this, 'masonry_pagination' ) );
 			add_action( 'wp_footer', array( $this, 'add_post_dynamic_script' ), 1000 );
@@ -1172,7 +1174,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since 0.0.1
 		 */
 		public function post_grid_callback( $attributes ) {
-
+			
 			// Render query.
 			$query = UAGB_Helper::get_query( $attributes, 'grid' );
 
@@ -1183,6 +1185,28 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$this->get_post_html( $attributes, $query, 'grid' );
 			// Output the post markup.
 			return ob_get_clean();
+		}
+
+		/**
+		 * Renders the post grid block on pagination clicks.
+		 *
+		 * @since 2.6.0
+		 * 
+		 * @return void
+		 */
+		public function post_grid_pagination_ajax_callback() {
+			check_ajax_referer( 'uagb_grid_ajax_nonce', 'nonce' );
+
+			if ( isset( $_POST['attr'] ) ) {
+
+				$attr          = json_decode( stripslashes( sanitize_text_field( $_POST['attr'] ) ), true );
+				$attr['paged'] = isset( $_POST['page_number'] ) ? sanitize_text_field( $_POST['page_number'] ) : '';
+				$html          = $this->post_grid_callback( $attr );
+				wp_send_json_success( $html );
+				
+			}
+
+			wp_send_json_error( ' Something went wrong, failed to load pagination data! ' );
 		}
 
 		/**
@@ -1547,7 +1571,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		public function masonry_pagination() {
 
 			check_ajax_referer( 'uagb_masonry_ajax_nonce', 'nonce' );
-
+			
 			$post_attribute_array = array();
 			// $_POST['attr'] is sanitized in later stage.
 			$attr = isset( $_POST['attr'] ) ? json_decode( stripslashes( $_POST['attr'] ), true ) : array(); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
@@ -1789,6 +1813,30 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							} )( jQuery );
 						});
 					</script>
+					<?php
+				}
+			}
+
+			if ( isset( self::$settings['grid'] ) && ! empty( self::$settings['grid'] ) ) {
+				foreach ( self::$settings['grid'] as $key => $value ) {
+					?>
+
+					<script type="text/javascript" id="<?php echo esc_attr( $key ); ?>">
+						( function() {
+							let elements = document.querySelectorAll( '.uagb-post-grid.uagb-block-<?php echo esc_html( $key ); ?> .uagb-post-pagination-wrap a' );
+							elements.forEach(function(element) {
+								element.addEventListener("click", function(event){
+									event.preventDefault();
+									const link = event.target.getAttribute('href').match( /\/page\/\d+\// )?.[0] || '';
+									const regex = /\d+/; // regular expression to match a number at the end of the string
+									const match = link.match( regex ) ? link.match( regex )[0] : 1; // match the regular expression with the link
+									const pageNumber = parseInt( match ); // extract the number and parse it to an integer
+									window.UAGBPostGrid._callAjax(<?php echo wp_json_encode( $value ); ?>, pageNumber, '<?php echo esc_attr( $key ); ?>');
+								});
+							});
+						} )();
+					</script>
+
 					<?php
 				}
 			}

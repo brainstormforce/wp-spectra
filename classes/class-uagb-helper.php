@@ -362,7 +362,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				} else {
 
-					$paged = 1;
+					$paged = isset( $attributes['paged'] ) ? $attributes['paged'] : 1;
 
 				}
 				$query_args['posts_per_page'] = $attributes['postsToShow'];

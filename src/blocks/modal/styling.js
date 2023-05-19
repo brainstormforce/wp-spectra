@@ -230,7 +230,7 @@ export default function styling( attributes, clientId, name ) {
 			'border-bottom-left-radius' : generateCSSUnit( contentBorderBottomLeftRadius, contentBorderRadiusUnit ),
 			'border-bottom-right-radius' : generateCSSUnit( contentBorderBottomRightRadius, contentBorderRadiusUnit ),
 		},
-		' .uagb-modal-popup-wrap:hover': {
+		' .uagb-modal-popup-content:hover': {
 			'border-color': contentBorderHColor,
 		},
 		' .uagb-modal-popup-close svg': {

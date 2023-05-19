@@ -3,7 +3,6 @@ import { useEffect, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { SelectControl, Placeholder } from '@wordpress/components';
 import apiFetch from '@wordpress/api-fetch';
-import { useDeviceType } from '@Controls/getPreviewType';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
@@ -15,7 +14,6 @@ import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBGF = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		isSelected,
 		setAttributes,
@@ -47,6 +45,7 @@ const UAGBGF = ( props ) => {
 		},
 		clientId,
 		name,
+		deviceType
 	} = props;
 	// eslint-disable-next-line  no-unused-vars
 	useSelect( ( select ) => {

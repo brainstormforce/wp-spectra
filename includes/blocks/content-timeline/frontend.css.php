@@ -10,27 +10,9 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_content_timeline_gfont( $attr );
 
-$icon_size_fallback         = UAGB_Block_Helper::get_fallback_number( $attr['iconSize'], 'iconSize', $attr['blockName'] );
-$connector_bg_size_fallback = UAGB_Block_Helper::get_fallback_number( $attr['connectorBgsize'], 'connectorBgsize', $attr['blockName'] );
-$border_width_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['borderwidth'], 'borderwidth', $attr['blockName'] );
-$separator_width_fallback   = UAGB_Block_Helper::get_fallback_number( $attr['separatorwidth'], 'separatorwidth', $attr['blockName'] );
-$head_space_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['headSpace'], 'headSpace', $attr['blockName'] );
-$border_radius_fallback     = UAGB_Block_Helper::get_fallback_number( $attr['borderRadius'], 'borderRadius', $attr['blockName'] );
-$date_bottom_space_fallback = UAGB_Block_Helper::get_fallback_number( $attr['dateBottomspace'], 'dateBottomspace', $attr['blockName'] );
-
 $selectors   = array();
 $t_selectors = array();
 $m_selectors = array();
-
-$block_name = 'content-timeline';
-
-$icon_size_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['iconSize'], 'iconSize', $block_name );
-$icon_size_tablet_fallback = UAGB_Block_Helper::get_fallback_number( $attr['iconSizeTablet'], 'iconSizeTablet', $block_name );
-$icon_size_mobile_fallback = UAGB_Block_Helper::get_fallback_number( $attr['iconSizeMobile'], 'iconSizeMobile', $block_name );
-
-$connector_bg_size_fallback        = UAGB_Block_Helper::get_fallback_number( $attr['connectorBgsize'], 'connectorBgsize', $block_name );
-$connector_bg_size_tablet_fallback = UAGB_Block_Helper::get_fallback_number( $attr['connectorBgsizeTablet'], 'connectorBgsizeTablet', $block_name );
-$connector_bg_size_mobile_fallback = UAGB_Block_Helper::get_fallback_number( $attr['connectorBgsizeMobile'], 'connectorBgsizeMobile', $block_name );
 
 $top_margin    = isset( $attr['topMargin'] ) ? $attr['topMargin'] : $attr['verticalSpace'];
 $bottom_margin = isset( $attr['bottomMargin'] ) ? $attr['bottomMargin'] : $attr['verticalSpace'];
@@ -46,14 +28,14 @@ $selectors = array(
 	' .uagb-timeline__heading'                             => array(
 		'text-align'    => $attr['align'],
 		'color'         => $attr['headingColor'],
-		'margin-bottom' => UAGB_Helper::get_css_value( $head_space_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 	),
 	' .uagb-timeline__marker.uagb-timeline__in-view-icon svg' => array(
 		'fill'  => $attr['iconFocus'],
 		'color' => $attr['iconFocus'],
 	),
 	' .uagb-timeline__heading-text'                        => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $head_space_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 	),
 	' .uagb-timeline-desc-content'                         => array(
 		'text-align' => $attr['align'],
@@ -109,35 +91,35 @@ $selectors = array(
 	),
 	' .uagb-timeline__line'                                => array(
 		'background-color' => $attr['separatorColor'],
-		'width'            => UAGB_Helper::get_css_value( $separator_width_fallback, 'px' ),
+		'width'            => UAGB_Helper::get_css_value( $attr['separatorwidth'], 'px' ),
 	),
 	'.uagb-timeline__right-block .uagb-timeline__line'     => array(
-		'right' => 'calc( ' . $connector_bg_size_fallback . 'px / 2 )',
+		'right' => 'calc( ' . $attr['connectorBgsize'] . 'px / 2 )',
 	),
 	'.uagb-timeline__left-block .uagb-timeline__line'      => array(
-		'left' => 'calc( ' . $connector_bg_size_fallback . 'px / 2 )',
+		'left' => 'calc( ' . $attr['connectorBgsize'] . 'px / 2 )',
 	),
 	'.uagb-timeline__center-block .uagb-timeline__line'    => array(
-		'right' => 'calc( ' . $connector_bg_size_fallback . 'px / 2 )',
+		'right' => 'calc( ' . $attr['connectorBgsize'] . 'px / 2 )',
 	),
 	' .uagb-timeline__marker'                              => array(
 		'background-color' => $attr['separatorBg'],
-		'min-height'       => UAGB_Helper::get_css_value( $connector_bg_size_fallback, 'px' ),
-		'min-width'        => UAGB_Helper::get_css_value( $connector_bg_size_fallback, 'px' ),
-		'line-height'      => UAGB_Helper::get_css_value( $connector_bg_size_fallback, 'px' ),
+		'min-height'       => UAGB_Helper::get_css_value( $attr['connectorBgsize'], 'px' ),
+		'min-width'        => UAGB_Helper::get_css_value( $attr['connectorBgsize'], 'px' ),
+		'line-height'      => UAGB_Helper::get_css_value( $attr['connectorBgsize'], 'px' ),
 		'border'           => $attr['borderwidth'] . 'px solid' . $attr['separatorBorder'],
 	),
 	'.uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow' => array(
-		'height' => UAGB_Helper::get_css_value( $connector_bg_size_fallback, 'px' ),
+		'height' => UAGB_Helper::get_css_value( $attr['connectorBgsize'], 'px' ),
 	),
 	'.uagb-timeline__right-block .uagb-timeline__right .uagb-timeline__arrow' => array(
-		'height' => UAGB_Helper::get_css_value( $connector_bg_size_fallback, 'px' ),
+		'height' => UAGB_Helper::get_css_value( $attr['connectorBgsize'], 'px' ),
 	),
 	'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__arrow' => array(
-		'height' => UAGB_Helper::get_css_value( $connector_bg_size_fallback, 'px' ),
+		'height' => UAGB_Helper::get_css_value( $attr['connectorBgsize'], 'px' ),
 	),
 	'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow' => array(
-		'height' => UAGB_Helper::get_css_value( $connector_bg_size_fallback, 'px' ),
+		'height' => UAGB_Helper::get_css_value( $attr['connectorBgsize'], 'px' ),
 	),
 	'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__marker' => array(
 		'margin-left'  => UAGB_Helper::get_css_value( $attr['horizontalSpace'], $attr['horizontalSpaceUnit'] ),
@@ -151,12 +133,12 @@ $selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['verticalSpace'], $attr['verticalSpaceUnit'] ),
 	),
 	' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $date_bottom_space_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspace'], 'px' ),
 		'color'         => $attr['dateColor'],
 		'text-align'    => $attr['align'],
 	),
 	' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $date_bottom_space_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspace'], 'px' ),
 		'color'         => $attr['dateColor'],
 		'text-align'    => $attr['align'],
 	),
@@ -187,7 +169,7 @@ $selectors = array(
 	),
 	' .uagb-timeline__events-inner-new'                    => array(
 		'background-color' => $attr['backgroundColor'],
-		'border-radius'    => UAGB_Helper::get_css_value( $border_radius_fallback, 'px' ),
+		'border-radius'    => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 	),
 	' .uagb-timeline__events-inner--content'               => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $left_padding, $attr['paddingUnit'] ),
@@ -197,7 +179,7 @@ $selectors = array(
 	),
 	' .uagb-timeline__marker svg'                          => array(
 		'color' => $attr['iconColor'],
-		'width' => UAGB_Helper::get_css_value( $icon_size_fallback, 'px' ),
+		'width' => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
 		'fill'  => $attr['iconColor'],
 	),
 	' .uagb-timeline__marker.uagb-timeline__in-view-icon'  => array(
@@ -262,26 +244,26 @@ $selectors = array(
 			'text-align' => $attr['alignMobile'],
 		),
 		' .uagb-timeline__marker svg'             => array(
-			'width' => UAGB_Helper::get_css_value( $icon_size_mobile_fallback, 'px' ),
+			'width' => UAGB_Helper::get_css_value( $attr['iconSizeMobile'], 'px' ),
 		),
 		' .uagb-timeline__marker'                 => array(
 			'background-color' => $attr['separatorBg'],
-			'min-height'       => UAGB_Helper::get_css_value( $connector_bg_size_mobile_fallback, 'px' ),
-			'min-width'        => UAGB_Helper::get_css_value( $connector_bg_size_mobile_fallback, 'px' ),
-			'line-height'      => UAGB_Helper::get_css_value( $connector_bg_size_mobile_fallback, 'px' ),
+			'min-height'       => UAGB_Helper::get_css_value( $attr['connectorBgsizeMobile'], 'px' ),
+			'min-width'        => UAGB_Helper::get_css_value( $attr['connectorBgsizeMobile'], 'px' ),
+			'line-height'      => UAGB_Helper::get_css_value( $attr['connectorBgsizeMobile'], 'px' ),
 			'border'           => $attr['borderwidth'] . 'px solid' . $attr['separatorBorder'],
 		),
 		'.uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow' => array(
-			'height' => UAGB_Helper::get_css_value( $connector_bg_size_mobile_fallback, 'px' ),
+			'height' => UAGB_Helper::get_css_value( $attr['connectorBgsizeMobile'], 'px' ),
 		),
 		'.uagb-timeline__right-block .uagb-timeline__right .uagb-timeline__arrow' => array(
-			'height' => UAGB_Helper::get_css_value( $connector_bg_size_mobile_fallback, 'px' ),
+			'height' => UAGB_Helper::get_css_value( $attr['connectorBgsizeMobile'], 'px' ),
 		),
 		'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__arrow' => array(
-			'height' => UAGB_Helper::get_css_value( $connector_bg_size_mobile_fallback, 'px' ),
+			'height' => UAGB_Helper::get_css_value( $attr['connectorBgsizeMobile'], 'px' ),
 		),
 		'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow' => array(
-			'height' => UAGB_Helper::get_css_value( $connector_bg_size_mobile_fallback, 'px' ),
+			'height' => UAGB_Helper::get_css_value( $attr['connectorBgsizeMobile'], 'px' ),
 		),
 		' .uagb-timeline__field:not(:last-child)' => array(
 			'margin-bottom' => UAGB_Helper::get_css_value( $attr['verticalSpaceMobile'], $attr['verticalSpaceUnitMobile'] ),
@@ -290,7 +272,7 @@ $selectors = array(
 
 	$t_selectors = array(
 		' .uagb-timeline__marker svg'             => array(
-			'width' => UAGB_Helper::get_css_value( $icon_size_tablet_fallback, 'px' ),
+			'width' => UAGB_Helper::get_css_value( $attr['iconSizeTablet'], 'px' ),
 		),
 		' .uagb-timeline__heading'                => array(
 			'text-align'    => $attr['alignTablet'],
@@ -347,26 +329,26 @@ $selectors = array(
 			'text-align' => $attr['alignTablet'],
 		),
 		' .uagb-timeline__marker svg'             => array(
-			'width' => UAGB_Helper::get_css_value( $icon_size_tablet_fallback, 'px' ),
+			'width' => UAGB_Helper::get_css_value( $attr['iconSizeTablet'], 'px' ),
 		),
 		' .uagb-timeline__marker'                 => array(
 			'background-color' => $attr['separatorBg'],
-			'min-height'       => UAGB_Helper::get_css_value( $connector_bg_size_tablet_fallback, 'px' ),
-			'min-width'        => UAGB_Helper::get_css_value( $connector_bg_size_tablet_fallback, 'px' ),
-			'line-height'      => UAGB_Helper::get_css_value( $connector_bg_size_tablet_fallback, 'px' ),
+			'min-height'       => UAGB_Helper::get_css_value( $attr['connectorBgsizeTablet'], 'px' ),
+			'min-width'        => UAGB_Helper::get_css_value( $attr['connectorBgsizeTablet'], 'px' ),
+			'line-height'      => UAGB_Helper::get_css_value( $attr['connectorBgsizeTablet'], 'px' ),
 			'border'           => $attr['borderwidth'] . 'px solid' . $attr['separatorBorder'],
 		),
 		'.uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow' => array(
-			'height' => UAGB_Helper::get_css_value( $connector_bg_size_tablet_fallback, 'px' ),
+			'height' => UAGB_Helper::get_css_value( $attr['connectorBgsizeTablet'], 'px' ),
 		),
 		'.uagb-timeline__right-block .uagb-timeline__right .uagb-timeline__arrow' => array(
-			'height' => UAGB_Helper::get_css_value( $connector_bg_size_tablet_fallback, 'px' ),
+			'height' => UAGB_Helper::get_css_value( $attr['connectorBgsizeTablet'], 'px' ),
 		),
 		'.uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__arrow' => array(
-			'height' => UAGB_Helper::get_css_value( $connector_bg_size_tablet_fallback, 'px' ),
+			'height' => UAGB_Helper::get_css_value( $attr['connectorBgsizeTablet'], 'px' ),
 		),
 		'.uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow' => array(
-			'height' => UAGB_Helper::get_css_value( $connector_bg_size_tablet_fallback, 'px' ),
+			'height' => UAGB_Helper::get_css_value( $attr['connectorBgsizeTablet'], 'px' ),
 		),
 		' .uagb-timeline__field:not(:last-child)' => array(
 			'margin-bottom' => UAGB_Helper::get_css_value( $attr['verticalSpaceTablet'], $attr['verticalSpaceUnitTablet'] ),

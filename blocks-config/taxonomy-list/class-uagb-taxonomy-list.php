@@ -579,6 +579,25 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 				}
 			}
 		}
+		/**
+		 * Return link for individual category.
+		 *
+		 * @param string $slug of category.
+		 * @param string $taxonomy_type attributes.
+		 *
+		 * @since 2.6.0
+		 * @return string link using slug.
+		 */
+		public function get_link_of_individual_categories( $slug, $taxonomy_type ) {
+			if ( ! is_string( $slug ) ) {
+				return '#';
+			}
+			$link = get_term_link( $slug, $taxonomy_type );
+			if ( is_wp_error( $link ) ) {
+				$link = '#';
+			}
+			return $link;
+		}
 
 		/**
 		 * Render List HTML.
@@ -626,32 +645,33 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 				}
 
 				?>
-				<?php if ( 'dropdown' !== $attributes['listDisplayStyle'] ) { ?>
+				<?php if ( 'dropdown' !== $attributes['listDisplayStyle'] && ! empty( $new_categories_list ) && is_array( $new_categories_list ) ) { ?>
 					<ul class="uagb-list-wrap">
 						<?php
-						if ( is_array( $new_categories_list ) ) {
-							foreach ( $new_categories_list as $key => $value ) {
-								$link = get_term_link( $value->slug, $attributes['taxonomyType'] );
-								if ( is_wp_error( $link ) ) {
-									$link = '#';
-								}
-								?>
+						foreach ( $new_categories_list as $key => $value ) {
+							$link = $this->get_link_of_individual_categories( $value->slug, $attributes['taxonomyType'] );
+							?>
 							<li class="uagb-tax-list">
 								<<?php echo esc_html( $titleTag ); ?> class="uagb-tax-link-wrap">
 									<a class="uagb-tax-link" href="<?php echo esc_url( $link ); ?>"><?php echo esc_html( $value->name ); ?></a>
-										<?php if ( $showCount ) { ?>
+									<?php if ( $showCount ) { ?>
 											<?php echo ' (' . esc_attr( $value->count ) . ')'; ?>
 										<?php } ?>
-										<?php if ( $attributes['showhierarchy'] && ! empty( $new_categories_list[ $key ]->children ) ) { ?>
+									<?php if ( $attributes['showhierarchy'] && ! empty( $new_categories_list[ $key ]->children ) && is_array( $new_categories_list[ $key ]->children ) ) { ?>
 											<ul class="uagb-taxonomy-list-children">
-												<?php foreach ( $new_categories_list[ $key ]->children as $value ) { ?>
+												<?php
+												foreach ( $new_categories_list[ $key ]->children as $value ) {
+													$child_link = $this->get_link_of_individual_categories( $value->slug, $attributes['taxonomyType'] );
+													?>
 													<li class="uagb-tax-list">
-													<a class="uagb-tax-link" href="<?php echo esc_url( $link ); ?>"><?php echo esc_html( $value->name ); ?></a>
-													<?php if ( $showCount ) { ?>
-														<?php echo ' (' . esc_attr( $value->count ) . ')'; ?>
+													<a class="uagb-tax-link" href="<?php echo esc_url( $child_link ); ?>"><?php echo esc_html( $value->name ); ?></a>
+														<?php if ( $showCount ) { ?>
+															<?php echo ' (' . esc_attr( $value->count ) . ')'; ?>
 													<?php } ?>
 													</li>
-												<?php } ?>
+														<?php
+												}
+												?>
 											</ul>
 										<?php } ?>
 								</<?php echo esc_html( $titleTag ); ?>>
@@ -660,7 +680,6 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 								<?php } ?>
 							</li>
 								<?php
-							}
 						}
 						?>
 					</ul>
@@ -670,10 +689,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 						<?php
 						if ( is_array( $new_categories_list ) ) {
 							foreach ( $new_categories_list as $key => $value ) {
-								$link = get_term_link( $value->slug, $attributes['taxonomyType'] );
-								if ( is_wp_error( $link ) ) {
-									$link = '#';
-								}
+								$link = $this->get_link_of_individual_categories( $value->slug, $attributes['taxonomyType'] );
 								?>
 							<option value="<?php echo esc_url( $link ); ?>" >
 								<?php echo esc_attr( $value->name ); ?>

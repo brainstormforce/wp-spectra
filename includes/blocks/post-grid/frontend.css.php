@@ -10,21 +10,18 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_post_gfont( $attr );
 
-$pagination_spacing_fallback       = UAGB_Block_Helper::get_fallback_number( $attr['paginationSpacing'], 'paginationSpacing', $attr['blockName'] );
-$pagination_border_radius_fallback = UAGB_Block_Helper::get_fallback_number( $attr['paginationBorderRadius'], 'paginationBorderRadius', $attr['blockName'] );
-$pagination_border_size_fallback   = UAGB_Block_Helper::get_fallback_number( $attr['paginationBorderSize'], 'paginationBorderSize', $attr['blockName'] );
-$paddingLeftMobile                 = isset( $attr['paddingLeftMobile'] ) ? $attr['paddingLeftMobile'] : $attr['contentPaddingMobile'];
-$paddingRightMobile                = isset( $attr['paddingRightMobile'] ) ? $attr['paddingRightMobile'] : $attr['contentPaddingMobile'];
-$paddingLeftTablet                 = isset( $attr['paddingLeftTablet'] ) ? $attr['paddingLeftTablet'] : $attr['contentPadding'];
-$paddingRightTablet                = isset( $attr['paddingRightTablet'] ) ? $attr['paddingRightTablet'] : $attr['contentPadding'];
-$paddingLeft                       = isset( $attr['paddingLeft'] ) ? $attr['paddingLeft'] : $attr['contentPadding'];
-$paddingRight                      = isset( $attr['paddingRight'] ) ? $attr['paddingRight'] : $attr['contentPadding'];
+$paddingLeftMobile  = isset( $attr['paddingLeftMobile'] ) ? $attr['paddingLeftMobile'] : $attr['contentPaddingMobile'];
+$paddingRightMobile = isset( $attr['paddingRightMobile'] ) ? $attr['paddingRightMobile'] : $attr['contentPaddingMobile'];
+$paddingLeftTablet  = isset( $attr['paddingLeftTablet'] ) ? $attr['paddingLeftTablet'] : $attr['contentPadding'];
+$paddingRightTablet = isset( $attr['paddingRightTablet'] ) ? $attr['paddingRightTablet'] : $attr['contentPadding'];
+$paddingLeft        = isset( $attr['paddingLeft'] ) ? $attr['paddingLeft'] : $attr['contentPadding'];
+$paddingRight       = isset( $attr['paddingRight'] ) ? $attr['paddingRight'] : $attr['contentPadding'];
 
 $selectors = UAGB_Block_Helper::get_post_selectors( $attr );
 // Pagination CSS.
 $selectors[' .uagb-post-pagination-wrap'] = array(
 
-	'margin-top'                             => UAGB_Helper::get_css_value( $pagination_spacing_fallback, $attr['paginationSpacingUnit'] ),
+	'margin-top'                             => UAGB_Helper::get_css_value( $attr['paginationSpacing'], $attr['paginationSpacingUnit'] ),
 	'justify-content'                        => $attr['paginationAlignment'],
 	'margin-' . $attr['paginationAlignment'] => '10px',
 );
@@ -46,9 +43,9 @@ if ( 'filled' === $attr['paginationLayout'] ) {
 
 		'border-style'     => 'solid',
 		'background-color' => 'transparent',
-		'border-width'     => UAGB_Helper::get_css_value( $pagination_border_size_fallback, 'px' ),
+		'border-width'     => UAGB_Helper::get_css_value( $attr['paginationBorderSize'], 'px' ),
 		'border-color'     => $attr['paginationBorderActiveColor'],
-		'border-radius'    => UAGB_Helper::get_css_value( $pagination_border_radius_fallback, 'px' ),
+		'border-radius'    => UAGB_Helper::get_css_value( $attr['paginationBorderRadius'], 'px' ),
 		'color'            => $attr['paginationActiveColor'],
 	);
 
@@ -56,9 +53,9 @@ if ( 'filled' === $attr['paginationLayout'] ) {
 
 		'border-style'     => 'solid',
 		'background-color' => 'transparent',
-		'border-width'     => UAGB_Helper::get_css_value( $pagination_border_size_fallback, 'px' ),
+		'border-width'     => UAGB_Helper::get_css_value( $attr['paginationBorderSize'], 'px' ),
 		'border-color'     => $attr['paginationBorderColor'],
-		'border-radius'    => UAGB_Helper::get_css_value( $pagination_border_radius_fallback, 'px' ),
+		'border-radius'    => UAGB_Helper::get_css_value( $attr['paginationBorderRadius'], 'px' ),
 		'color'            => $attr['paginationColor'],
 	);
 

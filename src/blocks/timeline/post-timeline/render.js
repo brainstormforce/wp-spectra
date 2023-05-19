@@ -9,7 +9,6 @@ import CtaLink from './components/CtaLink';
 import Author from './components/Author';
 import PostDate from './components/PostDate';
 import Icon from './components/Icon';
-import { useDeviceType } from '@Controls/getPreviewType';
 import { __ } from '@wordpress/i18n';
 import { Placeholder, Spinner } from '@wordpress/components';
 import { useLayoutEffect, memo } from '@wordpress/element';
@@ -27,8 +26,7 @@ const Render = ( props ) => {
 	const { latestPosts } = props;
 	props = props.parentProps;
 	const blockName = props.name.replace( 'uagb/', '' );
-	const deviceType = useDeviceType();
-	const { attributes, className, setAttributes } = props;
+	const { attributes, className, setAttributes, deviceType } = props;
 
 	const { displayPostLink, postsToShow } = attributes;
 

@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
-import { useDeviceType } from '@Controls/getPreviewType';
 import styles from './editor.lazy.scss';
 import getImageHeightWidth from '@Controls/getImageHeightWidth';
 import { useDispatch } from '@wordpress/data';
@@ -18,8 +17,7 @@ const Render = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
-	const deviceType = useDeviceType();
-	const { attributes, setAttributes, clientId } = props.parentProps;
+	const { attributes, setAttributes, clientId, deviceType } = props.parentProps;
 
 	const {
 		block_id,
@@ -113,7 +111,6 @@ const Render = ( props ) => {
 		<div className={ classnames( 'uagb-spectra-button-wrapper', 'wp-block-button' ) }>
 			<a // eslint-disable-line jsx-a11y/anchor-is-valid
 				className={ buttonClasses }
-				href="#"
 				target="_self"
 				rel="noopener noreferrer"
 			>

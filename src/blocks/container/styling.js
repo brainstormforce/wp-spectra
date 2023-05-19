@@ -40,21 +40,11 @@ function styling( attributes, clientId, name ) {
 		alignContentMobile,
 		backgroundType,
 		backgroundImageDesktop,
-		backgroundImageTablet,
-		backgroundImageMobile,
 		backgroundColor,
 		backgroundPositionDesktop,
-		backgroundPositionTablet,
-		backgroundPositionMobile,
 		backgroundAttachmentDesktop,
-		backgroundAttachmentTablet,
-		backgroundAttachmentMobile,
 		backgroundRepeatDesktop,
-		backgroundRepeatTablet,
-		backgroundRepeatMobile,
 		backgroundSizeDesktop,
-		backgroundSizeTablet,
-		backgroundSizeMobile,
 		gradientValue,
 		containerBorderHColor,
 		boxShadowColor,
@@ -125,24 +115,9 @@ function styling( attributes, clientId, name ) {
 		topHeightMobile,
 		topWidth,
 		backgroundCustomSizeDesktop,
-		backgroundCustomSizeTablet,
-		backgroundCustomSizeMobile,
 		backgroundCustomSizeType,
 		backgroundImageColor,
 		overlayType,
-		customPosition,
-		xPositionDesktop,
-		xPositionTablet,
-		xPositionMobile,
-		xPositionType,
-		xPositionTypeTablet,
-		xPositionTypeMobile,
-		yPositionDesktop,
-		yPositionTablet,
-		yPositionMobile,
-		yPositionType,
-		yPositionTypeTablet,
-		yPositionTypeMobile,
 		backgroundVideoOpacity,
 		backgroundVideoColor,
 		innerContentCustomWidthType,
@@ -208,6 +183,10 @@ function styling( attributes, clientId, name ) {
 
 	rightMarginTablet = 'undefined' !== typeof rightMarginTablet ? rightMarginTablet : rightMarginDesktop;
 	rightMarginMobile = 'undefined' !== typeof rightMarginMobile ? rightMarginMobile : rightMarginTablet;
+
+	if( 'alignfull' === contentWidth || 'alignwide' === contentWidth ){
+		leftMarginDesktop = rightMarginDesktop = leftMarginTablet = rightMarginTablet = leftMarginMobile = rightMarginMobile  = '';
+	}
 
 	const containerFullWidth = '100vw';
 
@@ -291,37 +270,6 @@ function styling( attributes, clientId, name ) {
 		},
 	};
 
-	const backgroundAttributesDesktop = {
-		'backgroundType': backgroundType,
-		'backgroundImage': backgroundImageDesktop,
-		'backgroundColor': backgroundColor,
-		'gradientValue': gradientValue,
-		'gradientColor1': gradientColor1,
-		'gradientColor2': gradientColor2,
-		'gradientLocation1': gradientLocation1,
-		'gradientLocation2': gradientLocation2,
-		'gradientType': gradientType,
-		'gradientAngle': gradientAngle,
-		'selectGradient': selectGradient,
-		'backgroundRepeat': backgroundRepeatDesktop,
-		'backgroundPosition': backgroundPositionDesktop,
-		'backgroundSize': backgroundSizeDesktop,
-		'backgroundAttachment': backgroundAttachmentDesktop,
-		'backgroundCustomSize': backgroundCustomSizeDesktop,
-		'backgroundCustomSizeType': backgroundCustomSizeType,
-		'backgroundImageColor': backgroundImageColor,
-		'overlayType': overlayType,
-		'backgroundVideo': backgroundVideo,
-		'backgroundVideoColor': backgroundVideoColor,
-		'customPosition': customPosition,
-		'xPosition': xPositionDesktop,
-		'xPositionType': xPositionType,
-		'yPosition': yPositionDesktop,
-		'yPositionType': yPositionType,
-	};
-
-	const containerBackgroundCSSDesktop = generateBackgroundCSS( backgroundAttributesDesktop );
-
 	let boxShadowPositionCSS = boxShadowPosition;
 
 	if ( 'outset' === boxShadowPosition ) {
@@ -341,9 +289,8 @@ function styling( attributes, clientId, name ) {
 		'padding-right': generateCSSUnit( rightPaddingDesktop, paddingType ),
 		'margin-top': generateCSSUnit( topMarginDesktop, marginType ) + ' !important',
 		'margin-bottom': generateCSSUnit( bottomMarginDesktop, marginType ) + ' !important',
-		'margin-left': generateCSSUnit( leftMarginDesktop, marginType ),
-		'margin-right': generateCSSUnit( rightMarginDesktop, marginType ),
-		...containerBackgroundCSSDesktop,
+		'margin-left': generateCSSUnit( leftMarginDesktop, marginType ) + ' !important',
+		'margin-right': generateCSSUnit( rightMarginDesktop, marginType ) + ' !important',
 		'box-shadow':
 			generateCSSUnit( boxShadowHOffset, 'px' ) +
 			' ' +
@@ -413,7 +360,7 @@ function styling( attributes, clientId, name ) {
 
 	if ( 'alignfull' === contentWidth && 'alignwide' === innerContentWidth ) {
 		widthSelectorsDesktop[
-			`.is-root-container > .block-editor-block-list__block.wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`
+			`.block-editor-block-list__block.wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`
 		] = {
 			'--inner-content-custom-width': `min(${ containerFullWidth },${ innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthType })`,
 			'max-width': 'var(--inner-content-custom-width)',
@@ -421,21 +368,17 @@ function styling( attributes, clientId, name ) {
 			'margin-left': 'auto',
 			'margin-right': 'auto',
 		};
-
-		widthSelectorsTablet[
-			`.is-root-container > .block-editor-block-list__block.uagb-editor-preview-mode-table.wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`
-		] = {
-			'--inner-content-custom-width': `min(${ containerFullWidth },${
-				innerContentCustomWidthTablet || innerContentCustomWidthDesktopFallback
-			}${ innerContentCustomWidthTypeTablet })`,
-			'max-width': 'var(--inner-content-custom-width)',
-			'width': '100%',
+		
+		widthSelectorsTablet[`.block-editor-block-list__block.uagb-editor-preview-mode-tablet.wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`] = {
+			'--inner-content-custom-width' : `min(${ containerFullWidth },${ innerContentCustomWidthTablet || innerContentCustomWidthDesktopFallback }${ innerContentCustomWidthTypeTablet })`,
+			'max-width' : 'var(--inner-content-custom-width)',
+			'width' :'100%',
 			'margin-left': 'auto',
-			'margin-right': 'auto',
+			'margin-right': 'auto'
 		};
 
 		widthSelectorsMobile[
-			`.is-root-container > .block-editor-block-list__block.uagb-editor-preview-mode-mobile.wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`
+			`.block-editor-block-list__block.uagb-editor-preview-mode-mobile.wp-block-uagb-container.uagb-block-${ block_id } > .uagb-container-inner-blocks-wrap`
 		] = {
 			'--inner-content-custom-width': `min(${ containerFullWidth },${
 				innerContentCustomWidthMobile || innerContentCustomWidthTablet || innerContentCustomWidthDesktopFallback
@@ -445,38 +388,8 @@ function styling( attributes, clientId, name ) {
 			'margin-left': 'auto',
 			'margin-right': 'auto',
 		};
+		
 	}
-
-	const backgroundAttributesTablet = {
-		'backgroundType': backgroundType,
-		'backgroundImage': backgroundImageTablet,
-		'backgroundColor': backgroundColor,
-		'gradientValue': gradientValue,
-		'gradientColor1': gradientColor1,
-		'gradientColor2': gradientColor2,
-		'gradientLocation1': gradientLocation1,
-		'gradientLocation2': gradientLocation2,
-		'gradientType': gradientType,
-		'gradientAngle': gradientAngle,
-		'selectGradient': selectGradient,
-		'backgroundRepeat': backgroundRepeatTablet,
-		'backgroundPosition': backgroundPositionTablet,
-		'backgroundSize': backgroundSizeTablet,
-		'backgroundAttachment': backgroundAttachmentTablet,
-		'backgroundCustomSize': backgroundCustomSizeTablet,
-		'backgroundCustomSizeType': backgroundCustomSizeType,
-		'backgroundImageColor': backgroundImageColor,
-		'overlayType': overlayType,
-		'backgroundVideo': backgroundVideo,
-		'backgroundVideoColor': backgroundVideoColor,
-		'customPosition': customPosition,
-		'xPosition': xPositionTablet,
-		'xPositionType': xPositionTypeTablet,
-		'yPosition': yPositionTablet,
-		'yPositionType': yPositionTypeTablet,
-	};
-
-	const containerBackgroundCSSTablet = generateBackgroundCSS( backgroundAttributesTablet );
 
 	const tablet_selectors = {
 		[ containerFlexSelector ]: {
@@ -504,37 +417,6 @@ function styling( attributes, clientId, name ) {
 			'height': generateCSSUnit( bottomHeightTablet, 'px' ),
 		},
 	};
-
-	const backgroundAttributesMobile = {
-		'backgroundType': backgroundType,
-		'backgroundImage': backgroundImageMobile,
-		'backgroundColor': backgroundColor,
-		'gradientValue': gradientValue,
-		'gradientColor1': gradientColor1,
-		'gradientColor2': gradientColor2,
-		'gradientLocation1': gradientLocation1,
-		'gradientLocation2': gradientLocation2,
-		'gradientType': gradientType,
-		'gradientAngle': gradientAngle,
-		'selectGradient': selectGradient,
-		'backgroundRepeat': backgroundRepeatMobile,
-		'backgroundPosition': backgroundPositionMobile,
-		'backgroundSize': backgroundSizeMobile,
-		'backgroundAttachment': backgroundAttachmentMobile,
-		'backgroundCustomSize': backgroundCustomSizeMobile,
-		'backgroundCustomSizeType': backgroundCustomSizeType,
-		'backgroundImageColor': backgroundImageColor,
-		'overlayType': overlayType,
-		'backgroundVideo': backgroundVideo,
-		'backgroundVideoColor': backgroundVideoColor,
-		'customPosition': customPosition,
-		'xPosition': xPositionMobile,
-		'xPositionType': xPositionTypeMobile,
-		'yPosition': yPositionMobile,
-		'yPositionType': yPositionTypeMobile,
-	};
-
-	const containerBackgroundCSSMobile = generateBackgroundCSS( backgroundAttributesMobile );
 
 	const mobile_selectors = {
 		[ containerFlexSelector ]: {
@@ -581,8 +463,9 @@ function styling( attributes, clientId, name ) {
 			'padding-right': generateCSSUnit( rightPaddingDesktop, paddingType ),
 			'margin-top': generateCSSUnit( topMarginDesktop, marginType ) + ' !important',
 			'margin-bottom': generateCSSUnit( bottomMarginDesktop, marginType ) + ' !important',
-			'margin-left': generateCSSUnit( leftMarginDesktop, marginType ),
-			'margin-right': generateCSSUnit( rightMarginDesktop, marginType ),
+			// For avoiding the margin collapse issue between themes style and our style we are adding !important.
+			'margin-left': generateCSSUnit( leftMarginDesktop, marginType ) + ' !important',
+			'margin-right': generateCSSUnit( rightMarginDesktop, marginType ) + ' !important',
 			'box-shadow':
 				generateCSSUnit( boxShadowHOffset, 'px' ) +
 				' ' +
@@ -605,8 +488,8 @@ function styling( attributes, clientId, name ) {
 			'padding-right': generateCSSUnit( rightPaddingTablet, paddingTypeTablet ),
 			'margin-top': generateCSSUnit( topMarginTablet, marginTypeTablet ) + ' !important',
 			'margin-bottom': generateCSSUnit( bottomMarginTablet, marginTypeTablet ) + ' !important',
-			'margin-left': generateCSSUnit( leftMarginTablet, marginTypeTablet ),
-			'margin-right': generateCSSUnit( rightMarginTablet, marginTypeTablet ),
+			'margin-left': generateCSSUnit( leftMarginTablet, marginTypeTablet ) + ' !important',
+			'margin-right': generateCSSUnit( rightMarginTablet, marginTypeTablet ) + ' !important',
 			'min-height': generateCSSUnit( minHeightTablet, minHeightTypeTablet ),
 		};
 		mobile_selectors[ '.wp-block' ] = {
@@ -616,8 +499,8 @@ function styling( attributes, clientId, name ) {
 			'padding-right': generateCSSUnit( rightPaddingMobile, paddingTypeMobile ),
 			'margin-top': generateCSSUnit( topMarginMobile, marginTypeMobile ) + ' !important',
 			'margin-bottom': generateCSSUnit( bottomMarginMobile, marginTypeMobile ) + ' !important',
-			'margin-left': generateCSSUnit( leftMarginMobile, marginTypeMobile ),
-			'margin-right': generateCSSUnit( rightMarginMobile, marginTypeMobile ),
+			'margin-left': generateCSSUnit( leftMarginMobile, marginTypeMobile ) + ' !important',
+			'margin-right': generateCSSUnit( rightMarginMobile, marginTypeMobile ) + ' !important',
 			'min-height': generateCSSUnit( minHeightMobile, minHeightTypeMobile ),
 		};
 		selectors[ '.wp-block:hover .uagb-container__video-wrap' ] = {
@@ -650,10 +533,9 @@ function styling( attributes, clientId, name ) {
 			'padding-right': generateCSSUnit( rightPaddingTablet, paddingTypeTablet ),
 			'margin-top': generateCSSUnit( topMarginTablet, marginTypeTablet ) + ' !important',
 			'margin-bottom': generateCSSUnit( bottomMarginTablet, marginTypeTablet ) + ' !important',
-			'margin-left': generateCSSUnit( leftMarginTablet, marginTypeTablet ),
-			'margin-right': generateCSSUnit( rightMarginTablet, marginTypeTablet ),
-			'min-height': generateCSSUnit( minHeightTablet, minHeightTypeTablet ),
-			...containerBackgroundCSSTablet,
+			'margin-left': generateCSSUnit( leftMarginTablet, marginTypeTablet ) + ' !important',
+			'margin-right': generateCSSUnit( rightMarginTablet, marginTypeTablet ) + ' !important',
+			'min-height': generateCSSUnit( minHeightTablet, minHeightTypeTablet ) + ' !important',
 			...borderCSSTablet,
 		};
 		mobile_selectors[ '.wp-block' ] = {
@@ -663,10 +545,9 @@ function styling( attributes, clientId, name ) {
 			'padding-right': generateCSSUnit( rightPaddingMobile, paddingTypeMobile ),
 			'margin-top': generateCSSUnit( topMarginMobile, marginTypeMobile ) + ' !important',
 			'margin-bottom': generateCSSUnit( bottomMarginMobile, marginTypeMobile ) + ' !important',
-			'margin-left': generateCSSUnit( leftMarginMobile, marginTypeMobile ),
-			'margin-right': generateCSSUnit( rightMarginMobile, marginTypeMobile ),
+			'margin-left': generateCSSUnit( leftMarginMobile, marginTypeMobile ) + ' !important',
+			'margin-right': generateCSSUnit( rightMarginMobile, marginTypeMobile ) + ' !important',
 			'min-height': generateCSSUnit( minHeightMobile, minHeightTypeMobile ),
-			...containerBackgroundCSSMobile,
 			...borderCSSMobile,
 		};
 		selectors[ '.wp-block:hover' ] = {

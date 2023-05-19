@@ -7,7 +7,6 @@ import { InnerBlocks } from '@wordpress/block-editor';
 import { useLayoutEffect, memo } from '@wordpress/element';
 
 import styles from './editor.lazy.scss';
-import { useDeviceType } from '@Controls/getPreviewType';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -18,12 +17,11 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	const deviceType = useDeviceType();
-
 	const {
 		attributes: { align, backgroundType, alignMobile, alignTablet },
 		isSelected,
 		className,
+		deviceType
 	} = props.parentProps;
 
 	const active = isSelected ? 'active' : 'not-active';

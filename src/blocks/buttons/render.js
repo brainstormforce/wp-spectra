@@ -3,7 +3,6 @@ import { InnerBlocks } from '@wordpress/block-editor';
 import { useLayoutEffect, useMemo, memo } from '@wordpress/element';
 
 import styles from './editor.lazy.scss';
-import { useDeviceType } from '@Controls/getPreviewType';
 
 const ALLOWED_BLOCKS = [ 'uagb/buttons-child' ];
 
@@ -18,9 +17,8 @@ const Render = ( props ) => {
 
 	props = props.parentProps;
 
-	const { attributes } = props;
+	const { attributes, deviceType } = props;
 
-	const deviceType = useDeviceType();
 
 	const { className, btn_count, buttons, stack, buttonSize, buttonSizeTablet, buttonSizeMobile } = attributes;
 

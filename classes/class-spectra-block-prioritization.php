@@ -30,10 +30,10 @@ class Spectra_Block_Prioritization {
 		'buttons',
 		'info-box',
 		'call-to-action',
+		'countdown',
 		// Alphabetically Ordered Blocks.
 		'blockquote',
 		'content-timeline',
-		'countdown',
 		'counter',
 		'faq',
 		'forms',
@@ -44,6 +44,7 @@ class Spectra_Block_Prioritization {
 		'inline-notice',
 		'instagram-feed',
 		'login',
+		'loop-builder',
 		'lottie',
 		'marketing-button',
 		'modal',
@@ -53,6 +54,7 @@ class Spectra_Block_Prioritization {
 		'price-list',
 		'register',
 		'review',
+		'separator',
 		'slider',
 		'social-share',
 		'star-rating',
@@ -68,6 +70,8 @@ class Spectra_Block_Prioritization {
 		'gf-styler',
 		'post-masonry',
 		'wp-search',
+		// Extensions.
+		'popup-builder',
 	);
 
 	/**

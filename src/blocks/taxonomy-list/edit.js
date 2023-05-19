@@ -7,7 +7,6 @@ import { useEffect, useMemo } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
-import { useDeviceType } from '@Controls/getPreviewType';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { useSelect } from '@wordpress/data';
 import Settings from './settings';
@@ -16,7 +15,6 @@ import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 const UAGBTaxonomyList = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		isSelected,
 		attributes,
@@ -48,6 +46,7 @@ const UAGBTaxonomyList = ( props ) => {
 		setAttributes,
 		clientId,
 		name,
+		deviceType
 	} = props;
 
 	let categoriesList = [];

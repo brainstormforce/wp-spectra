@@ -43,6 +43,7 @@ const setInitialState = ( store ) => {
 			social: data.social,
             instaLinkedAccounts: data?.insta_linked_accounts,
             coreBlocks: data.spectra_core_blocks,
+            enableAnimationsExtension: data.uag_enable_animations_extension,
             spectraFSEFonts: data.spectra_global_fse_fonts,
             spectraIsBlockTheme: data.wp_is_block_theme,
             themeFonts: data.theme_fonts

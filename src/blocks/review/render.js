@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import ReviewBody from './review-body';
 import { useEffect, useState, useLayoutEffect, memo } from '@wordpress/element';
 import styles from './editor.lazy.scss';
-import { useDeviceType } from '@Controls/getPreviewType';
 import getImageHeightWidth from '@Controls/getImageHeightWidth';
 
 const Render = ( props ) => {
@@ -16,7 +15,6 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-	const deviceType = useDeviceType();
 	const {
 		attributes: {
 			block_id,
@@ -48,6 +46,7 @@ const Render = ( props ) => {
 		setAttributes,
 		isSelected,
 		className,
+		deviceType
 	} = props;
 
 	const bodyInitialState = {

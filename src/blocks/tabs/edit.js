@@ -3,7 +3,6 @@
  */
 import styling from './styling';
 import { useEffect, useMemo } from '@wordpress/element';
-import { useDeviceType } from '@Controls/getPreviewType';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
@@ -15,7 +14,6 @@ import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 
 const UAGBTabsEdit = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		isSelected,
 		setAttributes,
@@ -33,6 +31,7 @@ const UAGBTabsEdit = ( props ) => {
 		},
 		clientId,
 		name,
+		deviceType
 	} = props;
 
 	useEffect( () => {

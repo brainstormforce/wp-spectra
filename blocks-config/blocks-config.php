@@ -20,3 +20,4 @@ require_once UAGB_DIR . 'blocks-config/forms/class-uagb-forms.php';
 require_once UAGB_DIR . 'blocks-config/lottie/class-uagb-lottie.php';
 require_once UAGB_DIR . 'blocks-config/image/class-uagb-image.php';
 require_once UAGB_DIR . 'blocks-config/image-gallery/class-spectra-image-gallery.php';
+require_once UAGB_DIR . 'blocks-config/popup-builder/class-uagb-popup-builder.php';

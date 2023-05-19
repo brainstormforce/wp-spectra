@@ -10,10 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_post_timeline_gfont( $attr );
 
-$head_top_spacing_fallback   = UAGB_Block_Helper::get_fallback_number( $attr['headTopSpacing'], 'headTopSpacing', $attr['blockName'] );
-$author_space_fallback       = UAGB_Block_Helper::get_fallback_number( $attr['authorSpace'], 'authorSpace', $attr['blockName'] );
-$cta_bottom_spacing_fallback = UAGB_Block_Helper::get_fallback_number( $attr['ctaBottomSpacing'], 'ctaBottomSpacing', $attr['blockName'] );
-
 $horizontal_space        = $attr['horizontalSpace'];
 $horizontal_space_tablet = '' !== $attr['horizontalSpaceTablet'] ? $attr['horizontalSpaceTablet'] : $horizontal_space;
 $horizontal_space_mobile = '' !== $attr['horizontalSpaceMobile'] ? $attr['horizontalSpaceMobile'] : $horizontal_space_tablet;
@@ -50,7 +46,7 @@ $selectors = array(
 		'color'            => $attr['ctaColor'],
 		'background-color' => $attr['ctaBackground'],
 		'text-align'       => $attr['align'],
-		'margin-bottom'    => UAGB_Helper::get_css_value( $cta_bottom_spacing_fallback, 'px' ),
+		'margin-bottom'    => UAGB_Helper::get_css_value( $attr['ctaBottomSpacing'], 'px' ),
 	),
 	' .uagb-timeline__heading a'                          => array(
 		'text-align' => $attr['align'],
@@ -58,14 +54,14 @@ $selectors = array(
 	),
 	' .uagb-timeline__heading-text'                       => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
-		'margin-top'    => UAGB_Helper::get_css_value( $head_top_spacing_fallback, 'px' ),
+		'margin-top'    => UAGB_Helper::get_css_value( $attr['headTopSpacing'], 'px' ),
 	),
 	'.uagb_timeline__cta-enable .uagb-timeline-desc-content' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['contentSpace'], 'px' ),
-		'margin-top'    => UAGB_Helper::get_css_value( $author_space_fallback, 'px' ),
+		'margin-top'    => UAGB_Helper::get_css_value( $attr['authorSpace'], 'px' ),
 	),
 	' .uagb-timeline__author-link + .uagb-timeline__link_parent' => array(
-		'margin-top' => UAGB_Helper::get_css_value( $author_space_fallback, 'px' ),
+		'margin-top' => UAGB_Helper::get_css_value( $attr['authorSpace'], 'px' ),
 	),
 	'.uagb-timeline__center-block .uagb-timeline__marker' => array(
 		'margin-left'  => UAGB_Helper::get_css_value( $horizontal_space, $attr['horizontalSpaceUnit'] ),

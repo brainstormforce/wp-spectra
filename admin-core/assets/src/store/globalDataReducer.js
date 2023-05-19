@@ -94,6 +94,11 @@ const globalDataReducer = ( state = {}, action ) => {
                 ...state,
                 enableMasonryExtension: action.payload,
             };
+        case 'UPDATE_ENABLE_ANIMATIONS_EXTENSION':
+            return {
+                ...state,
+                enableAnimationsExtension: action.payload,
+            };
         case 'UPDATE_RECAPTCHA_VERSION':
             return {
                 ...state,

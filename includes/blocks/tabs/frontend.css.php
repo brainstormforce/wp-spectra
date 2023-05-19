@@ -20,11 +20,6 @@ $overall_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'tab
 // Adds Fonts.
 UAGB_Block_JS::blocks_tabs_gfont( $attr );
 
-$block_name = 'tabs';
-
-$icon_size_fallback    = UAGB_Block_Helper::get_fallback_number( $attr['iconSize'], 'iconSize', $block_name );
-$icon_spacing_fallback = UAGB_Block_Helper::get_fallback_number( $attr['iconSpacing'], 'iconSpacing', $block_name );
-
 $tab_title_top_padding    = isset( $attr['tabTitleTopPadding'] ) ? $attr['tabTitleTopPadding'] : $attr['tabTitleVertPadding'];
 $tab_title_bottom_padding = isset( $attr['tabTitleBottomPadding'] ) ? $attr['tabTitleBottomPadding'] : $attr['tabTitleVertPadding'];
 $tab_title_left_padding   = isset( $attr['tabTitleLeftPadding'] ) ? $attr['tabTitleLeftPadding'] : $attr['tabTitleHrPadding'];
@@ -87,21 +82,21 @@ $selectors = array(
 		'color' => $attr['bodyTextColor'],
 	),
 	' .uagb-tabs__icon svg'                                => array(
-		'height' => UAGB_Helper::get_css_value( $icon_size_fallback, 'px' ),
-		'width'  => UAGB_Helper::get_css_value( $icon_size_fallback, 'px' ),
+		'height' => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
+		'width'  => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
 		'fill'   => $attr['iconColor'],
 	),
 	' .uagb-tabs__icon-position-left > .uagb-tabs__icon'   => array(
-		'margin-right' => UAGB_Helper::get_css_value( $icon_spacing_fallback, 'px' ),
+		'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpacing'], 'px' ),
 	),
 	' .uagb-tabs__icon-position-right > .uagb-tabs__icon'  => array(
-		'margin-left' => UAGB_Helper::get_css_value( $icon_spacing_fallback, 'px' ),
+		'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpacing'], 'px' ),
 	),
 	' .uagb-tabs__icon-position-bottom > .uagb-tabs__icon' => array(
-		'margin-top' => UAGB_Helper::get_css_value( $icon_spacing_fallback, 'px' ),
+		'margin-top' => UAGB_Helper::get_css_value( $attr['iconSpacing'], 'px' ),
 	),
 	' .uagb-tabs__icon-position-top > .uagb-tabs__icon'    => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $icon_spacing_fallback, 'px' ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['iconSpacing'], 'px' ),
 	),
 	'.uagb-tabs__hstyle1-desktop > .uagb-tabs__panel .uagb-tab' => $overall_border_css,
 	'.uagb-tabs__hstyle1-desktop > .uagb-tabs__body-wrap'  => $overall_border_css,
