@@ -86,7 +86,17 @@ const BlockCard = ( props ) => {
                         </div>
                     ) }
                 </p>
-                <a className="focus-visible:text-slate-500 active:text-slate-500 hover:text-slate-500 focus:text-slate-400 text-slate-400 text-sm truncate" href={ `https://wpspectra.com/blocks/${ link }` } target="_blank"rel="noreferrer">{__( 'Live Demo', 'ultimate-addons-for-gutenberg' )}</a>
+				{/* This condition is added until Spectra Pro is released. */}
+				{ admin_categories?.includes( 'pro' ) ? (
+					<span className="text-slate-400 text-sm truncate pointer-events-none">
+						{ __( 'Coming Soon', 'ultimate-addons-for-gutenberg' ) }
+					</span>
+				) : (
+					<a className="focus-visible:text-slate-500 active:text-slate-500 hover:text-slate-500 focus:text-slate-400 text-slate-400 text-sm truncate" href={ `https://wpspectra.com/blocks/${ link }` } target="_blank"rel="noreferrer">
+						{ __( 'Live Demo', 'ultimate-addons-for-gutenberg' ) }
+					</a>
+				) }
+                
             </div>
             { pro_filler ? (
                 <div className="inline-block align-text-bottom max-h-4 px-1.5 py-[3px] ml-1.5 text-[10px] leading-[10px] border border-slate-800 bg-slate-800 text-white rounded spectra-admin__block-label">
