@@ -33,6 +33,8 @@ uagLocalStorage.setItem( 'uagSvgConfirmation', JSON.stringify( uagb_blocks_info?
 // The Block Slugs need to be added exactly as below into the array at: /classes/class-spectra-block-prioritization.php.
 // Priorities need to be adequately updated in the respective includes/blocks/block.php files.
 
+// CPT Specific Blocks.
+import './blocks/popup-builder/block.js';
 // Core Spectra Blocks.
 import './blocks/container/block.js';
 import './blocks/advanced-heading/block.js';
@@ -42,11 +44,11 @@ import './blocks/buttons-child/block.js'; // Child Block.
 import './blocks/info-box/block.js';
 import './blocks/call-to-action/block.js';
 import './blocks/icon/block.js';
+import './blocks/countdown/block.js';
 // Alphabetically Ordered Blocks.
 import './blocks/blockquote/block.js';
 import './blocks/timeline/content-timeline/block.js';
 import './blocks/timeline/content-timeline-child/block.js'; // Child Block.
-import './blocks/countdown/block.js';
 import './blocks/counter/block.js';
 import './blocks/faq/block.js';
 import './blocks/faq-child/block.js'; // Child Block.
@@ -78,6 +80,7 @@ import './blocks/timeline/post-timeline/block.js';
 import './blocks/price-list/block.js';
 import './blocks/price-list-child/block.js'; // Child Block.
 import './blocks/review/block.js';
+import './blocks/separator/block.js';
 import './blocks/slider/block.js';
 import './blocks/slider-child/block.js'; // Child Block.
 import './blocks/social-share/block.js';

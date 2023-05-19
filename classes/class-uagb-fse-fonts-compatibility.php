@@ -201,6 +201,9 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 			}
 			$final_font_files = array();
 
+			if ( ! is_array( $font_files ) && empty( $font_files ) && empty( $font_family_key ) ) {
+				return;
+			}
 			foreach ( $font_files[ $font_family_key ] as $key => $font_file ) {
 
 				// require file.php if the download_url function doesn't exist.
@@ -466,7 +469,9 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 
 			// Construct updated theme.json.
 			$theme_json_raw = json_decode( file_get_contents( get_stylesheet_directory() . '/theme.json' ), true );
-
+			if ( empty( $theme_json_raw['settings']['typography']['fontFamilies'] ) ) { // Added condition to resolve an issue of PHP Notice:  Undefined index: fontFamilies.
+				return;
+			}
 			// Overwrite the previous fontFamilies with the new ones.
 			$font_families = $theme_json_raw['settings']['typography']['fontFamilies'];
 

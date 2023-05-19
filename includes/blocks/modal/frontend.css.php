@@ -9,7 +9,6 @@
 
 // Adds Fonts.
 UAGB_Block_JS::blocks_modal_gfont( $attr );
-$block_name      = 'modal';
 $m_selectors     = array();
 $t_selectors     = array();
 $selectors       = array();
@@ -65,7 +64,7 @@ $selectors               = array(
 		'border-bottom-left-radius'  => UAGB_Helper::get_css_value( $attr['contentBorderBottomLeftRadius'], $attr['contentBorderRadiusUnit'] ),
 		'border-bottom-right-radius' => UAGB_Helper::get_css_value( $attr['contentBorderBottomRightRadius'], $attr['contentBorderRadiusUnit'] ),
 	),
-	' .uagb-modal-popup-wrap:hover'              => array(
+	' .uagb-modal-popup-content:hover'           => array(
 		'border-color' => $attr['contentBorderHColor'],
 	),
 	' .uagb-modal-popup-close svg'               => array(
@@ -276,14 +275,13 @@ if ( 'popup-top-left' === $attr['closeIconPosition'] ) {
 	);
 }
 
-$buttonIconSpace_fallback      = UAGB_Block_Helper::get_fallback_number( $attr['buttonIconSpace'], 'buttonIconSpace', $block_name );
-$attr['buttonIconSpaceTablet'] = is_numeric( $attr['buttonIconSpaceTablet'] ) ? $attr['buttonIconSpaceTablet'] : $buttonIconSpace_fallback;
+$attr['buttonIconSpaceTablet'] = is_numeric( $attr['buttonIconSpaceTablet'] ) ? $attr['buttonIconSpaceTablet'] : $attr['buttonIconSpace'];
 $attr['buttonIconSpaceMobile'] = is_numeric( $attr['buttonIconSpaceMobile'] ) ? $attr['buttonIconSpaceMobile'] : $attr['buttonIconSpaceTablet'];
 
 if ( 'button' === $attr['modalTrigger'] ) {
 	if ( 'after' === $attr['buttonIconPosition'] ) {
 		$selectors[' .uagb-modal-button-link svg ']   = array(
-			'margin-left' => UAGB_Helper::get_css_value( $buttonIconSpace_fallback, $attr['buttonIconSpaceType'] ),
+			'margin-left' => UAGB_Helper::get_css_value( $attr['buttonIconSpace'], $attr['buttonIconSpaceType'] ),
 		);
 		$t_selectors[' .uagb-modal-button-link svg '] = array(
 			'margin-left' => UAGB_Helper::get_css_value( $attr['buttonIconSpaceTablet'], $attr['buttonIconSpaceType'] ),
@@ -293,7 +291,7 @@ if ( 'button' === $attr['modalTrigger'] ) {
 		);
 	} else {
 		$selectors[' .uagb-modal-button-link svg']   = array(
-			'margin-right' => UAGB_Helper::get_css_value( $buttonIconSpace_fallback, $attr['buttonIconSpaceType'] ),
+			'margin-right' => UAGB_Helper::get_css_value( $attr['buttonIconSpace'], $attr['buttonIconSpaceType'] ),
 		);
 		$t_selectors[' .uagb-modal-button-link svg'] = array(
 			'margin-right' => UAGB_Helper::get_css_value( $attr['buttonIconSpaceTablet'], $attr['buttonIconSpaceType'] ),
@@ -308,7 +306,7 @@ if ( $is_rtl ) {
 	if ( 'button' === $attr['modalTrigger'] ) {
 		if ( 'after' === $attr['buttonIconPosition'] ) {
 			$selectors[' .uagb-modal-button-link svg ']   = array(
-				'margin-right' => UAGB_Helper::get_css_value( $buttonIconSpace_fallback, $attr['buttonIconSpaceType'] ),
+				'margin-right' => UAGB_Helper::get_css_value( $attr['buttonIconSpace'], $attr['buttonIconSpaceType'] ),
 			);
 			$t_selectors[' .uagb-modal-button-link svg '] = array(
 				'margin-right' => UAGB_Helper::get_css_value( $attr['buttonIconSpaceTablet'], $attr['buttonIconSpaceType'] ),
@@ -318,7 +316,7 @@ if ( $is_rtl ) {
 			);
 		} else {
 			$selectors[' .uagb-modal-button-link svg']   = array(
-				'margin-left' => UAGB_Helper::get_css_value( $buttonIconSpace_fallback, $attr['buttonIconSpaceType'] ),
+				'margin-left' => UAGB_Helper::get_css_value( $attr['buttonIconSpace'], $attr['buttonIconSpaceType'] ),
 			);
 			$t_selectors[' .uagb-modal-button-link svg'] = array(
 				'margin-left' => UAGB_Helper::get_css_value( $attr['buttonIconSpaceTablet'], $attr['buttonIconSpaceType'] ),

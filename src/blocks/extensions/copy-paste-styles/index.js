@@ -12,6 +12,7 @@ import editorStyles from './../editor.lazy.scss';
 import { addFilter, applyFilters } from '@wordpress/hooks';
 import SettingsIcons from './icons.js';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
+import AnimationAttributes from '@Blocks/extensions/animations-extension/attributes.js';
 
 const UAGCopyPasteStyles = () => {
 	// Registering the shortcuts
@@ -138,12 +139,21 @@ const UAGCopyPasteStyles = () => {
 
 		if ( name.includes( 'uagb/' ) ) {
 			const blockName = name.replace( 'uagb/', '' );
-			const blockAttributes = allBlocksAttributes[ blockName ];
+			let blockAttributes = allBlocksAttributes[ blockName ];
 
 			spectraCopyPasteStyles[ `${ blockName }-styles` ] = {};
 			spectraCopyPasteStyles[ `global-style` ] = {};
 
 			if ( blockAttributes && spectraCopyPasteStyles ) {
+				// If Animations extension is enabled, explicitly add the animations attributes.
+				// PS: UAGCopyPaste styles do not work for any attributes added via 'blocks.registerBlockType' filter.
+				if ( 'enabled' === uagb_blocks_info.enableAnimationsExtension ) {
+					blockAttributes = {
+						...blockAttributes,
+						...AnimationAttributes,
+					};
+				}
+
 				Object.keys( blockAttributes ).map( ( attribute ) => {
 					if ( blockAttributes[ attribute ].UAGCopyPaste ) {
 						const key = blockAttributes[ attribute ].UAGCopyPaste.styleType;

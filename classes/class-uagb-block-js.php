@@ -545,6 +545,22 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		}
 
 		/**
+		 *
+		 * Adds Google fonts for Separator block.
+		 *
+		 * @since 2.6.0
+		 * @param array $attr the blocks attr.
+		 * @return void
+		 */
+		public static function blocks_separator_gfont( $attr ) {
+			$element_text_load_google_font = isset( $attr['elementTextLoadGoogleFonts'] ) ? $attr['elementTextLoadGoogleFonts'] : '';
+			$element_text_font_family      = isset( $attr['elementTextFontFamily'] ) ? $attr['elementTextFontFamily'] : '';
+			$element_text_font_weight      = isset( $attr['elementTextFontWeight'] ) ? $attr['elementTextFontWeight'] : '';
+
+			UAGB_Helper::blocks_google_font( $element_text_load_google_font, $element_text_font_family, $element_text_font_weight );
+		}
+
+		/**
 		 * Adds Google fonts for Taxonomy List block.
 		 *
 		 * @since 1.18.0

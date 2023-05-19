@@ -99,8 +99,7 @@ const attributes = {
 		default: 'zero',
 	},
 	redirectURL: {
-		type: 'string',
-		default: '',
+		type: 'object',
 	},
 
 	// <------------------ STYLE TAB ------------------>

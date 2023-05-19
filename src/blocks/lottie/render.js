@@ -4,7 +4,6 @@ import classnames from 'classnames';
 import { Player } from '@lottiefiles/react-lottie-player';
 import styles from './editor.lazy.scss';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
-import { useDeviceType } from '@Controls/getPreviewType';
 import { MediaPlaceholder } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
@@ -18,13 +17,11 @@ const Render = ( props ) => {
 
 	const { lottieplayer } = props;
 
-	const deviceType = useDeviceType();
-
 	props = props.parentProps;
 
 	const blockName = props.name.replace( 'uagb/', '' );
 
-	const { className, attributes, setAttributes } = props;
+	const { className, attributes, setAttributes, deviceType } = props;
 
 	const { loop, speed, reverse, lottieURl, playOn, align, jsonLottie } = attributes;
 

@@ -5,7 +5,6 @@ import Description from './components/Description';
 import CTA from './components/CallToActionNew';
 import SecondCTAButton from './components/SecondCTAButton';
 import styles from './editor.lazy.scss';
-import { useDeviceType } from '@Controls/getPreviewType';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -17,8 +16,7 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-	const { setAttributes, attributes } = props;
-	const deviceType = useDeviceType();
+	const { setAttributes, attributes, deviceType } = props;
 
 	// Setup the attributes.
 	const { block_id, ctaType, enabledSecondCtaButton } = attributes;

@@ -10,11 +10,6 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_forms_gfont( $attr );
 
-$block_name = 'forms';
-
-$field_gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['fieldGap'], 'fieldGap', $block_name );
-$label_gap_fallback = UAGB_Block_Helper::get_fallback_number( $attr['labelGap'], 'labelGap', $block_name );
-
 $selectors   = array();
 $m_selectors = array();
 $t_selectors = array();
@@ -29,14 +24,10 @@ $paddingFieldBottom = isset( $attr['paddingFieldBottom'] ) ? $attr['paddingField
 $paddingFieldLeft   = isset( $attr['paddingFieldLeft'] ) ? $attr['paddingFieldLeft'] : $attr['hPaddingField'];
 $paddingFieldRight  = isset( $attr['paddingFieldRight'] ) ? $attr['paddingFieldRight'] : $attr['hPaddingField'];
 
-$toggle_size_number          = UAGB_Block_Helper::get_fallback_number( $attr['toggleSize'], 'toggleSize', $block_name );
-$toggle_size_number_tablet   = is_numeric( $attr['toggleSizeTablet'] ) ? $attr['toggleSizeTablet'] : $toggle_size_number;
-$toggle_size_number_mobile   = is_numeric( $attr['toggleSizeMobile'] ) ? $attr['toggleSizeMobile'] : $toggle_size_number_tablet;
-$toggle_size_tablet_fallback = UAGB_Block_Helper::get_fallback_number( $attr['toggleSizeTablet'], 'toggleSizeTablet', $block_name );
-$toggle_size_mobile_fallback = UAGB_Block_Helper::get_fallback_number( $attr['toggleSizeMobile'], 'toggleSizeMobile', $block_name );
+$toggle_size_number_tablet = is_numeric( $attr['toggleSizeTablet'] ) ? $attr['toggleSizeTablet'] : $attr['toggleSize'];
+$toggle_size_number_mobile = is_numeric( $attr['toggleSizeMobile'] ) ? $attr['toggleSizeMobile'] : $toggle_size_number_tablet;
 
-$toggle_width_size_number        = UAGB_Block_Helper::get_fallback_number( $attr['toggleWidthSize'], 'toggleWidthSize', $block_name );
-$toggle_width_size_number_tablet = is_numeric( $attr['toggleWidthSizeTablet'] ) ? $attr['toggleWidthSizeTablet'] : $toggle_width_size_number;
+$toggle_width_size_number_tablet = is_numeric( $attr['toggleWidthSizeTablet'] ) ? $attr['toggleWidthSizeTablet'] : $attr['toggleWidthSize'];
 $toggle_width_size_number_mobile = is_numeric( $attr['toggleWidthSizeMobile'] ) ? $attr['toggleWidthSizeMobile'] : $toggle_width_size_number_tablet;
 
 $input_overall_border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'field' );
@@ -85,28 +76,20 @@ $toggle_border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'chec
 $toggle_border_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'checkBoxToggle', 'mobile' );
 
 // Individual Toggle Border Width Fallback for Math Calculations.
-$toggle_border_top_fallback           = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-top-width'], 'checkBoxToggleBorderTopWidth', $block_name );
-$toggle_border_left_fallback          = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-left-width'], 'checkBoxToggleBorderLeftWidth', $block_name );
-$toggle_border_right_fallback         = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-right-width'], 'checkBoxToggleBorderRightWidth', $block_name );
-$toggle_border_bottom_fallback        = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-bottom-width'], 'checkBoxToggleBorderBottomWidth', $block_name );
-$toggle_border_top_tablet_fallback    = isset( $toggle_border_tablet['border-top-width'] ) ? ( ! empty( $toggle_border_tablet['border-top-width'] ) ? $toggle_border_tablet['border-top-width'] : $toggle_border_top_fallback ) : $toggle_border_top_fallback;
-$toggle_border_left_tablet_fallback   = isset( $toggle_border_tablet['border-left-width'] ) ? ( ! empty( $toggle_border_tablet['border-left-width'] ) ? $toggle_border_tablet['border-left-width'] : $toggle_border_left_fallback ) : $toggle_border_left_fallback;
-$toggle_border_right_tablet_fallback  = isset( $toggle_border_tablet['border-right-width'] ) ? ( ! empty( $toggle_border_tablet['border-right-width'] ) ? $toggle_border_tablet['border-right-width'] : $toggle_border_right_fallback ) : $toggle_border_right_fallback;
-$toggle_border_bottom_tablet_fallback = isset( $toggle_border_tablet['border-bottom-width'] ) ? ( ! empty( $toggle_border_tablet['border-bottom-width'] ) ? $toggle_border_tablet['border-bottom-width'] : $toggle_border_bottom_fallback ) : $toggle_border_bottom_fallback;
+$toggle_border_top_tablet_fallback    = isset( $toggle_border_tablet['border-top-width'] ) ? ( ! empty( $toggle_border_tablet['border-top-width'] ) ? $toggle_border_tablet['border-top-width'] : $toggle_border['border-top-width'] ) : $toggle_border['border-top-width'];
+$toggle_border_left_tablet_fallback   = isset( $toggle_border_tablet['border-left-width'] ) ? ( ! empty( $toggle_border_tablet['border-left-width'] ) ? $toggle_border_tablet['border-left-width'] : $toggle_border['border-left-width'] ) : $toggle_border['border-left-width'];
+$toggle_border_right_tablet_fallback  = isset( $toggle_border_tablet['border-right-width'] ) ? ( ! empty( $toggle_border_tablet['border-right-width'] ) ? $toggle_border_tablet['border-right-width'] : $toggle_border['border-right-width'] ) : $toggle_border['border-right-width'];
+$toggle_border_bottom_tablet_fallback = isset( $toggle_border_tablet['border-bottom-width'] ) ? ( ! empty( $toggle_border_tablet['border-bottom-width'] ) ? $toggle_border_tablet['border-bottom-width'] : $toggle_border['border-bottom-width'] ) : $toggle_border['border-bottom-width'];
 $toggle_border_top_mobile_fallback    = isset( $toggle_border_mobile['border-top-width'] ) ? ( ! empty( $toggle_border_mobile['border-top-width'] ) ? $toggle_border_mobile['border-top-width'] : $toggle_border_top_tablet_fallback ) : $toggle_border_top_tablet_fallback;
 $toggle_border_left_mobile_fallback   = isset( $toggle_border_mobile['border-left-width'] ) ? ( ! empty( $toggle_border_mobile['border-left-width'] ) ? $toggle_border_mobile['border-left-width'] : $toggle_border_left_tablet_fallback ) : $toggle_border_left_tablet_fallback;
 $toggle_border_right_mobile_fallback  = isset( $toggle_border_mobile['border-right-width'] ) ? ( ! empty( $toggle_border_mobile['border-right-width'] ) ? $toggle_border_mobile['border-right-width'] : $toggle_border_right_tablet_fallback ) : $toggle_border_right_tablet_fallback;
 $toggle_border_bottom_mobile_fallback = isset( $toggle_border_mobile['border-bottom-width'] ) ? ( ! empty( $toggle_border_mobile['border-bottom-width'] ) ? $toggle_border_mobile['border-bottom-width'] : $toggle_border_bottom_tablet_fallback ) : $toggle_border_bottom_tablet_fallback;
 
 // Individual Toggle Border Radius Fallback for Inner Dot.
-$toggle_border_radius_tl_fallback        = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-top-left-radius'], 'checkBoxToggleBorderTopLeftRadius', $block_name );
-$toggle_border_radius_tr_fallback        = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-top-right-radius'], 'checkBoxToggleBorderTopRightRadius', $block_name );
-$toggle_border_radius_bl_fallback        = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-bottom-left-radius'], 'checkBoxToggleBorderBottomLeftRadius', $block_name );
-$toggle_border_radius_br_fallback        = UAGB_Block_Helper::get_attribute_fallback( $toggle_border['border-bottom-right-radius'], 'checkBoxToggleBorderBottomRightRadius', $block_name );
-$toggle_border_radius_tl_tablet_fallback = isset( $toggle_border_tablet['border-top-left-radius'] ) ? ( ! empty( $toggle_border_tablet['border-top-left-radius'] ) ? $toggle_border_tablet['border-top-left-radius'] : $toggle_border_radius_tl_fallback ) : $toggle_border_radius_tl_fallback;
-$toggle_border_radius_tr_tablet_fallback = isset( $toggle_border_tablet['border-top-right-radius'] ) ? ( ! empty( $toggle_border_tablet['border-top-right-radius'] ) ? $toggle_border_tablet['border-top-right-radius'] : $toggle_border_radius_tr_fallback ) : $toggle_border_radius_tr_fallback;
-$toggle_border_radius_bl_tablet_fallback = isset( $toggle_border_tablet['border-bottom-left-radius'] ) ? ( ! empty( $toggle_border_tablet['border-bottom-left-radius'] ) ? $toggle_border_tablet['border-bottom-left-radius'] : $toggle_border_radius_bl_fallback ) : $toggle_border_radius_bl_fallback;
-$toggle_border_radius_br_tablet_fallback = isset( $toggle_border_tablet['border-bottom-right-radius'] ) ? ( ! empty( $toggle_border_tablet['border-bottom-right-radius'] ) ? $toggle_border_tablet['border-bottom-right-radius'] : $toggle_border_radius_br_fallback ) : $toggle_border_radius_br_fallback;
+$toggle_border_radius_tl_tablet_fallback = isset( $toggle_border_tablet['border-top-left-radius'] ) ? ( ! empty( $toggle_border_tablet['border-top-left-radius'] ) ? $toggle_border_tablet['border-top-left-radius'] : $toggle_border['border-top-left-radius'] ) : $toggle_border['border-top-left-radius'];
+$toggle_border_radius_tr_tablet_fallback = isset( $toggle_border_tablet['border-top-right-radius'] ) ? ( ! empty( $toggle_border_tablet['border-top-right-radius'] ) ? $toggle_border_tablet['border-top-right-radius'] : $toggle_border['border-top-right-radius'] ) : $toggle_border['border-top-right-radius'];
+$toggle_border_radius_bl_tablet_fallback = isset( $toggle_border_tablet['border-bottom-left-radius'] ) ? ( ! empty( $toggle_border_tablet['border-bottom-left-radius'] ) ? $toggle_border_tablet['border-bottom-left-radius'] : $toggle_border['border-bottom-left-radius'] ) : $toggle_border['border-bottom-left-radius'];
+$toggle_border_radius_br_tablet_fallback = isset( $toggle_border_tablet['border-bottom-right-radius'] ) ? ( ! empty( $toggle_border_tablet['border-bottom-right-radius'] ) ? $toggle_border_tablet['border-bottom-right-radius'] : $toggle_border['border-bottom-right-radius'] ) : $toggle_border['border-bottom-right-radius'];
 $toggle_border_radius_tl_mobile_fallback = isset( $toggle_border_mobile['border-top-left-radius'] ) ? ( ! empty( $toggle_border_mobile['border-top-left-radius'] ) ? $toggle_border_mobile['border-top-left-radius'] : $toggle_border_radius_tl_tablet_fallback ) : $toggle_border_radius_tl_tablet_fallback;
 $toggle_border_radius_tr_mobile_fallback = isset( $toggle_border_mobile['border-top-right-radius'] ) ? ( ! empty( $toggle_border_mobile['border-top-right-radius'] ) ? $toggle_border_mobile['border-top-right-radius'] : $toggle_border_radius_tr_tablet_fallback ) : $toggle_border_radius_tr_tablet_fallback;
 $toggle_border_radius_bl_mobile_fallback = isset( $toggle_border_mobile['border-bottom-left-radius'] ) ? ( ! empty( $toggle_border_mobile['border-bottom-left-radius'] ) ? $toggle_border_mobile['border-bottom-left-radius'] : $toggle_border_radius_bl_tablet_fallback ) : $toggle_border_radius_bl_tablet_fallback;
@@ -124,8 +107,8 @@ $btn_border_Tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', '
 $btn_border_Mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'mobile' );
 
 // fallback for forms select field.
-$forms_padding_right_mobile_fallback = (int) UAGB_Block_Helper::get_fallback_number( $attr['paddingFieldRightMobile'], 'paddingFieldRightMobile', $block_name ) + 30;
-$forms_padding_right_tablet_fallback = (int) UAGB_Block_Helper::get_fallback_number( $attr['paddingFieldRightTablet'], 'paddingFieldRightTablet', $block_name ) + 30;
+$forms_padding_right_mobile_fallback = (int) $attr['paddingFieldRightMobile'] + 30;
+$forms_padding_right_tablet_fallback = (int) $attr['paddingFieldRightTablet'] + 30;
 
 $selectors = array(
 	'.uagb-forms__outer-wrap'                              => array(
@@ -141,12 +124,12 @@ $selectors = array(
 		'display' => $attr['displayLabels'] ? 'block' : 'none',
 	),
 	' .uagb-forms-main-form .uagb-forms-field-set'         => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $field_gap_fallback, $attr['fieldGapType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['fieldGap'], $attr['fieldGapType'] ),
 	),
 	' .uagb-forms-main-form .uagb-forms-input-label'       => array(
 		'color'         => $attr['labelColor'],
 		'font-size'     => UAGB_Helper::get_css_value( $attr['labelFontSize'], $attr['labelFontSizeType'] ),
-		'margin-bottom' => UAGB_Helper::get_css_value( $label_gap_fallback, $attr['labelGapUnit'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['labelGap'], $attr['labelGapUnit'] ),
 	),
 	' .uagb-forms-success-message'                         => array_merge(
 		array(
@@ -232,7 +215,7 @@ $selectors = array(
 	),
 	' .uagb-slider.round'                                  => array(
 		// Important is added to override the usual border radius we set with a completely round one.
-		'border-radius' => UAGB_Helper::get_css_value( 20 + $toggle_width_size_number, 'px' ) . ' !important',
+		'border-radius' => UAGB_Helper::get_css_value( 20 + $attr['toggleWidthSize'], 'px' ) . ' !important',
 	),
 	// Drop icon position css.
 	// select control color.
@@ -329,8 +312,8 @@ $m_selectors = array(
 // Checkbox Field css.
 $selectors[' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'] = array(
 	'background-color' => $attr['toggleColor'],
-	'width'            => UAGB_Helper::get_css_value( $toggle_size_number, $attr['toggleSizeType'] ),
-	'height'           => UAGB_Helper::get_css_value( $toggle_size_number, $attr['toggleSizeType'] ),
+	'width'            => UAGB_Helper::get_css_value( $attr['toggleSize'], $attr['toggleSizeType'] ),
+	'height'           => UAGB_Helper::get_css_value( $attr['toggleSize'], $attr['toggleSizeType'] ),
 );
 $selectors[' .uagb-forms-checkbox-wrap > label']                             = array(
 	'color' => $attr['inputColor'],
@@ -339,8 +322,8 @@ $selectors[' .uagb-forms-checkbox-wrap > label']                             = a
 // Radio Button Field css.
 $selectors[' .uagb-forms-radio-wrap input[type=radio] + label:before'] = array(
 	'background-color' => $attr['toggleColor'],
-	'width'            => UAGB_Helper::get_css_value( $toggle_size_number, $attr['toggleSizeType'] ),
-	'height'           => UAGB_Helper::get_css_value( $toggle_size_number, $attr['toggleSizeType'] ),
+	'width'            => UAGB_Helper::get_css_value( $attr['toggleSize'], $attr['toggleSizeType'] ),
+	'height'           => UAGB_Helper::get_css_value( $attr['toggleSize'], $attr['toggleSizeType'] ),
 );
 $selectors[' .uagb-forms-radio-wrap > label']                          = array(
 	'color' => $attr['inputColor'],
@@ -351,23 +334,23 @@ $selectors[' .uagb-slider']                                     = array(
 	'background-color' => $attr['toggleColor'],
 );
 $selectors[' .uagb-forms-main-form .uagb-switch']               = array(
-	'height' => 'calc(' . $toggle_border_top_fallback . ' + ' . $toggle_border_bottom_fallback . ' + ' . UAGB_Helper::get_css_value(
-		(int) ( 20 + $toggle_width_size_number + ( ( 20 + $toggle_width_size_number ) / 3 ) ),
+	'height' => 'calc(' . $toggle_border['border-top-width'] . ' + ' . $toggle_border['border-bottom-width'] . ' + ' . UAGB_Helper::get_css_value(
+		(int) ( 20 + $attr['toggleWidthSize'] + ( ( 20 + $attr['toggleWidthSize'] ) / 3 ) ),
 		'px'
 	) . ')',
-	'width'  => 'calc(' . $toggle_border_left_fallback . ' + ' . $toggle_border_right_fallback . ' + ' . UAGB_Helper::get_css_value(
-		(int) ( ( ( 20 + $toggle_width_size_number ) * 2.5 ) + ( ( 20 + $toggle_width_size_number ) / 3 ) ),
+	'width'  => 'calc(' . $toggle_border['border-left-width'] . ' + ' . $toggle_border['border-right-width'] . ' + ' . UAGB_Helper::get_css_value(
+		(int) ( ( ( 20 + $attr['toggleWidthSize'] ) * 2.5 ) + ( ( 20 + $attr['toggleWidthSize'] ) / 3 ) ),
 		'px'
 	) . ')',
 );
 $selectors[' .uagb-forms-main-form .uagb-slider:before']        = array(
-	'height'           => UAGB_Helper::get_css_value( 20 + $toggle_width_size_number, 'px' ),
-	'width'            => UAGB_Helper::get_css_value( 20 + $toggle_width_size_number, 'px' ),
-	'top'              => UAGB_Helper::get_css_value( (int) ( ( 20 + $toggle_width_size_number ) / 6 ), 'px' ),
-	'bottom'           => UAGB_Helper::get_css_value( (int) ( ( 20 + $toggle_width_size_number ) / 6 ), 'px' ),
-	'left'             => UAGB_Helper::get_css_value( (int) ( ( 20 + $toggle_width_size_number ) / 6 ), 'px' ),
+	'height'           => UAGB_Helper::get_css_value( 20 + $attr['toggleWidthSize'], 'px' ),
+	'width'            => UAGB_Helper::get_css_value( 20 + $attr['toggleWidthSize'], 'px' ),
+	'top'              => UAGB_Helper::get_css_value( (int) ( ( 20 + $attr['toggleWidthSize'] ) / 6 ), 'px' ),
+	'bottom'           => UAGB_Helper::get_css_value( (int) ( ( 20 + $attr['toggleWidthSize'] ) / 6 ), 'px' ),
+	'left'             => UAGB_Helper::get_css_value( (int) ( ( 20 + $attr['toggleWidthSize'] ) / 6 ), 'px' ),
 	'background-color' => $attr['toggleDotColor'],
-	'border-radius'    => $toggle_border_radius_tl_fallback . ' ' . $toggle_border_radius_tr_fallback . ' ' . $toggle_border_radius_br_fallback . ' ' . $toggle_border_radius_bl_fallback,
+	'border-radius'    => $toggle_border['border-top-left-radius'] . ' ' . $toggle_border['border-top-right-radius'] . ' ' . $toggle_border['border-bottom-right-radius'] . ' ' . $toggle_border['border-bottom-left-radius'],
 );
 $selectors[' .uagb-switch input:checked + .uagb-slider']        = array(
 	'background-color' => $attr['toggleActiveColor'],
@@ -375,7 +358,7 @@ $selectors[' .uagb-switch input:checked + .uagb-slider']        = array(
 );
 $selectors[' .uagb-switch input:checked + .uagb-slider:before'] = array(
 	'transform'        => 'translateX(' . UAGB_Helper::get_css_value(
-		(int) ( ( ( ( 20 + $toggle_width_size_number ) * 2.5 ) - ( 20 + $toggle_width_size_number ) ) ),
+		(int) ( ( ( ( 20 + $attr['toggleWidthSize'] ) * 2.5 ) - ( 20 + $attr['toggleWidthSize'] ) ) ),
 		'px'
 	) . ')',
 	'background-color' => $attr['toggleDotActiveColor'],
@@ -387,8 +370,8 @@ $selectors[' .uagb-switch input:focus + .uagb-slider']          = array(
 // Accept Field css.
 $selectors[' .uagb-forms-accept-wrap input[type=checkbox] + label:before'] = array(
 	'background-color' => $attr['toggleColor'],
-	'width'            => UAGB_Helper::get_css_value( $toggle_size_number, $attr['toggleSizeType'] ),
-	'height'           => UAGB_Helper::get_css_value( $toggle_size_number, $attr['toggleSizeType'] ),
+	'width'            => UAGB_Helper::get_css_value( $attr['toggleSize'], $attr['toggleSizeType'] ),
+	'height'           => UAGB_Helper::get_css_value( $attr['toggleSize'], $attr['toggleSizeType'] ),
 );
 $selectors[' .uagb-forms-accept-wrap > label']                             = array(
 	'color' => $attr['inputColor'],
@@ -532,19 +515,19 @@ $selectors[' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:befo
 	'color'            => $attr['toggleDotActiveColor'],
 	'background-color' => $attr['toggleActiveColor'],
 	'border-color'     => $attr['checkBoxToggleBorderHColor'],
-	'font-size'        => 'calc(' . $toggle_size_number . $attr['toggleSizeType'] . ' / 1.2)',
+	'font-size'        => 'calc(' . $attr['toggleSize'] . $attr['toggleSizeType'] . ' / 1.2)',
 );
 $selectors[' .uagb-forms-radio-wrap input[type=radio]:checked + label:before']       = array(
 	'background-color' => $attr['toggleDotActiveColor'],
 	'border-color'     => $attr['checkBoxToggleBorderHColor'],
 	'box-shadow'       => 'inset 0 0 0 4px ' . $attr['toggleActiveColor'],
-	'font-size'        => 'calc(' . $toggle_size_number . 'px / 1.2)',
+	'font-size'        => 'calc(' . $attr['toggleSize'] . 'px / 1.2)',
 );
 $selectors[' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before']   = array(
 	'color'            => $attr['toggleDotActiveColor'],
 	'background-color' => $attr['toggleActiveColor'],
 	'border-color'     => $attr['checkBoxToggleBorderHColor'],
-	'font-size'        => 'calc(' . $toggle_size_number . $attr['toggleSizeType'] . ' / 1.2)',
+	'font-size'        => 'calc(' . $attr['toggleSize'] . $attr['toggleSizeType'] . ' / 1.2)',
 );
 
 // Checkbox Field css.
@@ -552,24 +535,24 @@ $t_selectors[' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:be
 	'font-size' => 'calc(' . $toggle_size_number_tablet . $attr['toggleSizeType'] . ' / 1.2)',
 );
 $t_selectors[' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before']         = array(
-	'width'  => UAGB_Helper::get_css_value( $toggle_size_tablet_fallback, $attr['toggleSizeType'] ),
-	'height' => UAGB_Helper::get_css_value( $toggle_size_tablet_fallback, $attr['toggleSizeType'] ),
+	'width'  => UAGB_Helper::get_css_value( $attr['toggleSizeTablet'], $attr['toggleSizeType'] ),
+	'height' => UAGB_Helper::get_css_value( $attr['toggleSizeTablet'], $attr['toggleSizeType'] ),
 );
 // Radio Button Field css.
 $t_selectors[' .uagb-forms-radio-wrap input[type=radio]:checked + label:before'] = array(
 	'font-size' => 'calc(' . $toggle_size_number_tablet . 'px / 1.2)',
 );
 $t_selectors[' .uagb-forms-radio-wrap input[type=radio] + label:before']         = array(
-	'width'  => UAGB_Helper::get_css_value( $toggle_size_tablet_fallback, $attr['toggleSizeType'] ),
-	'height' => UAGB_Helper::get_css_value( $toggle_size_tablet_fallback, $attr['toggleSizeType'] ),
+	'width'  => UAGB_Helper::get_css_value( $attr['toggleSizeTablet'], $attr['toggleSizeType'] ),
+	'height' => UAGB_Helper::get_css_value( $attr['toggleSizeTablet'], $attr['toggleSizeType'] ),
 );
 // Accept Field css.
 $t_selectors[' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before'] = array(
 	'font-size' => 'calc(' . $toggle_size_number_tablet . $attr['toggleSizeType'] . ' / 1.2)',
 );
 $t_selectors[' .uagb-forms-accept-wrap input[type=checkbox] + label:before']         = array(
-	'width'  => UAGB_Helper::get_css_value( $toggle_size_tablet_fallback, $attr['toggleSizeType'] ),
-	'height' => UAGB_Helper::get_css_value( $toggle_size_tablet_fallback, $attr['toggleSizeType'] ),
+	'width'  => UAGB_Helper::get_css_value( $attr['toggleSizeTablet'], $attr['toggleSizeType'] ),
+	'height' => UAGB_Helper::get_css_value( $attr['toggleSizeTablet'], $attr['toggleSizeType'] ),
 );
 $t_selectors[' .uagb-forms-main-form .uagb-switch']                                  = array(
 	'height' => 'calc(' . $toggle_border_top_tablet_fallback . ' + ' . $toggle_border_bottom_tablet_fallback . ' + ' . UAGB_Helper::get_css_value(
@@ -595,24 +578,24 @@ $m_selectors[' .uagb-forms-checkbox-wrap input[type=checkbox]:checked + label:be
 	'font-size' => 'calc(' . $toggle_size_number_mobile . $attr['toggleSizeType'] . ' / 1.2)',
 );
 $m_selectors[' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before']         = array(
-	'width'  => UAGB_Helper::get_css_value( $toggle_size_mobile_fallback, $attr['toggleSizeType'] ),
-	'height' => UAGB_Helper::get_css_value( $toggle_size_mobile_fallback, $attr['toggleSizeType'] ),
+	'width'  => UAGB_Helper::get_css_value( $attr['toggleSizeMobile'], $attr['toggleSizeType'] ),
+	'height' => UAGB_Helper::get_css_value( $attr['toggleSizeMobile'], $attr['toggleSizeType'] ),
 );
 // Radio Button Field css.
 $m_selectors[' .uagb-forms-radio-wrap input[type=radio]:checked + label:before'] = array(
 	'font-size' => 'calc(' . $toggle_size_number_mobile . 'px / 1.2)',
 );
 $m_selectors[' .uagb-forms-radio-wrap input[type=radio] + label:before']         = array(
-	'width'  => UAGB_Helper::get_css_value( $toggle_size_mobile_fallback, $attr['toggleSizeType'] ),
-	'height' => UAGB_Helper::get_css_value( $toggle_size_mobile_fallback, $attr['toggleSizeType'] ),
+	'width'  => UAGB_Helper::get_css_value( $attr['toggleSizeMobile'], $attr['toggleSizeType'] ),
+	'height' => UAGB_Helper::get_css_value( $attr['toggleSizeMobile'], $attr['toggleSizeType'] ),
 );
 // Accept Field css.
 $m_selectors[' .uagb-forms-accept-wrap input[type=checkbox]:checked + label:before'] = array(
 	'font-size' => 'calc(' . $toggle_size_number_mobile . $attr['toggleSizeType'] . ' / 1.2)',
 );
 $m_selectors[' .uagb-forms-accept-wrap input[type=checkbox] + label:before']         = array(
-	'width'  => UAGB_Helper::get_css_value( $toggle_size_mobile_fallback, $attr['toggleSizeType'] ),
-	'height' => UAGB_Helper::get_css_value( $toggle_size_mobile_fallback, $attr['toggleSizeType'] ),
+	'width'  => UAGB_Helper::get_css_value( $attr['toggleSizeMobile'], $attr['toggleSizeType'] ),
+	'height' => UAGB_Helper::get_css_value( $attr['toggleSizeMobile'], $attr['toggleSizeType'] ),
 );
 $m_selectors[' .uagb-forms-main-form .uagb-switch']                                  = array(
 	'height' => 'calc(' . $toggle_border_top_mobile_fallback . ' + ' . $toggle_border_bottom_mobile_fallback . ' + ' . UAGB_Helper::get_css_value(

@@ -1,0 +1,143 @@
+/* --------- Common Variation Picker CSS --------- */
+
+/* stylelint-disable at-rule-no-unknown */
+
+// This Mixin contains Common Transition Speeds.
+@mixin transitionSpeeds {
+	-webkit-transition-duration: 100ms;
+	-moz-transition-duration: 100ms;
+	-o-transition-duration: 100ms;
+	transition-duration: 100ms;
+}
+
+.uagb-variation-picker {
+
+	.components-button,
+	.components-button.is-secondary,
+	.components-button.is-tertiary,
+	.components-button:hover:not(:disabled) {
+		box-shadow: none;
+		outline: none;
+		padding: $spectra-variation-button-padding;
+		border: 1px solid $spectra-color-heading;
+		border-radius: $spectra-variation-button-border-radius;
+		-webkit-transition-property: border-color;
+		-moz-transition-property: border-color;
+		-o-transition-property: border-color;
+		transition-property: border-color;
+
+		@include transitionSpeeds();
+
+		svg {
+			width: $spectra-variation-button-icon;
+			height: $spectra-variation-button-icon;
+			fill: none;
+
+			path,
+			rect,
+			circle {
+				stroke: $spectra-color-heading;
+				-webkit-transition-property: stroke;
+				-moz-transition-property: stroke;
+				-o-transition-property: stroke;
+				transition-property: stroke;
+
+				@include transitionSpeeds();
+			}
+		}
+
+		&:hover {
+			border-color: $spectra-color-primary;
+
+			svg {
+
+				path,
+				rect,
+				circle {
+					stroke: $spectra-color-primary;
+				}
+			}
+		}
+	}
+
+	.components-placeholder {
+		align-items: center;
+		border: 1px dashed $spectra-color-tab-background;
+		box-shadow: none;
+		padding: $spectra-variation-padding;
+
+		&.components-placeholder {
+			align-items: center;
+		}
+
+		&.is-large .components-placeholder__label,
+		.components-placeholder__label {
+			font-size: 24px;
+			font-weight: 400;
+			line-height: 29px;
+			text-align: left;
+			color: $spectra-color-heading;
+
+			svg {
+
+				path,
+				rect,
+				circle {
+					stroke: $spectra-color-primary;
+				}
+			}
+		}
+	}
+
+	.block-editor-block-variation-picker__variation::before {
+		padding-bottom: 0;
+	}
+
+	.components-placeholder__fieldset {
+		align-items: center;
+	}
+
+	.components-placeholder__instructions {
+		text-align: center;
+		color: $spectra-color-body;
+		line-height: 20px;
+	}
+
+	.block-editor-block-variation-picker__variations {
+		width: 70%;
+		justify-content: center;
+		margin: $spectra-variation-gap;
+
+		> li {
+			margin: $spectra-variation-button-margin;
+			flex-basis: content;
+			width: $spectra-variation-button-width;
+		}
+
+		.block-editor-block-variation-picker__variation-label {
+			width: $spectra-variation-button-width;
+			font-size: 14px;
+			font-weight: 400;
+			line-height: 20px;
+			color: $spectra-color-body;
+			-webkit-transition-property: color;
+			-moz-transition-property: color;
+			-o-transition-property: color;
+			transition-property: color;
+
+			@include transitionSpeeds();
+		}
+	}
+
+	.block-editor-block-variation-picker__skip {
+
+		.components-button,
+		.components-button:hover:not(:disabled) {
+			margin: $spectra-variation-gap;
+			border: none;
+			padding: 6px 12px;
+			text-decoration: none;
+			color: $spectra-color-primary;
+		}
+	}
+}

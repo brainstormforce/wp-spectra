@@ -3,7 +3,6 @@
  */
 
 import { useEffect, useMemo } from '@wordpress/element';
-import { useDeviceType } from '@Controls/getPreviewType';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import styling from './styling';
@@ -14,13 +13,13 @@ import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBIcon = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		clientId,
 		attributes,
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 		isSelected,
 		name,
+		deviceType
 	} = props;
 	const blockId = clientId.substr( 0, 8 );
 

@@ -7,7 +7,6 @@ import { InnerBlocks } from '@wordpress/block-editor';
 import { useLayoutEffect, memo, useMemo } from '@wordpress/element';
 
 import styles from './editor.lazy.scss';
-import { useDeviceType } from '@Controls/getPreviewType';
 const ALLOWED_BLOCKS = [ 'uagb/faq-child' ];
 
 const faq = [];
@@ -23,8 +22,7 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-	const deviceType = useDeviceType();
-	const { attributes } = props;
+	const { attributes, deviceType } = props;
 	const { equalHeight } = attributes;
 
 	const getFaqChildTemplate = useMemo( () => {

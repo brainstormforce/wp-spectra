@@ -2,7 +2,6 @@ import classnames from 'classnames';
 import { useLayoutEffect, memo } from '@wordpress/element';
 import { InnerBlocks } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
-import { useDeviceType } from '@Controls/getPreviewType';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -14,8 +13,7 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-	const deviceType = useDeviceType();
-	const { attributes, isSelected, className } = props;
+	const { attributes, isSelected, className, deviceType } = props;
 
 	const { align, contentWidth, tag, backgroundType, backgroundVideo } = attributes;
 

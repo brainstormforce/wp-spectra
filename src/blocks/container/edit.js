@@ -4,7 +4,6 @@
 import styling from './styling';
 import { useEffect, useLayoutEffect, useMemo } from '@wordpress/element';
 import scrollBlockToView from '@Controls/scrollBlockToView';
-import { useDeviceType } from '@Controls/getPreviewType';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import Settings from './settings';
@@ -24,7 +23,6 @@ import AddStaticStyles from '@Controls/AddStaticStyles';
 import { containerWrapper } from './containerWrapper';
 
 const UAGBContainer = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		isSelected,
 		attributes,
@@ -42,6 +40,7 @@ const UAGBContainer = ( props ) => {
 		clientId,
 		setAttributes,
 		name,
+		deviceType
 	} = props;
 
 	const {
@@ -83,26 +82,53 @@ const UAGBContainer = ( props ) => {
 	useEffect( () => {
 		const isBlockRootParentID = select( 'core/block-editor' ).getBlockParents( clientId );
 
-		const parentBlockName = select( 'core/block-editor' ).getBlocksByClientId( isBlockRootParentID );
+		const parentBlocks = select( 'core/block-editor' ).getBlocksByClientId( isBlockRootParentID );
 
-		if (
-			( parentBlockName[ 0 ] && 'uagb/container' !== parentBlockName[ 0 ].name ) ||
-			undefined === parentBlockName[ 0 ]
-		) {
+		// Check if a parent of this container is one of these special blocks.
+		const blockParents = {
+			hasSliderParent: false,
+			hasPopupParent: false,
+		};
+
+		// Add the lists of special block cases.
+		const specialBlocks = {
+			sliderBlocks: [ 'uagb/slider', 'uagb/slider-child' ],
+			popupBlocks: [ 'uagb/modal', 'uagb/popup-builder' ],
+		};
+
+		const parentBlocksNames = [];
+
+		if ( parentBlocks?.length ) {
+
+			for ( const parent in parentBlocks ) {
+				const parentName = parentBlocks[parent]?.name;
+				// For Slider.
+				if ( specialBlocks.sliderBlocks.includes( parentName ) ) {
+					blockParents.hasSliderParent = true;
+				}
+
+				// For Modal and Popup Builder.
+				if ( specialBlocks.popupBlocks.includes( parentName ) ) {
+					blockParents.hasPopupParent = true;
+				}
+
+				// For Container Root.
+				parentBlocksNames.push( parentName );
+			}
+
+			if ( ! parentBlocksNames.includes( 'uagb/container' ) ) {
+				setAttributes( { isBlockRootParent: true } );
+			} else {
+				setAttributes( { isBlockRootParent: false } );
+			}
+		} else {
 			setAttributes( { isBlockRootParent: true } );
 		}
-
-		let hasSliderParent = false;
-		const sliderBlocks = [ 'uagb/slider', 'uagb/slider-child' ];
-
-		for ( let index = 0; index < parentBlockName.length; index++ ) {
-			if ( sliderBlocks.includes( parentBlockName[ index ].name ) ) {
-				hasSliderParent = true;
-				break;
-			}
-		}
-
-		setAttributes( { hasSliderParent } );
+		
+		setAttributes( {
+			hasSliderParent: blockParents.hasSliderParent,
+			hasPopupParent: blockParents.hasPopupParent
+		} );
 
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );

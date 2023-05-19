@@ -2,6 +2,7 @@ import { useEffect, memo } from '@wordpress/element';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 import { __ } from '@wordpress/i18n';
+import { select } from '@wordpress/data';
 
 import { InspectorControls } from '@wordpress/block-editor';
 import SpacingControl from '@Components/spacing-control';
@@ -91,8 +92,9 @@ const Settings = ( props ) => {
 		yPositionTypeMobile,
 	} = attributes;
 
-	const parentClientId = wp.data.select( 'core/block-editor' ).getBlockHierarchyRootClientId( props.clientId );
-	const parentBlokAttributes = wp.data.select( 'core/block-editor' ).getBlockAttributes( parentClientId );
+	const parentClientIds = select( 'core/block-editor' ).getBlockParents( props.clientId );
+	const immediateParentClientId = parentClientIds.at( -1 );
+	const parentBlokAttributes = select( 'core/block-editor' ).getBlockAttributes( immediateParentClientId );
 
 	const { enableHashNavigation } = parentBlokAttributes;
 

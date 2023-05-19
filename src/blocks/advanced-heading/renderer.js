@@ -1,15 +1,18 @@
 import { RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 import { applyFilters } from '@wordpress/hooks';
+import { createBlock } from '@wordpress/blocks';
 
 const Renderer = ( props ) => {
 	const {
 		setAttributes,
-		attributes: { headingTag },
+		attributes,
 		context,
+		onReplace,
+		mergeBlocks
 	} = props;
 
-	let { headingTitle } = props.attributes;
+	let { headingTitle, headingTag } = attributes;
 	let allowedFormats = false;
 
 	// Check if this has dynamic content.
@@ -20,6 +23,8 @@ const Renderer = ( props ) => {
 			headingTitle = renderedMarkup;
 		}
 	}
+	
+	const propsOnSplit = ( value ) => value ? createBlock( 'uagb/advanced-heading', { ...attributes, headingTitle: value} ) : createBlock( 'core/paragraph' );
 
 	return (
 		<RichText
@@ -27,11 +32,14 @@ const Renderer = ( props ) => {
 			placeholder={ __( 'Write a Heading', 'ultimate-addons-for-gutenberg' ) }
 			value={ headingTitle }
 			className="uagb-heading-text"
-			multiline={ false }
 			onChange={ ( value ) => {
 				setAttributes( { headingTitle: value } );
 			} }
 			allowedFormats={ allowedFormats }
+			onMerge={ mergeBlocks }
+			onSplit={ propsOnSplit }
+			onReplace={ onReplace }
+			onRemove={ () => onReplace( [] ) }
 		/>
 	);
 };

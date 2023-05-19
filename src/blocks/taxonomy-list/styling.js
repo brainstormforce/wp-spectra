@@ -176,6 +176,7 @@ function styling( attributes, name ) {
 			'text-decoration': countDecoration,
 			'text-transform': countTransform,
 			'letter-spacing': generateCSSUnit( countLetterSpacing, countLetterSpacingType ),
+			'pointer-events': 'none',
 		},
 		'.uagb-layout-grid .uagb-tax-title': {
 			'color': titleColor,

@@ -5,7 +5,6 @@
 import RestMenuStyle from './inline-styles';
 import { select, dispatch } from '@wordpress/data';
 import { useEffect, useMemo } from '@wordpress/element';
-import { useDeviceType } from '@Controls/getPreviewType';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
@@ -16,7 +15,6 @@ import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 
 const UAGBRestaurantMenu = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		isSelected,
 		attributes,
@@ -24,6 +22,7 @@ const UAGBRestaurantMenu = ( props ) => {
 		setAttributes,
 		clientId,
 		name,
+		deviceType
 	} = props;
 
 	useEffect( () => {

@@ -67,7 +67,7 @@ UAGBCounter = {
 				}
 			} );
 		};
-		const IO = new IntersectionObserver( callback, { threshold: 1 } ); // eslint-disable-line no-undef
+		const IO = new IntersectionObserver( callback, { threshold: 0.75 } );
 		IO.observe( that.elements.counterWrapper );
 	},
 	_numberCount( data ) {
@@ -184,8 +184,8 @@ UAGBCounter = {
 	_getCounterData( element,data ){
 		
 		// Getting data from html attribute data-counter and overwrite data which comes from php.
-		let getCounterData = element.getAttribute( 'data-counter' );
-		if( ! getCounterData || null === getCounterData || undefined === getCounterData ){
+		let getCounterData = element?.getAttribute( 'data-counter' );
+		if( ! getCounterData ){
 			return data;
 		}
 

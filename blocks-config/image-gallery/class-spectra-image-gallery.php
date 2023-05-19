@@ -1526,7 +1526,16 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 		 * @since 2.1
 		 */
 		public static function render_frontend_carousel_layout( $id, $settings, $selector ) {
-			return 'jQuery( document ).ready( function() { if( jQuery( "' . $selector . '" ).length > 0 ){ jQuery( "' . $selector . '" ).find( ".uagb-slick-carousel" ).slick( ' . $settings . ' ); } } );';
+			return 'jQuery(document).ready(function () {
+				let scope = jQuery(".wp-block-uagb-image-gallery' . $selector . '");
+				if ( scope.length ) { 
+					scope.css("visibility", "visible");
+					let getSlickCarousel = scope.find(".uagb-slick-carousel");
+					if( getSlickCarousel.length ) {
+						getSlickCarousel.slick(' . $settings . ');
+					}
+				}
+			});';
 		}
 
 		/**

@@ -32,6 +32,11 @@
 	}
 
 	.block-editor-link-control {
+
+		&__search-item-title {
+			max-width: 110px;
+		}
+
 		.block-editor-link-control__tools {
 			.block-editor-link-control__settings {
 				.components-base-control:last-child {

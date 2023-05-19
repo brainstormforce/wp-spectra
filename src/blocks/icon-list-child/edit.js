@@ -5,7 +5,6 @@
 // Import classes
 import styling from './styling';
 import { useEffect, useMemo } from '@wordpress/element';
-import { useDeviceType } from '@Controls/getPreviewType';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
@@ -15,8 +14,7 @@ import AddStaticStyles from '@Controls/AddStaticStyles';
 let hideLabel;
 
 const UAGBIconListChild = ( props ) => {
-	const deviceType = useDeviceType();
-	const { isSelected, setAttributes, clientId, attributes, name } = props;
+	const { isSelected, setAttributes, clientId, attributes, name, deviceType } = props;
 
 	useEffect( () => {
 		// Assigning block_id in the attribute.

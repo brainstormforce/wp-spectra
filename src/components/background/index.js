@@ -66,6 +66,7 @@ const Background = ( props ) => {
 		yPositionTypeMobile,
 		backgroundVideoOpacity,
 		help = false,
+		label = __( 'Type', 'ultimate-addons-for-gutenberg' ),
 	} = props;
 
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
@@ -196,7 +197,7 @@ const Background = ( props ) => {
 		<>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
-				label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }
+				label={ label }
 				data={ {
 					value: backgroundType.value,
 					label: backgroundType.label,

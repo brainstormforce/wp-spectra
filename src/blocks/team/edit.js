@@ -4,7 +4,6 @@
 
 import styling from './styling';
 import { useEffect, useMemo } from '@wordpress/element';
-import { useDeviceType } from '@Controls/getPreviewType';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import DynamicCSSLoader from '../../components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
@@ -15,7 +14,6 @@ import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 
 const UAGBTeam = ( props ) => {
-	const deviceType = useDeviceType();
 	const {
 		isSelected,
 		setAttributes,
@@ -23,6 +21,7 @@ const UAGBTeam = ( props ) => {
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 		clientId,
 		name,
+		deviceType
 	} = props;
 
 	useEffect( () => {

@@ -1,0 +1,78 @@
+$modal-settings-height: 30px;
+$modal-button-wrapper-width: 90px;
+
+.spectra-popup {
+
+	&__panel {
+
+		&--accordian {
+
+			&.is-opened .components-panel__body-title {
+				margin-bottom: 16px;
+			}
+
+			.components-base-control__field {
+				padding: 0;
+			}
+
+			.components-input-control__label {
+				color: #50575e;
+				font-size: 13px !important;
+				line-height: 1.4em !important;
+				margin-bottom: 10px;
+				text-transform: none !important;
+				font-weight: 400 !important;
+			}
+
+			> .components-base-control {
+				margin-bottom: 25px;
+
+				.components-range-control__wrapper {
+					margin-left: 5px;
+				}
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+
+		&--button {
+
+			.components-button {
+				padding-left: 15px;
+			}
+		}
+
+		&-title {
+
+			&--wrapper {
+				display: flex;
+				flex-grow: 1;
+			}
+		}
+
+		&-svg {
+			box-sizing: content-box;
+			position: absolute;
+			right: 16px;
+			padding: 4px;
+		}
+	}
+
+	&__control {
+
+		&--meta-select {
+
+			.spectra__input:focus {
+				box-shadow: none;
+			}
+
+			svg {
+				width: 16px;
+				fill: #50575e;
+				stroke: #50575e;
+			}
+		}
+	}
+}

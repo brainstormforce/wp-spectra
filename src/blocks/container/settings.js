@@ -1,4 +1,4 @@
-import { useEffect, memo } from '@wordpress/element';
+import { memo } from '@wordpress/element';
 
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
@@ -13,6 +13,7 @@ import ResponsiveBorder from '@Components/responsive-border';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
+import UAGTextControl from '@Components/text-control';
 import { Icon, ToggleControl } from '@wordpress/components';
 import renderCustomIcon from '@Controls/renderCustomIcon';
 import UAGTabsControl from '@Components/tabs';
@@ -208,6 +209,8 @@ const Settings = ( props ) => {
 		selectGradient,
 	} = attributes;
 
+	const isPro = uagb_blocks_info.spectra_pro_status;
+
 	let currentDirection = directionDesktop?.split( '-' )?.[ 0 ];
 
 	if ( attributes[ 'direction' + deviceType ] && attributes[ 'direction' + deviceType ].split( '-' )[ 0 ] ) {
@@ -234,18 +237,6 @@ const Settings = ( props ) => {
 					'Define the horizontal alignment of every line of blocks inside this flex container.',
 					'ultimate-addons-for-gutenberg'
 			  );
-
-	// This useEffect ensures that background size is set to cover, so as to ensure color takes up entire width and height,
-	// in case bg type was set to Image before and given a custom width and height.
-	useEffect( () => {
-		if ( backgroundType === 'color' ) {
-			setAttributes( {
-				backgroundSizeDesktop: 'cover',
-				backgroundSizeTablet: 'cover',
-				backgroundSizeMobile: 'cover',
-			} );
-		}
-	}, [ backgroundType ] );
 
 	const onChangeHeight = ( value ) => {
 		setAttributes( { equalHeight: value } );
@@ -698,26 +689,27 @@ const Settings = ( props ) => {
 							},
 						] }
 					/>
-					{ htmlTag === 'a' && (
-						<LinkControl
-							searchInputPlaceholder="Search here..."
-							value={ htmlTagLink }
-							settings={ [
-								{
-									id: 'opensInNewTab',
-									title: __( 'Open in new window', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									id: 'noFollow',
-									title: __( 'Add nofollow', 'ultimate-addons-for-gutenberg' ),
-								},
-							] }
-							onChange={ ( link ) => {
-								setAttributes( { htmlTagLink: link } );
-							} }
-							withCreateSuggestion={ true }
-							createSuggestion={ ( inputValue ) =>
-								setAttributes( {
+					{htmlTag === 'a' && (
+						( isPro ? (
+							<UAGTextControl
+								label={__( 'Link', 'ultimate-addons-for-gutenberg' )}
+								enableDynamicContent={true}
+								name="htmlTagLink"
+								value={htmlTagLink?.url}
+								onChange={( value ) => setAttributes( { htmlTagLink: {...htmlTagLink, url: value } } )}
+								data={{value: htmlTagLink?.url, label: 'htmlTagLink'}}
+							/>
+						) : (
+							<LinkControl
+								searchInputPlaceholder={__( 'Search here…', 'ultimate-addons-for-gutenberg' )}
+								value={htmlTagLink}
+								settings={[
+									{id: 'opensInNewTab', title: __( 'Open in new window', 'ultimate-addons-for-gutenberg' )},
+									{id: 'noFollow', title: __( 'Add nofollow', 'ultimate-addons-for-gutenberg' )},
+								]}
+								onChange={( link ) => setAttributes( {htmlTagLink: link} )}
+								withCreateSuggestion={true}
+								createSuggestion={( inputValue ) => setAttributes( {
 									post: {
 										...attributes.post,
 										title: inputValue,
@@ -725,16 +717,12 @@ const Settings = ( props ) => {
 										id: Date.now(),
 										url: inputValue,
 									},
-								} )
-							}
-							createSuggestionButtonText={ ( newValue ) =>
-								`${ __( 'New:', 'ultimate-addons-for-gutenberg' ) } ${ newValue }`
-							}
-							onRemove={ () => {
-								setAttributes( { htmlTagLink: undefined } )
-							} }
-						/>
-					) }
+								} )}
+								createSuggestionButtonText={( newValue ) => `${__( 'New:', 'ultimate-addons-for-gutenberg' )} ${newValue}`}
+								onRemove={() => setAttributes( {htmlTagLink: undefined} )}
+							/>
+						) )
+					)}
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
 						label={ __( 'Overflow', 'ultimate-addons-for-gutenberg' ) }
