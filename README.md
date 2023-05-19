@@ -167,6 +167,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### 2.6.1 - FRIDAY, 19th MAY 2003 ###
+* Improvement: Added Premium Templates in Template Kits library
 * Fix: Admin Dashboard - Added missing i18n support for some strings.
 * Fix: Admin Dashboard - 'Activate all' and 'Deactivate all' previously had no impact on the status of Animations extension.
 * Fix: Animations Extension - Resolved the 'Error loading' issue for dynamic blocks that was caused by animation attributes.
