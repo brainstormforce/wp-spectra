@@ -166,6 +166,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Fix: Image Gallery - Removed the additional bottom spacing in the masonry layout that would appear on certain themes.
+
 ### 2.6.1 - FRIDAY, 19th MAY 2003 ###
 * Improvement: Added Premium Templates in Template Kits library
 * Fix: Admin Dashboard - Added missing i18n support for some strings.
