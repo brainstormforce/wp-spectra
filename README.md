@@ -167,11 +167,12 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
+* Fix: Global - Resolved an issue in which the CSS would not load in the front-end in edge cases.
 * Fix: Image Gallery - Removed the additional bottom spacing in the masonry layout that would appear on certain themes.
 * Fix: Image Gallery - Resolved an issue in which the masonry layout would appear stacked for a brief moment on load.
 
 ### 2.6.1 - FRIDAY, 19th MAY 2003 ###
-* Improvement: Added Premium Templates in Template Kits library
+* Improvement: Added Premium Templates in Template Kits library.
 * Fix: Admin Dashboard - Added missing i18n support for some strings.
 * Fix: Admin Dashboard - 'Activate all' and 'Deactivate all' previously had no impact on the status of Animations extension.
 * Fix: Animations Extension - Resolved the 'Error loading' issue for dynamic blocks that was caused by animation attributes.
