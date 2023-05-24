@@ -81,7 +81,7 @@ class UAGB_Init_Blocks {
 
 	/**
 	 * Register the Popup Builder CPT.
-	 * 
+	 *
 	 * @return void
 	 *
 	 * @since 2.6.0
@@ -128,7 +128,7 @@ class UAGB_Init_Blocks {
 
 		$meta_args_popup_type = array(
 			'single'        => true,
-			'type'          => 'string', 
+			'type'          => 'string',
 			'default'       => 'unset',
 			'auth_callback' => '__return_true',
 			'show_in_rest'  => true,
@@ -166,7 +166,7 @@ class UAGB_Init_Blocks {
 		add_filter( 'manage_spectra-popup_posts_columns', array( $spectra_popup_dashboard, 'popup_builder_admin_headings' ) );
 		add_action( 'manage_spectra-popup_posts_custom_column', array( $spectra_popup_dashboard, 'popup_builder_admin_content' ), 10, 2 );
 	}
-	
+
 	/**
 	 * Render block.
 	 *
