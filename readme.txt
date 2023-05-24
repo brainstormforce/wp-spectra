@@ -170,6 +170,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Global - Resolved an issue in which the CSS would not load in the front-end in edge cases.
 * Fix: Image Gallery - Removed the additional bottom spacing in the masonry layout that would appear on certain themes.
 * Fix: Image Gallery - Resolved an issue in which the masonry layout would appear stacked for a brief moment on load.
+* Fix: Call To Action - When using call to action with additional button, on responsive view button is getting more height
 
 = 2.6.1 - FRIDAY, 19th MAY 2003 =
 * Improvement: Added Premium Templates in Template Kits library.
