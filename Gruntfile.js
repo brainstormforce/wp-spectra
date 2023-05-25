@@ -395,7 +395,46 @@ module.exports = function ( grunt ) {
 			}
 		);
 	} );
-	
+
+	// Update Google Font library.
+    grunt.registerTask( 'google-fonts', function () {
+		this.async();
+		const request = require( 'request' );
+		const fs = require( 'fs' );
+		request(
+			'https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyAVfm2WzgRiV5posH5f_LNNKAQfv80I6yg',
+			function ( error, response, body ) {
+				const data = JSON.parse( body );
+				let fonts = {};
+				
+				data.items.forEach( ( font ) => {
+					const fontName = font.family;
+					const fontData = {
+						v: font.variants || [],
+						subset: font.subsets || [],
+						weight: font.variants ? [ 'Default', '400' ] : [],
+						i: [],
+					};
+					
+					if ( fontData.v.includes( 'italic' ) ) {
+						fontData.i.push( 'italic' );
+				    }
+					
+					fonts[ fontName ] = fontData;
+				} );
+				
+				fonts = JSON.stringify( fonts );
+				const keepFont = `const fonts = ${ fonts }; export default fonts;`;
+				
+				fs.writeFile( 'blocks-config/uagb-controls/fonts.js', keepFont, function ( err ) {
+					if ( ! err ) {
+						console.log( 'Google font update successfully !' ); // eslint-disable-line
+					}
+				} );
+			}
+		);
+	} );
+ 
 	grunt.registerTask( 'font-awesome-cate-list', function () {
 		this.async();
 		// Source https://github.com/FortAwesome/Font-Awesome/blob/6.x/metadata/categories.yml.
