@@ -174,6 +174,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Image Gallery - Resolved an issue in which the masonry layout would appear stacked for a brief moment on load.
 *  Fix: Image Gallery - Resolved an issue in FSE themes wherein the lightbox would have an extra top-margin on the front-end.
 * Fix: Call To Action - When using call to action with additional button, on responsive view button is getting more height
+* Fix: Table Of Contents - Resolved an issue in which the Table Of Contents block would overflow the Container in Full Site Editing (FSE) themes.
 * Fix: Spectra Custom CSS - Resolved Conflict with Astra Custom Layout Sticky Settings.
 
 = 2.6.1 - FRIDAY, 19th MAY 2003 =

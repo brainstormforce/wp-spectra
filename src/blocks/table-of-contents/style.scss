@@ -7,6 +7,9 @@
 .wp-block-uagb-table-of-contents {
 	.uagb-toc__wrap {
 		display: inline-block;
+		max-width: -moz-available; /* WebKit-based browsers will ignore this. */
+		max-width: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
+		max-width: fill-available; /* The element will expand to take all available space in it's container. */
 	}
 
 	li.uagb-toc__list {
