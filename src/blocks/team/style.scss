@@ -258,3 +258,42 @@
 		}
 	}
 }
+html[dir="rtl"] .wp-block-uagb-team {
+	&.uagb-team__image-position-above {
+		&.uagb-team__align-center {
+			text-align: center;
+
+			.uagb-team__content {
+				text-align: center;
+			}
+		}
+
+		&.uagb-team__align-left {
+			text-align: right;
+
+			.uagb-team__content {
+				text-align: right;
+			}
+		}
+
+		&.uagb-team__align-right {
+			text-align: left;
+
+			.uagb-team__content {
+				text-align: left;
+			}
+		}
+	}
+	&.uagb-team__image-position-left {
+		.uagb-team__content {
+			text-align: right;
+		}
+	}
+
+	&.uagb-team__image-position-right {
+
+		.uagb-team__content {
+			text-align: left;
+		}
+	}
+}
