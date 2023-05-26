@@ -623,6 +623,17 @@
 	}
 }
 
+.wp-site-blocks {
+	.uagb-post__arrow-outside.uagb-post-grid {
+		.slick-next {
+			right: 0;
+		}
+		.slick-prev {
+			left: 0;
+		}
+	}
+}
+
 @-webkit-keyframes sk-bouncedelay {
 	0%,
 	80%,
