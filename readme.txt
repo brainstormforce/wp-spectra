@@ -172,6 +172,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Container - Fixed an issue where setting a text color for a heading from a child container would affect all other headings on the page.
 * Fix: Image Gallery - Removed the additional bottom spacing in the masonry layout that would appear on certain themes.
 * Fix: Image Gallery - Resolved an issue in which the masonry layout would appear stacked for a brief moment on load.
+*  Fix: Image Gallery - Resolved an issue in FSE themes wherein the lightbox would have an extra top-margin on the front-end.
 * Fix: Call To Action - When using call to action with additional button, on responsive view button is getting more height
 * Fix: Spectra Custom CSS - Resolved Conflict with Astra Custom Layout Sticky Settings.
 

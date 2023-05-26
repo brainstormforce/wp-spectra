@@ -616,6 +616,7 @@
 			transition-property: opacity;
 			z-index: 999999999 !important;
 			outline: none;
+			margin-block-start: 0;
 
 			@include transitionSpeeds();
 
