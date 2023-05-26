@@ -28,7 +28,7 @@ const InstagramUsers = () => {
 
 	// Constants Required for the API Fetch.
 	const SPECTRA_AUTH_ROOT = 'https://wpspectra.com';
-	const SPECTRA_IG_TOKEN_GENERATOR = `${ SPECTRA_AUTH_ROOT }/auth/instagram/`;
+	const SPECTRA_IG_TOKEN_GENERATOR = `${ SPECTRA_AUTH_ROOT }/auth/instagram-token-generator/`;
 	const SPECTRA_IG_BASIC_APP_ID = 432767105395971;
 	const SPECTRA_IG_BASIC_REDIRECT = `${ SPECTRA_AUTH_ROOT }/auth/instagram/basic/`;
 	
