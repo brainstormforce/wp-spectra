@@ -131,34 +131,34 @@ if ( ( $attr['isBlockRootParent'] && ! ( 'alignwide' === $attr['innerContentWidt
 $background_video_opacity_value = ( isset( $attr['backgroundVideoOpacity'] ) && 'none' !== $attr['overlayType'] && ( ( 'color' === $attr['overlayType'] && ! empty( $attr['backgroundVideoColor'] ) ) || ( 'gradient' === $attr['overlayType'] && ! empty( $attr['gradientValue'] ) ) ) ) ? 1 - $attr['backgroundVideoOpacity'] : 1;
 
 $selectors = array(
-	'.uagb-block-' . $id . '.wp-block-uagb-container' => array(
+	'.uagb-block-' . $id . '.wp-block-uagb-container'    => array(
 		'color' => $attr['textColor'],
 	),
-	'.wp-block-uagb-container h1'                     => array(
+	'.uagb-block-' . $id . '.wp-block-uagb-container h1' => array(
 		'color' => $attr['textColor'],
 	),
-	'.wp-block-uagb-container h2'                     => array(
+	'.uagb-block-' . $id . '.wp-block-uagb-container h2' => array(
 		'color' => $attr['textColor'],
 	),
-	'.wp-block-uagb-container h3'                     => array(
+	'.uagb-block-' . $id . '.wp-block-uagb-container h3' => array(
 		'color' => $attr['textColor'],
 	),
-	'.wp-block-uagb-container h4'                     => array(
+	'.uagb-block-' . $id . '.wp-block-uagb-container h4' => array(
 		'color' => $attr['textColor'],
 	),
-	'.wp-block-uagb-container h5'                     => array(
+	'.uagb-block-' . $id . '.wp-block-uagb-container h5' => array(
 		'color' => $attr['textColor'],
 	),
-	'.wp-block-uagb-container h6'                     => array(
+	'.uagb-block-' . $id . '.wp-block-uagb-container h6' => array(
 		'color' => $attr['textColor'],
 	),
-	'.uagb-block-' . $id . ' a'                       => array(
+	'.uagb-block-' . $id . ' a'                          => array(
 		'color' => $attr['linkColor'],
 	),
-	'.uagb-block-' . $id . ' a:hover'                 => array(
+	'.uagb-block-' . $id . ' a:hover'                    => array(
 		'color' => $attr['linkHoverColor'],
 	),
-	'.uagb-is-root-container .uagb-block-' . $id      => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+	'.uagb-is-root-container .uagb-block-' . $id         => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'max-width' => UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthType'] ),
 		'width'     => '100%',
 	),
@@ -362,7 +362,7 @@ if ( 'video' === $attr['backgroundType'] ) {
 	$selectors[ '.uagb-block-' . $id . ' .uagb-container__video-wrap' ]   = array_merge( $video_bg_css, $border );
 	$t_selectors[ '.uagb-block-' . $id . ' .uagb-container__video-wrap' ] = $border_tablet;
 	$m_selectors[ '.uagb-block-' . $id . ' .uagb-container__video-wrap' ] = $border_mobile;
-	
+
 	if ( 'alignwide' === $attr['innerContentWidth'] && 'alignfull' === $attr['contentWidth'] ) {
 		$selectorClass = '.uagb-block-' . $id . ' .uagb-container-inner-blocks-wrap';
 	} else {
@@ -425,7 +425,7 @@ if ( 'video' === $attr['backgroundType'] ) {
 		'margin-left'    => UAGB_Helper::get_css_value( $left_margin_mobile, $attr['marginTypeMobile'] ),
 		'margin-right'   => UAGB_Helper::get_css_value( $right_margin_mobile, $attr['marginTypeMobile'] ),
 		'row-gap'        => UAGB_Helper::get_css_value( $attr['rowGapMobile'], $attr['rowGapTypeMobile'] ),
-		'column-gap'     => UAGB_Helper::get_css_value( $attr['columnGapMobile'], $attr['columnGapTypeMobile'] ), 
+		'column-gap'     => UAGB_Helper::get_css_value( $attr['columnGapMobile'], $attr['columnGapTypeMobile'] ),
 	);
 	$selectors[ '.wp-block-uagb-container.uagb-block-' . $id . ':hover .uagb-container__video-wrap' ] = array(
 		'border-color' => $attr['containerBorderHColor'],
