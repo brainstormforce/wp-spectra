@@ -1798,8 +1798,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 								$scope.imagesLoaded( function() {
 									$scope.slick( slider_options );
+								}).always( function() {
+									$scope.css( 'visibility', 'visible' );
+								} );
 
-								});
 								var enableEqualHeight = ( '<?php echo esc_html( $equal_height ); ?>' );
 
 								if( enableEqualHeight ){

@@ -157,6 +157,7 @@
 		-webkit-flex-wrap: wrap;
 		flex-wrap: wrap;
 		width: 100%;
+		visibility: hidden;
 	}
 
 	&.is-grid .uagb-post__inner-wrap {
