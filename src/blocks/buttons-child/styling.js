@@ -7,6 +7,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
+import generateShadowCSS from '@Controls/generateShadowCSS';
 
 function styling( attributes, clientId, name ) {
 	const blockName = name.replace( 'uagb/', '' );
@@ -82,13 +83,20 @@ function styling( attributes, clientId, name ) {
 		bottomMarginMobile,
 		leftMarginMobile,
 		marginType,
-
+		// Box - Box Shadow.
+		useSeparateBoxShadows,
 		boxShadowColor,
 		boxShadowHOffset,
 		boxShadowVOffset,
 		boxShadowBlur,
 		boxShadowSpread,
 		boxShadowPosition,
+		boxShadowColorHover,
+		boxShadowHOffsetHover,
+		boxShadowVOffsetHover,
+		boxShadowBlurHover,
+		boxShadowSpreadHover,
+		boxShadowPositionHover,
 		iconColor,
 		iconHColor,
 		iconSize,
@@ -107,12 +115,25 @@ function styling( attributes, clientId, name ) {
 	const mobileSelectors = {};
 	let selectors = {};
 
-	let boxShadowPositionCSS = boxShadowPosition;
-
-	if ( 'outset' === boxShadowPosition ) {
-		boxShadowPositionCSS = '';
-	}
-
+	// Box Shadow
+	const boxShadowCSS = generateShadowCSS( {
+		'horizontal': boxShadowHOffset,
+		'vertical': boxShadowVOffset,
+		'blur': boxShadowBlur,
+		'spread': boxShadowSpread,
+		'color': boxShadowColor,
+		'position': boxShadowPosition,
+	} );
+	const boxShadowHoverCSS = generateShadowCSS( {
+		'horizontal': boxShadowHOffsetHover,
+		'vertical': boxShadowVOffsetHover,
+		'blur': boxShadowBlurHover,
+		'spread': boxShadowSpreadHover,
+		'color': boxShadowColorHover,
+		'position': boxShadowPositionHover,
+		'altColor': boxShadowColor,
+	} );
+	
 	const borderCSS = generateBorderCSS( attributes, 'btn' );
 	const borderCSSTablet = generateBorderCSS( attributes, 'btn', 'tablet' );
 	const borderCSSMobile = generateBorderCSS( attributes, 'btn', 'mobile' );
@@ -134,18 +155,8 @@ function styling( attributes, clientId, name ) {
 			'margin-top': generateCSSUnit( topMargin, marginType ),
 			'margin-bottom': generateCSSUnit( bottomMargin, marginType ),
 			'color': color,
-			'box-shadow':
-				generateCSSUnit( boxShadowHOffset, 'px' ) +
-				' ' +
-				generateCSSUnit( boxShadowVOffset, 'px' ) +
-				' ' +
-				generateCSSUnit( boxShadowBlur, 'px' ) +
-				' ' +
-				generateCSSUnit( boxShadowSpread, 'px' ) +
-				' ' +
-				boxShadowColor +
-				' ' +
-				boxShadowPositionCSS,
+			'box-shadow': boxShadowCSS,
+			
 			'letter-spacing': generateCSSUnit( letterSpacing, letterSpacingType ),
 		},		
 		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__link': {
@@ -154,11 +165,19 @@ function styling( attributes, clientId, name ) {
 		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__link': {
 			'color': color,
 		},
+		
 	};
 	selectors[ ' .wp-block-button__link.uagb-buttons-repeater' ] = borderCSS;
 	selectors[ ' .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
 		'border-color': btnBorderHColor,
 	};
+	
+	// Box Shadow.
+	if ( useSeparateBoxShadows ) {
+		selectors['.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover'] = {
+			'box-shadow' : boxShadowHoverCSS,
+		}
+	}
 
 	//Twenty Twenty theme
 	selectors[

@@ -54,11 +54,26 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$attr['sizeType']       = isset( $attr['sizeType'] ) ? $attr['sizeType'] : 'px';
 			$attr['lineHeightType'] = isset( $attr['lineHeightType'] ) ? $attr['lineHeightType'] : 'em';
 
-			$box_shadow_position_css = $attr['boxShadowPosition'];
+			$box_shadow_properties       = array(
+				'horizontal' => $attr['boxShadowHOffset'],
+				'vertical'   => $attr['boxShadowVOffset'],
+				'blur'       => $attr['boxShadowBlur'],
+				'spread'     => $attr['boxShadowSpread'],
+				'color'      => $attr['boxShadowColor'],
+				'position'   => $attr['boxShadowPosition'],
+			);
+			$box_shadow_hover_properties = array(
+				'horizontal' => $attr['boxShadowHOffsetHover'],
+				'vertical'   => $attr['boxShadowVOffsetHover'],
+				'blur'       => $attr['boxShadowBlurHover'],
+				'spread'     => $attr['boxShadowSpreadHover'],
+				'color'      => $attr['boxShadowColorHover'],
+				'position'   => $attr['boxShadowPositionHover'],
+				'alt_color'  => $attr['boxShadowColor'],
+			);
 
-			if ( 'outset' === $attr['boxShadowPosition'] ) {
-				$box_shadow_position_css = '';
-			}
+			$box_shadow_css       = self::generate_shadow_css( $box_shadow_properties );
+			$box_shadow_hover_css = self::generate_shadow_css( $box_shadow_hover_properties );
 
 			if ( 'transparent' === $attr['backgroundType'] ) {
 
@@ -139,23 +154,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			$selectors[' .wp-block-button__link.has-text-color:focus .uagb-button__link'] = array(
 				'color' => $attr['hColor'],
+			);      
+			$selectors[ ' .uagb-button__wrapper ' . $wrapper . '.wp-block-button__link' ] = array(
+				'box-shadow' => $box_shadow_css,            
 			);
-			if ( 0 !== $attr['boxShadowHOffset'] || 0 !== $attr['boxShadowVOffset'] ) {
-				$selectors[ ' .uagb-button__wrapper ' . $wrapper . '.wp-block-button__link' ] = array(
-					'box-shadow' =>
-					UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
-					' ' .
-					UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) .
-					' ' .
-					UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) .
-					' ' .
-					UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) .
-					' ' .
-					$attr['boxShadowColor'] .
-					' ' .
-					$box_shadow_position_css,
+			
+			// If using separate box shadow hover settings, then generate CSS for it.
+			if ( $attr['useSeparateBoxShadows'] ) {
+				$selectors[ ' .uagb-button__wrapper ' . $wrapper . '.wp-block-button__link:hover' ] = array(
+					'box-shadow' => $box_shadow_hover_css,
 				);
-			}
+				
+			};
+			
 			$selectors[ $wrapper . '.wp-block-button__link' ]       = $border_css;
 			$m_selectors[ $wrapper . '.wp-block-button__link' ]     = $border_css_mobile;
 			$t_selectors[ $wrapper . '.wp-block-button__link' ]     = $border_css_tablet;

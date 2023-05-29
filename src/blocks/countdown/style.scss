@@ -3,6 +3,10 @@
 	justify-content: center;
 	text-align: center;
 
+	.wp-block-uagb-countdown__box {
+		transition: box-shadow 0.2s ease;
+	}
+
 	&__box {
 		position: relative; // Helps to position separators.
 		display: flex;
