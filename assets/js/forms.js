@@ -111,7 +111,7 @@ UAGBForms = {
 		}
 
 		//Ready Classes.
-		const formscope = document.getElementsByClassName( 'uagb-block-' + attr.block_id );
+		const formscope = document.getElementsByClassName( 'uagb-forms__outer-wrap' );
 		const formWrapper = formscope[ 0 ].children;
 		const sibling = formWrapper[ 0 ].children;
 
@@ -125,6 +125,7 @@ UAGBForms = {
 				sibling[ index + 1 ].after( div );
 				const wrapper_div = formscope[ 0 ].getElementsByClassName( 'uag-col-wrap-' + index );
 				wrapper_div[ 0 ].appendChild( sibling[ index ] );
+				wrapper_div[ 0 ].appendChild( sibling[ index ] );
 			}
 
 			if (
@@ -136,6 +137,8 @@ UAGBForms = {
 				div.className = 'uag-col-3-wrap uag-col-wrap-' + index;
 				sibling[ index + 2 ].after( div );
 				const wrapper_div = formscope[ 0 ].getElementsByClassName( 'uag-col-wrap-' + index );
+				wrapper_div[ 0 ].appendChild( sibling[ index ] );
+				wrapper_div[ 0 ].appendChild( sibling[ index ] );
 				wrapper_div[ 0 ].appendChild( sibling[ index ] );
 			}
 
@@ -149,6 +152,9 @@ UAGBForms = {
 				div.className = 'uag-col-4-wrap uag-col-wrap-' + index;
 				sibling[ index + 3 ].after( div );
 				const wrapper_div = formscope[ 0 ].getElementsByClassName( 'uag-col-wrap-' + index );
+				wrapper_div[ 0 ].appendChild( sibling[ index ] );
+				wrapper_div[ 0 ].appendChild( sibling[ index ] );
+				wrapper_div[ 0 ].appendChild( sibling[ index ] );
 				wrapper_div[ 0 ].appendChild( sibling[ index ] );
 			}
 		}

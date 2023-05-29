@@ -178,6 +178,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Table Of Contents - Resolved an issue in which the Table Of Contents block would overflow the Container in Full Site Editing (FSE) themes.
 * Fix: Post Carousel - The preset layout 4 is not showing as a slider on the frontend.
 * Fix: Post Carousel - Resolved an issue in the FSE ( Full Site Editing ) template in which the arrows would overflow the page.
+* Fix: Forms - Resolved an issue in which Custom class for form block uag-col-2 is not working as intended on the frontend.
 * Fix: Team - Resolved an issue in which the alignment would not function properly when the Team block is used in RTL mode.
 * Fix: Taxonomy - Number of columns option is not working for responsive devices on frontend.
 * Fix: Spectra Custom CSS - Resolved Conflict with Astra Custom Layout Sticky Settings.
