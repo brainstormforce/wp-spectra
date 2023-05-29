@@ -28,7 +28,19 @@ $box_shadow_properties = array(
 	'color'      => $attr['iconBoxShadowColor'],
 	'position'   => $attr['iconBoxShadowPosition'],
 );
-$box_shadow            = UAGB_Block_Helper::generate_shadow_css( $box_shadow_properties );
+
+$box_shadow_hover_properties = array(
+	'horizontal' => $attr['iconBoxShadowHOffsetHover'],
+	'vertical'   => $attr['iconBoxShadowVOffsetHover'],
+	'blur'       => $attr['iconBoxShadowBlurHover'],
+	'spread'     => $attr['iconBoxShadowSpreadHover'],
+	'color'      => $attr['iconBoxShadowColorHover'],
+	'position'   => $attr['iconBoxShadowPositionHover'],
+	'alt_color'  => $attr['iconBoxShadowColor'],
+);
+
+$box_shadow           = UAGB_Block_Helper::generate_shadow_css( $box_shadow_properties );
+$box_shadow_hover_css = UAGB_Block_Helper::generate_shadow_css( $box_shadow_hover_properties );
 
 $t_selectors = array();
 $m_selectors = array();
@@ -75,6 +87,14 @@ $selectors['.uagb-icon-wrapper .uagb-svg-wrapper:hover']     = array(
 	'border-color' => $attr['iconBorderHColor'],
 	'background'   => $hover_background,
 );
+
+// If using separate box shadow hover settings, then generate CSS for it.
+if ( $attr['useSeparateBoxShadows'] ) {
+	$selectors['.uagb-icon-wrapper .uagb-svg-wrapper:hover'] = array(
+		'box-shadow' => $box_shadow_hover_css,
+	);
+
+};
 
 // Generates css for tablet devices.
 $t_icon_width                                        = UAGB_Helper::get_css_value( $attr['iconSizeTablet'], $attr['iconSizeUnit'] );

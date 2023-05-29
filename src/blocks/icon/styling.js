@@ -76,12 +76,19 @@ function styling( attributes, name ) {
 		iconShadowVOffset,
 		iconShadowBlur,
 		// Block Shadow
+		useSeparateBoxShadows,
 		iconBoxShadowColor,
 		iconBoxShadowHOffset,
 		iconBoxShadowVOffset,
 		iconBoxShadowBlur,
 		iconBoxShadowSpread,
 		iconBoxShadowPosition,
+		iconBoxShadowColorHover,
+		iconBoxShadowHOffsetHover,
+		iconBoxShadowVOffsetHover,
+		iconBoxShadowBlurHover,
+		iconBoxShadowSpreadHover,
+		iconBoxShadowPositionHover,
 	} = attributes;
 
 	const iconWidth = getFallbackNumber( iconSize, 'iconSize', blockName );
@@ -104,6 +111,16 @@ function styling( attributes, name ) {
 		'spread': iconBoxShadowSpread,
 		'color': iconBoxShadowColor,
 		'position': iconBoxShadowPosition,
+	} );
+
+	const boxShadowHoverCSS = generateShadowCSS( {
+		'horizontal': iconBoxShadowHOffsetHover,
+		'vertical': iconBoxShadowVOffsetHover,
+		'blur': iconBoxShadowBlurHover,
+		'spread': iconBoxShadowSpreadHover,
+		'color': iconBoxShadowColorHover,
+		'position': iconBoxShadowPositionHover,
+		'altColor': iconBoxShadowColor,
 	} );
 
 	const selectors = {
@@ -145,6 +162,13 @@ function styling( attributes, name ) {
 			'fill': iconHoverColor,
 		},
 	};
+
+	// Box Shadow.
+	if ( useSeparateBoxShadows ) {
+		selectors['.uagb-icon-wrapper .uagb-svg-wrapper:hover'] = {
+			'box-shadow' : boxShadowHoverCSS,
+		}
+	}
 
 	const tabletSelectors = {
 		'.uagb-icon-wrapper': {
