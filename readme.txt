@@ -168,12 +168,13 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = x.x.x =
 * Improvement: Icon-List - When enter add new list item to the Icon-List.
+* Improvement: Global - Updated the hover box shadow generation, added shadow transitions and added optional hover shadow separation.
 * Fix: Global - Resolved an issue in which the CSS would not load in the front-end in edge cases.
 * Fix: Global - Resolved an issue wherein the border would overlap parts of the background images and gradients.
 * Fix: Container - Fixed an issue where setting a text color for a heading from a child container would affect all other headings on the page.
 * Fix: Image Gallery - Removed the additional bottom spacing in the masonry layout that would appear on certain themes.
 * Fix: Image Gallery - Resolved an issue in which the masonry layout would appear stacked for a brief moment on load.
-*  Fix: Image Gallery - Resolved an issue in FSE themes wherein the lightbox would have an extra top-margin on the front-end.
+* Fix: Image Gallery - Resolved an issue in FSE themes wherein the lightbox would have an extra top-margin on the front-end.
 * Fix: Call To Action - When using call to action with additional button, on responsive view button is getting more height
 * Fix: Table Of Contents - Resolved an issue in which the Table Of Contents block would overflow the Container in Full Site Editing (FSE) themes.
 * Fix: Post Carousel - The preset layout 4 is not showing as a slider on the frontend.
