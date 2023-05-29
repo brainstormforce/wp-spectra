@@ -370,6 +370,10 @@ const attributes = {
 			styleType: 'container-bg-gradient-value',
 		},
 	},
+	'useSeparateBoxShadows': {
+		type: 'boolean',
+		default: true,
+	},
 	'boxShadowColor': {
 		type: 'string',
 		default: '#00000070',

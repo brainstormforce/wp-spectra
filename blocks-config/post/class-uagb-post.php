@@ -1092,6 +1092,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'excerptLetterSpacingTablet'    => array(
 						'type' => 'number',
 					),
+					'useSeparateBoxShadows'         => array(
+						'type'    => 'boolean',
+						'default' => true,
+					),
 					'boxShadowColor'                => array(
 						'type'    => 'string',
 						'default' => '#00000070',

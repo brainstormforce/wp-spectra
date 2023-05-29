@@ -187,7 +187,7 @@ return array_merge(
 		'ctaLetterSpacingTablet'      => '',
 		'ctaLetterSpacingMobile'      => '',
 		'ctaLetterSpacingType'        => 'px',
-
+		'useSeparateBoxShadows'       => true,
 		'boxShadowColor'              => '#00000070',
 		'boxShadowHOffset'            => 0,
 		'boxShadowVOffset'            => 0,

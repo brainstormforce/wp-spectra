@@ -12,6 +12,8 @@
 	}
 
 	.uagb-post__inner-wrap {
+		transition: box-shadow 0.2s ease;
+
 		.uagb-post__taxonomy {
 			display: inline-block;
 

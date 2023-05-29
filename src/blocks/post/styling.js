@@ -8,6 +8,7 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
+import generateShadowCSS from '@Controls/generateShadowCSS';
 
 function styling( attributes, clientId ) {
 	const {
@@ -206,6 +207,7 @@ function styling( attributes, clientId ) {
 		ctaLetterSpacingTablet,
 		ctaLetterSpacingMobile,
 		ctaLetterSpacingType,
+		useSeparateBoxShadows,
 		boxShadowColor,
 		boxShadowHOffset,
 		boxShadowVOffset,
@@ -291,17 +293,26 @@ function styling( attributes, clientId ) {
 	let mobileSelectors = {};
 	let tabletSelectors = {};
 
-	let boxShadowPositionCSS = boxShadowPosition;
+	// Box Shadow
+	const boxShadowCSS = generateShadowCSS( {
+		'horizontal': boxShadowHOffset,
+		'vertical': boxShadowVOffset,
+		'blur': boxShadowBlur,
+		'spread': boxShadowSpread,
+		'color': boxShadowColor,
+		'position': boxShadowPosition,
+	} );
 
-	if ( 'outset' === boxShadowPosition ) {
-		boxShadowPositionCSS = '';
-	}
+	const boxShadowHoverCSS = generateShadowCSS( {
+		'horizontal': boxShadowHOffsetHover,
+		'vertical': boxShadowVOffsetHover,
+		'blur': boxShadowBlurHover,
+		'spread': boxShadowSpreadHover,
+		'color': boxShadowColorHover,
+		'position': boxShadowPositionHover,
+		'altColor': boxShadowColor,
+	} );
 
-	let boxShadowPositionCSSHover = boxShadowPositionHover;
-
-	if ( 'outset' === boxShadowPositionHover ) {
-		boxShadowPositionCSSHover = '';
-	}
 	const selectors = {
 		'.wp-block-uagb-post-grid': {
 			'grid-template-columns': 'repeat(' + columns + ' , minmax(0, 1fr))',
@@ -327,18 +338,7 @@ function styling( attributes, clientId ) {
 			'background': bgType ? bgColor : 'transparent',
 		},
 		'.wp-block-uagb-post-grid .uagb-post__inner-wrap': {
-			'box-shadow':
-				generateCSSUnit( boxShadowHOffset, 'px' ) +
-				' ' +
-				generateCSSUnit( boxShadowVOffset, 'px' ) +
-				' ' +
-				generateCSSUnit( boxShadowBlur, 'px' ) +
-				' ' +
-				generateCSSUnit( boxShadowSpread, 'px' ) +
-				' ' +
-				boxShadowColor +
-				' ' +
-				boxShadowPositionCSS,
+			'box-shadow': boxShadowCSS ,
 			...overallBorderCSS,
 			'padding-top': generateCSSUnit( paddingTop, contentPaddingUnit ),
 			'padding-left': generateCSSUnit( paddingLeft, contentPaddingUnit ),
@@ -743,27 +743,14 @@ function styling( attributes, clientId ) {
 		},
 	};
 
-	const boxShadowBlurHoverValue = isNaN( boxShadowBlurHover ) ? '' : boxShadowBlurHover;
-	const boxShadowColorHoverValue = boxShadowColorHover ? boxShadowColorHover : '';
+	if( useSeparateBoxShadows ){
+		selectors['.wp-block-uagb-post-grid .uagb-post__inner-wrap:hover'] = {
+			'box-shadow' : boxShadowHoverCSS ,
+		}
+	}
 
-	if ( '' !== boxShadowColorHoverValue || '' !== boxShadowBlurHoverValue ) {
-		const boxShadowBlurHoverCSSUnit =
-			'' === boxShadowBlurHoverValue ? '' : generateCSSUnit( boxShadowBlurHoverValue, 'px' );
-
-		selectors[ '.wp-block-uagb-post-grid .uagb-post__inner-wrap:hover' ] = {
-			'box-shadow':
-				generateCSSUnit( boxShadowHOffsetHover, 'px' ) +
-				' ' +
-				generateCSSUnit( boxShadowVOffsetHover, 'px' ) +
-				' ' +
-				boxShadowBlurHoverCSSUnit +
-				' ' +
-				generateCSSUnit( boxShadowSpreadHover, 'px' ) +
-				' ' +
-				boxShadowColorHoverValue +
-				' ' +
-				boxShadowPositionCSSHover,
-		};
+	selectors['.wp-block-uagb-post-grid article:hover'] = {
+		'border-color' : overallBorderHColor
 	}
 	selectors[ '.wp-block-uagb-post-grid article:hover' ] = {
 		'border-color': overallBorderHColor,
