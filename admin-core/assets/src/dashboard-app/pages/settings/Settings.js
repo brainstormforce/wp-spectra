@@ -28,8 +28,9 @@ import ContainerGlobalPadding from '@DashboardApp/pages/settings/ContainerGlobal
 import ContainerGlobalElementsGap from '@DashboardApp/pages/settings/ContainerGlobalElementsGap';
 import MyAccount from '@DashboardApp/pages/settings/MyAccount';
 import InstagramUsers from '@DashboardApp/pages/settings/block-settings/InstagramUsers';
+import InheritFromTheme from '@DashboardApp/pages/settings/InheritFromTheme';
 import { Link, useLocation, useHistory } from 'react-router-dom';
-import{ useEffect } from 'react';
+import { useEffect } from '@wordpress/element';
 
 
 function classNames( ...classes ) {
@@ -117,6 +118,7 @@ const Settings = () => {
                         { 'global-settings' === activeSettingsNavigationTab &&
                             <>
                                 <ContentWidth/>
+                                <InheritFromTheme/>
 								<ContainerGlobalPadding/>
 								<ContainerGlobalElementsGap/>
 								{

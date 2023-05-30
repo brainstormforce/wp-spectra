@@ -92,9 +92,24 @@ class Common_Settings extends Ajax_Base {
 			'insta_linked_accounts',
 			'insta_all_users_media',
 			'insta_refresh_all_tokens',
+			'btn_inherit_from_theme',
 		);
 
 		$this->init_ajax_events( $ajax_events );
+	}
+
+	/**
+	 * Save global option of button to inherit from theme.
+	 *
+	 * @since x.x.x
+	 * @return void
+	 */
+	public function btn_inherit_from_theme() {
+
+		$this->check_permission_nonce( 'uag_btn_inherit_from_theme' );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'uag_btn_inherit_from_theme', sanitize_text_field( $value ) );
+
 	}
 
 	/**

@@ -18,7 +18,7 @@ const attributes = {
 	},
 	inheritFromTheme: {
 		type: 'boolean',
-		default: false,
+		default: 'enabled' === uagb_blocks_info.btn_inherit_from_theme,
 	},
 	block_id: {
 		type: 'string',

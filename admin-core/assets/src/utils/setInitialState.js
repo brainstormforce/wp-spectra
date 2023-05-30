@@ -46,7 +46,8 @@ const setInitialState = ( store ) => {
             enableAnimationsExtension: data.uag_enable_animations_extension,
             spectraFSEFonts: data.spectra_global_fse_fonts,
             spectraIsBlockTheme: data.wp_is_block_theme,
-            themeFonts: data.theme_fonts
+            themeFonts: data.theme_fonts,
+            btnInheritFromTheme: data.uag_btn_inherit_from_theme,
         };
 
         store.dispatch( {type: 'UPDATE_INITIAL_STATE', payload: initialState} );

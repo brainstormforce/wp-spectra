@@ -292,6 +292,7 @@ const Settings = ( props ) => {
 		blockPaddingUnitTablet,
 		blockPaddingUnitMobile,
 		blockPaddingLink,
+		inheritFromTheme
 	} = attributes;
 
 	/*
@@ -661,11 +662,25 @@ const Settings = ( props ) => {
 					] }
 				/>
 				{ 'button' === ctaType && (
-					<UAGPresets
-						setAttributes={ setAttributes }
-						presets={ buttonsPresets }
-						presetInputType="radioImage"
-					/>
+					<>
+						{ ! inheritFromTheme && (
+							<UAGPresets
+								setAttributes={ setAttributes }
+								presets={ buttonsPresets }
+								presetInputType="radioImage"
+							/>
+						) }
+						<ToggleControl
+							checked={ inheritFromTheme }
+							onChange={ () =>
+								setAttributes( { inheritFromTheme: ! inheritFromTheme } )
+							}
+							label={ __(
+								'Inherit From Theme',
+								'ultimate-addons-for-gutenberg'
+							) }
+						/>
+					</>
 				) }
 				{ ctaType !== 'none' && (
 					<>
@@ -1755,7 +1770,7 @@ const Settings = ( props ) => {
 						</>
 					</UAGAdvancedPanelBody>
 				) }
-				{ 'none' !== ctaType && 'all' !== ctaType && (
+				{ 'none' !== ctaType && 'all' !== ctaType && ! inheritFromTheme && (
 					<UAGAdvancedPanelBody title="Call to Action" initialOpen={ false }>
 						<>
 							<TypographyControl
@@ -1872,7 +1887,7 @@ const Settings = ( props ) => {
 									disableBottomSeparator={ true }
 								/>
 							) }
-							{ ctaType === 'button' && (
+							{ ctaType === 'button' && ! inheritFromTheme && (
 								<>
 									<UAGTabsControl
 										tabs={ [

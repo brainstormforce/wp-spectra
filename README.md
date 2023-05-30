@@ -167,6 +167,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
+* New: Introducing the Inherit From Theme option - Choose to make buttons in Spectra blocks inherit their styles from the theme.
 * Improvement: Icon-List - When enter add new list item to the Icon-List.
 * Improvement: Global - Updated the hover box shadow generation, added shadow transitions and added optional hover shadow separation.
 * Fix: Global - Resolved an issue in which the CSS would not load in the front-end in edge cases.

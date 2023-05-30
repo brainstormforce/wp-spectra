@@ -187,6 +187,8 @@ function CtaStyle( attributes, clientId, name ) {
 		btncontentWidthMobile,
 		btncontentWidthType,
 		enabledSecondCtaButton,
+		inheritFromTheme,
+		secInheritFromTheme
 	} = attributes;
 
 	const ctaBorderCSS = generateBorderCSS( attributes, 'btn' );
@@ -258,79 +260,6 @@ function CtaStyle( attributes, clientId, name ) {
 		};
 	}
 
-	// CTA style.
-	selectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper' ] = {
-		'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
-		'font-family': ctaFontFamily,
-		'font-style': ctaFontStyle,
-		'text-decoration': ctaDecoration,
-		'text-transform': ctaTransform,
-		'font-weight': ctaFontWeight,
-		'color': ctaBtnLinkColor,
-		'background-color': ctaBgType === 'color' ? ctaBgColor : 'transparent',
-		'padding-top': generateCSSUnit( ctaTopPadding, ctaPaddingUnit ),
-		'padding-bottom': generateCSSUnit( ctaBottomPadding, ctaPaddingUnit ),
-		'padding-left': generateCSSUnit( ctaLeftPadding, ctaPaddingUnit ),
-		'padding-right': generateCSSUnit( ctaRightPadding, ctaPaddingUnit ),
-		...ctaBorderCSS,
-		'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
-	};
-
-	// Core Theme CSS
-	selectors[
-		'.uagb-cta__outer-wrap.wp-block-button:not(.is-style-outline) a.uagb-cta__button-link-wrapper.wp-block-button__link:not(.has-background)'
-	] = {
-		'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
-		'font-family': ctaFontFamily,
-		'font-style': ctaFontStyle,
-		'text-decoration': ctaDecoration,
-		'text-transform': ctaTransform,
-		'font-weight': ctaFontWeight,
-		'color': ctaBtnLinkColor,
-		'background-color': ctaBgColor,
-		'padding-top': generateCSSUnit( ctaTopPadding, ctaPaddingUnit ),
-		'padding-bottom': generateCSSUnit( ctaBottomPadding, ctaPaddingUnit ),
-		'padding-left': generateCSSUnit( ctaLeftPadding, ctaPaddingUnit ),
-		'padding-right': generateCSSUnit( ctaRightPadding, ctaPaddingUnit ),
-		...ctaBorderCSS,
-	};
-	selectors[
-		'.uagb-cta__outer-wrap.wp-block-button:not(.is-style-outline) a.uagb-cta__button-link-wrapper.wp-block-button__link:not(.has-background):hover'
-	] = {
-		'color': ctaLinkHoverColor,
-		'background-color': ctaBgHoverType === 'color' ? ctaBgHoverColor : 'transparent',
-		'border-color': btnBorderHColor,
-	};
-	selectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button' ] = {
-		'font-size': generateCSSUnit( secondCtaFontSize, secondCtaFontSizeType ),
-		'font-family': secondCtaFontFamily,
-		'font-style': secondCtaFontStyle,
-		'text-decoration': secondCtaFontDecoration,
-		'text-transform': secondCtaFontTransform,
-		'font-weight': secondCtaFontWeight,
-		'color': secondCtaColor,
-		'background-color': secondCtaBgType === 'color' ? secondCtaBackground : 'transparent',
-		'padding-top': generateCSSUnit( secondCtaTopPadding, secondCtaPaddingUnit ),
-		'padding-bottom': generateCSSUnit( secondCtaBottomPadding, secondCtaPaddingUnit ),
-		'padding-left': generateCSSUnit( secondCtaLeftPadding, secondCtaPaddingUnit ),
-		'padding-right': generateCSSUnit( secondCtaRightPadding, secondCtaPaddingUnit ),
-		'align-self': 'top' === buttonAlign ? 'flex-start' : 'center',
-		'height': 'fit-content',
-		...secondCtaBorderCSS,
-		'letter-spacing': generateCSSUnit( secondCtaLetterSpacing, secondCtaLetterSpacingType ),
-	};
-	selectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button:hover' ] = {
-		'color': secondCtaHoverColor,
-		'background-color': secondCtaBgHoverType === 'color' ? secondCtaHoverBackground : 'transparent',
-		'border-color': secondCtaBorderHColor,
-	};
-
-	selectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper:hover' ] = {
-		'color': ctaLinkHoverColor,
-		'background-color': ctaBgHoverType === 'color' ? ctaBgHoverColor : 'transparent',
-		'border-color': btnBorderHColor,
-	};
-
 	selectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper svg' ] = {
 		'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 		'width': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
@@ -381,30 +310,12 @@ function CtaStyle( attributes, clientId, name ) {
 			'letter-spacing': generateCSSUnit( descLetterSpacingTablet, descLetterSpacingType ),
 			'margin-bottom': generateCSSUnit( descSpaceTablet, descSpaceType ),
 		},
-		'.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper': {
-			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
-			'padding-top': generateCSSUnit( ctaTopPaddingTablet, tabletCTAPaddingUnit ),
-			'padding-bottom': generateCSSUnit( ctaBottomPaddingTablet, tabletCTAPaddingUnit ),
-			'padding-left': generateCSSUnit( ctaLeftPaddingTablet, tabletCTAPaddingUnit ),
-			'padding-right': generateCSSUnit( ctaRightPaddingTablet, tabletCTAPaddingUnit ),
-			'letter-spacing': generateCSSUnit( ctaLetterSpacingTablet, ctaLetterSpacingType ),
-			...ctaBorderCSSTablet,
-		},
 		'.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper svg': {
 			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
 			'height': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
 			'width': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
 			'line-height': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
 			'letter-spacing': generateCSSUnit( ctaLetterSpacingTablet, ctaLetterSpacingType ),
-		},
-		'.uagb-cta__outer-wrap a.uagb-cta-second__button': {
-			'font-size': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeType ),
-			'padding-top': generateCSSUnit( secondCtaTopTabletPadding, secondCtaTabletPaddingUnit ),
-			'padding-bottom': generateCSSUnit( secondCtaBottomTabletPadding, secondCtaTabletPaddingUnit ),
-			'padding-left': generateCSSUnit( secondCtaLeftTabletPadding, secondCtaTabletPaddingUnit ),
-			'padding-right': generateCSSUnit( secondCtaRightTabletPadding, secondCtaTabletPaddingUnit ),
-			...secondCtaBorderCSSTablet,
-			'letter-spacing': generateCSSUnit( secondCtaLetterSpacingTablet, secondCtaLetterSpacingType ),
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta-second__button svg': {
 			'font-size': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeType ),
@@ -414,9 +325,7 @@ function CtaStyle( attributes, clientId, name ) {
 			'letter-spacing': generateCSSUnit( secondCtaLetterSpacingTablet, secondCtaLetterSpacingType ),
 		},
 	};
-	tabletSelectors[
-		'.uagb-cta__outer-wrap.wp-block-button:not(.is-style-outline) a.uagb-cta__button-link-wrapper.wp-block-button__link:not(.has-background)'
-	] = ctaBorderCSSTablet;
+	
 	if ( ctaPosition === 'right' ) {
 		tabletSelectors[ '.uagb-cta__outer-wrap.uagb-cta__content-stacked-tablet ' ] = {
 			'display': 'inherit',
@@ -457,30 +366,12 @@ function CtaStyle( attributes, clientId, name ) {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
 		},
-		'.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper': {
-			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
-			'padding-top': generateCSSUnit( ctaTopPaddingMobile, mobileCTAPaddingUnit ),
-			'padding-bottom': generateCSSUnit( ctaBottomPaddingMobile, mobileCTAPaddingUnit ),
-			'padding-left': generateCSSUnit( ctaLeftPaddingMobile, mobileCTAPaddingUnit ),
-			'padding-right': generateCSSUnit( ctaRightPaddingMobile, mobileCTAPaddingUnit ),
-			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
-			...ctaBorderCSSMobile,
-		},
 		' .uagb-cta__button-wrapper .uagb-cta-with-svg': {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 			'height': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 			'width': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 			'line-height': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
-		},
-		'.uagb-cta__outer-wrap a.uagb-cta-second__button': {
-			'font-size': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeType ),
-			'padding-top': generateCSSUnit( secondCtaTopMobilePadding, secondCtaMobilePaddingUnit ),
-			'padding-bottom': generateCSSUnit( secondCtaBottomMobilePadding, secondCtaMobilePaddingUnit ),
-			'padding-left': generateCSSUnit( secondCtaLeftMobilePadding, secondCtaMobilePaddingUnit ),
-			'padding-right': generateCSSUnit( secondCtaRightMobilePadding, secondCtaMobilePaddingUnit ),
-			...secondCtaBorderCSSMobile,
-			'letter-spacing': generateCSSUnit( secondCtaLetterSpacingMobile, secondCtaLetterSpacingType ),
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta-second__button svg': {
 			'font-size': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeType ),
@@ -490,9 +381,7 @@ function CtaStyle( attributes, clientId, name ) {
 			'letter-spacing': generateCSSUnit( secondCtaLetterSpacingMobile, secondCtaLetterSpacingType ),
 		},
 	};
-	mobileSelectors[
-		'.uagb-cta__outer-wrap.wp-block-button:not(.is-style-outline) a.uagb-cta__button-link-wrapper.wp-block-button__link:not(.has-background)'
-	] = ctaBorderCSSMobile;
+	
 	if ( ctaType === 'text' ) {
 		selectors[ ' a.uagb-cta__button-link-wrapper' ] = {
 			'color': ctaBtnLinkColor,
@@ -739,6 +628,124 @@ function CtaStyle( attributes, clientId, name ) {
 		mobileSelectors[ ' .uagb-cta__buttons' ] = {
 			'column-gap': generateCSSUnit( gapBtnMobile, 'px' ),
 			'margin-left': generateCSSUnit( buttonRightSpaceMobile, buttonRightSpaceType ),
+		};
+	}
+	if( ! inheritFromTheme ) {
+		// CTA style.
+		selectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper' ] = {
+			'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
+			'font-family': ctaFontFamily,
+			'font-style': ctaFontStyle,
+			'text-decoration': ctaDecoration,
+			'text-transform': ctaTransform,
+			'font-weight': ctaFontWeight,
+			'color': ctaBtnLinkColor,
+			'background-color': ctaBgType === 'color' ? ctaBgColor : 'transparent',
+			'padding-top': generateCSSUnit( ctaTopPadding, ctaPaddingUnit ),
+			'padding-bottom': generateCSSUnit( ctaBottomPadding, ctaPaddingUnit ),
+			'padding-left': generateCSSUnit( ctaLeftPadding, ctaPaddingUnit ),
+			'padding-right': generateCSSUnit( ctaRightPadding, ctaPaddingUnit ),
+			...ctaBorderCSS,
+			'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
+		};
+
+		// Core Theme CSS
+		selectors[
+			'.uagb-cta__outer-wrap.wp-block-button:not(.is-style-outline) a.uagb-cta__button-link-wrapper.wp-block-button__link:not(.has-background)'
+		] = {
+			'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
+			'font-family': ctaFontFamily,
+			'font-style': ctaFontStyle,
+			'text-decoration': ctaDecoration,
+			'text-transform': ctaTransform,
+			'font-weight': ctaFontWeight,
+			'color': ctaBtnLinkColor,
+			'background-color': ctaBgColor,
+			'padding-top': generateCSSUnit( ctaTopPadding, ctaPaddingUnit ),
+			'padding-bottom': generateCSSUnit( ctaBottomPadding, ctaPaddingUnit ),
+			'padding-left': generateCSSUnit( ctaLeftPadding, ctaPaddingUnit ),
+			'padding-right': generateCSSUnit( ctaRightPadding, ctaPaddingUnit ),
+			...ctaBorderCSS,
+		};
+		selectors[
+			'.uagb-cta__outer-wrap.wp-block-button:not(.is-style-outline) a.uagb-cta__button-link-wrapper.wp-block-button__link:not(.has-background):hover'
+		] = {
+			'color': ctaLinkHoverColor,
+			'background-color': ctaBgHoverType === 'color' ? ctaBgHoverColor : 'transparent',
+			'border-color': btnBorderHColor,
+		};
+		tabletSelectors[
+			'.uagb-cta__outer-wrap.wp-block-button:not(.is-style-outline) a.uagb-cta__button-link-wrapper.wp-block-button__link:not(.has-background)'
+		] = ctaBorderCSSTablet;
+		mobileSelectors[
+			'.uagb-cta__outer-wrap.wp-block-button:not(.is-style-outline) a.uagb-cta__button-link-wrapper.wp-block-button__link:not(.has-background)'
+		] = ctaBorderCSSMobile;
+		tabletSelectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper'] = {
+			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
+			'padding-top': generateCSSUnit( ctaTopPaddingTablet, tabletCTAPaddingUnit ),
+			'padding-bottom': generateCSSUnit( ctaBottomPaddingTablet, tabletCTAPaddingUnit ),
+			'padding-left': generateCSSUnit( ctaLeftPaddingTablet, tabletCTAPaddingUnit ),
+			'padding-right': generateCSSUnit( ctaRightPaddingTablet, tabletCTAPaddingUnit ),
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingTablet, ctaLetterSpacingType ),
+			...ctaBorderCSSTablet,
+		};
+		mobileSelectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper'] = {
+			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+			'padding-top': generateCSSUnit( ctaTopPaddingMobile, mobileCTAPaddingUnit ),
+			'padding-bottom': generateCSSUnit( ctaBottomPaddingMobile, mobileCTAPaddingUnit ),
+			'padding-left': generateCSSUnit( ctaLeftPaddingMobile, mobileCTAPaddingUnit ),
+			'padding-right': generateCSSUnit( ctaRightPaddingMobile, mobileCTAPaddingUnit ),
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
+			...ctaBorderCSSMobile,
+		};
+	}
+	if ( ! secInheritFromTheme ) {
+		selectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button' ] = {
+			'font-size': generateCSSUnit( secondCtaFontSize, secondCtaFontSizeType ),
+			'font-family': secondCtaFontFamily,
+			'font-style': secondCtaFontStyle,
+			'text-decoration': secondCtaFontDecoration,
+			'text-transform': secondCtaFontTransform,
+			'font-weight': secondCtaFontWeight,
+			'color': secondCtaColor,
+			'background-color': secondCtaBgType === 'color' ? secondCtaBackground : 'transparent',
+			'padding-top': generateCSSUnit( secondCtaTopPadding, secondCtaPaddingUnit ),
+			'padding-bottom': generateCSSUnit( secondCtaBottomPadding, secondCtaPaddingUnit ),
+			'padding-left': generateCSSUnit( secondCtaLeftPadding, secondCtaPaddingUnit ),
+			'padding-right': generateCSSUnit( secondCtaRightPadding, secondCtaPaddingUnit ),
+			'align-self': 'top' === buttonAlign ? 'flex-start' : 'center',
+			'height': 'fit-content',
+			...secondCtaBorderCSS,
+			'letter-spacing': generateCSSUnit( secondCtaLetterSpacing, secondCtaLetterSpacingType ),
+		};
+		selectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button:hover' ] = {
+			'color': secondCtaHoverColor,
+			'background-color': secondCtaBgHoverType === 'color' ? secondCtaHoverBackground : 'transparent',
+			'border-color': secondCtaBorderHColor,
+		};
+
+		selectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper:hover' ] = {
+			'color': ctaLinkHoverColor,
+			'background-color': ctaBgHoverType === 'color' ? ctaBgHoverColor : 'transparent',
+			'border-color': btnBorderHColor,
+		};
+		tabletSelectors['.uagb-cta__outer-wrap a.uagb-cta-second__button'] = {
+			'font-size': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeType ),
+			'padding-top': generateCSSUnit( secondCtaTopTabletPadding, secondCtaTabletPaddingUnit ),
+			'padding-bottom': generateCSSUnit( secondCtaBottomTabletPadding, secondCtaTabletPaddingUnit ),
+			'padding-left': generateCSSUnit( secondCtaLeftTabletPadding, secondCtaTabletPaddingUnit ),
+			'padding-right': generateCSSUnit( secondCtaRightTabletPadding, secondCtaTabletPaddingUnit ),
+			...secondCtaBorderCSSTablet,
+			'letter-spacing': generateCSSUnit( secondCtaLetterSpacingTablet, secondCtaLetterSpacingType ),
+		};
+		mobileSelectors['.uagb-cta__outer-wrap a.uagb-cta-second__button' ] = {
+			'font-size': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeType ),
+			'padding-top': generateCSSUnit( secondCtaTopMobilePadding, secondCtaMobilePaddingUnit ),
+			'padding-bottom': generateCSSUnit( secondCtaBottomMobilePadding, secondCtaMobilePaddingUnit ),
+			'padding-left': generateCSSUnit( secondCtaLeftMobilePadding, secondCtaMobilePaddingUnit ),
+			'padding-right': generateCSSUnit( secondCtaRightMobilePadding, secondCtaMobilePaddingUnit ),
+			...secondCtaBorderCSSMobile,
+			'letter-spacing': generateCSSUnit( secondCtaLetterSpacingMobile, secondCtaLetterSpacingType ),
 		};
 	}
 

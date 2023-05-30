@@ -751,6 +751,7 @@ class UAGB_Init_Blocks {
 				'insta_all_users_media'                   => apply_filters( 'uag_instagram_transients', array() ),
 				'is_site_editor'                          => $screen->id,
 				'current_post_id'                         => get_the_ID(),
+				'btn_inherit_from_theme'                  => UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' ),
 			)
 		);
 		// To match the editor with frontend.

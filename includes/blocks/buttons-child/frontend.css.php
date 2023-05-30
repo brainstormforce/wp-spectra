@@ -17,7 +17,8 @@ $combined_selectors = array(
 	'tablet'  => $all_selectors['t_selectors'],
 	'mobile'  => $all_selectors['m_selectors'],
 );
-
-$combined_selectors = UAGB_Helper::get_typography_css( $attr, '', ' .uagb-button__link', $combined_selectors );
+if ( ! $attr['inheritFromTheme'] ) {
+	$combined_selectors = UAGB_Helper::get_typography_css( $attr, '', ' .uagb-button__link', $combined_selectors );
+}
 
 return UAGB_Helper::generate_all_css( $combined_selectors, '.wp-block-uagb-buttons .uagb-block-' . $id );
