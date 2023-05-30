@@ -205,7 +205,7 @@ class UAGB_Post_Assets {
 	/**
 	 * Is current post a revision.
 	 *
-	 * @since x.x.x
+	 * @since 2.6.2
 	 * @var is_post_revision
 	 */
 	public $is_post_revision = false;

@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 5.6
 Tested up to: 6.2
-Stable tag: 2.6.1
+Stable tag: 2.6.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -166,7 +166,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= x.x.x =
+= 2.6.2 - WEDNESDAY, 31st MAY 2023 =
 * New: Introducing the Inherit From Theme option - Choose to make buttons in Spectra blocks inherit their styles from the theme.
 * Improvement: Icon-List - When enter add new list item to the Icon-List.
 * Improvement: Global - Updated the hover box shadow generation, added shadow transitions and added optional hover shadow separation.

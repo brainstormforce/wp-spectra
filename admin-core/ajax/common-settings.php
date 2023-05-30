@@ -101,7 +101,7 @@ class Common_Settings extends Ajax_Base {
 	/**
 	 * Save global option of button to inherit from theme.
 	 *
-	 * @since x.x.x
+	 * @since 2.6.2
 	 * @return void
 	 */
 	public function btn_inherit_from_theme() {

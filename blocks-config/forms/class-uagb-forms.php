@@ -61,7 +61,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		 * Return the blocks content for reusable block.
 		 *
 		 * @param int $reusable_ref_id reference id of reusable block.
-		 * @since x.x.x
+		 * @since 2.6.2
 		 * @return array
 		 */
 		public function reusable_block_content_on_page( $reusable_ref_id ) {
@@ -76,7 +76,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		 * Generates ids for all wp template part.
 		 *
 		 * @param array $block_attr attributes array.
-		 * @since x.x.x
+		 * @since 2.6.2
 		 * @return integer|boolean
 		 */
 		public function get_fse_template_part( $block_attr ) {
@@ -101,7 +101,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		 *
 		 * @param array $block_attr of Block.
 		 * @param int   $block_id of Block.
-		 * @since x.x.x
+		 * @since 2.6.2
 		 * @return array
 		 */
 		public function uagb_forms_block_attr_check( $block_attr, $block_id ) {
