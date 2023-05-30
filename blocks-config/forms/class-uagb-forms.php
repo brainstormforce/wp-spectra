@@ -58,6 +58,40 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		}
 
 		/**
+		 * Return the blocks content for reusable block.
+		 *
+		 * @param int $reusable_ref_id reference id of reusable block.
+		 * @since x.x.x
+		 * @return array
+		 */
+		public function reusable_block_content_on_page( $reusable_ref_id ) {
+			if ( is_int( $reusable_ref_id ) ) {
+				$content                = get_post_field( 'post_content', $reusable_ref_id );
+				$reusable_block_content = parse_blocks( $content );
+				return $reusable_block_content;
+			}
+		}
+
+		/**
+		 * Return array of validated attributes.
+		 *
+		 * @param array $block_attr of Block.
+		 * @param int   $block_id of Block.
+		 * @since x.x.x
+		 * @return array
+		 */
+		public function uagb_forms_block_attr_check( $block_attr, $block_id ) {
+			if ( ! empty( $block_attr['ref'] ) ) {
+				$reusable_blocks_content = $this->reusable_block_content_on_page( $block_attr['ref'] );
+				$block_attr              = $this->recursive_inner_forms( $reusable_blocks_content, $block_id );
+			}
+			if ( is_array( $block_attr ) && $block_attr['block_id'] === $block_id ) {
+				return $block_attr;
+			}
+			return false;
+		}
+
+		/**
 		 *  Get the Inner blocks array.
 		 *
 		 * @since 2.3.5
@@ -77,20 +111,23 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 				if ( empty( $blocks ) ) {
 					continue;
 				}
-				if ( isset( $blocks['blockName'] ) && ( 'uagb/forms' === $blocks['blockName'] || 'core/block' === $blocks['blockName'] ) ) {
-					if ( ! empty( $blocks['attrs'] ) && isset( $blocks['attrs']['block_id'] ) ) {
-						return $blocks['attrs'];
+				if ( ! empty( $blocks['attrs'] ) && isset( $blocks['blockName'] ) && ( 'uagb/forms' === $blocks['blockName'] || 'core/block' === $blocks['blockName'] ) ) {
+					$blocks_attrs = $this->uagb_forms_block_attr_check( $blocks['attrs'], $block_id );
+					if ( ! $blocks_attrs ) {
+						continue;
 					}
+					return $blocks_attrs;
 				} else {
 					if ( is_array( $blocks['innerBlocks'] ) && ! empty( $blocks['innerBlocks'] ) ) {
 						foreach ( $blocks['innerBlocks'] as $j => $inner_block ) {
-							if ( isset( $inner_block['blockName'] ) && ( 'uagb/forms' === $inner_block ['blockName'] || 'core/block' === $inner_block['blockName'] ) ) {
-								if ( ! empty( $inner_block['attrs'] ) && isset( $inner_block['attrs']['block_id'] ) && $inner_block['attrs']['block_id'] === $block_id ) {
-									return $inner_block['attrs'];
+							if ( ! empty( $inner_block['attrs'] ) && isset( $inner_block['blockName'] ) && ( 'uagb/forms' === $inner_block ['blockName'] || 'core/block' === $inner_block['blockName'] ) ) {
+								$inner_block_attrs = $this->uagb_forms_block_attr_check( $inner_block['attrs'], $block_id );
+								if ( ! $inner_block_attrs ) {
+									continue;
 								}
+								return $inner_block_attrs;
 							} else {
 								$temp_attrs = $this->recursive_inner_forms( $inner_block['innerBlocks'], $block_id );
-
 								if ( ! empty( $temp_attrs ) && isset( $temp_attrs['block_id'] ) && $temp_attrs['block_id'] === $block_id ) {
 									return $temp_attrs;
 								}
@@ -125,12 +162,13 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 
 			$post_content = get_post_field( 'post_content', sanitize_text_field( $_POST['post_id'] ) );
 
-			if ( has_block( 'uagb/forms' || 'core/block', $post_content ) ) {
+			if ( has_block( 'uagb/forms', $post_content ) || has_block( 'core/block', $post_content ) ) {
 				$blocks = parse_blocks( $post_content );
 				if ( ! empty( $blocks ) && is_array( $blocks ) ) {
 					$current_block_attributes = $this->recursive_inner_forms( $blocks, $block_id );
 				}
-			} elseif ( wp_is_block_theme() ) {
+			}
+			if ( wp_is_block_theme() ) {
 				$wp_query_args        = array(
 					'post_status' => array( 'publish' ),
 					'post_type'   => 'wp_template',
@@ -146,27 +184,30 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 						if ( is_wp_error( $template ) ) {
 							continue;
 						}
-						$template_content = parse_blocks( $template->content );
+						$template_post_content = ! empty( $post_content ) ? $template->content . $post_content : $template->content;
+						$template_content      = parse_blocks( $template_post_content );
 						if ( get_template() === $template->theme && ! empty( $template_content ) && is_array( $template_content ) ) {
 							$current_block_attributes = $this->recursive_inner_forms( $template_content, $block_id );
 						}
 					}
 				}
-			} 
-			
+			}
+
 			$widget_content = get_option( 'widget_block' );
-			
 			if ( ! empty( $widget_content ) && is_array( $widget_content ) && empty( $current_block_attributes ) ) {
 				foreach ( $widget_content as $value ) {
-					if ( empty( $value['content'] ) ) {
+					if ( is_int( $value ) || empty( $value['content'] ) ) {
 						continue;
 					}
 					if ( has_block( 'uagb/forms', $value['content'] ) ) {
 						$current_block_attributes = $this->recursive_inner_forms( parse_blocks( $value['content'] ), $block_id );
+						if ( is_array( $current_block_attributes ) && $current_block_attributes['block_id'] === $block_id ) {
+							break;
+						}
 					}
 				}
 			}
-			
+
 			if ( empty( $current_block_attributes ) ) {
 				wp_send_json_error( 400 );
 			}
