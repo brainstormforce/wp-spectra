@@ -185,6 +185,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Team - Resolved an issue in which the alignment would not function properly when the Team block is used in RTL mode.
 * Fix: Taxonomy - Number of columns option is not working for responsive devices on frontend.
 * Fix: Spectra Custom CSS - Resolved Conflict with Astra Custom Layout Sticky Settings.
+* Fix: Table Of Contents - Resolved an issue in which the `uagb-toc-hide-heading` class would not work on core heading blocks in the front end.
 
 = 2.6.1 - FRIDAY, 19th MAY 2003 =
 * Improvement: Added Premium Templates in Template Kits library.
