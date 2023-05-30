@@ -145,7 +145,7 @@ const SelectedFontFamilies = () => {
                 </Switch>
             </div>
             <p className="mt-2 w-9/12 text-sm text-slate-500">
-                { __( 'Spectra offers 700+ Google font options. If this is overwhelming for your clients, you can use this option to show only limited number of fonts in the block settings.', 'ultimate-addons-for-gutenberg' ) }
+                { __( 'Spectra offers 1500+ Google font options. If this is overwhelming for your clients, you can use this option to show only limited number of fonts in the block settings.', 'ultimate-addons-for-gutenberg' ) }
             </p>
             <Select
                 isMulti

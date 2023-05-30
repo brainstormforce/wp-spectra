@@ -412,7 +412,7 @@ module.exports = function ( grunt ) {
 					const fontData = {
 						v: font.variants || [],
 						subset: font.subsets || [],
-						weight: font.variants ? [ 'Default', '400' ] : [],
+						weight: font.variants ? ['Default',...font.variants.filter( variant => /^[0-9]+$/.test( variant ) && !/^[a-z]+$/.test( variant ) ),'400'].sort( ( a, b ) => parseInt( a ) - parseInt( b ) ) : [],
 						i: [],
 					};
 

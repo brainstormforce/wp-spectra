@@ -223,7 +223,7 @@ const FSEFontFamilies = () => {
         </div>
         <section className={`block border-b border-solid border-slate-200 px-12 pb-8 justify-between ${ ! enableFSEFontFamiliesStatus ? 'uag-font-select-disabled' : ''}`}>  
             <p className="mt-2 w-9/12 text-sm text-slate-500">
-                { __( 'Spectra offers 700+ Google font options. You can select which you want to use in your FSE Typography', 'ultimate-addons-for-gutenberg' ) }
+                { __( 'Spectra offers 1500+ Google font options. You can select which you want to use in your FSE Typography', 'ultimate-addons-for-gutenberg' ) }
             </p>
             <Select
                 placeholder={ __( 'Select the font families you want', 'ultimate-addons-for-gutenberg' ) }
