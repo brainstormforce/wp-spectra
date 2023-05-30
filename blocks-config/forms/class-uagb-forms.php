@@ -73,6 +73,30 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		}
 
 		/**
+		 * Generates ids for all wp template part.
+		 *
+		 * @param array $block_attr attributes array.
+		 * @since x.x.x
+		 * @return integer|boolean
+		 */
+		public function get_fse_template_part( $block_attr ) {
+			if ( empty( $block_attr['slug'] ) ) {
+				return false;
+			}
+
+			$id              = false;
+			$slug            = $block_attr['slug'];
+			$templates_parts = get_block_templates( array( 'slugs__in' => $slug ), 'wp_template_part' );
+			foreach ( $templates_parts as $templates_part ) {
+				if ( $slug === $templates_part->slug ) {
+					$id = $templates_part->wp_id;
+					break;
+				}
+			}
+			return $id;
+		}
+
+		/**
 		 * Return array of validated attributes.
 		 *
 		 * @param array $block_attr of Block.
@@ -85,6 +109,13 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 				$reusable_blocks_content = $this->reusable_block_content_on_page( $block_attr['ref'] );
 				$block_attr              = $this->recursive_inner_forms( $reusable_blocks_content, $block_id );
 			}
+
+			if ( ! empty( $block_attr['slug'] ) ) {
+				$id                      = $this->get_fse_template_part( $block_attr );
+				$reusable_blocks_content = $this->reusable_block_content_on_page( $id );
+				$block_attr              = $this->recursive_inner_forms( $reusable_blocks_content, $block_id );
+			}
+
 			if ( is_array( $block_attr ) && $block_attr['block_id'] === $block_id ) {
 				return $block_attr;
 			}
@@ -111,7 +142,8 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 				if ( empty( $blocks ) ) {
 					continue;
 				}
-				if ( ! empty( $blocks['attrs'] ) && isset( $blocks['blockName'] ) && ( 'uagb/forms' === $blocks['blockName'] || 'core/block' === $blocks['blockName'] ) ) {
+
+				if ( ! empty( $blocks['attrs'] ) && isset( $blocks['blockName'] ) && ( 'uagb/forms' === $blocks['blockName'] || 'core/block' === $blocks['blockName'] || 'core/template-part' === $blocks['blockName'] ) ) {
 					$blocks_attrs = $this->uagb_forms_block_attr_check( $blocks['attrs'], $block_id );
 					if ( ! $blocks_attrs ) {
 						continue;
@@ -120,7 +152,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 				} else {
 					if ( is_array( $blocks['innerBlocks'] ) && ! empty( $blocks['innerBlocks'] ) ) {
 						foreach ( $blocks['innerBlocks'] as $j => $inner_block ) {
-							if ( ! empty( $inner_block['attrs'] ) && isset( $inner_block['blockName'] ) && ( 'uagb/forms' === $inner_block ['blockName'] || 'core/block' === $inner_block['blockName'] ) ) {
+							if ( ! empty( $inner_block['attrs'] ) && isset( $inner_block['blockName'] ) && ( 'uagb/forms' === $inner_block ['blockName'] || 'core/block' === $inner_block['blockName'] || 'core/template-part' === $blocks['blockName'] ) ) {
 								$inner_block_attrs = $this->uagb_forms_block_attr_check( $inner_block['attrs'], $block_id );
 								if ( ! $inner_block_attrs ) {
 									continue;
