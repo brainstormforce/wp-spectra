@@ -224,7 +224,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 			$widget_content = get_option( 'widget_block' );
 			if ( ! empty( $widget_content ) && is_array( $widget_content ) && empty( $current_block_attributes ) ) {
 				foreach ( $widget_content as $value ) {
-					if ( is_int( $value ) || empty( $value['content'] ) ) {
+					if ( ! is_array( $value ) || empty( $value['content'] ) ) {
 						continue;
 					}
 					if ( has_block( 'uagb/forms', $value['content'] ) ) {
