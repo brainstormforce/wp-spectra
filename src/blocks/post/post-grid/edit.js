@@ -66,7 +66,6 @@ const PostGridComponent = ( props ) => {
 		isEditing: false,
 		innerBlocks: [],
 	};
-
 	const [ state, setStateValue ] = useState( initialState );
 	const [ isTaxonomyLoading, setIsTaxonomyLoading ] = useState( false );
 

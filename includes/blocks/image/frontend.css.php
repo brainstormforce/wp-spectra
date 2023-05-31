@@ -13,11 +13,6 @@ UAGB_Block_JS::blocks_advanced_image_gfont( $attr );
 $m_selectors = array();
 $t_selectors = array();
 
-$imageBoxShadowPosition = $attr['imageBoxShadowPosition'];
-if ( 'outset' === $attr['imageBoxShadowPosition'] ) {
-	$imageBoxShadowPosition = '';
-}
-
 $image_border_css          = UAGB_Block_Helper::uag_generate_border_css( $attr, 'image' );
 $image_border_css_tablet   = UAGB_Block_Helper::uag_generate_border_css( $attr, 'image', 'tablet' );
 $image_border_css_mobile   = UAGB_Block_Helper::uag_generate_border_css( $attr, 'image', 'mobile' );
@@ -71,6 +66,27 @@ switch ( $attr['alignMobile'] ) {
 		break;
 }
 
+$box_shadow_properties       = array(
+	'horizontal' => $attr['imageBoxShadowHOffset'],
+	'vertical'   => $attr['imageBoxShadowVOffset'],
+	'blur'       => $attr['imageBoxShadowBlur'],
+	'spread'     => $attr['imageBoxShadowSpread'],
+	'color'      => $attr['imageBoxShadowColor'],
+	'position'   => $attr['imageBoxShadowPosition'],
+);
+$box_shadow_hover_properties = array(
+	'horizontal' => $attr['imageBoxShadowHOffsetHover'],
+	'vertical'   => $attr['imageBoxShadowVOffsetHover'],
+	'blur'       => $attr['imageBoxShadowBlurHover'],
+	'spread'     => $attr['imageBoxShadowSpreadHover'],
+	'color'      => $attr['imageBoxShadowColorHover'],
+	'position'   => $attr['imageBoxShadowPositionHover'],
+	'alt_color'  => $attr['imageBoxShadowColor'],
+);
+
+$box_shadow_css       = UAGB_Block_Helper::generate_shadow_css( $box_shadow_properties );
+$box_shadow_hover_css = UAGB_Block_Helper::generate_shadow_css( $box_shadow_hover_properties );
+
 $selectors = array(
 	'.wp-block-uagb-image'                            => array(
 		'margin-top'      => UAGB_Helper::get_css_value( $attr['imageTopMargin'], $attr['imageMarginUnit'] ),
@@ -86,7 +102,7 @@ $selectors = array(
 	),
 	'.wp-block-uagb-image--layout-default figure img' => array_merge(
 		array(
-			'box-shadow' => UAGB_Helper::get_css_value( $attr['imageBoxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['imageBoxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['imageBoxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['imageBoxShadowSpread'], 'px' ) . ' ' . $attr['imageBoxShadowColor'] . ' ' . $imageBoxShadowPosition,
+			'box-shadow' => $box_shadow_css,
 		),
 		$image_border_css
 	),
@@ -107,7 +123,7 @@ $selectors = array(
 	// overlay.
 	'.wp-block-uagb-image--layout-overlay figure img' => array_merge(
 		array(
-			'box-shadow' => UAGB_Helper::get_css_value( $attr['imageBoxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['imageBoxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['imageBoxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['imageBoxShadowSpread'], 'px' ) . ' ' . $attr['imageBoxShadowColor'] . ' ' . $imageBoxShadowPosition,
+			'box-shadow' => $box_shadow_css,
 		),
 		$image_border_css
 	),
@@ -189,6 +205,17 @@ if ( 'hover' === $attr['seperatorShowOn'] ) {
 	);
 }
 
+// If using separate box shadow hover settings, then generate CSS for it.
+if ( $attr['useSeparateBoxShadows'] ) {
+	$selectors['.wp-block-uagb-image--layout-default figure img:hover'] = array(
+		'box-shadow' => $box_shadow_hover_css,
+	);
+
+	$selectors['.wp-block-uagb-image--layout-overlay figure img:hover'] = array(
+		'box-shadow' => $box_shadow_hover_css,
+	);
+
+};
 
 if ( 'none' !== $attr['maskShape'] ) {
 	$imagePath = UAGB_URL . 'assets/images/masks/' . $attr['maskShape'] . '.svg';

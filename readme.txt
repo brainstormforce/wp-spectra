@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 5.6
-Tested up to: 6.2
-Stable tag: 2.6.1
+Tested up to: 6.2.2
+Stable tag: 2.6.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -166,8 +166,29 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= 2.6.2 - WEDNESDAY, 31st MAY 2023 =
+* New: Introducing the Inherit From Theme option - Choose to make buttons in Spectra blocks inherit their styles from the theme.
+* Improvement: Icon List - Added the functionality to create a new list item when pressing the enter key inside the Icon List block.
+* Improvement: Global - Updated the hover box shadow generation, added shadow transitions and added optional hover shadow separation.
+* Fix: Container - Fixed an issue where setting a text color for a heading from a child container would affect all other headings on the page.
+* Fix: Call To Action - Resolved an issue in the responsive view wherein the button would become taller when using an additional button.
+* Fix: Forms - Resolved an issue in which the custom class for Forms block `uag-col-2` was not working as intended on the front end.
+* Fix: Image Gallery - Removed the additional bottom spacing in the masonry layout that would appear on certain themes.
+* Fix: Image Gallery - Resolved an issue in which the masonry layout would appear stacked for a brief moment on load.
+* Fix: Image Gallery - Resolved an issue in FSE themes wherein the lightbox would have an extra top margin on the front end.
+* Fix: Post Carousel - Resolved an issue in which preset layout 4 would not show as a slider on the front end.
+* Fix: Post Carousel - Resolved an issue in which the carousel would appear as a grid for some time on load.
+* Fix: Post Carousel - Resolved an issue in the FSE ( Full Site Editing ) template in which the arrows would overflow the page.
+* Fix: Table Of Contents - Resolved an issue in which the Table Of Contents block would overflow the Container in Full Site Editing (FSE) themes.
+* Fix: Table Of Contents - Resolved an issue in which the `uagb-toc-hide-heading` class would not work on core heading blocks in the front end.
+* Fix: Taxonomy - Resolved an issue in which the number of columns would not work as required for responsive devices on the front end.
+* Fix: Team - Resolved an issue in which the alignment would not function properly when the Team block is used in RTL mode.
+* Fix: Spectra Custom CSS - Resolved Conflict with Astra Custom Layout Sticky Settings.
+* Fix: Global - Resolved an issue in which the CSS would not load in the front end in edge cases.
+* Fix: Global - Resolved an issue wherein the border would overlap parts of the background images and gradients.
+
 = 2.6.1 - FRIDAY, 19th MAY 2003 =
-* Improvement: Added Premium Templates in Template Kits library
+* Improvement: Added Premium Templates in Template Kits library.
 * Fix: Admin Dashboard - Added missing i18n support for some strings.
 * Fix: Admin Dashboard - 'Activate all' and 'Deactivate all' previously had no impact on the status of Animations extension.
 * Fix: Animations Extension - Resolved the 'Error loading' issue for dynamic blocks that was caused by animation attributes.

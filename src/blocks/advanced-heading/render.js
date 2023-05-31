@@ -11,7 +11,7 @@ const Render = ( props ) => {
 		attributes: {
 			block_id,
 			headingTitleToggle,
-			headingDescToggle,
+			headingDescToggle, 
 			seperatorStyle,
 			seperatorPosition,
 			headingDescPosition,
@@ -60,7 +60,7 @@ const Render = ( props ) => {
 			{ headingTitleToggle && headingText }
 			{ headingDescToggle && 'below-heading' === headingDescPosition ? descText : '' }
 			{ ! headingDescToggle && ! headingTitleToggle ? separator : '' }
-		</div>
+		</div>	
 	);
 };
 export default memo( Render );

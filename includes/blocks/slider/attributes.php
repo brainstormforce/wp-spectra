@@ -108,6 +108,7 @@ return apply_filters(
 			'marginType'                  => 'px',
 			'marginTypeTablet'            => 'px',
 			'marginTypeMobile'            => 'px',
+			'useSeparateBoxShadows'       => true,
 			'boxShadowColor'              => '#00000070',
 			'boxShadowHOffset'            => 0,
 			'boxShadowVOffset'            => 0,

@@ -214,6 +214,7 @@ return array_merge(
 		'columns'                           => 3,
 		'tcolumns'                          => 2,
 		'mcolumns'                          => 1,
+		'useSeparateBoxShadows'             => true,
 	),
 	$pagination_masonry_border_attribute,
 	$btn_border_attribute,

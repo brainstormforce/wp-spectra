@@ -127,9 +127,12 @@ function generateBackgroundCSS( backgroundAttributes ) {
 
 			bgCSS[ 'background-size' ] = backgroundSizeValue;
 			bgCSS[ 'background-attachment' ] = backgroundAttachment;
+			bgCSS[ 'background-clip' ] = 'padding-box';
+
 		} else if ( 'gradient' === backgroundType ) {
 			if ( '' !== gradient && 'unset' !== gradient ) {
-				bgCSS.background = gradient;
+				bgCSS.background = gradient;	
+				bgCSS[ 'background-clip' ] = 'padding-box';
 			}
 		} else if ( 'video' === backgroundType ) {
 			if (

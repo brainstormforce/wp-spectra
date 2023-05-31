@@ -317,6 +317,7 @@
 		}
 
 		&-thumbnail {
+			vertical-align: middle;
 			-webkit-transition: filter 0.5s, transform 0.5s;
 			-moz-transition: filter 0.5s, transform 0.5s;
 			-o-transition: filter 0.5s, transform 0.5s;
@@ -615,6 +616,7 @@
 			transition-property: opacity;
 			z-index: 999999999 !important;
 			outline: none;
+			margin-block-start: 0;
 
 			@include transitionSpeeds();
 

@@ -320,7 +320,7 @@ module.exports = function ( grunt ) {
 	function keep_category_list( fonts,customCategory ){
 		const keep_category_array = [];
 		for( const category in customCategory ){
-			if( customCategory[ category ] && customCategory[ category ] ?.title ){	
+			if( customCategory[ category ] && customCategory[ category ] ?.title ){
 				// we will keep count from here.
 				const put_category_with_title = { slug:category } ;
 				put_category_with_title.title = `%%translation_start%%${customCategory[ category ].title}%%translation_end%%`;
@@ -358,7 +358,7 @@ module.exports = function ( grunt ) {
 			'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/metadata/icons.json',
 			function ( error, response, body ) {
 				if ( response && response.statusCode === 200 ) {
-					console.log( 'Fonts successfully fetched!' ); // eslint-disable-line
+					console.log( 'Fonts successfully fetched!' ); // eslint-disable-line no-console
 
 					const fonts = JSON.parse( body );
 					Object.keys( fonts ).map( ( key ) => {
@@ -387,7 +387,7 @@ module.exports = function ( grunt ) {
 						JSON.stringify( fonts, null, 4 ),
 						function ( err ) {
 							if ( ! err ) {
-								console.log( 'Font-Awesome library updated!' ); // eslint-disable-line
+								console.log( 'Font-Awesome library updated!' ); // eslint-disable-line no-console
 							}
 						}
 					);
@@ -395,7 +395,57 @@ module.exports = function ( grunt ) {
 			}
 		);
 	} );
-	
+
+	// Update Google Font library.
+    grunt.registerTask( 'google-fonts', function () {
+		this.async();
+		const request = require( 'request' );
+		const fs = require( 'fs' );
+		request(
+			'https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyAVfm2WzgRiV5posH5f_LNNKAQfv80I6yg',
+			function ( error, response, body ) {
+				const data = JSON.parse( body );
+				let fonts = {};
+
+				data.items.forEach( ( font ) => {
+					const fontName = font.family;
+					let fontVarient = [];
+					if( font.variants ) {
+						const copyFontVArient = [ ...font.variants ];
+						const filterFontVarient =  copyFontVArient.filter( variant => /^[0-9]+$/.test( variant ) && !/^[a-z]+$/.test( variant ) );
+						filterFontVarient.push( '400' );
+						const sortArray = filterFontVarient.sort( ( a, b ) => parseInt( a ) - parseInt( b ) );
+						fontVarient = [ 'Default', ...sortArray ];
+                    }
+					
+					const fontData = {
+						v: font.variants || [],
+						subset: font.subsets || [],
+						weight: fontVarient,
+						i: [],
+					};
+
+					if ( fontData.v.includes( 'italic' ) ) {
+						fontData.i.push( 'normal', 'italic' );
+				    } else {
+						fontData.i.push( 'normal' );
+					}
+
+					fonts[ fontName ] = fontData;
+				} );
+
+				fonts = JSON.stringify( fonts );
+				const keepFont = `const fonts = ${ fonts }; export default fonts;`;
+
+				fs.writeFile( 'blocks-config/uagb-controls/fonts.js', keepFont, function ( err ) {
+					if ( ! err ) {
+						console.log( 'Google font update successfully !' ); // eslint-disable-line no-console
+					}
+				} );
+			}
+		);
+	} );
+
 	grunt.registerTask( 'font-awesome-cate-list', function () {
 		this.async();
 		// Source https://github.com/FortAwesome/Font-Awesome/blob/6.x/metadata/categories.yml.
@@ -409,9 +459,9 @@ module.exports = function ( grunt ) {
 						body,
 						function ( err ) {
 							if ( ! err ) {
-								console.log( 'Categories added' ); // eslint-disable-line
+								console.log( 'Categories added' ); // eslint-disable-line no-console
 								const yaml = require( 'js-yaml' );
-								const category_lists = yaml.load( fs.readFileSync( 'fontawesome-category.yml', {encoding: 'utf-8'} ) ); 
+								const category_lists = yaml.load( fs.readFileSync( 'fontawesome-category.yml', { encoding: 'utf-8' } ) );
 								fs.writeFileSync( './bin/icons-configure/fontawesome-category.json', JSON.stringify( category_lists, null, 2 ) );
 								fs.unlinkSync( 'fontawesome-category.yml' );
 							}
@@ -432,7 +482,7 @@ module.exports = function ( grunt ) {
 		let getDownloadedIcons = grunt.file.readJSON( './bin/spectra-icons-v6.json' );
 		const fs = require( 'fs' );
 		// We have take initially icons from 'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/metadata/icons.json' but we have downloaded and keep this in bin folder due to back word compatibility
-		
+
 		Object.keys( getDownloadedIcons ).map( ( key ) => {
 			getDownloadedIcons[key].categories = [];
 			getDownloadedIcons[key].custom_categories = [];
@@ -445,8 +495,8 @@ module.exports = function ( grunt ) {
 			return key;
 		} );
 
-		// keep custom category in icons 
-		getDownloadedIcons = keep_custom_category_in_icons( getDownloadedIcons, getCustomCategoryTitle ); 
+		// keep custom category in icons
+		getDownloadedIcons = keep_custom_category_in_icons( getDownloadedIcons, getCustomCategoryTitle );
 
 		// Put custom categories list.
 		getDownloadedIcons = keep_category_list( getDownloadedIcons, getCategoriesCustomTitle );
@@ -456,7 +506,7 @@ module.exports = function ( grunt ) {
 			JSON.stringify( getDownloadedIcons, null, 4 ),
 			function ( err ) {
 				if ( ! err ) {
-					console.log( 'Font-Awesome v6 library updated!' ); // eslint-disable-line
+					console.log( 'Font-Awesome v6 library updated!' ); // eslint-disable-line no-console
 				}
 			}
 		);

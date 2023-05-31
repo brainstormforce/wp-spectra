@@ -92,9 +92,24 @@ class Common_Settings extends Ajax_Base {
 			'insta_linked_accounts',
 			'insta_all_users_media',
 			'insta_refresh_all_tokens',
+			'btn_inherit_from_theme',
 		);
 
 		$this->init_ajax_events( $ajax_events );
+	}
+
+	/**
+	 * Save global option of button to inherit from theme.
+	 *
+	 * @since 2.6.2
+	 * @return void
+	 */
+	public function btn_inherit_from_theme() {
+
+		$this->check_permission_nonce( 'uag_btn_inherit_from_theme' );
+		$value = $this->check_post_value();
+		$this->delete_all_assets(); // We need to regenerate assets when user changes this setting to regenerate the dynamic CSS according to it.
+		$this->save_admin_settings( 'uag_btn_inherit_from_theme', sanitize_text_field( $value ) );
 	}
 
 	/**
@@ -634,12 +649,12 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * Save setting - Regenerates assets.
+	 * Delete all Assets.
 	 *
+	 * @since 2.6.2
 	 * @return void
 	 */
-	public function regenerate_assets() {
-		$this->check_permission_nonce( 'uag_regenerate_assets' );
+	public function delete_all_assets() {
 
 		$value = $this->check_post_value();
 
@@ -664,6 +679,16 @@ class Common_Settings extends Ajax_Base {
 			\UAGB_Admin_Helper::update_admin_settings_option( '__uagb_asset_version', time() );
 
 		}
+	}
+	/**
+	 * Save setting - Regenerates assets.
+	 *
+	 * @return void
+	 */
+	public function regenerate_assets() {
+		$this->check_permission_nonce( 'uag_regenerate_assets' );
+
+		$this->delete_all_assets();
 
 		$response_data = array(
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),

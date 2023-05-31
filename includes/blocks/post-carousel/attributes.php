@@ -204,6 +204,7 @@ return array_merge(
 		'dotsMarginTopTablet'        => '',
 		'dotsMarginTopMobile'        => '',
 		'dotsMarginTopUnit'          => 'px',
+		'useSeparateBoxShadows'      => true,
 	),
 	$btn_border_attribute,
 	$overall_border_attribute

@@ -57,6 +57,7 @@ const Settings = ( props ) => {
 		backgroundSizeMobile,
 		backgroundImageColor,
 		gradientValue,
+		useSeparateBoxShadows,
 		gradientColor1,
 		gradientColor2,
 		gradientLocation1,
@@ -606,8 +607,17 @@ const Settings = ( props ) => {
 	};
 
 	const boxShadowSettings = () => {
-		return (
-			<UAGAdvancedPanelBody title={ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+		return(
+			<UAGAdvancedPanelBody
+				title={ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) }
+				initialOpen={ false }
+			>
+				<ToggleControl
+					label={ __( 'Separate Hover Shadow', 'ultimate-addons-for-gutenberg' ) }
+					checked={ useSeparateBoxShadows }
+					onChange={ () => setAttributes( { useSeparateBoxShadows: ! useSeparateBoxShadows } ) }
+				/>
+			{ useSeparateBoxShadows ? (
 				<UAGTabsControl
 					tabs={ [
 						{
@@ -709,6 +719,62 @@ const Settings = ( props ) => {
 					}
 					disableBottomSeparator={ true }
 				/>
+			) : (
+						<>
+							<UAGPresets
+								setAttributes = { setAttributes }
+								presets = { boxShadowPresets }
+								presetInputType = 'radioImage'
+							/>
+							<BoxShadowControl
+								blockId={ block_id }
+								setAttributes={ setAttributes }
+								label={ __(
+									'Box Shadow',
+									'ultimate-addons-for-gutenberg'
+								) }
+								boxShadowColor={ {
+									value: boxShadowColor,
+									label: 'boxShadowColor',
+									title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowHOffset={ {
+									value: boxShadowHOffset,
+									label: 'boxShadowHOffset',
+									title: __(
+										'Horizontal',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowVOffset={ {
+									value: boxShadowVOffset,
+									label: 'boxShadowVOffset',
+									title: __(
+										'Vertical',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowBlur={ {
+									value: boxShadowBlur,
+									label: 'boxShadowBlur',
+									title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowSpread={ {
+									value: boxShadowSpread,
+									label: 'boxShadowSpread',
+									title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowPosition={ {
+									value: boxShadowPosition,
+									label: 'boxShadowPosition',
+									title: __(
+										'Position',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+							/>
+						</>
+				) }
 			</UAGAdvancedPanelBody>
 		);
 	};

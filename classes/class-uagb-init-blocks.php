@@ -81,7 +81,7 @@ class UAGB_Init_Blocks {
 
 	/**
 	 * Register the Popup Builder CPT.
-	 * 
+	 *
 	 * @return void
 	 *
 	 * @since 2.6.0
@@ -128,7 +128,7 @@ class UAGB_Init_Blocks {
 
 		$meta_args_popup_type = array(
 			'single'        => true,
-			'type'          => 'string', 
+			'type'          => 'string',
 			'default'       => 'unset',
 			'auth_callback' => '__return_true',
 			'show_in_rest'  => true,
@@ -166,7 +166,7 @@ class UAGB_Init_Blocks {
 		add_filter( 'manage_spectra-popup_posts_columns', array( $spectra_popup_dashboard, 'popup_builder_admin_headings' ) );
 		add_action( 'manage_spectra-popup_posts_custom_column', array( $spectra_popup_dashboard, 'popup_builder_admin_content' ), 10, 2 );
 	}
-	
+
 	/**
 	 * Render block.
 	 *
@@ -751,6 +751,7 @@ class UAGB_Init_Blocks {
 				'insta_all_users_media'                   => apply_filters( 'uag_instagram_transients', array() ),
 				'is_site_editor'                          => $screen->id,
 				'current_post_id'                         => get_the_ID(),
+				'btn_inherit_from_theme'                  => UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' ),
 			)
 		);
 		// To match the editor with frontend.

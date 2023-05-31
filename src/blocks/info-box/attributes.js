@@ -11,7 +11,7 @@ const borderAttributes = getBorderAttributes( 'btn' );
 const attributes = {
 	inheritFromTheme: {
 		type: 'boolean',
-		default: true,
+		default: 'enabled' === uagb_blocks_info.btn_inherit_from_theme,
 	},
 	prefixTitle: {
 		source: 'html',

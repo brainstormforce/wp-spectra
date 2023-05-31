@@ -6,6 +6,7 @@ import { RichText } from '@wordpress/block-editor';
 import { useLayoutEffect, memo, useEffect } from '@wordpress/element';
 import styles from './editor.lazy.scss';
 import getImageHeightWidth from '@Controls/getImageHeightWidth';
+import { createBlock } from '@wordpress/blocks';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -17,7 +18,7 @@ const Render = ( props ) => {
 	}, [] );
 
 	props = props.parentProps;
-	const { attributes, setAttributes, className, deviceType } = props;
+	const { attributes, setAttributes, className, deviceType, onReplace, mergeBlocks } = props;
 	const {
 		label,
 		image_icon,
@@ -63,6 +64,11 @@ const Render = ( props ) => {
 	const targetVal = target ? '_blank' : '_self';
 	const linkUrl = disableLink ? link : '/';
 
+	const propsOnSplit = ( value ) =>
+		value
+			? createBlock( 'uagb/icon-list-child', { ...attributes, label: value } )
+			: createBlock( 'uagb/icon-list-child' );
+
 	return (
 		<div
 			className={ classnames(
@@ -91,6 +97,10 @@ const Render = ( props ) => {
 					className="uagb-icon-list__label"
 					multiline={ false }
 					allowedFormats={ [ 'core/bold', 'core/italic', 'core/strikethrough' ] }
+					onMerge={ mergeBlocks }
+					onSplit={ propsOnSplit }
+					onReplace={ onReplace }
+					onRemove={ () => onReplace( [] ) }
 				/>
 			) }
 		</div>

@@ -15,6 +15,7 @@ vendor
 *.min.js
 
 assets/js/js_cookie.min.js
+blocks-config/uagb-controls/fonts.js
 
 **/deprecated/**
 

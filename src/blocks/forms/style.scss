@@ -29,6 +29,7 @@
 		textarea,
 		select {
 			width: 100%;
+			box-sizing: border-box;
 		}
 
 		.uagb-forms-checkbox-wrap .uagb-form-checkbox-option input.uagb-inner-input-view {
