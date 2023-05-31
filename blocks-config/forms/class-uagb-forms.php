@@ -66,9 +66,8 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		 */
 		public function reusable_block_content_on_page( $reusable_ref_id ) {
 			if ( is_int( $reusable_ref_id ) ) {
-				$content                = get_post_field( 'post_content', $reusable_ref_id );
-				$reusable_block_content = parse_blocks( $content );
-				return $reusable_block_content;
+				$content = get_post_field( 'post_content', $reusable_ref_id );
+				return parse_blocks( $content );
 			}
 		}
 
