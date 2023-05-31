@@ -409,10 +409,19 @@ module.exports = function ( grunt ) {
 
 				data.items.forEach( ( font ) => {
 					const fontName = font.family;
+					let fontVarient = [];
+					if( font.variants ) {
+						const copyFontVArient = [ ...font.variants ];
+						const filterFontVarient =  copyFontVArient.filter( variant => /^[0-9]+$/.test( variant ) && !/^[a-z]+$/.test( variant ) );
+						filterFontVarient.push( '400' );
+						const sortArray = filterFontVarient.sort( ( a, b ) => parseInt( a ) - parseInt( b ) );
+						fontVarient = [ 'Default', ...sortArray ];
+                    }
+					
 					const fontData = {
 						v: font.variants || [],
 						subset: font.subsets || [],
-						weight: font.variants ? ['Default',...font.variants.filter( variant => /^[0-9]+$/.test( variant ) && !/^[a-z]+$/.test( variant ) ),'400'].sort( ( a, b ) => parseInt( a ) - parseInt( b ) ) : [],
+						weight: fontVarient,
 						i: [],
 					};
 
@@ -452,7 +461,7 @@ module.exports = function ( grunt ) {
 							if ( ! err ) {
 								console.log( 'Categories added' ); // eslint-disable-line no-console
 								const yaml = require( 'js-yaml' );
-								const category_lists = yaml.load( fs.readFileSync( 'fontawesome-category.yml', {encoding: 'utf-8'} ) );
+								const category_lists = yaml.load( fs.readFileSync( 'fontawesome-category.yml', { encoding: 'utf-8' } ) );
 								fs.writeFileSync( './bin/icons-configure/fontawesome-category.json', JSON.stringify( category_lists, null, 2 ) );
 								fs.unlinkSync( 'fontawesome-category.yml' );
 							}
