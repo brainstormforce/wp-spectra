@@ -115,10 +115,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 				$block_attr              = $this->recursive_inner_forms( $reusable_blocks_content, $block_id );
 			}
 
-			if ( is_array( $block_attr ) && $block_attr['block_id'] === $block_id ) {
-				return $block_attr;
-			}
-			return false;
+			return ( is_array( $block_attr ) && $block_attr['block_id'] === $block_id ) ? $block_attr : false;
 		}
 
 		/**
@@ -215,7 +212,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 						if ( is_wp_error( $template ) ) {
 							continue;
 						}
-						$template_post_content = ! empty( $post_content ) ? $template->content . $post_content : $template->content;
+						$template_post_content = $template->content . ( ! empty( $post_content ) ? $post_content : '' );
 						$template_content      = parse_blocks( $template_post_content );
 						if ( get_template() === $template->theme && ! empty( $template_content ) && is_array( $template_content ) ) {
 							$current_block_attributes = $this->recursive_inner_forms( $template_content, $block_id );
