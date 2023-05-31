@@ -31,11 +31,7 @@ import InstagramUsers from '@DashboardApp/pages/settings/block-settings/Instagra
 import InheritFromTheme from '@DashboardApp/pages/settings/InheritFromTheme';
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import { useEffect } from '@wordpress/element';
-
-
-function classNames( ...classes ) {
-    return classes.filter( Boolean ).join( ' ' )
-}
+import { uagbClassNames } from '@Utils/Helpers';
 
 const Settings = () => {
 
@@ -98,12 +94,12 @@ const Settings = () => {
                                     search: `?page=spectra&path=settings&settings=${item.slug}`,
                                 } }
                                 key={item.name}
-                                className={ classNames(
+                                className={ uagbClassNames( [
                                     activeSettingsNavigationTab === item.slug
                                         ? 'border-spectra text-spectra focus:text-spectra-hover active:text-spectra hover:text-spectra-hover stroke-spectra fill-spectra focus:stroke-spectra focus:fill-spectra hover:stroke-spectra hover:fill-spectra'
                                         : 'border-white text-slate-800 stroke-slate-800 fill-slate-800 focus:text-slate-900 focus:border-slate-200 focus:stroke-slate-900 focus:fill-slate-900 hover:text-slate-900 hover:border-slate-200 hover:stroke-slate-900 hover:fill-slate-900',
                                     'border-l-4 group cursor-pointer py-3 pl-5 flex items-center text-base font-medium'
-                                ) }
+                                ] ) }
                                 onClick={ () => {
                                     dispatch( {type:'UPDATE_SETTINGS_ACTIVE_NAVIGATION_TAB', payload: item.slug} )
                                 }}
