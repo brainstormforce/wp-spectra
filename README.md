@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.2.2  
-**Stable tag:** 2.6.2  
+**Stable tag:** 2.6.3  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -166,7 +166,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### x.x.x ###
+### 2.6.3 - THURSDAY, 01st JUNE 2023 ###
 * Fix: Post Carousel - Resolved an issue in which the posts would not show up on the front end when the number of columns was greater than the number of posts.
 * Fix: Separator - Removed the block preview image from the Style Book.
 

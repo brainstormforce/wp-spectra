@@ -4,7 +4,7 @@
  *
  * @package UAGB
  *
- * @since x.x.x
+ * @since 2.6.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -14,14 +14,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Class UAGB_Buttons_Child.
  *
- * @since x.x.x
+ * @since 2.6.3
  */
 class UAGB_Buttons_Child {
 
 	/**
 	 * Member Variable
 	 *
-	 * @since x.x.x
+	 * @since 2.6.3
 	 * @var instance
 	 */
 	private static $instance;
@@ -29,7 +29,7 @@ class UAGB_Buttons_Child {
 	/**
 	 * Get class instance.
 	 *
-	 * @since X.X.X
+	 * @since 2.6.3
 	 * @return UAGB_Buttons_Child
 	 */
 	public static function get_instance() {
@@ -42,7 +42,7 @@ class UAGB_Buttons_Child {
 	/**
 	 * Class Constructor.
 	 *
-	 * @since X.X.X
+	 * @since 2.6.3
 	 * @return void
 	 */
 	public function __construct() {
@@ -52,7 +52,7 @@ class UAGB_Buttons_Child {
 	/**
 	 * Register Buttons Child.
 	 *
-	 * @since X.X.X
+	 * @since 2.6.3
 	 * @return void
 	 */
 	public function register_buttons_child() {
@@ -75,7 +75,7 @@ class UAGB_Buttons_Child {
 	 * @param array  $attributes Attributes.
 	 * @param String $content Content.
 	 * @param object $block Block Object.
-	 * @since X.X.X
+	 * @since 2.6.3
 	 * @return string $content.
 	 */
 	public function render_buttons_child( $attributes, $content, $block ) {
