@@ -22,7 +22,7 @@ const ButtonsChildComponent = ( props ) => {
 		attributes: { borderStyle, borderWidth, borderRadius, borderHColor, borderColor },
 		setAttributes,
 		name,
-		deviceType
+		deviceType,
 	} = props;
 
 	const initialState = {
