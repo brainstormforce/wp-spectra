@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.2.2  
-**Stable tag:** 2.6.2  
+**Stable tag:** 2.6.3  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -165,6 +165,10 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 1. /assets/screenshots/1.png
 
 ## Changelog ##
+
+### 2.6.3 - THURSDAY, 01st JUNE 2023 ###
+* Fix: Post Carousel - Resolved an issue in which the posts would not show up on the front end when the number of columns was greater than the number of posts.
+* Fix: Separator - Removed the block preview image from the Style Book.
 
 ### 2.6.2 - WEDNESDAY, 31st MAY 2023 ###
 * New: Introducing the Inherit From Theme option - Choose to make buttons in Spectra blocks inherit their styles from the theme.

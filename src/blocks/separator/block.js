@@ -9,8 +9,12 @@ import save from './save';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 import PreviewImage from '@Controls/previewImage';
+import { applyFilters } from '@wordpress/hooks';
+import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+const separatorCommonData = applyFilters( 'uagb/separator', addCommonDataToSpectraBlocks( {} ) );
 
 registerBlockType( 'uagb/separator', {
+	...separatorCommonData,
 	apiVersion: 2,
 	title: __( 'Separator', 'ultimate-addons-for-gutenberg' ),
 	description: __(
@@ -23,9 +27,4 @@ registerBlockType( 'uagb/separator', {
 	attributes,
 	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="separator" /> : <Edit { ...props } /> ),
 	save,
-	example: {
-		attributes: {
-			isPreview: true,
-		},
-	},
 } );
