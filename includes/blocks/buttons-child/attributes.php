@@ -15,9 +15,11 @@ $v_padding_default = ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) || 'y
 
 $h_padding_default = ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) || 'yes' === $enable_legacy_blocks ) ? 14 : '';
 
+$inherit_from_theme = 'enabled' === UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' );
+
 return array_merge(
 	array(
-		'inheritFromTheme'       => false,
+		'inheritFromTheme'       => $inherit_from_theme,
 		'block_id'               => '',
 		'label'                  => '#Click Here',
 		'link'                   => '',
@@ -87,6 +89,13 @@ return array_merge(
 		'boxShadowBlur'          => '',
 		'boxShadowSpread'        => '',
 		'boxShadowPosition'      => 'outset',
+		'useSeparateBoxShadows'  => true,
+		'boxShadowColorHover'    => '',
+		'boxShadowHOffsetHover'  => 0,
+		'boxShadowVOffsetHover'  => 0,
+		'boxShadowBlurHover'     => '',
+		'boxShadowSpreadHover'   => '',
+		'boxShadowPositionHover' => 'outset',
 		'iconColor'              => '',
 		'iconHColor'             => '',
 		'buttonSize'             => '',

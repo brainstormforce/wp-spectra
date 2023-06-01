@@ -9,17 +9,26 @@
 
 $block_name = 'slider';
 
-$box_shadow_position_css = $attr['boxShadowPosition'];
+$box_shadow_properties       = array(
+	'horizontal' => $attr['boxShadowHOffset'],
+	'vertical'   => $attr['boxShadowVOffset'],
+	'blur'       => $attr['boxShadowBlur'],
+	'spread'     => $attr['boxShadowSpread'],
+	'color'      => $attr['boxShadowColor'],
+	'position'   => $attr['boxShadowPosition'],
+);
+$box_shadow_hover_properties = array(
+	'horizontal' => $attr['boxShadowHOffsetHover'],
+	'vertical'   => $attr['boxShadowVOffsetHover'],
+	'blur'       => $attr['boxShadowBlurHover'],
+	'spread'     => $attr['boxShadowSpreadHover'],
+	'color'      => $attr['boxShadowColorHover'],
+	'position'   => $attr['boxShadowPositionHover'],
+	'alt_color'  => $attr['boxShadowColor'],
+);
 
-if ( 'outset' === $attr['boxShadowPosition'] ) {
-	$box_shadow_position_css = '';
-}
-
-$box_shadow_position_css_hover = $attr['boxShadowPositionHover'];
-
-if ( 'outset' === $attr['boxShadowPositionHover'] ) {
-	$box_shadow_position_css_hover = '';
-}
+$box_shadow_css       = UAGB_Block_Helper::generate_shadow_css( $box_shadow_properties );
+$box_shadow_hover_css = UAGB_Block_Helper::generate_shadow_css( $box_shadow_hover_properties );
 
 $border        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'slider' );
 $border_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'slider', 'tablet' );
@@ -90,18 +99,7 @@ $arrow_padding_mobile = '' !== $attr['arrowPaddingMobile'] ? $attr['arrowPadding
 
 $container_css = array_merge(
 	array(
-		'box-shadow'     =>
-				UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
-				' ' .
-				UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) .
-				' ' .
-				UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) .
-				' ' .
-				UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) .
-				' ' .
-				$attr['boxShadowColor'] .
-				' ' .
-				$box_shadow_position_css,
+		'box-shadow'     => $box_shadow_css,
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingDesktop'], $attr['paddingType'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingDesktop'], $attr['paddingType'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPaddingDesktop'], $attr['paddingType'] ),
@@ -166,19 +164,9 @@ $selectors = array(
 );
 
 // If hover blur or hover color are set, show the hover shadow.
-if ( ( ( '' !== $attr['boxShadowBlurHover'] ) && ( null !== $attr['boxShadowBlurHover'] ) ) || '' !== $attr['boxShadowColorHover'] ) {
+if ( $attr['useSeparateBoxShadows'] ) {
 
-	$selectors[ '.uagb-block-' . $id . ':hover' ]['box-shadow'] = UAGB_Helper::get_css_value( $attr['boxShadowHOffsetHover'], 'px' ) .
-																' ' .
-																UAGB_Helper::get_css_value( $attr['boxShadowVOffsetHover'], 'px' ) .
-																' ' .
-																UAGB_Helper::get_css_value( $attr['boxShadowBlurHover'], 'px' ) .
-																' ' .
-																UAGB_Helper::get_css_value( $attr['boxShadowSpreadHover'], 'px' ) .
-																' ' .
-																$attr['boxShadowColorHover'] .
-																' ' .
-																$box_shadow_position_css_hover;
+	$selectors[ '.uagb-block-' . $id . ':hover' ]['box-shadow'] = $box_shadow_hover_css;
 
 }
 

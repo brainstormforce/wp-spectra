@@ -15,8 +15,15 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
 import UAGTextControl from '@Components/text-control';
 import { useDeviceType } from '@Controls/getPreviewType';
-import { store as blockEditorStore, InspectorControls } from '@wordpress/block-editor';
-import { Icon, ToggleControl } from '@wordpress/components';
+import UAGTabsControl from '@Components/tabs';
+import {
+	store as blockEditorStore,
+	InspectorControls,
+} from '@wordpress/block-editor';
+import {
+	Icon,
+	ToggleControl
+} from '@wordpress/components';
 import renderSVG from '@Controls/renderIcon';
 import ImageSizeControl from '@Components/image-size-control';
 import ResponsiveBorder from '@Components/responsive-border';
@@ -24,7 +31,7 @@ import SpectraMatrixControl from '@Components/matrix-alignment-control';
 import { store as coreStore } from '@wordpress/core-data';
 // Extend component
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
-import boxShadowPresets from './presets';
+import boxShadowPresets,{ boxShadowHoverPresets } from './presets';
 import UAGPresets from '@Components/presets';
 import { pickRelevantMediaFiles } from './utils';
 
@@ -178,12 +185,19 @@ export default function Settings( props ) {
 		// effect
 		imageHoverEffect,
 		// shadow
+		useSeparateBoxShadows,
 		imageBoxShadowColor,
 		imageBoxShadowHOffset,
 		imageBoxShadowVOffset,
 		imageBoxShadowBlur,
 		imageBoxShadowSpread,
 		imageBoxShadowPosition,
+		imageBoxShadowColorHover,
+		imageBoxShadowHOffsetHover,
+		imageBoxShadowVOffsetHover,
+		imageBoxShadowBlurHover,
+		imageBoxShadowSpreadHover,
+		imageBoxShadowPositionHover,
 		// mask
 		maskShape,
 		maskCustomShape,
@@ -1392,44 +1406,206 @@ export default function Settings( props ) {
 	);
 
 	const imageBoxShadowStylePanel = (
-		<UAGAdvancedPanelBody title={ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
-			<UAGPresets setAttributes={ setAttributes } presets={ boxShadowPresets } presetInputType="radioImage" />
-			<BoxShadowControl
-				blockId={ block_id }
-				setAttributes={ setAttributes }
-				label={ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) }
-				boxShadowColor={ {
-					value: imageBoxShadowColor,
-					label: 'imageBoxShadowColor',
-					title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-				} }
-				boxShadowHOffset={ {
-					value: imageBoxShadowHOffset,
-					label: 'imageBoxShadowHOffset',
-					title: __( 'Horizontal', 'ultimate-addons-for-gutenberg' ),
-				} }
-				boxShadowVOffset={ {
-					value: imageBoxShadowVOffset,
-					label: 'imageBoxShadowVOffset',
-					title: __( 'Vertical', 'ultimate-addons-for-gutenberg' ),
-				} }
-				boxShadowBlur={ {
-					value: imageBoxShadowBlur,
-					label: 'imageBoxShadowBlur',
-					title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
-				} }
-				boxShadowSpread={ {
-					value: imageBoxShadowSpread,
-					label: 'imageBoxShadowSpread',
-					title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
-				} }
-				boxShadowPosition={ {
-					value: imageBoxShadowPosition,
-					label: 'imageBoxShadowPosition',
-					title: __( 'Position', 'ultimate-addons-for-gutenberg' ),
-				} }
-				popup={ false }
+		<UAGAdvancedPanelBody
+			title={ __( 'Box Shadow', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ false }
+		>
+			<ToggleControl
+				label={ __( 'Separate Hover Shadow', 'ultimate-addons-for-gutenberg' ) }
+				checked={ useSeparateBoxShadows }
+				onChange={ () => setAttributes( { useSeparateBoxShadows: ! useSeparateBoxShadows } ) }
 			/>
+			{ useSeparateBoxShadows ? (
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __(
+								'Normal',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+						{
+							name: 'hover',
+							title: __(
+								'Hover',
+								'ultimate-addons-for-gutenberg'
+							),
+						},
+					] }
+					normal={
+						<>
+							<UAGPresets
+								setAttributes = { setAttributes }
+								presets = { boxShadowPresets }
+								presetInputType = 'radioImage'
+							/>
+							<BoxShadowControl
+								blockId={ block_id }
+								setAttributes={ setAttributes }
+								label={ __(
+									'Box Shadow',
+									'ultimate-addons-for-gutenberg'
+								) }
+								boxShadowColor={ {
+									value: imageBoxShadowColor,
+									label: 'imageBoxShadowColor',
+									title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowHOffset={ {
+									value: imageBoxShadowHOffset,
+									label: 'imageBoxShadowHOffset',
+									title: __(
+										'Horizontal',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowVOffset={ {
+									value: imageBoxShadowVOffset,
+									label: 'imageBoxShadowVOffset',
+									title: __(
+										'Vertical',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowBlur={ {
+									value: imageBoxShadowBlur,
+									label: 'imageBoxShadowBlur',
+									title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowSpread={ {
+									value: imageBoxShadowSpread,
+									label: 'imageBoxShadowSpread',
+									title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowPosition={ {
+									value: imageBoxShadowPosition,
+									label: 'imageBoxShadowPosition',
+									title: __(
+										'Position',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								popup={ false }
+							/>
+						</>
+					}
+					hover={
+						<>
+							<UAGPresets
+								setAttributes = { setAttributes }
+								presets = { boxShadowHoverPresets }
+								presetInputType = 'radioImage'
+							/>
+							<BoxShadowControl
+								blockId={ block_id }
+								setAttributes={ setAttributes }
+								label={ __(
+									'Box Shadow',
+									'ultimate-addons-for-gutenberg'
+								) }
+								boxShadowColor={ {
+									value: imageBoxShadowColorHover,
+									label: 'imageBoxShadowColorHover',
+									title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowHOffset={ {
+									value: imageBoxShadowHOffsetHover,
+									label: 'imageBoxShadowHOffsetHover',
+									title: __(
+										'Horizontal',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowVOffset={ {
+									value: imageBoxShadowVOffsetHover,
+									label: 'imageBoxShadowVOffsetHover',
+									title: __(
+										'Vertical',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								boxShadowBlur={ {
+									value: imageBoxShadowBlurHover,
+									label: 'imageBoxShadowBlurHover',
+									title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowSpread={ {
+									value: imageBoxShadowSpreadHover,
+									label: 'imageBoxShadowSpreadHover',
+									title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
+								} }
+								boxShadowPosition={ {
+									value: imageBoxShadowPositionHover,
+									label: 'imageBoxShadowPositionHover',
+									title: __(
+										'Position',
+										'ultimate-addons-for-gutenberg'
+									),
+								} }
+								popup={ false }
+							/>
+						</>
+					}
+					disableBottomSeparator={ true }
+				/>
+			) : (
+				<>
+					<UAGPresets
+						setAttributes = { setAttributes }
+						presets = { boxShadowPresets }
+						presetInputType = 'radioImage'
+					/>
+					<BoxShadowControl
+						blockId={ block_id }
+						setAttributes={ setAttributes }
+						label={ __(
+							'Box Shadow',
+							'ultimate-addons-for-gutenberg'
+						) }
+						boxShadowColor={ {
+							value: imageBoxShadowColor,
+							label: 'imageBoxShadowColor',
+							title: __( 'Color', 'ultimate-addons-for-gutenberg' ),
+						} }
+						boxShadowHOffset={ {
+							value: imageBoxShadowHOffset,
+							label: 'imageBoxShadowHOffset',
+							title: __(
+								'Horizontal',
+								'ultimate-addons-for-gutenberg'
+							),
+						} }
+						boxShadowVOffset={ {
+							value: imageBoxShadowVOffset,
+							label: 'imageBoxShadowVOffset',
+							title: __(
+								'Vertical',
+								'ultimate-addons-for-gutenberg'
+							),
+						} }
+						boxShadowBlur={ {
+							value: imageBoxShadowBlur,
+							label: 'imageBoxShadowBlur',
+							title: __( 'Blur', 'ultimate-addons-for-gutenberg' ),
+						} }
+						boxShadowSpread={ {
+							value: imageBoxShadowSpread,
+							label: 'imageBoxShadowSpread',
+							title: __( 'Spread', 'ultimate-addons-for-gutenberg' ),
+						} }
+						boxShadowPosition={ {
+							value: imageBoxShadowPosition,
+							label: 'imageBoxShadowPosition',
+							title: __(
+								'Position',
+								'ultimate-addons-for-gutenberg'
+							),
+						} }
+						popup={ false }
+					/>
+				</>
+			) }			
 		</UAGAdvancedPanelBody>
 	);
 

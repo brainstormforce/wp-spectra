@@ -54,172 +54,192 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$attr['sizeType']       = isset( $attr['sizeType'] ) ? $attr['sizeType'] : 'px';
 			$attr['lineHeightType'] = isset( $attr['lineHeightType'] ) ? $attr['lineHeightType'] : 'em';
 
-			$box_shadow_position_css = $attr['boxShadowPosition'];
-
-			if ( 'outset' === $attr['boxShadowPosition'] ) {
-				$box_shadow_position_css = '';
-			}
-
-			if ( 'transparent' === $attr['backgroundType'] ) {
-
-				$selectors[' .wp-block-button__link']['background'] = 'transparent';
-
-			} elseif ( 'color' === $attr['backgroundType'] ) {
-
-				$selectors['.wp-block-uagb-buttons-child .uagb-buttons-repeater']['background'] = $attr['background'];
-				$selectors[' .wp-block-button__link']['background']                             = $attr['background'];
-
-			} elseif ( 'gradient' === $attr['backgroundType'] ) {
-				$bg_obj = array(
-					'backgroundType'    => 'gradient',
-					'gradientValue'     => $attr['gradientValue'],
-					'gradientColor1'    => $attr['gradientColor1'],
-					'gradientColor2'    => $attr['gradientColor2'],
-					'gradientType'      => $attr['gradientType'],
-					'gradientLocation1' => $attr['gradientLocation1'],
-					'gradientLocation2' => $attr['gradientLocation2'],
-					'gradientAngle'     => $attr['gradientAngle'],
-					'selectGradient'    => $attr['selectGradient'],
-				);
-
-				$btn_bg_css                           = self::uag_get_background_obj( $bg_obj );
-				$selectors[' .wp-block-button__link'] = $btn_bg_css;
-			}
-
-			// Hover background color types.
-			if ( 'transparent' === $attr['hoverbackgroundType'] ) {
-
-				$selectors[' .wp-block-button__link:hover'] = array(
-					'background' => 'transparent',
-				);
-				$selectors[' .wp-block-button__link:focus'] = array(
-					'background' => 'transparent',
-				);
-
-			} elseif ( 'color' === $attr['hoverbackgroundType'] ) {
-
-				$selectors[' .wp-block-button__link:hover'] = array(
-					'background' => $attr['hBackground'],
-				);
-				$selectors[' .wp-block-button__link:focus'] = array(
-					'background' => $attr['hBackground'],
-				);
-
-			} elseif ( 'gradient' === $attr['hoverbackgroundType'] ) {
-				$bg_hover_obj = array(
-					'backgroundType' => 'gradient',
-					'gradientValue'  => $attr['hovergradientValue'],
-				);
-
-				$btn_hover_bg_css                           = self::uag_get_background_obj( $bg_hover_obj );
-				$selectors[' .wp-block-button__link:hover'] = $btn_hover_bg_css;
-				$selectors[' .wp-block-button__link:focus'] = $btn_hover_bg_css;
-			}
-
-			$selectors[' .uagb-button__wrapper .uagb-buttons-repeater']                   = array(
-				'font-family'     => $attr['fontFamily'],
-				'font-weight'     => $attr['fontWeight'],
-				'font-style'      => $attr['fontStyle'],
-				'text-transform'  => $attr['transform'],
-				'text-decoration' => $attr['decoration'],
-				'font-size'       => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
-				'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
-				'padding-top'     => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
-				'padding-bottom'  => UAGB_Helper::get_css_value( $bottom_padding, $attr['paddingUnit'] ),
-				'padding-left'    => UAGB_Helper::get_css_value( $left_padding, $attr['paddingUnit'] ),
-				'padding-right'   => UAGB_Helper::get_css_value( $right_padding, $attr['paddingUnit'] ),
-				'color'           => $attr['color'],
-				'margin-top'      => UAGB_Helper::get_css_value( $attr['topMargin'], $attr['marginType'] ),
-				'margin-bottom'   => UAGB_Helper::get_css_value( $attr['bottomMargin'], $attr['marginType'] ),
-				'margin-left'     => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['marginType'] ),
-				'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['marginType'] ),
+			$box_shadow_properties       = array(
+				'horizontal' => $attr['boxShadowHOffset'],
+				'vertical'   => $attr['boxShadowVOffset'],
+				'blur'       => $attr['boxShadowBlur'],
+				'spread'     => $attr['boxShadowSpread'],
+				'color'      => $attr['boxShadowColor'],
+				'position'   => $attr['boxShadowPosition'],
 			);
-			$selectors[' .wp-block-button__link.has-text-color:hover .uagb-button__link'] = array(
-				'color' => $attr['hColor'],
+			$box_shadow_hover_properties = array(
+				'horizontal' => $attr['boxShadowHOffsetHover'],
+				'vertical'   => $attr['boxShadowVOffsetHover'],
+				'blur'       => $attr['boxShadowBlurHover'],
+				'spread'     => $attr['boxShadowSpreadHover'],
+				'color'      => $attr['boxShadowColorHover'],
+				'position'   => $attr['boxShadowPositionHover'],
+				'alt_color'  => $attr['boxShadowColor'],
 			);
-			$selectors[' .wp-block-button__link.has-text-color:focus .uagb-button__link'] = array(
-				'color' => $attr['hColor'],
-			);
-			if ( 0 !== $attr['boxShadowHOffset'] || 0 !== $attr['boxShadowVOffset'] ) {
+
+			$box_shadow_css       = self::generate_shadow_css( $box_shadow_properties );
+			$box_shadow_hover_css = self::generate_shadow_css( $box_shadow_hover_properties );
+
+			if ( ! $attr['inheritFromTheme'] ) {
+				if ( 'transparent' === $attr['backgroundType'] ) {
+
+					$selectors[' .wp-block-button__link']['background'] = 'transparent';
+
+				} elseif ( 'color' === $attr['backgroundType'] ) {
+
+					$selectors['.wp-block-uagb-buttons-child .uagb-buttons-repeater']['background'] = $attr['background'];
+					$selectors[' .wp-block-button__link']['background']                             = $attr['background'];
+
+				} elseif ( 'gradient' === $attr['backgroundType'] ) {
+					$bg_obj = array(
+						'backgroundType' => 'gradient',
+						'gradientValue'  => $attr['gradientValue'],
+					);
+
+					$btn_bg_css                           = self::uag_get_background_obj( $bg_obj );
+					$selectors[' .wp-block-button__link'] = $btn_bg_css;
+				}
+
+				// Hover background color types.
+				if ( 'transparent' === $attr['hoverbackgroundType'] ) {
+
+					$selectors[' .wp-block-button__link:hover'] = array(
+						'background' => 'transparent',
+					);
+					$selectors[' .wp-block-button__link:focus'] = array(
+						'background' => 'transparent',
+					);
+
+				} elseif ( 'color' === $attr['hoverbackgroundType'] ) {
+
+					$selectors[' .wp-block-button__link:hover'] = array(
+						'background' => $attr['hBackground'],
+					);
+					$selectors[' .wp-block-button__link:focus'] = array(
+						'background' => $attr['hBackground'],
+					);
+
+				} elseif ( 'gradient' === $attr['hoverbackgroundType'] ) {
+					$bg_hover_obj = array(
+						'backgroundType' => 'gradient',
+						'gradientValue'  => $attr['hovergradientValue'],
+					);
+
+					$btn_hover_bg_css                           = self::uag_get_background_obj( $bg_hover_obj );
+					$selectors[' .wp-block-button__link:hover'] = $btn_hover_bg_css;
+					$selectors[' .wp-block-button__link:focus'] = $btn_hover_bg_css;
+				}
+
+				$selectors[' .uagb-button__wrapper .uagb-buttons-repeater']                   = array(
+					'font-family'     => $attr['fontFamily'],
+					'font-weight'     => $attr['fontWeight'],
+					'font-style'      => $attr['fontStyle'],
+					'text-transform'  => $attr['transform'],
+					'text-decoration' => $attr['decoration'],
+					'font-size'       => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
+					'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
+					'padding-top'     => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
+					'padding-bottom'  => UAGB_Helper::get_css_value( $bottom_padding, $attr['paddingUnit'] ),
+					'padding-left'    => UAGB_Helper::get_css_value( $left_padding, $attr['paddingUnit'] ),
+					'padding-right'   => UAGB_Helper::get_css_value( $right_padding, $attr['paddingUnit'] ),
+					'color'           => $attr['color'],
+					'margin-top'      => UAGB_Helper::get_css_value( $attr['topMargin'], $attr['marginType'] ),
+					'margin-bottom'   => UAGB_Helper::get_css_value( $attr['bottomMargin'], $attr['marginType'] ),
+					'margin-left'     => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['marginType'] ),
+					'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['marginType'] ),
+				);
+				$selectors[' .wp-block-button__link.has-text-color:hover .uagb-button__link'] = array(
+					'color' => $attr['hColor'],
+				);
+				$selectors[' .wp-block-button__link.has-text-color:focus .uagb-button__link'] = array(
+					'color' => $attr['hColor'],
+				);
+			
 				$selectors[ ' .uagb-button__wrapper ' . $wrapper . '.wp-block-button__link' ] = array(
-					'box-shadow' =>
-					UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
-					' ' .
-					UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) .
-					' ' .
-					UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) .
-					' ' .
-					UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) .
-					' ' .
-					$attr['boxShadowColor'] .
-					' ' .
-					$box_shadow_position_css,
+					'box-shadow' => $box_shadow_css,            
+				);
+				
+				// If using separate box shadow hover settings, then generate CSS for it.
+				if ( $attr['useSeparateBoxShadows'] ) {
+					$selectors[ ' .uagb-button__wrapper ' . $wrapper . '.wp-block-button__link:hover' ] = array(
+						'box-shadow' => $box_shadow_hover_css,
+					);
+					
+				};
+				$selectors[ $wrapper . '.wp-block-button__link' ]       = $border_css;
+				$m_selectors[ $wrapper . '.wp-block-button__link' ]     = $border_css_mobile;
+				$t_selectors[ $wrapper . '.wp-block-button__link' ]     = $border_css_tablet;
+				$selectors[ $wrapper . '.wp-block-button__link:hover' ] = array(
+					'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHColor'],
+				);
+				$selectors[ $wrapper . '.wp-block-button__link:focus' ] = array(
+					'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHColor'],
+				);
+				// twenty twenty theme.
+				$selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater']       = $border_css;
+				$m_selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater']     = $border_css_mobile;
+				$t_selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater']     = $border_css_tablet;
+				$selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater:hover'] = array(
+					'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHColor'],
+				);
+				$selectors[ $wrapper . ' .uagb-button__link' ]                                  = array(
+					'color'           => $attr['color'],
+					'font-family'     => $attr['fontFamily'],
+					'font-weight'     => $attr['fontWeight'],
+					'font-style'      => $attr['fontStyle'],
+					'text-transform'  => $attr['transform'],
+					'text-decoration' => $attr['decoration'],
+					'font-size'       => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
+					'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
+				);
+				$selectors[ $wrapper . ':hover .uagb-button__link' ]                            = array(
+					'color' => $attr['hColor'],
+				);
+				$selectors[ $wrapper . ':focus .uagb-button__link' ]                            = array(
+					'color' => $attr['hColor'],
+				);
+				$m_selectors[ $wrapper . ' .uagb-button__link' ]                                = array(
+					'font-size'   => UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
+					'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
+				);
+				$t_selectors[ $wrapper . ' .uagb-button__link' ]                                = array(
+					'font-size'   => UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] ),
+					'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
+				);
+				$m_selectors[ ' .uagb-button__wrapper ' . $wrapper . '.wp-block-button__link' ] = array(
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['topMobilePadding'], $attr['mobilePaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomMobilePadding'], $attr['mobilePaddingUnit'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['leftMobilePadding'], $attr['mobilePaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['rightMobilePadding'], $attr['mobilePaddingUnit'] ),
+					'margin-top'     => UAGB_Helper::get_css_value( $attr['topMarginMobile'], $attr['marginType'] ),
+					'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMarginMobile'], $attr['marginType'] ),
+					'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginMobile'], $attr['marginType'] ),
+					'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginMobile'], $attr['marginType'] ),
+
+				);
+
+				$t_selectors[ ' .uagb-button__wrapper ' . $wrapper . '.wp-block-button__link' ] = array(
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['topTabletPadding'], $attr['tabletPaddingUnit'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomTabletPadding'], $attr['tabletPaddingUnit'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['leftTabletPadding'], $attr['tabletPaddingUnit'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['rightTabletPadding'], $attr['tabletPaddingUnit'] ),
+					'margin-top'     => UAGB_Helper::get_css_value( $attr['topMarginTablet'], $attr['marginType'] ),
+					'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMarginTablet'], $attr['marginType'] ),
+					'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginTablet'], $attr['marginType'] ),
+					'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginTablet'], $attr['marginType'] ),
+
 				);
 			}
-			$selectors[ $wrapper . '.wp-block-button__link' ]       = $border_css;
-			$m_selectors[ $wrapper . '.wp-block-button__link' ]     = $border_css_mobile;
-			$t_selectors[ $wrapper . '.wp-block-button__link' ]     = $border_css_tablet;
-			$selectors[ $wrapper . '.wp-block-button__link:hover' ] = array(
-				'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHColor'],
-			);
-			$selectors[ $wrapper . '.wp-block-button__link:focus' ] = array(
-				'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHColor'],
-			);
-			// twenty twenty theme.
-			$selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater']       = $border_css;
-			$m_selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater']     = $border_css_mobile;
-			$t_selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater']     = $border_css_tablet;
-			$selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater:hover'] = array(
-				'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHColor'],
-			);
-			$selectors[ $wrapper . ' .uagb-button__link' ]                                  = array(
-				'color'           => $attr['color'],
-				'font-family'     => $attr['fontFamily'],
-				'font-weight'     => $attr['fontWeight'],
-				'font-style'      => $attr['fontStyle'],
-				'text-transform'  => $attr['transform'],
-				'text-decoration' => $attr['decoration'],
-				'font-size'       => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
-				'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
-			);
-			$selectors[ $wrapper . ':hover .uagb-button__link' ]                            = array(
-				'color' => $attr['hColor'],
-			);
-			$selectors[ $wrapper . ':focus .uagb-button__link' ]                            = array(
-				'color' => $attr['hColor'],
-			);
-			$m_selectors[ $wrapper . ' .uagb-button__link' ]                                = array(
-				'font-size'   => UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
-				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
-			);
-			$t_selectors[ $wrapper . ' .uagb-button__link' ]                                = array(
-				'font-size'   => UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] ),
-				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
-			);
 			$m_selectors[ ' .uagb-button__wrapper ' . $wrapper . '.wp-block-button__link' ] = array(
-				'padding-top'    => UAGB_Helper::get_css_value( $attr['topMobilePadding'], $attr['mobilePaddingUnit'] ),
-				'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomMobilePadding'], $attr['mobilePaddingUnit'] ),
-				'padding-left'   => UAGB_Helper::get_css_value( $attr['leftMobilePadding'], $attr['mobilePaddingUnit'] ),
-				'padding-right'  => UAGB_Helper::get_css_value( $attr['rightMobilePadding'], $attr['mobilePaddingUnit'] ),
-				'margin-top'     => UAGB_Helper::get_css_value( $attr['topMarginMobile'], $attr['marginType'] ),
-				'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMarginMobile'], $attr['marginType'] ),
-				'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginMobile'], $attr['marginType'] ),
-				'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginMobile'], $attr['marginType'] ),
+				'margin-top'    => UAGB_Helper::get_css_value( $attr['topMarginMobile'], $attr['marginType'] ),
+				'margin-bottom' => UAGB_Helper::get_css_value( $attr['bottomMarginMobile'], $attr['marginType'] ),
+				'margin-left'   => UAGB_Helper::get_css_value( $attr['leftMarginMobile'], $attr['marginType'] ),
+				'margin-right'  => UAGB_Helper::get_css_value( $attr['rightMarginMobile'], $attr['marginType'] ),
 
 			);
 
 			$t_selectors[ ' .uagb-button__wrapper ' . $wrapper . '.wp-block-button__link' ] = array(
-				'padding-top'    => UAGB_Helper::get_css_value( $attr['topTabletPadding'], $attr['tabletPaddingUnit'] ),
-				'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomTabletPadding'], $attr['tabletPaddingUnit'] ),
-				'padding-left'   => UAGB_Helper::get_css_value( $attr['leftTabletPadding'], $attr['tabletPaddingUnit'] ),
-				'padding-right'  => UAGB_Helper::get_css_value( $attr['rightTabletPadding'], $attr['tabletPaddingUnit'] ),
-				'margin-top'     => UAGB_Helper::get_css_value( $attr['topMarginTablet'], $attr['marginType'] ),
-				'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMarginTablet'], $attr['marginType'] ),
-				'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginTablet'], $attr['marginType'] ),
-				'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginTablet'], $attr['marginType'] ),
+				'margin-top'    => UAGB_Helper::get_css_value( $attr['topMarginTablet'], $attr['marginType'] ),
+				'margin-bottom' => UAGB_Helper::get_css_value( $attr['bottomMarginTablet'], $attr['marginType'] ),
+				'margin-left'   => UAGB_Helper::get_css_value( $attr['leftMarginTablet'], $attr['marginType'] ),
+				'margin-right'  => UAGB_Helper::get_css_value( $attr['rightMarginTablet'], $attr['marginType'] ),
 
 			);
-
 			$selectors[ $wrapper . ' .uagb-button__icon > svg' ]       = array(
 				'width'  => UAGB_Helper::get_css_value( self::get_fallback_number( $attr['iconSize'], 'iconSize', $block_name ), 'px' ),
 				'height' => UAGB_Helper::get_css_value( self::get_fallback_number( $attr['iconSize'], 'iconSize', $block_name ), 'px' ),
@@ -501,17 +521,26 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$paddingBtnLeft   = isset( $attr['paddingBtnLeft'] ) ? $attr['paddingBtnLeft'] : $attr['btnHPadding'];
 			$paddingBtnRight  = isset( $attr['paddingBtnRight'] ) ? $attr['paddingBtnRight'] : $attr['btnHPadding'];
 
-			$box_shadow_position_css = $attr['boxShadowPosition'];
+			$box_shadow_properties       = array(
+				'horizontal' => $attr['boxShadowHOffset'],
+				'vertical'   => $attr['boxShadowVOffset'],
+				'blur'       => $attr['boxShadowBlur'],
+				'spread'     => $attr['boxShadowSpread'],
+				'color'      => $attr['boxShadowColor'],
+				'position'   => $attr['boxShadowPosition'],
+			);
+			$box_shadow_hover_properties = array(
+				'horizontal' => $attr['boxShadowHOffsetHover'],
+				'vertical'   => $attr['boxShadowVOffsetHover'],
+				'blur'       => $attr['boxShadowBlurHover'],
+				'spread'     => $attr['boxShadowSpreadHover'],
+				'color'      => $attr['boxShadowColorHover'],
+				'position'   => $attr['boxShadowPositionHover'],
+				'alt_color'  => $attr['boxShadowColor'],
+			);
 
-			if ( 'outset' === $attr['boxShadowPosition'] ) {
-				$box_shadow_position_css = '';
-			}
-
-			$box_shadow_position_css_hover = $attr['boxShadowPositionHover'];
-
-			if ( 'outset' === $attr['boxShadowPositionHover'] ) {
-				$box_shadow_position_css_hover = '';
-			}
+			$box_shadow_css       = self::generate_shadow_css( $box_shadow_properties );
+			$box_shadow_hover_css = self::generate_shadow_css( $box_shadow_hover_properties );
 
 			$column_gap_fallback = self::get_fallback_number( $attr['columnGap'], 'columnGap', $attr['blockName'] );
 			$row_gap_fallback    = self::get_fallback_number( $attr['rowGap'], 'rowGap', $attr['blockName'] );
@@ -523,18 +552,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						'padding-bottom' => UAGB_Helper::get_css_value( $paddingBottom, $attr['contentPaddingUnit'] ),
 						'padding-left'   => UAGB_Helper::get_css_value( $paddingLeft, $attr['contentPaddingUnit'] ),
 						'padding-right'  => UAGB_Helper::get_css_value( $paddingRight, $attr['contentPaddingUnit'] ),
-						'box-shadow'     =>
-							UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
-							' ' .
-							UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) .
-							' ' .
-							UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) .
-							' ' .
-							UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) .
-							' ' .
-							$attr['boxShadowColor'] .
-							' ' .
-							$box_shadow_position_css,
+						'box-shadow'     => $box_shadow_css,
 					),
 					$overall_border_css
 				),
@@ -600,22 +618,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 
-			// If hover blur or hover color are set, show the hover shadow.
-			if ( ( ( '' !== $attr['boxShadowBlurHover'] ) && ( null !== $attr['boxShadowBlurHover'] ) ) || '' !== $attr['boxShadowColorHover'] ) {
-
-				$selectors['.is-grid .uagb-post__inner-wrap:hover']['box-shadow'] = UAGB_Helper::get_css_value( $attr['boxShadowHOffsetHover'], 'px' ) .
-																			' ' .
-																			UAGB_Helper::get_css_value( $attr['boxShadowVOffsetHover'], 'px' ) .
-																			' ' .
-																			UAGB_Helper::get_css_value( $attr['boxShadowBlurHover'], 'px' ) .
-																			' ' .
-																			UAGB_Helper::get_css_value( $attr['boxShadowSpreadHover'], 'px' ) .
-																			' ' .
-																			$attr['boxShadowColorHover'] .
-																			' ' .
-																			$box_shadow_position_css_hover;
-
+			// If using separate box shadow hover settings, then generate CSS for it.
+			if ( $attr['useSeparateBoxShadows'] ) {
+				$selectors['.is-grid .uagb-post__inner-wrap:hover']['box-shadow'] = $box_shadow_hover_css;
 			}
+			
 			$selectors[' .uagb-post__text.uagb-post__title']['color']                            = $attr['titleColor'];
 			$selectors[' .uagb-post__text.uagb-post__title a']                                   = array(
 				'color' => $attr['titleColor'],
@@ -1447,11 +1454,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						if ( 'none' === $overlay_type && '' !== $bg_img ) {
 							$gen_bg_css['background-image'] = 'url(' . $bg_img . ');';
 						}
+						$gen_bg_css['background-clip'] = 'padding-box';
 						break;
 
 					case 'gradient':
 						if ( isset( $gradient ) ) {
 							$gen_bg_css['background-image'] = $gradient . ';';
+							$gen_bg_css['background-clip']  = 'padding-box';
 						}
 						break;
 					case 'video':

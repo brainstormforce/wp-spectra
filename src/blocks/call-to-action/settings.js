@@ -218,6 +218,8 @@ const Settings = ( props ) => {
 		btncontentWidthTablet,
 		btncontentWidthMobile,
 		btncontentWidthType,
+		inheritFromTheme,
+		secInheritFromTheme
 	} = attributes;
 
 	const secBtnSettings = () => {
@@ -233,12 +235,23 @@ const Settings = ( props ) => {
 				/>
 				{ enabledSecondCtaButton && (
 					<>
-						<UAGPresets
-							setAttributes={ setAttributes }
-							presets={ buttonsPresetsAdditionalButton }
-							presetInputType="radioImage"
+						{ ! secInheritFromTheme && (
+							<UAGPresets
+								setAttributes={ setAttributes }
+								presets={ buttonsPresetsAdditionalButton }
+								presetInputType="radioImage"
+							/>
+						) }
+						<ToggleControl
+							checked={ secInheritFromTheme }
+							onChange={ () =>
+								setAttributes( { secInheritFromTheme: ! secInheritFromTheme } )
+							}
+							label={ __(
+								'Inherit From Theme',
+								'ultimate-addons-for-gutenberg'
+							) }
 						/>
-
 						<MultiButtonsControl
 							setAttributes={ setAttributes }
 							label={ __( 'Stack Orientation', 'ultimate-addons-for-gutenberg' ) }
@@ -660,11 +673,23 @@ const Settings = ( props ) => {
 					showIcons={ false }
 				/>
 				{ 'button' === ctaType && (
-					<UAGPresets
-						setAttributes={ setAttributes }
-						presets={ buttonsPresetsCTA }
-						presetInputType="radioImage"
-					/>
+					<>
+						<UAGPresets
+							setAttributes={ setAttributes }
+							presets={ buttonsPresetsCTA }
+							presetInputType="radioImage"
+						/>
+						<ToggleControl
+							checked={ inheritFromTheme }
+							onChange={ () =>
+								setAttributes( { inheritFromTheme: ! inheritFromTheme } )
+							}
+							label={ __(
+								'Inherit From Theme',
+								'ultimate-addons-for-gutenberg'
+							) }
+						/>
+					</>
 				) }
 				{ stack !== 'desktop' && ctaType !== 'all' && ctaType !== 'none' && (
 					<MultiButtonsControl
@@ -790,7 +815,7 @@ const Settings = ( props ) => {
 	const ctaStyleSettings = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Button', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
-				{ ( ctaType === 'text' || ctaType === 'button' ) && (
+				{ ( ctaType === 'text' || ctaType === 'button' && ! inheritFromTheme ) && (
 					<TypographyControl
 						label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 						attributes={ attributes }
@@ -871,7 +896,7 @@ const Settings = ( props ) => {
 						disableBottomSeparator={ true }
 					/>
 				) }
-				{ ctaType === 'button' && (
+				{ ctaType === 'button' && ! inheritFromTheme && (
 					<>
 						<UAGTabsControl
 							tabs={ [
@@ -1725,8 +1750,8 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.style }>
 						{ headingSettings() }
 						{ descriptionSettings() }
-						{ ctaType !== 'all' && ctaType !== 'none' && ctaStyleSettings() }
-						{ 'button' === ctaType && enabledSecondCtaButton && secButtonStyleSettings() }
+						{ ctaType !== 'all' && ctaType !== 'none' && ! inheritFromTheme && ctaStyleSettings() }
+						{ 'button' === ctaType && enabledSecondCtaButton && ! secInheritFromTheme && secButtonStyleSettings() }
 						{ marginSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>

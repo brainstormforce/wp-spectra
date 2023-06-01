@@ -6,6 +6,7 @@ import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import generateShadowCSS from '@Controls/generateShadowCSS';
 
 export default function styling( attributes, clientId, name ) {
 	const blockName = name.replace( 'uagb/', '' );
@@ -135,12 +136,19 @@ export default function styling( attributes, clientId, name ) {
 		// border
 		imageBorderHColor,
 		// shadow
+		useSeparateBoxShadows,
 		imageBoxShadowColor,
 		imageBoxShadowHOffset,
 		imageBoxShadowVOffset,
 		imageBoxShadowBlur,
 		imageBoxShadowSpread,
 		imageBoxShadowPosition,
+		imageBoxShadowColorHover,
+		imageBoxShadowHOffsetHover,
+		imageBoxShadowVOffsetHover,
+		imageBoxShadowBlurHover,
+		imageBoxShadowSpreadHover,
+		imageBoxShadowPositionHover,
 		// mask
 		maskShape,
 		maskCustomShape,
@@ -184,7 +192,24 @@ export default function styling( attributes, clientId, name ) {
 	const tabletHeight = '' !== heightTablet ? heightTablet : height;
 	const mobileHeight = '' !== heightMobile ? heightMobile : tabletHeight;
 
-	const getImageShadowPosition = imageBoxShadowPosition !== 'outset' ? imageBoxShadowPosition : '';
+	// Box Shadow
+	const boxShadowCSS = generateShadowCSS( {
+		'horizontal': imageBoxShadowHOffset,
+		'vertical': imageBoxShadowVOffset,
+		'blur': imageBoxShadowBlur,
+		'spread': imageBoxShadowSpread,
+		'color': imageBoxShadowColor,
+		'position': imageBoxShadowPosition
+	} );
+	const boxShadowHoverCSS = generateShadowCSS( {
+		'horizontal': imageBoxShadowHOffsetHover,
+		'vertical': imageBoxShadowVOffsetHover,
+		'blur': imageBoxShadowBlurHover,
+		'spread': imageBoxShadowSpreadHover,
+		'color': imageBoxShadowColorHover,
+		'position': imageBoxShadowPositionHover,
+		'altColor': imageBoxShadowColor,
+	} );
 	
 	function getBlockAlign( alignment ) {
 		switch ( alignment ) {
@@ -216,19 +241,10 @@ export default function styling( attributes, clientId, name ) {
 			'align-items': blockAlign,
 		},
 		'.wp-block-uagb-image--layout-default figure img': {
-			'box-shadow':
-				generateCSSUnit( imageBoxShadowHOffset, 'px' ) +
-				' ' +
-				generateCSSUnit( imageBoxShadowVOffset, 'px' ) +
-				' ' +
-				generateCSSUnit( imageBoxShadowBlur, 'px' ) +
-				' ' +
-				generateCSSUnit( imageBoxShadowSpread, 'px' ) +
-				' ' +
-				imageBoxShadowColor +
-				' ' +
-				getImageShadowPosition,
-			...imageBorderCSS,
+			'width': 'inherit',
+			'height': 'inherit',
+			'box-shadow': boxShadowCSS,
+			...imageBorderCSS
 		},
 		'.wp-block-uagb-image .wp-block-uagb-image__figure img:hover': {
 			'border-color': imageBorderHColor,
@@ -254,19 +270,10 @@ export default function styling( attributes, clientId, name ) {
 		},
 		// overlay
 		'.wp-block-uagb-image--layout-overlay figure img': {
-			'box-shadow':
-				generateCSSUnit( imageBoxShadowHOffset, 'px' ) +
-				' ' +
-				generateCSSUnit( imageBoxShadowVOffset, 'px' ) +
-				' ' +
-				generateCSSUnit( imageBoxShadowBlur, 'px' ) +
-				' ' +
-				generateCSSUnit( imageBoxShadowSpread, 'px' ) +
-				' ' +
-				imageBoxShadowColor +
-				' ' +
-				getImageShadowPosition,
-			...imageBorderCSS,
+			'width': 'inherit',
+			'height': 'inherit',
+			'box-shadow': boxShadowCSS,
+			...imageBorderCSS
 		},
 		'.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__color-wrapper': {
 			'background': overlayBackground,
@@ -356,10 +363,21 @@ export default function styling( attributes, clientId, name ) {
 		};
 	}
 
-	if ( maskShape !== 'none' ) {
-		let imagePath = `${ window?.uagb_blocks_info?.uagb_url }assets/images/masks/${ maskShape }.svg`;
-		if ( maskShape === 'custom' ) {
-			imagePath = `${ maskCustomShape?.url }`;
+	// Box Shadow.
+	if ( useSeparateBoxShadows ) {
+		selectors['.wp-block-uagb-image--layout-default figure img:hover'] = {
+			'box-shadow' : boxShadowHoverCSS,
+		}
+
+		selectors['.wp-block-uagb-image--layout-overlay figure img:hover'] = {
+			'box-shadow' : boxShadowHoverCSS,
+		}
+	}
+
+	if( maskShape !== 'none' ){
+		let imagePath =  `${window?.uagb_blocks_info?.uagb_url}assets/images/masks/${maskShape}.svg`;
+		if( maskShape === 'custom' ){
+			imagePath = `${maskCustomShape?.url}`
 		}
 		if ( typeof imagePath !== 'undefined' && imagePath ) {
 			selectors[ '.wp-block-uagb-image .wp-block-uagb-image__figure img' ] = {

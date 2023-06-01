@@ -7,6 +7,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 import { applyFilters } from '@wordpress/hooks';
+import generateShadowCSS from '@Controls/generateShadowCSS';
 
 function styling( attributes, clientId ) {
 	let {
@@ -29,7 +30,8 @@ function styling( attributes, clientId ) {
 		backgroundSizeMobile,
 		gradientValue,
 		sliderBorderHColor,
-
+		
+		useSeparateBoxShadows,
 		boxShadowColor,
 		boxShadowHOffset,
 		boxShadowVOffset,
@@ -187,17 +189,24 @@ function styling( attributes, clientId ) {
 
 	const containerBackgroundCSSDesktop = generateBackgroundCSS( backgroundAttributesDesktop );
 
-	let boxShadowPositionCSS = boxShadowPosition;
-
-	if ( 'outset' === boxShadowPosition ) {
-		boxShadowPositionCSS = '';
-	}
-
-	let boxShadowPositionCSSHover = boxShadowPositionHover;
-
-	if ( 'outset' === boxShadowPositionHover ) {
-		boxShadowPositionCSSHover = '';
-	}
+	// Box Shadow
+	const boxShadowCSS = generateShadowCSS( {
+		'horizontal': boxShadowHOffset,
+		'vertical': boxShadowVOffset,
+		'blur': boxShadowBlur,
+		'spread': boxShadowSpread,
+		'color': boxShadowColor,
+		'position': boxShadowPosition,
+	} );
+	const boxShadowHoverCSS = generateShadowCSS( {
+		'horizontal': boxShadowHOffsetHover,
+		'vertical': boxShadowVOffsetHover,
+		'blur': boxShadowBlurHover,
+		'spread': boxShadowSpreadHover,
+		'color': boxShadowColorHover,
+		'position': boxShadowPositionHover,
+		'altColor': boxShadowColor,
+	} );
 
 	const sliderCSS = {
 		'padding-top': generateCSSUnit( topPaddingDesktop, paddingType ),
@@ -209,20 +218,9 @@ function styling( attributes, clientId ) {
 		'margin-left': generateCSSUnit( leftMarginDesktop, marginType ),
 		'margin-right': generateCSSUnit( rightMarginDesktop, marginType ),
 		...containerBackgroundCSSDesktop,
-		'box-shadow':
-			generateCSSUnit( boxShadowHOffset, 'px' ) +
-			' ' +
-			generateCSSUnit( boxShadowVOffset, 'px' ) +
-			' ' +
-			generateCSSUnit( boxShadowBlur, 'px' ) +
-			' ' +
-			generateCSSUnit( boxShadowSpread, 'px' ) +
-			' ' +
-			boxShadowColor +
-			' ' +
-			boxShadowPositionCSS,
-		...borderCSS,
-	};
+		'box-shadow': boxShadowCSS,
+		...borderCSS
+	}
 
 	let selectors = {
 		'.wp-block': {
@@ -274,24 +272,9 @@ function styling( attributes, clientId ) {
 		},
 	};
 
-	boxShadowBlurHover = isNaN( boxShadowBlurHover ) ? '' : boxShadowBlurHover;
-	boxShadowColorHover = boxShadowColorHover ? boxShadowColorHover : '';
-
-	if ( '' !== boxShadowColorHover || '' !== boxShadowBlurHover ) {
-		const boxShadowBlurHoverCSSUnit = '' === boxShadowBlurHover ? '' : generateCSSUnit( boxShadowBlurHover, 'px' );
-
-		selectors[ '.wp-block:hover' ][ 'box-shadow' ] =
-			generateCSSUnit( boxShadowHOffsetHover, 'px' ) +
-			' ' +
-			generateCSSUnit( boxShadowVOffsetHover, 'px' ) +
-			' ' +
-			boxShadowBlurHoverCSSUnit +
-			' ' +
-			generateCSSUnit( boxShadowSpreadHover, 'px' ) +
-			' ' +
-			boxShadowColorHover +
-			' ' +
-			boxShadowPositionCSSHover;
+	// Box Shadow.
+	if ( useSeparateBoxShadows ) {
+		selectors['.wp-block:hover']['box-shadow'] = boxShadowHoverCSS;
 	}
 
 	const backgroundAttributesTablet = {

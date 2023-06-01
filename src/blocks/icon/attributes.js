@@ -365,6 +365,10 @@ const attributes = {
 			styleType: 'icon-border-style',
 		},
 	},
+	useSeparateBoxShadows: {
+		type: 'boolean',
+		default: true,
+	},
 	iconShadowColor: {
 		type: 'string',
 		default: '#00000070',
@@ -433,6 +437,73 @@ const attributes = {
 			styleType: 'icon-box-shadow-position',
 		},
 	},
+	iconShadowColorHover: {
+		type: 'string',
+		default: '#00000070',
+		UAGCopyPaste: {
+			styleType: 'icon-shadow-color-hover'
+		},
+	},
+	iconShadowHOffsetHover: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'icon-shadow-hoffset-hover'
+		},
+	},
+	iconShadowVOffsetHover: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'icon-shadow-voffset-hover'
+		},
+	},
+	iconShadowBlurHover:{
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'icon-shadow-blur-hover'
+		},
+	},
+	iconBoxShadowColorHover: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'icon-box-shadow-color-hover'
+		},
+	},
+	iconBoxShadowHOffsetHover: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'icon-box-shadow-hoffset-hover'
+		},
+	},
+	iconBoxShadowVOffsetHover: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'icon-box-shadow-voffset-hover'
+		},
+	},
+	iconBoxShadowBlurHover: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-box-shadow-blur-hover'
+		},
+	},
+	iconBoxShadowSpreadHover: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'icon-box-shadow-spread-hover'
+		},
+	},
+	iconBoxShadowPositionHover: {
+		type: 'string',
+		default: 'outset',
+		UAGCopyPaste: {
+			styleType: 'icon-box-shadow-position-hover'
+		},
+	}
 };
 
 export default attributes;

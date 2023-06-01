@@ -57,7 +57,8 @@ const PageCustomCSS = () => {
 			...wp.codeEditor.defaultSettings.codemirror,
 			scrollbarStyle: null,
 		} );
-		const codeMirrorEditor = document.querySelector( '.CodeMirror-code' );
+
+		const codeMirrorEditor = document.querySelector( '.spectra-css-editor .CodeMirror-code' );
 
 		if ( codeMirrorEditor ) {
 			codeMirrorEditor?.addEventListener( 'keyup', function () {
@@ -78,8 +79,9 @@ const PageCustomCSS = () => {
 			<p className="spectra-custom-css-example spectra-custom-css-notice">
 				{ uagb_blocks_info.spectra_custom_css_example }
 			</p>
-
-			<textarea value={ customCSS } ref={ tabRef }></textarea>
+			<div id="spectra-css-editor" className="spectra-css-editor">
+				<textarea value={ customCSS } ref={ tabRef }></textarea>
+			</div>
 		</>
 	);
 };
