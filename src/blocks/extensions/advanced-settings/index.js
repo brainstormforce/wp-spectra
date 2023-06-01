@@ -7,6 +7,7 @@ import classnames from 'classnames';
 import { useEffect } from '@wordpress/element';
 import { AnimationList, AnimationSelectControlObject } from '@Blocks/extensions/animations-extension/animation-list';
 import { createHigherOrderComponent } from '@wordpress/compose';
+import { select } from '@wordpress/data'
 import Select from 'react-select';
 
 const { enableConditions, enableResponsiveConditions, enableAnimationsExtension } = uagb_blocks_info;
@@ -479,16 +480,23 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 		'uagb/popup-builder',
 	];
 
-	const getParentBlocks = wp.data.select( 'core/block-editor' ).getBlockParents( props.clientId );
+	// To disable animations WITHIN some blocks.
+	const excludeAnimationsWithin = [
+		'uagb/tabs',
+		'uagb/tabs-child',
+		'uagb/countdown',
+	];
+
+	const getParentBlocks = select( 'core/block-editor' ).getBlockParents( props.clientId );
 
 	let notHasDisallowedParentForAnimations = true;
 
-	// Currently we are disallowing animations feature in Tabs block.
+	// Currently we are disallowing animations feature in Tabs & Countdown blocks.
 	if ( getParentBlocks.length ) {
 		for ( let i = 0; i < getParentBlocks.length; i++ ) {
-			const currentParent = wp.data.select( 'core/block-editor' ).getBlock( getParentBlocks[ i ] );
+			const currentParent = select( 'core/block-editor' ).getBlock( getParentBlocks[ i ] );
 
-			if ( currentParent.name === 'uagb/tabs' || currentParent.name === 'uagb/tabs-child' ) {
+			if ( excludeAnimationsWithin.includes( currentParent.name ) ) {
 				notHasDisallowedParentForAnimations = false;
 				break;
 			}
