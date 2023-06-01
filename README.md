@@ -166,6 +166,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Fix: Post Carousel - Resolved an issue in which the posts would not show up on the front end when the number of columns was greater than the number of posts.
+
 ### 2.6.2 - WEDNESDAY, 31st MAY 2023 ###
 * New: Introducing the Inherit From Theme option - Choose to make buttons in Spectra blocks inherit their styles from the theme.
 * Improvement: Icon List - Added the functionality to create a new list item when pressing the enter key inside the Icon List block.

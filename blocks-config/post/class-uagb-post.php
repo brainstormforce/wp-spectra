@@ -1762,7 +1762,12 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 										}
 									}
 								}
-								if ( ! $scope.hasClass('is-carousel') || cols >= $scope.children('article.uagb-post__inner-wrap').length ) {
+								// If this is not a Post Carousel, return.
+								// Else if it is a carousel but has less posts than the number of columns, return after setting visibility.
+								if ( ! $scope.hasClass('is-carousel') ) {
+									return;
+								} else if ( cols >= $scope.children('article.uagb-post__inner-wrap').length ) {
+									$scope.css( 'visibility', 'visible' );
 									return;
 								}
 								var slider_options = {
