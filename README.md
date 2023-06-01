@@ -166,6 +166,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Fix: Buttons - Resolved an issue in which the button size would not work as expected in the editor after adding padding.
+
 ### 2.6.3 - THURSDAY, 01st JUNE 2023 ###
 * Fix: Post Carousel - Resolved an issue in which the posts would not show up on the front end when the number of columns was greater than the number of posts.
 * Fix: Separator - Removed the block preview image from the Style Book.

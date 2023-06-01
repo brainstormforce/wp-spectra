@@ -75,7 +75,7 @@ function styling( attributes, clientId, name ) {
 	const tabletSelectors = {};
 	const mobileSelectors = {};
 
-	selectors[ ' .uagb-button__wrapper .uagb-buttons-repeater:not(.wp-block-button__link)' ] = {
+	selectors[ '.uagb-buttons__outer-wrap .uagb-buttons-repeater:not(.wp-block-button__link)' ] = {
 		// For Backword user.
 		'font-family': fontFamily,
 		'font-style': fontStyle,
@@ -94,16 +94,19 @@ function styling( attributes, clientId, name ) {
 		'text-transform': fontTransform,
 		'font-weight': fontWeight,
 		'font-size': generateCSSUnit( fontSize, fontSizeType ),
-		'line-height': generateCSSUnit( lineHeight, lineHeightType ),
-		'padding-left': generateCSSUnit( leftPadding, paddingUnit ),
-		'padding-right': generateCSSUnit( rightPadding, paddingUnit ),
-		'padding-top': generateCSSUnit( topPadding, paddingUnit ),
-		'padding-bottom': generateCSSUnit( bottomPadding, paddingUnit ),
+		'line-height': generateCSSUnit( lineHeight, lineHeightType ),	
 		'margin-left': generateCSSUnit( leftMargin, marginType ),
 		'margin-right': generateCSSUnit( rightMargin, marginType ),
 		'margin-top': generateCSSUnit( topMargin, marginType ),
 		'margin-bottom': generateCSSUnit( bottomMargin, marginType ),
 		'letter-spacing': generateCSSUnit( fontLetterSpacing, fontLetterSpacingType ),
+	};
+	selectors[ ' .uagb-buttons-repeater.wp-block-button__link' ] = {
+		// For new user.
+		'padding-left': generateCSSUnit( leftPadding, paddingUnit ),
+		'padding-right': generateCSSUnit( rightPadding, paddingUnit ),
+		'padding-top': generateCSSUnit( topPadding, paddingUnit ),
+		'padding-bottom': generateCSSUnit( bottomPadding, paddingUnit ),
 	};
 	if ( 'desktop' === stack ) {
 		selectors[ '.uagb-buttons__outer-wrap .block-editor-block-list__layout' ] = {
@@ -216,15 +219,19 @@ function styling( attributes, clientId, name ) {
 	] = {
 		'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
 		'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
-		'padding-left': generateCSSUnit( leftTabletPadding, tabletPaddingUnit ),
-		'padding-right': generateCSSUnit( rightTabletPadding, tabletPaddingUnit ),
-		'padding-top': generateCSSUnit( topTabletPadding, tabletPaddingUnit ),
-		'padding-bottom': generateCSSUnit( bottomTabletPadding, tabletPaddingUnit ),
 		'margin-left': generateCSSUnit( leftMarginTablet, marginType ),
 		'margin-right': generateCSSUnit( rightMarginTablet, marginType ),
 		'margin-top': generateCSSUnit( topMarginTablet, marginType ),
 		'margin-bottom': generateCSSUnit( bottomMarginTablet, marginType ),
 		'letter-spacing': generateCSSUnit( fontLetterSpacingTablet, fontLetterSpacingType ),
+	};
+	tabletSelectors[
+		' .uagb-buttons-repeater.wp-block-button__link'
+	] = {
+		'padding-left': generateCSSUnit( leftTabletPadding, tabletPaddingUnit ),
+		'padding-right': generateCSSUnit( rightTabletPadding, tabletPaddingUnit ),
+		'padding-top': generateCSSUnit( topTabletPadding, tabletPaddingUnit ),
+		'padding-bottom': generateCSSUnit( bottomTabletPadding, tabletPaddingUnit ),
 	};
 
 	mobileSelectors[
@@ -232,15 +239,20 @@ function styling( attributes, clientId, name ) {
 	] = {
 		'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
 		'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
-		'padding-left': generateCSSUnit( leftMobilePadding, mobilePaddingUnit ),
-		'padding-right': generateCSSUnit( rightMobilePadding, mobilePaddingUnit ),
-		'padding-top': generateCSSUnit( topMobilePadding, mobilePaddingUnit ),
-		'padding-bottom': generateCSSUnit( bottomMobilePadding, mobilePaddingUnit ),
 		'margin-left': generateCSSUnit( leftMarginMobile, marginType ),
 		'margin-right': generateCSSUnit( rightMarginMobile, marginType ),
 		'margin-top': generateCSSUnit( topMarginMobile, marginType ),
 		'margin-bottom': generateCSSUnit( bottomMarginMobile, marginType ),
 		'letter-spacing': generateCSSUnit( fontLetterSpacingMobile, fontLetterSpacingType ),
+	};
+
+	mobileSelectors[
+		' .uagb-buttons-repeater.wp-block-button__link'
+	] = {
+		'padding-left': generateCSSUnit( leftMobilePadding, mobilePaddingUnit ),
+		'padding-right': generateCSSUnit( rightMobilePadding, mobilePaddingUnit ),
+		'padding-top': generateCSSUnit( topMobilePadding, mobilePaddingUnit ),
+		'padding-bottom': generateCSSUnit( bottomMobilePadding, mobilePaddingUnit ),
 	};
 
 	const base_selector = ` .uagb-block-${ clientId.substr( 0, 8 ) }`;
