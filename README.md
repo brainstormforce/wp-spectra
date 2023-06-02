@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.2.2  
-**Stable tag:** 2.6.3  
+**Stable tag:** 2.6.4  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -165,6 +165,10 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 1. /assets/screenshots/1.png
 
 ## Changelog ##
+
+### 2.6.4 - SATURDAY, 03rd JUNE 2023 ###
+* Fix: Buttons - Resolved an issue in which the button size would not work as expected in the editor after adding padding.
+* Fix: Resolved an issue with an invalid Google Maps API Key in the Embed URL implementation, ensuring functionality, and made the block dynamic for enhanced flexibility.
 
 ### 2.6.3 - THURSDAY, 01st JUNE 2023 ###
 * Fix: Post Carousel - Resolved an issue in which the posts would not show up on the front end when the number of columns was greater than the number of posts.
