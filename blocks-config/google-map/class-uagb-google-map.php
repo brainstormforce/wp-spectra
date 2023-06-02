@@ -20,7 +20,7 @@ if ( ! class_exists( 'UAGB_Google_Map' ) ) {
 		/**
 		 * Member Variable
 		 *
-		 * @since x.x.x
+		 * @since 2.6.4
 		 * @var instance
 		 */
 		private static $instance;
@@ -28,7 +28,7 @@ if ( ! class_exists( 'UAGB_Google_Map' ) ) {
 		/**
 		 *  Initiator
 		 *
-		 * @since x.x.x
+		 * @since 2.6.4
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
@@ -47,7 +47,7 @@ if ( ! class_exists( 'UAGB_Google_Map' ) ) {
 		/**
 		 * Registers the `core/latest-posts` block on server.
 		 *
-		 * @since x.x.x
+		 * @since 2.6.4
 		 */
 		public function register_blocks() {
 			// Check if the register function exists.
@@ -101,7 +101,7 @@ if ( ! class_exists( 'UAGB_Google_Map' ) ) {
 		 *
 		 * @param array $attributes Array of block attributes.
 		 *
-		 * @since x.x.x
+		 * @since 2.6.4
 		 */
 		public function google_map_callback( $attributes ) {
 			$desktop_class = '';
