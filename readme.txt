@@ -168,6 +168,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = x.x.x =
 * Fix: Buttons - Resolved an issue in which the button size would not work as expected in the editor after adding padding.
+* Fix: Resolved an issue with an invalid Google Maps API Key in the Embed URL implementation, ensuring functionality, and made the block dynamic for enhanced flexibility.
 
 = 2.6.3 - THURSDAY, 01st JUNE 2023 =
 * Fix: Post Carousel - Resolved an issue in which the posts would not show up on the front end when the number of columns was greater than the number of posts.

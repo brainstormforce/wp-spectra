@@ -26,9 +26,8 @@ const Render = ( props ) => {
 	const encoded_address = encodeURI( address );
 	const lang_par = language ? language : 'en';
 
-	const url = `https://www.google.com/maps/embed/v1/place?key=${
-		wp.uagb_google_api_key
-	}&q=${ encoded_address }&zoom=${ getFallbackNumber( zoom, 'zoom', blockName ) }&language=${ lang_par }`;
+	const url = `https://maps.google.com/maps?q=${ encoded_address }&z=${ getFallbackNumber( zoom, 'zoom', blockName ) }&hl=${ lang_par }&t=m&output=embed&iwloc=near`;
+
 	return (
 		<div
 			className={ classnames(
