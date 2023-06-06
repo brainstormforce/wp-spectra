@@ -21,3 +21,5 @@ require_once UAGB_DIR . 'blocks-config/lottie/class-uagb-lottie.php';
 require_once UAGB_DIR . 'blocks-config/image/class-uagb-image.php';
 require_once UAGB_DIR . 'blocks-config/image-gallery/class-spectra-image-gallery.php';
 require_once UAGB_DIR . 'blocks-config/popup-builder/class-uagb-popup-builder.php';
+require_once UAGB_DIR . 'blocks-config/buttons-child/class-uagb-buttons-child.php';
+require_once UAGB_DIR . 'blocks-config/google-map/class-uagb-google-map.php';

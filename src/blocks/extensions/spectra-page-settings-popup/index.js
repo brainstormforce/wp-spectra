@@ -8,6 +8,7 @@ import SettingsIcons from './icons.js';
 import PageCustomCSS from '../custom-page-css';
 import { PanelBody } from '@wordpress/components';
 import { applyFilters } from '@wordpress/hooks';
+import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
 
 const SpectraPageSettingsPopup = ( props ) => {
 	if ( 'site-editor' === uagb_blocks_info.is_site_editor ){
@@ -15,7 +16,7 @@ const SpectraPageSettingsPopup = ( props ) => {
 	}
 	const pluginSidebarBefore = applyFilters( `spectra.page-sidebar.before`, '', props );
 	const pluginSidebarAfter = applyFilters( `spectra.page-sidebar.after`, '', props );
-	const { PluginSidebar, PluginSidebarMoreMenuItem } = window?.wp?.editPost;
+	
 	return (
 		<>
 			{ 'yes' === uagb_blocks_info.enable_on_page_css_button && (

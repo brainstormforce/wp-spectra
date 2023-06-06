@@ -5,7 +5,6 @@
 import UAGB_Block_Icons from '@Controls/block-icons';
 import './style.scss';
 import Edit from './edit';
-import save from './save';
 import deprecated from './deprecated';
 import attributes from './attributes';
 import { __ } from '@wordpress/i18n';
@@ -34,6 +33,7 @@ registerBlockType( 'uagb/google-map', {
 	attributes,
 	category: uagb_blocks_info.category,
 	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="google-maps" /> : <Edit { ...props } /> ),
-	save,
+	// Render via PHP
+	save: () => null,
 	deprecated,
 } );
