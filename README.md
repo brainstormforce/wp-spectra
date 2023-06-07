@@ -166,6 +166,10 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Fix: Buttons - Resolved an issue in which an error was thrown when the background color was set to gradient.
+* Fix: Buttons - Resolved an issue in which the background color gradient would not work as intended on the front end.
+
 ### 2.6.4 - SATURDAY, 03rd JUNE 2023 ###
 * Fix: Buttons - Resolved an issue in which the button size would not work as expected in the editor after adding padding.
 * Fix: Resolved an issue with an invalid Google Maps API Key in the Embed URL implementation, ensuring functionality, and made the block dynamic for enhanced flexibility.
