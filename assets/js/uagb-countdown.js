@@ -55,6 +55,15 @@ UAGBCountdown = {
 	init( mainSelector, data = {} ) {
 		this.elements[ mainSelector ] = this.getElement( mainSelector );
 
+		// If global flag variable does not exists, create it.
+		// This is used like a signal for usage in Pro code.
+		if( ! window.UAGBCountdownTimeSignal ) {
+			window.UAGBCountdownTimeSignal = {};
+		}
+
+		// Set flag variable to false, till it's overtime.
+		window.UAGBCountdownTimeSignal[ mainSelector ] = false;
+
 		if ( typeof this.elements[ mainSelector ] !== 'undefined' ) {
 			if ( 'evergreen' === data?.timerType ) {
 				const CampaignID =
@@ -212,6 +221,11 @@ UAGBCountdown = {
 		// If it's overtime, stop updating the markup and clear the interval.
 		if ( isOvertime ) {
 			clearInterval( this.countdownInterval[ mainSelector ] );
+
+			// Set flag variable to true, for usage in Countdown Pro code (like a signal).
+			if( ( 'redirect' === data.timerEndAction || 'hide' === data.timerEndAction ) && data.isFrontend ) {
+				window.UAGBCountdownTimeSignal[ mainSelector ] = true;
+			}
 		}
 	},
 

@@ -17,6 +17,7 @@ $additional_attributes = apply_filters(
 return array_merge(
 	array(
 		'block_id'                     => '',
+		'isFrontend'                   => true,
 		'timerType'                    => 'date',
 		'timerEndAction'               => 'zero',
 		'redirectURL'                  => '',
