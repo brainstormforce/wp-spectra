@@ -167,6 +167,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
+* Fix: Buttons - Resolved an issue in which an error was thrown when the background color was set to gradient.
+* Fix: Buttons - Resolved an issue in which the background color gradient would not work as intended on the front end.
 * Fix: Call To Action - Resolved an issue in which an undefined variable warning would appear on the frontend.
 
 ### 2.6.4 - SATURDAY, 03rd JUNE 2023 ###
