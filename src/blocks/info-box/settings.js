@@ -682,6 +682,22 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
+				{ ctaType !== 'all' && ctaType !== 'none' && (
+					<>
+						<ToggleControl
+							label={ __( 'Show Icon', 'ultimate-addons-for-gutenberg' ) }
+							checked={ showCtaIcon }
+							onChange={ () => setAttributes( { showCtaIcon: ! showCtaIcon } ) }
+						/>
+						{ showCtaIcon && (
+							<UAGIconPicker
+								label={ __( 'Button Icon', 'ultimate-addons-for-gutenberg' ) }
+								value={ ctaIcon }
+								onChange={ ( value ) => setAttributes( { ctaIcon: value } ) }
+							/>
+						) }
+					</>
+				) }
 				{ ctaType !== 'none' && (
 					<>
 						<UAGTextControl
@@ -700,22 +716,6 @@ const Settings = ( props ) => {
 							onChange={ () => setAttributes( { ctaTarget: ! ctaTarget } ) }
 							label={ __( 'Open in new window', 'ultimate-addons-for-gutenberg' ) }
 						/>
-					</>
-				) }
-				{ ctaType !== 'all' && ctaType !== 'none' && (
-					<>
-						<ToggleControl
-							label={ __( 'Show Icon', 'ultimate-addons-for-gutenberg' ) }
-							checked={ showCtaIcon }
-							onChange={ () => setAttributes( { showCtaIcon: ! showCtaIcon } ) }
-						/>
-						{ showCtaIcon && (
-							<UAGIconPicker
-								label={ __( 'Button Icon', 'ultimate-addons-for-gutenberg' ) }
-								value={ ctaIcon }
-								onChange={ ( value ) => setAttributes( { ctaIcon: value } ) }
-							/>
-						) }
 					</>
 				) }
 				{ showCtaIcon && ctaIcon !== '' && ctaType !== 'all' && ctaType !== 'none' && (
