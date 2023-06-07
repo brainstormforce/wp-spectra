@@ -1473,8 +1473,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 					case 'gradient':
 						if ( isset( $gradient ) ) {
-							$gen_bg_css['background-image'] = $gradient . ';';
-							$gen_bg_css['background-clip']  = 'padding-box';
+							$gen_bg_css['background']      = $gradient . ';';
+							$gen_bg_css['background-clip'] = 'padding-box';
 						}
 						break;
 					case 'video':
