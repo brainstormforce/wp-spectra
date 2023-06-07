@@ -85,7 +85,7 @@ const GradientSettings = ( props ) => {
 				{ 'basic' === type && (
 					<GradientPicker
 						__nextHasNoMargin={ true }
-						value={ backgroundGradient.value }
+						value={ backgroundGradient?.value || null }
 						onChange={ onGradientChange }
 						className="uagb-gradient-picker"
 						gradients={ [] } // Passing it an empty to resolve block encounters an error when gutenberg is activated.

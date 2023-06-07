@@ -55,6 +55,15 @@ UAGBCountdown = {
 	init( mainSelector, data = {} ) {
 		this.elements[ mainSelector ] = this.getElement( mainSelector );
 
+		// If global flag variable does not exists, create it.
+		// This is used like a signal for usage in Pro code.
+		if( ! window?.UAGBCountdownTimeSignal ) {
+			window.UAGBCountdownTimeSignal = {};
+		}
+
+		// Set flag variable to false, till it's overtime.
+		window.UAGBCountdownTimeSignal[ mainSelector ] = false;
+
 		if ( typeof this.elements[ mainSelector ] !== 'undefined' ) {
 			if ( 'evergreen' === data?.timerType ) {
 				const CampaignID =
@@ -141,12 +150,12 @@ UAGBCountdown = {
 		}
 
 		// If show days or show hours is true, set the further units to true ( hours, minutes ).
-		if ( data.showDays ) {
+		if ( data?.showDays ) {
 			data.showHours = true;
 			data.showMinutes = true;
 		}
 
-		if ( data.showHours ) {
+		if ( data?.showHours ) {
 			data.showMinutes = true;
 		}
 
@@ -156,15 +165,15 @@ UAGBCountdown = {
 		let minutesWrap;
 		const secondsWrap = ref.querySelector( '.wp-block-uagb-countdown__time-seconds' );
 
-		if ( data.showDays ) {
+		if ( data?.showDays ) {
 			daysWrap = ref.querySelector( '.wp-block-uagb-countdown__time-days' );
 		}
 
-		if ( data.showHours ) {
+		if ( data?.showHours ) {
 			hoursWrap = ref.querySelector( '.wp-block-uagb-countdown__time-hours' );
 		}
 
-		if ( data.showMinutes ) {
+		if ( data?.showMinutes ) {
 			minutesWrap = ref.querySelector( '.wp-block-uagb-countdown__time-minutes' );
 		}
 
@@ -180,28 +189,28 @@ UAGBCountdown = {
 		let minutes = Math.floor( diff / 1000 / 60 ) % 60;
 		let seconds = Math.floor( diff / 1000 ) % 60;
 
-		if ( ! data.showDays ) {
+		if ( ! data?.showDays ) {
 			hours = hours + days * 24;
 		}
 
-		if ( ! data.showHours ) {
+		if ( ! data?.showHours ) {
 			minutes = minutes + hours * 60;
 		}
 
-		if ( ! data.showMinutes ) {
+		if ( ! data?.showMinutes ) {
 			seconds = seconds + minutes * 60;
 		}
 
 		// Update the markup - Also, we check if the wrappers exist to avoid potential console errors.
-		if ( data.showDays && daysWrap ) {
+		if ( data?.showDays && daysWrap ) {
 			daysWrap.innerHTML = ! isOvertime ? days : 0;
 		}
 
-		if ( data.showHours && hoursWrap ) {
+		if ( data?.showHours && hoursWrap ) {
 			hoursWrap.innerHTML = ! isOvertime ? hours : 0;
 		}
 
-		if ( data.showMinutes && minutesWrap ) {
+		if ( data?.showMinutes && minutesWrap ) {
 			minutesWrap.innerHTML = ! isOvertime ? minutes : 0;
 		}
 
@@ -212,6 +221,11 @@ UAGBCountdown = {
 		// If it's overtime, stop updating the markup and clear the interval.
 		if ( isOvertime ) {
 			clearInterval( this.countdownInterval[ mainSelector ] );
+
+			// Set flag variable to true, for usage in Countdown Pro code (like a signal).
+			if( ( 'redirect' === data?.timerEndAction || 'hide' === data?.timerEndAction ) && data?.isFrontend ) {
+				window.UAGBCountdownTimeSignal[ mainSelector ] = true;
+			}
 		}
 	},
 

@@ -87,8 +87,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				} elseif ( 'gradient' === $attr['backgroundType'] ) {
 					$bg_obj = array(
-						'backgroundType' => 'gradient',
-						'gradientValue'  => $attr['gradientValue'],
+						'backgroundType'    => 'gradient',
+						'gradientValue'     => $attr['gradientValue'],
+						'gradientColor1'    => $attr['gradientColor1'],
+						'gradientColor2'    => $attr['gradientColor2'],
+						'gradientType'      => $attr['gradientType'],
+						'gradientLocation1' => $attr['gradientLocation1'],
+						'gradientLocation2' => $attr['gradientLocation2'],
+						'gradientAngle'     => $attr['gradientAngle'],
+						'selectGradient'    => $attr['selectGradient'],
 					);
 
 					$btn_bg_css                           = self::uag_get_background_obj( $bg_obj );
@@ -116,8 +123,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				} elseif ( 'gradient' === $attr['hoverbackgroundType'] ) {
 					$bg_hover_obj = array(
-						'backgroundType' => 'gradient',
-						'gradientValue'  => $attr['hovergradientValue'],
+						'backgroundType'    => 'gradient',
+						'gradientValue'     => $attr['hovergradientValue'],
+						'gradientColor1'    => $attr['hovergradientColor1'],
+						'gradientColor2'    => $attr['hovergradientColor2'],
+						'gradientType'      => $attr['hovergradientType'],
+						'gradientLocation1' => $attr['hovergradientLocation1'],
+						'gradientLocation2' => $attr['hovergradientLocation2'],
+						'gradientAngle'     => $attr['hovergradientAngle'],
+						'selectGradient'    => $attr['hoverselectGradient'],
 					);
 
 					$btn_hover_bg_css                           = self::uag_get_background_obj( $bg_hover_obj );
@@ -149,17 +163,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$selectors[' .wp-block-button__link.has-text-color:focus .uagb-button__link'] = array(
 					'color' => $attr['hColor'],
 				);
-			
+
 				$selectors[ ' .uagb-button__wrapper ' . $wrapper . '.wp-block-button__link' ] = array(
-					'box-shadow' => $box_shadow_css,            
+					'box-shadow' => $box_shadow_css,
 				);
-				
+
 				// If using separate box shadow hover settings, then generate CSS for it.
 				if ( $attr['useSeparateBoxShadows'] ) {
 					$selectors[ ' .uagb-button__wrapper ' . $wrapper . '.wp-block-button__link:hover' ] = array(
 						'box-shadow' => $box_shadow_hover_css,
 					);
-					
+
 				};
 				$selectors[ $wrapper . '.wp-block-button__link' ]       = $border_css;
 				$m_selectors[ $wrapper . '.wp-block-button__link' ]     = $border_css_mobile;
@@ -622,7 +636,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( $attr['useSeparateBoxShadows'] ) {
 				$selectors['.is-grid .uagb-post__inner-wrap:hover']['box-shadow'] = $box_shadow_hover_css;
 			}
-			
+
 			$selectors[' .uagb-post__text.uagb-post__title']['color']                            = $attr['titleColor'];
 			$selectors[' .uagb-post__text.uagb-post__title a']                                   = array(
 				'color' => $attr['titleColor'],
@@ -1437,11 +1451,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 							$position_value                    = $x_position . $x_position_type . ' ' . $y_position . $y_position_type;
 							$gen_bg_css['background-position'] = $position_value;
 						}
-		
+
 						if ( isset( $size ) ) {
 							$gen_bg_css['background-size'] = esc_attr( $size );
 						}
-		
+
 						if ( isset( $attachment ) ) {
 							$gen_bg_css['background-attachment'] = esc_attr( $attachment );
 						}
@@ -1459,8 +1473,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 					case 'gradient':
 						if ( isset( $gradient ) ) {
-							$gen_bg_css['background-image'] = $gradient . ';';
-							$gen_bg_css['background-clip']  = 'padding-box';
+							$gen_bg_css['background']      = $gradient . ';';
+							$gen_bg_css['background-clip'] = 'padding-box';
 						}
 						break;
 					case 'video':
@@ -1646,7 +1660,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( 'default' === $attr[ $prefix . 'BorderStyle' ] ) {
 				return array();
 			}
-			
+
 			return $gen_border_css;
 		}
 
@@ -1661,9 +1675,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $border_style Border Style.
 		 */
 		public static function uag_generate_deprecated_border_css( $current_css, $border_width, $border_radius, $border_color = '', $border_style = '' ) {
-			
+
 			$gen_border_css = array();
-			
+
 			if ( ! empty( $current_css ) && isset( $current_css['border-style'] ) && 'default' !== $current_css['border-style'] ) {
 
 				$border_width  = is_numeric( $border_width ) ? $border_width : '';
@@ -1775,7 +1789,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			$alignment_property = $alignment_array[ $pos - 1 ];
-		
+
 			switch ( $format ) {
 				case 'flex':
 					switch ( $alignment_property ) {
@@ -1881,11 +1895,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 		/**
 		 * Generate the Box Shadow or Text Shadow CSS.
-		 * 
+		 *
 		 * For Text Shadow CSS:
 		 * ( 'spread', 'position' ) should not be sent as params during the function call.
 		 * ( 'spread_unit' ) will have no effect.
-		 * 
+		 *
 		 * For Box/Text Shadow Hover CSS:
 		 * ( 'alt_color' ) should be set as the attribute used for ( 'color' ) in Box/Text Shadow Normal CSS.
 		 *
@@ -1939,7 +1953,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( ( 0 === $horizontal && 0 === $vertical ) && ( 0 === $blur && 0 === $spread ) ) {
 				return '';
 			}
-			
+
 			// Return the CSS with horizontal, vertical, blur, and color - and conditionally render spread and position.
 			return (
 				$horizontal . ' ' . $vertical . ' ' . $blur . ( $spread ? " {$spread}" : '' ) . ' ' . ( $color ? $color : $alt_color ) . ( 'outset' === $position ? '' : " {$position}" )

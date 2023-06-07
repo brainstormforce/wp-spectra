@@ -498,9 +498,6 @@ if ( 'before' === $attr['secondCtaIconPosition'] ) {
 	);
 }
 
-if ( 'text' === $attr['ctaType'] ) {
-	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'cta', ' .uagb-cta__button-wrapper a.uagb-cta-typeof-text', $combined_selectors );
-}
 
 if ( ! $attr['secInheritFromTheme'] ) {
 	
@@ -646,6 +643,10 @@ if ( ! $attr['inheritFromTheme'] ) {
 
 if ( ! $attr['secInheritFromTheme'] ) {
 	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'secondCta', '.wp-block-uagb-call-to-action a.uagb-cta-second__button', $combined_selectors );
+}
+
+if ( 'text' === $attr['ctaType'] ) {
+	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'cta', ' .uagb-cta__button-wrapper a.uagb-cta-typeof-text', $combined_selectors );
 }
 
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'title', ' .uagb-cta__title', $combined_selectors );

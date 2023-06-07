@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.2.2  
-**Stable tag:** 2.6.4  
+**Stable tag:** 2.6.5  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -165,6 +165,11 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 1. /assets/screenshots/1.png
 
 ## Changelog ##
+
+### 2.6.5 - WEDNESDAY, 07th JUNE 2023 ###
+* Fix: Buttons - Resolved an issue in which an error was thrown when the background color was set to gradient.
+* Fix: Buttons - Resolved an issue in which the background color gradient would not work as intended on the front end.
+* Fix: Call To Action - Resolved an issue in which an undefined variable warning would appear on the frontend.
 
 ### 2.6.4 - SATURDAY, 03rd JUNE 2023 ###
 * Fix: Buttons - Resolved an issue in which the button size would not work as expected in the editor after adding padding.
