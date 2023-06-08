@@ -93,7 +93,7 @@ const PluginStats = () => {
 		) : (
 			<a
 				className='mr-8 ml-2 text-sm text-spectra active:text-spectra hover:text-spectra focus:text-spectra cursor-pointer'
-				href='https://wpspectra.com/pricing'
+				href='https://wpspectra.com/pro'
 				rel='noreferrer noopener'
 				target='_blank'
 			>
