@@ -268,8 +268,8 @@ const UAGBFormsEdit = ( props ) => {
 
 			for ( let index = 0; index < sibling.length; index++ ) {
 				if (
-					sibling[ index ].classList.contains( 'uag-col-2' ) &&
-					sibling[ index + 1 ].classList.contains( 'uag-col-2' )
+					sibling[ index ]?.classList.contains( 'uag-col-2' ) &&
+					sibling[ index + 1 ]?.classList.contains( 'uag-col-2' )
 				) {
 					const div = document.createElement( 'div' );
 					div.className = 'uag-col-2-wrap uag-col-wrap-' + index;
@@ -278,9 +278,9 @@ const UAGBFormsEdit = ( props ) => {
 					wrapper_div[ 0 ].appendChild( sibling[ index ] );
 					wrapper_div[ 0 ].appendChild( sibling[ index ] );
 				} else if (
-					sibling[ index ].classList.contains( 'uag-col-3' ) &&
-					sibling[ index + 1 ].classList.contains( 'uag-col-3' ) &&
-					sibling[ index + 2 ].classList.contains( 'uag-col-3' )
+					sibling[ index ]?.classList.contains( 'uag-col-3' ) &&
+					sibling[ index + 1 ]?.classList.contains( 'uag-col-3' ) &&
+					sibling[ index + 2 ]?.classList.contains( 'uag-col-3' )
 				) {
 					const div = document.createElement( 'div' );
 					div.className = 'uag-col-3-wrap uag-col-wrap-' + index;
@@ -290,10 +290,10 @@ const UAGBFormsEdit = ( props ) => {
 					wrapper_div[ 0 ].appendChild( sibling[ index ] );
 					wrapper_div[ 0 ].appendChild( sibling[ index ] );
 				} else if (
-					sibling[ index ].classList.contains( 'uag-col-4' ) &&
-					sibling[ index + 1 ].classList.contains( 'uag-col-4' ) &&
-					sibling[ index + 2 ].classList.contains( 'uag-col-4' ) &&
-					sibling[ index + 3 ].classList.contains( 'uag-col-4' )
+					sibling[ index ]?.classList.contains( 'uag-col-4' ) &&
+					sibling[ index + 1 ]?.classList.contains( 'uag-col-4' ) &&
+					sibling[ index + 2 ]?.classList.contains( 'uag-col-4' ) &&
+					sibling[ index + 3 ]?.classList.contains( 'uag-col-4' )
 				) {
 					const div = document.createElement( 'div' );
 					div.className = 'uag-col-4-wrap uag-col-wrap-' + index;
