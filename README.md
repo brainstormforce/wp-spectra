@@ -168,6 +168,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ### x.x.x ###
 * Improvement: Global - Added support for Spectra One's preview options.
+* Fix: Testimonial - Resolved an issue in which the default Testimonial blocks would share same the background image.
 
 ### 2.6.5 - WEDNESDAY, 07th JUNE 2023 ###
 * Fix: Buttons - Resolved an issue in which an error was thrown when the background color was set to gradient.

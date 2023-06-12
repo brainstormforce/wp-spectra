@@ -15,6 +15,7 @@ import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.j
 import { InspectorControls } from '@wordpress/block-editor';
 import { ToggleControl, Icon } from '@wordpress/components';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import { uagbDeepClone } from '@Utils/Helpers';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import { memo } from '@wordpress/element';
@@ -27,7 +28,6 @@ const Settings = ( props ) => {
 	// Setup the attributes.
 	const {
 		test_item_count,
-		test_block,
 		headingAlign,
 		headingAlignTablet,
 		headingAlignMobile,
@@ -185,6 +185,7 @@ const Settings = ( props ) => {
 	} = attributes;
 
 	const testItemCountFallback = getFallbackNumber( test_item_count, 'test_item_count', blockName );
+	const test_block = uagbDeepClone( attributes.test_block );
 
 	/*
 	 * Event to set Image as while adding.
