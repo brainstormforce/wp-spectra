@@ -21,6 +21,7 @@ import { addFilter } from '@wordpress/hooks';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import { uagbClassNames } from '@Utils/Helpers';
 
 const UAGBFormsEdit = ( props ) => {
 	const {
@@ -268,8 +269,8 @@ const UAGBFormsEdit = ( props ) => {
 
 			for ( let index = 0; index < sibling.length; index++ ) {
 				if (
-					sibling[ index ].classList.contains( 'uag-col-2' ) &&
-					sibling[ index + 1 ].classList.contains( 'uag-col-2' )
+					sibling[ index ]?.classList.contains( 'uag-col-2' ) &&
+					sibling[ index + 1 ]?.classList.contains( 'uag-col-2' )
 				) {
 					const div = document.createElement( 'div' );
 					div.className = 'uag-col-2-wrap uag-col-wrap-' + index;
@@ -278,9 +279,9 @@ const UAGBFormsEdit = ( props ) => {
 					wrapper_div[ 0 ].appendChild( sibling[ index ] );
 					wrapper_div[ 0 ].appendChild( sibling[ index ] );
 				} else if (
-					sibling[ index ].classList.contains( 'uag-col-3' ) &&
-					sibling[ index + 1 ].classList.contains( 'uag-col-3' ) &&
-					sibling[ index + 2 ].classList.contains( 'uag-col-3' )
+					sibling[ index ]?.classList.contains( 'uag-col-3' ) &&
+					sibling[ index + 1 ]?.classList.contains( 'uag-col-3' ) &&
+					sibling[ index + 2 ]?.classList.contains( 'uag-col-3' )
 				) {
 					const div = document.createElement( 'div' );
 					div.className = 'uag-col-3-wrap uag-col-wrap-' + index;
@@ -290,10 +291,10 @@ const UAGBFormsEdit = ( props ) => {
 					wrapper_div[ 0 ].appendChild( sibling[ index ] );
 					wrapper_div[ 0 ].appendChild( sibling[ index ] );
 				} else if (
-					sibling[ index ].classList.contains( 'uag-col-4' ) &&
-					sibling[ index + 1 ].classList.contains( 'uag-col-4' ) &&
-					sibling[ index + 2 ].classList.contains( 'uag-col-4' ) &&
-					sibling[ index + 3 ].classList.contains( 'uag-col-4' )
+					sibling[ index ]?.classList.contains( 'uag-col-4' ) &&
+					sibling[ index + 1 ]?.classList.contains( 'uag-col-4' ) &&
+					sibling[ index + 2 ]?.classList.contains( 'uag-col-4' ) &&
+					sibling[ index + 3 ]?.classList.contains( 'uag-col-4' )
 				) {
 					const div = document.createElement( 'div' );
 					div.className = 'uag-col-4-wrap uag-col-wrap-' + index;
@@ -335,7 +336,12 @@ const UAGBFormsEdit = ( props ) => {
 
 const addAdvancedClasses = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
-		return <BlockListBlock { ...props } className={ props.attributes.className } />;
+		// First we add any existing classes, then we add our classes if needed.
+		const addClassNames = uagbClassNames( [
+			props?.className || '',
+			props?.attributes?.className || '',
+		] );
+		return <BlockListBlock { ...props } className={ addClassNames ? addClassNames : null } />
 	};
 }, 'addAdvancedClasses' );
 

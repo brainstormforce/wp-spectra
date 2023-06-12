@@ -111,7 +111,7 @@ UAGBForms = {
 		}
 
 		//Ready Classes.
-		const formscope = document.getElementsByClassName( 'uagb-forms__outer-wrap' );
+		const formscope = document.getElementsByClassName( 'uagb-block-' + attr.block_id );
 		if ( formscope?.[ 0 ] ) {
 			const formWrapper = formscope[ 0 ].children;
 			const sibling = formWrapper[ 0 ].children;
