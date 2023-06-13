@@ -413,7 +413,7 @@ function styling( attributes, clientId, name ) {
 			'text-transform': inputTransform,
 			'text-decoration': inputDecoration,
 			'font-weight': inputFontWeight,
-			'color': inputplaceholderColor,
+			'color': inputColor,
 			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
 		},
 		' .uagb-forms-main-form .uagb-forms-input:focus': {

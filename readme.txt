@@ -166,6 +166,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+* Fix: Forms - Phone country-code input color is not getting applied in backend.
+
 = 2.6.6 - MONDAY, 12th JUNE 2023 =
 * Improvement: Global - Added support for Spectra One's preview options.
 * Fix: Table Of Contents - Fixed the improper HTML markup/structure for the heading list.
