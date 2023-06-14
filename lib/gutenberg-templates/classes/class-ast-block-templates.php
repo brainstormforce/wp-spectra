@@ -188,6 +188,8 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 				} else {
 					wp_send_json_error( $file_path );
 				}
+			} else {
+				wp_send_json_error( __( 'Something went wrong', 'astra-sites' ) );
 			}
 
 			update_option( 'ast_block_templates_wpforms_ids_mapping', $ids_mapping );
