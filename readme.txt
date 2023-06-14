@@ -167,7 +167,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
-* Fix: Forms - Phone country-code input color is not getting applied in backend.
+* Fix: Forms - Resolved an issue in which phone country-code input color would not work as intended on the backend.
+* Fix: Forms - Resolved an issue in which phone country-code select-control background active color would not work as intended on the backend.
 
 = 2.6.6 - MONDAY, 12th JUNE 2023 =
 * Improvement: Global - Added support for Spectra One's preview options.
