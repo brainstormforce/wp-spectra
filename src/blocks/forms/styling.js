@@ -577,6 +577,9 @@ function styling( attributes, clientId, name ) {
 		' .uagb-forms-field-set:hover .uagb-forms-input select': {
 			'color': inputplaceholderHoverColor,
 		},
+		' #inspector-select-control-0': {
+			'background-color': bgActiveColor,
+		},
 	};
 
 	tabletSelectors = {
@@ -663,6 +666,9 @@ function styling( attributes, clientId, name ) {
 			'text-align': buttonAlignTablet,
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:not(.has-background)': submitBorderTablet,
+		' #inspector-select-control-0': {
+			'background-color': bgActiveColor,
+		},
 	};
 
 	mobileSelectors = {
@@ -750,6 +756,9 @@ function styling( attributes, clientId, name ) {
 			'text-align': buttonAlignMobile,
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:not(.has-background)': submitBorderMobile,
+		' #inspector-select-control-0': {
+			'background-color': bgActiveColor,
+		},
 	};
 
 	if ( 'color' === submitBgType ) {
