@@ -167,7 +167,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### 2.6.7 - WEDNESDAY, 14th JUNE 2023 ###
-* Fix: Tightened the security of the plugin.
+* Improvement: Tightened the security of the plugin.
 
 ### 2.6.6 - MONDAY, 12th JUNE 2023 ###
 * Improvement: Global - Added support for Spectra One's preview options.
