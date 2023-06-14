@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 5.6
 Tested up to: 6.2.2
-Stable tag: 2.6.6
+Stable tag: 2.6.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -165,6 +165,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 2.6.7 - WEDNESDAY, 14th JUNE 2023 =
+* Improvement: Tightened the security of the plugin.
 
 = 2.6.6 - MONDAY, 12th JUNE 2023 =
 * Improvement: Global - Added support for Spectra One's preview options.

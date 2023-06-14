@@ -57,6 +57,7 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 			add_action( 'wp_ajax_ast_block_templates_import_wpforms', array( $this, 'import_wpforms' ) );
 			add_action( 'wp_ajax_ast_block_templates_import_block', array( $this, 'import_block' ) );
 			add_filter( 'upload_mimes', array( $this, 'custom_upload_mimes' ) );
+			add_action( 'wp_ajax_ast_block_templates_data_option', array( $this, 'api_request' ) );
 		}
 
 		/**
@@ -70,6 +71,35 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 			$mimes['json'] = 'application/json';
 
 			return $mimes;
+		}
+		
+		/**
+		 * Retrieve block data from an API and update the option with the data.
+		 *
+		 * @since 1.3.0
+		 * @return void
+		 */
+		public function api_request() {
+
+			if ( ! current_user_can( 'edit_posts' ) ) {
+				wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
+			}
+			
+			// Verify Nonce.
+			check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
+			$block_id     = isset( $_REQUEST['id'] ) ? absint( $_REQUEST['id'] ) : '';
+			$block_type   = isset( $_REQUEST['type'] ) ? sanitize_text_field( $_REQUEST['type'] ) : '';
+			$complete_url = AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-json/wp/v2/' . $block_type . '/' . $block_id . '/?site_url=' . site_url();
+			$response     = wp_remote_get( $complete_url );
+
+			if ( ! is_wp_error( $response ) || 200 === $response['response']['code'] ) {
+				$body = json_decode( wp_remote_retrieve_body( $response ) );
+				// Create a dynamic option name to save the block data.
+				update_option( 'ast-block-templates_data-' . $block_id, $body );
+				wp_send_json_success( $body );
+			} else {
+				wp_send_json_error( __( 'Something went wrong', 'astra-sites' ) );
+			}
 		}
 
 		/**
@@ -88,8 +118,20 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 			// Verify Nonce.
 			check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
 
-			// Ingnoring PHPCS temporary, we need to check why url encoded passed from API.
-			$wpforms_url = ( isset( $_REQUEST['wpforms_url'] ) ) ? esc_url_raw( urldecode( $_REQUEST['wpforms_url'] ) ) : $wpforms_url; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$block_id   = isset( $_REQUEST['id'] ) ? absint( $_REQUEST['id'] ) : '';
+			$block_data = get_option( 'ast-block-templates_data-' . $block_id );
+
+			$block_data  = null !== $block_data ? $block_data : '';
+			$wpforms_url = '';
+
+			if ( 'astra-blocks' === $block_data->{'type'} ) {
+				$wpforms_url = $block_data->{'post-meta'}->{'astra-site-wpforms-path'};
+			}
+
+			if ( 'site-pages' === $block_data->{'type'} ) {
+				$wpforms_url = $block_data->{'astra-site-wpforms-path'};
+			}
+
 			$ids_mapping = array();
 
 			if ( ! empty( $wpforms_url ) && function_exists( 'wpforms_encode' ) ) {
@@ -146,6 +188,8 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 				} else {
 					wp_send_json_error( $file_path );
 				}
+			} else {
+				wp_send_json_error( __( 'Something went wrong', 'astra-sites' ) );
 			}
 
 			update_option( 'ast_block_templates_wpforms_ids_mapping', $ids_mapping );
@@ -335,8 +379,11 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 			// Verify Nonce.
 			check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
 
-			$api_uri = ( isset( $_REQUEST['api_uri'] ) ) ? esc_url_raw( $_REQUEST['api_uri'] ) : '';
+			$block_id   = isset( $_REQUEST['id'] ) ? absint( $_REQUEST['id'] ) : '';
+			$block_data = get_option( 'ast-block-templates_data-' . $block_id );
 
+			$api_uri = null !== $block_data ? $block_data->{'astra-page-api-url'} : '';
+			
 			// Early return.
 			if ( '' == $api_uri ) {
 				wp_send_json_error( __( 'Something wrong', 'astra-sites' ) );
@@ -374,6 +421,9 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 			}
 
 			$data = json_decode( wp_remote_retrieve_body( $response ), true );
+
+			// Flush the object when import is successful.
+			delete_option( 'ast-block-templates_data-' . $block_id );
 
 			wp_send_json_success( $data['original_content'] );
 		}
@@ -413,8 +463,6 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 					'ast_block_templates_localize_vars',
 					array(
 						'popup_class'             => defined( 'UAGB_PLUGIN_SHORT_NAME' ) ? 'uag-block-templates-lightbox' : 'ast-block-templates-lightbox',
-						'api_url'                 => AST_BLOCK_TEMPLATES_LIBRARY_URL,
-						'site_url'                => site_url(),
 						'ajax_url'                => admin_url( 'admin-ajax.php' ),
 						'uri'                     => AST_BLOCK_TEMPLATES_URI,
 						'white_label_name'        => $this->get_white_label(),
@@ -422,7 +470,6 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 						'allSites'                => $this->get_all_sites(),
 						'allCategories'           => get_site_option( 'ast-block-templates-categories', array() ),
 						'wpforms_status'          => $this->get_plugin_status( 'wpforms-lite/wpforms.php' ),
-						'gutenberg_status'        => $this->get_plugin_status( 'gutenberg/gutenberg.php' ),
 						'spectra_status'          => $this->get_plugin_status( 'ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php' ),
 						'_ajax_nonce'             => wp_create_nonce( 'ast-block-templates-ajax-nonce' ),
 						'button_text'             => esc_html__( 'Template Kits', 'ast-block-templates' ),
