@@ -32,7 +32,9 @@ export default function save( props ) {
 			</button>
 		);
 	};
-
+	if ( props.innerBlocks.length === 0 ) { // If no preset selected then return.
+		return;
+	}
 	return (
 		<div
 			className={ classnames(

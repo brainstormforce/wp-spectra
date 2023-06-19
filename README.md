@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.2.2  
-**Stable tag:** 2.6.6  
+**Stable tag:** 2.6.7  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -167,8 +167,17 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
+<<<<<<< HEAD
 * Fix: Forms - Resolved an issue in which phone country-code input color would not work as intended on the backend.
 * Fix: Forms - Resolved an issue in which phone country-code select-control background active color would not work as intended on the backend.
+=======
+* Fix: Buttons - Resolved an issue in which the background color would appear transparent after installing the WooCommerce plugin.
+* Fix: Call To Action - Resolved an issue wherein an extra margin would appear above the heading of the Call To Action block in the Spectra One theme.
+* Fix: Form - Resolved an issue where the submit button is visible on the frontend when no preset from the variation picker is selected.
+
+### 2.6.7 - WEDNESDAY, 14th JUNE 2023 ###
+* Improvement: Tightened the security of the plugin.
+>>>>>>> d1901c76dd0be019fb1520d573acc67aa576f0ea
 
 ### 2.6.6 - MONDAY, 12th JUNE 2023 ###
 * Improvement: Global - Added support for Spectra One's preview options.

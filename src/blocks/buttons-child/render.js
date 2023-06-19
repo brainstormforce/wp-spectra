@@ -21,10 +21,6 @@ const Render = ( props ) => {
 		iconPosition,
 		removeText,
 		noFollow,
-		backgroundType,
-		btnBorderStyle,
-		background,
-		color,
 		showIcon,
 	} = attributes;
 
@@ -58,9 +54,6 @@ const Render = ( props ) => {
 		return '';
 	};
 
-	const hasBackground =
-		background !== '' || backgroundType === 'transparent' || 'gradient' === backgroundType ? 'has-background' : '';
-
 	return (
 		<div
 			className={ classnames(
@@ -68,17 +61,14 @@ const Render = ( props ) => {
 				'uagb-buttons__outer-wrap',
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
-				'wp-block-button',
-				btnBorderStyle !== 'none' && btnBorderStyle !== 'default' ? 'is-style-outline' : ''
+				'wp-block-button'
 			) }
 		>
 			<div className="uagb-button__wrapper">
 				<div
 					className={ classnames(
 						'uagb-buttons-repeater',
-						'wp-block-button__link',
-						hasBackground,
-						color !== '' ? 'has-text-color' : ''
+						'wp-block-button__link'
 					) }
 				>
 					{ iconHtml( 'before' ) }

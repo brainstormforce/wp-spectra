@@ -191,7 +191,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$selectors['.wp-block-button.is-style-outline .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater:hover'] = array(
 					'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHColor'],
 				);
-				$selectors[ $wrapper . ' .uagb-button__link' ]                                  = array(
+				$selectors[ $wrapper . ' .uagb-button__link' ]   = array(
 					'color'           => $attr['color'],
 					'font-family'     => $attr['fontFamily'],
 					'font-weight'     => $attr['fontWeight'],
@@ -201,17 +201,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'font-size'       => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
 					'line-height'     => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
 				);
-				$selectors[ $wrapper . ':hover .uagb-button__link' ]                            = array(
+				$selectors[ $wrapper . ':hover' ]                = array(
 					'color' => $attr['hColor'],
 				);
-				$selectors[ $wrapper . ':focus .uagb-button__link' ]                            = array(
+				$selectors[ $wrapper . ':focus' ]                = array(
 					'color' => $attr['hColor'],
 				);
-				$m_selectors[ $wrapper . ' .uagb-button__link' ]                                = array(
+				$m_selectors[ $wrapper . ' .uagb-button__link' ] = array(
 					'font-size'   => UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
 					'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
 				);
-				$t_selectors[ $wrapper . ' .uagb-button__link' ]                                = array(
+				$t_selectors[ $wrapper . ' .uagb-button__link' ] = array(
 					'font-size'   => UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] ),
 					'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
 				);
