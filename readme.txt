@@ -167,6 +167,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Fix: Buttons - Resolved an issue in which the background color would appear transparent after installing the WooCommerce plugin.
 * Fix: Call To Action - Resolved an issue wherein an extra margin would appear above the heading of the Call To Action block in the Spectra One theme.
 * Fix: Form - Resolved an issue where the submit button is visible on the frontend when no preset from the variation picker is selected.
 
