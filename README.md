@@ -166,6 +166,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Fix: Popup Builder - Resolved a conflict with Elementor that prevented users from opening a page in the Elementor page builder.
+
 ### 2.6.7 - WEDNESDAY, 14th JUNE 2023 ###
 * Improvement: Tightened the security of the plugin.
 
