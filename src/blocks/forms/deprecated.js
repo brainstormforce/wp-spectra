@@ -2,6 +2,8 @@ import classnames from 'classnames';
 import { InnerBlocks, RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 import { getBorderAttributes } from '@Controls/generateAttributes';
+import saveV2_6_7 from './v2.6.7/save';
+import newAttributes from './attributes';
 const inputBorderAttributes = getBorderAttributes( 'field' );
 const submitBorderAttributes = getBorderAttributes( 'btn' );
 const toggleBorderAttributes = getBorderAttributes( 'checkBoxToggle' );
@@ -514,6 +516,10 @@ const deprecated = [
 			);
 		},
 	},
+	{
+		attributes: newAttributes,
+		save: saveV2_6_7,
+	}
 ];
 
 export default deprecated;
