@@ -41,7 +41,7 @@ const UAGBContainer = ( props ) => {
 		setAttributes,
 		name,
 		deviceType,
-		context
+		context,
 	} = props;
 
 	const {
@@ -195,7 +195,7 @@ const UAGBContainer = ( props ) => {
 
 	useEffect( () => {
 		setAttributes( { context } );
-	}, [context] )
+	}, [ context ] )
 
 	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 

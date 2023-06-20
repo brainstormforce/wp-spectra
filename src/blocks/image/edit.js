@@ -20,7 +20,7 @@ function UAGBImageEdit( props ) {
 		name,
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 		deviceType,
-		context
+		context,
 	} = props;
 
 	useEffect( () => {
@@ -30,7 +30,7 @@ function UAGBImageEdit( props ) {
 
 	useEffect( () => {
 		setAttributes( { context } );
-	}, [context] )
+	}, [ context ] )
 
 	useEffect( () => {
 		scrollBlockToView();

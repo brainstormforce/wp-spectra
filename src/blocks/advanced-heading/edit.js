@@ -24,7 +24,7 @@ const UAGBAdvancedHeading = ( props ) => {
 		clientId,
 		name,
 		deviceType,
-		context
+		context,
 	} = props;
 
 	useEffect( () => {
@@ -39,7 +39,7 @@ const UAGBAdvancedHeading = ( props ) => {
 
 	useEffect( () => {
 		setAttributes( { context } );
-	}, [context] )
+	}, [ context ] )
 
 	useEffect( () => {
 		scrollBlockToView();
