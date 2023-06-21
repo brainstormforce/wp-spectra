@@ -166,7 +166,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= 2.6.8 - TUESDAY, 20th JUNE 2023 =
+= 2.6.8 - WEDNESDAY, 21st JUNE 2023 =
 * Fix: Buttons - Resolved an issue in which the background color would appear transparent after installing the WooCommerce plugin.
 * Fix: Call To Action - Resolved an issue wherein an extra margin would appear above the heading of the Call To Action block in the Spectra One theme.
 * Fix: Form - Resolved an issue in which the submit button would appear differently on the frontend when no preset from the variation picker was selected.
