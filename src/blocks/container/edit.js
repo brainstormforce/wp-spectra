@@ -40,7 +40,8 @@ const UAGBContainer = ( props ) => {
 		clientId,
 		setAttributes,
 		name,
-		deviceType
+		deviceType,
+		context,
 	} = props;
 
 	const {
@@ -191,6 +192,10 @@ const UAGBContainer = ( props ) => {
 			setAttributes( { variationSelected: true } );
 		}
 	}, [] );
+
+	useEffect( () => {
+		setAttributes( { context } );
+	}, [ context ] )
 
 	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 

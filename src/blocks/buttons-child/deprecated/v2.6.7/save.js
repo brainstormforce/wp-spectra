@@ -18,6 +18,10 @@ export default function save( props ) {
 		iconPosition,
 		removeText,
 		noFollow,
+		backgroundType,
+		btnBorderStyle,
+		background,
+		color,
 		showIcon,
 		dynamicContent
 	} = attributes;
@@ -45,23 +49,28 @@ export default function save( props ) {
 		return null;
 	};
 	const openNewWindow = opensInNewTab ? '_blank' : '_self';
-	
+	const hasBackground =
+		background !== '' || backgroundType === 'transparent' || 'gradient' === backgroundType ? 'has-background' : '';
+
 	return (
 		<div
 			className={ classnames(
 				className,
 				'uagb-buttons__outer-wrap',
 				`uagb-block-${ block_id }`,
-				'wp-block-button'
+				'wp-block-button',
+				btnBorderStyle !== 'none' && btnBorderStyle !== 'default' ? 'is-style-outline' : ''
 			) }
 		>
 			<div className="uagb-button__wrapper">
 				<a
 					className={ classnames(
 						'uagb-buttons-repeater',
-						'wp-block-button__link'
+						'wp-block-button__link',
+						hasBackground,
+						color !== '' ? 'has-text-color' : ''
 					) }
-					href={ '' === link ? '#' : link }
+					href={ '' === link || '#' === link ? '#' : link }
 					onClick={ ( '' === link || '#' === link ) && ( ! dynamicContent?.link?.enable ) ? 'return false;' : 'return true;' }
 					rel={ noFollow ? 'nofollow noopener' : 'follow noopener' }
 					target={ openNewWindow }

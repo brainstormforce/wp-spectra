@@ -26,60 +26,58 @@ export default function save( props ) {
 			<button className="uagb-forms-main-submit-button wp-block-button__link">
 				<RichText.Content
 					tagName="div"
-					value={ submitButtonText.replace( /<(?!br\s*V?)[^>]+>/g, '' ) }
+					value={submitButtonText.replace( /<(?!br\s*V?)[^>]+>/g, '' )}
 					className="uagb-forms-main-submit-button-text"
 				/>
 			</button>
 		);
 	};
-	if ( props.innerBlocks.length === 0 ) { // If no preset selected then return.
-		return;
-	}
+
 	return (
 		<div
-			className={ classnames(
+			className={classnames(
 				'uagb-forms__outer-wrap',
-				`uagb-block-${ block_id }`,
-				`uagb-forms__${ buttonSize }-btn`
-			) }
+				`uagb-block-${block_id}`,
+				`uagb-forms__${buttonSize}-btn`
+			)}
 		>
-			<form className="uagb-forms-main-form" method="post" autoComplete="on" name={ `uagb-form-${ block_id }` }>
+			<form className="uagb-forms-main-form" method="post" autoComplete="on" name={`uagb-form-${block_id}`}>
 				<InnerBlocks.Content />
 				<div className="uagb-forms-form-hidden-data">
-					{ reCaptchaEnable && (
+					{reCaptchaEnable && (
 						<input type="hidden" id="g-recaptcha-response" className="uagb-forms-recaptcha" />
-					) }
-					<input type="hidden" className="uagb_forms_form_label" value={ formLabel } />
-					<input type="hidden" className="uagb_forms_form_id" value={ `uagb-form-${ block_id }` } />
+					)}
+					<input type="hidden" className="uagb_forms_form_label" value={formLabel} />
+					<input type="hidden" className="uagb_forms_form_id" value={`uagb-form-${block_id}`} />
 				</div>
-				{ reCaptchaEnable && 'v2' === reCaptchaType && (
+				{reCaptchaEnable && 'v2' === reCaptchaType && (
 					<>
 						<div className="g-recaptcha uagb-forms-field-set" data-sitekey=""></div>
 					</>
-				) }
-				<div className={ `uagb-form-reacaptcha-error-${ block_id }` }></div>
-				<div className="uagb-forms-main-submit-button-wrap wp-block-button">{ renderButtonHtml() }</div>
+				)}
+				<div className={`uagb-form-reacaptcha-error-${block_id}`}></div>
+				<div className="uagb-forms-main-submit-button-wrap wp-block-button">{renderButtonHtml()}</div>
 			</form>
-			{ 'message' === confirmationType && (
+			{'message' === confirmationType && (
 				<>
 					<div
-						className={ classnames(
-							`uagb-forms-success-message-${ block_id }`,
+						className={classnames(
+							`uagb-forms-success-message-${block_id}`,
 							'uagb-forms-submit-message-hide'
-						) }
+						)}
 					>
-						<span>{ confirmationMessage }</span>
+						<span>{confirmationMessage}</span>
 					</div>
 					<div
-						className={ classnames(
-							`uagb-forms-failed-message-${ block_id }`,
+						className={classnames(
+							`uagb-forms-failed-message-${block_id}`,
 							'uagb-forms-submit-message-hide'
-						) }
+						)}
 					>
-						<span>{ failedMessage }</span>
+						<span>{failedMessage}</span>
 					</div>
 				</>
-			) }
+			)}
 		</div>
 	);
 }

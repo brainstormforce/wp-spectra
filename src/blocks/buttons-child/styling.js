@@ -133,13 +133,13 @@ function styling( attributes, clientId, name ) {
 		'position': boxShadowPositionHover,
 		'altColor': boxShadowColor,
 	} );
-	
+
 	if ( ! inheritFromTheme ) {
-		
+
 		const borderCSS = generateBorderCSS( attributes, 'btn' );
 		const borderCSSTablet = generateBorderCSS( attributes, 'btn', 'tablet' );
 		const borderCSSMobile = generateBorderCSS( attributes, 'btn', 'mobile' );
-	
+
 		selectors = {
 			'.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater': {
 				'font-size': generateCSSUnit( size, sizeType ),
@@ -160,8 +160,11 @@ function styling( attributes, clientId, name ) {
 				'color': color,
 				'box-shadow': boxShadowCSS,
 				'letter-spacing': generateCSSUnit( letterSpacing, letterSpacingType ),
-			},		
+			},
 			'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__link': {
+				'color': hColor,
+			},
+			'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover': {
 				'color': hColor,
 			},
 			'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__link': {
@@ -242,7 +245,6 @@ function styling( attributes, clientId, name ) {
 				'gradientAngle': gradientAngle,
 				'selectGradient': selectGradient,
 			};
-
 			const btnBackground = generateBackgroundCSS( backgroundAttributes );
 			selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = btnBackground;
 		} else if ( 'color' === backgroundType ) {
@@ -250,6 +252,7 @@ function styling( attributes, clientId, name ) {
 				'background': background,
 			};
 		}
+
 
 		if ( 'transparent' === hoverbackgroundType ) {
 			selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
@@ -327,7 +330,7 @@ function styling( attributes, clientId, name ) {
 	selectors[
 		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__icon > svg'
 	] = {
-		'fill': iconHColor,
+		'fill': iconHColor || hColor,
 	};
 	if ( ! removeText ) {
 		selectors[ ' .uagb-button__icon-position-after' ] = {
