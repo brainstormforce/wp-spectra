@@ -19,13 +19,18 @@ function UAGBImageEdit( props ) {
 		attributes,
 		name,
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
-		deviceType
+		deviceType,
+		context,
 	} = props;
 
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 	}, [] );
+
+	useEffect( () => {
+		setAttributes( { context } );
+	}, [ context ] )
 
 	useEffect( () => {
 		scrollBlockToView();

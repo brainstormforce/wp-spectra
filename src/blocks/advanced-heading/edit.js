@@ -24,6 +24,7 @@ const UAGBAdvancedHeading = ( props ) => {
 		clientId,
 		name,
 		deviceType,
+		context,
 	} = props;
 
 	useEffect( () => {
@@ -35,6 +36,10 @@ const UAGBAdvancedHeading = ( props ) => {
 		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 		setAttributes( { classMigrate: true } );
 	}, [] );
+
+	useEffect( () => {
+		setAttributes( { context } );
+	}, [ context ] )
 
 	useEffect( () => {
 		scrollBlockToView();

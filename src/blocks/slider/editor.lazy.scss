@@ -40,3 +40,36 @@
 		}
 	}
 }
+
+.slider-pro__copy-classes-button {
+	width: 100%;
+	justify-content: center;
+}
+
+.spectra-slider {
+
+	&__notice {
+		font-style: italic;
+		margin-bottom: 16px;
+		color: #1d2327;
+
+		&--clickable {
+			cursor: pointer;
+
+			.dashicons {
+				-webkit-transition: color 250ms;
+				-moz-transition: color 250ms;
+				-o-transition: color 250ms;
+				transition: color 250ms;
+				margin-right: 8px;
+			}
+		}
+
+		&--secondary {
+			font-size: 11px;
+			line-height: 1.4;
+			color: #a4afb7;
+			margin-bottom: 25px;
+		}
+	}
+}

@@ -327,19 +327,11 @@ function styling( attributes, clientId, name ) {
 		'height': generateCSSUnit( iconSizeMobile, 'px' ),
 		'fill': iconColor,
 	};
-	if ( iconHColor ) {
-		selectors[
-			'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__icon > svg'
-		] = {
-			'fill': iconHColor,
-		};
-	} else {
-		selectors[
-			'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__icon > svg'
-		] = {
-			'fill': hColor,
-		};
-	}
+	selectors[
+		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__icon > svg'
+	] = {
+		'fill': iconHColor || hColor,
+	};
 	if ( ! removeText ) {
 		selectors[ ' .uagb-button__icon-position-after' ] = {
 			'margin-left': generateCSSUnit( getFallbackNumber( iconSpace, 'iconSpace', blockName ), 'px' ),
