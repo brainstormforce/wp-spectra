@@ -577,7 +577,7 @@ function styling( attributes, clientId, name ) {
 		' .uagb-forms-field-set:hover .uagb-forms-input select': {
 			'color': inputplaceholderHoverColor,
 		},
-		' #inspector-select-control-0': {
+		' .components-base-control__field:hover .components-select-control__input': {
 			'background-color': bgActiveColor,
 		},
 	};
