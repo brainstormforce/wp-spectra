@@ -184,6 +184,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'boolean',
 								'default' => false,
 							),
+							'paginationType'              => array(
+								'type'    => 'string',
+								'default' => 'ajax',
+							),
 						)
 					),
 					'render_callback' => array( $this, 'post_grid_callback' ),
@@ -1530,13 +1534,13 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 				// $_POST['attributes'] is sanitized in later stage.
 				$attr = isset( $_POST['attributes'] ) ? json_decode( stripslashes( $_POST['attributes'] ), true ) : array(); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-
+				
 				$post_attribute_array = $this->required_attribute_for_query( $attr );
-
+				
 				$query = UAGB_Helper::get_query( $post_attribute_array, 'grid' );
-
+				
 				$pagination_markup = $this->render_pagination( $query, $attr );
-
+				
 				wp_send_json_success( $pagination_markup );
 			}
 
@@ -1826,8 +1830,11 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				}
 			}
 
-			if ( isset( self::$settings['grid'] ) && ! empty( self::$settings['grid'] ) ) {
+			if ( is_array( self::$settings['grid'] ) && ! empty( self::$settings['grid'] ) ) {
 				foreach ( self::$settings['grid'] as $key => $value ) {
+					if ( 'ajax' !== $value['paginationType'] ) { 
+						return; // Early return when pagination type is not ajax.
+					}
 					?>
 
 					<script type="text/javascript" id="<?php echo esc_attr( $key ); ?>">

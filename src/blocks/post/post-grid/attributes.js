@@ -1275,6 +1275,10 @@ const attributes = {
 		type: 'string',
 		default: 'inherit',
 	},
+	paginationType: {
+		type: 'string',
+		default: 'ajax',
+	},
 	...btnBorderAttributes,
 	...overallBorderAttributes,
 };
