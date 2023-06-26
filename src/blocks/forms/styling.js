@@ -347,11 +347,12 @@ function styling( attributes, clientId, name ) {
 			'padding-bottom': generateCSSUnit( formPaddingBottom, formPaddingUnit ),
 			'padding-left': generateCSSUnit( formPaddingLeft, formPaddingUnit ),
 		},
-		' form.uagb-forms-main-form, form.uagb-forms-main-form .uagb-forms-input, form.uagb-forms-main-form textarea': {
+		' .uagb-forms-input': {
 			'text-align': overallAlignment,
 		},
 		' .uagb-forms-input-label': {
 			'display': displayLabels ? 'block' : 'none',
+			'text-align': overallAlignment,
 		},
 
 		' .uagb-forms-main-form .uagb-forms-field-set': {
@@ -404,6 +405,7 @@ function styling( attributes, clientId, name ) {
 			'font-weight': inputFontWeight,
 			'color': inputplaceholderColor,
 			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
+			'text-align': overallAlignment,
 		},
 		' .uagb-forms-main-form select': {
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
