@@ -168,6 +168,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ### x.x.x ###
 * Improvement: Post Grid - Added the option for normal pagination to disable Ajax-based pagination.
+* Fix: Info Box - Removed the line-height inherit CSS to resolve an issue with extra spacing in the editor.
 * Fix: Info Box - Resolved an issue in which the bottom margin for the title would not work as intended on the frontend.
 
 ### 2.6.8 - WEDNESDAY, 21st JUNE 2023 ###
