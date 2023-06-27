@@ -168,6 +168,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = x.x.x =
 * Fix: Forms - Resolved an issue in which the overall alignment would not work as intended when three forms are placed with different alignments.
+* Fix: Popup Builder - Resolved an edge case issue with Astra global page layout.
 * Fix: Testimonial - Resolved an inssue in which the arrows would overlap the content on mobile devices.
 
 = 2.6.8 - WEDNESDAY, 21st JUNE 2023 =

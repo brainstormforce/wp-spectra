@@ -186,7 +186,8 @@ class UAGB_Popup_Builder {
 				}
 			}
 		endwhile;
-		add_action( 'wp_footer', array( $this, 'generate_popup_shortcode' ) );
+		wp_reset_postdata();
+		add_action( 'wp_body_open', array( $this, 'generate_popup_shortcode' ) );
 	}
 
 	/**
