@@ -288,7 +288,7 @@ $m_selectors = array(
 		'margin-right'  => UAGB_Helper::get_css_value( $attr['prefixMarginRightMobile'], $attr['prefixMobileMarginUnit'] ),
 	),
 	'.wp-block-uagb-info-box .uagb-ifb-title'              => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headMobileSpace'] . $attr['headMobileMarginUnit'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headMobileSpace'], $attr['headMobileMarginUnit'] ),
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['headMarginTopMobile'], $attr['headMobileMarginUnit'] ),
 		'margin-left'   => UAGB_Helper::get_css_value( $attr['headMarginLeftMobile'], $attr['headMobileMarginUnit'] ),
 		'margin-right'  => UAGB_Helper::get_css_value( $attr['headMarginRightMobile'], $attr['headMobileMarginUnit'] ),
@@ -408,7 +408,7 @@ $t_selectors = array(
 		'margin-right'  => UAGB_Helper::get_css_value( $attr['prefixMarginRightTablet'], $attr['prefixTabletMarginUnit'] ),
 	),
 	'.wp-block-uagb-info-box .uagb-ifb-title'              => array(
-		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headTabletSpace'] . $attr['headTabletMarginUnit'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headTabletSpace'], $attr['headTabletMarginUnit'] ),
 		'margin-top'    => UAGB_Helper::get_css_value( $attr['headMarginTopTablet'], $attr['headTabletMarginUnit'] ),
 		'margin-left'   => UAGB_Helper::get_css_value( $attr['headMarginLeftTablet'], $attr['headTabletMarginUnit'] ),
 		'margin-right'  => UAGB_Helper::get_css_value( $attr['headMarginRightTablet'], $attr['headTabletMarginUnit'] ),
