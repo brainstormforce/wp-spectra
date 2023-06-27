@@ -1830,7 +1830,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				}
 			}
 
-			if ( is_array( self::$settings['grid'] ) && ! empty( self::$settings['grid'] ) ) {
+			if ( ! empty( self::$settings['grid'] ) && is_array( self::$settings['grid'] ) ) {
 				foreach ( self::$settings['grid'] as $key => $value ) {
 					if ( 'ajax' !== $value['paginationType'] ) { 
 						return; // Early return when pagination type is not ajax.
