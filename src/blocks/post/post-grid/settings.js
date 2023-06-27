@@ -606,14 +606,13 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Pagination', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<MultiButtonsControl
-					setAttributes={setAttributes}
-					label={__( 'Pagination Type', 'ultimate-addons-for-gutenberg' )}
-					data={{
+					setAttributes={ setAttributes }
+					label={ __( 'Pagination Type', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
 						value: paginationType,
 						label: 'paginationType',
-					}}
-					className="uagb-multi-button-alignment-control"
-					options={[
+					} }
+					options={ [
 						{
 							value: 'ajax',
 							label: __( 'Ajax', 'ultimate-addons-for-gutenberg' ),
@@ -622,8 +621,8 @@ const Settings = ( props ) => {
 							value: 'normal',
 							label: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
 						},
-					]}
-					showIcons={false}
+					] }
+					showIcons={ false }
 				/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
