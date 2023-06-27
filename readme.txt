@@ -168,8 +168,11 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = x.x.x =
 * Improvement: Post Grid - Added the option for normal pagination to disable Ajax-based pagination.
+* Fix: Forms - Resolved an issue in which the overall alignment would not work as intended when three forms are placed with different alignments.
 * Fix: Info Box - Removed the line-height inherit CSS to resolve an issue with extra spacing in the editor.
 * Fix: Info Box - Resolved an issue in which the bottom margin for the title would not work as intended on the frontend.
+* Fix: Popup Builder - Resolved an edge case issue with Astra global page layout.
+* Fix: Testimonial - Resolved an issue in which the arrows would overlap the content on mobile devices.
 
 = 2.6.8 - WEDNESDAY, 21st JUNE 2023 =
 * Fix: Buttons - Resolved an issue in which the background color would appear transparent after installing the WooCommerce plugin.
