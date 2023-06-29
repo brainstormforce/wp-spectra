@@ -276,26 +276,39 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'fill' => ! empty( $attr['iconHColor'] ) ? $attr['iconHColor'] : $attr['hColor'],
 			);
 			if ( ! $attr['removeText'] ) {
+				$icon_margin        = UAGB_Helper::get_css_value( self::get_fallback_number( $attr['iconSpace'], 'iconSpace', $block_name ), 'px' );
+				$tablet_icon_margin = UAGB_Helper::get_css_value( $attr['iconSpaceTablet'], 'px' );
+				$mobile_icon_margin = UAGB_Helper::get_css_value( $attr['iconSpaceMobile'], 'px' );
+
+				$right_side_margin = 'margin-right';
+				$left_side_margin  = 'margin-left';
+
+				if ( ! is_rtl() ) {
+					$right_side_margin = 'margin-left';
+					$left_side_margin  = 'margin-right';
+				}
+			  
 				$selectors[ $wrapper . ' .uagb-button__icon-position-after' ]   = array(
-					'margin-left' => UAGB_Helper::get_css_value( self::get_fallback_number( $attr['iconSpace'], 'iconSpace', $block_name ), 'px' ),
+					$right_side_margin => $icon_margin,
 				);
 				$t_selectors[ $wrapper . ' .uagb-button__icon-position-after' ] = array(
-					'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpaceTablet'], 'px' ),
+					$right_side_margin => $tablet_icon_margin,
 				);
 				$m_selectors[ $wrapper . ' .uagb-button__icon-position-after' ] = array(
-					'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpaceMobile'], 'px' ),
+					$right_side_margin => $mobile_icon_margin,
 				);
-
+			  
 				$selectors[ $wrapper . ' .uagb-button__icon-position-before' ]   = array(
-					'margin-right' => UAGB_Helper::get_css_value( self::get_fallback_number( $attr['iconSpace'], 'iconSpace', $block_name ), 'px' ),
+					$left_side_margin => $icon_margin,
 				);
 				$t_selectors[ $wrapper . ' .uagb-button__icon-position-before' ] = array(
-					'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpaceTablet'], 'px' ),
+					$left_side_margin => $tablet_icon_margin,
 				);
 				$m_selectors[ $wrapper . ' .uagb-button__icon-position-before' ] = array(
-					'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpaceMobile'], 'px' ),
+					$left_side_margin => $mobile_icon_margin,
 				);
 			}
+			  
 			return array(
 				'selectors'   => $selectors,
 				'm_selectors' => $m_selectors,
