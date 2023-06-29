@@ -237,8 +237,8 @@ if ( 'none' !== $attr['maskShape'] ) {
 }
 
 // tablet.
-$t_selectors['.wp-block-uagb-image--layout-default figure']           = $image_border_css_tablet;
-$t_selectors['.wp-block-uagb-image--layout-overlay figure']           = $image_border_css_tablet;
+$t_selectors['.wp-block-uagb-image--layout-default figure img']       = $image_border_css_tablet;
+$t_selectors['.wp-block-uagb-image--layout-overlay figure img']       = $image_border_css_tablet;
 $t_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
 	'width' => UAGB_Helper::get_css_value( $attr['widthTablet'], 'px' ),
 );
@@ -285,8 +285,8 @@ if ( $attr['customHeightSetTablet'] ) {
 }
 
 // mobile.
-$m_selectors['.wp-block-uagb-image--layout-default figure']           = $image_border_css_mobile;
-$m_selectors['.wp-block-uagb-image--layout-overlay figure']           = $image_border_css_mobile;
+$m_selectors['.wp-block-uagb-image--layout-default figure img']       = $image_border_css_mobile;
+$m_selectors['.wp-block-uagb-image--layout-overlay figure img']       = $image_border_css_mobile;
 $m_selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
 	'width' => UAGB_Helper::get_css_value( $attr['widthMobile'], 'px' ),
 );

@@ -403,8 +403,8 @@ export default function styling( attributes, clientId, name ) {
 		'height': generateCSSUnit( heightTablet, 'px' ),
 	};
 
-	tablet_selectors[ '.wp-block-uagb-image--layout-default figure' ] = imageBorderCSSTablet;
-	tablet_selectors[ '.wp-block-uagb-image--layout-overlay figure' ] = imageBorderCSSTablet;
+	tablet_selectors[ '.wp-block-uagb-image--layout-default figure img' ] = imageBorderCSSTablet;
+	tablet_selectors[ '.wp-block-uagb-image--layout-overlay figure img' ] = imageBorderCSSTablet;
 
 	tablet_selectors[ '.wp-block-uagb-image' ] = {
 		'margin-top': generateCSSUnit( imageTopMarginTablet, imageMarginUnitTablet ),
@@ -464,8 +464,8 @@ export default function styling( attributes, clientId, name ) {
 		'height': generateCSSUnit( heightMobile, 'px' ),
 	};
 
-	mobile_selectors[ '.wp-block-uagb-image--layout-default figure' ] = imageBorderCSSMobile;
-	mobile_selectors[ '.wp-block-uagb-image--layout-overlay figure' ] = imageBorderCSSMobile;
+	mobile_selectors[ '.wp-block-uagb-image--layout-default figure img' ] = imageBorderCSSMobile;
+	mobile_selectors[ '.wp-block-uagb-image--layout-overlay figure img' ] = imageBorderCSSMobile;
 
 	mobile_selectors[ '.wp-block-uagb-image' ] = {
 		'margin-top': generateCSSUnit( imageTopMarginMobile, imageMarginUnitMobile ),
