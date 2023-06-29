@@ -166,8 +166,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= x.x.x = 
+= x.x.x =
 * Fix: Content Timeline - Resolved an issue in which the user-defined icon would not appear on new timeline items in the editor.
+* Fix: Testimonial - Resolved equal height issue in frontend when 2 columns per slide is set.
 
 = 2.6.9 - TUESDAY, 27th June 2023 =
 * Improvement: Post Grid - Added the option for normal pagination to disable Ajax-based pagination.
