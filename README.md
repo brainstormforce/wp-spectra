@@ -1,5 +1,5 @@
 # Spectra - WordPress Gutenberg Blocks #
-**Contributors:** [brainstormforce](https://profiles.wordpress.org/brainstormforce/)  
+**Contributors:** [brainstormforce](https://profiles.wordpress.org/brainstormforce)  
 **Donate link:** https://www.paypal.me/BrainstormForce  
 **Tags:** gutenberg, blocks, gutenberg blocks, editor, block  
 **Requires at least:** 5.6  
@@ -165,6 +165,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 1. /assets/screenshots/1.png
 
 ## Changelog ##
+
+### x.x.x ###
+* Fix: Content Timeline - Resolved an issue in which the user-defined icon would not appear on new timeline items in the editor.
 
 ### 2.6.9 - TUESDAY, 27th June 2023 ###
 * Improvement: Post Grid - Added the option for normal pagination to disable Ajax-based pagination.
