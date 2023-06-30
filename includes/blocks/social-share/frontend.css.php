@@ -34,10 +34,10 @@ $selectors = array(
 	' .uagb-ss-repeater:hover span.uagb-ss__link svg' => array(
 		'fill' => $attr['iconHoverColor'],
 	),
-	' .uagb-ss-repeater.uagb-ss__wrapper'          => array(
+	' .uagb-ss-repeater.uagb-ss__wrapper'             => array(
 		'background' => $attr['iconBgColor'],
 	),
-	' .uagb-ss-repeater.uagb-ss__wrapper:hover'    => array(
+	' .uagb-ss-repeater.uagb-ss__wrapper:hover'       => array(
 		'background' => $attr['iconBgHoverColor'],
 	),
 );
