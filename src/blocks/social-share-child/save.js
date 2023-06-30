@@ -37,13 +37,12 @@ export default function save( props ) {
 
 	return (
 		<div className={ classnames( 'uagb-ss-repeater', 'uagb-ss__wrapper', className, `uagb-block-${ block_id }` ) }>
-			<a // eslint-disable-line jsx-a11y/anchor-is-valid
+			<span
 				className="uagb-ss__link"
 				data-href={ url }
-				rel="noopener noreferrer"
 			>
 				<span className="uagb-ss__source-wrap">{ imageIconHtml }</span>
-			</a>
+			</span>
 		</div>
 	);
 }

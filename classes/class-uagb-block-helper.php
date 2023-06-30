@@ -316,19 +316,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$wrapper = ( ! $childMigrate ) ? ' .uagb-ss-repeater-' . $id : '.uagb-ss-repeater';
 
-			$selectors[ $wrapper . ' a.uagb-ss__link' ]           = array(
+			$selectors[ $wrapper . ' span.uagb-ss__link' ]           = array(
 				'color' => $attr['icon_color'],
 			);
-			$selectors[ $wrapper . ' a.uagb-ss__link' ]           = array(
+			$selectors[ $wrapper . ' span.uagb-ss__link' ]           = array(
 				'color' => $attr['icon_color'],
 			);
-			$selectors[ $wrapper . ' a.uagb-ss__link svg' ]       = array(
+			$selectors[ $wrapper . ' span.uagb-ss__link svg' ]       = array(
 				'fill' => $attr['icon_color'],
 			);
-			$selectors[ $wrapper . ':hover a.uagb-ss__link' ]     = array(
+			$selectors[ $wrapper . ':hover span.uagb-ss__link' ]     = array(
 				'color' => $attr['icon_hover_color'],
 			);
-			$selectors[ $wrapper . ':hover a.uagb-ss__link svg' ] = array(
+			$selectors[ $wrapper . ':hover span.uagb-ss__link svg' ] = array(
 				'fill' => $attr['icon_hover_color'],
 			);
 

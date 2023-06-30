@@ -166,6 +166,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Fix: Social Share - Converted anchor element to span, and removed unwanted attributes from the link.
+
 ### 2.6.9 - TUESDAY, 27th June 2023 ###
 * Improvement: Post Grid - Added the option for normal pagination to disable Ajax-based pagination.
 * Fix: Info Box - Removed the line-height inherit CSS to resolve an issue with extra spacing in the editor.
