@@ -25,13 +25,25 @@ $selectors = array(
 	' .uagb-ss-repeater span.uagb-ss__link'           => array(
 		'color' => $attr['iconColor'],
 	),
+	' .uagb-ss-repeater a.uagb-ss__link'              => array( // Backward user case.
+		'color' => $attr['iconColor'],
+	),
 	' .uagb-ss-repeater span.uagb-ss__link svg'       => array(
+		'fill' => $attr['iconColor'],
+	),
+	' .uagb-ss-repeater a.uagb-ss__link svg'          => array( // Backward user case.
 		'fill' => $attr['iconColor'],
 	),
 	' .uagb-ss-repeater:hover span.uagb-ss__link'     => array(
 		'color' => $attr['iconHoverColor'],
 	),
+	' .uagb-ss-repeater:hover a.uagb-ss__link'        => array( // Backward user case.
+		'color' => $attr['iconHoverColor'],
+	),
 	' .uagb-ss-repeater:hover span.uagb-ss__link svg' => array(
+		'fill' => $attr['iconHoverColor'],
+	),
+	' .uagb-ss-repeater:hover a.uagb-ss__link svg'    => array( // Backward user case.
 		'fill' => $attr['iconHoverColor'],
 	),
 	' .uagb-ss-repeater.uagb-ss__wrapper'             => array(
