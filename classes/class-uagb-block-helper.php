@@ -319,31 +319,31 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors[ $wrapper . ' span.uagb-ss__link' ]           = array(
 				'color' => $attr['icon_color'],
 			);
-			$selectors[ $wrapper . ' a.uagb-ss__link' ]              = array( // Backward user case.
+			$selectors[ $wrapper . ' a.uagb-ss__link' ]              = array( // Backward user case
 				'color' => $attr['icon_color'],
 			);
 			$selectors[ $wrapper . ' span.uagb-ss__link' ]           = array(
 				'color' => $attr['icon_color'],
 			);
-			$selectors[ $wrapper . ' a.uagb-ss__link' ]              = array( // Backward user case.
+			$selectors[ $wrapper . ' a.uagb-ss__link' ]              = array( // Backward user case
 				'color' => $attr['icon_color'],
 			);
 			$selectors[ $wrapper . ' span.uagb-ss__link svg' ]       = array(
 				'fill' => $attr['icon_color'],
 			);
-			$selectors[ $wrapper . ' a.uagb-ss__link svg' ]          = array( // Backward user case.
+			$selectors[ $wrapper . ' a.uagb-ss__link svg' ]          = array( // Backward user case
 				'fill' => $attr['icon_color'],
 			);
 			$selectors[ $wrapper . ':hover span.uagb-ss__link' ]     = array(
 				'color' => $attr['icon_hover_color'],
 			);
-			$selectors[ $wrapper . ':hover a.uagb-ss__link' ]        = array( // Backward user case.
+			$selectors[ $wrapper . ':hover a.uagb-ss__link' ]        = array( // Backward user case
 				'color' => $attr['icon_hover_color'],
 			);
 			$selectors[ $wrapper . ':hover span.uagb-ss__link svg' ] = array(
 				'fill' => $attr['icon_hover_color'],
 			);
-			$selectors[ $wrapper . ':hover a.uagb-ss__link svg' ]    = array( // Backward user case.
+			$selectors[ $wrapper . ':hover a.uagb-ss__link svg' ]    = array( // Backward user case
 				'fill' => $attr['icon_hover_color'],
 			);
 
