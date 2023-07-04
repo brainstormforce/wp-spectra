@@ -24,6 +24,14 @@ import fontAwesomePollyfiller from './font-awesome-pollyfiller';
 
 __webpack_public_path__ = uagb_blocks_info.uagb_url + 'dist/';
 
+// Merge all icon chunks.
+uagb_blocks_info.uagb_svg_icons = {};
+if( uagb_blocks_info?.number_of_icon_chunks ){
+	for ( let iconChunk = 0; iconChunk < uagb_blocks_info.number_of_icon_chunks; iconChunk++ ) {
+		uagb_blocks_info.uagb_svg_icons = { ...uagb_blocks_info.uagb_svg_icons, ...window[ 'uagb_svg_icons_'+iconChunk ]}
+	}
+}
+
 // Add Font Awesome Polyfiller to localized variable.
 uagb_blocks_info.font_awesome_5_polyfill = fontAwesomePollyfiller;
 

@@ -95,14 +95,6 @@ class UAGB_Post_Assets {
 	public $script = '';
 
 	/**
-	 * Store Json variable
-	 *
-	 * @since 1.8.1
-	 * @var instance
-	 */
-	public $icon_json;
-
-	/**
 	 * Page Blocks Variable
 	 *
 	 * @since 1.6.0
