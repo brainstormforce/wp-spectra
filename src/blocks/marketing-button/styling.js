@@ -228,7 +228,7 @@ function styling( attributes, clientId, name ) {
 			'width': generateCSSUnit( iconFontSizeTablet, iconFontSizeType ),
 			'height': generateCSSUnit( iconFontSizeTablet, iconFontSizeType ),
 		},
-		' .uagb-marketing-btn__link': {
+		' .uagb-marketing-btn__link:not(.has-background)': {
 			'padding-left': generateCSSUnit( paddingBtnLeftTablet, tabletPaddingBtnUnit ),
 			'padding-right': generateCSSUnit( paddingBtnRightTablet, tabletPaddingBtnUnit ),
 			'padding-top': generateCSSUnit( paddingBtnTopTablet, tabletPaddingBtnUnit ),
@@ -255,7 +255,7 @@ function styling( attributes, clientId, name ) {
 			'width': generateCSSUnit( iconFontSizeMobile, iconFontSizeType ),
 			'height': generateCSSUnit( iconFontSizeMobile, iconFontSizeType ),
 		},
-		' .uagb-marketing-btn__link': {
+		' .uagb-marketing-btn__link:not(.has-background)': {
 			'padding-left': generateCSSUnit( paddingBtnLeftMobile, mobilePaddingBtnUnit ),
 			'padding-right': generateCSSUnit( paddingBtnRightMobile, mobilePaddingBtnUnit ),
 			'padding-top': generateCSSUnit( paddingBtnTopMobile, mobilePaddingBtnUnit ),
