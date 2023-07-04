@@ -167,6 +167,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Improvement: Table Of Contents - Added the ability to expand and collapse the entire box by clicking the top portion or the title of the box.
 * Fix: Forms - Resolved an issue in which the padding for input fields would not work as expected when the form style was set to underline.
 * Fix: Marketing Button - Resolved an issue wherein the border-width and padding would not work as intended in the editor's tablet & mobile view.
 * Fix: Content Timeline - Resolved an issue in which the user-defined icon would not appear on new timeline items in the editor.

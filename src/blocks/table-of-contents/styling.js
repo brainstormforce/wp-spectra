@@ -241,6 +241,10 @@ function styling( attributes, clientId, name ) {
 		selectors[ ' .uagb-toc__title' ][ 'justify-content' ] = 'space-between';
 	}
 
+	if ( customWidth && makeCollapsible ) {
+		selectors[ ' .uagb-toc__title' ].cursor = 'pointer';
+	}
+
 	if ( disableBullets ) {
 		selectors[ '.wp-block-uagb-table-of-contents ol.uagb-toc__list>li' ] = {
 			'list-style-type': 'none !important',
