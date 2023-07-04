@@ -227,22 +227,7 @@ function styling( attributes, clientId, name ) {
 		'.wp-block-uagb-container .block-editor-block-list__block': {
 			'color': textColor,
 		},
-		'.wp-block-uagb-container h1': {
-			'color': textColor,
-		},
-		'.wp-block-uagb-container h2': {
-			'color': textColor,
-		},
-		'.wp-block-uagb-container h3': {
-			'color': textColor,
-		},
-		'.wp-block-uagb-container h4': {
-			'color': textColor,
-		},
-		'.wp-block-uagb-container h5': {
-			'color': textColor,
-		},
-		'.wp-block-uagb-container h6': {
+		'.wp-block-uagb-container *': {
 			'color': textColor,
 		},
 		'.wp-block-uagb-container .block-editor-block-list__block a': {

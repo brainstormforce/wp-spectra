@@ -144,6 +144,10 @@ if ( $attr['customWidth'] && $attr['makeCollapsible'] ) {
 	$selectors[' .uagb-toc__wrap .uagb-toc__title']['justify-content'] = 'space-between';
 }
 
+if ( $attr['makeCollapsible'] ) {
+	$selectors[' .uagb-toc__wrap .uagb-toc__title']['cursor'] = 'pointer';
+}
+
 if ( $attr['disableBullets'] ) {
 	$selectors[' .uagb-toc__list']                 = array(
 		'list-style-type' => 'none !important',

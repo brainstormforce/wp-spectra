@@ -135,6 +135,12 @@ if ( 'image' === $attr['backgroundType'] ) {
 	);
 }
 
+if ( true === $attr['equalHeight'] ) {
+	$selectors['  .uagb-tm__content'] = array(
+		'height' => '-webkit-fill-available',
+	);
+}
+
 $selectors['  .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__content'] = array(
 	'background-image'    => ( isset( $attr['backgroundImage']['url'] ) && '' !== $attr['backgroundImage']['url'] ) ? 'url("' . $attr['backgroundImage']['url'] . '")' : null,
 	'background-position' => $position,

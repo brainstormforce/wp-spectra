@@ -36,7 +36,7 @@ const Render = ( props ) => {
 		if ( UAGBTableOfContents ) {
 			const baseSelector = classMigrate ? '.uagb-block-' : '#uagb-toc-';
 			const selector = baseSelector + props.clientId.substr( 0, 8 );
-			UAGBTableOfContents.init( selector );
+			UAGBTableOfContents.init( selector, attributes );
 		}
 	}, [] );
 

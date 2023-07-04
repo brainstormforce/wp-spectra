@@ -489,14 +489,18 @@ if ( 'underlined' === $attr['formStyle'] ) {
 	);
 	$selectors[' .uagb-forms-main-form  .uagb-forms-input']                                       = array_merge(
 		array(
-			'border-top'    => 0,
-			'border-left'   => 0,
-			'border-right'  => 0,
-			'outline'       => 0,
-			'border-radius' => 0,
-			'background'    => 'transparent',
-			'border-bottom' => UAGB_Helper::get_css_value( $attr['fieldBorderBottomWidth'], 'px' ) . ' ' . $attr['fieldBorderStyle'] . ' ' . $attr['fieldBorderColor'],
-			'color'         => $attr['inputColor'],
+			'border-top'     => 0,
+			'border-left'    => 0,
+			'border-right'   => 0,
+			'outline'        => 0,
+			'border-radius'  => 0,
+			'background'     => 'transparent',
+			'border-bottom'  => UAGB_Helper::get_css_value( $attr['fieldBorderBottomWidth'], 'px' ) . ' ' . $attr['fieldBorderStyle'] . ' ' . $attr['fieldBorderColor'],
+			'color'          => $attr['inputColor'],
+			'padding-top'    => UAGB_Helper::get_css_value( $paddingFieldTop, $attr['paddingFieldUnit'] ),
+			'padding-bottom' => UAGB_Helper::get_css_value( $paddingFieldBottom, $attr['paddingFieldUnit'] ),
+			'padding-left'   => UAGB_Helper::get_css_value( $paddingFieldLeft, $attr['paddingFieldUnit'] ),
+			'padding-right'  => UAGB_Helper::get_css_value( $paddingFieldRight, $attr['paddingFieldUnit'] ),
 		),
 		$input_overall_border
 	);
