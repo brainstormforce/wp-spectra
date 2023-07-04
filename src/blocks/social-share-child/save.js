@@ -40,6 +40,9 @@ export default function save( props ) {
 			<span
 				className="uagb-ss__link"
 				data-href={ url }
+				tabIndex={ 0 }
+				role="button"
+				aria-label={ type }
 			>
 				<span className="uagb-ss__source-wrap">{ imageIconHtml }</span>
 			</span>
