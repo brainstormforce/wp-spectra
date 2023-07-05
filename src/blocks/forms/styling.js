@@ -415,7 +415,7 @@ function styling( attributes, clientId, name ) {
 			'text-transform': inputTransform,
 			'text-decoration': inputDecoration,
 			'font-weight': inputFontWeight,
-			'color': inputplaceholderHoverColor,
+			'color': inputplaceholderColor,
 			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
 		},
 		' .uagb-forms-main-form .uagb-forms-input:focus': {
