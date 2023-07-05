@@ -167,6 +167,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Improvement: Forms - Added a full-width alignment option to the submit button.
 * Improvement: Table Of Contents - Added the ability to expand and collapse the entire box by clicking the top portion or the title of the box.
 * Fix: Buttons - Resolved an issue wherein the child responsive padding would not work as expected on the frontend.
 * Fix: Forms - Resolved an issue in which the padding for input fields would not work as expected when the form style was set to underline.
@@ -177,6 +178,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Buttons - Resolved an issue in which the space between the icon and text would not apply in RTL sites.
 * Fix: Image - Resolved an issue in which the tablet and mobile border css would not be applied as intended.
 * Fix: Social Share - Converted anchors to span tags and removed unwanted attributes from the social links.
+* Fix: Forms - Reworked the e-mail sending functionality to ensure that only one e-mail is sent when CC and BCC addresses are specified.
 
 = 2.6.9 - TUESDAY, 27th June 2023 =
 * Improvement: Post Grid - Added the option for normal pagination to disable Ajax-based pagination.

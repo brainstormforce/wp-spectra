@@ -155,9 +155,6 @@ $selectors = array(
 	' .uagb-forms-failed-message:hover'                    => array(
 		'border-color' => $attr['errorMsgBorderHColor'],
 	),
-	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap' => array(
-		'text-align' => $attr['buttonAlign'],
-	),
 	' .uagb-forms-main-form .uagb-forms-input:focus'       => array(
 		'outline'          => ' none !important',
 		'border-color'     => ! empty( $attr['fieldBorderHColor'] ) ? $attr['fieldBorderHColor'] : $attr['inputborderHoverColor'],
@@ -236,6 +233,17 @@ $selectors = array(
 		'color' => $attr['inputplaceholderHoverColor'],
 	),
 );
+
+if ( 'full' !== $attr['buttonAlign'] ) {
+	$selectors[' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap'] = array(
+		'text-align' => $attr['buttonAlign'],
+	);
+} else {
+	$selectors[' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap'] = array(
+		'display' => 'grid',
+	);
+}
+
 $t_selectors = array(
 	'.uagb-forms__outer-wrap'                        => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['formPaddingTopTab'], $attr['formPaddingUnitTab'] ),
@@ -259,9 +267,6 @@ $t_selectors = array(
 		$btn_border_Tablet
 	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link ' => $btn_border_Tablet,
-	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap' => array(
-		'text-align' => $attr['buttonAlignTablet'],
-	),
 	' .uagb-slider.round'                            => array(
 		// Important is added to override the usual border radius we set with a completely round one.
 		'border-radius' => UAGB_Helper::get_css_value( 20 + $toggle_width_size_number_tablet, 'px' ) . ' !important',
@@ -274,6 +279,17 @@ $t_selectors = array(
 		'padding-right'       => UAGB_Helper::get_css_value( $forms_padding_right_tablet_fallback, $attr['paddingFieldUnitTablet'] ) . ' !important',
 	),
 );
+
+if ( 'full' !== $attr['buttonAlignTablet'] ) {
+	$t_selectors[' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap'] = array(
+		'text-align' => $attr['buttonAlignTablet'],
+	);
+} else {
+	$t_selectors[' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap'] = array(
+		'display' => 'grid',
+	);
+}
+
 $m_selectors = array(
 	'.uagb-forms__outer-wrap'                        => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['formPaddingTopMob'], $attr['formPaddingUnitMob'] ),
@@ -297,9 +313,6 @@ $m_selectors = array(
 		$btn_border_Mobile
 	),
 	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link ' => $btn_border_Mobile,
-	' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap' => array(
-		'text-align' => $attr['buttonAlignMobile'],
-	),
 	' .uagb-slider.round'                            => array(
 		// Important is added to override the usual border radius we set with a completely round one.
 		'border-radius' => UAGB_Helper::get_css_value( 20 + $toggle_width_size_number_mobile, 'px' ) . ' !important',
@@ -313,6 +326,15 @@ $m_selectors = array(
 		'padding-right'       => UAGB_Helper::get_css_value( $forms_padding_right_mobile_fallback, $attr['paddingFieldUnitmobile'] ) . ' !important',
 	),
 );
+if ( 'full' !== $attr['buttonAlignMobile'] ) {
+	$m_selectors[' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap'] = array(
+		'text-align' => $attr['buttonAlignMobile'],
+	);
+} else {
+	$m_selectors[' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap'] = array(
+		'display' => 'grid',
+	);
+}
 // Checkbox Field css.
 $selectors[' .uagb-forms-checkbox-wrap input[type=checkbox] + label:before'] = array(
 	'background-color' => $attr['toggleColor'],
