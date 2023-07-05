@@ -34,7 +34,6 @@ export default function save( props ) {
 			/>
 		);
 	}
-
 	return (
 		<div className={ classnames( 'uagb-ss-repeater', 'uagb-ss__wrapper', className, `uagb-block-${ block_id }` ) }>
 			<span

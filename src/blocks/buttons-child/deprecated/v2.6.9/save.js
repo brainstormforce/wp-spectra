@@ -26,7 +26,7 @@ export default function save( props ) {
 		if ( ! removeText ) {
 			return (
 				<RichText.Content
-					value={ label }
+					value={ label.replace( /<(?!br\s*V?)[^>]+>/g, '' ) }
 					tagName="div"
 					className="uagb-button__link"
 				/>
