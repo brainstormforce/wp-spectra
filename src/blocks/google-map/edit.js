@@ -7,6 +7,7 @@ import Settings from './settings';
 import Render from './render';
 import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import { GoogleMapsWrapper } from './wrapper';
 
 const UAGBGoogleMap = ( props ) => {
 	const {
@@ -47,4 +48,5 @@ const UAGBGoogleMap = ( props ) => {
 
 export default compose(
 	AddStaticStyles,
+	GoogleMapsWrapper
 )( UAGBGoogleMap );
