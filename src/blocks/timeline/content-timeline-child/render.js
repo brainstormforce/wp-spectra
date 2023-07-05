@@ -1,8 +1,9 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
-import { useLayoutEffect, memo } from '@wordpress/element';
+import { useLayoutEffect, memo, useEffect } from '@wordpress/element';
 import styles from './editor.lazy.scss';
 import { format } from '@wordpress/date';
+import { select } from '@wordpress/data';
 
 import { __ } from '@wordpress/i18n';
 
@@ -30,16 +31,27 @@ const Render = ( props ) => {
 		attributes: {
 			block_id,
 			headingTag,
-			icon,
 			t_date,
 			displayPostDate,
 			dateFormat,
 			time_heading,
 			time_desc,
 			content,
+			icon,
 		},
-		deviceType
+		deviceType,
+		clientId,
 	} = props;
+
+	const parentClientIds = select( 'core/block-editor' ).getBlockParents( clientId );
+	const immediateParentClientId = parentClientIds.at( -1 );
+	const parentBlockAttributes = select( 'core/block-editor' ).getBlockAttributes( immediateParentClientId );
+
+	useEffect( () => {
+		if ( parentBlockAttributes.icon ) {
+			setAttributes( { icon: parentBlockAttributes.icon } );
+		}
+	}, [ parentBlockAttributes.icon ] );
 
 	const timelinAlignment =
 		'undefined' !== typeof attributes[ 'timelinAlignment' + deviceType ]
@@ -83,11 +95,7 @@ const Render = ( props ) => {
 			) }
 		>
 			<div className="uagb-timeline__marker uagb-timeline__out-view-icon">
-				{ renderSVG( icon, setAttributes ) ? (
-					renderSVG( icon, setAttributes )
-				) : (
-					<svg xmlns="" viewBox="0 0 256 512"></svg>
-				) }
+				{ renderSVG( icon, setAttributes ) }
 			</div>
 			<div className={ classnames( props.attributes.dayalign_class, 'uagb-timeline__events-inner-new' ) }>
 				<div className="uagb-timeline__events-inner--content">

@@ -40,3 +40,6 @@ auth.json
 
 # VScode
 .vscode
+
+# Artifact
+artifact/

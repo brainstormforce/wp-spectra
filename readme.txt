@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 5.6
 Tested up to: 6.2.2
-Stable tag: 2.6.8
+Stable tag: 2.6.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -167,8 +167,27 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Improvement: Forms - Added a full-width alignment option to the submit button.
+* Improvement: Table Of Contents - Added the ability to expand and collapse the entire box by clicking the top portion or the title of the box.
+* Fix: Buttons - Resolved an issue wherein the child responsive padding would not work as expected on the frontend.
+* Fix: Forms - Resolved an issue in which the padding for input fields would not work as expected when the form style was set to underline.
+* Fix: Marketing Button - Resolved an issue wherein the border-width and padding would not work as intended in the editor's tablet & mobile view.
+* Fix: Container - Resolved an issue wherein the text color of the Container was at a higher priority than those set for headings of blocks inside it.
+* Fix: Content Timeline - Resolved an issue in which the user-defined icon would not appear on new timeline items in the editor.
+* Fix: Testimonial - Resolved equal height issue in frontend when 2 columns per slide is set.
+* Fix: Buttons - Resolved an issue in which the space between the icon and text would not apply in RTL sites.
+* Fix: Image - Resolved an issue in which the tablet and mobile border css would not be applied as intended.
+* Fix: Forms - Reworked the e-mail sending functionality to ensure that only one e-mail is sent when CC and BCC addresses are specified.
 * Fix: Forms - Resolved an issue in which phone country-code input color would not work as intended on the backend.
 * Fix: Forms - Resolved an issue in which phone country-code select-control background active color would not work as intended on the backend.
+
+= 2.6.9 - TUESDAY, 27th June 2023 =
+* Improvement: Post Grid - Added the option for normal pagination to disable Ajax-based pagination.
+* Fix: Info Box - Removed the line-height inherit CSS to resolve an issue with extra spacing in the editor.
+* Fix: Info Box - Resolved an issue in which the bottom margin for the title would not work as intended on the frontend.
+* Fix: Forms - Resolved an issue in which the overall alignment would not work as intended when three forms are placed with different alignments.
+* Fix: Popup Builder - Resolved an edge case issue with Astra global page layout.
+* Fix: Testimonial - Resolved an issue in which the arrows would overlap the content on mobile devices.
 
 = 2.6.8 - WEDNESDAY, 21st JUNE 2023 =
 * Fix: Buttons - Resolved an issue in which the background color would appear transparent after installing the WooCommerce plugin.

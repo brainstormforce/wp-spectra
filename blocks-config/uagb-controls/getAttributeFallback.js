@@ -6,12 +6,14 @@ import { applyFilters } from '@wordpress/hooks';
 // key          - The key of the default attribute for that setting.
 // blockName    - The name of the block.
 
-const allBlocksAttributes = applyFilters( 'uagb.blocksAttributes', blocksAttributes );
+const getAttributeFallback = ( currentValue, key, blockName ) => {
+	const allBlocksAttributes = applyFilters( 'uagb.blocksAttributes', blocksAttributes );
+	return currentValue ? currentValue : allBlocksAttributes[ blockName ][ key ].default;
+}
 
-const getAttributeFallback = ( currentValue, key, blockName ) =>
-	currentValue ? currentValue : allBlocksAttributes[ blockName ][ key ].default;
-
-export const getFallbackNumber = ( currentValue, key, blockName ) =>
-	isNaN( currentValue ) ? allBlocksAttributes[ blockName ][ key ].default : currentValue;
+export const getFallbackNumber = ( currentValue, key, blockName ) => {
+	const allBlocksAttributes = applyFilters( 'uagb.blocksAttributes', blocksAttributes );
+	return isNaN( currentValue ) ? allBlocksAttributes[ blockName ][ key ].default : currentValue;
+}
 
 export default getAttributeFallback;

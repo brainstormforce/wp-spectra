@@ -347,11 +347,12 @@ function styling( attributes, clientId, name ) {
 			'padding-bottom': generateCSSUnit( formPaddingBottom, formPaddingUnit ),
 			'padding-left': generateCSSUnit( formPaddingLeft, formPaddingUnit ),
 		},
-		' form.uagb-forms-main-form, form.uagb-forms-main-form .uagb-forms-input, form.uagb-forms-main-form textarea': {
+		' .uagb-forms-input': {
 			'text-align': overallAlignment,
 		},
 		' .uagb-forms-input-label': {
 			'display': displayLabels ? 'block' : 'none',
+			'text-align': overallAlignment,
 		},
 
 		' .uagb-forms-main-form .uagb-forms-field-set': {
@@ -404,6 +405,7 @@ function styling( attributes, clientId, name ) {
 			'font-weight': inputFontWeight,
 			'color': inputplaceholderColor,
 			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
+			'text-align': overallAlignment,
 		},
 		' .uagb-forms-main-form select': {
 			'font-size': generateCSSUnit( inputFontSize, inputFontSizeType ),
@@ -434,9 +436,6 @@ function styling( attributes, clientId, name ) {
 				paddingFieldBottom,
 				paddingFieldUnit
 			) })`,
-		},
-		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {
-			'text-align': buttonAlign,
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button': {
 			'color': submitColor,
@@ -585,6 +584,18 @@ function styling( attributes, clientId, name ) {
 		},
 	};
 
+	if( buttonAlign !== 'full' ) {
+		selectors[ ' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap'] = {
+			'text-align': buttonAlign,
+		}
+	}
+	else {
+		selectors[ ' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap'] = {
+			'display': 'grid', 
+		}
+	};
+
+
 	tabletSelectors = {
 		'.uagb-forms__outer-wrap': {
 			'padding-top': generateCSSUnit( formPaddingTopTab, formPaddingUnitTab ),
@@ -665,10 +676,18 @@ function styling( attributes, clientId, name ) {
 			'line-height': generateCSSUnit( inputLineHeightTablet, inputLineHeightType ),
 			'letter-spacing': generateCSSUnit( inputLetterSpacingTablet, inputLetterSpacingType ),
 		},
-		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {
-			'text-align': buttonAlignTablet,
-		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:not(.has-background)': submitBorderTablet,
+	};
+
+	if( buttonAlignTablet !== 'full' ) {
+		tabletSelectors[ ' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap'] = {
+			'text-align': buttonAlignTablet,
+		}
+	}
+	else {
+		tabletSelectors[ ' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap'] = {
+			'display': 'grid', 
+		}
 	};
 
 	mobileSelectors = {
@@ -752,10 +771,18 @@ function styling( attributes, clientId, name ) {
 			'line-height': generateCSSUnit( inputLineHeightMobile, inputLineHeightType ),
 			'letter-spacing': generateCSSUnit( inputLetterSpacingMobile, inputLetterSpacingType ),
 		},
-		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap': {
-			'text-align': buttonAlignMobile,
-		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:not(.has-background)': submitBorderMobile,
+	};
+
+	if( buttonAlignMobile !== 'full' ) {
+		mobileSelectors[ ' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap'] = {
+			'text-align': buttonAlignMobile,
+		}
+	}
+	else {
+		mobileSelectors[ ' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap'] = {
+			'display': 'grid', 
+		}
 	};
 
 	if ( 'color' === submitBgType ) {
@@ -904,14 +931,14 @@ function styling( attributes, clientId, name ) {
 			'border-left-width': 0,
 			'box-shadow': 'unset',
 		};
-		tabletSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
+		tabletSelectors[ '.uagb-forms__outer-wrap .uagb-forms-main-form  .uagb-forms-input' ] = {
 			'padding-top': generateCSSUnit( paddingFieldTopTablet, paddingFieldUnitTablet ),
 			'padding-bottom': generateCSSUnit( paddingFieldBottomTablet, paddingFieldUnitTablet ),
 			'padding-left': generateCSSUnit( paddingFieldLeftTablet, paddingFieldUnitTablet ),
 			'padding-right': generateCSSUnit( paddingFieldRightTablet, paddingFieldUnitTablet ),
 			...inputBorderTablet,
 		};
-		mobileSelectors[ ' .uagb-forms-main-form  .uagb-forms-input' ] = {
+		mobileSelectors[ '.uagb-forms__outer-wrap .uagb-forms-main-form  .uagb-forms-input' ] = {
 			'padding-top': generateCSSUnit( paddingFieldTopMobile, paddingFieldUnitmobile ),
 			'padding-bottom': generateCSSUnit( paddingFieldBottomMobile, paddingFieldUnitmobile ),
 			'padding-left': generateCSSUnit( paddingFieldLeftMobile, paddingFieldUnitmobile ),

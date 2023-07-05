@@ -16,7 +16,7 @@ UAGBTableOfContents = {
 		}
 		return document_element;
 	},
-	init( id ) {
+	init( id, attr ) {
 		const document_element = UAGBTableOfContents._getDocumentElement();
 		if ( document.querySelector( '.uagb-toc__list' ) !== null ) {
 			document.querySelector( '.uagb-toc__list' ).addEventListener(
@@ -31,6 +31,7 @@ UAGBTableOfContents = {
 			);
 		}
 
+		if( attr?.makeCollapsible ){
 		const elementToOpen = document_element.querySelector( id );
 
 		/* We need the following fail-safe click listener cause an usual click-listener
@@ -42,8 +43,8 @@ UAGBTableOfContents = {
 			const element = event.target;
 
 			// These two conditions help us target the required element (collapsible icon beside TOC heading).
-			const condition1 = element?.tagName === 'path' || element?.tagName === 'svg'; // Check if the clicked element type is either path or SVG.
-			const condition2 = element?.parentNode?.className === 'uagb-toc__title'; // Check if the clicked element's parent has the required class.
+			const condition1 = element?.tagName === 'path' || element?.tagName === 'svg' || element?.tagName === 'DIV'; // Check if the clicked element type is either path or SVG or Title DIV.
+			const condition2 = element?.className === 'uagb-toc__title' || element?.parentNode?.className === 'uagb-toc__title' || element?.parentNode?.tagName === 'svg'; // Check if the clicked element's parent has the required class.
 
 			if ( condition1 && condition2 ) {
 				const $root = element?.closest( `.wp-block-uagb-table-of-contents${id}` );
@@ -67,6 +68,7 @@ UAGBTableOfContents = {
 				}
 			}
 		}
+	}
 
 		document.addEventListener(
 			'scroll',
@@ -342,6 +344,6 @@ UAGBTableOfContents = {
 		}
 		UAGBTableOfContents._showHideScroll(); // eslint-disable-line no-undef
 		UAGBTableOfContents.hyperLinks(); // eslint-disable-line no-undef
-		UAGBTableOfContents.init( id ); // eslint-disable-line no-undef
+		UAGBTableOfContents.init( id, attr ); // eslint-disable-line no-undef
 	},
 };
