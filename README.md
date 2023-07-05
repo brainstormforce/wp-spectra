@@ -176,6 +176,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Testimonial - Resolved equal height issue in frontend when 2 columns per slide is set.
 * Fix: Buttons - Resolved an issue in which the space between the icon and text would not apply in RTL sites.
 * Fix: Image - Resolved an issue in which the tablet and mobile border css would not be applied as intended.
+* Fix: Forms - Reworked the e-mail sending functionality to ensure that only one e-mail is sent when CC and BCC addresses are specified.
 
 ### 2.6.9 - TUESDAY, 27th June 2023 ###
 * Improvement: Post Grid - Added the option for normal pagination to disable Ajax-based pagination.
