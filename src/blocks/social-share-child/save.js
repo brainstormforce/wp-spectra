@@ -35,7 +35,7 @@ export default function save( props ) {
 		);
 	}
 	const indexOfType = Object.keys( links ).indexOf( type );
-	
+	console.log(indexOfType)
 	return (
 		<div className={ classnames( 'uagb-ss-repeater', 'uagb-ss__wrapper', className, `uagb-block-${ block_id }` ) }>
 			<span
