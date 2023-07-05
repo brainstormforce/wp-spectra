@@ -251,6 +251,11 @@ const Settings = ( props ) => {
 						icon: <Icon icon={ renderSVG( 'fa fa-align-right' ) } />,
 						tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
 					},
+					{
+						value: 'full',
+						icon: <Icon icon={ renderSVG( 'fa fa-align-justify' ) } />,
+						tooltip: __( 'Full Width', 'ultimate-addons-for-gutenberg' ),
+					},
 				] }
 				showIcons={ true }
 				responsive={ true }
