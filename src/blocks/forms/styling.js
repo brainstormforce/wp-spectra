@@ -415,7 +415,7 @@ function styling( attributes, clientId, name ) {
 			'text-transform': inputTransform,
 			'text-decoration': inputDecoration,
 			'font-weight': inputFontWeight,
-			'color': inputColor,
+			'color': inputplaceholderHoverColor,
 			'letter-spacing': generateCSSUnit( inputLetterSpacing, inputLetterSpacingType ),
 		},
 		' .uagb-forms-main-form .uagb-forms-input:focus': {
@@ -576,10 +576,10 @@ function styling( attributes, clientId, name ) {
 		' .uagb-forms-field-set:hover .uagb-forms-input::placeholder': {
 			'color': inputplaceholderHoverColor,
 		},
-		' .uagb-forms-field-set:hover .uagb-forms-input select': {
-			'color': inputplaceholderHoverColor,
+		' .uagb-forms-field-set .uagb-forms-input select': {
+			'color': inputColor,
 		},
-		' .components-base-control__field:hover .components-select-control__input': {
+		' .uagb-forms-phone-flex:hover .components-base-control__field .components-select-control__input': {
 			'background-color': bgHoverColor,
 		},
 	};
