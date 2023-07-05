@@ -421,6 +421,9 @@ function styling( attributes, clientId, name ) {
 			'border': '2px solid ' + fieldBorderHColor,
 			'background-color': `${ bgActiveColor } !important`,
 		},
+		' .uagb-forms-main-form .components-select-control__input:focus':{
+			'background-color': `${ bgActiveColor } !important`,
+		},
 		' .uagb-forms-main-form .uagb-forms-input:focus::placeholder': {
 			'color': `${ inputplaceholderActiveColor } !important`,
 		},
@@ -578,7 +581,7 @@ function styling( attributes, clientId, name ) {
 			'color': inputplaceholderHoverColor,
 		},
 		' .components-base-control__field:hover .components-select-control__input': {
-			'background-color': bgActiveColor,
+			'background-color': bgHoverColor,
 		},
 	};
 
@@ -666,9 +669,6 @@ function styling( attributes, clientId, name ) {
 			'text-align': buttonAlignTablet,
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:not(.has-background)': submitBorderTablet,
-		' #inspector-select-control-0': {
-			'background-color': bgActiveColor,
-		},
 	};
 
 	mobileSelectors = {
@@ -756,9 +756,6 @@ function styling( attributes, clientId, name ) {
 			'text-align': buttonAlignMobile,
 		},
 		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:not(.has-background)': submitBorderMobile,
-		' #inspector-select-control-0': {
-			'background-color': bgActiveColor,
-		},
 	};
 
 	if ( 'color' === submitBgType ) {
