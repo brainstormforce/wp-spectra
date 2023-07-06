@@ -179,6 +179,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Buttons - Resolved an issue in which the space between the icon and text would not apply in RTL sites.
 * Fix: Image - Resolved an issue in which the tablet and mobile border css would not be applied as intended.
 * Fix: Forms - Reworked the e-mail sending functionality to ensure that only one e-mail is sent when CC and BCC addresses are specified.
+* Fix: Table Of Contents - Resolved an issue in which the collapsible option would not work as intended in Astra's Custom Layouts.
 * Fix: Icon - Resolved an issue in which the icon's background and border color on hover would not work as intended.
 
 = 2.6.9 - TUESDAY, 27th June 2023 =
