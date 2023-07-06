@@ -178,8 +178,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Buttons - Resolved an issue in which the space between the icon and text would not apply in RTL sites.
 * Fix: Image - Resolved an issue in which the tablet and mobile border css would not be applied as intended.
 * Fix: Forms - Reworked the e-mail sending functionality to ensure that only one e-mail is sent when CC and BCC addresses are specified.
-* Fix: Forms - Resolved an issue in which phone country-code input color would not work as intended on the backend.
-* Fix: Forms - Resolved an issue in which phone country-code select-control background active color would not work as intended on the backend.
+* Fix: Forms - Resolved an issue in which some phone country-code colors would not work as intended in the editor.
 
 ### 2.6.9 - TUESDAY, 27th June 2023 ###
 * Improvement: Post Grid - Added the option for normal pagination to disable Ajax-based pagination.
