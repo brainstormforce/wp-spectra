@@ -108,6 +108,10 @@ const attributes = {
 		type: 'boolean',
 		default: true,
 	},
+	willPushContent: {
+		type: 'boolean',
+		default: true,
+	},
 
 	// ------------------------- CLOSE SETTINGS.
 
