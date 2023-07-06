@@ -96,7 +96,7 @@ class UAGB_Init_Blocks {
 
 		$labels = array(
 			'name'               => _x( 'Popup Builder', 'plural', 'ultimate-addons-for-gutenberg' ),
-			'singular_name'      => _x( 'Popup', 'singular', 'ultimate-addons-for-gutenberg' ),
+			'singular_name'      => _x( 'Spectra Popup', 'singular', 'ultimate-addons-for-gutenberg' ),
 			'view_item'          => __( 'View Popup', 'ultimate-addons-for-gutenberg' ),
 			'add_new_item'       => __( 'Create New Popup', 'ultimate-addons-for-gutenberg' ),
 			'add_new'            => __( 'Create Popup', 'ultimate-addons-for-gutenberg' ),
@@ -109,17 +109,18 @@ class UAGB_Init_Blocks {
 		);
 
 		$type_args = array(
-			'supports'      => $supports,
-			'labels'        => $labels,
-			'public'        => false,
-			'show_in_menu'  => false,
-			'show_ui'       => true,
-			'show_in_rest'  => true,
-			'template_lock' => 'all',
-			'template'      => array(
+			'supports'          => $supports,
+			'labels'            => $labels,
+			'public'            => false,
+			'show_in_menu'      => false,
+			'show_in_admin_bar' => true,
+			'show_ui'           => true,
+			'show_in_rest'      => true,
+			'template_lock'     => 'all',
+			'template'          => array(
 				array( 'uagb/popup-builder', array() ),
 			),
-			'rewrite'       => array(
+			'rewrite'           => array(
 				'slug'       => 'spectra-popup',
 				'with-front' => false,
 				'pages'      => false,
