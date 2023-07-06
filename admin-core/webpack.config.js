@@ -3,15 +3,9 @@ const path = require( 'path' );
 const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 const newPath = path.join( __dirname, '../' );
 
-// Use the defaultConfig but replace the entry and output properties
-module.exports = {
+// Use the defaultConfig but add the common aliases, modules and plugins.
+const commonConfig = {
 	...defaultConfig,
-	entry: {
-		'dashboard-app': path.resolve(
-			__dirname,
-			'assets/src/DashboardApp.js'
-		),
-	},
 	resolve: {
 		alias: {
 			...defaultConfig.resolve.alias,
@@ -47,10 +41,6 @@ module.exports = {
 			),
 		},
 	},
-	output: {
-		filename: '[name].js',
-		path: path.resolve( __dirname, 'assets/build' ),
-	},
 	module: {
 		rules: [
 			...defaultConfig.module.rules,
@@ -63,7 +53,6 @@ module.exports = {
 		]
 	},
 	plugins: [
-		// ...defaultConfig.plugins,
 		...defaultConfig.plugins.filter( function ( plugin ) {
 			if ( plugin.constructor.name === 'LiveReloadPlugin' ) {
 				return false;
@@ -73,3 +62,25 @@ module.exports = {
 		} ),
 	],
 };
+
+// Now using the commonConfig that inherits the defaultConfig, replace the entry and output properties for each app.
+
+// Config for the Spectra Dashboard App.
+const dashboardConfig = Object.assign( {}, commonConfig, {
+	name: 'dashboard',
+	entry: {
+		'dashboard-app': path.resolve(
+			__dirname,
+			'assets/src/DashboardApp.js'
+		),
+	},
+	output: {
+		filename: '[name].js',
+		path: path.resolve( __dirname, 'assets/build' ),
+	},
+} );
+
+// Export all the configs.
+module.exports = [
+	dashboardConfig,
+];
