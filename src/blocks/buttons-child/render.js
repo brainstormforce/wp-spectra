@@ -44,6 +44,7 @@ const Render = ( props ) => {
 		}
 		return null;
 	};
+	const btnAllowedFormats = uagb_blocks_info.spectra_pro_status ? ['uagb/dynamic-content'] : [];
 	const btnText = () => {
 		if ( ! removeText ) {
 			return (
@@ -57,7 +58,7 @@ const Render = ( props ) => {
 					className="uagb-button__link"
 					rel={ noFollow ? 'nofollow noopener' : 'follow noopener' }
 					keepPlaceholderOnFocus
-					allowedFormats={ ['uagb/dynamic-content'] } // Removed the WP default link/bold/italic from the toolbar for button.
+					allowedFormats={ btnAllowedFormats } // Removed the WP default link/bold/italic from the toolbar for button.
 				/>
 			);
 		}
