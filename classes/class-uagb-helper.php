@@ -123,7 +123,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * As our svg icon is too long array so we will divide that into number of icon chunks.
 		 *
 		 * @var int
-		 * @since x.x.x
+		 * @since 2.7.0
 		 */
 		public static $number_of_icon_chunks = 4;
 
@@ -131,7 +131,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * We have icon list in chunks in this variable we will merge all insides array into one single array.
 		 *
 		 * @var array
-		 * @since x.x.x
+		 * @since 2.7.0
 		 */
 		public static $icon_array_merged = array();
 

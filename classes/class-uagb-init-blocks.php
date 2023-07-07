@@ -561,7 +561,7 @@ class UAGB_Init_Blocks {
 	 * Localize SVG icon scripts in chunks.
 	 * Ex - if 1800 icons available so we will localize 4 variables for it.
 	 *
-	 * @since x.x.x
+	 * @since 2.7.0
 	 * @return void
 	 */
 	public function add_svg_icon_assets() {

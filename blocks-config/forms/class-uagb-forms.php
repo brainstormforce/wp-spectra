@@ -344,7 +344,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		 * Validate emails from $to, $cc and $bcc.
 		 *
 		 * @param array $emails array.
-		 * @since x.x.x
+		 * @since 2.7.0
 		 * @return array
 		 */
 		public function get_valid_emails( $emails ) {

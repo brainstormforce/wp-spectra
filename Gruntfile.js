@@ -1,5 +1,5 @@
 /**
- * As we have for example 1800 icons list so we will not put all icons in same file we will split it in 4 php files. 
+ * As we have for example 1800 icons list so we will not put all icons in same file we will split it in 4 php files.
  * Now we will have 4 php file for icons.
  */
 const NUMBER_OF_ICON_CHUNKS = 4;
@@ -146,7 +146,7 @@ module.exports = function ( grunt ) {
 				overwrite: true,
 				replacements: [
 					{
-						from: 'x.x.x',
+						from: /x.x.x/ig,
 						to: '<%=pkg.version %>',
 					},
 				],
@@ -376,7 +376,7 @@ module.exports = function ( grunt ) {
 						const sortArray = filterFontVariant.sort( ( a, b ) => parseInt( a ) - parseInt( b ) );
 						fontVariant = [ 'Default', ...sortArray ];
                     }
-					
+
 					const fontData = {
 						v: font.variants || [],
 						subset: font.subsets || [],
@@ -431,7 +431,7 @@ module.exports = function ( grunt ) {
 
 	} );
 
-	
+
 	function createChunksOfObject( obj, chunksSize = 3 ) {
 		const entries = Object.entries( obj );
 		const chunkSize = Math.ceil( entries.length / chunksSize ); // Calculate the chunk size for equal division
@@ -455,7 +455,7 @@ module.exports = function ( grunt ) {
 		let getDownloadedIcons = grunt.file.readJSON( './bin/icons-configure/spectra-icons-v6.json' );
 		const fs = require( 'fs' );
 		// We have take initially icons from 'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/metadata/icons.json' but we have downloaded and keep this in bin folder due to back word compatibility
-		
+
 		// eslint-disable-next-line array-callback-return
 		Object.keys( getDownloadedIcons ).map( ( key ) => {
 			const iconObj = getDownloadedIcons[key];
@@ -467,26 +467,26 @@ module.exports = function ( grunt ) {
 
 			// Remove unwanted properties from icon list only we will keep in icon list are width height and path.
 			if( iconObj.svg?.solid ){
-				const keepSolidRequiredData = { ...{ 
-					width : iconObj.svg.solid.width, 
+				const keepSolidRequiredData = { ...{
+					width : iconObj.svg.solid.width,
 					height : iconObj.svg.solid.height,
 					path : iconObj.svg.solid.path
 				}};
 				iconObj.svg.solid = keepSolidRequiredData;
 			}
-			
+
 			if( iconObj.svg?.brands  ){
-				const keepBrandsRequiredData = { ...{ 
-					width : iconObj.svg.brands.width, 
+				const keepBrandsRequiredData = { ...{
+					width : iconObj.svg.brands.width,
 					height : iconObj.svg.brands.height,
 					path : iconObj.svg.brands.path
 				}};
 				iconObj.svg.brands = keepBrandsRequiredData;
 			}
-			
+
 			if( iconObj.svg?.regular  ){
-				const keepBrandsRequiredData = { ...{ 
-					width : iconObj.svg.regular.width, 
+				const keepBrandsRequiredData = { ...{
+					width : iconObj.svg.regular.width,
 					height : iconObj.svg.regular.height,
 					path : iconObj.svg.regular.path
 				}};
