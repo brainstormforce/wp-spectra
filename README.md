@@ -182,6 +182,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Buttons - Resolved an issue in which the text color would not work as intended in FSE themes.
 * Fix: Table Of Contents - Resolved an issue in which the collapsible option would not work as intended in Astra's Custom Layouts.
 * Fix: Icon - Resolved an issue in which the icon's background and border color on hover would not work as intended.
+* Fix: Call To Action - Resolved an issue where without inherit from theme for buttons mobile and tablet selectors styles are not working as  intended in frontend.
 
 ### 2.6.9 - TUESDAY, 27th June 2023 ###
 * Improvement: Post Grid - Added the option for normal pagination to disable Ajax-based pagination.
