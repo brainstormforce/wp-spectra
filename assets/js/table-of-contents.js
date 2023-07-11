@@ -3,7 +3,7 @@ let scrollOffset = 30;
 let scrolltoTop = false;
 let scrollElement = null;
 
-// eslint-disable-next-line no-undef
+
 UAGBTableOfContents = {
 	_getDocumentElement() {
 		let document_element = document;
@@ -21,13 +21,13 @@ UAGBTableOfContents = {
 		if ( document.querySelector( '.uagb-toc__list' ) !== null ) {
 			document.querySelector( '.uagb-toc__list' ).addEventListener(
 				'click',
-				UAGBTableOfContents._scroll // eslint-disable-line no-undef
+				UAGBTableOfContents._scroll
 			);
 		}
 		if ( document.querySelector( '.uagb-toc__scroll-top' ) !== null ) {
 			document.querySelector( '.uagb-toc__scroll-top' ).addEventListener(
 				'click',
-				UAGBTableOfContents._scrollTop // eslint-disable-line no-undef
+				UAGBTableOfContents._scrollTop
 			);
 		}
 
@@ -72,7 +72,7 @@ UAGBTableOfContents = {
 
 		document.addEventListener(
 			'scroll',
-			UAGBTableOfContents._showHideScroll // eslint-disable-line no-undef
+			UAGBTableOfContents._showHideScroll
 		);
 	},
 
@@ -149,7 +149,6 @@ UAGBTableOfContents = {
 		const offset = document.querySelector( hash ).offsetTop;
 
 		if ( null !== offset ) {
-			// eslint-disable-next-line no-undef
 			scroll( {
 				top: offset - scrollOffset,
 				behavior: 'smooth',
@@ -184,7 +183,7 @@ UAGBTableOfContents = {
 
 		let hash = e.target.getAttribute( 'href' );
 		if ( hash ) {
-			const node = document.querySelector( '.wp-block-uagb-table-of-contents' ); // eslint-disable-line no-undef
+			const node = document.querySelector( '.wp-block-uagb-table-of-contents' );
 
 			scrollData = node.getAttribute( 'data-scroll' );
 			scrollOffset = node.getAttribute( 'data-offset' );
@@ -197,14 +196,12 @@ UAGBTableOfContents = {
 			}
 			if ( scrollData ) {
 				if ( null !== offset ) {
-					// eslint-disable-next-line no-undef
 					scroll( {
 						top: offset - scrollOffset,
 						behavior: 'smooth',
 					} );
 				}
 			} else {
-				// eslint-disable-next-line no-undef
 				scroll( {
 					top: offset,
 					behavior: 'auto',
@@ -342,8 +339,8 @@ UAGBTableOfContents = {
 		if ( scrollElement !== null ) {
 			scrollElement.classList.add( 'uagb-toc__show-scroll' );
 		}
-		UAGBTableOfContents._showHideScroll(); // eslint-disable-line no-undef
-		UAGBTableOfContents.hyperLinks(); // eslint-disable-line no-undef
-		UAGBTableOfContents.init( id, attr ); // eslint-disable-line no-undef
+		UAGBTableOfContents._showHideScroll();
+		UAGBTableOfContents.hyperLinks();
+		UAGBTableOfContents.init( id, attr );
 	},
 };

@@ -168,8 +168,10 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ### 2.7.0 - MONDAY, 10th July 2023 ###
 * Feature: Popup Builder - Added a new `Push Content` feature for info bars.
+* Improvement: Performance - Significantly reduced the plugin zip size by over 1 MB after optimizing the Font Awesome v6 assets.
 * Improvement: Forms - Added a full-width alignment option to the submit button.
 * Improvement: Table Of Contents - Added the ability to expand and collapse the entire box by clicking the top portion or the title of the box.
+* Improvement: Global - Added new compatibility with Spectra Pro. 
 * Fix: Container - Resolved an issue wherein the text color of the Container was at a higher priority than those set for headings of blocks inside it.
 * Fix: Image - Resolved an issue in which the tablet and mobile border styles would not be applied as intended.
 * Fix: Buttons - Resolved an issue wherein the child responsive padding would not work as expected on the frontend.
