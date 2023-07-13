@@ -182,6 +182,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Content Timeline - Resolved an issue in which the user-defined icon would not appear on new timeline items in the editor.
 * Fix: Forms - Resolved an issue in which the padding for input fields would not work as expected when the form style was set to underline.
 * Fix: Forms - Reworked the e-mail sending functionality to ensure that only one e-mail is sent when CC and BCC addresses are specified.
+* Fix: Forms - Resolved an issue in which forms would not work in Astra's Custom Layout if we set it in the Header or Footer.
 * Fix: Marketing Button - Resolved an issue wherein the border-width and padding would not work as intended in the editor's tablet & mobile view.
 * Fix: Table Of Contents - Resolved an issue in which the collapsible option would not work as intended in Astra's Custom Layouts.
 * Fix: Testimonial - Resolved an issue with equal height on the frontend when 2 columns per slide were set.
