@@ -95,14 +95,6 @@ class UAGB_Post_Assets {
 	public $script = '';
 
 	/**
-	 * Store Json variable
-	 *
-	 * @since 1.8.1
-	 * @var instance
-	 */
-	public $icon_json;
-
-	/**
 	 * Page Blocks Variable
 	 *
 	 * @since 1.6.0
@@ -243,7 +235,9 @@ class UAGB_Post_Assets {
 			global $post;
 			$this_post = $this->preview ? $post : get_post( $this->post_id );
 			$this->prepare_assets( $this_post );
-			$this->prepare_ast_custom_layout_post_assets();
+			if ( $this->preview ) { // Load CSS only in preview mode of block editor.
+				$this->prepare_ast_custom_layout_post_assets();
+			}
 			$content = get_option( 'widget_block' );
 			$this->prepare_widget_area_assets( $content );
 		}

@@ -131,34 +131,19 @@ if ( ( $attr['isBlockRootParent'] && ! ( 'alignwide' === $attr['innerContentWidt
 $background_video_opacity_value = ( isset( $attr['backgroundVideoOpacity'] ) && 'none' !== $attr['overlayType'] && ( ( 'color' === $attr['overlayType'] && ! empty( $attr['backgroundVideoColor'] ) ) || ( 'gradient' === $attr['overlayType'] && ! empty( $attr['gradientValue'] ) ) ) ) ? 1 - $attr['backgroundVideoOpacity'] : 1;
 
 $selectors = array(
-	'.uagb-block-' . $id . '.wp-block-uagb-container'    => array(
+	'.uagb-block-' . $id . '.wp-block-uagb-container'   => array(
 		'color' => $attr['textColor'],
 	),
-	'.uagb-block-' . $id . '.wp-block-uagb-container h1' => array(
+	'.uagb-block-' . $id . '.wp-block-uagb-container *' => array(
 		'color' => $attr['textColor'],
 	),
-	'.uagb-block-' . $id . '.wp-block-uagb-container h2' => array(
-		'color' => $attr['textColor'],
-	),
-	'.uagb-block-' . $id . '.wp-block-uagb-container h3' => array(
-		'color' => $attr['textColor'],
-	),
-	'.uagb-block-' . $id . '.wp-block-uagb-container h4' => array(
-		'color' => $attr['textColor'],
-	),
-	'.uagb-block-' . $id . '.wp-block-uagb-container h5' => array(
-		'color' => $attr['textColor'],
-	),
-	'.uagb-block-' . $id . '.wp-block-uagb-container h6' => array(
-		'color' => $attr['textColor'],
-	),
-	'.uagb-block-' . $id . ' a'                          => array(
+	'.uagb-block-' . $id . ' a'                         => array(
 		'color' => $attr['linkColor'],
 	),
-	'.uagb-block-' . $id . ' a:hover'                    => array(
+	'.uagb-block-' . $id . ' a:hover'                   => array(
 		'color' => $attr['linkHoverColor'],
 	),
-	'.uagb-is-root-container .uagb-block-' . $id         => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+	'.uagb-is-root-container .uagb-block-' . $id        => array( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		'max-width' => UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthType'] ),
 		'width'     => '100%',
 	),

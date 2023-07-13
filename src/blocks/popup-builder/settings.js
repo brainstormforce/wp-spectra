@@ -69,6 +69,7 @@ const Settings = ( props ) => {
 		hasOverlay,
 		isDismissable,
 		haltBackgroundInteraction,
+		willPushContent,
 		// ------------------------- CLOSE SETTINGS.
 		closeIcon,
 		closeIconPosition,
@@ -612,32 +613,35 @@ const Settings = ( props ) => {
 			) }
 			{ ( 'banner' === variantType ) && (
 				<>
-					<MultiButtonsControl
-						label={ __(
-							'Position',
-							'ultimate-addons-for-gutenberg'
-						) }
-						data={ {
-							value: popupPositionV,
-							label: 'popupPositionV',
-						} }
-						options={ [
-							{
-								value: 'flex-start',
-								label: __( 'Top', 'ultimate-addons-for-gutenberg' ),
-							},
-							{
-								value: 'flex-end',
-								label: __( 'Bottom', 'ultimate-addons-for-gutenberg' ),
-							},
-						] }
-						setAttributes={ setAttributes }
-						showIcons={ false }
-						help={ 'flex-start' === popupPositionV && __(
-							'Coming Soon: Push the page content downward with Top Info Bars',
-							'ultimate-addons-for-gutenberg'
-						) }
+					<ToggleControl
+						label={ __( 'Push Content', 'ultimate-addons-for-gutenberg' ) }
+						checked={ willPushContent }
+						onChange={ () => setAttributes( { willPushContent: ! willPushContent } ) }
 					/>
+					{ ! willPushContent && (
+						<MultiButtonsControl
+							label={ __(
+								'Position',
+								'ultimate-addons-for-gutenberg'
+							) }
+							data={ {
+								value: popupPositionV,
+								label: 'popupPositionV',
+							} }
+							options={ [
+								{
+									value: 'flex-start',
+									label: __( 'Top', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'flex-end',
+									label: __( 'Bottom', 'ultimate-addons-for-gutenberg' ),
+								},
+							] }
+							setAttributes={ setAttributes }
+							showIcons={ false }
+						/>
+					) }
 				</>
 			) }
 		</UAGAdvancedPanelBody>

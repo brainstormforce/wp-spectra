@@ -110,6 +110,89 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 				add_action( 'admin_init', array( $this, 'save_google_fonts_to_theme' ) );
 			}
 		}
+
+		/**
+		 * Get, add and update font family in Spectra for ST.
+		 *
+		 * @param array $families font family.
+		 * @since 2.7.0
+		 * @return void
+		 */
+		public function get_font_family_for_starter_template( $families ) {
+			if ( UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_fse_font_globally', 'disabled' ) ) { // if Load FSE Fonts Globaly is disabled then enabled it.
+				UAGB_Admin_Helper::update_admin_settings_option( 'uag_load_fse_font_globally', 'enabled' );
+			}
+			$new_font_families = array();
+			if ( empty( $families ) || ! is_array( $families ) ) {
+				return;
+			}
+			foreach ( $families as $family ) {
+				$font_name        = ! empty( $family ) ? $family : '';
+				$font_name_string = explode( ',', $font_name );
+				$font_family      = trim( $font_name_string[0], "'" );
+				$font_slug        = $this->get_font_slug( $font_family );
+				$font_weight      = 'Default';
+				$font_style       = 'normal';
+				$final_font_files = $this->get_fonts_file_url( $font_family, $font_weight, $font_style );
+				$new_font_faces   = array(
+					array(
+						'fontFamily' => $font_family,
+						'fontStyle'  => $font_style,
+						'fontWeight' => $font_weight,
+						'src'        => $final_font_files,
+					),
+				);
+				$this->add_or_update_theme_font_faces( $font_family, $font_slug, $new_font_faces );
+			}
+
+			$theme_json_raw = json_decode( file_get_contents( get_stylesheet_directory() . '/theme.json' ), true );
+
+			$all_font_families = $theme_json_raw['settings']['typography']['fontFamilies'];
+			
+			if ( empty( $all_font_families ) || ! is_array( $all_font_families ) ) {
+				return;
+			}
+
+			foreach ( $all_font_families as $font_families_item ) {
+				$new_font_families_item = array(
+					'value'   => $font_families_item['fontFamily'],
+					'label'   => $font_families_item['fontFamily'],
+					'weights' => array(
+						array(
+							'value' => 'Default',
+							'label' => __( 'Default', 'ultimate-addons-for-gutenberg' ),
+						),
+						array(
+							'value' => '400',
+							'label' => __( '400', 'ultimate-addons-for-gutenberg' ),
+						),
+					),
+					'styles'  => array(
+						array(
+							'value' => 'normal',
+							'label' => __( 'normal', 'ultimate-addons-for-gutenberg' ),
+						),
+					),
+					'weight'  => array(
+						array(
+							'value' => '400',
+							'label' => __( '400', 'ultimate-addons-for-gutenberg' ),
+						),
+					),
+					'style'   => array(
+						array(
+							'value' => 'normal',
+							'label' => __( 'normal', 'ultimate-addons-for-gutenberg' ),
+						),
+					),
+				);
+
+				$new_font_families[] = $new_font_families_item;
+			}
+
+			UAGB_Admin_Helper::update_admin_settings_option( 'spectra_global_fse_fonts', $new_font_families );
+		}
+
 		/**
 		 * Save Google Fonts to the FSE Theme.
 		 *

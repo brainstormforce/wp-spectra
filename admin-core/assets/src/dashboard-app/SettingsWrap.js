@@ -1,6 +1,7 @@
 import React from 'react';
-import MainNav from './MainNav';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import AdminHeader from '@Common/components/AdminHeader';
+import MainNav from './MainNav';
 import SettingsRoute from './SettingsRoute';
 import SettingsSavedNotification from './SettingsSavedNotification';
 
@@ -8,7 +9,9 @@ const SettingsWrap = () => {
 
     return (
         <Router>
-            <MainNav/>
+            <AdminHeader>
+				<MainNav/>
+			</AdminHeader>
 			<SettingsSavedNotification/>
 			<Switch>
 				<Route path="/">

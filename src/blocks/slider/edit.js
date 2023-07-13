@@ -39,6 +39,21 @@ const UAGBSlider = ( props ) => {
 	useEffect( () => {
 		// Assigning block_id in the attribute.
 		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
+
+		// Backward Compatibility - Consecutive Slides Width is now removed and the gap between slides was fixed to 10 before.
+		if ( attributes.consecutiveSlidesWidth || attributes.consecutiveSlidesWidthTablet || attributes.consecutiveSlidesWidthMobile ) {
+			setAttributes( {
+				inactiveSlideVisibility: attributes.consecutiveSlidesWidth * 0.333,
+				inactiveSlideVisibilityTablet: attributes.consecutiveSlidesWidthTablet * 0.333,
+				inactiveSlideVisibilityMobile: attributes.consecutiveSlidesWidthMobile * 0.333,
+				consecutiveSlidesWidth: false,
+				consecutiveSlidesWidthTablet: false,
+				consecutiveSlidesWidthMobile: false,
+				gapBetweenSlides: 10,
+				gapBetweenSlidesTablet: 10,
+				gapBetweenSlidesMobile: 10,
+			} );
+		}
 	}, [] );
 
 	useEffect( () => {

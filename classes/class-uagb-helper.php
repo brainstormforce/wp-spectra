@@ -120,6 +120,22 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static $table_of_contents_flag = false;
 
 		/**
+		 * As our svg icon is too long array so we will divide that into number of icon chunks.
+		 *
+		 * @var int
+		 * @since 2.7.0
+		 */
+		public static $number_of_icon_chunks = 4;
+
+		/**
+		 * We have icon list in chunks in this variable we will merge all insides array into one single array.
+		 *
+		 * @var array
+		 * @since 2.7.0
+		 */
+		public static $icon_array_merged = array();
+
+		/**
 		 *  Initiator
 		 *
 		 * @since 0.0.1
@@ -238,23 +254,27 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * Get Json Data.
 		 *
 		 * @since 1.8.1
-		 * @return Array
+		 * @return array
 		 */
 		public static function backend_load_font_awesome_icons() {
-
-			$json_file = UAGB_DIR . 'blocks-config/uagb-controls/spectra-icons-v6.php';
-
-			if ( ! file_exists( $json_file ) ) {
-				return array();
-			}
-
-			// Function has already run.
+			
 			if ( null !== self::$icon_json ) {
 				return self::$icon_json;
 			}
 
-			self::$icon_json = include $json_file;
+			$icons_chunks = array();
+			for ( $i = 0; $i < self::$number_of_icon_chunks; $i++ ) { 
+				$json_file = UAGB_DIR . "blocks-config/uagb-controls/spectra-icons-v6-{$i}.php";
+				if ( file_exists( $json_file ) ) {
+					$icons_chunks[] = include $json_file;
+				}
+			}
 
+			if ( empty( $icons_chunks ) ) {
+				return array();
+			}
+			
+			self::$icon_json = $icons_chunks;
 			return self::$icon_json;
 		}
 
@@ -273,8 +293,15 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$icon = sanitize_text_field( esc_attr( $icon ) );
 
 			$json = self::backend_load_font_awesome_icons();
-			$path = null;
-			$view = null;
+
+			if ( ! empty( $json ) ) {
+				if ( empty( $icon_array_merged ) ) {
+					foreach ( $json as $value ) {
+						self::$icon_array_merged = array_merge( self::$icon_array_merged, $value );
+					}
+				}
+				$json = self::$icon_array_merged;
+			}
 
 			// Load Polyfiller Array if needed.
 			$load_font_awesome_5 = UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_font_awesome_5', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' );
@@ -282,17 +309,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			if ( 'disabled' !== $load_font_awesome_5 ) {
 				// If Icon doesn't need Polyfilling, use the Original.
 				$font_awesome_5_polyfiller = get_spectra_font_awesome_polyfiller();
-				$polyfilled_icon           = isset( $font_awesome_5_polyfiller[ $icon ] ) ? $font_awesome_5_polyfiller[ $icon ] : $icon;
-				$path                      = isset( $json[ $polyfilled_icon ]['svg']['brands'] ) ? $json[ $polyfilled_icon ]['svg']['brands']['path'] : ( isset( $json[ $polyfilled_icon ]['svg']['solid']['path'] ) ? $json[ $polyfilled_icon ]['svg']['solid']['path'] : '' );
-				$view                      = isset( $json[ $polyfilled_icon ]['svg']['brands'] ) ? $json[ $polyfilled_icon ]['svg']['brands']['viewBox'] : ( isset( $json[ $polyfilled_icon ]['svg']['solid']['viewBox'] ) ? $json[ $polyfilled_icon ]['svg']['solid']['viewBox'] : null );
-			} else {
-				$path = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['path'] : ( isset( $json[ $icon ]['svg']['solid']['path'] ) ? $json[ $icon ]['svg']['solid']['path'] : '' );
-				$view = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['viewBox'] : ( isset( $json[ $icon ]['svg']['solid']['viewBox'] ) ? $json[ $icon ]['svg']['solid']['viewBox'] : null );
+				$icon                      = ! empty( $font_awesome_5_polyfiller[ $icon ] ) ? $font_awesome_5_polyfiller[ $icon ] : $icon;
 			}
-			if ( $view ) {
-				$view = implode( ' ', $view );
-			}
-			if ( '' !== $path && null !== $view ) {
+
+			$icon_brand_or_solid = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands'] : ( isset( $json[ $icon ]['svg']['solid'] ) ? $json[ $icon ]['svg']['solid'] : array() );
+			$path                = isset( $icon_brand_or_solid['path'] ) ? $icon_brand_or_solid['path'] : '';
+			$view                = isset( $icon_brand_or_solid['width'] ) && isset( $icon_brand_or_solid['height'] ) ? '0 0 ' . $icon_brand_or_solid['width'] . ' ' . $icon_brand_or_solid['height'] : null;
+
+			if ( $path && $view ) {
 				?>
 				<svg xmlns="https://www.w3.org/2000/svg" viewBox= "<?php echo esc_attr( $view ); ?>"><path d="<?php echo esc_attr( $path ); ?>"></path></svg>
 				<?php

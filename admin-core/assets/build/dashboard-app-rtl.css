@@ -671,6 +671,8 @@ select {
   margin: -0.5rem;
 }.-m-2\.5 {
   margin: -0.625rem;
+}.m-0 {
+  margin: 0px;
 }.m-1 {
   margin: 0.25rem;
 }.m-2 {
@@ -737,6 +739,8 @@ select {
   margin-left: 1rem;
 }.mr-5 {
   margin-left: 1.25rem;
+}.mr-6 {
+  margin-left: 1.5rem;
 }.mr-8 {
   margin-left: 2rem;
 }.mr-\[80px\] {
@@ -1049,6 +1053,9 @@ select {
 }.border-white {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}.border-l-slate-200 {
+  --tw-border-opacity: 1;
+  border-right-color: rgb(226 232 240 / var(--tw-border-opacity));
 }.border-t-slate-200 {
   --tw-border-opacity: 1;
   border-top-color: rgb(226 232 240 / var(--tw-border-opacity));

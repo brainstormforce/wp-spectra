@@ -96,7 +96,7 @@ class UAGB_Init_Blocks {
 
 		$labels = array(
 			'name'               => _x( 'Popup Builder', 'plural', 'ultimate-addons-for-gutenberg' ),
-			'singular_name'      => _x( 'Popup', 'singular', 'ultimate-addons-for-gutenberg' ),
+			'singular_name'      => _x( 'Spectra Popup', 'singular', 'ultimate-addons-for-gutenberg' ),
 			'view_item'          => __( 'View Popup', 'ultimate-addons-for-gutenberg' ),
 			'add_new_item'       => __( 'Create New Popup', 'ultimate-addons-for-gutenberg' ),
 			'add_new'            => __( 'Create Popup', 'ultimate-addons-for-gutenberg' ),
@@ -109,17 +109,18 @@ class UAGB_Init_Blocks {
 		);
 
 		$type_args = array(
-			'supports'      => $supports,
-			'labels'        => $labels,
-			'public'        => false,
-			'show_in_menu'  => false,
-			'show_ui'       => true,
-			'show_in_rest'  => true,
-			'template_lock' => 'all',
-			'template'      => array(
+			'supports'          => $supports,
+			'labels'            => $labels,
+			'public'            => false,
+			'show_in_menu'      => false,
+			'show_in_admin_bar' => true,
+			'show_ui'           => true,
+			'show_in_rest'      => true,
+			'template_lock'     => 'all',
+			'template'          => array(
 				array( 'uagb/popup-builder', array() ),
 			),
-			'rewrite'       => array(
+			'rewrite'           => array(
 				'slug'       => 'spectra-popup',
 				'with-front' => false,
 				'pages'      => false,
@@ -557,6 +558,24 @@ class UAGB_Init_Blocks {
 	}
 
 	/**
+	 * Localize SVG icon scripts in chunks.
+	 * Ex - if 1800 icons available so we will localize 4 variables for it.
+	 *
+	 * @since 2.7.0
+	 * @return void
+	 */
+	public function add_svg_icon_assets() {
+		$localize_icon_chunks = UAGB_Helper::backend_load_font_awesome_icons();
+		if ( ! $localize_icon_chunks ) {
+			return;
+		}
+
+		foreach ( $localize_icon_chunks as $chunk_index => $value ) {
+			wp_localize_script( 'uagb-block-editor-js', "uagb_svg_icons_{$chunk_index}", $value );
+		}
+	}
+
+	/**
 	 * Enqueue Gutenberg block assets for backend editor.
 	 *
 	 * @since 1.0.0
@@ -721,7 +740,7 @@ class UAGB_Init_Blocks {
 				'enableMasonryGallery'                    => apply_filters( 'uag_enable_masonry_gallery', UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_masonry_gallery', 'enabled' ) ),
 				'enableAnimationsExtension'               => apply_filters( 'uag_enable_animations_extension', UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_animations_extension', 'enabled' ) ),
 				'enableResponsiveConditions'              => apply_filters( 'enable_block_responsive', UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_responsive', 'enabled' ) ),
-				'uagb_svg_icons'                          => UAGB_Helper::backend_load_font_awesome_icons(),
+				'number_of_icon_chunks'                   => UAGB_Helper::$number_of_icon_chunks,
 				'uagb_enable_extensions_for_blocks'       => apply_filters( 'uagb_enable_extensions_for_blocks', array() ),
 				'uagb_exclude_blocks_from_extension'      => $uagb_exclude_blocks_from_extension,
 				'uag_load_select_font_globally'           => $enable_selected_fonts,
@@ -746,7 +765,7 @@ class UAGB_Init_Blocks {
 				'spectra_pro_status'                      => is_plugin_active( 'spectra-pro/spectra-pro.php' ),
 				'spectra_custom_css_example'              => __(
 					'Use custom class added in block\'s advanced settings to target your desired block. Examples:
-				.my-class {text-align: center;} // my-class is a custom selector',
+			.my-class {text-align: center;} // my-class is a custom selector',
 					'ultimate-addons-for-gutenberg'
 				),
 				'is_rtl'                                  => is_rtl(),
@@ -764,6 +783,9 @@ class UAGB_Init_Blocks {
 		UAGB_Scripts_Utils::enqueue_blocks_styles();
 		// RTL Styles.
 		UAGB_Scripts_Utils::enqueue_blocks_rtl_styles();
+
+		// Add svg icons in chunks.
+		$this->add_svg_icon_assets();
 	}
 
 	/**

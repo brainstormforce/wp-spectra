@@ -434,7 +434,7 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 		 * @since 1.0.0
 		 */
 		public function template_assets() {
-
+			
 			$post_types = get_post_types( array( 'public' => true ), 'names' );
 
 			$current_screen = get_current_screen();
@@ -443,7 +443,7 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 				return false;
 			}
 
-			if ( ! array_key_exists( $current_screen->post_type, $post_types ) ) {
+			if ( 'site-editor' !== $current_screen->base && ! array_key_exists( $current_screen->post_type, $post_types ) ) {
 				return;
 			}
 

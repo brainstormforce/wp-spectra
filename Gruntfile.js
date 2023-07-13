@@ -1,3 +1,13 @@
+/**
+ * As we have for example 1800 icons list so we will not put all icons in same file we will split it in 4 php files.
+ * Now we will have 4 php file for icons.
+ */
+const NUMBER_OF_ICON_CHUNKS = 4;
+const ICONS_PHP_FILE_CHUNKS = {};
+for ( let i = 0; i < NUMBER_OF_ICON_CHUNKS; i++ ) {
+	ICONS_PHP_FILE_CHUNKS[ `blocks-config/uagb-controls/spectra-icons-v6-${i}.php` ] = `blocks-config/uagb-controls/SpectraIconsV6-${i}.json`;
+}
+
 module.exports = function ( grunt ) {
 	grunt.initConfig( {
 		pkg: grunt.file.readJSON( 'package.json' ),
@@ -59,6 +69,7 @@ module.exports = function ( grunt ) {
 		clean: {
 			main: [ 'ultimate-addons-for-gutenberg' ],
 			zip: [ '*.zip' ],
+			SpectraIconsV6: [ 'blocks-config/uagb-controls/*.json' ]
 		},
 		makepot: {
 			target: {
@@ -135,7 +146,7 @@ module.exports = function ( grunt ) {
 				overwrite: true,
 				replacements: [
 					{
-						from: 'x.x.x',
+						from: /x.x.x/ig,
 						to: '<%=pkg.version %>',
 					},
 				],
@@ -231,19 +242,14 @@ module.exports = function ( grunt ) {
 					phpArrayString = phpArrayString.replace( /"%%translation_start%%/g, '__("' );
 					phpArrayString = phpArrayString.replace( /%%translation_end%%"/g, '","ultimate-addons-for-gutenberg")' );
 					return (
-						'<?php\n/**\n * Font awesome icons array array file.\n *\n * @package     Spectra\n * @author      Spectra\n * @link        https://wpspectra.com/\n */\n\n/**\n * Returns font awesome icons array \n */\nreturn ' +
+						'<?php\n/**\n * Font awesome icons array array file.\n *\n * @package     UAGB\n * @author      Brainstorm Force\n * @link        https://wpspectra.com/\n */\n\n/**\n * Returns font awesome icons array \n */\nreturn ' +
 						phpArrayString +
 						';\n'
 					);
 				},
 			},
 			your_target: {
-				files: {
-					'blocks-config/uagb-controls/uagb-icons.php':
-						'blocks-config/uagb-controls/UAGBIcon.json',
-					'blocks-config/uagb-controls/spectra-icons-v6.php':
-						'blocks-config/uagb-controls/SpectraIconsV6.json',
-				},
+				files: ICONS_PHP_FILE_CHUNKS,
 			},
 		},
 	} );
@@ -276,6 +282,9 @@ module.exports = function ( grunt ) {
 	grunt.registerTask( 'release-no-clean', [ 'clean:zip', 'copy' ] );
 	grunt.registerTask( 'textdomain', [ 'addtextdomain' ] );
 	grunt.registerTask( 'i18n', [ 'addtextdomain', 'makepot' ] );
+
+	// Clean up svg icon json file.
+	grunt.registerTask( 'clean-icon-svg-json-file', [ 'clean:SpectraIconsV6' ] );
 
 	// Default
 	//grunt.registerTask('default', ['style']);
@@ -346,56 +355,6 @@ module.exports = function ( grunt ) {
 		return fonts;
 	}
 
-	// Update Font Awesome library.
-	grunt.registerTask( 'font-awesome', function () {
-		this.async();
-		const request = require( 'request' );
-		const getCategories = grunt.file.readJSON( './bin/icons-configure/fontawesome-category.json' );
-		const getCategoriesCustomTitle = grunt.file.readJSON( './bin/icons-configure/fontawesome-custom-shorted-category.json' );
-		const fs = require( 'fs' );
-
-		request(
-			'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/metadata/icons.json',
-			function ( error, response, body ) {
-				if ( response && response.statusCode === 200 ) {
-					console.log( 'Fonts successfully fetched!' ); // eslint-disable-line no-console
-
-					const fonts = JSON.parse( body );
-					Object.keys( fonts ).map( ( key ) => {
-
-						// Put category.
-						fonts[key].categories = [];
-						fonts[key].custom_categories = [];
-						keep_category( fonts, key, getCategories );
-						keep_custom_category( fonts, key, getCategoriesCustomTitle );
-						if( isNaN( fonts[key].label ) ){
-							fonts[key].label = `%%translation_start%%${fonts[key].label}%%translation_end%%`;
-						}
-						delete fonts[key].categories;
-						delete fonts[key].changes;
-						delete fonts[key].ligatures;
-						delete fonts[key].search;
-						delete fonts[key].styles;
-						delete fonts[key].unicode;
-						delete fonts[key].voted;
-						delete fonts[key].free;
-						return key;
-					} );
-
-					fs.writeFile(
-						'blocks-config/uagb-controls/UAGBIcon.json',
-						JSON.stringify( fonts, null, 4 ),
-						function ( err ) {
-							if ( ! err ) {
-								console.log( 'Font-Awesome library updated!' ); // eslint-disable-line no-console
-							}
-						}
-					);
-				}
-			}
-		);
-	} );
-
 	// Update Google Font library.
     grunt.registerTask( 'google-fonts', function () {
 		this.async();
@@ -409,19 +368,19 @@ module.exports = function ( grunt ) {
 
 				data.items.forEach( ( font ) => {
 					const fontName = font.family;
-					let fontVarient = [];
+					let fontVariant = [];
 					if( font.variants ) {
-						const copyFontVArient = [ ...font.variants ];
-						const filterFontVarient =  copyFontVArient.filter( variant => /^[0-9]+$/.test( variant ) && !/^[a-z]+$/.test( variant ) );
-						filterFontVarient.push( '400' );
-						const sortArray = filterFontVarient.sort( ( a, b ) => parseInt( a ) - parseInt( b ) );
-						fontVarient = [ 'Default', ...sortArray ];
+						const copyFontVariant = [ ...font.variants ];
+						const filterFontVariant =  copyFontVariant.filter( variant => /^[0-9]+$/.test( variant ) && !/^[a-z]+$/.test( variant ) );
+						filterFontVariant.push( '400' );
+						const sortArray = filterFontVariant.sort( ( a, b ) => parseInt( a ) - parseInt( b ) );
+						fontVariant = [ 'Default', ...sortArray ];
                     }
-					
+
 					const fontData = {
 						v: font.variants || [],
 						subset: font.subsets || [],
-						weight: fontVarient,
+						weight: fontVariant,
 						i: [],
 					};
 
@@ -472,6 +431,20 @@ module.exports = function ( grunt ) {
 
 	} );
 
+
+	function createChunksOfObject( obj, chunksSize = 3 ) {
+		const entries = Object.entries( obj );
+		const chunkSize = Math.ceil( entries.length / chunksSize ); // Calculate the chunk size for equal division
+		const dividedArray = [];
+
+		for ( let i = 0; i < entries.length; i += chunkSize ) {
+			const chunk = entries.slice( i, i + chunkSize );
+			const chunkObj = Object.fromEntries( chunk );
+			dividedArray.push( chunkObj );
+		}
+		return dividedArray;
+	}
+
 	// Update Font Awesome v6 library.
 	grunt.registerTask( 'font-awesome-v6', function () {
 		this.async();
@@ -479,20 +452,50 @@ module.exports = function ( grunt ) {
 		const getCategoriesCustomTitle = grunt.file.readJSON( './bin/icons-configure/fontawesome-custom-shorted-category.json' );
 		// This is custom category list like in our icon library brand category is not available so we put manually here.
 		const getCustomCategoryTitle = grunt.file.readJSON( './bin/icons-configure/custom-icon-category.json' );
-		let getDownloadedIcons = grunt.file.readJSON( './bin/spectra-icons-v6.json' );
+		let getDownloadedIcons = grunt.file.readJSON( './bin/icons-configure/spectra-icons-v6.json' );
 		const fs = require( 'fs' );
 		// We have take initially icons from 'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/metadata/icons.json' but we have downloaded and keep this in bin folder due to back word compatibility
 
+		// eslint-disable-next-line array-callback-return
 		Object.keys( getDownloadedIcons ).map( ( key ) => {
-			getDownloadedIcons[key].categories = [];
-			getDownloadedIcons[key].custom_categories = [];
+			const iconObj = getDownloadedIcons[key];
+			iconObj.categories = [];
+			iconObj.custom_categories = [];
 			keep_category( getDownloadedIcons, key, getCategories );
 			keep_custom_category( getDownloadedIcons, key, getCategoriesCustomTitle );
-			delete getDownloadedIcons[key].categories;
-			if( isNaN( getDownloadedIcons[key].label ) ){
-				getDownloadedIcons[key].label = `%%translation_start%%${getDownloadedIcons[key].label}%%translation_end%%`;
+			delete iconObj.categories;
+
+			// Remove unwanted properties from icon list only we will keep in icon list are width height and path.
+			if( iconObj.svg?.solid ){
+				const keepSolidRequiredData = { ...{
+					width : iconObj.svg.solid.width,
+					height : iconObj.svg.solid.height,
+					path : iconObj.svg.solid.path
+				}};
+				iconObj.svg.solid = keepSolidRequiredData;
 			}
-			return key;
+
+			if( iconObj.svg?.brands  ){
+				const keepBrandsRequiredData = { ...{
+					width : iconObj.svg.brands.width,
+					height : iconObj.svg.brands.height,
+					path : iconObj.svg.brands.path
+				}};
+				iconObj.svg.brands = keepBrandsRequiredData;
+			}
+
+			if( iconObj.svg?.regular  ){
+				const keepBrandsRequiredData = { ...{
+					width : iconObj.svg.regular.width,
+					height : iconObj.svg.regular.height,
+					path : iconObj.svg.regular.path
+				}};
+				iconObj.svg.regular = keepBrandsRequiredData;
+			}
+
+			if( isNaN( iconObj.label ) ){
+				iconObj.label = `%%translation_start%%${iconObj.label}%%translation_end%%`;
+			}
 		} );
 
 		// keep custom category in icons
@@ -501,15 +504,20 @@ module.exports = function ( grunt ) {
 		// Put custom categories list.
 		getDownloadedIcons = keep_category_list( getDownloadedIcons, getCategoriesCustomTitle );
 
-		fs.writeFile(
-			'blocks-config/uagb-controls/SpectraIconsV6.json',
-			JSON.stringify( getDownloadedIcons, null, 4 ),
-			function ( err ) {
-				if ( ! err ) {
-					console.log( 'Font-Awesome v6 library updated!' ); // eslint-disable-line no-console
+		const createChunks = createChunksOfObject( getDownloadedIcons, NUMBER_OF_ICON_CHUNKS );
+
+		for ( const chunkKey in createChunks ) {
+			const pieceOfIcon = createChunks[ chunkKey ];
+			const configFilePath = `blocks-config/uagb-controls/SpectraIconsV6-${chunkKey}.json`;
+			fs.writeFile( configFilePath ,
+				JSON.stringify( pieceOfIcon, null, 4 ),
+				function ( err ) {
+					if ( ! err ) {
+						console.log('Font-Awesome v6 chunk ' + chunkKey + ' library updated!'); // eslint-disable-line
+					}
 				}
-			}
-		);
+			);
+		}
 	} );
 
 	// Generate Read me file
@@ -520,5 +528,5 @@ module.exports = function ( grunt ) {
 
 	grunt.registerTask( 'minify', [ 'rtlcss', 'cssmin', 'uglify' ] );
 
-	grunt.registerTask( 'font-awesome-php-array-update', [ 'json2php' ] );
+	grunt.registerTask( 'font-awesome-php-array-update', [ 'json2php', 'clean-icon-svg-json-file' ] );
 };

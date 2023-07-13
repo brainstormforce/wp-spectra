@@ -107,6 +107,14 @@ if ( ! class_exists( 'UAGB_Google_Map' ) ) {
 			$desktop_class = '';
 			$tab_class     = '';
 			$mob_class     = '';
+
+			/**
+			 * Added filter to attributes to support Dynamic Content.
+			 *
+			 * @since 2.7.0
+			 * @hooked Pro -> DynamicContent->uagb_google_map_block_attributes
+			 * */
+			$attributes = apply_filters( 'uagb_google_map_block_attributes', $attributes );
 			
 			if ( array_key_exists( 'UAGHideDesktop', $attributes ) || array_key_exists( 'UAGHideTab', $attributes ) || array_key_exists( 'UAGHideMob', $attributes ) ) {
 				$desktop_class = ( isset( $attributes['UAGHideDesktop'] ) ) ? 'uag-hide-desktop' : '';
