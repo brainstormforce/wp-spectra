@@ -17,6 +17,8 @@ Power-up the Gutenberg editor with advanced and powerful blocks that help you bu
 
 Power-up the Gutenberg editor with advanced and powerful blocks that help you build websites in no time! This first Gutenberg plugin is here to make website building an ultimate journey.
 
+[Try it out on a free dummy site](https://bsf.io/spectra-demo)
+
 <a href="https://wpspectra.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Check out the live Spectra blocks demos.</a>
 
 Simply pick your favorite WordPress blocks from Spectra that speed up the process of website building with easy to use settings and customizations for intuitive visual styling.
