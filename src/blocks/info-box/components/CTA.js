@@ -75,10 +75,10 @@ const InfoBoxCta = ( props ) => {
 			<div className="uagb-ifb-button-wrapper wp-block-button">
 				{ attributes.ctaType === 'text' && (
 					<a
-						href={ attributes.ctaLink }
+						href={ attributes.ctaLink || '#' }
 						target={ target }
 						onClick={
-							'' === attributes.ctaLink || '#' === attributes.ctaLink ? 'return false;' : 'return true;'
+							( '' === attributes.ctaLink || '#' === attributes.ctaLink ) && ( ! attributes?.dynamicContent?.ctaLink?.enable ) ? 'return false;' : 'return true;'
 						}
 						className={ 'uagb-infobox-cta-link' }
 						rel={ rel }
@@ -95,12 +95,12 @@ const InfoBoxCta = ( props ) => {
 				) }
 				{ attributes.ctaType === 'button' && (
 					<a
-						href={ attributes.ctaLink }
+						href={ attributes.ctaLink || '#' }
 						className={ ctaBtnClass }
 						target={ target }
 						rel={ rel }
 						onClick={
-							'' === attributes.ctaLink || '#' === attributes.ctaLink ? 'return false;' : 'return true;'
+							( '' === attributes.ctaLink || '#' === attributes.ctaLink ) && ( ! attributes?.dynamicContent?.ctaLink?.enable ) ? 'return false;' : 'return true;'
 						}
 						alt=""
 					>

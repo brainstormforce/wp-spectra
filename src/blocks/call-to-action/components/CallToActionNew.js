@@ -25,8 +25,8 @@ const CTA = ( props ) => {
 		// Disables click events for link in editor.
 		e.preventDefault();
 	};
-	if ( setAttributes === 'not_set' ) {
-		link = attributes.ctaLink;
+	if ( setAttributes === 'not_set' || attributes?.dynamicContent?.ctaLink?.enable ) {
+		link = attributes.ctaLink || '#';
 		preventDefaultFunc = false; // Ensures click events for links aren't disabled for frontend.
 	}
 

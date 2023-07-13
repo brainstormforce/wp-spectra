@@ -56,12 +56,12 @@ export default function save( props ) {
 			) }
 		>
 			<div className="uagb-button__wrapper">
-				<a
+				<a // eslint-disable-line jsx-a11y/anchor-is-valid
 					className={ classnames(
 						'uagb-buttons-repeater',
 						'wp-block-button__link'
 					) }
-					href={ '' === link ? '#' : link }
+					href={ ( '' === link || dynamicContent?.link?.enable ) ? '#' : link }
 					onClick={ ( '' === link || '#' === link ) && ( ! dynamicContent?.link?.enable ) ? 'return false;' : 'return true;' }
 					rel={ noFollow ? 'nofollow noopener' : 'follow noopener' }
 					target={ openNewWindow }
