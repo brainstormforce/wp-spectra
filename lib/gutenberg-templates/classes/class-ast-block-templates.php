@@ -72,7 +72,7 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 
 			return $mimes;
 		}
-
+		
 		/**
 		 * Retrieve block data from an API and update the option with the data.
 		 *
@@ -84,7 +84,7 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 			if ( ! current_user_can( 'edit_posts' ) ) {
 				wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
 			}
-
+			
 			// Verify Nonce.
 			check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
 			$block_id     = isset( $_REQUEST['id'] ) ? absint( $_REQUEST['id'] ) : '';
@@ -383,7 +383,7 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 			$block_data = get_option( 'ast-block-templates_data-' . $block_id );
 
 			$api_uri = null !== $block_data ? $block_data->{'astra-page-api-url'} : '';
-
+			
 			// Early return.
 			if ( '' == $api_uri ) {
 				wp_send_json_error( __( 'Something wrong', 'astra-sites' ) );
@@ -434,7 +434,7 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 		 * @since 1.0.0
 		 */
 		public function template_assets() {
-
+			
 			$post_types = get_post_types( array( 'public' => true ), 'names' );
 
 			$current_screen = get_current_screen();
@@ -443,7 +443,7 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 				return false;
 			}
 
-			if ( ! array_key_exists( $current_screen->post_type, $post_types ) ) {
+			if ( 'site-editor' !== $current_screen->base && ! array_key_exists( $current_screen->post_type, $post_types ) ) {
 				return;
 			}
 
@@ -666,7 +666,7 @@ if ( ! class_exists( 'Ast_Block_Templates' ) ) :
 						'xml'  => 'text/xml',
 						'json' => 'application/json',
 					),
-				)
+				) 
 			);
 
 			$overrides = wp_parse_args( $overrides, $defaults );
