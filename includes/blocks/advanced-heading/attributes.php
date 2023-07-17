@@ -129,7 +129,7 @@ return array_merge(
 		'highLightBackground'          => '#007cba',
 		'highLightLoadGoogleFonts'     => false,
 		'highLightFontFamily'          => 'Default',
-		'highLightFontWeight'          => '',
+		'highLightFontWeight'          => 'Default',
 		'highLightFontStyle'           => 'normal',
 		'highLightTransform'           => '',
 		'highLightDecoration'          => '',

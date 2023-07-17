@@ -217,6 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ### x.x.x ###
 * Fix: Separator - Resolved an issue in which the separator mobile width would not work as intended in the frontend.
+* Fix: Heading - Resolved an issue in which the font-family would not render as required for highlighted headings.
 
 ### 2.7.0 - THURSDAY, 13th July 2023 ###
 * Feature: Popup Builder - Added a new `Push Content` feature for info bars.
