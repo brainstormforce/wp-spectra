@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Fix: Separator - Resolved an issue in which the separator mobile width would not work as intended in the frontend.
+
 ### 2.7.0 - THURSDAY, 13th July 2023 ###
 * Feature: Popup Builder - Added a new `Push Content` feature for info bars.
 * Improvement: Performance - Significantly reduced the plugin zip size by over 1 MB after optimizing the Font Awesome v6 assets.
