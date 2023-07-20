@@ -221,6 +221,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Heading - Resolved an issue in which the font-family would not render as required for highlighted headings.
 * Fix: Call To Action - Resolved an issue wherein additional button padding is not working responsively as intended in frontend.
 * Fix: Global - Resolved an issue in which the font-family would not render as required on the frontend for certain blocks.
+* Fix: Table Of Contents - Added support for Latin characters.
 
 ### 2.7.0 - THURSDAY, 13th July 2023 ###
 * Feature: Popup Builder - Added a new `Push Content` feature for info bars.
