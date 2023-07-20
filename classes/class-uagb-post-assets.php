@@ -1174,6 +1174,16 @@ class UAGB_Post_Assets {
 
 		$result = false;
 
+		// Remove if any old file exists for same post.
+		$old_assets = glob( $base_file_path . 'uag-' . $type . '-' . $this->post_id . '-*' );
+		if ( ! empty( $old_assets ) && is_array( $old_assets ) ) {
+			foreach ( $old_assets as $old_asset ) {
+				if ( file_exists( $old_asset ) ) {
+					$file_system->delete( $old_asset );
+				}
+			}
+		}
+
 		if ( wp_mkdir_p( $base_file_path ) ) {
 
 			// Create a new file.
