@@ -32,8 +32,13 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			$subhead_font_family      = isset( $attr['subHeadFontFamily'] ) ? $attr['subHeadFontFamily'] : '';
 			$subhead_font_weight      = isset( $attr['subHeadFontWeight'] ) ? $attr['subHeadFontWeight'] : '';
 
+			$highlight_head_load_google_font = isset( $attr['highLightLoadGoogleFonts'] ) ? $attr['highLightLoadGoogleFonts'] : '';
+			$highlight_head_font_family      = isset( $attr['highLightFontFamily'] ) ? $attr['highLightFontFamily'] : '';
+			$highlight_head_font_weight      = isset( $attr['highLightFontWeight'] ) ? $attr['highLightFontWeight'] : '';
+
 			UAGB_Helper::blocks_google_font( $head_load_google_font, $head_font_family, $head_font_weight );
 			UAGB_Helper::blocks_google_font( $subhead_load_google_font, $subhead_font_family, $subhead_font_weight );
+			UAGB_Helper::blocks_google_font( $highlight_head_load_google_font, $highlight_head_font_family, $highlight_head_font_weight );
 		}
 
 		/**

@@ -132,7 +132,7 @@ const attributes = {
 	},
 	nameFontWeight: {
 		type: 'string',
-		default: '500',
+		default: 'Default',
 		UAGCopyPaste: {
 			styleType: 'author-font-weight',
 		},

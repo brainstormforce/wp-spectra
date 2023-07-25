@@ -9,10 +9,14 @@ const DynamicFontLoader = ( { attributes } ) => {
 		subHeadLoadGoogleFonts,
 		subHeadFontFamily,
 		subHeadFontWeight,
+		highLightLoadGoogleFonts,
+		highLightFontFamily,
+		highLightFontWeight
 	} = attributes;
 
 	let loadHeadingGoogleFonts;
 	let loadSubHeadingGoogleFonts;
+	let loadHighLightHeadingGoogleFonts;
 
 	if ( headLoadGoogleFonts === true ) {
 		const hconfig = {
@@ -32,10 +36,20 @@ const DynamicFontLoader = ( { attributes } ) => {
 
 		loadSubHeadingGoogleFonts = <WebfontLoader config={ sconfig }></WebfontLoader>;
 	}
+	if ( highLightLoadGoogleFonts === true ) {
+		const sconfig = {
+			google: {
+				families: [ highLightFontFamily + ( highLightFontWeight ? ':' + highLightFontWeight : '' ) ],
+			},
+		};
+
+		loadHighLightHeadingGoogleFonts = <WebfontLoader config={ sconfig }></WebfontLoader>;
+	}
 	return (
 		<>
 			{ loadHeadingGoogleFonts }
 			{ loadSubHeadingGoogleFonts }
+			{ loadHighLightHeadingGoogleFonts }
 		</>
 	);
 };

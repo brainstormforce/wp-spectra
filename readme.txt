@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 5.6
 Tested up to: 6.2.2
-Stable tag: 2.7.0
+Stable tag: 2.7.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,9 +30,9 @@ Most helpful links
 
 <a href="https://bsf.io/spectra-demo" target="_blank" rel="">Try it out on a free dummy site</a>
 
-Our mission is to empower web designers like you with an end-to-end solution for building stunning websites. 
+Our mission is to empower web designers like you with an end-to-end solution for building stunning websites.
 
-We aim to simplify the website creation process by providing a versatile toolkit within a single plugin, eliminating the need to install multiple plugins for various functionalities. 
+We aim to simplify the website creation process by providing a versatile toolkit within a single plugin, eliminating the need to install multiple plugins for various functionalities.
 
 With Spectra, we strive to make it extremely easy to use for beginners and feature-rich for experienced designers.
 
@@ -62,11 +62,11 @@ Users of page builders like Elementor and Beaver Builder absolutely LOVE Spectra
 
 With Spectra, you can power up the block editor with advanced and powerful blocks that simplify the entire process. Say goodbye to the hassle of coding and say hello to effortless website creation.
 
-Spectra provides a wide range of unique and creative blocks on top of the default WordPress page editor, enabling you to build and design pages or posts without writing a single line of code. 
+Spectra provides a wide range of unique and creative blocks on top of the default WordPress page editor, enabling you to build and design pages or posts without writing a single line of code.
 
 It offers an easy-to-use interface, customization options, and a library of pre-built Starter Templates to help you build awesome websites in minutes.
 
-Whether you need to launch an online store or promote your services, Spectra empowers you to build pixel-perfect websites that captivate your audience. 
+Whether you need to launch an online store or promote your services, Spectra empowers you to build pixel-perfect websites that captivate your audience.
 
 Don't let coding complexities hold you back – unlock the potential of block editor with Spectra and build faster, better-performing websites today!
 
@@ -215,12 +215,21 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= 2.7.1 - TUESDAY, 25th JULY 2023 =
+* Improvement: Global - Added auto-cleaning for archived assets.
+* Fix: Heading - Resolved an issue in which the font-family would not render as required for highlighted headings.
+* Fix: Call To Action - Resolved an issue wherein additional button padding is not working responsively as intended in frontend.
+* Fix: Image Gallery - Resolved an issue wherein the "Load More" button would not appear on the frontend for the masonry layout with the button pagination type.
+* Fix: Separator - Resolved an issue in which the separator mobile width would not work as intended in the frontend.
+* Fix: Table Of Contents - Added support for Latin characters.
+* Fix: Global - Resolved an issue in which the font-family would not render as required on the frontend for certain blocks.
+
 = 2.7.0 - THURSDAY, 13th July 2023 =
 * Feature: Popup Builder - Added a new `Push Content` feature for info bars.
 * Improvement: Performance - Significantly reduced the plugin zip size by over 1 MB after optimizing the Font Awesome v6 assets.
 * Improvement: Forms - Added a full-width alignment option to the submit button.
 * Improvement: Table Of Contents - Added the ability to expand and collapse the entire box by clicking the top portion or the title of the box.
-* Improvement: Global - Added new compatibility with Spectra Pro. 
+* Improvement: Global - Added new compatibility with Spectra Pro.
 * Fix: Container - Resolved an issue wherein the text color of the Container was at a higher priority than those set for headings of blocks inside it.
 * Fix: Image - Resolved an issue in which the tablet and mobile border styles would not be applied as intended.
 * Fix: Buttons - Resolved an issue wherein the child responsive padding would not work as expected on the frontend.

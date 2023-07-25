@@ -96,7 +96,7 @@ export default function MyAccount() {
 										),
 										'<a href="https://wpspectra.com/pricing" class="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" target="_blank" rel="noreferrer">',
 										'</a>',
-										'<a class="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" target="_blank" href="https://my.wpspectra.com/" rel="noreferrer">',
+										'<a class="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" target="_blank" href="https://store.brainstormforce.com/" rel="noreferrer">',
 										'</a>'
 									)
 								) }

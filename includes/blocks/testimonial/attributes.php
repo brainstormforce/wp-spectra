@@ -25,7 +25,7 @@ return array_merge(
 		'nameFontSizeTablet'         => '',
 		'nameFontSizeMobile'         => '',
 		'nameFontFamily'             => '',
-		'nameFontWeight'             => '500',
+		'nameFontWeight'             => 'Default',
 		'nameFontStyle'              => '',
 		'nameLineHeightType'         => 'em',
 		'nameLineHeight'             => 2,

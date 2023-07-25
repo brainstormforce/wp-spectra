@@ -530,13 +530,13 @@ if ( ! $attr['secInheritFromTheme'] ) {
 	
 	$t_selectors['.wp-block-uagb-call-to-action.wp-block-button a.uagb-cta-second__button'] = $second_cta_border_tablet;
 	$m_selectors['.wp-block-uagb-call-to-action.wp-block-button a.uagb-cta-second__button'] = $second_cta_border_mobile;
-	$m_selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button']                 = array(
+	$m_selectors['.wp-block-uagb-call-to-action.wp-block-button a.uagb-cta-second__button'] = array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['secondCtaTopMobilePadding'], $attr['secondCtaMobilePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['secondCtaBottomMobilePadding'], $attr['secondCtaMobilePaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['secondCtaLeftMobilePadding'], $attr['secondCtaMobilePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['secondCtaRightMobilePadding'], $attr['secondCtaMobilePaddingUnit'] ),
 	);
-	$t_selectors['.wp-block-uagb-call-to-action a.uagb-cta-second__button']                 = array(
+	$t_selectors['.wp-block-uagb-call-to-action.wp-block-button a.uagb-cta-second__button'] = array(
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['secondCtaTopTabletPadding'], $attr['secondCtaTabletPaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['secondCtaBottomTabletPadding'], $attr['secondCtaTabletPaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['secondCtaLeftTabletPadding'], $attr['secondCtaTabletPaddingUnit'] ),
