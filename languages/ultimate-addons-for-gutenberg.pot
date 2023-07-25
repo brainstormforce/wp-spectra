@@ -2,16 +2,16 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.7.0\n"
+"Project-Id-Version: Spectra 2.7.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-07-07T11:35:33+00:00\n"
+"POT-Creation-Date: 2023-07-25T09:43:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.6.0\n"
+"X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
 
 #. Plugin Name of the plugin
@@ -74,7 +74,7 @@ msgid "Failed to refresh tokens"
 msgstr ""
 
 #: admin-core/api/common-settings.php:99
-#: classes/class-uagb-rest-api.php:367
+#: classes/class-uagb-rest-api.php:370
 msgid "Sorry, you cannot list resources."
 msgstr ""
 
@@ -97,12 +97,12 @@ msgstr ""
 msgid "Thank you for using %1$sSpectra.%2$s"
 msgstr ""
 
-#: blocks-config/forms/class-uagb-forms.php:275
-#: blocks-config/forms/class-uagb-forms.php:291
+#: blocks-config/forms/class-uagb-forms.php:308
+#: blocks-config/forms/class-uagb-forms.php:324
 msgid "Please try logging in again to verify that you are not a robot."
 msgstr ""
 
-#: blocks-config/forms/class-uagb-forms.php:383
+#: blocks-config/forms/class-uagb-forms.php:416
 #: includes/blocks/forms/attributes.php:69
 #: dist/blocks.js:3
 #: dist/blocks.js:19
@@ -7622,11 +7622,30 @@ msgstr ""
 msgid "Spectra requires&nbsp;%3$sBlock Editor%4$s. You can change your editor settings to Block Editor from&nbsp;%1$shere%2$s. Plugin is currently NOT RUNNING."
 msgstr ""
 
-#: classes/class-uagb-fse-fonts-compatibility.php:538
+#: classes/class-uagb-fse-fonts-compatibility.php:163
+#: classes/class-uagb-init-blocks.php:693
+#: dist/blocks.js:11
+#: dist/blocks.js:13
+#: dist/blocks.js:17
+#: dist/blocks.js:19
+msgid "Default"
+msgstr ""
+
+#: classes/class-uagb-fse-fonts-compatibility.php:167
+#: classes/class-uagb-fse-fonts-compatibility.php:179
+msgid "400"
+msgstr ""
+
+#: classes/class-uagb-fse-fonts-compatibility.php:173
+#: classes/class-uagb-fse-fonts-compatibility.php:185
+msgid "normal"
+msgstr ""
+
+#: classes/class-uagb-fse-fonts-compatibility.php:621
 msgid "There was some error in deleting the font."
 msgstr ""
 
-#: classes/class-uagb-fse-fonts-compatibility.php:564
+#: classes/class-uagb-fse-fonts-compatibility.php:647
 msgid "Successfully deleted font."
 msgstr ""
 
@@ -7692,14 +7711,6 @@ msgstr ""
 
 #: classes/class-uagb-init-blocks.php:536
 msgid "Please select a valid Contact Form 7."
-msgstr ""
-
-#: classes/class-uagb-init-blocks.php:693
-#: dist/blocks.js:11
-#: dist/blocks.js:13
-#: dist/blocks.js:17
-#: dist/blocks.js:19
-msgid "Default"
 msgstr ""
 
 #: classes/class-uagb-init-blocks.php:766

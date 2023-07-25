@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.2.2  
-**Stable tag:** 2.7.0  
+**Stable tag:** 2.7.1  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -215,14 +215,14 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### x.x.x ###
+### 2.7.1 - TUESDAY, 25th JULY 2023 ###
 * Improvement: Global - Added auto-cleaning for archived assets.
-* Fix: Separator - Resolved an issue in which the separator mobile width would not work as intended in the frontend.
 * Fix: Heading - Resolved an issue in which the font-family would not render as required for highlighted headings.
 * Fix: Call To Action - Resolved an issue wherein additional button padding is not working responsively as intended in frontend.
-* Fix: Global - Resolved an issue in which the font-family would not render as required on the frontend for certain blocks.
 * Fix: Image Gallery - Resolved an issue wherein the "Load More" button would not appear on the frontend for the masonry layout with the button pagination type.
+* Fix: Separator - Resolved an issue in which the separator mobile width would not work as intended in the frontend.
 * Fix: Table Of Contents - Added support for Latin characters.
+* Fix: Global - Resolved an issue in which the font-family would not render as required on the frontend for certain blocks.
 
 ### 2.7.0 - THURSDAY, 13th July 2023 ###
 * Feature: Popup Builder - Added a new `Push Content` feature for info bars.
