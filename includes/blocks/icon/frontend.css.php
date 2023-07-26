@@ -91,7 +91,9 @@ $selectors['.uagb-icon-wrapper .uagb-svg-wrapper:hover']     = array(
 // If using separate box shadow hover settings, then generate CSS for it.
 if ( $attr['useSeparateBoxShadows'] ) {
 	$selectors['.uagb-icon-wrapper .uagb-svg-wrapper:hover'] = array(
-		'box-shadow' => $box_shadow_hover_css,
+		'box-shadow'   => $box_shadow_hover_css,
+		'border-color' => $attr['iconBorderHColor'],
+		'background'   => $hover_background,
 	);
 
 };

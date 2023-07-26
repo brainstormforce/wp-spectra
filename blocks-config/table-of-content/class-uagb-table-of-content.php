@@ -210,8 +210,8 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 			$string = preg_replace( '/[\x00-\x1F\x7F]*/u', '', $string );
 			$string = str_replace( array( '&amp;', '&nbsp;' ), ' ', $string );
-			// Remove all except alphbets, space, `-` and `_`.
-			$string = preg_replace( '/[^A-Za-z0-9 _-]/', '', $string );
+			// Remove all except alphbets, space, `-`,`_` and latin characters.
+			$string = preg_replace( '/[^a-zA-Z0-9\p{L} _-]/u', '', $string );
 			// Convert space characters to an `_` (underscore).
 			$string = preg_replace( '/\s+/', '_', $string );
 			// Replace multiple `_` (underscore) with a single `-` (hyphen).

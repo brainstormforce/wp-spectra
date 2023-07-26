@@ -1477,7 +1477,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 								isotope.layout();
 							});
 							imagesLoaded( element ).on( 'always', function() {
-								element.style.visibility = 'visible';
+								element.parentNode.style.visibility = 'visible';
 							});
 						}
 						UAGBImageGalleryMasonry.init( <?php echo wp_json_encode( $attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );

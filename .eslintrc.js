@@ -57,5 +57,6 @@ module.exports = {
 		UAGBLottie: true,
 		AOS: true,
 		UAGBForms: true,
+		scroll: true,
 	},
 };

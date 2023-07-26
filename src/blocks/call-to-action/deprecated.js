@@ -14,6 +14,7 @@ import CTA from './components/CTA';
 import attributes from './old-attributes';
 import CTANew from './components/CallToActionNew';
 import SecondCTAButton from './components/SecondCTAButton';
+import saveV2_7_0 from './deprecated/v2_7_0/save';
 
 import { __ } from '@wordpress/i18n';
 
@@ -400,6 +401,10 @@ const deprecated = [
 			);
 		},
 	},
+	{
+		attributes,
+		saveV2_7_0,
+	}
 ];
 
 export default deprecated;

@@ -133,9 +133,6 @@ $selectors = array(
 		'justify-content'  => $popup_position_h,
 		'background-color' => $attr['hasOverlay'] ? $attr['popupOverlayColor'] : '',
 		'pointer-events'   => ( 'banner' === $attr['variantType'] || ( 'popup' === $attr['variantType'] && ! $attr['haltBackgroundInteraction'] ) ) ? 'none' : '',
-		'width'            => ( 'banner' === $attr['variantType'] ) ? '100% !important' : '',
-		'top'              => ( 'banner' === $attr['variantType'] && 'flex-end' === $attr['popupPositionV'] ) ? 'unset' : '',
-		'bottom'           => ( 'banner' === $attr['variantType'] && 'flex-end' === $attr['popupPositionV'] ) ? 0 : '',
 	),
 	' .uagb-popup-builder__wrapper'           => array(
 		'pointer-events' => 'auto',
@@ -311,6 +308,25 @@ $m_selectors = array(
 // Tablet and Mobile Image Backgrounds are handled by the device hierarchy.
 if ( 'none' === $attr['backgroundType'] || ( 'image' === $attr['backgroundType'] && ! $attr['backgroundImageDesktop'] ) ) {
 	$selectors[' .uagb-popup-builder__container']['background-color'] = '#fff';
+}
+
+// If this is a Banner, add the required static CSS overrides.
+if ( 'banner' === $attr['variantType'] ) {
+	$selectors['.uagb-popup-builder']['width']  = '100%';
+	$selectors['.uagb-popup-builder']['height'] = 'unset';
+	// If this is a Push Banner, add the Push Banner CSS as well.
+	if ( $attr['willPushContent'] ) {
+		$selectors['.uagb-popup-builder']['align-items'] = 'flex-start';
+		$selectors['.uagb-popup-builder']['position']    = 'relative';
+		$selectors['.uagb-popup-builder']['transition']  = 'max-height 0.5s cubic-bezier(1, 0, 1, 1)';
+		$selectors['.uagb-popup-builder']['max-height']  = 0;
+		$selectors['.uagb-popup-builder']['opacity']     = 1;
+		$selectors['.uagb-popup-builder']['z-index']     = 9999;
+		// Else if this is not a Push Banner, add the Bottom Banner overrides if needed.
+	} elseif ( 'flex-end' === $attr['popupPositionV'] ) {
+		$selectors['.uagb-popup-builder']['top']    = 'unset';
+		$selectors['.uagb-popup-builder']['bottom'] = 0;
+	}
 }
 
 $combined_selectors = UAGB_Helper::get_combined_selectors(

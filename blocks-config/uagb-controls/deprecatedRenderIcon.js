@@ -19,7 +19,7 @@ function renderSVG( svg ) {
 		const path = fontAwesome.svg.hasOwnProperty( 'brands' )
 			? fontAwesome.svg.brands.path
 			: fontAwesome.svg.solid.path;
-		const viewBox = viewbox_array.join( ' ' );
+		const viewBox = viewbox_array?.join( ' ' );
 
 		return (
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox={ viewBox }>

@@ -761,7 +761,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'main-title-font-weight',
 		},
-		default: '500',
+		default: 'Default',
 	},
 	// Link Font Size
 	headingFontSize: {

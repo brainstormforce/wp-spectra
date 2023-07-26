@@ -41,6 +41,7 @@ return array_merge(
 		'hasOverlay'                  => true,
 		'isDismissable'               => true,
 		'haltBackgroundInteraction'   => true,
+		'willPushContent'             => true,
 		// ------------------------- CLOSE SETTINGS.
 		'closeIcon'                   => 'xmark',
 		'closeIconPosition'           => 'top-right',

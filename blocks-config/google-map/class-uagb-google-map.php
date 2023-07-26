@@ -111,7 +111,7 @@ if ( ! class_exists( 'UAGB_Google_Map' ) ) {
 			/**
 			 * Added filter to attributes to support Dynamic Content.
 			 *
-			 * @since x.x.x
+			 * @since 2.7.0
 			 * @hooked Pro -> DynamicContent->uagb_google_map_block_attributes
 			 * */
 			$attributes = apply_filters( 'uagb_google_map_block_attributes', $attributes );
