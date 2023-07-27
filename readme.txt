@@ -219,6 +219,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Display Conditions - Resolved an issue wherein the `UAGDay` attribute would persist in the code view after turning off display conditions.
 * Fix: Social Share - Converted anchors to span tags and removed unwanted attributes from the social links.
 * Fix: Forms - Resolved an issue in which some phone country-code colors would not work as intended in the editor.
+* Fix: Table Of Content - Resolved an issue where default padding of Table of Content is not same in editor as in frontend.
 
 = 2.7.1 - TUESDAY, 25th JULY 2023 =
 * Improvement: Global - Added auto-cleaning for archived assets.
