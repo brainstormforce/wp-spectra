@@ -19,13 +19,9 @@ const UserConditionOptions = ( props ) => {
 
 	const handleChange = ( e ) => {
 		const { value, checked } = e.target;
-		let setUAGBDay;
-		if ( checked ) {
-			setUAGBDay = { UAGDay: [...UAGDay, value] };
-		} else {
-			setUAGBDay = { UAGDay: updateUAGDay( UAGDay, value ) };
-		}
-		setAttributes( setUAGBDay );
+		setAttributes( {
+			UAGDay: checked ? [...UAGDay, value] : updateUAGDay( UAGDay, value )
+		} );
 	};
 
 	const options = [
