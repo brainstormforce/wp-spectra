@@ -165,7 +165,7 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 		 *
 		 * @param array  $data Plugin update data.
 		 * @param object $response Plugin update response.
-		 * @since x.x.x
+		 * @since 2.7.2
 		 * @return void
 		 */
 		public function plugin_update_notification( $data, $response ) {
@@ -195,7 +195,7 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 		/**
 		 * Enqueue styles.
 		 *
-		 * @since x.x.x
+		 * @since 2.7.2
 		 * @return void
 		 */
 		public function enqueue_styles() {
