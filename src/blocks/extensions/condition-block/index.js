@@ -5,6 +5,7 @@ import { addFilter } from '@wordpress/hooks';
 const { enableConditionsForCoreBlocks, enableResponsiveConditionsForCoreBlocks } = uagb_blocks_info;
 import { useEffect } from '@wordpress/element';
 import classnames from 'classnames';
+import { updateUAGDay } from '@Utils/Helpers';
 
 const UserConditionOptions = ( props ) => {
 	const { attributes, setAttributes } = props;
@@ -21,14 +22,14 @@ const UserConditionOptions = ( props ) => {
 	];
 
 	const handleChange = ( e ) => {
-		// Destructuring
 		const { value, checked } = e.target;
-
+		let setUAGBDay;
 		if ( checked ) {
-			setAttributes( { UAGDay: [ ...UAGDay, value ] } );
+			setUAGBDay = { UAGDay: [...UAGDay, value] };
 		} else {
-			setAttributes( { UAGDay: UAGDay.filter( ( i ) => i !== value ) } );
+			setUAGBDay = { UAGDay: updateUAGDay( UAGDay, value ) };
 		}
+		setAttributes( setUAGBDay );
 	};
 
 	return (
@@ -121,7 +122,7 @@ const UserConditionOptions = ( props ) => {
 									value={ o.value }
 									sunday
 									onChange={ handleChange }
-									checked={ UAGDay.includes( o.value ) ? true : false }
+									checked={ UAGDay?.includes( o.value ) ? true : false }
 								/>
 								{ o.label }
 							</label>

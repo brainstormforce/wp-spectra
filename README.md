@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
+* Fix: Display Conditions - Resolved an issue wherein the `UAGDay` attribute would persist in the code view after turning off display conditions.
 * Fix: Social Share - Converted anchors to span tags and removed unwanted attributes from the social links.
 * Fix: Forms - Resolved an issue in which some phone country-code colors would not work as intended in the editor.
 
