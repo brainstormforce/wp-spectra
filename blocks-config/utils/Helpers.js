@@ -38,3 +38,8 @@ export function getPanelIdFromRef( ref ) {
 export const uagbClassNames = ( classes ) => classes.filter( Boolean ).join( ' ' );
 
 export const uagbDeepClone = ( arrayOrObject ) => JSON.parse( JSON.stringify( arrayOrObject ) );
+
+export const updateUAGDay = ( UAGDay, value ) => {
+	const filteredArray = UAGDay.filter( ( i ) => i !== value );
+	return filteredArray?.length > 0 ? filteredArray : undefined;
+};

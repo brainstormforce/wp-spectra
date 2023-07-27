@@ -40,16 +40,16 @@ function styling( attributes, clientId, name ) {
 	const gapMobileTabletFallback = isNaN( gapMobile ) ? gapTabletFallback : gapMobile;
 
 	const selectors = {
-		' a.uagb-ss__link': {
+		' span.uagb-ss__link': {
 			'color': iconColor,
 		},
-		' a.uagb-ss__link svg': {
+		' span.uagb-ss__link svg': {
 			'fill': iconColor,
 		},
-		' .uagb-ss-repeater:hover a.uagb-ss__link': {
+		' .uagb-ss-repeater:hover span.uagb-ss__link': {
 			'color': iconHoverColor,
 		},
-		' .uagb-ss-repeater:hover a.uagb-ss__link svg': {
+		' .uagb-ss-repeater:hover span.uagb-ss__link svg': {
 			'fill': iconHoverColor,
 		},
 		' .uagb-ss__wrapper': {

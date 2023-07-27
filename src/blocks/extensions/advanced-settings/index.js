@@ -9,6 +9,7 @@ import { AnimationList, AnimationSelectControlObject } from '@Blocks/extensions/
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { select } from '@wordpress/data'
 import Select from 'react-select';
+import { updateUAGDay } from '@Utils/Helpers';
 
 const { enableConditions, enableResponsiveConditions, enableAnimationsExtension } = uagb_blocks_info;
 
@@ -17,14 +18,10 @@ const UserConditionOptions = ( props ) => {
 	const { UAGLoggedIn, UAGLoggedOut, UAGDisplayConditions, UAGSystem, UAGBrowser, UAGUserRole, UAGDay } = attributes;
 
 	const handleChange = ( e ) => {
-		// Destructuring
 		const { value, checked } = e.target;
-
-		if ( checked ) {
-			setAttributes( { UAGDay: [ ...UAGDay, value ] } );
-		} else {
-			setAttributes( { UAGDay: UAGDay.filter( ( i ) => i !== value ) } );
-		}
+		setAttributes( {
+			UAGDay: checked ? [...UAGDay, value] : updateUAGDay( UAGDay, value )
+		} );
 	};
 
 	const options = [
@@ -137,7 +134,7 @@ const UserConditionOptions = ( props ) => {
 									value={ o.value }
 									sunday
 									onChange={ handleChange }
-									checked={ UAGDay.includes( o.value ) ? true : false }
+									checked={ UAGDay?.includes( o.value ) ? true : false }
 								/>
 								{ o.label }
 							</label>
