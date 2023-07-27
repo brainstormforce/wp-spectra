@@ -217,6 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = x.x.x =
 * Fix: Social Share - Converted anchors to span tags and removed unwanted attributes from the social links.
+* Fix: Forms - Resolved an issue in which some phone country-code colors would not work as intended in the editor.
 
 = 2.7.1 - TUESDAY, 25th JULY 2023 =
 * Improvement: Global - Added auto-cleaning for archived assets.

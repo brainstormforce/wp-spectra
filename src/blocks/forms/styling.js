@@ -423,6 +423,9 @@ function styling( attributes, clientId, name ) {
 			'border': '2px solid ' + fieldBorderHColor,
 			'background-color': `${ bgActiveColor } !important`,
 		},
+		' .uagb-forms-main-form .components-select-control__input:focus':{
+			'background-color': `${ bgActiveColor } !important`,
+		},
 		' .uagb-forms-main-form .uagb-forms-input:focus::placeholder': {
 			'color': `${ inputplaceholderActiveColor } !important`,
 		},
@@ -573,8 +576,11 @@ function styling( attributes, clientId, name ) {
 		' .uagb-forms-field-set:hover .uagb-forms-input::placeholder': {
 			'color': inputplaceholderHoverColor,
 		},
-		' .uagb-forms-field-set:hover .uagb-forms-input select': {
-			'color': inputplaceholderHoverColor,
+		' .uagb-forms-field-set .uagb-forms-input select': {
+			'color': inputColor,
+		},
+		' .uagb-forms-phone-flex:hover .components-base-control__field .components-select-control__input': {
+			'background-color': bgHoverColor,
 		},
 	};
 
