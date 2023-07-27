@@ -147,20 +147,20 @@ function styling( attributes, clientId, name ) {
 	const overallBorderCSSTablet = generateBorderCSS( attributes, 'overall', 'tablet' );
 	const overallBorderCSSMobile = generateBorderCSS( attributes, 'overall', 'mobile' );
 
-	const paddingTop = topPadding? topPadding : vPaddingDesktop;
-	const paddingBottom = bottomPadding? bottomPadding : vPaddingDesktop;
-	const paddingLeft = leftPadding? leftPadding : hPaddingDesktop;
-	const paddingRight = rightPadding? rightPadding : hPaddingDesktop;
+	const paddingTop = ( 'number' === typeof topPadding ) ? topPadding : vPaddingDesktop;
+	const paddingBottom = ( 'number' === typeof bottomPadding ) ? bottomPadding : vPaddingDesktop;
+	const paddingLeft = ( 'number' === typeof leftPadding ) ? leftPadding : hPaddingDesktop;
+	const paddingRight = ( 'number' === typeof rightPadding ) ? rightPadding : hPaddingDesktop;
 
-	const paddingTopTablet = topPaddingTablet? topPaddingTablet : vPaddingTablet;
-	const paddingBottomTablet = bottomPaddingTablet? bottomPaddingTablet : vPaddingTablet;
-	const paddingLeftTablet = leftPaddingTablet? leftPaddingTablet : hPaddingTablet;
-	const paddingRightTablet = rightPaddingTablet? rightPaddingTablet : hPaddingTablet;
+	const paddingTopTablet = ( 'number' === typeof topPaddingTablet ) ? topPaddingTablet : vPaddingTablet;
+	const paddingBottomTablet = ( 'number' === typeof bottomPaddingTablet ) ? bottomPaddingTablet : vPaddingTablet;
+	const paddingLeftTablet = ( 'number' === typeof leftPaddingTablet ) ? leftPaddingTablet : hPaddingTablet;
+	const paddingRightTablet = ( 'number' === typeof rightPaddingTablet ) ? rightPaddingTablet : hPaddingTablet;
 
-	const paddingTopMobile = topPaddingMobile? topPaddingMobile : vPaddingMobile;
-	const paddingBottomMobile = bottomPaddingMobile? bottomPaddingMobile : vPaddingMobile;
-	const paddingLeftMobile = leftPaddingMobile? leftPaddingMobile : hPaddingMobile;
-	const paddingRightMobile = rightPaddingMobile? rightPaddingMobile : hPaddingMobile;
+	const paddingTopMobile = ( 'number' === typeof topPaddingMobile ) ? topPaddingMobile : vPaddingMobile;
+	const paddingBottomMobile = ( 'number' === typeof bottomPaddingMobile ) ? bottomPaddingMobile : vPaddingMobile;
+	const paddingLeftMobile = ( 'number' === typeof leftPaddingMobile ) ? leftPaddingMobile : hPaddingMobile;
+	const paddingRightMobile = ( 'number' === typeof rightPaddingMobile ) ? rightPaddingMobile : hPaddingMobile;
 
 	selectors = {
 		'.wp-block-uagb-table-of-contents': {

@@ -13,20 +13,20 @@ UAGB_Block_JS::blocks_table_of_contents_gfont( $attr );
 $m_selectors = array();
 $t_selectors = array();
 
-$top_padding    = ! empty( $attr['topPadding'] ) ? $attr['topPadding'] : $attr['vPaddingDesktop'];
-$bottom_padding = ! empty( $attr['bottomPadding'] ) ? $attr['bottomPadding'] : $attr['vPaddingDesktop'];
-$left_padding   = ! empty( $attr['leftPadding'] ) ? $attr['leftPadding'] : $attr['hPaddingDesktop'];
-$right_padding  = ! empty( $attr['rightPadding'] ) ? $attr['rightPadding'] : $attr['hPaddingDesktop'];
+$top_padding    = ( isset( $attr['topPadding'] ) && is_numeric( $attr['topPadding'] ) ) ? $attr['topPadding'] : $attr['vPaddingDesktop'];
+$bottom_padding = ( isset( $attr['bottomPadding'] ) && is_numeric( $attr['bottomPadding'] ) ) ? $attr['bottomPadding'] : $attr['vPaddingDesktop'];
+$left_padding   = ( isset( $attr['leftPadding'] ) && is_numeric( $attr['leftPadding'] ) ) ? $attr['leftPadding'] : $attr['hPaddingDesktop'];
+$right_padding  = ( isset( $attr['rightPadding'] ) && is_numeric( $attr['rightPadding'] ) ) ? $attr['rightPadding'] : $attr['hPaddingDesktop'];
 
-$mobile_top_padding    = ! empty( $attr['topPaddingMobile'] ) ? $attr['topPaddingMobile'] : $attr['vPaddingMobile'];
-$mobile_bottom_padding = ! empty( $attr['bottomPaddingMobile'] ) ? $attr['bottomPaddingMobile'] : $attr['vPaddingMobile'];
-$mobile_left_padding   = ! empty( $attr['leftPaddingMobile'] ) ? $attr['leftPaddingMobile'] : $attr['hPaddingMobile'];
-$mobile_right_padding  = ! empty( $attr['rightPaddingMobile'] ) ? $attr['rightPaddingMobile'] : $attr['hPaddingMobile'];
+$mobile_top_padding    = ( isset( $attr['topPaddingMobile'] ) && is_numeric( $attr['topPaddingMobile'] ) ) ? $attr['topPaddingMobile'] : $attr['vPaddingMobile'];
+$mobile_bottom_padding = ( isset( $attr['bottomPaddingMobile'] ) && is_numeric( $attr['bottomPaddingMobile'] ) ) ? $attr['bottomPaddingMobile'] : $attr['vPaddingMobile'];
+$mobile_left_padding   = ( isset( $attr['leftPaddingMobile'] ) && is_numeric( $attr['leftPaddingMobile'] ) ) ? $attr['leftPaddingMobile'] : $attr['hPaddingMobile'];
+$mobile_right_padding  = ( isset( $attr['rightPaddingMobile'] ) && is_numeric( $attr['rightPaddingMobile'] ) ) ? $attr['rightPaddingMobile'] : $attr['hPaddingMobile'];
 
-$tablet_top_padding    = ! empty( $attr['topPaddingTablet'] ) ? $attr['topPaddingTablet'] : $attr['vPaddingTablet'];
-$tablet_bottom_padding = ! empty( $attr['bottomPaddingTablet'] ) ? $attr['bottomPaddingTablet'] : $attr['vPaddingTablet'];
-$tablet_left_padding   = ! empty( $attr['leftPaddingTablet'] ) ? $attr['leftPaddingTablet'] : $attr['hPaddingTablet'];
-$tablet_right_padding  = ! empty( $attr['rightPaddingTablet'] ) ? $attr['rightPaddingTablet'] : $attr['hPaddingTablet'];
+$tablet_top_padding    = ( isset( $attr['topPaddingTablet'] ) && is_numeric( $attr['topPaddingTablet'] ) ) ? $attr['topPaddingTablet'] : $attr['vPaddingTablet'];
+$tablet_bottom_padding = ( isset( $attr['bottomPaddingTablet'] ) && is_numeric( $attr['bottomPaddingTablet'] ) ) ? $attr['bottomPaddingTablet'] : $attr['vPaddingTablet'];
+$tablet_left_padding   = ( isset( $attr['leftPaddingTablet'] ) && is_numeric( $attr['leftPaddingTablet'] ) ) ? $attr['leftPaddingTablet'] : $attr['hPaddingTablet'];
+$tablet_right_padding  = ( isset( $attr['rightPaddingTablet'] ) && is_numeric( $attr['rightPaddingTablet'] ) ) ? $attr['rightPaddingTablet'] : $attr['hPaddingTablet'];
 
 $top_margin    = isset( $attr['topMargin'] ) ? $attr['topMargin'] : $attr['vMarginDesktop'];
 $bottom_margin = isset( $attr['bottomMargin'] ) ? $attr['bottomMargin'] : $attr['vMarginDesktop'];
