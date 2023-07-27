@@ -757,6 +757,7 @@ const attributes = {
 	},
 	highLightFontWeight: {
 		type: 'string',
+		default: 'Default',
 		UAGCopyPaste: {
 			styleType: 'highlight-font-weight',
 		},

@@ -48,5 +48,5 @@ const UAGBGoogleMap = ( props ) => {
 
 export default compose(
 	AddStaticStyles,
-	GoogleMapsWrapper
+	GoogleMapsWrapper,
 )( UAGBGoogleMap );

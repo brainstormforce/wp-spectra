@@ -101,7 +101,7 @@ return array_merge(
 		'lineHeightMobile'           => '',
 		'headingLoadGoogleFonts'     => false,
 		'headingFontFamily'          => '',
-		'headingFontWeight'          => '500',
+		'headingFontWeight'          => 'Default',
 		'headingFontSize'            => 20,
 		'headingFontSizeType'        => 'px',
 		'headingFontSizeTablet'      => '',

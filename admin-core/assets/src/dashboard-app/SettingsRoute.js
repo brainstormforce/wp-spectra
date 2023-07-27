@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { __ } from '@wordpress/i18n';
-import Welcome from './pages/welcome/Welcome';
+import Welcome from '@DashboardApp/pages/welcome/Welcome';
 import Blocks from '@DashboardApp/pages/blocks/Blocks';
 import Settings from '@DashboardApp/pages/settings/Settings';
 

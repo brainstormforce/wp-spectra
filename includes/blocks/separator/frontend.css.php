@@ -112,7 +112,6 @@ $selectors = array(
 		'fill'        => $attr['elementColor'],
 	),
 );
-
 $selectors = array_merge( $selectors, $border_style, $icon_spacing_style );
 
 // Tablet.
@@ -241,8 +240,8 @@ if ( 'none' === $attr['elementType'] ) {
 			'margin-right' => 0,
 		);
 	}
-	$border_style_tablet = array(
-		'.wp-block-uabg-separator .wp-block-uagb-separator__inner' => array_merge(
+	$border_style_mobile = array(
+		'.wp-block-uagb-separator .wp-block-uagb-separator__inner' => array_merge(
 			array(
 				'width' => UAGB_Helper::get_css_value( $attr['separatorWidthMobile'], $attr['separatorWidthType'] ),
 

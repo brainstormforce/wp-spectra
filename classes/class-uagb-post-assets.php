@@ -235,7 +235,9 @@ class UAGB_Post_Assets {
 			global $post;
 			$this_post = $this->preview ? $post : get_post( $this->post_id );
 			$this->prepare_assets( $this_post );
-			$this->prepare_ast_custom_layout_post_assets();
+			if ( $this->preview ) { // Load CSS only in preview mode of block editor.
+				$this->prepare_ast_custom_layout_post_assets();
+			}
 			$content = get_option( 'widget_block' );
 			$this->prepare_widget_area_assets( $content );
 		}
@@ -1171,6 +1173,16 @@ class UAGB_Post_Assets {
 		$file_path      = $uploads_dir['path'] . 'assets/' . $folder_name . '/' . $file_name;
 
 		$result = false;
+
+		// Remove if any old file exists for same post.
+		$old_assets = glob( $base_file_path . 'uag-' . $type . '-' . $this->post_id . '-*' );
+		if ( ! empty( $old_assets ) && is_array( $old_assets ) ) {
+			foreach ( $old_assets as $old_asset ) {
+				if ( file_exists( $old_asset ) ) {
+					$file_system->delete( $old_asset );
+				}
+			}
+		}
 
 		if ( wp_mkdir_p( $base_file_path ) ) {
 
