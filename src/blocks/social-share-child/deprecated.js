@@ -7,6 +7,7 @@ import classnames from 'classnames';
 import attributes from './attributes';
 import renderSVG from '@Controls/deprecatedRenderIcon';
 import links from './deprecatedLinks';
+import V2_6_9Save from './deprecated/V2_6_9/save';
 
 const deprecated = [
 	{
@@ -48,6 +49,10 @@ const deprecated = [
 			);
 		},
 	},
+	{
+		attributes,
+		save: V2_6_9Save,
+	}
 ];
 
 export default deprecated;
