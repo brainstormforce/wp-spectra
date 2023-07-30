@@ -27,7 +27,6 @@ import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
-	props = props.parentProps;
 
 	// Setup the attributes
 	const {

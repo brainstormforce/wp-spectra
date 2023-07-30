@@ -11,6 +11,7 @@ import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
 import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import addInitialAttr from '@Controls/addInitialAttr';
 
 const UAGBImageGallery = ( props ) => {
 	const {
@@ -24,10 +25,6 @@ const UAGBImageGallery = ( props ) => {
 	} = props;
 
 	useEffect( () => {
-		// Assigning block_id in the attribute.
-		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
-		setAttributes( { classMigrate: true } );
-
 		// Replacing the old Focus List Array with the Object List.
 		if ( Array.isArray( focusList ) && focusList.length ) {
 			const convertedList = {};
@@ -70,5 +67,6 @@ const UAGBImageGallery = ( props ) => {
 };
 
 export default compose(
+	addInitialAttr,
 	AddStaticStyles,
 )( UAGBImageGallery );

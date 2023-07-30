@@ -11,17 +11,15 @@ import Render from './render';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import addInitialAttr from '@Controls/addInitialAttr';
+
 let hideLabel;
 
 const UAGBIconListChild = ( props ) => {
-	const { isSelected, setAttributes, clientId, attributes, name, deviceType } = props;
 
-	useEffect( () => {
-		// Assigning block_id in the attribute.
-		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
-	}, [] );
+	const { isSelected, clientId, attributes, deviceType } = props;
 
-	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+	const blockStyling = useMemo( () => styling( attributes, clientId, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
@@ -30,12 +28,13 @@ const UAGBIconListChild = ( props ) => {
 	return (
 		<>
 			<DynamicCSSLoader { ...{ blockStyling } } />
-			{ isSelected && <Settings parentProps={ props } hideLabel={ hideLabel } /> }
-			<Render parentProps={ props } />
+			{ isSelected && <Settings { ...props } hideLabel={ hideLabel } /> }
+			<Render { ...props } />
 		</>
 	);
 };
 
 export default compose(
+	addInitialAttr,
 	AddStaticStyles,
 )( UAGBIconListChild );

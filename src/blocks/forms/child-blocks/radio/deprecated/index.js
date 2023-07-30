@@ -5,7 +5,36 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
 
-import attributes from './attributes';
+const attributes = {
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	},
+	block_id: {
+		type: 'string',
+	},
+	radioName: {
+		type: 'string',
+		default: __( 'RadioBox Title', 'ultimate-addons-for-gutenberg' ),
+	},
+	radioRequired: {
+		type: 'boolean',
+		default: false,
+	},
+	options: {
+		type: 'array',
+		default: [
+			{
+				optiontitle: __( 'Option Name 1', 'ultimate-addons-for-gutenberg' ),
+				optionvalue: __( 'Option Value 1', 'ultimate-addons-for-gutenberg' ),
+			},
+		],
+	},
+	layout: {
+		type: 'string',
+		default: 'round',
+	},
+};
 
 const deprecated = [
 	{
@@ -30,9 +59,9 @@ const deprecated = [
 						id={ block_id }
 					/>
 
-					{ options.map( ( o, index ) => {
-						var optionvalue = o.optionvalue;
-						var value = optionvalue.replace( /\s+/g, '-' ).toLowerCase();
+					{ options.map( ( o ) => {
+						const optionvalue = o.optionvalue;
+						const value = optionvalue.replace( /\s+/g, '-' ).toLowerCase();
 						return (
 							<>
 								<input

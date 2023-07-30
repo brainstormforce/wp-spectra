@@ -20,6 +20,7 @@ import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
 import styles from './editor.lazy.scss';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import addInitialAttr from '@Controls/addInitialAttr';
 
 const ColumnsComponent = ( props ) => {
 	const {
@@ -56,8 +57,8 @@ const ColumnsComponent = ( props ) => {
 		setAttributes,
 		isSelected,
 		clientId,
+		deviceType,
 		name,
-		deviceType
 	} = props;
 
 	const {
@@ -75,10 +76,10 @@ const ColumnsComponent = ( props ) => {
 			innerBlocks: getBlocks( clientId ),
 			hasInnerBlocks: select( 'core/block-editor' ).getBlocks( clientId ).length > 0,
 
-			blockType: getBlockType( props.name ),
+			blockType: getBlockType( name ),
 			defaultVariation:
-				typeof getDefaultBlockVariation === 'undefined' ? null : getDefaultBlockVariation( props.name ),
-			variations: typeof getBlockVariations === 'undefined' ? null : getBlockVariations( props.name ),
+				typeof getDefaultBlockVariation === 'undefined' ? null : getDefaultBlockVariation( name ),
+			variations: typeof getBlockVariations === 'undefined' ? null : getBlockVariations( name ),
 		};
 	} );
 	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
@@ -114,12 +115,6 @@ const ColumnsComponent = ( props ) => {
 			}
 			setAttributes( { gradientValue: gradientVal } );
 		}
-
-		// Replacement for componentDidMount.
-		// Assigning block_id in the attribute.
-		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
-
-		setAttributes( { classMigrate: true } );
 
 		//Margin
 		if ( topMargin ) {
@@ -182,7 +177,7 @@ const ColumnsComponent = ( props ) => {
 		scrollBlockToView();
 	}, [ deviceType ] );
 
-	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+	const blockStyling = useMemo( () => styling( attributes, clientId, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
 		responsiveConditionPreview( props );
@@ -221,13 +216,14 @@ const ColumnsComponent = ( props ) => {
 	return (
 		<>
 			<DynamicCSSLoader { ...{ blockStyling } } />
-			{ isSelected && <Settings parentProps={ props } deviceType={ deviceType } /> }
-			<Render parentProps={ props } />
+			{ isSelected && <Settings { ...props } /> }
+			<Render { ...props } />
 		</>
 	);
 };
 
 export default compose(
+	addInitialAttr,
 	withNotices,
 	AddStaticStyles,
 )( ColumnsComponent );

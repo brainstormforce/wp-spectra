@@ -20,7 +20,6 @@ const ALLOWED_BLOCKS = [
 import { InnerBlocks, RichText } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
-	props = props.parentProps;
 
 	const { attributes, setAttributes, deviceType } = props;
 	const { block_id, submitButtonText, formLabel, buttonSize, reCaptchaEnable, reCaptchaType } = attributes;

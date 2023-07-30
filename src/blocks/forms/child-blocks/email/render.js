@@ -14,13 +14,11 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	props = props.parentProps;
-
 	const { attributes, setAttributes } = props;
 
 	const { block_id, name, required, placeholder } = attributes;
 
-	const isRequired = required ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
+	const isRequired = required ? 'required' : '';
 
 	return (
 		<>

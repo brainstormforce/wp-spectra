@@ -1,7 +1,8 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
-import apiFetch from '@wordpress/api-fetch';
+
+import getApiData from '@Controls/getApiData';
 
 const ContentWidth = () => {
 
@@ -14,19 +15,21 @@ const ContentWidth = () => {
 
 		dispatch( { type: 'UPDATE_CONTENT_WIDTH', payload: value } );
 
-		const formData = new window.FormData();
-
-		formData.append( 'action', 'uag_content_width' );
-		formData.append( 'security', uag_react.content_width_nonce );
-		formData.append( 'value', value );
-
-		apiFetch( {
-			url: uag_react.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( () => {
+		// Create an object with the security and value properties
+        const data = {
+            security: uag_react.content_width_nonce,
+            value,
+        };
+		// Call the getApiData function with the specified parameters
+        const getApiFetchData = getApiData( {
+            url: uag_react.ajax_url,
+            action: 'uag_content_width',
+            data,
+        } );
+		// Wait for the API call to complete, then update the state to show a notification that the settings have been saved
+        getApiFetchData.then( () => {
 			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
-		} );
+        } );
 	};
 
     return (

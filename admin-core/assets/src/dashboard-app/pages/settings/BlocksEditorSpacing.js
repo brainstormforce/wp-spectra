@@ -1,7 +1,8 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
-import apiFetch from '@wordpress/api-fetch';
+
+import getApiData from '@Controls/getApiData';
 
 const BlocksEditorSpacing = () => {
 
@@ -14,19 +15,21 @@ const BlocksEditorSpacing = () => {
 
 		dispatch( { type: 'UPDATE_BLOCKS_EDITOR_SPACING', payload: value } );
 
-		const formData = new window.FormData();
-
-		formData.append( 'action', 'uag_blocks_editor_spacing' );
-		formData.append( 'security', uag_react.blocks_editor_spacing_nonce );
-		formData.append( 'value', value );
-
-		apiFetch( {
-			url: uag_react.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( () => {
-			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
-		} );
+		// Create an object with the security and value properties
+        const data = {
+            security: uag_react.blocks_editor_spacing_nonce,
+            value,
+        };
+        // Call the getApiData function with the specified parameters
+        const getApiFetchData = getApiData( {
+            url: uag_react.ajax_url,
+            action: 'uag_blocks_editor_spacing',
+            data,
+        } );
+        // Wait for the API call to complete, then update the state to show a notification that the settings have been saved
+        getApiFetchData.then( () => {
+            dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
+        } );
 	};
 
     return (

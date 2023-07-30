@@ -13,6 +13,7 @@ import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
 import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import addInitialAttr from '@Controls/addInitialAttr';
 
 const ReviewComponent = ( props ) => {
 	const {
@@ -65,8 +66,6 @@ const ReviewComponent = ( props ) => {
 			bookAuthorName,
 		},
 		setAttributes,
-		name,
-		clientId,
 		deviceType
 	} = props;
 
@@ -195,8 +194,6 @@ const ReviewComponent = ( props ) => {
 	};
 
 	useEffect( () => {
-		// Assigning block_id in the attribute.
-		props.setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
 		if ( contentVrPadding ) {
 			if ( undefined === topPadding ) {
@@ -262,7 +259,7 @@ const ReviewComponent = ( props ) => {
 		} );
 	}
 
-	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+	const blockStyling = useMemo( () => styling( attributes, deviceType ), [ attributes, deviceType ] );
 
 	return (
 		<>
@@ -299,12 +296,13 @@ const ReviewComponent = ( props ) => {
 			/>
 			<DynamicCSSLoader { ...{ blockStyling } } />
 			<DynamicFontLoader { ...{ attributes } } />
-			{ isSelected && <Settings parentProps={ props } /> }
-			<Render parentProps={ props } />
+			{ isSelected && <Settings { ...props } /> }
+			<Render { ...props } />
 		</>
 	);
 };
 
 export default compose(
+	addInitialAttr,
 	AddStaticStyles,
 )( ReviewComponent );

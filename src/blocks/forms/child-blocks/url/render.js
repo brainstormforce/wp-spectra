@@ -4,13 +4,12 @@ import { memo } from '@wordpress/element';
 import { RichText } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
-	props = props.parentProps;
 
 	const { attributes, setAttributes } = props;
 
 	const { block_id, required, name, placeholder } = attributes;
 
-	const isRequired = required ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
+	const isRequired = required ? 'required' : '';
 
 	return (
 		<>

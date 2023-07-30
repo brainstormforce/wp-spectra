@@ -1,9 +1,10 @@
 import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch } from '@headlessui/react'
-import apiFetch from '@wordpress/api-fetch';
 import UAGB_Block_Icons from '@Common/block-icons';
 import { useEffect } from 'react';
+
+import getApiData from '@Controls/getApiData';
 
 function classNames( ...classes ) {
     return classes.filter( Boolean ).join( ' ' )
@@ -18,18 +19,21 @@ const DynamicContentExtension = () => {
 
     useEffect( () => {
 
-        const formData = new window.FormData();
+        // Create an object with the security and enableDynamicContentExtension properties
+        const data = {
+            security: uag_react.enable_dynamic_content_nonce,
+            value: enableDynamicContentExtension,
+        };
 
-		formData.append( 'action', 'uag_enable_dynamic_content' );
-		formData.append( 'security', uag_react.enable_dynamic_content_nonce );
-		formData.append( 'value', enableDynamicContentExtension );
+        // Call the getApiData function with the specified parameters
+        const getApiFetchData = getApiData( {
+            url: uag_react.ajax_url,
+            action: 'uag_enable_dynamic_content',
+            data,
+        } );
 
-		apiFetch( {
-			url: uag_react.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( () => {
-		} );
+        // Wait for the API call to complete, but perform no actions after it finishes
+        getApiFetchData.then( () => {} );
 
     }, [enableDynamicContentExtension] );
 

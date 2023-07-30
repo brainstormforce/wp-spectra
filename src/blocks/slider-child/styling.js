@@ -7,7 +7,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function styling( attributes, clientId ) {
+function styling( attributes, clientId, deviceType ) {
 	let {
 		backgroundType,
 		backgroundImageDesktop,
@@ -86,7 +86,7 @@ function styling( attributes, clientId ) {
 		gradientAngle,
 		selectGradient,
 	} = attributes;
-
+	const previewType = deviceType.toLowerCase();
 	const borderCSSTablet = generateBorderCSS( attributes, 'container', 'tablet' );
 	const borderCSSMobile = generateBorderCSS( attributes, 'container', 'mobile' );
 
@@ -252,10 +252,23 @@ function styling( attributes, clientId ) {
 
 	let styling_css = generateCSS( selectors, base_selector );
 
-	styling_css += generateCSS( tablet_selectors, `${ base_selector }`, true, 'tablet' );
+	if( 'tablet' === previewType || 'mobile' === previewType ) {
+		styling_css += generateCSS(
+			tablet_selectors,
+			`${ base_selector }`,
+			true,
+			'tablet'
+		);
 
-	styling_css += generateCSS( mobile_selectors, `${ base_selector }`, true, 'mobile' );
-
+		if( 'mobile' === previewType ){
+			styling_css += generateCSS(
+				mobile_selectors,
+				`${ base_selector }`,
+				true,
+				'mobile'
+			);
+		}
+	}
 	return styling_css;
 }
 

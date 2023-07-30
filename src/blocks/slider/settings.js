@@ -23,7 +23,7 @@ import { createBlock } from '@wordpress/blocks';
 import { applyFilters } from '@wordpress/hooks';
 
 const Settings = ( props ) => {
-	props = props.parentProps;
+
 	const { attributes, setAttributes, deviceType, insertBlock, block } = props;
 	const {
 		block_id,

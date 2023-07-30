@@ -9,7 +9,8 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function styling( attributes, clientId ) {
+function styling( attributes, clientId, deviceType ) {
+	const previewType = deviceType.toLowerCase();
 	const {
 		backgroundType,
 		backgroundVideoColor,
@@ -242,10 +243,23 @@ function styling( attributes, clientId ) {
 
 	styling_css = generateCSS( selectors, id );
 
-	styling_css += generateCSS( tablet_selectors, `${ id }`, true, 'tablet' );
+	if( 'tablet' === previewType || 'mobile' === previewType ) {
+		styling_css += generateCSS(
+			tablet_selectors,
+			`${ id }`,
+			true,
+			'tablet'
+		);
 
-	styling_css += generateCSS( mobile_selectors, `${ id }`, true, 'mobile' );
-
+		if( 'mobile' === previewType ){
+			styling_css += generateCSS(
+				mobile_selectors,
+				`${ id }`,
+				true,
+				'mobile'
+			);
+		}
+	}
 	return styling_css;
 }
 

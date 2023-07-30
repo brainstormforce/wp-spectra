@@ -1,9 +1,10 @@
 import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch } from '@headlessui/react'
-import apiFetch from '@wordpress/api-fetch';
 import UAGB_Block_Icons from '@Common/block-icons';
 import { useEffect } from 'react';
+
+import getApiData from '@Controls/getApiData';
 
 function classNames( ...classes ) {
     return classes.filter( Boolean ).join( ' ' )
@@ -18,18 +19,19 @@ const ResponsiveConditionsExtention = () => {
 
     useEffect( () => {
 
-        const formData = new window.FormData();
-
-		formData.append( 'action', 'uag_enable_block_responsive' );
-		formData.append( 'security', uag_react.enable_block_responsive_nonce );
-		formData.append( 'value', enableResponsiveConditions );
-
-		apiFetch( {
-			url: uag_react.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( () => {
-		} );
+        // Create an object with the security and value properties
+        const data = {
+            security: uag_react.enable_block_responsive_nonce,
+            value: enableResponsiveConditions,
+        };
+        // Call the getApiData function with the specified parameters
+        const getApiFetchData = getApiData( {
+            url: uag_react.ajax_url,
+            action: 'uag_enable_block_responsive',
+            data,
+        } );
+        // Wait for the API call to complete, but perform no actions after it finishes
+        getApiFetchData.then( () => {} );
 
     }, [enableResponsiveConditions] );
 

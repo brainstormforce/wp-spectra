@@ -8,10 +8,12 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateShadowCSS from '@Controls/generateShadowCSS';
 
-export default function styling( attributes, clientId, name ) {
-	const blockName = name.replace( 'uagb/', '' );
+export default function styling( attributes, name, deviceType ) {
 
+	const blockName = name.replace( 'uagb/', '' );
+	const previewType = deviceType.toLowerCase();
 	const {
+		block_id,
 		width,
 		widthTablet,
 		widthMobile,
@@ -210,7 +212,7 @@ export default function styling( attributes, clientId, name ) {
 		'position': imageBoxShadowPositionHover,
 		'altColor': imageBoxShadowColor,
 	} );
-	
+
 	function getBlockAlign( alignment ) {
 		switch ( alignment ) {
 			case 'center':
@@ -223,7 +225,7 @@ export default function styling( attributes, clientId, name ) {
 				return '';
 		}
 	}
-	
+
 	const blockAlign = getBlockAlign( align );
 	const blockAlignTablet = getBlockAlign( alignTablet );
 	const blockAlignMobile = getBlockAlign( alignMobile );
@@ -393,7 +395,7 @@ export default function styling( attributes, clientId, name ) {
 		}
 	}
 
-	const base_selector = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
+	const base_selector = `.editor-styles-wrapper .uagb-block-${ block_id }`;
 
 	const tablet_selectors = {};
 	const mobile_selectors = {};
@@ -521,9 +523,22 @@ export default function styling( attributes, clientId, name ) {
 
 	let styling_css = generateCSS( selectors, base_selector );
 
-	styling_css += generateCSS( tablet_selectors, `${ base_selector }`, true, 'tablet' );
+	if( 'tablet' === previewType || 'mobile' === previewType ) {
+		styling_css += generateCSS(
+			tablet_selectors,
+			`${ base_selector }`,
+			true,
+			'tablet'
+		);
 
-	styling_css += generateCSS( mobile_selectors, `${ base_selector }`, true, 'mobile' );
-
+		if( 'mobile' === previewType ){
+			styling_css += generateCSS(
+				mobile_selectors,
+				`${ base_selector }`,
+				true,
+				'mobile'
+			);
+		}
+	}
 	return styling_css;
 }

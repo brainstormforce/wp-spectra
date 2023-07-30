@@ -31,7 +31,6 @@ for ( index = 1; index <= 31; index++ ) {
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
-	props = props.parentProps;
 
 	const { attributes, setAttributes } = props;
 

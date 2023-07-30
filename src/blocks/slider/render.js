@@ -9,7 +9,6 @@ import { Navigation, Pagination, Autoplay, Manipulation } from 'swiper';
 import { Swiper } from 'swiper/react';
 
 const Render = ( props ) => {
-	props = props.parentProps;
 
 	const {
 		attributes,

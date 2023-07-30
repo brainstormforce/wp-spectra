@@ -1,6 +1,5 @@
 import classnames from 'classnames';
 import { useLayoutEffect, memo } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 
 const Render = ( props ) => {
@@ -11,16 +10,13 @@ const Render = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
-	props = props.parentProps;
 
 	const { attributes } = props;
 
 	const { block_id, acceptRequired, acceptText, showLink, linkLabel, link, linkInNewTab } = attributes;
 
-	const isRequired = acceptRequired ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
-	const target = linkInNewTab
-		? __( '_blank', 'ultimate-addons-for-gutenberg' )
-		: __( '_self', 'ultimate-addons-for-gutenberg' );
+	const isRequired = acceptRequired ? 'required' : '';
+	const target = linkInNewTab ? '_blank' : '_self';
 
 	return (
 		<>
@@ -30,8 +26,7 @@ const Render = ( props ) => {
 				{ showLink && (
 					<div className="uagb-forms-accept-privacy-link">
 						<a href={ link } target={ target } rel="noopener noreferrer">
-							{ ' ' }
-							{ linkLabel }{ ' ' }
+							{ linkLabel }
 						</a>
 					</div>
 				) }

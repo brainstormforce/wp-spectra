@@ -1,5 +1,5 @@
 export const PostTaxonomy = ( props ) => {
-	const { post, categoriesList } = props;
+	const { post, categoriesList, attributes } = props;
 
 	const {
 		taxStyle,
@@ -7,7 +7,7 @@ export const PostTaxonomy = ( props ) => {
 		displayPostTaxonomyAboveTitle,
 		hideTaxonomyIcon,
 		taxDivider,
-	} = props.attributes;
+	} = attributes;
 
 	const list = categoriesList;
 	const cat = post.categories;

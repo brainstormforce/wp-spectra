@@ -36,7 +36,7 @@ let imageSizeOptions = [
 ];
 
 export default function Settings( props ) {
-	props = props.parentProps;
+
 	const { setAttributes, attributes, deviceType } = props;
 
 	const {

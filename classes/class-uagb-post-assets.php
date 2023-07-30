@@ -862,7 +862,7 @@ class UAGB_Post_Assets {
 			$_block_slug = str_replace( 'uagb/', '', $name );
 			$_block_css  = UAGB_Block_Module::get_frontend_css( $_block_slug, $blockattr, $block_id );
 			$_block_js   = UAGB_Block_Module::get_frontend_js( $_block_slug, $blockattr, $block_id, 'js' );
-			$css         = array_merge( $css, $_block_css );
+			$css         = $this->merge_array_string_values( $css, $_block_css );
 			if ( ! empty( $_block_js ) ) {
 				$js .= $_block_js;
 			}
@@ -885,7 +885,7 @@ class UAGB_Post_Assets {
 								'mobile'  => '',
 							);
 							$reuse_block_css['desktop'] .= $assets['css'];
-							$css                         = array_merge( $css, $reuse_block_css );
+							$css                         = $this->merge_array_string_values( $css, $reuse_block_css );
 							$js                         .= $assets['js'];
 						} else {
 							$this->stylesheet .= $assets['css'];
@@ -1325,5 +1325,24 @@ class UAGB_Post_Assets {
 		array_push( $this->static_css_blocks, $block_name );
 
 		return apply_filters( 'spectra_frontend_static_style', $css, $block_name );
+	}
+
+	/**
+	 * Merge two arrays with string values.
+	 *
+	 * @param array $array1 First array.
+	 * @param array $array2 Second array.
+	 * @since X.X.X
+	 * @return array
+	 */
+	public function merge_array_string_values( $array1, $array2 ) {
+		foreach ( $array1 as $key => $value ) {
+			if ( isset( $array2[ $key ] ) ) {
+				$array1[ $key ] = $value . $array2[ $key ];
+			}
+			unset( $array2[ $key ] );
+		}
+	
+		return array_merge( $array1, $array2 );
 	}
 }

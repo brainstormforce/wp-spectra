@@ -15,11 +15,8 @@ const Render = ( props ) => {
 	}, [] );
 
 	const countdownRef = props.countdownRef;
-
-	props = props.parentProps;
-
 	const {
-		attributes: { block_id, showLabels, labelDays, labelHours, labelMinutes, labelSeconds, timerEndAction }, deviceType
+		attributes: { block_id, name, showLabels, labelDays, labelHours, labelMinutes, labelSeconds, timerEndAction }, deviceType
 	} = props;
 
 	const blockProps = useBlockProps( {
@@ -29,7 +26,7 @@ const Render = ( props ) => {
 
 	const innerblocks_structure = !! uagb_blocks_info.spectra_pro_status && timerEndAction === 'content' && (
 		<div className={ `uagb-block-countdown-innerblocks-${ block_id } wp-block-uagb-countdown-innerblocks` }>
-			{ applyFilters( 'spectra.countdown.render-innerblocks', '', props.name ) }
+			{ applyFilters( 'spectra.countdown.render-innerblocks', '', name ) }
 		</div>
 	);
 

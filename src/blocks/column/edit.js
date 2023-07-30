@@ -13,6 +13,7 @@ import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import addInitialAttr from '@Controls/addInitialAttr';
 
 const ColumnComponent = ( props ) => {
 	const {
@@ -38,7 +39,6 @@ const ColumnComponent = ( props ) => {
 		},
 		isSelected,
 		clientId,
-		name,
 		deviceType
 	} = props;
 
@@ -54,11 +54,6 @@ const ColumnComponent = ( props ) => {
 			}
 			setAttributes( { gradientValue: gradientVal } );
 		}
-
-		// Assigning block_id in the attribute.
-		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
-
-		setAttributes( { classMigrate: true } );
 
 		if ( 'image' === backgroundType ) {
 			if ( 101 !== backgroundOpacity ) {
@@ -102,17 +97,18 @@ const ColumnComponent = ( props ) => {
 		scrollBlockToView();
 	}, [ deviceType ] );
 
-	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+	const blockStyling = useMemo( () => styling( attributes, clientId, deviceType ), [ attributes, deviceType ] );
 
 	return (
 		<>
 			<DynamicCSSLoader { ...{ blockStyling } } />
-			{ isSelected && <Settings parentProps={ props } deviceType={ deviceType } /> }
-			<Render parentProps={ props } />
+			{ isSelected && <Settings { ...props } /> }
+			<Render { ...props } />
 		</>
 	);
 };
 
 export default compose(
+	addInitialAttr,
 	AddStaticStyles,
 )( ColumnComponent );

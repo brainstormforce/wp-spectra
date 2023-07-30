@@ -2,9 +2,8 @@ import classnames from 'classnames';
 import { memo } from '@wordpress/element';
 
 const Render = ( props ) => {
-	props = props.parentProps;
 
-	const { attributes } = props;
+	const { attributes, isSelected } = props;
 
 	const { block_id, hidden_field_name, hidden_field_value } = attributes;
 
@@ -19,7 +18,7 @@ const Render = ( props ) => {
 		<>
 			<div className={ classnames( 'uagb-forms-hidden-wrap', `uagb-block-${ block_id }` ) }>
 				{ /* Edit View */ }
-				{ props.isSelected && (
+				{ isSelected && (
 					<input
 						type="text"
 						className="uagb-forms-hidden-input"
@@ -28,7 +27,7 @@ const Render = ( props ) => {
 					/>
 				) }
 				{ /* Hidden Field View */ }
-				{ ! props.isSelected && (
+				{ ! isSelected && (
 					<>
 						<label
 							className={ `uagb-forms-hidden-label uagb-form-hidden-${ hidden_field_label }` }

@@ -1,5 +1,4 @@
 // Global uagb_countdown_data.
-// eslint-disable-next-line no-undef
 UAGBCountdown = {
 	elements: {},
 	countdownInterval: {},

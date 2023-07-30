@@ -8,13 +8,13 @@ import { select } from '@wordpress/data';
 import getImageHeightWidth from '@Controls/getImageHeightWidth';
 
 const Render = ( props ) => {
-	props = props.parentProps;
-	const { className, setAttributes, attributes } = props;
+
+	const { className, setAttributes, attributes, clientId } = props;
 
 	// Setup the attributes.
 	const { imagePosition, headingAlign, imgAlign, showImage, image, imageWidth } = attributes;
 
-	const parentClientId = select( 'core/block-editor' ).getBlockHierarchyRootClientId( props.clientId );
+	const parentClientId = select( 'core/block-editor' ).getBlockHierarchyRootClientId( clientId );
 	const parentAttributes = select( 'core/block-editor' ).getBlockAttributes( parentClientId );
 
 	// eslint-disable-next-line no-nested-ternary
@@ -51,7 +51,7 @@ const Render = ( props ) => {
 			className={ classnames(
 				className,
 				'uagb-rest_menu__wrap',
-				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
+				`uagb-block-${ clientId.substr( 0, 8 ) }`
 			) }
 		>
 			{ imgAlignment === 'top' && (

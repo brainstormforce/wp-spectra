@@ -10,7 +10,7 @@ const ALLOWED_BLOCKS = [ 'uagb/column' ];
 import { InnerBlocks } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
-	const { attributes, isSelected, className, deviceType } = props.parentProps;
+	const { attributes, isSelected, className, deviceType, clientId } = props;
 	const {
 		stack,
 		align,
@@ -100,7 +100,7 @@ const Render = ( props ) => {
 				`${ alignType }`,
 				reverseTabletClass,
 				reverseMobileClass,
-				`uagb-block-${ props.parentProps.clientId.substr( 0, 8 ) }`,
+				`uagb-block-${ clientId.substr( 0, 8 ) }`,
 				`uagb-columns__max_width-${ contentWidth }`
 			) }
 		>

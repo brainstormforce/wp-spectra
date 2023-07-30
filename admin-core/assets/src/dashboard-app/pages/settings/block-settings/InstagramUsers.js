@@ -3,9 +3,9 @@ import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import UAGB_Block_Icons from '@Common/block-icons';
 import { Switch } from '@headlessui/react'
-import apiFetch from '@wordpress/api-fetch';
 import { escapeHTML } from '@wordpress/escape-html';
 import InstagramUnlinkPopup from './InstagramUnlinkPopup';
+import getApiData from '@Controls/getApiData';
 
 const classNames = ( ...classes ) => classes.filter( Boolean ).join( ' ' );
 
@@ -13,17 +13,16 @@ const InstagramUsers = () => {
 
 	// Refresh all Linked Accounts.
 	useEffect( () => {
-		const action = 'uag_insta_refresh_all_tokens';
-		const nonce = uag_react.insta_refresh_all_tokens_nonce;
-		const formData = new window.FormData();
-		formData.append( 'action', action );
-		formData.append( 'security', nonce );
-		formData.append( 'value', true );
-		apiFetch( {
+		const data = {
+			security: uag_react.insta_refresh_all_tokens_nonce,
+			value: true,
+		};
+		const getApiDataFetch = getApiData( {
 			url: uag_react.ajax_url,
-			method: 'POST',
-			body: formData,
+			action: 'uag_insta_refresh_all_tokens',
+			data,
 		} );
+		getApiDataFetch.then( () => {} );
 	}, [] )
 
 	// Constants Required for the API Fetch.
@@ -155,17 +154,16 @@ const InstagramUsers = () => {
 				isCurrentlyActive: 'new',
 			} );
 			dispatch( { type: 'UPDATE_INSTA_LINKED_ACCOUNTS', payload: tempUserMatrix } );
-			const action = 'uag_insta_linked_accounts';
-			const nonce = uag_react.insta_linked_accounts_nonce;
-			const formData = new window.FormData();
-			formData.append( 'action', action );
-			formData.append( 'security', nonce );
-			formData.append( 'value', JSON.stringify( tempUserMatrix ) );
-			apiFetch( {
+			const formData = {
+				security: uag_react.insta_linked_accounts_nonce,
+				value: JSON.stringify( tempUserMatrix ) ,
+			};
+			const getApiDataFetch = getApiData( {
 				url: uag_react.ajax_url,
-				method: 'POST',
-				body: formData,
-			} ).then( () => {
+				action: 'uag_insta_linked_accounts',
+				data : formData,
+			} );
+			getApiDataFetch.then( () => {
 				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'Account Linked!', 'ultimate-addons-for-gutenberg' ) } );
 				highlightLinkedUser( userID );
 				setAuthLinkingUser( false );
@@ -251,17 +249,17 @@ const InstagramUsers = () => {
 				isCurrentlyActive: 'new',
 			} );
 			dispatch( { type: 'UPDATE_INSTA_LINKED_ACCOUNTS', payload: tempUserMatrix } );
-			const action = 'uag_insta_linked_accounts';
-			const nonce = uag_react.insta_linked_accounts_nonce;
-			const formData = new window.FormData();
-			formData.append( 'action', action );
-			formData.append( 'security', nonce );
-			formData.append( 'value', JSON.stringify( tempUserMatrix ) );
-			apiFetch( {
+			const formData = {
+				security: uag_react.insta_linked_accounts_nonce,
+				value: JSON.stringify( tempUserMatrix ) ,
+			};
+			
+			const getApiDataFetch = getApiData( {
 				url: uag_react.ajax_url,
-				method: 'POST',
-				body: formData,
-			} ).then( ( responseData ) => {
+				action: 'uag_insta_linked_accounts',
+				data : formData,	
+			} );
+			getApiDataFetch.then( ( responseData ) => {
 				if ( responseData.success ) {
 					setLinkingUser( false );
 					handleInstaLinkUserLable( 'success' );

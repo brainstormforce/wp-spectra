@@ -1,13 +1,11 @@
 import UAGB_Block_Icons from '@Common/block-icons';
 import { Switch } from '@headlessui/react'
-import apiFetch from '@wordpress/api-fetch';
 import { useSelector, useDispatch } from 'react-redux';
 import { __ } from '@wordpress/i18n';
-
+import getApiData from '@Controls/getApiData';
 const classNames = ( ...classes ) => ( classes.filter( Boolean ).join( ' ' ) );
 
 const BlockCard = ( props ) => {
-
     const {
         admin_categories,
         link,
@@ -38,24 +36,22 @@ const BlockCard = ( props ) => {
 
         dispatch( {type:'UPDATE_BLOCK_STATUSES', payload: optionsClone} );
 
-        const formData = new window.FormData();
+        // Create an object with the security and value properties
+        const data = {
+            security: uag_react.blocks_activation_and_deactivation_nonce,
+            value: JSON.stringify( optionsClone ),
+        };
 
-        formData.append(
-            'action',
-            'uag_blocks_activation_and_deactivation'
-        );
-        formData.append(
-            'security',
-            uag_react.blocks_activation_and_deactivation_nonce
-        );
-        formData.append( 'value', JSON.stringify( optionsClone ) );
-
-        apiFetch( {
+        // Call the getApiData function with the specified parameters
+        const getApiFetchData = getApiData( {
             url: uag_react.ajax_url,
-            method: 'POST',
-            body: formData,
-        } ).then( () => {
-			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
+            action: 'uag_blocks_activation_and_deactivation',
+            data,
+        } );
+
+        // Wait for the API call to complete, then update the state to show a notification that the settings have been saved
+        getApiFetchData.then( () => {
+            dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
         } );
     };
 

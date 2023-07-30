@@ -45,7 +45,6 @@ const UAGBSectionEdit = ( props ) => {
 		},
 		setAttributes,
 		clientId,
-		name,
 		deviceType
 	} = props;
 
@@ -101,11 +100,6 @@ const UAGBSectionEdit = ( props ) => {
 			setAttributes( { gradientValue: gradientVal } );
 		}
 
-		// Assigning block_id in the attribute.
-		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-
-		setAttributes( { classMigrate: true } );
-
 		if ( 'image' === backgroundType ) {
 			if ( 101 !== backgroundOpacity ) {
 				const color = hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity );
@@ -122,13 +116,13 @@ const UAGBSectionEdit = ( props ) => {
 		}
 	}, [] );
 
-	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+	const blockStyling = useMemo( () => styling( attributes, clientId, deviceType ), [ attributes, deviceType ] );
 
 	return (
 		<>
 			<DynamicCSSLoader { ...{ blockStyling } } />
-			{ isSelected && <Settings parentProps={ props } /> }
-			<Render parentProps={ props } />
+			{ isSelected && <Settings { ...props } /> }
+			<Render { ...props } />
 		</>
 	);
 };

@@ -13,6 +13,7 @@ import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
 import DynamicCSSLoader from '../../components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import addInitialAttr from '@Controls/addInitialAttr';
 import { compose } from '@wordpress/compose';
 
 const UAGBtestimonial = ( props ) => {
@@ -48,10 +49,6 @@ const UAGBtestimonial = ( props ) => {
 	} = props;
 
 	useEffect( () => {
-		// Assigning block_id in the attribute.
-		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
-
-		setAttributes( { classMigrate: true } );
 
 		if ( 101 !== backgroundOpacity && 'image' === backgroundType && 'gradient' === overlayType ) {
 			const color1 = hexToRGBA( maybeGetColorForVariable( gradientColor1 ), backgroundOpacity );
@@ -105,7 +102,7 @@ const UAGBtestimonial = ( props ) => {
 
 	useEffect( () => {
 		if ( equalHeight ) {
-			uagb_carousel_height( clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
+			uagb_carousel_height( clientId.substr( 0, 8 ) );
 		} else {
 			uagb_carousel_unset_height( clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
 		}
@@ -128,12 +125,13 @@ const UAGBtestimonial = ( props ) => {
 		<>
 			<DynamicCSSLoader { ...{ blockStyling } } />
 			<DynamicFontLoader { ...{ attributes } } />
-			{ isSelected && <Settings parentProps={ props } /> }
-			<Render parentProps={ props } />
+			{ isSelected && <Settings { ...props } /> }
+			<Render { ...props } />
 		</>
 	);
 };
 
 export default compose(
+	addInitialAttr,
 	AddStaticStyles,
 )( UAGBtestimonial );

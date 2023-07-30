@@ -30,6 +30,7 @@ import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from '.././dynamicFontLoader';
 import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import addInitialAttr from '@Controls/addInitialAttr';
 import Settings from './settings';
 import Render from './render';
 
@@ -288,7 +289,6 @@ const UAGBPostMasonry = ( props ) => {
 		},
 		deviceType,
 		clientId,
-		name,
 	} = props;
 
 	const [ state, setState ] = useState( {
@@ -299,7 +299,6 @@ const UAGBPostMasonry = ( props ) => {
 	const [ isTaxonomyLoading, setIsTaxonomyLoading ] = useState( false );
 
 	useEffect( () => {
-		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 		if ( vpaginationButtonPaddingDesktop ) {
 			if ( ! paginationButtonPaddingTop ) {
 				setAttributes( {
@@ -446,8 +445,6 @@ const UAGBPostMasonry = ( props ) => {
 				} );
 			}
 		}
-
-		setAttributes( { allTaxonomyStore: undefined } );
 	}, [] );
 
 	useEffect( () => {
@@ -512,7 +509,7 @@ const UAGBPostMasonry = ( props ) => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+	const blockStyling = useMemo( () => styling( attributes, clientId, deviceType ), [ attributes, deviceType ] );
 
 	const togglePreview = () => {
 		setState( { isEditing: ! state.isEditing } );
@@ -545,6 +542,7 @@ const UAGBPostMasonry = ( props ) => {
 
 			if ( ! allTaxonomyStore && ! isTaxonomyLoading ) {
 				setIsTaxonomyLoading( true );
+				// We are not using the our wrapper getApiData function here because we need to pass any form data.
 				apiFetch( {
 					path: '/spectra/v1/all_taxonomy',
 				} ).then( ( data ) => {
@@ -609,7 +607,7 @@ const UAGBPostMasonry = ( props ) => {
 				latestPosts: getEntityRecords( 'postType', postType, latestPostsQuery ),
 				categoriesList,
 				taxonomyList: 'undefined' !== typeof currentTax ? currentTax.taxonomy : [],
-				block: getBlocks( props.clientId ),
+				block: getBlocks( clientId ),
 			};
 		}
 	);
@@ -2309,7 +2307,7 @@ const UAGBPostMasonry = ( props ) => {
 			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && (
 				<Settings
-					parentProps={ props }
+					{ ...props }
 					state={ state }
 					inspectorControls={ inspectorControls }
 					togglePreview={ togglePreview }
@@ -2318,7 +2316,7 @@ const UAGBPostMasonry = ( props ) => {
 				/>
 			) }
 			<Render
-				parentProps={ props }
+				{ ...props }
 				state={ state }
 				setState={ setState }
 				togglePreview={ togglePreview }
@@ -2332,5 +2330,6 @@ const UAGBPostMasonry = ( props ) => {
 };
 
 export default compose(
+	addInitialAttr,
 	AddStaticStyles,
 )( UAGBPostMasonry );

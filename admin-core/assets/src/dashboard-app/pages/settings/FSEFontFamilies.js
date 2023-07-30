@@ -2,13 +2,13 @@
 import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch } from '@headlessui/react'
-import apiFetch from '@wordpress/api-fetch';
 import Select from 'react-select';
 import googleFonts from '@Controls/fonts';
 import { useState, useRef } from '@wordpress/element';
 import FSEDisplayFontFamilies from './FSEDisplayFontFamilies';
 import FSEFontFamiliesSkeleton from '@DashboardApp/pages/settings/FSEFontFamiliesSkeleton';
 import { uagbClassNames } from '@Helpers/Helpers';
+import getApiData from '@Controls/getApiData';
 
 const FSEFontFamilies = () => {
 
@@ -84,30 +84,26 @@ const FSEFontFamilies = () => {
         }
     }
     const updateEnableSelectedFontFamilies = () => {
-
-        let assetStatus;
-		if ( enableFSEFontFamilies === 'disabled' ) {
-            assetStatus = 'enabled';
-		} else {
-            assetStatus = 'disabled';
-		}
+        const assetStatus = enableFSEFontFamilies === 'disabled' ? 'enabled' : 'disabled' ;
 
         dispatch( { type: 'UPDATE_ENABLE_FSE_FONT_FAMILIES', payload: assetStatus } );
 
-		const formData = new window.FormData();
+        const data = {
+            security: uag_react.load_fse_font_globally_nonce,
+            value: assetStatus,
+        };
 
-		formData.append( 'action', 'uag_load_fse_font_globally' );
-		formData.append( 'security', uag_react.load_fse_font_globally_nonce );
-		formData.append( 'value', assetStatus );
+        const getApiFetchData = getApiData( {
+            url: uag_react.ajax_url,
+            action: 'uag_load_fse_font_globally',
+            data,
+        } );
 
-		apiFetch( {
-			url: uag_react.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( () => {
-			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'Successfully saved!', 'ultimate-addons-for-gutenberg' ) } );
+        getApiFetchData.then( () => {
+            dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'Successfully saved!', 'ultimate-addons-for-gutenberg' ) } );
             location.reload();
-		} );
+        } );
+
     };
    
     const updateSelectedFontFamilies = ( font, type ) => {
@@ -171,25 +167,23 @@ const FSEFontFamilies = () => {
         familyRef.current.select.clearValue();
         setShowLoader( true );
         setSaveToDB( true );
-        const action = 'uag_fse_font_globally',
-                nonce = uag_react.fse_font_globally_nonce;
+        
+        const data = {
+            security: uag_react.fse_font_globally_nonce,
+            value: JSON.stringify( fseFontFamilies ),
+        };
 
-        const formData = new window.FormData();
-
-        formData.append( 'action', action );
-        formData.append( 'security', nonce );
-        formData.append( 'value', JSON.stringify( fseFontFamilies ) );
-
-        apiFetch( {
+        const getApiFetchData = getApiData( {
             url: uag_react.ajax_url,
-            method: 'POST',
-            body: formData,
-        } ).then( () => {
+            action: 'uag_fse_font_globally',
+            data,
+        } );
+
+        getApiFetchData.then( () => {
             setSaveToDB( false );
-            setFSEFontFamilies( [{value: null, label: ''}] );
+            setFSEFontFamilies( [ { value: null, label: '' } ] );
             dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload:  __( 'Successfully saved!', 'ultimate-addons-for-gutenberg' ) } );
             location.reload();
-
         } );
     };
 

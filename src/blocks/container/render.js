@@ -7,7 +7,7 @@ import { select, useSelect } from '@wordpress/data';
 import backgroundCss from './backgroundCss';
 
 const Render = ( props ) => {
-	props = props.parentProps;
+
 	const { attributes, clientId, deviceType } = props;
 
 	const {

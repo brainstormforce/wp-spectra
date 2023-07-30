@@ -18,7 +18,6 @@ import presets from './presets';
 import UAGPresets from '@Components/presets';
 import { memo } from '@wordpress/element';
 const Settings = ( props ) => {
-	props = props.parentProps;
 
 	const { attributes, setAttributes } = props;
 

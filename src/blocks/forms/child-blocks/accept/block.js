@@ -14,6 +14,8 @@ import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
 let acceptCommonData = {};
 acceptCommonData = applyFilters( 'uagb/forms-accept', addCommonDataToSpectraBlocks( acceptCommonData ) );
+import Version2_6_4 from './2_6_4';
+
 registerBlockType( 'uagb/forms-accept', {
 	...acceptCommonData,
 	title: __( 'Accept', 'ultimate-addons-for-gutenberg' ),
@@ -28,4 +30,5 @@ registerBlockType( 'uagb/forms-accept', {
 		anchor: true,
 	},
 	save,
+	deprecated : [ Version2_6_4 ],
 } );

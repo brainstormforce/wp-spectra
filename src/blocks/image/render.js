@@ -39,8 +39,8 @@ const propTypes = {};
 
 const defaultProps = {};
 
-const Render = ( parentProps ) => {
-	const { parentProps: props } = parentProps;
+const Render = ( props ) => {
+
 	let { attributes } = props;
 	const { setAttributes, className, isSelected, insertBlocksAfter, onReplace, context, clientId, deviceType } = props;
 

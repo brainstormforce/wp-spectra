@@ -12,8 +12,7 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	props = props.parentProps;
-	const { className, attributes, setAttributes, deviceType } = props;
+	const { className, attributes, setAttributes, deviceType, clientId } = props;
 	// Setup the attributes.
 	const {
 		formId,
@@ -61,7 +60,7 @@ const Render = ( props ) => {
 				className,
 				'uagb-gf-styler__outer-wrap',
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
+				`uagb-block-${ clientId.substr( 0, 8 ) }`
 			) }
 		>
 			<div

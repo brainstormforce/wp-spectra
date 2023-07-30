@@ -6,6 +6,7 @@ import CountdownBox from './components/CountdownBox';
 export default function Save( props ) {
 	const {
 		attributes: { block_id, showLabels, labelDays, labelHours, labelMinutes, labelSeconds, timerEndAction },
+		name,
 	} = props;
 
 	const blockProps = useBlockProps.save( {
@@ -14,7 +15,7 @@ export default function Save( props ) {
 
 	const innerblocks_structure = !! uagb_blocks_info.spectra_pro_status && timerEndAction === 'content' && (
 		<div className={ `uagb-block-countdown-innerblocks-${ block_id } wp-block-uagb-countdown-innerblocks` }>
-			{ applyFilters( 'spectra.countdown.save-innerblocks', '', props.name ) }
+			{ applyFilters( 'spectra.countdown.save-innerblocks', '', name ) }
 		</div>
 	);
 

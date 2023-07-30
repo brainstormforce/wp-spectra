@@ -16,7 +16,6 @@ import UAGTextControl from '@Components/text-control';
 import { memo } from '@wordpress/element';
 
 const Settings = ( props ) => {
-	props = props.parentProps;
 
 	const { attributes, setAttributes, deviceType } = props;
 

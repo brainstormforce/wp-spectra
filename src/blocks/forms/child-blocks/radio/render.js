@@ -2,9 +2,7 @@ import classnames from 'classnames';
 import { useLayoutEffect, memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
-
 import { Button } from '@wordpress/components';
-
 import { RichText } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
@@ -15,10 +13,6 @@ const Render = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
-
-	const { setState } = props;
-
-	props = props.parentProps;
 
 	const { attributes, setAttributes, isSelected } = props;
 
@@ -33,7 +27,6 @@ const Render = ( props ) => {
 		const addnewOptions = options.map( ( item ) => item );
 
 		setAttributes( { options: addnewOptions } );
-		setState( { optionsstate: addnewOptions } );
 	};
 
 	const editView = options.map( ( option, index ) => {
@@ -111,7 +104,6 @@ const Render = ( props ) => {
 		} );
 
 		setAttributes( { options: editOptions } );
-		setState( { optionsstate: editOptions } );
 	};
 
 	const deleteOption = ( index ) => {
@@ -123,11 +115,10 @@ const Render = ( props ) => {
 			return item;
 		} );
 
-		setState( { optionsstate: deleteOptions } );
 		setAttributes( { deleteOptions } );
 	};
 
-	const isRequired = radioRequired ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
+	const isRequired = radioRequired ? 'required' : '';
 
 	return (
 		<>

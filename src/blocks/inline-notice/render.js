@@ -15,7 +15,6 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	props = props.parentProps;
 	// Setup the attributes
 	const {
 		attributes: { block_id, icon, noticeTitle, noticeContent, noticeDismiss, noticeAlignment, headingTag },

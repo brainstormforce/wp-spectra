@@ -33,7 +33,7 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 const Settings = ( props ) => {
 	const { categoriesList, latestPosts, taxonomyList } = props;
 	// Caching all Props
-	const { attributes, setAttributes, deviceType } = props.parentProps;
+	const { attributes, setAttributes, deviceType } = props;
 
 	// Caching all attributes.
 	const {

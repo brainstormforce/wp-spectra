@@ -5,11 +5,12 @@ import { MediaUpload } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGB_Block_Icons from '@Controls/block-icons';
-import apiFetch from '@wordpress/api-fetch';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 import UAGConfirmPopup from '../popup-confirm';
 import UAGHelpText from '@Components/help-text';
 import { applyFilters } from '@wordpress/hooks';
+
+import getApiData from '@Controls/getApiData';
 
 const UAGMediaPicker = ( props ) => {
 	const [ panelNameForHook, setPanelNameForHook ] = useState( null );
@@ -86,17 +87,20 @@ const UAGMediaPicker = ( props ) => {
 	};
 
 	const onConfirm = ( open ) => {
-		const formData = new window.FormData();
-		formData.append( 'action', 'uagb_svg_confirmation' );
-		formData.append( 'svg_nonce', uagb_blocks_info.uagb_svg_confirmation_nonce );
-		formData.append( 'confirmation', 'yes' );
-
-		apiFetch( {
-			url: uagb_blocks_info.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( ( response ) => {
-			if ( response.success ) {
+		// Create an object with the svg_nonce and confirmation properties
+        const data = {
+            svg_nonce: uagb_blocks_info.uagb_svg_confirmation_nonce,
+			confirmation: 'yes',
+        };
+		// Call the getApiData function with the specified parameters
+        const getApiFetchData = getApiData( {
+            url: uagb_blocks_info.ajax_url,
+            action: 'uagb_svg_confirmation',
+            data,
+        } );
+		// Wait for the API call to complete, then update uagLocalstorage
+        getApiFetchData.then( ( response ) => {
+			if( response.success ) {
 				uagLocalStorage.setItem( 'uagSvgConfirmation', JSON.stringify( 'yes' ) );
 				open();
 			}

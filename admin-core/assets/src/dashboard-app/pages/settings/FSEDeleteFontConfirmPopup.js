@@ -4,8 +4,8 @@ import { Fragment, useRef, useState, useEffect } from '@wordpress/element';
 import { Dialog, Transition } from '@headlessui/react';
 import { __, sprintf } from '@wordpress/i18n';
 import ReactHtmlParser from 'react-html-parser';
-import apiFetch from '@wordpress/api-fetch';
 import { useDispatch } from 'react-redux';
+import getApiData from '@Controls/getApiData';
 
 const FSEDeleteFontConfirmPopup = ( props ) => {
 	const {
@@ -20,7 +20,6 @@ const FSEDeleteFontConfirmPopup = ( props ) => {
     const dispatch = useDispatch();
 
 	const [ open, setOpen ] = useState( openPopup );
-   
 	const cancelButtonRef = useRef( null );
 
 	useEffect( () => {
@@ -39,25 +38,22 @@ const FSEDeleteFontConfirmPopup = ( props ) => {
 			fontStyle
 		};
 
-		const action = 'uag_fse_font_globally_delete',
-                nonce = uag_react.fse_font_globally_delete_nonce;
+		const data = {
+			security: uag_react.fse_font_globally_delete_nonce,
+			value: JSON.stringify( fontToDelete ),
+		};
 
-        const formData = new window.FormData();
+		const getApiFetchData = getApiData( {
+			url: uag_react.ajax_url,
+			action: 'uag_fse_font_globally_delete',
+			data,
+		} );
 
-        formData.append( 'action', action );
-        formData.append( 'security', nonce );
-        formData.append( 'value', JSON.stringify( fontToDelete ) );
-
-        apiFetch( {
-            url: uag_react.ajax_url,
-            method: 'POST',
-            body: formData,
-        } ).then( ( data ) => {
+		getApiFetchData.then( ( responseData ) => {
 			setOpenPopup( false );
-            dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: data?.data?.messsage } );
+            dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: responseData?.data?.messsage } );
             location.reload();
-
-        } );
+		} );
 	};
 	
 	return (

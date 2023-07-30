@@ -17,7 +17,7 @@ const Render = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
-	const { attributes, setAttributes, clientId, deviceType } = props.parentProps;
+	const { attributes, setAttributes, clientId, deviceType } = props;
 
 	const {
 		block_id,

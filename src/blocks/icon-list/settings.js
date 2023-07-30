@@ -18,7 +18,7 @@ import UAGIconPicker from '@Components/icon-picker';
 import { memo } from '@wordpress/element';
 
 const Settings = ( props ) => {
-	props = props.parentProps;
+
 	const { attributes, deviceType, setAttributes, clientId } = props;
 
 	const {

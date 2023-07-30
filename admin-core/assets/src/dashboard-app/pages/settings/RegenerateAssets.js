@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { __ } from '@wordpress/i18n';
-import apiFetch from '@wordpress/api-fetch';
 import { useDispatch } from 'react-redux';
+
+import getApiData from '@Controls/getApiData';
 
 const RegenerateAssets = () => {
     const dispatch = useDispatch();
@@ -9,21 +10,24 @@ const RegenerateAssets = () => {
 
     const regenerateAssets = () => {
         setRegenerateAssetsState( 'loading' );
-        const formData = new window.FormData();
-		formData.append( 'action', 'uag_regenerate_assets' );
-		formData.append( 'security', uag_react.regenerate_assets_nonce );
-		formData.append( 'value', true );
-
-		apiFetch( {
-			url: uag_react.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( ( data ) => {
-            if ( data.success ) {
-				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'Assets Regenerated!', 'ultimate-addons-for-gutenberg' ) } );
-                setRegenerateAssetsState( false );
-			}
-		} );
+        // Create an object with the security and value properties
+        const data = {
+            security: uag_react.regenerate_assets_nonce,
+            value: true,
+        };
+        // Call the getApiData function with the specified parameters
+        const getApiFetchData = getApiData( {
+            url: uag_react.ajax_url,
+            action: 'uag_regenerate_assets',
+            data,
+        } );
+        // Wait for the API call to complete, then update the state to show a notification that the settings have been saved
+        getApiFetchData.then( ( _data ) => {
+                if ( _data.success ) {
+            		dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Assets Regenerated!' } );
+                    setRegenerateAssetsState( false );
+            	}
+        } );
     };
 
     return (

@@ -9,7 +9,7 @@ import generateBorderCSS from '@Controls/generateBorderCSS';
 import { applyFilters } from '@wordpress/hooks';
 import generateShadowCSS from '@Controls/generateShadowCSS';
 
-function styling( attributes, clientId ) {
+function styling( attributes, clientId, deviceType ) {
 	let {
 		backgroundType,
 		backgroundImageDesktop,
@@ -30,7 +30,7 @@ function styling( attributes, clientId ) {
 		backgroundSizeMobile,
 		gradientValue,
 		sliderBorderHColor,
-		
+
 		useSeparateBoxShadows,
 		boxShadowColor,
 		boxShadowHOffset,
@@ -121,7 +121,7 @@ function styling( attributes, clientId ) {
 		gradientAngle,
 		selectGradient,
 	} = attributes;
-
+	const previewType = deviceType.toLowerCase();
 	const borderCSS = generateBorderCSS( attributes, 'slider' );
 	const borderCSSTablet = generateBorderCSS( attributes, 'slider', 'tablet' );
 	const borderCSSMobile = generateBorderCSS( attributes, 'slider', 'mobile' );
@@ -425,10 +425,23 @@ function styling( attributes, clientId ) {
 
 	let styling_css = generateCSS( selectors, base_selector );
 
-	styling_css += generateCSS( tablet_selectors, `${ base_selector }`, true, 'tablet' );
+	if( 'tablet' === previewType || 'mobile' === previewType ) {
+		styling_css += generateCSS(
+			tablet_selectors,
+			`${ base_selector }`,
+			true,
+			'tablet'
+		);
 
-	styling_css += generateCSS( mobile_selectors, `${ base_selector }`, true, 'mobile' );
-
+		if( 'mobile' === previewType ){
+			styling_css += generateCSS(
+				mobile_selectors,
+				`${ base_selector }`,
+				true,
+				'mobile'
+			);
+		}
+	}
 	return styling_css;
 }
 

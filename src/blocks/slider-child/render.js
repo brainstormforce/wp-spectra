@@ -3,7 +3,6 @@ import { __ } from '@wordpress/i18n';
 import { memo } from '@wordpress/element';
 
 const Render = ( props ) => {
-	props = props.parentProps;
 
 	const { slideIndex } = props;
 

@@ -1,15 +1,17 @@
 import styling from './styling';
 import { useEffect, useMemo } from '@wordpress/element';
-
-import apiFetch from '@wordpress/api-fetch';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicFontLoader from './dynamicFontLoader';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import Settings from './settings';
 import Render from './render';
+
+import getApiData from '@Controls/getApiData';
+
 import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import addInitialAttr from '@Controls/addInitialAttr';
 import { useSelect } from '@wordpress/data';
 
 const UAGBCF7 = ( props ) => {
@@ -77,41 +79,40 @@ const UAGBCF7 = ( props ) => {
 			UAGHideTab,
 			UAGHideMob,
 		},
-		name,
 		deviceType
 	} = props;
 
-	// eslint-disable-next-line no-unused-vars
-	useSelect( ( select ) => {
-		let jsonData = '';
+	useSelect(
+		( select ) => { // eslint-disable-line  no-unused-vars
+			let jsonData = '';
 
-		if ( formId && -1 !== formId && 0 !== formId && ! isHtml ) {
-			const formData = new window.FormData();
+			if ( formId && -1 !== formId && 0 !== formId && ! isHtml ) {
+				// Create an object with the nonce and formId properties
+				const data = {
+					nonce: uagb_blocks_info.uagb_ajax_nonce,
+					formId,
+				};
+				// Call the getApiData function with the specified parameters
+				const getApiFetchData = getApiData( {
+					url: uagb_blocks_info.ajax_url,
+					action: 'uagb_cf7_shortcode',
+					data,
+				} );
+				// Wait for the API call to complete, then update attributes and jsonData variable
+				getApiFetchData.then( ( _data ) => {
+					setAttributes( { isHtml: true } );
+					setAttributes( { formJson: _data } );
+					jsonData = _data;
+				} );
+			}
 
-			formData.append( 'action', 'uagb_cf7_shortcode' );
-			formData.append( 'nonce', uagb_blocks_info.uagb_ajax_nonce );
-			formData.append( 'formId', formId );
-
-			apiFetch( {
-				url: uagb_blocks_info.ajax_url,
-				method: 'POST',
-				body: formData,
-			} ).then( ( data ) => {
-				setAttributes( { isHtml: true } );
-				setAttributes( { formJson: data } );
-				jsonData = data;
-			} );
-		}
-
-		return {
-			formHTML: jsonData,
-		};
-	} );
+			return {
+				formHTML: jsonData,
+			};
+		},
+	);
 
 	useEffect( () => {
-		// Assigning block_id in the attribute.
-		setAttributes( { isHtml: false } );
-		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 
 		if ( msgVrPadding ) {
 			if ( ! messageTopPaddingDesktop ) {
@@ -285,18 +286,19 @@ const UAGBCF7 = ( props ) => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+	const blockStyling = useMemo( () => styling( attributes, clientId, deviceType ), [ attributes, deviceType ] );
 
 	return (
 		<>
 			<DynamicCSSLoader { ...{ blockStyling } } />
 			<DynamicFontLoader { ...{ attributes } } />
-			{ isSelected && <Settings parentProps={ props } deviceType={ deviceType } /> }
-			<Render parentProps={ props } />
+			{ isSelected && <Settings { ...props } /> }
+			<Render { ...props } />
 		</>
 	);
 };
 
 export default compose(
+	addInitialAttr,
 	AddStaticStyles,
 )( UAGBCF7 );

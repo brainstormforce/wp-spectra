@@ -30,7 +30,6 @@ import boxShadowPresets, { boxShadowHoverPresets, buttonsPresets } from './prese
 import UAGPresets from '@Components/presets';
 
 const Settings = ( props ) => {
-	props = props.parentProps;
 
 	const { attributes, setAttributes, deviceType } = props;
 

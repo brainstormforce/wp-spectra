@@ -3,9 +3,6 @@
  */
 
 import classnames from 'classnames';
-
-import { __ } from '@wordpress/i18n';
-
 import { RichText } from '@wordpress/block-editor';
 
 export default function save( props ) {
@@ -13,7 +10,7 @@ export default function save( props ) {
 
 	const { block_id, name, required, placeholder, autocomplete } = attributes;
 
-	const isRequired = required ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
+	const isRequired = required ? 'required' : '';
 
 	return (
 		<div className={ classnames( 'uagb-forms-email-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ) }>

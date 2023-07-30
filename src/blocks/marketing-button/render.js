@@ -14,7 +14,6 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	props = props.parentProps;
 	const { attributes, setAttributes, className, mergeBlocks, insertBlocksAfter, createBlock, onReplace, deviceType } = props;
 
 	const { block_id, align, textAlign, heading, prefix, icon, iconPosition, titleTag, showDescription } = attributes;

@@ -11,7 +11,7 @@ const propTypes = {};
 const defaultProps = {};
 
 const Render = ( props ) => {
-	const { attributes, setAttributes, deviceType } = props.parentProps;
+	const { attributes, setAttributes, className, deviceType, name } = props;
 
 	const {
 		block_id,
@@ -85,7 +85,7 @@ const Render = ( props ) => {
 	const startFallback = getFallbackNumber( startNumber, 'startNumber', 'counter' );
 	const endFallback = getFallbackNumber( endNumber, 'endNumber', 'counter' );
 
-	const blockName = props.parentProps.name.replace( 'uagb/', '' );
+	const blockName = name.replace( 'uagb/', '' );
 	const circleSizeFallback = getFallbackNumber( circleSize, 'circleSize', blockName );
 
 	// Reusable const to check if icon/image is set and enabled.
@@ -155,7 +155,7 @@ const Render = ( props ) => {
 		<>
 			<div
 				className={ classnames(
-					props.className,
+					className,
 					`uagb-block-${ block_id }`,
 					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					'wp-block-uagb-counter',

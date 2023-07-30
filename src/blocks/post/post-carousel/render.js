@@ -24,11 +24,7 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	const { state, setState, togglePreview, categoriesList, latestPosts, replaceInnerBlocks, block } = props;
-
-	props = props.parentProps;
-
-	const { attributes, deviceType, name, setAttributes } = props;
+	const { state, setState, togglePreview, categoriesList, latestPosts, replaceInnerBlocks, block, clientId,  attributes, deviceType, name, setAttributes, className } = props;
 
 	const renderEditMode = () => {
 		const onDone = () => {
@@ -41,7 +37,7 @@ const Render = ( props ) => {
 
 		const onCancel = () => {
 			const { innerBlocks } = state;
-			replaceInnerBlocks( props.clientId, innerBlocks );
+			replaceInnerBlocks( clientId, innerBlocks );
 			togglePreview();
 		};
 
@@ -52,16 +48,16 @@ const Render = ( props ) => {
 				newBlocks.push( createBlock( name, attribute ) );
 				return true;
 			} );
-			replaceInnerBlocks( props.clientId, newBlocks );
+			replaceInnerBlocks( clientId, newBlocks );
 			setState( { innerBlocks: block } );
 		};
 
 		const InnerBlockProps = {
-			template: props.attributes.layoutConfig,
+			template: attributes.layoutConfig,
 			templateLock: false,
 			allowedBlocks: Object.keys( getBlockMap( 'uagb/post-grid' ) ),
 		};
-		if ( props.attributes.layoutConfig.length !== 0 ) {
+		if ( attributes.layoutConfig.length !== 0 ) {
 			InnerBlockProps.renderAppender = false;
 		}
 		return (
@@ -98,9 +94,9 @@ const Render = ( props ) => {
 	const renderViewMode = (
 		<Blog
 			attributes={ attributes }
-			className={ props.className }
+			className={ className }
 			latestPosts={ latestPosts }
-			block_id={ props.clientId.substr( 0, 8 ) }
+			block_id={ clientId.substr( 0, 8 ) }
 			categoriesList={ categoriesList }
 			deviceType={ deviceType }
 			name={ name }

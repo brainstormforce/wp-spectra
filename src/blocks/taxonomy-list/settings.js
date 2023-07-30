@@ -23,13 +23,11 @@ import UAGPresets from '@Components/presets';
 
 import UAGTextControl from '@Components/text-control';
 
-import apiFetch from '@wordpress/api-fetch';
-const Settings = ( props ) => {
-	const { taxonomyList, termsList } = props;
-	props = props.parentProps;
+import getApiData from '@Controls/getApiData';
 
+const Settings = ( props ) => {
 	// Caching all Props.
-	const { attributes, setAttributes, deviceType } = props;
+	const { attributes, setAttributes, taxonomyList, termsList, deviceType } = props;
 
 	// Caching all attributes.
 	const {
@@ -224,20 +222,23 @@ const Settings = ( props ) => {
 	);
 
 	const onSelectPostType = ( value ) => {
-		const formData = new window.FormData();
-
-		formData.append( 'action', 'uagb_get_taxonomy' );
-		formData.append( 'nonce', uagb_blocks_info.uagb_ajax_nonce );
-		apiFetch( {
-			url: uagb_blocks_info.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( ( data ) => {
-			setAttributes( { listInJson: data } );
+		// Create an object with the nonce property
+        const data = {
+            nonce: uagb_blocks_info.uagb_ajax_nonce,
+        };
+		// Call the getApiData function with the specified parameters
+        const getApiFetchData = getApiData( {
+            url: uagb_blocks_info.ajax_url,
+            action: 'uagb_get_taxonomy',
+            data,
+        } );
+		// Wait for the API call to complete, then update the attributes
+        getApiFetchData.then( ( _data ) => {
+            setAttributes( { listInJson: _data } );
 			setAttributes( { postType: value } );
 			setAttributes( { categories: '' } );
 			setAttributes( { taxonomyType: '' } );
-		} );
+        } );
 	};
 
 	const onSelectTaxonomyType = ( value ) => {

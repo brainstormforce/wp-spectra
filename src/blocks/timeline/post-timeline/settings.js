@@ -16,16 +16,11 @@ import { QueryControls, ToggleControl, Icon } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 import ResponsiveSlider from '@Components/responsive-slider';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
-import { useDeviceType } from '@Controls/getPreviewType';
 import UAGTextControl from '@Components/text-control';
 import { memo } from '@wordpress/element';
 
 const Settings = ( props ) => {
-	const { categoriesList, taxonomyList } = props;
-	props = props.parentProps;
-
-	const { attributes, setAttributes } = props;
-	const deviceType = useDeviceType();
+	const { categoriesList, taxonomyList, attributes, setAttributes, deviceType } = props;
 
 	const {
 		headingColor,

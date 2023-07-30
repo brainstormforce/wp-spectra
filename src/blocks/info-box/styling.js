@@ -7,8 +7,10 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function styling( attributes, clientId, name ) {
+function styling( attributes, clientId, name, deviceType ) {
+	const previewType = deviceType.toLowerCase();
 	const {
+		block_id,
 		headingAlign,
 		headingAlignTablet,
 		headingAlignMobile,
@@ -848,7 +850,7 @@ function styling( attributes, clientId, name ) {
 		selectors[' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover svg'] = {
 			'fill': ctaLinkHoverColor,
 		};
-	
+
 		tabletSelectors['.uagb-infobox__content-wrap .uagb-ifb-cta .uagb-ifb-button-wrapper.wp-block-button a.uagb-infobox-cta-link.wp-block-button__link'] = {
 			'padding-top': generateCSSUnit( paddingBtnTopTablet, tabletPaddingBtnUnit ),
 			'padding-bottom': generateCSSUnit( paddingBtnBottomTablet, tabletPaddingBtnUnit ),
@@ -860,7 +862,7 @@ function styling( attributes, clientId, name ) {
 			'letter-spacing': generateCSSUnit( ctaLetterSpacingTablet, ctaLetterSpacingType ),
 			'line-height': generateCSSUnit( ctaLineHeightTablet, ctaLineHeightType ),
 		};
-		
+
 		mobileSelectors[ '.uagb-infobox__content-wrap .uagb-ifb-cta .uagb-ifb-button-wrapper.wp-block-button a.uagb-infobox-cta-link.wp-block-button__link'] = {
 			'padding-top': generateCSSUnit( paddingBtnTopMobile, mobilePaddingBtnUnit ),
 			'padding-bottom': generateCSSUnit( paddingBtnBottomMobile, mobilePaddingBtnUnit ),
@@ -872,18 +874,32 @@ function styling( attributes, clientId, name ) {
 			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
 			'line-height': generateCSSUnit( ctaLineHeightMobile, ctaLineHeightType ),
 		};
-		
+
 		selectors[ ' .uagb-infobox-cta-link.wp-block-button__link' ] = ctaBorderCSS;
 		mobileSelectors[ ' .uagb-infobox-cta-link.wp-block-button__link' ] = ctaBorderCSSMobile;
 		tabletSelectors[ ' .uagb-infobox-cta-link.wp-block-button__link' ] = ctaBorderCSSTablet;
 	}
 
-	const id = `.editor-styles-wrapper #block-${ clientId } .uagb-block-${ clientId.substr( 0, 8 ) }`;
+	const id = `.editor-styles-wrapper #block-${ clientId } .uagb-block-${ block_id }`;
 	let stylingCss = generateCSS( selectors, id );
 
-	stylingCss += generateCSS( tabletSelectors, `${ id }`, true, 'tablet' );
+	if( 'tablet' === previewType || 'mobile' === previewType ) {
+		stylingCss += generateCSS(
+			tabletSelectors,
+			`${ id }`,
+			true,
+			'tablet'
+		);
 
-	stylingCss += generateCSS( mobileSelectors, `${ id }`, true, 'mobile' );
+		if( 'mobile' === previewType ){
+			stylingCss += generateCSS(
+				mobileSelectors,
+				`${ id }`,
+				true,
+				'mobile'
+			);
+		}
+	}
 	return stylingCss;
 }
 

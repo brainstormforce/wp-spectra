@@ -13,8 +13,7 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	props = props.parentProps;
-	const { className, attributes, deviceType } = props;
+	const { className, attributes, deviceType, clientId } = props;
 
 	// Setup the attributes.
 	const { menu_item_count, columns, tcolumns, mcolumns } = attributes;
@@ -34,7 +33,7 @@ const Render = ( props ) => {
 			className={ classnames(
 				className,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
+				`uagb-block-${ clientId.substr( 0, 8 ) }`,
 				`uagb-rm__desk-column-${ columns }`,
 				`uagb-rm__tablet-column-${ tcolumns }`,
 				`uagb-rm__mobile-column-${ mcolumns }`

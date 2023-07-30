@@ -2,16 +2,18 @@ import styling from './styling';
 import { useEffect, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { SelectControl, Placeholder } from '@wordpress/components';
-import apiFetch from '@wordpress/api-fetch';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
 import { useSelect } from '@wordpress/data';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+
+import getApiData from '@Controls/getApiData';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
 import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import addInitialAttr from '@Controls/addInitialAttr';
 
 const UAGBGF = ( props ) => {
 	const {
@@ -47,37 +49,38 @@ const UAGBGF = ( props ) => {
 		name,
 		deviceType
 	} = props;
-	// eslint-disable-next-line  no-unused-vars
-	useSelect( ( select ) => {
-		let jsonData = '';
 
-		if ( formId && -1 !== formId && 0 !== formId && ! isHtml ) {
-			const formData = new window.FormData();
+	useSelect(
+		( select ) => { // eslint-disable-line  no-unused-vars
+			let jsonData = '';
 
-			formData.append( 'action', 'uagb_gf_shortcode' );
-			formData.append( 'nonce', uagb_blocks_info.uagb_ajax_nonce );
-			formData.append( 'formId', formId );
+			if ( formId && -1 !== formId && 0 !== formId && ! isHtml ) {
 
-			apiFetch( {
-				url: uagb_blocks_info.ajax_url,
-				method: 'POST',
-				body: formData,
-			} ).then( ( data ) => {
-				setAttributes( { isHtml: true } );
-				setAttributes( { formJson: data } );
-				jsonData = data;
-			} );
-		}
+				// Create an object with the nonce and formId properties
+				const data = {
+					nonce: uagb_blocks_info.uagb_ajax_nonce,
+					formId,
+				};
+				// Call the getApiData function with the specified parameters
+				const getApiFetchData = getApiData( {
+					url: uagb_blocks_info.ajax_url,
+					action: 'uagb_gf_shortcode',
+					data,
+				} );
+				// Wait for the API call to complete, then update attributes and jsonData variable
+				getApiFetchData.then( ( _data ) => {
+					setAttributes( { isHtml: true } );
+					setAttributes( { formJson: _data } );
+					jsonData = _data;
+				} );
+			}
 
-		return {
-			formHTML: jsonData,
-		};
-	} );
+			return {
+				formHTML: jsonData,
+			};
+		},
+	);
 	useEffect( () => {
-		// Assigning block_id in the attribute.
-		setAttributes( { isHtml: false } );
-		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
-
 		if ( buttonVrPadding ) {
 			if ( undefined === buttontopPadding ) {
 				setAttributes( { buttontopPadding: buttonVrPadding } );
@@ -177,12 +180,13 @@ const UAGBGF = ( props ) => {
 		<>
 			<DynamicCSSLoader { ...{ blockStyling } } />
 			<DynamicFontLoader { ...{ attributes } } />
-			{ isSelected && <Settings parentProps={ props } /> }
-			<Render parentProps={ props } />
+			{ isSelected && <Settings { ...props } /> }
+			<Render { ...props } />
 		</>
 	);
 };
 
 export default compose(
+	addInitialAttr,
 	AddStaticStyles,
 )( UAGBGF );

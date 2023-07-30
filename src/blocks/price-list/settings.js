@@ -23,8 +23,8 @@ import { Icon, ToggleControl } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
-	props = props.parentProps;
-	const { setAttributes, attributes, deviceType } = props;
+
+	const { setAttributes, attributes, deviceType, clientId } = props;
 
 	// Setup the attributes.
 	const {
@@ -155,7 +155,7 @@ const Settings = ( props ) => {
 	} = attributes;
 
 	const setImgAlign = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.imgAlign = value;
@@ -164,7 +164,7 @@ const Settings = ( props ) => {
 	};
 
 	const setShowImage = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.showImage = value;
@@ -173,7 +173,7 @@ const Settings = ( props ) => {
 	};
 
 	const setimageSize = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.imageSize = value;
@@ -182,7 +182,7 @@ const Settings = ( props ) => {
 	};
 
 	const setheadingTag = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.headingTag = value;
@@ -191,7 +191,7 @@ const Settings = ( props ) => {
 	};
 
 	const setimagePosition = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.imagePosition = value;
@@ -200,7 +200,7 @@ const Settings = ( props ) => {
 	};
 
 	const setColumns = ( column, tcolumn, mcolumn ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.columns = column;
 			pricelistChild.attributes.tcolumns = tcolumn;
@@ -209,7 +209,7 @@ const Settings = ( props ) => {
 	};
 
 	const setimageAlignment = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.imageAlignment = value;
@@ -218,7 +218,7 @@ const Settings = ( props ) => {
 	};
 
 	const setStack = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.stack = value;
@@ -227,7 +227,7 @@ const Settings = ( props ) => {
 	};
 
 	const setWidth = () => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.imageWidth = imageWidth;
@@ -239,7 +239,7 @@ const Settings = ( props ) => {
 	}, [ imageWidth ] );
 
 	const setHeadingAlign = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( pricelistChild ) => {
 			pricelistChild.attributes.headingAlign = value;

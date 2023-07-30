@@ -142,7 +142,7 @@ function Blog( props ) {
 		rtl: false,
 		afterChange: () => {
 			if ( equalHeight ) {
-				uagb_carousel_height( block_id ); // eslint-disable-line no-undef
+				uagb_carousel_height( block_id );
 			}
 		},
 		nextArrow: <NextArrow arrowSize={ arrowSizeFallback } />,

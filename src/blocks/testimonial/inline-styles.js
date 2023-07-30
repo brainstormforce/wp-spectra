@@ -7,9 +7,9 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function testimonialStyle( attributes, clientId, name ) {
+function testimonialStyle( attributes, clientId, name, deviceType ) {
 	const blockName = name.replace( 'uagb/', '' );
-
+	const previewType = deviceType.toLowerCase();
 	const {
 		headingAlign,
 		headingAlignTablet,
@@ -419,9 +419,24 @@ function testimonialStyle( attributes, clientId, name ) {
 	const id = `.uagb-block-${ clientId.substr( 0, 8 ) }`;
 
 	stylingCss = generateCSS( selectors, id );
-	stylingCss += generateCSS( tabletSelectors, `${ id }`, true, 'tablet' );
-	stylingCss += generateCSS( mobileSelectors, `${ id }`, true, 'mobile' );
 
+	if( 'tablet' === previewType || 'mobile' === previewType ) {
+		stylingCss += generateCSS(
+			tabletSelectors,
+			`${ id }`,
+			true,
+			'tablet'
+		);
+
+		if( 'mobile' === previewType ){
+			stylingCss += generateCSS(
+				mobileSelectors,
+				`${ id }`,
+				true,
+				'mobile'
+			);
+		}
+	}
 	return stylingCss;
 }
 

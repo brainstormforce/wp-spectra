@@ -13,15 +13,15 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	props = props.parentProps;
-
-	const blockName = props.name.replace( 'uagb/', '' );
-
 	const {
 		className,
 		attributes: { zoom, address, language, height },
-		deviceType
+		deviceType,
+		name,
+		clientId
 	} = props;
+
+	const blockName = name.replace( 'uagb/', '' );
 
 	const encoded_address = encodeURI( address );
 	const lang_par = language ? language : 'en';
@@ -33,7 +33,7 @@ const Render = ( props ) => {
 			className={ classnames(
 				className,
 				'uagb-google-map__wrap',
-				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
+				`uagb-block-${ clientId.substr( 0, 8 ) }`,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
 			) }
 		>

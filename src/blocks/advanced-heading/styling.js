@@ -8,10 +8,12 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import { applyFilters } from '@wordpress/hooks';
 
-function styling( attributes, clientId, name ) {
+function styling( attributes, clientId, name, deviceType ) {
+	const previewType = deviceType.toLowerCase();
 	const blockName = name.replace( 'uagb/', '' );
 
 	const {
+		block_id,
 		headingAlign,
 		headingAlignTablet,
 		headingAlignMobile,
@@ -395,7 +397,7 @@ function styling( attributes, clientId, name ) {
 	};
 
 	if( headingDescToggle || 'none' !== seperatorStyle ) {
-		selectors[ ' .uagb-heading-text' ] ={ 
+		selectors[ ' .uagb-heading-text' ] ={
 			'margin-bottom': generateCSSUnit( getFallbackNumber( headSpace, 'headSpace', blockName ), 'px' ),
 		};
 		tablet_selectors[ ' .uagb-heading-text' ] = {
@@ -405,7 +407,7 @@ function styling( attributes, clientId, name ) {
 			'margin-bottom': generateCSSUnit( getFallbackNumber( headSpaceMobile, 'headSpaceMobile', blockName ), 'px' ),
 		};
 	}
-	const base_selector = `.editor-styles-wrapper #block-${ clientId } .uagb-block-${ clientId.substr( 0, 8 ) }`;
+	const base_selector = `.editor-styles-wrapper #block-${ clientId } .uagb-block-${ block_id }`;
 
 	selectors = applyFilters( `spectra.${ blockName }.styling`, selectors, attributes );
 	tablet_selectors = applyFilters( `spectra.${ blockName }.tabletStyling`, tablet_selectors, attributes );
@@ -413,9 +415,23 @@ function styling( attributes, clientId, name ) {
 
 	let styling_css = generateCSS( selectors, base_selector );
 
-	styling_css += generateCSS( tablet_selectors, `${ base_selector }`, true, 'tablet' );
+	if( 'tablet' === previewType || 'mobile' === previewType ) {
+		styling_css += generateCSS(
+			tablet_selectors,
+			`${ base_selector }`,
+			true,
+			'tablet'
+		);
 
-	styling_css += generateCSS( mobile_selectors, `${ base_selector }`, true, 'mobile' );
+		if( 'mobile' === previewType ){
+			styling_css += generateCSS(
+				mobile_selectors,
+				`${ base_selector }`,
+				true,
+				'mobile'
+			);
+		}
+	}
 	return styling_css;
 }
 

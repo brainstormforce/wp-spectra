@@ -7,11 +7,12 @@ import attributes from './attributes';
 import Edit from './edit';
 import save from './save';
 import { __ } from '@wordpress/i18n';
-import deprecated from './deprecated';
 import { registerBlockType } from '@wordpress/blocks';
 import PreviewImage from '@Controls/previewImage';
 import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+import Version from './deprecated/';
+import Version2_6_4 from './2_6_4';
 let radioCommonData = {};
 radioCommonData = applyFilters( 'uagb/forms-radio', addCommonDataToSpectraBlocks( radioCommonData ) );
 registerBlockType( 'uagb/forms-radio', {
@@ -28,5 +29,5 @@ registerBlockType( 'uagb/forms-radio', {
 		anchor: true,
 	},
 	save,
-	deprecated,
+	deprecated : [ Version2_6_4, Version ],
 } );
