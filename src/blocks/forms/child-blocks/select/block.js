@@ -12,7 +12,7 @@ import PreviewImage from '@Controls/previewImage';
 import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
 import Version from './deprecated/';
-import Version2_6_4 from './2_6_4';
+import Version2_7_2 from './2_7_2';
 let selectCommonData = {};
 selectCommonData = applyFilters( 'uagb/forms-select', addCommonDataToSpectraBlocks( selectCommonData ) );
 registerBlockType( 'uagb/forms-select', {
@@ -26,5 +26,5 @@ registerBlockType( 'uagb/forms-select', {
 	edit: ( props ) =>
 		props.attributes.isPreview ? <PreviewImage image="form-field" isChildren={ true } /> : <Edit { ...props } />,
 	save,
-	deprecated : [ Version2_6_4, Version ],
+	deprecated : [ Version2_7_2, Version ],
 } );

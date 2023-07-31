@@ -251,11 +251,7 @@ const Settings = ( props ) => {
 		}
 	};
 	const onChangeAlign = ( value ) => {
-		if ( 'stretch' !== value ) {
-			setAttributes( { equalHeight: false } );
-		} else {
-			setAttributes( { equalHeight: true } );
-		}
+		setAttributes( { equalHeight: 'stretch' === value } );
 	};
 	const generalSettings = () => {
 		const directionOptions = [

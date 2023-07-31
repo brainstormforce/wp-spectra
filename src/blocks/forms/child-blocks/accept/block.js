@@ -14,7 +14,7 @@ import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
 let acceptCommonData = {};
 acceptCommonData = applyFilters( 'uagb/forms-accept', addCommonDataToSpectraBlocks( acceptCommonData ) );
-import Version2_6_4 from './2_6_4';
+import Version2_7_2 from './2_7_2';
 
 registerBlockType( 'uagb/forms-accept', {
 	...acceptCommonData,
@@ -30,5 +30,5 @@ registerBlockType( 'uagb/forms-accept', {
 		anchor: true,
 	},
 	save,
-	deprecated : [ Version2_6_4 ],
+	deprecated : [ Version2_7_2 ],
 } );

@@ -15,7 +15,7 @@ import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks
 let dateCommonData = {};
 dateCommonData = applyFilters( 'uagb/forms-date', addCommonDataToSpectraBlocks( dateCommonData ) );
 import Version2_4_1 from './2_4_1';
-import Version2_6_4 from './2_6_4';
+import Version2_7_2 from './2_7_2';
 
 registerBlockType( 'uagb/forms-date', {
 	...dateCommonData,
@@ -31,5 +31,5 @@ registerBlockType( 'uagb/forms-date', {
 		anchor: true,
 	},
 	save,
-	deprecated : [ Version2_6_4, Version2_4_1 ],
+	deprecated : [ Version2_7_2, Version2_4_1 ],
 } );

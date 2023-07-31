@@ -14,7 +14,7 @@ import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks
 let emailCommonData = {};
 emailCommonData = applyFilters( 'uagb/forms-email', addCommonDataToSpectraBlocks( emailCommonData ) );
 import Version from './deprecated/';
-import Version2_6_4 from './2_6_4';
+import Version2_7_2 from './2_7_2';
 
 registerBlockType( 'uagb/forms-email', {
 	...emailCommonData,
@@ -30,5 +30,5 @@ registerBlockType( 'uagb/forms-email', {
 		anchor: true,
 	},
 	save,
-	deprecated : [ Version2_6_4, Version ],
+	deprecated : [ Version2_7_2, Version ],
 } );

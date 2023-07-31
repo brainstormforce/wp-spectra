@@ -13,7 +13,7 @@ import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
 import Version from './deprecated/';
 import Version2_4_1 from './2_4_1';
-import Version2_6_4 from './2_6_4';
+import Version2_7_2 from './2_7_2';
 let toggleCommonData = {};
 toggleCommonData = applyFilters( 'uagb/forms-toggle', addCommonDataToSpectraBlocks( toggleCommonData ) );
 registerBlockType( 'uagb/forms-toggle', {
@@ -30,5 +30,5 @@ registerBlockType( 'uagb/forms-toggle', {
 		anchor: true,
 	},
 	save,
-	deprecated : [ Version2_6_4, Version2_4_1, Version ],
+	deprecated : [ Version2_7_2, Version2_4_1, Version ],
 } );

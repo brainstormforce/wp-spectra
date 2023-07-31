@@ -14,7 +14,7 @@ import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks
 let checkboxCommonData = {};
 checkboxCommonData = applyFilters( 'uagb/forms-checkbox', addCommonDataToSpectraBlocks( checkboxCommonData ) );
 import Version from './deprecated/';
-import Version2_6_4 from './2_6_4';
+import Version2_7_2 from './2_7_2';
 
 registerBlockType( 'uagb/forms-checkbox', {
 	...checkboxCommonData,
@@ -30,5 +30,5 @@ registerBlockType( 'uagb/forms-checkbox', {
 		anchor: true,
 	},
 	save,
-	deprecated : [ Version2_6_4, Version ],
+	deprecated : [ Version2_7_2, Version ],
 } );

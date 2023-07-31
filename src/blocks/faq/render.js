@@ -22,7 +22,7 @@ const Render = ( props ) => {
 	}, [] );
 
 	const { attributes, deviceType, clientId } = props;
-	const { equalHeight } = attributes;
+	const { equalHeight, iconAlign, layout, expandFirstItem, inactiveOtherItems, enableToggle } = attributes;
 
 	const getFaqChildTemplate = useMemo( () => {
 		const childFaq = [];
@@ -42,13 +42,13 @@ const Render = ( props ) => {
 				'uagb-faq__outer-wrap',
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ clientId.substr( 0, 8 ) }`,
-				`uagb-faq-icon-${ attributes.iconAlign }`,
-				`uagb-faq-layout-${ attributes.layout }`,
-				`uagb-faq-expand-first-${ attributes.expandFirstItem }`,
-				`uagb-faq-inactive-other-${ attributes.inactiveOtherItems }`,
+				`uagb-faq-icon-${ iconAlign }`,
+				`uagb-faq-layout-${ layout }`,
+				`uagb-faq-expand-first-${ expandFirstItem }`,
+				`uagb-faq-inactive-other-${ inactiveOtherItems }`,
 				equalHeightClass
 			) }
-			data-faqtoggle={ attributes.enableToggle }
+			data-faqtoggle={ enableToggle }
 			role="tablist"
 		>
 			<InnerBlocks
