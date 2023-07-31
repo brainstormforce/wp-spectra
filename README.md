@@ -218,6 +218,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ### 2.7.3 - MONDAY, 31st JULY 2023 ###
 * Improvement: Core Blocks - Enhanced the reusable block functionality for all Core Blocks, with the exception of the Container.
 * Improvement: Global - Optimized the editor performance and stability.
+* Fix: Global - Added a check to prevent a potential error in some non-block based themes.
 
 ### 2.7.2 - THURSDAY, 27th JULY 2023 ###
 * Fix: Forms - Resolved an issue in which some phone country-code colors would not work as intended in the editor.

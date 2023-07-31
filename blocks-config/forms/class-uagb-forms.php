@@ -196,7 +196,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 					$current_block_attributes = $this->recursive_inner_forms( $blocks, $block_id );
 				}
 			}
-			if ( wp_is_block_theme() ) {
+			if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
 				$wp_query_args        = array(
 					'post_status' => array( 'publish' ),
 					'post_type'   => 'wp_template',

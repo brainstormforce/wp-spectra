@@ -878,7 +878,7 @@ class UAGB_Post_Assets {
 					$id = ( isset( $inner_block['attrs']['ref'] ) ) ? $inner_block['attrs']['ref'] : 0;
 					if ( $id ) {
 						$assets = $this->get_assets_using_post_content( $id );
-						if ( wp_is_block_theme() ) {
+						if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
 							$reuse_block_css             = array(
 								'desktop' => '',
 								'tablet'  => '',
@@ -1090,7 +1090,7 @@ class UAGB_Post_Assets {
 					if ( $id ) {
 						$assets = $this->get_assets_using_post_content( $id );
 
-						if ( wp_is_block_theme() ) {
+						if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
 							$block_css .= $assets['css'];
 							$js        .= $assets['js'];
 						} else {

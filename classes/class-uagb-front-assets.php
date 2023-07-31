@@ -133,12 +133,12 @@ class UAGB_Front_Assets {
 			$this->post_assets->enqueue_scripts();
 		}
 
-		if ( wp_is_block_theme() ) {
+		if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
 			$this->load_assets_for_fse_theme();
 		}
 
 		/* Archive & 404 page compatibility */
-		if ( is_archive() || ( is_home() && ! wp_is_block_theme() ) || is_search() || is_404() ) {
+		if ( is_archive() || ( is_home() && ! ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) ) || is_search() || is_404() ) {
 
 			global $wp_query;
 			$current_object_id = $wp_query->get_queried_object_id();
