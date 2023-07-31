@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 5.6  
 **Tested up to:** 6.2.2  
-**Stable tag:** 2.7.2  
+**Stable tag:** 2.7.3  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -215,12 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### X.X.X - THURSDAY, 27th JULY 2023 ###
-* Improvement: Core Blocks - Improved the reusable block functionality for all Core Blocks except the Container.
-* Improvement: Core Blocks - Disabled the editor update button on page reload for all Core Blocks except the Container.
-* Improvement: Forms - Safely removed older style implementation for child blocks.
-* Improvement: Code - Improved Performance by optimizing apiFetch across the plugin.
-* Improvement: Code - Improved code quality for passing React props.
+### 2.7.3 - MONDAY, 31st JULY 2023 ###
+* Improvement: Core Blocks - Enhanced the reusable block functionality for all Core Blocks, with the exception of the Container.
+* Improvement: Global - Optimized the editor performance and stability.
 
 ### 2.7.2 - THURSDAY, 27th JULY 2023 ###
 * Fix: Forms - Resolved an issue in which some phone country-code colors would not work as intended in the editor.
@@ -1509,3 +1506,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ### 0.0.1 ###
 * Initial release
+
+## Upgrade Notice ##
+
+### 2.7.3 ###
+We've optimized the internal structure of Spectra in this update. To ensure your website's safety, We recommend that you backup your website before updating.

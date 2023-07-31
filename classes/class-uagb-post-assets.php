@@ -1332,7 +1332,7 @@ class UAGB_Post_Assets {
 	 *
 	 * @param array $array1 First array.
 	 * @param array $array2 Second array.
-	 * @since X.X.X
+	 * @since 2.7.3
 	 * @return array
 	 */
 	public function merge_array_string_values( $array1, $array2 ) {
