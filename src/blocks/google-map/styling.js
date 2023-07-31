@@ -5,9 +5,9 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
-function styling( attributes, name ) {
+function styling( attributes, name, deviceType ) {
 	const blockName = name.replace( 'uagb/', '' );
-
+	const previewType = deviceType.toLowerCase();
 	const { block_id, height, heightTablet, heightMobile } = attributes;
 
 	const heightFallback = getFallbackNumber( height, 'height', blockName );
@@ -39,10 +39,23 @@ function styling( attributes, name ) {
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 
-	stylingCss += generateCSS( tabletSelectors, `${ baseSelector }`, true, 'tablet' );
+	if( 'tablet' === previewType || 'mobile' === previewType ) {
+		stylingCss += generateCSS(
+			tabletSelectors,
+			`${ baseSelector }`,
+			true,
+			'tablet'
+		);
 
-	stylingCss += generateCSS( mobileSelectors, `${ baseSelector }`, true, 'mobile' );
-
+		if( 'mobile' === previewType ){
+			stylingCss += generateCSS(
+				mobileSelectors,
+				`${ baseSelector }`,
+				true,
+				'mobile'
+			);
+		}
+	}
 	return stylingCss;
 }
 

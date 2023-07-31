@@ -17,7 +17,6 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	props = props.parentProps;
 	const { attributes, setAttributes, className, deviceType, onReplace, mergeBlocks } = props;
 	const {
 		label,

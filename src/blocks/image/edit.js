@@ -10,33 +10,30 @@ import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import { compose } from '@wordpress/compose';
 import { getLoopImage } from './getLoopImage';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import addInitialAttr from '@Controls/addInitialAttr';
 
 function UAGBImageEdit( props ) {
 	const {
-		setAttributes,
 		isSelected,
-		clientId,
 		attributes,
 		name,
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 		deviceType,
 		context,
+		setAttributes,
 	} = props;
 
 	useEffect( () => {
-		// Assigning block_id in the attribute.
-		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
-	}, [] );
-
-	useEffect( () => {
-		setAttributes( { context } );
+		if( ! attributes?.context ){
+			setAttributes( { context } );
+		}
 	}, [ context ] )
 
 	useEffect( () => {
 		scrollBlockToView();
 	}, [ deviceType ] );
 
-	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+	const blockStyling = useMemo( () => styling( attributes, name, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
 		responsiveConditionPreview( props );
@@ -45,9 +42,13 @@ function UAGBImageEdit( props ) {
 	return (
 		<>
 			<DynamicCSSLoader { ...{ blockStyling } } />
-			{ isSelected && <Settings parentProps={ props } /> }
-			<Render parentProps={ props } />
+			{ isSelected && <Settings { ...props } /> }
+			<Render { ...props } />
 		</>
 	);
 }
-export default compose( getLoopImage, AddStaticStyles )( UAGBImageEdit );
+export default compose( 
+	getLoopImage, 
+	addInitialAttr, 
+	AddStaticStyles 
+	)( UAGBImageEdit );

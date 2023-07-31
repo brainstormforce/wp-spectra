@@ -18,9 +18,7 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	props = props.parentProps;
-
-	const { attributes, setAttributes } = props;
+	const { attributes, setAttributes, clientId } = props;
 
 	const { className, image_icon, icon, image, parentSize, imgTagHeight } = attributes;
 
@@ -57,7 +55,7 @@ const Render = ( props ) => {
 				'uagb-ss-repeater',
 				'uagb-ss__wrapper',
 				className,
-				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
+				`uagb-block-${ clientId.substr( 0, 8 ) }`
 			) }
 		>
 			<span className="uagb-ss__link" href="/">

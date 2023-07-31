@@ -35,7 +35,24 @@ export function getPanelIdFromRef( ref ) {
 	return null;
 }
 
-export const uagbClassNames = ( classes ) => classes.filter( Boolean ).join( ' ' );
+export const uagbClassNames = ( classes ) => ( classes.filter( Boolean ).join( ' ' ) );
+
+/**
+ * A function to check if an object is not empty.
+ *
+ * @function
+ *
+ * @param {Object} obj - The object to check.
+ *
+ * @return {boolean} Returns true if the object is not empty, otherwise returns false.
+ */
+export const isObjectNotEmpty = ( obj ) => {
+	return (
+		obj &&
+		Object.keys( obj ).length > 0 &&
+		Object.getPrototypeOf( obj ) === Object.prototype
+	);
+}
 
 export const uagbDeepClone = ( arrayOrObject ) => JSON.parse( JSON.stringify( arrayOrObject ) );
 

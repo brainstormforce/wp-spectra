@@ -15,7 +15,6 @@ import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.j
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
-	props = props.parentProps;
 
 	const { attributes, setAttributes } = props;
 

@@ -7,8 +7,9 @@ import generateSpacing from '@Controls/generateSpacing';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import { applyFilters } from '@wordpress/hooks';
 
-function styling( attributes, clientId, name ) {
+function styling( attributes, clientId, name, deviceType ) {
 	const blockName = name.replace( 'uagb/', '' );
+	const previewType = deviceType.toLowerCase();
 	const {
 		// Tile Calcualtion
 		tileSize,
@@ -500,7 +501,7 @@ function styling( attributes, clientId, name ) {
 			'border-color':
 				'antiHover' === captionVisibility
 					? 'rgba(0,0,0,0)'
-					: 'antiHover' !== captionVisibility 
+					: 'antiHover' !== captionVisibility
 					? mainTitleBorderHColor
 					: mainTitleBorderColor,
 		},
@@ -962,10 +963,23 @@ function styling( attributes, clientId, name ) {
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 
-	stylingCss += generateCSS( tabletSelectors, `${ baseSelector }`, true, 'tablet' );
+	if( 'tablet' === previewType || 'mobile' === previewType ) {
+		stylingCss += generateCSS(
+			tabletSelectors,
+			`${ baseSelector }`,
+			true,
+			'tablet'
+		);
 
-	stylingCss += generateCSS( mobileSelectors, `${ baseSelector }`, true, 'mobile' );
-
+		if( 'mobile' === previewType ){
+			stylingCss += generateCSS(
+				mobileSelectors,
+				`${ baseSelector }`,
+				true,
+				'mobile'
+			);
+		}
+	}
 	return stylingCss;
 }
 

@@ -23,7 +23,7 @@ import innerContainerPresets, { boxShadowPresets, boxShadowHoverPresets } from '
 import UAGPresets from '@Components/presets';
 
 const Settings = ( props ) => {
-	props = props.parentProps;
+
 	const { attributes, setAttributes, deviceType } = props;
 	const {
 		block_id,
@@ -251,11 +251,7 @@ const Settings = ( props ) => {
 		}
 	};
 	const onChangeAlign = ( value ) => {
-		if ( 'stretch' !== value ) {
-			props.setAttributes( { equalHeight: false } );
-		} else {
-			props.setAttributes( { equalHeight: true } );
-		}
+		setAttributes( { equalHeight: 'stretch' === value } );
 	};
 	const generalSettings = () => {
 		const directionOptions = [

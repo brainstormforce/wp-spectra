@@ -7,9 +7,9 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
-function styling( attributes, clientId, name ) {
+function styling( attributes, clientId, name, deviceType ) {
 	const blockName = name.replace( 'uagb/', '' );
-
+	const previewType = deviceType.toLowerCase();
 	const {
 		customWidth,
 		makeCollapsible,
@@ -441,9 +441,23 @@ function styling( attributes, clientId, name ) {
 
 	let styling_css = generateCSS( selectors, id );
 
-	styling_css += generateCSS( tablet_selectors, `${ id }`, true, 'tablet' );
+	if( 'tablet' === previewType || 'mobile' === previewType ) {
+		styling_css += generateCSS(
+			tablet_selectors,
+			`${ id }`,
+			true,
+			'tablet'
+		);
 
-	styling_css += generateCSS( mobile_selectors, `${ id }`, true, 'mobile' );
+		if( 'mobile' === previewType ){
+			styling_css += generateCSS(
+				mobile_selectors,
+				`${ id }`,
+				true,
+				'mobile'
+			);
+		}
+	}
 
 	if ( '' !== scrollToTopColor ) {
 		styling_css += '.uagb-toc__scroll-top { color: ' + scrollToTopColor + '; }';

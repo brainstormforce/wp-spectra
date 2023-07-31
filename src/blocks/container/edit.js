@@ -20,6 +20,7 @@ import ReactHtmlParser from 'react-html-parser';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import addInitialAttr from '@Controls/addInitialAttr';
 import { containerWrapper } from './containerWrapper';
 
 const UAGBContainer = ( props ) => {
@@ -57,10 +58,10 @@ const UAGBContainer = ( props ) => {
 
 		return {
 			innerBlocks: getBlocks( clientId ),
-			blockType: getBlockType( props.name ),
+			blockType: getBlockType( name ),
 			defaultVariation:
-				typeof getDefaultBlockVariation === 'undefined' ? null : getDefaultBlockVariation( props.name ),
-			variations: typeof getBlockVariations === 'undefined' ? null : getBlockVariations( props.name ),
+				typeof getDefaultBlockVariation === 'undefined' ? null : getDefaultBlockVariation( name ),
+			variations: typeof getBlockVariations === 'undefined' ? null : getBlockVariations( name ),
 			isParentOfSelectedBlock: select( 'core/block-editor' ).hasSelectedInnerBlock( clientId, true ),
 		};
 	} );
@@ -130,9 +131,6 @@ const UAGBContainer = ( props ) => {
 			hasSliderParent: blockParents.hasSliderParent,
 			hasPopupParent: blockParents.hasPopupParent
 		} );
-
-		// Assigning block_id in the attribute.
-		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 
 		const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
 		let element;
@@ -251,13 +249,14 @@ const UAGBContainer = ( props ) => {
 	return (
 		<>
 			<DynamicCSSLoader { ...{ blockStyling } } />
-			{ isSelected && <Settings parentProps={ props } /> }
-			<Render parentProps={ props } />
+			{ isSelected && <Settings { ...props } /> }
+			<Render { ...props } />
 		</>
 	);
 };
 
 export default compose(
 	containerWrapper,
+	addInitialAttr,
 	AddStaticStyles,
 )( UAGBContainer );

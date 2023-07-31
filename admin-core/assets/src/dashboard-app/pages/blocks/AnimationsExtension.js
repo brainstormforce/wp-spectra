@@ -5,10 +5,10 @@
 import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch } from '@headlessui/react'
-import apiFetch from '@wordpress/api-fetch';
 import UAGB_Block_Icons from '@Common/block-icons';
 import { useEffect } from '@wordpress/element';
 import { uagbClassNames } from '@Utils/Helpers';
+import getApiData from '@Controls/getApiData';
 
 const AnimationsExtension = () => {
 
@@ -20,20 +20,18 @@ const AnimationsExtension = () => {
     useEffect( () => {
 
         const sendApiCall = setTimeout( () => {
-
-            const formData = new window.FormData();
-
-            formData.append( 'action', 'uag_enable_animations_extension' );
-            formData.append( 'security', uag_react.enable_animations_extension_nonce );
-            formData.append( 'value', enableAnimationsExtension );
-
-            apiFetch( {
+            const data = {
+                security: uag_react.enable_animations_extension_nonce,
+                value: enableAnimationsExtension,
+            };
+            
+            const getApiDataFetch = getApiData( {
                 url: uag_react.ajax_url,
-                method: 'POST',
-                body: formData,
-            } ).then( () => {
+                action: 'uag_enable_animations_extension',
+                data,
             } );
 
+            getApiDataFetch.then( () => {} );
         }, 300 )
 
         return ()=>{

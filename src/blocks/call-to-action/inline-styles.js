@@ -7,8 +7,9 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function CtaStyle( attributes, clientId, name ) {
+function CtaStyle( attributes, clientId, name, deviceType ) {
 	const blockName = name.replace( 'uagb/', '' );
+	const previewType = deviceType.toLowerCase();
 
 	const {
 		stack,
@@ -188,7 +189,8 @@ function CtaStyle( attributes, clientId, name ) {
 		btncontentWidthType,
 		enabledSecondCtaButton,
 		inheritFromTheme,
-		secInheritFromTheme
+		secInheritFromTheme,
+		block_id,
 	} = attributes;
 
 	const ctaBorderCSS = generateBorderCSS( attributes, 'btn' );
@@ -765,13 +767,27 @@ function CtaStyle( attributes, clientId, name ) {
 		};
 	}
 
-	const id = `.editor-styles-wrapper #block-${ clientId } .uagb-block-${ clientId.substr( 0, 8 ) }`;
+	const id = `.editor-styles-wrapper #block-${ clientId } .uagb-block-${ block_id }`;
 
 	let stylingCss = generateCSS( selectors, `${ id }` );
 
-	stylingCss += generateCSS( tabletSelectors, `${ id }`, true, 'tablet' );
+	if( 'tablet' === previewType || 'mobile' === previewType ) {
+		stylingCss += generateCSS(
+			tabletSelectors,
+			`${ id }`,
+			true,
+			'tablet'
+		);
 
-	stylingCss += generateCSS( mobileSelectors, `${ id }`, true, 'mobile' );
+		if( 'mobile' === previewType ){
+			stylingCss += generateCSS(
+				mobileSelectors,
+				`${ id }`,
+				true,
+				'mobile'
+			);
+		}
+	}
 
 	return stylingCss;
 }

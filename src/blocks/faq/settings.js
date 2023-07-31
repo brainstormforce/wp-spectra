@@ -24,9 +24,8 @@ import UAGPresets from '@Components/presets';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
-	props = props.parentProps;
-
-	const { attributes, setAttributes, deviceType } = props;
+	
+	const { attributes, setAttributes, deviceType, clientId } = props;
 	const {
 		layout,
 		inactiveOtherItems,
@@ -146,7 +145,7 @@ const Settings = ( props ) => {
 	} = attributes;
 
 	const onchangeIcon = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 		getChildBlocks.forEach( ( faqChild ) => {
 			faqChild.attributes.icon = value;
 		} );
@@ -154,7 +153,7 @@ const Settings = ( props ) => {
 		setAttributes( { icon: value } );
 	};
 	const onchangeActiveIcon = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( faqChild ) => {
 			faqChild.attributes.iconActive = value;
@@ -163,7 +162,7 @@ const Settings = ( props ) => {
 		setAttributes( { iconActive: value } );
 	};
 	const onchangeLayout = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( faqChild ) => {
 			faqChild.attributes.layout = value;
@@ -172,7 +171,7 @@ const Settings = ( props ) => {
 		setAttributes( { layout: value } );
 	};
 	const onchangeTag = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( faqChild ) => {
 			faqChild.attributes.headingTag = value;

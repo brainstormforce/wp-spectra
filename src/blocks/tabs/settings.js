@@ -22,7 +22,7 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import { memo } from '@wordpress/element';
 
 const Settings = ( props ) => {
-	props = props.parentProps;
+
 	const { attributes, setAttributes, deviceType } = props;
 
 	const {

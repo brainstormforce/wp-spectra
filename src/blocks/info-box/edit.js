@@ -12,6 +12,7 @@ import Settings from './settings';
 import Render from './render';
 import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import addInitialAttr from '@Controls/addInitialAttr';
 import { InfoBoxWrapper } from './components/Wrapper';
 
 const UAGBInfoBox = ( props ) => {
@@ -39,11 +40,7 @@ const UAGBInfoBox = ( props ) => {
 	} = props;
 
 	useEffect( () => {
-		// Assigning block_id in the attribute.
-		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
-
-		setAttributes( { classMigrate: true } );
-
+		
 		if ( ctaBgType === undefined ) {
 			setAttributes( { ctaBgType: 'color' } );
 		}
@@ -87,7 +84,9 @@ const UAGBInfoBox = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		setAttributes( { context } );
+		if( ! attributes?.context ){
+			setAttributes( { context } );
+		}
 	}, [ context ] )
 
 	useEffect( () => {
@@ -104,13 +103,14 @@ const UAGBInfoBox = ( props ) => {
 		<>
 			<DynamicCSSLoader { ...{ blockStyling } } />
 			<DynamicFontLoader { ...{ attributes } } />
-			{ isSelected && <Settings parentProps={ props } /> }
-			<Render parentProps={ props } />
+			{ isSelected && <Settings { ...props } /> }
+			<Render { ...props } />
 		</>
 	);
 };
 
 export default compose(
+	addInitialAttr,
 	AddStaticStyles,
 	InfoBoxWrapper,
 )( UAGBInfoBox );

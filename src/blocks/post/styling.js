@@ -10,7 +10,7 @@ import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateShadowCSS from '@Controls/generateShadowCSS';
 
-function styling( attributes, clientId ) {
+function styling( attributes, clientId, deviceType ) {
 	const {
 		blockName,
 		btnBorderHColor,
@@ -234,7 +234,7 @@ function styling( attributes, clientId ) {
 		dotsMarginTopMobile,
 		dotsMarginTopUnit,
 	} = attributes;
-
+	const previewType = deviceType.toLowerCase();
 	const overlayOpacityFallback = getFallbackNumber( overlayOpacity, 'overlayOpacity', blockName );
 	const columnGapFallback = getFallbackNumber( columnGap, 'columnGap', blockName );
 	const rowGapFallback = getFallbackNumber( rowGap, 'rowGap', blockName );
@@ -993,10 +993,23 @@ function styling( attributes, clientId ) {
 
 	stylingCss = generateCSS( selectors, `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }` );
 
-	stylingCss += generateCSS( tabletSelectors, `.uagb-block-${ clientId.substr( 0, 8 ) }`, true, 'tablet' );
+	if( 'tablet' === previewType || 'mobile' === previewType ) {
+		stylingCss += generateCSS(
+			tabletSelectors,
+			`.uagb-block-${ clientId.substr( 0, 8 ) }`,
+			true,
+			'tablet'
+		);
 
-	stylingCss += generateCSS( mobileSelectors, `.uagb-block-${ clientId.substr( 0, 8 ) }`, true, 'mobile' );
-
+		if( 'mobile' === previewType ){
+			stylingCss += generateCSS(
+				mobileSelectors,
+				`.uagb-block-${ clientId.substr( 0, 8 ) }`,
+				true,
+				'mobile'
+			);
+		}
+	}
 	return stylingCss;
 }
 

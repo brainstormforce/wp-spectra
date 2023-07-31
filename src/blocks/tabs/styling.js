@@ -7,9 +7,9 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function styling( attributes, clientId, name ) {
+function styling( attributes, clientId, name, deviceType ) {
 	const blockName = name.replace( 'uagb/', '' );
-
+	const previewType = deviceType.toLowerCase();
 	const {
 		headerBgColor,
 		titleAlign,
@@ -683,10 +683,23 @@ function styling( attributes, clientId, name ) {
 
 	let stylingCss = generateCSS( selectors, base_selector );
 
-	stylingCss += generateCSS( tabletSelectors, `${ base_selector }`, true, 'tablet' );
+	if( 'tablet' === previewType || 'mobile' === previewType ) {
+		stylingCss += generateCSS(
+			tabletSelectors,
+			`${ base_selector }`,
+			true,
+			'tablet'
+		);
 
-	stylingCss += generateCSS( mobileSelectors, `${ base_selector }`, true, 'mobile' );
-
+		if( 'mobile' === previewType ){
+			stylingCss += generateCSS(
+				mobileSelectors,
+				`${ base_selector }`,
+				true,
+				'mobile'
+			);
+		}
+	}
 	return stylingCss;
 }
 

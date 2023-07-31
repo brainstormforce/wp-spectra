@@ -9,10 +9,12 @@ import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateShadowCSS from '@Controls/generateShadowCSS';
 
-function styling( attributes, clientId, name ) {
+function styling( attributes, clientId, name, deviceType  ) {
 	const blockName = name.replace( 'uagb/', '' );
+	const previewType = deviceType.toLowerCase();
 
 	const {
+		block_id,
 		fontFamily,
 		fontWeight,
 		size,
@@ -363,13 +365,26 @@ function styling( attributes, clientId, name ) {
             [ leftSideMargin ]: mobileIconMargin,
         };
     }
-	const id = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
+	const id = `.editor-styles-wrapper .uagb-block-${ block_id }`;
 	let stylingCss = generateCSS( selectors, id );
 
-	stylingCss += generateCSS( tabletSelectors, `${ id }`, true, 'tablet' );
+	if( 'tablet' === previewType || 'mobile' === previewType ) {
+		stylingCss += generateCSS(
+			tabletSelectors,
+			`${ id }`,
+			true,
+			'tablet'
+		);
 
-	stylingCss += generateCSS( mobileSelectors, `${ id }`, true, 'mobile' );
-
+		if( 'mobile' === previewType ){
+			stylingCss += generateCSS(
+				mobileSelectors,
+				`${ id }`,
+				true,
+				'mobile'
+			);
+		}
+	}
 	return stylingCss;
 }
 

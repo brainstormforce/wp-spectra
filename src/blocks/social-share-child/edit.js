@@ -13,14 +13,12 @@ import Render from './render';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import addInitialAttr from '@Controls/addInitialAttr';
 const SocialShareChildComponent = ( props ) => {
-	const { isSelected, setAttributes, attributes, clientId, name, deviceType } = props;
+	const { isSelected, setAttributes, attributes, clientId, deviceType } = props;
 
 	useEffect( () => {
 		// Replacement for componentDidMount.
-
-		// Assigning block_id in the attribute.
-		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 
 		if ( select( 'core/editor' ) ) {
 			setAttributes( {
@@ -33,17 +31,18 @@ const SocialShareChildComponent = ( props ) => {
 		scrollBlockToView();
 	}, [ deviceType ] );
 
-	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+	const blockStyling = useMemo( () => styling( attributes, clientId ), [ attributes, deviceType ] );
 
 	return (
 		<>
 			<DynamicCSSLoader { ...{ blockStyling } } />
-			{ isSelected && <Settings parentProps={ props } /> }
-			<Render parentProps={ props } />
+			{ isSelected && <Settings { ...props } /> }
+			<Render { ...props } />
 		</>
 	);
 };
 
 export default compose(
+	addInitialAttr,
 	AddStaticStyles,
 )( SocialShareChildComponent );

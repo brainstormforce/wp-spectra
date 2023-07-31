@@ -2,7 +2,7 @@ import { InnerBlocks } from '@wordpress/block-editor';
 import { memo } from '@wordpress/element';
 
 const Render = ( props ) => {
-	props = props.parentProps;
+
 	const { attributes } = props;
 	const { tabActive, id } = attributes;
 

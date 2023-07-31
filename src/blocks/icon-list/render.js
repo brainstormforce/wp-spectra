@@ -15,7 +15,6 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	props = props.parentProps;
 	const { attributes, deviceType } = props;
 
 	const { className, icon_count, block_id } = attributes;

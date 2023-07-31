@@ -4,7 +4,6 @@ import renderSVG from '@Controls/renderIcon';
 import { useEffect, memo } from '@wordpress/element';
 import { doAction } from '@wordpress/hooks';
 import getMatrixAlignment from '@Controls/getMatrixAlignment';
-import { useDeviceType } from '@Controls/getPreviewType';
 import TypographyControl from '@Components/typography';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
 import ImageSizeControl from '@Components/image-size-control';
@@ -32,8 +31,7 @@ import { boxShadowPresets, boxShadowHoverPresets } from './presets';
 const MAX_IMAGE_COLUMNS = 8;
 
 const Settings = ( props ) => {
-	const deviceType = useDeviceType();
-	const { lightboxPreview, setLightboxPreview, attributes, setAttributes, clientId } = props;
+	const { lightboxPreview, setLightboxPreview, attributes, setAttributes, clientId, deviceType } = props;
 
 	const {
 		block_id,

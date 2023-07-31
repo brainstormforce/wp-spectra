@@ -57,6 +57,8 @@ module.exports = {
 		UAGBLottie: true,
 		AOS: true,
 		UAGBForms: true,
+		UAGBCountdown: true,
+		uagb_carousel_height: true,
 		scroll: true,
 	},
 };

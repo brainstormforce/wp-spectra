@@ -9,7 +9,8 @@ import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
 import { applyFilters } from '@wordpress/hooks';
 
-export default function styling( attributes, clientId, name ) {
+export default function styling( attributes, clientId, name, deviceType ) {
+	const previewType = deviceType.toLowerCase();
 	const {
 		modalTrigger,
 		buttonIconPosition,
@@ -605,9 +606,22 @@ export default function styling( attributes, clientId, name ) {
 
 	let styling_css = generateCSS( selectors, base_selector );
 
-	styling_css += generateCSS( tabletSelectors, `${ base_selector }`, true, 'tablet' );
+	if( 'tablet' === previewType || 'mobile' === previewType ) {
+		styling_css += generateCSS(
+			tabletSelectors,
+			`${ base_selector }`,
+			true,
+			'tablet'
+		);
 
-	styling_css += generateCSS( mobileSelectors, `${ base_selector }`, true, 'mobile' );
-
+		if( 'mobile' === previewType ){
+			styling_css += generateCSS(
+				mobileSelectors,
+				`${ base_selector }`,
+				true,
+				'mobile'
+			);
+		}
+	}
 	return styling_css;
 }

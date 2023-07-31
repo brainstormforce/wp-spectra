@@ -14,7 +14,6 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	props = props.parentProps;
 	const { attributes, setAttributes, deviceType } = props;
 
 	const { block_id, layout, placeholder, buttonType, buttonText } = attributes;

@@ -12,22 +12,16 @@ import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import addInitialAttr from '@Controls/addInitialAttr';
 const SocialShareComponent = ( props ) => {
 	const {
 		isSelected,
-		setAttributes,
 		clientId,
 		attributes,
 		name,
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 		deviceType
 	} = props;
-
-	useEffect( () => {
-		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
-		setAttributes( { classMigrate: true } );
-		setAttributes( { childMigrate: true } );
-	}, [] );
 
 	useEffect( () => {
 		responsiveConditionPreview( props );
@@ -54,12 +48,13 @@ const SocialShareComponent = ( props ) => {
 	return (
 		<>
 			<DynamicCSSLoader { ...{ blockStyling } } />
-			{ isSelected && <Settings parentProps={ props } /> }
-			<Render parentProps={ props } />
+			{ isSelected && <Settings { ...props } /> }
+			<Render { ...props } />
 		</>
 	);
 };
 
 export default compose(
+	addInitialAttr,
 	AddStaticStyles,
 )( SocialShareComponent );

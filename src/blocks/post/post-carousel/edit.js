@@ -32,6 +32,7 @@ import DynamicFontLoader from '.././dynamicFontLoader';
 import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 const MAX_POSTS_COLUMNS = 8;
+import addInitialAttr from '@Controls/addInitialAttr';
 import Settings from './settings';
 import Render from './render';
 import { Placeholder, Spinner, ToggleControl, Icon } from '@wordpress/components';
@@ -274,7 +275,6 @@ const UAGBPostCarousel = ( props ) => {
 		setAttributes,
 		deviceType,
 		clientId,
-		name,
 	} = props;
 
 	const [ state, setState ] = useState( {
@@ -287,7 +287,6 @@ const UAGBPostCarousel = ( props ) => {
 	useEffect( () => {
 		const { block } = props;
 		setState( { innerBlocks: block } );
-		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 
 		if ( btnVPadding ) {
 			if ( undefined === paddingBtnTop ) {
@@ -425,27 +424,25 @@ const UAGBPostCarousel = ( props ) => {
 		if ( columnGapMobile ) {
 			setAttributes( { dotsMarginTopMobile: columnGapMobile } );
 		}
-
-		setAttributes( { allTaxonomyStore: undefined } );
 	}, [] );
 
 	useEffect( () => {
 		if ( equalHeight ) {
-			uagb_carousel_height( props.clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
+			uagb_carousel_height( clientId.substr( 0, 8 ) );
 		} else {
-			uagb_carousel_unset_height( props.clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
+			uagb_carousel_unset_height( clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
 		}
 	}, [ attributes, deviceType ] );
 
-	let blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+	let blockStyling = useMemo( () => styling( attributes, clientId, deviceType ), [ attributes, deviceType ] );
 
 	blockStyling +=
 		'.uagb-block-' +
-		props.clientId.substr( 0, 8 ) +
+		clientId.substr( 0, 8 ) +
 		'.uagb-post-grid ul.slick-dots li.slick-active button:before, .uagb-block-' +
-		props.clientId.substr( 0, 8 ) +
+		clientId.substr( 0, 8 ) +
 		'.uagb-slick-carousel ul.slick-dots li button:before { color: ' +
-		props.attributes.arrowColor +
+		attributes.arrowColor +
 		'; }';
 
 	useEffect( () => {
@@ -478,6 +475,7 @@ const UAGBPostCarousel = ( props ) => {
 
 			if ( ! allTaxonomyStore && ! isTaxonomyLoading ) {
 				setIsTaxonomyLoading( true );
+    			// We are not using the our wrapper getApiData function here because we need to pass any form data.
 				apiFetch( {
 					path: '/spectra/v1/all_taxonomy',
 				} ).then( ( data ) => {
@@ -541,7 +539,7 @@ const UAGBPostCarousel = ( props ) => {
 				latestPosts: getEntityRecords( 'postType', postType, latestPostsQuery ),
 				categoriesList,
 				taxonomyList: 'undefined' !== typeof currentTax ? currentTax.taxonomy : [],
-				block: getBlocks( props.clientId ),
+				block: getBlocks( clientId ),
 			};
 		}
 	);
@@ -2150,11 +2148,11 @@ const UAGBPostCarousel = ( props ) => {
 					state={ state }
 					togglePreview={ togglePreview }
 					inspectorControls={ inspectorControls }
-					parentProps={ props }
+					{ ...props }
 				/>
 			) }
 			<Render
-				parentProps={ props }
+				{ ...props }
 				state={ state }
 				setState={ setState }
 				togglePreview={ togglePreview }
@@ -2168,5 +2166,6 @@ const UAGBPostCarousel = ( props ) => {
 };
 
 export default compose(
+	addInitialAttr,
 	AddStaticStyles,
 )( UAGBPostCarousel );

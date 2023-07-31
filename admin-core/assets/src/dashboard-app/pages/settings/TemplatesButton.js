@@ -1,7 +1,8 @@
 import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch } from '@headlessui/react'
-import apiFetch from '@wordpress/api-fetch';
+
+import getApiData from '@Controls/getApiData';
 
 function classNames( ...classes ) {
     return classes.filter( Boolean ).join( ' ' )
@@ -28,19 +29,21 @@ const TemplatesButton = () => {
 		const action = 'uag_enable_templates_button',
 			nonce = uag_react.enable_templates_button_nonce;
 
-		const formData = new window.FormData();
-
-		formData.append( 'action', action );
-		formData.append( 'security', nonce );
-		formData.append( 'value', assetStatus );
-
-		apiFetch( {
-			url: uag_react.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( () => {
-			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
-		} );
+		// Create an object with the security and value properties
+        const data = {
+            security: nonce,
+            value: assetStatus,
+        };
+        // Call the getApiData function with the specified parameters
+        const getApiFetchData = getApiData( {
+            url: uag_react.ajax_url,
+            action,
+            data,
+        } );
+        // Wait for the API call to complete, then update the state to show a notification that the settings have been saved
+        getApiFetchData.then( () => {
+            dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
+        } );
     };
 
     return (

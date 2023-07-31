@@ -3,9 +3,6 @@
  */
 
 import classnames from 'classnames';
-
-import { __ } from '@wordpress/i18n';
-
 import { RichText } from '@wordpress/block-editor';
 
 export default function save( props ) {
@@ -62,7 +59,7 @@ export default function save( props ) {
 			/>
 		);
 	}
-	const isRequired = dateRequired ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
+	const isRequired = dateRequired ? 'required' : '';
 
 	return (
 		<div className={ classnames( 'uagb-forms-date-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ) }>

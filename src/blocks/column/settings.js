@@ -15,7 +15,7 @@ import { InspectorControls } from '@wordpress/block-editor';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
-	props = props.parentProps;
+
 	const {
 		attributes: {
 			topPadding,

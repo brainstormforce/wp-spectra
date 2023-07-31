@@ -3,7 +3,8 @@ import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import Select from 'react-select';
 import { Switch } from '@headlessui/react';
-import apiFetch from '@wordpress/api-fetch';
+
+import getApiData from '@Controls/getApiData';
 
 function classNames( ...classes ) {
     return classes.filter( Boolean ).join( ' ' )
@@ -28,54 +29,62 @@ const ComingSoon = () => {
 
         dispatch( { type: 'UPDATE_ENABLE_COMING_SOON', payload: assetStatus } );
 
-		const formData = new window.FormData();
-
-		formData.append( 'action', 'uag_enable_coming_soon_mode' );
-		formData.append( 'security', uag_react.enable_coming_soon_mode_nonce );
-		formData.append( 'value', assetStatus );
-
-		apiFetch( {
-			url: uag_react.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( () => {
-			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload:  'Successfully saved!'  } );
-		} );
+		// Create an object with the security and value properties
+        const data = {
+            security: uag_react.enable_coming_soon_mode_nonce,
+            value: assetStatus,
+        };
+		// Call the getApiData function with the specified parameters
+        const getApiFetchData = getApiData( {
+            url: uag_react.ajax_url,
+            action: 'uag_enable_coming_soon_mode',
+            data,
+        } );
+		// Wait for the API call to complete, then update the state to show a notification that the settings have been saved
+        getApiFetchData.then( () => {
+            dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
+        } );
     };
  
 	const updateSelectedPage = ( page ) => {
 
 		dispatch( { type: 'UPDATE_COMING_SOON_PAGE', payload: page.value } );
 
-		const formData = new window.FormData();
-
-		formData.append( 'action', 'uag_coming_soon_page' );
-		formData.append( 'security', uag_react.coming_soon_page_nonce );
-		formData.append( 'value', page.value );
-
-		apiFetch( {
-			url: uag_react.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( () => {
-			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
-		} );
+		// Create an object with the security and value properties
+        const data = {
+            security: uag_react.coming_soon_page_nonce,
+            value: page.value,
+        };
+		// Call the getApiData function with the specified parameters
+        const getApiFetchData = getApiData( {
+            url: uag_react.ajax_url,
+            action: 'uag_coming_soon_page',
+            data,
+        } );
+		// Wait for the API call to complete, then update the state to show a notification that the settings have been saved
+        getApiFetchData.then( () => {
+            dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
+        } );
 	};
 
 	const fetchPageHandler = ( keyword = '' ) => {
-		const formData = new window.FormData();
-		formData.append( 'action', 'uag_fetch_pages' );
-		formData.append( 'security', uag_react.fetch_pages_nonce );
-		formData.append( 'keyword', keyword );
-		setFetchPages( true )
-		apiFetch( {
-			url: uag_react.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( ( response ) => {
-			setFetchPages( false )
-			setPages( response.data )
-		} );
+		// Create an object with the security and value properties
+        const data = {
+            security: uag_react.fetch_pages_nonce,
+            keyword,
+        };
+		setFetchPages( true );
+		// Call the getApiData function with the specified parameters
+        const getApiFetchData = getApiData( {
+            url: uag_react.ajax_url,
+            action: 'uag_fetch_pages',
+            data,
+        } );
+		// Wait for the API call to complete, then update the state to show a notification that the settings have been saved
+        getApiFetchData.then( ( response ) => {
+            setFetchPages( false );
+			setPages( response.data );
+        } );
 	}
 
 	const onChangeHandler = ( value ) => {

@@ -12,6 +12,7 @@ import { compose } from '@wordpress/compose';
 import { withDispatch, dispatch, select } from '@wordpress/data';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
+import addInitialAttr from '@Controls/addInitialAttr';
 
 const UAGBTabsEdit = ( props ) => {
 	const {
@@ -35,7 +36,6 @@ const UAGBTabsEdit = ( props ) => {
 	} = props;
 
 	useEffect( () => {
-		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 
 		// Backward Border Migration
 		if ( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ) {
@@ -95,8 +95,8 @@ const UAGBTabsEdit = ( props ) => {
 	return (
 		<>
 			<DynamicCSSLoader { ...{ blockStyling } } />
-			{ isSelected && <Settings parentProps={ props } deviceType={ deviceType } /> }
-			<Render parentProps={ props } />
+			{ isSelected && <Settings { ...props } /> }
+			<Render { ...props } />
 		</>
 	);
 };
@@ -133,5 +133,6 @@ export default compose(
 			},
 		};
 	} ),
+	addInitialAttr,
 	AddStaticStyles,
 )( UAGBTabsEdit );

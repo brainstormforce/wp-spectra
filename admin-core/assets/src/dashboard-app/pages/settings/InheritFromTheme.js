@@ -1,37 +1,36 @@
 import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch } from '@headlessui/react'
-import apiFetch from '@wordpress/api-fetch';
 import { uagbClassNames } from '@Utils/Helpers';
+import getApiData from '@Controls/getApiData';
 
 const InheritFromThemeRender = () => {
 
     const dispatch = useDispatch();
     const inheritFromTheme = useSelector( ( state ) => state.btnInheritFromTheme );
     const enableInheritTheme = 'enabled' === inheritFromTheme; 
- 
+
     const updateEnableInheritFromTheme = () => {
 
         const status = inheritFromTheme === 'disabled' ? 'enabled' : 'disabled';
 
         dispatch( { type: 'UPDATE_BTN_INHERIT_FROM_THEME', payload: status } );
+        
+        const data = {
+            security: uag_react.btn_inherit_from_theme_nonce,
+            value: status,
+        };
 
-		const action = 'uag_btn_inherit_from_theme',
-			nonce = uag_react.btn_inherit_from_theme_nonce;
+        const getApiDataFetch = getApiData( {
+            url: uag_react.ajax_url,
+            action: 'uag_btn_inherit_from_theme',
+            data,
+        } );
 
-		const formData = new window.FormData(); 
+        getApiDataFetch.then( () => {
+            dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'Successfully saved!' , 'ultimate-addons-for-gutenberg' ) } );
+        } );
 
-		formData.append( 'action', action );
-		formData.append( 'security', nonce );
-		formData.append( 'value', status );
-
-		apiFetch( {
-			url: uag_react.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( () => {
-			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'Successfully saved!' , 'ultimate-addons-for-gutenberg' ) } );
-		} );
     };
 
     return (

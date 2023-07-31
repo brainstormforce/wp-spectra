@@ -6,7 +6,7 @@ import inlineStyles from './inline-styles';
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 
-function styling( attributes, clientId ) {
+function styling( attributes, clientId, deviceType ) {
 	const {
 		backgroundType,
 		backgroundVideoColor,
@@ -56,7 +56,7 @@ function styling( attributes, clientId ) {
 		gradientAngle,
 	} = attributes;
 	let inner_width = '100%';
-
+	const previewType = deviceType.toLowerCase();
 	if ( typeof contentWidth !== 'undefined' ) {
 		if ( 'boxed' !== contentWidth ) {
 			if ( typeof innerWidth !== 'undefined' ) {
@@ -237,10 +237,23 @@ function styling( attributes, clientId ) {
 
 	stylingCss = generateCSS( selectors, id );
 
-	stylingCss += generateCSS( tabletSelectors, `${ id }`, true, 'tablet' );
+	if( 'tablet' === previewType || 'mobile' === previewType ) {
+		stylingCss += generateCSS(
+			tabletSelectors,
+			`${ id }`,
+			true,
+			'tablet'
+		);
 
-	stylingCss += generateCSS( mobileSelectors, `${ id }`, true, 'mobile' );
-
+		if( 'mobile' === previewType ){
+			stylingCss += generateCSS(
+				mobileSelectors,
+				`${ id }`,
+				true,
+				'mobile'
+			);
+		}
+	}
 	return stylingCss;
 }
 

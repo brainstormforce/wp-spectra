@@ -26,11 +26,11 @@ import { select } from '@wordpress/data';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
-	props = props.parentProps;
 
 	// Setup the attributes.
 	const {
 		setAttributes,
+		clientId,
 		attributes: {
 			headSpace,
 			headSpaceTablet,
@@ -158,7 +158,7 @@ const Settings = ( props ) => {
 	} = props;
 
 	const getborderwidth = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
 			UAGBcontentTimelineChild.attributes.borderwidth = value;
@@ -167,7 +167,7 @@ const Settings = ( props ) => {
 	};
 
 	const getseparatorwidth = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
 			UAGBcontentTimelineChild.attributes.separatorwidth = value;
@@ -176,7 +176,7 @@ const Settings = ( props ) => {
 	};
 
 	const getdateFormat = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
 			UAGBcontentTimelineChild.attributes.dateFormat = value;
@@ -185,7 +185,7 @@ const Settings = ( props ) => {
 	};
 
 	const getTimelineicon = ( value ) => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
 			UAGBcontentTimelineChild.attributes.icon = value;
@@ -194,7 +194,7 @@ const Settings = ( props ) => {
 	};
 
 	const toggleDisplayPostDate = () => {
-		const getChildBlocks = select( 'core/block-editor' ).getBlocks( props.clientId );
+		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( UAGBcontentTimelineChild ) => {
 			UAGBcontentTimelineChild.attributes.displayPostDate = displayPostDate;

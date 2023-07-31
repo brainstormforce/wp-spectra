@@ -6,7 +6,6 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 import attributes from './attributes';
 import Edit from './edit';
 import save from './save';
-import deprecated from './deprecated';
 
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
@@ -15,6 +14,9 @@ import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
 let dateCommonData = {};
 dateCommonData = applyFilters( 'uagb/forms-date', addCommonDataToSpectraBlocks( dateCommonData ) );
+import Version2_4_1 from './2_4_1';
+import Version2_7_2 from './2_7_2';
+
 registerBlockType( 'uagb/forms-date', {
 	...dateCommonData,
 	title: __( 'Datepicker', 'ultimate-addons-for-gutenberg' ),
@@ -29,5 +31,5 @@ registerBlockType( 'uagb/forms-date', {
 		anchor: true,
 	},
 	save,
-	deprecated,
+	deprecated : [ Version2_7_2, Version2_4_1 ],
 } );

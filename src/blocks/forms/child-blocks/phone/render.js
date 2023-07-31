@@ -17,8 +17,6 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	props = props.parentProps;
-
 	const { attributes, setAttributes } = props;
 
 	const { block_id, phoneRequired, phoneName, pattern, selectPhoneCode, autocomplete } = attributes;
@@ -64,7 +62,7 @@ const Render = ( props ) => {
 		index // eslint-disable-line no-unused-vars
 	) => contryCode.push( { value: o.props.value, label: o.props.children } ) );
 
-	const isRequired = phoneRequired ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
+	const isRequired = phoneRequired ? 'required' : '';
 
 	return (
 		<>

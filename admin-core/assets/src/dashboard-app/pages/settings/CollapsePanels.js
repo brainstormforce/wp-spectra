@@ -1,7 +1,8 @@
 import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch } from '@headlessui/react'
-import apiFetch from '@wordpress/api-fetch';
+
+import getApiData from '@Controls/getApiData';
 
 function classNames( ...classes ) {
     return classes.filter( Boolean ).join( ' ' )
@@ -25,19 +26,21 @@ const CollapsePanels = () => {
 
         dispatch( { type: 'UPDATE_ENABLE_COLLAPSE_PANELS', payload: assetStatus } );
 
-		const formData = new window.FormData();
-
-		formData.append( 'action', 'uag_collapse_panels' );
-		formData.append( 'security', uag_react.collapse_panels_nonce );
-		formData.append( 'value', assetStatus );
-
-		apiFetch( {
-			url: uag_react.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( () => {
-			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
-		} );
+		// Create an object with the security and value properties
+        const data = {
+            security: uag_react.collapse_panels_nonce,
+            value: assetStatus,
+        };
+        // Call the getApiData function with the specified parameters
+        const getApiFetchData = getApiData( {
+            url: uag_react.ajax_url,
+            action: 'uag_collapse_panels',
+            data,
+        } );
+        // Wait for the API call to complete, then update the state to show a notification that the settings have been saved
+        getApiFetchData.then( () => {
+            dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
+        } );
     };
 
     return (

@@ -18,6 +18,7 @@ import { isMediaDestroyed } from './utils';
 
 export default function Image( {
 	temporaryURL,
+	attributes,
 	attributes: {
 		url = '',
 		urlTablet = '',
@@ -85,14 +86,16 @@ export default function Image( {
 	// width and height. This resolves an issue in Safari where the loaded natural
 	// width and height is otherwise lost when switching between alignments.
 	const { naturalWidth, naturalHeight } = useMemo( () => {
-		// eslint-disable-next-line
-		const naturalWidth = imageRef.current?.naturalWidth || loadedNaturalWidth || undefined;
-		// eslint-disable-next-line
-		const naturalHeight = imageRef.current?.naturalHeight || loadedNaturalHeight || undefined;
-		setAttributes( { naturalWidth, naturalHeight } );
+		const getWidth = imageRef.current?.naturalWidth || loadedNaturalWidth || undefined;
+		const getHeight = imageRef.current?.naturalHeight || loadedNaturalHeight || undefined;
+		
+		if( ! attributes.naturalWidth || ! attributes.naturalHeight ){
+			setAttributes( { naturalWidth : getWidth, naturalHeight : getHeight } );
+		}
+
 		return {
-			naturalWidth,
-			naturalHeight,
+			naturalWidth : getWidth,
+			naturalHeight : getHeight,
 		};
 	}, [ loadedNaturalWidth, loadedNaturalHeight, imageRef.current?.complete ] );
 

@@ -1,31 +1,20 @@
 /**
  * BLOCK: Forms - Accept - Edit
  */
-
-import { useEffect } from '@wordpress/element';
-
 import Settings from './settings';
 import Render from './render';
+import { compose } from '@wordpress/compose';
+import addInitialAttr from '@Controls/addInitialAttr';
 
 const UAGBFormsAcceptEdit = ( props ) => {
-	const { setAttributes, isSelected, clientId } = props;
-
-	useEffect( () => {
-		// Assigning block_id in the attribute.
-		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
-
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( 'style' );
-		$style.setAttribute( 'id', 'uagb-style-forms-accept-' + clientId.substr( 0, 8 ) );
-		document.head.appendChild( $style );
-	}, [] );
-
 	return (
 		<>
-			{ isSelected && <Settings parentProps={ props } /> }
-			<Render parentProps={ props } />
+			{ props.isSelected && <Settings { ...props } /> }
+			<Render { ...props } />
 		</>
 	);
 };
 
-export default UAGBFormsAcceptEdit;
+export default compose(
+	addInitialAttr,
+)( UAGBFormsAcceptEdit );

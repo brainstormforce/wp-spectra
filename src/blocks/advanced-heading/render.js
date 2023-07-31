@@ -4,8 +4,6 @@ import Renderer from './renderer';
 import RendererDesc from './renderer-desc';
 
 const Render = ( props ) => {
-	props = props.parentProps;
-
 	const {
 		attributes,
 		attributes: {

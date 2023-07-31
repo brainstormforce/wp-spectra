@@ -3,7 +3,6 @@
  */
 
 import classnames from 'classnames';
-import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
 import { Fragment } from '@wordpress/element';
 
@@ -12,7 +11,7 @@ export default function save( props ) {
 
 	const { block_id, checkboxRequired, options, checkboxName } = attributes;
 
-	const isRequired = checkboxRequired ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
+	const isRequired = checkboxRequired ? 'required' : '';
 
 	return (
 		<div className={ classnames( 'uagb-forms-checkbox-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ) }>

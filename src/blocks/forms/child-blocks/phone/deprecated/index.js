@@ -1,10 +1,8 @@
 import classnames from 'classnames';
-
-import countryOptionsOld from './country-option-old';
-
+import countryOptionsOld from '../country-option-old';
 import { __ } from '@wordpress/i18n';
-
 import { RichText } from '@wordpress/block-editor';
+
 const attributes = {
 	block_id: {
 		type: 'string',
@@ -43,8 +41,8 @@ const deprecated = [
 				placeholder = __( '123-456-6789', 'ultimate-addons-for-gutenberg' );
 			}
 
-			var phone_html = '';
-			if ( pattern != '' ) {
+			let phone_html = '';
+			if ( pattern !== '' ) {
 				phone_html = (
 					<input
 						type="tel"

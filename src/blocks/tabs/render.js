@@ -20,7 +20,6 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	props = props.parentProps;
 	const { attributes, setAttributes, clientId, deviceType } = props;
 	const {
 		tabsStyleD,
@@ -118,7 +117,7 @@ const Render = ( props ) => {
 			<div
 				className={ classnames(
 					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-					`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
+					`uagb-block-${ clientId.substr( 0, 8 ) }`,
 					'uagb-tabs__wrap',
 					`uagb-tabs__${ tabsStyleD }-desktop`,
 					`uagb-tabs__${ tabsStyleT }-tablet`,

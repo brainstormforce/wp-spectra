@@ -18,8 +18,7 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	props = props.parentProps;
-	const { attributes, deviceType } = props;
+	const { attributes, deviceType, clientId } = props;
 
 	const { className, social_layout } = attributes;
 
@@ -85,7 +84,7 @@ const Render = ( props ) => {
 				'uagb-social-share__outer-wrap',
 				`uagb-social-share__layout-${ social_layout }`,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
+				`uagb-block-${ clientId.substr( 0, 8 ) }`
 			) }
 		>
 			<InnerBlocks

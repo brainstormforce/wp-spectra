@@ -8,10 +8,11 @@ import Edit from './edit';
 import save from './save';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
-import deprecated from './deprecated';
 import PreviewImage from '@Controls/previewImage';
 import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+import Version from './deprecated/';
+import Version2_7_2 from './2_7_2';
 let selectCommonData = {};
 selectCommonData = applyFilters( 'uagb/forms-select', addCommonDataToSpectraBlocks( selectCommonData ) );
 registerBlockType( 'uagb/forms-select', {
@@ -25,5 +26,5 @@ registerBlockType( 'uagb/forms-select', {
 	edit: ( props ) =>
 		props.attributes.isPreview ? <PreviewImage image="form-field" isChildren={ true } /> : <Edit { ...props } />,
 	save,
-	deprecated,
+	deprecated : [ Version2_7_2, Version ],
 } );

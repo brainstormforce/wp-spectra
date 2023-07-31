@@ -31,7 +31,7 @@ let imageSizeOptions = [
 ];
 const isPro = uagb_blocks_info.spectra_pro_status;
 export default function Settings( props ) {
-	props = props.parentProps;
+
 	const { attributes, setAttributes, deviceType } = props;
 	const {
 		modalTrigger,

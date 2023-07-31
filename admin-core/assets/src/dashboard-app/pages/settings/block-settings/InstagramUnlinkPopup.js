@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Dialog, Transition } from '@headlessui/react';
 import { __, sprintf } from '@wordpress/i18n';
 import ReactHtmlParser from 'react-html-parser';
-import apiFetch from '@wordpress/api-fetch';
+import getApiData from '@Controls/getApiData';
 
 const InstagramUnlinkPopup = ( props ) => {
 	
@@ -31,17 +31,19 @@ const InstagramUnlinkPopup = ( props ) => {
 				}
 			} );
 			dispatch( { type: 'UPDATE_INSTA_LINKED_ACCOUNTS', payload: updatedUserMatrix } );
-			const action = 'uag_insta_linked_accounts';
-			const nonce = uag_react.insta_linked_accounts_nonce;
-			const formData = new window.FormData();
-			formData.append( 'action', action );
-			formData.append( 'security', nonce );
-			formData.append( 'value', JSON.stringify( updatedUserMatrix ) );
-			apiFetch( {
+
+			const data = {
+				security: uag_react.insta_linked_accounts_nonce,
+				value: JSON.stringify( updatedUserMatrix ),
+			};
+
+			const getApiFetchData = getApiData( {
 				url: uag_react.ajax_url,
-				method: 'POST',
-				body: formData,
-			} ).then( () => {
+				action: 'uag_insta_linked_accounts',
+				data,
+			} );
+
+			getApiFetchData.then( () => {
 				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Account Unlinked!' } );
 				setPoppedUser( '' );
 			} );

@@ -13,6 +13,7 @@ import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
 import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import addInitialAttr from '@Controls/addInitialAttr';
 
 const UAGBMarketingButtonEdit = ( props ) => {
 	const {
@@ -35,9 +36,6 @@ const UAGBMarketingButtonEdit = ( props ) => {
 	} = props;
 
 	useEffect( () => {
-		// Assigning block_id in the attribute.
-		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
-		setAttributes( { classMigrate: true } );
 
 		// border migration
 		if ( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ) {
@@ -83,12 +81,13 @@ const UAGBMarketingButtonEdit = ( props ) => {
 		<>
 			<DynamicCSSLoader { ...{ blockStyling } } />
 			<DynamicFontLoader { ...{ attributes } } />
-			{ isSelected && <Settings parentProps={ props } /> }
-			<Render parentProps={ props } />
+			{ isSelected && <Settings { ...props } /> }
+			<Render { ...props } />
 		</>
 	);
 };
 
 export default compose(
+	addInitialAttr,
 	AddStaticStyles,
 )( UAGBMarketingButtonEdit );

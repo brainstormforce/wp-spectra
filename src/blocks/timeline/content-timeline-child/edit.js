@@ -7,12 +7,12 @@ import Settings from './settings';
 import Render from './render';
 
 const ContentTimelineChildComponent = ( props ) => {
-	const { isSelected, setAttributes, deviceType } = props;
+	const { isSelected, setAttributes, deviceType, clientId } = props;
 
 	useEffect( () => {
 		// Replacement for componentDidMount.
 		//Store client id.
-		setAttributes( { block_id: props.clientId } );
+		setAttributes( { block_id: clientId } );
 	}, [] );
 
 	useEffect( () => {
@@ -25,8 +25,8 @@ const ContentTimelineChildComponent = ( props ) => {
 
 	return (
 		<>
-			{ isSelected && <Settings parentProps={ props } /> }
-			<Render parentProps={ props } />
+			{ isSelected && <Settings { ...props } /> }
+			<Render { ...props } />
 		</>
 	);
 };

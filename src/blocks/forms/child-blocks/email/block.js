@@ -6,7 +6,6 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 import attributes from './attributes';
 import Edit from './edit';
 import save from './save';
-import deprecated from './deprecated';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 import PreviewImage from '@Controls/previewImage';
@@ -14,6 +13,9 @@ import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
 let emailCommonData = {};
 emailCommonData = applyFilters( 'uagb/forms-email', addCommonDataToSpectraBlocks( emailCommonData ) );
+import Version from './deprecated/';
+import Version2_7_2 from './2_7_2';
+
 registerBlockType( 'uagb/forms-email', {
 	...emailCommonData,
 	title: __( 'Email', 'ultimate-addons-for-gutenberg' ),
@@ -28,5 +30,5 @@ registerBlockType( 'uagb/forms-email', {
 		anchor: true,
 	},
 	save,
-	deprecated,
+	deprecated : [ Version2_7_2, Version ],
 } );

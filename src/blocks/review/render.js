@@ -14,7 +14,6 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	props = props.parentProps;
 	const {
 		attributes: {
 			block_id,

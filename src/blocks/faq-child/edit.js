@@ -3,9 +3,11 @@
  */
 
 import { useEffect, useState } from '@wordpress/element';
+import { compose } from '@wordpress/compose';
 
 import Settings from './settings';
 import Render from './render';
+import addInitialAttr from '@Controls/addInitialAttr';
 
 let prevState;
 
@@ -13,15 +15,11 @@ const FaqChildComponent = ( props ) => {
 	const initialState = {
 		isFocused: 'false',
 	};
-	const { isSelected, setAttributes, attributes, clientId } = props;
+	const { isSelected, attributes } = props;
 
 	const [ state, setStateValue ] = useState( initialState );
 
 	useEffect( () => {
-		// Replacement for componentDidMount.
-
-		// Assigning block_id in the attribute.
-		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 		// Pushing Style tag for this block css.
 		prevState = isSelected;
 	}, [] );
@@ -44,10 +42,12 @@ const FaqChildComponent = ( props ) => {
 
 	return (
 		<>
-			{ isSelected && <Settings parentProps={ props } /> }
-			<Render parentProps={ props } state={ state } />
+			{ isSelected && <Settings { ...props } /> }
+			<Render { ...props } state={ state } />
 		</>
 	);
 };
 
-export default FaqChildComponent;
+export default compose(
+	addInitialAttr,
+)( FaqChildComponent );

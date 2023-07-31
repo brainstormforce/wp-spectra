@@ -1,7 +1,8 @@
 import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
-import apiFetch from '@wordpress/api-fetch';
 import React from 'react';
+
+import getApiData from '@Controls/getApiData';
 
 const ContainerGlobalElementsGap = () => {
 
@@ -12,19 +13,21 @@ const ContainerGlobalElementsGap = () => {
 	const saveValue = ( value ) => {
 		dispatch( { type: 'UPDATE_CONTAINER_GLOBAL_ELEMENTS_GAP', payload: value } );
 
-		const formData = new window.FormData();
-
-		formData.append( 'action', 'uag_container_global_elements_gap' );
-		formData.append( 'security', uag_react.container_global_elements_gap_nonce );
-		formData.append( 'value', value );
-
-		apiFetch( {
-			url: uag_react.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( () => {
-			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
-		} );
+		// Create an object with the security and value properties
+        const data = {
+            security: uag_react.container_global_elements_gap_nonce,
+            value,
+        };
+		// Call the getApiData function with the specified parameters
+        const getApiFetchData = getApiData( {
+            url: uag_react.ajax_url,
+            action: 'uag_container_global_elements_gap',
+            data,
+        } );
+		// Wait for the API call to complete, then update the state to show a notification that the settings have been saved
+        getApiFetchData.then( () => {
+            dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
+        } );
 	};
 
 	const updateContainerGlobalElementsGap = ( e ) => {

@@ -27,6 +27,6 @@ const UAGBTabsChildEdit = ( props ) => {
 		}
 	}, [] );
 
-	return <Render parentProps={ props } />;
+	return <Render { ...props } />;
 };
 export default UAGBTabsChildEdit;

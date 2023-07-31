@@ -2,9 +2,7 @@ import classnames from 'classnames';
 import { useLayoutEffect, memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
-
 import { Button } from '@wordpress/components';
-
 import { RichText } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
@@ -16,26 +14,19 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	const { setState } = props;
-
-	props = props.parentProps;
-
 	const { attributes, setAttributes, isSelected } = props;
 
 	const { block_id, checkboxRequired, options, checkboxName } = attributes;
 
-	const isRequired = checkboxRequired ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
+	const isRequired = checkboxRequired ? 'required' : '';
 
 	const addOption = () => {
 		const newOption = {
 			optiontitle: __( 'Option Name ', 'ultimate-addons-for-gutenberg' ) + `${ options.length + 1 }`,
 			optionvalue: __( 'Option Value ', 'ultimate-addons-for-gutenberg' ) + `${ options.length + 1 }`,
 		};
-		options[ options.length ] = newOption;
-		const addnewOptions = options.map( ( item ) => item );
-
-		setAttributes( { options: addnewOptions } );
-		setState( { optionsstate: addnewOptions } );
+		const addNewOptions = [ ...options, newOption ]; 
+		setAttributes( { options: addNewOptions } );
 	};
 
 	const editView = options.map( ( option, index ) => {
@@ -113,7 +104,6 @@ const Render = ( props ) => {
 		} );
 
 		setAttributes( { options: editOptions } );
-		setState( { optionsstate: editOptions } );
 	};
 
 	const deleteOption = ( index ) => {
@@ -125,7 +115,6 @@ const Render = ( props ) => {
 			return item;
 		} );
 
-		setState( { optionsstate: deleteOptions } );
 		setAttributes( { deleteOptions } );
 	};
 

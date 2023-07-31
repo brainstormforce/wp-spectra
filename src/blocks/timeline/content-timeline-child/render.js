@@ -19,7 +19,6 @@ const Render = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
-	props = props.parentProps;
 
 	// Setup the attributes.
 	const {

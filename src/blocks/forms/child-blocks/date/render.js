@@ -14,8 +14,6 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	props = props.parentProps;
-
 	const { attributes, setAttributes } = props;
 
 	const { block_id, dateRequired, name, additonalVal, minYear, minMonth, minDay } = attributes;
@@ -50,7 +48,7 @@ const Render = ( props ) => {
 		);
 	}
 
-	const isRequired = dateRequired ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
+	const isRequired = dateRequired ? 'required' : '';
 
 	return (
 		<>

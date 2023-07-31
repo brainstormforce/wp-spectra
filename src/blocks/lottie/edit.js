@@ -11,22 +11,18 @@ import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import addInitialAttr from '@Controls/addInitialAttr';
 
 const UAGBLottie = ( props ) => {
 
-	const { setAttributes, attributes, isSelected, clientId, name, deviceType } = props;
+	const { setAttributes, attributes, isSelected, clientId, deviceType } = props;
 
 	const { UAGHideDesktop, UAGHideTab, UAGHideMob, loop, reverse } = attributes;
 	const lottieplayer = useRef();
 	const [ state, setState ] = useState( { direction: 1, loopState: true } );
 
-	useEffect( () => {
-		// Assigning block_id in the attribute.
-		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
-		setAttributes( { classMigrate: true } );
-	}, [] );
+	const blockStyling = useMemo( () => styling( attributes, clientId, deviceType ), [ attributes, deviceType ] );
 
-	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
 		responsiveConditionPreview( props );
@@ -51,14 +47,15 @@ const UAGBLottie = ( props ) => {
 	return (
 		<>
 			<DynamicCSSLoader { ...{ blockStyling } } />
-			<Render lottieplayer={ lottieplayer } parentProps={ props } />
+			<Render lottieplayer={ lottieplayer } { ...props } />
 			{ isSelected && (
-				<Settings parentProps={ props } loopLottie={ loopLottie } reverseDirection={ reverseDirection } />
+				<Settings { ...props } loopLottie={ loopLottie } reverseDirection={ reverseDirection } />
 			) }
 		</>
 	);
 };
 
 export default compose(
+	addInitialAttr,
 	AddStaticStyles,
 )( UAGBLottie );

@@ -17,6 +17,8 @@ import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from '.././dynamicFontLoader';
 import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import getApiData from '@Controls/getApiData';
+import addInitialAttr from '@Controls/addInitialAttr';
 
 const PostGridComponent = ( props ) => {
 	const {
@@ -58,7 +60,6 @@ const PostGridComponent = ( props ) => {
 		},
 		setAttributes,
 		clientId,
-		name,
 		deviceType
 	} = props;
 
@@ -73,7 +74,6 @@ const PostGridComponent = ( props ) => {
 		// Replacement for componentDidMount.
 		const { block } = props;
 		setStateValue( { innerBlocks: block } );
-		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 
 		if ( borderWidth ) {
 			if ( undefined === btnBorderTopWidth ) {
@@ -124,8 +124,6 @@ const PostGridComponent = ( props ) => {
 				setAttributes( { btnBorderStyle: borderStyle } );
 			}
 		}
-
-		setAttributes( { allTaxonomyStore: undefined } );
 	}, [] );
 
 	useEffect( () => {
@@ -136,7 +134,7 @@ const PostGridComponent = ( props ) => {
 		scrollBlockToView();
 	}, [ deviceType ] );
 
-	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+	const blockStyling = useMemo( () => styling( attributes, clientId, deviceType ), [ attributes, deviceType ] );
 
 	const togglePreview = () => {
 		setStateValue( { isEditing: ! state.isEditing } );
@@ -148,6 +146,7 @@ const PostGridComponent = ( props ) => {
 
 		if ( ! allTaxonomyStore && ! isTaxonomyLoading ) {
 			setIsTaxonomyLoading( true );
+    		// We are not using the our wrapper getApiData function here because we need to pass any form data.
 			apiFetch( {
 				path: '/spectra/v1/all_taxonomy',
 			} ).then( ( data ) => {
@@ -159,18 +158,19 @@ const PostGridComponent = ( props ) => {
 		const currentTax = allTaxonomy ? allTaxonomy[ postType ] : undefined;
 
 		if ( true === postPagination && 'empty' === paginationMarkup ) {
-			const formData = new window.FormData();
+			const formData = {
+				nonce: uagb_blocks_info.uagb_ajax_nonce,
+				attributes: JSON.stringify( props.attributes ),
+			};
 
-			formData.append( 'action', 'uagb_post_pagination' );
-			formData.append( 'nonce', uagb_blocks_info.uagb_ajax_nonce );
-			formData.append( 'attributes', JSON.stringify( props.attributes ) );
-
-			apiFetch( {
+			const getApiFetchData = getApiData( {
 				url: uagb_blocks_info.ajax_url,
-				method: 'POST',
-				body: formData,
-			} ).then( ( data ) => {
-				props.setAttributes( { paginationMarkup: data.data } );
+				action: 'uagb_post_pagination',
+				data : formData,
+			} );
+
+			getApiFetchData.then( ( data ) => {
+				setAttributes( { paginationMarkup: data.data } );
 			} );
 		}
 
@@ -236,7 +236,7 @@ const PostGridComponent = ( props ) => {
 		return (
 			<>
 				<Settings
-					parentProps={ props }
+					{ ...props }
 					state={ state }
 					setStateValue={ setStateValue }
 					latestPosts={ latestPosts }
@@ -257,7 +257,7 @@ const PostGridComponent = ( props ) => {
 			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && (
 				<Settings
-					parentProps={ props }
+					{ ...props }
 					state={ state }
 					setStateValue={ setStateValue }
 					togglePreview={ togglePreview }
@@ -267,7 +267,7 @@ const PostGridComponent = ( props ) => {
 				/>
 			) }
 			<Render
-				parentProps={ props }
+				{ ...props }
 				state={ state }
 				setStateValue={ setStateValue }
 				togglePreview={ togglePreview }
@@ -281,5 +281,6 @@ const PostGridComponent = ( props ) => {
 };
 
 export default compose(
+	addInitialAttr,
 	AddStaticStyles,
 )( PostGridComponent );

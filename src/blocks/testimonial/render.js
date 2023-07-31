@@ -20,9 +20,8 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	props = props.parentProps;
-	const blockName = props.name.replace( 'uagb/', '' );
-	const { className, setAttributes, attributes, deviceType } = props;
+	const { className, setAttributes, attributes, deviceType, name, clientId } = props;
+	const blockName = name.replace( 'uagb/', '' );
 
 	// Setup the attributes.
 	const {
@@ -114,7 +113,7 @@ const Render = ( props ) => {
 		rtl: false,
 		afterChange: () => {
 			if ( equalHeight ) {
-				uagb_carousel_height( block_id ); // eslint-disable-line no-undef
+				uagb_carousel_height( block_id );
 			}
 		},
 		draggable: false,
@@ -160,7 +159,7 @@ const Render = ( props ) => {
 				className,
 				'uagb-slick-carousel uagb-tm__arrow-outside',
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
+				`uagb-block-${ clientId.substr( 0, 8 ) }`,
 				`${ equalHeightClass }`,
 				isGridLayout,
 				isGridLayoutTablet,

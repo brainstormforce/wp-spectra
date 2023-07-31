@@ -21,9 +21,10 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import { memo } from '@wordpress/element';
 
 const Settings = ( props ) => {
-	props = props.parentProps;
-	const blockName = props.name.replace( 'uagb/', '' );
-	const { setAttributes, attributes, deviceType } = props;
+
+	const { setAttributes, attributes, deviceType, name } = props;
+	
+	const blockName = name.replace( 'uagb/', '' );
 
 	// Setup the attributes.
 	const {

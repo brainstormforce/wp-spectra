@@ -5,27 +5,23 @@
 import Settings from './settings';
 import Render from './render';
 import styling from './styling';
-import { useEffect, useMemo } from '@wordpress/element';
+import { useMemo } from '@wordpress/element';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import addInitialAttr from '@Controls/addInitialAttr';
 import { withSelect, useDispatch } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 
 const UAGBSlide = ( props ) => {
-	const { isSelected, setAttributes, attributes, deviceType, clientId, name } = props;
+	const { isSelected, attributes, deviceType, clientId } = props;
 
-	useEffect( () => {
-		// Assigning block_id in the attribute.
-		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-	}, [] );
-
-	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+	const blockStyling = useMemo( () => styling( attributes, clientId, deviceType ), [ attributes, deviceType ] );
 
 	return (
 		<>
 			<DynamicCSSLoader { ...{ blockStyling } } />
-			{ isSelected && <Settings parentProps={ props } /> }
-			<Render parentProps={ props } />
+			{ isSelected && <Settings { ...props } /> }
+			<Render { ...props } />
 		</>
 	);
 };
@@ -55,5 +51,6 @@ const applyWithSelect = withSelect( ( select, props ) => {
 
 export default compose(
 	applyWithSelect,
+	addInitialAttr,
 	AddStaticStyles,
 )( UAGBSlide );

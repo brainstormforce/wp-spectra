@@ -12,11 +12,10 @@ import renderSVG from '@Controls/renderIcon';
 import ResponsiveSlider from '@Components/responsive-slider';
 import SpacingControl from '@Components/spacing-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
-import { useDeviceType } from '@Controls/getPreviewType';
 import { memo } from '@wordpress/element';
 
 const Settings = ( props ) => {
-	props = props.parentProps;
+
 	// Setup the attributes
 	const {
 		attributes,
@@ -101,6 +100,7 @@ const Settings = ( props ) => {
 			starPositionTablet,
 			starPositionMobile,
 		},
+		deviceType
 	} = props;
 
 	let alignmentOptions = [
@@ -125,8 +125,6 @@ const Settings = ( props ) => {
 			tooltip: __( 'Full', 'ultimate-addons-for-gutenberg' ),
 		},
 	];
-
-	const deviceType = useDeviceType();
 
 	if (
 		'stack' === layout ||

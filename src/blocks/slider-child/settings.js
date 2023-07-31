@@ -10,8 +10,8 @@ import Background from '@Components/background';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
-	props = props.parentProps;
-	const { attributes, setAttributes } = props;
+
+	const { attributes, setAttributes, clientId } = props;
 	const {
 		backgroundType,
 		backgroundImageDesktop,
@@ -92,7 +92,7 @@ const Settings = ( props ) => {
 		yPositionTypeMobile,
 	} = attributes;
 
-	const parentClientIds = select( 'core/block-editor' ).getBlockParents( props.clientId );
+	const parentClientIds = select( 'core/block-editor' ).getBlockParents( clientId );
 	const immediateParentClientId = parentClientIds.at( -1 );
 	const parentBlokAttributes = select( 'core/block-editor' ).getBlockAttributes( immediateParentClientId );
 

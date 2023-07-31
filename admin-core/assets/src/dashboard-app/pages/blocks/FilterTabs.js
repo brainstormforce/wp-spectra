@@ -1,8 +1,9 @@
-import apiFetch from '@wordpress/api-fetch';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { __ } from '@wordpress/i18n';
+
+import getApiData from '@Controls/getApiData';
 
 const FilterTabs = () => {
 
@@ -89,22 +90,21 @@ const FilterTabs = () => {
 			dispatch( { type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: 'enabled' } );            
         }
 
-		const formData = new window.FormData();
-
-		formData.append( 'action', 'uag_blocks_activation_and_deactivation' );
-		formData.append(
-			'security',
-			uag_react.blocks_activation_and_deactivation_nonce
-		);
-		formData.append( 'value', JSON.stringify( value ) );
-
-		apiFetch( {
-			url: uag_react.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( () => {
-			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
-		} );
+		// Create an object with the security and value properties
+        const data = {
+            security: uag_react.blocks_activation_and_deactivation_nonce,
+            value: JSON.stringify( value ),
+        };
+        // Call the getApiData function with the specified parameters
+        const getApiFetchData = getApiData( {
+            url: uag_react.ajax_url,
+            action: 'uag_blocks_activation_and_deactivation',
+            data,
+        } );
+        // Wait for the API call to complete, then update the state to show a notification that the settings have been saved
+        getApiFetchData.then( () => {
+            dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
+        } );
 	};
 
 	const deactivateAllBlocks = () => {
@@ -135,22 +135,21 @@ const FilterTabs = () => {
 			dispatch( { type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: 'disabled' } );            
         }
 
-		const formData = new window.FormData();
-
-		formData.append( 'action', 'uag_blocks_activation_and_deactivation' );
-		formData.append(
-			'security',
-			uag_react.blocks_activation_and_deactivation_nonce
-		);
-		formData.append( 'value', JSON.stringify( value ) );
-
-		apiFetch( {
-			url: uag_react.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( () => {
-			dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
-		} );
+		// Create an object with the security and value properties
+        const data = {
+            security: uag_react.blocks_activation_and_deactivation_nonce,
+            value: JSON.stringify( value ),
+        };
+        // Call the getApiData function with the specified parameters
+        const getApiFetchData = getApiData( {
+            url: uag_react.ajax_url,
+            action: 'uag_blocks_activation_and_deactivation',
+            data,
+        } );
+        // Wait for the API call to complete, then update the state to show a notification that the settings have been saved
+        getApiFetchData.then( () => {
+            dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
+        } );
 	};
 
     // This method concatinates all the required classes for Active and Normal states for Free and Pro Tabs.

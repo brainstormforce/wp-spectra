@@ -3,7 +3,6 @@
  */
 
 import classnames from 'classnames';
-import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
@@ -14,7 +13,7 @@ export default function save( props ) {
 
 	const { block_id, textareaRequired, textareaName, rows, placeholder, autocomplete } = attributes;
 
-	const isRequired = textareaRequired ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
+	const isRequired = textareaRequired ? 'required' : '';
 
 	return (
 		<div className={ classnames( 'uagb-forms-textarea-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ) }>

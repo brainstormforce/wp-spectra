@@ -15,13 +15,9 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	const { lottieplayer } = props;
+	const { className, attributes, setAttributes, deviceType, lottieplayer, name, clientId } = props;
 
-	props = props.parentProps;
-
-	const blockName = props.name.replace( 'uagb/', '' );
-
-	const { className, attributes, setAttributes, deviceType } = props;
+	const blockName = name.replace( 'uagb/', '' );
 
 	const { loop, speed, reverse, lottieURl, playOn, align, jsonLottie } = attributes;
 
@@ -91,7 +87,7 @@ const Render = ( props ) => {
 		<div // eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
 			className={ classnames(
 				className,
-				`uagb-block-${ props.clientId.substr( 0, 8 ) }`,
+				`uagb-block-${ clientId.substr( 0, 8 ) }`,
 				'uagb-lottie__outer-wrap',
 				`uagb-lottie__${ align }`,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`

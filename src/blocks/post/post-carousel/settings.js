@@ -6,8 +6,6 @@ import { memo } from '@wordpress/element';
 const Settings = ( props ) => {
 	const { state, inspectorControls, togglePreview } = props;
 
-	props = props.parentProps;
-
 	const getBlockControls = () => {
 		const { isEditing } = state;
 

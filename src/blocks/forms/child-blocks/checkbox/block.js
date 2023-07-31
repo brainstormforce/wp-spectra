@@ -6,8 +6,6 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 import attributes from './attributes';
 import Edit from './edit';
 import save from './save';
-import deprecated from './deprecated';
-
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 import PreviewImage from '@Controls/previewImage';
@@ -15,6 +13,9 @@ import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
 let checkboxCommonData = {};
 checkboxCommonData = applyFilters( 'uagb/forms-checkbox', addCommonDataToSpectraBlocks( checkboxCommonData ) );
+import Version from './deprecated/';
+import Version2_7_2 from './2_7_2';
+
 registerBlockType( 'uagb/forms-checkbox', {
 	...checkboxCommonData,
 	title: __( 'Checkbox', 'ultimate-addons-for-gutenberg' ),
@@ -29,5 +30,5 @@ registerBlockType( 'uagb/forms-checkbox', {
 		anchor: true,
 	},
 	save,
-	deprecated,
+	deprecated : [ Version2_7_2, Version ],
 } );

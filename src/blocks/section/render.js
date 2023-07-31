@@ -12,8 +12,7 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	props = props.parentProps;
-	const { attributes, isSelected, className, deviceType } = props;
+	const { attributes, isSelected, className, deviceType, clientId } = props;
 
 	const { align, contentWidth, tag, backgroundType, backgroundVideo } = attributes;
 
@@ -37,7 +36,7 @@ const Render = ( props ) => {
 				`uagb-section__edit-${ active }`,
 				blockControlsClass,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
+				`uagb-block-${ clientId.substr( 0, 8 ) }`
 			) }
 		>
 			<div className="uagb-section__overlay"></div>

@@ -18,7 +18,6 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import UAGTextControl from '@Components/text-control';
 
 const Settings = ( props ) => {
-	props = props.parentProps;
 
 	const { setAttributes, attributes, deviceType } = props;
 

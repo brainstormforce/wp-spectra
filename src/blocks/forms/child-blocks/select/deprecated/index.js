@@ -4,15 +4,39 @@
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
-import attributes from './attributes';
+
+const attributes = {
+	isPreview: {
+		type: 'boolean',
+		default: false,
+	},
+	block_id: {
+		type: 'string',
+	},
+	selectName: {
+		type: 'string',
+		default: __( 'Select Title', 'ultimate-addons-for-gutenberg' ),
+	},
+	selectRequired: {
+		type: 'boolean',
+		default: false,
+	},
+	options: {
+		type: 'array',
+		default: [
+			{
+				optiontitle: __( 'Option Name 1', 'ultimate-addons-for-gutenberg' ),
+				optionvalue: __( 'Option Value 1', 'ultimate-addons-for-gutenberg' ),
+			},
+		],
+	},
+};
 
 const deprecated = [
 	{
 		attributes,
 		save( props ) {
-			const { attributes } = props;
-
-			const { block_id, selectRequired, options, selectName } = attributes;
+			const { attributes : { block_id, selectRequired, options, selectName } } = props;
 
 			const isRequired = selectRequired ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
 

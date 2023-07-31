@@ -48,7 +48,7 @@ const PostTimelineComponent = ( props ) => {
 
 	useEffect( () => {
 		//Store Client id.
-		setAttributes( { block_id: props.clientId } );
+		setAttributes( { block_id: clientId } );
 		if ( timelinAlignment ) {
 			if ( 'none' === stack ) {
 				if ( undefined === timelinAlignmentTablet ) {
@@ -96,6 +96,7 @@ const PostTimelineComponent = ( props ) => {
 
 		if ( ! allTaxonomyStore && ! isTaxonomyLoading ) {
 			setIsTaxonomyLoading( true );
+			// We are not using the our wrapper getApiData function here because we need to pass any form data.
 			apiFetch( {
 				path: '/spectra/v1/all_taxonomy',
 			} ).then( ( data ) => {
@@ -169,9 +170,9 @@ const PostTimelineComponent = ( props ) => {
 			<DynamicCSSLoader { ...{ blockStyling } } />
 			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && (
-				<Settings parentProps={ props } taxonomyList={ taxonomyList } categoriesList={ categoriesList } />
+				<Settings { ...props } taxonomyList={ taxonomyList } categoriesList={ categoriesList } />
 			) }
-			<Render parentProps={ props } latestPosts={ latestPosts } />
+			<Render { ...props } latestPosts={ latestPosts } />
 		</>
 	);
 };

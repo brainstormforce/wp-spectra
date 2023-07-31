@@ -28,7 +28,7 @@ export const removeFromArray = ( arr, removedElems ) =>
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
-	props = props.parentProps;
+
 	// Setup the attributes
 	const { attributes, setAttributes } = props;
 

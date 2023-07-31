@@ -6,7 +6,6 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import TypographyControl from '@Components/typography';
 import SpacingControl from '@Components/spacing-control';
-import { useDeviceType } from '@Controls/getPreviewType';
 import ResponsiveBorder from '@Components/responsive-border';
 import renderSVG from '@Controls/renderIcon';
 import renderCustomIcon from '@Controls/renderCustomIcon';
@@ -23,7 +22,7 @@ import { getSettings as getDateSettings } from '@wordpress/date';
 import { memo } from '@wordpress/element';
 
 function Settings( props ) {
-	props = props.parentProps;
+
 	const isPro = uagb_blocks_info.spectra_pro_status;
 	const {
 		setAttributes,
@@ -200,9 +199,8 @@ function Settings( props ) {
 			boxShadowSpreadHover,
 			boxShadowPositionHover,
 		},
+		deviceType,
 	} = props;
-
-	const deviceType = useDeviceType();
 
 	// <------------------ OPTIONS/VALUES ------------------>
 	const bgTypeOptions = [

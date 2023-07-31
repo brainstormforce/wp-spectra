@@ -16,16 +16,16 @@ import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import { addFilter } from '@wordpress/hooks';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import addInitialAttr from '@Controls/addInitialAttr';
 
 const UAGBSlider = ( props ) => {
 	const {
 		isSelected,
-		setAttributes,
 		attributes,
 		clientId,
-		name,
 		deviceType,
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
+		setAttributes
 	} = props;
 
 	// Add and remove the CSS on the drop and remove of the component.
@@ -45,13 +45,13 @@ const UAGBSlider = ( props ) => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+	const blockStyling = useMemo( () => styling( attributes, clientId, deviceType ), [ attributes, deviceType ] );
 
 	return (
 		<>
 			<DynamicCSSLoader { ...{ blockStyling } } />
-			{ isSelected && <Settings parentProps={ props } /> }
-			<Render parentProps={ props } />
+			{ isSelected && <Settings { ...props } /> }
+			<Render { ...props } />
 		</>
 	);
 };
@@ -73,6 +73,7 @@ const applyWithSelect = withSelect( ( select, props ) => {
 } );
 
 export default compose(
+	addInitialAttr,
 	applyWithSelect,
 	AddStaticStyles,
 )( UAGBSlider );

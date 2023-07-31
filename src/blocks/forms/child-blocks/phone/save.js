@@ -49,7 +49,7 @@ export default function save( props ) {
 		);
 	}
 
-	const isRequired = phoneRequired ? __( 'required', 'ultimate-addons-for-gutenberg' ) : '';
+	const isRequired = phoneRequired ? 'required' : '';
 
 	return (
 		<div className={ classnames( 'uagb-forms-phone-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ) }>

@@ -21,7 +21,6 @@ import UAGSelectControl from '@Components/select-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 const Settings = ( props ) => {
-	props = props.parentProps;
 	const { attributes, deviceType, setAttributes } = props;
 	const {
 		block_id,

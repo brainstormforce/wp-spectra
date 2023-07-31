@@ -15,12 +15,8 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	props = props.parentProps;
-
 	const { attributes, deviceType } = props;
-
-
-	const { className, btn_count, buttons, stack, buttonSize, buttonSizeTablet, buttonSizeMobile } = attributes;
+	const { className, btn_count, buttons, stack, buttonSize, buttonSizeTablet, buttonSizeMobile, block_id } = attributes;
 
 	const getButtonTemplate = useMemo( () => {
 		const childButtons = [];
@@ -41,7 +37,7 @@ const Render = ( props ) => {
 				`uagb-btn-tablet__${ buttonSizeTablet }-btn`,
 				`uagb-btn-mobile__${ buttonSizeMobile }-btn`,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ props.clientId.substr( 0, 8 ) }`
+				`uagb-block-${ block_id }`
 			) }
 		>
 			<div className={ classnames( 'uagb-buttons__wrap', `uagb-buttons-stack-${ stack }` ) }>

@@ -8,10 +8,11 @@ import Edit from './edit';
 import save from './save';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
-import deprecated from './deprecated';
 import PreviewImage from '@Controls/previewImage';
 import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+import Version from './deprecated/';
+import Version2_7_2 from './2_7_2';
 let phoneCommonData = {};
 phoneCommonData = applyFilters( 'uagb/forms-phone', addCommonDataToSpectraBlocks( phoneCommonData ) );
 registerBlockType( 'uagb/forms-phone', {
@@ -28,5 +29,5 @@ registerBlockType( 'uagb/forms-phone', {
 		anchor: true,
 	},
 	save,
-	deprecated,
+	deprecated : [ Version2_7_2, Version ],
 } );

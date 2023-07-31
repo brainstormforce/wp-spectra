@@ -1,7 +1,8 @@
 import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch } from '@headlessui/react'
-import apiFetch from '@wordpress/api-fetch';
+
+import getApiData from '@Controls/getApiData';
 
 function classNames( ...classes ) {
     return classes.filter( Boolean ).join( ' ' )
@@ -25,19 +26,21 @@ const LoadFontAwesome5 = () => {
 
         dispatch( { type: 'UPDATE_ENABLE_FONT_AWESOME_5', payload: assetStatus } );
 
-		const formData = new window.FormData();
-
-		formData.append( 'action', 'uag_load_font_awesome_5' );
-		formData.append( 'security', uag_react.load_font_awesome_5_nonce );
-		formData.append( 'value', assetStatus );
-
-		apiFetch( {
-			url: uag_react.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( () => {
+		// Create an object with the security and value properties
+        const data = {
+            security: uag_react.load_font_awesome_5_nonce,
+            value: assetStatus,
+        };
+        // Call the getApiData function with the specified parameters
+        const getApiFetchData = getApiData( {
+            url: uag_react.ajax_url,
+            action: 'uag_load_font_awesome_5',
+            data,
+        } );
+        // Wait for the API call to complete, then update the state to show a notification that the settings have been saved
+        getApiFetchData.then( () => {
 			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
-		} );
+        } );
     };
 
     return (

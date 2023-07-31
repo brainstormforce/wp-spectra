@@ -1,8 +1,8 @@
 import { useState } from '@wordpress/element';
 import { __, sprintf } from '@wordpress/i18n';
-import apiFetch from '@wordpress/api-fetch';
 import { useDispatch } from 'react-redux';
 import ReactHtmlParser from 'react-html-parser';
+import getApiData from '@Controls/getApiData';
 
 export default function MyAccount() {
 	const dispatch = useDispatch();
@@ -24,22 +24,26 @@ export default function MyAccount() {
 			return;
 		}
 		setRegenerateAssetsState( 'loading' );
-		const formData = new window.FormData();
-		formData.append( 'action', 'uag_license_activation' );
-		formData.append( 'security', uag_react.license_activation_nonce );
-		formData.append( 'key', licenseKey );
 
-		apiFetch( {
+		const data = {
+			action: 'uag_license_activation',
+			security: uag_react.license_activation_nonce,
+			key: licenseKey,
+		};
+
+		const getApiFetchData = getApiData( {
 			url: uag_react.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( ( data ) => {
-            if ( data.success ) {
+			action: 'uag_license_activation',
+			data,
+		} );
+
+		getApiFetchData.then( ( responseData ) => {
+			if ( responseData.success ) {
 				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'License successfully validated!', 'ultimate-addons-for-gutenberg' ) } );
 				location.reload();
 			} else {
 				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: {
-					message : data?.data?.message,
+					message : responseData?.data?.message,
 					messageType: 'error'
 				} } );
 				setlicenseKey( '' );
@@ -50,21 +54,23 @@ export default function MyAccount() {
 
 	const deactivateHandler = () => {
 		setRegenerateAssetsState( 'loading' );
-		const formData = new window.FormData();
-		formData.append( 'action', 'uag_license_deactivation' );
-		formData.append( 'security', uag_react.license_deactivation_nonce );
-		
-		apiFetch( {
+		const data = {
+			security: uag_react.license_deactivation_nonce,
+		};
+
+		const getApiFetchData = getApiData( {
 			url: uag_react.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( ( data ) => {
-            if ( data.success ) {
+			action: 'uag_license_deactivation',
+			data,
+		} );
+
+		getApiFetchData.then( ( responseData ) => {
+			if ( responseData.success ) {
 				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'License successfully deactivated!', 'ultimate-addons-for-gutenberg' ) } );
 				location.reload();
 			} else {
 				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: {
-					message : data?.data?.message,
+					message : responseData?.data?.message,
 					messageType: 'error'
 				} } );
 			}

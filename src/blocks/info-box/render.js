@@ -20,7 +20,6 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	props = props.parentProps;
 	const { attributes, setAttributes, deviceType } = props;
 
 	// Setup the attributes.
