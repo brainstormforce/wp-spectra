@@ -16,11 +16,10 @@ const UAGBGoogleMap = ( props ) => {
 		attributes,
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 		name,
-		clientId,
 		deviceType
 	} = props;
 
-	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+	const blockStyling = useMemo( () => styling( attributes, name, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();

@@ -79,7 +79,7 @@ const SpectraPopupBuilderEdit = ( props ) => {
 	}, [] );
 
 	// Add Dynamic Block Styling.
-	const blockStyling = useMemo( () => styling( attributes, clientId, name ), [ attributes, deviceType ] );
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
 		responsiveConditionPreview( props );

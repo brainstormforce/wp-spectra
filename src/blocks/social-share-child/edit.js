@@ -15,7 +15,7 @@ import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 import addInitialAttr from '@Controls/addInitialAttr';
 const SocialShareChildComponent = ( props ) => {
-	const { isSelected, setAttributes, attributes, clientId, name, deviceType } = props;
+	const { isSelected, setAttributes, attributes, clientId, deviceType } = props;
 
 	useEffect( () => {
 		// Replacement for componentDidMount.
@@ -31,7 +31,7 @@ const SocialShareChildComponent = ( props ) => {
 		scrollBlockToView();
 	}, [ deviceType ] );
 
-	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
+	const blockStyling = useMemo( () => styling( attributes, clientId ), [ attributes, deviceType ] );
 
 	return (
 		<>
