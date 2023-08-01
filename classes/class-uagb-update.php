@@ -42,7 +42,7 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 		public function __construct() {
 			add_action( 'admin_init', array( $this, 'init' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_styles' ) );
-			add_action( 'in_plugin_update_message-' . UAGB_BASE, array( $this, 'plugin_update_notification' ), 10, 2 );
+			add_action( 'in_plugin_update_message-' . UAGB_BASE, array( $this, 'plugin_update_notification' ), 10 );
 		}
 
 		/**
@@ -163,12 +163,11 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 		/**
 		 * Plugin update notification.
 		 *
-		 * @param array  $data Plugin update data.
-		 * @param object $response Plugin update response.
+		 * @param array $data Plugin update data.
 		 * @since 2.7.2
 		 * @return void
 		 */
-		public function plugin_update_notification( $data, $response ) {
+		public function plugin_update_notification( $data ) {
 			if ( ! empty( $data['upgrade_notice'] ) ) { ?>
 				<hr class="uagb-plugin-update-notification__separator" />
 				<div class="uagb-plugin-update-notification">
@@ -182,7 +181,10 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 						<div class="uagb-plugin-update-notification__message">
 							<?php
 								printf(
-									esc_html( $data['upgrade_notice'] )
+									wp_kses(
+										$data['upgrade_notice'],
+										array( 'a' => array( 'href' => array() ) )
+									)
 								);
 							?>
 						</div>
