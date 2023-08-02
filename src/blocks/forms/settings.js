@@ -1107,6 +1107,10 @@ const Settings = ( props ) => {
 				setAttributes={ setAttributes }
 				options={ [
 					{
+						value: 'default',
+						label: __( 'Default', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
 						value: 'small',
 						label: __( 'Small', 'ultimate-addons-for-gutenberg' ),
 					},

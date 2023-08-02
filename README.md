@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Fix: Forms - Resolved an issue wherein the submit button would not take the padding set in the customizer.
+
 ### 2.7.3 - MONDAY, 31st JULY 2023 ###
 * Improvement: Core Blocks - Enhanced the reusable block functionality for all Core Blocks, with the exception of the Container.
 * Improvement: Global - Optimized the editor performance and stability.
