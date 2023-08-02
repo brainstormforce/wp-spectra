@@ -62,7 +62,7 @@
 
 	.components-placeholder {
 		align-items: center;
-		border: 1px dashed $spectra-color-tab-background;
+		border: 1px dashed #555d66;
 		box-shadow: none;
 		padding: $spectra-variation-padding;
 
@@ -101,6 +101,7 @@
 		text-align: center;
 		color: $spectra-color-body;
 		line-height: 20px;
+		width: 100%;
 	}
 
 	.block-editor-block-variation-picker__variations {
@@ -138,6 +139,40 @@
 			padding: 6px 12px;
 			text-decoration: none;
 			color: $spectra-color-primary;
+		}
+	}
+
+	// Variations for stroke-fill.
+	&--fill {
+
+		.components-button,
+		.components-button.is-secondary,
+		.components-button.is-tertiary,
+		.components-button:hover:not(:disabled) {
+
+			svg {
+
+				path,
+				rect,
+				circle {
+					stroke-width: 0;
+					fill: $spectra-color-heading;
+					-webkit-transition-property: fill;
+					-moz-transition-property: fill;
+					-o-transition-property: fill;
+					transition-property: fill;
+				}
+			}
+
+			&:hover svg {
+
+				path,
+				rect,
+				circle {
+					fill: $spectra-color-primary;
+				}
+			}
+
 		}
 	}
 }

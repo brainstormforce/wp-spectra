@@ -44,10 +44,32 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		background-color: #f5f5f5;
 		padding: 2rem;
 		width: 100%;
 		box-sizing: border-box;
+		border: 1px dashed #555d66;
+		border-radius: 2px;
+
+		// Selectors are used this way for higher specificity.
+		& > &__title {
+			display: flex;
+			align-items: center;
+			font-size: 18pt;
+			font-weight: 400;
+			margin-bottom: 8px;
+
+			svg {
+				width: 24px;
+				height: 24px;
+				margin-right: 12px;
+			}
+		}
+
+		& > &__help-text {
+			font-size: 13px;
+			margin-top: 0;
+			margin-bottom: 32px !important;  // !important is for editor styling usage, so can be overridden.
+		}
 
 		& .components-input-control__container {
 			box-sizing: border-box;
@@ -75,7 +97,7 @@
 			height: 3em;
 
 			path {
-				stroke: #959595;
+				stroke: #0063a1;
 			}
 		}
 	}

@@ -28,9 +28,13 @@ const InitialSelector = ( { attributes, setAttributes } ) => {
 	return (
 		setAttributes !== 'inapplicable' && (
 			<div className="spectra-image-gallery-init-wrapper">
-				{ UAGB_Block_Icons.image_gallery }
-				<h3>{ __( 'Spectra - Image Gallery', 'ultimate-addons-for-gutenberg' ) }</h3>
-				<p>{ __( 'Select your images to get started', 'ultimate-addons-for-gutenberg' ) }</p>
+				<div className='spectra-image-gallery-init-wrapper__title'>
+					{ UAGB_Block_Icons.image_gallery }
+					{ __( 'Image Gallery', 'ultimate-addons-for-gutenberg' ) }
+				</div>
+				<p className='spectra-image-gallery-init-wrapper__help-text'>
+					{ __( 'Select your images to get started', 'ultimate-addons-for-gutenberg' ) }
+				</p>
 				<MediaUpload
 					title={ __( 'Select Images', 'ultimate-addons-for-gutenberg' ) }
 					onSelect={ handleGalleryUpdate }

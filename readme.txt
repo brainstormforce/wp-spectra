@@ -241,6 +241,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = 2.7.0 - THURSDAY, 13th July 2023 =
 * Feature: Popup Builder - Added a new `Push Content` feature for info bars.
+* Improvement: Global - Updated the variation picker and media placeholder UI.
 * Improvement: Performance - Significantly reduced the plugin zip size by over 1 MB after optimizing the Font Awesome v6 assets.
 * Improvement: Forms - Added a full-width alignment option to the submit button.
 * Improvement: Table Of Contents - Added the ability to expand and collapse the entire box by clicking the top portion or the title of the box.
