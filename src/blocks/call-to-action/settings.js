@@ -31,6 +31,8 @@ const Settings = ( props ) => {
 		titleTag,
 		titleFontSize,
 		titleFontSizeType,
+		titleFontSizeTypeMobile,
+		titleFontSizeTypeTablet,
 		titleFontSizeMobile,
 		titleFontSizeTablet,
 		titleFontFamily,
@@ -42,6 +44,8 @@ const Settings = ( props ) => {
 		titleLoadGoogleFonts,
 		descFontSize,
 		descFontSizeType,
+		descFontSizeTypeMobile,
+		descFontSizeTypeTablet,
 		descFontSizeMobile,
 		descFontSizeTablet,
 		descFontFamily,
@@ -71,6 +75,8 @@ const Settings = ( props ) => {
 		ctaIconSpaceMobile,
 		ctaFontSize,
 		ctaFontSizeType,
+		ctaFontSizeTypeMobile,
+		ctaFontSizeTypeTablet,
 		ctaFontSizeMobile,
 		ctaFontSizeTablet,
 		ctaFontFamily,
@@ -146,6 +152,8 @@ const Settings = ( props ) => {
 		secondCtaHoverBackground,
 		secondCtaFontSize,
 		secondCtaFontSizeType,
+		secondCtaFontSizeTypeMobile,
+		secondCtaFontSizeTypeTablet,
 		secondCtaFontSizeMobile,
 		secondCtaFontSizeTablet,
 		secondCtaIcon,
@@ -428,6 +436,14 @@ const Settings = ( props ) => {
 					fontSizeType={ {
 						value: secondCtaFontSizeType,
 						label: 'secondCtaFontSizeType',
+					} }
+					fontSizeTypeTablet={ {
+						value: secondCtaFontSizeTypeTablet,
+						label: 'secondCtaFontSizeTypeTablet',
+					} }
+					fontSizeTypeMobile={ {
+						value: secondCtaFontSizeTypeMobile,
+						label: 'secondCtaFontSizeTypeMobile',
 					} }
 					fontSize={ {
 						value: secondCtaFontSize,
@@ -847,6 +863,14 @@ const Settings = ( props ) => {
 							value: ctaFontSizeType,
 							label: 'ctaFontSizeType',
 						} }
+						fontSizeTypeTablet={ {
+							value: ctaFontSizeTypeTablet,
+							label: 'ctaFontSizeTypeTablet',
+						} }
+						fontSizeTypeMobile={ {
+							value: ctaFontSizeTypeMobile,
+							label: 'ctaFontSizeTypeMobile',
+						} }
 						fontSize={ {
 							value: ctaFontSize,
 							label: 'ctaFontSize',
@@ -1152,6 +1176,14 @@ const Settings = ( props ) => {
 						value: titleFontSizeType,
 						label: 'titleFontSizeType',
 					} }
+					fontSizeTypeTablet={ {
+						value: titleFontSizeTypeTablet,
+						label: 'titleFontSizeTypeTablet',
+					} }
+					fontSizeTypeMobile={ {
+						value: titleFontSizeTypeMobile,
+						label: 'titleFontSizeTypeMobile',
+					} }
 					fontSize={ {
 						value: titleFontSize,
 						label: 'titleFontSize',
@@ -1273,6 +1305,14 @@ const Settings = ( props ) => {
 					fontSizeType={ {
 						value: descFontSizeType,
 						label: 'descFontSizeType',
+					} }
+					fontSizeTypeTablet={ {
+						value: descFontSizeTypeTablet,
+						label: 'descFontSizeTypeMobile',
+					} }
+					fontSizeTypeMobile={ {
+						value: descFontSizeTypeMobile,
+						label: 'descFontSizeTypeMobile',
 					} }
 					fontSize={ {
 						value: descFontSize,

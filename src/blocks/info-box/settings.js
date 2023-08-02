@@ -45,6 +45,8 @@ const Settings = ( props ) => {
 		prefixColor,
 		prefixFontSize,
 		prefixFontSizeType,
+		prefixFontSizeTypeMobile,
+		prefixFontSizeTypeTablet,
 		prefixFontSizeTablet,
 		prefixFontSizeMobile,
 		prefixFontFamily,
@@ -60,6 +62,8 @@ const Settings = ( props ) => {
 		headingTag,
 		headFontSize,
 		headFontSizeType,
+		headFontSizeTypeMobile,
+		headFontSizeTypeTablet,
 		headFontSizeTablet,
 		headFontSizeMobile,
 		headFontFamily,
@@ -72,6 +76,8 @@ const Settings = ( props ) => {
 		headLoadGoogleFonts,
 		subHeadFontSize,
 		subHeadFontSizeType,
+		subHeadFontSizeTypeMobile,
+		subHeadFontSizeTypeTablet,
 		subHeadFontSizeTablet,
 		subHeadFontSizeMobile,
 		subHeadFontFamily,
@@ -120,6 +126,8 @@ const Settings = ( props ) => {
 		ctaLinkColor,
 		ctaFontSize,
 		ctaFontSizeType,
+		ctaFontSizeTypeMobile,
+		ctaFontSizeTypeTablet,
 		ctaFontSizeMobile,
 		ctaFontSizeTablet,
 		ctaTransform,
@@ -1186,6 +1194,14 @@ const Settings = ( props ) => {
 									value: prefixFontSizeType,
 									label: 'prefixFontSizeType',
 								} }
+								fontSizeTypeTablet={ {
+									value: prefixFontSizeTypeTablet,
+									label: 'prefixFontSizeTypeTablet',
+								} }
+								fontSizeTypeMobile={ {
+									value: prefixFontSizeTypeMobile,
+									label: 'prefixFontSizeTypeMobile',
+								} }
 								fontSize={ {
 									value: prefixFontSize,
 									label: 'prefixFontSize',
@@ -1347,6 +1363,14 @@ const Settings = ( props ) => {
 							fontSizeType={ {
 								value: headFontSizeType,
 								label: 'headFontSizeType',
+							} }
+							fontSizeTypeTablet={ {
+								value: headFontSizeTypeTablet,
+								label: 'headFontSizeTypeTablet',
+							} }
+							fontSizeTypeMobile={ {
+								value: headFontSizeTypeMobile,
+								label: 'headFontSizeTypeMobile',
 							} }
 							fontSize={ {
 								value: headFontSize,
@@ -1643,6 +1667,14 @@ const Settings = ( props ) => {
 									value: subHeadFontSizeType,
 									label: 'subHeadFontSizeType',
 								} }
+								fontSizeTypeTablet={ {
+									value: subHeadFontSizeTypeTablet,
+									label: 'subHeadFontSizeTypeTablet',
+								} }
+								fontSizeTypeMobile={ {
+									value: subHeadFontSizeTypeMobile,
+									label: 'subHeadFontSizeTypeMobile',
+								} }
 								fontSize={ {
 									value: subHeadFontSize,
 									label: 'subHeadFontSize',
@@ -1796,6 +1828,14 @@ const Settings = ( props ) => {
 								fontSizeType={ {
 									value: ctaFontSizeType,
 									label: 'ctaFontSizeType',
+								} }
+								fontSizeTypeTablet={ {
+									value: ctaFontSizeTypeTablet,
+									label: 'ctaFontSizeTypeTablet',
+								} }
+								fontSizeTypeMobile={ {
+									value: ctaFontSizeTypeMobile,
+									label: 'ctaFontSizeTypeMobile',
 								} }
 								fontSize={ {
 									value: ctaFontSize,

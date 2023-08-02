@@ -50,6 +50,8 @@ export default function styling( attributes, name, deviceType ) {
 		captionTransform,
 		captionDecoration,
 		captionFontSizeType,
+		captionFontSizeTypeMobile,
+		captionFontSizeTypeTablet,
 		captionFontSizeMobile,
 		captionFontSizeTablet,
 		captionLineHeight,
@@ -81,6 +83,8 @@ export default function styling( attributes, name, deviceType ) {
 		headingTransform,
 		headingDecoration,
 		headingFontSizeType,
+		headingFontSizeTypeMobile,
+		headingFontSizeTypeTablet,
 		headingFontSizeMobile,
 		headingFontSizeTablet,
 		headingLineHeight,
@@ -420,7 +424,7 @@ export default function styling( attributes, name, deviceType ) {
 		'align-items': blockAlignTablet,
 	};
 	tablet_selectors[ '.wp-block-uagb-image .wp-block-uagb-image__figure figcaption' ] = {
-		'font-size': generateCSSUnit( captionFontSizeTablet, captionFontSizeType ),
+		'font-size': generateCSSUnit( captionFontSizeTablet, captionFontSizeTypeTablet ),
 		'line-height': generateCSSUnit( captionLineHeightTablet, captionLineHeightType ),
 		'letter-spacing': generateCSSUnit( captionLetterSpacingTablet, captionLetterSpacingType ),
 		'margin-top': generateCSSUnit( captionTopMarginTablet, captionMarginUnitTablet ),
@@ -434,7 +438,7 @@ export default function styling( attributes, name, deviceType ) {
 	] = overlayBorderCSSTablet;
 
 	tablet_selectors[ '.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading' ] = {
-		'font-size': generateCSSUnit( headingFontSizeTablet, headingFontSizeType ),
+		'font-size': generateCSSUnit( headingFontSizeTablet, headingFontSizeTypeTablet ),
 		'line-height': generateCSSUnit( headingLineHeightTablet, headingLineHeightType ),
 		'letter-spacing': generateCSSUnit( headingLetterSpacingTablet, headingLetterSpacingType ),
 		'margin-top': generateCSSUnit( headingTopMarginTablet, headingMarginUnitTablet ),
@@ -481,7 +485,7 @@ export default function styling( attributes, name, deviceType ) {
 		'align-items': blockAlignMobile,
 	};
 	mobile_selectors[ '.wp-block-uagb-image .wp-block-uagb-image__figure figcaption' ] = {
-		'font-size': generateCSSUnit( captionFontSizeMobile, captionFontSizeType ),
+		'font-size': generateCSSUnit( captionFontSizeMobile, captionFontSizeTypeMobile ),
 		'line-height': generateCSSUnit( captionLineHeightMobile, captionLineHeightType ),
 		'letter-spacing': generateCSSUnit( captionLetterSpacingMobile, captionLetterSpacingType ),
 		'margin-top': generateCSSUnit( captionTopMarginMobile, captionMarginUnitMobile ),
@@ -495,7 +499,7 @@ export default function styling( attributes, name, deviceType ) {
 	] = overlayBorderCSSMobile;
 
 	mobile_selectors[ '.wp-block-uagb-image .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading' ] = {
-		'font-size': generateCSSUnit( headingFontSizeMobile, headingFontSizeType ),
+		'font-size': generateCSSUnit( headingFontSizeMobile, headingFontSizeTypeMobile ),
 		'line-height': generateCSSUnit( headingLineHeightMobile, headingLineHeightType ),
 		'letter-spacing': generateCSSUnit( headingLetterSpacingMobile, headingLetterSpacingType ),
 		'margin-top': generateCSSUnit( headingTopMarginMobile, headingMarginUnitMobile ),

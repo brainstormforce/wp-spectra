@@ -86,6 +86,8 @@ export default function Settings( props ) {
 		captionTransform,
 		captionDecoration,
 		captionFontSizeType,
+		captionFontSizeTypeMobile,
+		captionFontSizeTypeTablet,
 		captionFontSizeMobile,
 		captionFontSizeTablet,
 		captionLineHeight,
@@ -120,6 +122,8 @@ export default function Settings( props ) {
 		headingTransform,
 		headingDecoration,
 		headingFontSizeType,
+		headingFontSizeTypeMobile,
+		headingFontSizeTypeTablet,
 		headingFontSizeMobile,
 		headingFontSizeTablet,
 		headingLineHeight,
@@ -1019,6 +1023,14 @@ export default function Settings( props ) {
 					value: headingFontSizeType,
 					label: 'headingFontSizeType',
 				} }
+				fontSizeTypeTablet={ {
+					value: headingFontSizeTypeTablet,
+					label: 'headingFontSizeTypeTablet',
+				} }
+				fontSizeTypeMobile={ {
+					value: headingFontSizeTypeMobile,
+					label: 'headingFontSizeTypeMobile',
+				} }
 				fontSize={ {
 					value: headingFontSize,
 					label: 'headingFontSize',
@@ -1186,6 +1198,14 @@ export default function Settings( props ) {
 				fontSizeType={ {
 					value: captionFontSizeType,
 					label: 'captionFontSizeType',
+				} }
+				fontSizeTypeTablet={ {
+					value: captionFontSizeTypeTablet,
+					label: 'captionFontSizeTypeTablet',
+				} }
+				fontSizeTypeMobile={ {
+					value: captionFontSizeTypeMobile,
+					label: 'captionFontSizeTypeMobile',
 				} }
 				fontSize={ {
 					value: captionFontSize,

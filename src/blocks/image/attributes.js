@@ -316,6 +316,20 @@ const attributes = {
 			styleType: 'desc-font-size-type',
 		},
 	},
+	captionFontSizeTypeTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-font-size-type-tablet',
+		},
+	},
+	captionFontSizeTypeMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-font-size-type-mobile',
+		},
+	},
 	captionLineHeightType: {
 		type: 'string',
 		default: 'em',
@@ -520,6 +534,20 @@ const attributes = {
 		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'main-title-font-size-type',
+		},
+	},
+	headingFontSizeTypeTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-font-size-type-tablet',
+		},
+	},
+	headingFontSizeTypeMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-font-size-type-mobile',
 		},
 	},
 	headingLineHeightType: {

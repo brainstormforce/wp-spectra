@@ -18,6 +18,8 @@ function CtaStyle( attributes, clientId, name, deviceType ) {
 		descColor,
 		titleFontSize,
 		titleFontSizeType,
+		titleFontSizeTypeMobile,
+		titleFontSizeTypeTablet,
 		titleFontSizeMobile,
 		titleFontSizeTablet,
 		titleFontFamily,
@@ -28,6 +30,8 @@ function CtaStyle( attributes, clientId, name, deviceType ) {
 		titleLineHeightMobile,
 		descFontSize,
 		descFontSizeType,
+		descFontSizeTypeMobile,
+		descFontSizeTypeTablet,
 		descFontSizeMobile,
 		descFontSizeTablet,
 		descFontFamily,
@@ -47,6 +51,8 @@ function CtaStyle( attributes, clientId, name, deviceType ) {
 		ctaPosition,
 		ctaFontSize,
 		ctaFontSizeType,
+		ctaFontSizeTypeMobile,
+		ctaFontSizeTypeTablet,
 		ctaFontSizeMobile,
 		ctaFontSizeTablet,
 		ctaFontFamily,
@@ -98,6 +104,8 @@ function CtaStyle( attributes, clientId, name, deviceType ) {
 		secondCtaIconPosition,
 		secondCtaFontSize,
 		secondCtaFontSizeType,
+		secondCtaFontSizeTypeMobile,
+		secondCtaFontSizeTypeTablet,
 		secondCtaFontSizeMobile,
 		secondCtaFontSizeTablet,
 		secondCtaFontFamily,
@@ -301,29 +309,29 @@ function CtaStyle( attributes, clientId, name, deviceType ) {
 			'margin-right': generateCSSUnit( overallBlockRightTabletMargin, overallBlockTabletMarginUnit ),
 		},
 		' .block-editor-rich-text__editable.uagb-cta__title': {
-			'font-size': generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
+			'font-size': generateCSSUnit( titleFontSizeTablet, titleFontSizeTypeTablet ),
 			'line-height': generateCSSUnit( titleLineHeightTablet, titleLineHeightType ),
 			'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
 			'margin-bottom': generateCSSUnit( titleSpaceTablet, titleSpaceType ),
 		},
 		' .block-editor-rich-text__editable.uagb-cta__desc': {
-			'font-size': generateCSSUnit( descFontSizeTablet, descFontSizeType ),
+			'font-size': generateCSSUnit( descFontSizeTablet, descFontSizeTypeTablet ),
 			'line-height': generateCSSUnit( descLineHeightTablet, descLineHeightType ),
 			'letter-spacing': generateCSSUnit( descLetterSpacingTablet, descLetterSpacingType ),
 			'margin-bottom': generateCSSUnit( descSpaceTablet, descSpaceType ),
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper svg': {
-			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
-			'height': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
-			'width': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
-			'line-height': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
+			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeTypeTablet ),
+			'height': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeTypeTablet ),
+			'width': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeTypeTablet ),
+			'line-height': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeTypeTablet ),
 			'letter-spacing': generateCSSUnit( ctaLetterSpacingTablet, ctaLetterSpacingType ),
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta-second__button svg': {
-			'font-size': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeType ),
-			'height': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeType ),
-			'width': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeType ),
-			'line-height': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeType ),
+			'font-size': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeTypeTablet ),
+			'height': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeTypeTablet ),
+			'width': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeTypeTablet ),
+			'line-height': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeTypeTablet ),
 			'letter-spacing': generateCSSUnit( secondCtaLetterSpacingTablet, secondCtaLetterSpacingType ),
 		},
 	};
@@ -353,33 +361,33 @@ function CtaStyle( attributes, clientId, name, deviceType ) {
 			'margin-right': generateCSSUnit( overallBlockRightMobileMargin, overallBlockMobileMarginUnit ),
 		},
 		' .block-editor-rich-text__editable.uagb-cta__title': {
-			'font-size': generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
+			'font-size': generateCSSUnit( titleFontSizeMobile, titleFontSizeTypeMobile ),
 			'line-height': generateCSSUnit( titleLineHeightMobile, titleLineHeightType ),
 			'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
 			'margin-bottom': generateCSSUnit( titleSpaceMobile, titleSpaceType ),
 		},
 		' .block-editor-rich-text__editable.uagb-cta__desc': {
-			'font-size': generateCSSUnit( descFontSizeMobile, descFontSizeType ),
+			'font-size': generateCSSUnit( descFontSizeMobile, descFontSizeTypeMobile ),
 			'line-height': generateCSSUnit( descLineHeightMobile, descLineHeightType ),
 			'letter-spacing': generateCSSUnit( descLetterSpacingMobile, descLetterSpacingType ),
 			'margin-bottom': generateCSSUnit( descSpaceMobile, descSpaceType ),
 		},
 		' .uagb-cta__button-wrapper a.uagb-cta-typeof-text': {
-			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeTypeMobile ),
 			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
 		},
 		' .uagb-cta__button-wrapper .uagb-cta-with-svg': {
-			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
-			'height': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
-			'width': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
-			'line-height': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeTypeMobile ),
+			'height': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeTypeMobile ),
+			'width': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeTypeMobile ),
+			'line-height': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeTypeMobile ),
 			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
 		},
 		'.uagb-cta__outer-wrap a.uagb-cta-second__button svg': {
-			'font-size': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeType ),
-			'height': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeType ),
-			'width': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeType ),
-			'line-height': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeType ),
+			'font-size': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeTypeMobile ),
+			'height': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeTypeMobile ),
+			'width': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeTypeMobile ),
+			'line-height': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeTypeMobile ),
 			'letter-spacing': generateCSSUnit( secondCtaLetterSpacingMobile, secondCtaLetterSpacingType ),
 		},
 	};
@@ -679,7 +687,7 @@ function CtaStyle( attributes, clientId, name, deviceType ) {
 		tabletSelectors[
 			'.uagb-cta__outer-wrap.wp-block-button:not(.is-style-outline) a.uagb-cta__button-link-wrapper.wp-block-button__link:not(.has-background)'
 		] = {
-			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
+			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeTypeTablet ),
 			'padding-top': generateCSSUnit( ctaTopPaddingTablet, tabletCTAPaddingUnit ),
 			'padding-bottom': generateCSSUnit( ctaBottomPaddingTablet, tabletCTAPaddingUnit ),
 			'padding-left': generateCSSUnit( ctaLeftPaddingTablet, tabletCTAPaddingUnit ),
@@ -690,7 +698,7 @@ function CtaStyle( attributes, clientId, name, deviceType ) {
 		mobileSelectors[
 			'.uagb-cta__outer-wrap.wp-block-button:not(.is-style-outline) a.uagb-cta__button-link-wrapper.wp-block-button__link:not(.has-background)'
 		] = {
-			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeTypeMobile ),
 			'padding-top': generateCSSUnit( ctaTopPaddingMobile, mobileCTAPaddingUnit ),
 			'padding-bottom': generateCSSUnit( ctaBottomPaddingMobile, mobileCTAPaddingUnit ),
 			'padding-left': generateCSSUnit( ctaLeftPaddingMobile, mobileCTAPaddingUnit ),
@@ -699,7 +707,7 @@ function CtaStyle( attributes, clientId, name, deviceType ) {
 			...ctaBorderCSSMobile,
 		};
 		tabletSelectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper'] = {
-			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
+			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeTypeTablet ),
 			'padding-top': generateCSSUnit( ctaTopPaddingTablet, tabletCTAPaddingUnit ),
 			'padding-bottom': generateCSSUnit( ctaBottomPaddingTablet, tabletCTAPaddingUnit ),
 			'padding-left': generateCSSUnit( ctaLeftPaddingTablet, tabletCTAPaddingUnit ),
@@ -708,7 +716,7 @@ function CtaStyle( attributes, clientId, name, deviceType ) {
 			...ctaBorderCSSTablet,
 		};
 		mobileSelectors['.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper'] = {
-			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeTypeMobile ),
 			'padding-top': generateCSSUnit( ctaTopPaddingMobile, mobileCTAPaddingUnit ),
 			'padding-bottom': generateCSSUnit( ctaBottomPaddingMobile, mobileCTAPaddingUnit ),
 			'padding-left': generateCSSUnit( ctaLeftPaddingMobile, mobileCTAPaddingUnit ),
@@ -748,7 +756,7 @@ function CtaStyle( attributes, clientId, name, deviceType ) {
 			'border-color': btnBorderHColor,
 		};
 		tabletSelectors['.uagb-cta__outer-wrap a.uagb-cta-second__button'] = {
-			'font-size': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeType ),
+			'font-size': generateCSSUnit( secondCtaFontSizeTablet, secondCtaFontSizeTypeTablet ),
 			'padding-top': generateCSSUnit( secondCtaTopTabletPadding, secondCtaTabletPaddingUnit ),
 			'padding-bottom': generateCSSUnit( secondCtaBottomTabletPadding, secondCtaTabletPaddingUnit ),
 			'padding-left': generateCSSUnit( secondCtaLeftTabletPadding, secondCtaTabletPaddingUnit ),
@@ -757,7 +765,7 @@ function CtaStyle( attributes, clientId, name, deviceType ) {
 			'letter-spacing': generateCSSUnit( secondCtaLetterSpacingTablet, secondCtaLetterSpacingType ),
 		};
 		mobileSelectors['.uagb-cta__outer-wrap a.uagb-cta-second__button' ] = {
-			'font-size': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeType ),
+			'font-size': generateCSSUnit( secondCtaFontSizeMobile, secondCtaFontSizeTypeMobile ),
 			'padding-top': generateCSSUnit( secondCtaTopMobilePadding, secondCtaMobilePaddingUnit ),
 			'padding-bottom': generateCSSUnit( secondCtaBottomMobilePadding, secondCtaMobilePaddingUnit ),
 			'padding-left': generateCSSUnit( secondCtaLeftMobilePadding, secondCtaMobilePaddingUnit ),

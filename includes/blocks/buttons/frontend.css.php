@@ -137,7 +137,7 @@ if ( $attr['childMigrate'] ) {
 	);
 
 	$button_tablet_style = array(
-		'font-size'      => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
+		'font-size'      => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeTypeTablet'] ),
 		'line-height'    => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['fontLetterSpacingTablet'], $attr['fontLetterSpacingType'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topTabletPadding'], $attr['tabletPaddingUnit'] ),
@@ -151,7 +151,7 @@ if ( $attr['childMigrate'] ) {
 	);
 
 	$button_mobile_style = array(
-		'font-size'      => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
+		'font-size'      => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeTypeMobile'] ),
 		'line-height'    => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['fontLetterSpacingMobile'], $attr['fontLetterSpacingType'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topMobilePadding'], $attr['mobilePaddingUnit'] ),

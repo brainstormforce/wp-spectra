@@ -50,6 +50,8 @@ function Settings( props ) {
 			digitColor,
 			digitDecoration,
 			digitFontSizeType,
+			digitFontSizeTypeMobile,
+			digitFontSizeTypeTablet,
 			digitFontSizeMobile,
 			digitFontSizeTablet,
 			digitLineHeight,
@@ -70,6 +72,8 @@ function Settings( props ) {
 			labelTransform,
 			labelDecoration,
 			labelFontSizeType,
+			labelFontSizeTypeMobile,
+			labelFontSizeTypeTablet,
 			labelFontSizeMobile,
 			labelFontSizeTablet,
 			labelLineHeight,
@@ -88,6 +92,8 @@ function Settings( props ) {
 			separatorFontSize,
 			separatorColor,
 			separatorFontSizeType,
+			separatorFontSizeTypeMobile,
+			separatorFontSizeTypeTablet,
 			separatorFontSizeMobile,
 			separatorFontSizeTablet,
 			separatorLineHeight,
@@ -765,6 +771,14 @@ function Settings( props ) {
 					value: digitFontSizeType,
 					label: 'digitFontSizeType',
 				} }
+				fontSizeTypeTablet={ {
+					value: digitFontSizeTypeTablet,
+					label: 'digitFontSizeTypeTablet',
+				} }
+				fontSizeTypeMobile={ {
+					value: digitFontSizeTypeMobile,
+					label: 'digitFontSizeTypeMobile',
+				} }
 				fontSize={ {
 					value: digitFontSize,
 					label: 'digitFontSize',
@@ -855,6 +869,14 @@ function Settings( props ) {
 					value: labelFontSizeType,
 					label: 'labelFontSizeType',
 				} }
+				fontSizeTypeTablet={ {
+					value: labelFontSizeTypeTablet,
+					label: 'labelFontSizeTypeTablet',
+				} }
+				fontSizeTypeMobile={ {
+					value: labelFontSizeTypeMobile,
+					label: 'labelFontSizeTypeMobile',
+				} }
 				fontSize={ {
 					value: labelFontSize,
 					label: 'labelFontSize',
@@ -938,6 +960,14 @@ function Settings( props ) {
 				fontSizeType={ {
 					value: separatorFontSizeType,
 					label: 'separatorFontSizeType',
+				} }
+				fontSizeTypeTablet={ {
+					value: separatorFontSizeTypeTablet,
+					label: 'separatorFontSizeTypeTablet',
+				} }
+				fontSizeTypeMobile={ {
+					value: separatorFontSizeTypeMobile,
+					label: 'separatorFontSizeTypeMobile',
 				} }
 				fontSize={ {
 					value: separatorFontSize,

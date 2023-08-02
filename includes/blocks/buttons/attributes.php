@@ -53,6 +53,8 @@ return array(
 	'alignTablet'             => 'center',
 	'alignMobile'             => 'center',
 	'fontSizeType'            => 'px',
+	'fontSizeTypeTablet'      => 'px',
+	'fontSizeTypeMobile'      => 'px',
 	'fontSize'                => '',
 	'fontSizeMobile'          => '',
 	'fontSizeTablet'          => '',

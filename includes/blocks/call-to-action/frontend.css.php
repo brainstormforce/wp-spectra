@@ -20,8 +20,8 @@ $t_selectors = array();
 $m_selectors = array();
 
 $svg_size   = UAGB_Helper::get_css_value( $attr['ctaFontSize'], $attr['ctaFontSizeType'] );
-$m_svg_size = UAGB_Helper::get_css_value( $attr['ctaFontSizeMobile'], $attr['ctaFontSizeType'] );
-$t_svg_size = UAGB_Helper::get_css_value( $attr['ctaFontSizeTablet'], $attr['ctaFontSizeType'] );
+$m_svg_size = UAGB_Helper::get_css_value( $attr['ctaFontSizeMobile'], $attr['ctaFontSizeTypeMobile'] );
+$t_svg_size = UAGB_Helper::get_css_value( $attr['ctaFontSizeTablet'], $attr['ctaFontSizeTypeTablet'] );
 
 $btn_padding_top    = isset( $attr['ctaTopPadding'] ) ? $attr['ctaTopPadding'] : $attr['ctaBtnVertPadding'];
 $btn_padding_bottom = isset( $attr['ctaBottomPadding'] ) ? $attr['ctaBottomPadding'] : $attr['ctaBtnVertPadding'];
@@ -172,10 +172,10 @@ $t_selectors = array(
 		'line-height' => $t_svg_size,
 	),
 	'.wp-block-uagb-call-to-action a.uagb-cta-second__button svg' => array(
-		'font-size'   => UAGB_Helper::get_css_value( $attr['secondCtaFontSizeTablet'], $attr['secondCtaFontSizeType'] ),
-		'width'       => UAGB_Helper::get_css_value( $attr['secondCtaFontSizeTablet'], $attr['secondCtaFontSizeType'] ),
-		'height'      => UAGB_Helper::get_css_value( $attr['secondCtaFontSizeTablet'], $attr['secondCtaFontSizeType'] ),
-		'line-height' => UAGB_Helper::get_css_value( $attr['secondCtaFontSizeTablet'], $attr['secondCtaFontSizeType'] ),
+		'font-size'   => UAGB_Helper::get_css_value( $attr['secondCtaFontSizeTablet'], $attr['secondCtaFontSizeTypeTablet'] ),
+		'width'       => UAGB_Helper::get_css_value( $attr['secondCtaFontSizeTablet'], $attr['secondCtaFontSizeTypeTablet'] ),
+		'height'      => UAGB_Helper::get_css_value( $attr['secondCtaFontSizeTablet'], $attr['secondCtaFontSizeTypeTablet'] ),
+		'line-height' => UAGB_Helper::get_css_value( $attr['secondCtaFontSizeTablet'], $attr['secondCtaFontSizeTypeTablet'] ),
 	),
 );
 
@@ -206,10 +206,10 @@ $m_selectors = array(
 		'line-height' => $m_svg_size,
 	),
 	'.wp-block-uagb-call-to-action a.uagb-cta-second__button svg' => array(
-		'font-size'   => UAGB_Helper::get_css_value( $attr['secondCtaFontSizeMobile'], $attr['secondCtaFontSizeType'] ),
-		'width'       => UAGB_Helper::get_css_value( $attr['secondCtaFontSizeMobile'], $attr['secondCtaFontSizeType'] ),
-		'height'      => UAGB_Helper::get_css_value( $attr['secondCtaFontSizeMobile'], $attr['secondCtaFontSizeType'] ),
-		'line-height' => UAGB_Helper::get_css_value( $attr['secondCtaFontSizeMobile'], $attr['secondCtaFontSizeType'] ),
+		'font-size'   => UAGB_Helper::get_css_value( $attr['secondCtaFontSizeMobile'], $attr['secondCtaFontSizeTypeMobile'] ),
+		'width'       => UAGB_Helper::get_css_value( $attr['secondCtaFontSizeMobile'], $attr['secondCtaFontSizeTypeMobile'] ),
+		'height'      => UAGB_Helper::get_css_value( $attr['secondCtaFontSizeMobile'], $attr['secondCtaFontSizeTypeMobile'] ),
+		'line-height' => UAGB_Helper::get_css_value( $attr['secondCtaFontSizeMobile'], $attr['secondCtaFontSizeTypeMobile'] ),
 	),
 );
 

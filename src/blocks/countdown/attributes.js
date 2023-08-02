@@ -154,6 +154,20 @@ const attributes = {
 			styleType: 'digit-font-size-type',
 		},
 	},
+	digitFontSizeTypeTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'digit-font-size-type-tablet',
+		},
+	},
+	digitFontSizeTypeMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'digit-font-size-type-mobile',
+		},
+	},
 	digitLineHeightType: {
 		type: 'string',
 		default: 'em',
@@ -274,6 +288,20 @@ const attributes = {
 			styleType: 'label-font-size-type',
 		},
 	},
+	labelFontSizeTypeTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'label-font-size-type-tablet',
+		},
+	},
+	labelFontSizeTypeMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'label-font-size-type-mobile',
+		},
+	},
 	labelLineHeightType: {
 		type: 'string',
 		default: 'em',
@@ -379,6 +407,20 @@ const attributes = {
 		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'separator-font-size-type',
+		},
+	},
+	separatorFontSizeTypeTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'separator-font-size-type-tablet',
+		},
+	},
+	separatorFontSizeTypeMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'separator-font-size-type-mobile',
 		},
 	},
 	separatorLineHeightType: {

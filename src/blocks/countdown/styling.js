@@ -24,6 +24,8 @@ export default function styling( attributes, clientId, name, deviceType ) {
 		digitColor,
 		digitDecoration,
 		digitFontSizeType,
+		digitFontSizeTypeMobile,
+		digitFontSizeTypeTablet,
 		digitFontSizeMobile,
 		digitFontSizeTablet,
 		digitLineHeight,
@@ -43,6 +45,8 @@ export default function styling( attributes, clientId, name, deviceType ) {
 		labelTransform,
 		labelDecoration,
 		labelFontSizeType,
+		labelFontSizeTypeMobile,
+		labelFontSizeTypeTablet,
 		labelFontSizeMobile,
 		labelFontSizeTablet,
 		labelLineHeight,
@@ -60,6 +64,8 @@ export default function styling( attributes, clientId, name, deviceType ) {
 		separatorFontSize,
 		separatorColor,
 		separatorFontSizeType,
+		separatorFontSizeTypeMobile,
+		separatorFontSizeTypeTablet,
 		separatorFontSizeMobile,
 		separatorFontSizeTablet,
 		separatorLineHeight,
@@ -356,14 +362,14 @@ export default function styling( attributes, clientId, name, deviceType ) {
 	tabletSelectors[ '.wp-block-uagb-countdown .wp-block-uagb-countdown__box:not(:first-child)' ] = {}; // Empty ruleset to prevent undefined error (for RTL Box Gap).
 
 	tabletSelectors[ '.wp-block-uagb-countdown .wp-block-uagb-countdown__time' ] = {
-		'font-size': generateCSSUnit( digitFontSizeTablet, digitFontSizeType ),
+		'font-size': generateCSSUnit( digitFontSizeTablet, digitFontSizeTypeTablet ),
 		'line-height': generateCSSUnit( digitLineHeightTablet, digitLineHeightType ),
 		'letter-spacing': generateCSSUnit( digitLetterSpacingTablet, digitLetterSpacingType ),
 	};
 
 	tabletSelectors[ '.wp-block-uagb-countdown div.wp-block-uagb-countdown__label' ] = {
 		'align-self': ! isSquareBox && boxFlexTablet === 'row' ? labelVerticalAlignmentTablet : 'unset',
-		'font-size': generateCSSUnit( labelFontSizeTablet, labelFontSizeType ),
+		'font-size': generateCSSUnit( labelFontSizeTablet, labelFontSizeTypeTablet ),
 		'line-height': generateCSSUnit( labelLineHeightTablet, labelLineHeightType ),
 		'letter-spacing': generateCSSUnit( labelLetterSpacingTablet, labelLetterSpacingType ),
 	};
@@ -402,14 +408,14 @@ export default function styling( attributes, clientId, name, deviceType ) {
 	mobileSelectors[ '.wp-block-uagb-countdown .wp-block-uagb-countdown__box:not(:first-child)' ] = {}; // Empty ruleset to prevent undefined error (for RTL Box Gap).
 
 	mobileSelectors[ '.wp-block-uagb-countdown .wp-block-uagb-countdown__time' ] = {
-		'font-size': generateCSSUnit( digitFontSizeMobile, digitFontSizeType ),
+		'font-size': generateCSSUnit( digitFontSizeMobile, digitFontSizeTypeMobile ),
 		'line-height': generateCSSUnit( digitLineHeightMobile, digitLineHeightType ),
 		'letter-spacing': generateCSSUnit( digitLetterSpacingMobile, digitLetterSpacingType ),
 	};
 
 	mobileSelectors[ '.wp-block-uagb-countdown div.wp-block-uagb-countdown__label' ] = {
 		'align-self': ! isSquareBox && boxFlexMobile === 'row' ? labelVerticalAlignmentMobile : 'unset',
-		'font-size': generateCSSUnit( labelFontSizeMobile, labelFontSizeType ),
+		'font-size': generateCSSUnit( labelFontSizeMobile, labelFontSizeTypeMobile ),
 		'line-height': generateCSSUnit( labelLineHeightMobile, labelLineHeightType ),
 		'letter-spacing': generateCSSUnit( labelLetterSpacingMobile, labelLetterSpacingType ),
 	};
@@ -430,14 +436,14 @@ export default function styling( attributes, clientId, name, deviceType ) {
 		};
 
 		tabletSelectors[ separatorSelector ] = {
-			'font-size': generateCSSUnit( separatorFontSizeTablet, separatorFontSizeType ),
+			'font-size': generateCSSUnit( separatorFontSizeTablet, separatorFontSizeTypeTablet ),
 			'line-height': generateCSSUnit( separatorLineHeightTablet, separatorLineHeightType ),
 			'right': generateCSSUnit( -separatorRightSpacingTabletFallback, 'px' ),
 			'top': generateCSSUnit( separatorTopSpacingTabletFallback, 'px' ),
 		};
 
 		mobileSelectors[ separatorSelector ] = {
-			'font-size': generateCSSUnit( separatorFontSizeMobile, separatorFontSizeType ),
+			'font-size': generateCSSUnit( separatorFontSizeMobile, separatorFontSizeTypeMobile ),
 			'line-height': generateCSSUnit( separatorLineHeightMobile, separatorLineHeightType ),
 			'right': generateCSSUnit( -separatorRightSpacingMobileFallback, 'px' ),
 			'top': generateCSSUnit( separatorTopSpacingMobileFallback, 'px' ),
