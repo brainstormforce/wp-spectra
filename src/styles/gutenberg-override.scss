@@ -1,5 +1,7 @@
 /* --------- Overwriting All Gutenberg Components Inside Spectra Panels --------- */
-
+.components-popover.uagb-dynamic-content-wrap {
+	z-index: 99999999;
+}
 .block-editor-block-popover__dynamic-content,
 .components-panel .uagb-dynamic-content-wrap,
 .components-panel .uagb-inspector-tab,
