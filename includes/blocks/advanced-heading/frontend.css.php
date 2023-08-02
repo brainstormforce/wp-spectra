@@ -268,9 +268,7 @@ if ( $attr['headingDescToggle'] || 'none' !== $attr['seperatorStyle'] ) {
 		),
 	);
 }
-/**
- * Get Combined selectors with filters.
- */
+
 $combined_selectors = UAGB_Helper::get_combined_selectors(
 	'advanced-heading',
 	array(

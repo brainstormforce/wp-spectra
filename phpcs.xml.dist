@@ -60,6 +60,7 @@
 	<exclude-pattern>*/admin/bsf-analytics/*</exclude-pattern>
 	<exclude-pattern>/blocks-config/uagb-controls/spectra-icons-v6-*.php</exclude-pattern>
 	<exclude-pattern>/tests/bootstrap.php</exclude-pattern>
+	<exclude-pattern>*/php/stubs/*</exclude-pattern>
 
 </ruleset>
 
