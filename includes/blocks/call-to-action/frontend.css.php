@@ -54,7 +54,6 @@ if ( 'left' === $attr['textAlignMobile'] ) {
 }
 $selectors = array(
 	'.wp-block-uagb-call-to-action .uagb-cta__title'       => array(
-		'line-height'   => UAGB_Helper::get_css_value( $attr['titleLineHeight'], $attr['titleLineHeightType'] ),
 		'color'         => $attr['titleColor'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpace'], $attr['titleSpaceType'] ),
 	),
