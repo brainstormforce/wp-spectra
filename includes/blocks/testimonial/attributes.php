@@ -143,6 +143,7 @@ return array_merge(
 		'gradientAngle'              => 0,
 		'gradientPosition'           => 'center center',
 		'equalHeight'                => false,
+		'vAlignContent'              => 'flex-start',
 		'nameLetterSpacing'          => '',
 		'nameLetterSpacingTablet'    => '',
 		'nameLetterSpacingMobile'    => '',

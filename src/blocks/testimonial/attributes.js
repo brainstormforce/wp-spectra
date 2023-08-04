@@ -991,6 +991,13 @@ const attributes = {
 			styleType: 'post-equal-height',
 		},
 	},
+	vAlignContent: {
+		type: 'string',
+		default: 'flex-start',
+		UAGCopyPaste: {
+			styleType: 'post-valign-content',
+		},
+	},
 	...overallBorderAttributes,
 	// letter spacing
 	nameLetterSpacing: {
