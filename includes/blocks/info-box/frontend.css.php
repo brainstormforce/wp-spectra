@@ -23,8 +23,8 @@ $attr['imageWidthTablet'] = is_numeric( $attr['imageWidthTablet'] ) ? $attr['ima
 $attr['imageWidthMobile'] = is_numeric( $attr['imageWidthMobile'] ) ? $attr['imageWidthMobile'] : $attr['imageWidthTablet'];
 
 $cta_icon_size    = UAGB_Helper::get_css_value( $attr['ctaFontSize'], $attr['ctaFontSizeType'] );
-$m_cta_icon_size  = UAGB_Helper::get_css_value( $attr['ctaFontSizeMobile'], $attr['ctaFontSizeTypeMobile'] );
-$t_cta_icon_size  = UAGB_Helper::get_css_value( $attr['ctaFontSizeTablet'], $attr['ctaFontSizeTypeTablet'] );
+$m_cta_icon_size  = isset( $attr['ctaFontSizeMobile'] ) && isset( $attr['ctaFontSizeTypeMobile'] ) ? UAGB_Helper::get_css_value( $attr['ctaFontSizeMobile'], $attr['ctaFontSizeTypeMobile'] ) : $cta_icon_size;
+$t_cta_icon_size  = isset( $attr['ctaFontSizeTablet'] ) && isset( $attr['ctaFontSizeTypeTablet'] ) ? UAGB_Helper::get_css_value( $attr['ctaFontSizeTablet'], $attr['ctaFontSizeTypeTablet'] ) : $cta_icon_size;
 $icon_size        = UAGB_Helper::get_css_value( $attr['iconSize'], $attr['iconSizeType'] );
 $icon_size_tablet = UAGB_Helper::get_css_value( $attr['iconSizeTablet'], $attr['iconSizeType'] );
 $icon_size_mobile = UAGB_Helper::get_css_value( $attr['iconSizeMobile'], $attr['iconSizeType'] );
