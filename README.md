@@ -217,6 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ### x.x.x ###
 * Improvement: Core Blocks - Implemented responsive typography font-size units.
+* Improvement: Popup Builder - Moved page-level settings into block-level panels.
 * Fix: Forms - Resolved an issue wherein the submit button would not take the padding set in the customizer.
 * Fix: Call To Action - Resolved an issue wherein the line-height of the title would not appear responsive in the frontend.
 

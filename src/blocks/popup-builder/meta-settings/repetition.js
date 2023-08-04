@@ -4,6 +4,7 @@ import { useEntityProp } from '@wordpress/core-data';
 import { ToggleControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import Range from '@Components/range/Range.js';
+import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 // React Component to Render the Repetition Settings.
 const RepetitionSettings = () => {
@@ -42,7 +43,10 @@ const RepetitionSettings = () => {
 	}
 
 	return (
-		<>
+		<UAGAdvancedPanelBody
+			title={ __( 'Repetition', 'ultimate-addons-for-gutenberg' ) }
+			initialOpen={ false }
+		>
 			<ToggleControl
 				label={ __( 'Repeat Infinitely', 'ultimate-addons-for-gutenberg' ) }
 				checked={ infiniteRepeat }
@@ -70,7 +74,7 @@ const RepetitionSettings = () => {
 					) }
 				/>
 			) }
-		</>
+		</UAGAdvancedPanelBody>
 	)
 }
 

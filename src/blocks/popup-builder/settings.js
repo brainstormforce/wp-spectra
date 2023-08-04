@@ -36,10 +36,12 @@ import Separator from '@Components/separator';
 import UAGTabsControl from '@Components/tabs';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control';
 import UAGPresets from '@Components/presets';
-import SpectraHelperPanel from '@Components/spectra-helper-panel';
 import { boxShadowPresets, boxShadowHoverPresets } from './presets';
 import variantIcons from './variant-icons';
 import { uagbClassNames } from '@Utils/Helpers';
+import { applyFilters } from '@wordpress/hooks';
+
+import RepetitionSettings from './meta-settings/repetition';
 
 const Settings = ( props ) => {
 	const { attributes, setAttributes, deviceType } = props;
@@ -1313,19 +1315,8 @@ const Settings = ( props ) => {
 			) }
 		</UAGAdvancedPanelBody>
 	);
-	
-	// The Helper Panel Component for Popup Builder. 
-	const popupPageLevelHelper = () => (
-		<SpectraHelperPanel
-			message={ 'banner' === variantType ? __(
-				'Click the Spectra logo on the top right to change this info bar\'s behavioural settings',
-				'ultimate-addons-for-gutenberg'
-			) : __(
-				'Click the Spectra logo on the top right to change this popup\'s behavioural settings',
-				'ultimate-addons-for-gutenberg'
-			) }
-		/>
-	)
+
+	const popupGeneralMetaSettings = applyFilters( 'spectra.popup-builder.tab_general.repetition.before', <RepetitionSettings/> );
 
 	return (
 		<>
@@ -1337,9 +1328,9 @@ const Settings = ( props ) => {
 							<>
 								{ generalSettings() }
 								{ closeSettings() }
+								{ popupGeneralMetaSettings }
 							</>
 						) }
-						{ popupPageLevelHelper() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ popupStyling() }

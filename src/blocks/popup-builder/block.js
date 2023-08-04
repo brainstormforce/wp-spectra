@@ -10,9 +10,7 @@ import save from './save';
 import variations from './variations';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
-import { addFilter } from '@wordpress/hooks';
 import PreviewImage from '@Controls/previewImage';
-import { addSidebarPopupMenu } from './sidebar-settings/popup-sidebar';
 
 if ( 'spectra-popup' === window.typenow ) {
 	registerBlockType( 'uagb/popup-builder', {
@@ -50,11 +48,4 @@ if ( 'spectra-popup' === window.typenow ) {
 			}
 		},
 	} );
-
-	addFilter(
-		'spectra.page-sidebar.before',
-		'uagb/popup-builder',
-		addSidebarPopupMenu,
-		1
-	);
 }
