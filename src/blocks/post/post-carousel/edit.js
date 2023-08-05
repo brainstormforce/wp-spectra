@@ -587,7 +587,7 @@ const UAGBPostCarousel = ( props ) => {
 	}
 	const presetSettings = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+			<UAGAdvancedPanelBody title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<UAGPresets setAttributes={ setAttributes } presets={ presets } presetInputType="radioImage" />
 			</UAGAdvancedPanelBody>
 		);
@@ -603,7 +603,7 @@ const UAGBPostCarousel = ( props ) => {
 
 	const getGeneralPanelBody = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+			<UAGAdvancedPanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Text Alignment', 'ultimate-addons-for-gutenberg' ) }
@@ -2106,12 +2106,12 @@ const UAGBPostCarousel = ( props ) => {
 		<InspectorControls>
 			<InspectorTabs>
 				<InspectorTab { ...UAGTabs.general }>
-					{ presetSettings() }
 					{ getGeneralPanelBody() }
 					{ getCarouselPanelBody() }
 					{ getImagePanelBody() }
 					{ getContentPanelBody() }
 					{ getReadMoreLinkPanelBody() }
+					{ presetSettings() }
 				</InspectorTab>
 				<InspectorTab { ...UAGTabs.style }>
 					{ spacingSettings() }

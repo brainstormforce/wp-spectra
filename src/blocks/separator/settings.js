@@ -12,10 +12,8 @@ import UAGTextControl from '@Components/text-control';
 import ResponsiveSlider from '@Components/responsive-slider';
 import UAGSelectControl from '@Components/select-control';
 import UAGIconPicker from '@Components/icon-picker';
-import UAGPresets from '@Components/presets';
 // Extend component
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
-import { separatorPresets } from './presets';
 
 const Settings = ( props ) => {
 	const { attributes, setAttributes } = props;
@@ -79,16 +77,9 @@ const Settings = ( props ) => {
 	const separatorGeneralSettings = () => {
 		return (
 			<>
-				<UAGAdvancedPanelBody title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
-					<UAGPresets
-						setAttributes={ setAttributes }
-						presets={ separatorPresets }
-						presetInputType="radioImage"
-					/>
-				</UAGAdvancedPanelBody>
 				<UAGAdvancedPanelBody
 					title={ __( 'Separator', 'ultimate-addons-for-gutenberg' ) }
-					initialOpen={ false }
+					initialOpen={ true }
 				>
 					<UAGSelectControl
 						label={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
@@ -489,6 +480,15 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ true }
 				/>
+				<AdvancedPopColorControl
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ elementColor ? elementColor : '' }
+					data={ {
+						value: elementColor,
+						label: 'elementColor',
+					} }
+					setAttributes={ setAttributes }
+				/>
 				{ elementType === 'text' && (
 					<TypographyControl
 						label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
@@ -605,15 +605,6 @@ const Settings = ( props ) => {
 						setAttributes={ setAttributes }
 					/>
 				) }
-				<AdvancedPopColorControl
-					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={ elementColor ? elementColor : '' }
-					data={ {
-						value: elementColor,
-						label: 'elementColor',
-					} }
-					setAttributes={ setAttributes }
-				/>
 				<ResponsiveSlider
 					label={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 					data={ {

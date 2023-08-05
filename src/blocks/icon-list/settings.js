@@ -487,6 +487,40 @@ const Settings = ( props ) => {
 					] }
 					setAttributes={ setAttributes }
 				/>
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							name: 'hover',
+							title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
+						},
+					] }
+					normal={
+						<AdvancedPopColorControl
+							label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ labelColor }
+							data={ {
+								value: labelColor,
+								label: 'labelColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+					}
+					hover={
+						<AdvancedPopColorControl
+							label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ labelHoverColor }
+							data={ {
+								value: labelHoverColor,
+								label: 'labelHoverColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+					}
+				/>
 				<TypographyControl
 					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
@@ -560,41 +594,6 @@ const Settings = ( props ) => {
 						value: labelLetterSpacingType,
 						label: 'labelLetterSpacingType',
 					} }
-				/>
-				<UAGTabsControl
-					tabs={ [
-						{
-							name: 'normal',
-							title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							name: 'hover',
-							title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
-						},
-					] }
-					normal={
-						<AdvancedPopColorControl
-							label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-							colorValue={ labelColor }
-							data={ {
-								value: labelColor,
-								label: 'labelColor',
-							} }
-							setAttributes={ setAttributes }
-						/>
-					}
-					hover={
-						<AdvancedPopColorControl
-							label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-							colorValue={ labelHoverColor }
-							data={ {
-								value: labelHoverColor,
-								label: 'labelHoverColor',
-							} }
-							setAttributes={ setAttributes }
-						/>
-					}
-					disableBottomSeparator={ true }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -819,14 +818,14 @@ const Settings = ( props ) => {
 	};
 	const presetSettings = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+			<UAGAdvancedPanelBody title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<UAGPresets setAttributes={ setAttributes } presets={ presets } presetInputType="radioImage" />
 			</UAGAdvancedPanelBody>
 		);
 	};
 	const iconSettings = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+			<UAGAdvancedPanelBody title={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<UAGIconPicker
 					label={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 					value={ parentIcon }
@@ -841,9 +840,9 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
-						{ presetSettings() }
 						{ iconSettings() }
 						{ generalSetting() }
+						{ presetSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ iconSetting() }

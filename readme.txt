@@ -217,6 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = x.x.x =
 * Improvement: Core Blocks - Implemented responsive typography font-size units.
+* Improvement: Global - Added a fresh new look for preset icons and rearranged some settings.
 * Fix: Forms - Resolved an issue wherein the submit button would not take the padding set in the customizer.
 
 = 2.7.3 - MONDAY, 31st JULY 2023 =

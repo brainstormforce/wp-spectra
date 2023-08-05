@@ -970,6 +970,15 @@ export default function Settings( props ) {
 
 	const headlineStylePanel = (
 		<UAGAdvancedPanelBody title={ __( 'Headline', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+			<AdvancedPopColorControl
+				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+				colorValue={ headingColor ? headingColor : '' }
+				data={ {
+					value: headingColor,
+					label: 'headingColor',
+				} }
+				setAttributes={ setAttributes }
+			/>
 			<TypographyControl
 				label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 				setAttributes={ setAttributes }
@@ -1046,15 +1055,6 @@ export default function Settings( props ) {
 					label: 'headingLetterSpacingMobile',
 				} }
 			/>
-			<AdvancedPopColorControl
-				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-				colorValue={ headingColor ? headingColor : '' }
-				data={ {
-					value: headingColor,
-					label: 'headingColor',
-				} }
-				setAttributes={ setAttributes }
-			/>
 			<SpacingControl
 				label={ __( 'Margin', 'ultimate-addons-for-gutenberg' ) }
 				valueTop={ {
@@ -1130,6 +1130,15 @@ export default function Settings( props ) {
 
 	const numberStylePanel = (
 		<UAGAdvancedPanelBody title={ __( 'Number', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+			<AdvancedPopColorControl
+				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+				colorValue={ numberColor ? numberColor : '' }
+				data={ {
+					value: numberColor,
+					label: 'numberColor',
+				} }
+				setAttributes={ setAttributes }
+			/>
 			<TypographyControl
 				label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 				setAttributes={ setAttributes }
@@ -1205,15 +1214,6 @@ export default function Settings( props ) {
 					value: numberLetterSpacingMobile,
 					label: 'numberLetterSpacingMobile',
 				} }
-			/>
-			<AdvancedPopColorControl
-				label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-				colorValue={ numberColor ? numberColor : '' }
-				data={ {
-					value: numberColor,
-					label: 'numberColor',
-				} }
-				setAttributes={ setAttributes }
 			/>
 			<SpacingControl
 				label={

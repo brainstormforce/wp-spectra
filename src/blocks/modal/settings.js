@@ -2,7 +2,11 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor';
-import { Icon, ToggleControl } from '@wordpress/components';
+import {
+	Icon,
+	ToggleControl,
+	Notice,
+} from '@wordpress/components';
 import UAGMediaPicker from '@Components/image';
 import UAGIconPicker from '@Components/icon-picker';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
@@ -421,6 +425,12 @@ export default function Settings( props ) {
 
 	const modalContentPanel = (
 		<UAGAdvancedPanelBody title={ __( 'Container', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+			<Notice className="spectra-sidebar-settings-notice" status="warning" isDismissible={ false }>
+				{ __(
+					'Please click on the modal button to preview the modal container.',
+					'ultimate-addons-for-gutenberg'
+				) }
+			</Notice>
 			<ResponsiveSlider
 				label={ __( 'Modal Width', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
@@ -843,83 +853,7 @@ export default function Settings( props ) {
 							setAttributes={ setAttributes }
 						/>
 					) }
-					<TypographyControl
-						label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
-						attributes={ attributes }
-						setAttributes={ setAttributes }
-						loadGoogleFonts={ {
-							value: btnLoadGoogleFonts,
-							label: 'btnLoadGoogleFonts',
-						} }
-						fontFamily={ {
-							value: btnFontFamily,
-							label: 'btnFontFamily',
-						} }
-						fontWeight={ {
-							value: btnFontWeight,
-							label: 'btnFontWeight',
-						} }
-						fontStyle={ {
-							value: btnFontStyle,
-							label: 'btnFontStyle',
-						} }
-						transform={ {
-							value: btnTransform,
-							label: 'btnTransform',
-						} }
-						decoration={ {
-							value: btnDecoration,
-							label: 'btnDecoration',
-						} }
-						fontSizeType={ {
-							value: btnFontSizeType,
-							label: 'btnFontSizeType',
-						} }
-						fontSize={ {
-							value: btnFontSize,
-							label: 'btnFontSize',
-						} }
-						fontSizeMobile={ {
-							value: btnFontSizeMobile,
-							label: 'btnFontSizeMobile',
-						} }
-						fontSizeTablet={ {
-							value: btnFontSizeTablet,
-							label: 'btnFontSizeTablet',
-						} }
-						lineHeightType={ {
-							value: btnLineHeightType,
-							label: 'btnLineHeightType',
-						} }
-						lineHeight={ {
-							value: btnLineHeight,
-							label: 'btnLineHeight',
-						} }
-						lineHeightMobile={ {
-							value: btnLineHeightMobile,
-							label: 'btnLineHeightMobile',
-						} }
-						lineHeightTablet={ {
-							value: btnLineHeightTablet,
-							label: 'btnLineHeightTablet',
-						} }
-						letterSpacing={ {
-							value: btnLetterSpacing,
-							label: 'btnLetterSpacing',
-						} }
-						letterSpacingTablet={ {
-							value: btnLetterSpacingTablet,
-							label: 'btnLetterSpacingTablet',
-						} }
-						letterSpacingMobile={ {
-							value: btnLetterSpacingMobile,
-							label: 'btnLetterSpacingMobile',
-						} }
-						letterSpacingType={ {
-							value: btnLetterSpacingType,
-							label: 'btnLetterSpacingType',
-						} }
-					/>
+
 					<UAGTabsControl
 						tabs={ [
 							{
@@ -1022,6 +956,85 @@ export default function Settings( props ) {
 							</>
 						}
 					/>
+
+					<TypographyControl
+						label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						loadGoogleFonts={ {
+							value: btnLoadGoogleFonts,
+							label: 'btnLoadGoogleFonts',
+						} }
+						fontFamily={ {
+							value: btnFontFamily,
+							label: 'btnFontFamily',
+						} }
+						fontWeight={ {
+							value: btnFontWeight,
+							label: 'btnFontWeight',
+						} }
+						fontStyle={ {
+							value: btnFontStyle,
+							label: 'btnFontStyle',
+						} }
+						transform={ {
+							value: btnTransform,
+							label: 'btnTransform',
+						} }
+						decoration={ {
+							value: btnDecoration,
+							label: 'btnDecoration',
+						} }
+						fontSizeType={ {
+							value: btnFontSizeType,
+							label: 'btnFontSizeType',
+						} }
+						fontSize={ {
+							value: btnFontSize,
+							label: 'btnFontSize',
+						} }
+						fontSizeMobile={ {
+							value: btnFontSizeMobile,
+							label: 'btnFontSizeMobile',
+						} }
+						fontSizeTablet={ {
+							value: btnFontSizeTablet,
+							label: 'btnFontSizeTablet',
+						} }
+						lineHeightType={ {
+							value: btnLineHeightType,
+							label: 'btnLineHeightType',
+						} }
+						lineHeight={ {
+							value: btnLineHeight,
+							label: 'btnLineHeight',
+						} }
+						lineHeightMobile={ {
+							value: btnLineHeightMobile,
+							label: 'btnLineHeightMobile',
+						} }
+						lineHeightTablet={ {
+							value: btnLineHeightTablet,
+							label: 'btnLineHeightTablet',
+						} }
+						letterSpacing={ {
+							value: btnLetterSpacing,
+							label: 'btnLetterSpacing',
+						} }
+						letterSpacingTablet={ {
+							value: btnLetterSpacingTablet,
+							label: 'btnLetterSpacingTablet',
+						} }
+						letterSpacingMobile={ {
+							value: btnLetterSpacingMobile,
+							label: 'btnLetterSpacingMobile',
+						} }
+						letterSpacingType={ {
+							value: btnLetterSpacingType,
+							label: 'btnLetterSpacingType',
+						} }
+					/>
+
 					<SpacingControl
 						{ ...props }
 						label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }

@@ -36,10 +36,7 @@ const GeneralSettings = ( props ) => {
 
 	return (
 		<>
-			<UAGAdvancedPanelBody title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
-				<UAGPresets setAttributes={ setAttributes } presets={ iconPresets } presetInputType="radioImage" />
-			</UAGAdvancedPanelBody>
-			<UAGAdvancedPanelBody title={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+			<UAGAdvancedPanelBody title={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<UAGIconPicker
 					label={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 					value={ icon }
@@ -152,6 +149,9 @@ const GeneralSettings = ( props ) => {
 						/>
 					</>
 				) }
+			</UAGAdvancedPanelBody>
+			<UAGAdvancedPanelBody title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+				<UAGPresets setAttributes={ setAttributes } presets={ iconPresets } presetInputType="radioImage" />
 			</UAGAdvancedPanelBody>
 		</>
 	);

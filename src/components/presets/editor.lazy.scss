@@ -16,12 +16,19 @@
 	svg {
 		width: 100%;
 		height: auto;
-		border-radius: 3px;
 		fill: #898e95;
 		border: 1px solid #dadada;
 		color: #898e95;
 		background-color: #f0f0f1;
 		transition: background 0.08s ease, box-shadow 0.08s ease;
+		// New styling for presets.
+		border-radius: 5px 5px 3px 3px;
+
+		// New styling for presets.
+		& > path:first-child {
+			scale: 1.129 1.085;
+			transform-origin: center bottom;
+		}
 	}
 
 	.uag-presets-radio-input:checked + .uag-presets-radio-input-label svg {

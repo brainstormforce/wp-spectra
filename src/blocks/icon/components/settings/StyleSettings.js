@@ -101,7 +101,7 @@ const StyleSettings = ( props ) => {
 					normal={
 						<>
 							<AdvancedPopColorControl
-								label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+								label={ __( 'Icon Color', 'ultimate-addons-for-gutenberg' ) }
 								colorValue={ iconColor ? iconColor : '' }
 								data={ {
 									value: iconColor,
@@ -110,7 +110,7 @@ const StyleSettings = ( props ) => {
 								setAttributes={ setAttributes }
 							/>
 							<ColorSwitchControl
-								label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
+								label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
 								type={ {
 									value: iconBackgroundColorType,
 									label: 'iconBackgroundColorType',
@@ -130,7 +130,7 @@ const StyleSettings = ( props ) => {
 					hover={
 						<>
 							<AdvancedPopColorControl
-								label={ __( 'Hover Color', 'ultimate-addons-for-gutenberg' ) }
+								label={ __( 'Icon Color', 'ultimate-addons-for-gutenberg' ) }
 								colorValue={ iconHoverColor ? iconHoverColor : '' }
 								data={ {
 									value: iconHoverColor,
@@ -139,7 +139,7 @@ const StyleSettings = ( props ) => {
 								setAttributes={ setAttributes }
 							/>
 							<ColorSwitchControl
-								label={ __( 'Background Color', 'ultimate-addons-for-gutenberg' ) }
+								label={ __( 'Background Type', 'ultimate-addons-for-gutenberg' ) }
 								type={ {
 									value: iconHoverBackgroundColorType,
 									label: 'iconHoverBackgroundColorType',

@@ -28,7 +28,7 @@ const defaultProps = {
 	borderWidthLabel: __( 'Width', 'ultimate-addons-for-gutenberg' ),
 	borderRadiusLabel: __( 'Radius', 'ultimate-addons-for-gutenberg' ),
 	borderColorLabel: __( 'Color', 'ultimate-addons-for-gutenberg' ),
-	borderHoverColorLabel: __( 'Hover Color', 'ultimate-addons-for-gutenberg' ),
+	borderHoverColorLabel: __( 'Color', 'ultimate-addons-for-gutenberg' ),
 };
 
 const ResponsiveBorder = ( props ) => {

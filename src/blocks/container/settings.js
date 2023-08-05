@@ -19,7 +19,7 @@ import renderCustomIcon from '@Controls/renderCustomIcon';
 import UAGTabsControl from '@Components/tabs';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control';
 import Range from '@Components/range/Range';
-import innerContainerPresets, { boxShadowPresets, boxShadowHoverPresets } from './presets';
+import { boxShadowPresets, boxShadowHoverPresets } from './presets';
 import UAGPresets from '@Components/presets';
 
 const Settings = ( props ) => {
@@ -432,8 +432,8 @@ const Settings = ( props ) => {
 		return (
 			<>
 				<UAGAdvancedPanelBody
-					title={ __( 'Container', 'ultimate-addons-for-gutenberg' ) }
-					initialOpen={ false }
+					title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ true }
 				>
 					{ isBlockRootParent && (
 						<>
@@ -1094,7 +1094,7 @@ const Settings = ( props ) => {
 
 	const linkHoverColorMarkup = (
 		<AdvancedPopColorControl
-			label={ __( 'Link Hover Color', 'ultimate-addons-for-gutenberg' ) }
+			label={ __( 'Link Color', 'ultimate-addons-for-gutenberg' ) }
 			colorValue={ linkHoverColor }
 			data={ {
 				value: linkHoverColor,
@@ -1835,26 +1835,10 @@ const Settings = ( props ) => {
 		);
 	};
 
-	const presetSettings = () => {
-		return (
-			<UAGAdvancedPanelBody
-				title={ __( 'Inner Container Presets', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ true }
-			>
-				<UAGPresets
-					setAttributes={ setAttributes }
-					presets={ innerContainerPresets }
-					presetInputType="radioImage"
-				/>
-			</UAGAdvancedPanelBody>
-		);
-	};
-
 	return (
 		<InspectorControls>
 			<InspectorTabs>
 				<InspectorTab { ...UAGTabs.general }>
-					{ isBlockRootParent && presetSettings() }
 					{ generalSettings() }
 				</InspectorTab>
 				<InspectorTab { ...UAGTabs.style }>
