@@ -68,6 +68,9 @@ const Render = ( props ) => {
 		imageHoverEffect,
 		href,
 		linkDestination,
+		sizeSlug,
+		sizeSlugTablet,
+		sizeSlugMobile,
 	} = attributes;
 
 	// Add and remove the CSS on the drop and remove of the component.
@@ -164,6 +167,13 @@ const Render = ( props ) => {
 		setTemporaryURL();
 
 		let mediaAttributes = pickRelevantMediaFiles( media, imageDefaultSize );
+
+		// If Custom Sizing was set, remove the size reset.
+		if ( 'custom' === sizeSlug ) {
+			delete mediaAttributes.width;
+			delete mediaAttributes.height;
+		}
+
 		// If a caption text was meanwhile written by the user,
 		// make sure the text is not overwritten by empty captions.
 		if ( captionRef.current && ! mediaAttributes.caption ) {
@@ -175,18 +185,32 @@ const Render = ( props ) => {
 			};
 		}
 
-		let additionalAttributes;
+		let additionalAttributes = {};
 		// Reset the dimension attributes if changing to a different image.
 		if ( ! media.id || media.id !== id ) {
-			additionalAttributes = {
-				width: undefined,
-				height: undefined,
-				// Fallback to size "full" if there's no default image size.
-				// It means the image is smaller, and the block will use a full-size URL.
-				sizeSlug: hasDefaultSize( media, imageDefaultSize ) ? imageDefaultSize : 'full',
-				sizeSlugTablet: hasDefaultSize( media, imageDefaultSize ) ? imageDefaultSize : 'full',
-				sizeSlugMobile: hasDefaultSize( media, imageDefaultSize ) ? imageDefaultSize : 'full',
-			};
+			// We're only resetting the sizes for Desktop since the tablet and mobile sizes inherit by default.
+			if ( 'custom' !== sizeSlug ) {
+				additionalAttributes = {
+					width: undefined,
+					height: undefined,
+					// Fallback to size "full" if there's no default image size.
+					// It means the image is smaller, and the block will use a full-size URL.
+					sizeSlug: hasDefaultSize( media, imageDefaultSize ) ? imageDefaultSize : 'full',
+					...additionalAttributes,
+				};
+			}
+			if ( 'custom' !== sizeSlugTablet ) {
+				additionalAttributes = {
+					...additionalAttributes,
+					sizeSlugTablet: hasDefaultSize( media, imageDefaultSize ) ? imageDefaultSize : 'full',
+				};
+			}
+			if ( 'custom' !== sizeSlugMobile ) {
+				additionalAttributes = {
+					...additionalAttributes,
+					sizeSlugMobile: hasDefaultSize( media, imageDefaultSize ) ? imageDefaultSize : 'full',
+				};
+			}
 		} else {
 			// Keep the same url when selecting the same file, so "Image Size"
 			// option is not changed.
@@ -241,15 +265,32 @@ const Render = ( props ) => {
 
 	function onSelectURL( newURL ) {
 		if ( newURL !== url ) {
-			setAttributes( {
+			let attributesToSet = {
 				url: newURL,
 				id: undefined,
-				width: undefined,
-				height: undefined,
-				sizeSlug: imageDefaultSize,
-				sizeSlugTablet: imageDefaultSize,
-				sizeSlugMobile: imageDefaultSize,
-			} );
+			};
+			// We're only resetting the sizes for Desktop since the tablet and mobile sizes inherit by default.
+			if ( 'custom' !== sizeSlug ) {
+				attributesToSet = {
+					...attributesToSet,
+					width: undefined,
+					height: undefined,
+					sizeSlug: imageDefaultSize,
+				};
+			}
+			if ( 'custom' !== sizeSlugTablet ) {
+				attributesToSet = {
+					...attributesToSet,
+					sizeSlugTablet: imageDefaultSize,
+				};
+			}
+			if ( 'custom' !== sizeSlugMobile ) {
+				attributesToSet = {
+					...attributesToSet,
+					sizeSlugMobile: imageDefaultSize,
+				};
+			}
+			setAttributes( attributesToSet );
 		}
 	}
 

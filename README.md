@@ -217,6 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ### x.x.x ###
 * Improvement: Core Blocks - Implemented responsive typography font-size units.
+* Improvement: Image - Added a new `Custom Size` feature, which will maintain the dimensions set when the image is replaced!
 * Improvement: Popup Builder - Moved page-level settings into block-level panels.
 * Improvement: Testimonial - Added a vertical alignment option for equal-height content.
 * Fix: Forms - Resolved an issue wherein the submit button would not take the padding set in the customizer.
