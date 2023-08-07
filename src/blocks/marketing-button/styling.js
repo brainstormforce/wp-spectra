@@ -206,7 +206,12 @@ function styling( attributes, clientId, name, deviceType ) {
 		}
 	}
 
-	const marginType = 'after' === iconPosition ? 'margin-left' : 'margin-right';
+	let marginType;
+	if ( uagb_blocks_info.is_rtl !== '1' ) {
+		marginType = 'after' === iconPosition ? 'margin-left' : 'margin-right';
+	} else {
+		marginType = 'after' === iconPosition ? 'margin-right' : 'margin-left';
+	}
 
 	selectors[ ' svg' ][ marginType ] = generateCSSUnit( iconSpaceFallback, 'px' );
 

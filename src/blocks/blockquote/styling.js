@@ -330,9 +330,12 @@ function styling( attributes, clientId, name, deviceType ) {
 			'width': generateCSSUnit( tweetBtnFontSize, tweetBtnFontSizeType ),
 			'height': generateCSSUnit( tweetBtnFontSize, tweetBtnFontSizeType ),
 		};
+        
+
+		const iconMargin = uagb_blocks_info.is_rtl === '1' ? 'margin-left' : 'margin-right';  
 
 		selectors[ '.uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg' ] = {
-			'margin-right': generateCSSUnit( tweetIconSpacingFallback, tweetIconSpacingUnit ),
+			[ iconMargin ]: generateCSSUnit( tweetIconSpacingFallback, tweetIconSpacingUnit ),
 		};
 
 		// Hover CSS

@@ -43,6 +43,18 @@ $btn_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn
 $btn_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'mobile' );
 
 
+$icon_spacing        = UAGB_Helper::get_css_value( $attr['iconSpace'], 'px' );
+$icon_spacing_tablet = UAGB_Helper::get_css_value( $attr['iconSpaceTablet'], 'px' );
+$icon_spacing_mobile = UAGB_Helper::get_css_value( $attr['iconSpaceMobile'], 'px' );
+
+$right_side_margin = 'margin-right';
+$left_side_margin  = 'margin-left';
+
+if ( ! is_rtl() ) {
+	$right_side_margin = 'margin-left';
+	$left_side_margin  = 'margin-right';
+}
+
 $selectors = array(
 	' .uagb-marketing-btn__prefix'                         => array(
 		'margin-top' => UAGB_Helper::get_css_value( $attr['titleSpace'], $attr['titleSpaceUnit'] ),
@@ -83,16 +95,16 @@ $selectors = array(
 		'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHoverColor'],
 	),
 	'.uagb-marketing-btn__icon-after .uagb-marketing-btn__link svg' => array(
-		'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpace'], 'px' ),
+		$right_side_margin => $icon_spacing,
 	),
 	'.uagb-marketing-btn__icon-before .uagb-marketing-btn__link svg' => array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpace'], 'px' ),
+		$left_side_margin => $icon_spacing,
 	),
 	'.uagb-marketing-btn__icon-after .uagb-marketing-btn__icon-wrap svg' => array( // For backword compatibility.
-		'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpace'], 'px' ),
+		$right_side_margin => $icon_spacing,
 	),
 	'.uagb-marketing-btn__icon-before .uagb-marketing-btn__icon-wrap svg' => array( // For backword compatibility.
-		'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpace'], 'px' ),
+		$left_side_margin => $icon_spacing,
 	),
 	' .uagb-marketing-btn__title-wrap'                     => array( // For backword compatibility.
 		'align-items' => 'center',
@@ -180,10 +192,10 @@ $m_selectors = array(
 		$btn_border_css_mobile
 	),
 	'.uagb-marketing-btn__icon-after .uagb-marketing-btn__link svg' => array(
-		'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpaceMobile'], 'px' ),
+		$right_side_margin => $icon_spacing_mobile,
 	),
 	'.uagb-marketing-btn__icon-before .uagb-marketing-btn__link svg' => array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpaceMobile'], 'px' ),
+		$left_side_margin => $icon_spacing_mobile,
 	),
 	' .uagb-marketing-btn__prefix'                         => array(
 		'margin-top' => UAGB_Helper::get_css_value( $attr['titleSpaceMobile'], 'px' ),
@@ -217,10 +229,10 @@ $t_selectors = array(
 		$btn_border_css_tablet
 	),
 	'.uagb-marketing-btn__icon-after .uagb-marketing-btn__link svg' => array(
-		'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpaceTablet'], 'px' ),
+		$left_side_margin => $icon_spacing_tablet,
 	),
 	'.uagb-marketing-btn__icon-before .uagb-marketing-btn__link svg' => array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpaceTablet'], 'px' ),
+		$right_side_margin => $icon_spacing_tablet,
 	),
 	' .uagb-marketing-btn__wrap .uagb-marketing-btn__link' => array_merge( // deprecated for v1.25.6 .
 		array(

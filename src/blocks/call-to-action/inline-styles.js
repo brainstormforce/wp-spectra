@@ -404,47 +404,67 @@ function CtaStyle( attributes, clientId, name, deviceType ) {
 		};
 	}
 
+	const secondCtaIconSpacing = generateCSSUnit( secondCtaIconSpaceFallback, 'px' );
+	const secondCtaIconspacingTablet = generateCSSUnit( secondCtaIconSpaceTablet, 'px' );
+	const secondCtaIconSpacingMobile = generateCSSUnit( secondCtaIconSpaceMobile, 'px' );
+
 	if ( secondCtaIconPosition === 'before' ) {
+
+		const leftSideMargin = uagb_blocks_info.is_rtl === '1' ? 'margin-left' : 'margin-right';
+
 		selectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
-			'margin-right': generateCSSUnit( secondCtaIconSpaceFallback, 'px' ),
+			[ leftSideMargin ]: secondCtaIconSpacing,
 		};
 		tabletSelectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
-			'margin-right': generateCSSUnit( secondCtaIconSpaceTablet, 'px' ),
+			[ leftSideMargin ]: secondCtaIconspacingTablet,
 		};
 		mobileSelectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
-			'margin-right': generateCSSUnit( secondCtaIconSpaceMobile, 'px' ),
+			[ leftSideMargin ]: secondCtaIconSpacingMobile,
 		};
 	} else {
+
+		const rightSideMargin = uagb_blocks_info.is_rtl === '1' ? 'margin-right' : 'margin-left';
+
 		selectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
-			'margin-left': generateCSSUnit( secondCtaIconSpaceFallback, 'px' ),
+			[ rightSideMargin ]: secondCtaIconSpacing,
 		};
 		tabletSelectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
-			'margin-left': generateCSSUnit( secondCtaIconSpaceTablet, 'px' ),
+			[ rightSideMargin ]: secondCtaIconspacingTablet,
 		};
 		mobileSelectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
-			'margin-left': generateCSSUnit( secondCtaIconSpaceMobile, 'px' ),
+			[ rightSideMargin ]: secondCtaIconSpacingMobile,
 		};
 	}
 
+	const ctaIconSpacing = generateCSSUnit( ctaIconSpaceFallback, 'px' );
+	const ctaIconSpacingTablet = generateCSSUnit( ctaIconSpaceTablet, 'px' );
+	const ctaIconSpacingMobile = generateCSSUnit( ctaIconSpaceMobile, 'px' );
+
 	if ( ctaIconPosition === 'before' ) {
+
+		const leftSideMargin = uagb_blocks_info.is_rtl === '1' ? 'margin-left' : 'margin-right';
+
 		selectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
-			'margin-right': generateCSSUnit( ctaIconSpaceFallback, 'px' ),
+			[ leftSideMargin ]: ctaIconSpacing,
 		};
 		tabletSelectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
-			'margin-right': generateCSSUnit( ctaIconSpaceTablet, 'px' ),
+			[ leftSideMargin ]: ctaIconSpacingTablet,
 		};
 		mobileSelectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
-			'margin-right': generateCSSUnit( ctaIconSpaceMobile, 'px' ),
+			[ leftSideMargin ] : ctaIconSpacingMobile,
 		};
 	} else {
+
+		const rightSideMargin = uagb_blocks_info.is_rtl === '1' ? 'margin-right' : 'margin-left';
+
 		selectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
-			'margin-left': generateCSSUnit( ctaIconSpaceFallback, 'px' ),
+			[ rightSideMargin ]: ctaIconSpacing,
 		};
 		tabletSelectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
-			'margin-left': generateCSSUnit( ctaIconSpaceTablet, 'px' ),
+			[ rightSideMargin ]: ctaIconSpacingTablet,
 		};
 		mobileSelectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
-			'margin-left': generateCSSUnit( ctaIconSpaceMobile, 'px' ),
+			[ rightSideMargin ] : ctaIconSpacingMobile,
 		};
 	}
 

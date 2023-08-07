@@ -242,9 +242,11 @@ if ( $attr['enableTweet'] ) {
 		'width'  => UAGB_Helper::get_css_value( $attr['tweetBtnFontSize'], $attr['tweetBtnFontSizeType'] ),
 		'height' => UAGB_Helper::get_css_value( $attr['tweetBtnFontSize'], $attr['tweetBtnFontSizeType'] ),
 	);
+ 
+	$icon_margin = is_rtl() ? 'margin-left' : 'margin-right';
 
 	$selectors['.uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg'] = array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['tweetIconSpacing'], $attr['tweetIconSpacingUnit'] ),
+		$icon_margin => UAGB_Helper::get_css_value( $attr['tweetIconSpacing'], $attr['tweetIconSpacingUnit'] ),
 	);
 
 	// Hover CSS.
