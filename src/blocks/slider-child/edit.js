@@ -13,6 +13,7 @@ import { compose } from '@wordpress/compose';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 
 const UAGBSlide = ( props ) => {
+
 	const { isSelected, attributes, deviceType, clientId } = props;
 
 	const blockStyling = useMemo( () => styling( attributes, clientId, deviceType ), [ attributes, deviceType ] );

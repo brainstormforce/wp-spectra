@@ -13,6 +13,7 @@ import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
 import Version from './deprecated/';
 import Version2_7_2 from './2_7_2';
+
 let nameCommonData = {};
 nameCommonData = applyFilters( 'uagb/forms-name', addCommonDataToSpectraBlocks( nameCommonData ) );
 registerBlockType( 'uagb/forms-name', {

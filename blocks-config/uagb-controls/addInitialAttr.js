@@ -25,7 +25,7 @@ const checkDuplicate = ( blockIds, block_id, currentIndex ) => {
 const addInitialAttr = ( ChildComponent ) => {
 	const WrappedComponent = ( props ) => {
 		const { name, setAttributes, clientId, attributes : { block_id } } = props;
-		
+
 		useEffect( () => {
 			const listOfClassMigrate = [
 				'uagb/advanced-heading',
@@ -67,7 +67,7 @@ const addInitialAttr = ( ChildComponent ) => {
 			if ( listOfAllTaxonomyStore.includes( name ) ) {
 				attributeObject.allTaxonomyStore = undefined;
 			}
-			
+
             // editorInnerblocksPreview: This attribute is used to display innerblocks preview for 'Replace with Content' mode.
 			if ( listOfEditorInnerblocksPreview.includes( name ) ) {
 				attributeObject.editorInnerblocksPreview = false;
@@ -91,29 +91,8 @@ const addInitialAttr = ( ChildComponent ) => {
 			 * As of now we are not providing for all block
 			 * After tested few blocks we will implement this is all blocks.
 			 */
-			const REUSABLE_BLOCK_ISSUE_RESOLVED_BLOCKS = [ 
-				'uagb/blockquote',
-				'uagb/cf7-styler',
-				'uagb/column',
-				'uagb/columns',
+			const REUSABLE_BLOCK_ISSUE_RESOLVED_BLOCKS = [
 				'uagb/container',
-				'uagb/counter',
-				'uagb/faq',
-				'uagb/faq-child',
-				'uagb/forms',
-				'uagb/forms-accept',
-				'uagb/forms-checkbox',
-				'uagb/forms-date',
-				'uagb/forms-email',
-				'uagb/forms-hidden',
-				'uagb/forms-name',
-				'uagb/forms-phone',
-				'uagb/forms-radio',
-				'uagb/forms-select',
-				'uagb/forms-textarea',
-				'uagb/forms-toggle',
-				'uagb/forms-upload',
-				'uagb/forms-url',
 				'uagb/gf-styler',
 				'uagb/google-map',
 				'uagb/how-to',

@@ -17,7 +17,6 @@ const UAGBHowToStepEdit = ( props ) => {
 
 	const { isSelected, attributes, clientId, deviceType } = props;
 
-
 	const blockStyling = useMemo( () => styling( attributes, clientId, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {

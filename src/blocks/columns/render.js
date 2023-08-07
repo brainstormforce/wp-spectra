@@ -10,7 +10,9 @@ const ALLOWED_BLOCKS = [ 'uagb/column' ];
 import { InnerBlocks } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
-	const { attributes, isSelected, className, deviceType, clientId } = props;
+
+	const { attributes, isSelected, className, deviceType } = props;
+
 	const {
 		stack,
 		align,
@@ -29,6 +31,7 @@ const Render = ( props ) => {
 		topContentAboveShape,
 		bottomContentAboveShape,
 		contentWidth,
+		block_id,
 	} = attributes;
 
 	const getColumnsTemplate = useMemo( () => {
@@ -100,7 +103,7 @@ const Render = ( props ) => {
 				`${ alignType }`,
 				reverseTabletClass,
 				reverseMobileClass,
-				`uagb-block-${ clientId.substr( 0, 8 ) }`,
+				`uagb-block-${ block_id }`,
 				`uagb-columns__max_width-${ contentWidth }`
 			) }
 		>

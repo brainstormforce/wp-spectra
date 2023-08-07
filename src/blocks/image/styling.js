@@ -8,6 +8,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateShadowCSS from '@Controls/generateShadowCSS';
 
+
 export default function styling( attributes, name, deviceType ) {
 
 	const blockName = name.replace( 'uagb/', '' );

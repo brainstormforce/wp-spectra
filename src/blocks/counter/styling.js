@@ -10,6 +10,7 @@ import { getFallbackNumber } from '@Controls/getAttributeFallback';
 export default function styling( attributes, clientId, name, deviceType ) {
 	const previewType = deviceType.toLowerCase();
 	const {
+		block_id,
 		align,
 		alignTablet,
 		alignMobile,
@@ -398,7 +399,7 @@ export default function styling( attributes, clientId, name, deviceType ) {
 		},
 	};
 
-	const base_selector = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
+	const base_selector = `.editor-styles-wrapper .uagb-block-${ block_id }`;
 
 	const tablet_selectors = {};
 	const mobile_selectors = {};

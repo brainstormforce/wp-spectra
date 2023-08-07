@@ -13,9 +13,10 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	const { className, attributes, deviceType, clientId } = props;
+	const { className, attributes, deviceType } = props;
 
 	const {
+		block_id,
 		formId,
 		align,
 		isHtml,
@@ -65,7 +66,7 @@ const Render = ( props ) => {
 				className,
 				'uagb-cf7-styler__outer-wrap',
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ clientId.substr( 0, 8 ) }`
+				`uagb-block-${ block_id }`
 			) }
 		>
 			<div

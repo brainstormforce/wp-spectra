@@ -12,6 +12,7 @@ function styling( attributes, clientId, name, deviceType ) {
 	const blockName = name.replace( 'uagb/', '' );
 	const previewType = deviceType.toLowerCase();
 	const {
+		block_id,
 		formPaddingTop,
 		formPaddingRight,
 		formPaddingBottom,
@@ -981,7 +982,7 @@ function styling( attributes, clientId, name, deviceType ) {
 	}
 
 	let stylingCss = '';
-	const base_selector = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
+	const base_selector = `.editor-styles-wrapper .uagb-block-${ block_id }`;
 	stylingCss = generateCSS( selectors, base_selector );
 
 	if( 'tablet' === previewType || 'mobile' === previewType ) {
