@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 5.6
-Tested up to: 6.2.2
-Stable tag: 2.7.3
+Tested up to: 6.3.0
+Stable tag: 2.7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,17 +215,17 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= x.x.x =
+= 2.7.4 - TUESDAY, 8th AUGUST 2023 =
 * Improvement: Core Blocks - Implemented responsive typography font-size units.
 * Improvement: Image - Added a new `Custom Size` feature, which will maintain the dimensions set when the image is replaced!
 * Improvement: Popup Builder - Moved page-level settings into block-level panels.
 * Improvement: Testimonial - Added a vertical alignment option for equal-height content.
 * Improvement: Global - Added a fresh new look for preset icons and rearranged some settings.
-* Fix: Forms - Resolved an issue wherein the submit button would not take the padding set in the customizer.
 * Fix: Call To Action - Resolved an issue wherein the line-height of the title would not appear responsive in the frontend.
+* Fix: Forms - Resolved an issue wherein the submit button would not utilize the padding set in the customizer.
 * Fix: Inline Notice - Updated inconsistent default padding and removed unwanted top-margin in the editor and the frontend.
+* Fix: Testimonial - Resolved an issue in which an extra margin would appear for the content in the mobile view.
 * Fix: Global - Resolved an issue in which the spacing between the text and the icon in buttons would not be applied as intended in RTL mode for certain blocks.
-* Fix: Testimonial - Resolved an issue where there is extra margin for content in mobile view.
 
 = 2.7.3 - MONDAY, 31st JULY 2023 =
 * Improvement: Core Blocks - Enhanced the reusable block functionality for all Core Blocks, with the exception of the Container.
@@ -1522,6 +1522,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Initial release
 
 == Upgrade Notice ==
+
+= 2.7.4 =
+With WordPress 6.3 no longer supporting older versions of PHP, the next Spectra release will also require a minimum of PHP 7.4. For websites running on older version of PHP, we strongly recommend upgrading to PHP 7.4 or above to ensure optimal performance and compatibility.
 
 = 2.7.3 =
 We've optimized the internal structure of Spectra in this update. To ensure your website's safety, We recommend that you backup your website before updating.
