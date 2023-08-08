@@ -183,6 +183,8 @@ $m_selectors = array(
 	' .uagb-testimonial__wrap .uagb-tm__content'        => $overall_border_Mobile,
 	' .uagb-tm__desc'                                   => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceMobile'], $attr['descSpaceType'] ),
+		'margin-left'   => 'dots' !== $attr['arrowDots'] ? '20px' : 'auto',
+		'margin-right'  => 'dots' !== $attr['arrowDots'] ? '20px' : 'auto',
 	),
 	' .uagb-tm__content'                                => array(
 		'text-align'     => $attr['headingAlignMobile'],
