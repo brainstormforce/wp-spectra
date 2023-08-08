@@ -20,6 +20,7 @@ import { InspectorControls } from '@wordpress/block-editor';
 import Separator from '@Components/separator';
 import { getSettings as getDateSettings } from '@wordpress/date';
 import { memo } from '@wordpress/element';
+import { applyFilters } from '@wordpress/hooks';
 
 function Settings( props ) {
 
@@ -278,7 +279,7 @@ function Settings( props ) {
 
 	// <------------------ GENERAL TAB ------------------>
 	const generalPanel = (
-		<UAGAdvancedPanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+		<UAGAdvancedPanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 			{ displayDatePanel() && (
 				<div className="uagb-countdown__datetime-picker">
 					<div>
@@ -332,7 +333,7 @@ function Settings( props ) {
 
 	// <------------------ PRESETS TAB ------------------>
 	const presetsPanel = (
-		<UAGAdvancedPanelBody title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+		<UAGAdvancedPanelBody title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			<UAGPresets setAttributes={ setAttributes } presets={ countdownPresets } presetInputType="radioImage" />
 		</UAGAdvancedPanelBody>
 	);
@@ -1349,10 +1350,12 @@ function Settings( props ) {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
-						{ presetsPanel }
 						{ generalPanel }
 						{ labelGeneralPanel }
 						{ separatorGeneralPanel }
+						{/* Expiry settings from Pro */}
+						{ applyFilters( 'spectra.countdown.expiry-settings' ) }
+						{ presetsPanel }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ boxStylePanel }

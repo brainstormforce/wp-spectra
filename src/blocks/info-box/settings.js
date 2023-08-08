@@ -337,7 +337,7 @@ const Settings = ( props ) => {
 	// Global Controls.
 	const imageIconPanel = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Image/Icon', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+			<UAGAdvancedPanelBody title={ __( 'Image/Icon', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<ToggleControl
 					checked={ showIcon }
 					onChange={ () => setAttributes( { showIcon: ! showIcon } ) }
@@ -2205,7 +2205,7 @@ const Settings = ( props ) => {
 
 	const presetSettings = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+			<UAGAdvancedPanelBody title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<UAGPresets setAttributes={ setAttributes } presets={ infoBoxPresets } presetInputType="radioImage" />
 			</UAGAdvancedPanelBody>
 		);
@@ -2216,11 +2216,11 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
-						{ presetSettings() }
 						{ imageIconPanel() }
 						{ typographySettings() }
 						{ seperatorSettings() }
 						{ ctaSettings() }
+						{ presetSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ styleSettings() }

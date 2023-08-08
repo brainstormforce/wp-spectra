@@ -1125,7 +1125,52 @@ const Settings = ( props ) => {
 				prefix={ 'image' }
 				attributes={ attributes }
 				deviceType={ deviceType }
-				disableBottomSeparator={ true }
+			/>
+			<ResponsiveSlider
+				label={ __( 'Gap Between Images', 'ultimate-addons-for-gutenberg' ) }
+				data={ {
+					desktop: {
+						value: gridImageGap,
+						label: 'gridImageGap',
+						unit: {
+							value: gridImageGapUnit,
+							label: 'gridImageGapUnit',
+						},
+					},
+					tablet: {
+						value: gridImageGapTab,
+						label: 'gridImageGapTab',
+						unit: {
+							value: gridImageGapUnitTab,
+							label: 'gridImageGapUnitTab',
+						},
+					},
+					mobile: {
+						value: gridImageGapMob,
+						label: 'gridImageGapMob',
+						unit: {
+							value: gridImageGapUnitMob,
+							label: 'gridImageGapUnitMob',
+						},
+					},
+				} }
+				min={ 0 }
+				max={ 100 }
+				units={ [
+					{
+						name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
+						unitValue: 'px',
+					},
+					{
+						name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
+						unitValue: 'em',
+					},
+					{
+						name: __( '%', 'ultimate-addons-for-gutenberg' ),
+						unitValue: '%',
+					},
+				] }
+				setAttributes={ setAttributes }
 			/>
 		</UAGAdvancedPanelBody>
 	);
@@ -1322,52 +1367,6 @@ const Settings = ( props ) => {
 					},
 				] }
 			/>
-			<ResponsiveSlider
-				label={ __( 'Gap Between Images', 'ultimate-addons-for-gutenberg' ) }
-				data={ {
-					desktop: {
-						value: gridImageGap,
-						label: 'gridImageGap',
-						unit: {
-							value: gridImageGapUnit,
-							label: 'gridImageGapUnit',
-						},
-					},
-					tablet: {
-						value: gridImageGapTab,
-						label: 'gridImageGapTab',
-						unit: {
-							value: gridImageGapUnitTab,
-							label: 'gridImageGapUnitTab',
-						},
-					},
-					mobile: {
-						value: gridImageGapMob,
-						label: 'gridImageGapMob',
-						unit: {
-							value: gridImageGapUnitMob,
-							label: 'gridImageGapUnitMob',
-						},
-					},
-				} }
-				min={ 0 }
-				max={ 100 }
-				units={ [
-					{
-						name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
-						unitValue: 'px',
-					},
-					{
-						name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
-						unitValue: 'em',
-					},
-					{
-						name: __( '%', 'ultimate-addons-for-gutenberg' ),
-						unitValue: '%',
-					},
-				] }
-				setAttributes={ setAttributes }
-			/>
 		</UAGAdvancedPanelBody>
 	);
 
@@ -1525,6 +1524,51 @@ const Settings = ( props ) => {
 
 	const captionStyling = () => (
 		<UAGAdvancedPanelBody title={ __( 'Caption', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+			{ captionVisibility === 'always' && (
+				<ToggleControl
+					label={ __( 'Hover Colors', 'ultimate-addons-for-gutenberg' ) }
+					checked={ captionSeparateColors }
+					onChange={ () => setAttributes( { captionSeparateColors: ! captionSeparateColors } ) }
+				/>
+			) }
+			{ captionVisibility === 'always' && captionSeparateColors ? (
+				<UAGTabsControl
+					tabs={ [
+						{
+							name: 'normal',
+							title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							name: 'hover',
+							title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
+						},
+					] }
+					normal={ renderCaptionDisplay( false ) }
+					hover={ renderCaptionDisplay( true ) }
+					disableBottomSeparator={ 'overlay' === captionDisplayType }
+				/>
+			) : (
+				<>
+					<AdvancedPopColorControl
+						label={ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
+						colorValue={ captionColor ? captionColor : '' }
+						data={ {
+							value: captionColor,
+							label: 'captionColor',
+						} }
+						setAttributes={ setAttributes }
+					/>
+					<AdvancedPopColorControl
+						label={ labelForCaptionBgColor }
+						colorValue={ captionBackgroundColor ? captionBackgroundColor : '' }
+						data={ {
+							value: captionBackgroundColor,
+							label: 'captionBackgroundColor',
+						} }
+						setAttributes={ setAttributes }
+					/>
+				</>
+			) }
 			<TypographyControl
 				label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 				attributes={ attributes }
@@ -1670,51 +1714,6 @@ const Settings = ( props ) => {
 					},
 				] }
 			/>
-			{ captionVisibility === 'always' && (
-				<ToggleControl
-					label={ __( 'Hover Colors', 'ultimate-addons-for-gutenberg' ) }
-					checked={ captionSeparateColors }
-					onChange={ () => setAttributes( { captionSeparateColors: ! captionSeparateColors } ) }
-				/>
-			) }
-			{ captionVisibility === 'always' && captionSeparateColors ? (
-				<UAGTabsControl
-					tabs={ [
-						{
-							name: 'normal',
-							title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							name: 'hover',
-							title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
-						},
-					] }
-					normal={ renderCaptionDisplay( false ) }
-					hover={ renderCaptionDisplay( true ) }
-					disableBottomSeparator={ 'overlay' === captionDisplayType }
-				/>
-			) : (
-				<>
-					<AdvancedPopColorControl
-						label={ __( 'Text Color', 'ultimate-addons-for-gutenberg' ) }
-						colorValue={ captionColor ? captionColor : '' }
-						data={ {
-							value: captionColor,
-							label: 'captionColor',
-						} }
-						setAttributes={ setAttributes }
-					/>
-					<AdvancedPopColorControl
-						label={ labelForCaptionBgColor }
-						colorValue={ captionBackgroundColor ? captionBackgroundColor : '' }
-						data={ {
-							value: captionBackgroundColor,
-							label: 'captionBackgroundColor',
-						} }
-						setAttributes={ setAttributes }
-					/>
-				</>
-			) }
 			{ 'overlay' !== captionDisplayType && (
 				<ResponsiveBorder
 					setAttributes={ setAttributes }

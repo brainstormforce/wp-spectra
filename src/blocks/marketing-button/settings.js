@@ -123,7 +123,49 @@ const Settings = ( props ) => {
 	const generalSettings = () => {
 		return (
 			<>
-				<UAGAdvancedPanelBody title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+				<UAGAdvancedPanelBody title={ __( 'Content & Heading', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+					<MultiButtonsControl
+						setAttributes={ setAttributes }
+						label={ __( 'Heading Tag', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							value: titleTag,
+							label: 'titleTag',
+						} }
+						options={ [
+							{
+								value: 'h1',
+								label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'h2',
+								label: __( 'H2', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'h3',
+								label: __( 'H3', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'h4',
+								label: __( 'H4', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'h5',
+								label: __( 'H5', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'h6',
+								label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'span',
+								label: __( 'Span', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'p',
+								label: __( 'P', 'ultimate-addons-for-gutenberg' ),
+							},
+						] }
+					/>
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
 						label={ __( 'Button Alignment', 'ultimate-addons-for-gutenberg' ) }
@@ -202,50 +244,6 @@ const Settings = ( props ) => {
 						label={ __( 'Open in new window', 'ultimate-addons-for-gutenberg' ) }
 						checked={ linkTarget }
 						onChange={ () => setAttributes( { linkTarget: ! linkTarget } ) }
-					/>
-				</UAGAdvancedPanelBody>
-				<UAGAdvancedPanelBody title={ __( 'Heading', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
-					<MultiButtonsControl
-						setAttributes={ setAttributes }
-						label={ __( 'Tag', 'ultimate-addons-for-gutenberg' ) }
-						data={ {
-							value: titleTag,
-							label: 'titleTag',
-						} }
-						options={ [
-							{
-								value: 'h1',
-								label: __( 'H1', 'ultimate-addons-for-gutenberg' ),
-							},
-							{
-								value: 'h2',
-								label: __( 'H2', 'ultimate-addons-for-gutenberg' ),
-							},
-							{
-								value: 'h3',
-								label: __( 'H3', 'ultimate-addons-for-gutenberg' ),
-							},
-							{
-								value: 'h4',
-								label: __( 'H4', 'ultimate-addons-for-gutenberg' ),
-							},
-							{
-								value: 'h5',
-								label: __( 'H5', 'ultimate-addons-for-gutenberg' ),
-							},
-							{
-								value: 'h6',
-								label: __( 'H6', 'ultimate-addons-for-gutenberg' ),
-							},
-							{
-								value: 'span',
-								label: __( 'Span', 'ultimate-addons-for-gutenberg' ),
-							},
-							{
-								value: 'p',
-								label: __( 'P', 'ultimate-addons-for-gutenberg' ),
-							},
-						] }
 					/>
 				</UAGAdvancedPanelBody>
 			</>

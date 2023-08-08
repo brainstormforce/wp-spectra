@@ -184,7 +184,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 				className="uagb__url-panel-body"
 			>
 				<MultiButtonsControl
@@ -1131,7 +1131,7 @@ const Settings = ( props ) => {
 
 	const presetSettings = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+			<UAGAdvancedPanelBody title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<UAGPresets setAttributes={ setAttributes } presets={ presets } presetInputType="radioImage" />
 			</UAGAdvancedPanelBody>
 		);
@@ -1142,9 +1142,9 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
-						{ presetSettings() }
 						{ faqGeneralSettings() }
 						{ 'accordion' === layout && faqIconSettings() }
+						{ presetSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ commonStyle() }

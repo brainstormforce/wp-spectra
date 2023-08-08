@@ -220,6 +220,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Image - Added a new `Custom Size` feature, which will maintain the dimensions set when the image is replaced!
 * Improvement: Popup Builder - Moved page-level settings into block-level panels.
 * Improvement: Testimonial - Added a vertical alignment option for equal-height content.
+* Improvement: Global - Added a fresh new look for preset icons and rearranged some settings.
 * Fix: Forms - Resolved an issue wherein the submit button would not take the padding set in the customizer.
 * Fix: Call To Action - Resolved an issue wherein the line-height of the title would not appear responsive in the frontend.
 * Fix: Inline Notice - Updated inconsistent default padding and removed unwanted top-margin in the editor and the frontend.

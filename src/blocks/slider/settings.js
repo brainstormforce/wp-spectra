@@ -224,7 +224,7 @@ const Settings = ( props ) => {
 				<>
 					<UAGAdvancedPanelBody
 						title={ __( 'Slider', 'ultimate-addons-for-gutenberg' ) }
-						initialOpen={ false }
+						initialOpen={ true }
 					>
 						<ToggleControl
 							label={ __( 'Autoplay', 'ultimate-addons-for-gutenberg' ) }
@@ -362,22 +362,6 @@ const Settings = ( props ) => {
 						/>
 						{ afterNavigationOptions }
 					</UAGAdvancedPanelBody>
-					<UAGAdvancedPanelBody
-						title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
-						initialOpen={ false }
-					>
-						<MultiButtonsControl
-							setAttributes={ setAttributes }
-							label={ __( 'Vertical Alignment', 'ultimate-addons-for-gutenberg' ) }
-							data={ {
-								value: verticalAlign,
-								label: 'verticalAlign',
-							} }
-							options={ verticalAlignOptions }
-							showIcons={ true }
-							responsive={ false }
-						/>
-					</UAGAdvancedPanelBody>
 				</>
 			);
 		};
@@ -385,9 +369,32 @@ const Settings = ( props ) => {
 		return <>{ sliderSettings() }</>;
 	};
 
+	const contentSettings = () => {
+		return (
+			<>
+				<UAGAdvancedPanelBody
+					title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) }
+					initialOpen={ true }
+				>
+					<MultiButtonsControl
+						setAttributes={ setAttributes }
+						label={ __( 'Vertical Alignment', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							value: verticalAlign,
+							label: 'verticalAlign',
+						} }
+						options={ verticalAlignOptions }
+						showIcons={ true }
+						responsive={ false }
+					/>
+				</UAGAdvancedPanelBody>
+			</>
+		);
+	};
+
 	const backgroundSettings = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+			<UAGAdvancedPanelBody title={ __( 'Background', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<Background
 					setAttributes={ setAttributes }
 					backgroundGradient={ {
@@ -1064,6 +1071,7 @@ const Settings = ( props ) => {
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>{ generalSettings() }</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
+						{ contentSettings() }
 						{ backgroundSettings() }
 						{ borderSettings() }
 						{ boxShadowSettings() }
