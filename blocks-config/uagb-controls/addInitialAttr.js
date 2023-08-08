@@ -46,6 +46,9 @@ const addInitialAttr = ( ChildComponent ) => {
 				'uagb/table-of-contents',
 				'uagb/team',
 				'uagb/testimonial',
+				'uagb/instagram-feed',
+				'uagb/login',
+				'uagb/register',
 			];
 
 			const listOfChildMigrate = [
@@ -54,6 +57,7 @@ const addInitialAttr = ( ChildComponent ) => {
 				'uagb/restaurant-menu',
 				'uagb/social-share',
                 'uagb/content-timeline',
+				'uagb/instagram-feed',
 			];
 
 			const listOfIsHtml = [ 'uagb/cf7-styler', 'uagb/gf-styler' ];
@@ -133,18 +137,6 @@ const addInitialAttr = ( ChildComponent ) => {
 				'uagb/content-timeline-child',
 				'uagb/post-timeline',
 				'uagb/wp-search',
-				'uagb/instagram-feed',
-				'uagb/login',
-				'uagb/loop-builder',
-				'uagb/loop-wrapper',
-				'uagb/register',
-				'uagb/register-email',
-				'uagb/register-first-name',
-				'uagb/register-last-name',
-				'uagb/register-password',
-				'uagb/register-reenter-password',
-				'uagb/register-terms',
-				'uagb/register-username',
 			];
 
 			if( ! REUSABLE_BLOCK_ISSUE_RESOLVED_BLOCKS.includes( name ) ){
