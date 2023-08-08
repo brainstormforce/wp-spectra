@@ -171,6 +171,7 @@ const SpectraPopupBuilderEdit = ( props ) => {
 export default compose(
 	withDispatch( ( dispatch ) => {
 		dispatch( 'core/block-editor' ).setTemplateValidity( true );
+		return true;
 	} ),
 	AddStaticStyles,
 )( SpectraPopupBuilderEdit );
