@@ -117,20 +117,19 @@ const UAGBContainer = ( props ) => {
 				// For Container Root.
 				parentBlocksNames.push( parentName );
 			}
+		} 
 
-			if ( ! parentBlocksNames.includes( 'uagb/container' ) ) {
-				setAttributes( { isBlockRootParent: true } );
-			} else {
-				setAttributes( { isBlockRootParent: false } );
-			}
-		} else {
-			setAttributes( { isBlockRootParent: true } );
-		}
-		
-		setAttributes( {
+		const attributesToUpdate = {
 			hasSliderParent: blockParents.hasSliderParent,
-			hasPopupParent: blockParents.hasPopupParent
-		} );
+			hasPopupParent: blockParents.hasPopupParent,
+		};
+
+		// Conditionally set the isBlockRootParent attribute
+		if ( !parentBlocks || parentBlocks.length === 0 || !parentBlocks.some( parent => parent.name === 'uagb/container' ) ) {
+			attributesToUpdate.isBlockRootParent = true;
+		}
+
+		setAttributes( attributesToUpdate );
 
 		const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
 		let element;
@@ -192,7 +191,9 @@ const UAGBContainer = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		setAttributes( { context } );
+		if ( !attributes?.context ) {
+			setAttributes( { context } );
+		}
 	}, [ context ] )
 
 	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );

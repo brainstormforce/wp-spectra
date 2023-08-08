@@ -92,7 +92,6 @@ const addInitialAttr = ( ChildComponent ) => {
 			 * After tested few blocks we will implement this is all blocks.
 			 */
 			const REUSABLE_BLOCK_ISSUE_RESOLVED_BLOCKS = [
-				'uagb/container',
 				'uagb/gf-styler',
 				'uagb/google-map',
 				'uagb/how-to',
