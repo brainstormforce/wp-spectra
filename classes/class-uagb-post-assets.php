@@ -1342,7 +1342,7 @@ class UAGB_Post_Assets {
 			}
 			unset( $array2[ $key ] );
 		}
-	
+
 		return array_merge( $array1, $array2 );
 	}
 }

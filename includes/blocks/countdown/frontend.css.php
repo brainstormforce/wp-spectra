@@ -167,14 +167,14 @@ $t_selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__box:not(:last-c
 );
 
 $t_selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__time'] = array(
-	'font-size'      => UAGB_Helper::get_css_value( $attr['digitFontSizeTablet'], $attr['digitFontSizeType'] ),
+	'font-size'      => UAGB_Helper::get_css_value( $attr['digitFontSizeTablet'], $attr['digitFontSizeTypeTablet'] ),
 	'line-height'    => UAGB_Helper::get_css_value( $attr['digitLineHeightTablet'], $attr['digitLineHeightType'] ),
 	'letter-spacing' => UAGB_Helper::get_css_value( $attr['digitLetterSpacingTablet'], $attr['digitLetterSpacingType'] ),
 );
 
 $t_selectors['.wp-block-uagb-countdown div.wp-block-uagb-countdown__label'] = array(
 	'align-self'     => ( ! $attr['isSquareBox'] && ( 'row' === $attr['boxFlexTablet'] ) ) ? $attr['labelVerticalAlignmentTablet'] : 'unset',
-	'font-size'      => UAGB_Helper::get_css_value( $attr['labelFontSizeTablet'], $attr['labelFontSizeType'] ),
+	'font-size'      => UAGB_Helper::get_css_value( $attr['labelFontSizeTablet'], $attr['labelFontSizeTypeTablet'] ),
 	'line-height'    => UAGB_Helper::get_css_value( $attr['labelLineHeightTablet'], $attr['labelLineHeightType'] ),
 	'letter-spacing' => UAGB_Helper::get_css_value( $attr['labelLetterSpacingTablet'], $attr['labelLetterSpacingType'] ),
 );
@@ -215,14 +215,14 @@ $m_selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__box:not(:last-c
 );
 
 $m_selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__time'] = array(
-	'font-size'      => UAGB_Helper::get_css_value( $attr['digitFontSizeMobile'], $attr['digitFontSizeType'] ),
+	'font-size'      => UAGB_Helper::get_css_value( $attr['digitFontSizeMobile'], $attr['digitFontSizeTypeMobile'] ),
 	'line-height'    => UAGB_Helper::get_css_value( $attr['digitLineHeightMobile'], $attr['digitLineHeightType'] ),
 	'letter-spacing' => UAGB_Helper::get_css_value( $attr['digitLetterSpacingMobile'], $attr['digitLetterSpacingType'] ),
 );
 
 $m_selectors['.wp-block-uagb-countdown div.wp-block-uagb-countdown__label'] = array(
 	'align-self'     => ( ! $attr['isSquareBox'] && ( 'row' === $attr['boxFlexMobile'] ) ) ? $attr['labelVerticalAlignmentMobile'] : 'unset',
-	'font-size'      => UAGB_Helper::get_css_value( $attr['labelFontSizeMobile'], $attr['labelFontSizeType'] ),
+	'font-size'      => UAGB_Helper::get_css_value( $attr['labelFontSizeMobile'], $attr['labelFontSizeTypeMobile'] ),
 	'line-height'    => UAGB_Helper::get_css_value( $attr['labelLineHeightMobile'], $attr['labelLineHeightType'] ),
 	'letter-spacing' => UAGB_Helper::get_css_value( $attr['labelLetterSpacingMobile'], $attr['labelLetterSpacingType'] ),
 );
@@ -242,14 +242,14 @@ if ( true === $attr['showSeparator'] ) {
 	);
 
 	$t_selectors[ $separator_selector ] = array(
-		'font-size'   => UAGB_Helper::get_css_value( $attr['separatorFontSizeTablet'], $attr['separatorFontSizeType'] ),
+		'font-size'   => UAGB_Helper::get_css_value( $attr['separatorFontSizeTablet'], $attr['separatorFontSizeTypeTablet'] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr['separatorLineHeightTablet'], $attr['separatorLineHeightType'] ),
 		'right'       => UAGB_Helper::get_css_value( -$attr['separatorRightSpacingTablet'], 'px' ),
 		'top'         => UAGB_Helper::get_css_value( $attr['separatorTopSpacingTablet'], 'px' ),
 	);
 
 	$m_selectors[ $separator_selector ] = array(
-		'font-size'   => UAGB_Helper::get_css_value( $attr['separatorFontSizeMobile'], $attr['separatorFontSizeType'] ),
+		'font-size'   => UAGB_Helper::get_css_value( $attr['separatorFontSizeMobile'], $attr['separatorFontSizeTypeMobile'] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr['separatorLineHeightMobile'], $attr['separatorLineHeightType'] ),
 		'right'       => UAGB_Helper::get_css_value( -$attr['separatorRightSpacingMobile'], 'px' ),
 		'top'         => UAGB_Helper::get_css_value( $attr['separatorTopSpacingMobile'], 'px' ),

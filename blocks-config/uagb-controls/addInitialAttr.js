@@ -25,7 +25,7 @@ const checkDuplicate = ( blockIds, block_id, currentIndex ) => {
 const addInitialAttr = ( ChildComponent ) => {
 	const WrappedComponent = ( props ) => {
 		const { name, setAttributes, clientId, attributes : { block_id } } = props;
-		
+
 		useEffect( () => {
 			const listOfClassMigrate = [
 				'uagb/advanced-heading',
@@ -46,6 +46,9 @@ const addInitialAttr = ( ChildComponent ) => {
 				'uagb/table-of-contents',
 				'uagb/team',
 				'uagb/testimonial',
+				'uagb/instagram-feed',
+				'uagb/login',
+				'uagb/register',
 			];
 
 			const listOfChildMigrate = [
@@ -54,6 +57,7 @@ const addInitialAttr = ( ChildComponent ) => {
 				'uagb/restaurant-menu',
 				'uagb/social-share',
                 'uagb/content-timeline',
+				'uagb/instagram-feed',
 			];
 
 			const listOfIsHtml = [ 'uagb/cf7-styler', 'uagb/gf-styler' ];
@@ -67,7 +71,7 @@ const addInitialAttr = ( ChildComponent ) => {
 			if ( listOfAllTaxonomyStore.includes( name ) ) {
 				attributeObject.allTaxonomyStore = undefined;
 			}
-			
+
             // editorInnerblocksPreview: This attribute is used to display innerblocks preview for 'Replace with Content' mode.
 			if ( listOfEditorInnerblocksPreview.includes( name ) ) {
 				attributeObject.editorInnerblocksPreview = false;
@@ -91,29 +95,7 @@ const addInitialAttr = ( ChildComponent ) => {
 			 * As of now we are not providing for all block
 			 * After tested few blocks we will implement this is all blocks.
 			 */
-			const REUSABLE_BLOCK_ISSUE_RESOLVED_BLOCKS = [ 
-				'uagb/blockquote',
-				'uagb/cf7-styler',
-				'uagb/column',
-				'uagb/columns',
-				'uagb/container',
-				'uagb/counter',
-				'uagb/faq',
-				'uagb/faq-child',
-				'uagb/forms',
-				'uagb/forms-accept',
-				'uagb/forms-checkbox',
-				'uagb/forms-date',
-				'uagb/forms-email',
-				'uagb/forms-hidden',
-				'uagb/forms-name',
-				'uagb/forms-phone',
-				'uagb/forms-radio',
-				'uagb/forms-select',
-				'uagb/forms-textarea',
-				'uagb/forms-toggle',
-				'uagb/forms-upload',
-				'uagb/forms-url',
+			const REUSABLE_BLOCK_ISSUE_RESOLVED_BLOCKS = [
 				'uagb/gf-styler',
 				'uagb/google-map',
 				'uagb/how-to',
@@ -155,18 +137,6 @@ const addInitialAttr = ( ChildComponent ) => {
 				'uagb/content-timeline-child',
 				'uagb/post-timeline',
 				'uagb/wp-search',
-				'uagb/instagram-feed',
-				'uagb/login',
-				'uagb/loop-builder',
-				'uagb/loop-wrapper',
-				'uagb/register',
-				'uagb/register-email',
-				'uagb/register-first-name',
-				'uagb/register-last-name',
-				'uagb/register-password',
-				'uagb/register-reenter-password',
-				'uagb/register-terms',
-				'uagb/register-username',
 			];
 
 			if( ! REUSABLE_BLOCK_ISSUE_RESOLVED_BLOCKS.includes( name ) ){

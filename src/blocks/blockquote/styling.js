@@ -14,6 +14,7 @@ function styling( attributes, clientId, name, deviceType ) {
 	const previewType = deviceType.toLowerCase();
 
 	const {
+		block_id,
 		skinStyle,
 		align,
 		authorColor,
@@ -330,9 +331,12 @@ function styling( attributes, clientId, name, deviceType ) {
 			'width': generateCSSUnit( tweetBtnFontSize, tweetBtnFontSizeType ),
 			'height': generateCSSUnit( tweetBtnFontSize, tweetBtnFontSizeType ),
 		};
+        
+
+		const iconMargin = uagb_blocks_info.is_rtl === '1' ? 'margin-left' : 'margin-right';  
 
 		selectors[ '.uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg' ] = {
-			'margin-right': generateCSSUnit( tweetIconSpacingFallback, tweetIconSpacingUnit ),
+			[ iconMargin ]: generateCSSUnit( tweetIconSpacingFallback, tweetIconSpacingUnit ),
 		};
 
 		// Hover CSS
@@ -503,7 +507,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		},
 	};
 
-	const baseSelector = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
+	const baseSelector = `.editor-styles-wrapper .uagb-block-${ block_id }`;
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 

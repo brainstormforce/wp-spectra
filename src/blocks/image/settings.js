@@ -1,4 +1,4 @@
-import { useEffect } from '@wordpress/element';
+import { useEffect, useState } from '@wordpress/element';
 import TypographyControl from '@Components/typography';
 import { useViewportMatch } from '@wordpress/compose';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -86,6 +86,8 @@ export default function Settings( props ) {
 		captionTransform,
 		captionDecoration,
 		captionFontSizeType,
+		captionFontSizeTypeMobile,
+		captionFontSizeTypeTablet,
 		captionFontSizeMobile,
 		captionFontSizeTablet,
 		captionLineHeight,
@@ -120,6 +122,8 @@ export default function Settings( props ) {
 		headingTransform,
 		headingDecoration,
 		headingFontSizeType,
+		headingFontSizeTypeMobile,
+		headingFontSizeTypeTablet,
 		headingFontSizeMobile,
 		headingFontSizeTablet,
 		headingLineHeight,
@@ -233,16 +237,40 @@ export default function Settings( props ) {
 		return { imageDefaultSize };
 	}, [] );
 
+	const [ currentSizes, setCurrentSizes ] = useState( {
+		desktop: sizeSlug,
+		tablet: sizeSlugTablet,
+		mobile: sizeSlugMobile,
+	} );
+
 	useEffect( () => {
 		if ( ! sizeSlug ) {
 			return;
 		}
-		if ( 'Tablet' === deviceType ) {
-			updateTabletImage( sizeSlugTablet );
-		} else if ( 'Mobile' === deviceType ) {
-			updateMobileImage( sizeSlugMobile );
-		} else {
-			updateImage( sizeSlug );
+		switch ( deviceType ) {
+			case 'Mobile':
+				if ( 'custom' === sizeSlugMobile && currentSizes.mobile !== sizeSlugMobile ) {
+					setAttributes( { objectFitMobile: 'cover' } );
+				} else if ( 'custom' !== sizeSlugMobile ) {
+					updateMobileImage( sizeSlugMobile );
+				}
+				setCurrentSizes( { ...currentSizes, mobile: sizeSlugMobile } );
+				break;
+			case 'Tablet':
+				if ( 'custom' === sizeSlugTablet && currentSizes.tablet !== sizeSlugTablet ) {
+					setAttributes( { objectFitTablet: 'cover' } );
+				} else if ( 'custom' !== sizeSlugTablet ){
+					updateTabletImage( sizeSlugTablet );
+				}
+				setCurrentSizes( { ...currentSizes, tablet: sizeSlugTablet } );
+				break;
+			default:
+				if ( 'custom' === sizeSlug && currentSizes.desktop !== sizeSlug ) {
+					setAttributes( { objectFit: 'cover' } );
+				} else if ( 'custom' !== sizeSlug ) {
+					updateImage( sizeSlug );
+				}
+				setCurrentSizes( { ...currentSizes, desktop: sizeSlug } );
 		}
 	}, [ sizeSlug, sizeSlugTablet, sizeSlugMobile ] );
 
@@ -254,12 +282,13 @@ export default function Settings( props ) {
 		image?.media_details &&
 		imageSizes.reduce( ( acc, item ) => {
 			if ( image?.media_details?.sizes[ item.slug ] ) {
-				acc.push( { value: item.slug, label: item.name } );
+				const custom = acc.pop();
+				acc.push( { value: item.slug, label: item.name }, custom );
 			}
 			return acc;
-		}, [] );
+		}, [ { value: 'custom', label: 'Custom' } ] );
 
-	function updateImage( newSizeSlug ) {
+	const updateImage = ( newSizeSlug ) => {
 		const newUrl = image?.media_details?.sizes[ newSizeSlug ];
 		if ( ! newUrl || newUrl?.source_url === url ) {
 			return null;
@@ -272,7 +301,7 @@ export default function Settings( props ) {
 		} );
 	}
 
-	function updateTabletImage( newSizeSlug ) {
+	const updateTabletImage = ( newSizeSlug ) => {
 		const newUrl = image?.media_details?.sizes[ newSizeSlug ];
 		if ( ! newUrl || newUrl?.source_url === urlTablet ) {
 			return null;
@@ -285,7 +314,7 @@ export default function Settings( props ) {
 		} );
 	}
 
-	function updateMobileImage( newSizeSlug ) {
+	const updateMobileImage = ( newSizeSlug ) => {
 		const newUrl = image?.media_details?.sizes[ newSizeSlug ];
 		if ( ! newUrl || newUrl?.source_url === urlMobile ) {
 			return null;
@@ -336,6 +365,12 @@ export default function Settings( props ) {
 		}
 
 		const mediaAttributes = pickRelevantMediaFiles( media, imageDefaultSize );
+
+		// If Custom Sizing was set, remove the size reset.
+		if ( 'custom' === sizeSlug ) {
+			delete mediaAttributes.width;
+			delete mediaAttributes.height;
+		}
 
 		setAttributes( mediaAttributes );
 	};
@@ -521,7 +556,6 @@ export default function Settings( props ) {
 			{ isSelected && (
 				<>
 					<ImageSizeControl
-						onChangeImage={ updateImage }
 						onChange={ ( value ) => setAttributes( value ) }
 						data={ {
 							sizeSlug: {
@@ -1019,6 +1053,14 @@ export default function Settings( props ) {
 					value: headingFontSizeType,
 					label: 'headingFontSizeType',
 				} }
+				fontSizeTypeTablet={ {
+					value: headingFontSizeTypeTablet,
+					label: 'headingFontSizeTypeTablet',
+				} }
+				fontSizeTypeMobile={ {
+					value: headingFontSizeTypeMobile,
+					label: 'headingFontSizeTypeMobile',
+				} }
 				fontSize={ {
 					value: headingFontSize,
 					label: 'headingFontSize',
@@ -1186,6 +1228,14 @@ export default function Settings( props ) {
 				fontSizeType={ {
 					value: captionFontSizeType,
 					label: 'captionFontSizeType',
+				} }
+				fontSizeTypeTablet={ {
+					value: captionFontSizeTypeTablet,
+					label: 'captionFontSizeTypeTablet',
+				} }
+				fontSizeTypeMobile={ {
+					value: captionFontSizeTypeMobile,
+					label: 'captionFontSizeTypeMobile',
 				} }
 				fontSize={ {
 					value: captionFontSize,

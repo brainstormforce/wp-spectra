@@ -334,6 +334,20 @@ const attributes = {
 			styleType: 'btn-size-unit',
 		},
 	},
+	sizeTypeTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'btn-size-unit-tablet',
+		},
+	},
+	sizeTypeMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'btn-size-unit-mobile',
+		},
+	},
 	sizeMobile: {
 		type: 'number',
 		default: '',

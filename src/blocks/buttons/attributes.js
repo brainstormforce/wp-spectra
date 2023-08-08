@@ -143,6 +143,20 @@ const attributes = {
 			styleType: 'btn-font-size-type',
 		},
 	},
+	fontSizeTypeTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'btn-font-size-type-tablet',
+		},
+	},
+	fontSizeTypeMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'btn-font-size-type-mobile',
+		},
+	},
 	fontSize: {
 		type: 'number',
 		UAGCopyPaste: {

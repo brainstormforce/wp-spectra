@@ -7,6 +7,12 @@
  * @package uagb
  */
 
+/**
+ * Adding this comment to avoid PHPStan errors of undefined variable as these variables are defined else where.
+ *
+ * @var mixed[] $attr
+ */
+
 // Adds Fonts.
 UAGB_Block_JS::blocks_testimonial_gfont( $attr );
 
@@ -60,6 +66,7 @@ $selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $paddingBottom, $attr['paddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $paddingLeft, $attr['paddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $paddingRight, $attr['paddingUnit'] ),
+		'align-content'  => $attr['vAlignContent'],
 	),
 	' .uagb-testimonial__wrap .uagb-tm__image-content' => array(
 		'text-align'     => $attr['headingAlign'],
@@ -176,6 +183,8 @@ $m_selectors = array(
 	' .uagb-testimonial__wrap .uagb-tm__content'        => $overall_border_Mobile,
 	' .uagb-tm__desc'                                   => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceMobile'], $attr['descSpaceType'] ),
+		'margin-left'   => 'dots' !== $attr['arrowDots'] ? '20px' : 'auto',
+		'margin-right'  => 'dots' !== $attr['arrowDots'] ? '20px' : 'auto',
 	),
 	' .uagb-tm__content'                                => array(
 		'text-align'     => $attr['headingAlignMobile'],
@@ -183,6 +192,7 @@ $m_selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingRightMobile'], $attr['mobilePaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBottomMobile'], $attr['mobilePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingLeftMobile'], $attr['mobilePaddingUnit'] ),
+		'align-content'  => $attr['vAlignContent'],
 	),
 	'  .uagb-testimonial__wrap .uagb-tm__image-content' => array(
 		'text-align'     => $attr['headingAlignMobile'],
@@ -216,6 +226,7 @@ $t_selectors = array(
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingRightTablet'], $attr['tabletPaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBottomTablet'], $attr['tabletPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingLeftTablet'], $attr['tabletPaddingUnit'] ),
+		'align-content'  => $attr['vAlignContent'],
 	),
 	'  .uagb-testimonial__wrap .uagb-tm__image-content' => array(
 		'text-align'     => $attr['headingAlignTablet'],

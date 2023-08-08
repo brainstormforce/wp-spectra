@@ -41,6 +41,8 @@ function styling( attributes, clientId, name, deviceType  ) {
 		hColor,
 		hBackground,
 		sizeType,
+		sizeTypeTablet,
+		sizeTypeMobile,
 		sizeMobile,
 		sizeTablet,
 		lineHeight,
@@ -200,7 +202,7 @@ function styling( attributes, clientId, name, deviceType  ) {
 		mobileSelectors[
 			'.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'
 		] = {
-			'font-size': generateCSSUnit( sizeMobile, sizeType ),
+			'font-size': generateCSSUnit( sizeMobile, sizeTypeMobile ),
 			'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
 			'letter-spacing': generateCSSUnit( letterSpacingMobile, letterSpacingType ),
 			'padding-left': generateCSSUnit( leftMobilePadding, mobilePaddingUnit ),
@@ -217,7 +219,7 @@ function styling( attributes, clientId, name, deviceType  ) {
 		tabletSelectors[
 			'.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'
 		] = {
-			'font-size': generateCSSUnit( sizeTablet, sizeType ),
+			'font-size': generateCSSUnit( sizeTablet, sizeTypeTablet ),
 			'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
 			'letter-spacing': generateCSSUnit( letterSpacingTablet, letterSpacingType ),
 			'padding-left': generateCSSUnit( leftTabletPadding, tabletPaddingUnit ),

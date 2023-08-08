@@ -137,7 +137,7 @@ if ( $attr['childMigrate'] ) {
 	);
 
 	$button_tablet_style = array(
-		'font-size'      => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
+		'font-size'      => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeTypeTablet'] ),
 		'line-height'    => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['fontLetterSpacingTablet'], $attr['fontLetterSpacingType'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topTabletPadding'], $attr['tabletPaddingUnit'] ),
@@ -151,7 +151,7 @@ if ( $attr['childMigrate'] ) {
 	);
 
 	$button_mobile_style = array(
-		'font-size'      => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
+		'font-size'      => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeTypeMobile'] ),
 		'line-height'    => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
 		'letter-spacing' => UAGB_Helper::get_css_value( $attr['fontLetterSpacingMobile'], $attr['fontLetterSpacingType'] ),
 		'padding-top'    => UAGB_Helper::get_css_value( $attr['topMobilePadding'], $attr['mobilePaddingUnit'] ),
@@ -174,7 +174,13 @@ if ( $attr['childMigrate'] ) {
 
 if ( ! $attr['childMigrate'] ) {
 
-	$defaults = include UAGB_DIR . 'includes/blocks/buttons-child/attributes.php';
+	$defaults = UAGB_DIR . 'includes/blocks/buttons-child/attributes.php';
+
+	if ( file_exists( $defaults ) ) {
+		$default_attr = include $defaults;
+	}
+
+	$default_attr = ( ! empty( $default_attr ) && is_array( $default_attr ) ) ? $default_attr : array();
 
 	foreach ( $attr['buttons'] as $key => $button ) {
 
@@ -182,7 +188,7 @@ if ( ! $attr['childMigrate'] ) {
 			break;
 		}
 
-		$button = array_merge( $defaults, $button );
+		$button = array_merge( $default_attr, $button );
 
 		$wrapper = ( ! $attr['childMigrate'] ) ? ' .uagb-buttons-repeater-' . $key . '.uagb-button__wrapper' : ' .uagb-buttons-repeater';
 

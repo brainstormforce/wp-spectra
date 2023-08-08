@@ -26,6 +26,8 @@ function styling( attributes, clientId, name, deviceType ) {
 		alignTablet,
 		alignMobile,
 		fontSizeType,
+		fontSizeTypeTablet,
+		fontSizeTypeMobile,
 		fontSize,
 		fontSizeMobile,
 		fontSizeTablet,
@@ -219,7 +221,7 @@ function styling( attributes, clientId, name, deviceType ) {
 	tabletSelectors[
 		'.uagb-buttons__outer-wrap .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link'
 	] = {
-		'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
+		'font-size': generateCSSUnit( fontSizeTablet, fontSizeTypeTablet ),
 		'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
 		'margin-left': generateCSSUnit( leftMarginTablet, marginType ),
 		'margin-right': generateCSSUnit( rightMarginTablet, marginType ),
@@ -239,7 +241,7 @@ function styling( attributes, clientId, name, deviceType ) {
 	mobileSelectors[
 		'.uagb-buttons__outer-wrap .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link'
 	] = {
-		'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
+		'font-size': generateCSSUnit( fontSizeMobile, fontSizeTypeMobile ),
 		'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
 		'margin-left': generateCSSUnit( leftMarginMobile, marginType ),
 		'margin-right': generateCSSUnit( rightMarginMobile, marginType ),

@@ -287,7 +287,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$right_side_margin = 'margin-left';
 					$left_side_margin  = 'margin-right';
 				}
-			  
+
 				$selectors[ $wrapper . ' .uagb-button__icon-position-after' ]   = array(
 					$right_side_margin => $icon_margin,
 				);
@@ -297,7 +297,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$m_selectors[ $wrapper . ' .uagb-button__icon-position-after' ] = array(
 					$right_side_margin => $mobile_icon_margin,
 				);
-			  
+
 				$selectors[ $wrapper . ' .uagb-button__icon-position-before' ]   = array(
 					$left_side_margin => $icon_margin,
 				);
@@ -308,7 +308,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$left_side_margin => $mobile_icon_margin,
 				);
 			}
-			  
+
 			return array(
 				'selectors'   => $selectors,
 				'm_selectors' => $m_selectors,

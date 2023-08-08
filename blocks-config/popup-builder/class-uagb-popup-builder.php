@@ -218,13 +218,13 @@ class UAGB_Popup_Builder {
 		unset( $columns['author'] );
 
 		$columns['spectra_popup_type'] = __( 'Type', 'ultimate-addons-for-gutenberg' );
+		$columns['author']             = __( 'Author', 'ultimate-addons-for-gutenberg' );
 
 		$updated_columns = apply_filters( 'spectra_pro_admin_popup_list_titles', $columns );
 		if ( ! is_array( $updated_columns ) || empty( $updated_columns ) ) {
 			$updated_columns = $columns;
 		}
 
-		$updated_columns['author']               = __( 'Author', 'ultimate-addons-for-gutenberg' );
 		$updated_columns['spectra_popup_toggle'] = __( 'Enable/Disable', 'ultimate-addons-for-gutenberg' );
 
 		return $updated_columns;

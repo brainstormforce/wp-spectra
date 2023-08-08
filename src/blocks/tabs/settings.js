@@ -140,7 +140,8 @@ const Settings = ( props ) => {
 		} );
 	};
 
-	const tabStyleSettings = () => {
+	const tabTitleSettings = () => {
+
 		const tabsStyleOptions = {
 			desktop: [
 				{
@@ -245,8 +246,9 @@ const Settings = ( props ) => {
 				},
 			],
 		};
+
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+			<UAGAdvancedPanelBody title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<ResponsiveSelectControl
 					label={ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -266,12 +268,6 @@ const Settings = ( props ) => {
 					options={ tabsStyleOptions }
 					setAttributes={ setAttributes }
 				/>
-			</UAGAdvancedPanelBody>
-		);
-	};
-	const tabTitleSettings = () => {
-		return (
-			<UAGAdvancedPanelBody title={ __( 'Tabs Title', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<UAGSelectControl
 					label={ __( 'Initial Open Tab', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -560,7 +556,7 @@ const Settings = ( props ) => {
 	};
 	const presetSettings = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+			<UAGAdvancedPanelBody title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<UAGPresets setAttributes={ setAttributes } presets={ presets } presetInputType="radioImage" />
 			</UAGAdvancedPanelBody>
 		);
@@ -938,9 +934,8 @@ const Settings = ( props ) => {
 		<InspectorControls>
 			<InspectorTabs>
 				<InspectorTab { ...UAGTabs.general }>
-					{ presetSettings() }
-					{ tabStyleSettings() }
 					{ tabTitleSettings() }
+					{ presetSettings() }
 				</InspectorTab>
 				<InspectorTab { ...UAGTabs.style }>
 					{ tabTitleStyle() }

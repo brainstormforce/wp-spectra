@@ -23,6 +23,8 @@
 		box-shadow: none;
 		outline: none;
 		color: #d5dadf;
+		padding: 0;
+		margin-bottom: 0;
 
 		svg {
 			width: 100px;
@@ -43,7 +45,7 @@
 
 	.components-placeholder {
 		align-items: center;
-		border: 1px dashed #d5dadf;
+		border: 1px dashed #555d66;
 		box-shadow: none;
 
 		&.components-placeholder {
@@ -90,11 +92,11 @@
 	}
 
 	.block-editor-block-variation-picker__variations {
-		width: 85%;
+		width: 75%;
 		justify-content: center;
 
 		> li {
-			margin: 20px 20px 0 0;
+			margin: 20px 16px 0 0;
 			flex-basis: content;
 			width: 80px;
 		}

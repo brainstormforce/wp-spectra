@@ -272,6 +272,20 @@ const attributes = {
 			styleType: 'main-title-font-size-type',
 		},
 	},
+	headFontSizeTypeMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-font-size-type-mobile',
+		},
+	},
+	headFontSizeTypeTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-title-font-size-type-tablet',
+		},
+	},
 	headLineHeightType: {
 		type: 'string',
 		default: 'em',
@@ -400,6 +414,20 @@ const attributes = {
 		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'desc-font-size-type',
+		},
+	},
+	subHeadFontSizeTypeMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-font-size-type-mobile',
+		},
+	},
+	subHeadFontSizeTypeTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'desc-font-size-type-tablet',
 		},
 	},
 	subHeadFontSizeTablet: {
@@ -786,6 +814,20 @@ const attributes = {
 		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'highlight-font-size-type',
+		},
+	},
+	highLightFontSizeTypeMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'highlight-font-size-type-mobile',
+		},
+	},
+	highLightFontSizeTypeTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'highlight-font-size-type-tablet',
 		},
 	},
 	highLightLineHeightType: {

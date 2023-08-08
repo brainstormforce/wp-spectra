@@ -341,7 +341,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 					}
 				}
 
-				$toc .= sprintf( '<li class="uagb-toc__list"><a href="#%s">%s</a>', esc_attr( $id ), esc_html( $title ) );
+				$toc .= sprintf( '<li class="uagb-toc__list"><a href="#%s" class="uagb-toc-link__trigger">%s</a>', esc_attr( $id ), esc_html( $title ) );
 
 				$last_level = $level;
 			}

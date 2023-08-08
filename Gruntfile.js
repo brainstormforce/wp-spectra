@@ -31,6 +31,7 @@ module.exports = function ( grunt ) {
 					'!.gitignore',
 					'!.gitattributes',
 					'!*.zip',
+					'!*.neon',
 					'!Optimization.txt',
 					'!composer.json',
 					'!composer.lock',

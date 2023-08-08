@@ -119,6 +119,12 @@ const TypographyControl = ( props ) => {
 			props.fontSizeMobile.label,
 			props.fontSizeTablet.label
 		);
+		if ( props.fontSizeTypeMobile && props.fontSizeTypeTablet ) {
+			attributeNames.push(
+			props.fontSizeTypeMobile.label,
+			props.fontSizeTypeTablet.label,
+			);
+		};
 	}
 
 	if ( ! disableLineHeight ) {

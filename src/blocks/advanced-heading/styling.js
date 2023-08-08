@@ -45,6 +45,8 @@ function styling( attributes, clientId, name, deviceType ) {
 		headFontWeight,
 		headFontSize,
 		headFontSizeType,
+		headFontSizeTypeMobile,
+		headFontSizeTypeTablet,
 		headFontSizeMobile,
 		headFontSizeTablet,
 		headLineHeight,
@@ -65,6 +67,8 @@ function styling( attributes, clientId, name, deviceType ) {
 		subHeadFontWeight,
 		subHeadFontSize,
 		subHeadFontSizeType,
+		subHeadFontSizeTypeMobile,
+		subHeadFontSizeTypeTablet,
 		subHeadFontSizeMobile,
 		subHeadFontSizeTablet,
 		subHeadLineHeight,
@@ -124,6 +128,8 @@ function styling( attributes, clientId, name, deviceType ) {
 		highLightTransform,
 		highLightDecoration,
 		highLightFontSizeType,
+		highLightFontSizeTypeTablet,
+		highLightFontSizeTypeMobile,
 		highLightLineHeightType,
 		highLightFontSize,
 		highLightFontSizeTablet,
@@ -315,12 +321,12 @@ function styling( attributes, clientId, name, deviceType ) {
 	};
 
 	tablet_selectors[ ' ' + headingTag + '.uagb-heading-text' ] = {
-		'font-size': generateCSSUnit( headFontSizeTablet, headFontSizeType ),
+		'font-size': generateCSSUnit( headFontSizeTablet, headFontSizeTypeTablet ),
 		'line-height': generateCSSUnit( headLineHeightTablet, headLineHeightType ),
 		'letter-spacing': generateCSSUnit( headLetterSpacingTablet, headLetterSpacingType ),
 	};
 	tablet_selectors[ ' p.uagb-desc-text' ] = {
-		'font-size': generateCSSUnit( subHeadFontSizeTablet, subHeadFontSizeType ),
+		'font-size': generateCSSUnit( subHeadFontSizeTablet, subHeadFontSizeTypeTablet ),
 		'line-height': generateCSSUnit( subHeadLineHeightTablet, subHeadLineHeightType ),
 		'letter-spacing': generateCSSUnit( subHeadLetterSpacingTablet, subHeadLetterSpacingType ),
 		'margin-bottom': generateCSSUnit(
@@ -329,7 +335,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		),
 	};
 	tablet_selectors[ '.wp-block-uagb-advanced-heading .uagb-highlight' ] = {
-		'font-size': generateCSSUnit( highLightFontSizeTablet, highLightFontSizeType ),
+		'font-size': generateCSSUnit( highLightFontSizeTablet, highLightFontSizeTypeTablet ),
 		'line-height': generateCSSUnit( highLightLineHeightTablet, highLightLineHeightType ),
 		'letter-spacing': generateCSSUnit( highLightLetterSpacingTablet, highLightLetterSpacingType ),
 		'padding-top': generateCSSUnit( highLightTopPaddingTablet, highLightPaddingUnitTablet ),
@@ -362,12 +368,12 @@ function styling( attributes, clientId, name, deviceType ) {
 	};
 
 	mobile_selectors[ ' ' + headingTag + '.uagb-heading-text' ] = {
-		'font-size': generateCSSUnit( headFontSizeMobile, headFontSizeType ),
+		'font-size': generateCSSUnit( headFontSizeMobile, headFontSizeTypeMobile ),
 		'line-height': generateCSSUnit( headLineHeightMobile, headLineHeightType ),
 		'letter-spacing': generateCSSUnit( headLetterSpacingMobile, headLetterSpacingType ),
 	};
 	mobile_selectors[ ' p.uagb-desc-text' ] = {
-		'font-size': generateCSSUnit( subHeadFontSizeMobile, subHeadFontSizeType ),
+		'font-size': generateCSSUnit( subHeadFontSizeMobile, subHeadFontSizeTypeMobile ),
 		'line-height': generateCSSUnit( subHeadLineHeightMobile, subHeadLineHeightType ),
 		'letter-spacing': generateCSSUnit( subHeadLetterSpacingMobile, subHeadLetterSpacingType ),
 		'margin-bottom': generateCSSUnit(
@@ -376,7 +382,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		),
 	};
 	mobile_selectors[ '.wp-block-uagb-advanced-heading .uagb-highlight' ] = {
-		'font-size': generateCSSUnit( highLightFontSizeMobile, highLightFontSizeType ),
+		'font-size': generateCSSUnit( highLightFontSizeMobile, highLightFontSizeTypeMobile ),
 		'line-height': generateCSSUnit( highLightLineHeightMobile, highLightLineHeightType ),
 		'letter-spacing': generateCSSUnit( highLightLetterSpacingMobile, highLightLetterSpacingType ),
 		'padding-top': generateCSSUnit( highLightTopPaddingMobile, highLightPaddingUnitMobile ),

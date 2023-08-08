@@ -663,7 +663,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	const renderEmpty = () => (
 		<div className="spectra-image-gallery-init-wrapper">
 			{ UAGB_Block_Icons.image_gallery }
-			<h3>{ __( `Spectra - Image Gallery`, 'ultimate-addons-for-gutenberg' ) }</h3>
+			<h3>{ __( `Image Gallery`, 'ultimate-addons-for-gutenberg' ) }</h3>
 			<p>{ __( 'No images to display…', 'ultimate-addons-for-gutenberg' ) }</p>
 		</div>
 	);

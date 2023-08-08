@@ -9,12 +9,19 @@
     "wp-cli/wp-cli-bundle": "^2.5",
     "phpunit/phpunit": "^8",
     "yoast/phpunit-polyfills": "^1",
-    "automattic/vipwpcs": "^2.3"
+    "automattic/vipwpcs": "^2.3",
+    "phpstan/phpstan": "^1.10",
+    "szepeviktor/phpstan-wordpress": "^1.3",
+    "php-stubs/generator": "^0.8.3",
+    "php-stubs/wordpress-stubs": "^6.2"
   },
   "scripts": {
     "format": "phpcbf",
     "lint": "phpcs",
-    "test": "vendor/bin/phpunit"
+    "test": "vendor/bin/phpunit",
+    "phpstan": "vendor/bin/phpstan --memory-limit=2048M analyse",
+    "gen-stubs": "vendor/bin/generate-stubs artifact/phpstan/ultimate-addons-for-gutenberg/ --out=tests/php/stubs/uagb-stubs.php && rm -rf artifact/phpstan",
+    "update-stubs": "rm -f tests/php/stubs/uagb-stubs.php && bash bin/build-spectra-phpstan.sh && composer gen-stubs"
   },
   "require": {
     "brainstormforce/astra-notices": "~1",

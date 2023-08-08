@@ -126,8 +126,8 @@ div.uagb-spectra-button-wrapper {
 	}
 }
 
-.components-popover {
-	z-index: 99999999 !important;
+.block-editor-block-popover.components-popover {
+	z-index: 99999999;
 }
 
 /* Effect 1: Fade in and scale up */

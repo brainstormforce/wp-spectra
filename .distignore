@@ -40,6 +40,7 @@ node_modules
 *.sql
 *.tar.gz
 *.zip
+*.neon
 package-lock.json
 src
 eslintrc.json

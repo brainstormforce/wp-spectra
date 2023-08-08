@@ -16,9 +16,10 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	const { className, setAttributes, attributes, deviceType, clientId } = props;
+	const { className, setAttributes, attributes, deviceType } = props;
 
 	const {
+		block_id,
 		skinStyle,
 		align,
 		stack,
@@ -34,7 +35,7 @@ const Render = ( props ) => {
 		<div
 			className={ classnames(
 				className,
-				`uagb-block-${ clientId.substr( 0, 8 ) }`,
+				`uagb-block-${ block_id }`,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-blockquote__skin-${ skinStyle }`,
 				skinStyle !== 'border' ? `uagb-blockquote__align-${ align }` : '',

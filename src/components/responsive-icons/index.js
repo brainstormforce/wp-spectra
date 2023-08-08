@@ -4,6 +4,9 @@ document.addEventListener( 'DOMContentLoaded', spectra_responsive_icons );
 import DeviceIcons from './device-icons';
 
 function spectra_responsive_icons() {
+	if ( uagb_blocks_info.wp_version > '6.2.2' ) { // Don't show the Spectra Responsive Icons if WP version is greater than 6.2.2.
+		return;
+	}
 	wp.data.subscribe( function () {
 		setTimeout( function () {
 			spectra_responsive_icon();

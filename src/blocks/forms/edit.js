@@ -13,8 +13,8 @@ import { compose, createHigherOrderComponent } from '@wordpress/compose';
 import { createBlocksFromInnerBlocksTemplate } from '@wordpress/blocks';
 import { __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 import { withNotices } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
-import {migrateBorderAttributes} from '@Controls/generateAttributes';
+import { __, sprintf } from '@wordpress/i18n';
+import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import styles from './editor.lazy.scss';
 import { addFilter } from '@wordpress/hooks';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
@@ -22,6 +22,7 @@ import DynamicFontLoader from './dynamicFontLoader';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 import addInitialAttr from '@Controls/addInitialAttr';
 import { uagbClassNames } from '@Utils/Helpers';
+import ReactHtmlParser from 'react-html-parser';
 
 import getApiData from '@Controls/getApiData';
 
@@ -302,11 +303,22 @@ const UAGBFormsEdit = ( props ) => {
 
 	if ( ! hasInnerBlocks ) {
 		return (
-			<div className="uagb-forms-variations">
+			<div className="uagb-variation-picker uagb-variation-picker--fill">
 				<__experimentalBlockVariationPicker
 					icon={ UAGB_Block_Icons.forms }
 					label={ __( 'Forms', 'ultimate-addons-for-gutenberg' ) }
-					instructions={ __( 'Select a variation to start with.', 'ultimate-addons-for-gutenberg' ) }
+					instructions={
+						ReactHtmlParser(
+							sprintf(
+								// translators: %s: closing </br> tag.
+								__(
+									'Display conversion-friendly forms for various purposes.%sSelect a form layout to start with.',
+									'ultimate-addons-for-gutenberg'
+								),
+								`</br>`
+							)
+						)
+					}
 					variations={ variations }
 					allowSkip
 					onSelect={ ( nextVariation ) => blockVariationPickerOnSelect( nextVariation ) }

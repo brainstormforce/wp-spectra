@@ -205,7 +205,7 @@ const Settings = ( props ) => {
 
 	const presetSettings = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+			<UAGAdvancedPanelBody title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<UAGPresets setAttributes={ setAttributes } presets={ formsPresets } presetInputType="radioImage" />
 			</UAGAdvancedPanelBody>
 		);
@@ -265,7 +265,7 @@ const Settings = ( props ) => {
 		return (
 			<UAGAdvancedPanelBody
 				title={ __( 'General', 'ultimate-addons-for-gutenberg' ) }
-				initialOpen={ false }
+				initialOpen={ true }
 				className="uagb__url-panel-body"
 			>
 				<ToggleControl
@@ -580,6 +580,44 @@ const Settings = ( props ) => {
 
 	const labelStyling = () => (
 		<UAGAdvancedPanelBody title={ __( 'Label', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+			<UAGTabsControl
+				tabs={ [
+					{
+						name: 'normal',
+						title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
+						name: 'hover',
+						title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
+					},
+				] }
+				normal={
+					<>
+						<AdvancedPopColorControl
+							label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ labelColor ? labelColor : '' }
+							data={ {
+								value: labelColor,
+								label: 'labelColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+					</>
+				}
+				hover={
+					<>
+						<AdvancedPopColorControl
+							label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ labelHoverColor ? labelHoverColor : '' }
+							data={ {
+								value: labelHoverColor,
+								label: 'labelHoverColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+					</>
+				}
+			/>
 			<TypographyControl
 				label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 				attributes={ attributes }
@@ -657,44 +695,81 @@ const Settings = ( props ) => {
 					label: 'labelDecoration',
 				} }
 			/>
-			<UAGTabsControl
-				tabs={ [
+			<ResponsiveSlider
+				label={ __( 'Row Spacing', 'ultimate-addons-for-gutenberg' ) }
+				data={ {
+					desktop: {
+						value: fieldGap,
+						label: 'fieldGap',
+					},
+					tablet: {
+						value: fieldGapTablet,
+						label: 'fieldGapTablet',
+					},
+					mobile: {
+						value: fieldGapMobile,
+						label: 'fieldGapMobile',
+					},
+				} }
+				min={ 0 }
+				max={ 100 }
+				unit={ {
+					value: fieldGapType,
+					label: 'fieldGapType',
+				} }
+				units={ [
 					{
-						name: 'normal',
-						title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
+						name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
+						unitValue: 'px',
 					},
 					{
-						name: 'hover',
-						title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
+						name: __( '%', 'ultimate-addons-for-gutenberg' ),
+						unitValue: '%',
+					},
+					{
+						name: __( 'em', 'ultimate-addons-for-gutenberg' ),
+						unitValue: 'em',
 					},
 				] }
-				normal={
-					<>
-						<AdvancedPopColorControl
-							label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-							colorValue={ labelColor ? labelColor : '' }
-							data={ {
-								value: labelColor,
-								label: 'labelColor',
-							} }
-							setAttributes={ setAttributes }
-						/>
-					</>
-				}
-				hover={
-					<>
-						<AdvancedPopColorControl
-							label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-							colorValue={ labelHoverColor ? labelHoverColor : '' }
-							data={ {
-								value: labelHoverColor,
-								label: 'labelHoverColor',
-							} }
-							setAttributes={ setAttributes }
-						/>
-					</>
-				}
-				disableBottomSeparator={ true }
+				setAttributes={ setAttributes }
+			/>
+			<ResponsiveSlider
+				label={ __( 'Label Bottom Margin', 'ultimate-addons-for-gutenberg' ) }
+				data={ {
+					desktop: {
+						value: labelGap,
+						label: 'labelGap',
+					},
+					tablet: {
+						value: labelGapTablet,
+						label: 'labelGapTablet',
+					},
+					mobile: {
+						value: labelGapMobile,
+						label: 'labelGapMobile',
+					},
+				} }
+				min={ 0 }
+				max={ 100 }
+				unit={ {
+					value: labelGapUnit,
+					label: 'labelGapUnit',
+				} }
+				units={ [
+					{
+						name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
+						unitValue: 'px',
+					},
+					{
+						name: __( '%', 'ultimate-addons-for-gutenberg' ),
+						unitValue: '%',
+					},
+					{
+						name: __( 'em', 'ultimate-addons-for-gutenberg' ),
+						unitValue: 'em',
+					},
+				] }
+				setAttributes={ setAttributes }
 			/>
 		</UAGAdvancedPanelBody>
 	);
@@ -882,7 +957,7 @@ const Settings = ( props ) => {
 				} }
 			/>
 			<TypographyControl
-				label={ __( 'Input Typography', 'ultimate-addons-for-gutenberg' ) }
+				label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 				attributes={ attributes }
 				setAttributes={ setAttributes }
 				loadGoogleFonts={ {
@@ -1107,6 +1182,10 @@ const Settings = ( props ) => {
 				setAttributes={ setAttributes }
 				options={ [
 					{
+						value: 'default',
+						label: __( 'Default', 'ultimate-addons-for-gutenberg' ),
+					},
+					{
 						value: 'small',
 						label: __( 'Small', 'ultimate-addons-for-gutenberg' ),
 					},
@@ -1129,154 +1208,6 @@ const Settings = ( props ) => {
 				] }
 			/>
 
-			<TypographyControl
-				label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
-				attributes={ attributes }
-				setAttributes={ setAttributes }
-				loadGoogleFonts={ {
-					value: submitTextloadGoogleFonts,
-					label: 'submitTextloadGoogleFonts',
-				} }
-				fontFamily={ {
-					value: submitTextFontFamily,
-					label: 'submitTextFontFamily',
-				} }
-				fontWeight={ {
-					value: submitTextFontWeight,
-					label: 'submitTextFontWeight',
-				} }
-				fontStyle={ {
-					value: submitTextFontStyle,
-					label: 'submitTextFontStyle',
-				} }
-				fontSizeType={ {
-					value: submitTextFontSizeType,
-					label: 'submitTextFontSizeType',
-				} }
-				fontSize={ {
-					value: submitTextFontSize,
-					label: 'submitTextFontSize',
-				} }
-				fontSizeMobile={ {
-					value: submitTextFontSizeMobile,
-					label: 'submitTextFontSizeMobile',
-				} }
-				fontSizeTablet={ {
-					value: submitTextFontSizeTablet,
-					label: 'submitTextFontSizeTablet',
-				} }
-				lineHeightType={ {
-					value: submitTextLineHeightType,
-					label: 'submitTextLineHeightType',
-				} }
-				lineHeight={ {
-					value: submitTextLineHeight,
-					label: 'submitTextLineHeight',
-				} }
-				lineHeightMobile={ {
-					value: submitTextLineHeightMobile,
-					label: 'submitTextLineHeightMobile',
-				} }
-				lineHeightTablet={ {
-					value: submitTextLineHeightTablet,
-					label: 'submitTextLineHeightTablet',
-				} }
-				letterSpacing={ {
-					value: submitTextLetterSpacing,
-					label: 'submitTextLetterSpacing',
-				} }
-				letterSpacingTablet={ {
-					value: submitTextLetterSpacingTablet,
-					label: 'submitTextLetterSpacingTablet',
-				} }
-				letterSpacingMobile={ {
-					value: submitTextLetterSpacingMobile,
-					label: 'submitTextLetterSpacingMobile',
-				} }
-				letterSpacingType={ {
-					value: submitTextLetterSpacingType,
-					label: 'submitTextLetterSpacingType',
-				} }
-				transform={ {
-					value: submitTextTransform,
-					label: 'submitTextTransform',
-				} }
-				decoration={ {
-					value: submitTextDecoration,
-					label: 'submitTextDecoration',
-				} }
-			/>
-			<SpacingControl
-				{ ...props }
-				label={ __( 'Button Padding', 'ultimate-addons-for-gutenberg' ) }
-				valueTop={ {
-					value: paddingBtnTop,
-					label: 'paddingBtnTop',
-				} }
-				valueRight={ {
-					value: paddingBtnRight,
-					label: 'paddingBtnRight',
-				} }
-				valueBottom={ {
-					value: paddingBtnBottom,
-					label: 'paddingBtnBottom',
-				} }
-				valueLeft={ {
-					value: paddingBtnLeft,
-					label: 'paddingBtnLeft',
-				} }
-				valueTopTablet={ {
-					value: paddingBtnTopTablet,
-					label: 'paddingBtnTopTablet',
-				} }
-				valueRightTablet={ {
-					value: paddingBtnRightTablet,
-					label: 'paddingBtnRightTablet',
-				} }
-				valueBottomTablet={ {
-					value: paddingBtnBottomTablet,
-					label: 'paddingBtnBottomTablet',
-				} }
-				valueLeftTablet={ {
-					value: paddingBtnLeftTablet,
-					label: 'paddingBtnLeftTablet',
-				} }
-				valueTopMobile={ {
-					value: paddingBtnTopMobile,
-					label: 'paddingBtnTopMobile',
-				} }
-				valueRightMobile={ {
-					value: paddingBtnRightMobile,
-					label: 'paddingBtnRightMobile',
-				} }
-				valueBottomMobile={ {
-					value: paddingBtnBottomMobile,
-					label: 'paddingBtnBottomMobile',
-				} }
-				valueLeftMobile={ {
-					value: paddingBtnLeftMobile,
-					label: 'paddingBtnLeftMobile',
-				} }
-				unit={ {
-					value: paddingBtnUnit,
-					label: 'paddingBtnUnit',
-				} }
-				mUnit={ {
-					value: mobilePaddingBtnUnit,
-					label: 'mobilePaddingBtnUnit',
-				} }
-				tUnit={ {
-					value: tabletPaddingBtnUnit,
-					label: 'tabletPaddingBtnUnit',
-				} }
-				deviceType={ deviceType }
-				attributes={ attributes }
-				setAttributes={ setAttributes }
-				link={ {
-					value: paddingspacingLink,
-					label: 'paddingspacingLink',
-				} }
-			/>
 			<UAGTabsControl
 				tabs={ [
 					{
@@ -1457,6 +1388,154 @@ const Settings = ( props ) => {
 					</>
 				}
 			/>
+						<TypographyControl
+				label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				loadGoogleFonts={ {
+					value: submitTextloadGoogleFonts,
+					label: 'submitTextloadGoogleFonts',
+				} }
+				fontFamily={ {
+					value: submitTextFontFamily,
+					label: 'submitTextFontFamily',
+				} }
+				fontWeight={ {
+					value: submitTextFontWeight,
+					label: 'submitTextFontWeight',
+				} }
+				fontStyle={ {
+					value: submitTextFontStyle,
+					label: 'submitTextFontStyle',
+				} }
+				fontSizeType={ {
+					value: submitTextFontSizeType,
+					label: 'submitTextFontSizeType',
+				} }
+				fontSize={ {
+					value: submitTextFontSize,
+					label: 'submitTextFontSize',
+				} }
+				fontSizeMobile={ {
+					value: submitTextFontSizeMobile,
+					label: 'submitTextFontSizeMobile',
+				} }
+				fontSizeTablet={ {
+					value: submitTextFontSizeTablet,
+					label: 'submitTextFontSizeTablet',
+				} }
+				lineHeightType={ {
+					value: submitTextLineHeightType,
+					label: 'submitTextLineHeightType',
+				} }
+				lineHeight={ {
+					value: submitTextLineHeight,
+					label: 'submitTextLineHeight',
+				} }
+				lineHeightMobile={ {
+					value: submitTextLineHeightMobile,
+					label: 'submitTextLineHeightMobile',
+				} }
+				lineHeightTablet={ {
+					value: submitTextLineHeightTablet,
+					label: 'submitTextLineHeightTablet',
+				} }
+				letterSpacing={ {
+					value: submitTextLetterSpacing,
+					label: 'submitTextLetterSpacing',
+				} }
+				letterSpacingTablet={ {
+					value: submitTextLetterSpacingTablet,
+					label: 'submitTextLetterSpacingTablet',
+				} }
+				letterSpacingMobile={ {
+					value: submitTextLetterSpacingMobile,
+					label: 'submitTextLetterSpacingMobile',
+				} }
+				letterSpacingType={ {
+					value: submitTextLetterSpacingType,
+					label: 'submitTextLetterSpacingType',
+				} }
+				transform={ {
+					value: submitTextTransform,
+					label: 'submitTextTransform',
+				} }
+				decoration={ {
+					value: submitTextDecoration,
+					label: 'submitTextDecoration',
+				} }
+			/>
+			<SpacingControl
+				{ ...props }
+				label={ __( 'Button Padding', 'ultimate-addons-for-gutenberg' ) }
+				valueTop={ {
+					value: paddingBtnTop,
+					label: 'paddingBtnTop',
+				} }
+				valueRight={ {
+					value: paddingBtnRight,
+					label: 'paddingBtnRight',
+				} }
+				valueBottom={ {
+					value: paddingBtnBottom,
+					label: 'paddingBtnBottom',
+				} }
+				valueLeft={ {
+					value: paddingBtnLeft,
+					label: 'paddingBtnLeft',
+				} }
+				valueTopTablet={ {
+					value: paddingBtnTopTablet,
+					label: 'paddingBtnTopTablet',
+				} }
+				valueRightTablet={ {
+					value: paddingBtnRightTablet,
+					label: 'paddingBtnRightTablet',
+				} }
+				valueBottomTablet={ {
+					value: paddingBtnBottomTablet,
+					label: 'paddingBtnBottomTablet',
+				} }
+				valueLeftTablet={ {
+					value: paddingBtnLeftTablet,
+					label: 'paddingBtnLeftTablet',
+				} }
+				valueTopMobile={ {
+					value: paddingBtnTopMobile,
+					label: 'paddingBtnTopMobile',
+				} }
+				valueRightMobile={ {
+					value: paddingBtnRightMobile,
+					label: 'paddingBtnRightMobile',
+				} }
+				valueBottomMobile={ {
+					value: paddingBtnBottomMobile,
+					label: 'paddingBtnBottomMobile',
+				} }
+				valueLeftMobile={ {
+					value: paddingBtnLeftMobile,
+					label: 'paddingBtnLeftMobile',
+				} }
+				unit={ {
+					value: paddingBtnUnit,
+					label: 'paddingBtnUnit',
+				} }
+				mUnit={ {
+					value: mobilePaddingBtnUnit,
+					label: 'mobilePaddingBtnUnit',
+				} }
+				tUnit={ {
+					value: tabletPaddingBtnUnit,
+					label: 'tabletPaddingBtnUnit',
+				} }
+				deviceType={ deviceType }
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				link={ {
+					value: paddingspacingLink,
+					label: 'paddingspacingLink',
+				} }
+			/>
 			<ResponsiveBorder
 				setAttributes={ setAttributes }
 				prefix={ 'btn' }
@@ -1496,7 +1575,6 @@ const Settings = ( props ) => {
 		<UAGAdvancedPanelBody
 			title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) }
 			initialOpen={ false }
-			// className="uagb__url-panel-body"
 		>
 			<SpacingControl
 				{ ...props }
@@ -1568,82 +1646,6 @@ const Settings = ( props ) => {
 					value: formPaddingLink,
 					label: 'formPaddingLink',
 				} }
-			/>
-			<ResponsiveSlider
-				label={ __( 'Row Spacing', 'ultimate-addons-for-gutenberg' ) }
-				data={ {
-					desktop: {
-						value: fieldGap,
-						label: 'fieldGap',
-					},
-					tablet: {
-						value: fieldGapTablet,
-						label: 'fieldGapTablet',
-					},
-					mobile: {
-						value: fieldGapMobile,
-						label: 'fieldGapMobile',
-					},
-				} }
-				min={ 0 }
-				max={ 100 }
-				unit={ {
-					value: fieldGapType,
-					label: 'fieldGapType',
-				} }
-				units={ [
-					{
-						name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
-						unitValue: 'px',
-					},
-					{
-						name: __( '%', 'ultimate-addons-for-gutenberg' ),
-						unitValue: '%',
-					},
-					{
-						name: __( 'em', 'ultimate-addons-for-gutenberg' ),
-						unitValue: 'em',
-					},
-				] }
-				setAttributes={ setAttributes }
-			/>
-			<ResponsiveSlider
-				label={ __( 'Label Bottom Margin', 'ultimate-addons-for-gutenberg' ) }
-				data={ {
-					desktop: {
-						value: labelGap,
-						label: 'labelGap',
-					},
-					tablet: {
-						value: labelGapTablet,
-						label: 'labelGapTablet',
-					},
-					mobile: {
-						value: labelGapMobile,
-						label: 'labelGapMobile',
-					},
-				} }
-				min={ 0 }
-				max={ 100 }
-				unit={ {
-					value: labelGapUnit,
-					label: 'labelGapUnit',
-				} }
-				units={ [
-					{
-						name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
-						unitValue: 'px',
-					},
-					{
-						name: __( '%', 'ultimate-addons-for-gutenberg' ),
-						unitValue: '%',
-					},
-					{
-						name: __( 'em', 'ultimate-addons-for-gutenberg' ),
-						unitValue: 'em',
-					},
-				] }
-				setAttributes={ setAttributes }
 			/>
 		</UAGAdvancedPanelBody>
 	);
@@ -1725,11 +1727,11 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
-						{ presetSettings() }
 						{ generalSettings() }
 						{ submitGeneral() }
 						{ afterSubmitActions() }
 						{ googleReCaptcha() }
+						{ presetSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ displayLabels && labelStyling() }

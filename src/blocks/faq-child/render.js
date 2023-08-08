@@ -13,8 +13,8 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	const { attributes, setAttributes, state, clientId, isSelected } = props;
-	const { question, answer, icon, iconActive, layout, headingTag } = attributes;
+	const { attributes, setAttributes, state, isSelected } = props;
+	const { question, answer, icon, iconActive, layout, headingTag, block_id } = attributes;
 
 	const faqRenderIcon = () => {
 		return (
@@ -58,7 +58,7 @@ const Render = ( props ) => {
 			className={ classnames(
 				'uagb-faq-child__outer-wrap',
 				'uagb-faq-item',
-				`uagb-block-${ clientId.substr( 0, 8 ) }`,
+				`uagb-block-${ block_id }`,
 				isSelected && false !== state.isFocused ? 'uagb-faq__active' : ''
 			) }
 			role="tab"

@@ -8,6 +8,7 @@
  */
 
 return array(
+	'block_id'                   => '',
 	'classMigrate'               => false,
 	'blockName'                  => 'content-timeline',
 	'align'                      => '',

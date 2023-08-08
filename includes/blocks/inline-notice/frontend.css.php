@@ -21,35 +21,35 @@ $right_padding_mobile = 0;
 $left_padding_tablet  = 0;
 $right_padding_tablet = 0;
 
-$title_top_padding    = isset( $attr['titleTopPadding'] ) ? $attr['titleTopPadding'] : $attr['titleVrPadding'];
-$title_bottom_padding = isset( $attr['titleBottomPadding'] ) ? $attr['titleBottomPadding'] : $attr['titleVrPadding'];
-$title_left_padding   = isset( $attr['titleLeftPadding'] ) ? $attr['titleLeftPadding'] : $attr['titleHrPadding'];
-$title_right_padding  = isset( $attr['titleRightPadding'] ) ? $attr['titleRightPadding'] : $attr['titleHrPadding'];
+$title_top_padding    = ( isset( $attr['titleTopPadding'] ) && is_numeric( $attr['titleTopPadding'] ) ) ? $attr['titleTopPadding'] : $attr['titleVrPadding'];
+$title_bottom_padding = ( isset( $attr['titleBottomPadding'] ) && is_numeric( $attr['titleBottomPadding'] ) ) ? $attr['titleBottomPadding'] : $attr['titleVrPadding'];
+$title_left_padding   = ( isset( $attr['titleLeftPadding'] ) && is_numeric( $attr['titleLeftPadding'] ) ) ? $attr['titleLeftPadding'] : $attr['titleHrPadding'];
+$title_right_padding  = ( isset( $attr['titleRightPadding'] ) && is_numeric( $attr['titleRightPadding'] ) ) ? $attr['titleRightPadding'] : $attr['titleHrPadding'];
 
-$title_top_padding_mobile    = isset( $attr['titleTopPaddingMobile'] ) ? $attr['titleTopPaddingMobile'] : $attr['titleVrPadding'];
-$title_bottom_padding_mobile = isset( $attr['titleBottomPaddingMobile'] ) ? $attr['titleBottomPaddingMobile'] : $attr['titleVrPadding'];
-$title_left_padding_mobile   = isset( $attr['titleLeftPaddingMobile'] ) ? $attr['titleLeftPaddingMobile'] : $attr['titleHrPadding'];
-$title_right_padding_mobile  = isset( $attr['titleRightPaddingMobile'] ) ? $attr['titleRightPaddingMobile'] : $attr['titleHrPadding'];
+$title_top_padding_mobile    = ( isset( $attr['titleTopPaddingMobile'] ) && is_numeric( $attr['titleTopPaddingMobile'] ) ) ? $attr['titleTopPaddingMobile'] : $attr['titleVrPadding'];
+$title_bottom_padding_mobile = ( isset( $attr['titleBottomPaddingMobile'] ) && is_numeric( $attr['titleBottomPaddingMobile'] ) ) ? $attr['titleBottomPaddingMobile'] : $attr['titleVrPadding'];
+$title_left_padding_mobile   = ( isset( $attr['titleLeftPaddingMobile'] ) && is_numeric( $attr['titleLeftPaddingMobile'] ) ) ? $attr['titleLeftPaddingMobile'] : $attr['titleHrPadding'];
+$title_right_padding_mobile  = ( isset( $attr['titleRightPaddingMobile'] ) && is_numeric( $attr['titleRightPaddingMobile'] ) ) ? $attr['titleRightPaddingMobile'] : $attr['titleHrPadding'];
 
-$title_top_padding_tablet    = isset( $attr['titleTopPaddingTablet'] ) ? $attr['titleTopPaddingTablet'] : $attr['titleVrPadding'];
-$title_bottom_padding_tablet = isset( $attr['titleBottomPaddingTablet'] ) ? $attr['titleBottomPaddingTablet'] : $attr['titleVrPadding'];
-$title_left_padding_tablet   = isset( $attr['titleLeftPaddingTablet'] ) ? $attr['titleLeftPaddingTablet'] : $attr['titleHrPadding'];
-$title_right_padding_tablet  = isset( $attr['titleRightPaddingTablet'] ) ? $attr['titleRightPaddingTablet'] : $attr['titleHrPadding'];
+$title_top_padding_tablet    = ( isset( $attr['titleTopPaddingTablet'] ) && is_numeric( $attr['titleTopPaddingTablet'] ) ) ? $attr['titleTopPaddingTablet'] : $attr['titleVrPadding'];
+$title_bottom_padding_tablet = ( isset( $attr['titleBottomPaddingTablet'] ) && is_numeric( $attr['titleBottomPaddingTablet'] ) ) ? $attr['titleBottomPaddingTablet'] : $attr['titleVrPadding'];
+$title_left_padding_tablet   = ( isset( $attr['titleLeftPaddingTablet'] ) && is_numeric( $attr['titleLeftPaddingTablet'] ) ) ? $attr['titleLeftPaddingTablet'] : $attr['titleHrPadding'];
+$title_right_padding_tablet  = ( isset( $attr['titleRightPaddingTablet'] ) && is_numeric( $attr['titleRightPaddingTablet'] ) ) ? $attr['titleRightPaddingTablet'] : $attr['titleHrPadding'];
 
-$content_top_padding    = isset( $attr['contentTopPadding'] ) ? $attr['contentTopPadding'] : $attr['contentVrPadding'];
-$content_bottom_padding = isset( $attr['contentBottomPadding'] ) ? $attr['contentBottomPadding'] : $attr['contentVrPadding'];
-$content_left_padding   = isset( $attr['contentLeftPadding'] ) ? $attr['contentLeftPadding'] : $attr['contentHrPadding'];
-$content_right_padding  = isset( $attr['contentRightPadding'] ) ? $attr['contentRightPadding'] : $attr['contentHrPadding'];
+$content_top_padding    = ( isset( $attr['contentTopPadding'] ) && is_numeric( $attr['contentTopPadding'] ) ) ? $attr['contentTopPadding'] : $attr['contentVrPadding'];
+$content_bottom_padding = ( isset( $attr['contentBottomPadding'] ) && is_numeric( $attr['contentBottomPadding'] ) ) ? $attr['contentBottomPadding'] : $attr['contentVrPadding'];
+$content_left_padding   = ( isset( $attr['contentLeftPadding'] ) && is_numeric( $attr['contentLeftPadding'] ) ) ? $attr['contentLeftPadding'] : $attr['contentHrPadding'];
+$content_right_padding  = ( isset( $attr['contentRightPadding'] ) && is_numeric( $attr['contentRightPadding'] ) ) ? $attr['contentRightPadding'] : $attr['contentHrPadding'];
 
-$content_top_padding_mobile    = isset( $attr['contentTopPaddingMobile'] ) ? $attr['contentTopPaddingMobile'] : $attr['contentVrPadding'];
-$content_bottom_padding_mobile = isset( $attr['contentBottomPaddingMobile'] ) ? $attr['contentBottomPaddingMobile'] : $attr['contentVrPadding'];
-$content_left_padding_mobile   = isset( $attr['contentLeftPaddingMobile'] ) ? $attr['contentLeftPaddingMobile'] : $attr['contentHrPadding'];
-$content_right_padding_mobile  = isset( $attr['contentRightPaddingMobile'] ) ? $attr['contentRightPaddingMobile'] : $attr['contentHrPadding'];
+$content_top_padding_mobile    = ( isset( $attr['contentTopPaddingMobile'] ) && is_numeric( $attr['contentTopPaddingMobile'] ) ) ? $attr['contentTopPaddingMobile'] : $attr['contentVrPadding'];
+$content_bottom_padding_mobile = ( isset( $attr['contentBottomPaddingMobile'] ) && is_numeric( $attr['contentBottomPaddingMobile'] ) ) ? $attr['contentBottomPaddingMobile'] : $attr['contentVrPadding'];
+$content_left_padding_mobile   = ( isset( $attr['contentLeftPaddingMobile'] ) && is_numeric( $attr['contentLeftPaddingMobile'] ) ) ? $attr['contentLeftPaddingMobile'] : $attr['contentHrPadding'];
+$content_right_padding_mobile  = ( isset( $attr['contentRightPaddingMobile'] ) && is_numeric( $attr['contentRightPaddingMobile'] ) ) ? $attr['contentRightPaddingMobile'] : $attr['contentHrPadding'];
 
-$content_top_padding_tablet    = isset( $attr['contentTopPaddingTablet'] ) ? $attr['contentTopPaddingTablet'] : $attr['contentVrPadding'];
-$content_bottom_padding_tablet = isset( $attr['contentBottomPaddingTablet'] ) ? $attr['contentBottomPaddingTablet'] : $attr['contentVrPadding'];
-$content_left_padding_tablet   = isset( $attr['contentLeftPaddingTablet'] ) ? $attr['contentLeftPaddingTablet'] : $attr['contentHrPadding'];
-$content_right_padding_tablet  = isset( $attr['contentRightPaddingTablet'] ) ? $attr['contentRightPaddingTablet'] : $attr['contentHrPadding'];
+$content_top_padding_tablet    = ( isset( $attr['contentTopPaddingTablet'] ) && is_numeric( $attr['contentTopPaddingTablet'] ) ) ? $attr['contentTopPaddingTablet'] : $attr['contentVrPadding'];
+$content_bottom_padding_tablet = ( isset( $attr['contentBottomPaddingTablet'] ) && is_numeric( $attr['contentBottomPaddingTablet'] ) ) ? $attr['contentBottomPaddingTablet'] : $attr['contentVrPadding'];
+$content_left_padding_tablet   = ( isset( $attr['contentLeftPaddingTablet'] ) && is_numeric( $attr['contentLeftPaddingTablet'] ) ) ? $attr['contentLeftPaddingTablet'] : $attr['contentHrPadding'];
+$content_right_padding_tablet  = ( isset( $attr['contentRightPaddingTablet'] ) && is_numeric( $attr['contentRightPaddingTablet'] ) ) ? $attr['contentRightPaddingTablet'] : $attr['contentHrPadding'];
 
 $pos_top_tab        = isset( $attr['titleTopPaddingTablet'] ) ? $attr['titleTopPaddingTablet'] : $attr['titleTopPadding'];
 $pos_left_tab       = isset( $attr['titleLeftPaddingTablet'] ) ? $attr['titleLeftPaddingTablet'] : $attr['titleLeftPadding'];

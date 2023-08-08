@@ -18,11 +18,10 @@ const Render = ( props ) => {
 	}, [] );
 
 	const {
-		attributes: { align, backgroundType, alignMobile, alignTablet },
+		attributes: { align, backgroundType, alignMobile, alignTablet, block_id },
 		isSelected,
 		className,
 		deviceType,
-		clientId
 	} = props;
 
 	const active = isSelected ? 'active' : 'not-active';
@@ -42,7 +41,7 @@ const Render = ( props ) => {
 				alignClassMobile,
 				alignClassTablet,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ clientId.substr( 0, 8 ) }`
+				`uagb-block-${ block_id }`
 			) }
 		>
 			<div className="uagb-column__overlay"></div>

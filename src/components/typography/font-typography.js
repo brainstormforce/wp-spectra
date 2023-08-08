@@ -158,11 +158,17 @@ function FontFamilyControl( props ) {
 
 	let fontSize;
 	const fontSizeStepsVal = 'em' === props.fontSizeType.value ? 0.1 : 1; // fractional value when unit is em.
+	const fontSizeStepsValMobile = 'em' === props.fontSizeTypeMobile?.value ? 0.1 : 1;
+	const fontSizeStepsValTablet = 'em' === props.fontSizeTypeTablet?.value ? 0.1 : 1;
 	if ( true !== props.disableFontSize ) {
 		fontSize = (
 			<RangeTypographyControl
 				type={ props.fontSizeType }
 				typeLabel={ props.fontSizeType.label }
+				typeMobile={ props.fontSizeTypeMobile? props.fontSizeTypeMobile : props.fontSizeType }
+				typeLabelMobile={ props.fontSizeTypeMobile?.label? props.fontSizeTypeMobile.label : props.fontSizeType.label }
+				typeTablet={ props.fontSizeTypeTablet? props.fontSizeTypeTablet : props.fontSizeType }
+				typeLabelTablet={ props.fontSizeTypeTablet?.label? props.fontSizeTypeTablet.label : props.fontSizeType.label }
 				sizeMobile={ props.fontSizeMobile }
 				sizeMobileLabel={ props.fontSizeMobile.label }
 				sizeTablet={ props.fontSizeTablet }
@@ -180,6 +186,8 @@ function FontFamilyControl( props ) {
 					! props.fontSizeLabel ? __( 'Font Size', 'ultimate-addons-for-gutenberg' ) : props.fontSizeLabel
 				}
 				step={ fontSizeStepsVal }
+				stepMobile={ fontSizeStepsValMobile }
+				stepTablet={ fontSizeStepsValTablet }
 				{ ...props }
 			/>
 		);

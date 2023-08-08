@@ -48,6 +48,8 @@ return array_merge(
 		'hColor'                 => '',
 		'hBackground'            => '',
 		'sizeType'               => 'px',
+		'sizeTypeTablet'         => 'px',
+		'sizeTypeMobile'         => 'px',
 		'sizeMobile'             => '',
 		'sizeTablet'             => '',
 		'lineHeight'             => '',

@@ -11,7 +11,7 @@ import MultiButtonsControl from '@Components/multi-buttons-control';
 import ResponsiveBorder from '@Components/responsive-border';
 import SpacingControl from '@Components/spacing-control';
 import UAGTabsControl from '@Components/tabs';
-import ctaPresets, { buttonsPresetsCTA, buttonsPresetsAdditionalButton } from './presets';
+import { buttonsPresetsCTA, buttonsPresetsAdditionalButton } from './presets';
 import UAGPresets from '@Components/presets';
 import renderSVG from '@Controls/renderIcon';
 import UAGTextControl from '@Components/text-control';
@@ -31,6 +31,8 @@ const Settings = ( props ) => {
 		titleTag,
 		titleFontSize,
 		titleFontSizeType,
+		titleFontSizeTypeMobile,
+		titleFontSizeTypeTablet,
 		titleFontSizeMobile,
 		titleFontSizeTablet,
 		titleFontFamily,
@@ -42,6 +44,8 @@ const Settings = ( props ) => {
 		titleLoadGoogleFonts,
 		descFontSize,
 		descFontSizeType,
+		descFontSizeTypeMobile,
+		descFontSizeTypeTablet,
 		descFontSizeMobile,
 		descFontSizeTablet,
 		descFontFamily,
@@ -71,6 +75,8 @@ const Settings = ( props ) => {
 		ctaIconSpaceMobile,
 		ctaFontSize,
 		ctaFontSizeType,
+		ctaFontSizeTypeMobile,
+		ctaFontSizeTypeTablet,
 		ctaFontSizeMobile,
 		ctaFontSizeTablet,
 		ctaFontFamily,
@@ -146,6 +152,8 @@ const Settings = ( props ) => {
 		secondCtaHoverBackground,
 		secondCtaFontSize,
 		secondCtaFontSizeType,
+		secondCtaFontSizeTypeMobile,
+		secondCtaFontSizeTypeTablet,
 		secondCtaFontSizeMobile,
 		secondCtaFontSizeTablet,
 		secondCtaIcon,
@@ -428,6 +436,14 @@ const Settings = ( props ) => {
 					fontSizeType={ {
 						value: secondCtaFontSizeType,
 						label: 'secondCtaFontSizeType',
+					} }
+					fontSizeTypeTablet={ {
+						value: secondCtaFontSizeTypeTablet,
+						label: 'secondCtaFontSizeTypeTablet',
+					} }
+					fontSizeTypeMobile={ {
+						value: secondCtaFontSizeTypeMobile,
+						label: 'secondCtaFontSizeTypeMobile',
 					} }
 					fontSize={ {
 						value: secondCtaFontSize,
@@ -814,6 +830,43 @@ const Settings = ( props ) => {
 	const ctaStyleSettings = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Button', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+
+				{ ctaType === 'text' && (
+					<UAGTabsControl
+						tabs={ [
+							{
+								name: 'normal',
+								title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								name: 'hover',
+								title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
+							},
+						] }
+						normal={ ctaTextColor() }
+						hover={ ctaTxtHoverColor() }
+					/>
+				) }
+
+				{ ctaType === 'button' && ! inheritFromTheme && (
+					<>
+						<UAGTabsControl
+							tabs={ [
+								{
+									name: 'normal',
+									title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									name: 'hover',
+									title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
+								},
+							] }
+							normal={ ctaNormalSettings() }
+							hover={ ctaHoverSettings() }
+						/>
+					</>
+				) }
+
 				{ ( ctaType === 'text' || ctaType === 'button' && ! inheritFromTheme ) && (
 					<TypographyControl
 						label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
@@ -847,6 +900,14 @@ const Settings = ( props ) => {
 							value: ctaFontSizeType,
 							label: 'ctaFontSizeType',
 						} }
+						fontSizeTypeTablet={ {
+							value: ctaFontSizeTypeTablet,
+							label: 'ctaFontSizeTypeTablet',
+						} }
+						fontSizeTypeMobile={ {
+							value: ctaFontSizeTypeMobile,
+							label: 'ctaFontSizeTypeMobile',
+						} }
 						fontSize={ {
 							value: ctaFontSize,
 							label: 'ctaFontSize',
@@ -878,40 +939,9 @@ const Settings = ( props ) => {
 						disableLineHeight={ true }
 					/>
 				) }
-				{ ctaType === 'text' && (
-					<UAGTabsControl
-						tabs={ [
-							{
-								name: 'normal',
-								title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
-							},
-							{
-								name: 'hover',
-								title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
-							},
-						] }
-						normal={ ctaTextColor() }
-						hover={ ctaTxtHoverColor() }
-						disableBottomSeparator={ true }
-					/>
-				) }
+
 				{ ctaType === 'button' && ! inheritFromTheme && (
 					<>
-						<UAGTabsControl
-							tabs={ [
-								{
-									name: 'normal',
-									title: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									name: 'hover',
-									title: __( 'Hover', 'ultimate-addons-for-gutenberg' ),
-								},
-							] }
-							normal={ ctaNormalSettings() }
-							hover={ ctaHoverSettings() }
-							disableBottomSeparator={ false }
-						/>
 						<ResponsiveBorder
 							setAttributes={ setAttributes }
 							prefix={ 'btn' }
@@ -1120,6 +1150,15 @@ const Settings = ( props ) => {
 	const headingSettings = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Heading', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+				<AdvancedPopColorControl
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ titleColor ? titleColor : '' }
+					data={ {
+						value: titleColor,
+						label: 'titleColor',
+					} }
+					setAttributes={ setAttributes }
+				/>
 				<TypographyControl
 					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
@@ -1151,6 +1190,14 @@ const Settings = ( props ) => {
 					fontSizeType={ {
 						value: titleFontSizeType,
 						label: 'titleFontSizeType',
+					} }
+					fontSizeTypeTablet={ {
+						value: titleFontSizeTypeTablet,
+						label: 'titleFontSizeTypeTablet',
+					} }
+					fontSizeTypeMobile={ {
+						value: titleFontSizeTypeMobile,
+						label: 'titleFontSizeTypeMobile',
 					} }
 					fontSize={ {
 						value: titleFontSize,
@@ -1197,15 +1244,6 @@ const Settings = ( props ) => {
 						label: 'titleLetterSpacingType',
 					} }
 				/>
-				<AdvancedPopColorControl
-					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={ titleColor ? titleColor : '' }
-					data={ {
-						value: titleColor,
-						label: 'titleColor',
-					} }
-					setAttributes={ setAttributes }
-				/>
 				<ResponsiveSlider
 					label={ __( 'Bottom Margin', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -1242,6 +1280,15 @@ const Settings = ( props ) => {
 	const descriptionSettings = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Description', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+				<AdvancedPopColorControl
+					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
+					colorValue={ descColor ? descColor : '' }
+					data={ {
+						value: descColor,
+						label: 'descColor',
+					} }
+					setAttributes={ setAttributes }
+				/>
 				<TypographyControl
 					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
@@ -1273,6 +1320,14 @@ const Settings = ( props ) => {
 					fontSizeType={ {
 						value: descFontSizeType,
 						label: 'descFontSizeType',
+					} }
+					fontSizeTypeTablet={ {
+						value: descFontSizeTypeTablet,
+						label: 'descFontSizeTypeMobile',
+					} }
+					fontSizeTypeMobile={ {
+						value: descFontSizeTypeMobile,
+						label: 'descFontSizeTypeMobile',
 					} }
 					fontSize={ {
 						value: descFontSize,
@@ -1318,15 +1373,6 @@ const Settings = ( props ) => {
 						value: descLetterSpacingType,
 						label: 'descLetterSpacingType',
 					} }
-				/>
-				<AdvancedPopColorControl
-					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
-					colorValue={ descColor ? descColor : '' }
-					data={ {
-						value: descColor,
-						label: 'descColor',
-					} }
-					setAttributes={ setAttributes }
 				/>
 				<ResponsiveSlider
 					label={ __( 'Bottom Margin', 'ultimate-addons-for-gutenberg' ) }
@@ -1544,7 +1590,7 @@ const Settings = ( props ) => {
 	};
 	const layouts = () => {
 		return (
-			<UAGAdvancedPanelBody title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+			<UAGAdvancedPanelBody title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Overall Alignment', 'ultimate-addons-for-gutenberg' ) }
@@ -1728,20 +1774,11 @@ const Settings = ( props ) => {
 		);
 	};
 
-	const presetSettings = () => {
-		return (
-			<UAGAdvancedPanelBody title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
-				<UAGPresets setAttributes={ setAttributes } presets={ ctaPresets } presetInputType="radioImage" />
-			</UAGAdvancedPanelBody>
-		);
-	};
-
 	return (
 		<>
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
-						{ presetSettings() }
 						{ layouts() }
 						{ ctaSettings() }
 						{ 'button' === ctaType && secBtnSettings() }

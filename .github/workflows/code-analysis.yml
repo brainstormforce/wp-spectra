@@ -56,6 +56,10 @@ jobs:
         if: ${{ always() && steps.phpcs.outcome == 'failure' }}
         run: cs2pr ./phpcs-report.xml
 
+      - name: PHP static analysis
+        if: always()
+        run: composer run phpstan
+
       - name: Lint JS
         if: always()
         run: npm run lint-js

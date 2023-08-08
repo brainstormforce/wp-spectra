@@ -47,6 +47,7 @@
 	text-align: center;
 	word-break: break-word;
 	border-radius: inherit;
+	display: grid;
 }
 
 .uagb-tm__image-position-left .uagb-tm__content,
@@ -297,10 +298,5 @@
 				align-self: center;
 			}
 		}
-	}
-
-	.uagb-tm__desc {
-		margin-left: 20px;
-		margin-right: 20px;
 	}
 }

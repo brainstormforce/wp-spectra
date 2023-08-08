@@ -11,7 +11,9 @@ import generateBorderCSS from '@Controls/generateBorderCSS';
 
 function styling( attributes, clientId, deviceType ) {
 	const previewType = deviceType.toLowerCase();
+
 	const {
+		block_id,
 		backgroundType,
 		backgroundVideoColor,
 		backgroundImageColor,
@@ -239,7 +241,7 @@ function styling( attributes, clientId, deviceType ) {
 	};
 
 	let styling_css = '';
-	const id = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
+	const id = `.editor-styles-wrapper .uagb-block-${ block_id }`;
 
 	styling_css = generateCSS( selectors, id );
 
