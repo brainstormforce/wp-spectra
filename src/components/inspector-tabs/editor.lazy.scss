@@ -187,6 +187,12 @@ $border-color: #d6d9dd;
 	direction: initial;
 }
 
+.customize-widgets-layout__inspector .uagb-inspector-tabs-container { // CSS to resolve issue in customizer > widget > spectra inspector tab has gap https://share.getcloudapp.com/d5uDXmn0.
+	top: -12px;
+	margin-left: -12px;
+	margin-right: -12px;
+}
+
 .uagb-inspector-tab .components-panel__body:first-child,
 .edit-post-settings-sidebar__panel-block .uagb-inspector-tab .components-panel__body:first-child {
 	margin-top: 0;

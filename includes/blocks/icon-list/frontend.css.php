@@ -393,7 +393,13 @@ if ( 'horizontal' === $icon_layout_mobile ) {
 
 if ( ! $attr['childMigrate'] ) {
 
-	$defaults = require_once UAGB_DIR . 'includes/blocks/icon-list-child/attributes.php';
+	$defaults = UAGB_DIR . 'includes/blocks/icon-list-child/attributes.php';
+
+	if ( file_exists( $defaults ) ) {
+		$default_attr = include $defaults;
+	}
+
+	$default_attr = ( ! empty( $default_attr ) && is_array( $default_attr ) ) ? $default_attr : array();
 
 	foreach ( $attr['icons'] as $key => $icon ) {
 
@@ -431,7 +437,7 @@ if ( ! $attr['childMigrate'] ) {
 			break;
 		}
 
-		$icon = array_merge( $defaults, (array) $icon );
+		$icon = array_merge( $default_attr, (array) $icon );
 
 		$child_selectors = UAGB_Block_Helper::get_icon_list_child_selectors( $icon, $key, $attr['childMigrate'] );
 		$selectors       = array_merge( $selectors, (array) $child_selectors );

@@ -10,7 +10,6 @@ function styling() {
 	let mobileSelectors = {};
 
 	const spacing = uagb_blocks_info?.blocks_editor_spacing ? uagb_blocks_info.blocks_editor_spacing + 'px' : false;
-
 	if ( ! spacing ) {
 		return '';
 	}

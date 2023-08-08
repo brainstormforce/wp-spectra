@@ -187,7 +187,15 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						if ( 'font-family' === $j ) {
 							$css .= $j . ': "' . $val . '";';
 						} else {
-							$css .= $j . ': ' . $val . ';';
+							if ( is_array( $val ) ) {
+								// Convert $val array property to string.
+								foreach ( $val as $index => $property ) {
+									$properties = is_string( $property ) ? $property : (string) $property;
+									$css       .= $j . ': ' . $properties . ';';
+								}
+							} else {
+								$css .= $j . ': ' . $val . ';';
+							}
 						}
 					}
 				}

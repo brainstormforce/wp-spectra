@@ -174,7 +174,13 @@ if ( $attr['childMigrate'] ) {
 
 if ( ! $attr['childMigrate'] ) {
 
-	$defaults = include UAGB_DIR . 'includes/blocks/buttons-child/attributes.php';
+	$defaults = UAGB_DIR . 'includes/blocks/buttons-child/attributes.php';
+
+	if ( file_exists( $defaults ) ) {
+		$default_attr = include $defaults;
+	}
+
+	$default_attr = ( ! empty( $default_attr ) && is_array( $default_attr ) ) ? $default_attr : array();
 
 	foreach ( $attr['buttons'] as $key => $button ) {
 
@@ -182,7 +188,7 @@ if ( ! $attr['childMigrate'] ) {
 			break;
 		}
 
-		$button = array_merge( $defaults, $button );
+		$button = array_merge( $default_attr, $button );
 
 		$wrapper = ( ! $attr['childMigrate'] ) ? ' .uagb-buttons-repeater-' . $key . '.uagb-button__wrapper' : ' .uagb-buttons-repeater';
 

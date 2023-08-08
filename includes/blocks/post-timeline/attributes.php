@@ -8,6 +8,7 @@
  */
 
 return array(
+	'block_id'                   => '',
 	'blockName'                  => 'post-timeline',
 	'postsToShow'                => 6,
 	'postsOffset'                => 0,
