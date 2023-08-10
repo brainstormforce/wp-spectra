@@ -29,6 +29,7 @@ return array(
 	'descSpaceTablet'             => 20,
 	'descSpaceMobile'             => 15,
 	'descSpaceUnit'               => 'px',
+	'author'                      => 'Author Name', 
 	'authorColor'                 => '#888888',
 	'authorFontSize'              => '',
 	'authorFontSizeType'          => 'px',
