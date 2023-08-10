@@ -215,6 +215,10 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+* Fix: Post Carousel - Resolved an issue wherein the carousel dots would not appear centered.
+* Fix: Testimonials - Resolved an issue wherein the Testimonial dots would not appear centered.
+
 = 2.7.4 - TUESDAY, 8th AUGUST 2023 =
 * Improvement: Core Blocks - Implemented responsive typography font-size units.
 * Improvement: Image - Added a new `Custom Size` feature, which will maintain the dimensions set when the image is replaced!
