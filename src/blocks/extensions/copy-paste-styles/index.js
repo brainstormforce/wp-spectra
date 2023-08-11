@@ -391,22 +391,16 @@ const displayUAGCopyPasteSettingConditionally = createHigherOrderComponent( ( Bl
 			} );
 		}
 
-		if ( singleSelectBlockFlag || multiSelectBlockFlag ) {
+		const { isSelected } = props;
+		if ( isSelected ) {
 			return (
 				<>
-					<BlockEdit { ...props } />
-					<UAGCopyPasteStyles />
+					<BlockEdit {...props} />
+					{( singleSelectBlockFlag || multiSelectBlockFlag ) && <UAGCopyPasteStyles />}
 				</>
 			);
 		}
-
-		if ( ! singleSelectBlockFlag && ! multiSelectBlockFlag ) {
-			return (
-				<>
-					<BlockEdit { ...props } />
-				</>
-			);
-		}
+		return <BlockEdit {...props} />;
 	};
 }, 'displayUAGCopyPasteSettingConditionally' );
 

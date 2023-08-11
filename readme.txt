@@ -219,6 +219,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Blockquote - Resolved an issue wherein having '#' or '@' symbols in the description would result in the removal of content following them symbols when shared on Twitter.
 * Fix: Post Carousel - Resolved an issue wherein the carousel dots would not appear centered.
 * Fix: Testimonials - Resolved an issue wherein the Testimonial dots would not appear centered.
+* Fix: Global - Resolved an issue that was encountered when updating to WordPress 6.3 on some websites.
 
 = 2.7.4 - TUESDAY, 8th AUGUST 2023 =
 * Improvement: Core Blocks - Implemented responsive typography font-size units.
