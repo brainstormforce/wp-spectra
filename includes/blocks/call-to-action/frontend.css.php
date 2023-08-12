@@ -152,13 +152,13 @@ if ( 'left' === $attr['textAlign'] && 'right' === $attr['ctaPosition'] ) {
 }
 
 $t_selectors = array(
-	' .uagb-cta__title'                             => array(
+	'.wp-block-uagb-call-to-action .uagb-cta__title' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpaceTablet'], $attr['titleSpaceType'] ),
 	),
-	' .uagb-cta__desc'                              => array(
+	'.wp-block-uagb-call-to-action .uagb-cta__desc'  => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceTablet'], $attr['descSpaceType'] ),
 	),
-	' .uagb-cta__button-wrapper .uagb-cta-with-svg' => array(
+	' .uagb-cta__button-wrapper .uagb-cta-with-svg'  => array(
 		'font-size'   => $t_svg_size,
 		'width'       => $t_svg_size,
 		'height'      => $t_svg_size,
@@ -186,13 +186,13 @@ $t_selectors['.uagb-cta__content-stacked-tablet .uagb-cta__wrap']               
 );
 
 $m_selectors = array(
-	' .uagb-cta__title'                             => array(
+	'.wp-block-uagb-call-to-action .uagb-cta__title' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['titleSpaceMobile'], $attr['titleSpaceType'] ),
 	),
-	' .uagb-cta__desc'                              => array(
+	'.wp-block-uagb-call-to-action .uagb-cta__desc'  => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['descSpaceMobile'], $attr['descSpaceType'] ),
 	),
-	' .uagb-cta__button-wrapper .uagb-cta-with-svg' => array(
+	' .uagb-cta__button-wrapper .uagb-cta-with-svg'  => array(
 		'font-size'   => $m_svg_size,
 		'width'       => $m_svg_size,
 		'height'      => $m_svg_size,
