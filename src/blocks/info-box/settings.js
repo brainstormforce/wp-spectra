@@ -59,6 +59,7 @@ const Settings = ( props ) => {
 		prefixTransform,
 		prefixDecoration,
 		prefixLoadGoogleFonts,
+		prefixHeadingTag,
 		headingTag,
 		headFontSize,
 		headFontSizeType,
@@ -533,6 +534,28 @@ const Settings = ( props ) => {
 					onChange={ () => setAttributes( { showPrefix: ! showPrefix } ) }
 					label={ __( 'Enable Prefix', 'ultimate-addons-for-gutenberg' ) }
 				/>
+				{ showPrefix && (
+					<>
+						<MultiButtonsControl
+							setAttributes={ setAttributes }
+							label={ __( 'Prefix Tag', 'ultimate-addons-for-gutenberg' ) }
+							data={ {
+								value: prefixHeadingTag,
+								label: 'prefixHeadingTag',
+							} }
+							options={ [
+								{ value: 'h1', label: __( 'H1', 'ultimate-addons-for-gutenberg' ) },
+								{ value: 'h2', label: __( 'H2', 'ultimate-addons-for-gutenberg' ) },
+								{ value: 'h3', label: __( 'H3', 'ultimate-addons-for-gutenberg' ) },
+								{ value: 'h4', label: __( 'H4', 'ultimate-addons-for-gutenberg' ) },
+								{ value: 'h5', label: __( 'H5', 'ultimate-addons-for-gutenberg' ) },
+								{ value: 'h6', label: __( 'H6', 'ultimate-addons-for-gutenberg' ) },
+								{ value: 'p', label: __( 'P', 'ultimate-addons-for-gutenberg' ) },
+								{ value: 'span', label: __( 'Span', 'ultimate-addons-for-gutenberg' ) },
+							] }
+						/>
+					</>
+				) }
 
 				<ToggleControl
 					checked={ showTitle }

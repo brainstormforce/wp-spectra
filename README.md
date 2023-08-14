@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
+* Improvement: Info Box - Added heading tag settings for prefix.
 * Fix: Blockquote - Resolved an issue wherein having '#' or '@' symbols in the description would result in the removal of content following them symbols when shared on Twitter.
 * Fix: Call To Action - Resolved an issue in which the bottom-margins of the title and description would not work as intended for Tablet and Mobile devices on the frontend.
 * Fix: Post Carousel - Resolved an issue wherein the carousel dots would not appear centered.
