@@ -16,6 +16,27 @@
 	display: flex;
 }
 
+.uagb-social-share__layout-horizontal {
+	[data-type="uagb/social-share-child"] {
+		&:first-child .uagb-ss__wrapper {
+			margin-left: 0 !important;
+		}
+		&:last-child .uagb-ss__wrapper {
+			margin-right: 0 !important;
+		}
+	}
+}
+.uagb-social-share__layout-vertical {
+	[data-type="uagb/social-share-child"] {
+		&:first-child .uagb-ss__wrapper {
+			margin-top: 0 !important;
+		}
+		&:last-child .uagb-ss__wrapper {
+			margin-bottom: 0 !important;
+		}
+	}
+}
+
 [data-type="uagb/social-share"] .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
 	width: auto;
 	padding-right: 0;

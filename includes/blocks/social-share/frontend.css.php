@@ -67,7 +67,8 @@ $m_selectors['.uagb-social-share__outer-wrap .block-editor-inner-blocks'] = arra
 $selectors['.uagb-social-share__layout-vertical .uagb-ss__wrapper']     = array(
 	'margin-left'   => 0,
 	'margin-right'  => 0,
-	'margin-bottom' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
+	'margin-top'    => UAGB_Helper::get_css_value( ( $attr['gap'] / 2 ), 'px' ),
+	'margin-bottom' => UAGB_Helper::get_css_value( ( $attr['gap'] / 2 ), 'px' ),
 );
 $selectors['.uagb-social-share__layout-vertical .uagb-ss__link']        = array(
 	'padding' => UAGB_Helper::get_css_value( $attr['bgSize'], 'px' ),
@@ -75,12 +76,14 @@ $selectors['.uagb-social-share__layout-vertical .uagb-ss__link']        = array(
 $m_selectors['.uagb-social-share__layout-vertical .uagb-ss__wrapper']   = array(
 	'margin-left'   => 0,
 	'margin-right'  => 0,
-	'margin-bottom' => UAGB_Helper::get_css_value( $attr['gapMobile'], 'px' ),
+	'margin-top'    => UAGB_Helper::get_css_value( ( $gap_mobile_fallback / 2 ), 'px' ),
+	'margin-bottom' => UAGB_Helper::get_css_value( ( $gap_mobile_fallback / 2 ), 'px' ),
 );
 $t_selectors['.uagb-social-share__layout-vertical .uagb-ss__wrapper']   = array(
 	'margin-left'   => 0,
 	'margin-right'  => 0,
-	'margin-bottom' => UAGB_Helper::get_css_value( $attr['gapTablet'], 'px' ),
+	'margin-top'    => UAGB_Helper::get_css_value( ( $gap_tablet_fallback / 2 ), 'px' ),
+	'margin-bottom' => UAGB_Helper::get_css_value( ( $gap_tablet_fallback / 2 ), 'px' ),
 );
 $selectors['.uagb-social-share__layout-horizontal .uagb-ss__link']      = array(
 	'padding' => UAGB_Helper::get_css_value( $attr['bgSize'], 'px' ),

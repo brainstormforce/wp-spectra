@@ -66,17 +66,20 @@ function styling( attributes, clientId, name, deviceType ) {
 		'padding': generateCSSUnit( bgSizeFallback, 'px' ),
 		'margin-left': 0,
 		'margin-right': 0,
-		'margin-bottom': generateCSSUnit( gapFallback, 'px' ),
+		'margin-top': generateCSSUnit( gapFallback / 2, 'px' ),
+		'margin-bottom': generateCSSUnit( gapFallback / 2, 'px' ),
 	};
 	tabletSelectors[ '.uagb-social-share__layout-vertical .uagb-ss__wrapper' ] = {
 		'margin-left': 0,
 		'margin-right': 0,
-		'margin-bottom': generateCSSUnit( gapTablet, 'px' ),
+		'margin-top': generateCSSUnit( gapTabletFallback / 2, 'px' ),
+		'margin-bottom': generateCSSUnit( gapTabletFallback / 2, 'px' ),
 	};
 	mobileSelectors[ '.uagb-social-share__layout-vertical .uagb-ss__wrapper' ] = {
 		'margin-left': 0,
 		'margin-right': 0,
-		'margin-bottom': generateCSSUnit( gapMobile, 'px' ),
+		'margin-top': generateCSSUnit( gapMobileTabletFallback / 2, 'px' ),
+		'margin-bottom': generateCSSUnit( gapMobileTabletFallback / 2, 'px' ),
 	};
 
 	selectors[ '.uagb-social-share__layout-vertical.uagb-social-share__outer-wrap' ] = {

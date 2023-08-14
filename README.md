@@ -219,6 +219,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Blockquote - Resolved an issue wherein having '#' or '@' symbols in the description would result in the removal of content following them symbols when shared on Twitter.
 * Fix: Call To Action - Resolved an issue in which the bottom-margins of the title and description would not work as intended for Tablet and Mobile devices on the frontend.
 * Fix: Post Carousel - Resolved an issue wherein the carousel dots would not appear centered.
+* Fix: Social Share - Resolved an issue wherein the gap between icons would add unwanted margins to the sides of the wrapper.
 * Fix: Testimonials - Resolved an issue wherein the Testimonial dots would not appear centered.
 * Fix: Global - Resolved an issue that was encountered when updating to WordPress 6.3 on some websites.
 * Fix: Global - Resolved an issue wherein the color-picker default icon which would not appear in WordPress 6.3.
