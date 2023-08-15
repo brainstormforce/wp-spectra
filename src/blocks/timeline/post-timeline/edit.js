@@ -16,6 +16,7 @@ import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import { useSelect } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import AddInitialAttr from '@Controls/addInitialAttr';
 
 const PostTimelineComponent = ( props ) => {
 	const {
@@ -47,8 +48,6 @@ const PostTimelineComponent = ( props ) => {
 	const [ isTaxonomyLoading, setIsTaxonomyLoading ] = useState( false );
 
 	useEffect( () => {
-		//Store Client id.
-		setAttributes( { block_id: clientId } );
 		if ( timelinAlignment ) {
 			if ( 'none' === stack ) {
 				if ( undefined === timelinAlignmentTablet ) {
@@ -177,5 +176,6 @@ const PostTimelineComponent = ( props ) => {
 	);
 };
 export default compose(
+	AddInitialAttr,
 	AddStaticStyles,
 )( PostTimelineComponent );

@@ -16,7 +16,7 @@ const Render = ( props ) => {
 		};
 	}, [] );
 	const { headers } = props;
-	const { attributes, setAttributes, className, deviceType, name, clientId } = props;
+	const { attributes, setAttributes, className, deviceType, name } = props;
 	const blockName = name.replace( 'uagb/', '' );
 
 	const {
@@ -29,12 +29,13 @@ const Render = ( props ) => {
 		mappingHeaders,
 		headingTitle,
 		separatorStyle,
+		block_id,
 	} = attributes;
 
 	useEffect( () => {
 		if ( UAGBTableOfContents ) {
 			const baseSelector = classMigrate ? '.uagb-block-' : '#uagb-toc-';
-			const selector = baseSelector + clientId.substr( 0, 8 );
+			const selector = baseSelector + block_id;
 			UAGBTableOfContents.init( selector, attributes );
 		}
 	}, [] );
@@ -64,7 +65,7 @@ const Render = ( props ) => {
 				`uagb-toc__columns-${ getFallbackNumber( tColumnsDesktop, 'tColumnsDesktop', blockName ) }`,
 				makeCollapsible && initialCollapse ? 'uagb-toc__collapse' : '',
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ clientId.substr( 0, 8 ) }`
+				`uagb-block-${ block_id }`
 			) }
 			ref={ tocRoot }
 		>

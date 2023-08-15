@@ -219,7 +219,7 @@ function styling( attributes, deviceType ) {
 		},
 	};
 
-	const baseSelector = `.editor-styles-wrapper .uagb-block-${ block_id.substr( 0, 8 ) }`;
+	const baseSelector = `.editor-styles-wrapper .uagb-block-${ block_id }`;
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 

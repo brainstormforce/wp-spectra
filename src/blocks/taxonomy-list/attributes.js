@@ -6,10 +6,6 @@ const attributes = {
 	block_id: {
 		type: 'string',
 	},
-	listInJson: {
-		type: 'object',
-		default: null,
-	},
 	postType: {
 		type: 'string',
 		default: 'post',

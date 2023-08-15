@@ -10,6 +10,7 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 	const blockName = name.replace( 'uagb/', '' );
 	const previewType = deviceType.toLowerCase();
 	const {
+		block_id,
 		dateBottomspace,
 		dateBottomspaceTablet,
 		dateBottomspaceMobile,
@@ -605,7 +606,7 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 	};
 
 	let stylingCss = '';
-	const id = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }.uagb-timeline__outer-wrap`;
+	const id = `.editor-styles-wrapper .uagb-block-${ block_id }.uagb-timeline__outer-wrap`;
 
 	stylingCss = generateCSS( selectors, id );
 

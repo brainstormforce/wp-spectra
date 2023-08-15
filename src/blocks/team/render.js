@@ -15,7 +15,7 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	const { className, setAttributes, attributes, mergeBlocks, insertBlocksAfter, onReplace, deviceType, clientId } = props;
+	const { className, setAttributes, attributes, mergeBlocks, insertBlocksAfter, onReplace, deviceType } = props;
 
 	const {
 		align,
@@ -39,6 +39,7 @@ const Render = ( props ) => {
 		socialEnable,
 		stack,
 		imgWidth,
+		block_id,
 	} = attributes;
 
 	const titleHtml = (
@@ -173,7 +174,7 @@ const Render = ( props ) => {
 				`uagb-team__align-${ align }`,
 				`uagb-team__stack-${ stack }`,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ clientId.substr( 0, 8 ) }`
+				`uagb-block-${ block_id }`
 			) }
 		>
 			{ imgPosition === 'left' && imageHtml }

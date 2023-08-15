@@ -20,7 +20,7 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	const { className, setAttributes, attributes, deviceType, name, clientId } = props;
+	const { className, setAttributes, attributes, deviceType, name } = props;
 	const blockName = name.replace( 'uagb/', '' );
 
 	// Setup the attributes.
@@ -159,7 +159,7 @@ const Render = ( props ) => {
 				className,
 				'uagb-slick-carousel uagb-tm__arrow-outside',
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ clientId.substr( 0, 8 ) }`,
+				`uagb-block-${ block_id }`,
 				`${ equalHeightClass }`,
 				isGridLayout,
 				isGridLayoutTablet,

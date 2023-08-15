@@ -201,7 +201,7 @@ The basic need of the Spectra is the latest WordPress version. We have also made
 
 Yes! You can certainly use the Spectra on yours as well as your client's websites.
 
-### Will the Spectra slow down my website? ###
+### Will the Spectra slow down my website? ### 
 
 Absolutely no! The Spectra is built with ease and performance in mind. Its module architecture and the clean code keep it lightweight and fast. Therefore, it will not affect your website speed and performance in any way.
 

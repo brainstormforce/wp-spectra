@@ -10,6 +10,7 @@ function styling( attributes, clientId, name, deviceType ) {
 	const blockName = name.replace( 'uagb/', '' );
 	const previewType = deviceType.toLowerCase();
 	const {
+		block_id,
 		tag,
 		align,
 		titleColor,
@@ -354,7 +355,7 @@ function styling( attributes, clientId, name, deviceType ) {
 	};
 
 	let stylingCss = '';
-	const id = `#block-${ clientId } .uagb-block-${ clientId.substr( 0, 8 ) }`;
+	const id = `#block-${ clientId } .uagb-block-${ block_id }`;
 
 	stylingCss = generateCSS( selectors, id );
 

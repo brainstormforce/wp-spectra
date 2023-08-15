@@ -86,7 +86,7 @@ export default function save( props ) {
 
 	return (
 		<div
-			className={ classnames( className, 'uagb-ratings__outer-wrap', `uagb-block-${ block_id.substr( 0, 8 ) }` ) }
+			className={ classnames( className, 'uagb-ratings__outer-wrap', `uagb-block-${ block_id }` ) }
 		>
 			{ enableSchema && <script type="application/ld+json">{ schema }</script> }
 			<div className="uagb_review_block">
@@ -118,7 +118,7 @@ export default function save( props ) {
 									} }
 								>
 									<Stars
-										id={ `${ block_id.substr( 0, 8 ) }-${ i }` }
+										id={ `${ block_id }-${ i }` }
 										key={ i }
 										value={ j.value }
 										limit={ starCount }
@@ -142,7 +142,7 @@ export default function save( props ) {
 						<div className="uagb_review_average">
 							<span className="uagb_review_rating">{ Math.round( newAverage * 10 ) / 10 }</span>
 							<Stars
-								id={ `${ block_id.substr( 0, 8 ) }-average` }
+								id={ `${ block_id }-average` }
 								className="uagb_review_average_stars"
 								onHover={ () => null }
 								onClick={ () => null }

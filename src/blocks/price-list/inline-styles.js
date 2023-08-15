@@ -8,6 +8,7 @@ import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function RestMenuStyle( attributes, clientId, name, deviceType ) {
 	const {
+		block_id,
 		headingAlign,
 		priceColor,
 		descColor,
@@ -390,7 +391,7 @@ function RestMenuStyle( attributes, clientId, name, deviceType ) {
 	}
 
 	let stylingCss = '';
-	const id = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
+	const id = `.editor-styles-wrapper .uagb-block-${ block_id }`;
 
 	stylingCss = generateCSS( selectors, id );
 

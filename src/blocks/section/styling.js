@@ -8,6 +8,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 
 function styling( attributes, clientId, deviceType ) {
 	const {
+		block_id,
 		backgroundType,
 		backgroundVideoColor,
 		backgroundImageColor,
@@ -233,7 +234,7 @@ function styling( attributes, clientId, deviceType ) {
 		);
 	}
 	let stylingCss = '';
-	const id = `.uagb-block-${ clientId.substr( 0, 8 ) }`;
+	const id = `.uagb-block-${ block_id }`;
 
 	stylingCss = generateCSS( selectors, id );
 
