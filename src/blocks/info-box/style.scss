@@ -210,6 +210,18 @@ a.uagb-infobox-link-wrap,
 .uagb-ifb-button-wrapper {
 	line-height: 1;
 
+	&.uagb-ifb-button-type-text {
+		.uagb-infobox-cta-link {
+			&.wp-block-button__link {
+				background-color: unset;
+				border: none;
+			}
+			&.wp-block-button__link:hover {
+				background-color: unset;
+				border-color: unset;
+			}
+		}
+	}
 	.uagb-infobox-cta-link {
 		cursor: pointer;
 	}

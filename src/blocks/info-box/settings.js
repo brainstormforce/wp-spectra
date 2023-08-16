@@ -701,20 +701,20 @@ const Settings = ( props ) => {
 								presetInputType="radioImage"
 							/>
 						) }
-						<ToggleControl
-							checked={ inheritFromTheme }
-							onChange={ () =>
-								setAttributes( { inheritFromTheme: ! inheritFromTheme } )
-							}
-							label={ __(
-								'Inherit From Theme',
-								'ultimate-addons-for-gutenberg'
-							) }
-						/>
 					</>
 				) }
 				{ ctaType !== 'all' && ctaType !== 'none' && (
 					<>
+						<ToggleControl
+							checked={inheritFromTheme}
+							onChange={() =>
+								setAttributes( { inheritFromTheme: !inheritFromTheme } )
+							}
+							label={__(
+								'Inherit From Theme',
+								'ultimate-addons-for-gutenberg'
+							)}
+						/>
 						<ToggleControl
 							label={ __( 'Show Icon', 'ultimate-addons-for-gutenberg' ) }
 							checked={ showCtaIcon }

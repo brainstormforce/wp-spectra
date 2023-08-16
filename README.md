@@ -201,7 +201,7 @@ The basic need of the Spectra is the latest WordPress version. We have also made
 
 Yes! You can certainly use the Spectra on yours as well as your client's websites.
 
-### Will the Spectra slow down my website? ### 
+### Will the Spectra slow down my website? ###
 
 Absolutely no! The Spectra is built with ease and performance in mind. Its module architecture and the clean code keep it lightweight and fast. Therefore, it will not affect your website speed and performance in any way.
 
@@ -217,6 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ### x.x.x ###
 * Improvement: Info Box - Added heading tag settings for prefix.
+* Improvement: Info Box - Added an inherit-from-theme option for the text-type CTA.
 * Fix: Blockquote - Resolved an issue wherein having '#' or '@' symbols in the description would result in the removal of content following them symbols when shared on Twitter.
 * Fix: Call To Action - Resolved an issue in which the bottom-margins of the title and description would not work as intended for Tablet and Mobile devices on the frontend.
 * Fix: Post Carousel - Resolved an issue wherein the carousel dots would not appear centered.

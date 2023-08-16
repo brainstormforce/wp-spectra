@@ -254,7 +254,7 @@ if ( 'Stacked' === $attr['iconView'] ) {
 		'border' => $attr['iconBorderWidth'] . 'px solid ' . $attr['iconBackgroundHoverColor'],
 	);
 }
-if ( 'text' === $attr['ctaType'] ) {
+if ( 'text' === $attr['ctaType'] && ! $attr['inheritFromTheme'] ) {
 	$selectors[' div.uagb-ifb-button-wrapper a.uagb-infobox-cta-link']       = array(
 		'text-decoration' => $attr['ctaDecoration'],
 		'color'           => $attr['ctaLinkColor'],
