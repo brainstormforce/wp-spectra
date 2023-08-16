@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.7.4\n"
+"Project-Id-Version: Spectra 2.7.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-08-08T10:13:30+00:00\n"
+"POT-Creation-Date: 2023-08-16T13:37:19+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -208,12 +208,12 @@ msgstr ""
 msgid "Add a header to begin generating the table of contents"
 msgstr ""
 
-#: blocks-config/taxonomy-list/class-uagb-taxonomy-list.php:125
+#: blocks-config/taxonomy-list/class-uagb-taxonomy-list.php:121
 #: includes/blocks/taxonomy-list/attributes.php:92
 msgid "Taxonomy Not Available."
 msgstr ""
 
-#: blocks-config/taxonomy-list/class-uagb-taxonomy-list.php:688
+#: blocks-config/taxonomy-list/class-uagb-taxonomy-list.php:684
 #: includes/blocks/forms-select/block.php:15
 #: dist/blocks.js:20
 msgid "Select"
@@ -7665,7 +7665,7 @@ msgstr ""
 msgid "Successfully deleted font."
 msgstr ""
 
-#: classes/class-uagb-helper.php:426
+#: classes/class-uagb-helper.php:440
 #: dist/blocks.js:19
 #: dist/blocks.js:20
 msgid "Full"
@@ -7736,7 +7736,7 @@ msgid ""
 "\t\t\t.my-class {text-align: center;} // my-class is a custom selector"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:807
+#: classes/class-uagb-init-blocks.php:808
 #: dist/blocks.js:11
 #: dist/blocks.js:12
 #: dist/blocks.js:13
@@ -7746,21 +7746,21 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:836
-#: classes/class-uagb-init-blocks.php:869
+#: classes/class-uagb-init-blocks.php:837
+#: classes/class-uagb-init-blocks.php:870
 #: dist/blocks.js:20
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:850
+#: classes/class-uagb-init-blocks.php:851
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:883
+#: classes/class-uagb-init-blocks.php:884
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:899
+#: classes/class-uagb-init-blocks.php:900
 msgid "Invalid request"
 msgstr ""
 
@@ -8714,11 +8714,6 @@ msgid "Legacy"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:1
-#: admin-core/assets/build/dashboard-app.js:9
-msgid "Coming Soon"
-msgstr ""
-
-#: admin-core/assets/build/dashboard-app.js:1
 msgid "Live Demo"
 msgstr ""
 
@@ -8752,6 +8747,10 @@ msgstr ""
 #: admin-core/assets/build/dashboard-app.js:1
 #: admin-core/assets/build/dashboard-app.js:5
 msgid "Dynamic Content"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Documentations"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:1
@@ -9243,6 +9242,10 @@ msgid "Integrations"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:9
+msgid "Coming Soon"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Theme Fonts"
 msgstr ""
 
@@ -9289,11 +9292,13 @@ msgid "Click Here"
 msgstr ""
 
 #: dist/blocks.js:3
+#: dist/blocks.js:19
 #: dist/blocks.js:20
 msgid "Prefix"
 msgstr ""
 
 #: dist/blocks.js:3
+#: dist/blocks.js:19
 #: dist/blocks.js:20
 msgid "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
 msgstr ""
@@ -9744,6 +9749,12 @@ msgstr ""
 #: dist/blocks.js:17
 #: dist/blocks.js:20
 msgid "Custom"
+msgstr ""
+
+#: dist/blocks.js:11
+#: dist/blocks.js:17
+#: dist/blocks.js:20
+msgid "Overlay Opacity"
 msgstr ""
 
 #: dist/blocks.js:11
@@ -11031,11 +11042,6 @@ msgid "Caption"
 msgstr ""
 
 #: dist/blocks.js:17
-#: dist/blocks.js:20
-msgid "Overlay Opacity"
-msgstr ""
-
-#: dist/blocks.js:17
 msgid "Overlay Hover Opacity"
 msgstr ""
 
@@ -11261,6 +11267,15 @@ msgstr ""
 
 #: dist/blocks.js:19
 msgid "Enable Prefix"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Prefix Tag"
+msgstr ""
+
+#: dist/blocks.js:19
+#: dist/blocks.js:20
+msgid "Span"
 msgstr ""
 
 #: dist/blocks.js:19
@@ -11769,11 +11784,6 @@ msgstr ""
 
 #: dist/blocks.js:19
 msgid "Timeline Item"
-msgstr ""
-
-#: dist/blocks.js:19
-#: dist/blocks.js:20
-msgid "Span"
 msgstr ""
 
 #: dist/blocks.js:19
