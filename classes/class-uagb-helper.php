@@ -221,8 +221,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 *  get_css_value( VALUE, 'em' );
 		 *
-		 * @param string|int|float $value  CSS value.
-		 * @param string           $unit  CSS unit.
+		 * @param mixed  $value  CSS value.
+		 * @param string $unit  CSS unit.
 		 * @since 1.13.4
 		 */
 		public static function get_css_value( $value = '', $unit = '' ) {

@@ -69,6 +69,7 @@ const Settings = ( props ) => {
 		submitTextLineHeight,
 		submitTextLineHeightTablet,
 		submitTextLineHeightMobile,
+		inheritFromTheme,
 		labelloadGoogleFonts,
 		labelFontFamily,
 		labelFontWeight,
@@ -216,6 +217,11 @@ const Settings = ( props ) => {
 			initialOpen={ false }
 			// className="uagb__url-panel-body"
 		>
+			<ToggleControl
+					label={ __( 'Inherit From Theme', 'ultimate-addons-for-gutenberg' ) }
+					checked={ inheritFromTheme }
+					onChange={ () => setAttributes( { inheritFromTheme: ! inheritFromTheme } ) }
+			/>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
 				label={ __( 'Button Alignment', 'ultimate-addons-for-gutenberg' ) }
@@ -258,7 +264,9 @@ const Settings = ( props ) => {
 				showIcons={ true }
 				responsive={ true }
 			/>
-			<UAGPresets setAttributes={ setAttributes } presets={ buttonsPresets } presetInputType="radioImage" />
+			{ ! inheritFromTheme && (
+				<UAGPresets setAttributes={ setAttributes } presets={ buttonsPresets } presetInputType="radioImage" />
+			) }
 		</UAGAdvancedPanelBody>
 	);
 	const generalSettings = () => {
@@ -1173,6 +1181,8 @@ const Settings = ( props ) => {
 			initialOpen={ false }
 			// className="uagb__url-panel-body"
 		>
+			{ ! inheritFromTheme && (
+			<>
 			<UAGSelectControl
 				label={ __( 'Button Size', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
@@ -1544,6 +1554,7 @@ const Settings = ( props ) => {
 				deviceType={ deviceType }
 				disableBottomSeparator={ true }
 			/>
+			</> ) }
 		</UAGAdvancedPanelBody>
 	);
 
@@ -1737,7 +1748,7 @@ const Settings = ( props ) => {
 						{ displayLabels && labelStyling() }
 						{ inputStyling() }
 						{ elementStyling() }
-						{ submitStyling() }
+						{ ! inheritFromTheme && submitStyling() }
 						{ messageStyling() }
 						{ spaceStyling() }
 					</InspectorTab>
