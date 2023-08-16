@@ -1,7 +1,7 @@
 import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
 import { select } from '@wordpress/data';
 
-const backgroundCss = ( attributes, deviceType, clientId ) => {
+const backgroundCss = ( attributes, deviceType, clientId, pseudoElementOverlay = {} ) => {
 	let parentBlockNames = [];
 	// Get an array of parent block client IDs for the block with the specified ID.
 	const parentBlockClientIds = select( 'core/block-editor' ).getBlockParents( clientId );
@@ -45,6 +45,7 @@ const backgroundCss = ( attributes, deviceType, clientId ) => {
 		backgroundCustomSizeType,
 		backgroundImageColor,
 		overlayType,
+		overlayOpacity,
 		customPosition,
 		xPositionDesktop,
 		xPositionTablet,
@@ -89,6 +90,7 @@ const backgroundCss = ( attributes, deviceType, clientId ) => {
 		backgroundCustomSizeType,
 		backgroundImageColor,
 		overlayType,
+		overlayOpacity,
 		backgroundVideo,
 		backgroundVideoColor,
 		customPosition,
@@ -120,6 +122,7 @@ const backgroundCss = ( attributes, deviceType, clientId ) => {
 		backgroundCustomSizeType,
 		backgroundImageColor,
 		overlayType,
+		overlayOpacity,
 		backgroundVideo,
 		backgroundVideoColor,
 		customPosition,
@@ -151,6 +154,7 @@ const backgroundCss = ( attributes, deviceType, clientId ) => {
 		backgroundCustomSizeType,
 		backgroundImageColor,
 		overlayType,
+		overlayOpacity,
 		backgroundVideo,
 		backgroundVideoColor,
 		customPosition,
@@ -162,16 +166,24 @@ const backgroundCss = ( attributes, deviceType, clientId ) => {
 
 	let bgCss;
 
-	if ( 'Mobile' === deviceType ) {
-		bgCss = generateBackgroundCSS( backgroundAttributesMobile );
-	} else if ( 'Tablet' === deviceType ) {
-		bgCss = generateBackgroundCSS( backgroundAttributesTablet );
-	} else {
-		bgCss = generateBackgroundCSS( backgroundAttributesDesktop );
+	switch ( deviceType ) {
+		case 'Mobile':
+			bgCss = generateBackgroundCSS( backgroundAttributesMobile, pseudoElementOverlay );
+			break;
+		case 'Tablet':
+			bgCss = generateBackgroundCSS( backgroundAttributesTablet, pseudoElementOverlay );
+			break;
+		default:
+			bgCss = generateBackgroundCSS( backgroundAttributesDesktop, pseudoElementOverlay );
 	}
 
 	if ( ! bgCss ) {
 		return null;
+	}
+
+	// Return without formatting if this is for dynamic styling
+	if ( pseudoElementOverlay?.forStyleSheet ) {
+		return bgCss;
 	}
 
 	const createCamelCase = {};
@@ -188,7 +200,7 @@ const backgroundCss = ( attributes, deviceType, clientId ) => {
 		if( ! bgCss[cssProp] ){
 			continue;
 		}
-		createCamelCase[ snakeToCamel( cssProp ) ] = bgCss[cssProp].replace( ';', '' );
+		createCamelCase[ snakeToCamel( cssProp ) ] = 'string' === typeof bgCss[cssProp] ? bgCss[cssProp].replace( ';', '' ) : bgCss[cssProp];
 	}
 
 	return createCamelCase;

@@ -1411,13 +1411,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Background Control CSS Generator Function.
 		 *
-		 * @param  array $bg_obj   Color code in HEX.
+		 * @param array  $bg_obj          The background object with all CSS properties.
+		 * @param string $css_for_pseudo  A string indicating whether the pseudo-element CSS is required or not. Default is an empty string for elements that don't use the pseudo-element.
 		 *
-		 * @return array         Color code in HEX.
+		 * @return array                  The formatted CSS properties for the background.
 		 */
-		public static function uag_get_background_obj( $bg_obj ) {
+		public static function uag_get_background_obj( $bg_obj, $css_for_pseudo = '' ) {
 
-			$gen_bg_css = array();
+			$gen_bg_css         = array();
+			$gen_bg_overlay_css = array();
 
 			$bg_type             = isset( $bg_obj['backgroundType'] ) ? $bg_obj['backgroundType'] : '';
 			$bg_img              = isset( $bg_obj['backgroundImage'] ) && isset( $bg_obj['backgroundImage']['url'] ) ? $bg_obj['backgroundImage']['url'] : '';
@@ -1435,6 +1437,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$size                = isset( $bg_obj['backgroundSize'] ) ? $bg_obj['backgroundSize'] : '';
 			$attachment          = isset( $bg_obj['backgroundAttachment'] ) ? $bg_obj['backgroundAttachment'] : '';
 			$overlay_type        = isset( $bg_obj['overlayType'] ) ? $bg_obj['overlayType'] : '';
+			$overlay_opacity     = isset( $bg_obj['overlayOpacity'] ) ? $bg_obj['overlayOpacity'] : '';
 			$bg_image_color      = isset( $bg_obj['backgroundImageColor'] ) ? $bg_obj['backgroundImageColor'] : '';
 			$bg_custom_size      = isset( $bg_obj['backgroundCustomSize'] ) ? $bg_obj['backgroundCustomSize'] : '';
 			$bg_custom_size_type = isset( $bg_obj['backgroundCustomSizeType'] ) ? $bg_obj['backgroundCustomSizeType'] : '';
@@ -1488,10 +1491,22 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 							$gen_bg_css['background-attachment'] = esc_attr( $attachment );
 						}
 						if ( 'color' === $overlay_type && '' !== $bg_img && '' !== $bg_image_color ) {
-							$gen_bg_css['background-image'] = 'linear-gradient(to right, ' . $bg_image_color . ', ' . $bg_image_color . '), url(' . $bg_img . ');';
+							if ( ! empty( $css_for_pseudo ) ) {
+								$gen_bg_css['background-image']   = 'url(' . $bg_img . ');';
+								$gen_bg_overlay_css['background'] = $bg_image_color;
+								$gen_bg_overlay_css['opacity']    = $overlay_opacity;
+							} else {
+								$gen_bg_css['background-image'] = 'linear-gradient(to right, ' . $bg_image_color . ', ' . $bg_image_color . '), url(' . $bg_img . ');';
+							}
 						}
 						if ( 'gradient' === $overlay_type && '' !== $bg_img && '' !== $gradient ) {
-							$gen_bg_css['background-image'] = $gradient . ', url(' . $bg_img . ');';
+							if ( ! empty( $css_for_pseudo ) ) {
+								$gen_bg_css['background-image']         = 'url(' . $bg_img . ');';
+								$gen_bg_overlay_css['background-image'] = $gradient;
+								$gen_bg_overlay_css['opacity']          = $overlay_opacity;
+							} else {
+								$gen_bg_css['background-image'] = $gradient . ', url(' . $bg_img . ');';
+							}
 						}
 						if ( 'none' === $overlay_type && '' !== $bg_img ) {
 							$gen_bg_css['background-image'] = 'url(' . $bg_img . ');';
@@ -1521,7 +1536,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$gen_bg_css['background-color'] = $bg_color . ';';
 			}
 
-			return $gen_bg_css;
+			return 'yes' === $css_for_pseudo ? $gen_bg_overlay_css : $gen_bg_css;
 		}
 		/**
 		 * Border attribute generation Function.

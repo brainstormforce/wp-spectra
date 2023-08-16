@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Improvement: Container - Added an opacity setting for the overlay of the image and video background-types.
 * Improvement: Info Box - Added heading tag settings for prefix.
 * Improvement: Info Box - Added an inherit-from-theme option for the text-type CTA.
 * Fix: Blockquote - Resolved an issue wherein having '#' or '@' symbols in the description would result in the removal of content following them symbols when shared on Twitter.

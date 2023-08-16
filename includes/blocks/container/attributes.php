@@ -149,6 +149,7 @@ return array_merge(
 		'backgroundCustomSizeMobile'        => '',
 		'backgroundCustomSizeType'          => '%',
 		'overlayType'                       => 'none',
+		'overlayOpacity'                    => 1,
 		'customPosition'                    => 'default',
 		'xPositionDesktop'                  => '',
 		'xPositionTablet'                   => '',

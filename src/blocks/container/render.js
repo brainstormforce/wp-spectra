@@ -33,7 +33,7 @@ const Render = ( props ) => {
 	const direction = attributes[ 'direction' + deviceType ];
 
 	const moverDirection = 'row' === direction ? 'horizontal' : 'vertical';
-	const getContainerBGStyle = backgroundCss( attributes, deviceType, clientId );
+	const getContainerBGStyle = backgroundCss( attributes, deviceType, clientId, { hasPseudo: true, forStyleSheet: false } );
 
 	const topDividerHtml = 'none' !== topType && (
 		<div
@@ -78,7 +78,7 @@ const Render = ( props ) => {
 	const isRootContainerClass = isBlockRootParent ? `${ contentWidth } uagb-is-root-container` : '';
 	const blockProps = useBlockProps( {
 		className: `uagb-block-${ block_id } ${ hasChildrenClass } uagb-editor-preview-mode-${ deviceType.toLowerCase() } ${ isRootContainerClass }`,
-		style: getContainerBGStyle
+		style: 'video' !== backgroundType ? getContainerBGStyle : '',
 	} );
 
 	const innerBlocksParams = {

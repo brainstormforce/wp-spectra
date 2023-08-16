@@ -37,6 +37,8 @@ const UAGBContainer = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
+			backgroundType,
+			backgroundVideoOpacity,
 		},
 		clientId,
 		setAttributes,
@@ -182,6 +184,14 @@ const UAGBContainer = ( props ) => {
 				setAttributes,
 				attributes
 			);
+		}
+
+		// If the legacy video overlay opacity for video background was set, migrate it.
+		if ( 'video' === backgroundType && backgroundVideoOpacity ) {
+			setAttributes( {
+				overlayOpacity: backgroundVideoOpacity,
+				backgroundVideoOpacity: 0,
+			} );
 		}
 
 		if ( 0 !== select( 'core/block-editor' ).getBlockParents( clientId ).length ) {

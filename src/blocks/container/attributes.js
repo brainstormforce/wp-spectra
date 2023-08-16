@@ -876,6 +876,13 @@ const attributes = {
 			styleType: 'background-overlay-type',
 		},
 	},
+	overlayOpacity: {
+		type: 'number',
+		default: 1,
+		UAGCopyPaste: {
+			styleType: 'background-overlay-opacity',
+		},
+	},
 	// Background image position.
 	customPosition: {
 		type: 'string',

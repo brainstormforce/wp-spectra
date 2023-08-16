@@ -71,7 +71,6 @@ const Settings = ( props ) => {
 		backgroundSizeTablet,
 		backgroundSizeMobile,
 		backgroundImageColor,
-		backgroundVideoOpacity,
 		gradientValue,
 		boxShadowColor,
 		boxShadowHOffset,
@@ -158,6 +157,7 @@ const Settings = ( props ) => {
 		backgroundCustomSizeMobile,
 		backgroundCustomSizeType,
 		overlayType,
+		overlayOpacity,
 		customPosition,
 		xPositionDesktop,
 		xPositionTablet,
@@ -1003,6 +1003,10 @@ const Settings = ( props ) => {
 						value: overlayType,
 						label: 'overlayType',
 					} }
+					overlayOpacity={ {
+						value: overlayOpacity,
+						label: 'overlayOpacity',
+					} }
 					gradientOverlay={ {
 						value: true,
 					} }
@@ -1070,10 +1074,10 @@ const Settings = ( props ) => {
 						label: 'backgroundVideoColor',
 					} }
 					backgroundVideoOpacity={ {
-						value: backgroundVideoOpacity,
-						label: 'backgroundVideoOpacity',
+						value: overlayOpacity,
+						label: 'overlayOpacity',
 					} }
-					onOpacityChange={ ( opacity ) => setAttributes( { backgroundVideoOpacity: opacity } ) }
+					onOpacityChange={ ( opacity ) => setAttributes( { overlayOpacity: opacity } ) }
 					{ ...props }
 				/>
 			</UAGAdvancedPanelBody>
