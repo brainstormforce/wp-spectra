@@ -47,10 +47,10 @@ const Render = ( props ) => {
 	const parentBlockAttributes = select( 'core/block-editor' ).getBlockAttributes( immediateParentClientId );
 
 	useEffect( () => {
-		if ( parentBlockAttributes.icon ) {
+		if ( parentBlockAttributes?.icon ) {
 			setAttributes( { icon: parentBlockAttributes.icon } );
 		}
-	}, [ parentBlockAttributes.icon ] );
+	}, [ parentBlockAttributes?.icon ] );
 
 	const timelinAlignment =
 		'undefined' !== typeof attributes[ 'timelinAlignment' + deviceType ]

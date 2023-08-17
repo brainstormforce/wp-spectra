@@ -89,7 +89,7 @@ export default function save( props ) {
 	// Get Title and Prefix components.
 	const titleText = (
 		<div className="uagb-ifb-title-wrap">
-			{ showPrefix && '' !== prefixTitle && <RichText.Content tagName="span" value={ attributes.prefixTitle } className="uagb-ifb-title-prefix" /> }
+			{ showPrefix && '' !== prefixTitle && <RichText.Content tagName={attributes.prefixHeadingTag} value={ attributes.prefixTitle } className="uagb-ifb-title-prefix" /> }
 			{ 'none' !== seperatorStyle && position === 'after_prefix' && seperatorHtml }
 			{showTitle && '' !== infoBoxTitle &&
 				<RichText.Content

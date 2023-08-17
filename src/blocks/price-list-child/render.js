@@ -12,7 +12,7 @@ const Render = ( props ) => {
 	const { className, setAttributes, attributes, clientId } = props;
 
 	// Setup the attributes.
-	const { imagePosition, headingAlign, imgAlign, showImage, image, imageWidth } = attributes;
+	const { imagePosition, headingAlign, imgAlign, showImage, image, imageWidth, block_id } = attributes;
 
 	const parentClientId = select( 'core/block-editor' ).getBlockHierarchyRootClientId( clientId );
 	const parentAttributes = select( 'core/block-editor' ).getBlockAttributes( parentClientId );
@@ -51,7 +51,7 @@ const Render = ( props ) => {
 			className={ classnames(
 				className,
 				'uagb-rest_menu__wrap',
-				`uagb-block-${ clientId.substr( 0, 8 ) }`
+				`uagb-block-${ block_id }`
 			) }
 		>
 			{ imgAlignment === 'top' && (

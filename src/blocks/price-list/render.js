@@ -13,10 +13,10 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	const { className, attributes, deviceType, clientId } = props;
+	const { className, attributes, deviceType } = props;
 
 	// Setup the attributes.
-	const { menu_item_count, columns, tcolumns, mcolumns } = attributes;
+	const { menu_item_count, columns, tcolumns, mcolumns, block_id } = attributes;
 
 	const getPriceListTemplate = useMemo( () => {
 		const childList = [];
@@ -33,7 +33,7 @@ const Render = ( props ) => {
 			className={ classnames(
 				className,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ clientId.substr( 0, 8 ) }`,
+				`uagb-block-${ block_id }`,
 				`uagb-rm__desk-column-${ columns }`,
 				`uagb-rm__tablet-column-${ tcolumns }`,
 				`uagb-rm__mobile-column-${ mcolumns }`

@@ -76,15 +76,9 @@ const DynamicContentExtension = () => {
                         </div>
                     ) }
                 </p>
-				{/* This will be replaced by the commented code once Spectra Pro is released. */}
-				<span className="text-slate-400 text-sm truncate pointer-events-none">
-					{ __( 'Coming Soon', 'ultimate-addons-for-gutenberg' ) }
-				</span>
-				{/*
-                <a className="focus-visible:text-slate-500 active:text-slate-500 hover:text-slate-500 focus:text-slate-400 text-slate-400 text-sm truncate" href='https://wpspectra.com/docs/dynamic-content/' target="_blank"rel="noreferrer">
-					{ __( 'Documentation', 'ultimate-addons-for-gutenberg' ) }
+				<a className="focus-visible:text-slate-500 active:text-slate-500 hover:text-slate-500 focus:text-slate-400 text-slate-400 text-sm truncate" href='https://wpspectra.com/docs/how-to-use-dynamic-content/' target="_blank"rel="noreferrer">
+					{ __( 'Documentations', 'ultimate-addons-for-gutenberg' ) }
 				</a>
-				*/}
             </div>
             { uag_react.spectra_pro_status ? (
                 <Switch

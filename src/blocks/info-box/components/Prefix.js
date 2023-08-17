@@ -10,7 +10,7 @@ const Prefix = ( props ) => {
 	let { prefixTitle } = attributes;
 
 	if( 'not_set' === setAttributes ){
-		return <RichText.Content tagName="span" value={ prefixTitle } className="uagb-ifb-title-prefix" />
+		return <RichText.Content tagName={attributes.prefixHeadingTag} value={ prefixTitle } className="uagb-ifb-title-prefix" />
 	}
 
 	let allowedFormats = false;
@@ -26,7 +26,7 @@ const Prefix = ( props ) => {
 
 	return (
 		<RichText
-			tagName="div"
+			tagName={ attributes.prefixHeadingTag }
 			value={ prefixTitle }
 			placeholder={ __( 'Write a Prefix', 'ultimate-addons-for-gutenberg' ) }
 			className="uagb-ifb-title-prefix"

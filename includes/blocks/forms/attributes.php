@@ -214,6 +214,7 @@ return array_merge(
 		'gradientHLocation2'             => 100,
 		'gradientHAngle'                 => 0,
 		'selectHGradient'                => 'default',
+		'inheritFromTheme'               => false,
 	),
 	$success_message_border_attribute,
 	$failed_message_border_attribute,

@@ -25,7 +25,7 @@ const UAGBTaxonomyList = ( props ) => {
 			postType,
 			taxonomyType,
 			showEmptyTaxonomy,
-			listInJson,
+			listInJson = null,
 			borderStyle,
 			borderThickness,
 			borderRadius,
@@ -77,21 +77,23 @@ const UAGBTaxonomyList = ( props ) => {
 	} );
 
 	useEffect( () => {
-
-		// Create an object with the noce property
-        const data = {
-            nonce: uagb_blocks_info.uagb_ajax_nonce,
-        };
-		// Call the getApiData function with the specified parameters
-        const getApiFetchData = getApiData( {
-            url: uagb_blocks_info.ajax_url,
-            action: 'uagb_get_taxonomy',
-            data,
-        } );
-		// Wait for the API call to complete, then update attributes
-        getApiFetchData.then( ( _data ) => {
-            setAttributes( { listInJson: _data } );
-        } );
+		
+		if( ! listInJson ) {
+			// Create an object with the noce property
+			const data = {
+				nonce: uagb_blocks_info.uagb_ajax_nonce,
+			};
+			// Call the getApiData function with the specified parameters
+			const getApiFetchData = getApiData( {
+				url: uagb_blocks_info.ajax_url,
+				action: 'uagb_get_taxonomy',
+				data,
+			} );
+			// Wait for the API call to complete, then update attributes
+			getApiFetchData.then( ( responseData ) => {
+				setAttributes( { listInJson: responseData } );
+			} );
+		}
 
 		if ( borderThickness ) {
 			if ( undefined === overallBorderTopWidth ) {

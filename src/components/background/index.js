@@ -16,6 +16,7 @@ import { getPanelIdFromRef } from '@Utils/Helpers';
 import { select } from '@wordpress/data';
 import UAGHelpText from '@Components/help-text';
 import { applyFilters } from '@wordpress/hooks';
+import Range from '@Components/range/Range';
 
 const Background = ( props ) => {
 	const { getSelectedBlock } = select( 'core/block-editor' );
@@ -36,6 +37,7 @@ const Background = ( props ) => {
 		setAttributes,
 		backgroundImageColor,
 		overlayType,
+		overlayOpacity,
 		backgroundSize,
 		backgroundRepeat,
 		backgroundAttachment,
@@ -192,6 +194,35 @@ const Background = ( props ) => {
 		( backgroundImage.desktop?.value || backgroundImage.tablet?.value || backgroundImage.mobile?.value )
 			? true
 			: false;
+
+	// Render Common Overlay Controls.
+	const renderOverlayControls = () => {
+		// For now, we are only rendering this setting if the current block is a Container.
+		const currentBlock = select( 'core/block-editor' ).getSelectedBlock();
+
+		// Return early if the selected block is not a Container.
+		if ( ! currentBlock?.name || 'uagb/container' !== currentBlock.name ) {
+			return null;
+		}
+
+		return (
+			<div className='uag-background-image-overlay-opacity'>
+				<Range
+					label={ __( 'Overlay Opacity', 'ultimate-addons-for-gutenberg' ) }
+					setAttributes={ setAttributes }
+					value={ overlayOpacity.value }
+					data={ {
+						value: overlayOpacity.value,
+						label: overlayOpacity.label,
+					} }
+					min={ 0 }
+					max={ 1 }
+					step={ 0.05 }
+					displayUnit={ false }
+				/>
+			</div>
+		);
+	};
 
 	const advancedControls = (
 		<>
@@ -623,24 +654,26 @@ const Background = ( props ) => {
 							</div>
 						</>
 					) }
-					{ overlayType &&
-						backgroundImage &&
-						( ( imageResponsive && setImage ) || ( ! imageResponsive && backgroundImage?.value ) ) && (
-							<>
-								<div className="uag-background-image-overlay-type">
-									<MultiButtonsControl
-										setAttributes={ setAttributes }
-										label={ __( 'Overlay Type', 'ultimate-addons-for-gutenberg' ) }
-										data={ {
-											value: overlayType.value,
-											label: overlayType.label,
-										} }
-										className="uagb-multi-button-alignment-control"
-										options={ overlayOptions }
-										showIcons={ false }
-									/>
-								</div>
-								{ 'color' === overlayType.value && (
+					{ overlayType
+					&& backgroundImage
+					&& ( ( imageResponsive && setImage ) || ( ! imageResponsive && backgroundImage?.value ) )
+					&& (
+						<>
+							<div className="uag-background-image-overlay-type">
+								<MultiButtonsControl
+									setAttributes={ setAttributes }
+									label={ __( 'Overlay Type', 'ultimate-addons-for-gutenberg' ) }
+									data={ {
+										value: overlayType.value,
+										label: overlayType.label,
+									} }
+									className="uagb-multi-button-alignment-control"
+									options={ overlayOptions }
+									showIcons={ false }
+								/>
+							</div>
+							{ 'color' === overlayType.value && (
+								<>
 									<div className="uag-background-image-overlay-color">
 										<AdvancedPopColorControl
 											label={ __( 'Image Overlay Color', 'ultimate-addons-for-gutenberg' ) }
@@ -652,8 +685,11 @@ const Background = ( props ) => {
 											setAttributes={ setAttributes }
 										/>
 									</div>
-								) }
-								{ 'gradient' === overlayType.value && (
+									{ renderOverlayControls() }
+								</>
+							) }
+							{ 'gradient' === overlayType.value && (
+								<>
 									<div className="uag-background-image-overlay-gradient">
 										<GradientSettings
 											backgroundGradient={ props.backgroundGradient }
@@ -667,9 +703,11 @@ const Background = ( props ) => {
 											backgroundGradientAngle={ props.backgroundGradientAngle }
 										/>
 									</div>
-								) }
-							</>
-						) }
+									{ renderOverlayControls() }
+								</>
+							) }
+						</>
+					) }
 				</div>
 			) }
 			{ gradientOverlay.value && 'gradient' === backgroundType.value && (
@@ -717,37 +755,43 @@ const Background = ( props ) => {
 								/>
 							</div>
 							{ 'color' === overlayType.value && (
-								<div className="uag-background-image-overlay-color">
-									<AdvancedPopColorControl
-										label={ __( 'Image Overlay Color', 'ultimate-addons-for-gutenberg' ) }
-										colorValue={ backgroundVideoColor.value }
-										data={ {
-											value: backgroundVideoColor.value,
-											label: backgroundVideoColor.label,
-										} }
-										setAttributes={ setAttributes }
-										onOpacityChange={ onOpacityChange }
-										backgroundVideoOpacity={ {
-											value: backgroundVideoOpacity.value,
-											label: backgroundVideoOpacity.label,
-										} }
-									/>
-								</div>
+								<>
+									<div className="uag-background-image-overlay-color">
+										<AdvancedPopColorControl
+											label={ __( 'Image Overlay Color', 'ultimate-addons-for-gutenberg' ) }
+											colorValue={ backgroundVideoColor.value }
+											data={ {
+												value: backgroundVideoColor.value,
+												label: backgroundVideoColor.label,
+											} }
+											setAttributes={ setAttributes }
+											onOpacityChange={ onOpacityChange }
+											backgroundVideoOpacity={ {
+												value: backgroundVideoOpacity.value,
+												label: backgroundVideoOpacity.label,
+											} }
+										/>
+									</div>
+									{ renderOverlayControls() }
+								</>
 							) }
 							{ gradientOverlay.value && 'gradient' === overlayType.value && (
-								<div className="uag-background-image-overlay-gradient">
-									<GradientSettings
-										backgroundGradient={ props.backgroundGradient }
-										setAttributes={ setAttributes }
-										gradientType={ props.gradientType }
-										backgroundGradientColor2={ props.backgroundGradientColor2 }
-										backgroundGradientColor1={ props.backgroundGradientColor1 }
-										backgroundGradientType={ props.backgroundGradientType }
-										backgroundGradientLocation1={ props.backgroundGradientLocation1 }
-										backgroundGradientLocation2={ props.backgroundGradientLocation2 }
-										backgroundGradientAngle={ props.backgroundGradientAngle }
-									/>
-								</div>
+								<>
+									<div className="uag-background-image-overlay-gradient">
+										<GradientSettings
+											backgroundGradient={ props.backgroundGradient }
+											setAttributes={ setAttributes }
+											gradientType={ props.gradientType }
+											backgroundGradientColor2={ props.backgroundGradientColor2 }
+											backgroundGradientColor1={ props.backgroundGradientColor1 }
+											backgroundGradientType={ props.backgroundGradientType }
+											backgroundGradientLocation1={ props.backgroundGradientLocation1 }
+											backgroundGradientLocation2={ props.backgroundGradientLocation2 }
+											backgroundGradientAngle={ props.backgroundGradientAngle }
+										/>
+									</div>
+									{ renderOverlayControls() }
+								</>
 							) }
 						</>
 					) }

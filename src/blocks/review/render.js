@@ -113,7 +113,7 @@ const Render = ( props ) => {
 			className={ classnames(
 				className,
 				'uagb-ratings__outer-wrap',
-				`uagb-block-${ block_id.substr( 0, 8 ) }`,
+				`uagb-block-${ block_id }`,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
 			) }
 		>

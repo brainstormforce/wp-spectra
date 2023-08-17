@@ -13,12 +13,12 @@ import Settings from './settings';
 import Render from './render';
 //  Import CSS.
 import './style.scss';
+import AddInitialAttr from '@Controls/addInitialAttr';
 
 const UAGBSeparator = ( props ) => {
 	const {
 		isSelected,
 		attributes,
-		setAttributes,
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 		name,
 		clientId,
@@ -28,11 +28,6 @@ const UAGBSeparator = ( props ) => {
 	useEffect( () => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
-
-	useEffect( () => {
-		// Assigning block_id in the attribute.
-		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
-	}, [] );
 
 	useEffect( () => {
 		scrollBlockToView();
@@ -49,4 +44,7 @@ const UAGBSeparator = ( props ) => {
 		</>
 	);
 };
-export default compose( AddStaticStyles )( UAGBSeparator );
+export default compose( 
+	AddStaticStyles,
+	AddInitialAttr 
+)( UAGBSeparator );

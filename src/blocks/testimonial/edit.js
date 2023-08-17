@@ -41,6 +41,7 @@ const UAGBtestimonial = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
+			block_id,
 		},
 		isSelected,
 		clientId,
@@ -102,9 +103,9 @@ const UAGBtestimonial = ( props ) => {
 
 	useEffect( () => {
 		if ( equalHeight ) {
-			uagb_carousel_height( clientId.substr( 0, 8 ) );
+			uagb_carousel_height( block_id );
 		} else {
-			uagb_carousel_unset_height( clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
+			uagb_carousel_unset_height( block_id ); // eslint-disable-line no-undef
 		}
 	}, [ attributes, deviceType ] );
 

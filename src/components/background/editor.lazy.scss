@@ -1,5 +1,7 @@
 @import "../../styles/variables";
 
+// TODO: This entire CSS File needs to be extremely refactored.
+
 .uag-bg-select-control {
 	.uag-background-color,
 	.uag-background-image,
@@ -25,6 +27,17 @@
 			& > .components-base-control {
 				width: 45%;
 			}
+		}
+	}
+
+	// CSS Specifically to ensure that the Opacity slider and Gradient sliders are not broken in the current CSS file state.
+	.uag-background-image-overlay-opacity,
+	.uag-background-image-overlay-gradient {
+		margin-top: $spectra-control-vertical-gap;
+
+		.uag-range-control.uagb-size-type-field-tabs {
+			flex-direction: column;
+			align-items: flex-start;
 		}
 	}
 

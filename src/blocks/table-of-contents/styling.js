@@ -11,6 +11,7 @@ function styling( attributes, clientId, name, deviceType ) {
 	const blockName = name.replace( 'uagb/', '' );
 	const previewType = deviceType.toLowerCase();
 	const {
+		block_id,
 		customWidth,
 		makeCollapsible,
 		widthDesktop,
@@ -437,7 +438,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		};
 	}
 
-	const id = `.block-editor-block-list__block .uagb-block-${ clientId.substr( 0, 8 ) }`;
+	const id = `.block-editor-block-list__block .uagb-block-${ block_id }`;
 
 	let styling_css = generateCSS( selectors, id );
 

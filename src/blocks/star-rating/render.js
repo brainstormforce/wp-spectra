@@ -18,9 +18,8 @@ const Render = ( props ) => {
 	const {
 		className,
 		setAttributes,
-		attributes: { rating, range, title, displayTitle },
+		attributes: { rating, range, title, displayTitle, block_id },
 		deviceType,
-		clientId
 	} = props;
 
 	const rangeValue = parseInt( range );
@@ -38,7 +37,7 @@ const Render = ( props ) => {
 			className={ classnames(
 				className,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ clientId.substr( 0, 8 ) }`
+				`uagb-block-${ block_id }`
 			) }
 		>
 			{ displayTitle && (

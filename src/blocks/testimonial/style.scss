@@ -300,3 +300,12 @@
 		}
 	}
 }
+
+.entry-content {
+	.wp-block-uagb-testimonial
+	.is-carousel {
+		ul.slick-dots {
+			padding: unset; // To resolve an issue of dots are not in center on front-end, unseting padding of ul of slick-dots.
+		}
+	}
+}

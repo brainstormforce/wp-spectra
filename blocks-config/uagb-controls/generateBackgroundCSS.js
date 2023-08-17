@@ -1,4 +1,4 @@
-function generateBackgroundCSS( backgroundAttributes ) {
+const generateBackgroundCSS = ( backgroundAttributes, pseudoElementOverlay = {} ) => {
 	const {
 		backgroundType,
 		backgroundImage,
@@ -12,6 +12,7 @@ function generateBackgroundCSS( backgroundAttributes ) {
 		backgroundCustomSizeType,
 		backgroundImageColor,
 		overlayType,
+		overlayOpacity,
 		backgroundVideoColor,
 		backgroundVideo,
 		customPosition,
@@ -29,11 +30,20 @@ function generateBackgroundCSS( backgroundAttributes ) {
 	} = backgroundAttributes;
 
 	const bgCSS = {};
+	const bgOverlayCSS = {};
 	const xPositionValue = isNaN( xPosition ) || '' === xPosition ? 0 : xPosition;
 	const xPositionTypeValue = undefined !== xPositionType ? xPositionType : '';
 	const yPositionValue = isNaN( yPosition ) || '' === yPosition ? 0 : yPosition;
 	const yPositionTypeValue = undefined !== yPositionType ? yPositionType : '';
 
+	// Handle the Overlay Opacity.
+	const applyOverlayOpacity = () => {
+		if ( undefined !== overlayOpacity && '' !== overlayOpacity ) {
+			bgOverlayCSS.opacity = `${ overlayOpacity }`;
+		}
+	};
+
+	// Handle the Gradient Properties.
 	let gradient;
 
 	switch ( selectGradient ) {
@@ -58,12 +68,14 @@ function generateBackgroundCSS( backgroundAttributes ) {
 			break;
 	}
 	
+	// Handle the Background Size Properties.
 	let backgroundSizeValue = backgroundSize;
 
 	if ( 'custom' === backgroundSize ) {
 		backgroundSizeValue = backgroundCustomSize + backgroundCustomSizeType;
 	}
 
+	// Handle the Background Properties along with Overlay if Needed.
 	if ( undefined !== backgroundType && '' !== backgroundType ) {
 		if ( 'color' === backgroundType ) {
 			if (
@@ -94,14 +106,20 @@ function generateBackgroundCSS( backgroundAttributes ) {
 				'unset' !== backgroundImageColor &&
 				backgroundImage?.url
 			) {
-				bgCSS[ 'background-image' ] =
-					'linear-gradient(to right, ' +
-					backgroundImageColor +
-					', ' +
-					backgroundImageColor +
-					'), url(' +
-					backgroundImage?.url +
-					');';
+				if ( pseudoElementOverlay?.hasPseudo ) {
+					bgCSS[ 'background-image' ] = `url(${ backgroundImage.url });`;
+					bgOverlayCSS.background = backgroundImageColor;
+					applyOverlayOpacity();
+				} else {
+					bgCSS[ 'background-image' ] =
+						'linear-gradient(to right, ' +
+						backgroundImageColor +
+						', ' +
+						backgroundImageColor +
+						'), url(' +
+						backgroundImage.url +
+						');';
+				}
 			}
 			if (
 				'gradient' === overlayType &&
@@ -110,7 +128,13 @@ function generateBackgroundCSS( backgroundAttributes ) {
 				gradient &&
 				backgroundImage?.url
 			) {
-				bgCSS[ 'background-image' ] = gradient + ', url(' + backgroundImage?.url + ');';
+				if ( pseudoElementOverlay?.hasPseudo ) {
+					bgCSS[ 'background-image' ] = `url(${ backgroundImage.url });`;
+					bgOverlayCSS[ 'background-image' ] = gradient;
+					applyOverlayOpacity();
+				} else {
+					bgCSS[ 'background-image' ] = gradient + ', url(' + backgroundImage?.url + ');';
+				}
 			}
 			if ( '' !== backgroundImage && backgroundImage && 'none' === overlayType && backgroundImage?.url ) {
 				bgCSS[ 'background-image' ] = 'url(' + backgroundImage?.url + ');';
@@ -150,7 +174,7 @@ function generateBackgroundCSS( backgroundAttributes ) {
 		}
 	}
 
-	return bgCSS;
+	return pseudoElementOverlay?.forStyleSheet ? bgOverlayCSS : bgCSS;
 }
 
 export default generateBackgroundCSS;

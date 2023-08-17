@@ -1153,6 +1153,10 @@ const attributes = {
 			styleType: 'display-labels',
 		},
 	},
+	inheritFromTheme: {
+		type: 'boolean',
+		default: false,
+	},
 	isPreview: {
 		type: 'boolean',
 		default: false,

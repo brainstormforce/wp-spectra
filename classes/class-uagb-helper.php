@@ -221,7 +221,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 *  get_css_value( VALUE, 'em' );
 		 *
-		 * @param string $value  CSS value.
+		 * @param mixed  $value  CSS value.
 		 * @param string $unit  CSS unit.
 		 * @since 1.13.4
 		 */
@@ -230,7 +230,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				return '';
 			}
 
-			return esc_attr( $value ) . $unit;
+			$unit = sanitize_text_field( $unit );
+
+			if ( empty( $unit ) ) {
+				return $value;
+			}
+
+			return esc_attr( $value . $unit );
 		}
 
 
@@ -265,13 +271,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @return array
 		 */
 		public static function backend_load_font_awesome_icons() {
-			
+
 			if ( null !== self::$icon_json ) {
 				return self::$icon_json;
 			}
 
 			$icons_chunks = array();
-			for ( $i = 0; $i < self::$number_of_icon_chunks; $i++ ) { 
+			for ( $i = 0; $i < self::$number_of_icon_chunks; $i++ ) {
 				$json_file = UAGB_DIR . "blocks-config/uagb-controls/spectra-icons-v6-{$i}.php";
 				if ( file_exists( $json_file ) ) {
 					$icons_chunks[] = include $json_file;
@@ -281,7 +287,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			if ( empty( $icons_chunks ) ) {
 				return array();
 			}
-			
+
 			self::$icon_json = $icons_chunks;
 			return self::$icon_json;
 		}
@@ -1354,7 +1360,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since 2.4.0
 		 */
 		public static function get_combined_selectors( $block_name, $selectors, $attr ) {
-			if ( ! is_array( $selectors ) ) { 
+			if ( ! is_array( $selectors ) ) {
 				return $selectors;
 			}
 

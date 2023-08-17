@@ -1,6 +1,5 @@
 import { useEffect } from '@wordpress/element';
 import { select } from '@wordpress/data';
-
 const getUniqId = ( blocks ) => blocks
 	.reduce( ( result, block ) => {
 		if ( block?.attributes?.block_id && block.name.includes( 'uagb' ) ) {
@@ -117,26 +116,8 @@ const addInitialAttr = ( ChildComponent ) => {
 				'uagb/post-meta',
 				'uagb/post-taxonomy',
 				'uagb/post-title',
-				'uagb/restaurant-menu',
-				'uagb/restaurant-menu-child',
-				'uagb/review',
-				'uagb/section',
-				'uagb/separator',
 				'uagb/slider',
 				'uagb/slider-child',
-				'uagb/social-share',
-				'uagb/social-share-child',
-				'uagb/star-rating',
-				'uagb/table-of-contents',
-				'uagb/tabs',
-				'uagb/tabs-child',
-				'uagb/taxonomy-list',
-				'uagb/team',
-				'uagb/testimonial',
-				'uagb/content-timeline',
-				'uagb/content-timeline-child',
-				'uagb/post-timeline',
-				'uagb/wp-search',
 			];
 
 			if( ! REUSABLE_BLOCK_ISSUE_RESOLVED_BLOCKS.includes( name ) ){

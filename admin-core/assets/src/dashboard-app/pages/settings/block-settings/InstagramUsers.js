@@ -331,9 +331,11 @@ const InstagramUsers = () => {
 	const generateDP = ( user ) => {
 		switch ( user.userType.toLowerCase() ) {
 			case 'personal':
+				// Will be the profile picture.
+				const profileUserName = ( user?.userName && 'string' === typeof user.userName ) ? user.userName[0].toUpperCase() : UAGB_Block_Icons['instagram-feed'];
 				return (
 					<div className="h-12 w-12 aspect-square rounded-full bg-violet-100 text-spectra flex justify-center items-center text-xl">
-						{ user.userName[0] ? user.userName[0].toUpperCase() : UAGB_Block_Icons[ 'instagram-feed' ] }
+						{ profileUserName }
 					</div>
 				);
 			case 'business':

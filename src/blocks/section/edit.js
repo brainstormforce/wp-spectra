@@ -15,6 +15,7 @@ import AddStaticStyles from '@Controls/AddStaticStyles';
 import hexToRGBA from '@Controls/hexToRgba';
 
 import maybeGetColorForVariable from '@Controls/maybeGetColorForVariable';
+import addInitialAttr from '@Controls/addInitialAttr';
 
 const UAGBSectionEdit = ( props ) => {
 	const {
@@ -128,5 +129,6 @@ const UAGBSectionEdit = ( props ) => {
 };
 
 export default compose(
+	addInitialAttr,
 	AddStaticStyles,
 )( UAGBSectionEdit );

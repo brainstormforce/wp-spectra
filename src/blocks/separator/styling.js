@@ -10,6 +10,7 @@ function styling( attributes, clientId, name, deviceType ) {
 	const blockName = name.replace( 'uagb/', '' );
 	const previewType = deviceType.toLowerCase();
 	const {
+		block_id,
 		//separator
 		separatorAlign,
 		separatorAlignTablet,
@@ -405,7 +406,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		},
 	};
 
-	const base_selector = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
+	const base_selector = `.editor-styles-wrapper .uagb-block-${ block_id }`;
 
 	let styling_css = generateCSS( selectors, base_selector );
 

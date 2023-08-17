@@ -12,7 +12,7 @@ const Render = ( props ) => {
 	}, [] );
 
 	// Caching all Props.
-	const { categoriesList, attributes, deviceType, clientId } = props;
+	const { categoriesList, attributes, deviceType } = props;
 
 	// Caching all attributes.
 	const {
@@ -23,6 +23,7 @@ const Render = ( props ) => {
 		listDisplayStyle,
 		showhierarchy,
 		titleTag,
+		block_id,
 	} = attributes;
 
 	let Tag;
@@ -38,7 +39,7 @@ const Render = ( props ) => {
 				'uagb-taxonomy__outer-wrap',
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-layout-${ layout }`,
-				`uagb-block-${ clientId.substr( 0, 8 ) }`
+				`uagb-block-${ block_id }`
 			) }
 		>
 			{ 'grid' === layout &&

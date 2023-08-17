@@ -3,9 +3,9 @@ Contributors: brainstormforce
 Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
-Requires PHP: 5.6
+Requires PHP: 7.4
 Tested up to: 6.3.0
-Stable tag: 2.7.4
+Stable tag: 2.7.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -214,6 +214,21 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
 
 == Changelog ==
+
+= 2.7.5 - WEDNESDAY, 16th AUGUST 2023 =
+* Improvement: Container - Added an opacity setting for the overlay of the image and video background types.
+* Improvement: Info Box - Added heading tag settings for the prefix.
+* Improvement: Info Box - Added an inherit-from-theme option for the text-type CTA.
+* Improvement: Form - Added an inherit-from-theme option for the submit button styling.
+* Improvement: Global - Enhanced the reusable block functionality for the following blocks: Review, Content Timeline, Post Timeline, Price List, Separator, Social Share, Star Rating, Table Of Contents, Taxonomy List, Team, Testimonials.
+* Fix: Call To Action - Resolved an issue in which the bottom margins of the title and description would not work as intended for Tablet and Mobile devices on the frontend.
+* Fix: Blockquote - Resolved an issue wherein having '#' or '@' symbols in the description would result in the removal of content following the symbols when shared on Twitter.
+* Fix: Post Carousel - Resolved an issue wherein the carousel dots would not appear centered.
+* Fix: Social Share - Resolved an issue wherein the gap between icons would add unwanted margins to the sides of the wrapper.
+* Fix: Testimonials - Resolved an issue wherein the Testimonial dots would not appear centered.
+* Fix: Global - Resolved an issue that was encountered when updating to WordPress 6.3 on some websites.
+* Fix: Global - Resolved an issue wherein the color-picker default icon would not appear in WordPress 6.3.
+* Fix: Admin - Resolved an issue in which an undefined record could appear on the Instagram integrations page.
 
 = 2.7.4 - TUESDAY, 8th AUGUST 2023 =
 * Improvement: Core Blocks - Implemented responsive typography font-size units.
