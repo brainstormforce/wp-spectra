@@ -356,7 +356,7 @@ class UAGB_Post_Assets {
 		if ( $version_updated ) {
 			// Delete cached meta.
 			$unique_ids = get_option( '_uagb_fse_uniqids' );
-			if ( is_array( $unique_ids ) && ! empty( $unique_ids ) ) {
+			if ( ! empty( $unique_ids ) && is_array( $unique_ids ) ) {
 				foreach ( $unique_ids as $id ) {
 					delete_post_meta( (int) $id, '_uag_page_assets' );
 				}

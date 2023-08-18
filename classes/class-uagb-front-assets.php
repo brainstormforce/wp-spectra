@@ -119,7 +119,7 @@ class UAGB_Front_Assets {
 			$template_id_based_on_name = hash( 'crc32b', $template_name );
 			$dynamic_id                = hexdec( $template_id_based_on_name );
 			$get_uagb_fse_uniqids      = get_option( '_uagb_fse_uniqids' ); // Retrieve the existing array.
-			if ( is_array( $get_uagb_fse_uniqids ) && ! empty( $get_uagb_fse_uniqids ) ) {
+			if ( ! empty( $get_uagb_fse_uniqids ) && is_array( $get_uagb_fse_uniqids ) ) {
 				// Add the new dynamic_id to the array if it doesn't already exist.
 				$updated_uagb_fse_uniqids = array_unique( array_merge( $get_uagb_fse_uniqids, array( $dynamic_id ) ) );
 			} else {
