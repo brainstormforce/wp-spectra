@@ -179,8 +179,7 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 
 			$does_post_contain_reusable_blocks = $this->does_post_contain_reusable_blocks( $post_id );
 
-			if ( true === $does_post_contain_reusable_blocks ) {
-
+			if ( true === $does_post_contain_reusable_blocks || 'wp_block' === $current_post_type ) {
 				/* Update the asset version */
 				update_option( '__uagb_asset_version', time() );
 			}
