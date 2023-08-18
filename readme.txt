@@ -216,7 +216,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
-Fix: Forms - Resolved multiple styling issues on the frontend.
+* Fix: Global - Resolved a significant issue of multiple `_uag_page_assets` entries in the database when using an FSE theme.
+* Fix: Forms - Resolved multiple styling issues on the frontend.
 
 = 2.7.5 - WEDNESDAY, 16th AUGUST 2023 =
 * Improvement: Container - Added an opacity setting for the overlay of the image and video background types.

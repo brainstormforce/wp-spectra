@@ -173,6 +173,12 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 				}
 			}
 
+			$unique_ids = get_option( '_uagb_fse_uniqids' );
+			if ( is_array( $unique_ids ) && ! empty( $unique_ids ) ) {
+				foreach ( $unique_ids as $id ) {
+					delete_post_meta( (int) $id, '_uag_page_assets' );
+				}
+			}
 			delete_post_meta( $post_id, '_uag_page_assets' );
 			delete_post_meta( $post_id, '_uag_css_file_name' );
 			delete_post_meta( $post_id, '_uag_js_file_name' );
