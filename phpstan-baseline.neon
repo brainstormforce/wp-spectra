@@ -7535,3 +7535,8 @@ parameters:
 			message: "#^Variable \\$id might not be defined\\.$#"
 			count: 1
 			path: includes/blocks/wp-search/frontend.css.php
+
+		#common errors
+
+		- '#with no value type specified in iterable type array\.$#'
+		- '#type has no value type specified in iterable type array\.$#'

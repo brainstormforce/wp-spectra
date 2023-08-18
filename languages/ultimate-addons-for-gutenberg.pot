@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.7.5\n"
+"Project-Id-Version: Spectra 2.7.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-08-16T13:37:19+00:00\n"
+"POT-Creation-Date: 2023-08-18T14:02:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -74,7 +74,7 @@ msgid "Failed to refresh tokens"
 msgstr ""
 
 #: admin-core/api/common-settings.php:99
-#: classes/class-uagb-rest-api.php:370
+#: classes/class-uagb-rest-api.php:375
 msgid "Sorry, you cannot list resources."
 msgstr ""
 
@@ -103,7 +103,7 @@ msgid "Please try logging in again to verify that you are not a robot."
 msgstr ""
 
 #: blocks-config/forms/class-uagb-forms.php:416
-#: includes/blocks/forms/attributes.php:69
+#: includes/blocks/forms/attributes.php:71
 #: dist/blocks.js:3
 #: dist/blocks.js:20
 msgid "Form Submission"
@@ -8080,29 +8080,29 @@ msgstr ""
 msgid "Add a URL input field in your form."
 msgstr ""
 
-#: includes/blocks/forms/attributes.php:34
+#: includes/blocks/forms/attributes.php:36
 #: dist/blocks.js:3
 #: dist/blocks.js:19
 #: dist/blocks.js:20
 msgid "Submit"
 msgstr ""
 
-#: includes/blocks/forms/attributes.php:35
+#: includes/blocks/forms/attributes.php:37
 #: dist/blocks.js:3
 msgid "Spectra Form"
 msgstr ""
 
-#: includes/blocks/forms/attributes.php:40
+#: includes/blocks/forms/attributes.php:42
 msgid "The form has been submitted Successfully!"
 msgstr ""
 
-#: includes/blocks/forms/attributes.php:121
+#: includes/blocks/forms/attributes.php:123
 #: dist/blocks.js:3
 #: dist/blocks.js:20
 msgid "There has been some error while submitting the form. Please verify all form fields again."
 msgstr ""
 
-#: includes/blocks/forms/attributes.php:168
+#: includes/blocks/forms/attributes.php:170
 #: dist/blocks.js:3
 #: dist/blocks.js:20
 msgid "Please fill up the above captcha."

@@ -1,10 +1,27 @@
 let spectraImageGalleryLoadStatus = true;
 
 const UAGBImageGalleryMasonry = {
-	init( $attr, $selector ) {
+	init( $attr, $selector, lightboxSettings, thumbnailSettings ) {
 		let count = 2;
 		const windowHeight50 = window.innerHeight / 1.25;
 		const $scope = document.querySelector( $selector );
+		let thumbnailSwiper = null;
+		if ( $attr.lightboxThumbnails ) {
+			thumbnailSwiper = new Swiper( `${$selector}+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--thumbnails`,
+				thumbnailSettings
+			);
+			lightboxSettings = {
+				...lightboxSettings,
+				thumbs: {
+					swiper: thumbnailSwiper,
+				},
+			}
+		}
+		const lightboxSwiper = new Swiper( `${$selector}+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--main`,
+			lightboxSettings
+		)
+		lightboxSwiper.lazy.load();
+		loadLightBoxImages( $scope, lightboxSwiper, null, $attr, thumbnailSwiper );
 		const loader = $scope?.querySelector( '.spectra-image-gallery__control-loader' );
 		const loadButton = $scope?.querySelector( '.spectra-image-gallery__control-button' );
 		if ( $attr.feedPagination && $attr.paginateUseLoader ) {
@@ -25,7 +42,7 @@ const UAGBImageGalleryMasonry = {
 							loader.style.display = 'none';
 						}
 						if ( count <= total ) {
-							UAGBImageGalleryMasonry.callAjax( $scope, $args, $attr, false, count );
+							UAGBImageGalleryMasonry.callAjax( $scope, $args, $attr, false, count, $selector, lightboxSwiper, thumbnailSwiper );
 							count++;
 							spectraImageGalleryLoadStatus = false;
 						}
@@ -39,10 +56,10 @@ const UAGBImageGalleryMasonry = {
 					total,
 					page_number: count,
 				};
-				loadButton.classList.toggle( 'disabled' );
+				loadButton.classList.add( 'disabled' );
 				if ( spectraImageGalleryLoadStatus ) {
 					if ( count <= total ) {
-						UAGBImageGalleryMasonry.callAjax( $scope, $args, $attr, true, count );
+						UAGBImageGalleryMasonry.callAjax( $scope, $args, $attr, false, count, $selector, lightboxSwiper, thumbnailSwiper );
 						count++;
 						spectraImageGalleryLoadStatus = false;
 					}
@@ -81,13 +98,12 @@ const UAGBImageGalleryMasonry = {
 		} );
 	},
 
-	callAjax( $scope, $obj, $attr, append = false, count ) {
-		const mediaData = new FormData(); // eslint-disable-line no-undef
+	callAjax( $scope, $obj, $attr, append = false, count, $selector, lightboxSwiper, thumbnailSwiper ) {
+		const mediaData = new FormData();
 		mediaData.append( 'action', 'uag_load_image_gallery_masonry' );
-		mediaData.append( 'nonce', uagb_image_gallery.uagb_image_gallery_masonry_ajax_nonce ); // eslint-disable-line no-undef
+		mediaData.append( 'nonce', uagb_image_gallery.uagb_image_gallery_masonry_ajax_nonce );
 		mediaData.append( 'page_number', $obj.page_number );
 		mediaData.append( 'attr', JSON.stringify( $attr ) );
-		// eslint-disable-next-line no-undef
 		fetch( uagb_image_gallery.ajax_url, {
 			method: 'POST',
 			credentials: 'same-origin',
@@ -99,16 +115,20 @@ const UAGBImageGalleryMasonry = {
 				if ( ! element ) {
 					element = $scope;
 				}
-				// eslint-disable-next-line no-undef
 				const isotope = new Isotope( element, {
 					itemSelector: '.spectra-image-gallery__media-wrapper--isotope',
 					stagger: 10,
 				} );
 				isotope.insert( UAGBImageGalleryMasonry.createElementFromHTML( data.data ) );
-				// eslint-disable-next-line no-undef
 				imagesLoaded( element ).on( 'progress', function () {
 					isotope.layout();
 				} );
+				imagesLoaded( element ).on( 'always', function () {
+					const currentScope = document.querySelector( $selector );
+					const loadButton = currentScope?.querySelector( '.spectra-image-gallery__control-button' )
+						loadButton?.classList?.remove( 'disabled' );
+						loadLightBoxImages( currentScope, lightboxSwiper, null, $attr, thumbnailSwiper );
+					} );
 				if ( $attr.customLinks ) {
 					UAGBImageGalleryMasonry.addClickEvents( element, $attr );
 				}
@@ -128,9 +148,26 @@ const UAGBImageGalleryMasonry = {
 };
 
 const UAGBImageGalleryPagedGrid = {
-	init( $attr, $selector ) {
+	init( $attr, $selector, lightboxSettings, thumbnailSettings ) {
 		let count = 1;
 		const $scope = document.querySelector( $selector );
+		let thumbnailSwiper = null;
+		if ( $attr.lightboxThumbnails ){
+			thumbnailSwiper = new Swiper( `${$selector}+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--thumbnails`,
+			thumbnailSettings
+			);
+			lightboxSettings = {
+				...lightboxSettings,
+				thumbs: {
+					swiper: thumbnailSwiper,
+				},
+			}
+		}
+		const lightboxSwiper = new Swiper( `${$selector}+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--main`,
+			lightboxSettings
+		)
+		lightboxSwiper.lazy.load();
+		loadLightBoxImages( $scope, lightboxSwiper, count, $attr, thumbnailSwiper );
 		const arrows = $scope?.querySelectorAll( '.spectra-image-gallery__control-arrows--grid' );
 		const dots = $scope?.querySelectorAll( '.spectra-image-gallery__control-dot' );
 		for ( let i = 0; i < arrows.length; i++ ) {
@@ -162,7 +199,7 @@ const UAGBImageGalleryPagedGrid = {
 					} );
 				}
 				if ( page <= total && page >= 1 ) {
-					UAGBImageGalleryPagedGrid.callAjax( $scope, $args, $attr, arrows );
+					UAGBImageGalleryPagedGrid.callAjax( $scope, $args, $attr, arrows, $selector, lightboxSwiper, thumbnailSwiper );
 					count = page;
 				}
 			} );
@@ -179,7 +216,7 @@ const UAGBImageGalleryPagedGrid = {
 					page_number: page,
 					total: $attr.gridPages,
 				};
-				UAGBImageGalleryPagedGrid.callAjax( $scope, $args, $attr, arrows );
+				UAGBImageGalleryPagedGrid.callAjax( $scope, $args, $attr, arrows, $selector, lightboxSwiper, thumbnailSwiper );
 				count = page;
 			} );
 		}
@@ -215,13 +252,12 @@ const UAGBImageGalleryPagedGrid = {
 		} );
 	},
 
-	callAjax( $scope, $obj, $attr, arrows ) {
-		const mediaData = new FormData(); // eslint-disable-line no-undef
+	callAjax( $scope, $obj, $attr, arrows, $selector, lightboxSwiper, thumbnailSwiper ) {
+		const mediaData = new FormData();
 		mediaData.append( 'action', 'uag_load_image_gallery_grid_pagination' );
-		mediaData.append( 'nonce', uagb_image_gallery.uagb_image_gallery_grid_pagination_ajax_nonce ); // eslint-disable-line no-undef
+		mediaData.append( 'nonce', uagb_image_gallery.uagb_image_gallery_grid_pagination_ajax_nonce );
 		mediaData.append( 'page_number', $obj.page_number );
 		mediaData.append( 'attr', JSON.stringify( $attr ) );
-		// eslint-disable-next-line no-undef
 		fetch( uagb_image_gallery.ajax_url, {
 			method: 'POST',
 			credentials: 'same-origin',
@@ -237,7 +273,6 @@ const UAGBImageGalleryPagedGrid = {
 					element = $scope;
 				}
 				const mediaElements = element.querySelectorAll( '.spectra-image-gallery__media-wrapper--isotope' );
-				// eslint-disable-next-line no-undef
 				const isotope = new Isotope( element, {
 					itemSelector: '.spectra-image-gallery__media-wrapper--isotope',
 					layoutMode: 'fitRows',
@@ -247,9 +282,12 @@ const UAGBImageGalleryPagedGrid = {
 					isotope.layout();
 				} );
 				isotope.insert( UAGBImageGalleryPagedGrid.createElementFromHTML( data.data ) );
-				// eslint-disable-next-line no-undef
 				imagesLoaded( element ).on( 'progress', function () {
 					isotope.layout();
+				} );
+				imagesLoaded( element ).on( 'always', function () {
+					const currentScope = document.querySelector( $selector );
+					loadLightBoxImages( currentScope, lightboxSwiper, parseInt( $obj.page_number ), $attr, thumbnailSwiper );
 				} );
 				if ( $attr.customLinks ) {
 					UAGBImageGalleryPagedGrid.addClickEvents( element, $attr );
@@ -277,3 +315,99 @@ const UAGBImageGalleryPagedGrid = {
 			} );
 	},
 };
+
+const loadLightBoxImages = ( blockScope, lightboxSwiper, pageNum, attr, thumbnailSwiper ) => {
+	if ( ! blockScope ) {
+		return;
+	}
+	const pageLimit = attr.paginateLimit;
+	
+	const theBody = document.querySelector( 'body' );
+	const updateCounter = ( curPage ) => {
+		const lightbox = blockScope.nextElementSibling;
+		const counter = lightbox.querySelector( '.spectra-image-gallery__control-lightbox--count-page' );
+		if ( counter ) {
+			counter.innerHTML = parseInt( curPage ) + 1;
+		}
+	};
+	lightboxSwiper.on( 'activeIndexChange', ( swiperInstance ) => {
+		if ( attr.lightboxThumbnails ) {
+			thumbnailSwiper.slideTo( swiperInstance.activeIndex );
+		}
+		if ( attr.lightboxDisplayCount ) {
+			updateCounter( swiperInstance.activeIndex );
+		}
+		lightboxSwiper.lazy.load();
+	} )
+	if ( attr.lightboxThumbnails ) {
+		thumbnailSwiper.on( 'activeIndexChange', ( swiperInstance ) => {
+			lightboxSwiper.slideTo( swiperInstance.activeIndex );
+		} );
+
+	}
+	if ( blockScope.nextElementSibling.classList.contains( 'spectra-image-gallery__control-lightbox' ) ) {
+		const lightbox = blockScope.nextElementSibling;
+		lightbox.addEventListener( 'keydown', ( event ) => {
+			if ( 27 === event.keyCode ) {
+				theBody.style.overflow = '';
+				lightbox.style.opacity = 0;
+				setTimeout( () => {
+					lightbox.style.display = 'none';
+				}, 250 );
+			}
+		} );
+		lightbox.style.display = 'none';
+		if ( attr.lightboxCloseIcon ) {
+			const closeButton = lightbox.querySelector( '.spectra-image-gallery__control-lightbox--close' );
+			if ( closeButton ) {
+				closeButton.addEventListener( 'click', () => {
+					theBody.style.overflow = '';
+					lightbox.style.opacity = 0;
+					setTimeout( () => {
+						lightbox.style.display = 'none';
+					}, 250 );
+				} );
+			}
+		}
+		if ( attr.lightboxDisplayCount ) {
+			const lightboxTotal = lightbox.querySelector( '.spectra-image-gallery__control-lightbox--count-total' );
+			lightboxTotal.innerHTML = attr.mediaGallery.length;
+		}
+	}
+	const enableLightbox = ( goTo ) => {
+		if ( ! lightboxSwiper ) {
+			return;
+		}
+		const lightbox = blockScope?.nextElementSibling;
+		if ( ! lightbox ) {
+			return;
+		}
+		lightbox.style.display = '';
+		lightbox.focus();
+		setTimeout( () => {
+			lightboxSwiper.slideTo( goTo );
+		}, 100 );
+		setTimeout( () => {
+			lightbox.style.opacity = 1;
+			theBody.style.overflow = 'hidden';
+		}, 250 );
+	}
+
+	if ( pageNum !== null ) {
+		setTimeout( () => {
+			addClickListeners( blockScope, pageNum, enableLightbox, pageLimit );
+		}, 1000 );
+	} else {
+		addClickListeners( blockScope, null, enableLightbox );
+	}
+};
+
+// Common function for adding click event listeners to images
+const addClickListeners = ( $scope, pageNum, enableLightbox, pageLimit )  => {
+	const images = $scope.querySelectorAll( '.spectra-image-gallery__media-wrapper' );
+	images.forEach( ( image, index ) => {
+		const nextImg = pageNum !== null ? index + ( pageNum - 1 ) * pageLimit : index;
+		image.style.cursor = 'pointer';
+		image.addEventListener( 'click', () => enableLightbox( nextImg ) );
+	} );
+}

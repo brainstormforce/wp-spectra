@@ -173,14 +173,19 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 				}
 			}
 
+			$unique_ids = get_option( '_uagb_fse_uniqids' );
+			if ( ! empty( $unique_ids ) && is_array( $unique_ids ) ) {
+				foreach ( $unique_ids as $id ) {
+					delete_post_meta( (int) $id, '_uag_page_assets' );
+				}
+			}
 			delete_post_meta( $post_id, '_uag_page_assets' );
 			delete_post_meta( $post_id, '_uag_css_file_name' );
 			delete_post_meta( $post_id, '_uag_js_file_name' );
 
 			$does_post_contain_reusable_blocks = $this->does_post_contain_reusable_blocks( $post_id );
 
-			if ( true === $does_post_contain_reusable_blocks ) {
-
+			if ( true === $does_post_contain_reusable_blocks || 'wp_block' === $current_post_type ) {
 				/* Update the asset version */
 				update_option( '__uagb_asset_version', time() );
 			}

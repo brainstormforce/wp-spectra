@@ -593,51 +593,56 @@ $m_selectors[' .uagb-forms-main-form .uagb-slider:before']                      
 );
 
 if ( ! $attr['inheritFromTheme'] ) {
-	$selectors = array(
-		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link ' => array_merge(
-			array(
-				'font-size'      => UAGB_Helper::get_css_value( $attr['submitTextFontSize'], $attr['submitTextFontSizeType'] ),
-				'color'          => $attr['submitColor'],
-				'padding-top'    => UAGB_Helper::get_css_value( $btnPaddingTop, $attr['paddingBtnUnit'] ),
-				'padding-bottom' => UAGB_Helper::get_css_value( $btnPaddingBottom, $attr['paddingBtnUnit'] ),
-				'padding-left'   => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['paddingBtnUnit'] ),
-				'padding-right'  => UAGB_Helper::get_css_value( $btnPaddingRight, $attr['paddingBtnUnit'] ),
-			),
-			$btn_border
+	$selectors[' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link '] = array_merge(
+		array(
+			'font-size'      => UAGB_Helper::get_css_value( $attr['submitTextFontSize'], $attr['submitTextFontSizeType'] ),
+			'color'          => $attr['submitColor'],
+			'padding-top'    => UAGB_Helper::get_css_value( $btnPaddingTop, $attr['paddingBtnUnit'] ),
+			'padding-bottom' => UAGB_Helper::get_css_value( $btnPaddingBottom, $attr['paddingBtnUnit'] ),
+			'padding-left'   => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['paddingBtnUnit'] ),
+			'padding-right'  => UAGB_Helper::get_css_value( $btnPaddingRight, $attr['paddingBtnUnit'] ),
 		),
-		' .uagb-forms-main-form .uagb-forms-main-submit-button ' => array_merge(
-			array(
-				'font-size'      => UAGB_Helper::get_css_value( $attr['submitTextFontSize'], $attr['submitTextFontSizeType'] ),
-				'color'          => $attr['submitColor'],
-				'padding-top'    => UAGB_Helper::get_css_value( $btnPaddingTop, $attr['paddingBtnUnit'] ),
-				'padding-bottom' => UAGB_Helper::get_css_value( $btnPaddingBottom, $attr['paddingBtnUnit'] ),
-				'padding-left'   => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['paddingBtnUnit'] ),
-				'padding-right'  => UAGB_Helper::get_css_value( $btnPaddingRight, $attr['paddingBtnUnit'] ),
-			),
-			$btn_border
+		$btn_border
+	);
+
+
+	$selectors[' .uagb-forms-main-form .uagb-forms-main-submit-button '] = array_merge(
+		array(
+			'font-size'      => UAGB_Helper::get_css_value( $attr['submitTextFontSize'], $attr['submitTextFontSizeType'] ),
+			'color'          => $attr['submitColor'],
+			'padding-top'    => UAGB_Helper::get_css_value( $btnPaddingTop, $attr['paddingBtnUnit'] ),
+			'padding-bottom' => UAGB_Helper::get_css_value( $btnPaddingBottom, $attr['paddingBtnUnit'] ),
+			'padding-left'   => UAGB_Helper::get_css_value( $btnPaddingLeft, $attr['paddingBtnUnit'] ),
+			'padding-right'  => UAGB_Helper::get_css_value( $btnPaddingRight, $attr['paddingBtnUnit'] ),
 		),
-		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:hover ' => array(
-			'color'        => $attr['submitColorHover'],
-			'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['submitborderHoverColor'],
-		),
-		' .uagb-forms-main-form .uagb-forms-main-submit-button:hover' => array(
-			'color'        => $attr['submitColorHover'],
-			'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['submitborderHoverColor'],
-		),
-		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:focus ' => array(
-			'color'            => $attr['submitColorHover'],
-			'background-color' => ( 'color' === $attr['submitBgHoverType'] ) ? $attr['submitBgColorHover'] : 'transparent',
-			'border-color'     => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['submitborderHoverColor'],
-		),
-		' .uagb-forms-main-form .uagb-forms-main-submit-button:focus' => array(
-			'color'            => $attr['submitColorHover'],
-			'background-color' => ( 'color' === $attr['submitBgHoverType'] ) ? $attr['submitBgColorHover'] : 'transparent',
-			'border-color'     => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['submitborderHoverColor'],
-		),
-		' .uagb-forms__full-btn .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button' => array(
-			'width'   => '100%',
-			'padding' => '10px 15px',
-		),
+		$btn_border
+	);
+
+	$selectors[' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:hover '] = array(
+		'color'        => $attr['submitColorHover'],
+		'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['submitborderHoverColor'],
+	);
+
+	$selectors[' .uagb-forms-main-form .uagb-forms-main-submit-button:hover'] = array(
+		'color'        => $attr['submitColorHover'],
+		'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['submitborderHoverColor'],
+	);
+
+	$selectors[' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:focus '] = array(
+		'color'            => $attr['submitColorHover'],
+		'background-color' => ( 'color' === $attr['submitBgHoverType'] ) ? $attr['submitBgColorHover'] : 'transparent',
+		'border-color'     => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['submitborderHoverColor'],
+	);
+
+	$selectors[' .uagb-forms-main-form .uagb-forms-main-submit-button:focus'] = array(
+		'color'            => $attr['submitColorHover'],
+		'background-color' => ( 'color' === $attr['submitBgHoverType'] ) ? $attr['submitBgColorHover'] : 'transparent',
+		'border-color'     => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['submitborderHoverColor'],
+	);
+
+	$selectors[' .uagb-forms__full-btn .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button']                 = array(
+		'width'   => '100%',
+		'padding' => '10px 15px',
 	);
 	$selectors['.uagb-forms__small-btn .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button']['padding']      = '5px 10px';
 	$selectors['.uagb-forms__medium-btn .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button']['padding']     = '12px 24px';
@@ -699,31 +704,30 @@ if ( ! $attr['inheritFromTheme'] ) {
 		$selectors['  .uagb-forms-main-form .wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:hover'] = $btn_hover_bg_css;
 	}
 
-	$t_selectors = array(
-		' .uagb-forms-main-form .uagb-forms-main-submit-button' => array_merge(
-			array(
-				'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopTablet'], $attr['tabletPaddingBtnUnit'] ),
-				'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomTablet'], $attr['tabletPaddingBtnUnit'] ),
-				'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBtnLeftTablet'], $attr['tabletPaddingBtnUnit'] ),
-				'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightTablet'], $attr['tabletPaddingBtnUnit'] ),
-			),
-			$btn_border_Tablet
+	$t_selectors[' .uagb-forms-main-form .uagb-forms-main-submit-button'] = array_merge(
+		array(
+			'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopTablet'], $attr['tabletPaddingBtnUnit'] ),
+			'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomTablet'], $attr['tabletPaddingBtnUnit'] ),
+			'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBtnLeftTablet'], $attr['tabletPaddingBtnUnit'] ),
+			'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightTablet'], $attr['tabletPaddingBtnUnit'] ),
 		),
-		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link ' => $btn_border_Tablet,
+		$btn_border_Tablet
 	);
-	$m_selectors = array(
-		' .uagb-forms-main-form .uagb-forms-main-submit-button' => array_merge(
-			array(
-				'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopMobile'], $attr['mobilePaddingBtnUnit'] ),
-				'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomMobile'], $attr['mobilePaddingBtnUnit'] ),
-				'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBtnLeftMobile'], $attr['mobilePaddingBtnUnit'] ),
-				'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightMobile'], $attr['mobilePaddingBtnUnit'] ),
-			),
-			$btn_border_Mobile
-		),
-		' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link ' => $btn_border_Mobile,
-	); 
 
+	$t_selectors[' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link '] = $btn_border_Tablet;
+
+
+	$m_selectors[' .uagb-forms-main-form .uagb-forms-main-submit-button'] = array_merge(
+		array(
+			'padding-top'    => UAGB_Helper::get_css_value( $attr['paddingBtnTopMobile'], $attr['mobilePaddingBtnUnit'] ),
+			'padding-bottom' => UAGB_Helper::get_css_value( $attr['paddingBtnBottomMobile'], $attr['mobilePaddingBtnUnit'] ),
+			'padding-left'   => UAGB_Helper::get_css_value( $attr['paddingBtnLeftMobile'], $attr['mobilePaddingBtnUnit'] ),
+			'padding-right'  => UAGB_Helper::get_css_value( $attr['paddingBtnRightMobile'], $attr['mobilePaddingBtnUnit'] ),
+		),
+		$btn_border_Mobile
+	);
+
+	$m_selectors[' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap.wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link '] = $btn_border_Mobile;
 };
 
 $combined_selectors = array(
@@ -732,7 +736,9 @@ $combined_selectors = array(
 	'mobile'  => $m_selectors,
 );
 
-$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'submitText', ' .uagb-forms-main-form .uagb-forms-main-submit-button', $combined_selectors );
+if ( ! $attr['inheritFromTheme'] ) {
+	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'submitText', ' .uagb-forms-main-form .uagb-forms-main-submit-button', $combined_selectors );
+}
 
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'label', ' .uagb-forms-main-form .uagb-forms-input-label', $combined_selectors );
 

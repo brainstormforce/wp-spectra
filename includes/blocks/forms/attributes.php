@@ -13,6 +13,8 @@ $input_border_attribute           = UAGB_Block_Helper::uag_generate_border_attri
 $toggle_border_attribute          = UAGB_Block_Helper::uag_generate_border_attribute( 'checkBoxToggle' );
 $submit_border_attribute          = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
 
+$inherit_from_theme = 'enabled' === UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' );
+
 return array_merge(
 	array(
 		'block_id'                       => '',
@@ -214,7 +216,7 @@ return array_merge(
 		'gradientHLocation2'             => 100,
 		'gradientHAngle'                 => 0,
 		'selectHGradient'                => 'default',
-		'inheritFromTheme'               => false,
+		'inheritFromTheme'               => $inherit_from_theme,
 	),
 	$success_message_border_attribute,
 	$failed_message_border_attribute,
