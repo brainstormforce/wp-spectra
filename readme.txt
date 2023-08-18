@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+Fix: Forms - Resolved multiple styling issues on the frontend.
+
 = 2.7.5 - WEDNESDAY, 16th AUGUST 2023 =
 * Improvement: Container - Added an opacity setting for the overlay of the image and video background types.
 * Improvement: Info Box - Added heading tag settings for the prefix.

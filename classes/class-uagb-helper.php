@@ -807,7 +807,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param  string $selector The selector array.
 		 * @param  array  $combined_selectors The combined selector array.
 		 * @since  1.15.0
-		 * @return bool|string
+		 * @return array
 		 */
 		public static function get_typography_css( $attr, $slug, $selector, $combined_selectors ) {
 
