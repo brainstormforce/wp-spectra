@@ -85,18 +85,18 @@ $thumbnail_options = apply_filters(
 );
 
 $settings           = wp_json_encode( $slick_options );
-$lightbox_settings  = wp_json_encode( $lightbox_options );
-$thumbnail_settings = $attr['lightboxThumbnails'] ? wp_json_encode( $thumbnail_options ) : null;
+$lightbox_settings  = is_array( $lightbox_options ) ? $lightbox_options : array();
+$thumbnail_settings = ( ! empty( $attr['lightboxThumbnails'] ) && is_array( $thumbnail_options ) ) ? $thumbnail_options : array();
 
 if ( $attr['mediaGallery'] ) {
 	switch ( $attr['feedLayout'] ) {
 		case 'grid':
 			$js = $attr['feedPagination']
-				? Spectra_Image_Gallery::render_frontend_grid_pagination( $id, $attr, $selector )
+				? Spectra_Image_Gallery::render_frontend_grid_pagination( $id, $attr, $selector, $lightbox_settings, $thumbnail_settings )
 				: '';
 			break;
 		case 'masonry':
-			$js = Spectra_Image_Gallery::render_frontend_masonry_layout( $id, $attr, $selector );
+			$js = Spectra_Image_Gallery::render_frontend_masonry_layout( $id, $attr, $selector, $lightbox_settings, $thumbnail_settings );
 			break;
 		case 'carousel':
 			$js = Spectra_Image_Gallery::render_frontend_carousel_layout( $id, $settings, $selector );
