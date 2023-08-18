@@ -103,7 +103,7 @@ class UAGB_Front_Assets {
 	/**
 	 * Create an unique $dynamic_id.
 	 *
-	 * @since x.x.x
+	 * @since 2.7.6
 	 * @return float|int|false unique $dynamic_id.
 	 */
 	public function uagb_fse_uniqid() {

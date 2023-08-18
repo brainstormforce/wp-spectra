@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.3.0
-Stable tag: 2.7.5
+Stable tag: 2.7.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,9 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= x.x.x =
+= 2.7.6 - FRIDAY, 18th AUGUST 2023 =
+* Fix: Form - Resolved multiple styling issues on the frontend.
 * Fix: Image Gallery - Resolved an issue wherein the lightbox feature would not work after setting up pagination.
-* Fix: Forms - Resolved multiple styling issues on the frontend.
 * Fix: Global - Resolved a significant issue of multiple `_uag_page_assets` entries in the database when using an FSE theme.
 
 = 2.7.5 - WEDNESDAY, 16th AUGUST 2023 =
