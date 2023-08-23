@@ -690,7 +690,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since  1.14.0
 		 */
 		public static function allow_file_generation() {
-			return get_option( '_uagb_allow_file_generation', 'disabled' );
+			return apply_filters( 'uagb_allow_file_generation', get_option( '_uagb_allow_file_generation', 'disabled' ) );
 		}
 
 		/**
