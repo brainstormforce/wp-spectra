@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
+* Fix: Modal - Resolved an issue in which the Modal would not open in Astra's quick-view popup for WooCommerce products.
 * Fix: Separator - Resolved an edge-case issue in which the responsive alignment would not work as intended.
 
 ### 2.7.6 - FRIDAY, 18th AUGUST 2023 ###

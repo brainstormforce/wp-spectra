@@ -1,7 +1,9 @@
 document.addEventListener( 'UAGModalEditor', function ( e ) {
 	UAGBModal.init( '.uagb-block-' + e.detail.block_id, true );
 } );
-
+document.addEventListener( 'AstraQuickViewForModal', function ( e ) {
+	UAGBModal.init( e.detail.class_name, false );
+} );
 window.UAGBModal = {
 	init( mainSelector, isAdmin ) {
 		const document_element = UAGBModal._getDocumentElement();
