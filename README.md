@@ -1,5 +1,5 @@
 # Spectra - WordPress Gutenberg Blocks #
-**Contributors:** [brainstormforce](https://profiles.wordpress.org/brainstormforce)  
+**Contributors:** [brainstormforce](https://profiles.wordpress.org/brainstormforce/)  
 **Donate link:** https://www.paypal.me/BrainstormForce  
 **Tags:** gutenberg, blocks, gutenberg blocks, editor, block  
 **Requires at least:** 5.6  
@@ -214,6 +214,9 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
 
 ## Changelog ##
+
+### x.x.x ###
+* Fix: Separator - Resolved an edge-case issue in which the responsive alignment would not work as intended.
 
 ### 2.7.6 - FRIDAY, 18th AUGUST 2023 ###
 * Fix: Form - Resolved multiple styling issues on the frontend.
