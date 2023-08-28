@@ -179,18 +179,17 @@ class UAGB_Front_Assets {
 			if ( 0 !== $current_object_id && null !== $current_object_id ) {
 				$current_post_assets = new UAGB_Post_Assets( $current_object_id );
 				$current_post_assets->enqueue_scripts();
-			} else {
-				foreach ( $cached_wp_query as $post ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+			} elseif ( ! empty( $cached_wp_query ) && is_array( $cached_wp_query ) ) {
+				foreach ( $cached_wp_query as $post ) {
 					$current_post_assets = new UAGB_Post_Assets( $post->ID );
 					$current_post_assets->enqueue_scripts();
 				}
-			}
-
-			/*
-			If no posts are present in the category/archive
-			or 404 page (which is an obvious case for 404), then get the current page ID and enqueue script.
-			*/
-			if ( ! $cached_wp_query ) {
+			} else {
+				/*
+				If no posts are present in the category/archive
+				or 404 page (which is an obvious case for 404), then get the current page ID and enqueue script.
+				*/
+				$current_object_id   = is_int( $current_object_id ) ? $current_object_id : (int) $current_object_id;
 				$current_post_assets = new UAGB_Post_Assets( $current_object_id );
 				$current_post_assets->enqueue_scripts();
 			}
