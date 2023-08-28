@@ -230,7 +230,7 @@ UAGBTableOfContents = {
 				.replace( /\u2013|\u2014/g, '' ) // Remove long dash
 				.replace( /&(amp;)/g, '' ) // Remove &
 				.replace( /[&]nbsp[;]/gi, '-' ) // Replace inseccable spaces
-				.replace( /[^a-z0-9 -_]/gi, '' ) // Keep only alphnumeric, space, -, _
+				.replace( /[^a-zA-Z0-9\u00C0-\u017F _-]/g, '' ) // Keep only alphnumeric, space, -, _ and latin characters.
 				.replace( /&(mdash;)/g, '' ) // Remove long dash
 				.replace( /\s+/g, '-' ) // Replace spaces with -
 				.replace( /[&\/\\#,^!+()$~%.\[\]'":*?;-_<>{}@‘’”“|]/g, '' ) // Remove special chars

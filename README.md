@@ -220,6 +220,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Container - Resolved an issue in which the flex properties would not work as intended in the frontend for the Image and Heading blocks in nested Containers.
 * Fix: Modal - Resolved an issue in which the Modal would not open in Astra's quick-view popup for WooCommerce products.
 * Fix: Separator - Resolved an edge-case issue in which the responsive alignment would not work as intended.
+* Fix: Table Of Contents - Resolved an issue in which latin characters in a heading would prevent the links for that specific heading from working.
 * Fix: Post Blocks - Resolved an issue wherein taxonomies were not accessible to the Shop Manager role.
 
 ### 2.7.6 - FRIDAY, 18th AUGUST 2023 ###
