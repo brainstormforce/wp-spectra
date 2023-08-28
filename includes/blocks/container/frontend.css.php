@@ -368,11 +368,8 @@ if ( 'video' === $attr['backgroundType'] ) {
 	$t_selectors[ '.uagb-block-' . $id . ' .uagb-container__video-wrap' ] = $border_tablet;
 	$m_selectors[ '.uagb-block-' . $id . ' .uagb-container__video-wrap' ] = $border_mobile;
 
-	if ( 'alignwide' === $attr['innerContentWidth'] && 'alignfull' === $attr['contentWidth'] ) {
-		$selectorClass = '.uagb-block-' . $id . ' .uagb-container-inner-blocks-wrap';
-	} else {
-		$selectorClass = '.wp-block-uagb-container.uagb-block-' . $id;
-	}
+	$selectorClass = '.wp-block-uagb-container.uagb-block-' . $id;
+
 	$selectors[ '.uagb-block-' . $id . ' > div:not(.uagb-container__video-wrap):not(.uagb-container__shape)' ] = array(
 		'position' => 'relative',
 	);
