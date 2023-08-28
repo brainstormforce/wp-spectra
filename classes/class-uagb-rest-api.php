@@ -371,7 +371,7 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 		 */
 		public function get_items_permissions_check( $request ) {
 
-			if ( ! current_user_can( 'manage_options' ) ) {
+			if ( ! current_user_can( 'edit_posts' ) ) {
 				return new \WP_Error( 'uag_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'ultimate-addons-for-gutenberg' ), array( 'status' => rest_authorization_required_code() ) );
 			}
 
