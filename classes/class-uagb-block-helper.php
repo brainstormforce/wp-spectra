@@ -1450,6 +1450,22 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$y_position      = isset( $bg_obj['yPosition'] ) ? $bg_obj['yPosition'] : '';
 			$y_position_type = isset( $bg_obj['yPositionType'] ) ? $bg_obj['yPositionType'] : '';
 
+			$bg_overlay_img              = isset( $bg_obj['backgroundOverlayImage']['url'] ) ? $bg_obj['backgroundOverlayImage']['url'] : '';
+			$overlay_repeat              = isset( $bg_obj['backgroundOverlayRepeat'] ) ? $bg_obj['backgroundOverlayRepeat'] : '';
+			$overlay_position            = isset( $bg_obj['backgroundOverlayPosition'] ) ? $bg_obj['backgroundOverlayPosition'] : '';
+			$overlay_size                = isset( $bg_obj['backgroundOverlaySize'] ) ? $bg_obj['backgroundOverlaySize'] : '';
+			$overlay_attachment          = isset( $bg_obj['backgroundOverlayAttachment'] ) ? $bg_obj['backgroundOverlayAttachment'] : '';
+			$blend_mode                  = isset( $bg_obj['blendMode'] ) ? $bg_obj['blendMode'] : '';
+			$bg_overlay_custom_size      = isset( $bg_obj['backgroundOverlayCustomSize'] ) ? $bg_obj['backgroundOverlayCustomSize'] : '';
+			$bg_overlay_custom_size_type = isset( $bg_obj['backgroundOverlayCustomSizeType'] ) ? $bg_obj['backgroundOverlayCustomSizeType'] : '';
+
+			$custom_overlay__position = isset( $bg_obj['customOverlayPosition'] ) ? $bg_obj['customOverlayPosition'] : '';
+			$x_overlay_position       = isset( $bg_obj['xOverlayPosition'] ) ? $bg_obj['xOverlayPosition'] : '';
+			$x_overlay_position_type  = isset( $bg_obj['xOverlayPositionType'] ) ? $bg_obj['xOverlayPositionType'] : '';
+			$y_overlay_position       = isset( $bg_obj['yOverlayPosition'] ) ? $bg_obj['yOverlayPosition'] : '';
+			$y_overlay_position_type  = isset( $bg_obj['yOverlayPositionType'] ) ? $bg_obj['yOverlayPositionType'] : '';
+
+			$gradient = '';
 			if ( 'custom' === $size ) {
 				$size = $bg_custom_size . $bg_custom_size_type;
 			}
@@ -1508,7 +1524,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 								$gen_bg_css['background-image'] = $gradient . ', url(' . $bg_img . ');';
 							}
 						}
-						if ( 'none' === $overlay_type && '' !== $bg_img ) {
+						if ( ( 'none' === $overlay_type || 'image' === $overlay_type ) && '' !== $bg_img ) {
 							$gen_bg_css['background-image'] = 'url(' . $bg_img . ');';
 						}
 						$gen_bg_css['background-clip'] = 'padding-box';
@@ -1535,7 +1551,41 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			} elseif ( '' !== $bg_color ) {
 				$gen_bg_css['background-color'] = $bg_color . ';';
 			}
+			
+			// image overlay.
+			if ( 'image' === $overlay_type ) {
+				if ( 'custom' === $overlay_size ) {
+					$overlay_size = $bg_overlay_custom_size . $bg_overlay_custom_size_type;
+				}
 
+				if ( $overlay_repeat ) {
+					$gen_bg_overlay_css['background-repeat'] = esc_attr( $overlay_repeat );
+				}
+				if ( 'custom' !== $custom_overlay__position && $overlay_position && isset( $overlay_position['x'] ) && isset( $overlay_position['y'] ) ) {
+					$position_overlay_value                    = $overlay_position['x'] * 100 . '% ' . $overlay_position['y'] * 100 . '%';
+					$gen_bg_overlay_css['background-position'] = $position_overlay_value;
+				} elseif ( 'custom' === $custom_overlay__position && $x_overlay_position && $y_overlay_position && $x_overlay_position_type && $y_overlay_position_type ) {
+					$position_overlay_value                    = $x_overlay_position . $x_overlay_position_type . ' ' . $y_overlay_position . $y_overlay_position_type;
+					$gen_bg_overlay_css['background-position'] = $position_overlay_value;
+				}
+
+				if ( $overlay_size ) {
+					$gen_bg_overlay_css['background-size'] = esc_attr( $overlay_size );
+				}
+
+				if ( $overlay_attachment ) {
+					$gen_bg_overlay_css['background-attachment'] = esc_attr( $overlay_attachment );
+				}
+				if ( $blend_mode ) {
+					$gen_bg_overlay_css['mix-blend-mode'] = esc_attr( $blend_mode );
+				}
+				if ( '' !== $bg_overlay_img ) {
+					$gen_bg_overlay_css['background-image'] = 'url(' . $bg_overlay_img . ');';
+				}
+				$gen_bg_overlay_css['background-clip'] = 'padding-box';
+				$gen_bg_overlay_css['opacity']         = $overlay_opacity;
+			};
+			
 			return 'yes' === $css_for_pseudo ? $gen_bg_overlay_css : $gen_bg_css;
 		}
 		/**

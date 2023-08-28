@@ -123,6 +123,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		backgroundVideoColor,
 		innerContentCustomWidthType,
 		backgroundVideo,
+		backgroundOverlayOpacity,
 
 		textColor,
 		linkColor,
@@ -219,7 +220,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		( ( 'color' === overlayType && backgroundVideoColor ) || ( 'gradient' === overlayType && gradientValue ) )
 			? 1 - overlayOpacity
 			: 1;
-
+    
 	const videoBackgroundAttributes = {
 		'backgroundType': backgroundType,
 		'backgroundImage': backgroundImageDesktop,
@@ -276,6 +277,9 @@ function styling( attributes, clientId, name, deviceType ) {
 		' .uagb-container__video-wrap video': {
 			'opacity': backgroundVideoOpacityValue,
 		},
+		' .uagb-container-overlay': {
+			'opacity':backgroundOverlayOpacity,
+		}
 	};
 
 	let boxShadowPositionCSS = boxShadowPosition;
