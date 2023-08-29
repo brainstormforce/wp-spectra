@@ -448,11 +448,16 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 			if ( empty( $uagb_toc_heading_content ) || UAGB_ASSET_VER !== $uagb_toc_version ) {
 				global $_wp_current_template_content;
+				$custom_post  = get_post( $post->ID );
+				$post_content = '';
+				if ( $custom_post instanceof WP_Post ) {
+					$post_content = $custom_post->post_content;
+				}
 				// If the current template contents exist, use that - else get the content from the post ID.
-				if ( $_wp_current_template_content ) {
-					$content = $_wp_current_template_content;
+				if ( $_wp_current_template_content && has_block( 'uagb/table-of-contents', $_wp_current_template_content ) ) {
+					$content = $_wp_current_template_content . $post_content;
 				} else {
-					$content = get_post( $post->ID )->post_content;
+					$content = $post_content;
 				}
 				$uagb_toc_heading_content          = $this->table_of_contents_get_headings_from_content( $content );
 				$blocks                            = parse_blocks( $content );

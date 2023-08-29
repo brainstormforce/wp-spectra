@@ -224,6 +224,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Global - Resolved an issue where a PHP Warning occurred in some cases for some websites.
 * Fix: Table Of Contents - Resolved an issue in which latin characters in a heading would prevent the links for that specific heading from working.
 * Fix: Post Blocks - Resolved an issue wherein taxonomies were not accessible to the Shop Manager role.
+* Fix: Table Of Contents - Fixed an issue where the collapsible setting would not work in the editor when enabled.
+* Fix: Table Of Contents - Resolved an issue where regenerating assets would cause the Table Of Contents to appear empty in FSE.
 
 ### 2.7.6 - FRIDAY, 18th AUGUST 2023 ###
 * Fix: Form - Resolved multiple styling issues on the frontend.
