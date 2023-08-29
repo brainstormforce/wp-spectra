@@ -68,6 +68,43 @@ const backgroundCss = ( attributes, deviceType, clientId, pseudoElementOverlay =
 		gradientType,
 		gradientAngle,
 		selectGradient,
+
+		//image overlay
+		backgroundOverlayImageDesktop,
+		backgroundOverlayImageTablet,
+		backgroundOverlayImageMobile,
+		backgroundRepeatOverlayDesktop,
+		backgroundRepeatOverlayTablet,
+		backgroundRepeatOverlayMobile,
+		backgroundPositionOverlayDesktop,
+		backgroundPositionOverlayTablet,
+		backgroundPositionOverlayMobile,
+		backgroundSizeOverlayDesktop,
+		backgroundSizeOverlayTablet,
+		backgroundSizeOverlayMobile,
+		backgroundCustomSizeOverlayDesktop,
+		backgroundCustomSizeOverlayTablet,
+		backgroundCustomSizeOverlayMobile,
+		backgroundCustomOverlaySizeType,
+		backgroundAttachmentOverlayDesktop,
+		backgroundAttachmentOverlayTablet,
+		backgroundAttachmentOverlayMobile,
+		customOverlayPosition,
+		xPositionOverlayDesktop,
+		xPositionOverlayTablet,
+		xPositionOverlayMobile,
+		xPositionOverlayType,
+		xPositionOverlayTypeTablet,
+		xPositionOverlayTypeMobile,
+		yPositionOverlayDesktop,
+		yPositionOverlayTablet,
+		yPositionOverlayMobile,
+		yPositionOverlayType,
+		yPositionOverlayTypeTablet,
+		yPositionOverlayTypeMobile,
+		overlayBlendMode,
+		overlayBlendModeTablet,
+		overlayBlendModeMobile
 	} = attributes;
 
 	const backgroundAttributesDesktop = {
@@ -98,6 +135,20 @@ const backgroundCss = ( attributes, deviceType, clientId, pseudoElementOverlay =
 		xPositionType,
 		yPosition: yPositionDesktop,
 		yPositionType,
+
+		backgroundOverlayImage: backgroundOverlayImageDesktop,
+		backgroundOverlayRepeat: backgroundRepeatOverlayDesktop,
+		backgroundOverlayPosition: backgroundPositionOverlayDesktop,
+		backgroundOverlaySize: backgroundSizeOverlayDesktop,
+		backgroundOverlayAttachment: backgroundAttachmentOverlayDesktop,
+		backgroundCustomOverlaySize: backgroundCustomSizeOverlayDesktop,
+		backgroundCustomOverlaySizeType,
+		customOverlayPosition,
+		xPositionOverlay: xPositionOverlayDesktop,
+		xPositionOverlayType,
+		yPositionOverlay: yPositionOverlayDesktop,
+		yPositionOverlayType,
+		blendMode: overlayBlendMode,
 	};
 
 	// Any properties that should be inherited from Desktop will be imported from backgroundAttributesDesktop, since only 1 CSS file is generated at a time in bgCss.
@@ -130,6 +181,24 @@ const backgroundCss = ( attributes, deviceType, clientId, pseudoElementOverlay =
 		xPositionType: xPositionTypeTablet ? xPositionTypeTablet : backgroundAttributesDesktop.xPositionType,
 		yPosition: ! isNaN( yPositionTablet ) ? yPositionTablet : backgroundAttributesDesktop.yPosition,
 		yPositionType: yPositionTypeTablet ? yPositionTypeTablet : backgroundAttributesDesktop.yPositionType,
+
+		backgroundOverlayImage: backgroundOverlayImageTablet || backgroundOverlayImageDesktop,
+		backgroundOverlayRepeat: backgroundRepeatOverlayTablet || backgroundRepeatOverlayDesktop,
+		backgroundOverlayPosition: backgroundPositionOverlayTablet || backgroundPositionOverlayDesktop,
+		backgroundOverlaySize: backgroundSizeOverlayTablet || backgroundSizeOverlayDesktop,
+		backgroundOverlayAttachment: backgroundAttachmentOverlayTablet || backgroundAttachmentOverlayDesktop,
+		backgroundCustomOverlaySize: backgroundCustomSizeOverlayTablet || backgroundCustomSizeOverlayDesktop,
+		backgroundCustomOverlaySizeType,
+		customOverlayPosition,
+		xPositionOverlay: ( 'number' === typeof xPositionOverlayTablet ) ? xPositionOverlayTablet : backgroundAttributesDesktop.xPositionOverlay,
+        xPositionOverlayType: xPositionOverlayTypeTablet
+            ? xPositionOverlayTypeTablet
+            : backgroundAttributesDesktop.xPositionOverlayType,
+        yPositionOverlay: ( 'number' === typeof yPositionOverlayTablet ) ? yPositionOverlayTablet : backgroundAttributesDesktop.yPositionOverlay,
+        yPositionOverlayType: yPositionOverlayTypeTablet
+            ? yPositionOverlayTypeTablet
+            : backgroundAttributesDesktop.yPositionOverlayType,
+		blendMode: overlayBlendModeTablet || overlayBlendMode,
 	};
 
 	// Any properties that should be inherited from Tablet will be imported from backgroundAttributesTablet ( which inherits from backgroundAttributesDesktop ), since only 1 CSS file is generated at a time in bgCss.
@@ -162,6 +231,34 @@ const backgroundCss = ( attributes, deviceType, clientId, pseudoElementOverlay =
 		xPositionType: xPositionTypeMobile ? xPositionTypeMobile : backgroundAttributesTablet.xPositionType,
 		yPosition: ! isNaN( yPositionMobile ) ? yPositionMobile : backgroundAttributesTablet.yPosition,
 		yPositionType: yPositionTypeMobile ? yPositionTypeMobile : backgroundAttributesTablet.yPositionType,
+
+		backgroundOverlayImage:
+			backgroundOverlayImageMobile || backgroundOverlayImageTablet || backgroundOverlayImageDesktop,
+		backgroundOverlayRepeat:
+		backgroundRepeatOverlayMobile || backgroundRepeatOverlayTablet || backgroundRepeatOverlayDesktop,
+		backgroundOverlayPosition:
+		backgroundPositionOverlayMobile || backgroundPositionOverlayTablet || backgroundPositionOverlayDesktop,
+		backgroundOverlaySize:
+		backgroundSizeOverlayMobile || backgroundSizeOverlayTablet || backgroundSizeOverlayDesktop,
+		backgroundOverlayAttachment:
+			backgroundAttachmentOverlayMobile ||
+			backgroundAttachmentOverlayTablet ||
+			backgroundAttachmentOverlayDesktop,
+		backgroundCustomOverlaySize:
+			backgroundCustomSizeOverlayMobile ||
+			backgroundCustomSizeOverlayTablet ||
+			backgroundCustomSizeOverlayDesktop,
+		backgroundCustomOverlaySizeType,
+		customOverlayPosition,
+		xPositionOverlay: ( 'number' === typeof xPositionOverlayMobile ) ? xPositionOverlayMobile : backgroundAttributesTablet.xPositionOverlay,
+        xPositionOverlayType: xPositionOverlayTypeMobile
+            ? xPositionOverlayTypeMobile
+            : backgroundAttributesTablet.xPositionOverlayType,
+        yPositionOverlay: ( 'number' === typeof yPositionOverlayMobile ) ? yPositionOverlayMobile : backgroundAttributesTablet.yPositionOverlay,
+        yPositionOverlayType: yPositionOverlayTypeMobile
+            ? yPositionOverlayTypeMobile
+            : backgroundAttributesTablet.yPositionOverlayType,
+		blendMode: overlayBlendModeMobile || overlayBlendModeTablet || overlayBlendMode,
 	};
 
 	let bgCss;

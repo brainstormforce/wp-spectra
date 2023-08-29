@@ -27,6 +27,21 @@ const generateBackgroundCSS = ( backgroundAttributes, pseudoElementOverlay = {} 
 		gradientType,
 		gradientAngle,
 		selectGradient,
+
+		//image overlay
+		backgroundOverlayImage,
+		backgroundOverlayRepeat,
+		backgroundOverlayPosition,
+		backgroundOverlaySize,
+		backgroundOverlayAttachment,
+		backgroundCustomOverlaySize,
+		backgroundCustomOverlaySizeType,
+		customOverlayPosition,
+		xPositionOverlay,
+		xPositionOverlayType,
+		yPositionOverlay,
+		yPositionOverlayType,
+		blendMode,
 	} = backgroundAttributes;
 
 	const bgCSS = {};
@@ -35,6 +50,11 @@ const generateBackgroundCSS = ( backgroundAttributes, pseudoElementOverlay = {} 
 	const xPositionTypeValue = undefined !== xPositionType ? xPositionType : '';
 	const yPositionValue = isNaN( yPosition ) || '' === yPosition ? 0 : yPosition;
 	const yPositionTypeValue = undefined !== yPositionType ? yPositionType : '';
+
+	const xPositionOverlayValue = ( 'number' !== typeof xPositionOverlay ) ? 0 : xPositionOverlay;
+	const xPositionOverlayTypeValue = undefined !== xPositionOverlayType ? xPositionOverlayType : '';
+	const yPositionOverlayValue = ( 'number' !== typeof yPositionOverlay ) ? 0 : yPositionOverlay;
+	const yPositionOverlayTypeValue = undefined !== yPositionOverlayType ? yPositionOverlayType : '';
 
 	// Handle the Overlay Opacity.
 	const applyOverlayOpacity = () => {
@@ -67,7 +87,7 @@ const generateBackgroundCSS = ( backgroundAttributes, pseudoElementOverlay = {} 
 			gradient = '';
 			break;
 	}
-	
+
 	// Handle the Background Size Properties.
 	let backgroundSizeValue = backgroundSize;
 
@@ -79,8 +99,6 @@ const generateBackgroundCSS = ( backgroundAttributes, pseudoElementOverlay = {} 
 	if ( undefined !== backgroundType && '' !== backgroundType ) {
 		if ( 'color' === backgroundType ) {
 			if (
-				backgroundImage &&
-				'' !== backgroundImage &&
 				'' !== backgroundColor &&
 				undefined !== backgroundColor &&
 				'unset' !== backgroundColor &&
@@ -100,7 +118,6 @@ const generateBackgroundCSS = ( backgroundAttributes, pseudoElementOverlay = {} 
 		} else if ( 'image' === backgroundType ) {
 			if (
 				'color' === overlayType &&
-				'' !== backgroundImage &&
 				'' !== backgroundImageColor &&
 				undefined !== backgroundImageColor &&
 				'unset' !== backgroundImageColor &&
@@ -121,10 +138,9 @@ const generateBackgroundCSS = ( backgroundAttributes, pseudoElementOverlay = {} 
 						');';
 				}
 			}
+
 			if (
 				'gradient' === overlayType &&
-				'' !== backgroundImage &&
-				backgroundImage &&
 				gradient &&
 				backgroundImage?.url
 			) {
@@ -136,7 +152,10 @@ const generateBackgroundCSS = ( backgroundAttributes, pseudoElementOverlay = {} 
 					bgCSS[ 'background-image' ] = gradient + ', url(' + backgroundImage?.url + ');';
 				}
 			}
-			if ( '' !== backgroundImage && backgroundImage && 'none' === overlayType && backgroundImage?.url ) {
+			if (
+				( 'image' === overlayType || 'none' === overlayType ) &&
+				backgroundImage?.url
+			) {
 				bgCSS[ 'background-image' ] = 'url(' + backgroundImage?.url + ');';
 			}
 			bgCSS[ 'background-repeat' ] = backgroundRepeat;
@@ -152,10 +171,9 @@ const generateBackgroundCSS = ( backgroundAttributes, pseudoElementOverlay = {} 
 			bgCSS[ 'background-size' ] = backgroundSizeValue;
 			bgCSS[ 'background-attachment' ] = backgroundAttachment;
 			bgCSS[ 'background-clip' ] = 'padding-box';
-
 		} else if ( 'gradient' === backgroundType ) {
 			if ( '' !== gradient && 'unset' !== gradient ) {
-				bgCSS.background = gradient;	
+				bgCSS.background = gradient;
 				bgCSS[ 'background-clip' ] = 'padding-box';
 			}
 		} else if ( 'video' === backgroundType ) {
@@ -172,6 +190,37 @@ const generateBackgroundCSS = ( backgroundAttributes, pseudoElementOverlay = {} 
 				bgCSS[ 'background-image' ] = gradient + ';';
 			}
 		}
+	}
+
+	//Handle background overlay image css
+	if ( 'image' === overlayType ) {
+		if ( '' !== backgroundOverlayImage && backgroundOverlayImage?.url ) {
+			bgOverlayCSS[ 'background-image' ] = `url(${ backgroundOverlayImage.url } );`;
+		}
+
+		bgOverlayCSS[ 'background-repeat' ] = backgroundOverlayRepeat;
+
+		if ( 'custom' !== customOverlayPosition && backgroundOverlayPosition?.x && backgroundOverlayPosition?.y ) {
+			bgOverlayCSS[ 'background-position' ] = `${ backgroundOverlayPosition.x * 100 }% ${
+				backgroundOverlayPosition.y * 100
+			}%`;
+		} else if ( 'custom' === customOverlayPosition ) {
+			bgOverlayCSS[
+				'background-position'
+			] = `${ xPositionOverlayValue }${ xPositionOverlayTypeValue } ${ yPositionOverlayValue }${ yPositionOverlayTypeValue }`;
+		}
+
+		let backgroundOverlaySizeValue = backgroundOverlaySize;
+
+		if ( 'custom' === backgroundOverlaySize ) {
+			backgroundOverlaySizeValue = backgroundCustomOverlaySize + backgroundCustomOverlaySizeType;
+		}
+
+		bgOverlayCSS[ 'background-size' ] = backgroundOverlaySizeValue;
+		bgOverlayCSS[ 'background-attachment' ] = backgroundOverlayAttachment;
+		bgOverlayCSS[ 'background-clip' ] = 'padding-box';
+		bgOverlayCSS[ 'mix-blend-mode' ] = blendMode;
+		bgOverlayCSS.opacity = overlayOpacity;
 	}
 
 	return pseudoElementOverlay?.forStyleSheet ? bgOverlayCSS : bgCSS;

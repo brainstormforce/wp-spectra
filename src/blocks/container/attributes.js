@@ -323,7 +323,6 @@ const attributes = {
 			styleType: 'container-bg-gradient-value',
 		},
 	},
-
 	borderStyle: {
 		type: 'string',
 	},
@@ -883,6 +882,27 @@ const attributes = {
 			styleType: 'background-overlay-opacity',
 		},
 	},
+	overlayBlendMode: {
+		type: 'string',
+		default: 'normal',
+		UAGCopyPaste: {
+			styleType: 'background-overlay-blend-mode',
+		},
+	},
+	overlayBlendModeTablet: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'background-overlay-blend-mode-tablet',
+		},
+	},
+	overlayBlendModeMobile: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'background-overlay-blend-mode-mobile',
+		},
+	},
 	// Background image position.
 	customPosition: {
 		type: 'string',
@@ -955,6 +975,7 @@ const attributes = {
 		default: 'px',
 	},
 
+	// Background image position.
 	backgroundVideoColor: {
 		type: 'string',
 		UAGCopyPaste: {
@@ -1115,6 +1136,282 @@ const attributes = {
 		default: 0,
 		UAGCopyPaste: {
 			styleType: 'gradient-angle',
+		},
+	},
+	gradientOverlayAngle: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'gradient-overlay-angle',
+		},
+	},
+	backgroundOverlayType: {
+		type: 'string',
+		default: 'none',
+		UAGCopyPaste: {
+			styleType: 'container-bg-overlay-type',
+		},
+	},
+	backgroundOverlayImageDesktop: {
+		type: 'object',
+		UAGCopyPaste: {
+			styleType: 'container-bg-image-overlay-desktop',
+		},
+	},
+	backgroundOverlayImageTablet: {
+		type: 'object',
+		UAGCopyPaste: {
+			styleType: 'container-bg-image-overlay-tablet',
+		},
+	},
+	backgroundOverlayImageMobile: {
+		type: 'object',
+		UAGCopyPaste: {
+			styleType: 'container-bg-image-overlay-mobile',
+		},
+	},
+	backgroundPositionOverlayDesktop: {
+		type: 'object',
+		default: {
+			x: 0.5,
+			y: 0.5,
+		},
+		UAGCopyPaste: {
+			styleType: 'container-bg-position-overlay-desktop',
+		},
+	},
+	backgroundPositionOverlayTablet: {
+		type: 'object',
+		UAGCopyPaste: {
+			styleType: 'container-bg-position-overlay-tablet',
+		},
+	},
+	backgroundPositionOverlayMobile: {
+		type: 'object',
+		UAGCopyPaste: {
+			styleType: 'container-bg-position-overlay-mobile',
+		},
+	},
+	backgroundSizeOverlayDesktop: {
+		type: 'string',
+		default: 'cover',
+		UAGCopyPaste: {
+			styleType: 'container-bg-overlay-size-desktop',
+		},
+	},
+	backgroundSizeOverlayTablet: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'container-bg-overlay-size-tablet',
+		},
+	},
+	backgroundSizeOverlayMobile: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'container-bg-overlay-size-mobile',
+		},
+	},
+	backgroundRepeatOverlayDesktop: {
+		type: 'string',
+		default: 'no-repeat',
+		UAGCopyPaste: {
+			styleType: 'container-bg-repeat-overlay-desktop',
+		},
+	},
+	backgroundRepeatOverlayTablet: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'container-bg-repeat-overlay-tablet',
+		},
+	},
+	backgroundRepeatOverlayMobile: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'container-bg-repeat-overlay-mobile',
+		},
+	},
+	backgroundAttachmentOverlayDesktop: {
+		type: 'string',
+		default: 'scroll',
+		UAGCopyPaste: {
+			styleType: 'container-bg-attachment-overlay-desktop',
+		},
+	},
+	backgroundAttachmentOverlayTablet: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'container-bg-attachment-overlay-tablet',
+		},
+	},
+	backgroundAttachmentOverlayMobile: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'container-bg-attachment-overlay-mobile',
+		},
+	},
+	backgroundOverlayColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'container-bg-overlay-color',
+		},
+	},
+	backgroundImageOverlayColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'container-bg-image-overlay-color',
+		},
+		default: '#FFFFFF75',
+	},
+	backgroundOverlayImageColor: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'container-bg-overlay-image-color',
+		},
+		default: '#FFFFFF75',
+	},
+	gradientOverlayValue: {
+		type: 'string',
+		default: 'linear-gradient(90deg, rgba(6, 147, 227, 0.5) 0%, rgba(155, 81, 224, 0.5) 100%)',
+		UAGCopyPaste: {
+			styleType: 'container-bg-gradient-overlay-value',
+		},
+	},
+	backgroundCustomSizeOverlayDesktop: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-custom-size-overlay-desktop',
+		},
+		default: 100,
+	},
+	backgroundCustomSizeOverlayTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-custom-size-overlay-tablet',
+		},
+	},
+	backgroundCustomSizeOverlayMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-custom-size-overlay-mobile',
+		},
+	},
+	backgroundCustomOverlaySizeType: {
+		type: 'string',
+		default: '%',
+		UAGCopyPaste: {
+			styleType: 'background-custom-overlay-size-type',
+		},
+	},
+	customOverlayPosition: {
+		type: 'string',
+		default: 'default',
+		UAGCopyPaste: {
+			styleType: 'background-image-overlay-position-type',
+		},
+	},
+	xPositionOverlayDesktop: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-image-x-position-overlay-desktop',
+		},
+		default: '',
+	},
+	xPositionOverlayTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-image-x-position-overlay-tablet',
+		},
+	},
+	xPositionOverlayMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-image-x-position-overlay-mobile',
+		},
+	},
+	xPositionOverlayType: {
+		type: 'string',
+		default: 'px',
+	},
+	xPositionOverlayTypeTablet: {
+		type: 'string',
+		default: 'px',
+	},
+	xPositionOverlayTypeMobile: {
+		type: 'string',
+		default: 'px',
+	},
+
+	yPositionOverlayDesktop: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-image-y-position-overlay-desktop',
+		},
+		default: '',
+	},
+	yPositionOverlayTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-image-y-position-overlay-tablet',
+		},
+	},
+	yPositionOverlayMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'background-image-y-position-overlay-mobile',
+		},
+	},
+	yPositionOverlayType: {
+		type: 'string',
+		default: 'px',
+	},
+	yPositionOverlayTypeTablet: {
+		type: 'string',
+		default: 'px',
+	},
+	yPositionOverlayTypeMobile: {
+		type: 'string',
+		default: 'px',
+	},
+	gradientOverlayColor1: {
+		type: 'string',
+		default: '#06558a',
+		UAGCopyPaste: {
+			styleType: 'gradient-overlay-color-1',
+		},
+	},
+	gradientOverlayColor2: {
+		type: 'string',
+		default: '#0063A1',
+		UAGCopyPaste: {
+			styleType: 'gradient-overlay-color-2',
+		},
+	},
+	gradientOverlayType: {
+		type: 'string',
+		default: 'linear',
+		UAGCopyPaste: {
+			styleType: 'gradient-overlay-color-type',
+		},
+	},
+	selectOverlayGradient: {
+		type: 'string',
+		default: 'basic',
+		UAGCopyPaste: {
+			styleType: 'gradient-overlay-type',
+		},
+	},
+	gradientOverlayLocation1: {
+		type: 'number',
+		default: 0,
+		UAGCopyPaste: {
+			styleType: 'gradient-overlay-location-1',
+		},
+	},
+	gradientOverlayLocation2: {
+		type: 'number',
+		default: 100,
+		UAGCopyPaste: {
+			styleType: 'gradient-overlay-location-2',
 		},
 	},
 	...inputBorderAttributes,

@@ -368,7 +368,7 @@ class UAGB_Post_Assets {
 		// Set required varibled from stored data.
 		$this->current_block_list  = $page_assets['current_block_list'];
 		$this->uag_flag            = $page_assets['uag_flag'];
-		$this->stylesheet          = $page_assets['css'];
+		$this->stylesheet          = apply_filters( 'uag_page_assets_css', $page_assets['css'] );
 		$this->script              = $page_assets['js'];
 		$this->gfonts              = $page_assets['gfonts'];
 		$this->gfonts_files        = $page_assets['gfonts_files'];

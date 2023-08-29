@@ -65,6 +65,7 @@ body
 .wp-block-uagb-container > *:not( .wp-block-uagb-container ):not( .wp-block-uagb-column ):not( .wp-block-uagb-container ):not( .wp-block-uagb-section ):not( .uagb-container__shape ):not( .uagb-container__video-wrap ):not( .wp-block-uagb-image ):not( .wp-block-spectra-pro-register ):not( .wp-block-spectra-pro-login ):not( .uagb-slider-container ) {
 	min-width: unset !important;
 	width: 100%;
+	position: relative;
 }
 
 body .ast-container .wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .wp-block-uagb-container,
@@ -155,4 +156,3 @@ body .ast-container .wp-block-uagb-container > .uagb-container-inner-blocks-wrap
 		width: -webkit-fill-available !important;
 	}
 }
-

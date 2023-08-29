@@ -14,6 +14,7 @@ $m_selectors = array();
 $t_selectors = array();
 $border_size = '100%';
 
+
 $border_css = array(
 	'-webkit-mask-size' => ( UAGB_Helper::get_css_value( $attr['separatorSize'], $attr['separatorSizeType'] ) . ' ' . $border_size ),
 	'border-top-width'  => UAGB_Helper::get_css_value( $attr['separatorBorderHeight'], $attr['separatorBorderHeightUnit'] ),
@@ -28,18 +29,8 @@ $icon_spacing_style = array();
 if ( 'none' === $attr['elementType'] ) {
 	$border_style['.wp-block-uagb-separator:not(.wp-block-uagb-separator--text):not(.wp-block-uagb-separator--icon) .wp-block-uagb-separator__inner'] = $border_css;
 
-} else {
-	$align_css = array();
-	if ( 'left' === $attr['separatorAlign'] ) {
-		$align_css = array(
-			'margin-left' => 0,
-		);
-	}
-	if ( 'right' === $attr['separatorAlign'] ) {
-		$align_css = array(
-			'margin-right' => 0,
-		);
-	}
+} else { 
+	$align_css    = UAGB_Helper::alignment_css( $attr['separatorAlign'] );
 	$border_style = array(
 		'.wp-block-uagb-separator .wp-block-uagb-separator__inner' => array_merge(
 			array(
@@ -129,17 +120,7 @@ if ( 'none' === $attr['elementType'] ) {
 	$border_style_tablet['.wp-block-uagb-separator:not(.wp-block-uagb-separator--text):not(.wp-block-uagb-separator--icon) .wp-block-uagb-separator__inner'] = $border_css_tablet;
 
 } else {
-	$align_css = array();
-	if ( 'left' === $attr['separatorAlignTablet'] ) {
-		$align_css = array(
-			'margin-left' => 0,
-		);
-	}
-	if ( 'right' === $attr['separatorAlignTablet'] ) {
-		$align_css = array(
-			'margin-right' => 0,
-		);
-	}
+	$align_css           = UAGB_Helper::alignment_css( $attr['separatorAlignTablet'] );
 	$border_style_tablet = array(
 		'.wp-block-uagb-separator .wp-block-uagb-separator__inner' => array_merge(
 			array(
@@ -229,17 +210,7 @@ if ( 'none' === $attr['elementType'] ) {
 	$border_style_mobile['.wp-block-uagb-separator:not(.wp-block-uagb-separator--text):not(.wp-block-uagb-separator--icon) .wp-block-uagb-separator__inner'] = $border_css_mobile;
 
 } else {
-	$align_css = array();
-	if ( 'left' === $attr['separatorAlignMobile'] ) {
-		$align_css = array(
-			'margin-left' => 0,
-		);
-	}
-	if ( 'right' === $attr['separatorAlignMobile'] ) {
-		$align_css = array(
-			'margin-right' => 0,
-		);
-	}
+	$align_css           = UAGB_Helper::alignment_css( $attr['separatorAlignMobile'] );
 	$border_style_mobile = array(
 		'.wp-block-uagb-separator .wp-block-uagb-separator__inner' => array_merge(
 			array(

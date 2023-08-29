@@ -690,7 +690,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since  1.14.0
 		 */
 		public static function allow_file_generation() {
-			return get_option( '_uagb_allow_file_generation', 'disabled' );
+			return apply_filters( 'uagb_allow_file_generation', get_option( '_uagb_allow_file_generation', 'disabled' ) );
 		}
 
 		/**
@@ -1372,6 +1372,38 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			return $combined_selectors;
+		}
+
+		/**
+		 * Set alignment css function.
+		 *
+		 * @param string $align passed.
+		 * @since 2.7.7
+		 * @return array
+		 */
+		public static function alignment_css( $align ) {
+			$align_css = array();
+			switch ( $align ) {
+				case 'left':
+					$align_css = array(
+						'margin-left'  => 0,
+						'margin-right' => 'auto',
+					);
+					break;
+				case 'center':
+					$align_css = array(
+						'margin-left'  => 'auto',
+						'margin-right' => 'auto',
+					);
+					break;
+				case 'right':
+					$align_css = array(
+						'margin-right' => 0,
+						'margin-left'  => 'auto',
+					);
+					break;
+			}
+			return $align_css;
 		}
 	}
 

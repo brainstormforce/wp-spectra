@@ -20,7 +20,6 @@ const Render = ( props ) => {
 	const blockName = name.replace( 'uagb/', '' );
 
 	const {
-		classMigrate,
 		align,
 		makeCollapsible,
 		initialCollapse,
@@ -34,8 +33,7 @@ const Render = ( props ) => {
 
 	useEffect( () => {
 		if ( UAGBTableOfContents ) {
-			const baseSelector = classMigrate ? '.uagb-block-' : '#uagb-toc-';
-			const selector = baseSelector + block_id;
+			const selector = '.uagb-block-' + block_id;
 			UAGBTableOfContents.init( selector, attributes );
 		}
 	}, [] );

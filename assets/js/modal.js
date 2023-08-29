@@ -1,7 +1,9 @@
 document.addEventListener( 'UAGModalEditor', function ( e ) {
 	UAGBModal.init( '.uagb-block-' + e.detail.block_id, true );
 } );
-
+document.addEventListener( 'AstraQuickViewForModal', function ( e ) {
+	UAGBModal.init( e.detail.class_name, false );
+} );
 window.UAGBModal = {
 	init( mainSelector, isAdmin ) {
 		const document_element = UAGBModal._getDocumentElement();
@@ -44,7 +46,9 @@ window.UAGBModal = {
 							}
 						}
 					} );
-
+					if ( '.uagb-modal-wrapper' === mainSelector ) { // When we get mainSelector as a uagb-modal-wrapper from AstraQuickViewForModal event we get null for closeModal. So avoid this we need to use uagb-modal-popup as mainSelector.
+						mainSelector = '.uagb-modal-popup';
+					}
 					const closeModal = innerModal.querySelector( `${ mainSelector } .uagb-modal-popup-close` );
 					if ( closeModal ) {
 						closeModal.addEventListener( 'click', function () {
