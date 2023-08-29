@@ -156,14 +156,3 @@ body .ast-container .wp-block-uagb-container > .uagb-container-inner-blocks-wrap
 		width: -webkit-fill-available !important;
 	}
 }
-
-.uagb-container-overlay {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 1; /* Adjust the z-index to position the overlay properly */
-}
-

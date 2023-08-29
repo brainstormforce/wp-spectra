@@ -273,13 +273,3 @@
 		width: -webkit-fill-available;
 	}
 }
-
-.uagb-container-overlay {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 1; /* Adjust the z-index to position the overlay properly */
-}

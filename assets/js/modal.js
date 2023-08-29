@@ -46,7 +46,9 @@ window.UAGBModal = {
 							}
 						}
 					} );
-
+					if ( '.uagb-modal-wrapper' === mainSelector ) { // When we get mainSelector as a uagb-modal-wrapper from AstraQuickViewForModal event we get null for closeModal. So avoid this we need to use uagb-modal-popup as mainSelector.
+						mainSelector = '.uagb-modal-popup';
+					}
 					const closeModal = innerModal.querySelector( `${ mainSelector } .uagb-modal-popup-close` );
 					if ( closeModal ) {
 						closeModal.addEventListener( 'click', function () {
