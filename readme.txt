@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.3.0
-Stable tag: 2.7.6
+Stable tag: 2.7.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,17 +215,17 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= x.x.x =
+= 2.7.7 - TUESDAY, 29th AUGUST 2023 =
 * Improvement: Container - Added an image overlay option for the background.
 * Fix: Container - Resolved an issue wherein the blocks inside Containers would appear underneath the Container's overlay when set.
 * Fix: Container - Resolved an issue in which the flex properties would not work as intended in the frontend for the Image and Heading blocks in nested Containers.
 * Fix: Modal - Resolved an issue in which the Modal would not open in Astra's quick-view popup for WooCommerce products.
-* Fix: Separator - Resolved an edge-case issue in which the responsive alignment would not work as intended.
-* Fix: Global - Resolved an issue where a PHP Warning occurred in some cases for some websites.
-* Fix: Table Of Contents - Resolved an issue in which latin characters in a heading would prevent the links for that specific heading from working.
 * Fix: Post Blocks - Resolved an issue wherein taxonomies were not accessible to the Shop Manager role.
-* Fix: Table Of Contents - Fixed an issue where the collapsible setting would not work in the editor when enabled.
-* Fix: Table Of Contents - Resolved an issue where regenerating assets would cause the Table Of Contents to appear empty in FSE.
+* Fix: Separator - Resolved an edge-case issue in which the responsive alignment would not work as intended.
+* Fix: Table Of Contents - Resolved an issue in which Latin characters in a heading would prevent the links for that specific heading from working.
+* Fix: Table Of Contents - Resolved an issue wherein the collapsible setting would not work in the editor when enabled.
+* Fix: Table Of Contents - Resolved an issue wherein regenerating assets would cause the Table Of Contents to appear empty in FSE.
+* Fix: Global - Resolved an issue wherein a PHP warning could occurred in a few cases on some websites.
 
 = 2.7.6 - FRIDAY, 18th AUGUST 2023 =
 * Fix: Form - Resolved multiple styling issues on the frontend.

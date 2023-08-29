@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.7.6\n"
+"Project-Id-Version: Spectra 2.7.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-08-18T14:02:46+00:00\n"
+"POT-Creation-Date: 2023-08-29T02:25:28+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -192,8 +192,8 @@ msgstr ""
 msgid "No posts found"
 msgstr ""
 
-#: blocks-config/table-of-content/class-uagb-table-of-content.php:641
-#: blocks-config/table-of-content/class-uagb-table-of-content.php:645
+#: blocks-config/table-of-content/class-uagb-table-of-content.php:646
+#: blocks-config/table-of-content/class-uagb-table-of-content.php:650
 #: includes/blocks/table-of-contents/attributes.php:18
 #: dist/blocks-placeholder.js:38
 #: dist/blocks.js:3
@@ -201,7 +201,7 @@ msgstr ""
 msgid "Table Of Contents"
 msgstr ""
 
-#: blocks-config/table-of-content/class-uagb-table-of-content.php:929
+#: blocks-config/table-of-content/class-uagb-table-of-content.php:934
 #: includes/blocks/table-of-contents/attributes.php:19
 #: dist/blocks.js:3
 #: dist/blocks.js:20
@@ -9706,9 +9706,12 @@ msgid "Position"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:12
 #: dist/blocks.js:13
+#: dist/blocks.js:17
 #: dist/blocks.js:19
-msgid "Classic"
+#: dist/blocks.js:20
+msgid "Color"
 msgstr ""
 
 #: dist/blocks.js:11
@@ -9719,12 +9722,9 @@ msgid "Gradient"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:12
 #: dist/blocks.js:13
-#: dist/blocks.js:17
 #: dist/blocks.js:19
-#: dist/blocks.js:20
-msgid "Color"
+msgid "Classic"
 msgstr ""
 
 #: dist/blocks.js:11
@@ -9812,6 +9812,49 @@ msgid "Fixed"
 msgstr ""
 
 #: dist/blocks.js:11
+msgid "Blend Mode"
+msgstr ""
+
+#: dist/blocks.js:11
+#: dist/blocks.js:12
+#: dist/blocks.js:13
+#: dist/blocks.js:17
+#: dist/blocks.js:19
+#: dist/blocks.js:20
+msgid "Normal"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Multiply"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Screen"
+msgstr ""
+
+#: dist/blocks.js:11
+#: dist/blocks.js:17
+#: dist/blocks.js:20
+msgid "Overlay"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Darken"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Lighten"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Color Dodge"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Saturation"
+msgstr ""
+
+#: dist/blocks.js:11
 #: dist/blocks.js:17
 msgid "No Repeat"
 msgstr ""
@@ -9889,15 +9932,6 @@ msgstr ""
 #: dist/blocks.js:19
 #: dist/blocks.js:20
 msgid "Border"
-msgstr ""
-
-#: dist/blocks.js:11
-#: dist/blocks.js:12
-#: dist/blocks.js:13
-#: dist/blocks.js:17
-#: dist/blocks.js:19
-#: dist/blocks.js:20
-msgid "Normal"
 msgstr ""
 
 #: dist/blocks.js:11
@@ -10884,11 +10918,6 @@ msgstr ""
 
 #: dist/blocks.js:17
 msgid "Image Dimensions"
-msgstr ""
-
-#: dist/blocks.js:17
-#: dist/blocks.js:20
-msgid "Overlay"
 msgstr ""
 
 #: dist/blocks.js:17
