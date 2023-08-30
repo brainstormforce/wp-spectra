@@ -1409,6 +1409,81 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			return $desktop . $tab_styling_css . $mob_styling_css;
 		}
 		/**
+		 * Generates background CSS for a specific device type.
+		 *
+		 * This function takes attributes for styling and a device type, and returns
+		 * the corresponding background object and overlay CSS for that device type.
+		 *
+		 * @param array  $attr         The array of attributes containing styling options.
+		 * @param string $device_type   The device type ('Desktop', 'Tablet', 'Mobile') for which to generate background CSS.
+		 * @param string $overlay      The overlay option ('no' or 'yes') to determine whether to include overlay CSS.
+		 *
+		 * @since x.x.x
+		 * @return array               The background CSS object for the specified device type.
+		 */
+		public static function get_background_css_by_device( $attr, $device_type = 'Desktop', $overlay = 'no' ) {
+
+			switch ( $device_type ) {
+				case 'tablet':
+				case 'Tablet':
+					$device_type = 'Tablet';
+					break;
+				case 'mobile':
+				case 'Mobile':
+					$device_type = 'Mobile';
+					break;
+				default:
+					$device_type = 'Desktop';
+			}
+
+			$bg_obj = array(
+				'backgroundType'                  => $attr['backgroundType'],
+				'backgroundImage'                 => $attr[ 'backgroundImage' . $device_type ],
+				'backgroundColor'                 => $attr['backgroundColor'],
+				'gradientValue'                   => $attr['gradientValue'],
+				'gradientColor1'                  => $attr['gradientColor1'],
+				'gradientColor2'                  => $attr['gradientColor2'],
+				'gradientType'                    => $attr['gradientType'],
+				'gradientLocation1'               => $attr['gradientLocation1'],
+				'gradientLocation2'               => $attr['gradientLocation2'],
+				'gradientAngle'                   => $attr['gradientAngle'],
+				'selectGradient'                  => $attr['selectGradient'],
+				'backgroundRepeat'                => $attr[ 'backgroundRepeat' . $device_type ],
+				'backgroundPosition'              => $attr[ 'backgroundPosition' . $device_type ],
+				'backgroundSize'                  => $attr[ 'backgroundSize' . $device_type ],
+				'backgroundAttachment'            => $attr[ 'backgroundAttachment' . $device_type ],
+				'backgroundImageColor'            => $attr['backgroundImageColor'],
+				'overlayType'                     => $attr['overlayType'],
+				'overlayOpacity'                  => $attr['overlayOpacity'],
+				'backgroundCustomSize'            => $attr[ 'backgroundCustomSize' . $device_type ],
+				'backgroundCustomSizeType'        => $attr['backgroundCustomSizeType'],
+				'backgroundVideo'                 => $attr['backgroundVideo'],
+				'backgroundVideoColor'            => $attr['backgroundVideoColor'],
+				'customPosition'                  => $attr['customPosition'],
+				'xPosition'                       => $attr[ 'xPosition' . $device_type ],
+				'xPositionType'                   => $attr['xPositionType'],
+				'yPosition'                       => $attr[ 'yPosition' . $device_type ],
+				'yPositionType'                   => $attr['yPositionType'],
+				'backgroundOverlayImage'          => $attr[ 'backgroundOverlayImage' . $device_type ],
+				'backgroundOverlayRepeat'         => $attr[ 'backgroundRepeatOverlay' . $device_type ],
+				'backgroundOverlayPosition'       => $attr[ 'backgroundPositionOverlay' . $device_type ],
+				'backgroundOverlaySize'           => $attr[ 'backgroundSizeOverlay' . $device_type ],
+				'backgroundOverlayAttachment'     => $attr[ 'backgroundAttachmentOverlay' . $device_type ],
+				'backgroundOverlayCustomSize'     => $attr[ 'backgroundCustomSizeOverlay' . $device_type ],
+				'backgroundOverlayCustomSizeType' => $attr['backgroundCustomOverlaySizeType'],
+				'customOverlayPosition'           => $attr['customOverlayPosition'],
+				'xOverlayPosition'                => $attr[ 'xPositionOverlay' . $device_type ],
+				'xOverlayPositionType'            => $attr['xPositionOverlayType'],
+				'yOverlayPosition'                => $attr[ 'yPositionOverlay' . $device_type ],
+				'yOverlayPositionType'            => $attr['yPositionOverlayType'],
+				'blendMode'                       => $attr['overlayBlendMode'],
+			);
+
+			$container_bg_css = self::uag_get_background_obj( $bg_obj, $overlay );
+
+			return $container_bg_css;
+		}
+		/**
 		 * Background Control CSS Generator Function.
 		 *
 		 * @param array  $bg_obj          The background object with all CSS properties.
