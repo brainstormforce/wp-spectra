@@ -37,6 +37,10 @@ const UAGBInfoBox = ( props ) => {
 		clientId,
 		deviceType,
 		context,
+		hasDynamicImg,
+		hasDescriptionDC,
+		hasPrefixTitleDC,
+		hasTitleDC,
 	} = props;
 
 	useEffect( () => {
@@ -84,7 +88,7 @@ const UAGBInfoBox = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		if( ! attributes?.context ){
+		if( ( hasDynamicImg || hasDescriptionDC || hasPrefixTitleDC || hasTitleDC ) && ! attributes?.context ){
 			setAttributes( { context } );
 		}
 	}, [ context ] )

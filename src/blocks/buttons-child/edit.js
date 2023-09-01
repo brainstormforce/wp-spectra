@@ -20,7 +20,7 @@ const ButtonsChildComponent = ( props ) => {
 		isSelected,
 		clientId,
 		attributes,
-		attributes: { borderStyle, borderWidth, borderRadius, borderHColor, borderColor },
+		attributes: { borderStyle, borderWidth, borderRadius, borderHColor, borderColor, label },
 		setAttributes,
 		name,
 		deviceType,
@@ -32,6 +32,12 @@ const ButtonsChildComponent = ( props ) => {
 	};
 
 	const [ state, setStateValue ] = useState( initialState );
+
+	// Check label has dynamic content.
+	const labelHasDynamicContent = label && -1 !== label.indexOf( '<span data-spectra-dc-field="' );
+	
+	// Including condition in props for child component.
+	props = { ...props, labelHasDynamicContent };
 
 	useEffect( () => {
 		// border migration
@@ -65,7 +71,7 @@ const ButtonsChildComponent = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		if( ! attributes?.context ){
+		if( labelHasDynamicContent && ! attributes?.context ){
 			setAttributes( { context } );
 		}
 	}, [ context ] )

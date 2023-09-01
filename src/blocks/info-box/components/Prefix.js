@@ -6,7 +6,7 @@ import { createBlock } from '@wordpress/blocks';
 import { applyFilters } from '@wordpress/hooks';
 
 const Prefix = ( props ) => {
-	const { attributes, setAttributes, mergeBlocks, insertBlocksAfter, onReplace, context } = props;
+	const { attributes, setAttributes, mergeBlocks, insertBlocksAfter, onReplace, context, hasPrefixTitleDC } = props;
 	let { prefixTitle } = attributes;
 
 	if( 'not_set' === setAttributes ){
@@ -16,7 +16,7 @@ const Prefix = ( props ) => {
 	let allowedFormats = false;
 	
 	// Check if this has dynamic content.
-	if ( '' !== prefixTitle && -1 !== prefixTitle.indexOf( '<span data-spectra-dc-field="' ) ) {
+	if ( hasPrefixTitleDC ) {
 		const renderedMarkup = applyFilters( `uag_render_text_loop_data`, prefixTitle, context );
 		if ( renderedMarkup !== '' ) {
 			allowedFormats = [ 'uagb/dynamic-content' ];

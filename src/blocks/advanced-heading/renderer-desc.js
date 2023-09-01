@@ -4,14 +4,14 @@ import { applyFilters } from '@wordpress/hooks';
 import { createBlock } from '@wordpress/blocks';
 
 const RendererDesc = ( props ) => {
-	const { setAttributes, attributes, context, onReplace, mergeBlocks  } = props;
+	const { setAttributes, attributes, context, onReplace, mergeBlocks, descriptionHasDynamicContent  } = props;
 
 	let { headingDesc } = props.attributes;
 
 	let allowedFormats = false;
 
 	// Check if this has dynamic content.
-	if ( headingDesc && -1 !== headingDesc.indexOf( '<span data-spectra-dc-field="' ) ) {
+	if ( descriptionHasDynamicContent ) {
 		const renderedMarkup = applyFilters( `uag_render_text_loop_data`, headingDesc, context );
 		if ( renderedMarkup !== '' ) {
 			allowedFormats = [ 'uagb/dynamic-content' ];
