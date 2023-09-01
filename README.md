@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Fix: Container - Resolved an issue in which the link tag would not work as intended on the front-end.
+
 ### 2.7.7 - TUESDAY, 29th AUGUST 2023 ###
 * Improvement: Container - Added an image overlay option for the background.
 * Fix: Container - Resolved an issue wherein the blocks inside Containers would appear underneath the Container's overlay when set.
