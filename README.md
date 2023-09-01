@@ -217,6 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ### x.x.x ###
 * Fix: Container - Resolved an issue in which the link tag would not work as intended on the front-end.
+* Fix: How To - Resolved an issue in which the minimum minutes setting would be unskippable.
 
 ### 2.7.7 - TUESDAY, 29th AUGUST 2023 ###
 * Improvement: Container - Added an image overlay option for the background.
