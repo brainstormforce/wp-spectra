@@ -1418,7 +1418,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $device_type   The device type ('Desktop', 'Tablet', 'Mobile') for which to generate background CSS.
 		 * @param string $overlay      The overlay option ('no' or 'yes') to determine whether to include overlay CSS.
 		 *
-		 * @since x.x.x
+		 * @since 2.7.8
 		 * @return array               The background CSS object for the specified device type.
 		 */
 		public static function get_background_css_by_device( $attr, $device_type = 'Desktop', $overlay = 'no' ) {
