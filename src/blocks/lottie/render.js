@@ -15,7 +15,7 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	const { className, attributes, setAttributes, deviceType, lottieplayer, name, clientId } = props;
+	const { className, attributes, setAttributes, deviceType, lottieplayer, name } = props;
 
 	const blockName = name.replace( 'uagb/', '' );
 
@@ -87,7 +87,7 @@ const Render = ( props ) => {
 		<div // eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
 			className={ classnames(
 				className,
-				`uagb-block-${ clientId.substr( 0, 8 ) }`,
+				`uagb-block-${ attributes.block_id }`,
 				'uagb-lottie__outer-wrap',
 				`uagb-lottie__${ align }`,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`

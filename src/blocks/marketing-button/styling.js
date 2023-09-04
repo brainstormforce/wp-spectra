@@ -93,6 +93,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		prefixLetterSpacingTablet,
 		prefixLetterSpacingMobile,
 		prefixLetterSpacingType,
+		block_id
 	} = attributes;
 
 	const gradientLocation1Fallback = getFallbackNumber( gradientLocation1, 'gradientLocation1', blockName );
@@ -273,7 +274,7 @@ function styling( attributes, clientId, name, deviceType ) {
 
 	mobileSelectors[ ' svg' ][ marginType ] = generateCSSUnit( iconSpaceMobile, 'px' );
 
-	const id = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
+	const id = `.editor-styles-wrapper .uagb-block-${ block_id }`;
 
 	let stylingCss = generateCSS( selectors, id );
 

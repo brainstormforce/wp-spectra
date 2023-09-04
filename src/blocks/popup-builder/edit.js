@@ -20,6 +20,7 @@ import Render from './render';
 import Settings from './settings';
 import styling from './styling';
 import styles from './editor.lazy.scss';
+import addInitialAttr from '@Controls/addInitialAttr';
 
 const SpectraPopupBuilderEdit = ( props ) => {
 
@@ -71,11 +72,6 @@ const SpectraPopupBuilderEdit = ( props ) => {
 		return () => {
 			styles.unuse();
 		};
-	}, [] );
-
-	useEffect( () => {
-		// Assigning block_id in the attribute.
-		setAttributes( { block_id: clientId.substr( 0, 8 ) } );
 	}, [] );
 
 	// Add Dynamic Block Styling.
@@ -173,5 +169,6 @@ export default compose(
 		dispatch( 'core/block-editor' ).setTemplateValidity( true );
 		return true;
 	} ),
+	addInitialAttr,
 	AddStaticStyles,
 )( SpectraPopupBuilderEdit );

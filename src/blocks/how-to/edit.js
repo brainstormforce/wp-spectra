@@ -42,6 +42,7 @@ const HowToComponent = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
+			schema,
 		},
 		clientId,
 		name,
@@ -143,11 +144,13 @@ const HowToComponent = ( props ) => {
 
 	useEffect( () => {
 		// Replacement for componentDidMount.
-		setAttributes( {
-			schema: JSON.stringify( schemaJsonData ),
-		} );
+		if( ! schema ){
+			setAttributes( {
+				schema: JSON.stringify( schemaJsonData ),
+			} );
 
-		setPrevState( schemaJsonData );
+			setPrevState( schemaJsonData );
+		}
 	}, [] );
 
 	useEffect( () => {

@@ -14,6 +14,7 @@ function styling( attributes, clientId, deviceType ) {
 		heightMob,
 		backgroundColor,
 		backgroundHColor,
+		block_id,
 	} = attributes;
 	const previewType = deviceType.toLowerCase();
 	const widthFallback = isNaN( width ) ? 'auto' : `${ width }px`;
@@ -58,7 +59,7 @@ function styling( attributes, clientId, deviceType ) {
 		},
 	};
 
-	const base_selector = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
+	const base_selector = `.editor-styles-wrapper .uagb-block-${ block_id }`;
 
 	let styling_css = generateCSS( selectors, base_selector );
 

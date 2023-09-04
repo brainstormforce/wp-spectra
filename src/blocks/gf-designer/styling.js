@@ -12,6 +12,7 @@ function styling( attributes, clientId, name, deviceType ) {
 	const blockName = name.replace( 'uagb/', '' );
 	const previewType = deviceType.toLowerCase();
 	const {
+		block_id,
 		align,
 		titleDescAlignment,
 		fieldBgColor,
@@ -1169,7 +1170,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		},
 	};
 
-	const base_selector = `.editor-styles-wrapper .wp-block-uagb-gf-styler.uagb-block-${ clientId.substr( 0, 8 ) }`;
+	const base_selector = `.editor-styles-wrapper .wp-block-uagb-gf-styler.uagb-block-${ block_id }`;
 
 	let stylingCss = generateCSS( selectors, `${ base_selector }` );
 

@@ -12,6 +12,7 @@ import generateShadowCSS from '@Controls/generateShadowCSS';
 
 function styling( attributes, clientId, deviceType ) {
 	const {
+		block_id,
 		blockName,
 		btnBorderHColor,
 		align,
@@ -990,7 +991,7 @@ function styling( attributes, clientId, deviceType ) {
 	}
 
 	let stylingCss = '';
-	const baseSelector = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
+	const baseSelector = `.editor-styles-wrapper .uagb-block-${ block_id }`;
 
 	stylingCss = generateCSS( selectors, baseSelector );
 

@@ -150,6 +150,7 @@ export default function styling( attributes, clientId, name, deviceType ) {
 		closePaddingUnitMobile,
 		// ------------------------- BORDER EXTRACTED STYLING.
 		contentBorderHColor,
+		block_id
 	} = attributes;
 
 	const blockName = name.replace( 'uagb/', '' );
@@ -480,7 +481,7 @@ export default function styling( attributes, clientId, name, deviceType ) {
 		};
 	}
 
-	const baseSelector = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
+	const baseSelector = `.editor-styles-wrapper .uagb-block-${ block_id }`;
 
 	selectors = applyFilters( `spectra.${ blockName }.styling`, selectors, attributes );
 	tabletSelectors = applyFilters( `spectra.${ blockName }.tabletStyling`, tabletSelectors, attributes );
