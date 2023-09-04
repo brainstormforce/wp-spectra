@@ -21,21 +21,23 @@ const generateBorderCSS = ( attributes, prefix, deviceType = 'desktop' ) => {
 		const borderBottomWidth = generateCSSUnit( attributes[ prefix + 'BorderBottomWidth' + deviceType ], 'px' );
 		const borderLeftWidth = generateCSSUnit( attributes[ prefix + 'BorderLeftWidth' + deviceType ], 'px' );
 
+		const unitFallback = attributes[ prefix + 'BorderRadiusUnit' + deviceType ] || 'px';
+
 		const borderTopLeftRadius = generateCSSUnit(
 			attributes[ prefix + 'BorderTopLeftRadius' + deviceType ],
-			attributes[ prefix + 'BorderRadiusUnit' + deviceType ]
+			unitFallback
 		);
 		const borderTopRightRadius = generateCSSUnit(
 			attributes[ prefix + 'BorderTopRightRadius' + deviceType ],
-			attributes[ prefix + 'BorderRadiusUnit' + deviceType ]
+			unitFallback
 		);
 		const borderBottomRightRadius = generateCSSUnit(
 			attributes[ prefix + 'BorderBottomRightRadius' + deviceType ],
-			attributes[ prefix + 'BorderRadiusUnit' + deviceType ]
+			unitFallback
 		);
 		const borderBottomLeftRadius = generateCSSUnit(
 			attributes[ prefix + 'BorderBottomLeftRadius' + deviceType ],
-			attributes[ prefix + 'BorderRadiusUnit' + deviceType ]
+			unitFallback
 		);
 
 		if ( 'none' !== attributes[ prefix + 'BorderStyle' ] && '' !== attributes[ prefix + 'BorderStyle' ] ) {
