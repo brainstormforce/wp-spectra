@@ -1408,6 +1408,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			return $desktop . $tab_styling_css . $mob_styling_css;
 		}
+
 		/**
 		 * Generates background CSS for a specific device type.
 		 *
@@ -1483,6 +1484,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			return $container_bg_css;
 		}
+
 		/**
 		 * Background Control CSS Generator Function.
 		 *
@@ -1663,6 +1665,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			
 			return 'yes' === $css_for_pseudo ? $gen_bg_overlay_css : $gen_bg_css;
 		}
+
 		/**
 		 * Border attribute generation Function.
 		 *
@@ -1728,6 +1731,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			return $border_attr;
 		}
+
 		/**
 		 * Border attribute generation Function.
 		 *

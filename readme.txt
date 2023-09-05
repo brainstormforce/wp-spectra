@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= 2.7.8 - MONDAY, 4th SEPTEMBER 2023 =
+= 2.7.8 - TUESDAY, 5th SEPTEMBER 2023 =
 * Improvement: Global - Enhanced the reusable block functionality for the following blocks: Google Maps, How To, Icon List, Inline Notice, Lottie, Marketing Button, Modal, Popup Builder, Post Grid and Post Carousel. 
 * Fix: Container - Resolved an issue in which the link tag would not work as intended on the front-end.
 * Fix: How To - Resolved an issue in which the minimum minutes setting would be unskippable.
