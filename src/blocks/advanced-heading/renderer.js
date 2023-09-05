@@ -9,14 +9,15 @@ const Renderer = ( props ) => {
 		attributes,
 		context,
 		onReplace,
-		mergeBlocks
+		mergeBlocks,
+		headingHasDynamicContent,
 	} = props;
 
 	let { headingTitle, headingTag } = attributes;
 	let allowedFormats = false;
 
 	// Check if this has dynamic content.
-	if ( -1 !== headingTitle.indexOf( '<span data-spectra-dc-field="' ) ) {
+	if ( headingHasDynamicContent ) {
 		const renderedMarkup = applyFilters( `uag_render_text_loop_data`, headingTitle, context );
 		if ( renderedMarkup !== '' ) {
 			allowedFormats = [ 'uagb/dynamic-content' ];

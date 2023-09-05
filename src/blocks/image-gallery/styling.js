@@ -204,6 +204,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		mainTitleBorderColor,
 		mainTitleBorderHColor,
 		imageBorderHColor,
+		block_id
 	} = attributes;
 
 	// Arrow & Dots Default Color Fallback ( Not from Theme ).
@@ -951,7 +952,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		};
 	}
 
-	const baseSelector = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
+	const baseSelector = `.editor-styles-wrapper .uagb-block-${ block_id }`;
 
 	selectors = applyFilters( `spectra.image-gallery.styling`, selectors, attributes );
 	tabletSelectors = applyFilters( `spectra.image-gallery.tabletStyling`, tabletSelectors, attributes );

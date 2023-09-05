@@ -3,7 +3,12 @@ import { applyFilters } from '@wordpress/hooks';
 export function containerWrapper( ChildComponent ) {
 	return ( props ) => {
 		const { attributes, context } = props;
-		if ( ! attributes?.dynamicContent?.bgImage?.enable ) {
+		const hasDynamicContent = attributes?.dynamicContent?.bgImage?.enable;
+
+		// Adding condition to check if the block has dynamic content.
+		props = { ...props, hasDynamicContent };
+
+		if ( ! hasDynamicContent ) {
             return <ChildComponent { ...props } />;
 		}
         

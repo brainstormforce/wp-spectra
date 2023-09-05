@@ -18,7 +18,7 @@ const Render = ( props ) => {
 		attributes: { zoom, address, language, height },
 		deviceType,
 		name,
-		clientId
+		block_id
 	} = props;
 
 	const blockName = name.replace( 'uagb/', '' );
@@ -33,7 +33,7 @@ const Render = ( props ) => {
 			className={ classnames(
 				className,
 				'uagb-google-map__wrap',
-				`uagb-block-${ clientId.substr( 0, 8 ) }`,
+				`uagb-block-${ block_id }`,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
 			) }
 		>

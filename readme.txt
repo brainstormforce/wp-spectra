@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
-Tested up to: 6.3.0
-Stable tag: 2.7.7
+Tested up to: 6.3.1
+Stable tag: 2.7.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -214,6 +214,12 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
 
 == Changelog ==
+
+= 2.7.8 - TUESDAY, 5th SEPTEMBER 2023 =
+* Improvement: Global - Enhanced the reusable block functionality for the following blocks: Google Maps, How To, Icon List, Inline Notice, Lottie, Marketing Button, Modal, Popup Builder, Post Grid and Post Carousel. 
+* Fix: Container - Resolved an issue in which the link tag would not work as intended on the front-end.
+* Fix: How To - Resolved an issue in which the minimum minutes setting would be unskippable.
+* Fix: Post Blocks - Resolved an issue in which the responsive styling would not work as intended in the editor.
 
 = 2.7.7 - TUESDAY, 29th AUGUST 2023 =
 * Improvement: Container - Added an image overlay option for the background.

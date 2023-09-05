@@ -5,7 +5,6 @@ import RendererDesc from './renderer-desc';
 
 const Render = ( props ) => {
 	const {
-		attributes,
 		attributes: {
 			block_id,
 			headingTitleToggle,
@@ -14,15 +13,9 @@ const Render = ( props ) => {
 			seperatorPosition,
 			headingDescPosition,
 		},
-		setAttributes,
 		className,
-		context,
-		onReplace,
-		mergeBlocks,
 		deviceType
 	} = props;
-
-	const params = { setAttributes, attributes, context, onReplace, mergeBlocks };
 
 	const separator = seperatorStyle !== 'none' && (
 		<div className="uagb-separator-wrap">
@@ -33,7 +26,7 @@ const Render = ( props ) => {
 	const headingText = (
 		<>
 			{ seperatorPosition === 'above-heading' ? separator : '' }
-			<Renderer { ...params } />
+			<Renderer { ...props } />
 			{ seperatorPosition === 'below-heading' ? separator : '' }
 		</>
 	);
@@ -41,7 +34,7 @@ const Render = ( props ) => {
 	const descText = (
 		<>
 			{ seperatorPosition === 'above-sub-heading' ? separator : '' }
-			<RendererDesc { ...params } />
+			<RendererDesc { ...props } />
 			{ seperatorPosition === 'below-sub-heading' ? separator : '' }
 		</>
 	);

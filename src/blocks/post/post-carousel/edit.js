@@ -271,6 +271,7 @@ const UAGBPostCarousel = ( props ) => {
 			UAGHideTab,
 			UAGHideMob,
 			equalHeight,
+			block_id
 		},
 		setAttributes,
 		deviceType,
@@ -428,9 +429,9 @@ const UAGBPostCarousel = ( props ) => {
 
 	useEffect( () => {
 		if ( equalHeight ) {
-			uagb_carousel_height( clientId.substr( 0, 8 ) );
+			uagb_carousel_height( block_id );
 		} else {
-			uagb_carousel_unset_height( clientId.substr( 0, 8 ) ); // eslint-disable-line no-undef
+			uagb_carousel_unset_height( block_id ); // eslint-disable-line no-undef
 		}
 	}, [ attributes, deviceType ] );
 
@@ -438,9 +439,9 @@ const UAGBPostCarousel = ( props ) => {
 
 	blockStyling +=
 		'.uagb-block-' +
-		clientId.substr( 0, 8 ) +
+		block_id +
 		'.uagb-post-grid ul.slick-dots li.slick-active button:before, .uagb-block-' +
-		clientId.substr( 0, 8 ) +
+		block_id +
 		'.uagb-slick-carousel ul.slick-dots li button:before { color: ' +
 		attributes.arrowColor +
 		'; }';

@@ -48,6 +48,7 @@ function styling( attributes, clientId, deviceType ) {
 		childPaddingUnit,
 		childPaddingUnitTablet,
 		childPaddingUnitMobile,
+		block_id
 	} = attributes;
 
 	const selectors = {
@@ -115,7 +116,7 @@ function styling( attributes, clientId, deviceType ) {
 	};
 
 	let stylingCss = '';
-	const id = `.uagb-block-${ clientId.substr( 0, 8 ) }`;
+	const id = `.uagb-block-${ block_id }`;
 
 	stylingCss = generateCSS( selectors, id );
 

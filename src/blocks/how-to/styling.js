@@ -74,6 +74,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		subHeadLetterSpacingTablet,
 		subHeadLetterSpacingMobile,
 		subHeadLetterSpacingType,
+		block_id,
 	} = attributes;
 
 	let tabletSelectors = {};
@@ -469,7 +470,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		},
 	};
 
-	const baseSelector = `.editor-styles-wrapper .uagb-block-${ clientId.substr( 0, 8 ) }`;
+	const baseSelector = `.editor-styles-wrapper .uagb-block-${ block_id }`;
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 

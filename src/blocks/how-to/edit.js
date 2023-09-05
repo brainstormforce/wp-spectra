@@ -33,7 +33,6 @@ const HowToComponent = ( props ) => {
 			mainimage,
 			headingTitle,
 			headingDesc,
-			time,
 			cost,
 			timeInMins,
 			timeInHours,
@@ -43,6 +42,7 @@ const HowToComponent = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
+			schema,
 		},
 		clientId,
 		name,
@@ -82,6 +82,13 @@ const HowToComponent = ( props ) => {
 		const m = attributes.timeInMonths ? attributes.timeInMonths : 0;
 		const d = attributes.timeInDays ? attributes.timeInDays : 0;
 		const h = attributes.timeInHours ? attributes.timeInHours : 0;
+
+		if( y || m || d || h !== 0 ) {
+			attributes.time = '';
+		}
+		else {
+			attributes.time = '30';
+		}	
 
 		const minutes = attributes.timeInMins ? attributes.timeInMins : attributes.time;
 
@@ -137,11 +144,13 @@ const HowToComponent = ( props ) => {
 
 	useEffect( () => {
 		// Replacement for componentDidMount.
-		setAttributes( {
-			schema: JSON.stringify( schemaJsonData ),
-		} );
+		if( ! schema ){
+			setAttributes( {
+				schema: JSON.stringify( schemaJsonData ),
+			} );
 
-		setPrevState( schemaJsonData );
+			setPrevState( schemaJsonData );
+		}
 	}, [] );
 
 	useEffect( () => {
@@ -165,8 +174,6 @@ const HowToComponent = ( props ) => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	const minsValue = timeInMins ? timeInMins : time;
-
 	return (
 		<>
 			<DynamicCSSLoader { ...{ blockStyling } } />
@@ -177,7 +184,7 @@ const HowToComponent = ( props ) => {
 				mainimage={ mainimage }
 				showTotaltime={ showTotaltime }
 				timeNeeded={ timeNeeded }
-				minsValue={ minsValue }
+				minsValue={ timeInMins }
 				timeInHours={ timeInHours }
 				timeInDays={ timeInDays }
 				timeInMonths={ timeInMonths }

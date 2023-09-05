@@ -57,10 +57,10 @@ const Render = ( props ) => {
 			timeInYears,
 			imgTagHeight,
 			imgTagWidth,
+			block_id,
 		},
 		deviceType,
 		name,
-		clientId
 	} = props;
 
 	const blockName = name.replace( 'uagb/', '' );
@@ -221,7 +221,7 @@ const Render = ( props ) => {
 			className={ classnames(
 				className,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ clientId.substr( 0, 8 ) }`,
+				`uagb-block-${ block_id }`,
 				'uagb-how-to-main-wrap'
 			) }
 		>

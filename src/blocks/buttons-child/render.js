@@ -12,7 +12,7 @@ import { applyFilters } from '@wordpress/hooks';
 
 const Render = ( props ) => {
 
-	const { attributes, setAttributes, deviceType, context } = props;
+	const { attributes, setAttributes, deviceType, context, labelHasDynamicContent } = props;
 
 	const {
 		className,
@@ -27,7 +27,7 @@ const Render = ( props ) => {
 	let { label } = attributes;
 
 	// Check if this has dynamic content.
-	if ( label && -1 !== label.indexOf( '<span data-spectra-dc-field="' ) ) {
+	if ( labelHasDynamicContent ) {
 		const renderedMarkup = applyFilters( `uag_render_text_loop_data`, label, context );
 		if ( renderedMarkup !== '' ) {
 			label = renderedMarkup;

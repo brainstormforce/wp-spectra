@@ -6,7 +6,7 @@ import { createBlock } from '@wordpress/blocks';
 import { applyFilters } from '@wordpress/hooks';
 
 const InfoBoxDesc = ( props ) => {
-	const { attributes, setAttributes, mergeBlocks, insertBlocksAfter, onReplace, context } = props;
+	const { attributes, setAttributes, mergeBlocks, insertBlocksAfter, onReplace, context, hasDescriptionDC } = props;
 	let { headingDesc } = attributes;
 
 	if( 'not_set' === setAttributes ){
@@ -16,7 +16,7 @@ const InfoBoxDesc = ( props ) => {
 	let allowedFormats = false;
 	
 	// Check if this has dynamic content.
-	if ( '' !== headingDesc && -1 !== headingDesc.indexOf( '<span data-spectra-dc-field="' ) ) {
+	if ( hasDescriptionDC ) {
 		const renderedMarkup = applyFilters( `uag_render_text_loop_data`, headingDesc, context );
 		if ( renderedMarkup !== '' ) {
 			allowedFormats = [ 'uagb/dynamic-content' ];

@@ -21,10 +21,11 @@ function UAGBImageEdit( props ) {
 		deviceType,
 		context,
 		setAttributes,
+		hasDynamicContent,
 	} = props;
 
 	useEffect( () => {
-		if( ! attributes?.context ){
+		if ( hasDynamicContent && ! attributes?.context ) {
 			setAttributes( { context } );
 		}
 	}, [ context ] )
