@@ -38,9 +38,9 @@ if ( empty( $border['border-color'] ) ) {
 	$border['border-color'] = 'inherit';
 }
 
-$container_bg_css_desktop = UAGB_Block_Helper::get_background_css_by_device( $attr, 'Desktop', 'no' );
-$container_bg_css_tablet  = UAGB_Block_Helper::get_background_css_by_device( $attr, 'Tablet', 'no' );
-$container_bg_css_mobile  = UAGB_Block_Helper::get_background_css_by_device( $attr, 'Mobile', 'no' );
+$container_bg_css_desktop = UAGB_Block_Helper::get_background_css_by_device( $attr );
+$container_bg_css_tablet  = UAGB_Block_Helper::get_background_css_by_device( $attr, 'Tablet' );
+$container_bg_css_mobile  = UAGB_Block_Helper::get_background_css_by_device( $attr, 'Mobile' );
 
 $container_bg_overlay_css        = array();
 $container_bg_overlay_css_mobile = array();
