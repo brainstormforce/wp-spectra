@@ -2146,7 +2146,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$link_classes = 'wp-block-button__link uagb-text-link';
 			?>
 			<div class="<?php echo esc_attr( $wrap_classes ); ?>">
-				<a class="<?php echo esc_attr( $link_classes ); ?>" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_attr( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo esc_html( $cta_text ); ?></a>
+				<a class="<?php echo esc_attr( $link_classes ); ?>" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_attr( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo wp_kses_post( $cta_text ); ?></a>
 			</div>
 			<?php
 			do_action( "uagb_single_post_after_cta_{$attributes['post_type']}", get_the_ID(), $attributes );
