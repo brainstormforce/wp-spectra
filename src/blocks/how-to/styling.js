@@ -287,7 +287,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		'display': 'block',
 	};
 
-	selectors[ ' ' + headingTag + '.block-editor-rich-text__editable.uagb-howto-heading-text' ] = {
+	selectors[ ` ${ headingTag }.block-editor-rich-text__editable.uagb-howto-heading-text`] = {
 		'font-family': headFontFamily,
 		'font-style': headFontStyle,
 		'text-decoration': headDecoration,
@@ -385,6 +385,12 @@ function styling( attributes, clientId, name, deviceType ) {
 		},
 	};
 
+	mobileSelectors[ ` ${ headingTag }.block-editor-rich-text__editable.uagb-howto-heading-text` ] = {
+		'font-size': generateCSSUnit( headFontSizeMobile, headFontSizeType ),
+		'line-height': generateCSSUnit( headLineHeightMobile, headLineHeightType ),
+		'letter-spacing': generateCSSUnit( headLetterSpacingMobile, headLetterSpacingType ),
+	};
+
 	tabletSelectors = {
 		' .block-editor-rich-text__editable.uagb-howto-heading-text': {
 			'font-size': generateCSSUnit( headFontSizeTablet, headFontSizeType ),
@@ -468,6 +474,12 @@ function styling( attributes, clientId, name, deviceType ) {
 		' h4.uagb-howto-req-materials-text': {
 			'margin-top': generateCSSUnit( getFallbackNumber( rowGapTablet, 'rowGapTablet', blockName ), 'px' ),
 		},
+	};
+
+	tabletSelectors[ ` ${ headingTag }.block-editor-rich-text__editable.uagb-howto-heading-text` ] = {
+		'font-size': generateCSSUnit( headFontSizeTablet, headFontSizeType ),
+		'line-height': generateCSSUnit( headLineHeightTablet, headLineHeightType ),
+		'letter-spacing': generateCSSUnit( headLetterSpacingTablet, headLetterSpacingType ),
 	};
 
 	const baseSelector = `.editor-styles-wrapper .uagb-block-${ block_id }`;
