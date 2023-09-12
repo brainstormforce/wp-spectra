@@ -218,6 +218,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ### x.x.x ###
 * Fix: Image gallery - Resolved an issue wherein the lightbox was not working correctly within container.
 * Fix: Post Blocks - Resolved an issue wherein text-formatting for buttons would appear as HTML tags on the front-end.
+* Fix: Price List - Resolved issues wherein the title bottom margin, and the row and column gaps would not work as intended for responsive devices.
 
 ### 2.7.8 - TUESDAY, 5th SEPTEMBER 2023 ###
 * Improvement: Global - Enhanced the reusable block functionality for the following blocks: Google Maps, How To, Icon List, Inline Notice, Lottie, Marketing Button, Modal, Popup Builder, Post Grid and Post Carousel. 
