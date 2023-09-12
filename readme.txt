@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Fix: Call To Action - Resolved an issue wherein the buttons would not be aligned as intended.
 * Fix: Image gallery - Resolved an issue wherein the lightbox was not working correctly within container.
 * Fix: Post Blocks - Resolved an issue wherein text-formatting for buttons would appear as HTML tags on the front-end.
 * Fix: Price List - Resolved issues wherein the title bottom margin, and the row and column gaps would not work as intended for responsive devices.
