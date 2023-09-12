@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Improvement: InfoBox - Changed Info Box icon position dropdown to multi control.
 * Fix: Call To Action - Resolved an issue wherein the buttons would not be aligned as intended.
 * Fix: How To - Resolved an issue in which the responsive heading font-sizes would not work as intended.
 * Fix: Image gallery - Resolved an issue wherein the lightbox was not working correctly within container.

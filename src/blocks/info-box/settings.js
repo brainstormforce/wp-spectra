@@ -751,24 +751,26 @@ const Settings = ( props ) => {
 				) }
 				{ showCtaIcon && ctaIcon !== '' && ctaType !== 'all' && ctaType !== 'none' && (
 					<>
-						<UAGSelectControl
-							label={ __( 'Icon Position', 'ultimate-addons-for-gutenberg' ) }
-							data={ {
-								value: ctaIconPosition,
-								label: 'ctaIconPosition',
-							} }
-							setAttributes={ setAttributes }
-							options={ [
-								{
-									value: 'before',
-									label: __( 'Before Text', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									value: 'after',
-									label: __( 'After Text', 'ultimate-addons-for-gutenberg' ),
-								},
-							] }
-						/>
+						<MultiButtonsControl
+									setAttributes={ setAttributes }
+									label={ __( 'Icon Position', 'ultimate-addons-for-gutenberg' ) }
+									data={ {
+										value: ctaIconPosition,
+										label: 'ctaIconPosition',
+									} }
+									className="uagb-multi-button-alignment-control"
+									options={ [
+										{
+											value: 'before',
+											label: __( 'Before Text', 'ultimate-addons-for-gutenberg' ),
+										},
+										{
+											value: 'after',
+											label: __( 'After Text', 'ultimate-addons-for-gutenberg' ),
+										},
+									] }
+									showIcons={ false }
+								/>
 						<ResponsiveSlider
 							label={ __( 'Icon Spacing', 'ultimate-addons-for-gutenberg' ) }
 							data={ {
