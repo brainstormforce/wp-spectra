@@ -558,6 +558,7 @@ function CtaStyle( attributes, clientId, name, deviceType ) {
 		};
 		mobileSelectors[ ' .uagb-cta__buttons' ] = {
 			'column-gap': generateCSSUnit( gapBtnMobile, 'px' ),
+			'justify-content': 'center',
 		};
 	}
 	if ( ctaType === 'button' && enabledSecondCtaButton ) {

@@ -266,7 +266,8 @@ if ( 'desktop' === $attr['stackBtn'] ) {
 		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtnTablet'], 'px' ),
 	);
 	$m_selectors[' .uagb-cta__buttons'] = array(
-		'column-gap' => UAGB_Helper::get_css_value( $attr['gapBtnMobile'], 'px' ),
+		'column-gap'      => UAGB_Helper::get_css_value( $attr['gapBtnMobile'], 'px' ),
+		'justify-content' => 'center',
 	);
 }
 if ( 'button' === $attr['ctaType'] && $attr['enabledSecondCtaButton'] ) {

@@ -21,7 +21,12 @@
     "test": "vendor/bin/phpunit",
     "phpstan": "vendor/bin/phpstan --memory-limit=2048M analyse",
     "gen-stubs": "vendor/bin/generate-stubs artifact/phpstan/ultimate-addons-for-gutenberg/ --out=tests/php/stubs/uagb-stubs.php && rm -rf artifact/phpstan",
-    "update-stubs": "rm -f tests/php/stubs/uagb-stubs.php && bash bin/build-spectra-phpstan.sh && composer gen-stubs"
+    "update-stubs": "rm -f tests/php/stubs/uagb-stubs.php && bash bin/build-spectra-phpstan.sh && composer gen-stubs",
+    "commit:hook:pre": [
+      "cp .scripts/git-hooks/pre-commit .git/hooks/",
+      "chmod +x .git/hooks/pre-commit",
+      "echo 'pre-commit hook copied'"
+    ]
   },
   "require": {
     "brainstormforce/astra-notices": "~1",

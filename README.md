@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.3.1  
-**Stable tag:** 2.7.8  
+**Stable tag:** 2.7.9  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -215,8 +215,16 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### 2.7.9 - WEDNESDAY, 13th SEPTEMBER 2023 ###
+* Improvement: Info Box - Changed the Info Box icon position dropdown to a multi-control.
+* Fix: Call To Action - Resolved an issue wherein the buttons would not be aligned as intended.
+* Fix: How To - Resolved an issue in which the responsive heading font-sizes would not work as intended.
+* Fix: Image Gallery - Resolved an issue wherein the lightbox would not work as intended within Containers.
+* Fix: Post Blocks - Resolved an issue wherein text-formatting for buttons would appear as HTML tags on the front-end.
+* Fix: Price List - Resolved an issue in which the title bottom margin, row, and column gaps would not work as intended in the responsive editor.
+
 ### 2.7.8 - TUESDAY, 5th SEPTEMBER 2023 ###
-* Improvement: Global - Enhanced the reusable block functionality for the following blocks: Google Maps, How To, Icon List, Inline Notice, Lottie, Marketing Button, Modal, Popup Builder, Post Grid and Post Carousel. 
+* Improvement: Global - Enhanced the reusable block functionality for the following blocks: Google Maps, How To, Icon List, Inline Notice, Lottie, Marketing Button, Modal, Popup Builder, Post Grid and Post Carousel.
 * Fix: Container - Resolved an issue in which the link tag would not work as intended on the front-end.
 * Fix: How To - Resolved an issue in which the minimum minutes setting would be unskippable.
 * Fix: Post Blocks - Resolved an issue in which the responsive styling would not work as intended in the editor.

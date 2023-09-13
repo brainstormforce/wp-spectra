@@ -220,7 +220,7 @@ function RestMenuStyle( attributes, clientId, name, deviceType ) {
 			'width': generateCSSUnit( imageWidthTabletFallback, imageWidthType ),
 			'max-width': generateCSSUnit( imageWidthTabletFallback, imageWidthType ),
 		},
-		'.wp-block-uagb-restaurant-menu': {
+		' .block-editor-block-list__layout': {
 			'column-gap': generateCSSUnit( columnGapTabletFallback, columnGapType ),
 			'row-gap': generateCSSUnit( rowGapTabletFallback, rowGapType ),
 		},
@@ -260,7 +260,7 @@ function RestMenuStyle( attributes, clientId, name, deviceType ) {
 			'width': generateCSSUnit( imageWidthMobileFallback, imageWidthType ),
 			'max-width': generateCSSUnit( imageWidthMobileFallback, imageWidthType ),
 		},
-		'.wp-block-uagb-restaurant-menu': {
+		' .block-editor-block-list__layout': {
 			'column-gap': generateCSSUnit( columnGapMobileFallback, columnGapType ),
 			'row-gap': generateCSSUnit( rowGapMobileFallback, rowGapType ),
 		},
