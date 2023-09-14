@@ -15,6 +15,7 @@ define( 'UAGB_FILE', __FILE__ );
 define( 'UAGB_ROOT', dirname( plugin_basename( UAGB_FILE ) ) );
 define( 'UAGB_PLUGIN_NAME', 'Spectra' );
 define( 'UAGB_PLUGIN_SHORT_NAME', 'Spectra' );
+define( 'SPECTRA_PRO_PLUGIN_URL', 'https://wpspectra.com/pro' );
 
 if ( ! version_compare( PHP_VERSION, '5.6', '>=' ) ) {
 	add_action( 'admin_notices', 'uagb_fail_php_version' );

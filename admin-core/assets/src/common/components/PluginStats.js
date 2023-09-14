@@ -67,7 +67,7 @@ const PluginStats = () => {
 						} }
                     >
 						{ __( 'Licensed', 'ultimate-addons-for-gutenberg' ) }
-					</Link>					
+					</Link>
 				) : (
                     <Link
 						className='mr-8 ml-2 text-sm text-red-500 active:text-red-500 hover:text-red-500 focus:text-red-500 cursor-pointer'
@@ -96,7 +96,7 @@ const PluginStats = () => {
 		) : (
 			<a
 				className='mr-8 ml-2 text-sm text-spectra active:text-spectra hover:text-spectra focus:text-spectra cursor-pointer'
-				href='https://wpspectra.com/pro'
+				href={ uag_react.spectra_pro_url }
 				rel='noreferrer noopener'
 				target='_blank'
 			>

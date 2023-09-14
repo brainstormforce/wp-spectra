@@ -409,6 +409,24 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 			return '' === $content_width ? 1140 : $content_width;
 		}
+
+		/**
+		 * Get Spectra Pro URL with required params
+		 *
+		 * @return string
+		 * @since x.x.x
+		 */
+		public static function get_spectra_pro_url() {
+			$url       = SPECTRA_PRO_PLUGIN_URL;
+			$affiliate = get_option( 'spectra_partner_url_param', '' );
+			$affiliate = is_string( $affiliate ) ? sanitize_text_field( $affiliate ) : '';
+
+			if ( ! empty( $affiliate ) ) {
+				return add_query_arg( array( 'bsf' => $affiliate ), SPECTRA_PRO_PLUGIN_URL );
+			}
+
+			return esc_url( $url );
+		}
 	}
 
 	/**
