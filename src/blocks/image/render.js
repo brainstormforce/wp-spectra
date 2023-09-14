@@ -22,7 +22,7 @@ import styles from './editor.lazy.scss';
 /**
  * Internal dependencies
  */
-import { pickRelevantMediaFiles, isTemporaryImage, isExternalImage, hasDefaultSize, isMediaDestroyed } from './utils';
+import { pickRelevantMediaFiles, isTemporaryImage, isExternalImage, hasDefaultSize, isMediaDestroyed, getDevicesAttributes } from './utils';
 
 /**
  * Module constants
@@ -253,7 +253,9 @@ const Render = ( props ) => {
 				href = media.link;
 				break;
 		}
+
 		mediaAttributes.href = href;
+		mediaAttributes = { ...mediaAttributes, ...getDevicesAttributes( media, 'Tablet' ), ...getDevicesAttributes( media, 'Mobile' ) };
 
 		const imageAttributes = {
 			...mediaAttributes,
@@ -267,6 +269,8 @@ const Render = ( props ) => {
 		if ( newURL !== url ) {
 			let attributesToSet = {
 				url: newURL,
+				urlTablet: newURL,
+				urlMobile: newURL,
 				id: undefined,
 			};
 			// We're only resetting the sizes for Desktop since the tablet and mobile sizes inherit by default.
@@ -281,12 +285,16 @@ const Render = ( props ) => {
 			if ( 'custom' !== sizeSlugTablet ) {
 				attributesToSet = {
 					...attributesToSet,
+					widthTablet: undefined,
+					heightTablet: undefined,
 					sizeSlugTablet: imageDefaultSize,
 				};
 			}
 			if ( 'custom' !== sizeSlugMobile ) {
 				attributesToSet = {
 					...attributesToSet,
+					heightMobile: undefined,
+					widthMobile: undefined,
 					sizeSlugMobile: imageDefaultSize,
 				};
 			}
