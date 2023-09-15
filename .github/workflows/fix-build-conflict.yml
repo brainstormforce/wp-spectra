@@ -1,7 +1,7 @@
 name: Fix build conflict - Run build commands
 on:
   pull_request:
-    types: [ labeled ]
+    types: [labeled]
 
 jobs:
   build-run:
@@ -51,27 +51,28 @@ jobs:
           echo "$GITHUB_HEAD_REF"
 
       - name: Install dependencies and build
-        run: npm ci && npm run build
+        run: composer install --prefer-dist --no-suggest --no-progress && npm install && npm run build
 
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
+          add-paths: |
+            *.js
+            *.php
+            *.css
           commit-message: Auto build generated
           base: ${{ github.head_ref }}
           branch: ${{ github.head_ref }}-build
           delete-branch: true
           title: Updated the build files - \#${{ steps.get_pr_number.outputs.pr_number }}
           body: |
-            Update report
-            Hi!
-              This PR was created in response workflow running.
-              I've updated the build files.
+            Build Created!
+            Hi! This PR was created in response to workflow running.
 
       - name: Check outputs
         run: |
-          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
-          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+          echo "Pull Request - ${{ steps.cpr.outputs.pull-request-url }}"
 
       - name: Create a new comment with a new PR url
         uses: sandeshjangam/comment-actions@v1
@@ -79,11 +80,10 @@ jobs:
           type: create
           number: ${{ steps.get_pr_number.outputs.pr_number }}
           body: |
-            Hi, I have fixed the conflict.
-            Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}
+            Hi, I have fixed the conflict on your request.
             Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}
           reactions: hooray
 
       - uses: andymckay/labeler@1.0.4
         with:
-          remove-labels: "conflict"
+          remove-labels: 'conflict'
