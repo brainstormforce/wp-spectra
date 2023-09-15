@@ -217,6 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ### x.x.x ###
 * Fix: Global - Resolved an issue wherein a PHP error could occur in the Widget Editor.
+* Fix: Forms - Resolved an issue wherein the country-code background color would not match in the editor and the front-end.
 * Fix: Image - Resolved an issue in which the updated responsive images would not appear as intended.
 * Fix: Testimonial - Resolved an issue wherein the gradient background  styles would not work as intended.
 
