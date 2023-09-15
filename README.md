@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### X.X.X 
+* Fix: Global - Resolved an issue wherein a PHP error could occur in the Widget Editor.
 * Fix: Image - Resolved an issue in which the updated responsive images would not appear as intended.
 
 ### 2.7.9 - WEDNESDAY, 13th SEPTEMBER 2023 ###
