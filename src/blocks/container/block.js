@@ -10,7 +10,7 @@ import deprecated from './deprecated';
 import './style.scss';
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
-import variations from './variations';
+import { variations } from './variationPicker';
 import transforms from './transforms';
 import PreviewImage from '@Controls/previewImage';
 import { applyFilters } from '@wordpress/hooks';
