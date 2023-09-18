@@ -225,6 +225,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Testimonial - Resolved an issue wherein the gradient background  styles would not work as intended.
 * Fix: Forms - Resolved an issue wherein the Forms block would not work inside Containers in Astra's Custom Layout.
 * Fix: Global - Removed the Block Editor Spacing setting for FSE themes.
+* Fix: Image - Resolved an issue in which masked images would get cut-off when the zoom-in hover effect was used.
 
 = 2.7.9 - WEDNESDAY, 13th SEPTEMBER 2023 =
 * Improvement: Info Box - Changed the Info Box icon position dropdown to a multi-control.

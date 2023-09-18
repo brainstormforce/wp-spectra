@@ -387,7 +387,7 @@ export default function styling( attributes, name, deviceType ) {
 			imagePath = `${maskCustomShape?.url}`
 		}
 		if ( typeof imagePath !== 'undefined' && imagePath ) {
-			selectors[ '.wp-block-uagb-image .wp-block-uagb-image__figure img' ] = {
+			selectors[ `.wp-block-uagb-image .wp-block-uagb-image__figure img, .uagb-block-${ block_id } .wp-block-uagb-image--layout-overlay__color-wrapper` ] = {
 				'mask-image': `url(${ imagePath })`,
 				'-webkit-mask-image': `url(${ imagePath })`,
 				'mask-size': maskSize,

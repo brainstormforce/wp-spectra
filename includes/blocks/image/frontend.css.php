@@ -7,6 +7,12 @@
  * @package uagb
  */
 
+/**
+ * Adding this comment to avoid PHPStan errors of undefined variable as these variables are defined else where.
+ *
+ * @var int $id
+ */
+
 // Add fonts.
 UAGB_Block_JS::blocks_advanced_image_gfont( $attr );
 
@@ -223,7 +229,7 @@ if ( 'none' !== $attr['maskShape'] ) {
 		$imagePath = $attr['maskCustomShape']['url'];
 	}
 	if ( ! empty( $imagePath ) ) {
-		$selectors['.wp-block-uagb-image .wp-block-uagb-image__figure img'] = array(
+		$selectors[ '.wp-block-uagb-image .wp-block-uagb-image__figure img, .uagb-block-' . $id . ' .wp-block-uagb-image--layout-overlay__color-wrapper' ] = array(
 			'mask-image'            => 'url(' . $imagePath . ')',
 			'-webkit-mask-image'    => 'url(' . $imagePath . ')',
 			'mask-size'             => $attr['maskSize'],
