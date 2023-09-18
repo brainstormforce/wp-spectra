@@ -221,6 +221,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Global - Resolved an issue wherein a PHP error could occur in the Widget Editor.
 * Fix: Forms - Resolved an issue wherein the country-code background color would not match in the editor and the front-end.
 * Fix: Image - Resolved an issue in which the updated responsive images would not appear as intended.
+* Fix: Marketing Button - Resolved an issue in which the default border-radius would not match in the editor and the front-end. 
 * Fix: Testimonial - Resolved an issue wherein the gradient background  styles would not work as intended.
 * Fix: Forms - Resolved an issue wherein the Forms block would not work inside Containers in Astra's Custom Layout.
 * Fix: Global - Removed the Block Editor Spacing setting for FSE themes.

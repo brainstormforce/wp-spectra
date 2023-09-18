@@ -98,7 +98,7 @@ return array_merge(
 		'prefixLetterSpacingType'   => 'px',
 		'borderStyle'               => 'solid',
 		'borderWidth'               => 1,
-		'borderRadius'              => 2,
+		'borderRadius'              => '',
 		'borderColor'               => '',
 		'borderHoverColor'          => '',
 	),
