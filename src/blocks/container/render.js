@@ -8,7 +8,7 @@ import backgroundCss from './backgroundCss';
 
 const Render = ( props ) => {
 
-	const { attributes, clientId, deviceType } = props;
+	const { attributes, clientId, deviceType, hasSliderParent, hasPopupParent } = props;
 
 	const {
 		block_id,
@@ -26,8 +26,6 @@ const Render = ( props ) => {
 		isBlockRootParent,
 		contentWidth,
 		innerContentWidth,
-		hasSliderParent,
-		hasPopupParent,
 	} = attributes;
 
 	const direction = attributes[ 'direction' + deviceType ];

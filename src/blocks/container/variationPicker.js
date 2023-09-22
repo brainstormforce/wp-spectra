@@ -2,6 +2,12 @@
  * Internal dependencies
  */
 import rowIcons from './icons';
+import { __experimentalBlockVariationPicker as BlockVariationPicker } from '@wordpress/block-editor';
+import UAGB_Block_Icons from '@Controls/block-icons';
+import ReactHtmlParser from 'react-html-parser';
+import { __, sprintf } from '@wordpress/i18n';
+import { useDispatch } from '@wordpress/data';
+import { createBlocksFromInnerBlocksTemplate } from '@wordpress/blocks';
 
 /**
  * Template option choices for predefined form layouts.
@@ -201,4 +207,40 @@ const variations = [
 	},
 ];
 
-export default variations;
+export const VariationPicker = ( props ) => {
+	const { clientId, setAttributes, defaultVariation } = props;
+	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
+
+	const blockVariationPickerOnSelect = ( nextVariation = defaultVariation ) => {
+		if ( nextVariation.attributes ) {
+			setAttributes( nextVariation.attributes );
+		}
+
+		if ( nextVariation.innerBlocks && 'one-column' !== nextVariation.name ) {
+			replaceInnerBlocks( clientId, createBlocksFromInnerBlocksTemplate( nextVariation.innerBlocks ) );
+		}
+	};
+
+	return (
+		<div className="uagb-container-variation-picker">
+			<BlockVariationPicker
+				icon={ UAGB_Block_Icons.container }
+				label={ __( 'Container', 'ultimate-addons-for-gutenberg' ) }
+				instructions={ ReactHtmlParser(
+					sprintf(
+						// translators: %s: closing </br> tag.
+						__(
+							'Customizable containers with endless creation possibilities.%sSelect a container layout to start with.',
+							'ultimate-addons-for-gutenberg'
+						),
+						`</br>` 
+					)
+				) }
+				variations={ variations }
+				onSelect={ ( nextVariation ) => blockVariationPickerOnSelect( nextVariation ) }
+			/>
+		</div>
+	);
+};
+
+export default { VariationPicker, variations };

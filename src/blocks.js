@@ -19,7 +19,9 @@ if ( uagLocalStorage ) {
 }
 
 import blocksEditorSpacing from './blocks/extensions/blocks-editor-spacing';
+if ( ! uagb_blocks_info.is_block_theme ) {
 blocksEditorSpacing();
+}
 import fontAwesomePollyfiller from './font-awesome-pollyfiller';
 
 __webpack_public_path__ = uagb_blocks_info.uagb_url + 'dist/';

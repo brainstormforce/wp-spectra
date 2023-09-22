@@ -216,10 +216,17 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
+* Fix: Image - Resolved an issue in which the updated responsive images would not appear as intended.
+* Fix: Global - Resolved an issue in which non-FSE themes running on PHP 8.1 would encounter PHP issues regarding the `preg_match` and `strlen` functions.
 * Fix: Global - Resolved an issue wherein a PHP error could occur in the Widget Editor.
 * Fix: Forms - Resolved an issue wherein the country-code background color would not match in the editor and the front-end.
 * Fix: Image - Resolved an issue in which the updated responsive images would not appear as intended.
+* Fix: Marketing Button - Resolved an issue in which the default border-radius would not match in the editor and the front-end. 
 * Fix: Testimonial - Resolved an issue wherein the gradient background  styles would not work as intended.
+* Fix: Forms - Resolved an issue wherein the Forms block would not work inside Containers in Astra's Custom Layout.
+* Fix: Global - Removed the Block Editor Spacing setting for FSE themes.
+* Fix: Image - Resolved an issue in which masked images would get cut-off when the zoom-in hover effect was used.
+* Fix: Global - Resolved an console error issue for Social Share and Image gallery block.
 
 ### 2.7.10 - FRIDAY, 22nd SEPTEMBER 2023 ###
 * Improvement: Global - Improved the security for the title tags of the PHP rendered blocks. Props to Patchstack for reporting it privately to our team.
