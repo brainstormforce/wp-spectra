@@ -27,6 +27,14 @@ class Api_Init {
 	private static $instance;
 
 	/**
+	 * Dynamic properties container
+	 *
+	 * @since 2.7.10
+	 * @var array
+	 */
+	private $dynamic_properties = array();
+
+	/**
 	 * Initiator
 	 *
 	 * @since 1.0.0
@@ -61,6 +69,31 @@ class Api_Init {
 	}
 
 	/**
+	 * Init dynamic property setter
+	 *
+	 * @param string $name  Property name.
+	 * @param mixed  $value Property value.
+	 *
+	 * @since 2.7.10
+	 * @return void
+	 */
+	public function __set( $name, $value ) {
+		$this->dynamic_properties[ $name ] = $value;
+	}
+
+	/**
+	 * Init dynamic property getter
+	 *
+	 * @param string $name Property name.
+	 *
+	 * @since 2.7.10
+	 * @return mixed Property value if set, null otherwise.
+	 */
+	public function __get( $name ) {
+		return $this->dynamic_properties[ $name ] ? $this->dynamic_properties[ $name ] : null;
+	}
+
+	/**
 	 * Register API routes.
 	 */
 	public function register_routes() {
@@ -71,7 +104,7 @@ class Api_Init {
 
 		foreach ( $controllers as $controller ) {
 			$this->$controller = $controller::get_instance();
-			$this->$controller->register_routes();
+			$this->{$controller}->register_routes();
 		}
 	}
 }

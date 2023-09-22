@@ -539,9 +539,8 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 
 			if ( 'grid' === $layout ) {
 
-				if ( '' === $titleTag ) {
-					$titleTag = 'h4';
-				}
+				$array_of_allowed_HTML = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div' );
+				$title_tag             = UAGB_Helper::title_tag_allowed_html( $titleTag, $array_of_allowed_HTML, 'h4' );
 
 				$pt            = get_post_type_object( $postType );
 				$singular_name = $pt->labels->singular_name;
@@ -560,8 +559,8 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 
 						<div class="uagb-taxomony-box">
 							<a class="uagb-tax-link" href= "<?php echo esc_url( $link ); ?>">
-								<<?php echo esc_html( $titleTag ); ?> class="uagb-tax-title"><?php echo esc_html( $value->name ); ?>
-								</<?php echo esc_html( $titleTag ); ?>>
+								<<?php echo esc_html( $title_tag ); ?> class="uagb-tax-title"><?php echo esc_html( $value->name ); ?>
+								</<?php echo esc_html( $title_tag ); ?>>
 								<?php if ( $showCount ) { ?>
 										<?php echo esc_attr( $value->count ); ?>
 										<?php $countName = ( $value->count > 1 ) ? esc_attr( $singular_name ) . 's' : esc_attr( $singular_name ); ?>
@@ -614,9 +613,8 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 
 			if ( 'list' === $layout ) {
 
-				if ( '' === $titleTag ) {
-					$titleTag = 'div';
-				}
+				$array_of_allowed_HTML = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div' );
+				$title_tag             = UAGB_Helper::title_tag_allowed_html( $titleTag, $array_of_allowed_HTML, 'div' );
 
 				$pt            = get_post_type_object( $postType );
 				$singular_name = $pt->labels->singular_name;
@@ -648,7 +646,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 							$link = $this->get_link_of_individual_categories( $value->slug, $attributes['taxonomyType'] );
 							?>
 							<li class="uagb-tax-list">
-								<<?php echo esc_html( $titleTag ); ?> class="uagb-tax-link-wrap">
+								<<?php echo esc_html( $title_tag ); ?> class="uagb-tax-link-wrap">
 									<a class="uagb-tax-link" href="<?php echo esc_url( $link ); ?>"><?php echo esc_html( $value->name ); ?></a>
 									<?php if ( $showCount ) { ?>
 											<?php echo ' (' . esc_attr( $value->count ) . ')'; ?>
@@ -670,7 +668,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 												?>
 											</ul>
 										<?php } ?>
-								</<?php echo esc_html( $titleTag ); ?>>
+								</<?php echo esc_html( $title_tag ); ?>>
 								<?php if ( 'none' !== $seperatorStyle ) { ?>
 										<div class="uagb-tax-separator"></div>
 								<?php } ?>

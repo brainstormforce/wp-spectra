@@ -1019,7 +1019,8 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 
 			$target = ( isset( $attributes['linkTarget'] ) && ( true === $attributes['linkTarget'] ) ) ? '_blank' : '_self';
 
-			$tag = $attributes['headingTag'];
+			$array_of_allowed_HTML = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'p' );
+			$tag                   = UAGB_Helper::title_tag_allowed_html( $attributes['headingTag'], $array_of_allowed_HTML, 'h3' );
 			global $post;
 			?>
 				<?php do_action( "uagb_single_post_before_title_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
