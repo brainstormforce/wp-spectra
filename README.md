@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Fix: Container - Resolved an issue wherein container background images would not render as intended during site migration.
+
 ### 2.7.9 - WEDNESDAY, 13th SEPTEMBER 2023 ###
 * Improvement: Info Box - Changed the Info Box icon position dropdown to a multi-control.
 * Fix: Call To Action - Resolved an issue wherein the buttons would not be aligned as intended.
