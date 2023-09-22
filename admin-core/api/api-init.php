@@ -29,7 +29,7 @@ class Api_Init {
 	/**
 	 * Dynamic properties container
 	 *
-	 * @since x.x.x
+	 * @since 2.7.10
 	 * @var array
 	 */
 	private $dynamic_properties = array();
@@ -74,7 +74,7 @@ class Api_Init {
 	 * @param string $name  Property name.
 	 * @param mixed  $value Property value.
 	 *
-	 * @since x.x.x
+	 * @since 2.7.10
 	 * @return void
 	 */
 	public function __set( $name, $value ) {
@@ -86,7 +86,7 @@ class Api_Init {
 	 *
 	 * @param string $name Property name.
 	 *
-	 * @since x.x.x
+	 * @since 2.7.10
 	 * @return mixed Property value if set, null otherwise.
 	 */
 	public function __get( $name ) {

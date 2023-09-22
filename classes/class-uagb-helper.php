@@ -1412,7 +1412,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param string $title_Tag HTML tag of title.
 		 * @param array  $allowed_array Array of allowed HTML tags.
 		 * @param string $default_tag Default HTML tag.
-		 * @since x.x.x
+		 * @since 2.7.10
 		 * @return string $title_Tag | $default_tag.
 		 */
 		public static function title_tag_allowed_html( $title_Tag, $allowed_array, $default_tag ) {

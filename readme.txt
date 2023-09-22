@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.3.1
-Stable tag: 2.7.9
+Stable tag: 2.7.10
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,8 +215,10 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= x.x.x =
+= 2.7.10 - FRIDAY, 22nd SEPTEMBER 2023 =
+* Improvement: Improved Security for the title tag for the PHP render blocks. Props to Patchstack for reporting it privately to our team.
 * Fix: Container - Resolved an issue wherein container background images would not render as intended during site migration.
+* Fix: Deprecation notice shown on PHP v8.2 and above.
 
 = 2.7.9 - WEDNESDAY, 13th SEPTEMBER 2023 =
 * Improvement: Info Box - Changed the Info Box icon position dropdown to a multi-control.
