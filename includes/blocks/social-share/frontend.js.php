@@ -20,14 +20,14 @@ if ( has_post_thumbnail() ) {
 ob_start();
 ?>
 var ssLinksParent = document.querySelector( '<?php echo esc_attr( $selector ); ?>' );
-ssLinksParent.addEventListener( 'keyup', function ( e ) {
+ssLinksParent?.addEventListener( 'keyup', function ( e ) {
 var link = e.target.closest( '.uagb-ss__link' );
 if ( link && e.keyCode === 13 ) {
 	handleSocialLinkClick( link );
 }
 });
 
-ssLinksParent.addEventListener( 'click', function ( e ) {
+ssLinksParent?.addEventListener( 'click', function ( e ) {
 var link = e.target.closest( '.uagb-ss__link' );
 if ( link ) {
 	handleSocialLinkClick( link );
