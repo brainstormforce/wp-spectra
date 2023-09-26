@@ -107,7 +107,7 @@ $selectors = array(
 		'min-height'       => UAGB_Helper::get_css_value( $attr['connectorBgsize'], 'px' ),
 		'min-width'        => UAGB_Helper::get_css_value( $attr['connectorBgsize'], 'px' ),
 		'line-height'      => UAGB_Helper::get_css_value( $attr['connectorBgsize'], 'px' ),
-		'border'           => $attr['borderwidth'] . 'px solid' . $attr['separatorBorder'],
+		'border'           => $attr['borderwidth'] . 'px solid ' . $attr['separatorBorder'],
 	),
 	'.uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow' => array(
 		'height' => UAGB_Helper::get_css_value( $attr['connectorBgsize'], 'px' ),
@@ -251,7 +251,7 @@ $selectors = array(
 			'min-height'       => UAGB_Helper::get_css_value( $attr['connectorBgsizeMobile'], 'px' ),
 			'min-width'        => UAGB_Helper::get_css_value( $attr['connectorBgsizeMobile'], 'px' ),
 			'line-height'      => UAGB_Helper::get_css_value( $attr['connectorBgsizeMobile'], 'px' ),
-			'border'           => $attr['borderwidth'] . 'px solid' . $attr['separatorBorder'],
+			'border'           => $attr['borderwidth'] . 'px solid ' . $attr['separatorBorder'],
 		),
 		'.uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow' => array(
 			'height' => UAGB_Helper::get_css_value( $attr['connectorBgsizeMobile'], 'px' ),
@@ -336,7 +336,7 @@ $selectors = array(
 			'min-height'       => UAGB_Helper::get_css_value( $attr['connectorBgsizeTablet'], 'px' ),
 			'min-width'        => UAGB_Helper::get_css_value( $attr['connectorBgsizeTablet'], 'px' ),
 			'line-height'      => UAGB_Helper::get_css_value( $attr['connectorBgsizeTablet'], 'px' ),
-			'border'           => $attr['borderwidth'] . 'px solid' . $attr['separatorBorder'],
+			'border'           => $attr['borderwidth'] . 'px solid ' . $attr['separatorBorder'],
 		),
 		'.uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow' => array(
 			'height' => UAGB_Helper::get_css_value( $attr['connectorBgsizeTablet'], 'px' ),

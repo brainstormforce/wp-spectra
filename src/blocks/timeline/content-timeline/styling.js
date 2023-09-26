@@ -236,7 +236,7 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 			'min-height': generateCSSUnit( connectorBgsizeFallback, 'px' ),
 			'min-width': generateCSSUnit( connectorBgsizeFallback, 'px' ),
 			'line-height': generateCSSUnit( connectorBgsizeFallback, 'px' ),
-			'border': borderWidthFallback + 'px solid' + separatorBorder,
+			'border': borderWidthFallback + 'px solid ' + separatorBorder,
 		},
 		'.uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow': {
 			'height': generateCSSUnit( connectorBgsizeFallback, 'px' ),
