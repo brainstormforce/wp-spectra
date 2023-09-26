@@ -226,6 +226,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Forms - Resolved an issue wherein the Forms block would not work inside Containers in Astra's Custom Layout.
 * Fix: Global - Removed the Block Editor Spacing setting for FSE themes.
 * Fix: Image - Resolved an issue in which masked images would get cut-off when the zoom-in hover effect was used.
+* Fix: Image Gallery - Resolved an issue in the carousel type wherein the arrow positions would revert from percentage to pixels after reloading.
 * Fix: Global - Resolved an console error issue for Social Share and Image gallery block.
 
 ### 2.7.10 - FRIDAY, 22nd SEPTEMBER 2023 ###
