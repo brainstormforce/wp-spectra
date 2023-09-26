@@ -222,13 +222,14 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Forms - Resolved an issue wherein the country-code background color would not match in the editor and the front-end.
 * Fix: Forms - Added an error message when the confirmation type is set to "URL text".
 * Fix: Image - Resolved an issue in which the updated responsive images would not appear as intended.
-* Fix: Marketing Button - Resolved an issue in which the default border-radius would not match in the editor and the front-end. 
+* Fix: Marketing Button - Resolved an issue in which the default border-radius would not match in the editor and the front-end.
 * Fix: Testimonial - Resolved an issue wherein the gradient background  styles would not work as intended.
 * Fix: Forms - Resolved an issue wherein the Forms block would not work inside Containers in Astra's Custom Layout.
 * Fix: Global - Removed the Block Editor Spacing setting for FSE themes.
 * Fix: Image - Resolved an issue in which masked images would get cut-off when the zoom-in hover effect was used.
 * Fix: Image Gallery - Resolved an issue in the carousel type wherein the arrow positions would revert from percentage to pixels after reloading.
 * Fix: Global - Resolved an console error issue for Social Share and Image gallery block.
+* Fix: Post Timeline - Resolved an issue in which the notice links would not redirect users as intended.
 * Fix: Google Maps - Resolved an issue in which the custom classes would not appear on the frontend.
 * Fix: Table Of Contents - Resolved an issue wherein headings containing some uppercase latin characters would not function as intended.
 
