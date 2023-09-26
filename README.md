@@ -233,7 +233,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Table Of Contents - Resolved an issue wherein headings containing some uppercase latin characters would not function as intended.
 
 ### 2.7.10 - FRIDAY, 22nd SEPTEMBER 2023 ###
-* Improvement: Global - Improved the security for the title tags of the PHP rendered blocks. Props to Patchstack for reporting it privately to our team.
+* Security Fix: Hardened the security of the plugin. Props: Patchstack
 * Fix: Container - Resolved an issue wherein container background images would not render as intended during site migration.
 * Fix: Admin - Resolved an issue in which a deprecation notice would be shown on PHP v8.2 and above.
 

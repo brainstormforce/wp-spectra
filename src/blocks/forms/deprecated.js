@@ -3,7 +3,7 @@ import { InnerBlocks, RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 import { getBorderAttributes } from '@Controls/generateAttributes';
 import saveV2_6_7 from './v2.6.7/save';
-import saveV2_7_9 from './v2.7.9/save';
+import saveV2_7_10 from './v2.7.10/save';
 import newAttributes from './attributes';
 const inputBorderAttributes = getBorderAttributes( 'field' );
 const submitBorderAttributes = getBorderAttributes( 'btn' );
@@ -523,7 +523,7 @@ const deprecated = [
 	},
 	{
 		attributes: newAttributes,
-		save: saveV2_7_9,
+		save: saveV2_7_10,
 	}
 ];
 
