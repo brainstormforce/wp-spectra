@@ -413,7 +413,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		/**
 		 * Function to check if the current theme is a block theme.
 		 *
-		 * @since x.x.x
+		 * @since 2.7.11
 		 * @return boolean
 		 */
 		public static function is_block_theme() {
@@ -424,7 +424,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		 * Get Spectra Pro URL with required params
 		 *
 		 * @return string
-		 * @since x.x.x
+		 * @since 2.7.11
 		 */
 		public static function get_spectra_pro_url() {
 			$url       = SPECTRA_PRO_PLUGIN_URL;
