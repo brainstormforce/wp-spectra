@@ -49,6 +49,26 @@
 }
 .wp-block-uagb-image {
 
+	&--effect {
+		&-slide {
+			.wp-block-uagb-image__figure {
+				img,
+				.wp-block-uagb-image--layout-overlay__color-wrapper {
+					width: calc(100% + 40px) !important;
+					max-width: none !important;
+					transform: translate3d(-40px, 0, 0);
+					transition: transform 0.35s ease-in-out;
+				}
+				&:hover {
+					img,
+					.wp-block-uagb-image--layout-overlay__color-wrapper {
+						transform: translate3d(0, 0, 0);
+					}
+				}
+			}
+		}
+	}
+
 	// Initial selection screen/media-placeholder.
 	.components-placeholder.block-editor-media-placeholder {
 		box-shadow: none;

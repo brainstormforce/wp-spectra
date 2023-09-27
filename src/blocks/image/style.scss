@@ -164,15 +164,16 @@
 	&--effect {
 		&-zoomin {
 			.wp-block-uagb-image__figure {
-				overflow: hidden;
 
-				img {
+				img,
+				.wp-block-uagb-image--layout-overlay__color-wrapper {
 					transform: scale(1);
 					transition: transform 0.35s ease-in-out;
 				}
 
 				&:hover {
-					img {
+					img,
+					.wp-block-uagb-image--layout-overlay__color-wrapper {
 						transform: scale(1.05);
 					}
 				}
@@ -181,9 +182,9 @@
 
 		&-slide {
 			.wp-block-uagb-image__figure {
-				overflow: hidden;
 
-				img {
+				img,
+				.wp-block-uagb-image--layout-overlay__color-wrapper {
 					width: calc(100% + 40px) !important;
 					max-width: none !important;
 					transform: translate3d(-40px, 0, 0);
@@ -191,7 +192,8 @@
 				}
 
 				&:hover {
-					img {
+					img,
+					.wp-block-uagb-image--layout-overlay__color-wrapper {
 						transform: translate3d(0, 0, 0);
 					}
 				}

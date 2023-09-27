@@ -385,11 +385,14 @@ class UAGB_Post_Assets {
 	 * @since 1.23.0
 	 */
 	public function enqueue_scripts() {
-		global $_wp_current_template_content;
-		$blocks = parse_blocks( $_wp_current_template_content );
-		// Global Required assets.
-		// If the current template has content and contains blocks, execute this code block.
-		if ( has_blocks( $this->post_id ) || ( $_wp_current_template_content && has_blocks( $blocks ) ) ) {
+			$blocks = array();
+		if ( UAGB_Admin_Helper::is_block_theme() ) {
+			global $_wp_current_template_content;
+			$blocks = parse_blocks( $_wp_current_template_content );
+		}
+			// Global Required assets.
+			// If the current template has content and contains blocks, execute this code block.
+		if ( has_blocks( $this->post_id ) || has_blocks( $blocks ) ) {
 			/* Print conditional css for all blocks */
 			add_action( 'wp_head', array( $this, 'print_conditional_css' ), 80 );
 		}

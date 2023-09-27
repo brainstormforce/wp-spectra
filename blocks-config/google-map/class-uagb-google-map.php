@@ -155,6 +155,7 @@ if ( ! class_exists( 'UAGB_Google_Map' ) ) {
 				$tab_class,
 				$mob_class,
 				$zindex_extention_enabled ? 'uag-blocks-common-selector' : '',
+				( is_array( $attributes ) && isset( $attributes['className'] ) ) ? $attributes['className'] : '',
 			);
 
 			$address  = ! empty( $attributes['address'] ) ? rawurlencode( $attributes['address'] ) : rawurlencode( 'Brainstorm Force' );

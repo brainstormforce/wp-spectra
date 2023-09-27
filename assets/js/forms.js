@@ -210,8 +210,8 @@ UAGBForms = {
 			hideForm.style.display = 'none';
 
 			const errorMsg = document.querySelector( '.uagb-forms-failed-message-' + attr.block_id );
-			errorMsg.classList.remove( 'uagb-forms-submit-message-hide' );
-			errorMsg.classList.add( 'uagb-forms-failed-message' );
+			errorMsg?.classList?.remove( 'uagb-forms-submit-message-hide' );
+			errorMsg?.classList?.add( 'uagb-forms-failed-message' );
 			return false;
 		}
 

@@ -83,7 +83,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 						'countdown',
 					)
 				),
-				'wp_is_block_theme'                 => function_exists( 'wp_is_block_theme' ) ? wp_is_block_theme() : false,
+				'wp_is_block_theme'                 => self::is_block_theme(),
 			);
 
 			return $options;
@@ -400,7 +400,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 					$content_width = intval( $content_width_third_party );
 					self::update_admin_settings_option( 'uag_content_width_set_by', __( 'Filter added through any 3rd Party Theme/Plugin.', 'ultimate-addons-for-gutenberg' ) );
 				}
-				if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
+				if ( self::is_block_theme() ) {
 					$settings      = wp_get_global_settings();
 					$content_width = intval( $settings['layout']['wideSize'] );
 					self::update_admin_settings_option( 'uag_content_width_set_by', __( "Full Site Editor's Global Styles", 'ultimate-addons-for-gutenberg' ) );
@@ -408,6 +408,34 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			}
 
 			return '' === $content_width ? 1140 : $content_width;
+		}
+
+		/**
+		 * Function to check if the current theme is a block theme.
+		 *
+		 * @since 2.7.11
+		 * @return boolean
+		 */
+		public static function is_block_theme() {
+			return ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) ? true : false;
+		}
+
+		/**
+		 * Get Spectra Pro URL with required params
+		 *
+		 * @since 2.7.11
+		 * @return string
+		 */
+		public static function get_spectra_pro_url() {
+			$url       = SPECTRA_PRO_PLUGIN_URL;
+			$affiliate = get_option( 'spectra_partner_url_param', '' );
+			$affiliate = is_string( $affiliate ) ? sanitize_text_field( $affiliate ) : '';
+
+			if ( ! empty( $affiliate ) ) {
+				return add_query_arg( array( 'bsf' => $affiliate ), SPECTRA_PRO_PLUGIN_URL );
+			}
+
+			return esc_url( $url );
 		}
 	}
 

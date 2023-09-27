@@ -225,7 +225,7 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				$string = 'toc_' . uniqid();
 			}
 
-			return strtolower( $string ); // Replaces multiple hyphens with single one.
+			return mb_strtolower( $string ); // Replaces multiple hyphens with single one.
 		}
 
 		/**

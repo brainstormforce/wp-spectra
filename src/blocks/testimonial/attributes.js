@@ -935,12 +935,14 @@ const attributes = {
 	},
 	gradientColor1: {
 		type: 'string',
+		default: '#06558a',
 		UAGCopyPaste: {
 			styleType: 'column-gradient-color-1',
 		},
 	},
 	gradientColor2: {
 		type: 'string',
+		default: '#0063a1',
 		UAGCopyPaste: {
 			styleType: 'column-gradient-color-2',
 		},

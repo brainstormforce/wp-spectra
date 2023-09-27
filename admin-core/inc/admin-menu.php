@@ -249,6 +249,8 @@ class Admin_Menu {
 				'spectra_custom_fonts'     => apply_filters( 'spectra_system_fonts', array() ),
 				'is_allow_registration'    => (bool) get_option( 'users_can_register' ),
 				'theme_fonts'              => $theme_font_families,
+				'is_block_theme'           => \UAGB_Admin_Helper::is_block_theme(),
+				'spectra_pro_url'          => \UAGB_Admin_Helper::get_spectra_pro_url(),
 			)
 		);
 

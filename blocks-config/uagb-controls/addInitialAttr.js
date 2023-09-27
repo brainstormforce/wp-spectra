@@ -101,8 +101,8 @@ const addInitialAttr = ( ChildComponent ) => {
 			];
 
 			if( ! REUSABLE_BLOCK_ISSUE_RESOLVED_BLOCKS.includes( name ) ){
-				const getAllBlocks = select( 'core/editor' ).getBlocks();
-				const { blockIds, clientIds } = getUniqId( getAllBlocks );
+				const getAllBlocks = select( 'core/editor' )?.getBlocks();
+				const { blockIds, clientIds } = getAllBlocks ? getUniqId( getAllBlocks ) : { blockIds: [], clientIds: [] };
 				if ( 'not_set' === block_id || ! block_id || checkDuplicate( blockIds, block_id, clientIds.indexOf( clientId ) ) ) {
 					setAttributes( attributeObject );
 				}

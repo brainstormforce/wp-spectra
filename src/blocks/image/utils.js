@@ -74,3 +74,32 @@ export const isMediaDestroyed = ( id ) => {
 	const attachment = wp?.media?.attachment( id ) || {};
 	return attachment.destroyed;
 };
+
+// Get image attributes according to device type.
+export const getDevicesAttributes = ( media, deviceType ) => {
+	const urlType = 'url' + deviceType; // urlTablet, urlMobile
+	const heightType = 'height' + deviceType; // heightTablet, heightMobile
+	const widthType = 'width' + deviceType; // widthTablet, widthMobile
+	const deviceSizeSlug = 'sizeSlug' + deviceType; // sizeSlugTablet, sizeSlugMobile
+
+	const getMobileAttributes = pickRelevantMediaFiles( media, deviceSizeSlug );
+	const mediaAttributes = {};
+	if( getMobileAttributes.url ){
+		mediaAttributes[ urlType ] = getMobileAttributes.url;
+	}
+
+	if( 'custom' !== deviceSizeSlug ){
+		if( getMobileAttributes.height ){
+			mediaAttributes[ heightType ] = getMobileAttributes.height;
+		}
+
+		if( getMobileAttributes.width ){
+			mediaAttributes[ widthType ] = getMobileAttributes.width;
+		}
+	}else{
+		mediaAttributes[ heightType ] = undefined;
+		mediaAttributes[ widthType ] = undefined;
+	}
+	
+	return mediaAttributes;
+}

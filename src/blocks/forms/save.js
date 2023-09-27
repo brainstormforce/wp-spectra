@@ -60,7 +60,7 @@ export default function save( props ) {
 				<div className={ `uagb-form-reacaptcha-error-${ block_id }` }></div>
 				<div className="uagb-forms-main-submit-button-wrap wp-block-button">{ renderButtonHtml() }</div>
 			</form>
-			{ 'message' === confirmationType && (
+			{ confirmationType && (
 				<>
 					<div
 						className={ classnames(

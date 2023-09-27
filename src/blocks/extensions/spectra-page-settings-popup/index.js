@@ -8,12 +8,15 @@ import SettingsIcons from './icons.js';
 import PageCustomCSS from '../custom-page-css';
 import { PanelBody } from '@wordpress/components';
 import { applyFilters } from '@wordpress/hooks';
-import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
 
 const SpectraPageSettingsPopup = ( props ) => {
-	if ( 'site-editor' === uagb_blocks_info.is_site_editor ){
-		return;
+	const PluginSidebar = window?.wp?.editPost?.PluginSidebar;
+	const PluginSidebarMoreMenuItem = window?.wp?.editPost?.PluginSidebarMoreMenuItem;
+	
+	if( 'function' !== typeof PluginSidebarMoreMenuItem || 'function' !== typeof PluginSidebar ){
+		return null;
 	}
+
 	const pluginSidebarBefore = applyFilters( `spectra.page-sidebar.before`, '', props );
 	const pluginSidebarAfter = applyFilters( `spectra.page-sidebar.after`, '', props );
 	

@@ -1120,7 +1120,7 @@ const attributes = {
 		},
 	},
 	paginateArrowDistanceUnit: {
-		type: 'number',
+		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'arrow-distance-unit',
@@ -1141,7 +1141,7 @@ const attributes = {
 		},
 	},
 	paginateDotDistanceUnit: {
-		type: 'number',
+		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'dot-distance-unit',

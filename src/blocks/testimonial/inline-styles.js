@@ -364,8 +364,7 @@ function testimonialStyle( attributes, clientId, name, deviceType ) {
 			'line-height': generateCSSUnit( nameLineHeightTablet, nameLineHeightType ),
 		},
 	};
-	if ( 'gradient' === backgroundType ) {
-		let gradient;
+	let gradient;
 		switch ( selectGradient ) {
 			case 'basic':
 				gradient = gradientValue;
@@ -387,7 +386,7 @@ function testimonialStyle( attributes, clientId, name, deviceType ) {
 				gradient = '';
 				break;
 		}
-
+	if ( 'gradient' === backgroundType ) {
 		selectors[ ' .uagb-tm__content' ][ 'background-image' ] = gradient;
 	}
 
@@ -397,11 +396,9 @@ function testimonialStyle( attributes, clientId, name, deviceType ) {
 				'background-color': backgroundImageColor,
 			};
 		} else if ( 'gradient' === overlayType ) {
-			if ( gradientValue ) {
-				selectors[ ' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay' ] = {
-					'background-image': gradientValue,
-				};
-			}
+			selectors[ ' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay' ] = {
+				'background-image': gradient,
+			};
 		}
 	} else {
 		selectors[ ' .uagb-testimonial__wrap.uagb-tm__bg-type-color .uagb-tm__content' ] = {
