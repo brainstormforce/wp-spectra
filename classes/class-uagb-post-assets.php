@@ -386,7 +386,7 @@ class UAGB_Post_Assets {
 	 */
 	public function enqueue_scripts() {
 			$blocks = array();
-		if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
+		if ( UAGB_Admin_Helper::is_block_theme() ) {
 			global $_wp_current_template_content;
 			$blocks = parse_blocks( $_wp_current_template_content );
 		}

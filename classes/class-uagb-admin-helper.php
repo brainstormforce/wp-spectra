@@ -423,8 +423,8 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		/**
 		 * Get Spectra Pro URL with required params
 		 *
-		 * @return string
 		 * @since 2.7.11
+		 * @return string
 		 */
 		public static function get_spectra_pro_url() {
 			$url       = SPECTRA_PRO_PLUGIN_URL;
