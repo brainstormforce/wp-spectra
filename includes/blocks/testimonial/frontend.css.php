@@ -122,10 +122,12 @@ if ( 'basic' === $attr['selectGradient'] && $attr['gradientValue'] ) {
 } elseif ( 'radial' === $gradientType && 'advanced' === $attr['selectGradient'] ) {
 	$gradient = 'radial-gradient( at center center, ' . $gradientColor1 . ' ' . $gradientLocation1 . '%, ' . $gradientColor2 . ' ' . $gradientLocation2 . '%)';
 }
-	$selectors[' .uagb-tm__content']['background-image'] = $gradient;
 
 if ( 'gradient' === $attr['backgroundType'] ) {
-	$selectors[' .uagb-tm__content']['background-color'] = 'transparent';
+	$selectors[' .uagb-tm__content'] = array(
+		'background-color' => 'transparent',
+		'background-image' => $gradient,
+	);
 }
 if ( 'image' === $attr['backgroundType'] ) {
 	if ( 'color' === $attr['overlayType'] ) {

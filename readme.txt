@@ -230,7 +230,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Global - Resolved an issue wherein a PHP error could occur in the Widget Editor.
 * Fix: Global - Resolved an issue in which non-FSE themes running on PHP 8.1 would encounter PHP issues regarding the `preg_match` and `strlen` functions.
 * Fix: Global - Removed the Block Editor Spacing setting for FSE themes.
-* Fix: Global - Resolved a console error issue for the Social Share and Image Gallery block.
 
 = 2.7.10 - FRIDAY, 22nd SEPTEMBER 2023 =
 * Security Fix: Hardened the security of the plugin. Props: Patchstack
