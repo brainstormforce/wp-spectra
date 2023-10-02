@@ -218,6 +218,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ### x.x.x ###
 * Fix: Container - Resolved an issue wherein the left and right margin of inner-containers would not work as intended.
 * Fix: Post Carousel - Resolved an issue in which the responsive columns would not work as intended in the editor.
+* Fix: Image Gallery - Resolved an issue with the masonry type wherein the loader would not be hidden after all the images have been loaded.
 
 ### 2.7.11 - WEDNESDAY, 27th SEPTEMBER 2023 ###
 * Fix: Image - Resolved an issue in which the updated responsive images would not appear as intended.
