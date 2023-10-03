@@ -826,7 +826,7 @@ const Settings = ( props ) => {
 				help={
 					'Desktop' === deviceType
 						? __(
-								'Note: The Lightbox will be fullscreen on the front end.',
+								'Note: The lightbox preview will automatically close when the page reloads, and it will be displayed in fullscreen mode on the front end. ',
 								'ultimate-addons-for-gutenberg'
 						  )
 						: __( 'To preview this in the editor, use Desktop mode.', 'ultimate-addons-for-gutenberg' )
