@@ -48,11 +48,7 @@ const WebfontLoader = ( props ) => {
 	const handleInactive = () => {
 		setValue( { status: statuses.inactive } );
 	};
-
-	const isUrl = string => {
-		try { return Boolean( new URL( string ) ); }
-		catch( e ){ return false; }
-	}
+	
 	const loadFonts = () => {
 		if ( ! googlefonts.includes( props.config.google.families[ 0 ] ) ) {
 			WebFont.load( {
@@ -63,15 +59,13 @@ const WebfontLoader = ( props ) => {
 			} );
 			addFont( props.config.google.families[ 0 ] );
 		}
-		const iframeFound = document.getElementsByTagName( 'iframe' )[ 0 ];
-		let isIframeFromDifferentOrigin = false;
 
-		if ( iframeFound?.src && isUrl( iframeFound?.src ) ) {
-			const iframeUrl = new URL( iframeFound?.src )
-			isIframeFromDifferentOrigin = ( iframeUrl?.hostname !== window?.location?.hostname ) ? true : false;
+		let iframeFound = document.getElementsByTagName( 'iframe' );
+		if( iframeFound ) {
+			iframeFound = iframeFound[ 0 ];
 		}
 
-		if ( iframeFound && ! isIframeFromDifferentOrigin ) {
+		if ( iframeFound?.contentWindow ) {
 			WebFont.load( {
 				...props.config,
 				loading: handleLoading,
