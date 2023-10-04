@@ -283,6 +283,14 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 					unset( $attributes['UAGAnimationRepeat'] );
 				}
 
+				if ( isset( $attributes['UAGAnimationDelayInterval'] ) ) {
+					unset( $attributes['UAGAnimationDelayInterval'] );
+				}
+
+				if ( isset( $attributes['UAGAnimationDoNotApplyToContainer'] ) ) {
+					unset( $attributes['UAGAnimationDoNotApplyToContainer'] );
+				}
+
 					$request['attributes'] = $attributes;
 
 			}

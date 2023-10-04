@@ -482,6 +482,8 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 		'uagb/tabs',
 		'uagb/tabs-child',
 		'uagb/countdown',
+		'uagb/modal',
+		'uagb/popup-builder',
 	];
 
 	const getParentBlocks = select( 'core/block-editor' ).getBlockParents( props.clientId );

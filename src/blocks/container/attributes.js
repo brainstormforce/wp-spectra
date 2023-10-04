@@ -1415,6 +1415,24 @@ const attributes = {
 		},
 	},
 	...inputBorderAttributes,
+
+	// Special Animations Extension Attributes.
+	// At the moment, these are only required for Container and hence these have only been declared here.
+	UAGAnimationDelayInterval: {
+		type: 'number',
+		default: 200,
+		UAGCopyPaste: {
+			styleType: 'block-animation-delay-interval',
+		},
+	},
+	UAGAnimationDoNotApplyToContainer: {
+		type: 'boolean',
+		default: false,
+	},
+	UAGAnimationShowContainerAdvancedSettings: {
+		type: 'boolean',
+		default: false,
+	},
 };
 
 export default attributes;
