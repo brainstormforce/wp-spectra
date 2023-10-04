@@ -208,15 +208,15 @@ const globalDataReducer = ( state = {}, action ) => {
 				...state,
 				settingsSavedNotification: action.payload,
 			};
-		case 'UPDATE_ENABLE_COMING_SOON':
+		case 'UPDATE_VISIBILITY_MODE':
 			return {
 				...state,
-				enableComingSoonMode: action.payload,
+				visibilityMode: action.payload,
 			};
-		case 'UPDATE_COMING_SOON_PAGE':
+		case 'UPDATE_VISIBILITY_PAGE':
 			return {
 				...state,
-				comingSoonPage: action.payload,
+				visibilityPage: action.payload,
 			};
 		case 'UPDATE_BLOCKS_EDITOR_SPACING':
 			return {

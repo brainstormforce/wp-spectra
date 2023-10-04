@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+* Improvement: Global - Added the Maintenance Mode feature.
+
 = 2.7.11 - WEDNESDAY, 27th SEPTEMBER 2023 =
 * Fix: Image - Resolved an issue in which the updated responsive images would not appear as intended.
 * Fix: Image - Resolved an issue in which masked images would get cut off when the zoom-in hover effect was used.

@@ -3415,14 +3415,14 @@ namespace {
         }
     }
     /**
-     * Class UAGB_Coming_Soon.
+     * Class UAGB_Visibility.
      */
-    class UAGB_Coming_Soon
+    class UAGB_Visibility
     {
         /**
          *  Initiator
          *
-         * @since 0.0.1
+         * @since x.x.x
          */
         public static function get_instance()
         {
@@ -3434,25 +3434,25 @@ namespace {
         {
         }
         /**
-         * Set Coming Soon Template.
+         * Set Visibility Template.
          *
-         * @since 2.0.0
+         * @since x.x.x
          */
-        public function set_coming_soon_template()
+        public function set_visibility_template()
         {
         }
         /**
-         * Set Coming Soon Page.
+         * Set Visibility Page.
          *
-         * @since 2.0.0
+         * @since x.x.x
          */
-        public function set_coming_soon_page()
+        public function set_visibility_page()
         {
         }
         /**
          * Enqueue asset files.
          *
-         * @since 2.0.0
+         * @since x.x.x
          */
         public function enqueue_asset_files()
         {
@@ -4301,12 +4301,12 @@ namespace UagAdmin\Inc {
         {
         }
         /**
-         * Get Coming Soon Page
+         * Get Visibility Page
          *
          * @since 2.0.0
          * @return boolean|array
          */
-        public static function get_coming_soon_page()
+        public static function get_visibility_page()
         {
         }
         /**
@@ -4748,19 +4748,21 @@ namespace UagAdmin\Ajax {
         {
         }
         /**
-         * Save settings - Saves coming_soon_page.
+         * Save settings - Saves visibility_page.
          *
+         * @since x.x.x
          * @return void
          */
-        public function coming_soon_page()
+        public function visibility_page()
         {
         }
         /**
-         * Save settings - Saves enable_coming_soon_mode.
+         * Save settings - Saves visibility_mode.
          *
+         * @since x.x.x
          * @return void
          */
-        public function enable_coming_soon_mode()
+        public function visibility_mode()
         {
         }
         /**

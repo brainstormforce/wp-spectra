@@ -257,7 +257,7 @@ parameters:
 			path: admin-core/inc/admin-helper.php
 
 		-
-			message: "#^Method UagAdmin\\\\Inc\\\\Admin_Helper\\:\\:get_coming_soon_page\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method UagAdmin\\\\Inc\\\\Admin_Helper\\:\\:get_visibility_page\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: admin-core/inc/admin-helper.php
 
@@ -3354,62 +3354,62 @@ parameters:
 		-
 			message: "#^Constant UAGB_DIR not found\\.$#"
 			count: 1
-			path: classes/class-uagb-coming-soon.php
+			path: classes/class-uagb-visibility.php
 
 		-
 			message: "#^Constant UAGB_URL not found\\.$#"
 			count: 1
-			path: classes/class-uagb-coming-soon.php
+			path: classes/class-uagb-visibility.php
 
 		-
 			message: "#^Constant UAGB_VER not found\\.$#"
 			count: 1
-			path: classes/class-uagb-coming-soon.php
+			path: classes/class-uagb-visibility.php
 
 		-
-			message: "#^Method UAGB_Coming_Soon\\:\\:enqueue_asset_files\\(\\) has no return type specified\\.$#"
+			message: "#^Method UAGB_Visibility\\:\\:enqueue_asset_files\\(\\) has no return type specified\\.$#"
 			count: 1
-			path: classes/class-uagb-coming-soon.php
+			path: classes/class-uagb-visibility.php
 
 		-
-			message: "#^Method UAGB_Coming_Soon\\:\\:get_instance\\(\\) has no return type specified\\.$#"
+			message: "#^Method UAGB_Visibility\\:\\:get_instance\\(\\) has no return type specified\\.$#"
 			count: 1
-			path: classes/class-uagb-coming-soon.php
+			path: classes/class-uagb-visibility.php
 
 		-
-			message: "#^Method UAGB_Coming_Soon\\:\\:set_coming_soon_page\\(\\) has no return type specified\\.$#"
+			message: "#^Method UAGB_Visibility\\:\\:set_visibility_page\\(\\) has no return type specified\\.$#"
 			count: 1
-			path: classes/class-uagb-coming-soon.php
+			path: classes/class-uagb-visibility.php
 
 		-
-			message: "#^Method UAGB_Coming_Soon\\:\\:set_coming_soon_template\\(\\) has no return type specified\\.$#"
+			message: "#^Method UAGB_Visibility\\:\\:set_visibility_template\\(\\) has no return type specified\\.$#"
 			count: 1
-			path: classes/class-uagb-coming-soon.php
+			path: classes/class-uagb-visibility.php
 
 		-
 			message: "#^Parameter \\#1 \\$var of function intval expects array\\|bool\\|float\\|int\\|resource\\|string\\|null, mixed given\\.$#"
 			count: 2
-			path: classes/class-uagb-coming-soon.php
+			path: classes/class-uagb-visibility.php
 
 		-
 			message: "#^Parameter \\#1 \\$value of function intval expects array\\|bool\\|float\\|int\\|resource\\|string\\|null, mixed given\\.$#"
 			count: 2
-			path: classes/class-uagb-coming-soon.php
+			path: classes/class-uagb-visibility.php
 
 		-
-			message: "#^Property UAGB_Coming_Soon\\:\\:\\$instance has unknown class instance as its type\\.$#"
+			message: "#^Property UAGB_Visibility\\:\\:\\$instance has unknown class instance as its type\\.$#"
 			count: 1
-			path: classes/class-uagb-coming-soon.php
+			path: classes/class-uagb-visibility.php
 
 		-
-			message: "#^Static property UAGB_Coming_Soon\\:\\:\\$instance \\(instance\\) does not accept UAGB_Coming_Soon\\.$#"
+			message: "#^Static property UAGB_Visibility\\:\\:\\$instance \\(instance\\) does not accept UAGB_Visibility\\.$#"
 			count: 1
-			path: classes/class-uagb-coming-soon.php
+			path: classes/class-uagb-visibility.php
 
 		-
-			message: "#^Static property UAGB_Coming_Soon\\:\\:\\$instance \\(instance\\) in isset\\(\\) is not nullable\\.$#"
+			message: "#^Static property UAGB_Visibility\\:\\:\\$instance \\(instance\\) in isset\\(\\) is not nullable\\.$#"
 			count: 1
-			path: classes/class-uagb-coming-soon.php
+			path: classes/class-uagb-visibility.php
 
 		-
 			message: "#^Function uagb_filesystem\\(\\) has no return type specified\\.$#"

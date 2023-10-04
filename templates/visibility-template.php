@@ -1,6 +1,6 @@
 <?php
 /**
- * UAGB Coming Soon Template.
+ * UAGB Visibility Template.
  *
  * @package UAGB
  */
