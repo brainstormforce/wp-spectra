@@ -81,4 +81,26 @@ then
     fi
 fi
 
+if [ "$FILES" != "" ]
+then
+    echo "Running CSS linting issues..."
+    npm run lint-css
+    if [ $? != 0 ]
+    then
+        echo "Please fix the CSS issues before commit!"
+        exit 1
+    fi
+fi
+
+if [ "$FILES" != "" ]
+then
+    echo "Running JS linting issues..."
+    npm run lint-js
+    if [ $? != 0 ]
+    then
+        echo "Please fix the JS issues before commit!"
+        exit 1
+    fi
+fi
+
 exit $?
