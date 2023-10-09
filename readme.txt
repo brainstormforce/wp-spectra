@@ -221,6 +221,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Image Gallery - Resolved an issue with the masonry type wherein the loader would not be hidden after all the images have been loaded.
 * Fix: Global - Resolved an issue in which the font-family that was set would not appear as intended in the FSE template editor.
 * Fix: Separator - Resolved an issue wherein the height would revert from percentage to pixels after reloading the editor.
+* Improvement: Global - Enhanced the reusable block functionality for the following blocks: Tabs and Slider.
 
 = 2.7.11 - WEDNESDAY, 27th SEPTEMBER 2023 =
 * Fix: Image - Resolved an issue in which the updated responsive images would not appear as intended.

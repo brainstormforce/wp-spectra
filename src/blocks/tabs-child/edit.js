@@ -6,6 +6,8 @@ import { useEffect } from '@wordpress/element';
 
 import Render from './render';
 import { select } from '@wordpress/data';
+import { compose } from '@wordpress/compose';
+import addInitialAttr from '@Controls/addInitialAttr';
 
 const UAGBTabsChildEdit = ( props ) => {
 	const { attributes, setAttributes, clientId } = props;
@@ -16,8 +18,10 @@ const UAGBTabsChildEdit = ( props ) => {
 		const rootBlockId = getBlockRootClientId( clientId );
 		const rootBlockAttrs = getBlockAttributes( rootBlockId );
 
-		setAttributes( { block_id: clientId?.substr( 0, 8 ) } );
-		setAttributes( { tabActive: rootBlockAttrs?.tabActiveFrontend } );
+		// compare attributes to saved attributes and update if needed.
+		if( rootBlockAttrs?.tabActiveFrontend && rootBlockAttrs.tabActiveFrontend !== attributes?.tabActive ) {
+			setAttributes( { tabActive: rootBlockAttrs.tabActiveFrontend } );
+		}
 
 		// Apply parent style if newly inserted
 		if ( rootBlockAttrs !== null && rootBlockAttrs.needUpdate !== false ) {
@@ -29,4 +33,7 @@ const UAGBTabsChildEdit = ( props ) => {
 
 	return <Render { ...props } />;
 };
-export default UAGBTabsChildEdit;
+
+export default compose(
+	addInitialAttr,
+)( UAGBTabsChildEdit );

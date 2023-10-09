@@ -96,8 +96,6 @@ const addInitialAttr = ( ChildComponent ) => {
 			 */
 			const REUSABLE_BLOCK_ISSUE_RESOLVED_BLOCKS = [
 				'uagb/image-gallery',
-				'uagb/slider',
-				'uagb/slider-child',
 			];
 
 			if( ! REUSABLE_BLOCK_ISSUE_RESOLVED_BLOCKS.includes( name ) ){

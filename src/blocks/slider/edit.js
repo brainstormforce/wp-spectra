@@ -1,7 +1,7 @@
 /**
  * BLOCK: Slider
  */
-import { useEffect, useLayoutEffect, useMemo } from '@wordpress/element';
+import { useEffect, useLayoutEffect, useMemo, useState } from '@wordpress/element';
 import { withSelect, useDispatch } from '@wordpress/data';
 import styling from './styling';
 import Settings from './settings';
@@ -25,8 +25,12 @@ const UAGBSlider = ( props ) => {
 		clientId,
 		deviceType,
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
-		setAttributes
 	} = props;
+
+	// Centralize slider instance.
+	const [ swiperInstance, setSwiperInstance ] = useState( null );
+
+	props = { ...props, swiperInstance, setSwiperInstance };
 
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -34,11 +38,6 @@ const UAGBSlider = ( props ) => {
 		return () => {
 			styles.unuse();
 		};
-	}, [] );
-
-	useEffect( () => {
-		// Assigning block_id in the attribute.
-		setAttributes( { block_id: props.clientId.substr( 0, 8 ) } );
 	}, [] );
 
 	useEffect( () => {
