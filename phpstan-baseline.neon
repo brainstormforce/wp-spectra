@@ -432,11 +432,6 @@ parameters:
 			path: admin-core/views/admin-base.php
 
 		-
-			message: "#^Constant UAGB_DIR not found\\.$#"
-			count: 13
-			path: blocks-config/blocks-config.php
-
-		-
 			message: "#^Method UAGB_Buttons_Child\\:\\:get_instance\\(\\) should return UAGB_Buttons_Child but returns instance\\.$#"
 			count: 1
 			path: blocks-config/buttons-child/class-uagb-buttons-child.php
@@ -3159,11 +3154,6 @@ parameters:
 		-
 			message: "#^Constant UAGB_DIR not found\\.$#"
 			count: 1
-			path: classes/class-uagb-block-module.php
-
-		-
-			message: "#^Constant UAGB_URL not found\\.$#"
-			count: 11
 			path: classes/class-uagb-block-module.php
 
 		-

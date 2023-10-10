@@ -10,6 +10,7 @@ import { createHigherOrderComponent } from '@wordpress/compose';
 import { select } from '@wordpress/data'
 import Select from 'react-select';
 import { updateUAGDay } from '@Utils/Helpers';
+import RenderAdvancedPositionPanel from '@Blocks/extensions/advanced-positioning';
 
 const { enableConditions, enableResponsiveConditions, enableAnimationsExtension } = uagb_blocks_info;
 
@@ -504,6 +505,7 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 
 	return (
 		<>
+			{ ( isSelected && 'uagb/container' === name ) && <RenderAdvancedPositionPanel { ...props } /> }
 			{ isSelected &&
 				'enabled' === enableAnimationsExtension &&
 				! excludeDeprecatedBlocks.includes( name ) &&
@@ -511,7 +513,7 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 				notHasDisallowedParentForAnimations && (
 					<UAGAdvancedPanelBody
 						title={ __( 'Animations', 'ultimate-addons-for-gutenberg' ) }
-						initialOpen={ true }
+						initialOpen={ ! 'uagb/container' === name }
 						className="block-editor-block-inspector__advanced uagb-extention-tab"
 					>
 						{ animationOptions( props ) }

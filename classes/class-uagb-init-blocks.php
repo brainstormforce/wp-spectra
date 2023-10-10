@@ -232,7 +232,10 @@ class UAGB_Init_Blocks {
 			}
 		}
 
-		// Render Block Manipulation for Spectra Pro Blocks.
+		// Render Block Manipulation for the required Spectra Blocks.
+		$block_content = apply_filters( 'uagb_render_block', $block_content, $block );
+
+		// Render Block Manipulation for the required Spectra Pro Blocks.
 		$block_content = apply_filters( 'spectra_pro_render_block', $block_content, $block );
 
 		return $block_content;

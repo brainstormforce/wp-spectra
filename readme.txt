@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Feature: Container - Added a new Sticky-Container setting in the Advanced tab.
 * Improvement: Global - Added the Maintenance Mode feature.
 
 = 2.7.11 - WEDNESDAY, 27th SEPTEMBER 2023 =
