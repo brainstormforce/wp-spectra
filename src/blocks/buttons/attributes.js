@@ -1,4 +1,4 @@
-const itemCount = 2;
+const itemCount = 1;
 
 const buttons = [];
 

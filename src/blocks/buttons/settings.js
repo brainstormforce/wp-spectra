@@ -1,12 +1,13 @@
 import { memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import { InspectorControls } from '@wordpress/block-editor';
 import TypographyControl from '@Components/typography';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
 import ResponsiveSlider from '@Components/responsive-slider';
 import SpacingControl from '@Components/spacing-control';
 import ResponsiveSelectControl from '@Components/responsive-select';
+import { InspectorControls, BlockControls, AlignmentToolbar } from '@wordpress/block-editor';
+import { select } from '@wordpress/data';
 
 import { Icon } from '@wordpress/components';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
@@ -89,6 +90,9 @@ const Settings = ( props ) => {
 		fontLetterSpacingType,
 	} = attributes;
 
+	const parentBlock = select( 'core/block-editor' ).getSelectedBlock();
+	const buttonsCount = parentBlock.innerBlocks.length;
+
 	const buttonSizeOptions = [
 		{
 			value: 'default',
@@ -111,6 +115,41 @@ const Settings = ( props ) => {
 			label: __( 'Extra Large', 'ultimate-addons-for-gutenberg' ),
 		},
 	];
+
+	const alignmentControls = [
+		{
+			align: 'left',
+			icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
+			title: __( 'Left', 'ultimate-addons-for-gutenberg' ),
+		},
+		{
+			align: 'center',
+			icon: <Icon icon={ renderSVG( 'fa fa-align-center' ) } />,
+			title: __( 'Center', 'ultimate-addons-for-gutenberg' ),
+		},
+		{
+			align: 'right',
+			icon: <Icon icon={ renderSVG( 'fa fa-align-right' ) } />,
+			title: __( 'Right', 'ultimate-addons-for-gutenberg' ),
+		},
+		{
+			align: 'full',
+			icon: <Icon icon={ renderSVG( 'fa fa-align-justify' ) } />,
+			title: __( 'Full', 'ultimate-addons-for-gutenberg' ),
+		},
+	];
+
+	const getBlockControls = () => (
+		<BlockControls>
+			<AlignmentToolbar
+				value={ align }
+				onChange={ ( value ) => {
+					setAttributes( { align: value } );
+				} }
+				alignmentControls={ alignmentControls }
+			/>
+		</BlockControls>
+	);
 
 	const generalSettings = () => {
 		return (
@@ -157,57 +196,61 @@ const Settings = ( props ) => {
 					showIcons={ true }
 					responsive={ true }
 				/>
-				<MultiButtonsControl
-					setAttributes={ setAttributes }
-					label={ __( 'Stack Orientation', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						value: stack,
-						label: 'stack',
-					} }
-					options={ [
-						{
-							value: 'none',
-							label: __( 'None', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'desktop',
-							label: __( 'Desktop', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'tablet',
-							label: __( 'Tablet', 'ultimate-addons-for-gutenberg' ),
-						},
-						{
-							value: 'mobile',
-							label: __( 'Mobile', 'ultimate-addons-for-gutenberg' ),
-						},
-					] }
-					help={ __(
-						'Note: Choose on what breakpoint the buttons will stack.',
-						'ultimate-addons-for-gutenberg'
-					) }
-				/>
-				<ResponsiveSlider
-					label={ __( 'Gap Between Buttons', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						desktop: {
-							value: gap,
-							label: 'gap',
-						},
-						tablet: {
-							value: gapTablet,
-							label: 'gapTablet',
-						},
-						mobile: {
-							value: gapMobile,
-							label: 'gapMobile',
-						},
-					} }
-					min={ 0 }
-					max={ 200 }
-					displayUnit={ false }
-					setAttributes={ setAttributes }
-				/>
+				{ buttonsCount > 1 && (
+					<MultiButtonsControl
+						setAttributes={ setAttributes }
+						label={ __( 'Stack Orientation', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							value: stack,
+							label: 'stack',
+						} }
+						options={ [
+							{
+								value: 'none',
+								label: __( 'None', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'desktop',
+								label: __( 'Desktop', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'tablet',
+								label: __( 'Tablet', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'mobile',
+								label: __( 'Mobile', 'ultimate-addons-for-gutenberg' ),
+							},
+						] }
+						help={ __(
+							'Note: Choose on what breakpoint the buttons will stack.',
+							'ultimate-addons-for-gutenberg'
+						) }
+					/>
+				) }
+				{ buttonsCount > 1 && (
+					<ResponsiveSlider
+						label={ __( 'Gap Between Buttons', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							desktop: {
+								value: gap,
+								label: 'gap',
+							},
+							tablet: {
+								value: gapTablet,
+								label: 'gapTablet',
+							},
+							mobile: {
+								value: gapMobile,
+								label: 'gapMobile',
+							},
+						} }
+						min={ 0 }
+						max={ 200 }
+						displayUnit={ false }
+						setAttributes={ setAttributes }
+					/>
+				) }
 				<ResponsiveSelectControl
 					label={ __( 'Button Size', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -469,6 +512,7 @@ const Settings = ( props ) => {
 
 	return (
 		<>
+			{ getBlockControls() }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>{ generalSettings() }</InspectorTab>
