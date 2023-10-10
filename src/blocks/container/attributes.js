@@ -452,56 +452,48 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'container-top-padding-tablet',
 		},
-		default: uagb_blocks_info.container_global_padding,
 	},
 	bottomPaddingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-bottom-padding-tablet',
 		},
-		default: uagb_blocks_info.container_global_padding,
 	},
 	leftPaddingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-left-padding-tablet',
 		},
-		default: uagb_blocks_info.container_global_padding,
 	},
 	rightPaddingTablet: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-right-padding-tablet',
 		},
-		default: uagb_blocks_info.container_global_padding,
 	},
 	topPaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-top-padding-mobile',
 		},
-		default: uagb_blocks_info.container_global_padding,
 	},
 	bottomPaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-bottom-padding-mobile',
 		},
-		default: uagb_blocks_info.container_global_padding,
 	},
 	leftPaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-left-padding-mobile',
 		},
-		default: uagb_blocks_info.container_global_padding,
 	},
 	rightPaddingMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'container-right-padding-mobile',
 		},
-		default: uagb_blocks_info.container_global_padding,
 	},
 	paddingType: {
 		type: 'string',

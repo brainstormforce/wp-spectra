@@ -218,6 +218,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ### x.x.x ###
 * Improvement: Buttons - Reduced the default number of buttons to 1.
 * Improvement: Buttons - Added alignment options to both the child and parent blocks in the block controls toolbar.
+* Improvement: Container - Updated responsive padding settings to inherit from bigger devices by default.
 * Fix: Container - Resolved an issue wherein the left and right margin of inner-containers would not work as intended.
 * Fix: Post Carousel - Resolved an issue in which the responsive columns would not work as intended in the editor.
 * Fix: Image Gallery - Resolved an issue with the masonry type wherein the loader would not be hidden after all the images have been loaded.
