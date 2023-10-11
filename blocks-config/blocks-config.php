@@ -6,7 +6,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) || ! defined( 'UAGB_DIR' ) ) {
-	exit; // Exit if accessed directly, or if UAFB_DIR is not defined.
+	exit; // Exit if accessed directly, or if UAGB_DIR is not defined.
 }
 
 // Require the dynamic block classes.

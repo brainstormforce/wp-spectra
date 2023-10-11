@@ -291,6 +291,22 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 					unset( $attributes['UAGAnimationDoNotApplyToContainer'] );
 				}
 
+				if ( isset( $attributes['UAGStickyLocation'] ) ) {
+					unset( $attributes['UAGStickyLocation'] );
+				}
+
+				if ( isset( $attributes['UAGStickyRestricted'] ) ) {
+					unset( $attributes['UAGStickyRestricted'] );
+				}
+
+				if ( isset( $attributes['UAGStickyOffset'] ) ) {
+					unset( $attributes['UAGStickyOffset'] );
+				}
+
+				if ( isset( $attributes['UAGPosition'] ) ) {
+					unset( $attributes['UAGPosition'] );
+				}
+
 					$request['attributes'] = $attributes;
 
 			}
