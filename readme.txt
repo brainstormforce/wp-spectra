@@ -225,6 +225,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Global - Resolved an issue in which the font-family that was set would not appear as intended in the FSE template editor.
 * Fix: Separator - Resolved an issue wherein the height would revert from percentage to pixels after reloading the editor.
 * Improvement: Global - Enhanced the reusable block functionality for the following blocks: Tabs and Slider.
+* Fix: Global - Removed responsive conditions for core PHP rendered blocks.
 * Fix: Content Timeline - Resolved an issue in which the icons would appear over-sized and the content styling would break on the frontend.
 * Fix: Post Grid - Resolved an issue wherein the post meta responsive font-size would not work as intended in the editor.
 

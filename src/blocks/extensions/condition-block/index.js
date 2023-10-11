@@ -209,6 +209,9 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 			'core/rss',
 			'real-media-library/gallery',
 			'core/legacy-widget',
+			'core/navigation',
+			'core/search',
+			'core/file',
 		];
 
 		return (
