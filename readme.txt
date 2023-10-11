@@ -225,6 +225,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Global - Resolved an issue in which the font-family that was set would not appear as intended in the FSE template editor.
 * Fix: Separator - Resolved an issue wherein the height would revert from percentage to pixels after reloading the editor.
 * Improvement: Global - Enhanced the reusable block functionality for the following blocks: Tabs and Slider.
+* Fix: Content Timeline - Resolved an issue in which the icons would appear over-sized and the content styling would break on the frontend.
 
 = 2.7.11 - WEDNESDAY, 27th SEPTEMBER 2023 =
 * Fix: Image - Resolved an issue in which the updated responsive images would not appear as intended.
