@@ -214,6 +214,7 @@ class UAGB_Init_Blocks {
 
 			$attrs                                      = $block['attrs'];
 			$attrs['UAGAnimationDoNotApplyToContainer'] = isset( $attrs['UAGAnimationDoNotApplyToContainer'] ) ? $attrs['UAGAnimationDoNotApplyToContainer'] : false;
+			$block_positioning                          = ! empty( $attrs['UAGPosition'] ) && is_string( $attrs['UAGPosition'] ) ? $attrs['UAGPosition'] : false; 
 
 			// Container-specific animation attributes.
 			if ( ! $attrs['UAGAnimationDoNotApplyToContainer'] ) {
@@ -227,8 +228,11 @@ class UAGB_Init_Blocks {
 				// Container-specific animation attributes.
 				$attrs['UAGAnimationDelayInterval'] = isset( $attrs['UAGAnimationDelayInterval'] ) ? $attrs['UAGAnimationDelayInterval'] : 200;
 
-				$aos_attributes = '<div data-aos= "' . esc_attr( $attrs['UAGAnimationType'] ) . '" data-aos-duration="' . esc_attr( $attrs['UAGAnimationTime'] ) . '" data-aos-delay="' . esc_attr( $attrs['UAGAnimationDelay'] ) . '" data-aos-easing="' . esc_attr( $attrs['UAGAnimationEasing'] ) . '" data-aos-once="' . esc_attr( $attrs['UAGAnimationRepeat'] ) . '" ';
-				$block_content  = preg_replace( '/<div /', $aos_attributes, $block_content, 1 );
+				// If this is a sticky element, don't update the attributes of this element just yet.
+				if ( 'sticky' !== $block_positioning ) {
+					$aos_attributes = '<div data-aos= "' . esc_attr( $attrs['UAGAnimationType'] ) . '" data-aos-duration="' . esc_attr( $attrs['UAGAnimationTime'] ) . '" data-aos-delay="' . esc_attr( $attrs['UAGAnimationDelay'] ) . '" data-aos-easing="' . esc_attr( $attrs['UAGAnimationEasing'] ) . '" data-aos-once="' . esc_attr( $attrs['UAGAnimationRepeat'] ) . '" ';
+					$block_content  = preg_replace( '/<div /', $aos_attributes, $block_content, 1 );
+				}
 			}
 		}
 

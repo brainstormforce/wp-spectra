@@ -30,9 +30,26 @@ const UAGBBlockPositioning = {
 				fillerElement.style.maxWidth = elementStyles.getPropertyValue( 'max-width' ) || `${ elementDimensions.width }px`;
 				fillerElement.style.padding = elementStyles.getPropertyValue( 'padding' ) || 0;
 				fillerElement.style.margin = elementStyles.getPropertyValue( 'margin' ) || 0;
+				fillerElement.style.border = elementStyles.getPropertyValue( 'border' ) || 0;
+				fillerElement.style.borderColor = 'transparent';
 			}
 			return fillerElement;
 		};
+
+		// Add the animation attributes to the element and refresh the animations if this was an animated element.
+		const applyAnimationData = () => {
+			if ( 'undefined' === typeof AOS || ! attr?.UAGAnimationType ) {
+				return;
+			}
+			element.dataset.aos = attr?.UAGAnimationType;
+			element.dataset.aosDuration = attr?.UAGAnimationTime;
+			element.dataset.aosDelay = attr?.UAGAnimationDelay;
+			element.dataset.aosEasing = attr?.UAGAnimationEasing;
+			element.dataset.aosOnce = true;
+			setTimeout( () => {
+				AOS.refreshHard();
+			}, 100 );
+		}
 
 		// Get the dimensions of the sticky element.
 		const stickyDimensions = element.getBoundingClientRect();
@@ -84,6 +101,9 @@ const UAGBBlockPositioning = {
 						element.style.bottom = haltAtPosition;
 					} , 50 );
 				}
+
+				// Check if this sticky container was animated.
+				applyAnimationData();
 			} );
 
 			// Check when this needsto be stuck on the bottom, and when it doesn't.
@@ -138,7 +158,11 @@ const UAGBBlockPositioning = {
 					element.style.width = `${ stickyDimensions.width }px`;
 					element.style.zIndex = '999';
 				}
+
+				// Check if this sticky container was animated.
+				applyAnimationData();
 			} );
+
 
 			// Check when this needsto be stuck on the top, and when it doesn't.
 			window.addEventListener( 'scroll', () => {

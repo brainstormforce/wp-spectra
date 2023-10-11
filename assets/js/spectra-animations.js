@@ -1,1 +1,3 @@
-AOS.init();
+AOS.init( {
+	startEvent: 'load',
+} );
