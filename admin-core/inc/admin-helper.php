@@ -96,7 +96,7 @@ class Admin_Helper {
 	/**
 	 * Get Visibility Page
 	 *
-	 * @since x.x.x
+	 * @since 2.8.0
 	 * @return boolean|array
 	 */
 	public static function get_visibility_page() {

@@ -2,7 +2,7 @@
 /**
  * UAGB Block Positioning.
  *
- * @since x.x.x
+ * @since 2.8.0
  * @package uagb
  */
 
@@ -16,14 +16,14 @@ if ( ! class_exists( 'UAGB_Block_Positioning' ) ) {
 	/**
 	 * Class UAGB_Block_Positioning.
 	 * 
-	 * @since x.x.x
+	 * @since 2.8.0
 	 */
 	class UAGB_Block_Positioning {
 
 		/**
 		 * The instance of this class, or null if it has not been created yet.
 		 *
-		 * @since x.x.x
+		 * @since 2.8.0
 		 * @var object|null instance
 		 */
 		private static $instance = null;
@@ -31,7 +31,7 @@ if ( ! class_exists( 'UAGB_Block_Positioning' ) ) {
 		/**
 		 * The Initiator.
 		 *
-		 * @since x.x.x
+		 * @since 2.8.0
 		 * @return object  An instance of this class.
 		 */
 		public static function get_instance() {
@@ -44,7 +44,7 @@ if ( ! class_exists( 'UAGB_Block_Positioning' ) ) {
 		/**
 		 * The Constructor.
 		 * 
-		 * @since x.x.x
+		 * @since 2.8.0
 		 * @return void
 		 */
 		public function __construct() {
@@ -56,7 +56,7 @@ if ( ! class_exists( 'UAGB_Block_Positioning' ) ) {
 		 *
 		 * @param string $block_content  The block content.
 		 * @param array  $block          The block data.
-		 * @since x.x.x
+		 * @since 2.8.0
 		 * @return string                The block content after updation.
 		 */
 		public function add_positioning_classes( $block_content, $block ) {

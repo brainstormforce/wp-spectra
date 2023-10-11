@@ -124,7 +124,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		 *
 		 * @param  string  $key     The option key.
 		 * @param  boolean $network_override Whether to allow the network admin setting to be overridden on subsites.
-		 * @since x.x.x
+		 * @since 2.8.0
 		 * @return void            Return the option value.
 		 */
 		public static function delete_admin_settings_option( $key, $network_override = false ) {

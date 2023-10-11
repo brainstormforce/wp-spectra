@@ -3422,7 +3422,7 @@ namespace {
         /**
          *  Initiator
          *
-         * @since x.x.x
+         * @since 2.8.0
          */
         public static function get_instance()
         {
@@ -3436,7 +3436,7 @@ namespace {
         /**
          * Set Visibility Template.
          *
-         * @since x.x.x
+         * @since 2.8.0
          */
         public function set_visibility_template()
         {
@@ -3444,7 +3444,7 @@ namespace {
         /**
          * Set Visibility Page.
          *
-         * @since x.x.x
+         * @since 2.8.0
          */
         public function set_visibility_page()
         {
@@ -3452,7 +3452,7 @@ namespace {
         /**
          * Enqueue asset files.
          *
-         * @since x.x.x
+         * @since 2.8.0
          */
         public function enqueue_asset_files()
         {
@@ -4750,7 +4750,7 @@ namespace UagAdmin\Ajax {
         /**
          * Save settings - Saves visibility_page.
          *
-         * @since x.x.x
+         * @since 2.8.0
          * @return void
          */
         public function visibility_page()
@@ -4759,7 +4759,7 @@ namespace UagAdmin\Ajax {
         /**
          * Save settings - Saves visibility_mode.
          *
-         * @since x.x.x
+         * @since 2.8.0
          * @return void
          */
         public function visibility_mode()

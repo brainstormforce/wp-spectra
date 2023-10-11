@@ -149,7 +149,7 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 		/**
 		 * Migrate_visibility_mode
 		 *
-		 * @since x.x.x
+		 * @since 2.8.0
 		 * @return void
 		 */
 		public static function migrate_visibility_mode() {

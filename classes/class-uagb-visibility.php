@@ -17,7 +17,7 @@ class UAGB_Visibility {
 	/**
 	 * Member Variable
 	 *
-	 * @since x.x.x
+	 * @since 2.8.0
 	 * @var UAGB_Visibility|null
 	 */
 	private static $instance;
@@ -25,7 +25,7 @@ class UAGB_Visibility {
 	/**
 	 *  Initiator
 	 *
-	 * @since x.x.x
+	 * @since 2.8.0
 	 * @return UAGB_Visibility
 	 */
 	public static function get_instance() {
@@ -54,7 +54,7 @@ class UAGB_Visibility {
 	/**
 	 * Set Visibility Template.
 	 * 
-	 * @since x.x.x
+	 * @since 2.8.0
 	 * 
 	 * @return string Template file path.
 	 */
@@ -65,7 +65,7 @@ class UAGB_Visibility {
 	/**
 	 * Set Visibility Page.
 	 *
-	 * @since x.x.x
+	 * @since 2.8.0
 	 * 
 	 * @return void
 	 */
@@ -91,7 +91,7 @@ class UAGB_Visibility {
 	/**
 	 * Enqueue asset files.
 	 *
-	 * @since x.x.x
+	 * @since 2.8.0
 	 */
 	public function enqueue_asset_files() {
 
