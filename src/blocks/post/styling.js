@@ -668,7 +668,19 @@ function styling( attributes, clientId, deviceType ) {
 			'line-height': titleLineHeightMobile + titleLineHeightType,
 			'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
 		},
-		' .uagb-post__inner-wrap .uagb-post-grid-byline': {
+		' .uagb-post-grid-byline': {
+			'font-size': generateCSSUnit( metaFontSizeMobile, metaFontSizeType ),
+			'line-height': metaLineHeightMobile + metaLineHeightType,
+			'padding-bottom': generateCSSUnit( metaBottomSpaceMobile, metaBottomSpaceUnit ),
+			'letter-spacing': generateCSSUnit( metaLetterSpacingMobile, metaLetterSpacingType ),
+		},
+		' .uagb-post-grid-byline time': {
+			'font-size': generateCSSUnit( metaFontSizeMobile, metaFontSizeType ),
+			'line-height': metaLineHeightMobile + metaLineHeightType,
+			'padding-bottom': generateCSSUnit( metaBottomSpaceMobile, metaBottomSpaceUnit ),
+			'letter-spacing': generateCSSUnit( metaLetterSpacingMobile, metaLetterSpacingType ),
+		},
+		' .uagb-post-grid-byline span.uagb-post__comment': {
 			'font-size': generateCSSUnit( metaFontSizeMobile, metaFontSizeType ),
 			'line-height': metaLineHeightMobile + metaLineHeightType,
 			'padding-bottom': generateCSSUnit( metaBottomSpaceMobile, metaBottomSpaceUnit ),
@@ -776,7 +788,19 @@ function styling( attributes, clientId, deviceType ) {
 			'line-height': titleLineHeightTablet + titleLineHeightType,
 			'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
 		},
-		' .uagb-post__inner-wrap .uagb-post-grid-byline': {
+		' .uagb-post-grid-byline': {
+			'font-size': generateCSSUnit( metaFontSizeTablet, metaFontSizeType ),
+			'line-height': metaLineHeightTablet + metaLineHeightType,
+			'padding-bottom': generateCSSUnit( metaBottomSpaceTablet, metaBottomSpaceUnit ),
+			'letter-spacing': generateCSSUnit( metaLetterSpacingTablet, metaLetterSpacingType ),
+		},
+		' .uagb-post-grid-byline time': {
+			'font-size': generateCSSUnit( metaFontSizeTablet, metaFontSizeType ),
+			'line-height': metaLineHeightTablet + metaLineHeightType,
+			'padding-bottom': generateCSSUnit( metaBottomSpaceTablet, metaBottomSpaceUnit ),
+			'letter-spacing': generateCSSUnit( metaLetterSpacingTablet, metaLetterSpacingType ),
+		},
+		' .uagb-post-grid-byline span.uagb-post__comment': {
 			'font-size': generateCSSUnit( metaFontSizeTablet, metaFontSizeType ),
 			'line-height': metaLineHeightTablet + metaLineHeightType,
 			'padding-bottom': generateCSSUnit( metaBottomSpaceTablet, metaBottomSpaceUnit ),
