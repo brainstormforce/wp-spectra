@@ -123,7 +123,7 @@ const UserConditionOptions = ( props ) => {
 			) }
 			{ UAGDisplayConditions === 'day' && (
 				<>
-					<p>Select days you want to disable.</p>
+					<p>{ __( 'Select days you want to disable.', 'ultimate-addons-for-gutenberg' ) }</p>
 					{ options.map( ( o, index ) => {
 						// eslint-disable-next-line array-callback-return
 						return (
@@ -308,6 +308,17 @@ const animationOptions = ( props ) => {
 		localStorage.setItem( `aosRemoveClassesTimeoutCode-${ clientId }`, aosRemoveClasses );
 	};
 
+	// Adding playAnimation function to props for using in the pro plugin.
+	props = {
+		...props,
+		playAnimation,
+	};
+
+	const proAnimationOptions = applyFilters( 'spectra.animations-extension.pro-options', props );
+
+	// Check proAnimationOptions is valid react element or not.
+	const proValidOptions = proAnimationOptions.$$typeof === Symbol.for( 'react.element' ) && proAnimationOptions?.props?.children ? true : null;
+
 	return (
 		<>
 			<Select
@@ -334,24 +345,20 @@ const animationOptions = ( props ) => {
 				// Library specific prop.
 				classNamePrefix="uagb-animation-type-select"
 			/>
-
-			{ /* name: we pass in the block name dynamically since this feature must be available across all Spectra blocks */ }
-			{ applyFilters( 'spectra.animations-extension.pro-options', '', name ) }
+			{ proValidOptions && proAnimationOptions }
 
 			{ ! uagb_blocks_info.spectra_pro_status &&
 				<br />
 			}
 
-			{ UAGAnimationType && UAGAnimationType !== '' && (
-				<>
-					<Button
-						className="uagb-animation__play-button"
-						onClick={ () => playAnimation() }
-						variant="tertiary"
-					>
-						{ __( 'Preview', 'ultimate-addons-for-gutenberg' ) }
-					</Button>
-				</>
+			{ UAGAnimationType && ! proValidOptions && (
+				<Button
+					className="uagb-animation__play-button"
+					onClick={ () => playAnimation() }
+					variant="tertiary"
+				>
+					{ __( 'Preview', 'ultimate-addons-for-gutenberg' ) }
+				</Button>
 			) }
 		</>
 	);
