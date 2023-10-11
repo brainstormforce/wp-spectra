@@ -50,7 +50,7 @@ const Settings = () => {
         { name: __( 'Version Control', 'ultimate-addons-for-gutenberg' ), slug: 'version-control', icon: SettingsIcons['version-control'] },
         { name: __( 'Performance', 'ultimate-addons-for-gutenberg' ), slug: 'fonts-performance', icon: SettingsIcons['fonts-performance'] },
 		{ name: __( 'Integrations', 'ultimate-addons-for-gutenberg' ), slug: 'block-settings', icon: SettingsIcons['block-settings'] },
-		{ name: __( 'Visibility Mode', 'ultimate-addons-for-gutenberg' ), slug: 'visibility-mode', icon: SettingsIcons['visibility-mode'] },
+		{ name: __( 'Site Visibility', 'ultimate-addons-for-gutenberg' ), slug: 'visibility-mode', icon: SettingsIcons['visibility-mode'] },
     ];
 
     if ( spectraIsBlockTheme ) {
