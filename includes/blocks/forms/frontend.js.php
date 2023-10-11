@@ -9,6 +9,8 @@
 
 $selector        = '.uagb-block-' . $id;
 $current_post_id = get_the_ID();
+$curr_user       = wp_get_current_user();
+$default_email   = $curr_user->user_email;
 $js_attr         = array(
 	'block_id'                => $attr['block_id'],
 	'reCaptchaEnable'         => $attr['reCaptchaEnable'],
@@ -17,7 +19,7 @@ $js_attr         = array(
 	'reCaptchaSecretKeyV2'    => $attr['reCaptchaSecretKeyV2'],
 	'reCaptchaSiteKeyV3'      => $attr['reCaptchaSiteKeyV3'],
 	'reCaptchaSecretKeyV3'    => $attr['reCaptchaSecretKeyV3'],
-	'afterSubmitToEmail'      => $attr['afterSubmitToEmail'],
+	'afterSubmitToEmail'      => ! empty( trim( $attr['afterSubmitToEmail'] ) ) ? $attr['afterSubmitToEmail'] : $default_email,
 	'afterSubmitCcEmail'      => $attr['afterSubmitCcEmail'],
 	'afterSubmitBccEmail'     => $attr['afterSubmitBccEmail'],
 	'afterSubmitEmailSubject' => $attr['afterSubmitEmailSubject'],

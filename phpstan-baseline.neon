@@ -6573,7 +6573,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$attr might not be defined\\.$#"
-			count: 16
+			count: 17
 			path: includes/blocks/forms/frontend.js.php
 
 		-
