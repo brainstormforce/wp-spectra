@@ -212,22 +212,34 @@ class UAGB_Init_Blocks {
 			$block['attrs']['UAGAnimationType']
 		) {
 
-			$attrs = $block['attrs'];
+			$attrs                                      = $block['attrs'];
+			$attrs['UAGAnimationDoNotApplyToContainer'] = isset( $attrs['UAGAnimationDoNotApplyToContainer'] ) ? $attrs['UAGAnimationDoNotApplyToContainer'] : false;
+			$block_positioning                          = ! empty( $attrs['UAGPosition'] ) && is_string( $attrs['UAGPosition'] ) ? $attrs['UAGPosition'] : false; 
 
-			// Defaults aren't received here, hence we set them.
-			// Without these defaults, empty data is sent to markup (which doesn't affect the functionality at all but still it's a good practice to follow).
-			$attrs['UAGAnimationTime']   = isset( $attrs['UAGAnimationTime'] ) ? $attrs['UAGAnimationTime'] : 400;
-			$attrs['UAGAnimationDelay']  = isset( $attrs['UAGAnimationDelay'] ) ? $attrs['UAGAnimationDelay'] : 0;
-			$attrs['UAGAnimationEasing'] = isset( $attrs['UAGAnimationEasing'] ) ? $attrs['UAGAnimationEasing'] : 'ease';
-			$attrs['UAGAnimationRepeat'] = isset( $attrs['UAGAnimationRepeat'] ) ? 'false' : 'true';
+			// Container-specific animation attributes.
+			if ( ! $attrs['UAGAnimationDoNotApplyToContainer'] ) {
+				// Defaults aren't received here, hence we set them.
+				// Without these defaults, empty data is sent to markup (which doesn't affect the functionality at all but still it's a good practice to follow).
+				$attrs['UAGAnimationTime']   = isset( $attrs['UAGAnimationTime'] ) ? $attrs['UAGAnimationTime'] : 400;
+				$attrs['UAGAnimationDelay']  = isset( $attrs['UAGAnimationDelay'] ) ? $attrs['UAGAnimationDelay'] : 0;
+				$attrs['UAGAnimationEasing'] = isset( $attrs['UAGAnimationEasing'] ) ? $attrs['UAGAnimationEasing'] : 'ease';
+				$attrs['UAGAnimationRepeat'] = isset( $attrs['UAGAnimationRepeat'] ) ? 'false' : 'true';
 
-			$aos_attributes = '<div data-aos= "' . esc_attr( $attrs['UAGAnimationType'] ) . '" data-aos-duration="' . esc_attr( $attrs['UAGAnimationTime'] ) . '" data-aos-delay="' . esc_attr( $attrs['UAGAnimationDelay'] ) . '" data-aos-easing="' . esc_attr( $attrs['UAGAnimationEasing'] ) . '" data-aos-once="' . esc_attr( $attrs['UAGAnimationRepeat'] ) . '" ';
+				// Container-specific animation attributes.
+				$attrs['UAGAnimationDelayInterval'] = isset( $attrs['UAGAnimationDelayInterval'] ) ? $attrs['UAGAnimationDelayInterval'] : 200;
 
-			$block_content = preg_replace( '/<div /', $aos_attributes, $block_content, 1 );
-
+				// If this is a sticky element, don't update the attributes of this element just yet.
+				if ( 'sticky' !== $block_positioning ) {
+					$aos_attributes = '<div data-aos= "' . esc_attr( $attrs['UAGAnimationType'] ) . '" data-aos-duration="' . esc_attr( $attrs['UAGAnimationTime'] ) . '" data-aos-delay="' . esc_attr( $attrs['UAGAnimationDelay'] ) . '" data-aos-easing="' . esc_attr( $attrs['UAGAnimationEasing'] ) . '" data-aos-once="' . esc_attr( $attrs['UAGAnimationRepeat'] ) . '" ';
+					$block_content  = preg_replace( '/<div /', $aos_attributes, $block_content, 1 );
+				}
+			}
 		}
 
-		// Render Block Manipulation for Spectra Pro Blocks.
+		// Render Block Manipulation for the required Spectra Blocks.
+		$block_content = apply_filters( 'uagb_render_block', $block_content, $block );
+
+		// Render Block Manipulation for the required Spectra Pro Blocks.
 		$block_content = apply_filters( 'spectra_pro_render_block', $block_content, $block );
 
 		return $block_content;

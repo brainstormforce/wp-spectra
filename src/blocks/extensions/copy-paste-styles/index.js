@@ -13,6 +13,7 @@ import { addFilter, applyFilters } from '@wordpress/hooks';
 import SettingsIcons from './icons.js';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 import AnimationAttributes from '@Blocks/extensions/animations-extension/attributes.js';
+import positionAttributes from '@Blocks/extensions/advanced-positioning/attributes.js';
 
 const UAGCopyPasteStyles = () => {
 	// Registering the shortcuts
@@ -151,6 +152,7 @@ const UAGCopyPasteStyles = () => {
 					blockAttributes = {
 						...blockAttributes,
 						...AnimationAttributes,
+						...positionAttributes,
 					};
 				}
 

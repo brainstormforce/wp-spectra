@@ -166,7 +166,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'classes/class-uagb-front-assets.php';
 			require_once UAGB_DIR . 'classes/class-uagb-init-blocks.php';
 			require_once UAGB_DIR . 'classes/class-uagb-rest-api.php';
-			require_once UAGB_DIR . 'classes/class-uagb-coming-soon.php';
+			require_once UAGB_DIR . 'classes/class-uagb-visibility.php';
 
 			if ( 'twentyseventeen' === get_template() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-twenty-seventeen-compatibility.php';
@@ -281,6 +281,14 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 				if ( isset( $attributes['UAGAnimationRepeat'] ) ) {
 					unset( $attributes['UAGAnimationRepeat'] );
+				}
+
+				if ( isset( $attributes['UAGAnimationDelayInterval'] ) ) {
+					unset( $attributes['UAGAnimationDelayInterval'] );
+				}
+
+				if ( isset( $attributes['UAGAnimationDoNotApplyToContainer'] ) ) {
+					unset( $attributes['UAGAnimationDoNotApplyToContainer'] );
 				}
 
 					$request['attributes'] = $attributes;
@@ -401,6 +409,8 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			// This class is loaded from blocks config.
 			UAGB_Popup_Builder::generate_scripts();
+
+			UAGB_Update::migrate_visibility_mode();
 
 			// Adds filters to modify the blocks allowed in excerpts.
 			add_filter( 'excerpt_allowed_blocks', array( $this, 'add_blocks_to_excerpt' ), 20 );

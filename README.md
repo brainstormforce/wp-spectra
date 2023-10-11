@@ -216,6 +216,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
+* Feature: Container - Added a new Sticky-Container setting in the Advanced tab.
+* Improvement: Global - Added the Maintenance Mode feature.
 * Improvement: Buttons - Reduced the default number of buttons to 1.
 * Improvement: Buttons - Added alignment options to both the child and parent blocks in the block controls toolbar.
 * Improvement: Container - Updated responsive padding settings to inherit from bigger devices by default.
