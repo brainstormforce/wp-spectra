@@ -36,7 +36,7 @@ const SettingsIcons = {
             <path d="M11 13C11 11.8954 11.8954 11 13 11H15C16.1046 11 17 11.8954 17 13V15C17 16.1046 16.1046 17 15 17H13C11.8954 17 11 16.1046 11 15V13Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
     ),
-	'visibility-mode' : (
+	'site-visibility' : (
 		<svg className="flex-shrink-0 mr-4 stroke-inherit" fill="none" width="20" height="20" viewBox="0 0 26 19" xmlns="http://www.w3.org/2000/svg">
             <path d="M13.0002 13.2034C15.2468 13.2034 17.068 11.3821 17.068 9.13556C17.068 6.88897 15.2468 5.06775 13.0002 5.06775C10.7536 5.06775 8.93237 6.88897 8.93237 9.13556C8.93237 11.3821 10.7536 13.2034 13.0002 13.2034Z" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
             <path d="M24.5546 7.87297C25.1485 8.60711 25.1485 9.66413 24.5546 10.3983C22.7059 12.6835 18.0611 17.2712 13 17.2712C7.93888 17.2712 3.29405 12.6835 1.44539 10.3983C0.851538 9.66413 0.851538 8.60711 1.44539 7.87297C3.29405 5.58773 7.93888 1 13 1C18.0611 1 22.7059 5.58773 24.5546 7.87297Z" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
