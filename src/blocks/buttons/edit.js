@@ -23,7 +23,7 @@ const ButtonsComponent = ( props ) => {
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 		clientId,
 		name,
-		deviceType
+		deviceType,
 	} = props;
 
 	const initialState = {

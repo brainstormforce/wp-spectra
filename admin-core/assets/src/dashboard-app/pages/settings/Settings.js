@@ -19,7 +19,7 @@ import CopyPasteStyles from '@DashboardApp/pages/settings/CopyPasteStyles';
 import DynamicContent from './dynamic-content';
 import ContentWidth from '@DashboardApp/pages/settings/ContentWidth';
 import BlocksEditorSpacing from '@DashboardApp/pages/settings/BlocksEditorSpacing';
-import ComingSoon from '@DashboardApp/pages/settings/ComingSoon';
+import Visibility from '@DashboardApp/pages/settings/Visibility';
 import SettingsSkeleton from '@DashboardApp/pages/settings/SettingsSkeleton';
 import BlockSettings from '@DashboardApp/pages/settings/BlockSettings';
 import LoadFontAwesome5 from '@DashboardApp/pages/settings/LoadFontAwesome5';
@@ -50,7 +50,7 @@ const Settings = () => {
         { name: __( 'Version Control', 'ultimate-addons-for-gutenberg' ), slug: 'version-control', icon: SettingsIcons['version-control'] },
         { name: __( 'Performance', 'ultimate-addons-for-gutenberg' ), slug: 'fonts-performance', icon: SettingsIcons['fonts-performance'] },
 		{ name: __( 'Integrations', 'ultimate-addons-for-gutenberg' ), slug: 'block-settings', icon: SettingsIcons['block-settings'] },
-		{ name: __( 'Coming Soon', 'ultimate-addons-for-gutenberg' ), slug: 'coming-soon', icon: SettingsIcons['coming-soon'] },
+		{ name: __( 'Site Visibility', 'ultimate-addons-for-gutenberg' ), slug: 'site-visibility', icon: SettingsIcons['site-visibility'] },
     ];
 
     if ( spectraIsBlockTheme ) {
@@ -177,9 +177,9 @@ const Settings = () => {
 							</>
                         }
                         {
-                            'coming-soon' === activeSettingsNavigationTab &&
+                            'site-visibility' === activeSettingsNavigationTab &&
                             <>
-                                <ComingSoon/>
+                                <Visibility/>
                             </>
                         }
                         {

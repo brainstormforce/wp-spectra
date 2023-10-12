@@ -152,7 +152,7 @@ const attributes = {
 		},
 	},
 	separatorHeightType: {
-		type: 'number',
+		type: 'string',
 		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'separator-gap-unit',

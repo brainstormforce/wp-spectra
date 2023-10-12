@@ -818,6 +818,10 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	}
 }
 
+.block-editor-block-inspector .uagb-inspector-tab .components-panel__body.uag-advance-panel-body-animations > .components-base-control:last-child {
+	margin-bottom: 9px;
+}
+
 @import "styles/gutenberg-override";
 @import "styles/control-responsive";
 @import "styles/control-header";

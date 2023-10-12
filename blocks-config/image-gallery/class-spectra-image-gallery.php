@@ -1182,22 +1182,24 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 		 */
 		private function render_masonry_pagination_controls( $attributes ) {
 			ob_start();
-			if ( $attributes['paginateUseLoader'] ) {
-				?>
+			if ( $attributes['mediaGallery'] && count( $attributes['mediaGallery'] ) > $attributes['paginateLimit'] ) {
+				if ( $attributes['paginateUseLoader'] ) {
+					?>
 					<div class="spectra-image-gallery__control-loader wp-block-button">
 						<div class="wp-block-button__link spectra-image-gallery__control-loader--1"></div>
 						<div class="wp-block-button__link spectra-image-gallery__control-loader--2"></div>
 						<div class="wp-block-button__link spectra-image-gallery__control-loader--3"></div>
 					</div>
-				<?php
-			} else {
-				?>
+					<?php
+				} else {
+					?>
 					<div class="spectra-image-gallery__control-wrapper wp-block-button">
 						<div class="spectra-image-gallery__control-button wp-block-button__link" aria-label="<?php echo esc_attr( $attributes['paginateButtonText'] ); ?>" tabIndex=0>
 							<?php echo esc_html( $attributes['paginateButtonText'] ); ?>
 						</div>
 					</div>
-				<?php
+					<?php
+				}
 			}
 			return ob_get_clean();
 		}

@@ -10,6 +10,7 @@ import { createHigherOrderComponent } from '@wordpress/compose';
 import { select } from '@wordpress/data'
 import Select from 'react-select';
 import { updateUAGDay } from '@Utils/Helpers';
+import RenderAdvancedPositionPanel from '@Blocks/extensions/advanced-positioning';
 
 const { enableConditions, enableResponsiveConditions, enableAnimationsExtension } = uagb_blocks_info;
 
@@ -122,7 +123,7 @@ const UserConditionOptions = ( props ) => {
 			) }
 			{ UAGDisplayConditions === 'day' && (
 				<>
-					<p>Select days you want to disable.</p>
+					<p>{ __( 'Select days you want to disable.', 'ultimate-addons-for-gutenberg' ) }</p>
 					{ options.map( ( o, index ) => {
 						// eslint-disable-next-line array-callback-return
 						return (
@@ -307,6 +308,17 @@ const animationOptions = ( props ) => {
 		localStorage.setItem( `aosRemoveClassesTimeoutCode-${ clientId }`, aosRemoveClasses );
 	};
 
+	// Adding playAnimation function to props for using in the pro plugin.
+	props = {
+		...props,
+		playAnimation,
+	};
+
+	const proAnimationOptions = applyFilters( 'spectra.animations-extension.pro-options', props );
+
+	// Check proAnimationOptions is valid react element or not.
+	const proValidOptions = proAnimationOptions.$$typeof === Symbol.for( 'react.element' ) && proAnimationOptions?.props?.children ? true : null;
+
 	return (
 		<>
 			<Select
@@ -333,24 +345,20 @@ const animationOptions = ( props ) => {
 				// Library specific prop.
 				classNamePrefix="uagb-animation-type-select"
 			/>
-
-			{ /* name: we pass in the block name dynamically since this feature must be available across all Spectra blocks */ }
-			{ applyFilters( 'spectra.animations-extension.pro-options', '', name ) }
+			{ proValidOptions && proAnimationOptions }
 
 			{ ! uagb_blocks_info.spectra_pro_status &&
 				<br />
 			}
 
-			{ UAGAnimationType && UAGAnimationType !== '' && (
-				<>
-					<Button
-						className="uagb-animation__play-button"
-						onClick={ () => playAnimation() }
-						variant="tertiary"
-					>
-						{ __( 'Preview', 'ultimate-addons-for-gutenberg' ) }
-					</Button>
-				</>
+			{ UAGAnimationType && ! proValidOptions && (
+				<Button
+					className="uagb-animation__play-button"
+					onClick={ () => playAnimation() }
+					variant="tertiary"
+				>
+					{ __( 'Preview', 'ultimate-addons-for-gutenberg' ) }
+				</Button>
 			) }
 		</>
 	);
@@ -482,6 +490,8 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 		'uagb/tabs',
 		'uagb/tabs-child',
 		'uagb/countdown',
+		'uagb/modal',
+		'uagb/popup-builder',
 	];
 
 	const getParentBlocks = select( 'core/block-editor' ).getBlockParents( props.clientId );
@@ -502,6 +512,7 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 
 	return (
 		<>
+			{ ( isSelected && 'uagb/container' === name ) && <RenderAdvancedPositionPanel { ...props } /> }
 			{ isSelected &&
 				'enabled' === enableAnimationsExtension &&
 				! excludeDeprecatedBlocks.includes( name ) &&
@@ -509,7 +520,7 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 				notHasDisallowedParentForAnimations && (
 					<UAGAdvancedPanelBody
 						title={ __( 'Animations', 'ultimate-addons-for-gutenberg' ) }
-						initialOpen={ true }
+						initialOpen={ ! 'uagb/container' === name }
 						className="block-editor-block-inspector__advanced uagb-extention-tab"
 					>
 						{ animationOptions( props ) }

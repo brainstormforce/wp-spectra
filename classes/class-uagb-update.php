@@ -145,6 +145,31 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 			do_action( 'uagb_update_after' );
 		}
 
+
+		/**
+		 * Migrate_visibility_mode
+		 *
+		 * @since 2.8.0
+		 * @return void
+		 */
+		public static function migrate_visibility_mode() {
+
+			$old_option      = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_coming_soon_mode' );
+			$old_option_page = UAGB_Admin_Helper::get_admin_settings_option( 'uag_coming_soon_page' );
+
+			if ( ! $old_option && ! $old_option_page ) {
+				return;
+			}
+
+			// Update the option.
+			UAGB_Admin_Helper::update_admin_settings_option( 'uag_visibility_mode', $old_option ? $old_option : 'disabled' );
+			UAGB_Admin_Helper::update_admin_settings_option( 'uag_visibility_page', $old_option_page ? $old_option_page : '' );
+
+			// Delete the old option.
+			UAGB_Admin_Helper::delete_admin_settings_option( 'uag_enable_coming_soon_mode' );
+			UAGB_Admin_Helper::delete_admin_settings_option( 'uag_coming_soon_page' );
+		}
+
 		/**
 		 * Update asset generation option if it is not exist.
 		 *

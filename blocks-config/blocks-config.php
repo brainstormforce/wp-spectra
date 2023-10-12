@@ -5,11 +5,11 @@
  * @package UAGB
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) || ! defined( 'UAGB_DIR' ) ) {
+	exit; // Exit if accessed directly, or if UAGB_DIR is not defined.
 }
 
-
+// Require the dynamic block classes.
 require_once UAGB_DIR . 'blocks-config/post/class-uagb-post.php';
 require_once UAGB_DIR . 'blocks-config/post-timeline/class-uagb-post-timeline.php';
 require_once UAGB_DIR . 'blocks-config/cf7-styler/class-uagb-cf7-styler.php';
@@ -23,3 +23,6 @@ require_once UAGB_DIR . 'blocks-config/image-gallery/class-spectra-image-gallery
 require_once UAGB_DIR . 'blocks-config/popup-builder/class-uagb-popup-builder.php';
 require_once UAGB_DIR . 'blocks-config/buttons-child/class-uagb-buttons-child.php';
 require_once UAGB_DIR . 'blocks-config/google-map/class-uagb-google-map.php';
+
+// Require the advanced settings PHP classes.
+require_once UAGB_DIR . 'blocks-config/advanced-settings/class-uagb-block-positioning.php';

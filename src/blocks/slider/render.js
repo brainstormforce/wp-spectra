@@ -17,6 +17,8 @@ const Render = ( props ) => {
 		blockParents,
 		attributes: { slide_content },
 		deviceType,
+		setSwiperInstance,
+		swiperInstance,
 	} = props;
 
 	const swiperRef = useRef();
@@ -41,7 +43,6 @@ const Render = ( props ) => {
 		transitionSpeed,
 		slideItem,
 		block_id,
-		swiperInstance,
 		displayArrows,
 		displayDots,
 		extraClasses,
@@ -147,10 +148,6 @@ const Render = ( props ) => {
 			orientation: 'horizontal',
 		}
 	);
-
-	const setSwiperInstance = ( swiper ) => {
-		props.setAttributes( { swiperInstance: swiper } );
-	};
 
 	const setSwiperNavigationPagination = ( swiperInst ) => {
 		if ( swiperInst?.params?.navigation ) {

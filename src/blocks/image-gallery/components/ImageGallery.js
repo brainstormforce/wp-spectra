@@ -435,33 +435,38 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		</div>
 	);
 
-	const renderMasonryPagintion = () => (
-		<>
-			{ paginateUseLoader ? (
-				<div className="spectra-image-gallery__control-loader wp-block-button">
-					<div className="wp-block-button__link spectra-image-gallery__control-loader--1"></div>
-					<div className="wp-block-button__link spectra-image-gallery__control-loader--2"></div>
-					<div className="wp-block-button__link spectra-image-gallery__control-loader--3"></div>
-				</div>
-			) : (
-				<div className="spectra-image-gallery__control-wrapper wp-block-button">
-					<RichText
-						tagName="div"
-						placeholder={ __( 'Load More Images', 'ultimate-addons-for-gutenberg' ) }
-						value={ paginateButtonText }
-						onChange={ ( value ) =>
-							setAttributes( {
-								paginateButtonText: value,
-							} )
-						}
-						className="spectra-image-gallery__control-button wp-block-button__link"
-						multiline={ false }
-						allowedFormats={ [ 'core/bold', 'core/italic', 'core/strikethrough' ] }
-					/>
-				</div>
-			) }
-		</>
-	);
+	const renderMasonryPagintion = () => {
+		if ( mediaGallery.length <= paginateLimitFallback ) {
+			return null;
+		}
+		return (
+			<>
+				{ paginateUseLoader ? (
+					<div className="spectra-image-gallery__control-loader wp-block-button">
+						<div className="wp-block-button__link spectra-image-gallery__control-loader--1"></div>
+						<div className="wp-block-button__link spectra-image-gallery__control-loader--2"></div>
+						<div className="wp-block-button__link spectra-image-gallery__control-loader--3"></div>
+					</div>
+				) : (
+					<div className="spectra-image-gallery__control-wrapper wp-block-button">
+						<RichText
+							tagName="div"
+							placeholder={ __( 'Load More Images', 'ultimate-addons-for-gutenberg' ) }
+							value={ paginateButtonText }
+							onChange={ ( value ) =>
+								setAttributes( {
+									paginateButtonText: value,
+								} )
+							}
+							className="spectra-image-gallery__control-button wp-block-button__link"
+							multiline={ false }
+							allowedFormats={ [ 'core/bold', 'core/italic', 'core/strikethrough' ] }
+						/>
+					</div>
+				) }
+			</>
+		);
+	};
 
 	const renderGallery = () => {
 		switch ( feedLayout ) {

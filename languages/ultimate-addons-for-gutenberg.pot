@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.7.11\n"
+"Project-Id-Version: Spectra 2.8.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-09-26T10:28:52+00:00\n"
+"POT-Creation-Date: 2023-10-11T09:24:17+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -21,8 +21,8 @@ msgstr ""
 #: admin-core/inc/admin-menu.php:153
 #: admin-core/inc/admin-menu.php:166
 #: admin-core/inc/admin-menu.php:245
-#: classes/class-uagb-admin-helper.php:389
-#: classes/class-uagb-init-blocks.php:554
+#: classes/class-uagb-admin-helper.php:407
+#: classes/class-uagb-init-blocks.php:566
 msgid "Spectra"
 msgstr ""
 
@@ -53,7 +53,7 @@ msgstr ""
 
 #: admin-core/ajax/common-settings.php:153
 #: admin-core/ajax/common-settings.php:694
-#: classes/class-uagb-init-blocks.php:517
+#: classes/class-uagb-init-blocks.php:529
 msgid "Successfully saved data!"
 msgstr ""
 
@@ -97,12 +97,12 @@ msgstr ""
 msgid "Thank you for using %1$sSpectra.%2$s"
 msgstr ""
 
-#: blocks-config/forms/class-uagb-forms.php:311
-#: blocks-config/forms/class-uagb-forms.php:327
+#: blocks-config/forms/class-uagb-forms.php:318
+#: blocks-config/forms/class-uagb-forms.php:334
 msgid "Please try logging in again to verify that you are not a robot."
 msgstr ""
 
-#: blocks-config/forms/class-uagb-forms.php:419
+#: blocks-config/forms/class-uagb-forms.php:426
 #: includes/blocks/forms/attributes.php:71
 #: dist/blocks.js:3
 #: dist/blocks.js:20
@@ -128,7 +128,7 @@ msgstr ""
 msgid "Load More Images"
 msgstr ""
 
-#: blocks-config/image-gallery/class-spectra-image-gallery.php:1410
+#: blocks-config/image-gallery/class-spectra-image-gallery.php:1412
 #: dist/blocks.js:20
 msgid "Unable to load image"
 msgstr ""
@@ -7585,15 +7585,15 @@ msgstr ""
 msgid "Travel"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:397
+#: classes/class-uagb-admin-helper.php:415
 msgid "Astra Theme"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:401
+#: classes/class-uagb-admin-helper.php:419
 msgid "Filter added through any 3rd Party Theme/Plugin."
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:406
+#: classes/class-uagb-admin-helper.php:424
 msgid "Full Site Editor's Global Styles"
 msgstr ""
 
@@ -7638,7 +7638,7 @@ msgid "Spectra requires&nbsp;%3$sBlock Editor%4$s. You can change your editor se
 msgstr ""
 
 #: classes/class-uagb-fse-fonts-compatibility.php:163
-#: classes/class-uagb-init-blocks.php:694
+#: classes/class-uagb-init-blocks.php:706
 #: dist/blocks.js:11
 #: dist/blocks.js:13
 #: dist/blocks.js:17
@@ -7717,26 +7717,26 @@ msgstr ""
 msgid "No Popups in Trash"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:356
-#: classes/class-uagb-init-blocks.php:500
+#: classes/class-uagb-init-blocks.php:368
+#: classes/class-uagb-init-blocks.php:512
 msgid "User is not authenticated!"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:487
+#: classes/class-uagb-init-blocks.php:499
 msgid "Please select a valid Gravity Form."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:537
+#: classes/class-uagb-init-blocks.php:549
 msgid "Please select a valid Contact Form 7."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:767
+#: classes/class-uagb-init-blocks.php:779
 msgid ""
 "Use custom class added in block's advanced settings to target your desired block. Examples:\n"
 "\t\t\t.my-class {text-align: center;} // my-class is a custom selector"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:809
+#: classes/class-uagb-init-blocks.php:821
 #: dist/blocks.js:11
 #: dist/blocks.js:12
 #: dist/blocks.js:13
@@ -7746,30 +7746,30 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:838
-#: classes/class-uagb-init-blocks.php:871
+#: classes/class-uagb-init-blocks.php:850
+#: classes/class-uagb-init-blocks.php:883
 #: dist/blocks.js:20
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:852
+#: classes/class-uagb-init-blocks.php:864
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:885
+#: classes/class-uagb-init-blocks.php:897
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:901
+#: classes/class-uagb-init-blocks.php:913
 msgid "Invalid request"
 msgstr ""
 
 #. translators: %s: html tags
-#: classes/class-uagb-loader.php:340
+#: classes/class-uagb-loader.php:348
 msgid "The %1$sSpectra%2$s plugin requires %1$sGutenberg%2$s plugin installed & activated."
 msgstr ""
 
-#: classes/class-uagb-loader.php:343
+#: classes/class-uagb-loader.php:351
 msgid "Install Gutenberg"
 msgstr ""
 
@@ -7777,7 +7777,7 @@ msgstr ""
 msgid "Spectra <p>Rollback to Previous Version</p>"
 msgstr ""
 
-#: classes/class-uagb-update.php:179
+#: classes/class-uagb-update.php:204
 msgid "Heads up!"
 msgstr ""
 
@@ -8966,19 +8966,23 @@ msgid "This setting will apply spacing in between all blocks inside block editor
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:5
+msgid "Select the page you want"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Enable Coming Soon Mode"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:5
-msgid "Is your website still in the making? Is it not yet ready for other people to see?"
+msgid "Is your website still in the making and not yet ready for other people to see? When the site is ready to be indexed, the 'Coming Soon' page returns an HTTP 200 status code."
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:5
-msgid "Enable the coming soon mode. Only the page you select below will be displayed to people who are not logged in."
+msgid "Enable Maintenance Mode"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:5
-msgid "Select the page you want"
+msgid "Maintenance Mode returns an HTTP 503 status code, signaling to search engines to revisit the website shortly. However, it's advisable not to utilize this mode for extended periods, ideally limiting its use to a few days."
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:5
@@ -9242,7 +9246,7 @@ msgid "Integrations"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:9
-msgid "Coming Soon"
+msgid "Site Visibility"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:9
@@ -12135,7 +12139,7 @@ msgid "Actions"
 msgstr ""
 
 #: dist/blocks.js:19
-msgid "Note: It is required to enter an email ID to receive the data submitted via Form. Else you will not receive any data."
+msgid "Note: Enter an e-mail address to receive submissions. Defaults to the site e-mail address."
 msgstr ""
 
 #: dist/blocks.js:19
@@ -13276,7 +13280,7 @@ msgid "Preview Lightbox (Desktop)"
 msgstr ""
 
 #: dist/blocks.js:20
-msgid "Note: The Lightbox will be fullscreen on the front end."
+msgid "Note: The lightbox preview will automatically close when the page reloads, and it will be displayed in fullscreen mode on the front end. "
 msgstr ""
 
 #: dist/blocks.js:20
@@ -15100,6 +15104,30 @@ msgid "Zoom-Out Right"
 msgstr ""
 
 #: dist/blocks.js:20
+msgid "Stick at"
+msgstr ""
+
+#: dist/blocks.js:20
+msgid "Offset"
+msgstr ""
+
+#: dist/blocks.js:20
+msgid "Keep Inside Parent"
+msgstr ""
+
+#: dist/blocks.js:20
+msgid "Sticky"
+msgstr ""
+
+#: dist/blocks.js:20
+msgid "Sticky Container"
+msgstr ""
+
+#: dist/blocks.js:20
+msgid "Changes affect the frontend only"
+msgstr ""
+
+#: dist/blocks.js:20
 msgid "Animation Type"
 msgstr ""
 
@@ -15201,6 +15229,10 @@ msgstr ""
 
 #: dist/blocks.js:20
 msgid "Hide for User Role"
+msgstr ""
+
+#: dist/blocks.js:20
+msgid "Select days you want to disable."
 msgstr ""
 
 #: dist/blocks.js:20

@@ -96,14 +96,12 @@ const addInitialAttr = ( ChildComponent ) => {
 			 */
 			const REUSABLE_BLOCK_ISSUE_RESOLVED_BLOCKS = [
 				'uagb/image-gallery',
-				'uagb/slider',
-				'uagb/slider-child',
 			];
 
 			if( ! REUSABLE_BLOCK_ISSUE_RESOLVED_BLOCKS.includes( name ) ){
 				const getAllBlocks = select( 'core/editor' )?.getBlocks();
 				const { blockIds, clientIds } = getAllBlocks ? getUniqId( getAllBlocks ) : { blockIds: [], clientIds: [] };
-				if ( 'not_set' === block_id || ! block_id || checkDuplicate( blockIds, block_id, clientIds.indexOf( clientId ) ) ) {
+				if ( 'not_set' === block_id || '0' === block_id || ! block_id || checkDuplicate( blockIds, block_id, clientIds.indexOf( clientId ) ) ) {
 					setAttributes( attributeObject );
 				}
 			}else{

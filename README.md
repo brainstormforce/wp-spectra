@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.3.1  
-**Stable tag:** 2.7.11  
+**Stable tag:** 2.8.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -214,6 +214,23 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
 
 ## Changelog ##
+
+### 2.8.0 - THURSDAY, 12th OCTOBER 2023 ###
+* Feature: Container - Added a new Sticky-Container setting in the Advanced tab.
+* Feature: Visibility Mode - Improved the Coming-Soon Mode by adding the Maintenance Mode feature.
+* Improvement: Container - Updated responsive padding settings to inherit from bigger devices by default.
+* Improvement: Buttons - Added alignment options to both the child and parent blocks in the block controls toolbar.
+* Improvement: Buttons - Reduced the default number of buttons to 1.
+* Improvement: Form - Made the default recipient as the current user's WordPress email address when the `To` field is left empty in submitted forms.
+* Improvement: Global - Enhanced the reusable block functionality for the following blocks: Tabs and Slider.
+* Fix: Container - Resolved an issue wherein the left and right margins of inner-containers would not work as intended.
+* Fix: Content Timeline - Resolved an issue in which the icons would appear over-sized and the content styling would break on the frontend.
+* Fix: Image Gallery - Resolved an issue with the masonry type wherein the loader would not be hidden after all the images have been loaded.
+* Fix: Post Carousel - Resolved an issue in which the responsive columns would not work as intended in the editor.
+* Fix: Post Grid - Resolved an issue wherein the post meta responsive font-size would not work as intended in the editor.
+* Fix: Separator - Resolved an issue wherein the height would revert from percentage to pixels after reloading the editor.
+* Fix: Global - Removed responsive conditions for core PHP-rendered blocks.
+* Fix: Global - Resolved an issue in which the font-family that was set would not appear as intended in the FSE template editor.
 
 ### 2.7.11 - WEDNESDAY, 27th SEPTEMBER 2023 ###
 * Fix: Image - Resolved an issue in which the updated responsive images would not appear as intended.

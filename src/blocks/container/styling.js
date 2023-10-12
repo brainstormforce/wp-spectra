@@ -207,6 +207,13 @@ function styling( attributes, clientId, name, deviceType ) {
 	rightMarginTablet = 'undefined' !== typeof rightMarginTablet ? rightMarginTablet : rightMarginDesktop;
 	rightMarginMobile = 'undefined' !== typeof rightMarginMobile ? rightMarginMobile : rightMarginTablet;
 
+	const innerLeftMarginDesktop = leftMarginDesktop;
+	const innerRightMarginDesktop = rightMarginDesktop;
+	const innerLeftMarginTablet = leftMarginTablet;
+	const innerRightMarginTablet = rightMarginTablet;
+	const innerLeftMarginMobile = leftMarginMobile;
+	const innerRightMarginMobile = rightMarginMobile;
+
 	if( 'alignfull' === contentWidth || 'alignwide' === contentWidth ){
 		leftMarginDesktop = rightMarginDesktop = leftMarginTablet = rightMarginTablet = leftMarginMobile = rightMarginMobile  = '';
 	}
@@ -534,6 +541,10 @@ function styling( attributes, clientId, name, deviceType ) {
 		}
 	} else {
 		selectors[ '.wp-block' ] = containerCSS;
+		selectors[ '.wp-block:not(uagb-is-root-container)'] = {
+			'margin-left': generateCSSUnit( innerLeftMarginDesktop, marginType ) + ' !important',
+			'margin-right': generateCSSUnit( innerRightMarginDesktop, marginType ) + ' !important',
+		}
 		tablet_selectors[ '.wp-block' ] = {
 			'padding-top': generateCSSUnit( topPaddingTablet, paddingTypeTablet ),
 			'padding-bottom': generateCSSUnit( bottomPaddingTablet, paddingTypeTablet ),
@@ -546,6 +557,10 @@ function styling( attributes, clientId, name, deviceType ) {
 			'min-height': generateCSSUnit( minHeightTablet, minHeightTypeTablet ) + ' !important',
 			...borderCSSTablet,
 		};
+		tablet_selectors[ '.wp-block:not(uagb-is-root-container)'] = {
+			'margin-left': generateCSSUnit( innerLeftMarginTablet, marginTypeTablet ) + ' !important',
+			'margin-right': generateCSSUnit( innerRightMarginTablet, marginTypeTablet ) + ' !important',
+		}
 		mobile_selectors[ '.wp-block' ] = {
 			'padding-top': generateCSSUnit( topPaddingMobile, paddingTypeMobile ),
 			'padding-bottom': generateCSSUnit( bottomPaddingMobile, paddingTypeMobile ),
@@ -558,6 +573,10 @@ function styling( attributes, clientId, name, deviceType ) {
 			'min-height': generateCSSUnit( minHeightMobile, minHeightTypeMobile ),
 			...borderCSSMobile,
 		};
+		mobile_selectors[ '.wp-block:not(uagb-is-root-container)'] = {
+			'margin-left': generateCSSUnit( innerLeftMarginMobile, marginTypeMobile ) + ' !important',
+			'margin-right': generateCSSUnit( innerRightMarginMobile, marginTypeMobile ) + ' !important',
+		}
 		selectors[ '.wp-block:hover' ] = {
 			'border-color': containerBorderHColor,
 			'box-shadow': '',

@@ -24,11 +24,9 @@ import { applyFilters } from '@wordpress/hooks';
 
 const Settings = ( props ) => {
 
-	const { attributes, setAttributes, deviceType, insertBlock, block } = props;
+	const { attributes, setAttributes, deviceType, insertBlock, block, swiperInstance } = props;
 	const {
 		block_id,
-		swiperInstance,
-
 		pauseOn,
 		infiniteLoop,
 		transitionSpeed,

@@ -663,7 +663,7 @@ const attributes = {
 	},
 	borderRadius: {
 		type: 'number',
-		default: 2,
+		default: '',
 	},
 	borderStyle: {
 		type: 'string',

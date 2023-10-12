@@ -129,8 +129,22 @@ function Blog( props ) {
 
 	const equalHeightClass = equalHeight ? 'uagb-post__carousel_equal-height' : '';
 
+	let displayedSlides;
+
+	switch ( deviceType ) {
+		case 'Tablet':
+			displayedSlides = tcolumnsFallback;
+			break;
+		case 'Mobile':
+			displayedSlides = mcolumnsFallback;
+			break;
+		default:
+			displayedSlides = columnsFallback;
+			break;
+	}
+
 	const settings = {
-		slidesToShow: columnsFallback,
+		slidesToShow: displayedSlides,
 		slidesToScroll: 1,
 		autoplaySpeed: autoplaySpeedFallback,
 		autoplay,
@@ -147,22 +161,6 @@ function Blog( props ) {
 		},
 		nextArrow: <NextArrow arrowSize={ arrowSizeFallback } />,
 		prevArrow: <PrevArrow arrowSize={ arrowSizeFallback } />,
-		responsive: [
-			{
-				breakpoint: 1024,
-				settings: {
-					slidesToShow: tcolumnsFallback,
-					slidesToScroll: 1,
-				},
-			},
-			{
-				breakpoint: 767,
-				settings: {
-					slidesToShow: mcolumnsFallback,
-					slidesToScroll: 1,
-				},
-			},
-		],
 	};
 
 	const all_posts = displayPosts.map( ( post, i ) => (

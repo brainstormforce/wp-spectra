@@ -82,8 +82,8 @@ class Common_Settings extends Ajax_Base {
 			'recaptcha_secret_key_v2',
 			'recaptcha_site_key_v3',
 			'recaptcha_secret_key_v3',
-			'enable_coming_soon_mode',
-			'coming_soon_page',
+			'visibility_mode',
+			'visibility_page',
 			'fetch_pages',
 			'load_font_awesome_5',
 			'auto_block_recovery',
@@ -284,25 +284,25 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * Save settings - Saves coming_soon_page.
+	 * Save settings - Saves visibility_page.
 	 *
 	 * @return void
 	 */
-	public function coming_soon_page() {
-		$this->check_permission_nonce( 'uag_coming_soon_page' );
+	public function visibility_page() {
+		$this->check_permission_nonce( 'uag_visibility_page' );
 		$value = $this->check_post_value();
-		$this->save_admin_settings( 'uag_coming_soon_page', intval( $value ) );
+		$this->save_admin_settings( 'uag_visibility_page', intval( $value ) );
 	}
 
 	/**
-	 * Save settings - Saves enable_coming_soon_mode.
+	 * Save settings - Saves visibility_mode.
 	 *
 	 * @return void
 	 */
-	public function enable_coming_soon_mode() {
-		$this->check_permission_nonce( 'uag_enable_coming_soon_mode' );
+	public function visibility_mode() {
+		$this->check_permission_nonce( 'uag_visibility_mode' );
 		$value = $this->check_post_value();
-		$this->save_admin_settings( 'uag_enable_coming_soon_mode', sanitize_text_field( $value ) );
+		$this->save_admin_settings( 'uag_visibility_mode', sanitize_text_field( $value ) );
 	}
 
 	/**

@@ -76,8 +76,8 @@ class Admin_Helper {
 			),
 			'dynamic_content_mode'               => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_dynamic_content_mode', 'popup' ),
 			'preload_local_fonts'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_preload_local_fonts', 'disabled' ),
-			'enable_coming_soon_mode'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_coming_soon_mode', 'disabled' ),
-			'coming_soon_page'                   => self::get_coming_soon_page(),
+			'visibility_mode'                    => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_visibility_mode', 'disabled' ),
+			'visibility_page'                    => self::get_visibility_page(),
 			'uag_previous_versions'              => $uag_versions,
 			'changelog_data'                     => $changelog_data,
 			'uagb_old_user_less_than_2'          => get_option( 'uagb-old-user-less-than-2' ),
@@ -94,13 +94,14 @@ class Admin_Helper {
 	}
 
 	/**
-	 * Get Coming Soon Page
+	 * Get Visibility Page
 	 *
-	 * @since 2.0.0
+	 * @since 2.8.0
 	 * @return boolean|array
 	 */
-	public static function get_coming_soon_page() {
-		$page_id = \UAGB_Admin_Helper::get_admin_settings_option( 'uag_coming_soon_page', '' );
+	public static function get_visibility_page() {
+		$page_id = \UAGB_Admin_Helper::get_admin_settings_option( 'uag_visibility_page', '' );
+
 		if ( $page_id ) {
 			return array(
 				'value' => $page_id,

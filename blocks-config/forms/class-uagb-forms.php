@@ -216,6 +216,9 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 						$template_content      = parse_blocks( $template_post_content );
 						if ( get_template() === $template->theme && ! empty( $template_content ) && is_array( $template_content ) ) {
 							$current_block_attributes = $this->recursive_inner_forms( $template_content, $block_id );
+							if ( is_array( $current_block_attributes ) && $current_block_attributes['block_id'] === $block_id ) {
+								break;
+							}
 						}
 					}
 				}
@@ -274,6 +277,10 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 
 			if ( empty( $current_block_attributes ) ) {
 				wp_send_json_error( 400 );
+			}
+			$admin_email = get_option( 'admin_email' );
+			if ( is_array( $current_block_attributes ) && isset( $current_block_attributes['afterSubmitToEmail'] ) && empty( trim( $current_block_attributes['afterSubmitToEmail'] ) ) && is_string( $admin_email ) ) {
+				$current_block_attributes['afterSubmitToEmail'] = sanitize_email( $admin_email );
 			}
 			if ( ! isset( $current_block_attributes['reCaptchaType'] ) ) {
 				$current_block_attributes['reCaptchaType'] = 'v2';
