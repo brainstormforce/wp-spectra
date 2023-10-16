@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+* Fix: Lottie - Resolved an issue in which the SVG aligment would not work as intended in the TwentyTwentyThree theme.
+
 = 2.8.0 - THURSDAY, 12th OCTOBER 2023 =
 * Feature: Container - Added a new Sticky-Container setting in the Advanced tab.
 * Feature: Visibility Mode - Improved the Coming-Soon Mode by adding the Maintenance Mode feature.

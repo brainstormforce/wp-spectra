@@ -194,7 +194,6 @@ if ( ! class_exists( 'UAGB_Lottie' ) ) {
 			}
 
 			$main_classes = array(
-				'wp-block-uagb-lottie',
 				'uagb-block-' . $block_id,
 				'uagb-lottie__outer-wrap',
 				'uagb-lottie__' . $attributes['align'],
@@ -207,7 +206,10 @@ if ( ! class_exists( 'UAGB_Lottie' ) ) {
 			ob_start();
 
 			?>
-				<div class = "<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>" style="<?php echo esc_attr( implode( '', $zindex_wrap ) ); ?>"></div>
+				<div class = "wp-block-uagb-lottie">
+					<div class = "<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>" style="<?php echo esc_attr( implode( '', $zindex_wrap ) ); ?>">
+					</div>
+				</div>
 			<?php
 				return ob_get_clean();
 		}
