@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Improvement: Buttons - Added a new vertical alignment option.
 * Fix: Lottie - Resolved an issue in which the SVG aligment would not work as intended in the TwentyTwentyThree theme.
 
 = 2.8.0 - THURSDAY, 12th OCTOBER 2023 =
@@ -224,7 +225,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Container - Updated responsive padding settings to inherit from bigger devices by default.
 * Improvement: Buttons - Added alignment options to both the child and parent blocks in the block controls toolbar.
 * Improvement: Buttons - Reduced the default number of buttons to 1.
-* Improvement: Form - Made the default recipient as the current user's WordPress email address when the `To` field is left empty in submitted forms.
+* Improvement: Form - Made the default recipient as the current user's WordPress email address when the To field is left empty in submitted forms.
 * Improvement: Global - Enhanced the reusable block functionality for the following blocks: Tabs and Slider.
 * Fix: Container - Resolved an issue wherein the left and right margins of inner-containers would not work as intended.
 * Fix: Content Timeline - Resolved an issue in which the icons would appear over-sized and the content styling would break on the frontend.

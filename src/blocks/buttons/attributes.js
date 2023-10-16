@@ -427,6 +427,12 @@ const attributes = {
 			styleType: 'main-title-letter-spacing-type',
 		},
 	},
+	verticalAlignment: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'btn-vertical-align',
+		},
+	},
 };
 
 export default attributes;

@@ -6,7 +6,7 @@ import renderSVG from '@Controls/renderIcon';
 import ResponsiveSlider from '@Components/responsive-slider';
 import SpacingControl from '@Components/spacing-control';
 import ResponsiveSelectControl from '@Components/responsive-select';
-import { InspectorControls, BlockControls, AlignmentToolbar } from '@wordpress/block-editor';
+import { InspectorControls, BlockControls, AlignmentToolbar, BlockVerticalAlignmentControl } from '@wordpress/block-editor';
 import { select } from '@wordpress/data';
 
 import { Icon } from '@wordpress/components';
@@ -88,6 +88,7 @@ const Settings = ( props ) => {
 		fontLetterSpacingTablet,
 		fontLetterSpacingMobile,
 		fontLetterSpacingType,
+		verticalAlignment,
 	} = attributes;
 
 	const parentBlock = select( 'core/block-editor' ).getSelectedBlock();
@@ -141,6 +142,12 @@ const Settings = ( props ) => {
 
 	const getBlockControls = () => (
 		<BlockControls>
+			<BlockVerticalAlignmentControl
+				onChange={ ( alignment ) =>
+					setAttributes( { verticalAlignment: alignment } )
+				}
+				value={ verticalAlignment }
+			/>
 			<AlignmentToolbar
 				value={ align }
 				onChange={ ( value ) => {
@@ -195,6 +202,30 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ true }
 					responsive={ true }
+				/>
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( 'Vertical Alignment', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						value: verticalAlignment,
+						label: 'verticalAlignment',
+					} }
+					options={ [
+						{
+							value: 'top',
+							label: 'Top',
+						},
+						{
+							value: 'center',
+							label: 'Middle',
+						},
+						{
+							value: 'bottom',
+							label: 'Bottom',
+						},
+					] }
+					showIcons={false}
+					responsive={false}
 				/>
 				{ buttonsCount > 1 && (
 					<MultiButtonsControl
