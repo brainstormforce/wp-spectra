@@ -11,7 +11,7 @@ import UAGTabsControl from '@Components/tabs';
 
 import { InspectorControls, BlockControls, MediaReplaceFlow } from '@wordpress/block-editor';
 
-import { ToggleControl, ToolbarGroup, Icon } from '@wordpress/components';
+import { ToggleControl, ToolbarGroup, Icon, ExternalLink } from '@wordpress/components';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import UAGTextControl from '@Components/text-control';
@@ -48,6 +48,24 @@ const Settings = ( props ) => {
 	const controlsSettings = (
 		<>
 			<UAGAdvancedPanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+				<p className="uagb-form-notice">
+					{
+						<>
+							{__(
+								'Note: You can see sample Lottie animations ',
+								'ultimate-addons-for-gutenberg'
+							)}
+							<ExternalLink
+								href={
+									'https://lottiefiles.com/'
+								}
+							>
+								{__( 'here on this', 'ultimate-addons-for-gutenberg' )}
+							</ExternalLink>
+							{__( ' website.', 'ultimate-addons-for-gutenberg' )}
+						</>
+					}
+				</p>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'File Source', 'ultimate-addons-for-gutenberg' ) }

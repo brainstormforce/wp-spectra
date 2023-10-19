@@ -219,6 +219,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 = x.x.x =
 * Improvement: Buttons - Added a new vertical alignment option.
 * Fix: Lottie - Resolved an issue in which the SVG aligment would not work as intended in the TwentyTwentyThree theme.
+* Fix: Global - Resolved an issue wherein adding Containers, Forms, Lottie blocks and the Popup Builder caused errors when the Gutenberg plugin was active.
 
 ### 2.8.0 - THURSDAY, 12th OCTOBER 2023 ###
 * Feature: Container - Added a new Sticky-Container setting in the Advanced tab.
