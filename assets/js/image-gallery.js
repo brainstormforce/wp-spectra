@@ -231,7 +231,7 @@ const UAGBImageGalleryPagedGrid = {
 
 	getCustomURL( image, $attr ) {
 		const urlValidRegex = new RegExp(
-			'^((http|https)://)(www.)?[a-zA-Z0-9@:%._\\+~#?&//=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%._\\+~#?&//=]*)$'
+			'^((http|https)://)(www.)?[a-zA-Z0-9@:%._\\+~#?&//=\\-]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%._\\+~#?&//=]*)$'
 		);
 		const imageID = parseInt( image.getAttribute( 'data-spectra-gallery-image-id' ) );
 		return urlValidRegex.test( $attr?.customLinks[ imageID ] ) ? $attr.customLinks[ imageID ] : undefined;
