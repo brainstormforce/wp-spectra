@@ -217,6 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ### x.x.x ###
 * Improvement: Buttons - Added a new vertical alignment option.
+* Improvement: Admin - Made the welcome video GDPR compliant and added a filter to hide it.
 * Fix: Lottie - Resolved an issue in which the SVG aligment would not work as intended in the TwentyTwentyThree theme.
 * Fix: Form - Resolved an issue that caused form submissions to fail when the reCAPTCHA badge was hidden with v3 enabled.
 * Fix: Global - Resolved an issue wherein a block error would occur when attempting to select typography font families in the presence of multiple iFrames.

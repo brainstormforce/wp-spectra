@@ -247,6 +247,7 @@ class Admin_Menu {
 				'spectra_pro_status'       => is_plugin_active( 'spectra-pro/spectra-pro.php' ),
 				'spectra_pro_ver'          => defined( 'SPECTRA_PRO_VER' ) ? SPECTRA_PRO_VER : null,
 				'spectra_custom_fonts'     => apply_filters( 'spectra_system_fonts', array() ),
+				'spectra_admin_video'      => apply_filters( 'spectra_display_admin_video', true ),
 				'is_allow_registration'    => (bool) get_option( 'users_can_register' ),
 				'theme_fonts'              => $theme_font_families,
 				'is_block_theme'           => \UAGB_Admin_Helper::is_block_theme(),
