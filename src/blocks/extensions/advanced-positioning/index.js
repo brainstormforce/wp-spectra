@@ -18,11 +18,10 @@ const RenderAdvancedPositionPanel = ( props ) => {
 		attributes: { UAGPosition },
 		setAttributes,
 	} = props;
-
 	return (
 		<UAGAdvancedPanelBody
 			title={ __( 'Sticky', 'ultimate-addons-for-gutenberg' ) }
-			initialOpen={ true }
+			initialOpen={ false }
 			className="block-editor-block-inspector__advanced uagb-extention-tab"
 		>
 			<ToggleControl

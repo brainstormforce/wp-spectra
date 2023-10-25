@@ -104,7 +104,8 @@ const backgroundCss = ( attributes, deviceType, clientId, pseudoElementOverlay =
 		yPositionOverlayTypeMobile,
 		overlayBlendMode,
 		overlayBlendModeTablet,
-		overlayBlendModeMobile
+		overlayBlendModeMobile,
+		globalBlockStyleId,
 	} = attributes;
 
 	const backgroundAttributesDesktop = {
@@ -149,6 +150,7 @@ const backgroundCss = ( attributes, deviceType, clientId, pseudoElementOverlay =
 		yPositionOverlay: yPositionOverlayDesktop,
 		yPositionOverlayType,
 		blendMode: overlayBlendMode,
+		globalBlockStyleId
 	};
 
 	// Any properties that should be inherited from Desktop will be imported from backgroundAttributesDesktop, since only 1 CSS file is generated at a time in bgCss.
@@ -199,6 +201,7 @@ const backgroundCss = ( attributes, deviceType, clientId, pseudoElementOverlay =
             ? yPositionOverlayTypeTablet
             : backgroundAttributesDesktop.yPositionOverlayType,
 		blendMode: overlayBlendModeTablet || overlayBlendMode,
+		globalBlockStyleId,
 	};
 
 	// Any properties that should be inherited from Tablet will be imported from backgroundAttributesTablet ( which inherits from backgroundAttributesDesktop ), since only 1 CSS file is generated at a time in bgCss.
@@ -259,6 +262,7 @@ const backgroundCss = ( attributes, deviceType, clientId, pseudoElementOverlay =
             ? yPositionOverlayTypeMobile
             : backgroundAttributesTablet.yPositionOverlayType,
 		blendMode: overlayBlendModeMobile || overlayBlendModeTablet || overlayBlendMode,
+		globalBlockStyleId,
 	};
 
 	let bgCss;

@@ -8,7 +8,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import { applyFilters } from '@wordpress/hooks';
 
-function styling( attributes, clientId, name, deviceType ) {
+function styling( attributes, clientId, name, deviceType, gbsSelector = false ) {
 	const previewType = deviceType.toLowerCase();
 	const blockName = name.replace( 'uagb/', '' );
 
@@ -162,6 +162,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		headingDescToggle
 	} = attributes;
 
+
 	let tablet_selectors = {};
 	let mobile_selectors = {};
 
@@ -194,7 +195,6 @@ function styling( attributes, clientId, name, deviceType ) {
 			'padding-left': generateCSSUnit( blockLeftPadding, blockPaddingUnit ),
 		},
 		' p.uagb-desc-text': {
-			'margin': 0,
 			'font-family': subHeadFontFamily,
 			'font-style': subHeadFontStyle,
 			'text-decoration': subHeadDecoration,
@@ -413,7 +413,7 @@ function styling( attributes, clientId, name, deviceType ) {
 			'margin-bottom': generateCSSUnit( getFallbackNumber( headSpaceMobile, 'headSpaceMobile', blockName ), 'px' ),
 		};
 	}
-	const base_selector = `.editor-styles-wrapper #block-${ clientId } .uagb-block-${ block_id }`;
+	const base_selector = '.editor-styles-wrapper ' + ( gbsSelector ? gbsSelector + ' ' : `#block-${ clientId } .uagb-block-${ block_id }` );
 
 	selectors = applyFilters( `spectra.${ blockName }.styling`, selectors, attributes );
 	tablet_selectors = applyFilters( `spectra.${ blockName }.tabletStyling`, tablet_selectors, attributes );
@@ -421,7 +421,7 @@ function styling( attributes, clientId, name, deviceType ) {
 
 	let styling_css = generateCSS( selectors, base_selector );
 
-	if( 'tablet' === previewType || 'mobile' === previewType ) {
+	if( 'tablet' === previewType || 'mobile' === previewType || gbsSelector ) {
 		styling_css += generateCSS(
 			tablet_selectors,
 			`${ base_selector }`,
@@ -429,7 +429,7 @@ function styling( attributes, clientId, name, deviceType ) {
 			'tablet'
 		);
 
-		if( 'mobile' === previewType ){
+		if( 'mobile' === previewType || gbsSelector ){
 			styling_css += generateCSS(
 				mobile_selectors,
 				`${ base_selector }`,

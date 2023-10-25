@@ -18,6 +18,8 @@ import UAGTextControl from '@Components/text-control';
 import { ToggleControl, Icon } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import ResponsiveSlider from '@Components/responsive-slider';
+import renderGBSSettings from '@Controls/renderGBSSettings';
+import styling from './inline-styles';
 
 const Settings = ( props ) => {
 
@@ -1778,19 +1780,21 @@ const Settings = ( props ) => {
 		<>
 			<InspectorControls>
 				<InspectorTabs>
-					<InspectorTab { ...UAGTabs.general }>
+					<InspectorTab { ...UAGTabs.general } parentProps={ props }>
 						{ layouts() }
 						{ ctaSettings() }
 						{ 'button' === ctaType && secBtnSettings() }
 					</InspectorTab>
-					<InspectorTab { ...UAGTabs.style }>
+					<InspectorTab { ...UAGTabs.style } parentProps={ props }>
 						{ headingSettings() }
 						{ descriptionSettings() }
 						{ ctaType !== 'all' && ctaType !== 'none' && ! inheritFromTheme && ctaStyleSettings() }
 						{ 'button' === ctaType && enabledSecondCtaButton && ! secInheritFromTheme && secButtonStyleSettings() }
 						{ marginSettings() }
 					</InspectorTab>
-					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
+					<InspectorTab { ...UAGTabs.advance } parentProps={ props }>
+						{ renderGBSSettings( styling, setAttributes, attributes ) }
+					</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 		</>

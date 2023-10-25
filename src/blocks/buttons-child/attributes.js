@@ -26,6 +26,7 @@ const attributes = {
 	align: {
 		type: 'string',
 		default: 'center',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-align',
 		},
@@ -33,6 +34,10 @@ const attributes = {
 	gap: {
 		type: 'number',
 		default: 10,
+		isGBSStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-align',
+		},
 	},
 	stack: {
 		type: 'string',
@@ -41,6 +46,7 @@ const attributes = {
 	loadGoogleFonts: {
 		type: 'boolean',
 		default: false,
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-load-google-fonts',
 		},
@@ -48,12 +54,14 @@ const attributes = {
 	fontFamily: {
 		type: 'string',
 		default: 'Default',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-font-family',
 		},
 	},
 	fontWeight: {
 		type: 'string',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-font-weight',
 		},
@@ -72,6 +80,7 @@ const attributes = {
 	},
 	size: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-size',
 		},
@@ -79,6 +88,7 @@ const attributes = {
 	vPadding: {
 		type: 'number',
 		default: vPaddingDefault,
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-vertical-padding',
 		},
@@ -86,78 +96,91 @@ const attributes = {
 	hPadding: {
 		type: 'number',
 		default: hPaddingDefault,
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-horizontal-padding',
 		},
 	},
 	topPadding: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-top-padding',
 		},
 	},
 	rightPadding: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-right-padding',
 		},
 	},
 	bottomPadding: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-padding',
 		},
 	},
 	leftPadding: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-left-padding',
 		},
 	},
 	topMobilePadding: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-top-padding-mobile',
 		},
 	},
 	rightMobilePadding: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-right-padding-mobile',
 		},
 	},
 	bottomMobilePadding: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-padding-mobile',
 		},
 	},
 	leftMobilePadding: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-left-padding-mobile',
 		},
 	},
 	topTabletPadding: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-top-padding-tablet',
 		},
 	},
 	rightTabletPadding: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-right-padding-tablet',
 		},
 	},
 	bottomTabletPadding: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-padding-tablet',
 		},
 	},
 	leftTabletPadding: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-left-padding-tablet',
 		},
@@ -165,6 +188,7 @@ const attributes = {
 	paddingUnit: {
 		type: 'string',
 		default: 'px',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-padding-unit',
 		},
@@ -172,6 +196,7 @@ const attributes = {
 	gradientValue: {
 		type: 'string',
 		default: '',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-bg-gradient-value',
 		},
@@ -179,6 +204,7 @@ const attributes = {
 	gradientColor1: {
 		type: 'string',
 		default: '#06558a',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-gradient-color-1',
 		},
@@ -186,6 +212,7 @@ const attributes = {
 	gradientColor2: {
 		type: 'string',
 		default: '#0063A1',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-gradient-color-2',
 		},
@@ -193,6 +220,7 @@ const attributes = {
 	gradientType: {
 		type: 'string',
 		default: 'linear',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-gradient-color-type',
 		},
@@ -200,6 +228,7 @@ const attributes = {
 	hoverselectGradient: {
 		type: 'string',
 		default: 'basic',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-gradient-type',
 		},
@@ -207,6 +236,7 @@ const attributes = {
 	selectGradient: {
 		type: 'string',
 		default: 'basic',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-gradient-type',
 		},
@@ -214,6 +244,7 @@ const attributes = {
 	gradientLocation1: {
 		type: 'number',
 		default: 0,
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-gradient-location-1',
 		},
@@ -221,6 +252,7 @@ const attributes = {
 	gradientLocation2: {
 		type: 'number',
 		default: 100,
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-gradient-location-2',
 		},
@@ -228,6 +260,7 @@ const attributes = {
 	gradientAngle: {
 		type: 'number',
 		default: 0,
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-gradient-angle',
 		},
@@ -235,6 +268,7 @@ const attributes = {
 	hovergradientValue: {
 		type: 'string',
 		default: '',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-hbg-gradient-value',
 		},
@@ -242,6 +276,7 @@ const attributes = {
 	hovergradientColor1: {
 		type: 'string',
 		default: '#06558a',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-h-gradient-color-1',
 		},
@@ -249,6 +284,7 @@ const attributes = {
 	hovergradientColor2: {
 		type: 'string',
 		default: '#0063A1',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-h-gradient-color-2',
 		},
@@ -256,6 +292,7 @@ const attributes = {
 	hovergradientType: {
 		type: 'string',
 		default: 'linear',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-h-gradient-color-type',
 		},
@@ -263,6 +300,7 @@ const attributes = {
 	hovergradientLocation1: {
 		type: 'number',
 		default: 0,
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-h-gradient-location-1',
 		},
@@ -270,6 +308,7 @@ const attributes = {
 	hovergradientLocation2: {
 		type: 'number',
 		default: 100,
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-h-gradient-location-2',
 		},
@@ -277,6 +316,7 @@ const attributes = {
 	hovergradientAngle: {
 		type: 'number',
 		default: 0,
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-h-gradient-angle',
 		},
@@ -302,6 +342,7 @@ const attributes = {
 	color: {
 		type: 'string',
 		default: '',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-color',
 		},
@@ -309,6 +350,7 @@ const attributes = {
 	background: {
 		type: 'string',
 		default: '',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-bg-color',
 		},
@@ -316,6 +358,7 @@ const attributes = {
 	hColor: {
 		type: 'string',
 		default: '#fff',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-hover-color',
 		},
@@ -323,6 +366,7 @@ const attributes = {
 	hBackground: {
 		type: 'string',
 		default: '',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-h-background',
 		},
@@ -351,6 +395,7 @@ const attributes = {
 	sizeMobile: {
 		type: 'number',
 		default: '',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-size-mobile',
 		},
@@ -358,6 +403,7 @@ const attributes = {
 	sizeTablet: {
 		type: 'number',
 		default: '',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-size-tablet',
 		},
@@ -365,6 +411,7 @@ const attributes = {
 	lineHeight: {
 		type: 'number',
 		default: '',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-line-height',
 		},
@@ -379,6 +426,7 @@ const attributes = {
 	lineHeightMobile: {
 		type: 'number',
 		default: '',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-line-height-mobile',
 		},
@@ -386,6 +434,7 @@ const attributes = {
 	lineHeightTablet: {
 		type: 'number',
 		default: '',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-line-height-tablet',
 		},
@@ -408,36 +457,42 @@ const attributes = {
 	iconSpace: {
 		type: 'number',
 		default: 8,
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-space',
 		},
 	},
 	iconSpaceTablet: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-space-tablet',
 		},
 	},
 	iconSpaceMobile: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-space-mobile',
 		},
 	},
 	fontStyle: {
 		type: 'string',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-font-style',
 		},
 	},
 	transform: {
 		type: 'string',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-transform',
 		},
 	},
 	decoration: {
 		type: 'string',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-decoration',
 		},
@@ -445,6 +500,7 @@ const attributes = {
 	backgroundType: {
 		type: 'string',
 		default: 'color',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-background-type',
 		},
@@ -452,78 +508,91 @@ const attributes = {
 	hoverbackgroundType: {
 		type: 'string',
 		default: 'color',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-hbackground-type',
 		},
 	},
 	topMargin: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-top-margin',
 		},
 	},
 	rightMargin: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-right-margin',
 		},
 	},
 	bottomMargin: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-margin',
 		},
 	},
 	leftMargin: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-left-margin',
 		},
 	},
 	topMarginTablet: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-top-margin-tablet',
 		},
 	},
 	rightMarginTablet: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-right-margin-tablet',
 		},
 	},
 	bottomMarginTablet: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-margin-tablet',
 		},
 	},
 	leftMarginTablet: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-left-margin-tablet',
 		},
 	},
 	topMarginMobile: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-top-margin-mobile',
 		},
 	},
 	rightMarginMobile: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-right-margin-mobile',
 		},
 	},
 	bottomMarginMobile: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-bottom-margin-mobile',
 		},
 	},
 	leftMarginMobile: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-left-margin-mobile',
 		},
@@ -546,6 +615,7 @@ const attributes = {
 	boxShadowColor:{
 		type:'string',
 		default: '#00000026',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-box-shadow-color',
 		},
@@ -553,6 +623,7 @@ const attributes = {
 	boxShadowHOffset: {
 		type: 'number',
 		default: 0,
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-box-shadow-h-offset',
 		},
@@ -560,18 +631,21 @@ const attributes = {
 	boxShadowVOffset: {
 		type: 'number',
 		default: 0,
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-box-shadow-v-offset',
 		},
 	},
 	boxShadowBlur: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-box-shadow-blur',
 		},
 	},
 	boxShadowSpread: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-box-shadow-spread',
 		},
@@ -579,12 +653,14 @@ const attributes = {
 	boxShadowPosition: {
 		type: 'string',
 		default: 'outset',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-box-shadow-position',
 		},
 	},
 	boxShadowColorHover: {
 		type: 'string',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-box-shadow-color-hover'
 		},
@@ -630,6 +706,7 @@ const attributes = {
 	},
 	iconHColor: {
 		type: 'string',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-hover-color',
 		},
@@ -637,18 +714,21 @@ const attributes = {
 	iconSize: {
 		type: 'number',
 		default: 15,
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-size',
 		},
 	},
 	iconSizeTablet: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-size-tablet',
 		},
 	},
 	iconSizeMobile: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-icon-size-mobile',
 		},
@@ -681,18 +761,21 @@ const attributes = {
 	// letter spacing.
 	letterSpacing: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'main-title-letter-spacing',
 		},
 	},
 	letterSpacingTablet: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'main-title-letter-spacing-tablet',
 		},
 	},
 	letterSpacingMobile: {
 		type: 'number',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'main-title-letter-spacing-mobile',
 		},
@@ -700,6 +783,7 @@ const attributes = {
 	letterSpacingType: {
 		type: 'string',
 		default: 'px',
+		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'main-title-letter-spacing-type',
 		},

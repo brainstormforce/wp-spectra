@@ -126,6 +126,7 @@ const UAGTextControl = ( props ) => {
 									autoComplete={ props?.autoComplete }
 									readOnly={ isEnableDynamicContent() }
 									placeholder={ props?.placeholder }
+									onKeyUp={ props?.onKeyUp }
 								/>
 							) }
 							{ props?.variant === 'textarea' && (

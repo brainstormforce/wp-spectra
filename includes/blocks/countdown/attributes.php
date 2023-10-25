@@ -194,6 +194,9 @@ return array_merge(
 		'boxShadowBlurHover'           => '',
 		'boxShadowSpreadHover'         => '',
 		'boxShadowPositionHover'       => '',
+		// For Global Block Styles.
+		'globalBlockStyleName'         => '',
+		'globalBlockStyleId'           => '',
 	),
 	$additional_attributes,
 	$box_border_attribute,

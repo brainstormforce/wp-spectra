@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x -
+* New: Core Blocks - Added Global Block Style support for core blocks.
+
 ### 2.8.0 - THURSDAY, 12th OCTOBER 2023 ###
 * Feature: Container - Added a new Sticky-Container setting in the Advanced tab.
 * Feature: Visibility Mode - Improved the Coming-Soon Mode by adding the Maintenance Mode feature.

@@ -8,9 +8,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateShadowCSS from '@Controls/generateShadowCSS';
 
-
-export default function styling( attributes, name, deviceType ) {
-
+export default function styling( attributes, clientId, name, deviceType, gbsSelector = false ) {
 	const blockName = name.replace( 'uagb/', '' );
 	const previewType = deviceType.toLowerCase();
 	const {
@@ -400,8 +398,6 @@ export default function styling( attributes, name, deviceType ) {
 		}
 	}
 
-	const base_selector = `.editor-styles-wrapper .uagb-block-${ block_id }`;
-
 	const tablet_selectors = {};
 	const mobile_selectors = {};
 
@@ -526,9 +522,11 @@ export default function styling( attributes, name, deviceType ) {
 		mobile_selectors[ '.wp-block-uagb-image .wp-block-uagb-image__figure img' ].height = mobileHeight + 'px';
 	}
 
+	const base_selector = gbsSelector ? `div.editor-styles-wrapper ${ gbsSelector } ` : `.editor-styles-wrapper .uagb-block-${ block_id }`;
+
 	let styling_css = generateCSS( selectors, base_selector );
 
-	if( 'tablet' === previewType || 'mobile' === previewType ) {
+	if( 'tablet' === previewType || 'mobile' === previewType || gbsSelector ) {
 		styling_css += generateCSS(
 			tablet_selectors,
 			`${ base_selector }`,
@@ -536,7 +534,7 @@ export default function styling( attributes, name, deviceType ) {
 			'tablet'
 		);
 
-		if( 'mobile' === previewType ){
+		if( 'mobile' === previewType || gbsSelector ){
 			styling_css += generateCSS(
 				mobile_selectors,
 				`${ base_selector }`,

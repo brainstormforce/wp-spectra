@@ -269,6 +269,10 @@ return array_merge(
 		'ctaBorderWidth'             => 1,
 		'ctaBorderRadius'            => 0,
 		'ctaBorderhoverColor'        => '',
+
+		// For Global Block Styles.
+		'globalBlockStyleName'       => '',
+		'globalBlockStyleId'         => '',
 	),
 	$cta_border_attribute
 );

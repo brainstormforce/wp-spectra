@@ -10,6 +10,7 @@ import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import { compose } from '@wordpress/compose';
 import { getLoopImage } from './getLoopImage';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import AddGBSStyles from '@Controls/AddGBSStyles';
 import addInitialAttr from '@Controls/addInitialAttr';
 
 function UAGBImageEdit( props ) {
@@ -21,6 +22,7 @@ function UAGBImageEdit( props ) {
 		deviceType,
 		context,
 		setAttributes,
+		clientId,
 		hasDynamicContent,
 	} = props;
 
@@ -34,7 +36,7 @@ function UAGBImageEdit( props ) {
 		scrollBlockToView();
 	}, [ deviceType ] );
 
-	const blockStyling = useMemo( () => styling( attributes, name, deviceType ), [ attributes, deviceType ] );
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
 		responsiveConditionPreview( props );
@@ -51,5 +53,6 @@ function UAGBImageEdit( props ) {
 export default compose( 
 	getLoopImage, 
 	addInitialAttr, 
-	AddStaticStyles 
+	AddStaticStyles,
+	AddGBSStyles,
 	)( UAGBImageEdit );

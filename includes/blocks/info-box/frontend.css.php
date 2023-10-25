@@ -76,7 +76,6 @@ $selectors = array(
 		'display'         => 'inline-flex',
 		'align-items'     => 'center',
 		'justify-content' => 'center',
-		'line-height'     => 0,
 		'box-sizing'      => 'content-box',
 		'width'           => $icon_size,
 		'height'          => $icon_size,
@@ -767,4 +766,8 @@ if ( ! $attr['inheritFromTheme'] ) {
 
 $base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-infobox-';
 
-return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
+return UAGB_Helper::generate_all_css(
+	$combined_selectors,
+	$base_selector . $id,
+	isset( $gbs_class ) ? $gbs_class : ''
+);
