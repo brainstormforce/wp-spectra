@@ -73,11 +73,24 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		fontLetterSpacingTablet,
 		fontLetterSpacingMobile,
 		fontLetterSpacingType,
+		verticalAlignment,
 	} = attributes;
 
 	const selectors = {};
 	const tabletSelectors = {};
 	const mobileSelectors = {};
+
+	let vAlign;
+	switch ( verticalAlignment ) {
+		case 'top':
+			vAlign = 'flex-start';
+			break;
+		case 'bottom':
+			vAlign = 'flex-end';
+			break;
+		default:
+			vAlign = 'center';
+	}
 
 	selectors[ '.uagb-buttons__outer-wrap .uagb-buttons-repeater:not(.wp-block-button__link)' ] = {
 		// For Backword user.
@@ -177,9 +190,13 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		selectors[ '.uagb-editor-preview-mode-desktop .block-editor-inner-blocks' ] = {
 			'text-align': align,
 		};
+		selectors[ '.uagb-editor-preview-mode-desktop .block-editor-block-list__layout' ] = {
+			'align-items': vAlign,
+		};
 	} else {
 		selectors[ '.uagb-editor-preview-mode-desktop .block-editor-block-list__layout' ] = {
 			'width': '100%',
+			'align-items': vAlign,
 		};
 		selectors[ ' .block-editor-block-list__block' ] = {
 			'width': '100%',
@@ -189,6 +206,9 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-inner-blocks' ] = {
 			'text-align': alignTablet,
 		};
+		tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-block-list__layout' ] = {
+			'align-items': vAlign,
+		};
 	} else {
 		tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-block-list__layout' ] = {
 			'flex-direction': 'column',
@@ -196,6 +216,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		};
 		tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-block-list__layout' ] = {
 			'width': '100%',
+			'align-items': vAlign,
 		};
 		tabletSelectors[ ' .block-editor-block-list__block ' ] = {
 			'width': '100%',
@@ -205,6 +226,9 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-inner-blocks' ] = {
 			'text-align': alignMobile,
 		};
+		mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
+			'align-items': vAlign,
+		};
 	} else {
 		mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
 			'flex-direction': 'column',
@@ -212,6 +236,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		};
 		mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
 			'width': '100%',
+			'align-items': vAlign,
 		};
 		mobileSelectors[ ' .block-editor-block-list__block ' ] = {
 			'width': '100%',

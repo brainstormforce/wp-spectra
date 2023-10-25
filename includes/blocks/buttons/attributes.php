@@ -103,6 +103,8 @@ return array(
 	'marginType'              => 'px',
 	'marginLink'              => '',
 
+	'verticalAlignment'       => '',
+
 	// letter spacing.
 	'fontLetterSpacing'       => '',
 	'fontLetterSpacingTablet' => '',

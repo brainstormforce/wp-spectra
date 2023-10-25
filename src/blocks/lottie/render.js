@@ -54,24 +54,12 @@ const Render = ( props ) => {
 	};
 
 	if ( validJsonPath === 'invalid' ) {
-		const lottie_url = (
-			<span className="uagb-lottie-instructions">
-				{ __(
-					'Allows you to add fancy animation i.e Lottie to your website. You can see sample Lottie animations',
-					'ultimate-addons-for-gutenberg'
-				) }
-				<a className="uagb-lottie-instructions__lottie-url" href="https://lottiefiles.com/" target="__blank">
-					{ __( 'here on this', 'ultimate-addons-for-gutenberg' ) }
-				</a>
-				{ __( 'website.', 'ultimate-addons-for-gutenberg' ) }
-			</span>
-		);
 		return (
 			<div className="uagb-lottie_upload_wrap">
 				<MediaPlaceholder
 					labels={ {
 						title: __( 'Lottie', 'ultimate-addons-for-gutenberg' ),
-						instructions: lottie_url,
+						instructions: __( 'Allows you to add fancy animation i.e Lottie to your website.', 'ultimate-addons-for-gutenberg' ),
 					} }
 					allowedTypes={ [ 'application/json' ] }
 					accept={ [ 'application/json' ] }

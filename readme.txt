@@ -217,6 +217,17 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = x.x.x =
 * New: Core Blocks - Added Global Block Style support for core blocks.
+* Improvement: Admin - Made the welcome video GDPR compliant and added a filter to hide it.
+* Improvement: Buttons - Added a new vertical alignment option.
+* Improvement: Container - Enhanced the accessibility of nested Containers.
+* Fix: Image Gallery - Resolved an issue in which the custom link validation would fail when the root domain contained hyphens.
+* Fix: Lottie - Resolved an issue in which the SVG aligment would not work as intended in the TwentyTwentyThree theme.
+* Fix: Form - Resolved an issue that caused form submissions to fail when the reCAPTCHA badge was hidden with v3 enabled.
+* Fix: Global - Resolved an issue wherein a block error would occur when attempting to select typography font families in the presence of multiple iFrames.
+* Fix: Global - Resolved an issue wherein adding Containers, Forms, Lottie blocks and the Popup Builder caused errors when the Gutenberg plugin was active.
+* Fix: Lottie - Resolved an issue in which the width of the block would be adopted from the parent Container.
+* Fix: Container - Resolved an issue wherein the core Social Share block would get centered by default inside Containers.
+* Fix: Global - Resolved an issue wherein the normal text-transformation option would not work as intended.
 
 = 2.8.0 - THURSDAY, 12th OCTOBER 2023 =
 * Feature: Container - Added a new Sticky-Container setting in the Advanced tab.
@@ -224,7 +235,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Container - Updated responsive padding settings to inherit from bigger devices by default.
 * Improvement: Buttons - Added alignment options to both the child and parent blocks in the block controls toolbar.
 * Improvement: Buttons - Reduced the default number of buttons to 1.
-* Improvement: Form - Made the default recipient as the current user's WordPress email address when the `To` field is left empty in submitted forms.
+* Improvement: Form - Made the default recipient as the current user's WordPress email address when the To field is left empty in submitted forms.
 * Improvement: Global - Enhanced the reusable block functionality for the following blocks: Tabs and Slider.
 * Fix: Container - Resolved an issue wherein the left and right margins of inner-containers would not work as intended.
 * Fix: Content Timeline - Resolved an issue in which the icons would appear over-sized and the content styling would break on the frontend.

@@ -273,3 +273,10 @@
 		width: -webkit-fill-available;
 	}
 }
+
+// Hover CSS to access the nested containers when hovering on them.
+.is-root-container > .block-editor-block-list__block.wp-block-uagb-container:hover,
+.is-root-container > .block-editor-block-list__block.wp-block-uagb-container .block-editor-block-list__block:hover {
+	outline: 2px solid #2271b1;
+	outline-offset: -2px;
+}
