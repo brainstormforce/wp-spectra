@@ -21,6 +21,8 @@ import AdvancedPopColorControl from '@Components/color-control/advanced-pop-colo
 import Range from '@Components/range/Range';
 import { boxShadowPresets, boxShadowHoverPresets } from './presets';
 import UAGPresets from '@Components/presets';
+import renderGBSSettings from '@Controls/renderGBSSettings';
+import styling from './styling';
 
 const Settings = ( props ) => {
 
@@ -2078,10 +2080,10 @@ const Settings = ( props ) => {
 	return (
 		<InspectorControls>
 			<InspectorTabs>
-				<InspectorTab { ...UAGTabs.general }>
+				<InspectorTab { ...UAGTabs.general } parentProps={ props }>
 					{ generalSettings() }
 				</InspectorTab>
-				<InspectorTab { ...UAGTabs.style }>
+				<InspectorTab { ...UAGTabs.style } parentProps={ props }>
 					{ backgroundSettings() }
 					{ colorSettings() }
 					{ borderSettings() }
@@ -2089,7 +2091,9 @@ const Settings = ( props ) => {
 					{ shapeDividersSettings() }
 					{ spacingSettings() }
 				</InspectorTab>
-				<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
+				<InspectorTab { ...UAGTabs.advance } parentProps={ props }>
+					{ renderGBSSettings( styling, setAttributes, attributes ) }
+				</InspectorTab>
 			</InspectorTabs>
 		</InspectorControls>
 	);

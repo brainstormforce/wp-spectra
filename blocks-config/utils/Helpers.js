@@ -38,6 +38,19 @@ export function getPanelIdFromRef( ref ) {
 export const uagbClassNames = ( classes ) => ( classes.filter( Boolean ).join( ' ' ) );
 
 /**
+ * Check if object is empty.
+ * 
+ * @param {Object} obj - The object.
+ * @return {boolean} - The result.
+ */
+export const isEmptyObject = ( obj ) => Object.keys( obj ).length === 0 && obj.constructor === Object;
+
+/**
+ * This variable is used as a placeholder kind of value which is used to identify the attribute is a GBS style attribute.
+ */
+export const GBS_RANDOM_NUMBER = 0.001020304;
+
+/**
  * A function to check if an object is not empty.
  *
  * @function

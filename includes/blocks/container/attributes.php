@@ -233,6 +233,9 @@ return array_merge(
 		'gradientOverlayLocation2'           => 100,
 		'gradientOverlayAngle'               => 0,
 		'selectOverlayGradient'              => 'basic',
+		// For Global Block Styles.
+		'globalBlockStyleName'               => '',
+		'globalBlockStyleId'                 => '',
 	),
 	$border_attribute
 );

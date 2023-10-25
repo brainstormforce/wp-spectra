@@ -13,6 +13,7 @@ import Settings from './settings';
 import Render from './render';
 import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import AddGBSStyles from '@Controls/AddGBSStyles';
 import addInitialAttr from '@Controls/addInitialAttr';
 
 const ButtonsChildComponent = ( props ) => {
@@ -20,7 +21,7 @@ const ButtonsChildComponent = ( props ) => {
 		isSelected,
 		clientId,
 		attributes,
-		attributes: { borderStyle, borderWidth, borderRadius, borderHColor, borderColor, label },
+		attributes: { borderStyle, borderWidth, borderRadius, borderHColor, borderColor, label, globalBlockStyleId },
 		setAttributes,
 		name,
 		deviceType,
@@ -40,6 +41,11 @@ const ButtonsChildComponent = ( props ) => {
 	props = { ...props, labelHasDynamicContent };
 
 	useEffect( () => {
+
+		if( globalBlockStyleId ) {
+			return;
+		}
+		
 		// border migration
 		if ( borderWidth || borderRadius || borderColor || borderHColor || borderStyle ) {
 			migrateBorderAttributes(
@@ -101,4 +107,5 @@ const ButtonsChildComponent = ( props ) => {
 export default compose(
 	addInitialAttr,
 	AddStaticStyles,
+	AddGBSStyles
 )( ButtonsChildComponent );

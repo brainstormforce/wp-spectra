@@ -9,7 +9,7 @@ import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateShadowCSS from '@Controls/generateShadowCSS';
 
-function styling( attributes, clientId, name, deviceType  ) {
+function styling( attributes, clientId, name, deviceType, gbsSelector = false ) {
 	const blockName = name.replace( 'uagb/', '' );
 	const previewType = deviceType.toLowerCase();
 
@@ -367,21 +367,22 @@ function styling( attributes, clientId, name, deviceType  ) {
             [ leftSideMargin ]: mobileIconMargin,
         };
     }
-	const id = `.editor-styles-wrapper .uagb-block-${ block_id }`;
-	let stylingCss = generateCSS( selectors, id );
 
-	if( 'tablet' === previewType || 'mobile' === previewType ) {
+	const base_selector = gbsSelector ? gbsSelector + ' ' : `.editor-styles-wrapper .uagb-block-${ block_id }`;
+	let stylingCss = generateCSS( selectors, base_selector );
+
+	if( 'tablet' === previewType || 'mobile' === previewType || gbsSelector ) {
 		stylingCss += generateCSS(
 			tabletSelectors,
-			`${ id }`,
+			`${ base_selector }`,
 			true,
 			'tablet'
 		);
 
-		if( 'mobile' === previewType ){
+		if( 'mobile' === previewType || gbsSelector ){
 			stylingCss += generateCSS(
 				mobileSelectors,
-				`${ id }`,
+				`${ base_selector }`,
 				true,
 				'mobile'
 			);

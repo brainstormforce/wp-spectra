@@ -20,6 +20,9 @@ import { getImageSize } from '@Utils/Helpers';
 import { ToggleControl, Icon } from '@wordpress/components';
 import UAGTextControl from '@Components/text-control';
 import renderSVG from '@Controls/renderIcon';
+import renderGBSSettings from '@Controls/renderGBSSettings';
+import styling from './styling';
+
 let imageSizeOptions = [
 	{
 		value: 'thumbnail',
@@ -2240,18 +2243,20 @@ const Settings = ( props ) => {
 		<>
 			<InspectorControls>
 				<InspectorTabs>
-					<InspectorTab { ...UAGTabs.general }>
+					<InspectorTab { ...UAGTabs.general } parentProps={ props }>
 						{ imageIconPanel() }
 						{ typographySettings() }
 						{ seperatorSettings() }
 						{ ctaSettings() }
 						{ presetSettings() }
 					</InspectorTab>
-					<InspectorTab { ...UAGTabs.style }>
+					<InspectorTab { ...UAGTabs.style } parentProps={ props }>
 						{ styleSettings() }
 						{ spacingStylePanel() }
 					</InspectorTab>
-					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
+					<InspectorTab { ...UAGTabs.advance } parentProps={ props }>
+						{ renderGBSSettings( styling, setAttributes, attributes ) }
+					</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 		</>

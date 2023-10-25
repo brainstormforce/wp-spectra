@@ -7,7 +7,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function styling( attributes, clientId, name, deviceType ) {
+function styling( attributes, clientId, name, deviceType, gbsSelector = false ) {
 	const previewType = deviceType.toLowerCase();
 	const {
 		block_id,
@@ -899,21 +899,21 @@ function styling( attributes, clientId, name, deviceType ) {
 		tabletSelectors[ ' .uagb-infobox-cta-link.wp-block-button__link' ] = ctaBorderCSSTablet;
 	}
 
-	const id = `.editor-styles-wrapper #block-${ clientId } .uagb-block-${ block_id }`;
-	let stylingCss = generateCSS( selectors, id );
+	const base_selector = '.editor-styles-wrapper ' + ( gbsSelector ? gbsSelector + ' ' : `#block-${ clientId } .uagb-block-${ block_id }` );
+	let stylingCss = generateCSS( selectors, base_selector );
 
-	if( 'tablet' === previewType || 'mobile' === previewType ) {
+	if( 'tablet' === previewType || 'mobile' === previewType || gbsSelector ) {
 		stylingCss += generateCSS(
 			tabletSelectors,
-			`${ id }`,
+			`${ base_selector }`,
 			true,
 			'tablet'
 		);
 
-		if( 'mobile' === previewType ){
+		if( 'mobile' === previewType || gbsSelector ){
 			stylingCss += generateCSS(
 				mobileSelectors,
-				`${ id }`,
+				`${ base_selector }`,
 				true,
 				'mobile'
 			);

@@ -3,6 +3,7 @@ import MasonryGalleryExtension from '@DashboardApp/pages/blocks/MasonryGalleryEx
 import ResponsiveConditionsExtention from '@DashboardApp/pages/blocks/ResponsiveConditionsExtention';
 import AnimationsExtension from '@DashboardApp/pages/blocks/AnimationsExtension';
 import DynamicContentExtension from '@DashboardApp/pages/blocks/DynamicContentExtension';
+import GlobalBlockStyleExtension from '@DashboardApp/pages/blocks/GlobalBlockStyleExtension';
 
 const Extensions = ( { currentTab } ) => {
 	// All extensions should be sorted in Alphabetical Order of their labels.
@@ -13,6 +14,7 @@ const Extensions = ( { currentTab } ) => {
 				<AnimationsExtension/>
 				<DisplayConditionsExtension/>
 				<DynamicContentExtension/>
+				<GlobalBlockStyleExtension/>
 				<MasonryGalleryExtension/>
 				<ResponsiveConditionsExtention/>
 			</>
@@ -21,6 +23,7 @@ const Extensions = ( { currentTab } ) => {
 		return (
 			<>
 				<DynamicContentExtension/>
+				<GlobalBlockStyleExtension/>
 			</>
 		);
 	}

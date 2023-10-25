@@ -103,10 +103,14 @@ return array(
 	'marginType'              => 'px',
 	'marginLink'              => '',
 
+	'verticalAlignment'       => '',
+
 	// letter spacing.
 	'fontLetterSpacing'       => '',
 	'fontLetterSpacingTablet' => '',
 	'fontLetterSpacingMobile' => '',
 	'fontLetterSpacingType'   => 'px',
-	'verticalAlignment'       => '',
+	// For Global Block Styles.
+	'globalBlockStyleName'    => '',
+	'globalBlockStyleId'      => '',
 );

@@ -28,6 +28,8 @@ import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 
 import boxShadowPresets, { boxShadowHoverPresets, buttonsPresets } from './presets';
 import UAGPresets from '@Components/presets';
+import renderGBSSettings from '@Controls/renderGBSSettings';
+import styling from './styling';
 
 const Settings = ( props ) => {
 
@@ -997,11 +999,11 @@ const Settings = ( props ) => {
 			{ getBlockControls() }
 			<InspectorControls>
 				<InspectorTabs>
-					<InspectorTab { ...UAGTabs.general }>
+					<InspectorTab { ...UAGTabs.general } parentProps={ props }>
 						{ ! inheritFromTheme && presetSettings() }
 						{ buttonSettings() }
 					</InspectorTab>
-					<InspectorTab { ...UAGTabs.style }>
+					<InspectorTab { ...UAGTabs.style } parentProps={ props }>
 						{ ! removeText && ! inheritFromTheme && textSettings() }
 						{ showIcon && '' !== icon && IconSettings() }
 						{ ! inheritFromTheme && (
@@ -1013,7 +1015,9 @@ const Settings = ( props ) => {
 						) }
 						{ spacingSettings() }
 					</InspectorTab>
-					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
+					<InspectorTab { ...UAGTabs.advance } parentProps={ props }>
+						{ renderGBSSettings( styling, setAttributes, attributes ) }
+					</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 		</>

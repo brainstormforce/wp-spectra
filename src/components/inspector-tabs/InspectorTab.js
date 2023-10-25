@@ -2,6 +2,7 @@ import { applyFilters } from '@wordpress/hooks';
 import { useRef, useEffect } from '@wordpress/element';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 import { select } from '@wordpress/data';
+import GbsNotice from '@Components/global-block-link/GbsNotice.js';
 
 const InspectorTab = ( props ) => {
 	const { children, isActive, type } = props;
@@ -66,6 +67,12 @@ const InspectorTab = ( props ) => {
 	const inspectorTabBefore = applyFilters( `spectra.${ blockNameForHook }.tab_${ type }.before`, '', blockName );
 	const inspectorTabAfter = applyFilters( `spectra.${ blockNameForHook }.tab_${ type }`, '', blockName );
 
+	// Should show GBS notice.
+	let GBSNotice = null;
+	if( ( 'general' === type || 'style' === type )&& props?.parentProps?.attributes ){
+		GBSNotice = <GbsNotice { ...props.parentProps.attributes } />;
+	}
+
 	return (
 		<div
 			style={ {
@@ -75,6 +82,7 @@ const InspectorTab = ( props ) => {
 			ref={ tabRef }
 		>
 			{ inspectorTabBefore }
+			{ GBSNotice }
 			{ Array.isArray( children ) ? children.map( ( item ) => item ) : children }
 			{ tabContent() }
 			{ inspectorTabAfter }

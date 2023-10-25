@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* New: Core Blocks - Added Global Block Style support for core blocks.
 * Improvement: Admin - Made the welcome video GDPR compliant and added a filter to hide it.
 * Improvement: Buttons - Added a new vertical alignment option.
 * Improvement: Container - Enhanced the accessibility of nested Containers.

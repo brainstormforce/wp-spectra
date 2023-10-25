@@ -8,7 +8,7 @@ import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 import generateShadowCSS from '@Controls/generateShadowCSS';
 
-function styling( attributes, name, deviceType ) {
+function styling( attributes, clientId, name, deviceType, gbsSelector = false ) {
 	const blockName = name.replace( 'uagb/', '' );
 	const previewType = deviceType.toLowerCase();
 	const {
@@ -217,21 +217,22 @@ function styling( attributes, name, deviceType ) {
 	};
 
 	let stylingCss = '';
-	const id = `.uagb-block-${ block_id }`;
-	stylingCss = generateCSS( selectors, id );
+	const base_selector = gbsSelector ? gbsSelector : `.uagb-block-${ block_id }`;
+	
+	stylingCss = generateCSS( selectors, base_selector );
 
-	if( 'tablet' === previewType || 'mobile' === previewType ) {
+	if( 'tablet' === previewType || 'mobile' === previewType || gbsSelector ) {
 		stylingCss += generateCSS(
 			tabletSelectors,
-			`${ id }`,
+			`${ base_selector }`,
 			true,
 			'tablet'
 		);
 
-		if( 'mobile' === previewType ){
+		if( 'mobile' === previewType || gbsSelector ){
 			stylingCss += generateCSS(
 				mobileSelectors,
-				`${ id }`,
+				`${ base_selector }`,
 				true,
 				'mobile'
 			);

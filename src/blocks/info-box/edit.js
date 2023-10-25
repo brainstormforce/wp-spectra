@@ -14,6 +14,7 @@ import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 import addInitialAttr from '@Controls/addInitialAttr';
 import { InfoBoxWrapper } from './components/Wrapper';
+import AddGBSStyles from '@Controls/AddGBSStyles';
 
 const UAGBInfoBox = ( props ) => {
 	const {
@@ -32,6 +33,7 @@ const UAGBInfoBox = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
+			globalBlockStyleId,
 		},
 		name,
 		clientId,
@@ -44,7 +46,11 @@ const UAGBInfoBox = ( props ) => {
 	} = props;
 
 	useEffect( () => {
-		
+		// Don't set attributes if global style is applied.
+		if( globalBlockStyleId ) {
+			return;
+		}
+
 		if ( ctaBgType === undefined ) {
 			setAttributes( { ctaBgType: 'color' } );
 		}
@@ -117,4 +123,5 @@ export default compose(
 	addInitialAttr,
 	AddStaticStyles,
 	InfoBoxWrapper,
+	AddGBSStyles
 )( UAGBInfoBox );

@@ -17,6 +17,7 @@ import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 import addInitialAttr from '@Controls/addInitialAttr';
 import { containerWrapper } from './containerWrapper';
+import AddGBSStyles from '@Controls/AddGBSStyles';
 import { VariationPicker } from './variationPicker';
 
 const UAGBContainer = ( props ) => {
@@ -33,6 +34,7 @@ const UAGBContainer = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
+			globalBlockStyleId,
 			backgroundType,
 			backgroundVideoOpacity,
 		},
@@ -132,6 +134,10 @@ const UAGBContainer = ( props ) => {
 			setAttributes( attributesToUpdate );
 		}
 
+		if( globalBlockStyleId ) {
+			return;
+		}
+		
 		// border
 		if ( borderWidth || borderRadius || borderColor || borderHoverColor || borderStyle ) {
 			migrateBorderAttributes(
@@ -195,4 +201,5 @@ export default compose(
 	containerWrapper,
 	addInitialAttr,
 	AddStaticStyles,
+	AddGBSStyles
 )( UAGBContainer );

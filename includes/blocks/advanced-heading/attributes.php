@@ -172,5 +172,8 @@ return array_merge(
 		'subHeadSpaceTablet'           => '',
 		'subHeadSpaceType'             => 'px',
 		'headingDescToggle'            => $subheading_toggle_default,
+		// For Global Block Styles.
+		'globalBlockStyleName'         => '',
+		'globalBlockStyleId'           => '',
 	)
 );

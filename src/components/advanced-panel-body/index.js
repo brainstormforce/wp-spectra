@@ -5,7 +5,7 @@ import { select } from '@wordpress/data';
 import { applyFilters } from '@wordpress/hooks';
 
 const UAGAdvancedPanelBody = ( props ) => {
-	const { children } = props;
+	const { children, className = '' } = props;
 
 	const panelRef = useRef( null );
 	// Below code is to set the setting state of Tab for each block.
@@ -106,7 +106,7 @@ const UAGAdvancedPanelBody = ( props ) => {
 			{ ...props }
 			onToggle={ onPanelToggle }
 			ref={ panelRef }
-			className={ `uag-advance-panel-body-${ panelTitle }` }
+			className={ `uag-advance-panel-body-${ panelTitle } ${ className }` }
 		>
 			{ tabBodyBefore }
 			{ children }

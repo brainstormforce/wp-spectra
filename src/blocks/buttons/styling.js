@@ -6,7 +6,7 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
-function styling( attributes, clientId, name, deviceType ) {
+function styling( attributes, clientId, name, deviceType, gbsSelector = false ) {
 	const blockName = name.replace( 'uagb/', '' );
 	const previewType = deviceType.toLowerCase();
 
@@ -284,11 +284,11 @@ function styling( attributes, clientId, name, deviceType ) {
 		'padding-bottom': generateCSSUnit( bottomMobilePadding, mobilePaddingUnit ),
 	};
 
-	const base_selector = ` .uagb-block-${ block_id }`;
+	const base_selector = gbsSelector ? gbsSelector + ' ' : ` .uagb-block-${ block_id }`;
 
 	let styling_css = generateCSS( selectors, base_selector );
 
-	if( 'tablet' === previewType || 'mobile' === previewType ) {
+	if( 'tablet' === previewType || 'mobile' === previewType || gbsSelector ) {
 		styling_css += generateCSS(
 			tabletSelectors,
 			`${ base_selector }`,
@@ -296,7 +296,7 @@ function styling( attributes, clientId, name, deviceType ) {
 			'tablet'
 		);
 
-		if( 'mobile' === previewType ){
+		if( 'mobile' === previewType || gbsSelector ){
 			styling_css += generateCSS(
 				mobileSelectors,
 				`${ base_selector }`,

@@ -42,6 +42,7 @@ const generateBackgroundCSS = ( backgroundAttributes, pseudoElementOverlay = {} 
 		yPositionOverlay,
 		yPositionOverlayType,
 		blendMode,
+		globalBlockStyleId,
 	} = backgroundAttributes;
 
 	const bgCSS = {};
@@ -115,6 +116,11 @@ const generateBackgroundCSS = ( backgroundAttributes, pseudoElementOverlay = {} 
 			} else if ( undefined === backgroundImage || '' === backgroundImage || 'unset' === backgroundImage ) {
 				bgCSS[ 'background-color' ] = backgroundColor;
 			}
+			// globalBlockStyleId
+			if ( globalBlockStyleId ) {
+				// We have added overlay for container block only that's why we are checking for pseudoElementOverlay?.blockName in future we will implement overlay for all blocks then we will remove this condition.
+				bgCSS[ 'background-image' ] = `unset;`;
+			} 
 		} else if ( 'image' === backgroundType ) {
 			if (
 				'color' === overlayType &&
@@ -127,15 +133,18 @@ const generateBackgroundCSS = ( backgroundAttributes, pseudoElementOverlay = {} 
 					bgCSS[ 'background-image' ] = `url(${ backgroundImage.url });`;
 					bgOverlayCSS.background = backgroundImageColor;
 					applyOverlayOpacity();
+				} else if ( 'container' === pseudoElementOverlay?.blockName ) {
+					// We have added overlay for container block only that's why we are checking for pseudoElementOverlay?.blockName in future we will implement overlay for all blocks then we will remove this condition.
+					bgCSS[ 'background-image' ] = `url(${ backgroundImage.url });`;
 				} else {
 					bgCSS[ 'background-image' ] =
-						'linear-gradient(to right, ' +
-						backgroundImageColor +
-						', ' +
-						backgroundImageColor +
-						'), url(' +
-						backgroundImage.url +
-						');';
+					'linear-gradient(to right, ' +
+					backgroundImageColor +
+					', ' +
+					backgroundImageColor +
+					'), url(' +
+					backgroundImage.url +
+					');';
 				}
 			}
 
@@ -148,16 +157,18 @@ const generateBackgroundCSS = ( backgroundAttributes, pseudoElementOverlay = {} 
 					bgCSS[ 'background-image' ] = `url(${ backgroundImage.url });`;
 					bgOverlayCSS[ 'background-image' ] = gradient;
 					applyOverlayOpacity();
-				} else {
+				} else if ( 'container' === pseudoElementOverlay?.blockName ) {
+					// We have added overlay for container block only that's why we are checking for pseudoElementOverlay?.blockName in future we will implement overlay for all blocks then we will remove this condition.
+					bgCSS[ 'background-image' ] = `url(${ backgroundImage.url });`;
+				}  else {
 					bgCSS[ 'background-image' ] = gradient + ', url(' + backgroundImage?.url + ');';
 				}
 			}
-			if (
-				( 'image' === overlayType || 'none' === overlayType ) &&
-				backgroundImage?.url
-			) {
+
+			if ( ['image', 'none', ''].includes( overlayType ) && backgroundImage?.url ) {
 				bgCSS[ 'background-image' ] = 'url(' + backgroundImage?.url + ');';
 			}
+
 			bgCSS[ 'background-repeat' ] = backgroundRepeat;
 
 			if ( 'custom' !== customPosition && backgroundPosition?.x && backgroundPosition?.y ) {

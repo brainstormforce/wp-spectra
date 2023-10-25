@@ -7,7 +7,7 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
 
-function CtaStyle( attributes, clientId, name, deviceType ) {
+function CtaStyle( attributes, clientId, name, deviceType, gbsSelector = false ) {
 	const blockName = name.replace( 'uagb/', '' );
 	const previewType = deviceType.toLowerCase();
 
@@ -796,22 +796,22 @@ function CtaStyle( attributes, clientId, name, deviceType ) {
 		};
 	}
 
-	const id = `.editor-styles-wrapper #block-${ clientId } .uagb-block-${ block_id }`;
+	const base_selector = gbsSelector ? `.editor-styles-wrapper ${ gbsSelector } ` : `.editor-styles-wrapper #block-${ clientId } .uagb-block-${ block_id }`;
+	
+	let stylingCss = generateCSS( selectors, `${ base_selector }` );
 
-	let stylingCss = generateCSS( selectors, `${ id }` );
-
-	if( 'tablet' === previewType || 'mobile' === previewType ) {
+	if( 'tablet' === previewType || 'mobile' === previewType || gbsSelector ) {
 		stylingCss += generateCSS(
 			tabletSelectors,
-			`${ id }`,
+			`${ base_selector }`,
 			true,
 			'tablet'
 		);
 
-		if( 'mobile' === previewType ){
+		if( 'mobile' === previewType || gbsSelector ){
 			stylingCss += generateCSS(
 				mobileSelectors,
-				`${ id }`,
+				`${ base_selector }`,
 				true,
 				'mobile'
 			);
