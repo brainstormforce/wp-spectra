@@ -209,7 +209,7 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 		/**
 		 * Get GBS Initial States.
 		 *
-		 * @since X.X.X
+		 * @since 2.9.0
 		 * @return array
 		 */
 		public function get_gbs_initial_states() {

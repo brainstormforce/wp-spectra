@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
-Tested up to: 6.3.1
-Stable tag: 2.8.0
+Tested up to: 6.3.2
+Stable tag: 2.9.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,19 +215,19 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= x.x.x =
+= 2.9.0 - THURSDAY, 26th OCTOBER 2023 =
 * New: Core Blocks - Added Global Block Style support for core blocks.
-* Improvement: Admin - Made the welcome video GDPR compliant and added a filter to hide it.
-* Improvement: Buttons - Added a new vertical alignment option.
 * Improvement: Container - Enhanced the accessibility of nested Containers.
-* Fix: Image Gallery - Resolved an issue in which the custom link validation would fail when the root domain contained hyphens.
-* Fix: Lottie - Resolved an issue in which the SVG aligment would not work as intended in the TwentyTwentyThree theme.
-* Fix: Form - Resolved an issue that caused form submissions to fail when the reCAPTCHA badge was hidden with v3 enabled.
-* Fix: Global - Resolved an issue wherein a block error would occur when attempting to select typography font families in the presence of multiple iFrames.
-* Fix: Global - Resolved an issue wherein adding Containers, Forms, Lottie blocks and the Popup Builder caused errors when the Gutenberg plugin was active.
-* Fix: Lottie - Resolved an issue in which the width of the block would be adopted from the parent Container.
+* Improvement: Buttons - Added a new vertical alignment option.
+* Improvement: Admin - Made the welcome video GDPR compliant and added a filter to hide it.
 * Fix: Container - Resolved an issue wherein the core Social Share block would get centered by default inside Containers.
-* Fix: Global - Resolved an issue wherein the normal text-transformation option would not work as intended.
+* Fix: Form - Resolved an issue that caused form submissions to fail when the reCAPTCHA badge was hidden with v3 enabled.
+* Fix: Image Gallery - Resolved an issue in which the custom link validation would fail when the root domain contained hyphens.
+* Fix: Lottie - Resolved an issue in which the SVG alignment would not work as intended in the TwentyTwentyThree theme.
+* Fix: Lottie - Resolved an issue in which the width of the block would be adopted from the parent Container.
+* Fix: Global - Resolved an issue wherein a block error would occur when attempting to select typography font-families in the presence of multiple iFrames.
+* Fix: Global - Resolved an issue wherein adding Containers, Forms, Lottie blocks and the Popup Builder would cause errors when the Gutenberg plugin was active.
+* Fix: Global - Resolved an issue wherein the 'normal' text-transformation option would not work as intended.
 
 = 2.8.0 - THURSDAY, 12th OCTOBER 2023 =
 * Feature: Container - Added a new Sticky-Container setting in the Advanced tab.

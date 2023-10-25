@@ -278,7 +278,7 @@ class UAGB_Post_Assets {
 	/**
 	 * Load Styles for Spectra Global Block Styles.
 	 *
-	 * @since x.x.x
+	 * @since 2.9.0
 	 * @return void
 	 */
 	public function spectra_gbs_load_styles() {
@@ -341,7 +341,7 @@ class UAGB_Post_Assets {
 	/**
 	 * Load Google Fonts for Spectra Global Block Styles.
 	 *
-	 * @since x.x.x
+	 * @since 2.9.0
 	 * @return void
 	 */
 	public function spectra_gbs_load_gfonts() {

@@ -793,7 +793,7 @@ class Common_Settings extends Ajax_Base {
 	/**
 	 * Save setting - Enables GBS extension.
 	 *
-	 * @since x.x.x
+	 * @since 2.9.0
 	 * @return void
 	 */
 	public function enable_gbs_extension() {
@@ -812,7 +812,7 @@ class Common_Settings extends Ajax_Base {
 	 * when user will disable GBS extension.
 	 *
 	 * @param string $value value will be enabled or disabled.
-	 * @since X.X.X
+	 * @since 2.9.0
 	 * @return void
 	 */
 	public function save_gbs_default_in_upload_folder( $value ) {

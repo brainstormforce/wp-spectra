@@ -118,7 +118,7 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 		 * Filter GBS Placeholder Attributes.
 		 *
 		 * @param array $attributes Block attributes.
-		 * @since x.x.x
+		 * @since 2.9.0
 		 * @return array $attributes Block attributes by removing 0.001020304.
 		 */
 		public static function gbs_filter_placeholder_attributes( $attributes ) {

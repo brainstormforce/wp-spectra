@@ -897,7 +897,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @param string $selector Selector.
 		 * @param array  $gbs_attributes GBS attributes array.
-		 * @since x.x.x
+		 * @since 2.9.0
 		 * @return string $selector Updated selector.
 		 */
 		public static function add_gbs_selector_if_applicable( $selector, $gbs_attributes ) {
@@ -913,7 +913,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @param string $style_name Style Name.
 		 * 
-		 * @since x.x.x
+		 * @since 2.9.0
 		 * @return string $selector Styles Selector.
 		 */
 		public static function get_gbs_selector( $style_name ) {
@@ -1548,7 +1548,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * Check if file exists and delete it.
 		 *
 		 * @param string $file_name File name.
-		 * @since X.X.X
+		 * @since 2.9.0
 		 * @return void
 		 */
 		public static function remove_file( $file_name ) {
