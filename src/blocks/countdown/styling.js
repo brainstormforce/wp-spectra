@@ -176,6 +176,7 @@ export default function styling( attributes, clientId, name, deviceType, gbsSele
 		showSeparator,
 		separatorType,
 		boxBorderHColor,
+		globalBlockStyleId,
 	} = attributes;
 
 	const blockName = name.replace( 'uagb/', '' );
@@ -274,9 +275,11 @@ export default function styling( attributes, clientId, name, deviceType, gbsSele
 			'display': showDays || showHours || showMinutes ? '' : 'none',
 		},
 		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box': {
-			'aspect-ratio': isSquareBox ? 1 : 'auto',
+			// eslint-disable-next-line no-nested-ternary
+			'aspect-ratio': isSquareBox ? 1 : ( ! globalBlockStyleId ? 'auto' : '' ),
 			'width': generateCSSUnit( boxWidth, 'px' ),
-			'height': isSquareBox ? generateCSSUnit( boxWidth, 'px' ) : 'auto',
+			// eslint-disable-next-line no-nested-ternary
+			'height': isSquareBox ? generateCSSUnit( boxWidth, 'px' ) : ( ! globalBlockStyleId ? 'auto' : '' ),
 			'flex-direction': boxFlex,
 			'justify-content': boxFlex !== 'column' ? boxAlign : 'center',
 			'align-items': boxFlex !== 'row' ? boxAlign : 'center',
@@ -342,7 +345,8 @@ export default function styling( attributes, clientId, name, deviceType, gbsSele
 
 	tabletSelectors[ '.wp-block-uagb-countdown .wp-block-uagb-countdown__box' ] = {
 		'width': generateCSSUnit( boxWidthTablet, 'px' ),
-		'height': isSquareBox ? generateCSSUnit( boxWidthTablet, 'px' ) : 'auto',
+		// eslint-disable-next-line no-nested-ternary
+		'height': isSquareBox ? generateCSSUnit( boxWidthTablet, 'px' ) : ( ! globalBlockStyleId ? 'auto' : '' ),
 		'flex-direction': boxFlexTablet,
 		'justify-content': boxFlexTablet !== 'column' ? boxAlignTablet : 'center',
 		'align-items': boxFlexTablet !== 'row' ? boxAlignTablet : 'center',
@@ -388,7 +392,8 @@ export default function styling( attributes, clientId, name, deviceType, gbsSele
 
 	mobileSelectors[ '.wp-block-uagb-countdown .wp-block-uagb-countdown__box' ] = {
 		'width': generateCSSUnit( boxWidthMobile, 'px' ),
-		'height': isSquareBox ? generateCSSUnit( boxWidthMobile, 'px' ) : 'auto',
+		// eslint-disable-next-line no-nested-ternary
+		'height': isSquareBox ? generateCSSUnit( boxWidthMobile, 'px' ) : ( ! globalBlockStyleId ? 'auto' : '' ),
 		'flex-direction': boxFlexMobile,
 		'justify-content': boxFlexMobile !== 'column' ? boxAlignMobile : 'center',
 		'align-items': boxFlexMobile !== 'row' ? boxAlignMobile : 'center',
@@ -464,7 +469,7 @@ export default function styling( attributes, clientId, name, deviceType, gbsSele
 		mobileSelectors[ boxGapSelectorRTL ][ 'margin-right' ] = generateCSSUnit( boxSpacingFallbackMobile, 'px' );
 	}
 
-	const baseSelector = gbsSelector ? gbsSelector : `.editor-styles-wrapper .uagb-block-${ block_id }`;
+	const baseSelector = '.editor-styles-wrapper ' + ( gbsSelector ? gbsSelector : `.uagb-block-${ block_id }` );
 
 	selectors = applyFilters( `spectra.${ blockName }.styling`, selectors, attributes );
 	tabletSelectors = applyFilters( `spectra.${ blockName }.tabletStyling`, tabletSelectors, attributes );

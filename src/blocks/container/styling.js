@@ -669,12 +669,12 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 				boxShadowPositionCSSHover;
 		}
 	} else {
-		selectors[ '.wp-block' ] = containerCSS;
-		selectors[ '.wp-block:not(uagb-is-root-container)'] = {
+		selectors[ '.wp-block-uagb-container' ] = containerCSS;
+		selectors[ '.wp-block-uagb-container:not(uagb-is-root-container)'] = {
 			'margin-left': generateCSSUnit( innerLeftMarginDesktop, marginType ) + ' !important',
 			'margin-right': generateCSSUnit( innerRightMarginDesktop, marginType ) + ' !important',
 		}
-		tablet_selectors[ '.wp-block' ] = {
+		tablet_selectors[ '.wp-block-uagb-container' ] = {
 			'padding-top': generateCSSUnit( topPaddingTablet, paddingTypeTablet ),
 			'padding-bottom': generateCSSUnit( bottomPaddingTablet, paddingTypeTablet ),
 			'padding-left': generateCSSUnit( leftPaddingTablet, paddingTypeTablet ),
@@ -687,11 +687,11 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			...borderCSSTablet,
 			...containerBackgroundCSSTablet,
 		};
-		tablet_selectors[ '.wp-block:not(uagb-is-root-container)'] = {
+		tablet_selectors[ '.wp-block-uagb-container:not(uagb-is-root-container)'] = {
 			'margin-left': generateCSSUnit( innerLeftMarginTablet, marginTypeTablet ) + ' !important',
 			'margin-right': generateCSSUnit( innerRightMarginTablet, marginTypeTablet ) + ' !important',
 		}
-		mobile_selectors[ '.wp-block' ] = {
+		mobile_selectors[ '.wp-block-uagb-container' ] = {
 			'padding-top': generateCSSUnit( topPaddingMobile, paddingTypeMobile ),
 			'padding-bottom': generateCSSUnit( bottomPaddingMobile, paddingTypeMobile ),
 			'padding-left': generateCSSUnit( leftPaddingMobile, paddingTypeMobile ),
@@ -704,11 +704,11 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			...borderCSSMobile,
 			...containerBackgroundCSSMobile
 		};
-		mobile_selectors[ '.wp-block:not(uagb-is-root-container)'] = {
+		mobile_selectors[ '.wp-block-uagb-container:not(uagb-is-root-container)'] = {
 			'margin-left': generateCSSUnit( innerLeftMarginMobile, marginTypeMobile ) + ' !important',
 			'margin-right': generateCSSUnit( innerRightMarginMobile, marginTypeMobile ) + ' !important',
 		}
-		selectors[ '.wp-block:hover' ] = {
+		selectors[ '.wp-block-uagb-container:hover' ] = {
 			'border-color': containerBorderHColor,
 			'box-shadow': '',
 		};

@@ -272,6 +272,21 @@ if ( $is_rtl ) {
 	$m_selectors[ $boxGapSelectorRTL ]['margin-right'] = UAGB_Helper::get_css_value( $attr['boxSpacingMobile'], 'px' );
 }
 
+
+if ( ! empty( $attr['globalBlockStyleId'] ) && empty( $attr['isSquareBox'] ) ) {
+	
+	$selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__box']['aspect-ratio'] = '';
+	$selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__box']['height']       = '';
+
+	// For Tablet.
+	$t_selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__box']['aspect-ratio'] = '';
+	$t_selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__box']['height']       = '';
+
+	// For Mobile.
+	$m_selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__box']['aspect-ratio'] = '';
+	$m_selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__box']['height']       = '';
+}
+
 $combined_selectors = UAGB_Helper::get_combined_selectors(
 	'countdown',
 	array(
