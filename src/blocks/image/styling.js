@@ -522,7 +522,7 @@ export default function styling( attributes, clientId, name, deviceType, gbsSele
 		mobile_selectors[ '.wp-block-uagb-image .wp-block-uagb-image__figure img' ].height = mobileHeight + 'px';
 	}
 
-	const base_selector = gbsSelector ? `div.editor-styles-wrapper ${ gbsSelector } ` : `.editor-styles-wrapper .uagb-block-${ block_id }`;
+	const base_selector = gbsSelector ? `.editor-styles-wrapper ${ gbsSelector } ` : `.editor-styles-wrapper .uagb-block-${ block_id }`;
 
 	let styling_css = generateCSS( selectors, base_selector );
 
