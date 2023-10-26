@@ -16,6 +16,7 @@ parameters:
 	scanFiles:
 	bootstrapFiles:
 		- %rootDir%/../../php-stubs/wordpress-stubs/wordpress-stubs.php
+		- tests/php/stubs/uagb-constants.php
 		- tests/php/stubs/uagb-stubs.php
 	paths:
 		- ultimate-addons-for-gutenberg.php

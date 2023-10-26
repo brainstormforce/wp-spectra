@@ -313,6 +313,11 @@ if ( ! class_exists( 'UAGB_WebFont_Loader' ) ) {
 				return;
 			}
 
+			// Check if response code is 400.
+			if ( wp_remote_retrieve_response_code( $response ) === 400 ) {
+				return;
+			}
+
 			// Get the CSS from our response.
 			$contents = wp_remote_retrieve_body( $response );
 

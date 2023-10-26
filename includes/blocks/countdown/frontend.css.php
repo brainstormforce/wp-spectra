@@ -7,6 +7,8 @@
  * @package uagb
  */
 
+$attr = isset( $attr ) ? $attr : array();
+
 UAGB_Block_JS::blocks_countdown_gfont( $attr );
 
 $is_rtl = is_rtl();
@@ -230,28 +232,28 @@ $m_selectors['.wp-block-uagb-countdown div.wp-block-uagb-countdown__label'] = ar
 if ( true === $attr['showSeparator'] ) {
 
 	$selectors[ $separator_selector ] = array(
-		'content'     => "'" . $attr['separatorType'] . "'",
+		'content'     => $attr['separatorType'] ? "'" . $attr['separatorType'] . "'" : '',
 		'font-family' => $attr['separatorFontFamily'],
 		'font-style'  => $attr['separatorFontStyle'],
 		'font-weight' => $attr['separatorFontWeight'],
 		'font-size'   => UAGB_Helper::get_css_value( $attr['separatorFontSize'], $attr['separatorFontSizeType'] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr['separatorLineHeight'], $attr['separatorLineHeightType'] ),
 		'color'       => $attr['separatorColor'],
-		'right'       => UAGB_Helper::get_css_value( -$attr['separatorRightSpacing'], 'px' ),
+		'right'       => is_int( $attr['separatorRightSpacing'] ) ? UAGB_Helper::get_css_value( -$attr['separatorRightSpacing'], 'px' ) : '',
 		'top'         => UAGB_Helper::get_css_value( $attr['separatorTopSpacing'], 'px' ),
 	);
 
 	$t_selectors[ $separator_selector ] = array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr['separatorFontSizeTablet'], $attr['separatorFontSizeTypeTablet'] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr['separatorLineHeightTablet'], $attr['separatorLineHeightType'] ),
-		'right'       => UAGB_Helper::get_css_value( -$attr['separatorRightSpacingTablet'], 'px' ),
+		'right'       => is_int( $attr['separatorRightSpacingTablet'] ) ? UAGB_Helper::get_css_value( -$attr['separatorRightSpacingTablet'], 'px' ) : '',
 		'top'         => UAGB_Helper::get_css_value( $attr['separatorTopSpacingTablet'], 'px' ),
 	);
 
 	$m_selectors[ $separator_selector ] = array(
 		'font-size'   => UAGB_Helper::get_css_value( $attr['separatorFontSizeMobile'], $attr['separatorFontSizeTypeMobile'] ),
 		'line-height' => UAGB_Helper::get_css_value( $attr['separatorLineHeightMobile'], $attr['separatorLineHeightType'] ),
-		'right'       => UAGB_Helper::get_css_value( -$attr['separatorRightSpacingMobile'], 'px' ),
+		'right'       => is_int( $attr['separatorRightSpacingMobile'] ) ? UAGB_Helper::get_css_value( -$attr['separatorRightSpacingMobile'], 'px' ) : '',
 		'top'         => UAGB_Helper::get_css_value( $attr['separatorTopSpacingMobile'], 'px' ),
 	);
 }
@@ -270,6 +272,21 @@ if ( $is_rtl ) {
 	$m_selectors[ $boxGapSelectorRTL ]['margin-right'] = UAGB_Helper::get_css_value( $attr['boxSpacingMobile'], 'px' );
 }
 
+
+if ( ! empty( $attr['globalBlockStyleId'] ) && empty( $attr['isSquareBox'] ) ) {
+	
+	$selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__box']['aspect-ratio'] = '';
+	$selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__box']['height']       = '';
+
+	// For Tablet.
+	$t_selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__box']['aspect-ratio'] = '';
+	$t_selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__box']['height']       = '';
+
+	// For Mobile.
+	$m_selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__box']['aspect-ratio'] = '';
+	$m_selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__box']['height']       = '';
+}
+
 $combined_selectors = UAGB_Helper::get_combined_selectors(
 	'countdown',
 	array(
@@ -282,4 +299,8 @@ $combined_selectors = UAGB_Helper::get_combined_selectors(
 
 $base_selector = '.uagb-block-';
 
-return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
+return UAGB_Helper::generate_all_css(
+	$combined_selectors,
+	$base_selector . $id,
+	isset( $gbs_class ) ? $gbs_class : ''
+);

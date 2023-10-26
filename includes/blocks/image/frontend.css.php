@@ -350,4 +350,8 @@ $base_selector = '.uagb-block-';
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'heading', '.wp-block-uagb-image--layout-overlay .wp-block-uagb-image--layout-overlay__inner .uagb-image-heading', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'caption', '.wp-block-uagb-image .wp-block-uagb-image__figure figcaption', $combined_selectors );
 
-return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
+return UAGB_Helper::generate_all_css(
+	$combined_selectors,
+	$base_selector . $id,
+	isset( $gbs_class ) ? $gbs_class : ''
+);

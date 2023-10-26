@@ -46,6 +46,7 @@ module.exports = {
 			'@Utils': path.resolve( __dirname, 'blocks-config/utils/' ),
 			'@Blocks': path.resolve( __dirname, 'src/blocks/' ),
 			'@Attributes': path.resolve( __dirname, 'blocks-config/blocks-attributes/' ),
+			'@Store': path.resolve( __dirname, 'src/store/' ),
 		},
 	},
 	module: {

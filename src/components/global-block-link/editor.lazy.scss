@@ -1,0 +1,181 @@
+.spectra-global-block-style-name-modal {
+
+	& > .components-modal__content {
+		width: 550px;
+		margin: 0;
+		padding: 32px;
+	}
+
+	.components-modal__header {
+		display: none !important;
+	}
+	.gbs-add-new-style-head {
+		display: flex;
+		justify-content: space-between;
+		.popup-close-btn {
+			cursor: pointer;
+		}
+		& > div {
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+			h3,
+			p {
+				margin: 0;
+			}
+			h3 {
+				font-size: 18px;
+				font-weight: 600;
+				line-height: 28px;
+			}
+			p {
+				font-size: 14px;
+				font-weight: 400;
+				line-height: 20px;
+			}
+		}
+	}
+
+	.input-wrap {
+		margin: 20px 0;
+		.components-base-control__label {
+			font-size: 14px;
+			font-weight: 500;
+			line-height: 20px;
+			text-transform: none;
+		}
+
+		.components-text-control__input {
+			padding: 12px 14px;
+			border: 1px solid #e6e7e9;
+			box-shadow: 0 1px 2px #1018280d;
+			border-radius: 6px;
+			font-size: 16px;
+		}
+
+		&.gbs-error {
+			.components-text-control__input {
+				border-color: #dc2626;
+			}
+			.gbs-error-msg {
+				color: #dc2626;
+				margin: 8px 0 0 0;
+				font-size: 14px;
+			}
+		}
+	}
+	.button-wrap {
+		display: flex;
+		gap: 12px;
+		.cancel-button {
+			color: #1d2327;
+			border: 1px solid #e6e7e9;
+			&:hover {
+				box-shadow: 0 0 2px 0 #e3e7e90d;
+				border-color: #007cba;
+			}
+		}
+
+		button {
+			flex: 1;
+			box-shadow: unset;
+			font-weight: 600;
+			height: 40px;
+			border-radius: 4px;
+			display: flex;
+			justify-content: center;
+			font-size: 16px;
+
+			p {
+				margin: 0;
+			}
+		}
+	}
+}
+
+.spectra-gbs-button {
+
+	&.delete {
+		margin-left: 5px;
+	}
+
+	&.loading::after {
+		content: "";
+		position: absolute;
+		width: 16px;
+		height: 16px;
+		top: 0;
+		right: 4%;
+		bottom: 0;
+		margin: auto;
+		border: 4px dotted transparent;
+		border-top-color: #4f94d4;
+		border-right-color: #4f94d4;
+		border-radius: 50%;
+		animation: button-loading-spinner 1s ease infinite;
+	}
+
+	&.loading {
+		position: relative;
+		padding-right: 30px;
+	}
+}
+
+.uag-advance-panel-body-global-block-styles {
+	opacity: 1;
+	transition: opacity 0.5s ease-out;
+	-moz-transition: opacity 0.5s ease-out;
+	-webkit-transition: opacity 0.5s ease-out;
+	-o-transition: opacity 0.5s ease-out;
+	border-bottom: 1px solid #e0e0e0 !important;
+
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+
+	&.loading {
+		position: relative;
+		opacity: 0.4;
+		pointer-events: none;
+	}
+	&.components-panel__body.is-opened {
+		h2.components-panel__body-title {
+			margin-bottom: 0;
+		}
+	}
+	.spectra-gbs-buttons-wrap {
+		display: flex;
+		.gbs-update-save-add-btn {
+			display: flex;
+			gap: 10px;
+			width: 100%;
+			& > button.components-button.spectra-gbs-button {
+				margin: 0;
+				flex: 1;
+				justify-content: center;
+				box-shadow: inset 0 0 0 1px var(--wp-components-color-accent, var(--wp-admin-theme-color, #3858e9));
+			}
+		}
+	}
+}
+.spectra-gbs-notice {
+	background: #eff6ff;
+	font-size: 12px;
+	font-style: italic;
+	font-weight: 500;
+	& > span {
+		padding: 16px;
+		display: block;
+	}
+}
+
+@keyframes button-loading-spinner {
+
+	from {
+		transform: rotate(0turn);
+	}
+
+	to {
+		transform: rotate(1turn);
+	}
+}

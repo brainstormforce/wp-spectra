@@ -256,7 +256,7 @@ const TypographyControl = ( props ) => {
 						label: __( 'Default', 'ultimate-addons-for-gutenberg' ),
 					},
 					{
-						value: 'normal',
+						value: 'none',
 						label: __( 'Normal', 'ultimate-addons-for-gutenberg' ),
 					},
 					{

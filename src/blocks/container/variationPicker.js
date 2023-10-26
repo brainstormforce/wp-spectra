@@ -4,8 +4,7 @@
 import rowIcons from './icons';
 import { __experimentalBlockVariationPicker as BlockVariationPicker } from '@wordpress/block-editor';
 import UAGB_Block_Icons from '@Controls/block-icons';
-import ReactHtmlParser from 'react-html-parser';
-import { __, sprintf } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { useDispatch } from '@wordpress/data';
 import { createBlocksFromInnerBlocksTemplate } from '@wordpress/blocks';
 
@@ -15,7 +14,7 @@ import { createBlocksFromInnerBlocksTemplate } from '@wordpress/blocks';
  * @constant
  * @type {Array}
  */
-const variations = [
+export const variations = [
 	{
 		name: 'one-column',
 		icon: rowIcons[ '100' ],
@@ -226,21 +225,15 @@ export const VariationPicker = ( props ) => {
 			<BlockVariationPicker
 				icon={ UAGB_Block_Icons.container }
 				label={ __( 'Container', 'ultimate-addons-for-gutenberg' ) }
-				instructions={ ReactHtmlParser(
-					sprintf(
-						// translators: %s: closing </br> tag.
-						__(
-							'Customizable containers with endless creation possibilities.%sSelect a container layout to start with.',
-							'ultimate-addons-for-gutenberg'
-						),
-						`</br>` 
+				instructions={
+					__(
+						'Select a container layout to start with.',
+						'ultimate-addons-for-gutenberg'
 					)
-				) }
+				}
 				variations={ variations }
 				onSelect={ ( nextVariation ) => blockVariationPickerOnSelect( nextVariation ) }
 			/>
 		</div>
 	);
 };
-
-export default { VariationPicker, variations };

@@ -44,7 +44,7 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 			add_filter( 'register_post_type_args', array( $this, 'add_cpts_to_api' ), 10, 2 );
 
 			// We have added this action here to support both the ways of post updations, Rest API & Normal.
-			add_action( 'save_post', array( $this, 'delete_page_assets' ), 10, 1 );
+			add_action( 'save_post', array( 'UAGB_Helper', 'delete_page_assets' ), 10, 1 );
 			global $wp_customize;
 			if ( $wp_customize ) { // Check whether the $wp_customize is set.
 				add_filter( 'render_block_data', array( $this, 'content_pre_render' ) ); // Add a inline style for block when it rendered in customizer.
@@ -125,96 +125,6 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 		}
 
 		/**
-		 * This function deletes the Page assets from the Page Meta Key.
-		 *
-		 * @param int $post_id Post Id.
-		 * @since 1.23.0
-		 */
-		public function delete_page_assets( $post_id ) {
-			$current_post_type = get_post_type( $post_id );
-			if ( 'wp_template_part' === $current_post_type || 'wp_template' === $current_post_type ) {
-
-				// Delete all the TOC Post Meta on update of the template.
-				delete_post_meta_by_key( '_uagb_toc_options' );
-
-				$wp_upload_dir = UAGB_Helper::get_uag_upload_dir_path();
-
-				if ( file_exists( $wp_upload_dir . 'custom-style-blocks.css' ) ) {
-					wp_delete_file( $wp_upload_dir . 'custom-style-blocks.css' );
-				}
-
-				$file_generation = UAGB_Helper::allow_file_generation();
-
-				if ( 'enabled' === $file_generation ) {
-
-					UAGB_Helper::delete_uag_asset_dir();
-				}
-
-				UAGB_Admin_Helper::create_specific_stylesheet();
-
-				/* Update the asset version */
-				UAGB_Admin_Helper::update_admin_settings_option( '__uagb_asset_version', time() );
-				return;
-			}
-
-			if ( 'enabled' === UAGB_Helper::$file_generation ) {
-
-				$css_asset_info = UAGB_Scripts_Utils::get_asset_info( 'css', $post_id );
-				$js_asset_info  = UAGB_Scripts_Utils::get_asset_info( 'js', $post_id );
-
-				$css_file_path = $css_asset_info['css'];
-				$js_file_path  = $js_asset_info['js'];
-
-				if ( file_exists( $css_file_path ) ) {
-					wp_delete_file( $css_file_path );
-				}
-				if ( file_exists( $js_file_path ) ) {
-					wp_delete_file( $js_file_path );
-				}
-			}
-
-			$unique_ids = get_option( '_uagb_fse_uniqids' );
-			if ( ! empty( $unique_ids ) && is_array( $unique_ids ) ) {
-				foreach ( $unique_ids as $id ) {
-					delete_post_meta( (int) $id, '_uag_page_assets' );
-				}
-			}
-			delete_post_meta( $post_id, '_uag_page_assets' );
-			delete_post_meta( $post_id, '_uag_css_file_name' );
-			delete_post_meta( $post_id, '_uag_js_file_name' );
-
-			$does_post_contain_reusable_blocks = $this->does_post_contain_reusable_blocks( $post_id );
-
-			if ( true === $does_post_contain_reusable_blocks || 'wp_block' === $current_post_type ) {
-				/* Update the asset version */
-				update_option( '__uagb_asset_version', time() );
-			}
-		}
-
-		/**
-		 * Does Post contains reusable blocks.
-		 *
-		 * @param int $post_id Post ID.
-		 *
-		 * @since 1.23.5
-		 *
-		 * @return boolean Wether the Post contains any Reusable blocks or not.
-		 */
-		public function does_post_contain_reusable_blocks( $post_id ) {
-
-			$post_content = get_post_field( 'post_content', $post_id, 'raw' );
-			$tag          = '<!-- wp:block';
-			$flag         = strpos( $post_content, $tag );
-
-			if ( false !== $flag ) {
-
-				return true;
-			}
-
-			return false;
-		}
-
-		/**
 		 * Create API fields for additional info
 		 *
 		 * @since 0.0.1
@@ -281,6 +191,63 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 					),
 				)
 			);
+
+			register_rest_route(
+				'spectra/v1',
+				'editor',
+				array(
+					array(
+						'methods'             => 'GET',
+						'callback'            => array( $this, 'get_gbs_initial_states' ),
+						'permission_callback' => array( $this, 'get_items_permissions_check' ),
+						'args'                => array(),
+					),
+				)
+			);
+		}
+
+		/**
+		 * Get GBS Initial States.
+		 *
+		 * @since 2.9.0
+		 * @return array
+		 */
+		public function get_gbs_initial_states() {
+			// check if GBS is enabled or not.
+			if ( 'enabled' !== \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_gbs_extension', 'enabled' ) ) {
+				return array();
+			}
+
+			$spectra_global_block_styles = get_option(
+				'spectra_global_block_styles',
+				array(
+					array(
+						'value' => '',
+						'label' => __( 'None', 'ultimate-addons-for-gutenberg' ),
+					),
+				) 
+			);
+			
+			$spectra_gbs_google_fonts_editor = get_option(
+				'spectra_gbs_google_fonts_editor',
+				array() 
+			);
+
+			if ( empty( $spectra_global_block_styles ) ) {
+				$spectra_global_block_styles = array(
+					array(
+						'value' => '',
+						'label' => __( 'None', 'ultimate-addons-for-gutenberg' ),
+					),
+				);
+			}
+
+			$initial_state = array(
+				'spectra_global_block_styles'     => $spectra_global_block_styles,
+				'spectra_gbs_google_fonts_editor' => $spectra_gbs_google_fonts_editor,
+			);
+
+			return $initial_state;
 		}
 
 		/**

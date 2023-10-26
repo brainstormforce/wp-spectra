@@ -6,7 +6,7 @@ import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
-function styling( attributes, clientId, name, deviceType ) {
+function styling( attributes, clientId, name, deviceType, gbsSelector = false ) {
 	const blockName = name.replace( 'uagb/', '' );
 	const previewType = deviceType.toLowerCase();
 
@@ -73,11 +73,24 @@ function styling( attributes, clientId, name, deviceType ) {
 		fontLetterSpacingTablet,
 		fontLetterSpacingMobile,
 		fontLetterSpacingType,
+		verticalAlignment,
 	} = attributes;
 
 	const selectors = {};
 	const tabletSelectors = {};
 	const mobileSelectors = {};
+
+	let vAlign;
+	switch ( verticalAlignment ) {
+		case 'top':
+			vAlign = 'flex-start';
+			break;
+		case 'bottom':
+			vAlign = 'flex-end';
+			break;
+		default:
+			vAlign = 'center';
+	}
 
 	selectors[ '.uagb-buttons__outer-wrap .uagb-buttons-repeater:not(.wp-block-button__link)' ] = {
 		// For Backword user.
@@ -177,9 +190,13 @@ function styling( attributes, clientId, name, deviceType ) {
 		selectors[ '.uagb-editor-preview-mode-desktop .block-editor-inner-blocks' ] = {
 			'text-align': align,
 		};
+		selectors[ '.uagb-editor-preview-mode-desktop .block-editor-block-list__layout' ] = {
+			'align-items': vAlign,
+		};
 	} else {
 		selectors[ '.uagb-editor-preview-mode-desktop .block-editor-block-list__layout' ] = {
 			'width': '100%',
+			'align-items': vAlign,
 		};
 		selectors[ ' .block-editor-block-list__block' ] = {
 			'width': '100%',
@@ -189,6 +206,9 @@ function styling( attributes, clientId, name, deviceType ) {
 		tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-inner-blocks' ] = {
 			'text-align': alignTablet,
 		};
+		tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-block-list__layout' ] = {
+			'align-items': vAlign,
+		};
 	} else {
 		tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-block-list__layout' ] = {
 			'flex-direction': 'column',
@@ -196,6 +216,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		};
 		tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-block-list__layout' ] = {
 			'width': '100%',
+			'align-items': vAlign,
 		};
 		tabletSelectors[ ' .block-editor-block-list__block ' ] = {
 			'width': '100%',
@@ -205,6 +226,9 @@ function styling( attributes, clientId, name, deviceType ) {
 		mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-inner-blocks' ] = {
 			'text-align': alignMobile,
 		};
+		mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
+			'align-items': vAlign,
+		};
 	} else {
 		mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
 			'flex-direction': 'column',
@@ -212,6 +236,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		};
 		mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
 			'width': '100%',
+			'align-items': vAlign,
 		};
 		mobileSelectors[ ' .block-editor-block-list__block ' ] = {
 			'width': '100%',
@@ -259,11 +284,11 @@ function styling( attributes, clientId, name, deviceType ) {
 		'padding-bottom': generateCSSUnit( bottomMobilePadding, mobilePaddingUnit ),
 	};
 
-	const base_selector = ` .uagb-block-${ block_id }`;
+	const base_selector = gbsSelector ? gbsSelector + ' ' : ` .uagb-block-${ block_id }`;
 
 	let styling_css = generateCSS( selectors, base_selector );
 
-	if( 'tablet' === previewType || 'mobile' === previewType ) {
+	if( 'tablet' === previewType || 'mobile' === previewType || gbsSelector ) {
 		styling_css += generateCSS(
 			tabletSelectors,
 			`${ base_selector }`,
@@ -271,7 +296,7 @@ function styling( attributes, clientId, name, deviceType ) {
 			'tablet'
 		);
 
-		if( 'mobile' === previewType ){
+		if( 'mobile' === previewType || gbsSelector ){
 			styling_css += generateCSS(
 				mobileSelectors,
 				`${ base_selector }`,

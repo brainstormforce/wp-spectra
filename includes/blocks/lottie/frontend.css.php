@@ -20,15 +20,15 @@ $selectors                                   = array(
 		'background-color' => $attr['backgroundColor'],
 	),
 	'.uagb-lottie__left'       => array(
-		'margin-right' => 'auto',
-		'margin-left'  => '0px',
+		'margin-right' => 'auto !important',
+		'margin-left'  => '0px !important',
 	),
 	'.uagb-lottie__right'      => array(
-		'margin-left'  => 'auto',
-		'margin-right' => '0px',
+		'margin-left'  => 'auto !important',
+		'margin-right' => '0px !important',
 	),
 	'.uagb-lottie__center'     => array(
-		'margin' => '0 auto',
+		'margin' => '0 auto !important',
 	),
 );
 $selectors['.uagb-lottie__outer-wrap:hover'] = array(

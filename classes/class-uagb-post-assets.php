@@ -42,7 +42,7 @@ class UAGB_Post_Assets {
 	 * UAG File Generation Flag
 	 *
 	 * @since 1.14.0
-	 * @var file_generation
+	 * @var string
 	 */
 	public $file_generation = 'disabled';
 
@@ -211,6 +211,9 @@ class UAGB_Post_Assets {
 
 		$this->post_id = intval( $post_id );
 
+		// For Spectra Global Block Styles.
+		$this->spectra_gbs_load_gfonts();
+
 		if ( wp_is_post_revision( $this->post_id ) ) {
 			$this->is_post_revision = true;
 		}
@@ -269,6 +272,96 @@ class UAGB_Post_Assets {
 		foreach ( $result as $post_id => $post_data ) {
 			$custom_post = get_post( $post_id );
 			$this->prepare_assets( $custom_post );
+		}
+	}
+
+	/**
+	 * Load Styles for Spectra Global Block Styles.
+	 *
+	 * @since 2.9.0
+	 * @return void
+	 */
+	public function spectra_gbs_load_styles() {
+		// Check if GBS is enabled.
+		$gbs_status                  = \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_gbs_extension', 'enabled' );
+		$spectra_global_block_styles = get_option( 'spectra_global_block_styles', array() );
+		if ( empty( $spectra_global_block_styles ) || ! is_array( $spectra_global_block_styles ) ) {
+			return;
+		}
+
+		if ( 'disabled' === $gbs_status ) {
+			// Enqueue GBS default styles.
+			foreach ( $spectra_global_block_styles as $style ) {
+
+				if ( empty( $style['blockName'] ) || ! is_string( $style['blockName'] ) ) {
+					continue;
+				}
+
+				// Check if uagb string exist in $block_name or not.
+				if ( 0 !== strpos( $style['blockName'], 'uagb/' ) ) {
+					continue;
+				}
+
+				$_block_slug = str_replace( 'uagb/', '', $style['blockName'] );
+
+				// This is class name and file name.
+				$file_names    = 'uagb-gbs-default-' . $_block_slug;
+				$wp_upload_dir = \UAGB_Helper::get_uag_upload_dir_path();
+				$wp_upload_url = UAGB_Helper::get_uag_upload_url_path();
+				$file_dir      = $wp_upload_dir . $file_names . '.css';
+				if ( file_exists( $file_dir ) ) {
+					$file_url = $wp_upload_url . $file_names . '.css';
+					wp_enqueue_style( $file_names, $file_url, array(), UAGB_VER, 'all' );
+				}
+			}
+		}
+
+		if ( 'enabled' !== $gbs_status ) {
+			return;
+		}
+		
+		$should_render_styles_in_fse_page = wp_is_block_theme() && ! get_queried_object();
+
+		foreach ( $spectra_global_block_styles as $style ) {
+			if ( ! empty( $style['value'] ) && ! empty( $style['frontendStyles'] ) ) {
+				
+				if ( ! empty( $style['post_ids'] ) && in_array( $this->post_id, $style['post_ids'] ) ) {
+					$this->stylesheet = $style['frontendStyles'] . $this->stylesheet;
+				} elseif ( $should_render_styles_in_fse_page && isset( $style['page_template_slugs'] ) && ! empty( $style['page_template_slugs'] ) ) {
+					// Render in fse template.
+					$this->stylesheet = $style['frontendStyles'] . $this->stylesheet;
+				} elseif ( isset( $style['styleForGlobal'] ) && ! empty( $style['styleForGlobal'] ) ) {
+					$this->stylesheet = $style['frontendStyles'] . $this->stylesheet;
+				}         
+			}
+		}
+	}
+	
+
+	/**
+	 * Load Google Fonts for Spectra Global Block Styles.
+	 *
+	 * @since 2.9.0
+	 * @return void
+	 */
+	public function spectra_gbs_load_gfonts() {
+
+		$spectra_gbs_google_fonts = get_option( 'spectra_gbs_google_fonts', array() );
+		
+		if ( ! is_array( $spectra_gbs_google_fonts ) ) {
+			return;
+		}
+
+		$families = array();
+		foreach ( $spectra_gbs_google_fonts as $style ) {
+			if ( is_array( $style ) ) {
+				foreach ( $style as $family ) {
+					if ( ! in_array( $family, $families, true ) ) {
+						UAGB_Helper::blocks_google_font( true, $family, '' );
+						$families[] = $family;
+					}
+				}
+			}
 		}
 	}
 
@@ -397,6 +490,9 @@ class UAGB_Post_Assets {
 			add_action( 'wp_head', array( $this, 'print_conditional_css' ), 80 );
 		}
 
+		// For Spectra Global Block Styles.
+		$this->spectra_gbs_load_styles();
+		
 		// UAG Flag specific.
 		if ( $this->is_allowed_assets_generation ) {
 
@@ -869,9 +965,12 @@ class UAGB_Post_Assets {
 
 		if ( strpos( $name, 'uagb/' ) !== false ) {
 			$_block_slug = str_replace( 'uagb/', '', $name );
-			$_block_css  = UAGB_Block_Module::get_frontend_css( $_block_slug, $blockattr, $block_id );
-			$_block_js   = UAGB_Block_Module::get_frontend_js( $_block_slug, $blockattr, $block_id, 'js' );
-			$css         = $this->merge_array_string_values( $css, $_block_css );
+
+			$blockattr = isset( $blockattr ) && is_array( $blockattr ) ? $blockattr : array();
+
+			$_block_css = UAGB_Block_Module::get_frontend_css( $_block_slug, $blockattr, $block_id );
+			$_block_js  = UAGB_Block_Module::get_frontend_js( $_block_slug, $blockattr, $block_id, 'js' );
+			$css        = $this->merge_array_string_values( $css, $_block_css );
 			if ( ! empty( $_block_js ) ) {
 				$js .= $_block_js;
 			}
@@ -1210,12 +1309,12 @@ class UAGB_Post_Assets {
 	/**
 	 * Creates css and js files.
 	 *
-	 * @param  var $file_data    Gets the CSS\JS for the current Page.
-	 * @param  var $type    Gets the CSS\JS type.
-	 * @param  var $post_id Post ID.
+	 * @param  var    $file_data    Gets the CSS\JS for the current Page.
+	 * @param  string $type    Gets the CSS\JS type.
+	 * @param  int    $post_id Post ID.
 	 * @since  1.14.0
 	 */
-	public function file_write( $file_data, $type = 'css', $post_id = '' ) {
+	public function file_write( $file_data, $type = 'css', $post_id = 0 ) {
 
 		if ( ! $this->post_id ) {
 			return false;

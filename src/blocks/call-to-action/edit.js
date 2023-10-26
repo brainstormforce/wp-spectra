@@ -12,6 +12,7 @@ import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import AddGBSStyles from '@Controls/AddGBSStyles';
 import addInitialAttr from '@Controls/addInitialAttr';
 
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
@@ -34,6 +35,7 @@ const UAGBCallToAction = ( props ) => {
 			ctaBorderColor,
 			ctaBorderhoverColor,
 			ctaBorderRadius,
+			globalBlockStyleId,
 		},
 		clientId,
 		name,
@@ -45,6 +47,10 @@ const UAGBCallToAction = ( props ) => {
 			setAttributes( { stack: 'none' } );
 		} else if ( stack === 'none' && 'below-title' === ctaPosition ) {
 			setAttributes( { stack: 'desktop' } );
+		}
+
+		if( globalBlockStyleId ) {
+			return;
 		}
 
 		if ( ctaLeftSpace ) {
@@ -109,4 +115,5 @@ const UAGBCallToAction = ( props ) => {
 export default compose(
 	addInitialAttr,
 	AddStaticStyles,
+	AddGBSStyles
 )( UAGBCallToAction );

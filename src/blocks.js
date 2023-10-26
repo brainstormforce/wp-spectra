@@ -9,6 +9,18 @@
  * Webpack is compiling as the input file.
  */
 
+import { registerPlugin } from '@wordpress/plugins';
+
+import './store'; // Spectra Redux store initialized.
+
+import SpectraLoadGlobalGoogleFonts from '@Components/global-block-link/load-google-fonts'; // Spectra Global Block Styles Font Loader.
+
+registerPlugin( 'spectra-global-blocks-fonts', { render: SpectraLoadGlobalGoogleFonts } ); // Spectra Global Block Styles Font Loading.
+
+import '@Components/global-block-link/filters'; // Spectra Global Block Styles Filters.
+
+import '@Components/global-block-link/attributes'; // Spectra Global Block Styles Attributes.
+
 import domReady from '@wordpress/dom-ready';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 // Delete the local storage on every refresh.
@@ -115,7 +127,7 @@ import './blocks/post/deprecated-block.js'; // Masonry.
 import './blocks/wp-search/block.js';
 
 // Responsive Device Icons on Editor
-import './components/responsive-icons/index.js';
+import '@Components/responsive-icons/index.js';
 
 // Keep category list in separate variable and remove category list from icons list.
 if ( uagb_blocks_info.uagb_svg_icons?.uagb_category_list ) {

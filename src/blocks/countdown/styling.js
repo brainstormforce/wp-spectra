@@ -9,7 +9,7 @@ import generateShadowCSS from '@Controls/generateShadowCSS';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import { applyFilters } from '@wordpress/hooks';
 
-export default function styling( attributes, clientId, name, deviceType ) {
+export default function styling( attributes, clientId, name, deviceType, gbsSelector = false ) {
 	const previewType = deviceType.toLowerCase();
 	const {
 		block_id,
@@ -176,6 +176,7 @@ export default function styling( attributes, clientId, name, deviceType ) {
 		showSeparator,
 		separatorType,
 		boxBorderHColor,
+		globalBlockStyleId,
 	} = attributes;
 
 	const blockName = name.replace( 'uagb/', '' );
@@ -274,9 +275,11 @@ export default function styling( attributes, clientId, name, deviceType ) {
 			'display': showDays || showHours || showMinutes ? '' : 'none',
 		},
 		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box': {
-			'aspect-ratio': isSquareBox ? 1 : 'auto',
+			// eslint-disable-next-line no-nested-ternary
+			'aspect-ratio': isSquareBox ? 1 : ( ! globalBlockStyleId ? 'auto' : '' ),
 			'width': generateCSSUnit( boxWidth, 'px' ),
-			'height': isSquareBox ? generateCSSUnit( boxWidth, 'px' ) : 'auto',
+			// eslint-disable-next-line no-nested-ternary
+			'height': isSquareBox ? generateCSSUnit( boxWidth, 'px' ) : ( ! globalBlockStyleId ? 'auto' : '' ),
 			'flex-direction': boxFlex,
 			'justify-content': boxFlex !== 'column' ? boxAlign : 'center',
 			'align-items': boxFlex !== 'row' ? boxAlign : 'center',
@@ -342,7 +345,8 @@ export default function styling( attributes, clientId, name, deviceType ) {
 
 	tabletSelectors[ '.wp-block-uagb-countdown .wp-block-uagb-countdown__box' ] = {
 		'width': generateCSSUnit( boxWidthTablet, 'px' ),
-		'height': isSquareBox ? generateCSSUnit( boxWidthTablet, 'px' ) : 'auto',
+		// eslint-disable-next-line no-nested-ternary
+		'height': isSquareBox ? generateCSSUnit( boxWidthTablet, 'px' ) : ( ! globalBlockStyleId ? 'auto' : '' ),
 		'flex-direction': boxFlexTablet,
 		'justify-content': boxFlexTablet !== 'column' ? boxAlignTablet : 'center',
 		'align-items': boxFlexTablet !== 'row' ? boxAlignTablet : 'center',
@@ -388,7 +392,8 @@ export default function styling( attributes, clientId, name, deviceType ) {
 
 	mobileSelectors[ '.wp-block-uagb-countdown .wp-block-uagb-countdown__box' ] = {
 		'width': generateCSSUnit( boxWidthMobile, 'px' ),
-		'height': isSquareBox ? generateCSSUnit( boxWidthMobile, 'px' ) : 'auto',
+		// eslint-disable-next-line no-nested-ternary
+		'height': isSquareBox ? generateCSSUnit( boxWidthMobile, 'px' ) : ( ! globalBlockStyleId ? 'auto' : '' ),
 		'flex-direction': boxFlexMobile,
 		'justify-content': boxFlexMobile !== 'column' ? boxAlignMobile : 'center',
 		'align-items': boxFlexMobile !== 'row' ? boxAlignMobile : 'center',
@@ -423,7 +428,7 @@ export default function styling( attributes, clientId, name, deviceType ) {
 	// Separator.
 	if ( showSeparator ) {
 		selectors[ separatorSelector ] = {
-			'content': "'" + separatorType + "'",
+			'content': separatorType ? `'${ separatorType }'` : '',
 			'font-family': separatorFontFamily,
 			'font-style': separatorFontStyle,
 			'font-weight': separatorFontWeight,
@@ -431,21 +436,21 @@ export default function styling( attributes, clientId, name, deviceType ) {
 			'line-height': generateCSSUnit( separatorLineHeight, separatorLineHeightType ),
 			'color': separatorColor,
 
-			'right': generateCSSUnit( -separatorRightSpacingFallback, 'px' ),
+			'right': separatorRightSpacingFallback ? generateCSSUnit( -separatorRightSpacingFallback, 'px' ) : '',
 			'top': generateCSSUnit( separatorTopSpacingFallback, 'px' ),
 		};
 
 		tabletSelectors[ separatorSelector ] = {
 			'font-size': generateCSSUnit( separatorFontSizeTablet, separatorFontSizeTypeTablet ),
 			'line-height': generateCSSUnit( separatorLineHeightTablet, separatorLineHeightType ),
-			'right': generateCSSUnit( -separatorRightSpacingTabletFallback, 'px' ),
+			'right': separatorRightSpacingTabletFallback ? generateCSSUnit( -separatorRightSpacingTabletFallback, 'px' ) : '',
 			'top': generateCSSUnit( separatorTopSpacingTabletFallback, 'px' ),
 		};
 
 		mobileSelectors[ separatorSelector ] = {
 			'font-size': generateCSSUnit( separatorFontSizeMobile, separatorFontSizeTypeMobile ),
 			'line-height': generateCSSUnit( separatorLineHeightMobile, separatorLineHeightType ),
-			'right': generateCSSUnit( -separatorRightSpacingMobileFallback, 'px' ),
+			'right': separatorRightSpacingMobileFallback ? generateCSSUnit( -separatorRightSpacingMobileFallback, 'px' ) : '',
 			'top': generateCSSUnit( separatorTopSpacingMobileFallback, 'px' ),
 		};
 	}
@@ -464,7 +469,7 @@ export default function styling( attributes, clientId, name, deviceType ) {
 		mobileSelectors[ boxGapSelectorRTL ][ 'margin-right' ] = generateCSSUnit( boxSpacingFallbackMobile, 'px' );
 	}
 
-	const baseSelector = `.editor-styles-wrapper .uagb-block-${ block_id }`;
+	const baseSelector = '.editor-styles-wrapper ' + ( gbsSelector ? gbsSelector : `.uagb-block-${ block_id }` );
 
 	selectors = applyFilters( `spectra.${ blockName }.styling`, selectors, attributes );
 	tabletSelectors = applyFilters( `spectra.${ blockName }.tabletStyling`, tabletSelectors, attributes );
@@ -472,7 +477,7 @@ export default function styling( attributes, clientId, name, deviceType ) {
 
 	let styling_css = generateCSS( selectors, baseSelector );
 
-	if( 'tablet' === previewType || 'mobile' === previewType ) {
+	if( 'tablet' === previewType || 'mobile' === previewType || gbsSelector ) {
 		styling_css += generateCSS(
 			tabletSelectors,
 			`${ baseSelector }`,
@@ -480,7 +485,7 @@ export default function styling( attributes, clientId, name, deviceType ) {
 			'tablet'
 		);
 
-		if( 'mobile' === previewType ){
+		if( 'mobile' === previewType || gbsSelector ){
 			styling_css += generateCSS(
 				mobileSelectors,
 				`${ baseSelector }`,

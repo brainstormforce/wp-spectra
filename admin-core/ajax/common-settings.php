@@ -62,6 +62,7 @@ class Common_Settings extends Ajax_Base {
 			'enable_block_responsive',
 			'enable_dynamic_content',
 			'enable_animations_extension',
+			'enable_gbs_extension',
 			'blocks_activation_and_deactivation',
 			'load_select_font_globally',
 			'load_fse_font_globally',
@@ -787,5 +788,121 @@ class Common_Settings extends Ajax_Base {
 			wp_send_json_success( array( 'messsage' => __( 'Successfully refreshed tokens!', 'ultimate-addons-for-gutenberg' ) ) );
 		}
 		wp_send_json_error( array( 'messsage' => __( 'Failed to refresh tokens', 'ultimate-addons-for-gutenberg' ) ) );
+	}
+	
+	/**
+	 * Save setting - Enables GBS extension.
+	 *
+	 * @since 2.9.0
+	 * @return void
+	 */
+	public function enable_gbs_extension() {
+		$this->check_permission_nonce( 'uag_enable_gbs_extension' );
+		$value = $this->check_post_value();
+		
+		$value = 'enabled' === $value ? 'enabled' : 'disabled';
+		$this->save_gbs_default_in_upload_folder( $value );
+
+		$this->save_admin_settings( 'uag_enable_gbs_extension', $value );
+	}
+
+	/**
+	 * Generate or delete default block css files.
+	 * These generated files will be used in frontend.
+	 * when user will disable GBS extension.
+	 *
+	 * @param string $value value will be enabled or disabled.
+	 * @since 2.9.0
+	 * @return void
+	 */
+	public function save_gbs_default_in_upload_folder( $value ) {
+		$spectra_global_block_styles = get_option( 'spectra_global_block_styles', array() );
+				
+		if ( empty( $spectra_global_block_styles ) || ! is_array( $spectra_global_block_styles ) ) {
+			return;
+		}
+
+		$create_block_array = array();
+
+		foreach ( $spectra_global_block_styles as $styles ) {
+			if ( empty( $styles['blockName'] ) || ! is_string( $styles['blockName'] ) ) {
+				continue;
+			}
+
+			$create_block_array[ $styles['blockName'] ] = true; 
+		}
+
+		// Remove assets if css available.
+		if ( 'enabled' === $value ) {
+			// Store all post ids in array.
+			$post_ids = array();
+
+			foreach ( $spectra_global_block_styles as $styles_get ) {
+				if ( empty( $styles_get['post_ids'] ) ) {
+					continue;
+				}
+
+				foreach ( $styles_get['post_ids'] as $post_id ) {
+					if ( ! $post_id || in_array( $post_id, $post_ids ) ) {
+						continue;
+					}
+
+					delete_post_meta( $post_id, '_uag_page_assets' );
+					delete_post_meta( $post_id, '_uag_css_file_name' );
+					delete_post_meta( $post_id, '_uag_js_file_name' );
+
+					$post_ids[] = $post_id;
+				}
+			}
+
+			update_option( '__uagb_asset_version', time() );
+		}
+
+		foreach ( $create_block_array as $block_name => $index ) {
+			// Check if uagb string exist in $block_name or not.
+			if ( ! is_string( $block_name ) || 0 !== strpos( $block_name, 'uagb/' ) ) {
+				continue;
+			}
+			
+			$_block_slug = str_replace( 'uagb/', '', $block_name );
+
+			// This is class name and file name.
+			$class_name = 'uagb-gbs-default-' . $_block_slug;
+
+			$wp_upload_dir = \UAGB_Helper::get_uag_upload_dir_path();
+			
+			$path_and_file_name = $wp_upload_dir . $class_name . '.css';
+
+			// If $value is enabled then only remove css default files.
+			if ( 'enabled' === $value ) {
+				\UAGB_Helper::remove_file( $path_and_file_name );
+				continue;
+			}
+
+			// For default GBS id we are assigning default GBS id attr globalBlockStyleId = $class_name.
+			$dummy_attr = array( 'globalBlockStyleId' => $class_name );
+
+			$_block_css = \UAGB_Block_Module::get_frontend_css( $_block_slug, $dummy_attr, '', true );
+
+			$tab_styling_css = '';
+			$mob_styling_css = '';
+			$desktop         = $_block_css['desktop'];
+			
+			if ( ! empty( $_block_css['tablet'] ) ) {
+				$tab_styling_css .= '@media only screen and (max-width: ' . UAGB_TABLET_BREAKPOINT . 'px) {';
+				$tab_styling_css .= $_block_css['tablet'];
+				$tab_styling_css .= '}';
+			}
+
+			if ( ! empty( $_block_css['mobile'] ) ) {
+				$mob_styling_css .= '@media only screen and (max-width: ' . UAGB_MOBILE_BREAKPOINT . 'px) {';
+				$mob_styling_css .= $_block_css['mobile'];
+				$mob_styling_css .= '}';
+			}
+			$_block_css = $desktop . $tab_styling_css . $mob_styling_css;
+			
+			$wp_filesystem = uagb_filesystem();
+			$wp_filesystem->put_contents( $path_and_file_name, $_block_css, FS_CHMOD_FILE );
+		}
 	}
 }

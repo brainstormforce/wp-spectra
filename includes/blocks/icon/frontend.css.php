@@ -152,4 +152,8 @@ $combined_selectors = array(
 	'mobile'  => $m_selectors,
 );
 
-return UAGB_Helper::generate_all_css( $combined_selectors, ' .uagb-block-' . $id );
+return UAGB_Helper::generate_all_css(
+	$combined_selectors,
+	' .uagb-block-' . $id,
+	isset( $gbs_class ) ? $gbs_class : ''
+);

@@ -11,6 +11,7 @@ import Render from './render';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
+import AddGBSStyles from '@Controls/AddGBSStyles';
 import addInitialAttr from '@Controls/addInitialAttr';
 
 const UAGBIcon = ( props ) => {
@@ -19,10 +20,11 @@ const UAGBIcon = ( props ) => {
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 		isSelected,
 		name,
-		deviceType
+		deviceType,
+		clientId,
 	} = props;
 
-	const blockStyling = useMemo( () => styling( attributes, name, deviceType ), [ attributes, deviceType ] );
+	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
@@ -44,4 +46,5 @@ const UAGBIcon = ( props ) => {
 export default compose(
 	addInitialAttr,
 	AddStaticStyles,
+	AddGBSStyles
 )( UAGBIcon );

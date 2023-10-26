@@ -247,6 +247,7 @@ class Admin_Menu {
 				'spectra_pro_status'       => is_plugin_active( 'spectra-pro/spectra-pro.php' ),
 				'spectra_pro_ver'          => defined( 'SPECTRA_PRO_VER' ) ? SPECTRA_PRO_VER : null,
 				'spectra_custom_fonts'     => apply_filters( 'spectra_system_fonts', array() ),
+				'spectra_admin_video'      => apply_filters( 'spectra_display_admin_video', true ),
 				'is_allow_registration'    => (bool) get_option( 'users_can_register' ),
 				'theme_fonts'              => $theme_font_families,
 				'is_block_theme'           => \UAGB_Admin_Helper::is_block_theme(),
@@ -436,8 +437,17 @@ class Admin_Menu {
 	 *  Add footer link.
 	 */
 	public function add_footer_link() {
-		// translators: HTML entities.
-		return '<span id="footer-thankyou">' . sprintf( __( 'Thank you for using %1$sSpectra.%2$s', 'ultimate-addons-for-gutenberg' ), '<a href="https://wpspectra.com/" class="focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover">', '</a>' ) . '</span>';
+		return '<span id="spectra-footer-thankyou" style="font-family: Inter, sans-serif;">' . sprintf(
+			// translators: %1$s: Opening Strong Tag, %2$s: Closing Strong Tag, %3$s Anchor Tag with Star Symbol Codes.
+			__(
+				'Enjoyed %1$sSpectra%2$s? Please leave us a %3$s rating. We really appreciate your support!',
+				'ultimate-addons-for-gutenberg'
+			),
+			'<strong>', 
+			'</strong>',
+			'<a href="https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg/reviews/?rate=5#new-post" target="_blank" style="color: #6104ff; text-decoration: none;" onmouseover="this.style.textDecoration=\'underline\'" onmouseout="this.style.textDecoration=\'none\'">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
+		) . '</span>';
+		
 	}
 
 }

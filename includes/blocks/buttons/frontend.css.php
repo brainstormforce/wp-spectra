@@ -69,18 +69,28 @@ if ( 'desktop' === $attr['stack'] ) {
 		'column-gap' => UAGB_Helper::get_css_value( $attr['gapMobile'], 'px' ),
 	);
 }
-$alignment       = ( 'left' === $attr['align'] ) ? 'flex-start' : ( ( 'right' === $attr['align'] ) ? 'flex-end' : 'center' );
-$alignmentTablet = ( 'left' === $attr['alignTablet'] ) ? 'flex-start' : ( ( 'right' === $attr['alignTablet'] ) ? 'flex-end' : 'center' );
-$alignmentMobile = ( 'left' === $attr['alignMobile'] ) ? 'flex-start' : ( ( 'right' === $attr['alignMobile'] ) ? 'flex-end' : 'center' );
 
+$vAlign = '';
+switch ( $attr['verticalAlignment'] ) {
+	case 'top':
+		$vAlign = 'flex-start';
+		break;
+	case 'bottom':
+		$vAlign = 'flex-end';
+		break;
+	default:
+		$vAlign = 'center';
+		break;
+}
 if ( 'full' !== $attr['align'] ) {
 	$selectors['.uagb-buttons__outer-wrap .uagb-buttons__wrap '] = array(
 		'justify-content' => $attr['align'],
-		'align-items'     => $alignment,
+		'align-items'     => $vAlign,
 	);
 } else {
 	$selectors['.uagb-buttons__outer-wrap .uagb-buttons__wrap']                   = array(
-		'width' => '100%',
+		'width'       => '100%',
+		'align-items' => $vAlign,
 	);
 	$selectors['.uagb-buttons__outer-wrap .uagb-buttons__wrap .wp-block-button '] = array(
 		'width' => '100%',
@@ -90,7 +100,7 @@ if ( 'full' !== $attr['align'] ) {
 if ( 'full' !== $attr['alignTablet'] ) {
 	$t_selectors['.uagb-buttons__outer-wrap .uagb-buttons__wrap '] = array(
 		'justify-content' => $attr['alignTablet'],
-		'align-items'     => $alignmentTablet,
+		'align-items'     => $vAlign,
 	);
 } else {
 	$t_selectors['.uagb-buttons__outer-wrap .uagb-buttons__wrap']                   = array(
@@ -104,7 +114,7 @@ if ( 'full' !== $attr['alignTablet'] ) {
 if ( 'full' !== $attr['alignMobile'] ) {
 	$m_selectors['.uagb-buttons__outer-wrap .uagb-buttons__wrap '] = array(
 		'justify-content' => $attr['alignMobile'],
-		'align-items'     => $alignmentMobile,
+		'align-items'     => $vAlign,
 	);
 } else {
 	$m_selectors['.uagb-buttons__outer-wrap .uagb-buttons__wrap']                   = array(
@@ -215,4 +225,8 @@ $combined_selectors = array(
 
 $base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-buttons-';
 
-return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
+return UAGB_Helper::generate_all_css( 
+	$combined_selectors,
+	$base_selector . $id,
+	isset( $gbs_class ) ? $gbs_class : ''
+);

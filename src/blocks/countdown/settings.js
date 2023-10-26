@@ -20,6 +20,8 @@ import { InspectorControls } from '@wordpress/block-editor';
 import Separator from '@Components/separator';
 import { getSettings as getDateSettings } from '@wordpress/date';
 import { memo } from '@wordpress/element';
+import renderGBSSettings from '@Controls/renderGBSSettings';
+import styling from './styling';
 import { applyFilters } from '@wordpress/hooks';
 
 function Settings( props ) {
@@ -1349,7 +1351,7 @@ function Settings( props ) {
 		<>
 			<InspectorControls>
 				<InspectorTabs>
-					<InspectorTab { ...UAGTabs.general }>
+					<InspectorTab { ...UAGTabs.general } parentProps={ props }>
 						{ generalPanel }
 						{ labelGeneralPanel }
 						{ separatorGeneralPanel }
@@ -1357,7 +1359,7 @@ function Settings( props ) {
 						{ applyFilters( 'spectra.countdown.expiry-settings' ) }
 						{ presetsPanel }
 					</InspectorTab>
-					<InspectorTab { ...UAGTabs.style }>
+					<InspectorTab { ...UAGTabs.style } parentProps={ props }>
 						{ boxStylePanel }
 						{ digitStylePanel }
 						{ showLabels && labelStylePanel }
@@ -1365,7 +1367,9 @@ function Settings( props ) {
 						{ boxShadowSettings }
 						{ spacingStylePanel }
 					</InspectorTab>
-					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
+					<InspectorTab { ...UAGTabs.advance } parentProps={ props }>
+						{ renderGBSSettings( styling, setAttributes, attributes ) }
+					</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 		</>

@@ -92,5 +92,8 @@ return array_merge(
 		'iconBoxShadowPositionHover'       => '',
 		// Border.
 		'iconBorderStyle'                  => 'default',
+		// For Global Block Styles.
+		'globalBlockStyleName'             => '',
+		'globalBlockStyleId'               => '',
 	)
 );

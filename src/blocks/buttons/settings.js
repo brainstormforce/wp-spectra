@@ -6,7 +6,7 @@ import renderSVG from '@Controls/renderIcon';
 import ResponsiveSlider from '@Components/responsive-slider';
 import SpacingControl from '@Components/spacing-control';
 import ResponsiveSelectControl from '@Components/responsive-select';
-import { InspectorControls, BlockControls, AlignmentToolbar } from '@wordpress/block-editor';
+import { InspectorControls, BlockControls, AlignmentToolbar, BlockVerticalAlignmentControl } from '@wordpress/block-editor';
 import { select } from '@wordpress/data';
 
 import { Icon } from '@wordpress/components';
@@ -14,6 +14,8 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import renderGBSSettings from '@Controls/renderGBSSettings';
+import styling from './styling';
 
 const Settings = ( props ) => {
 
@@ -88,6 +90,7 @@ const Settings = ( props ) => {
 		fontLetterSpacingTablet,
 		fontLetterSpacingMobile,
 		fontLetterSpacingType,
+		verticalAlignment,
 	} = attributes;
 
 	const parentBlock = select( 'core/block-editor' ).getSelectedBlock();
@@ -141,6 +144,12 @@ const Settings = ( props ) => {
 
 	const getBlockControls = () => (
 		<BlockControls>
+			<BlockVerticalAlignmentControl
+				onChange={ ( alignment ) =>
+					setAttributes( { verticalAlignment: alignment } )
+				}
+				value={ verticalAlignment }
+			/>
 			<AlignmentToolbar
 				value={ align }
 				onChange={ ( value ) => {
@@ -195,6 +204,30 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ true }
 					responsive={ true }
+				/>
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( 'Vertical Alignment', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						value: verticalAlignment,
+						label: 'verticalAlignment',
+					} }
+					options={ [
+						{
+							value: 'top',
+							label: 'Top',
+						},
+						{
+							value: 'center',
+							label: 'Middle',
+						},
+						{
+							value: 'bottom',
+							label: 'Bottom',
+						},
+					] }
+					showIcons={false}
+					responsive={false}
 				/>
 				{ buttonsCount > 1 && (
 					<MultiButtonsControl
@@ -515,12 +548,14 @@ const Settings = ( props ) => {
 			{ getBlockControls() }
 			<InspectorControls>
 				<InspectorTabs>
-					<InspectorTab { ...UAGTabs.general }>{ generalSettings() }</InspectorTab>
-					<InspectorTab { ...UAGTabs.style }>
+					<InspectorTab { ...UAGTabs.general } parentProps={ props }>{ generalSettings() }</InspectorTab>
+					<InspectorTab { ...UAGTabs.style } parentProps={ props }>
 						{ styleSettings() }
 						{ spacingSettings() }
 					</InspectorTab>
-					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
+					<InspectorTab { ...UAGTabs.advance } parentProps={ props }>
+						{ renderGBSSettings( styling, setAttributes, attributes ) }
+					</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 		</>

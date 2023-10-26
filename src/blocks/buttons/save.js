@@ -17,7 +17,7 @@ export default function save( props ) {
 				`uagb-btn__${ buttonSize }-btn`,
 				`uagb-btn-tablet__${ buttonSizeTablet }-btn`,
 				`uagb-btn-mobile__${ buttonSizeMobile }-btn`,
-				`uagb-block-${ block_id }`
+				`uagb-block-${ block_id }`,
 			) }
 		>
 			<div className="uagb-buttons__wrap uagb-buttons-layout-wrap">

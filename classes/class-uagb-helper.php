@@ -37,7 +37,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * UAG File Generation Flag
 		 *
 		 * @since 1.14.0
-		 * @var file_generation
+		 * @var string
 		 */
 		public static $file_generation = 'disabled';
 
@@ -243,9 +243,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Adds Google fonts all blocks.
 		 *
-		 * @param array $load_google_font the blocks attr.
-		 * @param array $font_family the blocks attr.
-		 * @param array $font_weight the blocks attr.
+		 * @param bool       $load_google_font the blocks attr.
+		 * @param array      $font_family the blocks attr.
+		 * @param int|string $font_weight the blocks attr.
 		 */
 		public static function blocks_google_font( $load_google_font, $font_family, $font_weight ) {
 
@@ -893,13 +893,52 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		}
 
 		/**
+		 * Sets the selector to Global Block Styles Selector if applicable.
+		 *
+		 * @param string $selector Selector.
+		 * @param array  $gbs_attributes GBS attributes array.
+		 * @since 2.9.0
+		 * @return string $selector Updated selector.
+		 */
+		public static function add_gbs_selector_if_applicable( $selector, $gbs_attributes ) {
+			if ( empty( $gbs_attributes['globalBlockStyleId'] ) ) {
+				return $selector;
+			}
+
+			return self::get_gbs_selector( $gbs_attributes['globalBlockStyleId'] );
+		}
+
+		/**
+		 * Get the Global block styles CSS selector.
+		 *
+		 * @param string $style_name Style Name.
+		 * 
+		 * @since 2.9.0
+		 * @return string $selector Styles Selector.
+		 */
+		public static function get_gbs_selector( $style_name ) {
+
+			if ( $style_name ) {
+				return '.spectra-gbs-' . $style_name;
+			}
+			return '';
+		}
+
+		/**
 		 * Parse CSS into correct CSS syntax.
 		 *
 		 * @param array  $combined_selectors The combined selector array.
 		 * @param string $id The selector ID.
+		 * @param string $gbs_class The GBS class as string.
+		 * 
 		 * @since 1.15.0
+		 * @return array $css CSS.
 		 */
-		public static function generate_all_css( $combined_selectors, $id ) {
+		public static function generate_all_css( $combined_selectors, $id, $gbs_class = '' ) {
+
+			if ( ! empty( $gbs_class ) ) {
+				$id = $gbs_class;
+			}
 
 			return array(
 				'desktop' => self::generate_css( $combined_selectors['desktop'], $id ),
@@ -1375,6 +1414,92 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		}
 
 		/**
+		 * This function deletes the Page assets from the Page Meta Key.
+		 *
+		 * @param int $post_id Post Id.
+		 * 
+		 * @return void
+		 * @since 1.23.0
+		 */
+		public static function delete_page_assets( $post_id ) {
+			$current_post_type = get_post_type( $post_id );
+			if ( 'wp_template_part' === $current_post_type || 'wp_template' === $current_post_type ) {
+
+				// Delete all the TOC Post Meta on update of the template.
+				delete_post_meta_by_key( '_uagb_toc_options' );
+
+				$wp_upload_dir = self::get_uag_upload_dir_path();
+
+				if ( file_exists( $wp_upload_dir . 'custom-style-blocks.css' ) ) {
+					wp_delete_file( $wp_upload_dir . 'custom-style-blocks.css' );
+				}
+
+
+				if ( 'enabled' === self::$file_generation ) {
+
+					self::delete_uag_asset_dir();
+				}
+
+				UAGB_Admin_Helper::create_specific_stylesheet();
+
+				/* Update the asset version */
+				UAGB_Admin_Helper::update_admin_settings_option( '__uagb_asset_version', time() );
+				return;
+			}
+
+			if ( 'enabled' === self::$file_generation ) {
+
+				$css_asset_info = UAGB_Scripts_Utils::get_asset_info( 'css', $post_id );
+				$js_asset_info  = UAGB_Scripts_Utils::get_asset_info( 'js', $post_id );
+
+				$css_file_path = $css_asset_info['css'];
+				$js_file_path  = $js_asset_info['js'];
+
+				if ( file_exists( $css_file_path ) ) {
+					wp_delete_file( $css_file_path );
+				}
+				if ( file_exists( $js_file_path ) ) {
+					wp_delete_file( $js_file_path );
+				}
+			}
+
+			$unique_ids = get_option( '_uagb_fse_uniqids' );
+			if ( ! empty( $unique_ids ) && is_array( $unique_ids ) ) {
+				foreach ( $unique_ids as $id ) {
+					delete_post_meta( (int) $id, '_uag_page_assets' );
+				}
+			}
+
+			delete_post_meta( $post_id, '_uag_page_assets' );
+			delete_post_meta( $post_id, '_uag_css_file_name' );
+			delete_post_meta( $post_id, '_uag_js_file_name' );
+
+			$does_post_contain_reusable_blocks = self::does_post_contain_reusable_blocks( $post_id );
+
+			if ( true === $does_post_contain_reusable_blocks || 'wp_block' === $current_post_type ) {
+				/* Update the asset version */
+				update_option( '__uagb_asset_version', time() );
+			}
+		}
+
+		/**
+		 * Does Post contains reusable blocks.
+		 *
+		 * @param int $post_id Post ID.
+		 *
+		 * @since 1.23.5
+		 *
+		 * @return boolean Wether the Post contains any Reusable blocks or not.
+		 */
+		public static function does_post_contain_reusable_blocks( $post_id ) {
+
+			$post_content = get_post_field( 'post_content', $post_id, 'raw' );
+			$tag          = '<!-- wp:block';
+			$flag         = strpos( $post_content, $tag );
+			return ( 0 === $flag || is_numeric( $flag ) );
+		}
+
+		/**
 		 * Set alignment css function.
 		 *
 		 * @param string $align passed.
@@ -1417,6 +1542,19 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function title_tag_allowed_html( $title_Tag, $allowed_array, $default_tag ) {
 			return in_array( $title_Tag, $allowed_array, true ) ? sanitize_key( $title_Tag ) : $default_tag;
+		}
+
+		/**
+		 * Check if file exists and delete it.
+		 *
+		 * @param string $file_name File name.
+		 * @since 2.9.0
+		 * @return void
+		 */
+		public static function remove_file( $file_name ) {
+			if ( file_exists( $file_name ) ) {
+				wp_delete_file( $file_name );
+			}
 		}
 	}
 

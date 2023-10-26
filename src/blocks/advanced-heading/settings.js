@@ -19,6 +19,8 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import UAGSelectControl from '@Components/select-control';
 // Extend component
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import renderGBSSettings from '@Controls/renderGBSSettings';
+import styling from './styling';
 
 const Settings = ( props ) => {
 	const { attributes, deviceType, setAttributes } = props;
@@ -1245,12 +1247,12 @@ const Settings = ( props ) => {
 		<div>
 			<InspectorControls>
 				<InspectorTabs>
-					<InspectorTab { ...UAGTabs.general }>
+					<InspectorTab { ...UAGTabs.general } parentProps={ props }>
 						{ generalPanel() }
 						{ subHeadingPanel() }
 						{ separatorPanel() }
 					</InspectorTab>
-					<InspectorTab { ...UAGTabs.style }>
+					<InspectorTab { ...UAGTabs.style } parentProps={ props }>
 						{ headingTitleToggle && headingStylePanel() }
 						{ 'none' !== seperatorStyle && seperatorSettings() }
 						{ headingDescToggle && subHeadingStylePanel() }
@@ -1259,7 +1261,9 @@ const Settings = ( props ) => {
 						{ backgroundStylePanel() }
 						{ spacingStylePanel() }
 					</InspectorTab>
-					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
+					<InspectorTab { ...UAGTabs.advance } parentProps={ props }>
+						{ renderGBSSettings( styling, setAttributes, attributes ) }
+					</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
 		</div>

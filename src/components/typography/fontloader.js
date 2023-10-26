@@ -60,10 +60,7 @@ const WebfontLoader = ( props ) => {
 			addFont( props.config.google.families[ 0 ] );
 		}
 
-		let iframeFound = document.getElementsByTagName( 'iframe' );
-		if( iframeFound ) {
-			iframeFound = iframeFound[ 0 ];
-		}
+		const iframeFound = document.querySelector( 'iframe[name="editor-canvas"]' );
 
 		if ( iframeFound?.contentWindow ) {
 			WebFont.load( {
