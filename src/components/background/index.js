@@ -92,6 +92,7 @@ const Background = ( props ) => {
 		overlayBlendMode,
 		imageOverlayResponsive,
 		label = __( 'Type', 'ultimate-addons-for-gutenberg' ),
+		backgroundVideoFallbackImage,
 	} = props;
 
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
@@ -129,6 +130,23 @@ const Background = ( props ) => {
 			return;
 		}
 		setAttributes( { [ backgroundVideo.label ]: media } );
+	};
+
+	const onRemoveBgFallbackImage = () => {
+		setAttributes( { [ backgroundVideoFallbackImage.label ]: null } );
+	};
+
+	const onSelectBgFallbackImage = ( media ) => {
+		if ( ! media || !media.url ) {
+			setAttributes( { [ backgroundVideoFallbackImage.label ]: null } );
+			return;
+		}
+
+		if ( ! media.type || 'image' !== media.type ) {
+			return;
+		}
+
+		setAttributes( { [ backgroundVideoFallbackImage.label ]: media } );
 	};
 
 	// For now, we are only rendering this setting if the current block is a Container.
@@ -1490,6 +1508,20 @@ const Background = ( props ) => {
 						allow={ [ 'video' ] }
 					/>
 				</div>
+			) }
+			{'video' === backgroundType.value && backgroundVideoType.value && (
+			<div className="uag-background-video-image-fallback">
+				<UAGMediaPicker
+					slug={ 'image' }
+					allow={ [ 'image' ] }
+					onSelectImage={ onSelectBgFallbackImage }
+					backgroundImage={ backgroundVideoFallbackImage.value }
+					onRemoveImage={ onRemoveBgFallbackImage }
+					disableDynamicContent={ true }
+					label={ __( 'Fallback Image', 'ultimate-addons-for-gutenberg' ) }
+					help={ __( 'This cover image will replace the background video in case that the video could not be loaded.', 'ultimate-addons-for-gutenberg' ) }
+				/>
+			</div>
 			) }
 			<OverlayControls />
 		</>

@@ -1478,6 +1478,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'yOverlayPosition'                => $attr[ 'yPositionOverlay' . $device_type ],
 				'yOverlayPositionType'            => $attr['yPositionOverlayType'],
 				'blendMode'                       => $attr['overlayBlendMode'],
+				'backgroundVideoFallbackImage'    => $attr['backgroundVideoFallbackImage'],
 			);
 
 			$container_bg_css = self::uag_get_background_obj( $bg_obj, $overlay );

@@ -1539,6 +1539,12 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	backgroundVideoFallbackImage: {
+		type: 'object',
+		UAGCopyPaste: {
+			styleType: 'container-bg-image-desktop',
+		},
+	},
 };
 
 export default attributes;
