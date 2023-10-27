@@ -322,7 +322,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since 1.14.9
 		 * @param array  $attr The block attributes.
 		 * @param string $id The key for the Icon List Item.
-		 * @param string $childMigrate The child migration flag.
+		 * @param mixed  $childMigrate The child migration flag.
 		 * @return array The Widget List.
 		 */
 		public static function get_social_share_child_selectors( $attr, $id, $childMigrate ) {
@@ -1737,7 +1737,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * Border attribute generation Function.
 		 *
 		 * @since 2.0.0
-		 * @param  array $prefix   Attribute Prefix.
+		 * @param  string $prefix   Attribute Prefix.
 		 * @return array
 		 */
 		public static function uag_generate_border_attribute( $prefix ) {

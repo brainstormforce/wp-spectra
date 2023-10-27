@@ -3,7 +3,8 @@
  * Slider child front end style
  *
  * @since 2.0.0
- *
+ * @var mixed[] $attr
+ * @var int $id
  * @package uagb
  */
 

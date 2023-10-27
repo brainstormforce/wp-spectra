@@ -11,6 +11,7 @@
  * Adding this comment to avoid PHPStan errors of undefined variable as these variables are defined else where.
  *
  * @var mixed[] $attr
+ * @var int $id
  */
 
 // Adds Fonts.
