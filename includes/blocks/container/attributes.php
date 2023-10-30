@@ -169,7 +169,7 @@ return array_merge(
 		'yPositionTypeMobile'                => 'px',
 		'backgroundVideoColor'               => '#FFFFFF75',
 		'backgroundVideo'                    => '',
-		'backgroundVideoOpacity'             => 0.5,
+		'backgroundVideoOpacity'             => '',
 		'topInvert'                          => false,
 		'bottomInvert'                       => false,
 		'textColor'                          => '',

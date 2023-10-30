@@ -218,6 +218,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ### x.x.x ###
 * Improvement: Container - Added a fallback image option for the video background-type.
 * Improvement: Container - Added a new 'Centralized Position' setting for custom image background positioning.
+* Fix: Container - Resolved an issue wherein the background video opaicty would not work as intended.
 * Fix: Forms - Added note for Forms block duplicate name fields to have distinct labels.
 * Fix: Global - Resolved an issue in which the Spectra blocks were unable to be previewed in the widget editor customizer.
 * Fix: Buttons - Resolved an issue in which the margins added to the button group would get overridden by child button margins.
