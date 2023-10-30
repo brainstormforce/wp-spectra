@@ -161,6 +161,7 @@ const Settings = ( props ) => {
 		overlayType,
 		overlayOpacity,
 		customPosition,
+		centralizedPosition,
 		xPositionDesktop,
 		xPositionTablet,
 		xPositionMobile,
@@ -1091,6 +1092,10 @@ const Settings = ( props ) => {
 						value: customPosition,
 						label: 'customPosition',
 					} }
+					centralizedPosition = { {
+						value: centralizedPosition,
+						label: 'centralizedPosition',
+					}} 
 					xPositionDesktop={ {
 						value: xPositionDesktop,
 						label: 'xPositionDesktop',

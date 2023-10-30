@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
-import { SelectControl } from '@wordpress/components';
+import { SelectControl, ToggleControl } from '@wordpress/components';
 import styles from './editor.lazy.scss';
 import GradientSettings from '@Components/gradient-settings';
 import { useEffect, useState, useRef, useLayoutEffect } from '@wordpress/element';
@@ -54,6 +54,7 @@ const Background = ( props ) => {
 		imageResponsive,
 		gradientOverlay,
 		customPosition,
+		centralizedPosition,
 		xPositionDesktop,
 		xPositionTablet,
 		xPositionMobile,
@@ -1219,6 +1220,20 @@ const Background = ( props ) => {
 							{ 'custom' === customPosition.value && (
 								<>
 									<div className="uag-background-image-position">
+										{ isContainer && (
+											<div className="uag-background-image-axis-position">
+												<ToggleControl
+													label={ __( 'Centralized Position', 'ultimate-addons-for-gutenberg' ) }
+													checked={ centralizedPosition.value }
+													onChange={ () =>
+														setAttributes( {
+															[ centralizedPosition.label ]: ! centralizedPosition.value,
+														} )
+													}
+												/>
+											</div>
+										) }
+
 										<ResponsiveSlider
 											label={ __( 'X Position', 'ultimate-addons-for-gutenberg' ) }
 											data={ {
@@ -1247,8 +1262,8 @@ const Background = ( props ) => {
 													},
 												},
 											} }
-											limitMin={ { 'px': -800, '%': -100, 'em': -100, 'vw': -100 } }
-											limitMax={ { 'px': 800, '%': 100, 'em': 100, 'vw': 100 } }
+											limitMin={ { 'px': -1000, '%': -100, 'em': -100, 'vw': -100 } }
+											limitMax={ { 'px': 1000, '%': 100, 'em': 100, 'vw': 100 } }
 											units={ [
 												{
 													name: __( 'PX', 'ultimate-addons-for-gutenberg' ),

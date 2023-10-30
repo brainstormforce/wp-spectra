@@ -154,6 +154,7 @@ return array_merge(
 		'overlayBlendModeTablet'             => '',
 		'overlayBlendModeMobile'             => '',
 		'customPosition'                     => 'default',
+		'centralizedPosition'                => false,
 		'xPositionDesktop'                   => '',
 		'xPositionTablet'                    => '',
 		'xPositionMobile'                    => '',

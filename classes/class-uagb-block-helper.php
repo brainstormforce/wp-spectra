@@ -1461,6 +1461,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'backgroundVideo'                 => $attr['backgroundVideo'],
 				'backgroundVideoColor'            => $attr['backgroundVideoColor'],
 				'customPosition'                  => $attr['customPosition'],
+				'centralizedPosition'             => $attr['centralizedPosition'],
 				'xPosition'                       => $attr[ 'xPosition' . $device_type ],
 				'xPositionType'                   => $attr['xPositionType'],
 				'yPosition'                       => $attr[ 'yPosition' . $device_type ],
@@ -1543,6 +1544,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$y_overlay_position       = isset( $bg_obj['yOverlayPosition'] ) ? $bg_obj['yOverlayPosition'] : '';
 			$y_overlay_position_type  = isset( $bg_obj['yOverlayPositionType'] ) ? $bg_obj['yOverlayPositionType'] : '';
 
+			$custom_x_position = UAGB_Helper::get_css_value( $x_position, $x_position_type );
+			$custom_y_position = UAGB_Helper::get_css_value( $y_position, $y_position_type );
+
 			$gradient = '';
 			if ( 'custom' === $size ) {
 				$size = $bg_custom_size . $bg_custom_size_type;
@@ -1573,7 +1577,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 							$position_value                    = $position['x'] * 100 . '% ' . $position['y'] * 100 . '%';
 							$gen_bg_css['background-position'] = $position_value;
 						} elseif ( 'custom' === $custom_position && isset( $x_position ) && isset( $y_position ) && isset( $x_position_type ) && isset( $y_position_type ) ) {
-							$position_value                    = $x_position . $x_position_type . ' ' . $y_position . $y_position_type;
+							$position_value                    = false === $bg_obj['centralizedPosition'] ? $custom_x_position . ' ' . $custom_y_position : 'calc(50% +  ' . $custom_x_position . ') calc(50% + ' . $custom_y_position . ')';
 							$gen_bg_css['background-position'] = $position_value;
 						}
 

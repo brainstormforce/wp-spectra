@@ -991,6 +991,10 @@ const attributes = {
 		},
 	},
 	// Background image position.
+	centralizedPosition: {
+		type: 'boolean',
+		default: false,
+	},
 	customPosition: {
 		type: 'string',
 		default: 'default',
