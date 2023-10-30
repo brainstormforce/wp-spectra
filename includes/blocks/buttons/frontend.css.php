@@ -140,10 +140,6 @@ if ( $attr['childMigrate'] ) {
 		'padding-bottom'  => UAGB_Helper::get_css_value( $attr['bottomPadding'], $attr['paddingUnit'] ),
 		'padding-left'    => UAGB_Helper::get_css_value( $attr['leftPadding'], $attr['paddingUnit'] ),
 		'padding-right'   => UAGB_Helper::get_css_value( $attr['rightPadding'], $attr['paddingUnit'] ),
-		'margin-top'      => UAGB_Helper::get_css_value( $attr['topMargin'], $attr['marginType'] ),
-		'margin-bottom'   => UAGB_Helper::get_css_value( $attr['bottomMargin'], $attr['marginType'] ),
-		'margin-left'     => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['marginType'] ),
-		'margin-right'    => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['marginType'] ),
 	);
 
 	$button_tablet_style = array(
@@ -154,10 +150,6 @@ if ( $attr['childMigrate'] ) {
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomTabletPadding'], $attr['tabletPaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftTabletPadding'], $attr['tabletPaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['rightTabletPadding'], $attr['tabletPaddingUnit'] ),
-		'margin-top'     => UAGB_Helper::get_css_value( $attr['topMarginTablet'], $attr['marginType'] ),
-		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMarginTablet'], $attr['marginType'] ),
-		'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginTablet'], $attr['marginType'] ),
-		'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginTablet'], $attr['marginType'] ),
 	);
 
 	$button_mobile_style = array(
@@ -168,10 +160,6 @@ if ( $attr['childMigrate'] ) {
 		'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomMobilePadding'], $attr['mobilePaddingUnit'] ),
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['leftMobilePadding'], $attr['mobilePaddingUnit'] ),
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['rightMobilePadding'], $attr['mobilePaddingUnit'] ),
-		'margin-top'     => UAGB_Helper::get_css_value( $attr['topMarginMobile'], $attr['marginType'] ),
-		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMarginMobile'], $attr['marginType'] ),
-		'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginMobile'], $attr['marginType'] ),
-		'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginMobile'], $attr['marginType'] ),
 	);
 
 	$selectors[' .uagb-buttons-repeater:not(.wp-block-button__link)']   = $button_desktop_style; // For Backword user.
@@ -180,6 +168,27 @@ if ( $attr['childMigrate'] ) {
 	$t_selectors[' .uagb-buttons-repeater.wp-block-button__link']       = $button_tablet_style; // For New User.
 	$m_selectors[' .uagb-buttons-repeater:not(.wp-block-button__link)'] = $button_mobile_style; // For Backword user.
 	$m_selectors[' .uagb-buttons-repeater.wp-block-button__link']       = $button_mobile_style; // For New User.
+
+	$selectors[' .uagb-button__wrapper'] = array(
+		'margin-top'    => UAGB_Helper::get_css_value( $attr['topMargin'], $attr['marginType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['bottomMargin'], $attr['marginType'] ),
+		'margin-left'   => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['marginType'] ),
+		'margin-right'  => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['marginType'] ),
+	);
+
+	$t_selectors[' .uagb-button__wrapper'] = array(
+		'margin-top'    => UAGB_Helper::get_css_value( $attr['topMarginTablet'], $attr['marginType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['bottomMarginTablet'], $attr['marginType'] ),
+		'margin-left'   => UAGB_Helper::get_css_value( $attr['leftMarginTablet'], $attr['marginType'] ),
+		'margin-right'  => UAGB_Helper::get_css_value( $attr['rightMarginTablet'], $attr['marginType'] ),
+	);
+
+	$m_selectors[' .uagb-button__wrapper'] = array(
+		'margin-top'    => UAGB_Helper::get_css_value( $attr['topMarginMobile'], $attr['marginType'] ),
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['bottomMarginMobile'], $attr['marginType'] ),
+		'margin-left'   => UAGB_Helper::get_css_value( $attr['leftMarginMobile'], $attr['marginType'] ),
+		'margin-right'  => UAGB_Helper::get_css_value( $attr['rightMarginMobile'], $attr['marginType'] ),
+	);
 }
 
 if ( ! $attr['childMigrate'] ) {

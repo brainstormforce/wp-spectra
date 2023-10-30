@@ -219,6 +219,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Container - Added a fallback image option for the video background-type.
 * Fix: Forms - Added note for Forms block duplicate name fields to have distinct labels.
 * Fix: Global - Resolved an issue in which the Spectra blocks were unable to be previewed in the widget editor customizer.
+* Fix: Buttons - Resolved an issue in which the margins added to the button group would get overridden by child button margins.
 
 = 2.9.0 - THURSDAY, 26th OCTOBER 2023 =
 * New: Core Blocks - Added Global Block Style support for core blocks.
