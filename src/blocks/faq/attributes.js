@@ -723,72 +723,84 @@ const attributes = {
 	},
 	answerTopPadding: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'desc-top-padding',
 		},
 	},
 	answerRightPadding: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'desc-right-padding',
 		},
 	},
 	answerBottomPadding: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-padding',
 		},
 	},
 	answerLeftPadding: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'desc-left-padding',
 		},
 	},
 	answerTopPaddingTablet: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'desc-top-padding-tablet',
 		},
 	},
 	answerRightPaddingTablet: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'desc-right-padding-tablet',
 		},
 	},
 	answerBottomPaddingTablet: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-padding-tablet',
 		},
 	},
 	answerLeftPaddingTablet: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'desc-left-padding-tablet',
 		},
 	},
 	answerTopPaddingMobile: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'desc-top-padding-mobile',
 		},
 	},
 	answerRightPaddingMobile: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'desc-right-padding-mobile',
 		},
 	},
 	answerBottomPaddingMobile: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'desc-bottom-padding-mobile',
 		},
 	},
 	answerLeftPaddingMobile: {
 		type: 'number',
+		default: 10,
 		UAGCopyPaste: {
 			styleType: 'desc-left-padding-mobile',
 		},
