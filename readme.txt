@@ -223,6 +223,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Global - Resolved an issue in which the Spectra blocks were unable to be previewed in the widget editor customizer.
 * Fix: Buttons - Resolved an issue in which the margins added to the button group would get overridden by child button margins.
 * Fix: Table Of Contents - Resolved an issue wherein the Table Of Contents collapse feature would not work as intended.	
+* Fix: Icon List - Resolved an issue wherein the vertical alignment would not appear as intended in the editor mobile view.
 
 = 2.9.0 - THURSDAY, 26th OCTOBER 2023 =
 * New: Core Blocks - Added Global Block Style support for core blocks.

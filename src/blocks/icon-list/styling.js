@@ -360,6 +360,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		};
 		mobileSelectors[ ' .uagb-icon-list__wrap .block-editor-block-list__layout' ] = {
 			'flex-direction': 'column',
+			'align-items': 'flex-start',
 		};
 	}
 
