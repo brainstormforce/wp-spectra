@@ -308,7 +308,7 @@ if ( 'video' === $attr['backgroundType'] ) {
 	$t_selectors[ $base_selector . ' .uagb-container__video-wrap' ] = $border_tablet;
 	$m_selectors[ $base_selector . ' .uagb-container__video-wrap' ] = $border_mobile;
 
-	$selectorClass = '.wp-block-uagb-container.' . $base_selector;
+	$selectorClass = '.wp-block-uagb-container' . $base_selector;
 
 	$selectors[ $base_selector . ' > div:not(.uagb-container__video-wrap):not(.uagb-container__shape)' ] = array(
 		'position' => 'relative',
