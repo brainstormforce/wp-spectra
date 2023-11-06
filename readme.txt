@@ -226,6 +226,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Buttons - Resolved an issue in which the margins added to the button group would get overridden by child button margins.
 * Fix: Table Of Contents - Resolved an issue wherein the Table Of Contents collapse feature would not work as intended.	
 * Fix: Icon List - Resolved an issue wherein the vertical alignment would not appear as intended in the editor mobile view.
+* Fix: Global - Resolved an issue with Full Site Editing (FSE) in which changes applied to page templates would not be visible when File Generation was enabled.
 * Fix: FAQ - Resolved an issue in which the default content padding would appear differently in the editor and the front-end.
 * Fix: Post Gird/Carousel/Timeline - Resolved an issue wherein a `preg_replace` warning could appear.
 
