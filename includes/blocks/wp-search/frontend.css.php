@@ -3,7 +3,8 @@
  * Frontend CSS & Google Fonts loading File.
  *
  * @since 2.0.0
- *
+ * @var mixed[] $attr
+ * @var int $id
  * @package uagb
  */
 

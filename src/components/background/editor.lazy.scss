@@ -17,6 +17,7 @@
 	.uag-background-image-overlay-type,
 	.uag-background-image-overlay-color,
 	.uag-background-image-overlay-gradient,
+	.uag-background-video-image-fallback,
 	.uagb-responsive-select-control {
 		margin-top: $spectra-control-vertical-gap;
 
@@ -106,5 +107,9 @@
 				}
 			}
 		}
+	}
+
+	.uag-background-image-axis-position {
+		margin-bottom: 24px;
 	}
 }

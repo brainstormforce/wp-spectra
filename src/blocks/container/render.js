@@ -76,7 +76,7 @@ const Render = ( props ) => {
 	const isRootContainerClass = isBlockRootParent ? `${ contentWidth } uagb-is-root-container` : '';
 	const blockProps = useBlockProps( {
 		className: `uagb-block-${ block_id } ${ hasChildrenClass } uagb-editor-preview-mode-${ deviceType.toLowerCase() } ${ isRootContainerClass }`,
-		style: 'video' !== backgroundType ? getContainerBGStyle : '',
+		style: getContainerBGStyle,
 	} );
 
 	const innerBlocksParams = {

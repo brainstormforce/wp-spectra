@@ -102,7 +102,7 @@ UAGBForms = {
 						if( badge ){
 							badge.style.visibility = 'hidden';
 						}
-					}, 100 );
+					}, 500 );
 				}
 				const api = document.createElement( 'script' );
 				api.type = 'text/javascript';

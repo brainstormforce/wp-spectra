@@ -209,6 +209,16 @@ UAGBTableOfContents = {
 			}
 		}
 	},
+	selectDomElement( id ){
+		// Select id class but not with script init class.
+		const thisScope = document.querySelector( `${ id }:not(.script-init)` );
+		if ( ! thisScope ) {
+			return null;
+		}
+		// Add script init class to avoid reinit.
+		thisScope.classList.add( 'script-init' );
+		return thisScope;
+	},
 
 	/**
 	 * Alter the_content.
@@ -240,10 +250,12 @@ UAGBTableOfContents = {
 
 			return decodeURI( encodeURIComponent( parsedSlug ) );
 		};
-		const $thisScope = document.querySelector( id );
+		const $thisScope = UAGBTableOfContents.selectDomElement( id );
+
 		if ( ! $thisScope ) {
 			return;
 		}
+		
 		if ( $thisScope.querySelector( '.uag-toc__collapsible-wrap' ) !== null ) {
 			if ( $thisScope.querySelector( '.uag-toc__collapsible-wrap' ).length > 0 ) {
 				$thisScope.querySelector( '.uagb-toc__title-wrap' ).classList.add( 'uagb-toc__is-collapsible' );

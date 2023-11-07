@@ -3,6 +3,8 @@
  * Frontend CSS & Google Fonts loading File.
  *
  * @since 2.0.0
+ * @var mixed[] $attr
+ * @var int $id
  *
  * @package uagb
  */
@@ -179,7 +181,6 @@ $selectors['.uagb-social-share__outer-wrap'] = array(
 	'justify-content'   => $alignment,
 	'-webkit-box-pack'  => $alignment,
 	'-ms-flex-pack'     => $alignment,
-	'justify-content'   => $alignment,
 	'-webkit-box-align' => $alignment,
 	'-ms-flex-align'    => $alignment,
 	'align-items'       => $alignment,
@@ -189,7 +190,6 @@ $t_selectors['.uagb-social-share__outer-wrap'] = array(
 	'justify-content'   => $t_alignment,
 	'-webkit-box-pack'  => $t_alignment,
 	'-ms-flex-pack'     => $t_alignment,
-	'justify-content'   => $t_alignment,
 	'-webkit-box-align' => $t_alignment,
 	'-ms-flex-align'    => $t_alignment,
 	'align-items'       => $t_alignment,
@@ -199,7 +199,6 @@ $m_selectors['.uagb-social-share__outer-wrap'] = array(
 	'justify-content'   => $m_alignment,
 	'-webkit-box-pack'  => $m_alignment,
 	'-ms-flex-pack'     => $m_alignment,
-	'justify-content'   => $m_alignment,
 	'-webkit-box-align' => $m_alignment,
 	'-ms-flex-align'    => $m_alignment,
 	'align-items'       => $m_alignment,
@@ -257,7 +256,6 @@ if ( 'horizontal' === $attr['social_layout'] ) {
 			'justify-content'   => $alignment,
 			'-webkit-box-pack'  => $alignment,
 			'-ms-flex-pack'     => $alignment,
-			'justify-content'   => $alignment,
 			'-webkit-box-align' => $alignment,
 			'-ms-flex-align'    => $alignment,
 			'align-items'       => $alignment,
@@ -268,7 +266,6 @@ if ( 'horizontal' === $attr['social_layout'] ) {
 			'justify-content'   => $t_alignment,
 			'-webkit-box-pack'  => $t_alignment,
 			'-ms-flex-pack'     => $t_alignment,
-			'justify-content'   => $t_alignment,
 			'-webkit-box-align' => $t_alignment,
 			'-ms-flex-align'    => $t_alignment,
 			'align-items'       => $t_alignment,
@@ -279,7 +276,6 @@ if ( 'horizontal' === $attr['social_layout'] ) {
 			'justify-content'   => $m_alignment,
 			'-webkit-box-pack'  => $m_alignment,
 			'-ms-flex-pack'     => $m_alignment,
-			'justify-content'   => $m_alignment,
 			'-webkit-box-align' => $m_alignment,
 			'-ms-flex-align'    => $m_alignment,
 			'align-items'       => $m_alignment,
@@ -298,7 +294,6 @@ if ( 'horizontal' === $attr['social_layout'] ) {
 			'justify-content'   => $t_alignment,
 			'-webkit-box-pack'  => $t_alignment,
 			'-ms-flex-pack'     => $t_alignment,
-			'justify-content'   => $t_alignment,
 			'-webkit-box-align' => $t_alignment,
 			'-ms-flex-align'    => $t_alignment,
 			'align-items'       => $t_alignment,
@@ -317,7 +312,6 @@ if ( 'horizontal' === $attr['social_layout'] ) {
 			'justify-content'   => $m_alignment,
 			'-webkit-box-pack'  => $m_alignment,
 			'-ms-flex-pack'     => $m_alignment,
-			'justify-content'   => $m_alignment,
 			'-webkit-box-align' => $m_alignment,
 			'-ms-flex-align'    => $m_alignment,
 			'align-items'       => $m_alignment,

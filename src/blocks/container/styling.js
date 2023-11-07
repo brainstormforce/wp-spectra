@@ -184,6 +184,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		containerBorderRightWidthMobile,
 		containerBorderBottomWidthMobile,
 		containerBorderLeftWidthMobile,
+		backgroundVideoFallbackImage,
 		globalBlockStyleId,
 	} = attributes;
 
@@ -309,6 +310,10 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			'opacity': backgroundVideoOpacityValue,
 		},
 	};
+
+	if ( backgroundVideoFallbackImage?.url ){
+		selectors[ ' .uagb-container__video-wrap video'].background = `url(${backgroundVideoFallbackImage.url}) 50% 50%;`;
+	}
 
 	let boxShadowPositionCSS = boxShadowPosition;
 

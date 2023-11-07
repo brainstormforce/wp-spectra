@@ -28,9 +28,8 @@ const UAGBSlide = ( props ) => {
 };
 
 const applyWithSelect = withSelect( ( select, props ) => {
-	// eslint-disable-line no-shadow
-	const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' ) || select( 'core/edit-widgets' ) || select( 'core/edit-site' );;
-	const deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+	const getStore = select( 'core/edit-post' ) || select( 'core/edit-widgets' ) || select( 'core/edit-site' );
+	const deviceType = getStore?.__experimentalGetPreviewDeviceType ? getStore.__experimentalGetPreviewDeviceType() : null;
 	const { getBlocks, getBlockIndex } = select( 'core/block-editor' );
 	const { getBlockType } = select( 'core/blocks' );
 	const { insertBlock } = useDispatch( 'core/block-editor' );

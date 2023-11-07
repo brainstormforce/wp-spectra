@@ -134,6 +134,7 @@ if ( 'video' === $attr['backgroundType'] && ! empty( $attr['backgroundVideoOpaci
 }
 
 $background_video_opacity_value = ( isset( $attr['overlayOpacity'] ) && 'none' !== $attr['overlayType'] && ( ( 'color' === $attr['overlayType'] && ! empty( $attr['backgroundVideoColor'] ) ) || ( 'gradient' === $attr['overlayType'] && ! empty( $attr['gradientValue'] ) ) ) ) ? 1 - $attr['overlayOpacity'] : 1;
+$bg_video_image_fallback        = ! empty( $attr['backgroundVideoFallbackImage']['url'] ) ? $attr['backgroundVideoFallbackImage']['url'] : '';
 
 $selectors = array(
 	$base_selector . '.wp-block-uagb-container'           => array(
@@ -168,6 +169,10 @@ $selectors = array(
 		'opacity' => $background_video_opacity_value,
 	),
 );
+
+if ( $bg_video_image_fallback ) {
+	$selectors[ $base_selector . ' .uagb-container__video-wrap video' ]['background'] = 'url(' . $bg_video_image_fallback . ') 50% 50%;';
+}
 
 if ( '' !== $attr['topWidth'] ) {
 	$selectors[ $base_selector . ' .uagb-container__shape-top svg' ]['width'] = 'calc( ' . $attr['topWidth'] . '% + 1.3px )';
@@ -303,7 +308,7 @@ if ( 'video' === $attr['backgroundType'] ) {
 	$t_selectors[ $base_selector . ' .uagb-container__video-wrap' ] = $border_tablet;
 	$m_selectors[ $base_selector . ' .uagb-container__video-wrap' ] = $border_mobile;
 
-	$selectorClass = '.wp-block-uagb-container.' . $base_selector;
+	$selectorClass = '.wp-block-uagb-container' . $base_selector;
 
 	$selectors[ $base_selector . ' > div:not(.uagb-container__video-wrap):not(.uagb-container__shape)' ] = array(
 		'position' => 'relative',

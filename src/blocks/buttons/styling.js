@@ -112,11 +112,13 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		'font-weight': fontWeight,
 		'font-size': generateCSSUnit( fontSize, fontSizeType ),
 		'line-height': generateCSSUnit( lineHeight, lineHeightType ),	
+		'letter-spacing': generateCSSUnit( fontLetterSpacing, fontLetterSpacingType ),
+	};
+	selectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper' ] = {
 		'margin-left': generateCSSUnit( leftMargin, marginType ),
 		'margin-right': generateCSSUnit( rightMargin, marginType ),
 		'margin-top': generateCSSUnit( topMargin, marginType ),
 		'margin-bottom': generateCSSUnit( bottomMargin, marginType ),
-		'letter-spacing': generateCSSUnit( fontLetterSpacing, fontLetterSpacingType ),
 	};
 	selectors[ ' .uagb-buttons-repeater.wp-block-button__link' ] = {
 		// For new user.
@@ -248,11 +250,13 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 	] = {
 		'font-size': generateCSSUnit( fontSizeTablet, fontSizeTypeTablet ),
 		'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
+		'letter-spacing': generateCSSUnit( fontLetterSpacingTablet, fontLetterSpacingType ),
+	};
+	tabletSelectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper' ] = {
 		'margin-left': generateCSSUnit( leftMarginTablet, marginType ),
 		'margin-right': generateCSSUnit( rightMarginTablet, marginType ),
 		'margin-top': generateCSSUnit( topMarginTablet, marginType ),
 		'margin-bottom': generateCSSUnit( bottomMarginTablet, marginType ),
-		'letter-spacing': generateCSSUnit( fontLetterSpacingTablet, fontLetterSpacingType ),
 	};
 	tabletSelectors[
 		' .uagb-buttons-repeater.wp-block-button__link'
@@ -268,11 +272,14 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 	] = {
 		'font-size': generateCSSUnit( fontSizeMobile, fontSizeTypeMobile ),
 		'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
+		'letter-spacing': generateCSSUnit( fontLetterSpacingMobile, fontLetterSpacingType ),
+	};
+
+	mobileSelectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper' ] = {
 		'margin-left': generateCSSUnit( leftMarginMobile, marginType ),
 		'margin-right': generateCSSUnit( rightMarginMobile, marginType ),
 		'margin-top': generateCSSUnit( topMarginMobile, marginType ),
 		'margin-bottom': generateCSSUnit( bottomMarginMobile, marginType ),
-		'letter-spacing': generateCSSUnit( fontLetterSpacingMobile, fontLetterSpacingType ),
 	};
 
 	mobileSelectors[
