@@ -228,6 +228,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Icon List - Resolved an issue wherein the vertical alignment would not appear as intended in the editor mobile view.
 * Fix: Global - Resolved an issue with Full Site Editing (FSE) in which changes applied to page templates would not be visible when File Generation was enabled.
 * Fix: FAQ - Resolved an issue in which the default content padding would appear differently in the editor and the front-end.
+* Fix: Slider - Resolved an issue wherein the block would not work as intended in the Astra widget customizer.
 * Fix: Post Gird/Carousel/Timeline - Resolved an issue wherein a `preg_replace` warning could appear.
 
 = 2.9.0 - THURSDAY, 26th OCTOBER 2023 =
