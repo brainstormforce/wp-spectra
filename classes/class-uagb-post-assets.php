@@ -252,7 +252,7 @@ class UAGB_Post_Assets {
 	/**
 	 * Get WooCommerce Template.
 	 *
-	 * @since x.x.x
+	 * @since 2.9.1
 	 * @return bool|string The WooCommerce template if found, or false if not found.
 	 */
 	public function get_woocommerce_template() {
@@ -274,7 +274,7 @@ class UAGB_Post_Assets {
 	/**
 	 * Determine template post type function.
 	 *
-	 * @since x.x.x
+	 * @since 2.9.1
 	 * @return string The determined post type.
 	 */
 	private function determine_template_post_type() {
@@ -327,7 +327,7 @@ class UAGB_Post_Assets {
 	 * Generates assets for templates based on post type.
 	 *
 	 * @param string $post_type of current template.
-	 * @since x.x.x
+	 * @since 2.9.1
 	 * @return void
 	 */
 	public function prepare_assets_for_templates_based_post_type( $post_type ) {
