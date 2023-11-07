@@ -1301,6 +1301,13 @@ class UAGB_Post_Assets {
 						$block_css .= $assets['css'];
 						$js        .= $assets['js'];
 					}
+				} elseif ( 'core/pattern' === $block['blockName'] ) {
+					$get_assets = $this->get_core_pattern_assets( $block );
+					
+					if ( ! empty( $get_assets['css'] ) ) {
+						$block_css .= $get_assets['css'];
+						$js        .= $get_assets['js'];
+					}
 				} else {
 					// Add your block specif css here.
 					$block_assets = $this->get_block_css_and_js( $block );
@@ -1538,5 +1545,36 @@ class UAGB_Post_Assets {
 		}
 
 		return array_merge( $array1, $array2 );
+	}
+
+	/**
+	 * Handle the block assets when blocks type will be core/pattern.
+	 *
+	 * @param array $block The block array.
+	 * @since X.X.X
+	 * @return array
+	 */
+	public function get_core_pattern_assets( $block ) {
+		if ( empty( $block['attrs']['slug'] ) ) {
+			return array();
+		}
+	
+		$slug = $block['attrs']['slug'];
+
+		// Check class and function exists.
+		if ( ! class_exists( 'WP_Block_Patterns_Registry' ) || ! method_exists( 'WP_Block_Patterns_Registry', 'get_instance' ) ) {
+			return array();
+		}
+
+		$registry = WP_Block_Patterns_Registry::get_instance();
+
+		// Check is_registered method exists.
+		if ( ! method_exists( $registry, 'is_registered' ) || ! method_exists( $registry, 'get_registered' ) || ! $registry->is_registered( $slug ) ) {
+			return array();
+		}
+	
+		$pattern = $registry->get_registered( $slug );
+		
+		return $this->get_blocks_assets( parse_blocks( $pattern['content'] ) );
 	}
 }
