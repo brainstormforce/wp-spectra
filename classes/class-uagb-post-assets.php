@@ -1551,7 +1551,7 @@ class UAGB_Post_Assets {
 	 * Handle the block assets when blocks type will be core/pattern.
 	 *
 	 * @param array $block The block array.
-	 * @since X.X.X
+	 * @since 2.9.1
 	 * @return array
 	 */
 	public function get_core_pattern_assets( $block ) {
