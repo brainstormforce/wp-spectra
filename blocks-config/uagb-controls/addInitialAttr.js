@@ -37,7 +37,7 @@ const addInitialAttr = ( ChildComponent ) => {
 		]; // Add all parent block name here who's getting issue in customize preview.
 
 		useEffect( () => {
-			if ( uagb_blocks_info.is_customize_preview && undefined === block_id && listOfParentBlock.includes( name ) ) {
+			if ( uagb_blocks_info.is_customize_preview && ( '0' === block_id || undefined === block_id ) && listOfParentBlock.includes( name ) ) {
 				document.addEventListener( `UAG-${name}-${clientId.substr( 0, 8 )}-BlockCustomizeWidgetEditor`, function ( e ) {
 					setAttributes( { block_id: e.detail.id, classMigrate: e.detail.classMigrate, childMigrate: e.detail.childMigrate } );
 				} );
@@ -45,7 +45,7 @@ const addInitialAttr = ( ChildComponent ) => {
 		}, [] );
 
 		useEffect( () => {
-			if ( uagb_blocks_info.is_customize_preview && undefined === block_id && listOfParentBlock.includes( name ) ) {
+			if ( uagb_blocks_info.is_customize_preview && ( '0' === block_id || undefined === block_id ) && listOfParentBlock.includes( name ) ) {
 				const loadCustomEvent = new CustomEvent( `UAG-${name}-${clientId.substr( 0, 8 )}-BlockCustomizeWidgetEditor`, { detail: { id: clientId.substr( 0, 8 ), classMigrate: true, childMigrate: true }, } );
 				document.dispatchEvent( loadCustomEvent );
 			}
