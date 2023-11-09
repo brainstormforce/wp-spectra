@@ -186,6 +186,9 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			} else {
 				add_filter( 'ast_block_templates_disable', '__return_true' );
 			}
+
+			// Includes Zip AI library.
+			require_once UAGB_DIR . 'lib/zip-ai/zip-ai.php';
 		}
 
 		/**
