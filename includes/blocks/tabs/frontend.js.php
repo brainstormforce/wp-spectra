@@ -3,6 +3,7 @@
  * Frontend JS File.
  *
  * @since 2.0.0
+ * @var int $id
  *
  * @package uagb
  */

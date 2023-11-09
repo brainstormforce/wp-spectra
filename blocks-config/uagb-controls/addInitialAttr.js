@@ -25,6 +25,32 @@ const addInitialAttr = ( ChildComponent ) => {
 	const WrappedComponent = ( props ) => {
 		const { name, setAttributes, clientId, attributes : { block_id } } = props;
 
+		const listOfParentBlock = [
+			'uagb/faq',
+			'uagb/buttons',
+			'uagb/icon-list',
+			'uagb/restaurant-menu',
+			'uagb/social-share',
+			'uagb/content-timeline',
+			'uagb/tabs',
+			'uagb/how-to'
+		]; // Add all parent block name here who's getting issue in customize preview.
+
+		useEffect( () => {
+			if ( uagb_blocks_info.is_customize_preview && ( '0' === block_id || undefined === block_id ) && listOfParentBlock.includes( name ) ) {
+				document.addEventListener( `UAG-${name}-${clientId.substr( 0, 8 )}-BlockCustomizeWidgetEditor`, function ( e ) {
+					setAttributes( { block_id: e.detail.id, classMigrate: e.detail.classMigrate, childMigrate: e.detail.childMigrate } );
+				} );
+			}
+		}, [] );
+
+		useEffect( () => {
+			if ( uagb_blocks_info.is_customize_preview && ( '0' === block_id || undefined === block_id ) && listOfParentBlock.includes( name ) ) {
+				const loadCustomEvent = new CustomEvent( `UAG-${name}-${clientId.substr( 0, 8 )}-BlockCustomizeWidgetEditor`, { detail: { id: clientId.substr( 0, 8 ), classMigrate: true, childMigrate: true }, } );
+				document.dispatchEvent( loadCustomEvent );
+			}
+		}, [ props.attributes ] );
+
 		useEffect( () => {
 			const listOfClassMigrate = [
 				'uagb/advanced-heading',

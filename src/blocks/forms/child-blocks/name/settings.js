@@ -25,6 +25,10 @@ const Settings = ( props ) => {
 						label: 'autocomplete',
 					} }
 					setAttributes={ setAttributes }
+					help={ __(
+						'Duplicated name fields must be assigned distinct label names to send the data.',
+						'ultimate-addons-for-gutenberg'
+					) }
 				>
 					<option value="off">{ __( 'Off', 'ultimate-addons-for-gutenberg' ) }</option>
 					<option value="name">{ __( 'Full Name', 'ultimate-addons-for-gutenberg' ) }</option>

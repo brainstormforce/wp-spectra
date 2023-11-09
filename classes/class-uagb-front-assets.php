@@ -101,61 +101,6 @@ class UAGB_Front_Assets {
 	}
 
 	/**
-	 * Create an unique $dynamic_id.
-	 *
-	 * @since 2.7.6
-	 * @return float|int|false unique $dynamic_id.
-	 */
-	public function uagb_fse_uniqid() {
-		global  $_wp_current_template_id;
-		$post_id = get_the_ID(); // It return False if $post is not set else return post_id.
-		if ( $_wp_current_template_id && ! $post_id ) {
-			$dynamic_id               = false;
-			$updated_uagb_fse_uniqids = array();
-			// Split the string by the forward slashes.
-			$template_id = explode( '//', $_wp_current_template_id, 2 );
-			// Get the second template name as id after the forward slashes.
-			$template_name             = $template_id[1];
-			$template_id_based_on_name = hash( 'crc32b', $template_name );
-			$dynamic_id                = hexdec( $template_id_based_on_name );
-			$get_uagb_fse_uniqids      = get_option( '_uagb_fse_uniqids' ); // Retrieve the existing array.
-			if ( ! empty( $get_uagb_fse_uniqids ) && is_array( $get_uagb_fse_uniqids ) ) {
-				// Add the new dynamic_id to the array if it doesn't already exist.
-				$updated_uagb_fse_uniqids = array_unique( array_merge( $get_uagb_fse_uniqids, array( $dynamic_id ) ) );
-			} else {
-				$updated_uagb_fse_uniqids = array( $dynamic_id ); // Update the array with $dynamic_id if $get_uagb_fse_uniqids is false.
-			}
-			update_option( '_uagb_fse_uniqids', $updated_uagb_fse_uniqids ); // Update the option with the new array.
-			return $dynamic_id;      
-		}
-		return $post_id;
-	}
-
-	/**
-	 * Enqueue asset files for FSE Theme.
-	 *
-	 * @since 2.4.1
-	 */
-	public function load_assets_for_fse_theme() {
-		global $_wp_current_template_content;
-		if ( $_wp_current_template_content ) {
-			$unique_id                        = $this->uagb_fse_uniqid();
-			$dynamic_id                       = (int) $unique_id;
-			$blocks                           = parse_blocks( $_wp_current_template_content );
-			$current_post_assets              = new UAGB_Post_Assets( $dynamic_id );
-			$current_post_assets->page_blocks = $blocks;
-			$assets                           = $current_post_assets->get_blocks_assets( $blocks );
-			if ( empty( $assets['css'] ) && empty( $assets['js'] ) && empty( $current_post_assets->get_fonts() ) ) {
-				return;
-			}
-			$current_post_assets->stylesheet = $assets['css'];
-			$current_post_assets->script     = $assets['js'];
-			$current_post_assets->gfonts     = array_merge( $current_post_assets->get_fonts(), UAGB_Helper::$gfonts );
-			$current_post_assets->enqueue_scripts();
-		}
-	}
-
-	/**
 	 * Enqueue asset files.
 	 *
 	 * @since 1.23.0
@@ -166,12 +111,8 @@ class UAGB_Front_Assets {
 			$this->post_assets->enqueue_scripts();
 		}
 
-		if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
-			$this->load_assets_for_fse_theme();
-		}
-
 		/* Archive & 404 page compatibility */
-		if ( is_archive() || ( is_home() && ! ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) ) || is_search() || is_404() ) {
+		if ( is_archive() || is_home() || is_search() || is_404() ) {
 
 			global $wp_query;
 			$current_object_id = $wp_query->get_queried_object_id();

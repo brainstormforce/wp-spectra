@@ -130,7 +130,11 @@ const UAGBContainer = ( props ) => {
 		}
 
 		// Compare with attribute and attributeToUpdate and update only if there is a change.
-		if( attributesToUpdate.isBlockRootParent !== attributes.isBlockRootParent || attributesToUpdate.hasPopupParent !== attributes.hasPopupParent || attributesToUpdate.hasSliderParent !== attributes.hasSliderParent ) {
+		if ( attributesToUpdate.isBlockRootParent !== attributes.isBlockRootParent
+			|| attributesToUpdate.hasPopupParent !== attributes.hasPopupParent
+			|| attributesToUpdate.hasSliderParent !== attributes.hasSliderParent
+			|| attributesToUpdate.backgroundVideoOpacity !== attributes.backgroundVideoOpacity
+		) {
 			setAttributes( attributesToUpdate );
 		}
 

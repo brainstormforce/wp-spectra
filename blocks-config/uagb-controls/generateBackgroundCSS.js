@@ -1,3 +1,5 @@
+import generateCSSUnit from '@Controls/generateCSSUnit';
+
 const generateBackgroundCSS = ( backgroundAttributes, pseudoElementOverlay = {} ) => {
 	const {
 		backgroundType,
@@ -16,6 +18,7 @@ const generateBackgroundCSS = ( backgroundAttributes, pseudoElementOverlay = {} 
 		backgroundVideoColor,
 		backgroundVideo,
 		customPosition,
+		centralizedPosition,
 		xPosition,
 		xPositionType,
 		yPosition,
@@ -47,6 +50,7 @@ const generateBackgroundCSS = ( backgroundAttributes, pseudoElementOverlay = {} 
 
 	const bgCSS = {};
 	const bgOverlayCSS = {};
+	
 	const xPositionValue = isNaN( xPosition ) || '' === xPosition ? 0 : xPosition;
 	const xPositionTypeValue = undefined !== xPositionType ? xPositionType : '';
 	const yPositionValue = isNaN( yPosition ) || '' === yPosition ? 0 : yPosition;
@@ -56,6 +60,9 @@ const generateBackgroundCSS = ( backgroundAttributes, pseudoElementOverlay = {} 
 	const xPositionOverlayTypeValue = undefined !== xPositionOverlayType ? xPositionOverlayType : '';
 	const yPositionOverlayValue = ( 'number' !== typeof yPositionOverlay ) ? 0 : yPositionOverlay;
 	const yPositionOverlayTypeValue = undefined !== yPositionOverlayType ? yPositionOverlayType : '';
+
+	const customXPosition = generateCSSUnit( xPositionValue, xPositionTypeValue );
+	const customYPosition = generateCSSUnit( yPositionValue, yPositionTypeValue );
 
 	// Handle the Overlay Opacity.
 	const applyOverlayOpacity = () => {
@@ -176,7 +183,7 @@ const generateBackgroundCSS = ( backgroundAttributes, pseudoElementOverlay = {} 
 			} else if ( 'custom' === customPosition ) {
 				bgCSS[
 					'background-position'
-				] = `${ xPositionValue }${ xPositionTypeValue } ${ yPositionValue }${ yPositionTypeValue }`;
+				] = centralizedPosition === false ? `${ customXPosition } ${ customYPosition }` : `calc(50% + ${ customXPosition }) calc(50% + ${ customYPosition })` ;
 			}
 
 			bgCSS[ 'background-size' ] = backgroundSizeValue;

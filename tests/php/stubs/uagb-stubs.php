@@ -3705,7 +3705,7 @@ namespace {
          * @since 1.14.9
          * @param array  $attr The block attributes.
          * @param string $id The key for the Icon List Item.
-         * @param string $childMigrate The child migration flag.
+         * @param mixed $childMigrate The child migration flag.
          * @return array The Widget List.
          */
         public static function get_social_share_child_selectors($attr, $id, $childMigrate)
@@ -7317,6 +7317,7 @@ namespace {
     \define('UAGB_ROOT', \dirname(\plugin_basename(\UAGB_FILE)));
     \define('UAGB_PLUGIN_NAME', 'Spectra');
     \define('UAGB_PLUGIN_SHORT_NAME', 'Spectra');
+    \define('UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
     /**
      * Ultimate Addons for Gutenberg admin notice for minimum PHP version.
      *

@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
-import { SelectControl } from '@wordpress/components';
+import { SelectControl, ToggleControl } from '@wordpress/components';
 import styles from './editor.lazy.scss';
 import GradientSettings from '@Components/gradient-settings';
 import { useEffect, useState, useRef, useLayoutEffect } from '@wordpress/element';
@@ -54,6 +54,7 @@ const Background = ( props ) => {
 		imageResponsive,
 		gradientOverlay,
 		customPosition,
+		centralizedPosition,
 		xPositionDesktop,
 		xPositionTablet,
 		xPositionMobile,
@@ -92,6 +93,7 @@ const Background = ( props ) => {
 		overlayBlendMode,
 		imageOverlayResponsive,
 		label = __( 'Type', 'ultimate-addons-for-gutenberg' ),
+		backgroundVideoFallbackImage,
 	} = props;
 
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
@@ -129,6 +131,23 @@ const Background = ( props ) => {
 			return;
 		}
 		setAttributes( { [ backgroundVideo.label ]: media } );
+	};
+
+	const onRemoveBgFallbackImage = () => {
+		setAttributes( { [ backgroundVideoFallbackImage.label ]: null } );
+	};
+
+	const onSelectBgFallbackImage = ( media ) => {
+		if ( ! media || !media.url ) {
+			setAttributes( { [ backgroundVideoFallbackImage.label ]: null } );
+			return;
+		}
+
+		if ( ! media.type || 'image' !== media.type ) {
+			return;
+		}
+
+		setAttributes( { [ backgroundVideoFallbackImage.label ]: media } );
 	};
 
 	// For now, we are only rendering this setting if the current block is a Container.
@@ -1201,6 +1220,20 @@ const Background = ( props ) => {
 							{ 'custom' === customPosition.value && (
 								<>
 									<div className="uag-background-image-position">
+										{ isContainer && (
+											<div className="uag-background-image-axis-position">
+												<ToggleControl
+													label={ __( 'Centralized Position', 'ultimate-addons-for-gutenberg' ) }
+													checked={ centralizedPosition.value }
+													onChange={ () =>
+														setAttributes( {
+															[ centralizedPosition.label ]: ! centralizedPosition.value,
+														} )
+													}
+												/>
+											</div>
+										) }
+
 										<ResponsiveSlider
 											label={ __( 'X Position', 'ultimate-addons-for-gutenberg' ) }
 											data={ {
@@ -1229,8 +1262,8 @@ const Background = ( props ) => {
 													},
 												},
 											} }
-											limitMin={ { 'px': -800, '%': -100, 'em': -100, 'vw': -100 } }
-											limitMax={ { 'px': 800, '%': 100, 'em': 100, 'vw': 100 } }
+											limitMin={ { 'px': -1000, '%': -100, 'em': -100, 'vw': -100 } }
+											limitMax={ { 'px': 1000, '%': 100, 'em': 100, 'vw': 100 } }
 											units={ [
 												{
 													name: __( 'PX', 'ultimate-addons-for-gutenberg' ),
@@ -1490,6 +1523,20 @@ const Background = ( props ) => {
 						allow={ [ 'video' ] }
 					/>
 				</div>
+			) }
+			{'video' === backgroundType.value && backgroundVideoType.value && (
+			<div className="uag-background-video-image-fallback">
+				<UAGMediaPicker
+					slug={ 'image' }
+					allow={ [ 'image' ] }
+					onSelectImage={ onSelectBgFallbackImage }
+					backgroundImage={ backgroundVideoFallbackImage.value }
+					onRemoveImage={ onRemoveBgFallbackImage }
+					disableDynamicContent={ true }
+					label={ __( 'Fallback Image', 'ultimate-addons-for-gutenberg' ) }
+					help={ __( 'This cover image will replace the background video in case that the video could not be loaded.', 'ultimate-addons-for-gutenberg' ) }
+				/>
+			</div>
 			) }
 			<OverlayControls />
 		</>
