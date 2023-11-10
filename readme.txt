@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+* Fix: Tabs - Resolved an issue in which the tabs wrapper margin would appear differently in the editor and the front-end.
+
 = 2.10.0 - THURSDAY, 9th NOVEMBER 2023 =
 New: Integrated Zip AI into Spectra
 
