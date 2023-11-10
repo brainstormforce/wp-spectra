@@ -1,7 +1,6 @@
 /* eslint-disable no-nested-ternary */
 
 import React from 'react';
-
 import { __ } from '@wordpress/i18n';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -51,6 +50,10 @@ const PluginStats = () => {
 			<line x1='0.5' y1='2.18557e-08' x2='0.499999' y2='16' stroke='#E2E8F0'/>
 		</svg>
 	);
+
+	const docsTrigger = () => {
+		window.open( 'https://wpspectra.com/docs/', '_blank' );
+	};
 
 	const renderLicenseStatus = () => (
 		uag_react.spectra_pro_installed ? (
@@ -107,7 +110,14 @@ const PluginStats = () => {
 
 	return (
 		<>
-			<div className='mr-2 text-sm text-slate-400'>
+						<button
+							onClick={ docsTrigger }
+							className='mx-2 text-sm font-medium text-slate-600'
+						>
+							{ __( 'Knowledge Base', 'ultimate-addons-for-gutenberg' ) }
+						</button>
+						{renderDivider()}
+			<div className='mx-2 text-sm text-slate-400'>
 				{ uag_react.plugin_ver }
 			</div>
 			{ ( uag_react.spectra_pro_installed && uag_react.spectra_pro_ver ) && (
