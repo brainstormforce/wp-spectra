@@ -1379,13 +1379,6 @@ const attributes = {
 		},
 		default: '#FFFFFF75',
 	},
-	gradientOverlayValue: {
-		type: 'string',
-		default: 'linear-gradient(90deg, rgba(6, 147, 227, 0.5) 0%, rgba(155, 81, 224, 0.5) 100%)',
-		UAGCopyPaste: {
-			styleType: 'container-bg-gradient-overlay-value',
-		},
-	},
 	backgroundCustomSizeOverlayDesktop: {
 		type: 'number',
 		UAGCopyPaste: {

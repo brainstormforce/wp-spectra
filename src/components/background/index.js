@@ -922,7 +922,7 @@ const Background = ( props ) => {
 								<>
 									<div className="uag-background-image-overlay-gradient">
 										<GradientSettings
-											backgroundGradient={ props.backgroundOverlayGradient }
+											backgroundGradient={ props.backgroundGradient }
 											setAttributes={ setAttributes }
 											gradientType={ props.gradientType }
 											backgroundGradientColor2={ props.backgroundGradientColor2 }
@@ -975,7 +975,7 @@ const Background = ( props ) => {
 										<>
 											<div className="uag-background-image-overlay-gradient">
 												<GradientSettings
-													backgroundGradient={ props.backgroundOverlayGradient }
+													backgroundGradient={ props.backgroundGradient }
 													setAttributes={ setAttributes }
 													gradientType={ props.gradientType }
 													backgroundGradientColor2={ props.backgroundGradientColor2 }
