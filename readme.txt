@@ -216,10 +216,11 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Fix: Inline Notice - Resolved an issue wherein the title would not appear to be full-width in the Firefox browser.
 * Fix: Tabs - Resolved an issue in which the tabs wrapper margin would appear differently in the editor and the front-end.
 
 = 2.10.0 - THURSDAY, 9th NOVEMBER 2023 =
-New: Integrated Zip AI into Spectra
+* New: Integrated Zip AI into Spectra
 
 = 2.9.1 - TUESDAY, 7th NOVEMBER 2023 =
 * Improvement: Container - Added a fallback image option for the video background type.
