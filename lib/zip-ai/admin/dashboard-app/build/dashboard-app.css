@@ -844,6 +844,8 @@ select {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }.bg-opacity-75 {
   --tw-bg-opacity: 0.75;
+}.stroke-current {
+  stroke: currentColor;
 }.stroke-red-600 {
   stroke: #dc2626;
 }.p-0 {
@@ -1028,6 +1030,9 @@ select {
 }.hover\:bg-spec-hover:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(83 0 224 / var(--tw-bg-opacity));
+}.hover\:text-slate-700:hover {
+  --tw-text-opacity: 1;
+  color: rgb(51 65 85 / var(--tw-text-opacity));
 }.hover\:text-spec:hover {
   --tw-text-opacity: 1;
   color: rgb(97 4 255 / var(--tw-text-opacity));
