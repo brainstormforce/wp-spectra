@@ -15,14 +15,14 @@ use SiteGround_Optimizer\File_Cacher\File_Cacher;
 /**
  * Class UAGB_Caching.
  *
- * @since x.x.x
+ * @since 2.10.1
  */
 class UAGB_Caching {
 
 	/**
 	 * Member Variable
 	 *
-	 * @since x.x.x
+	 * @since 2.10.1
 	 * @var UAGB_Caching|null
 	 */
 	private static $instance;
@@ -30,7 +30,7 @@ class UAGB_Caching {
 	/**
 	 *  Initiator
 	 *
-	 * @since x.x.x
+	 * @since 2.10.1
 	 * @return UAGB_Caching
 	 */
 	public static function get_instance() {
@@ -45,7 +45,7 @@ class UAGB_Caching {
 	/**
 	 * Constructor
 	 *
-	 * @since x.x.x
+	 * @since 2.10.1
 	 */
 	public function __construct() {
 		add_action( 'uagb_delete_uag_asset_dir', array( $this, 'clear_cache' ) );
@@ -55,7 +55,7 @@ class UAGB_Caching {
 	/**
 	 * Clears the cache.
 	 *
-	 * @since x.x.x
+	 * @since 2.10.1
 	 * @return void
 	 */
 	public function clear_cache() {
@@ -65,7 +65,7 @@ class UAGB_Caching {
 	/**
 	 * Clears the SiteGround cache.
 	 *
-	 * @since x.x.x
+	 * @since 2.10.1
 	 * @return void
 	 */
 	public static function clear_siteground_cache() {

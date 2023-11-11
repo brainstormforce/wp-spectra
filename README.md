@@ -4,8 +4,8 @@
 **Tags:** gutenberg, blocks, gutenberg blocks, editor, block  
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
-**Tested up to:** 6.4  
-**Stable tag:** 2.10.0  
+**Tested up to:** 6.4.1  
+**Stable tag:** 2.10.1  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### x.x.x ###
+### 2.10.1 - SATURDAY, 11th NOVEMBER 2023 ###
 * Improvement: Zip AI - Added an option to disable Zip AI.
 * Improvement: Caching - Added compatibility with SiteGround's caching.
 
