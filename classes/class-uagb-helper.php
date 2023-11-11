@@ -157,7 +157,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			self::$block_list      = UAGB_Block_Module::get_blocks_info();
 			self::$file_generation = self::allow_file_generation();
-			// Condition is only needed when we are using block based theme and Reading setting is updated. 
+			// Condition is only needed when we are using block based theme and Reading setting is updated.
 			if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() && isset( $_POST['option_page'] ) && 'reading' === $_POST['option_page'] && isset( $_POST['action'] ) && 'update' === $_POST['action'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Missing
 				/* Update the asset version */
 				UAGB_Admin_Helper::update_admin_settings_option( '__uagb_asset_version', time() ); // Update the asset version when reading settings is updated.
@@ -669,6 +669,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			// Create empty files.
 			uagb_install()->create_files();
 			UAGB_Admin_Helper::create_specific_stylesheet();
+			do_action( 'uagb_delete_uag_asset_dir' );
 			return true;
 		}
 
@@ -917,7 +918,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * Get the Global block styles CSS selector.
 		 *
 		 * @param string $style_name Style Name.
-		 * 
+		 *
 		 * @since 2.9.0
 		 * @return string $selector Styles Selector.
 		 */
@@ -935,7 +936,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param array  $combined_selectors The combined selector array.
 		 * @param string $id The selector ID.
 		 * @param string $gbs_class The GBS class as string.
-		 * 
+		 *
 		 * @since 1.15.0
 		 * @return array $css CSS.
 		 */
@@ -1422,7 +1423,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * This function deletes the Page assets from the Page Meta Key.
 		 *
 		 * @param int $post_id Post Id.
-		 * 
+		 *
 		 * @return void
 		 * @since 1.23.0
 		 */
@@ -1485,6 +1486,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				/* Update the asset version */
 				update_option( '__uagb_asset_version', time() );
 			}
+
+			do_action( 'uagb_delete_page_assets' );
 		}
 
 		/**

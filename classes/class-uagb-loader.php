@@ -167,6 +167,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'classes/class-uagb-init-blocks.php';
 			require_once UAGB_DIR . 'classes/class-uagb-rest-api.php';
 			require_once UAGB_DIR . 'classes/class-uagb-visibility.php';
+			require_once UAGB_DIR . 'classes/class-uagb-caching.php';
 
 			if ( 'twentyseventeen' === get_template() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-twenty-seventeen-compatibility.php';

@@ -215,8 +215,11 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+* Improvement: Caching - Added compatibility with SiteGround's caching.
+
 = 2.10.0 - THURSDAY, 9th NOVEMBER 2023 =
-New: Integrated Zip AI into Spectra
+* New: Integrated Zip AI into Spectra
 
 = 2.9.1 - TUESDAY, 7th NOVEMBER 2023 =
 * Improvement: Container - Added a fallback image option for the video background type.
