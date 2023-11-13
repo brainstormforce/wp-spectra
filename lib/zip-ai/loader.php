@@ -154,7 +154,7 @@ if ( ! class_exists( '\ZipAI\Loader' ) ) {
 			define( 'ZIP_AI_FILE', __FILE__ );
 			define( 'ZIP_AI_DIR', plugin_dir_path( ZIP_AI_FILE ) );
 			define( 'ZIP_AI_URL', plugins_url( '/', ZIP_AI_FILE ) );
-			define( 'ZIP_AI_VERSION', '1.0.2' );
+			define( 'ZIP_AI_VERSION', '1.0.3' );
 			define( 'ZIP_AI_MENU_SLUG', 'zip-ai' );
 			define( 'ZIP_AI_MIDDLEWARE', 'https://app.zipwp.com/auth/' );
 			define( 'ZIP_AI_CREDIT_SERVER_API', 'https://credits.startertemplates.com/api/' );
@@ -170,16 +170,12 @@ if ( ! class_exists( '\ZipAI\Loader' ) ) {
 		 * @return void
 		 */
 		public function setup_classes() {
-			// Quick Cleanup Function for Existing Testers - this should be removed before Zip goes live.
-			if ( Zip_Ai_Helpers::get_admin_settings_option( 'spec_ai_settings' ) ) {
-				Zip_Ai_Helpers::delete_admin_settings_option( 'spec_ai_settings' );
-			}
 
 			// Enable the Zip AI Chat Sidebar if required.
 			if ( apply_filters( 'zip_ai_enable_chat_sidebar', true ) ) {
 				// If the Zip AI Option does not exist, create it and ensure that Zip Chat is enabled.
-				$zip_ai_option = Zip_Ai_Helpers::get_admin_settings_option( 'zip_ai_settings' );
-				if ( empty( $zip_ai_option['auth_token'] ) ) {
+				$zip_ai_option = Zip_Ai_Helpers::get_zip_ai_setting();
+				if ( empty( $zip_ai_option['auth_token'] ) && ! isset( $zip_ai_option['chat_enabled'] ) ) {
 					Zip_Ai_Helpers::ensure_zip_chat_is_enabled();
 				}
 				Sidebar_Configurations::get_instance();

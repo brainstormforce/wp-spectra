@@ -287,6 +287,7 @@ class Sidebar_Configurations {
 			array(
 				'ajax_url'               => admin_url( 'admin-ajax.php' ),
 				'ajax_nonce'             => wp_create_nonce( 'zip_ai_ajax_nonce' ),
+				'zip_ai_admin_nonce'     => wp_create_nonce( 'zip_ai_admin_nonce' ),
 				'current_post_id'        => get_the_ID(),
 				'zip_ai_auth_middleware' => Zip_Ai_Helpers::get_auth_middleware_url(),
 				'is_zip_ai_authorized'   => Zip_Ai_Helpers::is_zip_ai_authorized(),

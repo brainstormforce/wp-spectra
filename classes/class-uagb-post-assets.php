@@ -414,12 +414,12 @@ class UAGB_Post_Assets {
 		if ( 'enabled' !== $gbs_status ) {
 			return;
 		}
-		
+
 		$should_render_styles_in_fse_page = wp_is_block_theme() && ! get_queried_object();
 
 		foreach ( $spectra_global_block_styles as $style ) {
 			if ( ! empty( $style['value'] ) && ! empty( $style['frontendStyles'] ) ) {
-				
+
 				if ( ! empty( $style['post_ids'] ) && in_array( $this->post_id, $style['post_ids'] ) ) {
 					$this->stylesheet = $style['frontendStyles'] . $this->stylesheet;
 				} elseif ( $should_render_styles_in_fse_page && isset( $style['page_template_slugs'] ) && ! empty( $style['page_template_slugs'] ) ) {
@@ -427,11 +427,11 @@ class UAGB_Post_Assets {
 					$this->stylesheet = $style['frontendStyles'] . $this->stylesheet;
 				} elseif ( isset( $style['styleForGlobal'] ) && ! empty( $style['styleForGlobal'] ) ) {
 					$this->stylesheet = $style['frontendStyles'] . $this->stylesheet;
-				}         
+				}
 			}
 		}
 	}
-	
+
 
 	/**
 	 * Load Google Fonts for Spectra Global Block Styles.
@@ -442,7 +442,7 @@ class UAGB_Post_Assets {
 	public function spectra_gbs_load_gfonts() {
 
 		$spectra_gbs_google_fonts = get_option( 'spectra_gbs_google_fonts', array() );
-		
+
 		if ( ! is_array( $spectra_gbs_google_fonts ) ) {
 			return;
 		}
@@ -587,7 +587,7 @@ class UAGB_Post_Assets {
 
 		// For Spectra Global Block Styles.
 		$this->spectra_gbs_load_styles();
-		
+
 		// UAG Flag specific.
 		if ( $this->is_allowed_assets_generation ) {
 
@@ -1303,7 +1303,7 @@ class UAGB_Post_Assets {
 					}
 				} elseif ( 'core/pattern' === $block['blockName'] ) {
 					$get_assets = $this->get_core_pattern_assets( $block );
-					
+
 					if ( ! empty( $get_assets['css'] ) ) {
 						$block_css .= $get_assets['css'];
 						$js        .= $get_assets['js'];
@@ -1558,7 +1558,7 @@ class UAGB_Post_Assets {
 		if ( empty( $block['attrs']['slug'] ) ) {
 			return array();
 		}
-	
+
 		$slug = $block['attrs']['slug'];
 
 		// Check class and function exists.
@@ -1572,9 +1572,9 @@ class UAGB_Post_Assets {
 		if ( ! method_exists( $registry, 'is_registered' ) || ! method_exists( $registry, 'get_registered' ) || ! $registry->is_registered( $slug ) ) {
 			return array();
 		}
-	
+
 		$pattern = $registry->get_registered( $slug );
-		
+
 		return $this->get_blocks_assets( parse_blocks( $pattern['content'] ) );
 	}
 }

@@ -125,9 +125,6 @@ class Admin_Configurations {
 			// Remove the auth token from the Zip AI settings.
 			unset( $existing_zip_ai_options['auth_token'] );
 
-			// Enable Zip Chat if it's not already enabled.
-			Zip_Ai_Helpers::ensure_zip_chat_is_enabled();
-
 			// Update the Zip AI settings.
 			Zip_Ai_Helpers::update_admin_settings_option( 'zip_ai_settings', $existing_zip_ai_options );
 
@@ -147,11 +144,11 @@ class Admin_Configurations {
 		// Update the auth token.
 		$existing_zip_ai_options['auth_token'] = Zip_Ai_Helpers::encrypt( sanitize_text_field( $_GET['token'] ) );
 
-		// Enable Zip Chat if it's not already enabled.
-		Zip_Ai_Helpers::ensure_zip_chat_is_enabled();
-
 		// Update the Zip AI settings.
 		Zip_Ai_Helpers::update_admin_settings_option( 'zip_ai_settings', $existing_zip_ai_options );
+
+		// Enable Zip Chat if it's not already enabled.
+		Zip_Ai_Helpers::ensure_zip_chat_is_enabled();
 
 		// Redirect to the settings page.
 		if ( apply_filters( 'zip_ai_auth_redirection_flag', true ) ) {
