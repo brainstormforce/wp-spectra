@@ -219,6 +219,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Container - Resolved an issue wherein the gradient overlay would not work as intended.
 * Fix: Inline Notice - Resolved an issue wherein the title would not appear to be full-width in the Firefox browser.
 * Fix: Tabs - Resolved an issue in which the tabs wrapper margin would appear differently in the editor and the front-end.
+* Fix: Icon List - Resolved an issue wherein the vertical layout alignment would not appear as intended in the editor's tablet view. 
 
 = 2.10.0 - THURSDAY, 9th NOVEMBER 2023 =
 * New: Integrated Zip AI into Spectra
