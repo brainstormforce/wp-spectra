@@ -4,8 +4,8 @@
 **Tags:** gutenberg, blocks, gutenberg blocks, editor, block  
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
-**Tested up to:** 6.4  
-**Stable tag:** 2.10.0  
+**Tested up to:** 6.4.1  
+**Stable tag:** 2.10.1  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -222,8 +222,12 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Icon List - Resolved an issue wherein the vertical layout alignment would not appear as intended in the editor's tablet view. 
 * Fix: FAQ - Resolved an issue wherein the block content padding would appear differently in the editor and the front-end.
 
+### 2.10.1 - SATURDAY, 11th NOVEMBER 2023 ###
+* Improvement: Zip AI - Added an option to disable Zip AI.
+* Improvement: Caching - Added compatibility with SiteGround's caching.
+
 ### 2.10.0 - THURSDAY, 9th NOVEMBER 2023 ###
-* New: Integrated Zip AI into Spectra
+* New: Integrated Zip AI into Spectra.
 
 ### 2.9.1 - TUESDAY, 7th NOVEMBER 2023 ###
 * Improvement: Container - Added a fallback image option for the video background type.
