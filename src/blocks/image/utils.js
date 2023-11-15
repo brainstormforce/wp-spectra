@@ -103,3 +103,28 @@ export const getDevicesAttributes = ( media, deviceType ) => {
 	
 	return mediaAttributes;
 }
+
+export const checkProtocol = ( url ) => {
+	if( ! url ) {
+		return false;
+	}
+
+	return url && url.indexOf( 'http:' ) >= 0 ? 'http:' : 'https:'
+}
+
+export const migrateHttp = ( attributes ) => {
+	const currentHttpProtocol = window.location.protocol;
+	const urlProtocol = checkProtocol( attributes.url );
+	
+	if( urlProtocol === currentHttpProtocol ) {
+		return attributes;
+	}
+
+	// Replace url protocol in attribute object.
+	// eslint-disable-next-line array-callback-return
+	[ 'url', 'urlMobile', 'urlTablet' ].map( ( item ) => {
+		attributes[ item ] = attributes[ item ].replace( urlProtocol, currentHttpProtocol );
+	} );
+
+	return attributes;
+}
