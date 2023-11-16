@@ -189,7 +189,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			}
 
 			// Includes Zip AI library.
-			require_once UAGB_DIR . 'lib/zip-ai/zip-ai.php';
+			require_once UAGB_DIR . 'lib/class-uagb-zip-ai.php';
 		}
 
 		/**
