@@ -237,7 +237,7 @@ class UAGB_Post_Assets {
 			global $post;
 			$this_post = $this->preview ? $post : get_post( $this->post_id );
 			if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) { // Check if block theme is active.
-				$what_post_type = $this->determine_template_post_type(); // Determine template post type.
+				$what_post_type = $this->determine_template_post_type( $this->post_id ); // Determine template post type.
 				$this->prepare_assets_for_templates_based_post_type( $what_post_type ); // Prepare assets for templates based on post type.
 			}
 			$this->prepare_assets( $this_post );
@@ -266,6 +266,12 @@ class UAGB_Post_Assets {
 				return 'archive-product';
 			} elseif ( is_product() ) {
 				return 'single-product';
+			} elseif ( is_product_taxonomy() ) {
+				return 'taxonomy-product_cat';
+			} elseif ( is_product_tag() ) {
+				return 'taxonomy-product_tag';
+			} elseif ( is_product_category() ) {
+				return 'taxonomy-product_cat';
 			}
 		}
 		return false;
@@ -274,10 +280,18 @@ class UAGB_Post_Assets {
 	/**
 	 * Determine template post type function.
 	 *
+	 * @param int $post_id of current post.
 	 * @since 2.9.1
 	 * @return string The determined post type.
 	 */
-	private function determine_template_post_type() {
+	private function determine_template_post_type( $post_id ) {
+		// Check if post id is passed.
+		if ( ! empty( $post_id ) ) {
+			$template_slug = get_page_template_slug( $post_id );
+			if ( ! empty( $template_slug ) ) {
+				return $template_slug;
+			}
+		}
 
 		$get_woocommerce_template = $this->get_woocommerce_template(); // Get WooCommerce template.
 		if ( is_string( $get_woocommerce_template ) ) { // Check if WooCommerce template is found.
