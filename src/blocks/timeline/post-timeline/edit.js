@@ -134,7 +134,8 @@ const PostTimelineComponent = ( props ) => {
 		};
 
 		if ( excludeCurrentPost ) {
-			latestPostsQuery.exclude = select( 'core/editor' ).getCurrentPostId();
+			const getStore = select( 'core/editor' );
+			latestPostsQuery.exclude = getStore?.getCurrentPostId ? getStore.getCurrentPostId() : null;
 		}
 		const category = [];
 		const temp = parseInt( categories );
