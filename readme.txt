@@ -222,6 +222,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Icon List - Resolved an issue wherein the vertical layout alignment would not appear as intended in the editor's tablet view.
 * Fix: FAQ - Resolved an issue wherein the block content padding would appear differently in the editor and the front-end.
 * Fix: Global - Resolved an issue wherein the WooCommerce and custom template-styles would not load as intended in FSE theme.
+* Fix: Content Timeline - Resolved an issue wherein the block's styling would be applied to other nested blocks in the editor.
 
 = 2.10.1 - SATURDAY, 11th NOVEMBER 2023 =
 * Improvement: Zip AI - Added an option to disable Zip AI.
