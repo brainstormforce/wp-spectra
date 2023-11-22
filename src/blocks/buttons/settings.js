@@ -399,76 +399,78 @@ const Settings = ( props ) => {
 	const spacingSettings = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
-				<SpacingControl
-					{ ...props }
-					label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
-					valueTop={ {
-						value: topPadding,
-						label: 'topPadding',
-					} }
-					valueRight={ {
-						value: rightPadding,
-						label: 'rightPadding',
-					} }
-					valueBottom={ {
-						value: bottomPadding,
-						label: 'bottomPadding',
-					} }
-					valueLeft={ {
-						value: leftPadding,
-						label: 'leftPadding',
-					} }
-					valueTopTablet={ {
-						value: topTabletPadding,
-						label: 'topTabletPadding',
-					} }
-					valueRightTablet={ {
-						value: rightTabletPadding,
-						label: 'rightTabletPadding',
-					} }
-					valueBottomTablet={ {
-						value: bottomTabletPadding,
-						label: 'bottomTabletPadding',
-					} }
-					valueLeftTablet={ {
-						value: leftTabletPadding,
-						label: 'leftTabletPadding',
-					} }
-					valueTopMobile={ {
-						value: topMobilePadding,
-						label: 'topMobilePadding',
-					} }
-					valueRightMobile={ {
-						value: rightMobilePadding,
-						label: 'rightMobilePadding',
-					} }
-					valueBottomMobile={ {
-						value: bottomMobilePadding,
-						label: 'bottomMobilePadding',
-					} }
-					valueLeftMobile={ {
-						value: leftMobilePadding,
-						label: 'leftMobilePadding',
-					} }
-					unit={ {
-						value: paddingUnit,
-						label: 'paddingUnit',
-					} }
-					mUnit={ {
-						value: mobilePaddingUnit,
-						label: 'mobilePaddingUnit',
-					} }
-					tUnit={ {
-						value: tabletPaddingUnit,
-						label: 'tabletPaddingUnit',
-					} }
-					attributes={ attributes }
-					setAttributes={ setAttributes }
-					link={ {
-						value: paddingLink,
-						label: 'paddingLink',
-					} }
-				/>
+				{ 'default' === buttonSize && (
+					<SpacingControl
+						{ ...props }
+						label={ __( 'Padding', 'ultimate-addons-for-gutenberg' ) }
+						valueTop={ {
+							value: topPadding,
+							label: 'topPadding',
+						} }
+						valueRight={ {
+							value: rightPadding,
+							label: 'rightPadding',
+						} }
+						valueBottom={ {
+							value: bottomPadding,
+							label: 'bottomPadding',
+						} }
+						valueLeft={ {
+							value: leftPadding,
+							label: 'leftPadding',
+						} }
+						valueTopTablet={ {
+							value: topTabletPadding,
+							label: 'topTabletPadding',
+						} }
+						valueRightTablet={ {
+							value: rightTabletPadding,
+							label: 'rightTabletPadding',
+						} }
+						valueBottomTablet={ {
+							value: bottomTabletPadding,
+							label: 'bottomTabletPadding',
+						} }
+						valueLeftTablet={ {
+							value: leftTabletPadding,
+							label: 'leftTabletPadding',
+						} }
+						valueTopMobile={ {
+							value: topMobilePadding,
+							label: 'topMobilePadding',
+						} }
+						valueRightMobile={ {
+							value: rightMobilePadding,
+							label: 'rightMobilePadding',
+						} }
+						valueBottomMobile={ {
+							value: bottomMobilePadding,
+							label: 'bottomMobilePadding',
+						} }
+						valueLeftMobile={ {
+							value: leftMobilePadding,
+							label: 'leftMobilePadding',
+						} }
+						unit={ {
+							value: paddingUnit,
+							label: 'paddingUnit',
+						} }
+						mUnit={ {
+							value: mobilePaddingUnit,
+							label: 'mobilePaddingUnit',
+						} }
+						tUnit={ {
+							value: tabletPaddingUnit,
+							label: 'tabletPaddingUnit',
+						} }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						link={ {
+							value: paddingLink,
+							label: 'paddingLink',
+						} }
+					/>
+				) }
 				<SpacingControl
 					{ ...props }
 					label={ __( 'Margin', 'ultimate-addons-for-gutenberg' ) }
