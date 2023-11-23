@@ -27,6 +27,11 @@
       "cp .scripts/git-hooks/pre-commit .git/hooks/",
       "chmod +x .git/hooks/pre-commit",
       "echo 'pre-commit hook copied'"
+    ],
+    "push:hook:pre": [
+      "cp .scripts/git-hooks/pre-push .git/hooks/",
+      "chmod +x .git/hooks/pre-push",
+      "echo 'pre-push hook copied'"
     ]
   },
   "require": {
