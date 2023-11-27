@@ -224,6 +224,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: FAQ - Resolved an issue wherein the block content padding would appear differently in the editor and the front-end.
 * Fix: Global - Resolved an issue wherein the WooCommerce and custom template-styles would not load as intended in FSE theme.
 * Fix: Content Timeline - Resolved an issue wherein the block's styling would be applied to other nested blocks in the editor.
+* Fix: Container - Resolved an issue wherein the animation slide right doesn't work as intended with Testimonial block in Firefox browser. 
 * Fix: Image - Resolved an issue wherein images would not load as intended after migration.
 
 ### 2.10.1 - SATURDAY, 11th NOVEMBER 2023 ###
