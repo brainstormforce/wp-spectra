@@ -117,7 +117,7 @@ export const migrateHttp = ( attributes ) => {
 	const urlProtocol = checkProtocol( attributes.url );
 	
 	if( urlProtocol === currentHttpProtocol ) {
-		return attributes;
+		return;
 	}
 
 	// Replace url protocol in attribute object.

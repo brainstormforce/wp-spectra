@@ -44,9 +44,11 @@ function UAGBImageEdit( props ) {
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
 	// Migrate image urls with current http protocol.
-	if( id ){
-		props.attributes = migrateHttp( attributes );
-	}
+	useMemo( () => { 
+		if( id ) { 
+			migrateHttp( props.attributes );
+		}
+	}, [ attributes ] );
 
 	return (
 		<>
