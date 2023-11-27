@@ -307,22 +307,20 @@ class UAGB_Post_Assets {
 			'is_embed'      => 'embed',
 			'is_front_page' => 'home',
 			'is_home'       => 'home',
-			'is_page'       => 'page',
 			'is_paged'      => 'paged',
 			'is_search'     => 'search',
-			'is_single'     => 'single',
-			'is_singular'   => 'singular',
 			'is_tag'        => 'tag',
 		); // Conditional tags to post type.
-
-		if ( is_singular() && is_page() ) {
-			// Will return true if you are using a static page as the homepage.
-			// Run only if you are on the main website URL i.e., example.com.
+		
+		// Determines whether the query is for an existing single page.
+		if ( is_page() ) {
 			return 'page';
-		} elseif ( is_home() && ! is_front_page() ) {
-			// Blog page.
-			// Run only if you are not on the main website URL i.e., example.com/static_page_as_post_page.
-			return 'home';
+		} elseif ( is_singular() ) {
+			// Applies to single Posts, and existing single post of any post type (post, attachment, page, custom post types).
+			$object = get_queried_object();
+			if ( $object instanceof WP_Post && ! empty( $object->post_type ) ) {
+				return 'single-' . $object->post_type; 
+			}
 		}
 
 		$what_post_type = '404'; // Default to '404' if no condition matches.
