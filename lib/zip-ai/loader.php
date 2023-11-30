@@ -155,7 +155,7 @@ if ( ! class_exists( '\ZipAI\Loader' ) ) {
 			define( 'ZIP_AI_FILE', __FILE__ );
 			define( 'ZIP_AI_DIR', plugin_dir_path( ZIP_AI_FILE ) );
 			define( 'ZIP_AI_URL', plugins_url( '/', ZIP_AI_FILE ) );
-			define( 'ZIP_AI_VERSION', '1.0.5' );
+			define( 'ZIP_AI_VERSION', '1.0.6' );
 			define( 'ZIP_AI_MENU_SLUG', 'zip-ai' );
 			define( 'ZIP_AI_MIDDLEWARE', 'https://app.zipwp.com/auth/' );
 			define( 'ZIP_AI_CREDIT_SERVER_API', 'https://credits.startertemplates.com/api/' );
@@ -174,8 +174,8 @@ if ( ! class_exists( '\ZipAI\Loader' ) ) {
 			// Migrate any older modules to the new format.
 			Module::migrate_options();
 
-			// Enable the Zip AI Chat Sidebar if required.
-			if ( Module::is_enabled( 'ai_assistant' ) ) {
+			// Enable the Zip AI Chat Sidebar if required - filter is for old users.
+			if ( apply_filters( 'zip_ai_enable_chat_sidebar', true ) && Module::is_enabled( 'ai_assistant' ) ) {
 				Sidebar_Configurations::get_instance();
 			}
 

@@ -3,7 +3,7 @@
  * Plugin Name: Zip AI Assistant
  * Description: Library which interacts with SCS and provide multiple useful modules.
  * Author: Brainstorm Force
- * Version: 1.0.5
+ * Version: 1.0.6
  * License: GPL v2
  * Text Domain: zip-ai
  *
@@ -16,4 +16,6 @@ if ( defined( 'ZIP_AI_DIR' ) ) {
 }
 
 // Load the Zip AI Loader.
-require_once 'loader.php';
+if ( apply_filters( 'zip_ai_load_library', true ) ) {
+	require_once 'loader.php';
+}
