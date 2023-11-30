@@ -4,6 +4,7 @@ import { __ } from '@wordpress/i18n';
 import Welcome from '@DashboardApp/pages/welcome/Welcome';
 import Blocks from '@DashboardApp/pages/blocks/Blocks';
 import Settings from '@DashboardApp/pages/settings/Settings';
+import AiFeatures from '@DashboardApp/pages/ai-features/AiFeatures';
 
 function SettingsRoute() {
 	const query = new URLSearchParams( useLocation().search );
@@ -38,6 +39,10 @@ function SettingsRoute() {
 					break;
 				case 'settings':
 					routePage = <Settings/>;
+					break;
+				case 'ai-features':
+					// Only render the AI Features page if Zip AI data was successfully localized.
+					routePage = uag_react?.zip_ai_admin_nonce ? <AiFeatures/> : <Welcome/>;
 					break;
 				default:
 					routePage = <Welcome/>;

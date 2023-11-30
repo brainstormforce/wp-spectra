@@ -10,8 +10,10 @@
  * @package zip-ai
  */
 
+// Exit if Zip AI is already loaded.
 if ( defined( 'ZIP_AI_DIR' ) ) {
 	return;
 }
 
+// Load the Zip AI Loader.
 require_once 'loader.php';

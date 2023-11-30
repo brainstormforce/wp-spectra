@@ -1,6 +1,9 @@
 <?php
 /**
- * Zip AI - Helpers.
+ * Zip AI - Helper.
+ *
+ * This file contains the helper functions of Zip AI.
+ * Helpers are functions that are used throughout the library.
  *
  * @package zip-ai
  */
@@ -12,12 +15,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Classes to be used, in alphabetical order.
 use ZipAI\Classes\Token_Calculator;
+use ZipAI\Classes\Utils;
 
 /**
- * The Zip_Ai_Helpers Class.
+ * The Helper Class.
  */
-class Zip_Ai_Helpers {
+class Helper {
 	/**
 	 * Get an option from the database.
 	 *
@@ -39,16 +44,11 @@ class Zip_Ai_Helpers {
 	 * @param mixed  $value            The value to update.
 	 * @param bool   $network_override Whether to allow the network_override admin setting to be overridden on subsites.
 	 * @since 1.0.0
-	 * @return void
+	 * @return bool True if the option was updated, false otherwise.
 	 */
 	public static function update_admin_settings_option( $key, $value, $network_override = false ) {
-
-		// Update the site-wide option if we're in the network admin.
-		if ( $network_override && is_multisite() ) {
-			update_site_option( $key, $value );
-		} else {
-			update_option( $key, $value );
-		}
+		// Update the site-wide option if we're in the network admin, and return the updated status.
+		return $network_override && is_multisite() ? update_site_option( $key, $value ) : update_option( $key, $value );
 	}
 
 	/**
@@ -69,52 +69,25 @@ class Zip_Ai_Helpers {
 	}
 
 	/**
-	 * Enable Zip Chat if it's not already enabled.
-	 *
-	 * @since 1.0.0
-	 * @return void
-	 */
-	public static function ensure_zip_chat_is_enabled() {
-		// Get the Zip AI settings.
-		$zip_ai_options = self::get_admin_settings_option( 'zip_ai_settings' );
-
-		// If Zip Chat is already enabled, abandon ship.
-		if ( ! empty( $zip_ai_options['chat_enabled'] ) ) {
-			return;
-		}
-
-		// If the Zip AI settings are empty, set them to an empty array.
-		if ( empty( $zip_ai_options ) || ! is_array( $zip_ai_options ) ) {
-			$zip_ai_options = array();
-		}
-
-		// Set the chat enabled option to true.
-		$zip_ai_options['chat_enabled'] = true;
-
-		// Update the Zip AI settings.
-		self::update_admin_settings_option( 'zip_ai_settings', $zip_ai_options );
-	}
-
-	/**
 	 * Check if Zip AI is authorized.
 	 *
 	 * @since 1.0.0
 	 * @return boolean True if Zip AI is authorized, false otherwise.
 	 */
-	public static function is_zip_ai_authorized() {
+	public static function is_authorized() {
 		// Get the Zip AI settings.
-		$zip_ai_options = self::get_admin_settings_option( 'zip_ai_settings' );
+		$existing_settings = self::get_admin_settings_option( 'zip_ai_settings' );
 
 		// If the Zip AI settings are empty, return false.
-		if ( empty( $zip_ai_options ) || ! is_array( $zip_ai_options ) ) {
+		if ( empty( $existing_settings ) || ! is_array( $existing_settings ) ) {
 			return false;
 		}
 
 		// Return true if the auth token is set and is a string.
 		return (
-			! empty( $zip_ai_options['auth_token'] )
-			&& is_string( $zip_ai_options['auth_token'] )
-			&& ! empty( trim( $zip_ai_options['auth_token'] ) )
+			! empty( $existing_settings['auth_token'] )
+			&& is_string( $existing_settings['auth_token'] )
+			&& ! empty( trim( $existing_settings['auth_token'] ) )
 		);
 	}
 
@@ -129,21 +102,21 @@ class Zip_Ai_Helpers {
 	 * @since 1.0.0
 	 * @return mixed|array The setting value, or the default.
 	 */
-	public static function get_zip_ai_setting( $key = '', $default = array() ) {
+	public static function get_setting( $key = '', $default = array() ) {
 
 		// Get the Zip AI settings.
-		$zip_ai_options = self::get_admin_settings_option( 'zip_ai_settings' );
+		$existing_settings = self::get_admin_settings_option( 'zip_ai_settings' );
 
 		// If the Zip AI settings are empty, return the fallback.
-		if ( empty( $zip_ai_options ) || ! is_array( $zip_ai_options ) ) {
+		if ( empty( $existing_settings ) || ! is_array( $existing_settings ) ) {
 			return $default;
 		}
 
 		// If the key is empty, return the entire settings array - otherwise return the specific setting or the fallback.
 		if ( empty( $key ) ) {
-			return $zip_ai_options;
+			return $existing_settings;
 		} else {
-			return isset( $zip_ai_options[ $key ] ) ? $zip_ai_options[ $key ] : $default;
+			return isset( $existing_settings[ $key ] ) ? $existing_settings[ $key ] : $default;
 		}
 	}
 
@@ -169,7 +142,7 @@ class Zip_Ai_Helpers {
 	 * @since 1.0.0
 	 * @return array The Zip AI Response.
 	 */
-	public static function get_scs_response( $endpoint ) {
+	public static function get_credit_server_response( $endpoint ) {
 		// If the endpoint is not a string, then abandon ship.
 		if ( ! is_string( $endpoint ) ) {
 			return array(
@@ -178,10 +151,10 @@ class Zip_Ai_Helpers {
 		}
 
 		// Get the Auth Token from the Zip AI Settings.
-		$zip_ai_auth_token = self::get_decrypted_auth_token();
+		$auth_token = self::get_decrypted_auth_token();
 
 		// If the Zip Auth Token is not set, then abandon ship.
-		if ( empty( $zip_ai_auth_token ) || ! is_string( $zip_ai_auth_token ) ) {
+		if ( empty( $auth_token ) || ! is_string( $auth_token ) ) {
 			return array(
 				'error' => __( 'The Zip AI Auth Token is not set.', 'zip-ai' ),
 			);
@@ -195,7 +168,7 @@ class Zip_Ai_Helpers {
 			$api_url,
 			array(
 				'headers' => array(
-					'Authorization' => 'Bearer ' . $zip_ai_auth_token,
+					'Authorization' => 'Bearer ' . $auth_token,
 				),
 				'timeout' => 30, // phpcs:ignore WordPressVIPMinimum.Performance.RemoteRequestTimeout.timeout_timeout -- 30 seconds is required sometime for open ai responses
 			)
@@ -230,53 +203,15 @@ class Zip_Ai_Helpers {
 	 */
 	public static function get_decrypted_auth_token() {
 		// Get the Zip AI Settings.
-		$zip_auth_token = self::get_zip_ai_setting( 'auth_token' );
+		$auth_token = self::get_setting( 'auth_token' );
 
 		// Return early if the auth token is not set.
-		if ( empty( $zip_auth_token ) || ! is_string( $zip_auth_token ) ) {
+		if ( empty( $auth_token ) || ! is_string( $auth_token ) ) {
 			return '';
 		}
 
 		// Return the decrypted auth token.
-		return ! empty( trim( $zip_auth_token ) ) ? self::decrypt( $zip_auth_token ) : '';
-	}
-
-	/**
-	 * Encrypt data using base64.
-	 *
-	 * @param string $input The input string which needs to be encrypted.
-	 * @since 1.0.0
-	 * @return string The encrypted string.
-	 */
-	public static function encrypt( $input ) {
-		// If the input is empty or not a string, then abandon ship.
-		if ( empty( $input ) || ! is_string( $input ) ) {
-			return '';
-		}
-
-		// Encrypt the input and return it.
-		$base_64 = base64_encode( $input ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
-		$encode  = rtrim( $base_64, '=' );
-		return $encode;
-	}
-
-	/**
-	 * Decrypt data using base64.
-	 *
-	 * @param string $input The input string which needs to be decrypted.
-	 * @since 1.0.0
-	 * @return string The decrypted string.
-	 */
-	public static function decrypt( $input ) {
-		// If the input is empty or not a string, then abandon ship.
-		if ( empty( $input ) || ! is_string( $input ) ) {
-			return '';
-		}
-
-		// Decrypt the input and return it.
-		$base_64 = $input . str_repeat( '=', strlen( $input ) % 4 );
-		$decode  = base64_decode( $base_64 ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode
-		return $decode;
+		return ! empty( trim( $auth_token ) ) ? Utils::decrypt( $auth_token ) : '';
 	}
 
 	/**
@@ -299,7 +234,7 @@ class Zip_Ai_Helpers {
 		);
 
 		// Get the response from the endpoint.
-		$response = self::get_scs_response( 'usage' );
+		$response = self::get_credit_server_response( 'usage' );
 
 		// If the response is not an error, then update the credit details.
 		if (
@@ -314,76 +249,6 @@ class Zip_Ai_Helpers {
 		}
 
 		return $credit_details;
-	}
-
-	/**
-	 * This function helps in setting multiple options of submenu page.
-	 *
-	 * @param array $args arguments for submenu page.
-	 * @since 1.0.0
-	 * @return void
-	 */
-	public static function add_zip_ai_submenu_page( $args = array(
-		'parent_slug'     => '',
-		'page_title'      => '',
-		'menu_title'      => '',
-		'menu_capability' => '',
-		'menu_slug'       => '',
-		'menu_position'   => '',
-	) ) {
-		if ( ! empty( $args['parent_slug'] ) ) {
-			add_filter(
-				'zip_ai_parent_page',
-				function() use ( $args ) {
-					return $args['parent_slug'];
-				}
-			);
-		}
-
-		if ( ! empty( $args['page_title'] ) ) {
-			add_filter(
-				'zip_ai_page_title',
-				function() use ( $args ) {
-					return $args['page_title'];
-				}
-			);
-		}
-
-		if ( ! empty( $args['menu_title'] ) ) {
-			add_filter(
-				'zip_ai_menu_title',
-				function() use ( $args ) {
-					return $args['menu_title'];
-				}
-			);
-		}
-
-		if ( ! empty( $args['menu_capability'] ) ) {
-			add_filter(
-				'zip_ai_menu_capability',
-				function() use ( $args ) {
-					return $args['menu_capability'];
-				}
-			);
-		}
-
-		if ( ! empty( $args['menu_slug'] ) ) {
-			add_filter(
-				'zip_ai_menu_slug',
-				function() use ( $args ) {
-					return $args['menu_slug'];
-				}
-			);
-		}
-
-		if ( ! empty( $args['menu_position'] ) ) {
-			add_filter(
-				'zip_ai_menu_position',
-				function() use ( $args ) {
-					return intval( $args['menu_position'] );
-				}
-			);
-		}
 	}
 
 	/**
@@ -414,7 +279,7 @@ class Zip_Ai_Helpers {
 	}
 
 	/**
-	 * TGet the revoke url for the auth token.
+	 * Get the revoke url for the auth token.
 	 *
 	 * @since 1.0.0
 	 * @return string The authorization revoke url.

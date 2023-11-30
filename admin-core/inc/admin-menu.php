@@ -14,6 +14,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use \ZipAI\Classes\Helper as Zip_Ai_Helper;
+use \ZipAI\Classes\Module as Zip_Ai_Module;
+
+
 /**
  * Class Admin_Menu.
  */
@@ -160,6 +164,18 @@ class Admin_Menu {
 		// Use this action hook to add sub menu to above menu.
 		do_action( 'spectra_after_menu_register' );
 
+		// Add the AI Features Submenu if Zip AI Library is loaded.
+		if ( defined( 'ZIP_AI_VERSION' ) ) {
+			add_submenu_page(
+				$menu_slug,
+				__( 'Spectra', 'ultimate-addons-for-gutenberg' ),
+				__( 'AI Features', 'ultimate-addons-for-gutenberg' ),
+				$capability,
+				$menu_slug . '&path=ai-features',
+				array( $this, 'render' )
+			);
+		}
+
 		// Finally, add the Settings Submenu.
 		add_submenu_page(
 			$menu_slug,
@@ -254,6 +270,27 @@ class Admin_Menu {
 				'spectra_pro_url'          => \UAGB_Admin_Helper::get_spectra_pro_url(),
 			)
 		);
+
+		// If the Zip AI Assets is available, add the Zip AI localizations.
+		if ( is_array( $localize )
+			&& class_exists( '\ZipAI\Classes\Helper' )
+			&& class_exists( '\ZipAI\Classes\Module' )
+			&& defined( 'ZIP_AI_CREDIT_TOPUP_URL' )
+		) {
+
+			$localize = array_merge(
+				$localize,
+				array(
+					'zip_ai_auth_middleware'  => Zip_Ai_Helper::get_auth_middleware_url(),
+					'zip_ai_auth_revoke_url'  => Zip_Ai_Helper::get_auth_revoke_url(),
+					'zip_ai_credit_topup_url' => ZIP_AI_CREDIT_TOPUP_URL,
+					'zip_ai_is_authorized'    => Zip_Ai_Helper::is_authorized(),
+					'zip_ai_is_chat_enabled'  => Zip_Ai_Module::is_enabled( 'ai_assistant' ),
+					'zip_ai_admin_nonce'      => wp_create_nonce( 'zip_ai_admin_nonce' ),
+					'zip_ai_credit_details'   => Zip_Ai_Helper::get_credit_details(),
+				)
+			);
+		}
 
 		$this->settings_app_scripts( $localize );
 	}
