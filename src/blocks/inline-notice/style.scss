@@ -32,7 +32,9 @@
 
 	.uagb-notice-title {
 		margin: 0;
+		width: -moz-available;
 		width: -webkit-fill-available;
+		width: fill-available;
 		display: inline-block;
 	}
 

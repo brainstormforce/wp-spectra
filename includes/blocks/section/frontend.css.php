@@ -3,20 +3,28 @@
  * Frontend CSS & Google Fonts loading File.
  *
  * @since 2.0.0
- *
  * @package uagb
  */
 
 global $content_width;
 
-$overall_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall' );
-$overall_border_css        = UAGB_Block_Helper::uag_generate_deprecated_border_css(
+/**
+ * Note: Fixing issue due to constraints on variable usage before a global declaration.
+ * 
+ * @var mixed[] $attr
+ * @var int $id
+ * @var string $gradient
+ */
+
+$overall_border_css = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall' );
+$overall_border_css = UAGB_Block_Helper::uag_generate_deprecated_border_css(
 	$overall_border_css,
-	( isset( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
-	( isset( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
-	( isset( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
-	( isset( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
+	( isset( $attr['borderWidth'] ) && is_string( $attr['borderWidth'] ) ? $attr['borderWidth'] : '' ),
+	( isset( $attr['borderRadius'] ) && is_string( $attr['borderRadius'] ) ? $attr['borderRadius'] : '' ),
+	( isset( $attr['borderColor'] ) && is_string( $attr['borderColor'] ) ? $attr['borderColor'] : '' ),
+	( isset( $attr['borderStyle'] ) && is_string( $attr['borderStyle'] ) ? $attr['borderStyle'] : '' )
 );
+
 $overall_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'tablet' );
 $overall_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'overall', 'mobile' );
 

@@ -169,7 +169,6 @@ const Settings = () => {
 									uag_react.spectra_pro_status && (
 										<>
 											<InstagramUsers/>
-											{/* SOCIAL MARKER */}
 										</>
 									)
 								}

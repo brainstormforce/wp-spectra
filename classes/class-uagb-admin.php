@@ -42,8 +42,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				return;
 			}
 
-			// Disabling asking 5 Stars from users for a few updated till we get stable.
-			// add_action( 'admin_notices', array( $this, 'register_notices' ) );.
+
+			add_action( 'admin_notices', array( $this, 'register_notices' ) );
 
 			add_filter( 'wp_kses_allowed_html', array( $this, 'add_data_attributes' ), 10, 2 );
 

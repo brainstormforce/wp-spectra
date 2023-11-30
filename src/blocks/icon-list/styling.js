@@ -331,6 +331,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		};
 		tabletSelectors[ ' .uagb-icon-list__wrap .block-editor-block-list__layout' ] = {
 			'flex-direction': 'column',
+			'align-items': 'flex-start',
 		};
 	}
 

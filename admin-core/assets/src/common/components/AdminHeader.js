@@ -13,9 +13,9 @@ const AdminHeader = ( props ) => {
 
 	return (
 		<Disclosure as='nav' className='bg-white shadow'>
-			<div className='max-w-3xl mx-auto px-6 lg:max-w-7xl'>
-				<div className='relative flex justify-between h-16'>
-					<div className='flex-1 flex items-center justify-center sm:items-stretch sm:justify-start'>
+			<div className='max-w-3xl mx-auto px-3 sm:px-6 lg:max-w-full'>
+				<div className='relative flex flex-col lg:flex-row justify-between h-28 lg:h-16 py-3 lg:py-0'>
+					<div className='lg:flex-1 flex items-start justify-center sm:items-stretch sm:justify-start'>
 						{ iconLogo ? (
 							<>
 								<div className='flex-shrink-0 flex items-center'>

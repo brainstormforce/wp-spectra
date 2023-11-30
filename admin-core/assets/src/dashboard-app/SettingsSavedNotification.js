@@ -43,9 +43,10 @@ export default function SettingsSavedNotification() {
 	return (
 		<>
 			{/* Global notification live region, render this permanently at the end of the document */}
+			{/* The Z-index is set to appear above fullscreen popups as well. */}
 			<div
 				aria-live="assertive"
-				className="fixed inset-10 z-10 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start"
+				className="fixed inset-10 z-[9999999] flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start"
 			>
 				<div className="w-full flex flex-col items-center space-y-4 sm:items-end">
 					{/* Notification panel, dynamically insert this into the live region when it needs to be displayed */}

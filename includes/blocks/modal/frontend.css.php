@@ -63,6 +63,7 @@ $selectors               = array(
 		'border-top-right-radius'    => UAGB_Helper::get_css_value( $attr['contentBorderTopRightRadius'], $attr['contentBorderRadiusUnit'] ),
 		'border-bottom-left-radius'  => UAGB_Helper::get_css_value( $attr['contentBorderBottomLeftRadius'], $attr['contentBorderRadiusUnit'] ),
 		'border-bottom-right-radius' => UAGB_Helper::get_css_value( $attr['contentBorderBottomRightRadius'], $attr['contentBorderRadiusUnit'] ),
+		'z-index'                    => '99999',
 	),
 	' .uagb-modal-popup-content:hover'           => array(
 		'border-color' => $attr['contentBorderHColor'],
@@ -76,6 +77,7 @@ $selectors               = array(
 	),
 	'.uagb-modal-popup.active'                   => array(
 		'background' => $attr['overlayColor'],
+		'z-index'    => '99999',
 	),
 	' .uagb-modal-popup-content'                 => array_merge(
 		array(

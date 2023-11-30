@@ -3,7 +3,8 @@
  * Frontend CSS & Google Fonts loading File.
  *
  * @since 2.0.0
- *
+ * @var mixed[] $attr
+ * @var int $id
  * @package uagb
  */
 
@@ -207,11 +208,11 @@ if ( 'side' === $attr['imgAlign'] ) {
 		if ( 'left' === $attr['imagePosition'] ) {
 			$t_selectors[' .wp-block-uagb-restaurant-menu-child .uagb-rm__content'] = array(
 				'display'    => 'block',
-				'text-align' => 'left' === $attr['imagePosition'] ? 'left' : 'right',
+				'text-align' => 'left',
 			);
 			$m_selectors[' .wp-block-uagb-restaurant-menu-child .uagb-rm__content'] = array(
 				'display'    => 'block',
-				'text-align' => 'left' === $attr['imagePosition'] ? 'left' : 'right',
+				'text-align' => 'left',
 			);
 		} else {
 			$t_selectors[' .wp-block-uagb-restaurant-menu-child .uagb-rm__content'] = array(
@@ -229,7 +230,7 @@ if ( 'side' === $attr['imgAlign'] ) {
 		if ( 'left' === $attr['imagePosition'] ) {
 			$m_selectors[' .wp-block-uagb-restaurant-menu-child .uagb-rm__content'] = array(
 				'display'    => 'block',
-				'text-align' => 'left' === $attr['imagePosition'] ? 'left' : 'right',
+				'text-align' => 'left',
 			);
 		} else {
 			$m_selectors[' .wp-block-uagb-restaurant-menu-child .uagb-rm__content'] = array(

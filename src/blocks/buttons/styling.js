@@ -74,6 +74,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		fontLetterSpacingMobile,
 		fontLetterSpacingType,
 		verticalAlignment,
+		buttonSize,
 	} = attributes;
 
 	const selectors = {};
@@ -120,13 +121,31 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		'margin-top': generateCSSUnit( topMargin, marginType ),
 		'margin-bottom': generateCSSUnit( bottomMargin, marginType ),
 	};
-	selectors[ ' .uagb-buttons-repeater.wp-block-button__link' ] = {
-		// For new user.
-		'padding-left': generateCSSUnit( leftPadding, paddingUnit ),
-		'padding-right': generateCSSUnit( rightPadding, paddingUnit ),
-		'padding-top': generateCSSUnit( topPadding, paddingUnit ),
-		'padding-bottom': generateCSSUnit( bottomPadding, paddingUnit ),
-	};
+	if( 'default' === buttonSize ) {
+		selectors[ ' .uagb-buttons-repeater.wp-block-button__link' ] = {
+			// For new user.
+			'padding-left': generateCSSUnit( leftPadding, paddingUnit ),
+			'padding-right': generateCSSUnit( rightPadding, paddingUnit ),
+			'padding-top': generateCSSUnit( topPadding, paddingUnit ),
+			'padding-bottom': generateCSSUnit( bottomPadding, paddingUnit ),
+		};
+		tabletSelectors[
+			' .uagb-buttons-repeater.wp-block-button__link'
+		] = {
+			'padding-left': generateCSSUnit( leftTabletPadding, tabletPaddingUnit ),
+			'padding-right': generateCSSUnit( rightTabletPadding, tabletPaddingUnit ),
+			'padding-top': generateCSSUnit( topTabletPadding, tabletPaddingUnit ),
+			'padding-bottom': generateCSSUnit( bottomTabletPadding, tabletPaddingUnit ),
+		};
+		mobileSelectors[
+			' .uagb-buttons-repeater.wp-block-button__link'
+		] = {
+			'padding-left': generateCSSUnit( leftMobilePadding, mobilePaddingUnit ),
+			'padding-right': generateCSSUnit( rightMobilePadding, mobilePaddingUnit ),
+			'padding-top': generateCSSUnit( topMobilePadding, mobilePaddingUnit ),
+			'padding-bottom': generateCSSUnit( bottomMobilePadding, mobilePaddingUnit ),
+		};
+	}
 	if ( 'desktop' === stack ) {
 		selectors[ '.uagb-buttons__outer-wrap .block-editor-block-list__layout' ] = {
 			'flex-direction': 'column',
@@ -258,14 +277,6 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		'margin-top': generateCSSUnit( topMarginTablet, marginType ),
 		'margin-bottom': generateCSSUnit( bottomMarginTablet, marginType ),
 	};
-	tabletSelectors[
-		' .uagb-buttons-repeater.wp-block-button__link'
-	] = {
-		'padding-left': generateCSSUnit( leftTabletPadding, tabletPaddingUnit ),
-		'padding-right': generateCSSUnit( rightTabletPadding, tabletPaddingUnit ),
-		'padding-top': generateCSSUnit( topTabletPadding, tabletPaddingUnit ),
-		'padding-bottom': generateCSSUnit( bottomTabletPadding, tabletPaddingUnit ),
-	};
 
 	mobileSelectors[
 		'.uagb-buttons__outer-wrap .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link'
@@ -282,16 +293,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		'margin-bottom': generateCSSUnit( bottomMarginMobile, marginType ),
 	};
 
-	mobileSelectors[
-		' .uagb-buttons-repeater.wp-block-button__link'
-	] = {
-		'padding-left': generateCSSUnit( leftMobilePadding, mobilePaddingUnit ),
-		'padding-right': generateCSSUnit( rightMobilePadding, mobilePaddingUnit ),
-		'padding-top': generateCSSUnit( topMobilePadding, mobilePaddingUnit ),
-		'padding-bottom': generateCSSUnit( bottomMobilePadding, mobilePaddingUnit ),
-	};
-
-	const base_selector = gbsSelector ? gbsSelector + ' ' : ` .uagb-block-${ block_id }`;
+	const base_selector = gbsSelector ? gbsSelector + ' ' : `.editor-styles-wrapper .uagb-block-${ block_id }`;
 
 	let styling_css = generateCSS( selectors, base_selector );
 

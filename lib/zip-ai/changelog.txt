@@ -1,0 +1,17 @@
+v1.0.6 - 30th November 2023
+- Improvement: Added a filter to disable the entire library from loading.
+
+v1.0.5 - 30th November 2023
+- Improvement: Added a new module structure and removed the admin page from Tools.
+
+v1.0.4 - 30th November 2023
+- Updating distignore for composer update compatibility.
+
+v1.0.3 - 11th November 2023
+- Improvement: Added an option to disable Zip Ai Assistant from sidebar.
+
+v1.0.2 - 9th November 2023
+- Improvement: Better one click command.
+
+v1.0.1 - 9th November 2023
+- Initial Commit

@@ -12,13 +12,14 @@ import { getLoopImage } from './getLoopImage';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 import AddGBSStyles from '@Controls/AddGBSStyles';
 import addInitialAttr from '@Controls/addInitialAttr';
+import { migrateHttp } from './utils';
 
 function UAGBImageEdit( props ) {
 	const {
 		isSelected,
 		attributes,
 		name,
-		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
+		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob, id },
 		deviceType,
 		context,
 		setAttributes,
@@ -41,6 +42,13 @@ function UAGBImageEdit( props ) {
 	useEffect( () => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
+
+	// Migrate image urls with current http protocol.
+	useMemo( () => { 
+		if( id ) { 
+			migrateHttp( props.attributes );
+		}
+	}, [ attributes ] );
 
 	return (
 		<>

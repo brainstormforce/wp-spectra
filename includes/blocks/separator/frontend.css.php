@@ -3,12 +3,13 @@
  * Frontend CSS & Google Fonts loading File.
  *
  * @since 2.6.0
- *
+ * @var string[] $attr
+ * @var int $id
  * @package uagb
  */
 
 // Add fonts.
-UAGB_BLOCK_JS::blocks_separator_gfont( $attr );
+UAGB_Block_JS::blocks_separator_gfont( $attr );
 
 $m_selectors = array();
 $t_selectors = array();
