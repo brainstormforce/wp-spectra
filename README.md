@@ -218,6 +218,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ### x.x.x ###
 * Fix: Buttons - Resolved an issue were the padding styles are getting overridden by Astra default padding styles.
 * Fix: Container - Resolved an issue wherein the gradient overlay would not work as intended.
+* Fix: Info Box - Resolved an issue wherein adding dynamic link to CTA complete box giving an recovery issue.
+* Fix: Info Box - Resolved an issue in which the CTA would not work as expected with dynamic link and complete box.
 * Fix: Inline Notice - Resolved an issue wherein the title would not appear to be full-width in the Firefox browser.
 * Fix: Tabs - Resolved an issue in which the tabs wrapper margin would appear differently in the editor and the front-end.
 * Fix: Icon List - Resolved an issue wherein the vertical layout alignment would not appear as intended in the editor's tablet view.
