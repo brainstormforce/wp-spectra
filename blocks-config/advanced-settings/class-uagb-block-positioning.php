@@ -104,7 +104,7 @@ if ( ! class_exists( 'UAGB_Block_Positioning' ) ) {
 		 *
 		 * @param string $block_content Image block content.
 		 * @param array  $block Image block data.
-		 * @since x.x.x
+		 * @since 2.10.2
 		 * @return string
 		 */
 		public function image_block_content_filters( $block_content, $block ) {

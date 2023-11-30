@@ -86,7 +86,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '2.10.1' );
+			define( 'UAGB_VER', '2.10.2' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'spectra' );
@@ -532,7 +532,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 * Add the Zip AI Collab Product Details.
 		 *
 		 * @param mixed $product_details The previous product details, if any.
-		 * @since x.x.x
+		 * @since 2.10.2
 		 * @return array The Spectra product details.
 		 */
 		public function add_zip_ai_collab_product_details( $product_details ) {
@@ -553,7 +553,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 * Add the Zip AI Modules that come with Spectra.
 		 *
 		 * @param mixed $modules The modules for Zip AI, if any.
-		 * @since x.x.x
+		 * @since 2.10.2
 		 * @return array The Spectra default modules.
 		 */
 		public function add_zip_ai_modules( $modules ) {
@@ -579,7 +579,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 * Add the Zip AI Authorization/Revoke URL.
 		 *
 		 * @param mixed $auth_url The previous authorization URL, if any.
-		 * @since x.x.x
+		 * @since 2.10.2
 		 * @return string The Spectra redirection URL.
 		 */
 		public function add_zip_ai_redirection_url( $auth_url ) {

@@ -2,7 +2,7 @@
 /**
  * Zip AI initialization
  *
- * @since x.x.x
+ * @since 2.10.2
  * @package zip-ai
  */
 
@@ -15,14 +15,14 @@ if ( ! class_exists( 'UAGB_Zip_AI' ) ) :
 	/**
 	 * This class connect zip ai library with spectra
 	 *
-	 * @since x.x.x
+	 * @since 2.10.2
 	 */
 	class UAGB_Zip_AI {
 
 		/**
 		 * Instance
 		 *
-		 * @since x.x.x
+		 * @since 2.10.2
 		 * @var (Object) UAGB_Zip_AI
 		 */
 		private static $instance = null;
@@ -30,7 +30,7 @@ if ( ! class_exists( 'UAGB_Zip_AI' ) ) :
 		/**
 		 * Get Instance
 		 *
-		 * @since x.x.x
+		 * @since 2.10.2
 		 *
 		 * @return object Class object.
 		 */
@@ -45,7 +45,7 @@ if ( ! class_exists( 'UAGB_Zip_AI' ) ) :
 		/**
 		 * Constructor.
 		 *
-		 * @since x.x.x
+		 * @since 2.10.2
 		 *
 		 * @return void
 		 */
@@ -57,7 +57,7 @@ if ( ! class_exists( 'UAGB_Zip_AI' ) ) :
 		/**
 		 * Checks for latest version of zip-ai library available in environment.
 		 *
-		 * @since x.x.x
+		 * @since 2.10.2
 		 *
 		 * @return void
 		 */
@@ -89,7 +89,7 @@ if ( ! class_exists( 'UAGB_Zip_AI' ) ) :
 		/**
 		 * Load latest zip-ai library
 		 *
-		 * @since x.x.x
+		 * @since 2.10.2
 		 *
 		 * @return void
 		 */

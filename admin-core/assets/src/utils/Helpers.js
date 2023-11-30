@@ -14,6 +14,6 @@ export const uagbClassNames = ( classes ) => ( classes.filter( Boolean ).join( '
  * @param  {number} number The number to format.
  * @return {string}        The number with commas at every thousand.
  *
- * @since x.x.x
+ * @since 2.10.2
  */
 export const displayInThousands = ( number ) => ( number.toString().replace( /\B(?=(\d{3})+(?!\d))/g, ',' ) );

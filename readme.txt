@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.4.1
-Stable tag: 2.10.1
+Stable tag: 2.10.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,20 +215,20 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= x.x.x =
-* Fix: Buttons - Resolved an issue were the padding styles are getting overridden by Astra default padding styles.
+= 2.10.2 - THURSDAY, 30th NOVEMBER 2023 =
 * Fix: Container - Resolved an issue wherein the gradient overlay would not work as intended.
-* Fix: Info Box - Resolved an issue wherein adding dynamic link to CTA complete box giving an recovery issue.
-* Fix: Info Box - Resolved an issue in which the CTA would not work as expected with dynamic link and complete box.
-* Fix: Inline Notice - Resolved an issue wherein the title would not appear to be full-width in the Firefox browser.
-* Fix: Tabs - Resolved an issue in which the tabs wrapper margin would appear differently in the editor and the front-end.
-* Fix: Icon List - Resolved an issue wherein the vertical layout alignment would not appear as intended in the editor's tablet view.
+* Fix: Container - Resolved an issue wherein the slide-right animation would not work as intended with the Testimonial block in Firefox browser.
+* Fix: Image - Resolved an issue in which images would not load as intended after migration.
+* Fix: Buttons - Resolved an issue wherein the padding would be overridden by Astra's default padding styles.
+* Fix: Info Box - Resolved an issue wherein adding a dynamic link to the CTA complete box would result in a recovery issue.
+* Fix: Info Box - Resolved an issue in which the CTA would not work as expected with the dynamic link and complete box settings.
+* Fix: Content Timeline - Resolved an issue in which the block's styling would be applied to other nested blocks in the editor.
 * Fix: FAQ - Resolved an issue wherein the block content padding would appear differently in the editor and the front-end.
+* Fix: Icon List - Resolved an issue in which the vertical layout alignment would not appear as intended in the editor's tablet view.
+* Fix: Inline Notice - Resolved an issue wherein the title would not appear to be full-width in the Firefox browser.
 * Fix: Modal - Resolved an issue wherein the link component would appear behind the Modal in the editor.
-* Fix: Content Timeline - Resolved an issue wherein the block's styling would be applied to other nested blocks in the editor.
-* Fix: Container - Resolved an issue wherein the animation slide right doesn't work as intended with Testimonial block in Firefox browser. 
-* Fix: Image - Resolved an issue wherein images would not load as intended after migration.
-* Fix: Global - Resolved an issue wherein the WooCommerce and custom template-styles would not load as intended in FSE theme.
+* Fix: Tabs - Resolved an issue in which the tabs wrapper margin would appear differently in the editor and the front-end.
+* Fix: Global - Resolved an issue wherein the WooCommerce and custom template-styles would not load as intended in FSE themes.
 * Fix: Global - Resolved an issue wherein the template styles for custom post types would not load as intended in FSE themes.
 
 = 2.10.1 - SATURDAY, 11th NOVEMBER 2023 =

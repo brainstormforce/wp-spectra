@@ -914,7 +914,7 @@ class Common_Settings extends Ajax_Base {
 	/**
 	 * Save setting - Enables or Disables the given Zip AI Module.
 	 *
-	 * @since x.x.x
+	 * @since 2.10.2
 	 * @return void
 	 */
 	public function zip_ai_module_status() {
@@ -972,7 +972,7 @@ class Common_Settings extends Ajax_Base {
 	/**
 	 * Ajax Request - Verify if Zip AI is authorized.
 	 *
-	 * @since x.x.x
+	 * @since 2.10.2
 	 * @return void
 	 */
 	public function zip_ai_verify_authenticity() {
