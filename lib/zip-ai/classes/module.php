@@ -24,7 +24,7 @@ class Module {
 	/**
 	 * Private Variable of all the valid Zip AI Modules.
 	 *
-	 * @since x.x.x
+	 * @since 1.0.5
 	 * @var array $valid_modules Array of all the available Zip AI Modules.
 	 */
 	private static $valid_modules = [
@@ -37,7 +37,7 @@ class Module {
 	 *
 	 * @param string|array $module_name Name of the module or an array of module names.
 	 * @param string       $status      Status of the module(s) to be updated.
-	 * @since x.x.x
+	 * @since 1.0.5
 	 * @return boolean True if Zip AI Module(s) status has been updated, false otherwise.
 	 */
 	private static function update_status( $module_name, $status ) {
@@ -84,7 +84,7 @@ class Module {
 	/**
 	 * Function to migrate older Zip AI settings into the new modular format.
 	 *
-	 * @since x.x.x
+	 * @since 1.0.5
 	 * @return void
 	 */
 	public static function migrate_options() {
@@ -115,7 +115,7 @@ class Module {
 	 * This is done so that even if a value exists in the database, if the product that is adding the filter is disabled, the feature will be considered as non-existent.
 	 * Finally the required data from the database will overwrite the filtered defaults, and only the valid modules will be returned for use.
 	 *
-	 * @since x.x.x
+	 * @since 1.0.5
 	 * @return array Array of all the available Zip AI Modules and their details.
 	 */
 	public static function get_all_modules() {
@@ -147,7 +147,7 @@ class Module {
 	 * If an array is passed, all valid modules will be enabled.
 	 *
 	 * @param string|array $module_name Name of the module or an array of module names.
-	 * @since x.x.x
+	 * @since 1.0.5
 	 * @return boolean True if Zip AI module(s) has been enabled, false otherwise.
 	 */
 	public static function enable( $module_name ) {
@@ -161,7 +161,7 @@ class Module {
 	 * If an array is passed, all valid modules will be disabled.
 	 *
 	 * @param string|array $module_name Name of the module or an array of module names.
-	 * @since x.x.x
+	 * @since 1.0.5
 	 * @return boolean True if Zip AI module(s) has been enabled, false otherwise.
 	 */
 	public static function disable( $module_name ) {
@@ -172,7 +172,7 @@ class Module {
 	 * Function to check if Zip AI Module is enabled.
 	 *
 	 * @param string $module_name Name of the module.
-	 * @since x.x.x
+	 * @since 1.0.5
 	 * @return boolean True if Zip AI is enabled, false otherwise.
 	 */
 	public static function is_enabled( $module_name ) {

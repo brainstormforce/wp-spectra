@@ -162,7 +162,7 @@ class Admin_Configurations {
 	/**
 	 * Setup the Ajax Event to Entirely Disable the Zip AI Library from loading.
 	 *
-	 * @since x.x.x
+	 * @since 1.0.5
 	 * @return void
 	 */
 	public function disabler_ajax() {
