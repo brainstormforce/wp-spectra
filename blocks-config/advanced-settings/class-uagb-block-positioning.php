@@ -60,6 +60,10 @@ if ( ! class_exists( 'UAGB_Block_Positioning' ) ) {
 		 * @return string                The block content after updation.
 		 */
 		public function add_positioning_classes( $block_content, $block ) {
+			if ( empty( $block['blockName'] ) ) {
+				return $block_content;
+			}
+			
 			// Check $block_content is string or not.
 			if ( ! is_string( $block_content ) || false === strpos( $block['blockName'], 'uagb' ) ) {
 				return $block_content;
