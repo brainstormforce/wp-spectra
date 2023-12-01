@@ -209,7 +209,6 @@ return array_merge(
 		'backgroundOverlayOpacity'           => 1,
 		'backgroundOverlayColor'             => '#FFFFFF75',
 		'backgroundImageOverlayColor'        => '#FFFFFF75',
-		'gradientOverlayValue'               => 'linear-gradient(90deg, rgba(6, 147, 227, 0.5) 0%, rgba(155, 81, 224, 0.5) 100%)',
 		'backgroundCustomSizeOverlayDesktop' => 100,
 		'backgroundCustomSizeOverlayTablet'  => '',
 		'backgroundCustomSizeOverlayMobile'  => '',

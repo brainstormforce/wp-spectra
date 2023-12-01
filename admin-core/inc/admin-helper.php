@@ -12,6 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use \ZipAI\Classes\Module as Zip_Ai_Module;
+
 /**
  * Class Admin_Helper.
  */
@@ -44,6 +46,19 @@ class Admin_Helper {
 		$theme_data          = \WP_Theme_JSON_Resolver::get_theme_data();
 		$theme_settings      = $theme_data->get_settings();
 		$theme_font_families = isset( $theme_settings['typography']['fontFamilies']['theme'] ) && is_array( $theme_settings['typography']['fontFamilies']['theme'] ) ? $theme_settings['typography']['fontFamilies']['theme'] : array();
+
+		// Prepare to get the Zip AI Co-pilot modules.
+		$zip_ai_modules = array();
+
+		// If the Zip AI Helper is available, get the required modules and their states.
+		if ( class_exists( '\ZipAI\Classes\Module' ) ) {
+			$zip_ai_modules = Zip_Ai_Module::get_all_modules();
+
+			// Check if each module is enabled based on the key.
+			foreach ( $zip_ai_modules as $module => $details ) {
+				$zip_ai_modules[ $module ] = Zip_Ai_Module::is_enabled( $module );
+			}
+		}
 
 		$options = array(
 			'rollback_to_previous_version'       => isset( $uag_versions[0]['value'] ) ? $uag_versions[0]['value'] : '',
@@ -89,6 +104,7 @@ class Admin_Helper {
 			'insta_linked_accounts'              => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_insta_linked_accounts', array() ),
 			'spectra_global_fse_fonts'           => \UAGB_Admin_Helper::get_admin_settings_option( 'spectra_global_fse_fonts', array() ),
 			'theme_fonts'                        => $theme_font_families,
+			'zip_ai_modules'                     => $zip_ai_modules,
 		);
 
 		return $options;

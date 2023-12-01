@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d3a519458c7e093d1c5ce31fc2fcc7f0",
+    "content-hash": "d42438ee20d03ed342cedb7d844b5479",
     "packages": [
         {
             "name": "automattic/vipwpcs",
@@ -151,6 +151,71 @@
                 "issues": "https://github.com/brainstormforce/gutenberg-templates/issues"
             },
             "time": "2023-07-11T11:42:58+00:00"
+        },
+        {
+            "name": "brainstormforce/zip-ai",
+            "version": "1.0.6",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:brainstormforce/zip-ai.git",
+                "reference": "ec5b524255ef2bfd2f339ef947dab51e8d395aff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/brainstormforce/zip-ai/zipball/ec5b524255ef2bfd2f339ef947dab51e8d395aff",
+                "reference": "ec5b524255ef2bfd2f339ef947dab51e8d395aff",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "^2"
+            },
+            "require-dev": {
+                "automattic/vipwpcs": "^2.3",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+                "php-stubs/generator": "^0.8.2",
+                "php-stubs/wordpress-stubs": "^6.1",
+                "phpcompatibility/php-compatibility": "^9.3",
+                "phpstan/phpstan": "^1.9",
+                "squizlabs/php_codesniffer": "^3.5",
+                "szepeviktor/phpstan-wordpress": "^1.1",
+                "wp-coding-standards/wpcs": "^2.2"
+            },
+            "type": "wordpress-plugin",
+            "scripts": {
+                "format": [
+                    "vendor/bin/phpcbf"
+                ],
+                "lint": [
+                    "vendor/bin/phpcs"
+                ],
+                "test": [
+                    "vendor/bin/phpunit"
+                ],
+                "phpstan": [
+                    "vendor/bin/phpstan --memory-limit=2048M analyse"
+                ],
+                "gen-stubs": [
+                    "vendor/bin/generate-stubs artifact/phpstan/zip-ai/ --out=tests/php/stubs/zip-ai-stubs.php && rm -rf artifact/phpstan"
+                ],
+                "update-stubs": [
+                    "rm -f tests/php/stubs/zip-ai-stubs.php && bash bin/build-folder-phpstan.sh && composer gen-stubs"
+                ]
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Brainstorm Force",
+                    "email": "hello@bsf.io"
+                }
+            ],
+            "description": "Library which interacts with SCS and provide multiple useful modules",
+            "support": {
+                "source": "https://github.com/brainstormforce/zip-ai/tree/1.0.6",
+                "issues": "https://github.com/brainstormforce/zip-ai/issues"
+            },
+            "time": "2023-11-30T14:08:28+00:00"
         },
         {
             "name": "composer/installers",

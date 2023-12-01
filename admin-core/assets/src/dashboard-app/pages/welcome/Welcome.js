@@ -84,40 +84,6 @@ const Welcome = () => {
 							<div className="box-border rounded-md bg-white shadow-sm overflow-hidden transition hover:shadow-hover">
 								<div className="p-8 pr-10">
 									<h3 className="text-slate-800 text-xl font-medium pb-2">
-										{ __( 'Knowledge Base', 'ultimate-addons-for-gutenberg' ) }
-									</h3>
-									<p className="text-slate-500 text-sm pb-2 pr-2">
-										{ __(
-											'Learn everything you need to know about the Spectra plugin with our comprehensive documentation.',
-											'ultimate-addons-for-gutenberg'
-										) }
-									</p>
-									<a
-										className="text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover underline"
-										href="https://wpspectra.com/docs/"
-										target="_blank"
-										rel="noreferrer"
-									>
-										{ __( 'Browse Now', 'ultimate-addons-for-gutenberg' ) }
-									</a>
-									<a
-										className="text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover no-underline"
-										href="https://wpspectra.com/docs/"
-										target="_blank"
-										rel="noreferrer"
-									>
-										{ ' → ' }
-									</a>
-								</div>
-							</div>
-						</section>
-						<section aria-labelledby="section-2-title">
-							<h2 className="sr-only" id="section-2-title">
-								Section title
-							</h2>
-							<div className="box-border rounded-md bg-white shadow-sm overflow-hidden transition hover:shadow-hover">
-								<div className="p-8 pr-10">
-									<h3 className="text-slate-800 text-xl font-medium pb-2">
 										{ __( 'Get 5-star Support', 'ultimate-addons-for-gutenberg' ) }
 									</h3>
 									<p className="text-slate-500 text-sm pb-2 pr-2">
@@ -171,6 +137,92 @@ const Welcome = () => {
 									<a
 										className="text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover no-underline"
 										href="https://www.facebook.com/groups/wpspectra"
+										target="_blank"
+										rel="noreferrer"
+									>
+										{ ' → ' }
+									</a>
+								</div>
+							</div>
+						</section>
+						<section>
+							<div className="box-border rounded-md bg-white shadow-sm overflow-hidden transition hover:shadow-hover">
+								<div className="p-8 pr-10">
+									<h3 className="text-slate-800 text-xl font-medium pb-2">
+										{ __( 'Rate Us', 'ultimate-addons-for-gutenberg' ) }
+									</h3>
+									<p className="text-slate-500 text-sm pb-2.5 pr-12 flex items-center">
+										<span className="text-xl text-slate-800 flex mr-2">
+											{ [ 1, 2, 3, 4, 5 ].map( ( item, key ) => (
+												<svg
+													key={ key }
+													width="20"
+													height="20"
+													viewBox="0 0 20 20"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<defs>
+														<linearGradient
+															id={ `half-color-gradient-${ key }` }
+															x1="0%"
+															x2="100%"
+															y1="0%"
+															y2="0%"
+														>
+															<stop
+																offset="50%"
+																style={ {
+																	stopColor: '#1e293b', //slate-800
+																	stopOpacity: 1,
+																} }
+															/>
+															<stop
+																offset="50%"
+																style={ { stopColor: '#64748b', stopOpacity: 1 } }
+															/>
+														</linearGradient>
+													</defs>
+													<g clipPath="url(#clip0_2358_55923)">
+														<path
+															d="M9.04894 2.92705C9.3483 2.00574 10.6517 2.00574 10.9511 2.92705L12.0206 6.21885C12.1545 6.63087 12.5385 6.90983 12.9717 6.90983H16.4329C17.4016 6.90983 17.8044 8.14945 17.0207 8.71885L14.2205 10.7533C13.87 11.0079 13.7234 11.4593 13.8572 11.8713L14.9268 15.1631C15.2261 16.0844 14.1717 16.8506 13.388 16.2812L10.5878 14.2467C10.2373 13.9921 9.7627 13.9921 9.41221 14.2467L6.61204 16.2812C5.82833 16.8506 4.77385 16.0844 5.0732 15.1631L6.14277 11.8713C6.27665 11.4593 6.12999 11.0079 5.7795 10.7533L2.97933 8.71885C2.19562 8.14945 2.59839 6.90983 3.56712 6.90983H7.02832C7.46154 6.90983 7.8455 6.63087 7.97937 6.21885L9.04894 2.92705Z"
+															fill={
+																key === 4
+																	? `url(#half-color-gradient-${ key })`
+																	: '#334155'
+															}
+														/>
+													</g>
+													<defs>
+														<clipPath id="clip0_2358_55923">
+															<rect width="20" height="20" fill="white" />
+														</clipPath>
+													</defs>
+												</svg>
+											) ) }
+										</span>
+
+										<span className="text-xs leading-4 align-text-bottom text-slate-400">
+											{ __( 'Based on 1k+ reviews', 'ultimate-addons-for-gutenberg' ) }
+										</span>
+									</p>
+									<p className="text-slate-500 text-sm pb-5">
+										{ __(
+											'We love to hear from you, we would appreciate every single review.',
+											'ultimate-addons-for-gutenberg'
+										) }
+									</p>
+									<a
+										className="text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover underline"
+										href="https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg/reviews/?rate=5#new-post"
+										target="_blank"
+										rel="noreferrer"
+									>
+										{ __( 'Submit a Review', 'ultimate-addons-for-gutenberg' ) }
+									</a>
+									<a
+										className="text-base text-spectra focus:text-spectra focus-visible:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover no-underline"
+										href="https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg/reviews/?rate=5#new-post"
 										target="_blank"
 										rel="noreferrer"
 									>

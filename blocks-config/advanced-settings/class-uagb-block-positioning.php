@@ -60,10 +60,23 @@ if ( ! class_exists( 'UAGB_Block_Positioning' ) ) {
 		 * @return string                The block content after updation.
 		 */
 		public function add_positioning_classes( $block_content, $block ) {
+			if ( empty( $block['blockName'] ) ) {
+				return $block_content;
+			}
+			
+			// Check $block_content is string or not.
+			if ( ! is_string( $block_content ) || false === strpos( $block['blockName'], 'uagb' ) ) {
+				return $block_content;
+			}
+			
+			// Filter image block content.
+			if ( 'uagb/image' === $block['blockName'] ) {
+				$block_content = $this->image_block_content_filters( $block_content, $block );
+			}
+
 			// Return early if this doesn't need any positioning classes.
 			if (
-				! is_string( $block_content )
-				|| 'uagb/container' !== $block['blockName']
+				'uagb/container' !== $block['blockName']
 				|| empty( $block['attrs']['UAGPosition'] )
 			) {
 				return $block_content;
@@ -83,6 +96,58 @@ if ( ! class_exists( 'UAGB_Block_Positioning' ) ) {
 				$block_content = $updated_content;
 			}
 
+			return $block_content;
+		}
+
+		/**
+		 * This function is used to filter image block content.
+		 *
+		 * @param string $block_content Image block content.
+		 * @param array  $block Image block data.
+		 * @since 2.10.2
+		 * @return string
+		 */
+		public function image_block_content_filters( $block_content, $block ) {
+			// Remove srcset attribute from image.
+			if ( empty( $block['attrs']['id'] ) && ! empty( $block['attrs']['url'] ) && strpos( $block_content, 'srcset' ) ) {
+				$remove_srcset_from_content = preg_replace( '/srcset="([^"]*)"/', '', $block_content );
+				if ( $remove_srcset_from_content ) {
+					$block_content = $remove_srcset_from_content;
+				}
+				
+				return $block_content;
+			}
+
+			/**
+			 * For migrating http and https.
+			 */
+			if ( empty( $block['attrs']['id'] ) || empty( $block['attrs']['url'] ) ) {
+				return $block_content;
+			}
+
+			// Check url protocol.
+			$current_url_protocol   = wp_parse_url( get_site_url(), PHP_URL_SCHEME );
+			$attribute_url_protocol = wp_parse_url( $block['attrs']['url'], PHP_URL_SCHEME );
+
+			if ( ! is_string( $current_url_protocol ) || ! is_string( $attribute_url_protocol ) || $current_url_protocol === $attribute_url_protocol ) {
+				return $block_content;
+			}
+
+			foreach ( array( 'url', 'urlMobile', 'urlTablet' ) as $replace_attributes_url ) {
+				if ( empty( $block['attrs'][ $replace_attributes_url ] ) ) {
+					continue;
+				}
+
+				if ( false === strpos( $block_content, $block['attrs'][ $replace_attributes_url ] ) ) {
+					continue;
+				}
+
+				// Replace http with https with current url protocol.
+				$migrated_urls = str_replace( $attribute_url_protocol, $current_url_protocol, $block['attrs'][ $replace_attributes_url ] );
+
+				$block_content = str_replace( $block['attrs'][ $replace_attributes_url ], $migrated_urls, $block_content );
+			}
+			
 			return $block_content;
 		}
 	}

@@ -46,10 +46,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$border_css_tablet = self::uag_generate_border_css( $attr, 'btn', 'tablet' );
 			$border_css_mobile = self::uag_generate_border_css( $attr, 'btn', 'mobile' );
 
-			$top_padding    = isset( $attr['topPadding'] ) ? $attr['topPadding'] : $attr['vPadding'];
-			$bottom_padding = isset( $attr['bottomPadding'] ) ? $attr['bottomPadding'] : $attr['vPadding'];
-			$left_padding   = isset( $attr['leftPadding'] ) ? $attr['leftPadding'] : $attr['hPadding'];
-			$right_padding  = isset( $attr['rightPadding'] ) ? $attr['rightPadding'] : $attr['hPadding'];
+			$top_padding    = isset( $attr['topPadding'] ) ? $attr['topPadding'] : '';
+			$bottom_padding = isset( $attr['bottomPadding'] ) ? $attr['bottomPadding'] : '';
+			$left_padding   = isset( $attr['leftPadding'] ) ? $attr['leftPadding'] : '';
+			$right_padding  = isset( $attr['rightPadding'] ) ? $attr['rightPadding'] : '';
 
 			$attr['sizeType']       = isset( $attr['sizeType'] ) ? $attr['sizeType'] : 'px';
 			$attr['lineHeightType'] = isset( $attr['lineHeightType'] ) ? $attr['lineHeightType'] : 'em';

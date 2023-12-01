@@ -33,11 +33,28 @@ registerBlockType( 'uagb/advanced-heading', {
 	},
 	attributes,
 	category: uagb_blocks_info.category,
+	__experimentalLabel: ( atts, content ) => {
+		const { context } = content;
+		if( context === 'list-view' && atts?.metadata?.name && atts.metadata.name ) {
+			return atts.metadata.name;
+		}
+
+		const loopData = applyFilters( 'uag_loop_data_source_label', '', atts );
+
+		if( loopData ) {
+			return loopData;
+		}
+
+		// Heading content show.
+		if( atts.headingTitle ) {
+			return atts.headingTitle;
+		}
+
+		return __( 'Heading', 'ultimate-addons-for-gutenberg' );
+	},
 	edit: ( props ) =>
 		props.attributes.isPreview ? <PreviewImage image="advanced-heading" /> : <Edit { ...props } />,
 	save,
-	__experimentalLabel: ( atts ) =>
-		applyFilters( 'uag_loop_data_source_label', __( 'Heading', 'ultimate-addons-for-gutenberg' ), atts ),
 	deprecated,
 	usesContext: [ 'postId', 'postType' ],
 	transforms: {

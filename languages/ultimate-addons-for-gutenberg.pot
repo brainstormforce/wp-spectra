@@ -2,26 +2,27 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.10.1\n"
+"Project-Id-Version: Spectra 2.10.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-11-11T08:32:48+00:00\n"
+"POT-Creation-Date: 2023-11-30T12:17:36+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
 
 #. Plugin Name of the plugin
-#: admin-core/inc/admin-menu.php:131
-#: admin-core/inc/admin-menu.php:132
-#: admin-core/inc/admin-menu.php:143
-#: admin-core/inc/admin-menu.php:153
-#: admin-core/inc/admin-menu.php:166
-#: admin-core/inc/admin-menu.php:245
-#: classes/class-uagb-admin-helper.php:408
+#: admin-core/inc/admin-menu.php:135
+#: admin-core/inc/admin-menu.php:136
+#: admin-core/inc/admin-menu.php:147
+#: admin-core/inc/admin-menu.php:157
+#: admin-core/inc/admin-menu.php:171
+#: admin-core/inc/admin-menu.php:182
+#: admin-core/inc/admin-menu.php:261
+#: classes/class-uagb-admin-helper.php:424
 #: classes/class-uagb-init-blocks.php:571
 msgid "Spectra"
 msgstr ""
@@ -51,27 +52,49 @@ msgstr ""
 msgid "Sorry, something went wrong."
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:154
-#: admin-core/ajax/common-settings.php:695
+#: admin-core/ajax/common-settings.php:159
+#: admin-core/ajax/common-settings.php:700
 #: classes/class-uagb-init-blocks.php:534
 msgid "Successfully saved data!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:170
+#: admin-core/ajax/common-settings.php:175
 #: classes/class-uagb-init-blocks.php:982
 msgid "No post data found!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:206
+#: admin-core/ajax/common-settings.php:211
 msgid "Plugin Successfully Activated"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:788
+#: admin-core/ajax/common-settings.php:793
 msgid "Successfully refreshed tokens!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:790
+#: admin-core/ajax/common-settings.php:795
 msgid "Failed to refresh tokens"
+msgstr ""
+
+#: admin-core/ajax/common-settings.php:932
+msgid "Module not found!"
+msgstr ""
+
+#. Translators: %s is the module name.
+#: admin-core/ajax/common-settings.php:950
+msgid "%s disabled!"
+msgstr ""
+
+#. Translators: %s is the module name.
+#: admin-core/ajax/common-settings.php:961
+msgid "%s enabled!"
+msgstr ""
+
+#: admin-core/ajax/common-settings.php:968
+msgid "Unable to save setting."
+msgstr ""
+
+#: admin-core/ajax/common-settings.php:987
+msgid "Unable to verify authenticity."
 msgstr ""
 
 #: admin-core/api/common-settings.php:99
@@ -79,22 +102,27 @@ msgstr ""
 msgid "Sorry, you cannot list resources."
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:93
-#: admin-core/inc/admin-menu.php:167
+#: admin-core/inc/admin-menu.php:97
+#: admin-core/inc/admin-menu.php:183
 #: admin-core/assets/build/dashboard-app.js:1
 msgid "Settings"
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:144
+#: admin-core/inc/admin-menu.php:148
 msgid "Dashboard"
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:154
+#: admin-core/inc/admin-menu.php:158
 msgid "Blocks"
 msgstr ""
 
+#: admin-core/inc/admin-menu.php:172
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "AI Features"
+msgstr ""
+
 #. translators: %1$s: Opening Strong Tag, %2$s: Closing Strong Tag, %3$s Anchor Tag with Star Symbol Codes.
-#: admin-core/inc/admin-menu.php:442
+#: admin-core/inc/admin-menu.php:479
 msgid "Enjoyed %1$sSpectra%2$s? Please leave us a %3$s rating. We really appreciate your support!"
 msgstr ""
 
@@ -6856,7 +6884,6 @@ msgid "Twitch"
 msgstr ""
 
 #: blocks-config/uagb-controls/spectra-icons-v6-3.php:13
-#: dist/blocks.js:17
 msgid "Twitter"
 msgstr ""
 
@@ -7567,15 +7594,15 @@ msgstr ""
 msgid "Travel"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:416
+#: classes/class-uagb-admin-helper.php:432
 msgid "Astra Theme"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:420
+#: classes/class-uagb-admin-helper.php:436
 msgid "Filter added through any 3rd Party Theme/Plugin."
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:425
+#: classes/class-uagb-admin-helper.php:441
 msgid "Full Site Editor's Global Styles"
 msgstr ""
 
@@ -7744,11 +7771,11 @@ msgid "Invalid request"
 msgstr ""
 
 #. translators: %s: html tags
-#: classes/class-uagb-loader.php:368
+#: classes/class-uagb-loader.php:374
 msgid "The %1$sSpectra%2$s plugin requires %1$sGutenberg%2$s plugin installed & activated."
 msgstr ""
 
-#: classes/class-uagb-loader.php:371
+#: classes/class-uagb-loader.php:377
 msgid "Install Gutenberg"
 msgstr ""
 
@@ -8584,6 +8611,10 @@ msgid "data object is empty"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:1
+msgid "Knowledge Base"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
 msgid "Core"
 msgstr ""
 
@@ -8632,18 +8663,6 @@ msgid "Visit Our Website"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:1
-msgid "Knowledge Base"
-msgstr ""
-
-#: admin-core/assets/build/dashboard-app.js:1
-msgid "Learn everything you need to know about the Spectra plugin with our comprehensive documentation."
-msgstr ""
-
-#: admin-core/assets/build/dashboard-app.js:1
-msgid "Browse Now"
-msgstr ""
-
-#: admin-core/assets/build/dashboard-app.js:1
 msgid "Get 5-star Support"
 msgstr ""
 
@@ -8665,6 +8684,22 @@ msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:1
 msgid "Join Now"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Rate Us"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Based on 1k+ reviews"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "We love to hear from you, we would appreciate every single review."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Submit a Review"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:1
@@ -8788,6 +8823,7 @@ msgstr ""
 #: admin-core/assets/build/dashboard-app.js:3
 #: admin-core/assets/build/dashboard-app.js:5
 #: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:12
 #: dist/blocks.js:11
 #: dist/blocks.js:17
 msgid "Cancel"
@@ -9234,6 +9270,169 @@ msgid "License"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:9
+msgid "Failed to save setting"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:12
+msgid "Manage AI Features"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Here you can enable/disable AI features from your website."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "AI Assistant"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Coming Soon"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Disable"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Enable"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "AI Design Copilot"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Go Back"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Get Started with 1000 Free Monthly Credits"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Getting Started with 1000 Free Monthly Credits"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Build 10x faster with Spectra & ZipWP"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Spectra offers AI features powered by ZipWP to help you build your website 10x faster. Design beautiful pages, create persuasive content, and generate custom code in seconds. The possibilities are endless!"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:10
+msgid "Craft Compelling Content"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:10
+msgid "With our AI, you can effortlessly create persuasive and engaging copy that resonates with your audience."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:10
+msgid "AI-Powered Block Patterns"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:10
+msgid "Our AI can personalize and customize the block patterns and section templates to tailor them to your website's unique needs."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:10
+msgid "WordPress Wizardry"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:10
+msgid "Got questions? Our AI has the answers. Whether it's troubleshooting or customizing your site, we got your back."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:10
+msgid "Personalized Templates"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:10
+msgid "Say goodbye to generic designs and say hello to our AI-personalized page templates, tailored just for you."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:10
+msgid "Generate Custom Code"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:10
+msgid "No more struggling with complex coding issues. Our AI can generate custom code, functions, and CSS tailored to your needs."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:10
+msgid "Custom Pages with AI"
+msgstr ""
+
+#. translators: %s: Percentage Ascii Code
+#: admin-core/assets/build/dashboard-app.js:10
+#: admin-core/assets/build/dashboard-app.js:11
+msgid "With our AI by your side, you can create beautiful, 100%s custom web pages without the need for any design or coding skills."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:10
+msgid "From the Team Behind Some Iconic WordPress Products"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:10
+msgid "Build 10x Faster with Spectra & ZipWP"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+msgid "Credit Usage"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+msgid "Get more Credits"
+msgstr ""
+
+#. translators: %s: number of words
+#: admin-core/assets/build/dashboard-app.js:12
+msgid "of %s"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:12
+msgid "This setting allows you to enable or disable the AI features on your website. "
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:12
+msgid "Zip is Connected"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:12
+msgid "Your website is connected with ZipWP. You can revoke this connection at any time."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:12
+msgid "Revoke Access"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:12
+msgid "Are you sure you wish to revoke the authorization token?"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:12
+msgid "You will need to re-authorize Zip to use it again."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:12
+msgid "Revoke"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:12
 msgid "Default route fallback"
 msgstr ""
 
@@ -14422,6 +14621,10 @@ msgstr ""
 
 #: dist/blocks.js:17
 msgid "social share"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Twitter / X"
 msgstr ""
 
 #: dist/blocks.js:17

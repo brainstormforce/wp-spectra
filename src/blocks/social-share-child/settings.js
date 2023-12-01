@@ -100,7 +100,7 @@ const Settings = ( props ) => {
 						},
 						{
 							value: 'twitter',
-							label: __( 'Twitter', 'ultimate-addons-for-gutenberg' ),
+							label: __( 'Twitter / X', 'ultimate-addons-for-gutenberg' ),
 						},
 						{
 							value: 'google',

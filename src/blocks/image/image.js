@@ -114,14 +114,17 @@ export default function Image( {
 		defaultedAlt = __( 'This image has an empty alt attribute', 'ultimate-addons-for-gutenberg' );
 	}
 
+	// Check if table and mobile devices has different images then set srcset attribute add in image tag.
+	const shouldSrcSet = id && url && ( urlTablet || urlMobile ) && ( url !== urlTablet || url !== urlMobile );
+
 	let img = (
 		// Disable reason: Image itself is not meant to be interactive, but
 		// should direct focus to block.
 		<>
 			<img
-				srcSet={ `${ temporaryURL || url } ${ urlTablet ? ',' + urlTablet + ' 780w' : '' }${
+				srcSet={ shouldSrcSet ? `${ temporaryURL || url } ${ urlTablet ? ',' + urlTablet + ' 780w' : '' }${
 					urlMobile ? ', ' + urlMobile + ' 360w' : ''
-				}` }
+				}` : null }
 				src={ temporaryURL || url }
 				alt={ defaultedAlt }
 				onLoad={ ( event ) => {

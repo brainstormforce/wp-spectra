@@ -21,6 +21,15 @@ const Navigation = () => {
 		},
 	];
 
+	// Only add the AI Features tab before settings if Zip AI data was successfully localized.
+	if ( uag_react?.zip_ai_admin_nonce ) {
+		menus.splice( 2, 0, {
+			name: __( 'AI Features', 'ultimate-addons-for-gutenberg' ),
+			slug: uag_react.home_slug,
+			path: 'ai-features',
+		} );
+	}
+
 	const query = new URLSearchParams( useLocation()?.search );
 	const activePage = query.get( 'page' )
 		? query.get( 'page' )

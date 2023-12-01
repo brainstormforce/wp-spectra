@@ -43,8 +43,13 @@ registerBlockType( 'uagb/image', {
 	category: uagb_blocks_info.category,
 	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="image" /> : <Edit { ...props } /> ),
 	save,
-	__experimentalLabel: ( atts ) =>
-		applyFilters( 'uag_loop_data_source_label', __( 'Image', 'ultimate-addons-for-gutenberg' ), atts ),
+	__experimentalLabel: ( atts, { context } ) => {
+		if ( context === 'list-view' && atts?.metadata?.name && atts.metadata.name ) {
+			return atts.metadata.name;
+		}
+
+		return applyFilters( 'uag_loop_data_source_label', __( 'Image', 'ultimate-addons-for-gutenberg' ), atts );
+	},
 	usesContext: [ 'postId', 'postType' ],
 	deprecated,
 	transforms: {
