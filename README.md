@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Improvement: FAQ - Added block margin and padding settings.
+
 ### 2.10.2 - THURSDAY, 30th NOVEMBER 2023 ###
 * Fix: Container - Resolved an issue wherein the gradient overlay would not work as intended.
 * Fix: Container - Resolved an issue wherein the slide-right animation would not work as intended with the Testimonial block in Firefox browser.
