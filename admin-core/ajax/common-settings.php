@@ -942,27 +942,49 @@ class Common_Settings extends Ajax_Base {
 		if ( class_exists( '\ZipAI\Classes\Module' ) ) {
 			// If the value is 'disabled', disable the Zip AI Module - else enable it.
 			if ( 'disabled' === $value ) {
-				Zip_Ai_Module::disable( $module );
-				wp_send_json_success(
-					array(
-						'messsage' => sprintf(
-						// Translators: %s is the module name.
-							__( '%s disabled!', 'ultimate-addons-for-gutenberg' ),
-							$module_name
-						),
-					) 
-				);
+				if ( Zip_Ai_Module::disable( $module ) ) {
+					wp_send_json_success(
+						array(
+							'messsage' => sprintf(
+							// Translators: %s is the module name.
+								__( '%s disabled!', 'ultimate-addons-for-gutenberg' ),
+								$module_name
+							),
+						) 
+					);
+				} else {
+					wp_send_json_error(
+						array(
+							'messsage' => sprintf(
+							// Translators: %s is the module name.
+								__( 'Unable to disable %s', 'ultimate-addons-for-gutenberg' ),
+								$module_name
+							),
+						) 
+					);
+				}
 			} else {
-				Zip_Ai_Module::enable( $module );
-				wp_send_json_success(
-					array(
-						'messsage' => sprintf(
-						// Translators: %s is the module name.
-							__( '%s enabled!', 'ultimate-addons-for-gutenberg' ),
-							$module_name
-						),
-					) 
-				);
+				if ( Zip_Ai_Module::enable( $module ) ) {
+					wp_send_json_success(
+						array(
+							'messsage' => sprintf(
+							// Translators: %s is the module name.
+								__( '%s enabled!', 'ultimate-addons-for-gutenberg' ),
+								$module_name
+							),
+						) 
+					);
+				} else {
+					wp_send_json_error(
+						array(
+							'messsage' => sprintf(
+							// Translators: %s is the module name.
+								__( 'Unable to enable %s', 'ultimate-addons-for-gutenberg' ),
+								$module_name
+							),
+						) 
+					);
+				}
 			}
 		} else {
 			wp_send_json_error( array( 'messsage' => __( 'Unable to save setting.', 'ultimate-addons-for-gutenberg' ) ) );

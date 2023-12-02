@@ -1,3 +1,7 @@
+v1.0.7 - 2nd December 2023
+- Improvement: Updated the middleware request and the Zip AI settings that are saved.
+- Fix: Implemented proper multi-setting updation.
+
 v1.0.6 - 30th November 2023
 - Improvement: Added a filter to disable the entire library from loading.
 
