@@ -262,7 +262,7 @@ class Helper {
 			apply_filters(
 				'zip_ai_auth_middleware_args',
 				array(
-					'type'         => 'scs',
+					'type'         => 'token',
 					'redirect_url' => add_query_arg(
 						array(
 							'nonce'         => wp_create_nonce( 'zip_ai_auth_nonce' ),
