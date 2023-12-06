@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Improvement: Inline Notice - Added accessibility for the close button.
+
 ### 2.10.3 - SATURDAY, 2nd DECEMBER 2023 ###
 * Improvement: FAQ - Added block margin and padding settings.
 

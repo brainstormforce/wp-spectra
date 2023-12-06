@@ -34,17 +34,19 @@ export default function save( props ) {
 	}
 	return (
 		<div
-			className={ classnames(
+			className={classnames(
 				className,
-				`${ noticeDismiss }`,
-				`uagb-inline_notice__align-${ noticeAlignment }`,
-				`uagb-block-${ block_id }`,
-				`${ active }`
-			) }
+				`${noticeDismiss}`,
+				`uagb-inline_notice__align-${noticeAlignment}`,
+				`uagb-block-${block_id}`,
+				`${active}`
+			)}
 		>
-			{ imageIconHtml }
-			<RichText.Content value={ noticeTitle } tagName={ headingTag } className="uagb-notice-title" />
-			<RichText.Content value={ noticeContent } tagName="div" className="uagb-notice-text" />
+			<button className="uagb-notice-close-button" type="button" aria-label="Close">
+				{imageIconHtml}
+			</button>
+			<RichText.Content value={noticeTitle} tagName={headingTag} className="uagb-notice-title" />
+			<RichText.Content value={noticeContent} tagName="div" className="uagb-notice-text" />
 		</div>
 	);
 }
