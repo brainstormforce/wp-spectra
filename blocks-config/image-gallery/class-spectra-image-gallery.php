@@ -1644,16 +1644,12 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 		 * Renders Front-end Click Event.
 		 *
 		 * @param string $id             Block ID.
-		 * @param array  $media_gallery  The Media Gallery Attribute.
+		 * @param array  $attr           The array of Attribute.
 		 * @return string                The Output Buffer.
 		 *
 		 * @since 2.4.0
 		 */
-		public static function render_image_click( $id, $media_gallery ) {
-			$image_urls = array();
-			foreach ( $media_gallery as $media ) {
-				$image_urls[ $media['id'] ] = $media['url'];
-			}
+		public static function render_image_click( $id, $attr ) {
 			ob_start();
 			?>
 				window.addEventListener( 'DOMContentLoaded', () => {
@@ -1661,14 +1657,8 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 					if ( ! blockScope ) {
 						return;
 					}
-					const mediaGallery = <?php echo wp_json_encode( $image_urls ); ?>;
-					const images = blockScope.querySelectorAll( '.spectra-image-gallery__media-wrapper' );
-					for ( let i = 0; i < images.length; i++ ) {
-						const imageID = parseInt( images[ i ].getAttribute( 'data-spectra-gallery-image-id' ) );
-						const imageURL = mediaGallery[ imageID ];
-						images[ i ].style.cursor = 'pointer';
-						images[ i ].addEventListener( 'click', () => window.open( imageURL, '_blank' ) );
-					}
+					const attr = <?php echo wp_json_encode( $attr ); ?>;
+					addClickListeners( blockScope, null, false, null, attr );
 				} );
 			<?php
 			return ob_get_clean();
