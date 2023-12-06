@@ -239,6 +239,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Tabs - Resolved an issue in which the tabs wrapper margin would appear differently in the editor and the front-end.
 * Fix: Global - Resolved an issue wherein the WooCommerce and custom template-styles would not load as intended in FSE themes.
 * Fix: Global - Resolved an issue wherein the template styles for custom post types would not load as intended in FSE themes.
+* Feature: Container - Added new auto-width and equal-width options to the Container block.
 
 ### 2.10.1 - SATURDAY, 11th NOVEMBER 2023 ###
 * Improvement: Zip AI - Added an option to disable Zip AI.

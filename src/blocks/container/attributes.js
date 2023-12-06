@@ -1518,6 +1518,27 @@ const attributes = {
 		},
 	},
 	...inputBorderAttributes,
+	childrenWidthDesktop: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'container-children-width-desktop',
+		},
+		isGBSStyle: true,
+	},
+	childrenWidthTablet: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'container-children-width-tablet',
+		},
+		isGBSStyle: true,
+	},
+	childrenWidthMobile: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'container-children-width-mobile',
+		},
+		isGBSStyle: true,
+	},
 
 	// Special Animations Extension Attributes.
 	// At the moment, these are only required for Container and hence these have only been declared here.
