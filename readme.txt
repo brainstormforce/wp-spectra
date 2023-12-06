@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Improvement: Added vw as a Typography size option
 * Improvement: Inline Notice - Added accessibility for the close button.
 * Fix: Container - Resolved an issue wherein the fallback image would appear repeatedly when the Container background was set to video.
 
