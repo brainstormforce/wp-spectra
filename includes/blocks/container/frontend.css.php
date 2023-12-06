@@ -171,7 +171,8 @@ $selectors = array(
 );
 
 if ( $bg_video_image_fallback ) {
-	$selectors[ $base_selector . ' .uagb-container__video-wrap video' ]['background'] = 'url(' . $bg_video_image_fallback . ') 50% 50%;';
+	$selectors[ $base_selector . ' .uagb-container__video-wrap video' ]['background']      = 'url(' . $bg_video_image_fallback . ') 50% 50%;';
+	$selectors[ $base_selector . ' .uagb-container__video-wrap video' ]['background-size'] = 'cover';
 }
 
 if ( '' !== $attr['topWidth'] ) {

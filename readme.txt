@@ -217,6 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = x.x.x =
 * Improvement: Inline Notice - Added accessibility for the close button.
+* Fix: Container - Resolved an issue wherein the fallback image would appear repeatedly when the Container background was set to video.
 
 = 2.10.3 - SATURDAY, 2nd DECEMBER 2023 =
 * Improvement: FAQ - Added block margin and padding settings.

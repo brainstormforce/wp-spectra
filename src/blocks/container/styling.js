@@ -313,6 +313,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 
 	if ( backgroundVideoFallbackImage?.url ){
 		selectors[ ' .uagb-container__video-wrap video'].background = `url(${backgroundVideoFallbackImage.url}) 50% 50%;`;
+		selectors[' .uagb-container__video-wrap video']['background-size'] = 'cover';
 	}
 
 	let boxShadowPositionCSS = boxShadowPosition;
