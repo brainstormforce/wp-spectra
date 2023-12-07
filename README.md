@@ -220,6 +220,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Inline Notice - Added accessibility for the close button.
 * Fix: Container - Resolved an issue wherein the fallback image would appear repeatedly when the Container background was set to video.
 * Fix: Image Gallery - Resolved an issue wherein the images in the paginated masonry layout would not be clickable.
+* Fix: Taxonomy List - Resolved an issue wherein the hierarchy would not be displayed as intended in the list layout.
 
 ### 2.10.3 - SATURDAY, 2nd DECEMBER 2023 ###
 * Improvement: FAQ - Added block margin and padding settings.

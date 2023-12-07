@@ -2,6 +2,9 @@ import classnames from 'classnames';
 import { useLayoutEffect, memo } from '@wordpress/element';
 import styles from './editor.lazy.scss';
 import { decodeEntities } from '@wordpress/html-entities';
+import { useEntityRecords } from '@wordpress/core-data';
+import { __ } from '@wordpress/i18n';
+
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -21,17 +24,86 @@ const Render = ( props ) => {
 		noTaxDisplaytext,
 		showCount,
 		listDisplayStyle,
-		showhierarchy,
 		titleTag,
 		block_id,
+		showEmptyTaxonomy,
+		taxonomyType,
 	} = attributes;
 
+	const showhierarchy = 'post_tag' === taxonomyType ? false : attributes.showhierarchy;
+	
 	let Tag;
 	if ( 'grid' === layout ) {
 		Tag = titleTag ? titleTag : 'h4';
 	} else if ( 'list' === layout ) {
 		Tag = titleTag ? titleTag : 'div';
 	}
+	const query = { per_page: -1, hide_empty: !showEmptyTaxonomy, context: 'view' };
+
+	const { records: categories } = useEntityRecords(
+		'taxonomy',
+		taxonomyType,
+		query
+	);
+
+	const getCategoriesList = ( parentId ) => {
+		if ( !categories?.length ) {
+			return [];
+		}
+		if ( parentId === null ) {
+			return categories;
+		}
+
+		return categories.filter( ( { parent } ) => parent === parentId );
+	};
+
+	const renderCategoryName = ( name ) =>
+		!name ? __( '(Untitled)', 'ultimate-addons-for-gutenberg' ) : decodeEntities( name ).trim();
+
+	const renderCategoryList = () => {
+		const parentId = showhierarchy ? 0 : null;
+		const categoryList = getCategoriesList( parentId );
+		return categoryList.map( ( category ) =>
+			renderCategoryListItem( category )
+		);
+	};
+
+	const renderCategoryListItem = ( category ) => {
+		const childCategories = getCategoriesList( category.id );
+		const { id, link, count, name } = category;
+		if ( 0 === category.parent && ! showhierarchy || 'post_tag' === taxonomyType ) {
+			return (
+				<li key={id} className={`uagb-tax-list`}>
+					<Tag class="uagb-tax-link-wrap">
+						<a className="uagb-tax-link" href={link} target="_blank" rel="noreferrer noopener">
+							{ renderCategoryName( name ) }
+						</a>
+						{showCount && ` (${count})`}
+					</Tag>
+					{'none' !== seperatorStyle && <div className="uagb-tax-separator" ></div>}
+				</li>
+			);
+		} else if ( showhierarchy ) {
+			return (
+				<li key={id} className={`uagb-tax-list`}>
+					<Tag class="uagb-tax-link-wrap">
+					<a className="uagb-tax-link"  href={link} target="_blank" rel="noreferrer noopener">
+						{renderCategoryName( name )}
+					</a>
+						{showCount && ` (${count})`}
+					</Tag>
+					{'none' !== seperatorStyle && <div className="uagb-tax-separator" ></div>}
+					{ showhierarchy && !!childCategories.length && (
+						<ul className="uagb-taxonomy-list-children">
+							{childCategories.map( ( childCategory ) =>
+								renderCategoryListItem( childCategory )	
+							)}
+						</ul>
+					)}
+				</li>
+			);
+		}
+	};
 
 	return (
 		<div
@@ -61,41 +133,9 @@ const Render = ( props ) => {
 					</div>
 				) ) }
 
-			{ 'list' === layout && 'list' === listDisplayStyle && (
+			{'list' === layout && 'list' === listDisplayStyle && (
 				<ul className="uagb-list-wrap">
-					{ categoriesList.map( ( p, index ) => (
-						<li className="uagb-tax-list" key={ index }>
-							<Tag className="uagb-tax-link-wrap">
-								<a
-									className="uagb-tax-link"
-									href={ p.link }
-									dangerouslySetInnerHTML={ {
-										__html: p.name,
-									} }
-								></a>
-								{ showCount && ` (${ p.count })` }
-								{ showhierarchy && p.children !== null && (
-									<ul className="uagb-taxonomy-list-children">
-										{ Object.keys( p.children ).map( function ( key, i ) {
-											return (
-												<li className="uagb-tax-list" key={ i }>
-													<a
-														className="uagb-tax-link"
-														href={ `${ p.link }${ p.children[ key ].slug }` }
-													>
-														{ p.children[ key ].name }
-													</a>
-													{ showCount && <span>{ ` (${ p.children[ key ].count })` }</span> }
-												</li>
-											);
-										} ) }
-									</ul>
-								) }
-							</Tag>
-
-							{ 'none' !== seperatorStyle && <div className="uagb-tax-separator"></div> }
-						</li>
-					) ) }
+					{ renderCategoryList() }
 				</ul>
 			) }
 

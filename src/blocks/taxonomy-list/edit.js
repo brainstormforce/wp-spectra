@@ -56,6 +56,7 @@ const UAGBTaxonomyList = ( props ) => {
 	// eslint-disable-next-line  no-unused-vars
 	const { taxonomyList, termsList } = useSelect( ( select ) => {
 		const allTaxonomy = null !== listInJson ? listInJson.data : '';
+
 		const currentTax = '' !== allTaxonomy ? allTaxonomy[ postType ] : 'undefined';
 
 		const listToShowTaxonomy = showEmptyTaxonomy ? 'with_empty_taxonomy' : 'without_empty_taxonomy';
