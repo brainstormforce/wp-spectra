@@ -219,6 +219,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Added vw as a Typography size option
 * Improvement: Inline Notice - Added accessibility for the close button.
 * Fix: Container - Resolved an issue wherein the fallback image would appear repeatedly when the Container background was set to video.
+* Fix: Form - Resolved an issue wherein form submission not working, when ReCaptcha version is selected and enable ReCaptcha is disabled.
 * Fix: Image Gallery - Resolved an issue wherein the images in the paginated masonry layout would not be clickable.
 * Fix: Taxonomy List - Resolved an issue wherein the hierarchy would not be displayed as intended in the list layout.
 
