@@ -185,6 +185,20 @@ function FontFamilyControl( props ) {
 				sizeText={
 					! props.fontSizeLabel ? __( 'Font Size', 'ultimate-addons-for-gutenberg' ) : props.fontSizeLabel
 				}
+				units={ [
+					{
+						name: __( 'Pixel', 'ultimate-addons-for-gutenberg' ),
+						unitValue: 'px',
+					},
+					{
+						name: __( 'Em', 'ultimate-addons-for-gutenberg' ),
+						unitValue: 'em',
+					},
+					{
+						name: __( 'VW', 'ultimate-addons-for-gutenberg' ),
+						unitValue: 'vw',
+					},
+				] }
 				step={ fontSizeStepsVal }
 				stepMobile={ fontSizeStepsValMobile }
 				stepTablet={ fontSizeStepsValTablet }

@@ -22,6 +22,7 @@ import Range from '@Components/range/Range';
 import { boxShadowPresets, boxShadowHoverPresets } from './presets';
 import UAGPresets from '@Components/presets';
 import renderGBSSettings from '@Controls/renderGBSSettings';
+import { ChildrenWidthDropdown } from './utils';
 import styling from './styling';
 
 const Settings = ( props ) => {
@@ -808,6 +809,8 @@ const Settings = ( props ) => {
 							'ultimate-addons-for-gutenberg'
 						) }
 					/>
+
+					<ChildrenWidthDropdown { ...{ attributes, setAttributes, deviceType } } />
 
 					<MultiButtonsControl
 						setAttributes={ setAttributes }

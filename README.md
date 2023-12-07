@@ -215,6 +215,12 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Improvement: Added vw as a Typography size option
+* Improvement: Inline Notice - Added accessibility for the close button.
+* Fix: Container - Resolved an issue wherein the fallback image would appear repeatedly when the Container background was set to video.
+* Fix: Image Gallery - Resolved an issue wherein the images in the paginated masonry layout would not be clickable.
+
 ### 2.10.3 - SATURDAY, 2nd DECEMBER 2023 ###
 * Improvement: FAQ - Added block margin and padding settings.
 
@@ -233,6 +239,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Tabs - Resolved an issue in which the tabs wrapper margin would appear differently in the editor and the front-end.
 * Fix: Global - Resolved an issue wherein the WooCommerce and custom template-styles would not load as intended in FSE themes.
 * Fix: Global - Resolved an issue wherein the template styles for custom post types would not load as intended in FSE themes.
+* Feature: Container - Added new auto-width and equal-width options to the Container block.
 
 ### 2.10.1 - SATURDAY, 11th NOVEMBER 2023 ###
 * Improvement: Zip AI - Added an option to disable Zip AI.

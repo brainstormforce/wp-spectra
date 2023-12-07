@@ -22,7 +22,7 @@ const UAGBInlineNoticeEdit = ( props ) => {
 		attributes,
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
 		name,
-		deviceType
+		deviceType,
 	} = props;
 
 	useEffect( () => {

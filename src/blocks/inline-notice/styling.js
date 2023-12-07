@@ -226,15 +226,15 @@ function styling( attributes, clientId, name, deviceType ) {
 		' svg': {
 			'fill': noticeDismissColor,
 		},
-		'.uagb-dismissable > svg': {
+		'.uagb-dismissable button[type="button"] svg': {
 			'width': generateCSSUnit( iconSizeFallback, iconSizeUnit ),
 			'height': generateCSSUnit( iconSizeFallback, iconSizeUnit ),
 			'top': generateCSSUnit( titlePaddingTop, titlePaddingUnit ),
 		},
-		'.uagb-inline_notice__align-left svg': {
+		'.uagb-inline_notice__align-left button[type="button"] svg': {
 			'right': generateCSSUnit( titlePaddingRight, titlePaddingUnit ),
 		},
-		'.uagb-inline_notice__align-center svg': {
+		'.uagb-inline_notice__align-center button[type="button"] svg': {
 			'right': generateCSSUnit( titlePaddingRight, titlePaddingUnit ),
 		},
 	};
@@ -259,15 +259,15 @@ function styling( attributes, clientId, name, deviceType ) {
 			'padding-top': generateCSSUnit( contentPaddingTopMobile, mobileContentPaddingUnit ),
 			'padding-bottom': generateCSSUnit( contentPaddingBottomMobile, mobileContentPaddingUnit ),
 		},
-		'.uagb-dismissable > svg': {
+		'.uagb-dismissable button[type="button"] svg': {
 			'width': generateCSSUnit( iconSizeMobFallback, iconSizeUnit ),
 			'height': generateCSSUnit( iconSizeMobFallback, iconSizeUnit ),
 			'top': generateCSSUnit( posTopMob, posTopUnitMob ),
 		},
-		'.uagb-inline_notice__align-left svg': {
+		'.uagb-inline_notice__align-left button[type="button"] svg': {
 			'right': generateCSSUnit( posRightMob, posRightUnitMob ),
 		},
-		'.uagb-inline_notice__align-center svg': {
+		'.uagb-inline_notice__align-center button[type="button"] svg': {
 			'right': generateCSSUnit( posRightMob, posRightUnitMob ),
 		},
 	};
@@ -292,15 +292,15 @@ function styling( attributes, clientId, name, deviceType ) {
 			'padding-top': generateCSSUnit( contentPaddingTopTablet, tabletContentPaddingUnit ),
 			'padding-bottom': generateCSSUnit( contentPaddingBottomTablet, tabletContentPaddingUnit ),
 		},
-		'.uagb-dismissable > svg': {
+		'.uagb-dismissable button[type="button"] svg': {
 			'width': generateCSSUnit( iconSizeTabFallback, iconSizeUnit ),
 			'height': generateCSSUnit( iconSizeTabFallback, iconSizeUnit ),
 			'top': generateCSSUnit( posTopTab, posTopUnitTab ),
 		},
-		'.uagb-inline_notice__align-left svg': {
+		'.uagb-inline_notice__align-left button[type="button"] svg': {
 			'right': generateCSSUnit( posRightTab, posRightUnitTab ),
 		},
-		'.uagb-inline_notice__align-center svg': {
+		'.uagb-inline_notice__align-center button[type="button"] svg': {
 			'right': generateCSSUnit( posRightTab, posRightUnitTab ),
 		},
 	};
@@ -322,13 +322,13 @@ function styling( attributes, clientId, name, deviceType ) {
 			'3px';
 		selectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-text' ][ 'border-bottom-right-radius' ] =
 			'3px';
-		selectors[ '.uagb-inline_notice__align-right svg' ] = {
+		selectors[ '.uagb-inline_notice__align-right button[type="button"] svg' ] = {
 			'left': generateCSSUnit( titlePaddingLeft, titlePaddingUnit ),
 		};
-		tabletSelectors[ '.uagb-inline_notice__align-right svg' ] = {
+		tabletSelectors[ '.uagb-inline_notice__align-right button[type="button"] svg' ] = {
 			'left': generateCSSUnit( posLeftTab, posLeftUnitTab ),
 		};
-		mobileSelectors[ '.uagb-inline_notice__align-right svg' ] = {
+		mobileSelectors[ '.uagb-inline_notice__align-right button[type="button"] svg' ] = {
 			'left': generateCSSUnit( posLeftMob, posLeftUnitMob ),
 		};
 	} else if ( 'simple' === layout ) {
@@ -356,13 +356,13 @@ function styling( attributes, clientId, name, deviceType ) {
 				'px'
 			) })`,
 		};
-		tabletSelectors[ '.uagb-inline_notice__align-right svg' ] = {
+		tabletSelectors[ '.uagb-inline_notice__align-right button[type="button"] svg' ] = {
 			'left': `calc(${ generateCSSUnit( posLeftTab, posLeftUnitTab ) } + ${ generateCSSUnit(
 				posClassicTab,
 				'px'
 			) })`,
 		};
-		mobileSelectors[ '.uagb-inline_notice__align-right svg' ] = {
+		mobileSelectors[ '.uagb-inline_notice__align-right button[type="button"] svg' ] = {
 			'left': `calc(${ generateCSSUnit( posLeftMob, posLeftUnitMob ) } + ${ generateCSSUnit(
 				posClassicMob,
 				'px'

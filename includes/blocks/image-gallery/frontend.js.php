@@ -110,7 +110,7 @@ if ( $attr['mediaGallery'] ) {
 			$js .= Spectra_Image_Gallery::render_frontend_lightbox( $id, $attr, $lightbox_settings, $thumbnail_settings, $selector );
 			break;
 		case 'image':
-			$js .= Spectra_Image_Gallery::render_image_click( $id, $attr['mediaGallery'] );
+			$js .= Spectra_Image_Gallery::render_image_click( $id, $attr );
 			break;
 		case 'url':
 			$js = apply_filters( 'uagb_image_gallery_pro_custom_url_js', $js, $id, $attr );
