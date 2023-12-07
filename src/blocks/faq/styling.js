@@ -121,6 +121,38 @@ function styling( attributes, clientId, name, deviceType ) {
 		iconBgSizeMobile,
 		iconBgSizeType,
 		iconBorderHColor,
+		// padding
+		blockTopPadding,
+		blockRightPadding,
+		blockLeftPadding,
+		blockBottomPadding,
+		blockTopPaddingTablet,
+		blockRightPaddingTablet,
+		blockLeftPaddingTablet,
+		blockBottomPaddingTablet,
+		blockTopPaddingMobile,
+		blockRightPaddingMobile,
+		blockLeftPaddingMobile,
+		blockBottomPaddingMobile,
+		blockPaddingUnit,
+		blockPaddingUnitTablet,
+		blockPaddingUnitMobile,
+		// margin
+		blockTopMargin,
+		blockRightMargin,
+		blockLeftMargin,
+		blockBottomMargin,
+		blockTopMarginTablet,
+		blockRightMarginTablet,
+		blockLeftMarginTablet,
+		blockBottomMarginTablet,
+		blockTopMarginMobile,
+		blockRightMarginMobile,
+		blockLeftMarginMobile,
+		blockBottomMarginMobile,
+		blockMarginUnit,
+		blockMarginUnitTablet,
+		blockMarginUnitMobile,
 	} = attributes;
 
 	const borderCSS = generateBorderCSS( attributes, 'overall', '' );
@@ -250,6 +282,16 @@ function styling( attributes, clientId, name, deviceType ) {
 			'color': answerTextColor,
 			'letter-spacing': generateCSSUnit( answerLetterSpacing, answerLetterSpacingType ),
 		},
+		'.uagb-faq__outer-wrap': {
+			'margin-top': generateCSSUnit( blockTopMargin, blockMarginUnit ),
+			'margin-right': generateCSSUnit( blockRightMargin, blockMarginUnit ),
+			'margin-bottom': generateCSSUnit( blockBottomMargin, blockMarginUnit ),
+			'margin-left': generateCSSUnit( blockLeftMargin, blockMarginUnit ),
+			'padding-top': generateCSSUnit( blockTopPadding, blockPaddingUnit ),
+			'padding-right': generateCSSUnit( blockRightPadding, blockPaddingUnit ),
+			'padding-bottom': generateCSSUnit( blockBottomPadding, blockPaddingUnit ),
+			'padding-left': generateCSSUnit( blockLeftPadding, blockPaddingUnit ),
+		},
 	};
 
 	tabletSelectors = {
@@ -305,6 +347,16 @@ function styling( attributes, clientId, name, deviceType ) {
 			'grid-column-gap': generateCSSUnit( columnsGapTablet, columnsGapUnit ),
 			'grid-row-gap': generateCSSUnit( rowsGapTablet, rowsGapUnit ),
 		},
+		'.uagb-faq__outer-wrap': {
+			'margin-top': generateCSSUnit( blockTopMarginTablet, blockMarginUnitTablet ),
+			'margin-right': generateCSSUnit( blockRightMarginTablet, blockMarginUnitTablet ),
+			'margin-bottom': generateCSSUnit( blockBottomMarginTablet, blockMarginUnitTablet ),
+			'margin-left': generateCSSUnit( blockLeftMarginTablet, blockMarginUnitTablet ),
+			'padding-top': generateCSSUnit( blockTopPaddingTablet, blockPaddingUnitTablet ),
+			'padding-right': generateCSSUnit( blockRightPaddingTablet, blockPaddingUnitTablet ),
+			'padding-bottom': generateCSSUnit( blockBottomPaddingTablet, blockPaddingUnitTablet ),
+			'padding-left': generateCSSUnit( blockLeftPaddingTablet, blockPaddingUnitTablet ),
+		}
 	};
 
 	mobileSelectors = {
@@ -360,6 +412,16 @@ function styling( attributes, clientId, name, deviceType ) {
 			'grid-column-gap': generateCSSUnit( columnsGapMobile, columnsGapUnit ),
 			'grid-row-gap': generateCSSUnit( rowsGapMobile, rowsGapUnit ),
 		},
+		'.uagb-faq__outer-wrap': {
+			'margin-top': generateCSSUnit( blockTopMarginMobile, blockMarginUnitMobile ),
+			'margin-right': generateCSSUnit( blockRightMarginMobile, blockMarginUnitMobile ),
+			'margin-bottom': generateCSSUnit( blockBottomMarginMobile, blockMarginUnitMobile ),
+			'margin-left': generateCSSUnit( blockLeftMarginMobile, blockMarginUnitMobile ),
+			'padding-top': generateCSSUnit( blockTopPaddingMobile, blockPaddingUnitMobile ),
+			'padding-right': generateCSSUnit( blockRightPaddingMobile, blockPaddingUnitMobile ),
+			'padding-bottom': generateCSSUnit( blockBottomPaddingMobile, blockPaddingUnitMobile ),
+			'padding-left': generateCSSUnit( blockLeftPaddingMobile, blockPaddingUnitMobile ),
+		}
 	};
 
 	if ( 'accordion' === layout && true === inactiveOtherItems ) {

@@ -122,14 +122,8 @@ class Admin_Configurations {
 		// Redirect to the settings page if the user is trying to revoke the token.
 		if ( isset( $_GET['revoke_zip_ai_authorization_token'] ) && 'definitely' === sanitize_text_field( $_GET['revoke_zip_ai_authorization_token'] ) ) {
 
-			// Get the Zip AI settings.
-			$db_settings_options = Helper::get_setting();
-
-			// Remove the auth token from the Zip AI settings.
-			unset( $db_settings_options['auth_token'] );
-
-			// Update the Zip AI settings.
-			Helper::update_admin_settings_option( 'zip_ai_settings', $db_settings_options );
+			// Delete the Zip AI settings.
+			Helper::delete_admin_settings_option( 'zip_ai_settings' );
 
 			// Redirect to the settings page.
 			$redirection_url = apply_filters( 'zip_ai_revoke_redirection_url', admin_url() );
@@ -137,16 +131,28 @@ class Admin_Configurations {
 			exit;
 		}//end if
 
-		// If the middleware and referrer are not the same, then abandon ship.
-		if ( ! isset( $_GET['token'] ) ) {
+		// If none of the required data is received, abandon ship.
+		if ( ! isset( $_GET['credit_token'] ) && ! isset( $_GET['token'] ) && ! isset( $_GET['email'] ) ) {
 			return;
 		}
 
 		// Get the existing options, and update the auth token before updating the option.
 		$db_settings_options = Helper::get_setting();
 
-		// Update the auth token.
-		$db_settings_options['auth_token'] = Utils::encrypt( sanitize_text_field( $_GET['token'] ) );
+		// Update the auth token if needed.
+		if ( isset( $_GET['credit_token'] ) && is_string( $_GET['credit_token'] ) ) {
+			$db_settings_options['auth_token'] = Utils::encrypt( sanitize_text_field( $_GET['credit_token'] ) );
+		}
+
+		// Update the Zip token if needed.
+		if ( isset( $_GET['token'] ) && is_string( $_GET['token'] ) ) {
+			$db_settings_options['zip_token'] = Utils::encrypt( sanitize_text_field( $_GET['token'] ) );
+		}
+
+		// Update the email if needed.
+		if ( isset( $_GET['email'] ) && is_string( $_GET['email'] ) ) {
+			$db_settings_options['email'] = sanitize_email( $_GET['email'] );
+		}
 
 		// Update the Zip AI settings.
 		Helper::update_admin_settings_option( 'zip_ai_settings', $db_settings_options );

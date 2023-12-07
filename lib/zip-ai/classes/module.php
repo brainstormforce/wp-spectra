@@ -61,24 +61,24 @@ class Module {
 
 		// Modules from DB is an array of arrays, where the keys are the module names, and the values are an array of module data.
 		// We need to update all the modules that are passed in the $module_name array, making their status as $status.
-		$updated_modules = array_map(
-			function( $module ) use ( $status ) {
-				// If the module is not an array, return it as is.
-				if ( ! is_array( $module ) ) {
+		array_walk(
+			$all_modules,
+			function( &$module, $module_key ) use ( $module_name, $status ) {
+				// If the module is not in the module name array, return it as it is.
+				if ( ! is_array( $module ) || ! in_array( $module_key, $module_name, true ) ) {
 					return $module;
 				}
 
-				// If the module is an array, update the status.
+				// If the module is in the module name array, update the status.
 				$module['status'] = $status;
 
 				// Return the updated module.
 				return $module;
-			},
-			$all_modules
+			}
 		);
 
 		// Update the modules array.
-		return Helper::update_admin_settings_option( 'zip_ai_modules', $updated_modules );
+		return Helper::update_admin_settings_option( 'zip_ai_modules', $all_modules );
 	}
 
 	/**
