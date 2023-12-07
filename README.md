@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Improvement: Buttons - Added an option to inherit the secondary styles when using the Astra theme.
+
 ### 2.10.3 - SATURDAY, 2nd DECEMBER 2023 ###
 * Improvement: FAQ - Added block margin and padding settings.
 

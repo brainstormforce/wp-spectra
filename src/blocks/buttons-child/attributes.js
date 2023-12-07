@@ -20,6 +20,13 @@ const attributes = {
 		type: 'boolean',
 		default: 'enabled' === uagb_blocks_info.btn_inherit_from_theme,
 	},
+	buttonType: {
+		type: 'string',
+		default: 'primary',
+		UAGCopyPaste: {
+			styleType: 'btn-type',
+		},
+	},
 	block_id: {
 		type: 'string',
 	},

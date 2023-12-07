@@ -19,8 +19,15 @@ export default function save( props ) {
 		removeText,
 		noFollow,
 		showIcon,
-		dynamicContent
+		dynamicContent,
+		buttonType,
+		inheritFromTheme,
 	} = attributes;
+
+	const inheritAstraSecondary = inheritFromTheme && 'secondary' === buttonType;
+	const buttonTypeClass = inheritAstraSecondary ? 'ast-outline-button' : 'wp-block-button__link';
+	//border-width is added to revert the border related styles by default.
+	const borderStyle = inheritAstraSecondary ? { borderWidth: 'revert-layer' } : {};
 
 	const btnText = () => {
 		if ( ! removeText ) {
@@ -59,8 +66,9 @@ export default function save( props ) {
 				<a // eslint-disable-line jsx-a11y/anchor-is-valid
 					className={ classnames(
 						'uagb-buttons-repeater',
-						'wp-block-button__link'
+						`${ buttonTypeClass }`,
 					) }
+					style={ borderStyle }
 					href={ ( '' === link || dynamicContent?.link?.enable ) ? '#' : link }
 					onClick={ ( '' === link || '#' === link ) && ( ! dynamicContent?.link?.enable ) ? 'return false;' : 'return true;' }
 					rel={ noFollow ? 'nofollow noopener' : 'follow noopener' }

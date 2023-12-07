@@ -104,7 +104,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		'line-height': generateCSSUnit( lineHeight, lineHeightType ),
 	};
 
-	selectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link' ] = {
+	selectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper .uagb-buttons-repeater' ] = {
 		// For new user.
 		'font-family': fontFamily,
 		'font-style': fontStyle,
@@ -265,7 +265,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 	}
 
 	tabletSelectors[
-		'.uagb-buttons__outer-wrap .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link'
+		'.uagb-buttons__outer-wrap .uagb-button__wrapper .uagb-buttons-repeater'
 	] = {
 		'font-size': generateCSSUnit( fontSizeTablet, fontSizeTypeTablet ),
 		'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
@@ -279,7 +279,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 	};
 
 	mobileSelectors[
-		'.uagb-buttons__outer-wrap .uagb-button__wrapper .uagb-buttons-repeater.wp-block-button__link'
+		'.uagb-buttons__outer-wrap .uagb-button__wrapper .uagb-buttons-repeater'
 	] = {
 		'font-size': generateCSSUnit( fontSizeMobile, fontSizeTypeMobile ),
 		'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
