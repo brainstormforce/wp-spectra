@@ -14,8 +14,8 @@ $btn_border_attributes = UAGB_Block_Helper::uag_generate_border_attribute(
 $content_border_attributes = UAGB_Block_Helper::uag_generate_border_attribute(
 	'content'
 );
-$filtered_attributes       = apply_filters( 'spectra_modal_attributes', array() );
-$additional_attributes     = is_array( $filtered_attributes ) ? $filtered_attributes : array();
+$additional_attributes     = apply_filters( 'spectra_modal_attributes', array() );
+$additional_attributes     = is_array( $additional_attributes ) ? $additional_attributes : array();
 
 return array_merge(
 	array(
