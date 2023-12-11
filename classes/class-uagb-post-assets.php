@@ -311,7 +311,7 @@ class UAGB_Post_Assets {
 			'is_search'     => 'search',
 			'is_tag'        => 'tag',
 		); // Conditional tags to post type.
-		
+
 		// Determines whether the query is for an existing single page.
 		if ( is_page() ) {
 			return 'page';
@@ -319,7 +319,7 @@ class UAGB_Post_Assets {
 			// Applies to single Posts, and existing single post of any post type (post, attachment, page, custom post types).
 			$object = get_queried_object();
 			if ( $object instanceof WP_Post && ! empty( $object->post_type ) ) {
-				return 'single-' . $object->post_type; 
+				return 'single-' . $object->post_type;
 			}
 		}
 
@@ -1194,8 +1194,9 @@ class UAGB_Post_Assets {
 
 		if ( 'yes' === $enable_on_page_css_button ) {
 			$custom_css = get_post_meta( $this->post_id, '_uag_custom_page_level_css', true );
+			$custom_css = ! empty( $custom_css ) && is_string( $custom_css ) ? wp_kses_post( $custom_css ) : '';
 
-			if ( is_string( $custom_css ) && ! self::$custom_css_appended ) {
+			if ( ! empty( $custom_css ) && ! self::$custom_css_appended ) {
 				$this->stylesheet         .= $custom_css;
 				self::$custom_css_appended = true;
 			}

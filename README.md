@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
+* Security Fix: Hardened the security of the plugin. Props: Wordfence
 * Improvement: Added vw as a Typography size option
 * Improvement: Buttons - Added an option to inherit the secondary styles when using the Astra theme.
 * Improvement: Inline Notice - Added accessibility for the close button.
