@@ -113,8 +113,11 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		letterSpacingTablet,
 		letterSpacingMobile,
 		letterSpacingType,
-		inheritFromTheme
+		inheritFromTheme,
+		buttonType,
 	} = attributes;
+
+	const buttonClass = 'primary' === buttonType ? '.wp-block-button__link' : '.ast-outline-button';
 
 	const tabletSelectors = {};
 	const mobileSelectors = {};
@@ -145,8 +148,18 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		const borderCSSMobile = generateBorderCSS( attributes, 'btn', 'mobile' );
 
 		selectors = {
-			'.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater': {
-				'font-size': generateCSSUnit( size, sizeType ),
+			'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__link': {
+				'color': hColor,
+			},
+			'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover': {
+				'color': hColor,
+			},
+			'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__link': {
+				'color': color,
+			},
+		};
+		selectors[`.uagb-buttons__outer-wrap .uagb-button__wrapper ${buttonClass}.uagb-buttons-repeater`] = {
+			'font-size': generateCSSUnit( size, sizeType ),
 				'line-height': generateCSSUnit( lineHeight, lineHeightType ),
 				'font-family': fontFamily,
 				'font-weight': fontWeight,
@@ -164,16 +177,6 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 				'color': color,
 				'box-shadow': boxShadowCSS,
 				'letter-spacing': generateCSSUnit( letterSpacing, letterSpacingType ),
-			},
-			'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__link': {
-				'color': hColor,
-			},
-			'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover': {
-				'color': hColor,
-			},
-			'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__link': {
-				'color': color,
-			},
 		};
 		selectors[ ' .wp-block-button__link.uagb-buttons-repeater' ] = borderCSS;
 		selectors[ ' .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
@@ -200,7 +203,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			'border-color': btnBorderHColor,
 		};
 		mobileSelectors[
-			'.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'
+			`.uagb-buttons__outer-wrap .uagb-button__wrapper ${buttonClass}.uagb-buttons-repeater`
 		] = {
 			'font-size': generateCSSUnit( sizeMobile, sizeTypeMobile ),
 			'line-height': generateCSSUnit( lineHeightMobile, lineHeightType ),
@@ -217,7 +220,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		};
 
 		tabletSelectors[
-			'.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'
+			`.uagb-buttons__outer-wrap .uagb-button__wrapper ${buttonClass}.uagb-buttons-repeater`
 		] = {
 			'font-size': generateCSSUnit( sizeTablet, sizeTypeTablet ),
 			'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
@@ -285,17 +288,17 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			};
 		}
 	} else {
-		selectors = {
-			'.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater': {
+		selectors[
+			`.uagb-buttons__outer-wrap .uagb-button__wrapper ${buttonClass}.uagb-buttons-repeater`
+		] = {
 				'margin-left': generateCSSUnit( leftMargin, marginType ),
 				'margin-right': generateCSSUnit( rightMargin, marginType ),
 				'margin-top': generateCSSUnit( topMargin, marginType ),
 				'margin-bottom': generateCSSUnit( bottomMargin, marginType ),
 			}
-		};
 
 		mobileSelectors[
-			'.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'
+			`.uagb-buttons__outer-wrap .uagb-button__wrapper ${buttonClass}.uagb-buttons-repeater`
 		] = {
 			'margin-left': generateCSSUnit( leftMarginMobile, marginType ),
 			'margin-right': generateCSSUnit( rightMarginMobile, marginType ),
@@ -304,7 +307,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		};
 
 		tabletSelectors[
-			'.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater'
+			`.uagb-buttons__outer-wrap .uagb-button__wrapper ${buttonClass}.uagb-buttons-repeater`
 		] = {
 			'margin-left': generateCSSUnit( leftMarginTablet, marginType ),
 			'margin-right': generateCSSUnit( rightMarginTablet, marginType ),
@@ -312,27 +315,27 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			'margin-bottom': generateCSSUnit( bottomMarginTablet, marginType ),
 		};
 	}
-	selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__icon svg' ] = {
+	selectors[ `.uagb-buttons__outer-wrap ${buttonClass}.uagb-buttons-repeater .uagb-button__icon svg` ] = {
 		'width': generateCSSUnit( getFallbackNumber( iconSize, 'iconSize', blockName ), 'px' ),
 		'height': generateCSSUnit( getFallbackNumber( iconSize, 'iconSize', blockName ), 'px' ),
 		'fill': iconColor,
 	};
 	tabletSelectors[
-		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__icon svg'
+		`.uagb-buttons__outer-wrap ${buttonClass}.uagb-buttons-repeater .uagb-button__icon svg`
 	] = {
 		'width': generateCSSUnit( iconSizeTablet, 'px' ),
 		'height': generateCSSUnit( iconSizeTablet, 'px' ),
 		'fill': iconColor,
 	};
 	mobileSelectors[
-		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater .uagb-button__icon svg'
+		`.uagb-buttons__outer-wrap ${buttonClass}.uagb-buttons-repeater .uagb-button__icon svg`
 	] = {
 		'width': generateCSSUnit( iconSizeMobile, 'px' ),
 		'height': generateCSSUnit( iconSizeMobile, 'px' ),
 		'fill': iconColor,
 	};
 	selectors[
-		'.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater:hover .uagb-button__icon > svg'
+		`.uagb-buttons__outer-wrap ${buttonClass}.uagb-buttons-repeater:hover .uagb-button__icon > svg`
 	] = {
 		'fill': iconHColor || hColor,
 	};
