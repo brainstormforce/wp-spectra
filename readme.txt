@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+* Security Fix: Hardened the security of the plugin. Props: Wordfence
+
 = 2.10.3 - SATURDAY, 2nd DECEMBER 2023 =
 * Improvement: FAQ - Added block margin and padding settings.
 
