@@ -3,7 +3,8 @@
  * Frontend CSS loading File.
  *
  * @since 2.2.0
- *
+ * @var mixed[] $attr
+ * @var int $id
  * @package uagb
  */
 
@@ -13,9 +14,10 @@ $m_selectors     = array();
 $t_selectors     = array();
 $selectors       = array();
 $is_rtl          = is_rtl();
-$btn_icon_size   = UAGB_Helper::get_css_value( $attr['btnFontSize'], $attr['btnFontSizeType'] );
-$t_btn_icon_size = UAGB_Helper::get_css_value( $attr['btnFontSizeTablet'], $attr['btnFontSizeType'] );
-$m_btn_icon_size = UAGB_Helper::get_css_value( $attr['btnFontSizeMobile'], $attr['btnFontSizeType'] );
+$btn_icon_size   = UAGB_Helper::get_css_value( $attr['btnFontSize'], is_string( $attr['btnFontSizeType'] ) ? $attr['btnFontSizeType'] : '' );
+$t_btn_icon_size = UAGB_Helper::get_css_value( $attr['btnFontSizeTablet'], is_string( $attr['btnFontSizeType'] ) ? $attr['btnFontSizeType'] : '' );
+$m_btn_icon_size = UAGB_Helper::get_css_value( $attr['btnFontSizeMobile'], is_string( $attr['btnFontSizeType'] ) ? $attr['btnFontSizeType'] : '' );
+
 
 $btn_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn' );
 $btn_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'tablet' );

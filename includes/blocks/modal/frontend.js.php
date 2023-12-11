@@ -3,7 +3,8 @@
  * Frontend JS File.
  *
  * @since 2.2.0
- *
+ * @var mixed[] $attr
+ * @var int $id
  * @package uagb
  */
 
