@@ -600,7 +600,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 		 * @param string  $taxonomy_type of taxonomy type.
 		 * @param integer $parent_id of parent id.
 		 * @param bool    $show_empty_taxonomy of show empty taxonomy.
-		 * @since x.x.x
+		 * @since 2.10.4
 		 * @return array of terms.
 		 */
 		public function get_terms_hierarchical( $taxonomy_type, $parent_id, $show_empty_taxonomy ) {
@@ -632,7 +632,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 		 * @param string $seperatorStyle of separator style.
 		 * @param string $title_tag of title tag.
 		 * @param bool   $show_hierarchy of show hierarchy.
-		 * @since x.x.x
+		 * @since 2.10.4
 		 * @return void
 		 */
 		public function display_terms_recursive( $term, $taxonomy_type, $showCount, $seperatorStyle, $title_tag, $show_hierarchy ) {

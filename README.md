@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.4.1  
-**Stable tag:** 2.10.3  
+**Stable tag:** 2.10.4  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### x.x.x ###
+### 2.10.4 - TUESDAY, 12th DECEMBER 2023 ###
 * Security Fix: Hardened the security of the plugin. Props: Wordfence
 * Improvement: Added vw as a Typography size option
 * Improvement: Buttons - Added an option to inherit the secondary styles when using the Astra theme.

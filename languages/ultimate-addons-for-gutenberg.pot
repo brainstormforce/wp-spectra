@@ -2,16 +2,16 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.10.2\n"
+"Project-Id-Version: Spectra 2.10.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-11-30T12:17:36+00:00\n"
+"POT-Creation-Date: 2023-12-11T13:29:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.8.1\n"
+"X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
 
 #. Plugin Name of the plugin
@@ -59,7 +59,7 @@ msgid "Successfully saved data!"
 msgstr ""
 
 #: admin-core/ajax/common-settings.php:175
-#: classes/class-uagb-init-blocks.php:982
+#: classes/class-uagb-init-blocks.php:983
 msgid "No post data found!"
 msgstr ""
 
@@ -85,15 +85,25 @@ msgid "%s disabled!"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:961
+#: admin-core/ajax/common-settings.php:960
+msgid "Unable to disable %s"
+msgstr ""
+
+#. Translators: %s is the module name.
+#: admin-core/ajax/common-settings.php:972
 msgid "%s enabled!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:968
+#. Translators: %s is the module name.
+#: admin-core/ajax/common-settings.php:982
+msgid "Unable to enable %s"
+msgstr ""
+
+#: admin-core/ajax/common-settings.php:990
 msgid "Unable to save setting."
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:987
+#: admin-core/ajax/common-settings.php:1009
 msgid "Unable to verify authenticity."
 msgstr ""
 
@@ -126,12 +136,12 @@ msgstr ""
 msgid "Enjoyed %1$sSpectra%2$s? Please leave us a %3$s rating. We really appreciate your support!"
 msgstr ""
 
-#: blocks-config/forms/class-uagb-forms.php:318
-#: blocks-config/forms/class-uagb-forms.php:334
+#: blocks-config/forms/class-uagb-forms.php:319
+#: blocks-config/forms/class-uagb-forms.php:335
 msgid "Please try logging in again to verify that you are not a robot."
 msgstr ""
 
-#: blocks-config/forms/class-uagb-forms.php:426
+#: blocks-config/forms/class-uagb-forms.php:429
 #: includes/blocks/forms/attributes.php:71
 #: dist/blocks.js:3
 #: dist/blocks.js:17
@@ -170,33 +180,33 @@ msgstr ""
 msgid "Popup Builder"
 msgstr ""
 
-#: blocks-config/popup-builder/class-uagb-popup-builder.php:220
+#: blocks-config/popup-builder/class-uagb-popup-builder.php:230
 #: dist/blocks.js:11
 #: dist/blocks.js:17
 msgid "Type"
 msgstr ""
 
-#: blocks-config/popup-builder/class-uagb-popup-builder.php:221
+#: blocks-config/popup-builder/class-uagb-popup-builder.php:231
 #: dist/blocks.js:17
 msgid "Author"
 msgstr ""
 
-#: blocks-config/popup-builder/class-uagb-popup-builder.php:228
+#: blocks-config/popup-builder/class-uagb-popup-builder.php:238
 msgid "Enable/Disable"
 msgstr ""
 
-#: blocks-config/popup-builder/class-uagb-popup-builder.php:251
+#: blocks-config/popup-builder/class-uagb-popup-builder.php:261
 #: dist/blocks.js:11
 msgid "Info Bar"
 msgstr ""
 
-#: blocks-config/popup-builder/class-uagb-popup-builder.php:254
+#: blocks-config/popup-builder/class-uagb-popup-builder.php:264
 #: admin-core/assets/build/dashboard-app.js:5
 #: dist/blocks.js:11
 msgid "Popup"
 msgstr ""
 
-#: blocks-config/popup-builder/class-uagb-popup-builder.php:257
+#: blocks-config/popup-builder/class-uagb-popup-builder.php:267
 msgid "Unset"
 msgstr ""
 
@@ -236,7 +246,7 @@ msgstr ""
 msgid "Taxonomy Not Available."
 msgstr ""
 
-#: blocks-config/taxonomy-list/class-uagb-taxonomy-list.php:682
+#: blocks-config/taxonomy-list/class-uagb-taxonomy-list.php:708
 #: includes/blocks/forms-select/block.php:15
 #: dist/blocks.js:17
 msgid "Select"
@@ -7742,7 +7752,7 @@ msgid ""
 "\t\t\t.my-class {text-align: center;} // my-class is a custom selector"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:828
+#: classes/class-uagb-init-blocks.php:829
 #: classes/class-uagb-rest-api.php:226
 #: classes/class-uagb-rest-api.php:240
 #: dist/blocks.js:1
@@ -7752,21 +7762,21 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:857
-#: classes/class-uagb-init-blocks.php:890
+#: classes/class-uagb-init-blocks.php:858
+#: classes/class-uagb-init-blocks.php:891
 #: dist/blocks.js:17
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:871
+#: classes/class-uagb-init-blocks.php:872
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:904
+#: classes/class-uagb-init-blocks.php:905
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:920
+#: classes/class-uagb-init-blocks.php:921
 msgid "Invalid request"
 msgstr ""
 
@@ -10472,6 +10482,14 @@ msgid "Unlink Style"
 msgstr ""
 
 #: dist/blocks.js:11
+msgid "Children Width "
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Equal"
+msgstr ""
+
+#: dist/blocks.js:11
 msgid "Define the vertical alignment inside this container."
 msgstr ""
 
@@ -11309,6 +11327,18 @@ msgstr ""
 
 #: dist/blocks.js:17
 msgid "Inherit From Theme"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Button Type"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Primary"
+msgstr ""
+
+#: dist/blocks.js:17
+msgid "Secondary"
 msgstr ""
 
 #: dist/blocks.js:17
@@ -15701,10 +15731,6 @@ msgstr ""
 
 #: dist/blocks.js:17
 msgid "Input Width"
-msgstr ""
-
-#: dist/blocks.js:17
-msgid "Button Type"
 msgstr ""
 
 #: dist/blocks.js:17
