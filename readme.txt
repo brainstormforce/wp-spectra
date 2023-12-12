@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
-Tested up to: 6.4.1
+Tested up to: 6.4.2
 Stable tag: 2.10.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -216,12 +216,13 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = 2.10.4 - TUESDAY, 12th DECEMBER 2023 =
-* Security Fix: Hardened the security of the plugin. Props: Wordfence
-* Improvement: Added vw as a Typography size option
+* Security Fix: Hardened the security of the plugin. Props: Wordfence.
+* Feature: Container - Added new auto-width and equal-width options to the Container block.
 * Improvement: Buttons - Added an option to inherit the secondary styles when using the Astra theme.
 * Improvement: Inline Notice - Added accessibility for the close button.
+* Improvement: Global - Added viewport width as a typography size option.
 * Fix: Container - Resolved an issue wherein the fallback image would appear repeatedly when the Container background was set to video.
-* Fix: Form - Resolved an issue wherein form submission not working, when ReCaptcha version is selected and enable ReCaptcha is disabled.
+* Fix: Form - Resolved an issue wherein form submissions would not work as intended when a ReCaptcha version is used and ReCaptcha is disabled.
 * Fix: Image Gallery - Resolved an issue wherein the images in the paginated masonry layout would not be clickable.
 * Fix: Popup Builder - Resolved an issue wherein only the latest 10 popups would be visible on the frontend when enabled.
 * Fix: Taxonomy List - Resolved an issue wherein the hierarchy would not be displayed as intended in the list layout.
@@ -244,7 +245,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Tabs - Resolved an issue in which the tabs wrapper margin would appear differently in the editor and the front-end.
 * Fix: Global - Resolved an issue wherein the WooCommerce and custom template-styles would not load as intended in FSE themes.
 * Fix: Global - Resolved an issue wherein the template styles for custom post types would not load as intended in FSE themes.
-* Feature: Container - Added new auto-width and equal-width options to the Container block.
 
 = 2.10.1 - SATURDAY, 11th NOVEMBER 2023 =
 * Improvement: Zip AI - Added an option to disable Zip AI.
