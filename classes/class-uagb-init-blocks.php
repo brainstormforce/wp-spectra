@@ -796,6 +796,7 @@ class UAGB_Init_Blocks {
 				'is_block_theme'                          => UAGB_Admin_Helper::is_block_theme(),
 				'is_customize_preview'                    => is_customize_preview(),
 				'uag_enable_gbs_extension'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_gbs_extension', 'enabled' ),
+				'current_theme'                           => wp_get_theme()->get( 'Name' ),
 			)
 		);
 		// To match the editor with frontend.

@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
-Tested up to: 6.4.1
-Stable tag: 2.10.3
+Tested up to: 6.4.2
+Stable tag: 2.10.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -214,6 +214,18 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
 
 == Changelog ==
+
+= 2.10.4 - TUESDAY, 12th DECEMBER 2023 =
+* Security Fix: Hardened the security of the plugin. Props: Wordfence.
+* Feature: Container - Added new auto-width and equal-width options to the Container block.
+* Improvement: Buttons - Added an option to inherit the secondary styles when using the Astra theme.
+* Improvement: Inline Notice - Added accessibility for the close button.
+* Improvement: Global - Added viewport width as a typography size option.
+* Fix: Container - Resolved an issue wherein the fallback image would appear repeatedly when the Container background was set to video.
+* Fix: Form - Resolved an issue wherein form submissions would not work as intended when a ReCaptcha version is used and ReCaptcha is disabled.
+* Fix: Image Gallery - Resolved an issue wherein the images in the paginated masonry layout would not be clickable.
+* Fix: Popup Builder - Resolved an issue wherein only the latest 10 popups would be visible on the frontend when enabled.
+* Fix: Taxonomy List - Resolved an issue wherein the hierarchy would not be displayed as intended in the list layout.
 
 = 2.10.3 - SATURDAY, 2nd DECEMBER 2023 =
 * Improvement: FAQ - Added block margin and padding settings.

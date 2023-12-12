@@ -157,7 +157,6 @@ return array_merge(
 		'paddingRightMobile'         => '',
 		'paddingBottomMobile'        => '',
 		'paddingLeftMobile'          => '',
-		'contentPaddingUnit'         => 'px',
 		'paddingUnit'                => 'px',
 		'mobilePaddingUnit'          => 'px',
 		'tabletPaddingUnit'          => 'px',

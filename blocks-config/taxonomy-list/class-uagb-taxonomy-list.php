@@ -595,6 +595,69 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 		}
 
 		/**
+		 * Get terms hierarchical.
+		 *
+		 * @param string  $taxonomy_type of taxonomy type.
+		 * @param integer $parent_id of parent id.
+		 * @param bool    $show_empty_taxonomy of show empty taxonomy.
+		 * @since 2.10.4
+		 * @return array of terms.
+		 */
+		public function get_terms_hierarchical( $taxonomy_type, $parent_id, $show_empty_taxonomy ) {
+			$args = array(
+				'taxonomy'   => $taxonomy_type,
+				'parent'     => $parent_id,
+				'hide_empty' => ! $show_empty_taxonomy,
+			);
+
+			$terms = get_terms( $args );
+
+			if ( is_wp_error( $terms ) || empty( $terms ) || ! is_array( $terms ) ) {
+				return array();
+			}
+
+			foreach ( $terms as $term ) {
+				$term->children = $this->get_terms_hierarchical( $taxonomy_type, $term->term_id, $show_empty_taxonomy );
+			}
+
+			return $terms;
+		}
+
+		/**
+		 * Display terms recursive.
+		 *
+		 * @param object $term of terms.
+		 * @param string $taxonomy_type of taxonomy type.
+		 * @param bool   $showCount of show count.
+		 * @param string $seperatorStyle of separator style.
+		 * @param string $title_tag of title tag.
+		 * @param bool   $show_hierarchy of show hierarchy.
+		 * @since 2.10.4
+		 * @return void
+		 */
+		public function display_terms_recursive( $term, $taxonomy_type, $showCount, $seperatorStyle, $title_tag, $show_hierarchy ) {
+			if ( $term instanceof WP_Term ) {
+				$child_link = $this->get_link_of_individual_categories( $term->slug, $taxonomy_type );
+				echo sprintf( 
+					'<li class="uagb-tax-list"><%s class="uagb-tax-link-wrap"><a class="uagb-tax-link" href="%s">%s</a> %s</%s><div class="uagb-tax-separator"></div></li>',
+					esc_html( $title_tag ),
+					esc_url( $child_link ),
+					esc_html( $term->name ),
+					( boolval( $showCount ) ? ' (' . esc_attr( $term->count ) . ') ' : '' ),
+					esc_html( $title_tag )
+				);
+
+				if ( $show_hierarchy && ! empty( $term->children ) && is_array( $term->children ) ) {
+					foreach ( $term->children as $child ) {
+						echo sprintf( '<ul class="uagb-taxonomy-list-children">' );
+						$this->display_terms_recursive( $child, $taxonomy_type, $showCount, $seperatorStyle, $title_tag, $show_hierarchy );
+						echo sprintf( '</ul>' );
+					}
+				}
+			}
+		}
+
+		/**
 		 * Render List HTML.
 		 *
 		 * @param array $attributes Array of block attributes.
@@ -624,59 +687,22 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 					'parent'     => 0,
 				);
 
-				$new_categories_list = get_terms( $attributes['taxonomyType'], $args );
-
-				if ( is_array( $new_categories_list ) ) {
-					foreach ( $new_categories_list as $key => $value ) {
-						$child_arg_empty_tax                   = array(
-							'hide_empty' => ! $attributes['showEmptyTaxonomy'],
-							'parent'     => $value->term_id,
-						);
-						$child_cat_empty_tax                   = get_terms( $attributes['taxonomyType'], $child_arg_empty_tax );
-						$child_cat_empty_tax_arr               = $child_cat_empty_tax ? $child_cat_empty_tax : '';
-						$new_categories_list[ $key ]->children = $child_cat_empty_tax_arr;
-					}
-				}
-
+				$taxonomy_type       = $attributes['taxonomyType'];
+				$show_empty_taxonomy = $attributes['showEmptyTaxonomy'];
+				$new_categories_list = $this->get_terms_hierarchical( $taxonomy_type, 0, $show_empty_taxonomy );
 				?>
 				<?php if ( 'dropdown' !== $attributes['listDisplayStyle'] && ! empty( $new_categories_list ) && is_array( $new_categories_list ) ) { ?>
 					<ul class="uagb-list-wrap">
 						<?php
-						foreach ( $new_categories_list as $key => $value ) {
-							$link = $this->get_link_of_individual_categories( $value->slug, $attributes['taxonomyType'] );
+						foreach ( $new_categories_list as $term ) {
 							?>
-							<li class="uagb-tax-list">
-								<<?php echo esc_html( $title_tag ); ?> class="uagb-tax-link-wrap">
-									<a class="uagb-tax-link" href="<?php echo esc_url( $link ); ?>"><?php echo esc_html( $value->name ); ?></a>
-									<?php if ( $showCount ) { ?>
-											<?php echo ' (' . esc_attr( $value->count ) . ')'; ?>
-										<?php } ?>
-									<?php if ( $attributes['showhierarchy'] && ! empty( $new_categories_list[ $key ]->children ) && is_array( $new_categories_list[ $key ]->children ) ) { ?>
-											<ul class="uagb-taxonomy-list-children">
-												<?php
-												foreach ( $new_categories_list[ $key ]->children as $value ) {
-													$child_link = $this->get_link_of_individual_categories( $value->slug, $attributes['taxonomyType'] );
-													?>
-													<li class="uagb-tax-list">
-													<a class="uagb-tax-link" href="<?php echo esc_url( $child_link ); ?>"><?php echo esc_html( $value->name ); ?></a>
-														<?php if ( $showCount ) { ?>
-															<?php echo ' (' . esc_attr( $value->count ) . ')'; ?>
-													<?php } ?>
-													</li>
-														<?php
-												}
-												?>
-											</ul>
-										<?php } ?>
-								</<?php echo esc_html( $title_tag ); ?>>
-								<?php if ( 'none' !== $seperatorStyle ) { ?>
-										<div class="uagb-tax-separator"></div>
-								<?php } ?>
-							</li>
-								<?php
-						}
-						?>
-					</ul>
+							<?php
+							if ( $term instanceof WP_Term ) {
+								$this->display_terms_recursive( $term, $taxonomy_type, $showCount, $seperatorStyle, $title_tag, $attributes['showhierarchy'] );
+							}
+							?>
+						<?php } ?>
+						</ul>
 				<?php } else { ?>
 					<select class="uagb-list-dropdown-wrap" onchange="redirectToTaxonomyLink(this)">
 						<option selected value=""> -- <?php esc_html_e( 'Select', 'ultimate-addons-for-gutenberg' ); ?> -- </option>

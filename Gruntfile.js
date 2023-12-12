@@ -446,6 +446,24 @@ module.exports = function ( grunt ) {
 		return dividedArray;
 	}
 
+	function mergeCustomCategories( getDownloadedIcons, getCategoriesCustomTitle, getCustomCategoryTitle ) {
+		for ( const shortCategoryKey in getCategoriesCustomTitle ) {
+			const shortCategory = getCategoriesCustomTitle[shortCategoryKey];
+	
+			if ( typeof shortCategory === 'object' && shortCategory.hasOwnProperty( 'original_cate' ) ) {
+				if ( shortCategory.original_cate.includes( 'brands' ) ) {
+					for ( const iconKey of getCustomCategoryTitle.brands.icons ) {
+						if ( getDownloadedIcons.hasOwnProperty( iconKey ) ) {
+							const icon = getDownloadedIcons[iconKey];
+							// Add the shortCategoryKey (object key) to the custom_categories array
+							icon.custom_categories.push( shortCategoryKey );
+						}
+					}
+				}
+			}
+		}
+	}
+
 	// Update Font Awesome v6 library.
 	grunt.registerTask( 'font-awesome-v6', function () {
 		this.async();
@@ -504,6 +522,8 @@ module.exports = function ( grunt ) {
 
 		// Put custom categories list.
 		getDownloadedIcons = keep_category_list( getDownloadedIcons, getCategoriesCustomTitle );
+
+		mergeCustomCategories( getDownloadedIcons, getCategoriesCustomTitle, getCustomCategoryTitle );
 
 		const createChunks = createChunksOfObject( getDownloadedIcons, NUMBER_OF_ICON_CHUNKS );
 

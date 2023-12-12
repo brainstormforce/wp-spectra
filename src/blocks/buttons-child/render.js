@@ -22,9 +22,16 @@ const Render = ( props ) => {
 		noFollow,
 		showIcon,
 		block_id,
+		buttonType,
+		inheritFromTheme,
 	} = attributes;
 
 	let { label } = attributes;
+
+	const inheritAstraSecondary = inheritFromTheme && 'secondary' === buttonType;
+	const buttonTypeClass = inheritAstraSecondary ? 'ast-outline-button' : 'wp-block-button__link';
+	//border-width is added to revert the border related styles by default.
+	const borderStyle = inheritAstraSecondary ? { borderWidth: 'revert-layer' } : {};
 
 	// Check if this has dynamic content.
 	if ( labelHasDynamicContent ) {
@@ -79,8 +86,9 @@ const Render = ( props ) => {
 				<div
 					className={ classnames(
 						'uagb-buttons-repeater',
-						'wp-block-button__link'
+						`${ buttonTypeClass }`,
 					) }
+					style={ borderStyle }
 				>
 					{ iconHtml( 'before' ) }
 					{ btnText() }

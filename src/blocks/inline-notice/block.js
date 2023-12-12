@@ -31,7 +31,7 @@ registerBlockType( 'uagb/inline-notice', {
 	},
 	attributes,
 	category: uagb_blocks_info.category,
-	deprecated,
 	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="inline-notice" /> : <Edit { ...props } /> ),
 	save,
+	deprecated,
 } );

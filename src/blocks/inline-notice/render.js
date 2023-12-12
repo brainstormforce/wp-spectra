@@ -39,7 +39,9 @@ const Render = ( props ) => {
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
 			) }
 		>
-			{ imageIconHtml }
+			<button className="uagb-notice-close-button" type="button" aria-label="Close">
+				{imageIconHtml}
+			</button>
 			<RichText
 				tagName={ headingTag }
 				placeholder={ __( 'Notice Title', 'ultimate-addons-for-gutenberg' ) }

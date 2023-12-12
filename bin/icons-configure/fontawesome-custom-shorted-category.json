@@ -77,7 +77,7 @@
 	},
 	"social": {
 		"title": "Social",
-		"original_cate": ["charity", "gender", "political", "religion", "social","humanitarian" ]
+		"original_cate": [ "social", "brands" ]
 	},
 	"travel": {
 		"title": "Travel",

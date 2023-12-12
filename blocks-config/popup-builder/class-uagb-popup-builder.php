@@ -167,16 +167,26 @@ class UAGB_Popup_Builder {
 	 * @since 2.6.0
 	 */
 	public function enqueue_popup_scripts() {
-		$args   = array( 'post_type' => 'spectra-popup' );
+		$args   = array(
+			'post_type'      => 'spectra-popup',
+			'posts_per_page' => -1,
+			'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+				array(
+					'key'     => 'spectra-popup-enabled', // The meta key.
+					'value'   => true, // The meta value to compare with.
+					'compare' => '=', // The comparison type.
+					'type'    => 'BOOLEAN', // The meta value type.
+				),
+			),
+		);
 		$popups = new WP_Query( $args );
 
 		while ( $popups->have_posts() ) :
 			$popups->the_post();
 
 			$popup_id = get_the_ID();
-			$enabled  = get_post_meta( $popup_id, 'spectra-popup-enabled', true );
 
-			$render_this_popup = apply_filters( 'spectra_pro_popup_display_filters', $enabled, $this->post_id );
+			$render_this_popup = apply_filters( 'spectra_pro_popup_display_filters', true, $this->post_id );
 
 			if ( $render_this_popup ) {
 				$current_popup_assets = new UAGB_Post_Assets( $popup_id );

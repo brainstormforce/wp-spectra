@@ -30,6 +30,7 @@ export default function RangeTypographyControl( props ) {
 		sizeMobileText,
 		sizeMobile,
 		sizeMobileLabel,
+		
 	} = props;
 
 	const output = {};
@@ -42,6 +43,7 @@ export default function RangeTypographyControl( props ) {
 				value={ size.value || '' }
 				min={ min }
 				max={ 200 }
+				// Add units here if it exisits
 				unit={ type }
 				responsive={ true }
 				setAttributes={ setAttributes }

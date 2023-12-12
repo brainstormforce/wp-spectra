@@ -3,19 +3,21 @@
  * Frontend CSS loading File.
  *
  * @since 2.2.0
- *
+ * @var mixed[] $attr
+ * @var int $id
  * @package uagb
  */
 
 // Adds Fonts.
 UAGB_Block_JS::blocks_modal_gfont( $attr );
-$m_selectors     = array();
-$t_selectors     = array();
-$selectors       = array();
-$is_rtl          = is_rtl();
-$btn_icon_size   = UAGB_Helper::get_css_value( $attr['btnFontSize'], $attr['btnFontSizeType'] );
-$t_btn_icon_size = UAGB_Helper::get_css_value( $attr['btnFontSizeTablet'], $attr['btnFontSizeType'] );
-$m_btn_icon_size = UAGB_Helper::get_css_value( $attr['btnFontSizeMobile'], $attr['btnFontSizeType'] );
+$m_selectors        = array();
+$t_selectors        = array();
+$selectors          = array();
+$is_rtl             = is_rtl();
+$btn_font_size_type = is_string( $attr['btnFontSizeType'] ) ? $attr['btnFontSizeType'] : '';
+$btn_icon_size      = UAGB_Helper::get_css_value( $attr['btnFontSize'], $btn_font_size_type );
+$t_btn_icon_size    = UAGB_Helper::get_css_value( $attr['btnFontSizeTablet'], $btn_font_size_type );
+$m_btn_icon_size    = UAGB_Helper::get_css_value( $attr['btnFontSizeMobile'], $btn_font_size_type );
 
 $btn_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn' );
 $btn_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'btn', 'tablet' );
