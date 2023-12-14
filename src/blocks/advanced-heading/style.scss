@@ -5,6 +5,16 @@
  */
 
 .wp-block-uagb-advanced-heading {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p,
+	div {
+		word-break: break-word;
+	}
 	.uagb-heading-text {
 		margin: 0;
 	}
@@ -42,22 +52,4 @@
 			color: #fff;
 		}
 	}
-}
-
-// Adding word break css for all text tags.
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-span,
-div,
-a,
-li,
-td,
-th,
-label {
-	word-break: break-word;
 }
