@@ -224,3 +224,272 @@ select::before {
 		}
 	}
 }
+
+.wp-block-uagb-forms {
+
+	/* Start here - Ready Classes for Width */
+	&.uagb-forms-inline-field {
+
+		/* Start here - To manage the gap between the Forms fields. */
+		&.uagb-forms-column-gap-20 .uagb-forms-main-form {
+			column-gap: 20px;
+		}
+		&.uagb-forms-column-gap-15 .uagb-forms-main-form {
+			column-gap: 15px;
+		}
+		&.uagb-forms-column-gap-10 .uagb-forms-main-form {
+			column-gap: 10px;
+		}
+		&.uagb-forms-column-gap-5 .uagb-forms-main-form {
+			column-gap: 5px;
+		}
+		/* End here - To manage the gap between the Forms fields. */
+
+		/* Start here - To manage the submit button width for desktop. */
+		&.uagb-forms-button-desk-width-20 .uagb-forms-main-submit-button-wrap {
+			width: 20%;
+		}
+		&.uagb-forms-button-desk-width-25 .uagb-forms-main-submit-button-wrap {
+			width: 25%;
+		}
+		&.uagb-forms-button-desk-width-33 .uagb-forms-main-submit-button-wrap {
+			width: 33.33%;
+		}
+		&.uagb-forms-button-desk-width-40 .uagb-forms-main-submit-button-wrap {
+			width: 40%;
+		}
+		&.uagb-forms-button-desk-width-50 .uagb-forms-main-submit-button-wrap {
+			width: 50%;
+		}
+		&.uagb-forms-button-desk-width-60 .uagb-forms-main-submit-button-wrap {
+			width: 60%;
+		}
+		&.uagb-forms-button-desk-width-66 .uagb-forms-main-submit-button-wrap {
+			width: 66.66%;
+		}
+		&.uagb-forms-button-desk-width-75 .uagb-forms-main-submit-button-wrap {
+			width: 75%;
+		}
+		&.uagb-forms-button-desk-width-80 .uagb-forms-main-submit-button-wrap {
+			width: 80%;
+		}
+		/* End here - To manage the submit button width for desktop. */
+
+		/* Start here - To align the forms field. */
+		&.uagb-forms-align-item-flex-start .uagb-forms-main-form {
+			align-items: flex-start;
+		}
+		&.uagb-forms-align-item-center .uagb-forms-main-form {
+			align-items: center;
+		}
+		/* End here - To align the forms field. */
+
+		.uagb-forms-main-form {
+			/* Start here - To make the forms field inline. */
+			display: flex;
+			flex-wrap: wrap;
+			margin: 0 -5px;
+			position: relative;
+			text-align: left;
+			/* End here - To make the forms field inline. */
+
+			/* Start here - To adjust the forms field width on desktop. */
+			.uagb-forms-field-desk-width-20 {
+				width: 20%;
+			}
+			.uagb-forms-field-desk-width-25 {
+				width: 25%;
+			}
+			.uagb-forms-field-desk-width-33 {
+				width: 33.33%;
+			}
+			.uagb-forms-field-desk-width-40 {
+				width: 40%;
+			}
+			.uagb-forms-field-desk-width-50 {
+				width: 50%;
+			}
+			.uagb-forms-field-desk-width-60 {
+				width: 60%;
+			}
+			.uagb-forms-field-desk-width-66 {
+				width: 66.66%;
+			}
+			.uagb-forms-field-desk-width-75 {
+				width: 75%;
+			}
+			.uagb-forms-field-desk-width-80 {
+				width: 80%;
+			}
+			/* End here - To adjust the forms field width on desktop. */
+		}
+
+	}
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+	.wp-block-uagb-forms {
+
+		&.uagb-forms-inline-field {
+
+			.uagb-forms-main-form {
+
+				/* Start here - To adjust the forms field width on tablet. */
+				.uagb-forms-field-tablet-width-20 {
+					width: 20%;
+				}
+				.uagb-forms-field-tablet-width-25 {
+					width: 25%;
+				}
+				.uagb-forms-field-tablet-width-33 {
+					width: 33.33%;
+				}
+				.uagb-forms-field-tablet-width-40 {
+					width: 40%;
+				}
+				.uagb-forms-field-tablet-width-50 {
+					width: 50%;
+				}
+				.uagb-forms-field-tablet-width-60 {
+					width: 60%;
+				}
+				.uagb-forms-field-tablet-width-66 {
+					width: 66.66%;
+				}
+				.uagb-forms-field-tablet-width-75 {
+					width: 75%;
+				}
+				.uagb-forms-field-tablet-width-80 {
+					width: 80%;
+				}
+				.uagb-forms-field-tablet-width-100 {
+					width: 100%;
+				}
+				.uagb-forms-field-tablet-width-unset {
+					width: auto;
+				}
+				/* End here - To adjust the forms field width on tablet. */
+			}
+
+			/* Start here - To adjust the forms submit button width on tablet. */
+			&.uagb-forms-button-tablet-width-20 .uagb-forms-main-submit-button-wrap {
+				width: 20%;
+			}
+			&.uagb-forms-button-tablet-width-25 .uagb-forms-main-submit-button-wrap {
+				width: 25%;
+			}
+			&.uagb-forms-button-tablet-width-33 .uagb-forms-main-submit-button-wrap {
+				width: 33.33%;
+			}
+			&.uagb-forms-button-tablet-width-40 .uagb-forms-main-submit-button-wrap {
+				width: 40%;
+			}
+			&.uagb-forms-button-tablet-width-50 .uagb-forms-main-submit-button-wrap {
+				width: 50%;
+			}
+			&.uagb-forms-button-tablet-width-60 .uagb-forms-main-submit-button-wrap {
+				width: 60%;
+			}
+			&.uagb-forms-button-tablet-width-66 .uagb-forms-main-submit-button-wrap {
+				width: 66.66%;
+			}
+			&.uagb-forms-button-tablet-width-75 .uagb-forms-main-submit-button-wrap {
+				width: 75%;
+			}
+			&.uagb-forms-button-tablet-width-80 .uagb-forms-main-submit-button-wrap {
+				width: 80%;
+			}
+			&.uagb-forms-button-tablet-width-100 .uagb-forms-main-submit-button-wrap {
+				width: 100%;
+			}
+			&.uagb-forms-button-tablet-width-unset .uagb-forms-main-submit-button-wrap {
+				width: auto;
+			}
+			/* End here - To adjust the forms submit button width on tablet. */
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.wp-block-uagb-forms {
+
+		&.uagb-forms-inline-field {
+
+			.uagb-forms-main-form {
+
+				/* Start here - To adjust the forms field width on mobile. */
+				.uagb-forms-field-mobile-width-20 {
+					width: 20%;
+				}
+				.uagb-forms-field-mobile-width-25 {
+					width: 25%;
+				}
+				.uagb-forms-field-mobile-width-33 {
+					width: 33.33%;
+				}
+				.uagb-forms-field-mobile-width-40 {
+					width: 40%;
+				}
+				.uagb-forms-field-mobile-width-50 {
+					width: 50%;
+				}
+				.uagb-forms-field-mobile-width-60 {
+					width: 60%;
+				}
+				.uagb-forms-field-mobile-width-66 {
+					width: 66.66%;
+				}
+				.uagb-forms-field-mobile-width-75 {
+					width: 75%;
+				}
+				.uagb-forms-field-mobile-width-80 {
+					width: 80%;
+				}
+				.uagb-forms-field-mobile-width-100 {
+					width: 100%;
+				}
+				.uagb-forms-field-mobile-width-unset {
+					width: auto;
+				}
+				/* End here - To adjust the forms field width on mobile. */
+			}
+
+			/* Start here - To adjust the forms submit button width on mobile. */
+			&.uagb-forms-button-mobile-width-20 .uagb-forms-main-submit-button-wrap {
+				width: 20%;
+			}
+			&.uagb-forms-button-mobile-width-25 .uagb-forms-main-submit-button-wrap {
+				width: 25%;
+			}
+			&.uagb-forms-button-mobile-width-33 .uagb-forms-main-submit-button-wrap {
+				width: 33.33%;
+			}
+			&.uagb-forms-button-mobile-width-40 .uagb-forms-main-submit-button-wrap {
+				width: 40%;
+			}
+			&.uagb-forms-button-mobile-width-50 .uagb-forms-main-submit-button-wrap {
+				width: 50%;
+			}
+			&.uagb-forms-button-mobile-width-60 .uagb-forms-main-submit-button-wrap {
+				width: 60%;
+			}
+			&.uagb-forms-button-mobile-width-66 .uagb-forms-main-submit-button-wrap {
+				width: 66.66%;
+			}
+			&.uagb-forms-button-mobile-width-75 .uagb-forms-main-submit-button-wrap {
+				width: 75%;
+			}
+			&.uagb-forms-button-mobile-width-80 .uagb-forms-main-submit-button-wrap {
+				width: 80%;
+			}
+			&.uagb-forms-button-mobile-width-100 .uagb-forms-main-submit-button-wrap {
+				width: 100%;
+			}
+			&.uagb-forms-button-mobile-width-unset .uagb-forms-main-submit-button-wrap {
+				width: auto;
+			}
+			/* End here - To adjust the forms submit button width on mobile. */
+		}
+	}
+}
