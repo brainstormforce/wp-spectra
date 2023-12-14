@@ -305,7 +305,7 @@ class UAGB_Post_Assets {
 			'is_category'   => 'category',
 			'is_date'       => 'date',
 			'is_embed'      => 'embed',
-			'is_front_page' => 'home',
+			'is_front_page' => 'front-page',
 			'is_home'       => 'home',
 			'is_paged'      => 'paged',
 			'is_search'     => 'search',
@@ -313,13 +313,16 @@ class UAGB_Post_Assets {
 		); // Conditional tags to post type.
 
 		// Determines whether the query is for an existing single page.
-		if ( is_page() ) {
+		if ( is_page() && ! is_front_page() ) {
 			return 'page';
-		} elseif ( is_singular() ) {
-			// Applies to single Posts, and existing single post of any post type (post, attachment, page, custom post types).
+		} else {
 			$object = get_queried_object();
 			if ( $object instanceof WP_Post && ! empty( $object->post_type ) ) {
-				return 'single-' . $object->post_type;
+				if ( is_singular( 'post' ) ) { // Applies to single Posts, and existing single post.
+					return 'single';
+				} elseif ( is_singular() ) { // Applies to single post of any post type ( attachment, page, custom post types).
+					return 'single-' . $object->post_type . '-' . $object->post_name;
+				}
 			}
 		}
 

@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 = x.x.x =
 * Fix: Global - Resolved an issue wherein the Astra customizer typography settings would not appear as expected.
+* Fix: Global - Resolved an issue wherein the template styles for the front-page and single-post templates would not load as intended in FSE themes.
 
 = 2.10.4 - TUESDAY, 12th DECEMBER 2023 =
 * Security Fix: Hardened the security of the plugin. Props: Wordfence.

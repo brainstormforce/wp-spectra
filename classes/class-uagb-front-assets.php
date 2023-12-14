@@ -120,7 +120,7 @@ class UAGB_Front_Assets {
 			if ( 0 !== $current_object_id && null !== $current_object_id ) {
 				$current_post_assets = new UAGB_Post_Assets( $current_object_id );
 				$current_post_assets->enqueue_scripts();
-			} elseif ( ! empty( $cached_wp_query ) && is_array( $cached_wp_query ) ) {
+			} elseif ( ! ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) && ! empty( $cached_wp_query ) && is_array( $cached_wp_query ) ) {
 				foreach ( $cached_wp_query as $post ) {
 					$current_post_assets = new UAGB_Post_Assets( $post->ID );
 					$current_post_assets->enqueue_scripts();
