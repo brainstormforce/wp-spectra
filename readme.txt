@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.4.2
-Stable tag: 2.10.4
+Stable tag: 2.10.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -214,6 +214,10 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
 
 == Changelog ==
+
+= 2.10.5 - MONDAY, 18th DECEMBER 2023 =
+* Fix: Global - Resolved an issue wherein the Astra customizer typography settings would not appear as expected.
+* Fix: Global - Resolved an issue wherein the template styles for the front-page and single-post templates would not load as intended in FSE themes.
 
 = 2.10.4 - TUESDAY, 12th DECEMBER 2023 =
 * Security Fix: Hardened the security of the plugin. Props: Wordfence.

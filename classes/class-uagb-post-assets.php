@@ -312,18 +312,30 @@ class UAGB_Post_Assets {
 			'is_tag'        => 'tag',
 		); // Conditional tags to post type.
 
+		$what_post_type = '404'; // Default to '404' if no condition matches.
+
 		// Determines whether the query is for an existing single page.
-		if ( is_page() ) {
+		if ( is_page() && ! is_front_page() ) {
 			return 'page';
-		} elseif ( is_singular() ) {
-			// Applies to single Posts, and existing single post of any post type (post, attachment, page, custom post types).
+		} elseif ( is_home() && is_front_page() && get_front_page_template() ) { // Run only when is_home and is_front_page() and get_front_page_template() is true. i.e front-page template.
+			return 'front-page';
+		} else {
 			$object = get_queried_object();
 			if ( $object instanceof WP_Post && ! empty( $object->post_type ) ) {
-				return 'single-' . $object->post_type;
+				if ( is_singular( 'post' ) ) { // Applies to single Posts, and existing single post.
+					return 'single';
+				} elseif ( is_singular() ) { // Applies to single post of any post type ( attachment, page, custom post types).
+					$name_decoded       = urldecode( $object->post_name );
+					$template_types     = get_block_templates();
+					$template_type_slug = array_column( $template_types, 'slug' );
+					if ( in_array( 'single-' . $object->post_type . '-' . $name_decoded, $template_type_slug ) ) {
+						return 'single-' . $object->post_type . '-' . $name_decoded;
+					} elseif ( in_array( 'single-' . $object->post_type, $template_type_slug ) ) {
+						return 'single-' . $object->post_type;
+					}
+				}
 			}
 		}
-
-		$what_post_type = '404'; // Default to '404' if no condition matches.
 
 		foreach ( $conditional_to_post_type as $conditional => $post_type ) {
 			if ( $conditional() ) {
