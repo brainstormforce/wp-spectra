@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= 2.10.5 - THURSDAY, 14th DECEMBER 2023 =
+= 2.10.5 - MONDAY, 18th DECEMBER 2023 =
 * Fix: Global - Resolved an issue wherein the Astra customizer typography settings would not appear as expected.
 * Fix: Global - Resolved an issue wherein the template styles for the front-page and single-post templates would not load as intended in FSE themes.
 
