@@ -59,6 +59,7 @@ registerBlockType( 'uagb/restaurant-menu', {
 	keywords: [ __( 'pricelist', 'ultimate-addons-for-gutenberg' ), __( 'menu', 'ultimate-addons-for-gutenberg' ), __( 'uag', 'ultimate-addons-for-gutenberg' ) ],
 	supports: {
 		anchor: true,
+		html: false,
 	},
 	attributes,
 	category: uagb_blocks_info.category,

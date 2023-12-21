@@ -30,5 +30,6 @@ registerBlockType( 'uagb/buttons-child', {
 	usesContext: [ 'queryId', 'query', 'queryContext', 'postId', 'postType' ],
 	supports: {
 		anchor: true,
+		html: false,
 	},
 } );

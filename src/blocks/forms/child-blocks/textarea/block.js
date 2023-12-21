@@ -28,6 +28,7 @@ registerBlockType( 'uagb/forms-textarea', {
 		props.attributes.isPreview ? <PreviewImage image="form-textarea" isChildren={ true } /> : <Edit { ...props } />,
 	supports: {
 		anchor: true,
+		html: false,
 	},
 	save,
 	deprecated : [ Version2_7_2, Version ],

@@ -25,6 +25,7 @@ registerBlockType( 'uagb/how-to-step', {
 		props.attributes.isPreview ? <PreviewImage image="how-to-step" isChildren={ true } /> : <Edit { ...props } />,
 	supports: {
 		anchor: true,
+		html: false,
 	},
 	save,
 	deprecated,

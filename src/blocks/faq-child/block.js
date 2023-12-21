@@ -30,6 +30,7 @@ registerBlockType( 'uagb/faq-child', {
 		props.attributes.isPreview ? <PreviewImage image="faq-child" isChildren={ true } /> : <Edit { ...props } />,
 	supports: {
 		anchor: true,
+		html: false,
 	},
 	save,
 	deprecated,

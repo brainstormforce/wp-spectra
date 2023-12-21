@@ -61,6 +61,7 @@ registerBlockType( 'uagb/faq', {
 	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="faq" /> : <Edit { ...props } /> ),
 	supports: {
 		anchor: true,
+		html: false,
 	},
 	save,
 } );

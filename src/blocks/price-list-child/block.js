@@ -27,6 +27,7 @@ registerBlockType( 'uagb/restaurant-menu-child', {
 	keywords: [ __( 'pricelist', 'ultimate-addons-for-gutenberg' ), __( 'menu', 'ultimate-addons-for-gutenberg' ), __( 'uag', 'ultimate-addons-for-gutenberg' ) ],
 	supports: {
 		anchor: true,
+		html: false,
 	},
 	parent: [ 'uagb/restaurant-menu' ],
 	attributes,

@@ -27,6 +27,7 @@ registerBlockType( 'uagb/forms-phone', {
 		props.attributes.isPreview ? <PreviewImage image="form-phone" isChildren={ true } /> : <Edit { ...props } />,
 	supports: {
 		anchor: true,
+		html: false,
 	},
 	save,
 	deprecated : [ Version2_7_2, Version ],

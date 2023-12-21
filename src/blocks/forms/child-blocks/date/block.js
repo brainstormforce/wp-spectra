@@ -29,6 +29,7 @@ registerBlockType( 'uagb/forms-date', {
 		props.attributes.isPreview ? <PreviewImage image="form-field" isChildren={ true } /> : <Edit { ...props } />,
 	supports: {
 		anchor: true,
+		html: false,
 	},
 	save,
 	deprecated : [ Version2_7_2, Version2_4_1 ],

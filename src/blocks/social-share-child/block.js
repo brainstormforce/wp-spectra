@@ -31,6 +31,9 @@ registerBlockType( 'uagb/social-share-child', {
 	],
 	attributes,
 	category: uagb_blocks_info.category,
+	supports: {
+		html: false,
+	},
 	edit: ( props ) =>
 		props.attributes.isPreview ? (
 			<PreviewImage image="social-share-child" isChildren={ true } />

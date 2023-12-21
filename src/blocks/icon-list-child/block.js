@@ -26,6 +26,9 @@ registerBlockType( 'uagb/icon-list-child', {
 	parent: [ 'uagb/icon-list' ],
 	attributes,
 	category: uagb_blocks_info.category,
+	supports: {
+		html: false,
+	},
 	edit: ( props ) =>
 		props.attributes.isPreview ? (
 			<PreviewImage image="icon-list-child" isChildren={ true } />

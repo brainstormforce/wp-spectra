@@ -28,6 +28,7 @@ registerBlockType( 'uagb/forms-toggle', {
 		props.attributes.isPreview ? <PreviewImage image="form-toggle" isChildren={ true } /> : <Edit { ...props } />,
 	supports: {
 		anchor: true,
+		html: false,
 	},
 	save,
 	deprecated : [ Version2_7_2, Version2_4_1, Version ],

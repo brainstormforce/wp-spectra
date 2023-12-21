@@ -26,6 +26,7 @@ registerBlockType( 'uagb/tabs-child', {
 	keywords: [ __( 'tabs', 'ultimate-addons-for-gutenberg' ), __( 'uag', 'ultimate-addons-for-gutenberg' ) ],
 	supports: {
 		anchor: true,
+		html: false,
 	},
 	attributes,
 	category: uagb_blocks_info.category,
