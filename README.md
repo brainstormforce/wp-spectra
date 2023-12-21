@@ -218,7 +218,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ### x.x.x ###
 * Improvement: Caching - Added compatibility with Cloudway's caching - Breeze plugin.
 * Fix: FAQ - Resolved an issue wherein FAQ blocks inside an inner-container would shrink when minimized.
-
+* Fix: Tabs - Resolved an issue wherein the nested tab does not shows the content on the frontend.
 
 ### 2.10.5 - MONDAY, 18th DECEMBER 2023 ###
 * Fix: Global - Resolved an issue wherein the Astra customizer typography settings would not appear as expected.
