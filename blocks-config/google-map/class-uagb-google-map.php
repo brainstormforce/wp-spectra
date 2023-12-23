@@ -179,14 +179,14 @@ if ( ! class_exists( 'UAGB_Google_Map' ) ) {
 			<div 
 			class="<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>"
 			style="<?php echo esc_attr( implode( '', $zindex_wrap ) ); ?>" >
-				<iframe
+				<embed
 					class="uagb-google-map__iframe"
 					title="<?php _e( 'Google Map for ', 'ultimate-addons-for-gutenberg' ) . $address; ?>"
 					src="<?php echo esc_url_raw( $updated_url ); ?>"
 					width="640"
 					height="<?php echo floatval( $height ); ?>"
 					loading="lazy"
-				></iframe>
+				></embed>
 			</div>
 			<?php
 			return ob_get_clean();
