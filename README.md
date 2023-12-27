@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.4.2  
-**Stable tag:** 2.10.5  
+**Stable tag:** 2.10.6  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### x.x.x ###
+### 2.10.6 - WEDNESDAY, 27th DECEMBER 2023 ###
 * Improvement: Caching - Added compatibility with Cloudway's caching - Breeze plugin.
 * Fix: FAQ - Resolved an issue wherein FAQ blocks inside an inner-container would shrink when minimized.
 * Fix: Tabs - Resolved an issue wherein the nested tab does not shows the content on the frontend.

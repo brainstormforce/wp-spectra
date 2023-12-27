@@ -1571,7 +1571,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @param array  $modules     The reference to the modules array that will be modified.
 		 * @param string $module_name The module name.
-		 * @since x.x.x
+		 * @since 2.10.6
 		 * @return void
 		 */
 		public static function ensure_zip_ai_module_is_enabled( &$modules, $module_name ) {
