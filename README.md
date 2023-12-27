@@ -216,8 +216,12 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### 2.10.6 - WEDNESDAY, 27th DECEMBER 2023 ###
+* New: All new AI based Template Kit library
+* Feature: Transform to - Added transform to option for Core Gallery to Spectra Image Gallery.
 * Improvement: Caching - Added compatibility with Cloudway's caching - Breeze plugin.
 * Fix: FAQ - Resolved an issue wherein FAQ blocks inside an inner-container would shrink when minimized.
+* Fix: Google Maps - Resolved an issue where the eye icon to hide the page title disappears when importing Google Maps in the editor.
+* Fix: Slider - Resolved an issue where slides per view ( pro feature ) was not working in editor.
 * Fix: Tabs - Resolved an issue wherein the nested tab does not shows the content on the frontend.
 * Fix: Global - Resolved an issue wherein the template styles for static page selected as front-page would not load as intended in FSE themes.
 
