@@ -41,6 +41,8 @@ class Sync_Library {
 		add_action( 'wp_ajax_ast-block-templates-import-blocks', array( $this, 'ajax_import_blocks' ) );
 		add_action( 'admin_init', array( $this, 'setup_templates' ), 10 );
 		add_action( 'sync_blocks', array( $this, 'sync_blocks' ) );
+		add_action( 'wp_ajax_ast-block-templates-get-sites-request-count', array( $this, 'ajax_sites_requests_count' ) );
+		add_action( 'wp_ajax_ast-block-templates-import-sites', array( $this, 'ajax_import_sites' ) );
 	}
 
 	/**
@@ -227,6 +229,12 @@ class Sync_Library {
 			$this->import_blocks( $i );
 		}
 
+		$sites = $this->get_total_sites_count();
+
+		for ( $i = 1; $i <= $sites; $i++ ) {
+			$this->import_sites( $i );
+		}
+
 		Helper::instance()->ast_block_templates_log( 'Sync process for Gutenberg Blocks is done.' );
 	}
 
@@ -247,6 +255,14 @@ class Sync_Library {
 			'ast-block-templates-blocks-6',
 			'ast-block-templates-blocks-7',
 			'ast-block-templates-block-requests',
+			'ast-block-templates-sites-1',
+			'ast-block-templates-sites-2',
+			'ast-block-templates-sites-3',
+			'ast-block-templates-sites-4',
+			'ast-block-templates-sites-5',
+			'ast-block-templates-sites-6',
+			'ast-block-templates-sites-7',
+			'ast-block-templates-site-requests',
 			'ast-block-templates-last-export-checksums',
 			'ast-block-templates-customizer-css',
 		);
@@ -643,6 +659,187 @@ class Sync_Library {
 		}
 
 		Helper::instance()->ast_block_templates_log( 'BLOCK: Completed request ' . $page );
+	}
+
+	/**
+	 * Get Sites Total Requests
+	 *
+	 * @return integer
+	 */
+	public function get_total_sites_count() {
+
+		Helper::instance()->ast_block_templates_log( 'SITE: Getting Total Sites' );
+
+		$api_args = array(
+			'timeout' => 60,
+		);
+
+		$query_args = apply_filters(
+			'ast_block_templates_get_total_pages_args',
+			array(
+				'page_builder' => 'gutenberg',
+				'per_page' => 30,
+			)
+		);
+
+		$api_url = esc_url_raw( add_query_arg( $query_args, AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-json/astra-sites/v1/get-total-pages/' ) );
+
+		Helper::instance()->ast_block_templates_log( 'SITE: ' . $api_url );
+
+		$response = wp_remote_get( $api_url, $api_args );
+
+		if ( ! is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) === 200 ) {
+			$total_requests = json_decode( wp_remote_retrieve_body( $response ), true );
+
+			if ( isset( $total_requests['pages'] ) ) {
+				Helper::instance()->ast_block_templates_log( 'SITE: Request count ' . $total_requests['pages'] );
+
+				update_option( 'ast-block-templates-site-requests', $total_requests['pages'], 'no' );
+
+				do_action( 'ast_block_templates_sync_get_total_pages', $total_requests['pages'] );
+				return $total_requests['pages'];
+			}
+		}
+		// Return a default value if conditions are not met.
+		return 0;
+	}
+
+	/**
+	 * Import Sites
+	 *
+	 * @since 1.0.0
+	 * @param  integer $page Page number.
+	 * @return void
+	 */
+	public function import_sites( $page = 1 ) {
+
+		Helper::instance()->ast_block_templates_log( 'SITE: Importing request ' . $page . ' ..' );
+		$api_args   = array(
+			'timeout' => 30,
+		);
+		$all_blocks = array();
+
+		$query_args = apply_filters(
+			'ast_block_templates_get_sites_and_pages_args',
+			array(
+				'per_page'     => 30,
+				'page'         => $page,
+				'page-builder' => 'gutenberg',
+			)
+		);
+
+		$api_url = esc_url_raw( add_query_arg( $query_args, AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-json/astra-sites/v1/sites-and-pages/' ) );
+
+		Helper::instance()->ast_block_templates_log( 'SITE: ' . $api_url );
+
+		$response = wp_remote_get( $api_url, $api_args );
+
+		if ( ! is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) === 200 ) {
+			$all_blocks = json_decode( wp_remote_retrieve_body( $response ), true );
+
+			if ( isset( $all_blocks['code'] ) ) {
+				$message = isset( $all_blocks['message'] ) ? $all_blocks['message'] : '';
+				if ( ! empty( $message ) ) {
+					Helper::instance()->ast_block_templates_log( 'SITE: HTTP Request Error: ' . $message );
+				} else {
+					Helper::instance()->ast_block_templates_log( 'SITE: HTTP Request Error!' );
+				}
+			} else {
+
+				$option_name = 'ast-block-templates-sites-' . $page;
+				Helper::instance()->ast_block_templates_log( 'SITE: Storing in option ' . $option_name );
+
+				update_option( $option_name, $all_blocks, 'no' );
+
+				do_action( 'ast_block_templates_sync_sites', $page, $all_blocks );
+
+				if ( Helper::instance()->ast_block_templates_doing_wp_cli() ) {
+					Helper::instance()->ast_block_templates_log( 'SITE: Generating ' . $option_name . '.json file' );
+				}
+			}
+		} else {
+			Helper::instance()->ast_block_templates_log( 'SITE: API Error: ' . $response->get_error_message() );
+		}
+
+		Helper::instance()->ast_block_templates_log( 'SITE: Completed request ' . $page );
+	}
+
+	/**
+	 * Blocks Requests Count
+	 *
+	 * @since 2.1.0
+	 * @return void
+	 */
+	public function ajax_sites_requests_count() {
+
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
+		}
+		// Verify Nonce.
+		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
+
+		// Get count.
+		$total_requests = $this->get_total_sites_count();
+		if ( $total_requests ) {
+			wp_send_json_success(
+				array(
+					'message' => 'Success',
+					'status'  => true,
+					'data'    => $total_requests,
+				)
+			);
+		}
+
+		wp_send_json_success(
+			array(
+				'message' => 'Failed',
+				'status'  => false,
+				'data'    => $total_requests,
+			)
+		);
+	}
+
+	/** 
+	 * Import Sites
+	 *
+	 * @since 2.1.0
+	 * @return void
+	 */
+	public function ajax_import_sites() {
+
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
+		}
+		// Verify Nonce.
+		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
+
+		$page_no = isset( $_POST['page_no'] ) ? absint( $_POST['page_no'] ) : '';
+		if ( $page_no ) {
+			$this->import_sites( $page_no );
+			$data = array(
+				'message' => 'Success imported sites for page ' . $page_no,
+				'status'  => true,
+				'data'    => array(),
+			);
+
+			if ( isset( $_POST['total'] ) && $_POST['total'] === $_POST['page_no'] ) {
+				$data['data']['allBlocks'] = Plugin::instance()->get_all_blocks();
+				$data['data']['categories'] = get_option( 'ast-block-templates-categories', array() );
+				$data['data']['allSites'] = Plugin::instance()->get_all_sites();
+			}
+
+			wp_send_json_success(
+				$data
+			);
+		}
+
+		wp_send_json_error(
+			array(
+				'message' => 'Failed imported sites for page ' . $page_no,
+				'status'  => false,
+				'data'    => '',
+			)
+		);
 	}
 
 }

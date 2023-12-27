@@ -1,3 +1,8 @@
+v2.1.0 - 27-December-2023
+- New: Added site templates kits.
+- Fix: Customizer color palette was getting applied in non-adaptive mode.
+- Fix: Templates looks broken if Spectra activated while importing template.  
+
 v2.0.19 - 22-December-2023
 - New: Added "Revoke Access" button for seamless ZipAI authentication revocation.
 - Fix: Resolved issue of patterns/pages importing at last index instead of selected insertion point.

@@ -52,6 +52,7 @@ class Plugin {
 		add_action( 'wp_ajax_ast_block_templates_activate_plugin', array( $this, 'activate_plugin' ) );
 		add_action( 'wp_ajax_ast_block_templates_import_wpforms', array( $this, 'import_wpforms' ) );
 		add_action( 'wp_ajax_ast_block_templates_import_block', array( $this, 'import_block' ) );
+		add_action( 'wp_ajax_ast_block_templates_color_palette', array( $this, 'get_color_palette' ) );
 		add_filter( 'upload_mimes', array( $this, 'custom_upload_mimes' ) );
 		add_action( 'wp_ajax_ast_block_templates_data_option', array( $this, 'api_request' ) );
 		$this->get_default_color_palette();
@@ -220,6 +221,28 @@ class Plugin {
 		// Create a dynamic option name to save the block data.
 		update_option( 'ast-block-templates_data-' . $block_id, $body );
 		wp_send_json_success( $body );
+	}
+
+	/**
+	 * Get the Color palette.
+	 *
+	 * @since 1.3.0
+	 * @return void
+	 */
+	public function get_color_palette() {
+
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
+		}
+
+		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
+
+		wp_send_json_success(
+			array(
+				'block' => $this->get_block_palette_colors(),
+				'page' => $this->get_page_palette_colors(),
+			) 
+		);
 	}
 
 	/**
@@ -802,9 +825,6 @@ class Plugin {
 			$server_astra_customizer_css = get_option( 'ast-block-templates-customizer-css', '' );
 		}
 		
-		// Set line height to 1.2em.
-		$astra_customizer_css .= 'h1{ line-height: 1.2em; }';
-		$server_astra_customizer_css .= 'h1{ line-height: 1.2em; }';
 		$settings = get_option( 'ast_block_templates_ai_settings', array() );
 		$disable_ai = isset( $settings['disable_ai'] ) ? $settings['disable_ai'] : false;
 		$adaptive_mode = isset( $settings['adaptive_mode'] ) ? $settings['adaptive_mode'] : false;
@@ -879,6 +899,7 @@ class Plugin {
 						'ast_block_templates_favorites', array(
 							'block' => array(),
 							'page' => array(),
+							'site' => array(),
 						)
 					),
 					'astra_customizer_css' => str_replace( 'body', '.st-block-container', defined( 'ASTRA_THEME_VERSION' ) ? $astra_customizer_css : $server_astra_customizer_css ),
@@ -966,8 +987,15 @@ class Plugin {
 	public function get_page_palette_colors() {
 
 		$default_palette_color = self::$color_palette;
+		// Checking the nonce already.
+		if ( isset( $_REQUEST['adaptive_mode'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$non_adaptive_mode = 'true' === sanitize_text_field( $_REQUEST['adaptive_mode'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		} else {
+			$settings = get_option( 'ast_block_templates_ai_settings', array() );
+			$non_adaptive_mode = isset( $settings['adaptive_mode'] ) ? $settings['adaptive_mode'] : false;
+		}
 
-		if ( class_exists( 'Astra_Global_Palette' ) ) {
+		if ( class_exists( 'Astra_Global_Palette' ) && ! $non_adaptive_mode ) {
 			$astra_palette_colors = astra_get_palette_colors();
 			$default_palette_color = $astra_palette_colors['palettes'][ $astra_palette_colors['currentPalette'] ];
 		}
@@ -1016,7 +1044,15 @@ class Plugin {
 
 		$default_palette_color = self::$color_palette;
 
-		if ( class_exists( 'Astra_Global_Palette' ) ) {
+		// Checking the nonce already.
+		if ( isset( $_REQUEST['adaptive_mode'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$non_adaptive_mode = 'true' === sanitize_text_field( $_REQUEST['adaptive_mode'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		} else {
+			$settings = get_option( 'ast_block_templates_ai_settings', array() );
+			$non_adaptive_mode = isset( $settings['adaptive_mode'] ) ? $settings['adaptive_mode'] : false;
+		}
+		
+		if ( class_exists( 'Astra_Global_Palette' ) && ! $non_adaptive_mode ) {
 			$astra_palette_colors = astra_get_palette_colors();
 			$default_palette_color = $astra_palette_colors['palettes'][ $astra_palette_colors['currentPalette'] ];
 		}
@@ -1136,6 +1172,20 @@ class Plugin {
 				$current_page_data = get_option( 'ast-block-templates-sites-' . $page, array() );
 				if ( ! empty( $current_page_data ) ) {
 					foreach ( $current_page_data as $site_id => $site_data ) {
+
+						$exclude_site = false;
+						if ( isset( $site_data['required-plugins'] ) ) {
+							foreach ( $site_data['required-plugins'] as $plugin ) {
+								if ( isset( $plugin['slug'] ) && 'surecart' === $plugin['slug'] ) {
+									$exclude_site = true;
+									break; // Break the inner loop once 'surecart' is found.
+								}
+							}
+						}
+
+						if ( $exclude_site ) {
+							continue; // Skip the current site if 'surecart' is found.
+						}
 
 						// Replace `astra-sites-tag` with `tag`.
 						if ( isset( $site_data['astra-sites-tag'] ) ) {

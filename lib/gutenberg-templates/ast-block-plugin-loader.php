@@ -16,6 +16,7 @@ use Gutenberg_Templates\Inc\Importer\Image_Importer;
 use Gutenberg_Templates\Inc\Importer\Updater;
 use Gutenberg_Templates\Inc\Content\Ai_Content;
 use Gutenberg_Templates\Inc\Traits\Upgrade;
+use Gutenberg_Templates\Inc\Importer\Template_Kit_Importer;
 use Gutenberg_Templates\Inc\Block\Spectra_AI_Block;
 
 /**
@@ -98,6 +99,7 @@ class Ast_Block_Plugin_Loader {
 	 */
 	public function load_classes() {
 		Api_Init::instance();
+		Template_Kit_Importer::instance();
 		Plugin::instance();
 		Image_Importer::instance();
 		Sync_Library::instance();
