@@ -26,6 +26,7 @@ registerBlockType( 'uagb/forms-hidden', {
 		props.attributes.isPreview ? <PreviewImage image="form-hidden" isChildren={ true } /> : <Edit { ...props } />,
 	supports: {
 		anchor: true,
+		html: false,
 	},
 	save,
 	deprecated,

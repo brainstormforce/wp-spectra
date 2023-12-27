@@ -299,39 +299,55 @@ class UAGB_Post_Assets {
 		}
 
 		$conditional_to_post_type = array(
-			'is_archive'    => 'archive',
 			'is_attachment' => 'attachment',
-			'is_author'     => 'author',
-			'is_category'   => 'category',
-			'is_date'       => 'date',
 			'is_embed'      => 'embed',
 			'is_front_page' => 'home',
 			'is_home'       => 'home',
 			'is_paged'      => 'paged',
 			'is_search'     => 'search',
-			'is_tag'        => 'tag',
 		); // Conditional tags to post type.
 
-		$what_post_type = '404'; // Default to '404' if no condition matches.
+		$what_post_type     = '404'; // Default to '404' if no condition matches.
+		$object             = get_queried_object();
+		$template_types     = get_block_templates();
+		$template_type_slug = array_column( $template_types, 'slug' );
 
 		// Determines whether the query is for an existing single page.
-		if ( is_page() && ! is_front_page() ) {
+		$is_regular_page        = is_page() && ! is_front_page();
+		$is_front_page_template = is_front_page() && get_front_page_template();
+		$is_static_front_page   = 'page' === get_option( 'show_on_front' ) && get_option( 'page_on_front' ) && is_front_page() && ! is_home() && ! $is_front_page_template;
+
+		if ( $is_regular_page || $is_static_front_page ) { // Run only for page and any page selected as home page from settings > reading > static page. 
 			return 'page';
-		} elseif ( is_home() && is_front_page() && get_front_page_template() ) { // Run only when is_home and is_front_page() and get_front_page_template() is true. i.e front-page template.
+		} elseif ( $is_front_page_template ) { // Run only when is_home and is_front_page() and get_front_page_template() is true. i.e front-page template.
 			return 'front-page';
+		} elseif ( is_archive() ) { // Applies to archive pages.
+			if ( is_author() && $object instanceof WP_User ) { // For author archive or more specific author template.
+				$author_slug = 'author-' . $object->user_nicename;
+				return in_array( $author_slug, $template_type_slug ) ? $author_slug : ( in_array( 'author', $template_type_slug ) ? 'author' : 'archive' );
+			} elseif ( $object instanceof WP_Term ) {
+				if ( is_category() ) { // For category archive or more specific category template.
+					$category_slug = 'category-' . $object->slug;
+					return in_array( $category_slug, $template_type_slug ) ? $category_slug : ( in_array( 'category', $template_type_slug ) ? 'category' : 'archive' );
+				} elseif ( is_tag() ) { // For tag archive or more specific tag template.
+					$tag_slug = 'tag-' . $object->slug;
+					return in_array( $tag_slug, $template_type_slug ) ? $tag_slug : ( in_array( 'tag', $template_type_slug ) ? 'tag' : 'archive' );
+				} 
+			} elseif ( is_date() && in_array( 'date', $template_type_slug ) ) { // For date archive template.
+				return 'date';
+			}
+			// If none of the above condition matches, return archive template.
+			return 'archive';
 		} else {
-			$object = get_queried_object();
 			if ( $object instanceof WP_Post && ! empty( $object->post_type ) ) {
-				if ( is_singular( 'post' ) ) { // Applies to single Posts, and existing single post.
-					return 'single';
-				} elseif ( is_singular() ) { // Applies to single post of any post type ( attachment, page, custom post types).
-					$name_decoded       = urldecode( $object->post_name );
-					$template_types     = get_block_templates();
-					$template_type_slug = array_column( $template_types, 'slug' );
+				if ( is_singular() ) { // Applies to single post of any post type ( attachment, page, custom post types).
+					$name_decoded = urldecode( $object->post_name );
 					if ( in_array( 'single-' . $object->post_type . '-' . $name_decoded, $template_type_slug ) ) {
 						return 'single-' . $object->post_type . '-' . $name_decoded;
 					} elseif ( in_array( 'single-' . $object->post_type, $template_type_slug ) ) {
 						return 'single-' . $object->post_type;
+					} else { // If none of the above condition matches, return single template.
+						return 'single';
 					}
 				}
 			}

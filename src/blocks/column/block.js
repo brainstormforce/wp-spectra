@@ -25,6 +25,7 @@ registerBlockType( 'uagb/column', {
 		inserter: false,
 		// Add EditorsKit block navigator toolbar
 		editorsKitBlockNavigator: true,
+		html: false,
 	},
 	attributes,
 	category: uagb_blocks_info.category,

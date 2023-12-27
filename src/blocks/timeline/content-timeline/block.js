@@ -63,6 +63,7 @@ registerBlockType( 'uagb/content-timeline', {
 	category: uagb_blocks_info.category,
 	supports: {
 		anchor: true,
+		html: false,
 	},
 	attributes,
 	edit: ( props ) =>

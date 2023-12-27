@@ -37,14 +37,14 @@ const Render = ( props ) => {
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
 			) }
 		>
-			<iframe
+			<embed
 				className="uagb-google-map__iframe"
 				title={ __( 'Google Map for ', 'ultimate-addons-for-gutenberg' ) + address }
 				src={ url }
 				width="640"
 				height={ height }
 				loading="lazy"
-			></iframe>
+			></embed>
 		</div>
 	);
 };

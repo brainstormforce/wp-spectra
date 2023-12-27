@@ -30,6 +30,7 @@ registerBlockType( 'uagb/forms', {
 	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="form" /> : <Edit { ...props } /> ),
 	supports: {
 		anchor: true,
+		html: false,
 	},
 	deprecated,
 	save,

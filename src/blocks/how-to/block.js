@@ -27,6 +27,7 @@ registerBlockType( 'uagb/how-to', {
 	],
 	supports: {
 		anchor: true,
+		html: false,
 	},
 	attributes,
 	category: uagb_blocks_info.category,

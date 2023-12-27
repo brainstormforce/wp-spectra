@@ -86,7 +86,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '2.10.5' );
+			define( 'UAGB_VER', '2.11.0' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'spectra' );
@@ -561,17 +561,14 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 */
 		public function add_zip_ai_modules( $modules ) {
 			// If the filtered modules is not an array, make it one.
-			if ( ! is_array( $modules ) ) {
-				$modules = array();
-			}
+			$modules = is_array( $modules ) ? $modules : array();
 
-			// If the AI Assistant module does not exist, add it - else just update the status.
-			if ( empty( $modules['ai_assistant'] ) || ! is_array( $modules['ai_assistant'] ) ) {
-				$modules['ai_assistant'] = array(
-					'status' => 'enabled',
-				);
-			} else {
-				$modules['ai_assistant']['status'] = 'enabled';
+			// List of module names to enable.
+			$modules_to_enable = array( 'ai_assistant', 'ai_design_copilot' );
+
+			// Ensure each module in the list is enabled.
+			foreach ( $modules_to_enable as $module_name ) {
+				\UAGB_Helper::ensure_zip_ai_module_is_enabled( $modules, $module_name );
 			}
 
 			// Return the Spectra default modules.

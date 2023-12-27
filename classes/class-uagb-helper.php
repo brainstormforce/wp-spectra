@@ -1564,6 +1564,23 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				wp_delete_file( $file_name );
 			}
 		}
+
+		/**
+		 * Enable the given Zip AI module if it exists, else create and enable it.
+		 * TO DO - Move this to the Zip AI helper.
+		 *
+		 * @param array  $modules     The reference to the modules array that will be modified.
+		 * @param string $module_name The module name.
+		 * @since 2.11.0
+		 * @return void
+		 */
+		public static function ensure_zip_ai_module_is_enabled( &$modules, $module_name ) {
+			if ( empty( $modules[ $module_name ] ) || ! is_array( $modules[ $module_name ] ) ) {
+				$modules[ $module_name ] = array( 'status' => 'enabled' );
+			} else {
+				$modules[ $module_name ]['status'] = 'enabled';
+			}
+		}
 	}
 
 	/**

@@ -23,6 +23,9 @@ registerBlockType( 'uagb/forms-select', {
 	parent: [ 'uagb/forms' ],
 	attributes,
 	category: uagb_blocks_info.category,
+	supports: {
+		html: false,
+	},
 	edit: ( props ) =>
 		props.attributes.isPreview ? <PreviewImage image="form-field" isChildren={ true } /> : <Edit { ...props } />,
 	save,

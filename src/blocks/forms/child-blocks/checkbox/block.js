@@ -28,6 +28,7 @@ registerBlockType( 'uagb/forms-checkbox', {
 		props.attributes.isPreview ? <PreviewImage image="form-checkbox" isChildren={ true } /> : <Edit { ...props } />,
 	supports: {
 		anchor: true,
+		html: false,
 	},
 	save,
 	deprecated : [ Version2_7_2, Version ],

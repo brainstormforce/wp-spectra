@@ -11,6 +11,7 @@ import { registerBlockType } from '@wordpress/blocks';
 import PreviewImage from '@Controls/previewImage';
 import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+import transforms from './transforms';
 let imageGalleryCommonData = {};
 imageGalleryCommonData = applyFilters( 'uagb/image-gallery', addCommonDataToSpectraBlocks( imageGalleryCommonData ) );
 registerBlockType( 'uagb/image-gallery', {
@@ -39,4 +40,5 @@ registerBlockType( 'uagb/image-gallery', {
 	save() {
 		return null;
 	},
+	transforms,
 } );

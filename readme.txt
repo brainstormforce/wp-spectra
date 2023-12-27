@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.4.2
-Stable tag: 2.10.5
+Stable tag: 2.11.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -214,6 +214,16 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
 
 == Changelog ==
+
+= 2.11.0 - WEDNESDAY, 27th DECEMBER 2023 =
+* New: All new AI based Template Kit library
+* Feature: Transform to - Added transform to option for Core Gallery to Spectra Image Gallery.
+* Improvement: Caching - Added compatibility with Cloudway's caching - Breeze plugin.
+* Fix: FAQ - Resolved an issue wherein FAQ blocks inside an inner-container would shrink when minimized.
+* Fix: Google Maps - Resolved an issue where the eye icon to hide the page title disappears when importing Google Maps in the editor.
+* Fix: Slider - Resolved an issue where slides per view ( pro feature ) was not working in editor.
+* Fix: Tabs - Resolved an issue wherein the nested tab does not shows the content on the frontend.
+* Fix: Global - Resolved an issue wherein the template styles for static page selected as front-page would not load as intended in FSE themes.
 
 = 2.10.5 - MONDAY, 18th DECEMBER 2023 =
 * Fix: Global - Resolved an issue wherein the Astra customizer typography settings would not appear as expected.

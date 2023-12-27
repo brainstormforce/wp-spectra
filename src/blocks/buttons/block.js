@@ -23,6 +23,7 @@ registerBlockType( 'uagb/buttons', {
 	keywords: [ __( 'buttons', 'ultimate-addons-for-gutenberg' ), __( 'uag', 'ultimate-addons-for-gutenberg' ) ],
 	supports: {
 		anchor: true,
+		html: false,
 	},
 	getEditWrapperProps( attribute ) {
 		return { 'data-btn-width': attribute.align };

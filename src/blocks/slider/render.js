@@ -27,7 +27,9 @@ const Render = ( props ) => {
 	const sliderNavNextRef = useRef();
 	const { selectBlock } = useDispatch( blockEditorStore );
 
-	doAction( `spectra.slider.before_render`, attributes );
+	const sliderOption = { ...attributes, swiperInstance };  
+
+	doAction( `spectra.slider.before_render`, sliderOption );
 
 	const { isListViewOpen, hasChildren } = useSelect( ( select ) => {
 		const getStore = select( 'core/edit-post' ) || select( 'core/edit-widgets' ) || select( 'core/edit-site' );

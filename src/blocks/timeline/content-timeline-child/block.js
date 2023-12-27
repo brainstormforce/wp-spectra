@@ -33,6 +33,9 @@ registerBlockType( 'uagb/content-timeline-child', {
 		__( 'uag', 'ultimate-addons-for-gutenberg' ),
 	],
 	category: uagb_blocks_info.category,
+	supports: {
+		html: false,
+	},
 	attributes,
 	edit: ( props ) =>
 		props.attributes.isPreview ? (

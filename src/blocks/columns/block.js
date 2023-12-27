@@ -44,6 +44,7 @@ if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_bloc
 			// Add EditorsKit block navigator toolbar
 			editorsKitBlockNavigator: true,
 			anchor: true,
+			html: false,
 		},
 		save,
 		deprecated,

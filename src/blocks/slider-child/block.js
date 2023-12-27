@@ -26,6 +26,9 @@ registerBlockType( 'uagb/slider-child', {
 	keywords: [ __( 'slider', 'ultimate-addons-for-gutenberg' ), __( 'uag', 'ultimate-addons-for-gutenberg' ) ],
 	attributes,
 	category: uagb_blocks_info.category,
+	supports: {
+		html: false,
+	},
 	edit: ( props ) =>
 		props.attributes.isPreview ? <PreviewImage image="slider-child" isChildren={ true } /> : <Edit { ...props } />,
 	save,

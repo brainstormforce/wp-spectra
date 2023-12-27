@@ -28,6 +28,7 @@ registerBlockType( 'uagb/social-share', {
 	],
 	supports: {
 		anchor: true,
+		html: false,
 	},
 	attributes,
 	category: uagb_blocks_info.category,

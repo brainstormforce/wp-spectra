@@ -32,6 +32,7 @@ if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_bloc
 		],
 		supports: {
 			anchor: true,
+			html: false,
 		},
 		attributes,
 		category: uagb_blocks_info.category,

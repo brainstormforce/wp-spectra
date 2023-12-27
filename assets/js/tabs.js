@@ -4,14 +4,27 @@ UAGBTabs = {
 		if ( ! tabsWrap ) {
 			return;
 		}
+
 		for ( let i = 0; i < tabsWrap.length; i++ ) {
 			UAGBTabs.addEvents( tabsWrap[ i ], $selector );
 		}
 	},
 	addEvents( tabsWrap, $selector ) {
+		// Tabs wrap has two child elements, one is tabs list (.uagb-tabs__panel) and another is tabs body (.uagb-tabs__body-wrap).
+		const tabsWrapChildren = tabsWrap.children;
+
+		// Verify if tabsWrapChildren has two child elements.
+		if ( 2 !== tabsWrapChildren.length ) {
+			return;
+		}
+
 		const tabActive = tabsWrap.getAttribute( 'data-tab-active' );
-		const tabLi = tabsWrap.querySelectorAll( '.uagb-tabs__panel > li.uagb-tab' );
-		const tabBody = tabsWrap.querySelectorAll( '.uagb-tabs__body-container' );
+
+		// Select tabs list (.uagb-tabs__panel) from tabsWrapChildren.
+		const tabLi = tabsWrapChildren[0].querySelectorAll( 'li.uagb-tab' );
+
+		// Select tabs body (.uagb-tabs__body-wrap) from tabsWrapChildren and children will be tab body container (.uagb-tabs__body-container).
+		const tabBody = tabsWrapChildren[1].children;
 
 		// Set initial active class to Tabs body.
 		tabBody[ tabActive ].classList.add( 'uagb-tabs-body__active' );
@@ -50,18 +63,21 @@ UAGBTabs = {
 		const tabPanel = selectedLi.closest( '.uagb-tabs__panel' );
 
 		const tabContainer = tabName.closest( '.uagb-tabs__wrap' );
+
 		const tabBodyWrap = tabContainer.querySelector( '.uagb-tabs__body-wrap' );
-		const tabSelectedBody = tabBodyWrap.querySelector( '.uagb-inner-tab-' + tabId );
-		const tabUnselectedBody = tabBodyWrap.querySelectorAll( '.uagb-tabs__body-container:not(.uagb-inner-tab-' + tabId + ')' );
+		
+		const tabBodyChildren = tabBodyWrap.children;
+		const tabSelectedBody = UAGBTabs.getChildrenWithClass( tabBodyChildren, 'uagb-inner-tab-' + tabId );
+
 		const allLi = tabPanel.querySelectorAll( 'a.uagb-tabs-list' );
 
 		// Remove old li active class.
 		tabPanel.querySelector( '.uagb-tabs__active' )?.classList.remove( 'uagb-tabs__active' );
 
 		//Remove old tab body active class.
-		tabBodyWrap.querySelector( '.uagb-tabs-body__active' )?.classList.remove( 'uagb-tabs-body__active' );
+		UAGBTabs.getChildrenWithClass( tabBodyChildren, 'uagb-tabs-body__active' )?.classList.remove( 'uagb-tabs-body__active' );
 
-		// Set aria-selected attribute as flase for old active tab.
+		// Set aria-selected attribute as false for old active tab.
 		for ( let i = 0; i < allLi.length; i++ ) {
 			allLi[ i ].setAttribute( 'aria-selected', false );
 		}
@@ -79,8 +95,13 @@ UAGBTabs = {
 		tabSelectedBody?.setAttribute( 'aria-hidden', false );
 
 		// Set aria-hidden attribute true for all unselected tab body.
-		for ( let i = 0; i < tabUnselectedBody.length; i++ ) {
-			tabUnselectedBody[ i ].setAttribute( 'aria-hidden', true );
+		for ( let i = 0; i < tabBodyChildren.length; i++ ) {
+			// If tabBodyChildren[i] has .uagb-inner-tab-' + tabId + ' then continue.
+			if ( tabBodyChildren[ i ].classList.contains( 'uagb-inner-tab-' + tabId ) ) {
+				continue;
+			}
+
+			tabBodyChildren[ i ].setAttribute( 'aria-hidden', true );
 		}
 	},
 	anchorTabId( $selector ) {
@@ -140,4 +161,14 @@ UAGBTabs = {
 			}
 		}
 	},
+	getChildrenWithClass( children, className ) {
+		let child = null;
+		for ( let i = 0; i < children.length; i++ ) {
+			if ( children[ i ].classList.contains( className ) ) {
+				child = children[ i ];
+				break;
+			}
+		}
+		return child;
+	}
 };

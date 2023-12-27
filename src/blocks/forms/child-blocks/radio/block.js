@@ -28,6 +28,7 @@ registerBlockType( 'uagb/forms-radio', {
 		props.attributes.isPreview ? <PreviewImage image="form-radio" isChildren={ true } /> : <Edit { ...props } />,
 	supports: {
 		anchor: true,
+		html: false,
 	},
 	save,
 	deprecated : [ Version2_7_2, Version ],
