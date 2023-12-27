@@ -83,7 +83,7 @@ class UAGB_Caching {
 	 * This function helps to purge all cache in clodways envirnoment.
 	 * In presence of Breeze plugin (https://wordpress.org/plugins/breeze/)
 	 *
-	 * @since 2.10.6
+	 * @since 2.11.0
 	 * @return void
 	 */
 	public static function clear_cloudways_cache() {

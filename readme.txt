@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.4.2
-Stable tag: 2.10.6
+Stable tag: 2.11.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= 2.10.6 - WEDNESDAY, 27th DECEMBER 2023 =
+= 2.11.0 - WEDNESDAY, 27th DECEMBER 2023 =
 * New: All new AI based Template Kit library
 * Feature: Transform to - Added transform to option for Core Gallery to Spectra Image Gallery.
 * Improvement: Caching - Added compatibility with Cloudway's caching - Breeze plugin.
