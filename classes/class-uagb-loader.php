@@ -562,10 +562,10 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		public function add_zip_ai_modules( $modules ) {
 			// If the filtered modules is not an array, make it one.
 			$modules = is_array( $modules ) ? $modules : array();
-			
+
 			// List of module names to enable.
 			$modules_to_enable = array( 'ai_assistant', 'ai_design_copilot' );
-			
+
 			// Ensure each module in the list is enabled.
 			foreach ( $modules_to_enable as $module_name ) {
 				\UAGB_Helper::ensure_zip_ai_module_is_enabled( $modules, $module_name );

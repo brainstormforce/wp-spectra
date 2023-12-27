@@ -1575,7 +1575,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @return void
 		 */
 		public static function ensure_zip_ai_module_is_enabled( &$modules, $module_name ) {
-			if ( ! is_array( $modules[ $module_name ] ) ) {
+			if ( empty( $modules[ $module_name ] ) || ! is_array( $modules[ $module_name ] ) ) {
 				$modules[ $module_name ] = array( 'status' => 'enabled' );
 			} else {
 				$modules[ $module_name ]['status'] = 'enabled';
