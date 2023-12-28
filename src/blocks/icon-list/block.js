@@ -10,7 +10,7 @@ import deprecated from './deprecated';
 import './style.scss';
 
 import { __ } from '@wordpress/i18n';
-
+import transforms from './transforms';
 import { registerBlockType } from '@wordpress/blocks';
 import PreviewImage from '@Controls/previewImage';
 import { applyFilters } from '@wordpress/hooks';
@@ -36,4 +36,5 @@ registerBlockType( 'uagb/icon-list', {
 	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="icon-list" /> : <Edit { ...props } /> ),
 	save,
 	deprecated,
+	transforms,
 } );
