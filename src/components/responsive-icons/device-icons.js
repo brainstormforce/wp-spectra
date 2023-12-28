@@ -7,6 +7,8 @@ import { __, sprintf } from '@wordpress/i18n';
 import { useCallback, useLayoutEffect } from '@wordpress/element';
 import { dispatch } from '@wordpress/data';
 import styles from './editor.lazy.scss';
+import { setCustomizerPreview } from '@Utils/customizer-preview-device';
+
 const DeviceIcons = () => {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -21,6 +23,9 @@ const DeviceIcons = () => {
 	const customSetPreviewDeviceType = useCallback( ( device ) => {
 		const { __experimentalSetPreviewDeviceType: setPreviewDeviceType } = dispatch( 'core/edit-post' );
 		setPreviewDeviceType( device );
+		
+		// Set the device type in the customizer preview.
+		setCustomizerPreview( device );
 	}, [] );
 
 	const devicesSvgs = {

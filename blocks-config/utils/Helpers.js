@@ -73,3 +73,21 @@ export const updateUAGDay = ( UAGDay, value ) => {
 	const filteredArray = UAGDay.filter( ( i ) => i !== value );
 	return filteredArray?.length > 0 ? filteredArray : undefined;
 };
+
+/**
+ * Check if current page is customizer page.
+ * 
+ * @return {boolean} - The result.
+ */
+export const isCustomizerPage = () => {
+    // We need to run this script only on customizer page.
+    if ( ! window.location.href.includes( '/customize.php' ) ) {
+        return false;
+    }
+
+    if ( ! window?.wp?.customize ) {
+        return false;
+    }
+
+    return true;
+}

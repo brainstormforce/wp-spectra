@@ -9,6 +9,7 @@ import { dispatch, select } from '@wordpress/data';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGHelpText from '@Components/help-text';
+import { setCustomizerPreview } from '@Utils/customizer-preview-device';
 import { applyFilters } from '@wordpress/hooks';
 
 const ResponsiveToggle = ( props ) => {
@@ -28,6 +29,9 @@ const ResponsiveToggle = ( props ) => {
 		if ( null !== dispatch( 'core/edit-post' ) ) {
 			const { __experimentalSetPreviewDeviceType: setPreviewDeviceType } = dispatch( 'core/edit-post' );
 			setPreviewDeviceType( device );
+			
+			// Set the device type in the customizer preview.
+			setCustomizerPreview( device );
 		}
 		toggleResponsive( displayResponsive );
 	}, [] );

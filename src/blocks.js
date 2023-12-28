@@ -35,6 +35,7 @@ if ( ! uagb_blocks_info.is_block_theme ) {
 blocksEditorSpacing();
 }
 import fontAwesomePollyfiller from './font-awesome-pollyfiller';
+import { setDeviceOnCustomizerAction } from '@Utils/customizer-preview-device';
 
 __webpack_public_path__ = uagb_blocks_info.uagb_url + 'dist/';
 
@@ -157,3 +158,5 @@ export const initAutoBlockRecovery = () => {
 if ( 'disabled' !== uagb_blocks_info.auto_block_recovery ) {
 	domReady( initAutoBlockRecovery );
 }
+
+setDeviceOnCustomizerAction();
