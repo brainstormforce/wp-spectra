@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 = x.x.x =
 * Feature: Transform to - Added transform to option from Core Pullquote to Spectra Blockquote and Core List to Spectra Iconlist.
+* Fix: Post Grid - Resolved an issue wherein the post grid block with the featured image border radius is not applied and image overflows.
 
 = 2.11.0 - WEDNESDAY, 27th DECEMBER 2023 =
 * New: All new AI based Template Kit library
