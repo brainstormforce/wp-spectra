@@ -138,7 +138,7 @@ const Background = ( props ) => {
 	};
 
 	const onSelectBgFallbackImage = ( media ) => {
-		if ( ! media || !media.url ) {
+		if ( ! media?.url ) {
 			setAttributes( { [ backgroundVideoFallbackImage.label ]: null } );
 			return;
 		}
@@ -861,141 +861,129 @@ const Background = ( props ) => {
 		);
 	};
 
-	const OverlayControls = () => {
-		// Return early if the selected block is not a Container.
-		if ( ! isContainer ) {
-			return null;
-		}
+	const buttonControl = (
+		<>
+			<Separator />
+			<div className="uag-background-image-overlay-type">
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( 'Overlay Type', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						value: overlayType.value,
+						label: overlayType.label,
+					} }
+					options={ overlayOptions }
+					showIcons={ isContainer ? true : false }
+					colorVariant="secondary"
+					layoutVariant="inline"
+				/>
+			</div>
+		</>
+	);
 
-		const buttonControl = () => {
-			return (
+	const overlayControls = (
+		<>
+			{ ( ( backgroundType.value === 'color' && backgroundColor.value ) ||
+				( backgroundType.value === 'gradient' && gradientOverlay.value ) ) && (
 				<>
-					<Separator />
-					<div className="uag-background-image-overlay-type">
-						<MultiButtonsControl
-							setAttributes={ setAttributes }
-							label={ __( 'Overlay Type', 'ultimate-addons-for-gutenberg' ) }
-							data={ {
-								value: overlayType.value,
-								label: overlayType.label,
-							} }
-							options={ overlayOptions }
-							showIcons={ isContainer ? true : false }
-							colorVariant="secondary"
-							layoutVariant="inline"
-						/>
-					</div>
+					{ buttonControl }
+					{ 'image' === overlayType.value && renderOverlayImageControls() }
 				</>
-			);
-		};
-
-		return (
-			<>
-				{ ( ( backgroundType.value === 'color' && backgroundColor.value ) ||
-					( backgroundType.value === 'gradient' && gradientOverlay.value ) ) && (
+			) }
+			{ backgroundType.value === 'image' &&
+				( ( imageResponsive && setImage ) || ( ! imageResponsive && backgroundImage?.value ) ) && (
 					<>
-						{ buttonControl() }
+						{ buttonControl }
+						{ 'color' === overlayType.value && (
+							<>
+								<div className="uag-background-image-overlay-color">
+									<AdvancedPopColorControl
+										label={ __( 'Image Overlay Color', 'ultimate-addons-for-gutenberg' ) }
+										colorValue={ backgroundImageColor.value }
+										data={ {
+											value: backgroundImageColor.value,
+											label: backgroundImageColor.label,
+										} }
+										setAttributes={ setAttributes }
+									/>
+								</div>
+								{ renderOverlayControls() }
+							</>
+						) }
+						{ 'gradient' === overlayType.value && (
+							<>
+								<div className="uag-background-image-overlay-gradient">
+									<GradientSettings
+										backgroundGradient={ props.backgroundGradient }
+										setAttributes={ setAttributes }
+										gradientType={ props.gradientType }
+										backgroundGradientColor2={ props.backgroundGradientColor2 }
+										backgroundGradientColor1={ props.backgroundGradientColor1 }
+										backgroundGradientType={ props.backgroundGradientType }
+										backgroundGradientLocation1={ props.backgroundGradientLocation1 }
+										backgroundGradientLocation2={ props.backgroundGradientLocation2 }
+										backgroundGradientAngle={ props.backgroundGradientAngle }
+									/>
+								</div>
+								{ renderOverlayControls() }
+							</>
+						) }
 						{ 'image' === overlayType.value && renderOverlayImageControls() }
 					</>
 				) }
-				{ backgroundType.value === 'image' &&
-					( ( imageResponsive && setImage ) || ( ! imageResponsive && backgroundImage?.value ) ) && (
-						<>
-							{ buttonControl() }
-							{ 'color' === overlayType.value && (
-								<>
-									<div className="uag-background-image-overlay-color">
-										<AdvancedPopColorControl
-											label={ __( 'Image Overlay Color', 'ultimate-addons-for-gutenberg' ) }
-											colorValue={ backgroundImageColor.value }
-											data={ {
-												value: backgroundImageColor.value,
-												label: backgroundImageColor.label,
-											} }
-											setAttributes={ setAttributes }
-										/>
-									</div>
-									{ renderOverlayControls() }
-								</>
-							) }
-							{ 'gradient' === overlayType.value && (
-								<>
-									<div className="uag-background-image-overlay-gradient">
-										<GradientSettings
-											backgroundGradient={ props.backgroundGradient }
-											setAttributes={ setAttributes }
-											gradientType={ props.gradientType }
-											backgroundGradientColor2={ props.backgroundGradientColor2 }
-											backgroundGradientColor1={ props.backgroundGradientColor1 }
-											backgroundGradientType={ props.backgroundGradientType }
-											backgroundGradientLocation1={ props.backgroundGradientLocation1 }
-											backgroundGradientLocation2={ props.backgroundGradientLocation2 }
-											backgroundGradientAngle={ props.backgroundGradientAngle }
-										/>
-									</div>
-									{ renderOverlayControls() }
-								</>
-							) }
-							{ 'image' === overlayType.value && renderOverlayImageControls() }
-						</>
-					) }
-				{ backgroundType.value === 'video' &&
-					'video' === backgroundType.value &&
-					backgroundVideo.value &&
-					backgroundVideoType.value && (
-						<div className="uag-background-video-overlay">
-							{ overlayType && backgroundVideo && backgroundVideo.value && (
-								<>
-									{ buttonControl() }
-									{ 'color' === overlayType.value && (
-										<>
-											<div className="uag-background-image-overlay-color">
-												<AdvancedPopColorControl
-													label={ __(
-														'Image Overlay Color',
-														'ultimate-addons-for-gutenberg'
-													) }
-													colorValue={ backgroundVideoColor.value }
-													data={ {
-														value: backgroundVideoColor.value,
-														label: backgroundVideoColor.label,
-													} }
-													setAttributes={ setAttributes }
-													onOpacityChange={ onOpacityChange }
-													backgroundVideoOpacity={ {
-														value: backgroundVideoOpacity.value,
-														label: backgroundVideoOpacity.label,
-													} }
-												/>
-											</div>
-											{ renderOverlayControls() }
-										</>
-									) }
-									{ gradientOverlay.value && 'gradient' === overlayType.value && (
-										<>
-											<div className="uag-background-image-overlay-gradient">
-												<GradientSettings
-													backgroundGradient={ props.backgroundGradient }
-													setAttributes={ setAttributes }
-													gradientType={ props.gradientType }
-													backgroundGradientColor2={ props.backgroundGradientColor2 }
-													backgroundGradientColor1={ props.backgroundGradientColor1 }
-													backgroundGradientType={ props.backgroundGradientType }
-													backgroundGradientLocation1={ props.backgroundGradientLocation1 }
-													backgroundGradientLocation2={ props.backgroundGradientLocation2 }
-													backgroundGradientAngle={ props.backgroundGradientAngle }
-												/>
-											</div>
-											{ renderOverlayControls() }
-										</>
-									) }
-								</>
-							) }
-						</div>
-					) }
-			</>
-		);
-	};
+			{ backgroundType.value === 'video' &&
+				'video' === backgroundType.value &&
+				backgroundVideo.value &&
+				backgroundVideoType.value && (
+					<div className="uag-background-video-overlay">
+						{ overlayType && backgroundVideo && backgroundVideo.value && (
+							<>
+								{ buttonControl }
+								{ 'color' === overlayType.value && (
+									<>
+										<div className="uag-background-image-overlay-color">
+											<AdvancedPopColorControl
+												label={ __( 'Image Overlay Color', 'ultimate-addons-for-gutenberg' ) }
+												colorValue={ backgroundVideoColor.value }
+												data={ {
+													value: backgroundVideoColor.value,
+													label: backgroundVideoColor.label,
+												} }
+												setAttributes={ setAttributes }
+												onOpacityChange={ onOpacityChange }
+												backgroundVideoOpacity={ {
+													value: backgroundVideoOpacity.value,
+													label: backgroundVideoOpacity.label,
+												} }
+											/>
+										</div>
+										{ renderOverlayControls() }
+									</>
+								) }
+								{ gradientOverlay.value && 'gradient' === overlayType.value && (
+									<>
+										<div className="uag-background-image-overlay-gradient">
+											<GradientSettings
+												backgroundGradient={ props.backgroundGradient }
+												setAttributes={ setAttributes }
+												gradientType={ props.gradientType }
+												backgroundGradientColor2={ props.backgroundGradientColor2 }
+												backgroundGradientColor1={ props.backgroundGradientColor1 }
+												backgroundGradientType={ props.backgroundGradientType }
+												backgroundGradientLocation1={ props.backgroundGradientLocation1 }
+												backgroundGradientLocation2={ props.backgroundGradientLocation2 }
+												backgroundGradientAngle={ props.backgroundGradientAngle }
+											/>
+										</div>
+										{ renderOverlayControls() }
+									</>
+								) }
+							</>
+						) }
+					</div>
+				) }
+		</>
+	);
 
 	const advancedControls = (
 		<>
@@ -1223,7 +1211,10 @@ const Background = ( props ) => {
 										{ isContainer && (
 											<div className="uag-background-image-axis-position">
 												<ToggleControl
-													label={ __( 'Centralized Position', 'ultimate-addons-for-gutenberg' ) }
+													label={ __(
+														'Centralized Position',
+														'ultimate-addons-for-gutenberg'
+													) }
 													checked={ centralizedPosition.value }
 													onChange={ () =>
 														setAttributes( {
@@ -1524,21 +1515,24 @@ const Background = ( props ) => {
 					/>
 				</div>
 			) }
-			{'video' === backgroundType.value && backgroundVideoType.value && (
-			<div className="uag-background-video-image-fallback">
-				<UAGMediaPicker
-					slug={ 'image' }
-					allow={ [ 'image' ] }
-					onSelectImage={ onSelectBgFallbackImage }
-					backgroundImage={ backgroundVideoFallbackImage.value }
-					onRemoveImage={ onRemoveBgFallbackImage }
-					disableDynamicContent={ true }
-					label={ __( 'Fallback Image', 'ultimate-addons-for-gutenberg' ) }
-					help={ __( 'This cover image will replace the background video in case that the video could not be loaded.', 'ultimate-addons-for-gutenberg' ) }
-				/>
-			</div>
+			{ backgroundVideoType?.value && 'video' === backgroundType.value && (
+				<div className="uag-background-video-image-fallback">
+					<UAGMediaPicker
+						slug={ 'image' }
+						allow={ [ 'image' ] }
+						onSelectImage={ onSelectBgFallbackImage }
+						backgroundImage={ backgroundVideoFallbackImage.value }
+						onRemoveImage={ onRemoveBgFallbackImage }
+						disableDynamicContent={ true }
+						label={ __( 'Fallback Image', 'ultimate-addons-for-gutenberg' ) }
+						help={ __(
+							'This cover image will replace the background video in case that the video could not be loaded.',
+							'ultimate-addons-for-gutenberg'
+						) }
+					/>
+				</div>
 			) }
-			<OverlayControls />
+			{ isContainer && overlayControls }
 		</>
 	);
 	const controlName = 'background'; // there is no label props that's why keep hard coded label
