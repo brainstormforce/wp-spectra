@@ -857,8 +857,6 @@ class Plugin {
 					'popup_class'             => defined( 'UAGB_PLUGIN_SHORT_NAME' ) ? 'uag-block-templates-lightbox' : 'ast-block-templates-lightbox',
 					'ajax_url'                => admin_url( 'admin-ajax.php' ),
 					'uri'                     => AST_BLOCK_TEMPLATES_URI,
-					'allBlocks'               => $blocks['blocks'],
-					'allBlocksPages'          => $blocks['blocks_pages'],
 					'allSites'                => $this->get_all_sites(),
 					'allCategories'           => get_option( 'ast-block-templates-categories', array() ),
 					'wpforms_status'          => $this->get_plugin_status( 'wpforms-lite/wpforms.php' ),
