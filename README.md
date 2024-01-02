@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Improvement: Core: Updating asset url generation logic to prevent caching issues.
+
 ### 2.11.1 - SATURDAY, 30th DECEMBER 2023 ###
 * Fix: Gutenberg Template - Resolved an issue where 503 error occurs in some cases.
 

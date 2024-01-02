@@ -1,5 +1,6 @@
 parameters:
 	reportUnmatchedIgnoredErrors: false
+	treatPhpDocTypesAsCertain: false
 	ignoreErrors:
 		-
 			message: "#^Constant UAGB_DIR not found\\.$#"
@@ -1944,11 +1945,6 @@ parameters:
 		-
 			message: "#^Comparison operation \"\\>\" between int\\<1, max\\> and 0 is always true\\.$#"
 			count: 1
-			path: blocks-config/table-of-content/class-uagb-table-of-content.php
-
-		-
-			message: "#^Constant UAGB_ASSET_VER not found\\.$#"
-			count: 2
 			path: blocks-config/table-of-content/class-uagb-table-of-content.php
 
 		-
@@ -4958,11 +4954,6 @@ parameters:
 
 		-
 			message: "#^Constant FS_CHMOD_FILE not found\\.$#"
-			count: 1
-			path: classes/class-uagb-post-assets.php
-
-		-
-			message: "#^Constant UAGB_ASSET_VER not found\\.$#"
 			count: 1
 			path: classes/class-uagb-post-assets.php
 
