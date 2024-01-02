@@ -75,6 +75,48 @@ export const updateUAGDay = ( UAGDay, value ) => {
 };
 
 /**
+ * Retrieves the value at a specified path within an object.
+ *
+ * This function allows you to access nested properties of an object using a dot-separated path
+ * or an array of keys. If the specified path is not valid or the property does not exist,
+ * the function returns a default value.
+ *
+ * @param {Object} getObjectValue - The object from which to retrieve the value.
+ * @param {string|Array} path - The path to the desired property, specified as a dot-separated string
+ *                             or an array of keys.
+ * @param {*} defaultValue - The value to return if the specified path is not valid or the property
+ *                          does not exist. This value is returned when the path traversal encounters
+ *                          an undefined or null property.
+ * @return {*} - The value at the specified path, or the default value if the path is not valid
+ *               or the property does not exist.
+ *
+ * @example
+ * const obj = { a: { b: { c: 42 } } };
+ *
+ * // Using a dot-separated string as the path
+ * const value = get(obj, 'a.b.c'); // Returns 42
+ *
+ * // Using an array of keys as the path
+ * const valueArray = get(obj, ['a', 'b', 'c']); // Returns 42
+ *
+ * // Providing a default value
+ * const nonExistentValue = get(obj, 'x.y.z', 'Default'); // Returns 'Default'
+ */
+export const uagbGetValue = ( getObjectValue, path, defaultValue ) => {
+	const keys = Array.isArray( path ) ? path : path.split( '.' );
+	let result = getObjectValue;
+
+	for ( const key of keys ) {
+		if ( result?.hasOwnProperty( key ) ) {
+			result = result[key];
+		} else {
+			return defaultValue;
+		}
+	}
+	return result;
+};
+
+/**
  * Check if current page is customizer page.
  * 
  * @return {boolean} - The result.
