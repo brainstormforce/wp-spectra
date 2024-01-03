@@ -21,7 +21,7 @@ class Upgrade {
 	 * Constructor
 	 */
 	public function __construct() {
-		add_action( 'wp_ajax_ast_skip_zipai_onboarding', array( $this, 'skip_spectra_pro_onboarding' ) );
+		add_action( 'wp_ajax_ast_skip_zip_ai_onboarding', array( $this, 'skip_spectra_pro_onboarding' ) );
 	}
 
 	/**
@@ -29,14 +29,18 @@ class Upgrade {
 	 */
 	public function skip_spectra_pro_onboarding() {
 
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
+		}
+
 		// Verify Nonce.
 		check_ajax_referer( 'skip-spectra-pro-onboarding-nonce', 'security' );
 
-		update_option( 'ast_skip_zipai_onboarding', 'yes' );
+		update_option( 'ast_skip_zip_ai_onboarding', 'yes' );
 
 		wp_send_json_success(
 			array(
-				'message' => 'Plugin activated successfully.',
+				'success' => 'true',
 			)
 		);
 	}

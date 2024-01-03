@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.4.2
-Stable tag: 2.11.1
+Stable tag: 2.11.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -217,6 +217,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = x.x.x =
 * Improvement: Core: Updating asset url generation logic to prevent caching issues.
+
+= 2.11.2 - WEDNESDAY, 3rd JANUARY 2024 =
+* Security Fix: Hardened the security of the plugin.
 
 = 2.11.1 - SATURDAY, 30th DECEMBER 2023 =
 * Fix: Gutenberg Template - Resolved an issue where 503 error occurs in some cases.
