@@ -296,7 +296,7 @@ class Helper {
 		return array(
 			'business' => 'Business',
 			'person' => 'Person',
-			'organization' => 'Organization',
+			'organisation' => 'Organisation',
 			'restaurant' => 'Restaurant',
 			'product' => 'Product',
 			'event' => 'Event',

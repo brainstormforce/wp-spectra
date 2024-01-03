@@ -100,6 +100,7 @@ class RevokeAccess extends Api_Base {
 		}
 		
 		$business_details = get_option( 'ast-templates-business-details', false );
+		delete_option( 'ast-block-templates-show-onboarding' );
 		if ( ! $business_details ) {
 			$business_details = array();
 		}
