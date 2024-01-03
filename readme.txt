@@ -215,6 +215,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 = x.x.x =
+* Feature: Transform to - Added transform to option from Core Cover and Media & Text to Spectra Image.
+* Feature: Transform to - Added transform to option from Core Separator, Page Break and Spacer to Spectra Separator.
 * Feature: Global - Added rename option in list view to customize Spectra block name.
 * Feature: Transform to - Added transform to option from Core Pullquote to Spectra Blockquote and Core List to Spectra Iconlist.
 * Fix: Container - Resolved style settings background overlay glictes.

@@ -11,6 +11,7 @@ import { registerBlockType } from '@wordpress/blocks';
 import PreviewImage from '@Controls/previewImage';
 import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+import transforms from './transforms';
 const separatorCommonData = applyFilters( 'uagb/separator', addCommonDataToSpectraBlocks( {} ) );
 
 registerBlockType( 'uagb/separator', {
@@ -27,4 +28,5 @@ registerBlockType( 'uagb/separator', {
 	attributes,
 	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="separator" /> : <Edit { ...props } /> ),
 	save,
+	transforms,
 } );
