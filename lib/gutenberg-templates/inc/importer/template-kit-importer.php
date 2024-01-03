@@ -40,16 +40,21 @@ class Template_Kit_Importer {
 	public function template_importer() {
 
 		if ( ! current_user_can( 'edit_posts' ) ) {
-			wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
 		}
 		// Verify Nonce.
 		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
 
 		$api_uri = ( isset( $_REQUEST['api_uri'] ) ) ? esc_url_raw( $_REQUEST['api_uri'] ) : '';
 
-		// Early return.
-		if ( '' == $api_uri ) {
-			wp_send_json_error( __( 'Something wrong', 'astra-sites' ) );
+		if ( ! Plugin::instance()->is_valid_url( $api_uri ) ) {
+			wp_send_json_error(
+				array(
+					/* Translators: %s is API URL. */
+					'message' => sprintf( __( 'Invalid Request URL - %s', 'ast-block-templates' ), $api_uri ),
+					'code'    => 'Error',
+				)
+			);
 		}
 
 		$api_args = apply_filters(
