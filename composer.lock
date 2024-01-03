@@ -105,16 +105,16 @@
         },
         {
             "name": "brainstormforce/gutenberg-templates",
-            "version": "2.1.1",
+            "version": "2.1.6",
             "source": {
                 "type": "git",
                 "url": "git@github.com:brainstormforce/gutenberg-templates.git",
-                "reference": "0828b7a146f8004b2da69258f2c88ec508247dc0"
+                "reference": "69d55b963758d3598baef89a0e3077c9ce15c900"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brainstormforce/gutenberg-templates/zipball/0828b7a146f8004b2da69258f2c88ec508247dc0",
-                "reference": "0828b7a146f8004b2da69258f2c88ec508247dc0",
+                "url": "https://api.github.com/repos/brainstormforce/gutenberg-templates/zipball/69d55b963758d3598baef89a0e3077c9ce15c900",
+                "reference": "69d55b963758d3598baef89a0e3077c9ce15c900",
                 "shasum": ""
             },
             "require": {
@@ -126,6 +126,7 @@
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
                 "php-stubs/generator": "^0.8.2",
                 "php-stubs/wordpress-stubs": "^6.1",
+                "php-stubs/wp-cli-stubs": "^2.9",
                 "phpcompatibility/phpcompatibility-wp": "*",
                 "phpstan/phpstan": "^1.9",
                 "squizlabs/php_codesniffer": "^3.5",
@@ -167,10 +168,10 @@
             ],
             "description": "Gutenberg single page templates, and blocks library to imported your website easily.",
             "support": {
-                "source": "https://github.com/brainstormforce/gutenberg-templates/tree/2.1.1",
+                "source": "https://github.com/brainstormforce/gutenberg-templates/tree/2.1.6",
                 "issues": "https://github.com/brainstormforce/gutenberg-templates/issues"
             },
-            "time": "2023-12-30T08:14:11+00:00"
+            "time": "2024-01-03T14:56:53+00:00"
         },
         {
             "name": "brainstormforce/zip-ai",
