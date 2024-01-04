@@ -25,9 +25,7 @@ export default function save( props ) {
 					{ 'accordion' === layout && faqRenderIcon() }
 					<RichText.Content tagName={ headingTag } value={ question } className="uagb-question" />
 				</div>
-				<div className="uagb-faq-content">
-				<RichText.Content tagName="p" value={ answer } />
-				</div>
+				<RichText.Content className="uagb-faq-content" tagName="p" value={ answer } />
 			</>
 		);
 	};
