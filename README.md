@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.4.2  
-**Stable tag:** 2.11.2  
+**Stable tag:** 2.11.3  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -214,21 +214,20 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
 
 ## Changelog ##
-### x.x.x ###
-* Feature: Transform to - Added transform to option from Core Cover and Media & Text to Spectra Image.
-* Feature: Transform to - Added transform to option from Core Separator, Page Break and Spacer to Spectra Separator.
+
+### 2.11.3 - MONDAY, 8th JANUARY 2024 ###
+* Feature: Transform to - Added transform to option from Core Media & Text to Spectra Image.
 * Feature: Transform to - Added transform to option from Core Buttons to Spectra Buttons.
 * Feature: Transform to - Added transform to option from Core Media & Text to Spectra Infobox.
-* Feature: Global - Added rename option in list view to customize Spectra block name.
 * Feature: Transform to - Added transform to option from Core Pullquote to Spectra Blockquote and Core List to Spectra Iconlist.
-* Improvement: Core: Updating asset url generation logic to prevent caching issues.
-* Fix: Container - Resolved style settings background overlay glictes.
+* Feature: Global - Added a rename option in the list view to customize Spectra block names.
+* Improvement: Core - Updated asset URL generation logic to prevent caching issues.
+* Fix: Container - Resolved the background overlay glitches in the style settings.
 * Fix: Icon - Resolved an issue wherein the icon would appear enlarged in the Twenty Seventeen theme.
-* Fix: Infobox - Resolved an issue where the page reloads upon clicking Infobox with the call-to-action set as complete box.
-* Fix: Post Grid - Resolved an issue wherein the post grid block with the featured image border radius is not applied and image overflows.
-* Fix: Post Grid - Resolved an issue wherein the post grid block with the featured image border radius is not applied and image overflows.
-* Fix: Infobox - Resolved an issue where the page reloads upon clicking Infobox with the call-to-action set as complete box.
-* Fix: FAQ - Resolved an issue where the answer tab is opened by default if content has <p> or <br> tag.
+* Fix: Info Box - Resolved an issue wherein the page would reload upon clicking on the Info Box with the call-to-action set as complete box.
+* Fix: FAQ - Resolved an issue in which the answer tab would be opened by default if the content had a paragraph or break tag.
+* Fix: Post Grid - Resolved an issue wherein the featured image border-radius would not be applied and the image would overflow.
+* Fix: Global - Resolved an issue in which the Customizer responsive buttons would not work as intended.
 
 ### 2.11.2 - WEDNESDAY, 3rd JANUARY 2024 ###
 * Security Fix: Hardened the security of the plugin.
