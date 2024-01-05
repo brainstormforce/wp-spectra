@@ -220,12 +220,10 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Feature: Global - Added rename option in list view to customize Spectra block name.
 * Feature: Transform to - Added transform to option from Core Pullquote to Spectra Blockquote and Core List to Spectra Iconlist.
 * Fix: Container - Resolved style settings background overlay glictes.
+* Improvement: Core: Updating asset url generation logic to prevent caching issues.
 * Fix: Post Grid - Resolved an issue wherein the post grid block with the featured image border radius is not applied and image overflows.
 * Fix: Infobox - Resolved an issue where the page reloads upon clicking Infobox with the call-to-action set as complete box.
 * Fix: FAQ - Resolved an issue where the answer tab is opened by default if content has <p> or <br> tag.
-
-### x.x.x ###
-* Improvement: Core: Updating asset url generation logic to prevent caching issues.
 
 ### 2.11.2 - WEDNESDAY, 3rd JANUARY 2024 ###
 * Security Fix: Hardened the security of the plugin.
