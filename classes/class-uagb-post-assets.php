@@ -317,7 +317,7 @@ class UAGB_Post_Assets {
 		$is_front_page_template = is_front_page() && get_front_page_template();
 		$is_static_front_page   = 'page' === get_option( 'show_on_front' ) && get_option( 'page_on_front' ) && is_front_page() && ! is_home() && ! $is_front_page_template;
 
-		if ( $is_regular_page || $is_static_front_page ) { // Run only for page and any page selected as home page from settings > reading > static page. 
+		if ( $is_regular_page || $is_static_front_page ) { // Run only for page and any page selected as home page from settings > reading > static page.
 			return 'page';
 		} elseif ( $is_front_page_template ) { // Run only when is_home and is_front_page() and get_front_page_template() is true. i.e front-page template.
 			return 'front-page';
@@ -332,7 +332,7 @@ class UAGB_Post_Assets {
 				} elseif ( is_tag() ) { // For tag archive or more specific tag template.
 					$tag_slug = 'tag-' . $object->slug;
 					return in_array( $tag_slug, $template_type_slug ) ? $tag_slug : ( in_array( 'tag', $template_type_slug ) ? 'tag' : 'archive' );
-				} 
+				}
 			} elseif ( is_date() && in_array( 'date', $template_type_slug ) ) { // For date archive template.
 				return 'date';
 			}
@@ -826,12 +826,12 @@ class UAGB_Post_Assets {
 		$file_handler = $this->assets_file_handler;
 
 		if ( isset( $file_handler['css_url'] ) ) {
-			wp_enqueue_style( 'uag-style-' . $this->post_id, $file_handler['css_url'], array(), UAGB_VER, 'all' );
+			wp_enqueue_style( 'uag-style-' . $this->post_id, $file_handler['css_url'], array(), UAGB_ASSET_VER, 'all' );
 		} else {
 			$this->fallback_css = true;
 		}
 		if ( isset( $file_handler['js_url'] ) ) {
-			wp_enqueue_script( 'uag-script-' . $this->post_id, $file_handler['js_url'], array(), UAGB_VER, true );
+			wp_enqueue_script( 'uag-script-' . $this->post_id, $file_handler['js_url'], array(), UAGB_ASSET_VER, true );
 		} else {
 			$this->fallback_js = true;
 		}
@@ -1398,13 +1398,11 @@ class UAGB_Post_Assets {
 	 */
 	public function create_file( $file_data, $type, $file_state = 'new', $old_file_name = '' ) {
 
-		$date          = new DateTime();
-		$new_timestamp = $date->getTimestamp();
-		$uploads_dir   = UAGB_Helper::get_upload_dir();
-		$file_system   = uagb_filesystem();
+		$uploads_dir = UAGB_Helper::get_upload_dir();
+		$file_system = uagb_filesystem();
 
-		// Example 'uag-css-15-1645698679.css'.
-		$file_name = 'uag-' . $type . '-' . $this->post_id . '-' . $new_timestamp . '.' . $type;
+		// Example 'uag-css-15.css'.
+		$file_name = 'uag-' . $type . '-' . $this->post_id . '.' . $type;
 
 		if ( 'old' === $file_state ) {
 			$file_name = $old_file_name;
@@ -1416,6 +1414,7 @@ class UAGB_Post_Assets {
 
 		$result = false;
 
+		// TODO: This old_assets removal code need to be removed after 3 major releases. from v2.11.0.
 		// Remove if any old file exists for same post.
 		$old_assets = glob( $base_file_path . 'uag-' . $type . '-' . $this->post_id . '-*' );
 		if ( ! empty( $old_assets ) && is_array( $old_assets ) ) {

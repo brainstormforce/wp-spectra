@@ -69,6 +69,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 				$content = get_post_field( 'post_content', $reusable_ref_id );
 				return parse_blocks( $content );
 			}
+			return array();
 		}
 
 		/**
@@ -247,12 +248,12 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 					'exclusion' => 'ast-advanced-hook-exclusion',
 					'users'     => 'ast-advanced-hook-users',
 				);
-				
+
 				$result = Astra_Target_Rules_Fields::get_instance()->get_posts_by_conditions( ASTRA_ADVANCED_HOOKS_POST_TYPE, $option );
 
 				if ( ! empty( $result ) && is_array( $result ) ) {
 					$post_ids = array_keys( $result );
-					
+
 					foreach ( $post_ids as $post_id ) {
 
 						$custom_post = get_post( $post_id );
@@ -271,7 +272,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 								}
 							}
 						}
-					}               
+					}
 				}
 			}
 
@@ -346,7 +347,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 					}
 				}
 			}
-			
+
 			if ( empty( $google_recaptcha_secret_key ) && ! empty( $google_recaptcha_site_key ) ) {
 				wp_send_json_error( 400 );
 			}
