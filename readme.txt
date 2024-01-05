@@ -221,8 +221,11 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Feature: Transform to - Added transform to option from Core Media & Text to Spectra Infobox.
 * Feature: Global - Added rename option in list view to customize Spectra block name.
 * Feature: Transform to - Added transform to option from Core Pullquote to Spectra Blockquote and Core List to Spectra Iconlist.
-* Fix: Container - Resolved style settings background overlay glictes.
 * Improvement: Core: Updating asset url generation logic to prevent caching issues.
+* Fix: Container - Resolved style settings background overlay glictes.
+* Fix: Icon - Resolved an issue wherein the icon would appear enlarged in the Twenty Seventeen theme.
+* Fix: Infobox - Resolved an issue where the page reloads upon clicking Infobox with the call-to-action set as complete box.
+* Fix: Post Grid - Resolved an issue wherein the post grid block with the featured image border radius is not applied and image overflows.
 * Fix: Post Grid - Resolved an issue wherein the post grid block with the featured image border radius is not applied and image overflows.
 * Fix: Infobox - Resolved an issue where the page reloads upon clicking Infobox with the call-to-action set as complete box.
 * Fix: FAQ - Resolved an issue where the answer tab is opened by default if content has <p> or <br> tag.
