@@ -1491,11 +1491,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * Background Control CSS Generator Function.
 		 *
 		 * @param array  $bg_obj          The background object with all CSS properties.
-		 * @param string $css_for_pseudo  A string indicating whether the pseudo-element CSS is required or not. Default is an empty string for elements that don't use the pseudo-element.
+		 * @param string $css_for_overlay The overlay option ('no' or 'yes') to determine whether to include overlay CSS. Leave empty for blocks that do not use the '::before' overlay.
 		 *
 		 * @return array                  The formatted CSS properties for the background.
 		 */
-		public static function uag_get_background_obj( $bg_obj, $css_for_pseudo = '' ) {
+		public static function uag_get_background_obj( $bg_obj, $css_for_overlay = '' ) {
 
 			$gen_bg_css         = array();
 			$gen_bg_overlay_css = array();
@@ -1589,7 +1589,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 							$gen_bg_css['background-attachment'] = esc_attr( $attachment );
 						}
 						if ( 'color' === $overlay_type && '' !== $bg_img && '' !== $bg_image_color ) {
-							if ( ! empty( $css_for_pseudo ) ) {
+							if ( ! empty( $css_for_overlay ) ) {
 								$gen_bg_css['background-image']   = 'url(' . $bg_img . ');';
 								$gen_bg_overlay_css['background'] = $bg_image_color;
 								$gen_bg_overlay_css['opacity']    = $overlay_opacity;
@@ -1598,7 +1598,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 							}
 						}
 						if ( 'gradient' === $overlay_type && '' !== $bg_img && '' !== $gradient ) {
-							if ( ! empty( $css_for_pseudo ) ) {
+							if ( ! empty( $css_for_overlay ) ) {
 								$gen_bg_css['background-image']         = 'url(' . $bg_img . ');';
 								$gen_bg_overlay_css['background-image'] = $gradient;
 								$gen_bg_overlay_css['opacity']          = $overlay_opacity;
@@ -1669,7 +1669,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$gen_bg_overlay_css['opacity']         = $overlay_opacity;
 			};
 			
-			return 'yes' === $css_for_pseudo ? $gen_bg_overlay_css : $gen_bg_css;
+			return 'yes' === $css_for_overlay ? $gen_bg_overlay_css : $gen_bg_css;
 		}
 
 		/**
