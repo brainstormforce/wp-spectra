@@ -66,7 +66,7 @@ class BlockEditor {
 		}
 
 		$attachment = wp_prepare_attachment_for_js( absint( $image ) );
-		if ( is_wp_error( $attachment ) || ! is_array( $attachment ) ) {
+		if ( ! is_array( $attachment ) ) {
 			return $block;
 		}
 
@@ -111,7 +111,7 @@ class BlockEditor {
 
 		$attachment = wp_prepare_attachment_for_js( absint( $image ) );
 
-		if ( is_wp_error( $attachment ) || ! is_array( $attachment ) ) {
+		if ( ! is_array( $attachment ) ) {
 			return $block;
 		}
 
@@ -165,7 +165,7 @@ class BlockEditor {
 		}
 
 		$attachment = wp_prepare_attachment_for_js( absint( $image ) );
-		if ( is_wp_error( $attachment ) || ! is_array( $attachment ) ) {
+		if ( ! is_array( $attachment ) ) {
 			return $block;
 		}
 
@@ -255,7 +255,7 @@ class BlockEditor {
 
 			$attachment = wp_prepare_attachment_for_js( absint( $new_image ) );
 
-			if ( is_wp_error( $attachment ) || ! is_array( $attachment ) ) {
+			if ( ! is_array( $attachment ) ) {
 				continue;
 			}
 

@@ -1,3 +1,17 @@
+v2.1.9 - 08-January-2023
+- Fix: Reverted capabilities check from manage_options to edit_post.
+
+v2.1.8 - 08-January-2023
+- Improvement: Show three dots loading indicator when regenerating content for a specific category.
+- Improvement: Prevent unnecessary re-render to improve performance and UX.
+- Improvement: Improved access control by transitioning from 'edit_post' to 'manage_options' for enhanced user capabilities. 
+- Fix: Google map location/address not getting updated.
+- Fix: Not showing loading skeleton while regenerating content.
+- Fix: 503 Error by removing kits data from the localize variable.
+
+v2.1.7 - 04-January-2023
+- Fix: Extra check added for checking wpforms-lite plugin.
+
 v2.1.6 - 03-January-2023
 - Fix: Spelling "organization" changed to "organisation".
 
