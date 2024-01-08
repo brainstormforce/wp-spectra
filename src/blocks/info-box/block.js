@@ -8,7 +8,7 @@ import save from './save';
 import attributes from './attributes';
 import deprecated from './deprecated';
 import './style.scss';
-
+import transforms from './transforms';
 import { __ } from '@wordpress/i18n';
 
 import { registerBlockType } from '@wordpress/blocks';
@@ -35,4 +35,5 @@ registerBlockType( 'uagb/info-box', {
 	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="info-box" /> : <Edit { ...props } /> ),
 	save,
 	deprecated,
+	transforms,
 } );

@@ -8,11 +8,12 @@ import attributes from './attributes';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
 import './style.scss';
-import { registerBlockType, createBlock } from '@wordpress/blocks';
+import { registerBlockType } from '@wordpress/blocks';
 import deprecated from './deprecated';
 import PreviewImage from '@Controls/previewImage';
 import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+import transforms from './transforms';
 let imageCommonData = {};
 imageCommonData = applyFilters( 'uagb/image', addCommonDataToSpectraBlocks( imageCommonData ) );
 registerBlockType( 'uagb/image', {
@@ -52,41 +53,5 @@ registerBlockType( 'uagb/image', {
 	},
 	usesContext: [ 'postId', 'postType' ],
 	deprecated,
-	transforms: {
-		from: [
-			{
-				type: 'block',
-				blocks: [ 'core/image' ],
-				transform: ( { url, sizeSlug } ) => {
-					return createBlock( 'uagb/image', {
-						url,
-						sizeSlug,
-					} );
-				},
-			},
-			{
-				type: 'block',
-				blocks: [ 'core/post-featured-image' ],
-				transform: ( { sizeSlug } ) => {
-					return createBlock( 'uagb/image', {
-						useDynamicData: true,
-						dynamicContentType: 'featured-image',
-						sizeSlug,
-					} );
-				},
-			},
-		],
-		to: [
-			{
-				type: 'block',
-				blocks: [ 'core/image' ],
-				transform: ( { url, sizeSlug } ) => {
-					return createBlock( 'core/image', {
-						url,
-						sizeSlug,
-					} );
-				},
-			},
-		],
-	},
+	transforms,
 } );

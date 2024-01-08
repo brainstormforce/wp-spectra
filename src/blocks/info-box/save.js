@@ -150,7 +150,7 @@ export default function save( props ) {
 	}
 
 	let linkClick = 'return false;';
-	if ( ( ctaLink !== '' || ctaLink !== '#' ) && !attributes?.dynamicContent?.ctaLink?.enable ) {
+	if ( ( ctaLink !== '' && ctaLink !== '#' ) && !attributes?.dynamicContent?.ctaLink?.enable ) {
 		linkClick = 'return true;';
 	} else if ( attributes?.dynamicContent?.ctaLink?.enable ) {
 		linkClick = 'return true;';

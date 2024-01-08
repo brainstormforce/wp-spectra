@@ -77,12 +77,14 @@ class Blocks extends Api_Base {
 	public function get_blocks( $request ) {
 
 		$blocks = Plugin::instance()->get_all_blocks();
+		$all_sites = Plugin::instance()->get_all_sites();
 
 		$response = new \WP_REST_Response(
 			array(
 				'success' => true,
 				'allBlocks'               => $blocks['blocks'],
 				'allBlocksPages'          => $blocks['blocks_pages'],
+				'allSites'                => $all_sites,
 			)
 		);
 		$response->set_status( 200 );

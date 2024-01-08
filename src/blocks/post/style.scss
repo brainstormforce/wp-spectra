@@ -13,6 +13,7 @@
 
 	.uagb-post__inner-wrap {
 		transition: box-shadow 0.2s ease;
+		overflow: hidden;
 
 		.uagb-post__taxonomy {
 			display: inline-block;

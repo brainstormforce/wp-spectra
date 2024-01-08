@@ -13,6 +13,7 @@ import { registerBlockType } from '@wordpress/blocks';
 import PreviewImage from '@Controls/previewImage';
 import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
+import transforms from './transforms';
 let buttonsCommonData = {};
 buttonsCommonData = applyFilters( 'uagb/buttons', addCommonDataToSpectraBlocks( buttonsCommonData ) );
 registerBlockType( 'uagb/buttons', {
@@ -33,4 +34,7 @@ registerBlockType( 'uagb/buttons', {
 	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="buttons" /> : <Edit { ...props } /> ),
 	save,
 	deprecated,
+	transforms,
+
+	
 } );

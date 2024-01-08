@@ -834,7 +834,7 @@ class Plugin {
 		}
 		$astra_theme_css = apply_filters( 'astra_dynamic_theme_css', '' );
 		$astra_theme_css = str_replace( ':root', '', $astra_theme_css );
-		$astra_theme_css = str_replace( 'body', '', $astra_theme_css );
+		$astra_theme_css = preg_replace( '/(?<!-)(\\bbody\\b)(?!-)/i', '', $astra_theme_css );
 
 		$upload_dir = wp_upload_dir();
 		$common_style_url = trailingslashit( $upload_dir['basedir'] ) . 'uag-plugin/custom-style-blocks.css';
@@ -904,7 +904,6 @@ class Plugin {
 					'popup_class'             => defined( 'UAGB_PLUGIN_SHORT_NAME' ) ? 'uag-block-templates-lightbox' : 'ast-block-templates-lightbox',
 					'ajax_url'                => admin_url( 'admin-ajax.php' ),
 					'uri'                     => AST_BLOCK_TEMPLATES_URI,
-					'allSites'                => $this->get_all_sites(),
 					'allCategories'           => get_option( 'ast-block-templates-categories', array() ),
 					'wpforms_status'          => $this->get_plugin_status( 'wpforms-lite/wpforms.php' ),
 					'spectra_status'          => $this->get_plugin_status( 'ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php' ),
@@ -926,8 +925,8 @@ class Plugin {
 					'getProURL'               => defined( 'ASTRA_PRO_SITES_NAME' ) ? esc_url( admin_url( 'plugins.php?bsf-inline-license-form=astra-pro-sites' ) ) : esc_url( 'https://wpastra.com/starter-templates-plans/?utm_source=gutenberg-templates&utm_medium=dashboard&utm_campaign=Starter-Template-Backend' ),
 					'astra_theme_css'         => isset( $astra_theme_css ) ? $astra_theme_css : '',
 					'site_url'                => site_url(),
-					'global-styles'           => str_replace( 'body', '.st-block-container', wp_get_global_stylesheet() ),
-					'spectra_common_styles'   => str_replace( 'body', '.st-block-container', $common_css_content ) . ' .st-block-container .uagb-button__wrapper a { text-decoration: none; }',
+					'global-styles'           => preg_replace( '/(?<!-)(\\bbody\\b)(?!-)/i', '.st-block-container', wp_get_global_stylesheet() ),
+					'spectra_common_styles'   => preg_replace( '/(?<!-)(\\bbody\\b)(?!-)/i', '.st-block-container', $common_css_content ) . ' .st-block-container .uagb-button__wrapper a { text-decoration: none; }',
 					'block_color_palette'     => $this->get_block_palette_colors(),
 					'page_color_palette'      => $this->get_page_palette_colors(),
 					'ai_content_ajax_nonce'             => ( current_user_can( 'manage_options' ) ) ? wp_create_nonce( 'ast-block-templates-ai-content' ) : '',
@@ -947,7 +946,7 @@ class Plugin {
 							'site' => array(),
 						)
 					),
-					'astra_customizer_css' => str_replace( 'body', '.st-block-container', defined( 'ASTRA_THEME_VERSION' ) ? $astra_customizer_css : $server_astra_customizer_css ),
+					'astra_customizer_css' => preg_replace( '/(?<!-)(\\bbody\\b)(?!-)/i', '.st-block-container', defined( 'ASTRA_THEME_VERSION' ) ? $astra_customizer_css : $server_astra_customizer_css ),
 					'disable_ai' => $disable_ai,
 					'adaptive_mode' => $adaptive_mode,
 					'debug_mode' => Helper::instance()->is_debug_mode() ? 'yes' : 'no',
@@ -974,7 +973,7 @@ class Plugin {
 					'header_markup' => $ast_header,
 					'footer_markup' => $ast_footer,
 					'astra_static_css_path' => $static_css_path,
-					'server_astra_customizer_css' => str_replace( 'body', '.st-block-container', $server_astra_customizer_css ),
+					'server_astra_customizer_css' => preg_replace( '/(?<!-)(\\bbody\\b)(?!-)/i', '.st-block-container', $server_astra_customizer_css ),
 					'is_rtl' => is_rtl(),
 					'ai_design_copilot' => isset( $ai_features['ai_design_copilot']['status'] ) ? $ai_features['ai_design_copilot']['status'] : 'disabled',
 					'ai_assistant' => isset( $ai_features['ai_assistant']['status'] ) ? $ai_features['ai_assistant']['status'] : 'disabled',

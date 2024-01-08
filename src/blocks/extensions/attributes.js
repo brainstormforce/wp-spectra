@@ -92,3 +92,42 @@ if ( 'enabled' === enableMasonryGallery || true === enableMasonryGallery ) {
 
 	addFilter( 'blocks.registerBlockType', 'uagb/masonry-gallery', addMasonryAttribute );
 }
+
+/**
+ * Adds a metadata attribute to the block settings if it is a Spectra block.
+ * If the block is a Spectra block, it adds a metadata attribute of type 'object' with a default value of { name: '' }.
+ * It also adds an experimental label function to the block settings if it is not already set.
+ * The label function returns the value of metadata.name when the block is viewed in the list view context.
+ *
+ * @param {Object} settings - The block settings object.
+ * @return {Object} - The modified block settings object.
+ */
+export function blockMetadataAttribute( settings ) {
+	const blockName = settings.name;
+	const isSpectraBlock = blockName.includes( 'uagb/' );
+	if ( isSpectraBlock ) {
+		settings.attributes = {
+			...settings.attributes,
+			metadata: {
+				type: 'object',
+				default: {
+					name: '',
+				},
+			},
+		};
+
+		// Don't override if already set for any spectra block.
+		if ( ! settings?.__experimentalLabel ) {
+			settings.__experimentalLabel = ( attributes, { context } ) => {
+				const { metadata } = attributes;
+				if ( context === 'list-view' && metadata.name ) {
+					return metadata.name;
+				}
+			};
+		}
+	}
+
+	return settings;
+}
+
+addFilter( 'blocks.registerBlockType', 'uagb/block-label', blockMetadataAttribute );

@@ -797,6 +797,7 @@ class UAGB_Init_Blocks {
 				'is_customize_preview'                    => is_customize_preview(),
 				'uag_enable_gbs_extension'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_gbs_extension', 'enabled' ),
 				'current_theme'                           => wp_get_theme()->get( 'Name' ),
+				'is_gutenberg_activated'                  => is_plugin_active( 'gutenberg/gutenberg.php' ), // TODO: Once Gutenberg merged the rename functionality code in WP then we need to remove localization part for is_gutenberg_activated.
 			)
 		);
 		// To match the editor with frontend.

@@ -105,16 +105,16 @@
         },
         {
             "name": "brainstormforce/gutenberg-templates",
-            "version": "2.1.6",
+            "version": "2.1.9",
             "source": {
                 "type": "git",
                 "url": "git@github.com:brainstormforce/gutenberg-templates.git",
-                "reference": "69d55b963758d3598baef89a0e3077c9ce15c900"
+                "reference": "23210deb7d28e6b56a8086df0536b3998235940d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brainstormforce/gutenberg-templates/zipball/69d55b963758d3598baef89a0e3077c9ce15c900",
-                "reference": "69d55b963758d3598baef89a0e3077c9ce15c900",
+                "url": "https://api.github.com/repos/brainstormforce/gutenberg-templates/zipball/23210deb7d28e6b56a8086df0536b3998235940d",
+                "reference": "23210deb7d28e6b56a8086df0536b3998235940d",
                 "shasum": ""
             },
             "require": {
@@ -168,10 +168,10 @@
             ],
             "description": "Gutenberg single page templates, and blocks library to imported your website easily.",
             "support": {
-                "source": "https://github.com/brainstormforce/gutenberg-templates/tree/2.1.6",
+                "source": "https://github.com/brainstormforce/gutenberg-templates/tree/2.1.9",
                 "issues": "https://github.com/brainstormforce/gutenberg-templates/issues"
             },
-            "time": "2024-01-03T14:56:53+00:00"
+            "time": "2024-01-08T12:19:52+00:00"
         },
         {
             "name": "brainstormforce/zip-ai",
