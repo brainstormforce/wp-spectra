@@ -70,7 +70,7 @@ const AssetsGeneration = () => {
             </div>
             <p className="mt-2 w-9/12 text-sm text-slate-500">
                 { __( 'Spectra loads the CSS and JS inline on the page by default. If you want to generate separate CSS and JS files for Spectra blocks, enable this option. Please read ', 'ultimate-addons-for-gutenberg' ) }
-                <a className='text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover' href="https://wpspectra.com/clean-html-with-uag/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard" target='_blank' rel="noreferrer"> { __( 'this article', 'ultimate-addons-for-gutenberg' ) } </a>
+                <a className='text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover' href="https://wpspectra.com/docs/file-generation/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard" target='_blank' rel="noreferrer"> { __( 'this article', 'ultimate-addons-for-gutenberg' ) } </a>
                 { __( ' to learn the difference between generating CSS and JS inline and in a separate file.', 'ultimate-addons-for-gutenberg' ) }
             </p>
         </section>
