@@ -153,7 +153,7 @@ class UAGB_Popup_Builder {
 		}
 
 		ob_start();
-		echo do_shortcode( $popup->post_content );
+		echo do_shortcode( do_blocks( $popup->post_content ) );
 		$output = ob_get_clean();
 
 		return is_string( $output ) ? $output : '';
