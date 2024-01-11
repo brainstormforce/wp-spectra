@@ -542,6 +542,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			// Overwrite the product details that were of a lower priority, if any.
 			$product_details = array(
 				'product_name'                          => 'Spectra',
+				'product_slug'                          => 'spectra',
 				'product_logo'                          => file_get_contents( UAGB_DIR . 'assets/images/logos/spectra.svg' ),
 				'product_primary_color'                 => '#5733ff',
 				'ai_assistant_learn_more_url'           => admin_url( 'admin.php?page=spectra&path=ai-features' ),

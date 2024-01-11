@@ -279,6 +279,20 @@ class Sidebar_Configurations {
 		// Enqueue the admin styles.
 		wp_enqueue_style( $handle );
 
+		// Create the middleware parameters array.
+		$middleware_params = [];
+
+		// Get the collab product details, and extract the slug from there if it exists.
+		$collab_product_details = apply_filters( 'zip_ai_collab_product_details', null );
+
+		// If the collab details is an array and has the plugin slug, add it to the middleware params.
+		if ( is_array( $collab_product_details )
+			&& ! empty( $collab_product_details['product_slug'] )
+			&& is_string( $collab_product_details['product_slug'] )
+		) {
+			$middleware_params['plugin'] = sanitize_text_field( $collab_product_details['product_slug'] );
+		}
+
 		// Localize the script required for the Zip AI Sidebar.
 		wp_localize_script(
 			$handle,
@@ -288,11 +302,11 @@ class Sidebar_Configurations {
 				'ajax_nonce'             => wp_create_nonce( 'zip_ai_ajax_nonce' ),
 				'admin_nonce'            => wp_create_nonce( 'zip_ai_admin_nonce' ),
 				'current_post_id'        => get_the_ID(),
-				'auth_middleware'        => Helper::get_auth_middleware_url(),
+				'auth_middleware'        => Helper::get_auth_middleware_url( $middleware_params ),
 				'is_authorized'          => Helper::is_authorized(),
 				'is_chat_enabled'        => Module::is_enabled( 'ai_assistant' ),
 				'is_customize_preview'   => is_customize_preview(),
-				'collab_product_details' => apply_filters( 'zip_ai_collab_product_details', null ),
+				'collab_product_details' => $collab_product_details,
 			)
 		);
 	}
