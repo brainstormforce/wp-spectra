@@ -1473,18 +1473,23 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 					const scope = document.querySelector( '.uagb-block-<?php echo esc_attr( $id ); ?>' );
 					if ( scope ){
 						if ( scope.children[0].classList.contains( 'spectra-image-gallery__layout--masonry' ) ) {
-							const element = scope.querySelector( '.spectra-image-gallery__layout--masonry' );
-							const isotope = new Isotope( element, {
-								itemSelector: '.spectra-image-gallery__media-wrapper--isotope',
-							} );
-							imagesLoaded( element ).on( 'progress', function() {
-								isotope.layout();
-							});
-							imagesLoaded( element ).on( 'always', function() {
-								element.parentNode.style.visibility = 'visible';
-							});
+							// Add timeout for the images to load.
+							setTimeout( function() {
+								const element = scope.querySelector( '.spectra-image-gallery__layout--masonry' );
+								const isotope = new Isotope( element, {
+									itemSelector: '.spectra-image-gallery__media-wrapper--isotope',
+									percentPosition: true,
+								} );
+								imagesLoaded( element ).on( 'progress', function() {
+									isotope.layout();
+								});
+								imagesLoaded( element ).on( 'always', function() {
+									element.parentNode.style.visibility = 'visible';
+								});
+								UAGBImageGalleryMasonry.init( <?php echo wp_json_encode( $attr ); ?>, '<?php echo esc_attr( $selector ); ?>', <?php echo wp_json_encode( $lightbox_settings ); ?>, <?php echo wp_json_encode( $thumbnail_settings ); ?> );
+								UAGBImageGalleryMasonry.initByOffset( element, isotope );
+							}, 500 );
 						}
-						UAGBImageGalleryMasonry.init( <?php echo wp_json_encode( $attr ); ?>, '<?php echo esc_attr( $selector ); ?>', <?php echo wp_json_encode( $lightbox_settings ); ?>, <?php echo wp_json_encode( $thumbnail_settings ); ?> );
 					}
 				});
 			<?php
@@ -1510,14 +1515,17 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 					const scope = document.querySelector( '.uagb-block-<?php echo esc_attr( $id ); ?>' );
 					if ( scope ){
 						if ( scope.children[0].classList.contains( 'spectra-image-gallery__layout--isogrid' ) ) {
-							const element = scope.querySelector( '.spectra-image-gallery__layout--isogrid' );
-							const isotope = new Isotope( element, {
-								itemSelector: '.spectra-image-gallery__media-wrapper--isotope',
-								layoutMode: 'fitRows',
-							} );
-							imagesLoaded( element ).on( 'progress', function() {
-								isotope.layout();
-							});
+							setTimeout( function() {
+								const element = scope.querySelector( '.spectra-image-gallery__layout--isogrid' );
+								const isotope = new Isotope( element, {
+									itemSelector: '.spectra-image-gallery__media-wrapper--isotope',
+									layoutMode: 'fitRows',
+								} );
+								imagesLoaded( element ).on( 'progress', function() {
+									isotope.layout();
+								});
+								UAGBImageGalleryMasonry.initByOffset( element, isotope );
+							}, 500 );
 						}
 						UAGBImageGalleryPagedGrid.init( <?php echo wp_json_encode( $attr ); ?>, '<?php echo esc_attr( $selector ); ?>', <?php echo wp_json_encode( $lightbox_settings ); ?>, <?php echo wp_json_encode( $thumbnail_settings ); ?> );
 					}

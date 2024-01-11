@@ -1701,12 +1701,14 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 						document.addEventListener("DOMContentLoaded", function(){
 							let scope = document.querySelector( '.uagb-block-<?php echo esc_html( $key ); ?>' );
 							if (scope.classList.contains( 'is-masonry' )) {
-
-								const isotope = new Isotope( scope, { // eslint-disable-line no-undef
-										itemSelector: 'article',
-									} );
-								imagesLoaded( scope, function() { isotope	});
-								window.addEventListener( 'resize', function() {	isotope	});
+								setTimeout( function() {
+									const isotope = new Isotope( scope, { // eslint-disable-line no-undef
+											itemSelector: 'article',
+										} );
+									imagesLoaded( scope, function() { isotope	});
+									window.addEventListener( 'resize', function() {	isotope	});
+									UAGBImageGalleryMasonry.initByOffset( scope, isotope );
+								}, 500 );
 							}
 							// This CSS is for Post BG Image Spacing
 							let articles = document.querySelectorAll( '.wp-block-uagb-post-masonry.uagb-post__image-position-background .uagb-post__inner-wrap' );
