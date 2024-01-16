@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
+* Improvement: Global - Added negative value range to linear gradient location for background styles.
 * Fix: Image Gallery - Resolved stacking issue on Safari during the initial load when choosing the masonry layout.
 * Fix: Popup Builder - Resolved an issue wherein dynamic blocks inside the popups would not be visible on the fronted.
 

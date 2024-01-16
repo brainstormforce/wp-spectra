@@ -140,7 +140,7 @@ const GradientSettings = ( props ) => {
 							value: backgroundGradientLocation1.value,
 							label: backgroundGradientLocation1.label,
 						} }
-						min={ 0 }
+						min={ -100 }
 						max={ 100 }
 						displayUnit={ false }
 					/>
@@ -152,7 +152,7 @@ const GradientSettings = ( props ) => {
 							value: backgroundGradientLocation2.value,
 							label: backgroundGradientLocation2.label,
 						} }
-						min={ 0 }
+						min={ -100 }
 						max={ 100 }
 						displayUnit={ false }
 					/>
