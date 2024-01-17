@@ -220,6 +220,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Image Gallery - Resolved stacking issue on Safari during the initial load when choosing the masonry layout.
 * Fix: Popup Builder - Resolved an issue wherein dynamic blocks inside the popups would not be visible on the fronted.
 * Fix: Tabs - Resolved an issue wherein the title with bold text in it the layout breaks in frontend.
+* Fix: Global - Resolved an issue wherein the template styles for some WooCommerce templates would not load as intended in FSE themes.
 
 ### 2.11.3 - MONDAY, 8th JANUARY 2024 ###
 * Feature: Transform to - Added transform to option from Core Media & Text to Spectra Image.
