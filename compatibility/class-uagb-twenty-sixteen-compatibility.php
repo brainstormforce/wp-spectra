@@ -26,7 +26,7 @@ if ( ! class_exists( 'UAGB_Twenty_Sixteen_Compatibility' ) ) {
 		/**
 		 *  Initiator
 		 *
-		 * @since x.x.x
+		 * @since 2.11.4
 		 * @return UAGB_Twenty_Sixteen_Compatibility
 		 */
 		public static function get_instance() {
@@ -46,7 +46,7 @@ if ( ! class_exists( 'UAGB_Twenty_Sixteen_Compatibility' ) ) {
 		/**
 		 * Generates stylesheet and appends in head tag.
 		 *
-		 * @since x.x.x
+		 * @since 2.11.4
 		 * @return void
 		 */
 		public function generate_stylesheet() {

@@ -4293,7 +4293,7 @@ namespace {
         /**
          * Generates stylesheet and appends in head tag.
          *
-         * @since x.x.x
+         * @since 2.11.4
          */
         public function generate_stylesheet()
         {
