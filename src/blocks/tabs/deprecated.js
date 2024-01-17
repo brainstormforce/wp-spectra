@@ -9,6 +9,8 @@ import { __ } from '@wordpress/i18n';
 import { getBorderAttributes } from '@Controls/generateAttributes';
 import newAttributesV2_0_14 from './deprecated/v2_0_14/attributes';
 import newSaveV2_0_14 from './deprecated/v2_0_14/save';
+import newAttributes from './attributes';
+import newSaveV2_11_3 from './deprecated/v2_11_3/save';
 
 const borderAttributes = getBorderAttributes( 'tab' );
 
@@ -839,6 +841,10 @@ const deprecated = [
 		attributes: newAttributesV2_0_14,
 		save: newSaveV2_0_14,
 	},
+	{
+		attributes: newAttributes,
+		save: newSaveV2_11_3,
+	}
 ];
 
 export default deprecated;
