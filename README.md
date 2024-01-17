@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
+* Improvement: Global - Added a filter to modify the icons in the Spectra Icon Picker.
 * Improvement: Buttons - Handled the Inherit-from-theme secondary-button option for Astra child themes.
 * Improvement: Global - Added negative value range to linear gradient location for background styles.
 * Fix: Image Gallery - Resolved stacking issue on Safari during the initial load when choosing the masonry layout.
