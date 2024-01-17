@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
+* Fix: Global - Resolved an issue wherein all icons would appear enlarged in the Twenty Sixteen Theme.
 * Improvement: Global - Added a filter to modify the icons in the Spectra Icon Picker.
 * Improvement: Buttons - Handled the Inherit-from-theme secondary-button option for Astra child themes.
 * Improvement: Global - Added negative value range to linear gradient location for background styles.

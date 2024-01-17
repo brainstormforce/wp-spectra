@@ -4273,6 +4273,32 @@ namespace {
         {
         }
     }
+    /**
+     * Class UAGB_Twenty_Sixteen_Compatibility.
+     */
+    final class UAGB_Twenty_Sixteen_Compatibility
+    {
+        /**
+         *  Initiator
+         */
+        public static function get_instance()
+        {
+        }
+        /**
+         * Constructor
+         */
+        public function __construct()
+        {
+        }
+        /**
+         * Generates stylesheet and appends in head tag.
+         *
+         * @since x.x.x
+         */
+        public function generate_stylesheet()
+        {
+        }
+    }
 }
 namespace UagAdmin\Inc {
     /**

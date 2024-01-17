@@ -173,6 +173,10 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 				require_once UAGB_DIR . 'classes/class-uagb-twenty-seventeen-compatibility.php';
 			}
 
+			if ( 'twentysixteen' === get_template() ) {
+				require_once UAGB_DIR . 'compatibility/class-uagb-twenty-sixteen-compatibility.php';
+			}
+
 			require_once UAGB_DIR . 'admin-core/admin-loader.php';
 
 			// Register all UAG Lite Blocks.
