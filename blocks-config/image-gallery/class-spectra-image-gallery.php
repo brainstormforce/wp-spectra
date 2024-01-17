@@ -1123,9 +1123,12 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 				<div class="spectra-image-gallery__control-lightbox--thumbnails-wrapper">
 					<div class="swiper spectra-image-gallery__control-lightbox--thumbnails">
 						<div class="swiper-wrapper">
-							<?php for ( $i = 0; $i < $total_images; $i++ ) { ?>
+							<?php 
+							for ( $i = 0; $i < $total_images; $i++ ) { 
+								$image_url = ! empty( $attributes['mediaGallery'][ $i ]['sizes']['thumbnail']['url'] ) ? $attributes['mediaGallery'][ $i ]['sizes']['thumbnail']['url'] : $attributes['mediaGallery'][ $i ]['url'];
+								?>
 								<div class="swiper-slide">
-									<img src="<?php echo esc_url( $attributes['mediaGallery'][ $i ]['sizes']['thumbnail']['url'] ); ?>" alt="<?php echo esc_attr( $attributes['mediaGallery'][ $i ]['alt'] ); ?>"/>
+									<img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $attributes['mediaGallery'][ $i ]['alt'] ); ?>"/>
 								</div>
 							<?php } ?>
 						</div>
