@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* New: Introducing a Quick Action Bar - Keep all your essential Spectra blocks right at your fingertips!
+
 ### 2.11.3 - MONDAY, 8th JANUARY 2024 ###
 * Feature: Transform to - Added transform to option from Core Media & Text to Spectra Image.
 * Feature: Transform to - Added transform to option from Core Buttons to Spectra Buttons.

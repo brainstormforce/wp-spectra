@@ -32,3 +32,17 @@ export function updateInitialState( value ) {
 		value,
 	};
 }
+
+export function updateEnableQuickActionSidebar( value ) {
+	return {
+		type: 'UPDATE_ENABLE_QUICK_ACTION_SIDEBAR',
+		value,
+	};
+}
+
+export function updateDefaultAllowedQuickSidebarBlocks( value ) {
+	return {
+		type: 'UPDATE_DEFAULT_ALLOWED_QUICK_SIDEBAR_BLOCKS',
+		value,
+	};
+}

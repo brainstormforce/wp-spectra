@@ -756,6 +756,16 @@ const UAGB_Block_Icons = {
 			strokeWidth: 1.4,
 		} ),
 	),
+	'quick-action-bar': el(
+		'svg',
+		{ width: 40, height: 40, viewBox: '0 0 25 24', fill: 'none' },
+		el( 'path', {
+			d: 'M5.14111 7.53928H18.8584M5.14111 12H14.9392M5.14111 16.4607H11.02',
+			stroke: iconColor,
+			strokeWidth: 1.4,
+			strokeLinecap: 'round',
+		} ),
+	),
 };
 
 

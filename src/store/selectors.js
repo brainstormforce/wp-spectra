@@ -20,3 +20,11 @@ export function getGlobalBlockStylesFontFamilies( state ) {
 export function getState( state ) {
 	return state;
 }
+
+export function getEnableQuickActionSidebar( state ) {
+	return state.enableQuickActionSidebar;
+}
+
+export function getDefaultAllowedQuickSidebarBlocks( state ) {
+	return state.defaultAllowedQuickSidebarBlocks;
+}

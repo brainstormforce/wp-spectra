@@ -14,7 +14,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use UagAdmin\Api\Api_Base;
 use UagAdmin\Inc\Admin_Helper;
-use UagAdmin\Inc\Global_Settings;
 
 /**
  * Class Admin_Query.

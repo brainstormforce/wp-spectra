@@ -480,11 +480,11 @@ class Admin_Menu {
 				'Enjoyed %1$sSpectra%2$s? Please leave us a %3$s rating. We really appreciate your support!',
 				'ultimate-addons-for-gutenberg'
 			),
-			'<strong>', 
+			'<strong>',
 			'</strong>',
 			'<a href="https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg/reviews/?rate=5#new-post" target="_blank" style="color: #6104ff; text-decoration: none;" onmouseover="this.style.textDecoration=\'underline\'" onmouseout="this.style.textDecoration=\'none\'">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
 		) . '</span>';
-		
+
 	}
 
 }

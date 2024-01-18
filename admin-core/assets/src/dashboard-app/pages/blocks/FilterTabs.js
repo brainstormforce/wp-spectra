@@ -83,11 +83,12 @@ const FilterTabs = () => {
 			dispatch( {type: 'UPDATE_ENABLE_RESPONSIVE_CONDITIONS', payload: 'enabled' } );
 			dispatch( {type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: 'enabled' } );
             dispatch( {type: 'UPDATE_ENABLE_ANIMATIONS_EXTENSION', payload: 'enabled' } );
+			dispatch( {type: 'UPDATE_ENABLE_QUICK_ACTION_SIDEBAR_EXTENSION', payload: 'enabled' } );
         }
 
         if ( 'pro' === activeBlocksFilterTab ) {
             // Update Extensions Statuses.
-			dispatch( { type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: 'enabled' } );            
+			dispatch( { type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: 'enabled' } );
         }
 
 		// Create an object with the security and value properties
@@ -128,11 +129,12 @@ const FilterTabs = () => {
 			dispatch( {type: 'UPDATE_ENABLE_RESPONSIVE_CONDITIONS', payload: 'disabled' } );
 			dispatch( {type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: 'disabled' } );
             dispatch( {type: 'UPDATE_ENABLE_ANIMATIONS_EXTENSION', payload: 'disabled' } );
+			dispatch( {type: 'UPDATE_ENABLE_QUICK_ACTION_SIDEBAR_EXTENSION', payload: 'disabled' } );
         }
 
         if ( 'pro' === activeBlocksFilterTab ) {
             // Update Extensions Statuses.
-			dispatch( { type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: 'disabled' } );            
+			dispatch( { type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: 'disabled' } );
         }
 
 		// Create an object with the security and value properties
@@ -158,7 +160,7 @@ const FilterTabs = () => {
         if ( tabName === activeBlocksFilterTab ) {
             tabClasses += ( 'pro' === tabName ) ? 'text-spectra active:text-spectra focus:text-spectra hover:text-spectra' : 'text-slate-800 active:text-slate-800 focus:text-slate-800 hover:text-slate-800';
             tabClasses += ' bg-white border-transparent shadow shadow-focused';
-        } 
+        }
         else {
             tabClasses += ( 'pro' === tabName ) ? 'text-spectra border-indigo-100 bg-indigo-50 focus:text-spectra active:text-spectra hover:text-spectra' : 'text-slate-500 border-slate-200 focus:text-slate-500 active:text-slate-500 hover:text-slate-500';
             tabClasses += ' focus-visible:bg-white hover:bg-white';
