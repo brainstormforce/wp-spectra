@@ -192,4 +192,20 @@ class Module {
 		// Return based on whether Zip AI is enabled or not.
 		return 'enabled' === $all_modules[ $module_name ]['status'];
 	}
+
+	/**
+	 * Enable the given Zip AI module if it exists, else create and enable it.
+	 *
+	 * @param array  $modules     The reference to the modules array that will be modified.
+	 * @param string $module_name The module name.
+	 * @since 1.1.0
+	 * @return void
+	 */
+	public static function force_enabled( &$modules, $module_name ) {
+		if ( empty( $modules[ $module_name ] ) || ! is_array( $modules[ $module_name ] ) ) {
+			$modules[ $module_name ] = array( 'status' => 'enabled' );
+		} else {
+			$modules[ $module_name ]['status'] = 'enabled';
+		}
+	}
 }

@@ -319,16 +319,16 @@ class Admin_Configurations {
 		$localize = apply_filters(
 			'zip_ai_admin_localize',
 			array(
-				'admin_url'        => admin_url(),
-				'ajax_url'         => admin_url( 'admin-ajax.php' ),
-				'auth_middleware'  => Helper::get_auth_middleware_url(),
-				'auth_revoke_url'  => Helper::get_auth_revoke_url(),
-				'credit_topup_url' => ZIP_AI_CREDIT_TOPUP_URL,
-				'is_authorized'    => Helper::is_authorized(),
-				'is_chat_enabled'  => Module::is_enabled( 'ai_assistant' ),
-				'admin_nonce'      => wp_create_nonce( 'zip_ai_admin_nonce' ),
-				'page_slug'        => $this->menu_slug,
-				'credit_details'   => Helper::get_credit_details(),
+				'admin_url'               => admin_url(),
+				'ajax_url'                => admin_url( 'admin-ajax.php' ),
+				'auth_middleware'         => Helper::get_auth_middleware_url(),
+				'auth_revoke_url'         => Helper::get_auth_revoke_url(),
+				'credit_topup_url'        => ZIP_AI_CREDIT_TOPUP_URL,
+				'is_authorized'           => Helper::is_authorized(),
+				'is_ai_assistant_enabled' => Module::is_enabled( 'ai_assistant' ),
+				'admin_nonce'             => wp_create_nonce( 'zip_ai_admin_nonce' ),
+				'page_slug'               => $this->menu_slug,
+				'credit_details'          => Helper::get_credit_details(),
 			)
 		);
 

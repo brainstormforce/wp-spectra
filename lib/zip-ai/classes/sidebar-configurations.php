@@ -63,8 +63,15 @@ class Sidebar_Configurations {
 		// Setup the Sidebar Auth Ajax.
 		add_action( 'wp_ajax_verify_zip_ai_authenticity', array( $this, 'verify_authenticity' ) );
 
-		// Add the Sidebar to the Gutenberg Editor.
-		add_action( 'enqueue_block_editor_assets', array( $this, 'load_editor_sidebar_assets' ) );
+		add_action( 'admin_bar_menu', array( $this, 'add_admin_trigger' ), 999 );
+
+		// Render the Sidebar React App in the Footer in the Gutenberg Editor, Admin, and the Front-end.
+		add_action( 'admin_footer', array( $this, 'render_sidebar_markup' ) );
+		add_action( 'wp_footer', array( $this, 'render_sidebar_markup' ) );
+
+		// Add the Sidebar to the Gutenberg Editor, Admin, and the Front-end.
+		add_action( 'admin_enqueue_scripts', array( $this, 'load_sidebar_assets' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'load_sidebar_assets' ) );
 	}
 
 	/**
@@ -235,12 +242,12 @@ class Sidebar_Configurations {
 	}
 
 	/**
-	 * Enqueue Gutenberg block assets for backend editor.
+	 * Enqueue the AI Asssitant Sidebar assets.
 	 *
 	 * @return void
 	 * @since 1.0.0
 	 */
-	public function load_editor_sidebar_assets() {
+	public function load_sidebar_assets() {
 
 		// Set the required variables.
 		$handle            = 'zip-ai-sidebar';
@@ -253,7 +260,17 @@ class Sidebar_Configurations {
 				'dependencies' => array(),
 				'version'      => ZIP_AI_VERSION,
 			);
-		$script_dep        = array_merge( $script_info['dependencies'], array( 'wp-blocks', 'wp-i18n' ) );
+
+		// If this is in the front-end, remove any editor-specific dependencies.
+		// This will work as intended because the React components for the editor have checks to render the same, leaving no errors.
+		$script_dep = ! is_admin() ? array_diff(
+			$script_info['dependencies'],
+			[
+				'wp-block-editor',
+				'wp-edit-post',
+				'wp-rich-text',
+			]
+		) : $script_info['dependencies'];
 
 		// Register the sidebar scripts.
 		wp_register_script(
@@ -272,28 +289,88 @@ class Sidebar_Configurations {
 			ZIP_AI_VERSION
 		);
 
-		// Enqueue the admin scripts.
+		// Register the sidebar Google Fonts.
+		wp_register_style(
+			$handle . '-google-fonts',
+			'https://fonts.googleapis.com/css2?family=Courier+Prime&family=Inter:wght@400;500;600;700&display=swap',
+			array(),
+			ZIP_AI_VERSION
+		);
+
+		// Enqueue the sidebar scripts.
 		wp_enqueue_script( $handle );
 		// Set the script translations.
 		wp_set_script_translations( $handle, 'zip-ai' );
-		// Enqueue the admin styles.
+		// Enqueue the sidebar styles.
 		wp_enqueue_style( $handle );
+		// Enqueue the Google Font styles.
+		wp_enqueue_style( $handle . '-google-fonts' );
+
+		// Create the middleware parameters array.
+		$middleware_params = [];
+
+		// Get the collab product details, and extract the slug from there if it exists.
+		$collab_product_details = apply_filters( 'zip_ai_collab_product_details', null );
+
+		// If the collab details is an array and has the plugin slug, add it to the middleware params.
+		if ( is_array( $collab_product_details )
+			&& ! empty( $collab_product_details['product_slug'] )
+			&& is_string( $collab_product_details['product_slug'] )
+		) {
+			$middleware_params['plugin'] = sanitize_text_field( $collab_product_details['product_slug'] );
+		}
 
 		// Localize the script required for the Zip AI Sidebar.
 		wp_localize_script(
 			$handle,
 			'zip_ai_react',
 			array(
-				'ajax_url'               => admin_url( 'admin-ajax.php' ),
-				'ajax_nonce'             => wp_create_nonce( 'zip_ai_ajax_nonce' ),
-				'admin_nonce'            => wp_create_nonce( 'zip_ai_admin_nonce' ),
-				'current_post_id'        => get_the_ID(),
-				'auth_middleware'        => Helper::get_auth_middleware_url(),
-				'is_authorized'          => Helper::is_authorized(),
-				'is_chat_enabled'        => Module::is_enabled( 'ai_assistant' ),
-				'is_customize_preview'   => is_customize_preview(),
-				'collab_product_details' => apply_filters( 'zip_ai_collab_product_details', null ),
+				'ajax_url'                => admin_url( 'admin-ajax.php' ),
+				'ajax_nonce'              => wp_create_nonce( 'zip_ai_ajax_nonce' ),
+				'admin_nonce'             => wp_create_nonce( 'zip_ai_admin_nonce' ),
+				'current_post_id'         => get_the_ID(),
+				'auth_middleware'         => Helper::get_auth_middleware_url( $middleware_params ),
+				'is_authorized'           => Helper::is_authorized(),
+				'is_ai_assistant_enabled' => Module::is_enabled( 'ai_assistant' ),
+				'is_customize_preview'    => is_customize_preview(),
+				'collab_product_details'  => $collab_product_details,
 			)
 		);
+	}
+
+	/**
+	 * Add the Zip AI Assistant Sidebar to the admin bar.
+	 *
+	 * @param object $admin_bar The admin bar object.
+	 * @since 1.1.0
+	 * @return void
+	 */
+	public function add_admin_trigger( $admin_bar ) {
+		$args = array(
+			'id'     => 'zip-ai-assistant',
+			'title'  => __( 'AI Assistant', 'zip-ai' ),
+			'href'   => 'javascript:void(0);',
+			'parent' => 'top-secondary',
+		);
+		$admin_bar->add_node( $args );
+	}
+
+	/**
+	 * Render the AI Assistant Sidebar markup.
+	 *
+	 * @since 1.1.0
+	 * @return void
+	 */
+	public static function render_sidebar_markup() {
+		// If the adminbar is visible on this screen, render the admin trigger.
+		if ( is_admin_bar_showing() ) {
+			?>
+				<div id="zip-ai-sidebar-admin-trigger"></div>
+			<?php
+		}
+		// Render the sidebar div.
+		?>
+			<div id="zip-ai-sidebar"></div>
+		<?php
 	}
 }

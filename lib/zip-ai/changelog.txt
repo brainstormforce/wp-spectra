@@ -1,3 +1,13 @@
+v1.1.0 - 17th January 2024
+- Feature: Made the AI Assistant sidebar accessible outside the editor.
+- Improvement: Added the 'Force Enabled' function to ensure that modules are enabled.
+
+v1.0.9 - 11th January 2024
+- Improvement: Added middleware parameter handling for the plugin slug.
+
+v1.0.8 - 18th December 2023
+- Fix: Added compatibility with PHP version 7.0 and above.
+
 v1.0.7 - 2nd December 2023
 - Improvement: Updated the middleware request and the Zip AI settings that are saved.
 - Fix: Implemented proper multi-setting updation.

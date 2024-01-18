@@ -568,7 +568,9 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			// Ensure each module in the list is enabled.
 			foreach ( $modules_to_enable as $module_name ) {
-				\UAGB_Helper::ensure_zip_ai_module_is_enabled( $modules, $module_name );
+				if ( class_exists( 'ZipAI\Classes\Module' ) ) {
+					\ZipAI\Classes\Module::force_enabled( $modules, $module_name );
+				}
 			}
 
 			// Return the Spectra default modules.
