@@ -1,16 +1,8 @@
 /**
- * BLOCK: Tabs - Deprecated Block
+ * BLOCK: UAGB Tabs Block Attributes
  */
-
-import classnames from 'classnames';
-import renderSVG from '@Controls/deprecatedRenderIcon';
-import { RichText, InnerBlocks } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 import { getBorderAttributes } from '@Controls/generateAttributes';
-import newAttributesV2_0_14 from './deprecated/v2_0_14/attributes';
-import newSaveV2_0_14 from './deprecated/v2_0_14/save';
-import newAttributesV2_11_3 from './deprecated/v2_11_3/attributes';
-import newSaveV2_11_3 from './deprecated/v2_11_3/save';
 
 const borderAttributes = getBorderAttributes( 'tab' );
 
@@ -50,7 +42,7 @@ const attributes = {
 	},
 	tabsStyleM: {
 		type: 'string',
-		default: 'vstyle6',
+		default: 'stack1',
 		UAGCopyPaste: {
 			styleType: 'tabs-style-mobile',
 		},
@@ -697,6 +689,7 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	...borderAttributes,
 	titleLetterSpacing: {
 		type: 'number',
 		UAGCopyPaste: {
@@ -722,129 +715,6 @@ const attributes = {
 			styleType: 'main-title-letter-spacing-type',
 		},
 	},
-	...borderAttributes,
 };
 
-const deprecated = [
-	{
-		attributes,
-		save( props ) {
-			const { className } = props;
-			const {
-				block_id,
-				tabHeaders,
-				tabActiveFrontend,
-				tabsStyleD,
-				tabsStyleT,
-				tabsStyleM,
-				icon,
-				showIcon,
-				iconPosition,
-			} = props.attributes;
-
-			return (
-				<div
-					className={ classnames(
-						className,
-						`uagb-block-${ block_id }`,
-						`uagb-tabs__wrap`,
-						`uagb-tabs__${ tabsStyleD }-desktop`,
-						`uagb-tabs__${ tabsStyleT }-tablet`,
-						`uagb-tabs__${ tabsStyleM }-mobile`
-					) }
-					data-tab-active={ tabActiveFrontend }
-				>
-					<ul className="uagb-tabs__panel">
-						{ tabHeaders.map( ( header, index ) => (
-							<li key={ index } className="uagb-tab">
-								<a
-									href={ `#uagb-tabs__tab${ index }` }
-									className={ `uagb-tabs__icon-position-${ iconPosition }` }
-								>
-									{ showIcon && ( iconPosition === 'left' || iconPosition === 'top' ) && (
-										<span className="uagb-tabs__icon">{ renderSVG( icon ) }</span>
-									) }
-									<RichText.Content tagName={ 'span' } value={ header } />
-									{ showIcon && ( iconPosition === 'right' || iconPosition === 'bottom' ) && (
-										<span className="uagb-tabs__icon">{ renderSVG( icon ) }</span>
-									) }
-								</a>
-							</li>
-						) ) }
-					</ul>
-					<div className="uagb-tabs__body-wrap">
-						<InnerBlocks.Content />
-					</div>
-				</div>
-			);
-		},
-	},
-	{
-		attributes,
-		save( props ) {
-			const { attributes, className } = props;
-			const {
-				block_id,
-				tabHeaders,
-				tabActiveFrontend,
-				tabsStyleD,
-				tabsStyleT,
-				tabsStyleM,
-				icon,
-				showIcon,
-				iconPosition,
-				tabAlign,
-			} = attributes;
-
-			return (
-				<div
-					className={ classnames(
-						className,
-						`uagb-block-${ block_id }`,
-						'uagb-tabs__wrap',
-						`uagb-tabs__${ tabsStyleD }-desktop`,
-						`uagb-tabs__${ tabsStyleT }-tablet`,
-						`uagb-tabs__${ tabsStyleM }-mobile`
-					) }
-					data-tab-active={ tabActiveFrontend }
-				>
-					<ul className={ `uagb-tabs__panel uagb-tabs__align-${ tabAlign }` }>
-						{ tabHeaders.map( ( header, index ) => (
-							<li
-								key={ index }
-								className={ `uagb-tab ${ tabActiveFrontend === index ? 'uagb-tabs__active' : '' }` }
-							>
-								<a
-									href={ `#uagb-tabs__tab${ index }` }
-									className={ `uagb-tabs-list uagb-tabs__icon-position-${ iconPosition }` }
-									data-tab={ index }
-								>
-									{ showIcon && ( iconPosition === 'left' || iconPosition === 'top' ) && (
-										<span className="uagb-tabs__icon">{ renderSVG( icon ) }</span>
-									) }
-									<RichText.Content tagName={ 'span' } value={ header } />
-									{ showIcon && ( iconPosition === 'right' || iconPosition === 'bottom' ) && (
-										<span className="uagb-tabs__icon">{ renderSVG( icon ) }</span>
-									) }
-								</a>
-							</li>
-						) ) }
-					</ul>
-					<div className="uagb-tabs__body-wrap">
-						<InnerBlocks.Content />
-					</div>
-				</div>
-			);
-		},
-	},
-	{
-		attributes: newAttributesV2_0_14,
-		save: newSaveV2_0_14,
-	},
-	{
-		attributes: newAttributesV2_11_3,
-		save: newSaveV2_11_3,
-	}
-];
-
-export default deprecated;
+export default attributes;
