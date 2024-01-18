@@ -49,7 +49,7 @@ export default function save( props ) {
 							{ showIcon && ( iconPosition === 'left' || iconPosition === 'top' ) && (
 								<span className="uagb-tabs__icon">{ renderSVG( icon ) }</span>
 							) }
-							<RichText.Content value={ header } />
+							<RichText.Content tagName='div' value={ header } />
 							{ showIcon && ( iconPosition === 'right' || iconPosition === 'bottom' ) && (
 								<span className="uagb-tabs__icon">{ renderSVG( icon ) }</span>
 							) }

@@ -254,26 +254,40 @@ class Helper {
 	/**
 	 * Get the authorization middleware url.
 	 *
+	 * @param array $params An array of parameters to add to the middleware URL.
 	 * @since 1.0.0
 	 * @return string The authorization middleware url.
 	 */
-	public static function get_auth_middleware_url() {
+	public static function get_auth_middleware_url( $params = [] ) {
+		// Create the Redirect URL.
+		$redirect_url = add_query_arg(
+			array(
+				'nonce'         => wp_create_nonce( 'zip_ai_auth_nonce' ),
+				'scs-authorize' => 'true',
+			),
+			admin_url()
+		);
+
+		// Create the Authentication URL.
 		$auth_url = add_query_arg(
 			apply_filters(
 				'zip_ai_auth_middleware_args',
 				array(
 					'type'         => 'token',
-					'redirect_url' => add_query_arg(
-						array(
-							'nonce'         => wp_create_nonce( 'zip_ai_auth_nonce' ),
-							'scs-authorize' => 'true',
-						),
-						admin_url(),
-					),
+					'redirect_url' => rawurlencode( $redirect_url ),
 				)
 			),
 			ZIP_AI_MIDDLEWARE
 		);
+
+		// Add the plugin param if passed.
+		if ( ! empty( $params['plugin'] ) && is_string( $params['plugin'] ) ) {
+			$auth_url = add_query_arg(
+				'plugin',
+				sanitize_text_field( $params['plugin'] ),
+				$auth_url
+			);
+		}
 
 		return $auth_url;
 	}
@@ -294,7 +308,7 @@ class Helper {
 						'revoke_zip_ai_authorization_token' => 'definitely',
 					),
 					admin_url(),
-				),
+				)
 			)
 		);
 

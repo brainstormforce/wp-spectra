@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.4.2
-Stable tag: 2.11.3
+Stable tag: 2.11.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -214,6 +214,17 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
 
 == Changelog ==
+
+= 2.11.4 - THURSDAY, 18th JANUARY 2024 =
+* Improvement: Buttons - Handled the inherit-from-theme secondary-button option for Astra child themes.
+* Improvement: Global - Added a filter to modify the icons in the Spectra Icon Picker.
+* Improvement: Global - Added a negative value range to linear-gradient location for background styles.
+* Fix: Image Gallery - Resolved an issue where block was showing error when Lightbox preview was enabled in editor.
+* Fix: Image Gallery - Resolved the stacking issue on Safari during the initial load when choosing the masonry layout.
+* Fix: Popup Builder - Resolved an issue wherein dynamic blocks inside popups would not be visible on the fronted.
+* Fix: Tabs - Resolved an issue wherein the layout on the frontend would appear inconsistently when a title with bold text is present.
+* Fix: Global - Resolved an issue wherein all icons would appear enlarged in the Twenty Sixteen Theme.
+* Fix: Global - Resolved an issue wherein the template styles for some WooCommerce templates would not load as intended in FSE themes.
 
 = 2.11.3 - MONDAY, 8th JANUARY 2024 =
 * Feature: Transform to - Added transform to option from Core Media & Text to Spectra Image.

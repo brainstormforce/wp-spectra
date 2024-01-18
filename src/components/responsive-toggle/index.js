@@ -3,13 +3,13 @@
  */
 import { ButtonGroup, Button, Tooltip } from '@wordpress/components';
 import { useDeviceType } from '@Controls/getPreviewType';
+import setDeviceType from '@Controls/setDeviceType';
 import { __, sprintf } from '@wordpress/i18n';
-import { useEffect, useState, useRef, useCallback } from '@wordpress/element';
-import { dispatch, select } from '@wordpress/data';
+import { useEffect, useState, useRef } from '@wordpress/element';
+import { select } from '@wordpress/data';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGHelpText from '@Components/help-text';
-import { setCustomizerPreview } from '@Utils/customizer-preview-device';
 import { applyFilters } from '@wordpress/hooks';
 
 const ResponsiveToggle = ( props ) => {
@@ -24,17 +24,6 @@ const ResponsiveToggle = ( props ) => {
 	useEffect( () => {
 		setPanelNameForHook( getPanelIdFromRef( panelRef ) );
 	}, [ blockNameForHook ] );
-
-	const customSetPreviewDeviceType = useCallback( ( device ) => {
-		if ( null !== dispatch( 'core/edit-post' ) ) {
-			const { __experimentalSetPreviewDeviceType: setPreviewDeviceType } = dispatch( 'core/edit-post' );
-			setPreviewDeviceType( device );
-			
-			// Set the device type in the customizer preview.
-			setCustomizerPreview( device );
-		}
-		toggleResponsive( displayResponsive );
-	}, [] );
 
 	const devicesSvgs = {
 		desktop: (
@@ -182,7 +171,10 @@ const ResponsiveToggle = ( props ) => {
 									staticName === deviceType ? ' active-tab' : ''
 								}` }
 								aria-pressed={ deviceType === staticName }
-								onClick={ () => customSetPreviewDeviceType( staticName ) }
+								onClick={ () => {
+									setDeviceType( staticName );
+									toggleResponsive( displayResponsive );
+								} }
 							>
 								{ title }
 							</Button>

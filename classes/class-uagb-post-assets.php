@@ -258,20 +258,41 @@ class UAGB_Post_Assets {
 	public function get_woocommerce_template() {
 		// Check if WooCommerce is active.
 		if ( class_exists( 'WooCommerce' ) ) {
-			if ( is_cart() ) {
-				return 'cart';
-			} elseif ( is_checkout() ) {
-				return 'checkout';
-			} elseif ( is_shop() ) {
-				return 'archive-product';
-			} elseif ( is_product() ) {
-				return 'single-product';
-			} elseif ( is_product_taxonomy() ) {
-				return 'taxonomy-product_cat';
-			} elseif ( is_product_tag() ) {
-				return 'taxonomy-product_tag';
-			} elseif ( is_product_category() ) {
-				return 'taxonomy-product_cat';
+			// Check other WooCommerce pages.
+			switch ( true ) {
+				case is_cart():
+					return 'page-cart';
+				case is_checkout():
+					return 'page-checkout';
+				case is_product():
+					return 'single-product';
+				case is_archive():
+					$object          = get_queried_object();
+					$searchCondition = is_search() && is_post_type_archive( 'product' );
+
+					switch ( true ) {
+						case is_product_taxonomy() && $object instanceof WP_Term:
+							if ( taxonomy_is_product_attribute( $object->taxonomy ) ) {
+								return $searchCondition ? 'product-search-results' : 'taxonomy-product_attribute';
+							} elseif ( in_array( $object->taxonomy, array( 'product_cat', 'product_tag' ) ) ) {
+								return $searchCondition ? 'product-search-results' : 'taxonomy-' . $object->taxonomy;
+							}
+							break;
+
+						case is_product_tag() || is_product_category():
+							return $searchCondition ? 'product-search-results' : ( 'taxonomy-' . ( is_product_tag() ? 'product_tag' : 'product_cat' ) );
+
+						case is_shop():
+							return $searchCondition ? 'product-search-results' : 'archive-product';
+
+						default:
+							return $searchCondition ? 'product-search-results' : 'archive-product';
+					}
+					break;
+
+				default:
+					// Handle other cases if needed.
+					break;
 			}
 		}
 		return false;
@@ -303,8 +324,8 @@ class UAGB_Post_Assets {
 			'is_embed'      => 'embed',
 			'is_front_page' => 'home',
 			'is_home'       => 'home',
-			'is_paged'      => 'paged',
 			'is_search'     => 'search',
+			'is_paged'      => 'paged',
 		); // Conditional tags to post type.
 
 		$what_post_type     = '404'; // Default to '404' if no condition matches.
