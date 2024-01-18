@@ -734,7 +734,7 @@ class UAGB_Init_Blocks {
 		$screen                 = get_current_screen();
 
 		$uag_enable_quick_action_sidebar = apply_filters( 'uag_enable_quick_action_sidebar', UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_quick_action_sidebar', 'enabled' ) );
-		
+
 		$localized_params = array(
 			'cf7_is_active'                           => class_exists( 'WPCF7_ContactForm' ),
 			'gf_is_active'                            => class_exists( 'GFForms' ),

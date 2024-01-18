@@ -161,9 +161,10 @@ const Lightbox = ( { attributes, setAttributes, setLightboxPreview } ) => {
 			<div className="swiper spectra-image-gallery__control-lightbox--thumbnails" ref={ thumbnailRef }>
 				<div className="swiper-wrapper">
 					{ mediaGallery.map( ( media ) => (
+						media?.sizes?.thumbnail?.url && (
 						<div className="swiper-slide" key={ media.id }>
 							<img src={ media.sizes.thumbnail.url } alt={ media.alt } />
-						</div>
+						</div> )
 					) ) }
 				</div>
 			</div>

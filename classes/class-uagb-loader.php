@@ -86,7 +86,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '2.11.3' );
+			define( 'UAGB_VER', '2.11.4' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'spectra' );
@@ -171,6 +171,10 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			if ( 'twentyseventeen' === get_template() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-twenty-seventeen-compatibility.php';
+			}
+
+			if ( 'twentysixteen' === get_template() ) {
+				require_once UAGB_DIR . 'compatibility/class-uagb-twenty-sixteen-compatibility.php';
 			}
 
 			require_once UAGB_DIR . 'admin-core/admin-loader.php';
@@ -542,6 +546,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			// Overwrite the product details that were of a lower priority, if any.
 			$product_details = array(
 				'product_name'                          => 'Spectra',
+				'product_slug'                          => 'spectra',
 				'product_logo'                          => file_get_contents( UAGB_DIR . 'assets/images/logos/spectra.svg' ),
 				'product_primary_color'                 => '#5733ff',
 				'ai_assistant_learn_more_url'           => admin_url( 'admin.php?page=spectra&path=ai-features' ),

@@ -1,6 +1,53 @@
 let spectraImageGalleryLoadStatus = true;
 
 const UAGBImageGalleryMasonry = {
+	initByOffset( $selector, instance ){
+		// Verify $selector and instance.
+		if ( ! $selector || ! instance ) {
+			return;
+		}
+
+		// Add class for scroll not init.
+		$selector.classList.add( 'scroll-not-init' );
+
+		// Add class for last image not loaded.
+		$selector.classList.add( 'last-image-not-loaded' );
+
+		const getAllImages = $selector.querySelectorAll( 'img' );
+		if( getAllImages.length ){
+			// Get last image.
+			const getLastImage = getAllImages[ getAllImages.length - 1 ];
+			// Add event listener for last image.
+			getLastImage.addEventListener( 'load', () => {
+					// You can perform additional actions here once the image has loaded.
+					// Remove class for last image not loaded.
+					$selector.classList.remove( 'last-image-not-loaded' );
+					setTimeout( function() {
+						instance.layout();
+					}, 100 );
+				}
+			);
+		}
+
+		let timeOutInstance = null;
+		// Get scroll position dynamically.
+		window.addEventListener( 'scroll', function() {
+			if ( ! $selector.classList.contains( 'scroll-not-init' ) ) {
+				return;
+			}
+			// Clear timeout instance.
+			clearTimeout( timeOutInstance );
+
+			if ( UAGBImageGalleryMasonry.presentInViewport( $selector ) ) {
+				// If $selector comes in view port then init masonry.
+				$selector.classList.remove( 'scroll-not-init' );
+				// Init masonry.
+				timeOutInstance = setTimeout( function() {
+					instance.layout();
+				}, 100 );
+			}
+		} );
+	},
 	init( $attr, $selector, lightboxSettings, thumbnailSettings ) {
 		let count = 2;
 		const windowHeight50 = window.innerHeight / 1.25;
@@ -115,35 +162,47 @@ const UAGBImageGalleryMasonry = {
 				if ( ! element ) {
 					element = $scope;
 				}
-				const isotope = new Isotope( element, {
-					itemSelector: '.spectra-image-gallery__media-wrapper--isotope',
-					stagger: 10,
-				} );
-				isotope.insert( UAGBImageGalleryMasonry.createElementFromHTML( data.data ) );
-				imagesLoaded( element ).on( 'progress', function () {
-					isotope.layout();
-				} );
-				imagesLoaded( element ).on( 'always', function () {
-					const currentScope = document.querySelector( $selector );
-					const loadButton = currentScope?.querySelector( '.spectra-image-gallery__control-button' )
-						loadButton?.classList?.remove( 'disabled' );
-						loadLightBoxImages( currentScope, lightboxSwiper, null, $attr, thumbnailSwiper );
+
+				setTimeout( function () {
+					const isotope = new Isotope( element, {
+						itemSelector: '.spectra-image-gallery__media-wrapper--isotope',
+						stagger: 10,
 					} );
-				if ( 'url' === $attr.imageClickEvent && $attr.customLinks ) {
-					UAGBImageGalleryMasonry.addClickEvents( element, $attr );
-				}
-				spectraImageGalleryLoadStatus = true;
-				if ( true === append ) {
-					$scope?.querySelector( '.spectra-image-gallery__control-button' ).classList.toggle( 'disabled' );
-				}
-				if ( count === parseInt( $obj.total ) ) {
-					$scope.querySelector( '.spectra-image-gallery__control-button' ).style.opacity = 0;
-					setTimeout( () => {
-						$scope.querySelector( '.spectra-image-gallery__control-button' ).parentElement.style.display =
-							'none';
-					}, 2000 );
-				}
+					isotope.insert( UAGBImageGalleryMasonry.createElementFromHTML( data.data ) );
+					imagesLoaded( element ).on( 'progress', function () {
+						isotope.layout();
+					} );
+					imagesLoaded( element ).on( 'always', function () {
+						const currentScope = document.querySelector( $selector );
+						const loadButton = currentScope?.querySelector( '.spectra-image-gallery__control-button' )
+							loadButton?.classList?.remove( 'disabled' );
+							loadLightBoxImages( currentScope, lightboxSwiper, null, $attr, thumbnailSwiper );
+						} );
+					if ( 'url' === $attr.imageClickEvent && $attr.customLinks ) {
+						UAGBImageGalleryMasonry.addClickEvents( element, $attr );
+					}
+					spectraImageGalleryLoadStatus = true;
+					if ( true === append ) {
+						$scope?.querySelector( '.spectra-image-gallery__control-button' ).classList.toggle( 'disabled' );
+					}
+					if ( count === parseInt( $obj.total ) ) {
+						$scope.querySelector( '.spectra-image-gallery__control-button' ).style.opacity = 0;
+						setTimeout( () => {
+							$scope.querySelector( '.spectra-image-gallery__control-button' ).parentElement.style.display =
+								'none';
+						}, 2000 );
+					}
+				}, 500 );
 			} );
+	},
+	presentInViewport( element ) {
+		const rect = element.getBoundingClientRect();
+		return (
+			rect.top >= 0 &&
+			rect.left >= 0 &&
+			rect.bottom <= ( window.innerHeight || document.documentElement.clientHeight ) &&
+			rect.right <= ( window.innerWidth || document.documentElement.clientWidth )
+		);
 	},
 };
 
@@ -268,50 +327,52 @@ const UAGBImageGalleryPagedGrid = {
 				if ( data.success === false ) {
 					return;
 				}
-				let element = $scope?.querySelector( '.spectra-image-gallery__layout--isogrid' );
-				if ( ! element ) {
-					element = $scope;
-				}
-				const mediaElements = element.querySelectorAll( '.spectra-image-gallery__media-wrapper--isotope' );
-				const isotope = new Isotope( element, {
-					itemSelector: '.spectra-image-gallery__media-wrapper--isotope',
-					layoutMode: 'fitRows',
-				} );
-				mediaElements.forEach( ( mediaEle ) => {
-					isotope.remove( mediaEle );
-					isotope.layout();
-				} );
-				isotope.insert( UAGBImageGalleryPagedGrid.createElementFromHTML( data.data ) );
-				imagesLoaded( element ).on( 'progress', function () {
-					isotope.layout();
-				} );
-				imagesLoaded( element ).on( 'always', function () {
-					const currentScope = document.querySelector( $selector );
-					loadLightBoxImages( currentScope, lightboxSwiper, parseInt( $obj.page_number ), $attr, thumbnailSwiper );
-				} );
-				if ( $attr.customLinks ) {
-					UAGBImageGalleryPagedGrid.addClickEvents( element, $attr );
-				}
-				if ( parseInt( $obj.page_number ) === 1 ) {
-					arrows.forEach( ( arrow ) => {
-						arrow.disabled = arrow.getAttribute( 'data-direction' ) === 'Prev';
+				setTimeout( function () {
+					let element = $scope?.querySelector( '.spectra-image-gallery__layout--isogrid' );
+					if ( ! element ) {
+						element = $scope;
+					}
+					const mediaElements = element.querySelectorAll( '.spectra-image-gallery__media-wrapper--isotope' );
+					const isotope = new Isotope( element, {
+						itemSelector: '.spectra-image-gallery__media-wrapper--isotope',
+						layoutMode: 'fitRows',
 					} );
-				} else if ( parseInt( $obj.page_number ) === parseInt( $obj.total ) ) {
-					arrows.forEach( ( arrow ) => {
-						arrow.disabled = arrow.getAttribute( 'data-direction' ) === 'Next';
+					mediaElements.forEach( ( mediaEle ) => {
+						isotope.remove( mediaEle );
+						isotope.layout();
 					} );
-				} else {
-					arrows.forEach( ( arrow ) => {
-						arrow.disabled = false;
+					isotope.insert( UAGBImageGalleryPagedGrid.createElementFromHTML( data.data ) );
+					imagesLoaded( element ).on( 'progress', function () {
+						isotope.layout();
 					} );
-				}
-				$scope
-					?.querySelector( '.spectra-image-gallery__control-dot--active' )
-					.classList.toggle( 'spectra-image-gallery__control-dot--active' );
-				const $activeDot = $scope?.querySelectorAll( '.spectra-image-gallery__control-dot' );
-				$activeDot[ parseInt( $obj.page_number ) - 1 ].classList.toggle(
-					'spectra-image-gallery__control-dot--active'
-				);
+					imagesLoaded( element ).on( 'always', function () {
+						const currentScope = document.querySelector( $selector );
+						loadLightBoxImages( currentScope, lightboxSwiper, parseInt( $obj.page_number ), $attr, thumbnailSwiper );
+					} );
+					if ( $attr.customLinks ) {
+						UAGBImageGalleryPagedGrid.addClickEvents( element, $attr );
+					}
+					if ( parseInt( $obj.page_number ) === 1 ) {
+						arrows.forEach( ( arrow ) => {
+							arrow.disabled = arrow.getAttribute( 'data-direction' ) === 'Prev';
+						} );
+					} else if ( parseInt( $obj.page_number ) === parseInt( $obj.total ) ) {
+						arrows.forEach( ( arrow ) => {
+							arrow.disabled = arrow.getAttribute( 'data-direction' ) === 'Next';
+						} );
+					} else {
+						arrows.forEach( ( arrow ) => {
+							arrow.disabled = false;
+						} );
+					}
+					$scope
+						?.querySelector( '.spectra-image-gallery__control-dot--active' )
+						.classList.toggle( 'spectra-image-gallery__control-dot--active' );
+					const $activeDot = $scope?.querySelectorAll( '.spectra-image-gallery__control-dot' );
+					$activeDot[ parseInt( $obj.page_number ) - 1 ].classList.toggle(
+						'spectra-image-gallery__control-dot--active'
+					);
+				}, 500 );
 			} );
 	},
 };

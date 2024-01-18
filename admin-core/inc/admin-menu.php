@@ -281,7 +281,7 @@ class Admin_Menu {
 			$localize = array_merge(
 				$localize,
 				array(
-					'zip_ai_auth_middleware'  => Zip_Ai_Helper::get_auth_middleware_url(),
+					'zip_ai_auth_middleware'  => Zip_Ai_Helper::get_auth_middleware_url( array( 'plugin' => 'spectra' ) ),
 					'zip_ai_auth_revoke_url'  => Zip_Ai_Helper::get_auth_revoke_url(),
 					'zip_ai_credit_topup_url' => ZIP_AI_CREDIT_TOPUP_URL,
 					'zip_ai_is_authorized'    => Zip_Ai_Helper::is_authorized(),

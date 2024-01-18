@@ -320,6 +320,20 @@ class Sidebar_Configurations {
 			$middleware_params['plugin'] = sanitize_text_field( $collab_product_details['product_slug'] );
 		}
 
+		// Create the middleware parameters array.
+		$middleware_params = [];
+
+		// Get the collab product details, and extract the slug from there if it exists.
+		$collab_product_details = apply_filters( 'zip_ai_collab_product_details', null );
+
+		// If the collab details is an array and has the plugin slug, add it to the middleware params.
+		if ( is_array( $collab_product_details )
+			&& ! empty( $collab_product_details['product_slug'] )
+			&& is_string( $collab_product_details['product_slug'] )
+		) {
+			$middleware_params['plugin'] = sanitize_text_field( $collab_product_details['product_slug'] );
+		}
+
 		// Localize the script required for the Zip AI Sidebar.
 		wp_localize_script(
 			$handle,

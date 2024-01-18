@@ -841,7 +841,7 @@ const Settings = ( props ) => {
 								value: gradientLocation1,
 								label: 'gradientLocation1',
 							} }
-							min={ 0 }
+							min={ -100 }
 							max={ 100 }
 							displayUnit={ false }
 						/>
@@ -853,7 +853,7 @@ const Settings = ( props ) => {
 								value: gradientLocation2,
 								label: 'gradientLocation2',
 							} }
-							min={ 0 }
+							min={ -100 }
 							max={ 100 }
 							displayUnit={ false }
 						/>

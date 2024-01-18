@@ -148,6 +148,7 @@ const Settings = ( props ) => {
 	} = attributes;
 
 	const currentTheme = uagb_blocks_info.current_theme;
+	const isAstraBasedTheme = uagb_blocks_info.is_astra_based_theme;
 
 	const { updateBlockAttributes } = useDispatch( blockEditorStore );
 
@@ -210,7 +211,7 @@ const Settings = ( props ) => {
 					onChange={ () => setAttributes( { inheritFromTheme: ! inheritFromTheme } ) }
 					label={ __( 'Inherit From Theme', 'ultimate-addons-for-gutenberg' ) }
 				/>
-				{ inheritFromTheme && 'Astra' === currentTheme && (
+				{ inheritFromTheme && ( 'Astra' === currentTheme || isAstraBasedTheme ) && (
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
 						label={ __( `Button Type`, 'ultimate-addons-for-gutenberg' ) }

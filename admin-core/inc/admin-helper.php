@@ -53,11 +53,6 @@ class Admin_Helper {
 		// If the Zip AI Helper is available, get the required modules and their states.
 		if ( class_exists( '\ZipAI\Classes\Module' ) ) {
 			$zip_ai_modules = Zip_Ai_Module::get_all_modules();
-
-			// Check if each module is enabled based on the key.
-			foreach ( $zip_ai_modules as $module => $details ) {
-				$zip_ai_modules[ $module ] = Zip_Ai_Module::is_enabled( $module );
-			}
 		}
 
 		$options = array(

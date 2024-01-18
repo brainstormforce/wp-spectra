@@ -1,7 +1,7 @@
 /**
  * The Manage Features Popup.
  */
-import { Fragment, useEffect, useRef } from '@wordpress/element';
+import { Fragment, useState, useEffect, useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import { Dialog, Transition } from '@headlessui/react';
@@ -14,6 +14,13 @@ const ManageFeaturesPopup = ( props ) => {
 	} = props;
 
 	const cancelButtonRef = useRef( null );
+
+	// State to check if any modules are being updated.
+	const [ isUpdating, setIsUpdating ] = useState( {
+		atLeastOneUpdate: false,
+		ai_assistant: false,
+		ai_design_copilot: false,
+	} );
 
 	// Disable the body scroll when the popup is open.
 	useEffect( () => {
@@ -28,27 +35,47 @@ const ManageFeaturesPopup = ( props ) => {
     const dispatch = useDispatch();
     const currentZipAiStatus = useSelector( ( state ) => state.zipAiModules );
 	const {
-		ai_assistant: zipAiAssistantStatus,
-		ai_design_copilot: zipAiDesignCopilotStatus,
+		ai_assistant: zipAiAssistant,
+		ai_design_copilot: zipAiDesignCopilot,
 	} = currentZipAiStatus;
+
+	// Small function to check if a module exists, and if so whether it is enabled or not - Returns true, false or undefined.
+	const checkModuleStatus = ( theModule ) => {
+		switch ( theModule?.status ) {
+			case 'enabled':
+				return true;
+			case 'disabled':
+				return false;
+			default:
+				return undefined;
+		}		
+	};
+
+	const zipAiAssistantStatus = checkModuleStatus( zipAiAssistant );
+	const zipAiDesignCopilotStatus = checkModuleStatus( zipAiDesignCopilot );
 
 	// Update the Zip AI status.
     const updateZipAiStatus = ( moduleName, value ) => {
+		setIsUpdating( {
+			...isUpdating,
+			atLeastOneUpdate: true,
+			[ moduleName ]: true,
+		} );
 
 		// Toggle the status.
-        const status = ! value;
+        const updatedValue = value ? 'disabled' : 'enabled';
 
 		// Update the status in the store.
-		dispatch( { type: 'UPDATE_ZIP_AI_MODULES', payload: {
-			...currentZipAiStatus,
-			[ moduleName ]: status,
-		} } );
+		const updatedZipAiStatus = currentZipAiStatus;
+		updatedZipAiStatus[ moduleName ].status = updatedValue;
+
+		dispatch( { type: 'UPDATE_ZIP_AI_MODULES', payload: { ...updatedZipAiStatus } } );
         
 		// Create an object with the security and value properties. Send the value as a string for easier sanitization.
         const data = {
             security: uag_react.zip_ai_module_status_nonce,
 			module: moduleName,
-            value: status ? 'enabled' : 'disabled',
+            value: updatedValue,
         };
 
 		// Send the data to the server.
@@ -65,8 +92,14 @@ const ManageFeaturesPopup = ( props ) => {
 				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: response?.data?.messsage || __( 'Successfully saved!' , 'ultimate-addons-for-gutenberg' ) } );
 			} else {
 				// Update the failed notification.
-				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: { message: __( 'Failed to save setting', 'ultimate-addons-for-gutenberg' ), messageType: 'error' } } );
+				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: { message: response?.data?.messsage || __( 'Failed to save setting', 'ultimate-addons-for-gutenberg' ), messageType: 'error' } } );
+				dispatch( { type: 'UPDATE_ZIP_AI_MODULES', payload: { ...currentZipAiStatus } } );
 			}
+			setIsUpdating( {
+				...isUpdating,
+				atLeastOneUpdate: false,
+				[ moduleName ]: false,
+			} );
 		} );
 
     };
@@ -85,8 +118,16 @@ const ManageFeaturesPopup = ( props ) => {
 							{ __( 'Coming Soon', 'ultimate-addons-for-gutenberg' ) }
 						</p>
 					) : (
-						<button className='text-spectra hover:text-spectra-hover focus-visible:text-spectra-hover focus-visible:outline-none' onClick={ () => updateZipAiStatus( 'ai_assistant', zipAiAssistantStatus ) }>
-							{ zipAiAssistantStatus ? __( 'Disable', 'ultimate-addons-for-gutenberg' ) : __( 'Enable', 'ultimate-addons-for-gutenberg' ) }
+						<button
+							className='text-spectra hover:text-spectra-hover focus-visible:text-spectra-hover focus-visible:outline-none'
+							onClick={ () => updateZipAiStatus( 'ai_assistant', zipAiAssistantStatus ) }
+							disabled={ isUpdating?.atLeastOneUpdate }
+						>
+							{ isUpdating?.ai_assistant ? __( 'Updating', 'ultimate-addons-for-gutenberg' ) : (
+								<>
+									{ zipAiAssistantStatus ? __( 'Disable', 'ultimate-addons-for-gutenberg' ) : __( 'Enable', 'ultimate-addons-for-gutenberg' ) }
+								</>
+							) }
 						</button>
 					) }
 				</div>
@@ -99,8 +140,16 @@ const ManageFeaturesPopup = ( props ) => {
 							{ __( 'Coming Soon', 'ultimate-addons-for-gutenberg' ) }
 						</p>
 					) : (
-						<button className='text-spectra hover:text-spectra-hover focus-visible:text-spectra-hover focus-visible:outline-none' onClick={ () => updateZipAiStatus( 'ai_design_copilot', zipAiDesignCopilotStatus ) }>
-							{ zipAiDesignCopilotStatus ? __( 'Disable', 'ultimate-addons-for-gutenberg' ) : __( 'Enable', 'ultimate-addons-for-gutenberg' ) }
+						<button
+							className='text-spectra hover:text-spectra-hover focus-visible:text-spectra-hover focus-visible:outline-none'
+							onClick={ () => updateZipAiStatus( 'ai_design_copilot', zipAiDesignCopilotStatus ) }
+							disabled={ isUpdating?.atLeastOneUpdate }
+						>
+							{ isUpdating?.ai_design_copilot ? __( 'Updating', 'ultimate-addons-for-gutenberg' ) : (
+								<>
+									{ zipAiDesignCopilotStatus ? __( 'Disable', 'ultimate-addons-for-gutenberg' ) : __( 'Enable', 'ultimate-addons-for-gutenberg' ) }
+								</>
+							) }
 						</button>
 					) }
 				</div>

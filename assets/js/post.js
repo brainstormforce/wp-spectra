@@ -165,40 +165,42 @@ window.UAGBPostMasonry = {
 					element = $scope;
 				}
 
-				// eslint-disable-next-line no-undef
-				const isotope = new Isotope( element, {
-					itemSelector: 'article',
-				} );
+				setTimeout( function () {
+					// eslint-disable-next-line no-undef
+					const isotope = new Isotope( element, {
+						itemSelector: 'article',
+					} );
 
-				isotope.insert( window.UAGBPostMasonry.createElementFromHTML( data.data ) );
-				loadStatus = true;
+					isotope.insert( window.UAGBPostMasonry.createElementFromHTML( data.data ) );
+					loadStatus = true;
 
-				if ( loader.length > 0 ) {
-					loader[ 0 ].style.display = 'none';
-				}
-
-				if ( true === append ) {
-					$scope.querySelector( '.uagb-post__load-more-wrap' ).style.display = 'block';
-				}
-
-				if ( count === parseInt( $obj.total ) ) {
-					$scope.querySelector( '.uagb-post__load-more-wrap' ).style.display = 'none';
-				}
-				// This CSS is for Post BG Image Spacing
-				const articles = document.querySelectorAll(
-					'.uagb-post__image-position-background .uagb-post__inner-wrap'
-				);
-
-				for ( const article of articles ) {
-					const articleWidth = article.offsetWidth;
-					const rowGap = $attr.rowGap;
-					const imageWidth = 100 - ( rowGap / articleWidth ) * 100;
-					const image = article.getElementsByClassName( 'uagb-post__image' );
-					if ( image[ 0 ] ) {
-						image[ 0 ].style.width = imageWidth + '%';
-						image[ 0 ].style.marginLeft = rowGap / 2 + 'px';
+					if ( loader.length > 0 ) {
+						loader[ 0 ].style.display = 'none';
 					}
-				}
+
+					if ( true === append ) {
+						$scope.querySelector( '.uagb-post__load-more-wrap' ).style.display = 'block';
+					}
+
+					if ( count === parseInt( $obj.total ) ) {
+						$scope.querySelector( '.uagb-post__load-more-wrap' ).style.display = 'none';
+					}
+					// This CSS is for Post BG Image Spacing
+					const articles = document.querySelectorAll(
+						'.uagb-post__image-position-background .uagb-post__inner-wrap'
+					);
+
+					for ( const article of articles ) {
+						const articleWidth = article.offsetWidth;
+						const rowGap = $attr.rowGap;
+						const imageWidth = 100 - ( rowGap / articleWidth ) * 100;
+						const image = article.getElementsByClassName( 'uagb-post__image' );
+						if ( image[ 0 ] ) {
+							image[ 0 ].style.width = imageWidth + '%';
+							image[ 0 ].style.marginLeft = rowGap / 2 + 'px';
+						}
+					}
+				}, 500 );
 			} )
 			.catch( function ( error ) {
 				console.log( JSON.stringify( error ) ); // eslint-disable-line no-console
