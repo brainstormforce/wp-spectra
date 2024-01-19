@@ -19,11 +19,13 @@ const PopoverModal = ( { closePopover, updateDefaultAllowedQuickSidebarBlocks, g
 	const saveOptionToDatabase = ( allowedBlocks ) => {
 		// update allowedBlocks.
 		updateDefaultAllowedQuickSidebarBlocks( allowedBlocks );
+
 		// Create an object with the uagb_ajax_nonce and confirmation properties.
 		const data = {
 			security: uagb_blocks_info.uagb_ajax_nonce,
 			defaultAllowedQuickSidebarBlocks: JSON.stringify( allowedBlocks ),
 		};
+
 		// Call the getApiData function with the specified parameters.
 		getApiData( {
 			url: uagb_blocks_info.ajax_url,
@@ -32,10 +34,8 @@ const PopoverModal = ( { closePopover, updateDefaultAllowedQuickSidebarBlocks, g
 		} );
 	};
 
-	const closePopup = () => {
-		// Call the callback function in the parent
-		closePopover( false );
-	};
+	// Call the callback function in the parent
+	const closePopup = () => closePopover( false );
 
 	const handleSearchChange = ( newSearchTerm ) => setSearchTerm( newSearchTerm );
 
@@ -45,7 +45,9 @@ const PopoverModal = ( { closePopover, updateDefaultAllowedQuickSidebarBlocks, g
 			...getDefaultAllowedQuickSidebarBlocks,
 			selectedBlock.name
 		];
+
 		saveOptionToDatabase( allowedBlocks );
+
 		// Increment uniqueId when removing a block
 		setUniqueId( ( prevUniqueId ) => prevUniqueId + 1 );
 
@@ -55,6 +57,7 @@ const PopoverModal = ( { closePopover, updateDefaultAllowedQuickSidebarBlocks, g
 			id: addedNoticeID,
 			isDismissible: true,
 		} );
+		
 		// Set a timeout to remove the notice after a specific duration (e.g., 600 milliseconds)
 		setTimeout( () => {
 			// Remove the notice by ID

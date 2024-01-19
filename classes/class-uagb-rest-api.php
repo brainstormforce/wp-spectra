@@ -232,8 +232,10 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 		 * @return array
 		 */
 		public function get_quick_action_bar_initial_states() {
-
-			$spectra_enable_quick_action_sidebar = \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_quick_action_sidebar', 'enabled' );
+			// Get value from DB for Quick Action Bar.
+			$db_value                            = \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_quick_action_sidebar' );
+			$show_enable                         = ( empty( $db_value ) ) ? 'enabled' : $db_value;
+			$spectra_enable_quick_action_sidebar = \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_quick_action_sidebar', $show_enable );
 
 			$spectra_default_allowed_quick_sidebar_blocks = \UAGB_Admin_Helper::get_admin_settings_option(
 				'uagb_quick_sidebar_allowed_blocks',
@@ -258,6 +260,11 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 				'uagb_quick_sidebar_allowed_blocks' => $spectra_default_allowed_quick_sidebar_blocks,
 			);
 
+			// If db value is empty then add a notice value 1 to initial state variable.
+			if ( empty( $db_value ) ) {
+				// Notice for Quick Action Bar db value.
+				$initial_state['uag_show_notice_for_qab'] = 1;
+			}
 			return $initial_state;
 		}
 

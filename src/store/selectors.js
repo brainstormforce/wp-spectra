@@ -28,3 +28,7 @@ export function getEnableQuickActionSidebar( state ) {
 export function getDefaultAllowedQuickSidebarBlocks( state ) {
 	return state.defaultAllowedQuickSidebarBlocks;
 }
+
+export function getNoticeForQuickActionSidebar( state ) {
+	return state.showNoticeForQuickActionSidebar;
+}

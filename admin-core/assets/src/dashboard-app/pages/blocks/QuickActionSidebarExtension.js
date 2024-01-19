@@ -65,7 +65,9 @@ const QuickActionSidebarExtension = () => {
                         { __( 'Extension', 'ultimate-addons-for-gutenberg' ) }
                     </div>
                 </p>
-				<span className="focus-visible:text-slate-500 active:text-slate-500 hover:text-slate-500 focus:text-slate-400 text-slate-400 text-sm truncate">{__( 'Coming soon', 'ultimate-addons-for-gutenberg' )}</span>
+				<a className="focus-visible:text-slate-500 active:text-slate-500 hover:text-slate-500 focus:text-slate-400 text-slate-400 text-sm truncate" href='https://wpspectra.com/docs/quick-action-bar/' target="_blank" rel="noreferrer">
+					{__( 'Documentations', 'ultimate-addons-for-gutenberg' )}
+				</a>
             </div>
             <Switch
                 checked={QuickActionSidebarStatus}

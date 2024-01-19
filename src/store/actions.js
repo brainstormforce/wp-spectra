@@ -46,3 +46,10 @@ export function updateDefaultAllowedQuickSidebarBlocks( value ) {
 		value,
 	};
 }
+
+export function updateNoticeForQuickSidebarBlocks( value ) {
+	return {
+		type: 'UPDATE_NOTICE_FOR_QUICK_SIDEBAR',
+		value,
+	};
+}

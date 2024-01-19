@@ -13,7 +13,7 @@ import { store as spectraStore } from '@Store';
 import { STORE_NAME as storeName } from '@Store/constants';
 
 const SpectraPageSettingsPopup = ( props ) => {
-	const { getEnableQuickActionSidebar, updateEnableQuickActionSidebar } = props;
+	const { getEnableQuickActionSidebar, updateEnableQuickActionSidebar, getNoticeForQuickActionSidebar, updateNoticeForQuickSidebarBlocks } = props;
 	const getSidebarStore = 'site-editor' !== uagb_blocks_info.is_site_editor ? window?.wp?.editPost : window?.wp?.editSite;
 	if ( !getSidebarStore || !getSidebarStore?.PluginSidebar || !getSidebarStore?.PluginSidebarMoreMenuItem ) {
 		return null;
@@ -48,7 +48,7 @@ const SpectraPageSettingsPopup = ( props ) => {
 					initialOpen={true}
 					className={'spectra-quick-action-sidebar-panel'}
 				>
-					<ToggleOption label={__( 'Enable Sidebar', 'ultimate-addons-for-gutenberg' )} enableQuickActionSidebar={getEnableQuickActionSidebar} updateEnableQuickActionSidebar={updateEnableQuickActionSidebar} />
+					<ToggleOption label={__( 'Enable Sidebar', 'ultimate-addons-for-gutenberg' )} enableQuickActionSidebar={getEnableQuickActionSidebar} updateEnableQuickActionSidebar={updateEnableQuickActionSidebar} getNoticeForQuickActionSidebar={getNoticeForQuickActionSidebar} updateNoticeForQuickSidebarBlocks={updateNoticeForQuickSidebarBlocks}/>
 				</PanelBody>
 				{ pluginSidebarBefore }
 				{ 'site-editor' !== uagb_blocks_info.is_site_editor && 'yes' === uagb_blocks_info.enable_on_page_css_button && (
@@ -71,14 +71,17 @@ export default compose(
 		const postMeta = select( 'core/editor' ).getEditedPostAttribute( 'meta' );
 		const oldPostMeta = select( 'core/editor' ).getCurrentPostAttribute( 'meta' );
 		const getEnableQuickActionSidebar = select( spectraStore ).getEnableQuickActionSidebar();
+		const getNoticeForQuickActionSidebar = select( spectraStore ).getNoticeForQuickActionSidebar();
 		return {
 			meta: { ...oldPostMeta, ...postMeta },
 			oldMeta: oldPostMeta,
-			getEnableQuickActionSidebar
+			getEnableQuickActionSidebar,
+			getNoticeForQuickActionSidebar
 		};
 	} ),
 	withDispatch( ( dispatch ) => ( {
 		setMetaFieldValue: ( value, field ) => dispatch( 'core/editor' ).editPost( { meta: { [ field ]: value } } ),
 		updateEnableQuickActionSidebar: ( value ) => dispatch( storeName ).updateEnableQuickActionSidebar( value ),
+		updateNoticeForQuickSidebarBlocks: ( value ) => dispatch( storeName ).updateNoticeForQuickSidebarBlocks( value ),
 	} ) )
 )( SpectraPageSettingsPopup );
