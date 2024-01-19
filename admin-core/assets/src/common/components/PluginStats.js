@@ -134,8 +134,13 @@ const PluginStats = () => {
 					</div>
 				</>
 			) }
-			{ renderDivider() }
-			{ renderLicenseStatus() }
+			{ ( ! uag_react.spectra_pro_installed || ( uag_react.spectra_pro_installed && uag_react.spectra_pro_licensing ) ) && (
+				<>
+					{ renderDivider() }
+					{ renderLicenseStatus() }
+				</>
+			)}
+
 		</>
 	);
 
