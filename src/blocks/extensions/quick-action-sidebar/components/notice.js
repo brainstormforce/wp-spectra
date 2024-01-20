@@ -13,8 +13,8 @@ export const Notice = ( props ) => {
 		// If getNoticeForQuickActionSidebar is 1, then set it to 'enabled'.
 		if ( 1 === getNoticeForQuickActionSidebar ) {
 			// Step 1 : Show notice for quick action sidebar.
-			const linkText = __( 'Refer documentation for more information', 'ultimate-addons-for-gutenberg' );
-			const description = __( 'To disable the Quick Action Bar, click the Spectra icon at the top right of the editing screen and disable the Quick Action Bar in the "Spectra Page Settings" section.', 'ultimate-addons-for-gutenberg' );
+			const linkText = __( 'Learn More', 'ultimate-addons-for-gutenberg' );
+			const description = __( 'Introducing the Quick Action Bar which makes page building faster and easier by giving you quick access to the blocks you use the most. You can easily disable this feature in the Spectra settings.', 'ultimate-addons-for-gutenberg' );
 			const noticeLink = `
 			<div class="components-notice__content">
 				${description}
