@@ -2,8 +2,7 @@
  * Internal & External dependencies.
  */
 import { ButtonGroup, Button, Tooltip } from '@wordpress/components';
-import { useDeviceType } from '@Controls/getPreviewType';
-import setDeviceType from '@Controls/setDeviceType';
+import { useDeviceType, setDeviceType } from '@Controls/getPreviewType';
 import { __, sprintf } from '@wordpress/i18n';
 import { useEffect, useState, useRef } from '@wordpress/element';
 import { select } from '@wordpress/data';

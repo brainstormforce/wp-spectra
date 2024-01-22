@@ -19,6 +19,11 @@ const DEFAULT_STATE = {
         }
     ],
 	globalBlockStylesFontFamilies: [],
+	
+	/**
+	 * This variable is used to set the device type. If the Gutenberg stores do not provide device type support, this variable serves as a fallback.
+	 */
+	deviceType: 'Desktop',
 	enableQuickActionSidebar: 'enabled', // 'enabled' | 'disabled' quick action sidebar.
 	defaultAllowedQuickSidebarBlocks: [ // Default blocks allowed in the quick action sidebar.
 		'uagb/container',
@@ -57,6 +62,14 @@ function reducer( state = DEFAULT_STATE, action ) {
 			return {
 				...state,
 				globalBlockStylesFontFamilies: action.value,
+			};
+		/**
+		 * This action is used to set the device type. If the Gutenberg stores do not provide device type support, this action serves as a fallback.
+		 */
+		case 'UPDATE_DEVICE_TYPE':
+			return {
+				...state,
+				deviceType: action.value,
 			};
 		case 'UPDATE_ENABLE_QUICK_ACTION_SIDEBAR':
 			return {
