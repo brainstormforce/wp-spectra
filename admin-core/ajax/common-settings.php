@@ -441,7 +441,7 @@ class Common_Settings extends Ajax_Base {
 	/**
 	 * Save setting - Enables quick action sidebar.
 	 *
-	 * @since x.x.x
+	 * @since 2.12.0
 	 * @return void
 	 */
 	public function enable_quick_action_sidebar() {

@@ -997,7 +997,7 @@ class UAGB_Init_Blocks {
 	/**
 	 * Function to save enable/disable data.
 	 *
-	 * @since x.x.x
+	 * @since 2.12.0
 	 * @return void
 	 */
 	public function uag_global_sidebar_enabled() {
@@ -1020,7 +1020,7 @@ class UAGB_Init_Blocks {
 	/**
 	 * Function to save allowed block data.
 	 *
-	 * @since x.x.x
+	 * @since 2.12.0
 	 * @return void
 	 */
 	public function uag_global_update_allowed_block() {

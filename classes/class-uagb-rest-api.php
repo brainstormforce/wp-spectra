@@ -210,7 +210,7 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 		/**
 		 * Get Initial States.
 		 *
-		 * @since x.x.x
+		 * @since 2.12.0
 		 * @return array
 		 */
 		public function uagb_initial_states() {
@@ -228,7 +228,7 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 		/**
 		 * Get Quick Action Bar Initial States.
 		 *
-		 * @since x.x.x
+		 * @since 2.12.0
 		 * @return array
 		 */
 		public function get_quick_action_bar_initial_states() {
