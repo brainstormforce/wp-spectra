@@ -56,7 +56,7 @@ const Settings = () => {
     if ( spectraIsBlockTheme ) {
         navigation.push( { name: __( 'Theme Fonts', 'ultimate-addons-for-gutenberg' ), slug: 'fse-support', icon: SettingsIcons.font } );
     }
-	if( uag_react.spectra_pro_status ){
+	if( uag_react.spectra_pro_status && uag_react.spectra_pro_licensing ){
 		navigation.push( { name: __( 'License', 'ultimate-addons-for-gutenberg' ), slug: 'license', icon: SettingsIcons.account } );
 	}
 
@@ -65,7 +65,7 @@ const Settings = () => {
 		const activePath = query.get( 'path' );
 		const activeHash = query.get( 'settings' );
 		let activeSettingsTabFromHash = ( activeHash && 'settings' === activePath ) ? activeHash : 'global-settings';
-		if( uag_react.spectra_pro_status && !uag_react.license_status ){
+		if( uag_react.spectra_pro_status && uag_react.spectra_pro_licensing && !uag_react.license_status ){
 			activeSettingsTabFromHash = ( activeHash && 'settings' === activePath ) ? activeHash : 'license';
 			history.push( {
 				pathname: 'admin.php',
@@ -121,7 +121,7 @@ const Settings = () => {
 									uag_react.spectra_pro_status && (
 										<DynamicContent />
 								) }
-								{ 
+								{
 									! uag_react.is_block_theme && (
 										<BlocksEditorSpacing />
 								) }
@@ -182,7 +182,7 @@ const Settings = () => {
                             </>
                         }
                         {
-                        	uag_react.spectra_pro_status &&  'license' === activeSettingsNavigationTab &&
+                        	uag_react.spectra_pro_status &&  uag_react.spectra_pro_licensing && 'license' === activeSettingsNavigationTab &&
                             <>
                                 <MyAccount />
                             </>

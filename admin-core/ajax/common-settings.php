@@ -62,6 +62,7 @@ class Common_Settings extends Ajax_Base {
 			'enable_on_page_css_button',
 			'enable_block_condition',
 			'enable_masonry_gallery',
+			'enable_quick_action_sidebar',
 			'enable_block_responsive',
 			'enable_dynamic_content',
 			'enable_animations_extension',
@@ -435,6 +436,19 @@ class Common_Settings extends Ajax_Base {
 		$this->check_permission_nonce( 'uag_enable_masonry_gallery' );
 		$value = $this->check_post_value();
 		$this->save_admin_settings( 'uag_enable_masonry_gallery', sanitize_text_field( $value ) );
+	}
+
+	/**
+	 * Save setting - Enables quick action sidebar.
+	 *
+	 * @since 2.12.0
+	 * @return void
+	 */
+	public function enable_quick_action_sidebar() {
+		$this->check_permission_nonce( 'uag_enable_quick_action_sidebar' );
+		$value = $this->check_post_value();
+		$value = 'disabled' === $value ? 'disabled' : 'enabled';
+		$this->save_admin_settings( 'uag_enable_quick_action_sidebar', sanitize_text_field( $value ) );
 	}
 
 	/**
@@ -950,7 +964,7 @@ class Common_Settings extends Ajax_Base {
 								__( '%s disabled!', 'ultimate-addons-for-gutenberg' ),
 								$module_name
 							),
-						) 
+						)
 					);
 				} else {
 					wp_send_json_error(
@@ -960,7 +974,7 @@ class Common_Settings extends Ajax_Base {
 								__( 'Unable to disable %s', 'ultimate-addons-for-gutenberg' ),
 								$module_name
 							),
-						) 
+						)
 					);
 				}
 			} else {
@@ -972,7 +986,7 @@ class Common_Settings extends Ajax_Base {
 								__( '%s enabled!', 'ultimate-addons-for-gutenberg' ),
 								$module_name
 							),
-						) 
+						)
 					);
 				} else {
 					wp_send_json_error(
@@ -982,7 +996,7 @@ class Common_Settings extends Ajax_Base {
 								__( 'Unable to enable %s', 'ultimate-addons-for-gutenberg' ),
 								$module_name
 							),
-						) 
+						)
 					);
 				}
 			}

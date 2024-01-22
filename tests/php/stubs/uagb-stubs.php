@@ -455,7 +455,7 @@ namespace {
          * Renders the post grid block on pagination clicks.
          *
          * @since 2.6.0
-         * 
+         *
          * @return void
          */
         public function post_grid_pagination_ajax_callback()
@@ -1018,7 +1018,7 @@ namespace {
         protected $popup_ids;
         /**
          * Constructor to Default the Current Instance's Post ID and add the Shortcode if needed.
-         * 
+         *
          * @return void
          *
          * @since 2.6.0
@@ -4301,3071 +4301,3079 @@ namespace {
     }
 }
 namespace UagAdmin\Inc {
-    /**
-     * Class Admin_Helper.
-     */
-    class Admin_Helper
-    {
-        /**
-         * Common.
-         *
-         * @var object instance
-         */
-        public static $common = null;
-        /**
-         * Options.
-         *
-         * @var object instance
-         */
-        public static $options = null;
-        /**
-         * Get Common settings.
-         *
-         * @return array.
-         */
-        public static function get_common_settings()
-        {
-        }
-        /**
-         * Get Visibility Page
-         *
-         * @since 2.0.0
-         * @return boolean|array
-         */
-        public static function get_visibility_page()
-        {
-        }
-        /**
-         * Get Changelogs from API.
-         *
-         * @since 2.0.0
-         * @return array $changelog_data Changelog Data.
-         */
-        public static function get_changelog_feed_data()
-        {
-        }
-        /**
-         * Get blocks.
-         */
-        public static function get_blocks()
-        {
-        }
-        /**
-         * Get options.
-         */
-        public static function get_options()
-        {
-        }
-        /**
-         * Get Rollback versions.
-         *
-         * @since 1.23.0
-         * @return array
-         * @access public
-         */
-        public static function get_rollback_versions_options()
-        {
-        }
-        /**
-         * Sort Rollback versions.
-         *
-         * @param string $prev Previous Version.
-         * @param string $next Next Version.
-         *
-         * @since 1.23.0
-         * @return array
-         * @access public
-         */
-        public static function sort_rollback_versions($prev, $next)
-        {
-        }
-    }
-    /**
-     * Class Admin_Menu.
-     */
-    class Admin_Menu
-    {
-        /**
-         * Initiator
-         *
-         * @since 1.0.0
-         * @return object initialized object of class.
-         */
-        public static function get_instance()
-        {
-        }
-        /**
-         * Constructor
-         *
-         * @since 1.0.0
-         */
-        public function __construct()
-        {
-        }
-        /**
-         * Init Hooks.
-         *
-         * @since 1.0.0
-         * @return void
-         */
-        public function initialize_hooks()
-        {
-        }
-        /**
-         * Show action on plugin page.
-         *
-         * @param  array $links links.
-         * @return array
-         */
-        public function add_action_links($links)
-        {
-        }
-        /**
-         *  Initialize after Spectra gets loaded.
-         */
-        public function settings_admin_scripts()
-        {
-        }
-        /**
-         * Add submenu to admin menu.
-         *
-         * @since 1.0.0
-         */
-        public function setup_menu()
-        {
-        }
-        /**
-         * Renders the admin settings.
-         *
-         * @since 1.0.0
-         * @return void
-         */
-        public function render()
-        {
-        }
-        /**
-         * Renders the admin settings content.
-         *
-         * @since 1.0.0
-         * @param sting $menu_page_slug current page name.
-         * @param sting $page_action current page action.
-         *
-         * @return void
-         */
-        public function render_content($menu_page_slug, $page_action)
-        {
-        }
-        /**
-         * Enqueues the needed CSS/JS for the builder's admin settings page.
-         *
-         * @since 1.0.0
-         */
-        public function styles_scripts()
-        {
-        }
-        /**
-         * Create an Array of Blocks info which we need to show in Admin dashboard.
-         */
-        public function get_blocks_info_for_activation_deactivation()
-        {
-        }
-        /**
-         * Get plugin status
-         *
-         * @since 2.0.0
-         *
-         * @param  string $plugin_init_file Plguin init file.
-         * @return mixed
-         */
-        public function get_plugin_status($plugin_init_file)
-        {
-        }
-        /**
-         * Settings app scripts
-         *
-         * @param array $localize Variable names.
-         */
-        public function settings_app_scripts($localize)
-        {
-        }
-        /**
-         *  Add footer link.
-         */
-        public function add_footer_link()
-        {
-        }
-    }
+	/**
+	 * Class Admin_Helper.
+	 */
+	class Admin_Helper
+	{
+		/**
+		 * Common.
+		 *
+		 * @var object instance
+		 */
+		public static $common = null;
+		/**
+		 * Options.
+		 *
+		 * @var object instance
+		 */
+		public static $options = null;
+		/**
+		 * Get Common settings.
+		 *
+		 * @return array.
+		 */
+		public static function get_common_settings()
+		{
+		}
+		/**
+		 * Get Visibility Page
+		 *
+		 * @since 2.0.0
+		 * @return boolean|array
+		 */
+		public static function get_visibility_page()
+		{
+		}
+		/**
+		 * Get Changelogs from API.
+		 *
+		 * @since 2.0.0
+		 * @return array $changelog_data Changelog Data.
+		 */
+		public static function get_changelog_feed_data()
+		{
+		}
+		/**
+		 * Get blocks.
+		 */
+		public static function get_blocks()
+		{
+		}
+		/**
+		 * Get options.
+		 */
+		public static function get_options()
+		{
+		}
+		/**
+		 * Get Rollback versions.
+		 *
+		 * @since 1.23.0
+		 * @return array
+		 * @access public
+		 */
+		public static function get_rollback_versions_options()
+		{
+		}
+		/**
+		 * Sort Rollback versions.
+		 *
+		 * @param string $prev Previous Version.
+		 * @param string $next Next Version.
+		 *
+		 * @since 1.23.0
+		 * @return array
+		 * @access public
+		 */
+		public static function sort_rollback_versions($prev, $next)
+		{
+		}
+	}
+	/**
+	 * Class Admin_Menu.
+	 */
+	class Admin_Menu
+	{
+		/**
+		 * Initiator
+		 *
+		 * @since 1.0.0
+		 * @return object initialized object of class.
+		 */
+		public static function get_instance()
+		{
+		}
+		/**
+		 * Constructor
+		 *
+		 * @since 1.0.0
+		 */
+		public function __construct()
+		{
+		}
+		/**
+		 * Init Hooks.
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function initialize_hooks()
+		{
+		}
+		/**
+		 * Show action on plugin page.
+		 *
+		 * @param  array $links links.
+		 * @return array
+		 */
+		public function add_action_links($links)
+		{
+		}
+		/**
+		 *  Initialize after Spectra gets loaded.
+		 */
+		public function settings_admin_scripts()
+		{
+		}
+		/**
+		 * Add submenu to admin menu.
+		 *
+		 * @since 1.0.0
+		 */
+		public function setup_menu()
+		{
+		}
+		/**
+		 * Renders the admin settings.
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function render()
+		{
+		}
+		/**
+		 * Renders the admin settings content.
+		 *
+		 * @since 1.0.0
+		 * @param sting $menu_page_slug current page name.
+		 * @param sting $page_action current page action.
+		 *
+		 * @return void
+		 */
+		public function render_content($menu_page_slug, $page_action)
+		{
+		}
+		/**
+		 * Enqueues the needed CSS/JS for the builder's admin settings page.
+		 *
+		 * @since 1.0.0
+		 */
+		public function styles_scripts()
+		{
+		}
+		/**
+		 * Create an Array of Blocks info which we need to show in Admin dashboard.
+		 */
+		public function get_blocks_info_for_activation_deactivation()
+		{
+		}
+		/**
+		 * Get plugin status
+		 *
+		 * @since 2.0.0
+		 *
+		 * @param  string $plugin_init_file Plguin init file.
+		 * @return mixed
+		 */
+		public function get_plugin_status($plugin_init_file)
+		{
+		}
+		/**
+		 * Settings app scripts
+		 *
+		 * @param array $localize Variable names.
+		 */
+		public function settings_app_scripts($localize)
+		{
+		}
+		/**
+		 *  Add footer link.
+		 */
+		public function add_footer_link()
+		{
+		}
+	}
 }
 namespace UagAdmin {
-    /**
-     * Class Admin_Loader.
-     */
-    class Admin_Loader
-    {
-        /**
-         * Initiator
-         *
-         * @since 2.0.0
-         * @return object initialized object of class.
-         */
-        public static function get_instance()
-        {
-        }
-        /**
-         * Autoload classes.
-         *
-         * @param string $class class name.
-         */
-        public function autoload($class)
-        {
-        }
-        /**
-         * Constructor
-         *
-         * @since 2.0.0
-         */
-        public function __construct()
-        {
-        }
-        /**
-         * Include required classes.
-         */
-        public function define_constants()
-        {
-        }
-        /**
-         * Include required classes.
-         */
-        public function setup_classes()
-        {
-        }
-    }
+	/**
+	 * Class Admin_Loader.
+	 */
+	class Admin_Loader
+	{
+		/**
+		 * Initiator
+		 *
+		 * @since 2.0.0
+		 * @return object initialized object of class.
+		 */
+		public static function get_instance()
+		{
+		}
+		/**
+		 * Autoload classes.
+		 *
+		 * @param string $class class name.
+		 */
+		public function autoload($class)
+		{
+		}
+		/**
+		 * Constructor
+		 *
+		 * @since 2.0.0
+		 */
+		public function __construct()
+		{
+		}
+		/**
+		 * Include required classes.
+		 */
+		public function define_constants()
+		{
+		}
+		/**
+		 * Include required classes.
+		 */
+		public function setup_classes()
+		{
+		}
+	}
 }
 namespace UagAdmin\Api {
-    /**
-     * Class Api_Base.
-     */
-    abstract class Api_Base extends \WP_REST_Controller
-    {
-        /**
-         * Endpoint namespace.
-         *
-         * @var string
-         */
-        protected $namespace = 'uag/v1';
-        /**
-         * Register API routes.
-         */
-        public function get_api_namespace()
-        {
-        }
-    }
-    /**
-     * Class Admin_Query.
-     */
-    class Common_Settings extends \UagAdmin\Api\Api_Base
-    {
-        /**
-         * Route base.
-         *
-         * @var string
-         */
-        protected $rest_base = '/admin/commonsettings/';
-        /**
-         * Initiator
-         *
-         * @since 1.0.0
-         * @return object initialized object of class.
-         */
-        public static function get_instance()
-        {
-        }
-        /**
-         * Init Hooks.
-         *
-         * @since 1.0.0
-         * @return void
-         */
-        public function register_routes()
-        {
-        }
-        /**
-         * Get common settings.
-         *
-         * @param  WP_REST_Request $request Full details about the request.
-         */
-        public function get_common_settings($request)
-        {
-        }
-        /**
-         * Check whether a given request has permission to read notes.
-         *
-         * @param  WP_REST_Request $request Full details about the request.
-         * @return WP_Error|boolean
-         */
-        public function get_items_permissions_check($request)
-        {
-        }
-    }
-    /**
-     * Class Api_Init.
-     */
-    class Api_Init
-    {
-        /**
-         * Initiator
-         *
-         * @since 1.0.0
-         * @return object initialized object of class.
-         */
-        public static function get_instance()
-        {
-        }
-        /**
-         * Constructor
-         *
-         * @since 1.0.0
-         */
-        public function __construct()
-        {
-        }
-        /**
-         * Init Hooks.
-         *
-         * @since 1.0.0
-         * @return void
-         */
-        public function initialize_hooks()
-        {
-        }
-        /**
-         * Register API routes.
-         */
-        public function register_routes()
-        {
-        }
-    }
+	/**
+	 * Class Api_Base.
+	 */
+	abstract class Api_Base extends \WP_REST_Controller
+	{
+		/**
+		 * Endpoint namespace.
+		 *
+		 * @var string
+		 */
+		protected $namespace = 'uag/v1';
+		/**
+		 * Register API routes.
+		 */
+		public function get_api_namespace()
+		{
+		}
+	}
+	/**
+	 * Class Admin_Query.
+	 */
+	class Common_Settings extends \UagAdmin\Api\Api_Base
+	{
+		/**
+		 * Route base.
+		 *
+		 * @var string
+		 */
+		protected $rest_base = '/admin/commonsettings/';
+		/**
+		 * Initiator
+		 *
+		 * @since 1.0.0
+		 * @return object initialized object of class.
+		 */
+		public static function get_instance()
+		{
+		}
+		/**
+		 * Init Hooks.
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function register_routes()
+		{
+		}
+		/**
+		 * Get common settings.
+		 *
+		 * @param  WP_REST_Request $request Full details about the request.
+		 */
+		public function get_common_settings($request)
+		{
+		}
+		/**
+		 * Check whether a given request has permission to read notes.
+		 *
+		 * @param  WP_REST_Request $request Full details about the request.
+		 * @return WP_Error|boolean
+		 */
+		public function get_items_permissions_check($request)
+		{
+		}
+	}
+	/**
+	 * Class Api_Init.
+	 */
+	class Api_Init
+	{
+		/**
+		 * Initiator
+		 *
+		 * @since 1.0.0
+		 * @return object initialized object of class.
+		 */
+		public static function get_instance()
+		{
+		}
+		/**
+		 * Constructor
+		 *
+		 * @since 1.0.0
+		 */
+		public function __construct()
+		{
+		}
+		/**
+		 * Init Hooks.
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function initialize_hooks()
+		{
+		}
+		/**
+		 * Register API routes.
+		 */
+		public function register_routes()
+		{
+		}
+	}
 }
 namespace UagAdmin\Ajax {
-    /**
-     * Class Ajax_Base.
-     */
-    abstract class Ajax_Base
-    {
-        /**
-         * Erros class instance.
-         *
-         * @var object
-         */
-        public $errors = null;
-        /**
-         * Constructor
-         *
-         * @since 2.0.0
-         */
-        public function __construct()
-        {
-        }
-        /**
-         * Register ajax events.
-         *
-         * @param array $ajax_events Ajax events.
-         */
-        public function init_ajax_events($ajax_events)
-        {
-        }
-        /**
-         * Localize nonce for ajax call.
-         *
-         * @param string $action Action name.
-         * @return void
-         */
-        public function localize_ajax_action_nonce($action)
-        {
-        }
-        /**
-         * Get ajax error message.
-         *
-         * @param string $type Message type.
-         * @return string
-         */
-        public function get_error_msg($type)
-        {
-        }
-    }
-    /**
-     * Class Common_Settings.
-     */
-    class Common_Settings extends \UagAdmin\Ajax\Ajax_Base
-    {
-        /**
-         * Initiator
-         *
-         * @return object initialized object of class.
-         *
-         * @since 2.0.0
-         */
-        public static function get_instance()
-        {
-        }
-        /**
-         * Register_ajax_events.
-         *
-         * @return void
-         */
-        public function register_ajax_events()
-        {
-        }
-        /**
-         * Save global option of button to inherit from theme.
-         *
-         * @since 2.6.2
-         * @return void
-         */
-        public function btn_inherit_from_theme()
-        {
-        }
-        /**
-         * Required Spectra Pro Plugin Activate
-         *
-         * @return void
-         */
-        public function pro_activate()
-        {
-        }
-        /**
-         * Save settings - Saves google recaptcha v3 secret key.
-         *
-         * @return void
-         */
-        public function recaptcha_secret_key_v3()
-        {
-        }
-        /**
-         * Save settings - Saves google recaptcha v2 secret key.
-         *
-         * @return void
-         */
-        public function recaptcha_secret_key_v2()
-        {
-        }
-        /**
-         * Save settings - Saves google recaptcha v2 site key.
-         *
-         * @return void
-         */
-        public function recaptcha_site_key_v2()
-        {
-        }
-        /**
-         * Save settings - Saves google recaptcha v3 site key.
-         *
-         * @return void
-         */
-        public function recaptcha_site_key_v3()
-        {
-        }
-        /**
-         * Save settings - Saves fetch_pages.
-         *
-         * @return void
-         */
-        public function fetch_pages()
-        {
-        }
-        /**
-         * Save settings - Saves visibility_page.
-         *
-         * @since 2.8.0
-         * @return void
-         */
-        public function visibility_page()
-        {
-        }
-        /**
-         * Save settings - Saves visibility_mode.
-         *
-         * @since 2.8.0
-         * @return void
-         */
-        public function visibility_mode()
-        {
-        }
-        /**
-         * Save setting - Saves content_width.
-         *
-         * @return void
-         */
-        public function content_width()
-        {
-        }
-        /**
-         * Save setting - Saves container global padding.
-         *
-         * @return void
-         */
-        public function container_global_padding()
-        {
-        }
-        /**
-         * Save setting - Saves container global elements gap.
-         *
-         * @return void
-         */
-        public function container_global_elements_gap()
-        {
-        }
-        /**
-         * Save setting - Saves blocks editor spacing.
-         *
-         * @return void
-         */
-        public function blocks_editor_spacing()
-        {
-        }
-        /**
-         * Save setting - Loads selected font globally.
-         *
-         * @return void
-         */
-        public function load_select_font_globally()
-        {
-        }
-        /**
-         * Save setting - Loads selected font globally.
-         *
-         * @since 2.5.1
-         * @return void
-         */
-        public function load_fse_font_globally()
-        {
-        }
-        /**
-         * Save setting - Saves selected font globally.
-         *
-         * @since 2.5.1
-         * @return void
-         */
-        public function select_font_globally()
-        {
-        }
-        /**
-         * Save setting - Saves selected font globally.
-         *
-         * @since 2.5.1
-         * @return void
-         */
-        public function fse_font_globally_delete()
-        {
-        }
-        /**
-         * Save setting - Saves selected font globally.
-         *
-         * @since 2.5.1
-         * @return void
-         */
-        public function fse_font_globally()
-        {
-        }
-        /**
-         * Save setting - Enables masonry gallery.
-         *
-         * @return void
-         */
-        public function enable_masonry_gallery()
-        {
-        }
-        /**
-         * Save setting - Loads gfonts locally.
-         *
-         * @return void
-         */
-        public function load_gfonts_locally()
-        {
-        }
-        /**
-         * Save setting - Collapses panels.
-         *
-         * @return void
-         */
-        public function collapse_panels()
-        {
-        }
-        /**
-         * Save setting - Enables copy paste.
-         *
-         * @return void
-         */
-        public function copy_paste()
-        {
-        }
-        /**
-         * Save setting - Saves social settings.
-         *
-         * @return void
-         *
-         * @since 2.1.0
-         */
-        public function social()
-        {
-        }
-        /**
-         * Save setting - Enables dynamic content mode.
-         *
-         * @return void
-         *
-         * @since 2.1.0
-         */
-        public function dynamic_content_mode()
-        {
-        }
-        /**
-         * Save setting - Preloads local fonts.
-         *
-         * @return void
-         */
-        public function preload_local_fonts()
-        {
-        }
-        /**
-         * Save setting - Enables block conditions.
-         *
-         * @return void
-         *
-         * @since 2.4.0
-         */
-        public function enable_block_condition()
-        {
-        }
-        /**
-         * Save setting - Enables block responsiveness.
-         *
-         * @return void
-         */
-        public function enable_block_responsive()
-        {
-        }
-        /**
-         * Save setting - Enables dynamic content.
-         *
-         * @return void
-         *
-         * @since 2.1.0
-         */
-        public function enable_dynamic_content()
-        {
-        }
-        /**
-         * Save setting - Enables animation extension.
-         *
-         * @return void
-         *
-         * @since 2.6.0
-         */
-        public function enable_animations_extension()
-        {
-        }
-        /**
-         * Save settings - Enables templates button.
-         *
-         * @return void
-         */
-        public function enable_templates_button()
-        {
-        }
-        /**
-         * Save setting - Enables the on-page CSS button .
-         *
-         * @return void
-         */
-        public function enable_on_page_css_button()
-        {
-        }
-        /**
-         * Save setting - Activates and deactivates blocks .
-         *
-         * @return void
-         */
-        public function blocks_activation_and_deactivation()
-        {
-        }
-        /**
-         * Save setting - Enables beta updates.
-         *
-         * @return void
-         */
-        public function enable_beta_updates()
-        {
-        }
-        /**
-         * Save setting - Enables legacy blocks.
-         *
-         * @return void
-         */
-        public function enable_legacy_blocks()
-        {
-        }
-        /**
-         * Save setting - Enables file generation.
-         *
-         * @return void
-         */
-        public function enable_file_generation()
-        {
-        }
-        /**
-         * Delete all Assets.
-         *
-         * @since 2.6.2
-         * @return void
-         */
-        public function delete_all_assets()
-        {
-        }
-        /**
-         * Save setting - Regenerates assets.
-         *
-         * @return void
-         */
-        public function regenerate_assets()
-        {
-        }
-        /**
-         * Save setting - Sanitizes form inputs.
-         *
-         * @param array $input_settings setting data.
-         * @return array    The sanitized form inputs.
-         */
-        public function sanitize_form_inputs($input_settings = array())
-        {
-        }
-        /**
-         * Save setting - Loads font awesome 5.
-         *
-         * @return void
-         */
-        public function load_font_awesome_5()
-        {
-        }
-        /**
-         * Save setting - Auto recovers the block.
-         *
-         * @return void
-         */
-        public function auto_block_recovery()
-        {
-        }
-        /**
-         * Save setting - All Linked Instagram Accounts.
-         *
-         * @return void
-         *
-         * @since 2.4.1
-         */
-        public function insta_linked_accounts()
-        {
-        }
-        /**
-         * Save setting - All Instagram Users' Media.
-         *
-         * @return void
-         *
-         * @since 2.4.1
-         */
-        public function insta_all_users_media()
-        {
-        }
-        /**
-         * Ajax Request - Refresh All Instagram Tokens.
-         *
-         * @return void
-         *
-         * @since 2.4.1
-         */
-        public function insta_refresh_all_tokens()
-        {
-        }
-    }
-    /**
-     * Class Ajax_Init.
-     */
-    class Ajax_Init
-    {
-        /**
-         * Initiator
-         *
-         * @since 2.0.0
-         * @return object initialized object of class.
-         */
-        public static function get_instance()
-        {
-        }
-        /**
-         * Constructor
-         *
-         * @since 2.0.0
-         */
-        public function __construct()
-        {
-        }
-        /**
-         * Init Hooks.
-         *
-         * @since 2.0.0
-         * @return void
-         */
-        public function initialize_hooks()
-        {
-        }
-        /**
-         * Register Ajax actions.
-         */
-        public function register_all_ajax_events()
-        {
-        }
-    }
-    /**
-     * Class Ajax_Errors
-     */
-    class Ajax_Errors
-    {
-        /**
-         * Initiator
-         *
-         * @since 2.0.0
-         * @return object initialized object of class.
-         */
-        public static function get_instance()
-        {
-        }
-        /**
-         * Constructor
-         *
-         * @since 2.0.0
-         */
-        public function __construct()
-        {
-        }
-        /**
-         * Get error message.
-         *
-         * @param string $type Message type.
-         * @return string
-         */
-        public function get_error_msg($type)
-        {
-        }
-    }
+	/**
+	 * Class Ajax_Base.
+	 */
+	abstract class Ajax_Base
+	{
+		/**
+		 * Erros class instance.
+		 *
+		 * @var object
+		 */
+		public $errors = null;
+		/**
+		 * Constructor
+		 *
+		 * @since 2.0.0
+		 */
+		public function __construct()
+		{
+		}
+		/**
+		 * Register ajax events.
+		 *
+		 * @param array $ajax_events Ajax events.
+		 */
+		public function init_ajax_events($ajax_events)
+		{
+		}
+		/**
+		 * Localize nonce for ajax call.
+		 *
+		 * @param string $action Action name.
+		 * @return void
+		 */
+		public function localize_ajax_action_nonce($action)
+		{
+		}
+		/**
+		 * Get ajax error message.
+		 *
+		 * @param string $type Message type.
+		 * @return string
+		 */
+		public function get_error_msg($type)
+		{
+		}
+	}
+	/**
+	 * Class Common_Settings.
+	 */
+	class Common_Settings extends \UagAdmin\Ajax\Ajax_Base
+	{
+		/**
+		 * Initiator
+		 *
+		 * @return object initialized object of class.
+		 *
+		 * @since 2.0.0
+		 */
+		public static function get_instance()
+		{
+		}
+		/**
+		 * Register_ajax_events.
+		 *
+		 * @return void
+		 */
+		public function register_ajax_events()
+		{
+		}
+		/**
+		 * Save global option of button to inherit from theme.
+		 *
+		 * @since 2.6.2
+		 * @return void
+		 */
+		public function btn_inherit_from_theme()
+		{
+		}
+		/**
+		 * Required Spectra Pro Plugin Activate
+		 *
+		 * @return void
+		 */
+		public function pro_activate()
+		{
+		}
+		/**
+		 * Save settings - Saves google recaptcha v3 secret key.
+		 *
+		 * @return void
+		 */
+		public function recaptcha_secret_key_v3()
+		{
+		}
+		/**
+		 * Save settings - Saves google recaptcha v2 secret key.
+		 *
+		 * @return void
+		 */
+		public function recaptcha_secret_key_v2()
+		{
+		}
+		/**
+		 * Save settings - Saves google recaptcha v2 site key.
+		 *
+		 * @return void
+		 */
+		public function recaptcha_site_key_v2()
+		{
+		}
+		/**
+		 * Save settings - Saves google recaptcha v3 site key.
+		 *
+		 * @return void
+		 */
+		public function recaptcha_site_key_v3()
+		{
+		}
+		/**
+		 * Save settings - Saves fetch_pages.
+		 *
+		 * @return void
+		 */
+		public function fetch_pages()
+		{
+		}
+		/**
+		 * Save settings - Saves visibility_page.
+		 *
+		 * @since 2.8.0
+		 * @return void
+		 */
+		public function visibility_page()
+		{
+		}
+		/**
+		 * Save settings - Saves visibility_mode.
+		 *
+		 * @since 2.8.0
+		 * @return void
+		 */
+		public function visibility_mode()
+		{
+		}
+		/**
+		 * Save setting - Saves content_width.
+		 *
+		 * @return void
+		 */
+		public function content_width()
+		{
+		}
+		/**
+		 * Save setting - Saves container global padding.
+		 *
+		 * @return void
+		 */
+		public function container_global_padding()
+		{
+		}
+		/**
+		 * Save setting - Saves container global elements gap.
+		 *
+		 * @return void
+		 */
+		public function container_global_elements_gap()
+		{
+		}
+		/**
+		 * Save setting - Saves blocks editor spacing.
+		 *
+		 * @return void
+		 */
+		public function blocks_editor_spacing()
+		{
+		}
+		/**
+		 * Save setting - Loads selected font globally.
+		 *
+		 * @return void
+		 */
+		public function load_select_font_globally()
+		{
+		}
+		/**
+		 * Save setting - Loads selected font globally.
+		 *
+		 * @since 2.5.1
+		 * @return void
+		 */
+		public function load_fse_font_globally()
+		{
+		}
+		/**
+		 * Save setting - Saves selected font globally.
+		 *
+		 * @since 2.5.1
+		 * @return void
+		 */
+		public function select_font_globally()
+		{
+		}
+		/**
+		 * Save setting - Saves selected font globally.
+		 *
+		 * @since 2.5.1
+		 * @return void
+		 */
+		public function fse_font_globally_delete()
+		{
+		}
+		/**
+		 * Save setting - Saves selected font globally.
+		 *
+		 * @since 2.5.1
+		 * @return void
+		 */
+		public function fse_font_globally()
+		{
+		}
+		/**
+		 * Save setting - Enables masonry gallery.
+		 *
+		 * @return void
+		 */
+		public function enable_masonry_gallery()
+		{
+		}
+		/**
+		 * Save setting - Enables quick action sidebar.
+		 *
+		 * @return void
+		 */
+		public function enable_quick_action_sidebar()
+		{
+		}
+		/**
+		 * Save setting - Loads gfonts locally.
+		 *
+		 * @return void
+		 */
+		public function load_gfonts_locally()
+		{
+		}
+		/**
+		 * Save setting - Collapses panels.
+		 *
+		 * @return void
+		 */
+		public function collapse_panels()
+		{
+		}
+		/**
+		 * Save setting - Enables copy paste.
+		 *
+		 * @return void
+		 */
+		public function copy_paste()
+		{
+		}
+		/**
+		 * Save setting - Saves social settings.
+		 *
+		 * @return void
+		 *
+		 * @since 2.1.0
+		 */
+		public function social()
+		{
+		}
+		/**
+		 * Save setting - Enables dynamic content mode.
+		 *
+		 * @return void
+		 *
+		 * @since 2.1.0
+		 */
+		public function dynamic_content_mode()
+		{
+		}
+		/**
+		 * Save setting - Preloads local fonts.
+		 *
+		 * @return void
+		 */
+		public function preload_local_fonts()
+		{
+		}
+		/**
+		 * Save setting - Enables block conditions.
+		 *
+		 * @return void
+		 *
+		 * @since 2.4.0
+		 */
+		public function enable_block_condition()
+		{
+		}
+		/**
+		 * Save setting - Enables block responsiveness.
+		 *
+		 * @return void
+		 */
+		public function enable_block_responsive()
+		{
+		}
+		/**
+		 * Save setting - Enables dynamic content.
+		 *
+		 * @return void
+		 *
+		 * @since 2.1.0
+		 */
+		public function enable_dynamic_content()
+		{
+		}
+		/**
+		 * Save setting - Enables animation extension.
+		 *
+		 * @return void
+		 *
+		 * @since 2.6.0
+		 */
+		public function enable_animations_extension()
+		{
+		}
+		/**
+		 * Save settings - Enables templates button.
+		 *
+		 * @return void
+		 */
+		public function enable_templates_button()
+		{
+		}
+		/**
+		 * Save setting - Enables the on-page CSS button .
+		 *
+		 * @return void
+		 */
+		public function enable_on_page_css_button()
+		{
+		}
+		/**
+		 * Save setting - Activates and deactivates blocks .
+		 *
+		 * @return void
+		 */
+		public function blocks_activation_and_deactivation()
+		{
+		}
+		/**
+		 * Save setting - Enables beta updates.
+		 *
+		 * @return void
+		 */
+		public function enable_beta_updates()
+		{
+		}
+		/**
+		 * Save setting - Enables legacy blocks.
+		 *
+		 * @return void
+		 */
+		public function enable_legacy_blocks()
+		{
+		}
+		/**
+		 * Save setting - Enables file generation.
+		 *
+		 * @return void
+		 */
+		public function enable_file_generation()
+		{
+		}
+		/**
+		 * Delete all Assets.
+		 *
+		 * @since 2.6.2
+		 * @return void
+		 */
+		public function delete_all_assets()
+		{
+		}
+		/**
+		 * Save setting - Regenerates assets.
+		 *
+		 * @return void
+		 */
+		public function regenerate_assets()
+		{
+		}
+		/**
+		 * Save setting - Sanitizes form inputs.
+		 *
+		 * @param array $input_settings setting data.
+		 * @return array    The sanitized form inputs.
+		 */
+		public function sanitize_form_inputs($input_settings = array())
+		{
+		}
+		/**
+		 * Save setting - Loads font awesome 5.
+		 *
+		 * @return void
+		 */
+		public function load_font_awesome_5()
+		{
+		}
+		/**
+		 * Save setting - Auto recovers the block.
+		 *
+		 * @return void
+		 */
+		public function auto_block_recovery()
+		{
+		}
+		/**
+		 * Save setting - All Linked Instagram Accounts.
+		 *
+		 * @return void
+		 *
+		 * @since 2.4.1
+		 */
+		public function insta_linked_accounts()
+		{
+		}
+		/**
+		 * Save setting - All Instagram Users' Media.
+		 *
+		 * @return void
+		 *
+		 * @since 2.4.1
+		 */
+		public function insta_all_users_media()
+		{
+		}
+		/**
+		 * Ajax Request - Refresh All Instagram Tokens.
+		 *
+		 * @return void
+		 *
+		 * @since 2.4.1
+		 */
+		public function insta_refresh_all_tokens()
+		{
+		}
+	}
+	/**
+	 * Class Ajax_Init.
+	 */
+	class Ajax_Init
+	{
+		/**
+		 * Initiator
+		 *
+		 * @since 2.0.0
+		 * @return object initialized object of class.
+		 */
+		public static function get_instance()
+		{
+		}
+		/**
+		 * Constructor
+		 *
+		 * @since 2.0.0
+		 */
+		public function __construct()
+		{
+		}
+		/**
+		 * Init Hooks.
+		 *
+		 * @since 2.0.0
+		 * @return void
+		 */
+		public function initialize_hooks()
+		{
+		}
+		/**
+		 * Register Ajax actions.
+		 */
+		public function register_all_ajax_events()
+		{
+		}
+	}
+	/**
+	 * Class Ajax_Errors
+	 */
+	class Ajax_Errors
+	{
+		/**
+		 * Initiator
+		 *
+		 * @since 2.0.0
+		 * @return object initialized object of class.
+		 */
+		public static function get_instance()
+		{
+		}
+		/**
+		 * Constructor
+		 *
+		 * @since 2.0.0
+		 */
+		public function __construct()
+		{
+		}
+		/**
+		 * Get error message.
+		 *
+		 * @param string $type Message type.
+		 * @return string
+		 */
+		public function get_error_msg($type)
+		{
+		}
+	}
 }
 namespace {
-    /**
-     * Download webfonts locally.
-     */
-    class UAGB_WebFont_Loader
-    {
-        /**
-         * The font-format.
-         *
-         * Use "woff" or "woff2".
-         * This will change the user-agent user to make the request.
-         *
-         * @access protected
-         * @since 1.0.0
-         * @var string
-         */
-        protected $font_format = 'woff2';
-        /**
-         * The remote URL.
-         *
-         * @access protected
-         * @since 1.1.0
-         * @var string
-         */
-        protected $remote_url;
-        /**
-         * Base path.
-         *
-         * @access protected
-         * @since 1.1.0
-         * @var string
-         */
-        protected $base_path;
-        /**
-         * Base URL.
-         *
-         * @access protected
-         * @since 1.1.0
-         * @var string
-         */
-        protected $base_url;
-        /**
-         * Subfolder name.
-         *
-         * @access protected
-         * @since 1.1.0
-         * @var string
-         */
-        protected $subfolder_name;
-        /**
-         * The fonts folder.
-         *
-         * @access protected
-         * @since 1.1.0
-         * @var string
-         */
-        protected $fonts_folder;
-        /**
-         * The fonts folder url.
-         *
-         * @access protected
-         * @since 1.1.0
-         * @var string
-         */
-        protected $fonts_folder_url;
-        /**
-         * The local stylesheet's path.
-         *
-         * @access protected
-         * @since 1.1.0
-         * @var string
-         */
-        protected $local_stylesheet_path;
-        /**
-         * The local stylesheet's URL.
-         *
-         * @access protected
-         * @since 1.1.0
-         * @var string
-         */
-        protected $local_stylesheet_url;
-        /**
-         * The remote CSS.
-         *
-         * @access protected
-         * @since 1.1.0
-         * @var string
-         */
-        protected $remote_styles;
-        /**
-         * The final CSS.
-         *
-         * @access protected
-         * @since 1.1.0
-         * @var string
-         */
-        protected $css;
-        /**
-         * Cleanup routine frequency.
-         */
-        const CLEANUP_FREQUENCY = 'monthly';
-        /**
-         * Constructor.
-         *
-         * Get a new instance of the object for a new URL.
-         *
-         * @access public
-         * @since 1.1.0
-         * @param string $url The remote URL.
-         */
-        public function __construct($url = '')
-        {
-        }
-        /**
-         * Get the local URL which contains the styles.
-         *
-         * Fallback to the remote URL if we were unable to write the file locally.
-         *
-         * @access public
-         * @since 1.1.0
-         * @return string
-         */
-        public function get_url()
-        {
-        }
-        /**
-         * Get the local stylesheet URL.
-         *
-         * @access public
-         * @since 1.1.0
-         * @return string
-         */
-        public function get_local_stylesheet_url()
-        {
-        }
-        /**
-         * Get styles with fonts downloaded locally.
-         *
-         * @access public
-         * @since 1.0.0
-         * @return string
-         */
-        public function get_styles()
-        {
-        }
-        /**
-         * Get styles from remote url with fonts downloaded locally without writing css file.
-         * Note - It always request to remote and it will not create a file on local.
-         *
-         * @access public
-         * @since 1.0.0
-         * @return string
-         */
-        public function get_remote_styles()
-        {
-        }
-        /**
-         * Get local stylesheet contents.
-         *
-         * @access public
-         * @since 1.1.0
-         * @return string|false Returns the remote URL contents.
-         */
-        public function get_local_stylesheet_contents()
-        {
-        }
-        /**
-         * Get remote file contents.
-         *
-         * @access public
-         * @since 1.0.0
-         * @return string Returns the remote URL contents.
-         */
-        public function get_remote_url_contents()
-        {
-        }
-        /**
-         * Download files mentioned in our CSS locally.
-         *
-         * @access public
-         * @since 1.0.0
-         * @return array Returns an array of remote URLs and their local counterparts.
-         */
-        public function get_local_files_from_css()
-        {
-        }
-        /**
-         * Get font files from the CSS.
-         *
-         * @access public
-         * @since 1.0.0
-         * @return array Returns an array of font-families and the font-files used.
-         */
-        public function get_remote_files_from_css()
-        {
-        }
-        /**
-         * Write the CSS to the filesystem.
-         *
-         * @access protected
-         * @since 1.1.0
-         * @return string|false Returns the absolute path of the file on success, or false on fail.
-         */
-        protected function write_stylesheet()
-        {
-        }
-        /**
-         * Get the stylesheet path.
-         *
-         * @access public
-         * @since 1.1.0
-         * @return string
-         */
-        public function get_local_stylesheet_path()
-        {
-        }
-        /**
-         * Get the local stylesheet filename.
-         *
-         * This is a hash, generated from the site-URL, the wp-content path and the URL.
-         * This way we can avoid issues with sites changing their URL, or the wp-content path etc.
-         *
-         * @access public
-         * @since 1.1.0
-         * @return string
-         */
-        public function get_local_stylesheet_filename()
-        {
-        }
-        /**
-         * Set the font-format to be used.
-         *
-         * @access public
-         * @since 1.0.0
-         * @param string $format The format to be used. Use "woff" or "woff2".
-         * @return void
-         */
-        public function set_font_format($format = 'woff2')
-        {
-        }
-        /**
-         * Check if the local stylesheet exists.
-         *
-         * @access public
-         * @since 1.1.0
-         * @return bool
-         */
-        public function local_file_exists()
-        {
-        }
-        /**
-         * Get the base path.
-         *
-         * @access public
-         * @since 1.1.0
-         * @return string
-         */
-        public function get_base_path()
-        {
-        }
-        /**
-         * Get the base URL.
-         *
-         * @access public
-         * @since 1.1.0
-         * @return string
-         */
-        public function get_base_url()
-        {
-        }
-        /**
-         * Get the subfolder name.
-         *
-         * @access public
-         * @since 1.1.0
-         * @return string
-         */
-        public function get_subfolder_name()
-        {
-        }
-        /**
-         * Get the folder for fonts.
-         *
-         * @access public
-         * @return string
-         */
-        public function get_fonts_folder()
-        {
-        }
-        /**
-         * Get the url to folder of fonts.
-         *
-         * @access public
-         * @return string
-         */
-        public function get_fonts_folder_url()
-        {
-        }
-        /**
-         * Schedule a cleanup.
-         *
-         * Deletes the fonts files on a regular basis.
-         * This way font files will get updated regularly,
-         * and we avoid edge cases where unused files remain in the server.
-         *
-         * @access public
-         * @since 1.1.0
-         * @return void
-         */
-        public function schedule_cleanup()
-        {
-        }
-        /**
-         * Delete the fonts folder.
-         *
-         * This runs as part of a cleanup routine.
-         *
-         * @access public
-         * @since 1.1.0
-         * @return bool
-         */
-        public function delete_fonts_folder()
-        {
-        }
-        /**
-         * Get the filesystem.
-         *
-         * @access protected
-         * @since 1.0.0
-         * @return WP_Filesystem
-         */
-        protected function get_filesystem()
-        {
-        }
-        /**
-         * Get the font files and preload them.
-         *
-         * @access public
-         */
-        public function get_preload_local_fonts()
-        {
-        }
-    }
-    /**
-     * Admin
-     */
-    class UAGB_Ast_Block_Templates
-    {
-        /**
-         * Get Instance
-         *
-         * @since 1.0.0
-         *
-         * @return object Class object.
-         */
-        public static function get_instance()
-        {
-        }
-        /**
-         * Add support to change template button text.
-         *
-         * @since 1.21.0
-         * @param  array $vars localize array of button.
-         */
-        public function update_vars($vars = array())
-        {
-        }
-        /**
-         * Version Check
-         *
-         * @return void
-         */
-        public function version_check()
-        {
-        }
-        /**
-         * Load latest plugin
-         *
-         * @return void
-         */
-        public function load()
-        {
-        }
-    }
-    /**
-     * Astra_Notices
-     *
-     * @since 1.0.0
-     */
-    class Astra_Notices
-    {
-        /**
-         * Initiator
-         *
-         * @since 1.0.0
-         * @return object initialized object of class.
-         */
-        public static function get_instance()
-        {
-        }
-        /**
-         * Constructor
-         *
-         * @since 1.0.0
-         */
-        public function __construct()
-        {
-        }
-        /**
-         * Filters and Returns a list of allowed tags and attributes for a given context.
-         *
-         * @param array  $allowedposttags array of allowed tags.
-         * @param string $context Context type (explicit).
-         * @since 1.0.0
-         * @return array
-         */
-        public function add_data_attributes($allowedposttags, $context)
-        {
-        }
-        /**
-         * Add Notice.
-         *
-         * @since 1.0.0
-         * @param array $args Notice arguments.
-         * @return void
-         */
-        public static function add_notice($args = array())
-        {
-        }
-        /**
-         * Dismiss Notice.
-         *
-         * @since 1.0.0
-         * @return void
-         */
-        public function dismiss_notice()
-        {
-        }
-        /**
-         * Enqueue Scripts.
-         *
-         * @since 1.0.0
-         * @return void
-         */
-        public function enqueue_scripts()
-        {
-        }
-        /**
-         * Sort the notices based on the given priority of the notice.
-         * This function is called from usort()
-         *
-         * @since 1.5.2
-         * @param array $notice_1 First notice.
-         * @param array $notice_2 Second Notice.
-         * @return array
-         */
-        public function sort_notices($notice_1, $notice_2)
-        {
-        }
-        /**
-         * Display the notices in the WordPress admin.
-         *
-         * @since 1.0.0
-         * @return void
-         */
-        public function show_notices()
-        {
-        }
-        /**
-         * Render a notice.
-         *
-         * @since 1.0.0
-         * @param  array $notice Notice markup.
-         * @return void
-         */
-        public static function markup($notice = array())
-        {
-        }
-        /**
-         * Get base URL for the astra-notices.
-         *
-         * @return mixed URL.
-         */
-        public static function get_url()
-        {
-        }
-    }
-    /**
-     * Ast_Block Templates WP CLI
-     */
-    class Ast_Block_Templates_Sync_Library_WP_CLI extends \WP_CLI_Command
-    {
-        /**
-         * Sync
-         *
-         *  Example: wp ast-block-templates sync
-         *
-         * @since 1.0.0
-         * @param  array $args       Arguments.
-         * @param  array $assoc_args Associated Arguments.
-         * @return void
-         */
-        public function sync($args = array(), $assoc_args = array())
-        {
-        }
-    }
-    /**
-     * Ast_Block Templates Image Importer
-     *
-     * @since 1.0.0
-     */
-    class Ast_Block_Templates_Image_Importer
-    {
-        /**
-         * Initiator
-         *
-         * @since 1.0.0
-         * @return object initialized object of class.
-         */
-        public static function get_instance()
-        {
-        }
-        /**
-         * Constructor
-         *
-         * @since 1.0.0
-         */
-        public function __construct()
-        {
-        }
-        /**
-         * Process Image Download
-         *
-         * @since 1.0.0
-         * @param  array $attachments Attachment array.
-         * @return array              Attachment array.
-         */
-        public function process($attachments)
-        {
-        }
-        /**
-         * Get Hash Image.
-         *
-         * @since 1.0.0
-         * @param  string $attachment_url Attachment URL.
-         * @return string                 Hash string.
-         */
-        public function get_hash_image($attachment_url)
-        {
-        }
-        /**
-         * Import Image
-         *
-         * @since 1.0.0
-         * @param  array $attachment Attachment array.
-         * @return array              Attachment array.
-         */
-        public function import($attachment)
-        {
-        }
-        /**
-         * Is Image URL
-         *
-         * @since 1.0.0
-         *
-         * @param  string $url URL.
-         * @return boolean
-         */
-        public function is_image_url($url = '')
-        {
-        }
-    }
-    /**
-     * Admin
-     */
-    class Ast_Block_Templates
-    {
-        /**
-         * Get Instance
-         *
-         * @since 1.0.0
-         *
-         * @return object Class object.
-         */
-        public static function get_instance()
-        {
-        }
-        /**
-         * Add .json files as supported format in the uploader.
-         *
-         * @param array $mimes Already supported mime types.
-         */
-        public function custom_upload_mimes($mimes)
-        {
-        }
-        /**
-         * Retrieve block data from an API and update the option with the data.
-         *
-         * @since 1.3.0
-         * @return void
-         */
-        public function api_request()
-        {
-        }
-        /**
-         * Import WP Forms
-         *
-         * @since 1.0.0
-         *
-         * @param  string $wpforms_url WP Forms JSON file URL.
-         * @return void
-         */
-        public function import_wpforms($wpforms_url = '')
-        {
-        }
-        /**
-         * Import Block
-         */
-        public function import_block()
-        {
-        }
-        /**
-         * Download and Replace hotlink images
-         *
-         * @since 1.0.0
-         *
-         * @param  string $content Mixed post content.
-         * @return array           Hotlink image array.
-         */
-        public function get_content($content = '')
-        {
-        }
-        /**
-         * Allowed tags for the batch update process.
-         *
-         * @param  array        $allowedposttags   Array of default allowable HTML tags.
-         * @param  string|array $context    The context for which to retrieve tags. Allowed values are 'post',
-         *                                  'strip', 'data', 'entities', or the name of a field filter such as
-         *                                  'pre_user_description'.
-         * @return array Array of allowed HTML tags and their allowed attributes.
-         */
-        public function allowed_tags_and_attributes($allowedposttags, $context)
-        {
-        }
-        /**
-         * Activate Plugin
-         */
-        public function activate_plugin()
-        {
-        }
-        /**
-         * Template Importer
-         *
-         * @since 1.0.0
-         */
-        public function template_importer()
-        {
-        }
-        /**
-         * Template Assets
-         *
-         * @since 1.0.0
-         */
-        public function template_assets()
-        {
-        }
-        /**
-         * Get white label name
-         *
-         * @since 1.0.7
-         *
-         * @return string
-         */
-        public function get_white_label()
-        {
-        }
-        /**
-         * Get plugin status
-         *
-         * @since 1.0.0
-         *
-         * @param  string $plugin_init_file Plguin init file.
-         * @return mixed
-         */
-        public function get_plugin_status($plugin_init_file)
-        {
-        }
-        /**
-         * Get all sites
-         *
-         * @since 1.0.0
-         *
-         * @return array page builder sites.
-         */
-        public function get_all_sites()
-        {
-        }
-        /**
-         * Get all blocks
-         *
-         * @since 1.0.0
-         * @return array All Elementor Blocks.
-         */
-        public function get_all_blocks()
-        {
-        }
-        /**
-         * Download File Into Uploads Directory
-         *
-         * @since 1.0.0
-         *
-         * @param  string $file Download File URL.
-         * @param  array  $overrides Upload file arguments.
-         * @param  int    $timeout_seconds Timeout in downloading the XML file in seconds.
-         * @return array        Downloaded file data.
-         */
-        public function download_file($file = '', $overrides = array(), $timeout_seconds = 300)
-        {
-        }
-    }
-    /**
-     * Sync Library
-     *
-     * @since 1.0.0
-     */
-    class Ast_Block_Templates_Sync_Library
-    {
-        /**
-         * Catch the latest checksums
-         *
-         * @since 1.1.0
-         * @access public
-         * @var string Last checksums.
-         */
-        public $last_export_checksums;
-        /**
-         * Initiator
-         *
-         * @since 1.0.0
-         * @return object initialized object of class.
-         */
-        public static function get_instance()
-        {
-        }
-        /**
-         * Constructor
-         *
-         * @since 1.0.0
-         */
-        public function __construct()
-        {
-        }
-        /**
-         * Auto Sync the library
-         *
-         * @since 1.0.6
-         * @return void
-         */
-        public function auto_sync()
-        {
-        }
-        /**
-         * Start Importer
-         *
-         * @since 1.0.0
-         * @return void
-         */
-        public function setup_templates()
-        {
-        }
-        /**
-         * Set default assets
-         *
-         * @since 1.0.2
-         */
-        public function set_default_assets()
-        {
-        }
-        /**
-         * Process Import
-         *
-         * @since 1.0.6
-         *
-         * @return mixed Null if process is already started.
-         */
-        public function process_sync()
-        {
-        }
-        /**
-         * Json Files Names.
-         *
-         * @since 1.0.1
-         * @return array
-         */
-        public function get_default_assets()
-        {
-        }
-        /**
-         * Update Library Complete
-         *
-         * @since 1.0.0
-         * @return void
-         */
-        public function update_library_complete()
-        {
-        }
-        /**
-         * Update Library
-         *
-         * @since 1.0.0
-         * @return void
-         */
-        public function check_sync_status()
-        {
-        }
-        /**
-         * Get Last Exported Checksum Status
-         *
-         * @since 1.0.0
-         * @return string Checksums Status.
-         */
-        public function get_last_export_checksums()
-        {
-        }
-        /**
-         * Set Last Exported Checksum
-         *
-         * @since 1.0.0
-         * @return string Checksums Status.
-         */
-        public function set_last_export_checksums()
-        {
-        }
-        /**
-         * Update Latest Checksums
-         *
-         * Store latest checksum after batch complete.
-         *
-         * @since 1.0.0
-         * @return void
-         */
-        public function update_latest_checksums()
-        {
-        }
-        /**
-         * Import Sites
-         *
-         * @since 1.0.0
-         * @return void
-         */
-        public function ajax_import_sites()
-        {
-        }
-        /**
-         * Import Categories
-         *
-         * @since 1.0.3
-         * @return void
-         */
-        public function ajax_import_categories()
-        {
-        }
-        /**
-         * Import Blocks
-         *
-         * @since 1.0.0
-         * @return void
-         */
-        public function ajax_import_blocks()
-        {
-        }
-        /**
-         * Blocks Requests Count
-         *
-         * @since 1.0.0
-         * @return void
-         */
-        public function ajax_sites_requests_count()
-        {
-        }
-        /**
-         * Blocks Requests Count
-         *
-         * @since 1.0.0
-         * @return void
-         */
-        public function ajax_blocks_requests_count()
-        {
-        }
-        /**
-         * Get Sites Total Requests
-         *
-         * @return integer
-         */
-        public function get_total_sites_count()
-        {
-        }
-        /**
-         * Get Blocks Total Requests
-         *
-         * @return integer
-         */
-        public function get_total_blocks_requests()
-        {
-        }
-        /**
-         * Import Sites
-         *
-         * @since 1.0.0
-         * @param  integer $page Page number.
-         * @return void
-         */
-        public function import_sites($page = 1)
-        {
-        }
-        /**
-         * Import Categories
-         *
-         * @since 1.0.3
-         * @return void
-         */
-        public function import_categories()
-        {
-        }
-        /**
-         * Import Blocks
-         *
-         * @since 1.0.0
-         * @param  integer $page Page number.
-         * @return void
-         */
-        public function import_blocks($page = 1)
-        {
-        }
-    }
+	/**
+	 * Download webfonts locally.
+	 */
+	class UAGB_WebFont_Loader
+	{
+		/**
+		 * The font-format.
+		 *
+		 * Use "woff" or "woff2".
+		 * This will change the user-agent user to make the request.
+		 *
+		 * @access protected
+		 * @since 1.0.0
+		 * @var string
+		 */
+		protected $font_format = 'woff2';
+		/**
+		 * The remote URL.
+		 *
+		 * @access protected
+		 * @since 1.1.0
+		 * @var string
+		 */
+		protected $remote_url;
+		/**
+		 * Base path.
+		 *
+		 * @access protected
+		 * @since 1.1.0
+		 * @var string
+		 */
+		protected $base_path;
+		/**
+		 * Base URL.
+		 *
+		 * @access protected
+		 * @since 1.1.0
+		 * @var string
+		 */
+		protected $base_url;
+		/**
+		 * Subfolder name.
+		 *
+		 * @access protected
+		 * @since 1.1.0
+		 * @var string
+		 */
+		protected $subfolder_name;
+		/**
+		 * The fonts folder.
+		 *
+		 * @access protected
+		 * @since 1.1.0
+		 * @var string
+		 */
+		protected $fonts_folder;
+		/**
+		 * The fonts folder url.
+		 *
+		 * @access protected
+		 * @since 1.1.0
+		 * @var string
+		 */
+		protected $fonts_folder_url;
+		/**
+		 * The local stylesheet's path.
+		 *
+		 * @access protected
+		 * @since 1.1.0
+		 * @var string
+		 */
+		protected $local_stylesheet_path;
+		/**
+		 * The local stylesheet's URL.
+		 *
+		 * @access protected
+		 * @since 1.1.0
+		 * @var string
+		 */
+		protected $local_stylesheet_url;
+		/**
+		 * The remote CSS.
+		 *
+		 * @access protected
+		 * @since 1.1.0
+		 * @var string
+		 */
+		protected $remote_styles;
+		/**
+		 * The final CSS.
+		 *
+		 * @access protected
+		 * @since 1.1.0
+		 * @var string
+		 */
+		protected $css;
+		/**
+		 * Cleanup routine frequency.
+		 */
+		const CLEANUP_FREQUENCY = 'monthly';
+		/**
+		 * Constructor.
+		 *
+		 * Get a new instance of the object for a new URL.
+		 *
+		 * @access public
+		 * @since 1.1.0
+		 * @param string $url The remote URL.
+		 */
+		public function __construct($url = '')
+		{
+		}
+		/**
+		 * Get the local URL which contains the styles.
+		 *
+		 * Fallback to the remote URL if we were unable to write the file locally.
+		 *
+		 * @access public
+		 * @since 1.1.0
+		 * @return string
+		 */
+		public function get_url()
+		{
+		}
+		/**
+		 * Get the local stylesheet URL.
+		 *
+		 * @access public
+		 * @since 1.1.0
+		 * @return string
+		 */
+		public function get_local_stylesheet_url()
+		{
+		}
+		/**
+		 * Get styles with fonts downloaded locally.
+		 *
+		 * @access public
+		 * @since 1.0.0
+		 * @return string
+		 */
+		public function get_styles()
+		{
+		}
+		/**
+		 * Get styles from remote url with fonts downloaded locally without writing css file.
+		 * Note - It always request to remote and it will not create a file on local.
+		 *
+		 * @access public
+		 * @since 1.0.0
+		 * @return string
+		 */
+		public function get_remote_styles()
+		{
+		}
+		/**
+		 * Get local stylesheet contents.
+		 *
+		 * @access public
+		 * @since 1.1.0
+		 * @return string|false Returns the remote URL contents.
+		 */
+		public function get_local_stylesheet_contents()
+		{
+		}
+		/**
+		 * Get remote file contents.
+		 *
+		 * @access public
+		 * @since 1.0.0
+		 * @return string Returns the remote URL contents.
+		 */
+		public function get_remote_url_contents()
+		{
+		}
+		/**
+		 * Download files mentioned in our CSS locally.
+		 *
+		 * @access public
+		 * @since 1.0.0
+		 * @return array Returns an array of remote URLs and their local counterparts.
+		 */
+		public function get_local_files_from_css()
+		{
+		}
+		/**
+		 * Get font files from the CSS.
+		 *
+		 * @access public
+		 * @since 1.0.0
+		 * @return array Returns an array of font-families and the font-files used.
+		 */
+		public function get_remote_files_from_css()
+		{
+		}
+		/**
+		 * Write the CSS to the filesystem.
+		 *
+		 * @access protected
+		 * @since 1.1.0
+		 * @return string|false Returns the absolute path of the file on success, or false on fail.
+		 */
+		protected function write_stylesheet()
+		{
+		}
+		/**
+		 * Get the stylesheet path.
+		 *
+		 * @access public
+		 * @since 1.1.0
+		 * @return string
+		 */
+		public function get_local_stylesheet_path()
+		{
+		}
+		/**
+		 * Get the local stylesheet filename.
+		 *
+		 * This is a hash, generated from the site-URL, the wp-content path and the URL.
+		 * This way we can avoid issues with sites changing their URL, or the wp-content path etc.
+		 *
+		 * @access public
+		 * @since 1.1.0
+		 * @return string
+		 */
+		public function get_local_stylesheet_filename()
+		{
+		}
+		/**
+		 * Set the font-format to be used.
+		 *
+		 * @access public
+		 * @since 1.0.0
+		 * @param string $format The format to be used. Use "woff" or "woff2".
+		 * @return void
+		 */
+		public function set_font_format($format = 'woff2')
+		{
+		}
+		/**
+		 * Check if the local stylesheet exists.
+		 *
+		 * @access public
+		 * @since 1.1.0
+		 * @return bool
+		 */
+		public function local_file_exists()
+		{
+		}
+		/**
+		 * Get the base path.
+		 *
+		 * @access public
+		 * @since 1.1.0
+		 * @return string
+		 */
+		public function get_base_path()
+		{
+		}
+		/**
+		 * Get the base URL.
+		 *
+		 * @access public
+		 * @since 1.1.0
+		 * @return string
+		 */
+		public function get_base_url()
+		{
+		}
+		/**
+		 * Get the subfolder name.
+		 *
+		 * @access public
+		 * @since 1.1.0
+		 * @return string
+		 */
+		public function get_subfolder_name()
+		{
+		}
+		/**
+		 * Get the folder for fonts.
+		 *
+		 * @access public
+		 * @return string
+		 */
+		public function get_fonts_folder()
+		{
+		}
+		/**
+		 * Get the url to folder of fonts.
+		 *
+		 * @access public
+		 * @return string
+		 */
+		public function get_fonts_folder_url()
+		{
+		}
+		/**
+		 * Schedule a cleanup.
+		 *
+		 * Deletes the fonts files on a regular basis.
+		 * This way font files will get updated regularly,
+		 * and we avoid edge cases where unused files remain in the server.
+		 *
+		 * @access public
+		 * @since 1.1.0
+		 * @return void
+		 */
+		public function schedule_cleanup()
+		{
+		}
+		/**
+		 * Delete the fonts folder.
+		 *
+		 * This runs as part of a cleanup routine.
+		 *
+		 * @access public
+		 * @since 1.1.0
+		 * @return bool
+		 */
+		public function delete_fonts_folder()
+		{
+		}
+		/**
+		 * Get the filesystem.
+		 *
+		 * @access protected
+		 * @since 1.0.0
+		 * @return WP_Filesystem
+		 */
+		protected function get_filesystem()
+		{
+		}
+		/**
+		 * Get the font files and preload them.
+		 *
+		 * @access public
+		 */
+		public function get_preload_local_fonts()
+		{
+		}
+	}
+	/**
+	 * Admin
+	 */
+	class UAGB_Ast_Block_Templates
+	{
+		/**
+		 * Get Instance
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return object Class object.
+		 */
+		public static function get_instance()
+		{
+		}
+		/**
+		 * Add support to change template button text.
+		 *
+		 * @since 1.21.0
+		 * @param  array $vars localize array of button.
+		 */
+		public function update_vars($vars = array())
+		{
+		}
+		/**
+		 * Version Check
+		 *
+		 * @return void
+		 */
+		public function version_check()
+		{
+		}
+		/**
+		 * Load latest plugin
+		 *
+		 * @return void
+		 */
+		public function load()
+		{
+		}
+	}
+	/**
+	 * Astra_Notices
+	 *
+	 * @since 1.0.0
+	 */
+	class Astra_Notices
+	{
+		/**
+		 * Initiator
+		 *
+		 * @since 1.0.0
+		 * @return object initialized object of class.
+		 */
+		public static function get_instance()
+		{
+		}
+		/**
+		 * Constructor
+		 *
+		 * @since 1.0.0
+		 */
+		public function __construct()
+		{
+		}
+		/**
+		 * Filters and Returns a list of allowed tags and attributes for a given context.
+		 *
+		 * @param array  $allowedposttags array of allowed tags.
+		 * @param string $context Context type (explicit).
+		 * @since 1.0.0
+		 * @return array
+		 */
+		public function add_data_attributes($allowedposttags, $context)
+		{
+		}
+		/**
+		 * Add Notice.
+		 *
+		 * @since 1.0.0
+		 * @param array $args Notice arguments.
+		 * @return void
+		 */
+		public static function add_notice($args = array())
+		{
+		}
+		/**
+		 * Dismiss Notice.
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function dismiss_notice()
+		{
+		}
+		/**
+		 * Enqueue Scripts.
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function enqueue_scripts()
+		{
+		}
+		/**
+		 * Sort the notices based on the given priority of the notice.
+		 * This function is called from usort()
+		 *
+		 * @since 1.5.2
+		 * @param array $notice_1 First notice.
+		 * @param array $notice_2 Second Notice.
+		 * @return array
+		 */
+		public function sort_notices($notice_1, $notice_2)
+		{
+		}
+		/**
+		 * Display the notices in the WordPress admin.
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function show_notices()
+		{
+		}
+		/**
+		 * Render a notice.
+		 *
+		 * @since 1.0.0
+		 * @param  array $notice Notice markup.
+		 * @return void
+		 */
+		public static function markup($notice = array())
+		{
+		}
+		/**
+		 * Get base URL for the astra-notices.
+		 *
+		 * @return mixed URL.
+		 */
+		public static function get_url()
+		{
+		}
+	}
+	/**
+	 * Ast_Block Templates WP CLI
+	 */
+	class Ast_Block_Templates_Sync_Library_WP_CLI extends \WP_CLI_Command
+	{
+		/**
+		 * Sync
+		 *
+		 *  Example: wp ast-block-templates sync
+		 *
+		 * @since 1.0.0
+		 * @param  array $args       Arguments.
+		 * @param  array $assoc_args Associated Arguments.
+		 * @return void
+		 */
+		public function sync($args = array(), $assoc_args = array())
+		{
+		}
+	}
+	/**
+	 * Ast_Block Templates Image Importer
+	 *
+	 * @since 1.0.0
+	 */
+	class Ast_Block_Templates_Image_Importer
+	{
+		/**
+		 * Initiator
+		 *
+		 * @since 1.0.0
+		 * @return object initialized object of class.
+		 */
+		public static function get_instance()
+		{
+		}
+		/**
+		 * Constructor
+		 *
+		 * @since 1.0.0
+		 */
+		public function __construct()
+		{
+		}
+		/**
+		 * Process Image Download
+		 *
+		 * @since 1.0.0
+		 * @param  array $attachments Attachment array.
+		 * @return array              Attachment array.
+		 */
+		public function process($attachments)
+		{
+		}
+		/**
+		 * Get Hash Image.
+		 *
+		 * @since 1.0.0
+		 * @param  string $attachment_url Attachment URL.
+		 * @return string                 Hash string.
+		 */
+		public function get_hash_image($attachment_url)
+		{
+		}
+		/**
+		 * Import Image
+		 *
+		 * @since 1.0.0
+		 * @param  array $attachment Attachment array.
+		 * @return array              Attachment array.
+		 */
+		public function import($attachment)
+		{
+		}
+		/**
+		 * Is Image URL
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param  string $url URL.
+		 * @return boolean
+		 */
+		public function is_image_url($url = '')
+		{
+		}
+	}
+	/**
+	 * Admin
+	 */
+	class Ast_Block_Templates
+	{
+		/**
+		 * Get Instance
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return object Class object.
+		 */
+		public static function get_instance()
+		{
+		}
+		/**
+		 * Add .json files as supported format in the uploader.
+		 *
+		 * @param array $mimes Already supported mime types.
+		 */
+		public function custom_upload_mimes($mimes)
+		{
+		}
+		/**
+		 * Retrieve block data from an API and update the option with the data.
+		 *
+		 * @since 1.3.0
+		 * @return void
+		 */
+		public function api_request()
+		{
+		}
+		/**
+		 * Import WP Forms
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param  string $wpforms_url WP Forms JSON file URL.
+		 * @return void
+		 */
+		public function import_wpforms($wpforms_url = '')
+		{
+		}
+		/**
+		 * Import Block
+		 */
+		public function import_block()
+		{
+		}
+		/**
+		 * Download and Replace hotlink images
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param  string $content Mixed post content.
+		 * @return array           Hotlink image array.
+		 */
+		public function get_content($content = '')
+		{
+		}
+		/**
+		 * Allowed tags for the batch update process.
+		 *
+		 * @param  array        $allowedposttags   Array of default allowable HTML tags.
+		 * @param  string|array $context    The context for which to retrieve tags. Allowed values are 'post',
+		 *                                  'strip', 'data', 'entities', or the name of a field filter such as
+		 *                                  'pre_user_description'.
+		 * @return array Array of allowed HTML tags and their allowed attributes.
+		 */
+		public function allowed_tags_and_attributes($allowedposttags, $context)
+		{
+		}
+		/**
+		 * Activate Plugin
+		 */
+		public function activate_plugin()
+		{
+		}
+		/**
+		 * Template Importer
+		 *
+		 * @since 1.0.0
+		 */
+		public function template_importer()
+		{
+		}
+		/**
+		 * Template Assets
+		 *
+		 * @since 1.0.0
+		 */
+		public function template_assets()
+		{
+		}
+		/**
+		 * Get white label name
+		 *
+		 * @since 1.0.7
+		 *
+		 * @return string
+		 */
+		public function get_white_label()
+		{
+		}
+		/**
+		 * Get plugin status
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param  string $plugin_init_file Plguin init file.
+		 * @return mixed
+		 */
+		public function get_plugin_status($plugin_init_file)
+		{
+		}
+		/**
+		 * Get all sites
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return array page builder sites.
+		 */
+		public function get_all_sites()
+		{
+		}
+		/**
+		 * Get all blocks
+		 *
+		 * @since 1.0.0
+		 * @return array All Elementor Blocks.
+		 */
+		public function get_all_blocks()
+		{
+		}
+		/**
+		 * Download File Into Uploads Directory
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param  string $file Download File URL.
+		 * @param  array  $overrides Upload file arguments.
+		 * @param  int    $timeout_seconds Timeout in downloading the XML file in seconds.
+		 * @return array        Downloaded file data.
+		 */
+		public function download_file($file = '', $overrides = array(), $timeout_seconds = 300)
+		{
+		}
+	}
+	/**
+	 * Sync Library
+	 *
+	 * @since 1.0.0
+	 */
+	class Ast_Block_Templates_Sync_Library
+	{
+		/**
+		 * Catch the latest checksums
+		 *
+		 * @since 1.1.0
+		 * @access public
+		 * @var string Last checksums.
+		 */
+		public $last_export_checksums;
+		/**
+		 * Initiator
+		 *
+		 * @since 1.0.0
+		 * @return object initialized object of class.
+		 */
+		public static function get_instance()
+		{
+		}
+		/**
+		 * Constructor
+		 *
+		 * @since 1.0.0
+		 */
+		public function __construct()
+		{
+		}
+		/**
+		 * Auto Sync the library
+		 *
+		 * @since 1.0.6
+		 * @return void
+		 */
+		public function auto_sync()
+		{
+		}
+		/**
+		 * Start Importer
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function setup_templates()
+		{
+		}
+		/**
+		 * Set default assets
+		 *
+		 * @since 1.0.2
+		 */
+		public function set_default_assets()
+		{
+		}
+		/**
+		 * Process Import
+		 *
+		 * @since 1.0.6
+		 *
+		 * @return mixed Null if process is already started.
+		 */
+		public function process_sync()
+		{
+		}
+		/**
+		 * Json Files Names.
+		 *
+		 * @since 1.0.1
+		 * @return array
+		 */
+		public function get_default_assets()
+		{
+		}
+		/**
+		 * Update Library Complete
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function update_library_complete()
+		{
+		}
+		/**
+		 * Update Library
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function check_sync_status()
+		{
+		}
+		/**
+		 * Get Last Exported Checksum Status
+		 *
+		 * @since 1.0.0
+		 * @return string Checksums Status.
+		 */
+		public function get_last_export_checksums()
+		{
+		}
+		/**
+		 * Set Last Exported Checksum
+		 *
+		 * @since 1.0.0
+		 * @return string Checksums Status.
+		 */
+		public function set_last_export_checksums()
+		{
+		}
+		/**
+		 * Update Latest Checksums
+		 *
+		 * Store latest checksum after batch complete.
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function update_latest_checksums()
+		{
+		}
+		/**
+		 * Import Sites
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function ajax_import_sites()
+		{
+		}
+		/**
+		 * Import Categories
+		 *
+		 * @since 1.0.3
+		 * @return void
+		 */
+		public function ajax_import_categories()
+		{
+		}
+		/**
+		 * Import Blocks
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function ajax_import_blocks()
+		{
+		}
+		/**
+		 * Blocks Requests Count
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function ajax_sites_requests_count()
+		{
+		}
+		/**
+		 * Blocks Requests Count
+		 *
+		 * @since 1.0.0
+		 * @return void
+		 */
+		public function ajax_blocks_requests_count()
+		{
+		}
+		/**
+		 * Get Sites Total Requests
+		 *
+		 * @return integer
+		 */
+		public function get_total_sites_count()
+		{
+		}
+		/**
+		 * Get Blocks Total Requests
+		 *
+		 * @return integer
+		 */
+		public function get_total_blocks_requests()
+		{
+		}
+		/**
+		 * Import Sites
+		 *
+		 * @since 1.0.0
+		 * @param  integer $page Page number.
+		 * @return void
+		 */
+		public function import_sites($page = 1)
+		{
+		}
+		/**
+		 * Import Categories
+		 *
+		 * @since 1.0.3
+		 * @return void
+		 */
+		public function import_categories()
+		{
+		}
+		/**
+		 * Import Blocks
+		 *
+		 * @since 1.0.0
+		 * @param  integer $page Page number.
+		 * @return void
+		 */
+		public function import_blocks($page = 1)
+		{
+		}
+	}
 }
 namespace {
-    /**
-     * Get frontend post_assets obj.
-     *
-     * @since 1.23.0
-     */
-    function uagb_get_front_post_assets()
-    {
-    }
-    /**
-     * Filesystem class
-     *
-     * @since 1.23.0
-     */
-    /**
-     * Install class
-     *
-     * @since 2.0.0
-     *
-     * @return object
-     */
-    function uagb_install()
-    {
-    }
-    /**
-     * Gives UAGB_Block object
-     *
-     * @since 2.1.0
-     *
-     * @return object
-     */
-    function uagb_block()
-    {
-    }
-    /**
-     * Filesystem class
-     *
-     * @since 1.23.0
-     */
-    function uagb_filesystem()
-    {
-    }
-    /**
-     * Load main object
-     *
-     * @since 2.0.0
-     *
-     * @return object
-     */
-    function uagb()
-    {
-    }
-    /**
-     * Get post assets object.
-     *
-     * @param int $post_id current step ID.
-     * @since 2.0.0
-     */
-    function uagb_get_post_assets($post_id)
-    {
-    }
-    /**
-     * Get Spectra Font Awesome Polyfiller.
-     *
-     * @since 2.0.0
-     */
-    function get_spectra_font_awesome_polyfiller()
-    {
-    }
-    /**
-     * Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $default_padding = 20;
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/slider-child';
-    /**
-     * Slider child front end style
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_name = 'slider';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $highLight_border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('highLight');
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/advanced-heading';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('tab');
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/tabs';
-    /**
-     * Frontend CSS & Google Fonts loading File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $overall_border_css = \UAGB_Block_Helper::uag_generate_border_css($attr, 'tab');
-    /**
-     * Frontend JS File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $selector = '.uagb-block-' . $id;
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/forms-url';
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/social-share';
-    /**
-     * Frontend CSS & Google Fonts loading File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $gap_tablet_fallback = \is_numeric($attr['gapTablet']) ? $attr['gapTablet'] : $attr['gap'];
-    /**
-     * Frontend JS File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $base_selector = isset($attr['classMigrate']) && $attr['classMigrate'] ? '.uagb-block-' : '#uagb-social-share-';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/restaurant-menu';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/post-meta';
-    /**
-     * Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $field_border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('input');
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/cf7-styler';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.4.1
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/instagram-feed';
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/post-timeline';
-    /**
-     * Frontend JS File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $selector = '.uagb-block-' . $id;
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/inline-notice';
-    /**
-     * Frontend JS File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $base_selector = '.uagb-block-';
-    /**
-     * Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $overall_border_attributes = \UAGB_Block_Helper::uag_generate_border_attribute('overall');
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/section';
-    /**
-     * Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $success_message_border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('successMsg');
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/forms';
-    /**
-     * Frontend JS File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $selector = '.uagb-block-' . $id;
-    /**
-     * Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $default_buttons_child = array();
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/buttons';
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/forms-textarea';
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/forms-hidden';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/post-excerpt';
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/forms-accept';
-    /**
-     * Attributes File.
-     *
-     * @since 2.4.0
-     *
-     * @package uagb
-     */
-    $box_border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('box');
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.4.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/countdown';
-    /**
-     * Frontend JS File.
-     *
-     * @since 2.4.0
-     *
-     * @package uagb
-     */
-    $selector = '.uagb-block-' . $id;
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/masonry-gallery';
-    /**
-     * Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('overall');
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/taxonomy-list';
-    /**
-     * Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('overall');
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/faq';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.6.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/separator';
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/faq-child';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.6.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/animations-extension';
-    /**
-     * Frontend JS File.
-     *
-     * @since 2.6.0
-     *
-     * @package uagb
-     */
-    $selector = '.uagb-block-' . $id;
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/how-to-step';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/post-taxonomy';
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/social-share-child';
-    /**
-     * Frontend CSS & Google Fonts loading File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $selectors = \UAGB_Block_Helper::get_social_share_child_selectors($attr, $id, \true);
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/content-timeline';
-    /**
-     * Frontend JS File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $selector = '.uagb-block-' . $id;
-    /**
-     * Block Information.
-     *
-     * @since 2.6.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/loop-builder';
-    /**
-     * Attributes File.
-     *
-     * @since 2.3.0
-     *
-     * @package uagb
-     */
-    $border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('slider');
-    /**
-     * Block Information.
-     *
-     * @since 2.3.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/slider';
-    /**
-     * Frontend CSS & Google Fonts loading File.
-     *
-     * @since 2.3.0
-     *
-     * @package uagb
-     */
-    $block_name = 'slider';
-    /**
-     * Frontend JS File.
-     *
-     * @since 2.3.0
-     *
-     * @package uagb
-     */
-    $selector = '.uagb-block-' . $id . ' .uagb-swiper';
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/forms-radio';
-    /**
-     * Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('column');
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/column';
-    /**
-     * Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $inputBorderAttributes = \UAGB_Block_Helper::uag_generate_border_attribute('input');
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/wp-search';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/icon-list-child';
-    /**
-     * Frontend CSS & Google Fonts loading File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $selectors = \UAGB_Block_Helper::get_icon_list_child_selectors($attr, $id, \true)['desktop'];
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/forms-date';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $image_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('image');
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/image';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/how-to';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $btn_border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('btn');
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/post-grid';
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/star-rating';
-    /**
-     * Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $borderAttributes = \UAGB_Block_Helper::uag_generate_border_attribute('overall');
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/table-of-contents';
-    /**
-     * Frontend JS File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $base_selector = isset($attr['classMigrate']) && $attr['classMigrate'] ? '.uagb-block-' : '#uagb-toc-';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $btn_border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('btn');
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/post-carousel';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('container');
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/container';
-    /**
-     * Frontend CSS & Google Fonts loading File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $inner_content_custom_width_tablet_fallback = \is_numeric($attr['innerContentCustomWidthTablet']) ? $attr['innerContentCustomWidthTablet'] : $attr['innerContentCustomWidthDesktop'];
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.1.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/register';
-    /**
-     * Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $disable_v_h_padding = \apply_filters('uagb_disable_v_h_padding', \false);
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/buttons-child';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/post-image';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/team';
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/forms-toggle';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/blockquote';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/gf-styler';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/icon-list';
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/review';
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/content-timeline-child';
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/lottie';
-    /**
-     * Frontend CSS & Google Fonts loading File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $selectors = array();
-    /**
-     * Frontend JS File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $base_selector = 'uagb-block-';
-    /**
-     * Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $cta_border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('btn');
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/info-box';
-    /**
-     * Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('overall');
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/testimonial';
-    /**
-     * Frontend JS File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $dots = 'dots' === $attr['arrowDots'] || 'arrowDots' === $attr['arrowDots'] ? \true : \false;
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/forms-email';
-    /**
-     * Attributes File.
-     *
-     * @since 2.6.0
-     *
-     * @package uagb
-     */
-    $content_border_attributes = \UAGB_Block_Helper::uag_generate_border_attribute('content');
-    /**
-     * Block Information.
-     *
-     * @since 2.6.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/popup-builder';
-    /**
-     * Frontend JS File.
-     *
-     * @since 2.6.0
-     *
-     * @package uagb
-     */
-    $js = '';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/restaurant-menu-child';
-    /**
-     * Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('columns');
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/columns';
-    /**
-     * Attributes File.
-     *
-     * @since 2.1.0
-     *
-     * @package uagb
-     */
-    $icon_wrap_border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('iconWrap');
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.1.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/counter';
-    /**
-     * Frontend JS File.
-     *
-     * @since 2.1.0
-     *
-     * @package uagb
-     */
-    $selector = '.uagb-block-' . $id;
-    /**
-     * Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $button_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('btn');
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/marketing-button';
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/google-map';
-    /**
-     * Frontend CSS & Google Fonts loading File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $t_selectors = array();
-    /**
-     * Attributes File.
-     *
-     * @since 2.4.0
-     *
-     * @package uagb
-     */
-    $icon_border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('icon');
-    /**
-     * Block Information.
-     *
-     * @since 2.4.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/icon';
-    /**
-     * Frontend CSS.
-     *
-     * @since 2.4.0
-     *
-     * @package uagb
-     */
-    $icon_width = \UAGB_Helper::get_css_value($attr['iconSize'], $attr['iconSizeUnit']);
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/forms-select';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.2.0
-     *
-     * @package uagb
-     */
-    $btn_border_attributes = \UAGB_Block_Helper::uag_generate_border_attribute('btn');
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.2.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/modal';
-    /**
-     * Frontend JS File.
-     *
-     * @since 2.2.0
-     *
-     * @package uagb
-     */
-    $selector = '.uagb-block-' . $id;
-    /**
-     * Attributes File.
-     *
-     * @since 2.1.0
-     *
-     * @package uagb
-     */
-    $arrow_border_attributes = \UAGB_Block_Helper::uag_generate_border_attribute('arrow', array('borderStyle' => 'none', 'borderTopWidth' => 4, 'borderRightWidth' => 4, 'borderBottomWidth' => 4, 'borderLeftWidth' => 4, 'borderTopLeftRadius' => 50, 'borderTopRightRadius' => 50, 'borderBottomLeftRadius' => 50, 'borderBottomRightRadius' => 50));
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.1.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/image-gallery';
-    /**
-     * Frontend JS File.
-     *
-     * @since 2.1.0
-     *
-     * @package uagb
-     */
-    $block_name = 'image-gallery';
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/forms-checkbox';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/post-title';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/post-button';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $pagination_masonry_border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('paginationMasonry');
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/post-masonry';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/tabs-child';
-    /**
-     * Attributes File.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $cta_border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('btn');
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/call-to-action';
-    /**
-     * Block Information.
-     *
-     * @since 2.0.14
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/forms-upload';
-    /**
-     * Block Information & Attributes File.
-     *
-     * @since 2.1.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/login';
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/forms-phone';
-    /**
-     * Block Information.
-     *
-     * @since 2.0.0
-     *
-     * @package uagb
-     */
-    $block_slug = 'uagb/forms-name';
-    /**
-     * Get styles for a webfont.
-     *
-     * This will get the CSS from the remote API,
-     * download any fonts it contains,
-     * replace references to remote URLs with locally-downloaded assets,
-     * and finally return the resulting CSS.
-     *
-     * @since 1.0.0
-     *
-     * @param string $url    The URL of the remote webfont.
-     * @param string $format The font-format. If you need to support IE, change this to "woff".
-     *
-     * @return string Returns the CSS.
-     */
-    function uagb_get_webfont_styles($url, $format = 'woff2')
-    {
-    }
-    /**
-     * Get styles for a webfont.
-     *
-     * This will get the CSS from the remote API,
-     * download any fonts it contains,
-     * replace references to remote URLs with locally-downloaded assets,
-     * and finally return the resulting CSS.
-     *
-     * @since 1.0.0
-     *
-     * @param string $url    The URL of the remote webfont.
-     * @param string $format The font-format. If you need to support IE, change this to "woff".
-     *
-     * @return string Returns the CSS.
-     */
-    function uagb_get_webfont_remote_styles($url, $format = 'woff2')
-    {
-    }
-    /**
-     * Get a stylesheet URL for a webfont.
-     *
-     * @since 1.1.0
-     *
-     * @param string $url    The URL of the remote webfont.
-     * @param string $format The font-format. If you need to support IE, change this to "woff".
-     *
-     * @return string Returns the CSS.
-     */
-    function uagb_get_webfont_url($url, $format = 'woff2')
-    {
-    }
-    /**
-     * Get a stylesheet URL for a webfont.
-     *
-     * @since 1.1.0
-     *
-     * @param string $url    The URL of the remote webfont.
-     * @param string $format The font-format. If you need to support IE, change this to "woff".
-     *
-     * @return string Returns the CSS.
-     */
-    function uagb_get_preload_local_fonts($url, $format = 'woff2')
-    {
-    }
-    /**
-     * Log
-     *
-     * @param string $message   Log message.
-     */
-    function ast_block_templates_log($message = '')
-    {
-    }
-    /**
-     * Doing WP CLI
-     */
-    function ast_block_templates_doing_wp_cli()
-    {
-    }
-    /**
-     * Get an instance of WP_Filesystem_Direct.
-     *
-     * @since 1.0.0
-     * @return object A WP_Filesystem_Direct instance.
-     */
-    function ast_block_templates_get_filesystem()
-    {
-    }
-    /**
-     * Check for the valid image
-     *
-     * @param string $link  The Image link.
-     *
-     * @since 1.0.0
-     * @return boolean
-     */
-    function ast_block_templates_is_valid_image($link = '')
-    {
-    }
-    \define('AST_BLOCK_TEMPLATES_LIBRARY_URL', \apply_filters('ast_block_templates_library_url', 'https://websitedemos.net/'));
-    \define('AST_BLOCK_TEMPLATES_VER', '1.3.2');
-    \define('AST_BLOCK_TEMPLATES_FILE', __FILE__);
-    \define('AST_BLOCK_TEMPLATES_BASE', \plugin_basename(\AST_BLOCK_TEMPLATES_FILE));
-    \define('AST_BLOCK_TEMPLATES_DIR', \plugin_dir_path(\AST_BLOCK_TEMPLATES_FILE));
-    \define('AST_BLOCK_TEMPLATES_URI', \plugins_url('/', \AST_BLOCK_TEMPLATES_FILE));
-    /**
-     * Plugin Name: Spectra
-     * Plugin URI: https://www.brainstormforce.com
-     * Author: Brainstorm Force
-     * Author URI: https://www.brainstormforce.com
-     * Version: 2.7.3
-     * Description: The Spectra extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster.
-     * Text Domain: ultimate-addons-for-gutenberg
-     *
-     * @package UAGB
-     */
-    \define('UAGB_FILE', __FILE__);
-    \define('UAGB_ROOT', \dirname(\plugin_basename(\UAGB_FILE)));
-    \define('UAGB_PLUGIN_NAME', 'Spectra');
-    \define('UAGB_PLUGIN_SHORT_NAME', 'Spectra');
-    \define('UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
-    /**
-     * Ultimate Addons for Gutenberg admin notice for minimum PHP version.
-     *
-     * Warning when the site doesn't have the minimum required PHP version.
-     *
-     * @since 1.8.1
-     *
-     * @return void
-     */
-    function uagb_fail_php_version()
-    {
-    }
-    /**
-     * Ultimate Addons for Gutenberg admin notice for minimum WordPress version.
-     *
-     * Warning when the site doesn't have the minimum required WordPress version.
-     *
-     * @since 1.8.1
-     *
-     * @return void
-     */
-    function uagb_fail_wp_version()
-    {
-    }
+	/**
+	 * Get frontend post_assets obj.
+	 *
+	 * @since 1.23.0
+	 */
+	function uagb_get_front_post_assets()
+	{
+	}
+	/**
+	 * Filesystem class
+	 *
+	 * @since 1.23.0
+	 */
+	/**
+	 * Install class
+	 *
+	 * @since 2.0.0
+	 *
+	 * @return object
+	 */
+	function uagb_install()
+	{
+	}
+	/**
+	 * Gives UAGB_Block object
+	 *
+	 * @since 2.1.0
+	 *
+	 * @return object
+	 */
+	function uagb_block()
+	{
+	}
+	/**
+	 * Filesystem class
+	 *
+	 * @since 1.23.0
+	 */
+	function uagb_filesystem()
+	{
+	}
+	/**
+	 * Load main object
+	 *
+	 * @since 2.0.0
+	 *
+	 * @return object
+	 */
+	function uagb()
+	{
+	}
+	/**
+	 * Get post assets object.
+	 *
+	 * @param int $post_id current step ID.
+	 * @since 2.0.0
+	 */
+	function uagb_get_post_assets($post_id)
+	{
+	}
+	/**
+	 * Get Spectra Font Awesome Polyfiller.
+	 *
+	 * @since 2.0.0
+	 */
+	function get_spectra_font_awesome_polyfiller()
+	{
+	}
+	/**
+	 * Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$default_padding = 20;
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/slider-child';
+	/**
+	 * Slider child front end style
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_name = 'slider';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$highLight_border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('highLight');
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/advanced-heading';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('tab');
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/tabs';
+	/**
+	 * Frontend CSS & Google Fonts loading File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$overall_border_css = \UAGB_Block_Helper::uag_generate_border_css($attr, 'tab');
+	/**
+	 * Frontend JS File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$selector = '.uagb-block-' . $id;
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/forms-url';
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/social-share';
+	/**
+	 * Frontend CSS & Google Fonts loading File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$gap_tablet_fallback = \is_numeric($attr['gapTablet']) ? $attr['gapTablet'] : $attr['gap'];
+	/**
+	 * Frontend JS File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$base_selector = isset($attr['classMigrate']) && $attr['classMigrate'] ? '.uagb-block-' : '#uagb-social-share-';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/restaurant-menu';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/post-meta';
+	/**
+	 * Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$field_border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('input');
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/cf7-styler';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.4.1
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/instagram-feed';
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/post-timeline';
+	/**
+	 * Frontend JS File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$selector = '.uagb-block-' . $id;
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/inline-notice';
+	/**
+	 * Frontend JS File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$base_selector = '.uagb-block-';
+	/**
+	 * Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$overall_border_attributes = \UAGB_Block_Helper::uag_generate_border_attribute('overall');
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/section';
+	/**
+	 * Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$success_message_border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('successMsg');
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/forms';
+	/**
+	 * Frontend JS File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$selector = '.uagb-block-' . $id;
+	/**
+	 * Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$default_buttons_child = array();
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/buttons';
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/forms-textarea';
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/forms-hidden';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/post-excerpt';
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/forms-accept';
+	/**
+	 * Attributes File.
+	 *
+	 * @since 2.4.0
+	 *
+	 * @package uagb
+	 */
+	$box_border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('box');
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.4.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/countdown';
+	/**
+	 * Frontend JS File.
+	 *
+	 * @since 2.4.0
+	 *
+	 * @package uagb
+	 */
+	$selector = '.uagb-block-' . $id;
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/masonry-gallery';
+	/**
+	 * Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('overall');
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/taxonomy-list';
+	/**
+	 * Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('overall');
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/faq';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/separator';
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/faq-child';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/animations-extension';
+	/**
+	 * Frontend JS File.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @package uagb
+	 */
+	$selector = '.uagb-block-' . $id;
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/how-to-step';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/post-taxonomy';
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/social-share-child';
+	/**
+	 * Frontend CSS & Google Fonts loading File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$selectors = \UAGB_Block_Helper::get_social_share_child_selectors($attr, $id, \true);
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/content-timeline';
+	/**
+	 * Frontend JS File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$selector = '.uagb-block-' . $id;
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/loop-builder';
+	/**
+	 * Attributes File.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @package uagb
+	 */
+	$border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('slider');
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/slider';
+	/**
+	 * Frontend CSS & Google Fonts loading File.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @package uagb
+	 */
+	$block_name = 'slider';
+	/**
+	 * Frontend JS File.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @package uagb
+	 */
+	$selector = '.uagb-block-' . $id . ' .uagb-swiper';
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/forms-radio';
+	/**
+	 * Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('column');
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/column';
+	/**
+	 * Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$inputBorderAttributes = \UAGB_Block_Helper::uag_generate_border_attribute('input');
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/wp-search';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/icon-list-child';
+	/**
+	 * Frontend CSS & Google Fonts loading File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$selectors = \UAGB_Block_Helper::get_icon_list_child_selectors($attr, $id, \true)['desktop'];
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/forms-date';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$image_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('image');
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/image';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/how-to';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$btn_border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('btn');
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/post-grid';
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/star-rating';
+	/**
+	 * Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$borderAttributes = \UAGB_Block_Helper::uag_generate_border_attribute('overall');
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/table-of-contents';
+	/**
+	 * Frontend JS File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$base_selector = isset($attr['classMigrate']) && $attr['classMigrate'] ? '.uagb-block-' : '#uagb-toc-';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$btn_border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('btn');
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/post-carousel';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('container');
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/container';
+	/**
+	 * Frontend CSS & Google Fonts loading File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$inner_content_custom_width_tablet_fallback = \is_numeric($attr['innerContentCustomWidthTablet']) ? $attr['innerContentCustomWidthTablet'] : $attr['innerContentCustomWidthDesktop'];
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.1.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/register';
+	/**
+	 * Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$disable_v_h_padding = \apply_filters('uagb_disable_v_h_padding', \false);
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/buttons-child';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/post-image';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/team';
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/forms-toggle';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/blockquote';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/gf-styler';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/icon-list';
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/review';
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/content-timeline-child';
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/lottie';
+	/**
+	 * Frontend CSS & Google Fonts loading File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$selectors = array();
+	/**
+	 * Frontend JS File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$base_selector = 'uagb-block-';
+	/**
+	 * Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$cta_border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('btn');
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/info-box';
+	/**
+	 * Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('overall');
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/testimonial';
+	/**
+	 * Frontend JS File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$dots = 'dots' === $attr['arrowDots'] || 'arrowDots' === $attr['arrowDots'] ? \true : \false;
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/forms-email';
+	/**
+	 * Attributes File.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @package uagb
+	 */
+	$content_border_attributes = \UAGB_Block_Helper::uag_generate_border_attribute('content');
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/popup-builder';
+	/**
+	 * Frontend JS File.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @package uagb
+	 */
+	$js = '';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/restaurant-menu-child';
+	/**
+	 * Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('columns');
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/columns';
+	/**
+	 * Attributes File.
+	 *
+	 * @since 2.1.0
+	 *
+	 * @package uagb
+	 */
+	$icon_wrap_border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('iconWrap');
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.1.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/counter';
+	/**
+	 * Frontend JS File.
+	 *
+	 * @since 2.1.0
+	 *
+	 * @package uagb
+	 */
+	$selector = '.uagb-block-' . $id;
+	/**
+	 * Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$button_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('btn');
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/marketing-button';
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/google-map';
+	/**
+	 * Frontend CSS & Google Fonts loading File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$t_selectors = array();
+	/**
+	 * Attributes File.
+	 *
+	 * @since 2.4.0
+	 *
+	 * @package uagb
+	 */
+	$icon_border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('icon');
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.4.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/icon';
+	/**
+	 * Frontend CSS.
+	 *
+	 * @since 2.4.0
+	 *
+	 * @package uagb
+	 */
+	$icon_width = \UAGB_Helper::get_css_value($attr['iconSize'], $attr['iconSizeUnit']);
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/forms-select';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.2.0
+	 *
+	 * @package uagb
+	 */
+	$btn_border_attributes = \UAGB_Block_Helper::uag_generate_border_attribute('btn');
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.2.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/modal';
+	/**
+	 * Frontend JS File.
+	 *
+	 * @since 2.2.0
+	 *
+	 * @package uagb
+	 */
+	$selector = '.uagb-block-' . $id;
+	/**
+	 * Attributes File.
+	 *
+	 * @since 2.1.0
+	 *
+	 * @package uagb
+	 */
+	$arrow_border_attributes = \UAGB_Block_Helper::uag_generate_border_attribute('arrow', array('borderStyle' => 'none', 'borderTopWidth' => 4, 'borderRightWidth' => 4, 'borderBottomWidth' => 4, 'borderLeftWidth' => 4, 'borderTopLeftRadius' => 50, 'borderTopRightRadius' => 50, 'borderBottomLeftRadius' => 50, 'borderBottomRightRadius' => 50));
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.1.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/image-gallery';
+	/**
+	 * Frontend JS File.
+	 *
+	 * @since 2.1.0
+	 *
+	 * @package uagb
+	 */
+	$block_name = 'image-gallery';
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/forms-checkbox';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/post-title';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/post-button';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$pagination_masonry_border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('paginationMasonry');
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/post-masonry';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/tabs-child';
+	/**
+	 * Attributes File.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$cta_border_attribute = \UAGB_Block_Helper::uag_generate_border_attribute('btn');
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/call-to-action';
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.14
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/forms-upload';
+	/**
+	 * Block Information & Attributes File.
+	 *
+	 * @since 2.1.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/login';
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/forms-phone';
+	/**
+	 * Block Information.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @package uagb
+	 */
+	$block_slug = 'uagb/forms-name';
+	/**
+	 * Get styles for a webfont.
+	 *
+	 * This will get the CSS from the remote API,
+	 * download any fonts it contains,
+	 * replace references to remote URLs with locally-downloaded assets,
+	 * and finally return the resulting CSS.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $url    The URL of the remote webfont.
+	 * @param string $format The font-format. If you need to support IE, change this to "woff".
+	 *
+	 * @return string Returns the CSS.
+	 */
+	function uagb_get_webfont_styles($url, $format = 'woff2')
+	{
+	}
+	/**
+	 * Get styles for a webfont.
+	 *
+	 * This will get the CSS from the remote API,
+	 * download any fonts it contains,
+	 * replace references to remote URLs with locally-downloaded assets,
+	 * and finally return the resulting CSS.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $url    The URL of the remote webfont.
+	 * @param string $format The font-format. If you need to support IE, change this to "woff".
+	 *
+	 * @return string Returns the CSS.
+	 */
+	function uagb_get_webfont_remote_styles($url, $format = 'woff2')
+	{
+	}
+	/**
+	 * Get a stylesheet URL for a webfont.
+	 *
+	 * @since 1.1.0
+	 *
+	 * @param string $url    The URL of the remote webfont.
+	 * @param string $format The font-format. If you need to support IE, change this to "woff".
+	 *
+	 * @return string Returns the CSS.
+	 */
+	function uagb_get_webfont_url($url, $format = 'woff2')
+	{
+	}
+	/**
+	 * Get a stylesheet URL for a webfont.
+	 *
+	 * @since 1.1.0
+	 *
+	 * @param string $url    The URL of the remote webfont.
+	 * @param string $format The font-format. If you need to support IE, change this to "woff".
+	 *
+	 * @return string Returns the CSS.
+	 */
+	function uagb_get_preload_local_fonts($url, $format = 'woff2')
+	{
+	}
+	/**
+	 * Log
+	 *
+	 * @param string $message   Log message.
+	 */
+	function ast_block_templates_log($message = '')
+	{
+	}
+	/**
+	 * Doing WP CLI
+	 */
+	function ast_block_templates_doing_wp_cli()
+	{
+	}
+	/**
+	 * Get an instance of WP_Filesystem_Direct.
+	 *
+	 * @since 1.0.0
+	 * @return object A WP_Filesystem_Direct instance.
+	 */
+	function ast_block_templates_get_filesystem()
+	{
+	}
+	/**
+	 * Check for the valid image
+	 *
+	 * @param string $link  The Image link.
+	 *
+	 * @since 1.0.0
+	 * @return boolean
+	 */
+	function ast_block_templates_is_valid_image($link = '')
+	{
+	}
+	\define('AST_BLOCK_TEMPLATES_LIBRARY_URL', \apply_filters('ast_block_templates_library_url', 'https://websitedemos.net/'));
+	\define('AST_BLOCK_TEMPLATES_VER', '1.3.2');
+	\define('AST_BLOCK_TEMPLATES_FILE', __FILE__);
+	\define('AST_BLOCK_TEMPLATES_BASE', \plugin_basename(\AST_BLOCK_TEMPLATES_FILE));
+	\define('AST_BLOCK_TEMPLATES_DIR', \plugin_dir_path(\AST_BLOCK_TEMPLATES_FILE));
+	\define('AST_BLOCK_TEMPLATES_URI', \plugins_url('/', \AST_BLOCK_TEMPLATES_FILE));
+	/**
+	 * Plugin Name: Spectra
+	 * Plugin URI: https://www.brainstormforce.com
+	 * Author: Brainstorm Force
+	 * Author URI: https://www.brainstormforce.com
+	 * Version: 2.7.3
+	 * Description: The Spectra extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster.
+	 * Text Domain: ultimate-addons-for-gutenberg
+	 *
+	 * @package UAGB
+	 */
+	\define('UAGB_FILE', __FILE__);
+	\define('UAGB_ROOT', \dirname(\plugin_basename(\UAGB_FILE)));
+	\define('UAGB_PLUGIN_NAME', 'Spectra');
+	\define('UAGB_PLUGIN_SHORT_NAME', 'Spectra');
+	\define('UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
+	/**
+	 * Ultimate Addons for Gutenberg admin notice for minimum PHP version.
+	 *
+	 * Warning when the site doesn't have the minimum required PHP version.
+	 *
+	 * @since 1.8.1
+	 *
+	 * @return void
+	 */
+	function uagb_fail_php_version()
+	{
+	}
+	/**
+	 * Ultimate Addons for Gutenberg admin notice for minimum WordPress version.
+	 *
+	 * Warning when the site doesn't have the minimum required WordPress version.
+	 *
+	 * @since 1.8.1
+	 *
+	 * @return void
+	 */
+	function uagb_fail_wp_version()
+	{
+	}
 }

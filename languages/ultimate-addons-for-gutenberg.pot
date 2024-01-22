@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.11.4\n"
+"Project-Id-Version: Spectra 2.12.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-01-17T09:55:54+00:00\n"
+"POT-Creation-Date: 2024-01-22T04:18:52+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -22,8 +22,8 @@ msgstr ""
 #: admin-core/inc/admin-menu.php:171
 #: admin-core/inc/admin-menu.php:182
 #: admin-core/inc/admin-menu.php:261
-#: classes/class-uagb-admin-helper.php:424
-#: classes/class-uagb-init-blocks.php:571
+#: classes/class-uagb-admin-helper.php:420
+#: classes/class-uagb-init-blocks.php:574
 msgid "Spectra"
 msgstr ""
 
@@ -52,63 +52,63 @@ msgstr ""
 msgid "Sorry, something went wrong."
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:159
-#: admin-core/ajax/common-settings.php:700
-#: classes/class-uagb-init-blocks.php:534
+#: admin-core/ajax/common-settings.php:160
+#: admin-core/ajax/common-settings.php:714
+#: classes/class-uagb-init-blocks.php:537
 msgid "Successfully saved data!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:175
-#: classes/class-uagb-init-blocks.php:985
+#: admin-core/ajax/common-settings.php:176
+#: classes/class-uagb-init-blocks.php:1064
 msgid "No post data found!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:211
+#: admin-core/ajax/common-settings.php:212
 msgid "Plugin Successfully Activated"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:793
+#: admin-core/ajax/common-settings.php:807
 msgid "Successfully refreshed tokens!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:795
+#: admin-core/ajax/common-settings.php:809
 msgid "Failed to refresh tokens"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:932
+#: admin-core/ajax/common-settings.php:946
 msgid "Module not found!"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:950
+#: admin-core/ajax/common-settings.php:964
 msgid "%s disabled!"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:960
+#: admin-core/ajax/common-settings.php:974
 msgid "Unable to disable %s"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:972
+#: admin-core/ajax/common-settings.php:986
 msgid "%s enabled!"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:982
+#: admin-core/ajax/common-settings.php:996
 msgid "Unable to enable %s"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:990
+#: admin-core/ajax/common-settings.php:1004
 msgid "Unable to save setting."
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:1009
+#: admin-core/ajax/common-settings.php:1023
 msgid "Unable to verify authenticity."
 msgstr ""
 
-#: admin-core/api/common-settings.php:99
-#: classes/class-uagb-rest-api.php:342
+#: admin-core/api/common-settings.php:98
+#: classes/class-uagb-rest-api.php:405
 msgid "Sorry, you cannot list resources."
 msgstr ""
 
@@ -132,7 +132,7 @@ msgid "AI Features"
 msgstr ""
 
 #. translators: %1$s: Opening Strong Tag, %2$s: Closing Strong Tag, %3$s Anchor Tag with Star Symbol Codes.
-#: admin-core/inc/admin-menu.php:479
+#: admin-core/inc/admin-menu.php:480
 msgid "Enjoyed %1$sSpectra%2$s? Please leave us a %3$s rating. We really appreciate your support!"
 msgstr ""
 
@@ -183,6 +183,7 @@ msgstr ""
 #: blocks-config/popup-builder/class-uagb-popup-builder.php:230
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Type"
 msgstr ""
 
@@ -957,6 +958,7 @@ msgstr ""
 #: blocks-config/uagb-controls/spectra-icons-v6-0.php:13
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Book"
 msgstr ""
 
@@ -1046,6 +1048,7 @@ msgstr ""
 
 #: blocks-config/uagb-controls/spectra-icons-v6-0.php:13
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Box"
 msgstr ""
 
@@ -2165,6 +2168,7 @@ msgstr ""
 #: blocks-config/uagb-controls/spectra-icons-v6-1.php:13
 #: dist/blocks.js:1
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Desktop"
 msgstr ""
 
@@ -3896,6 +3900,7 @@ msgstr ""
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Image"
 msgstr ""
 
@@ -4097,7 +4102,7 @@ msgid "KORVUE"
 msgstr ""
 
 #: blocks-config/uagb-controls/spectra-icons-v6-2.php:13
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "L"
 msgstr ""
 
@@ -4301,7 +4306,7 @@ msgid "lyft"
 msgstr ""
 
 #: blocks-config/uagb-controls/spectra-icons-v6-2.php:13
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "M"
 msgstr ""
 
@@ -4572,6 +4577,7 @@ msgstr ""
 #: blocks-config/uagb-controls/spectra-icons-v6-2.php:13
 #: dist/blocks.js:1
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Mobile"
 msgstr ""
 
@@ -4840,6 +4846,7 @@ msgstr ""
 #: blocks-config/uagb-controls/spectra-icons-v6-2.php:13
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "P"
 msgstr ""
 
@@ -5720,7 +5727,7 @@ msgid "Rust"
 msgstr ""
 
 #: blocks-config/uagb-controls/spectra-icons-v6-2.php:13
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "S"
 msgstr ""
 
@@ -6482,6 +6489,7 @@ msgstr ""
 #: blocks-config/uagb-controls/spectra-icons-v6-3.php:13
 #: dist/blocks.js:1
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Tablet"
 msgstr ""
 
@@ -6935,7 +6943,7 @@ msgstr ""
 
 #: blocks-config/uagb-controls/spectra-icons-v6-3.php:13
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Underline"
 msgstr ""
 
@@ -7604,15 +7612,15 @@ msgstr ""
 msgid "Travel"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:432
+#: classes/class-uagb-admin-helper.php:428
 msgid "Astra Theme"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:436
+#: classes/class-uagb-admin-helper.php:432
 msgid "Filter added through any 3rd Party Theme/Plugin."
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:441
+#: classes/class-uagb-admin-helper.php:437
 msgid "Full Site Editor's Global Styles"
 msgstr ""
 
@@ -7657,10 +7665,11 @@ msgid "Spectra requires&nbsp;%3$sBlock Editor%4$s. You can change your editor se
 msgstr ""
 
 #: classes/class-uagb-fse-fonts-compatibility.php:163
-#: classes/class-uagb-init-blocks.php:711
+#: classes/class-uagb-init-blocks.php:714
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Default"
 msgstr ""
 
@@ -7687,96 +7696,97 @@ msgstr ""
 msgid "Full"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:104
+#: classes/class-uagb-init-blocks.php:107
 msgctxt "plural"
 msgid "Popup Builder"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:105
+#: classes/class-uagb-init-blocks.php:108
 msgctxt "singular"
 msgid "Spectra Popup"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:106
+#: classes/class-uagb-init-blocks.php:109
 msgid "View Popup"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:107
+#: classes/class-uagb-init-blocks.php:110
 msgid "Create New Popup"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:108
+#: classes/class-uagb-init-blocks.php:111
 msgid "Create Popup"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:109
+#: classes/class-uagb-init-blocks.php:112
 msgid "Edit Popup"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:110
+#: classes/class-uagb-init-blocks.php:113
 msgid "Search Popups"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:111
+#: classes/class-uagb-init-blocks.php:114
 msgid "Update Popup"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:112
+#: classes/class-uagb-init-blocks.php:115
 msgid "Popup Updated"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:113
+#: classes/class-uagb-init-blocks.php:116
 msgid "No Popups Found"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:114
+#: classes/class-uagb-init-blocks.php:117
 msgid "No Popups in Trash"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:373
-#: classes/class-uagb-init-blocks.php:517
+#: classes/class-uagb-init-blocks.php:376
+#: classes/class-uagb-init-blocks.php:520
 msgid "User is not authenticated!"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:504
+#: classes/class-uagb-init-blocks.php:507
 msgid "Please select a valid Gravity Form."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:554
+#: classes/class-uagb-init-blocks.php:557
 msgid "Please select a valid Contact Form 7."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:784
+#: classes/class-uagb-init-blocks.php:787
 msgid ""
 "Use custom class added in block's advanced settings to target your desired block. Examples:\n"
-"\t\t\t.my-class {text-align: center;} // my-class is a custom selector"
+"\t\t.my-class {text-align: center;} // my-class is a custom selector"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:831
-#: classes/class-uagb-rest-api.php:226
-#: classes/class-uagb-rest-api.php:240
+#: classes/class-uagb-init-blocks.php:864
+#: classes/class-uagb-rest-api.php:288
+#: classes/class-uagb-rest-api.php:303
 #: dist/blocks.js:1
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "None"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:860
 #: classes/class-uagb-init-blocks.php:893
-#: dist/blocks.js:17
+#: classes/class-uagb-init-blocks.php:926
+#: dist/blocks.js:21
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:874
+#: classes/class-uagb-init-blocks.php:907
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:907
+#: classes/class-uagb-init-blocks.php:940
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:923
+#: classes/class-uagb-init-blocks.php:956
 msgid "Invalid request"
 msgstr ""
 
@@ -7823,6 +7833,7 @@ msgstr ""
 
 #: includes/blocks/buttons-child/block.php:14
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Button"
 msgstr ""
 
@@ -7855,7 +7866,7 @@ msgid "Add a button along with heading and description."
 msgstr ""
 
 #: includes/blocks/cf7-styler/block.php:16
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Contact Form 7 Designer"
 msgstr ""
 
@@ -7866,6 +7877,7 @@ msgstr ""
 #: includes/blocks/column/block.php:14
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Column"
 msgstr ""
 
@@ -7874,12 +7886,12 @@ msgid "Immediate child of Advanced Columns."
 msgstr ""
 
 #: includes/blocks/columns/block.php:16
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Advanced Columns"
 msgstr ""
 
 #: includes/blocks/columns/block.php:17
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Insert a number of columns within a single row."
 msgstr ""
 
@@ -8129,12 +8141,12 @@ msgid "Add easily customizable forms to gather information."
 msgstr ""
 
 #: includes/blocks/gf-styler/block.php:16
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Gravity Form Designer"
 msgstr ""
 
 #: includes/blocks/gf-styler/block.php:17
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Highly customize and style your forms created by Gravity Forms."
 msgstr ""
 
@@ -8176,6 +8188,7 @@ msgstr ""
 #: dist/blocks-placeholder.js:21
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Icon"
 msgstr ""
 
@@ -8364,12 +8377,12 @@ msgid "Customize your post image."
 msgstr ""
 
 #: includes/blocks/post-masonry/block.php:16
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Post Masonry"
 msgstr ""
 
 #: includes/blocks/post-masonry/block.php:17
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Display your posts in a masonary layout."
 msgstr ""
 
@@ -8455,12 +8468,12 @@ msgid "Add reviews to items with Schema support."
 msgstr ""
 
 #: includes/blocks/section/block.php:16
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Advanced Row"
 msgstr ""
 
 #: includes/blocks/section/block.php:17
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Outer wrap section that allows you to add other blocks within it."
 msgstr ""
 
@@ -8587,12 +8600,12 @@ msgstr ""
 
 #: includes/blocks/wp-search/block.php:16
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Search"
 msgstr ""
 
 #: includes/blocks/wp-search/block.php:17
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Add a search widget to let users search posts from your website."
 msgstr ""
 
@@ -8777,6 +8790,11 @@ msgid "Global Block Style"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:1
+#: dist/blocks.js:21
+msgid "Quick Action Bar"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
 msgid "File Generation"
 msgstr ""
 
@@ -8813,7 +8831,7 @@ msgid "Spectra comes with a stunning library of page templates and block pattern
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:1
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Custom CSS"
 msgstr ""
 
@@ -8836,6 +8854,7 @@ msgstr ""
 #: admin-core/assets/build/dashboard-app.js:12
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Cancel"
 msgstr ""
 
@@ -8920,6 +8939,7 @@ msgstr ""
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Style"
 msgstr ""
 
@@ -9301,6 +9321,10 @@ msgid "Coming Soon"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:9
+msgid "Updating"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Disable"
 msgstr ""
 
@@ -9454,6 +9478,7 @@ msgstr ""
 #: dist/blocks.js:1
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "General"
 msgstr ""
 
@@ -9467,7 +9492,7 @@ msgid "Global block style added"
 msgstr ""
 
 #: dist/blocks.js:1
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Device"
 msgstr ""
 
@@ -9676,6 +9701,7 @@ msgstr ""
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Pixel"
 msgstr ""
 
@@ -9684,6 +9710,7 @@ msgstr ""
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Em"
 msgstr ""
 
@@ -9707,6 +9734,7 @@ msgstr ""
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Margin"
 msgstr ""
 
@@ -9726,18 +9754,21 @@ msgstr ""
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Box Shadow"
 msgstr ""
 
 #: dist/blocks.js:7
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Outset"
 msgstr ""
 
 #: dist/blocks.js:7
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Inset"
 msgstr ""
 
@@ -9749,28 +9780,33 @@ msgstr ""
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "%"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Top"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Right"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Bottom"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Left"
 msgstr ""
 
@@ -9868,12 +9904,14 @@ msgstr ""
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Position"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Color"
 msgstr ""
 
@@ -9906,12 +9944,14 @@ msgstr ""
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Custom"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Overlay Opacity"
 msgstr ""
 
@@ -9976,6 +10016,7 @@ msgstr ""
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Normal"
 msgstr ""
 
@@ -10024,12 +10065,14 @@ msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Size"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Width"
 msgstr ""
 
@@ -10082,57 +10125,67 @@ msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Radius"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Border"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Hover"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Solid"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Dotted"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Dashed"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Double"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Groove"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Ridge"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Alignment"
 msgstr ""
 
@@ -10175,36 +10228,42 @@ msgstr ""
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Preset 1"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Preset 2"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Preset 3"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Preset 4"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Preset 5"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Preset 6"
 msgstr ""
 
@@ -10230,6 +10289,7 @@ msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Padding"
 msgstr ""
 
@@ -10260,24 +10320,28 @@ msgstr ""
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Horizontal"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Vertical"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Blur"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Spread"
 msgstr ""
 
@@ -10304,6 +10368,7 @@ msgstr ""
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Center"
 msgstr ""
 
@@ -10353,6 +10418,7 @@ msgstr ""
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Background"
 msgstr ""
 
@@ -10372,11 +10438,13 @@ msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Icon Size"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Icon Color"
 msgstr ""
 
@@ -10388,6 +10456,7 @@ msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Spacing"
 msgstr ""
 
@@ -10458,7 +10527,7 @@ msgid "Style Name"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Save"
 msgstr ""
 
@@ -10567,16 +10636,18 @@ msgstr ""
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Layout"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Container Width"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Content Width"
 msgstr ""
 
@@ -10605,41 +10676,42 @@ msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "HTML Tag"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "div"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "header"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "footer"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "main"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "article"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "section"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "aside"
 msgstr ""
 
@@ -10656,7 +10728,7 @@ msgid "summary"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "nav"
 msgstr ""
 
@@ -10715,112 +10787,115 @@ msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Text Color"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Tilt"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Mountains"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Wave Brush"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Waves"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Waves Pattern"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Triangle"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Drops"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Clouds"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "ZigZag"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Pyramids"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Triangle Asymmetrical"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Tilt Opacity"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Fan Opacity"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Curve"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Curve Asymmetrical"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Curve Reverse"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Curve Asymmetrical Reverse"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Arrow"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Arrow Split"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Height"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Flip"
 msgstr ""
 
@@ -10829,22 +10904,24 @@ msgid "Invert"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Bring To Front"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Shape Dividers"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Row Gap"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Column Gap"
 msgstr ""
 
@@ -10858,6 +10935,7 @@ msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "uag"
 msgstr ""
 
@@ -10867,7 +10945,7 @@ msgid "flex"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Font Size"
 msgstr ""
 
@@ -10937,6 +11015,7 @@ msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Content"
 msgstr ""
 
@@ -10949,36 +11028,42 @@ msgstr ""
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "H1"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "H2"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "H3"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "H4"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "H5"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "H6"
 msgstr ""
 
@@ -10998,11 +11083,13 @@ msgstr ""
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Typography"
 msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Bottom Spacing"
 msgstr ""
 
@@ -11026,6 +11113,7 @@ msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Background Color"
 msgstr ""
 
@@ -11287,6 +11375,7 @@ msgid "Overall Alignment"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Vertical Alignment"
 msgstr ""
 
@@ -11307,6 +11396,7 @@ msgid "Button Size"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Text"
 msgstr ""
 
@@ -11331,6 +11421,7 @@ msgid "Inherit From Theme"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Button Type"
 msgstr ""
 
@@ -11359,6 +11450,7 @@ msgid "Icon Spacing"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Transparent"
 msgstr ""
 
@@ -11387,6 +11479,7 @@ msgid "Select Position"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Above Title"
 msgstr ""
 
@@ -11435,6 +11528,7 @@ msgid "Prefix Tag"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Span"
 msgstr ""
 
@@ -11511,6 +11605,7 @@ msgid "Turn this off to inherit the natural width of Image."
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Border Radius"
 msgstr ""
 
@@ -11519,10 +11614,12 @@ msgid "Button Text Color"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Background Type"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Button Padding"
 msgstr ""
 
@@ -11543,6 +11640,7 @@ msgid "info box"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Stack On"
 msgstr ""
 
@@ -11695,6 +11793,7 @@ msgid "Digit"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Label"
 msgstr ""
 
@@ -11763,6 +11862,7 @@ msgid "Inline"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Text Alignment"
 msgstr ""
 
@@ -11859,10 +11959,12 @@ msgid "Vertical Spacing"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Border Color"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Border Style"
 msgstr ""
 
@@ -11895,6 +11997,7 @@ msgid "Arrow Alignment"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Date"
 msgstr ""
 
@@ -11923,6 +12026,7 @@ msgid "Icon Background Size"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Border Width"
 msgstr ""
 
@@ -12115,6 +12219,7 @@ msgid "Question Tag"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Columns"
 msgstr ""
 
@@ -12143,6 +12248,7 @@ msgid "Gap between Icon and Question"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Active Color"
 msgstr ""
 
@@ -12207,10 +12313,12 @@ msgid "Enter a URL you want to redirect your page to after form Submission"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Submit Button"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Button Alignment"
 msgstr ""
 
@@ -12287,10 +12395,12 @@ msgid "Label Bottom Margin"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Input"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Active"
 msgstr ""
 
@@ -12483,6 +12593,7 @@ msgid "Postal / ZIP Code"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Placeholder"
 msgstr ""
 
@@ -13007,6 +13118,7 @@ msgid "Read more."
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Title"
 msgstr ""
 
@@ -13263,6 +13375,7 @@ msgid "Tiled"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Pagination"
 msgstr ""
 
@@ -13419,6 +13532,7 @@ msgid "Below"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Gap"
 msgstr ""
 
@@ -13495,6 +13609,7 @@ msgid "Dot Position"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Loader Size"
 msgstr ""
 
@@ -13515,6 +13630,7 @@ msgid "grid"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "masonry"
 msgstr ""
 
@@ -13739,6 +13855,7 @@ msgid "modal"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Edit"
 msgstr ""
 
@@ -13751,14 +13868,17 @@ msgid "Edit the blocks inside the preview below to change the content displayed 
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Done"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Reset Layout"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "All"
 msgstr ""
 
@@ -13767,54 +13887,67 @@ msgid "Showing All Post Grid Layout."
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Post Type"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Taxonomy"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Exclude Current Post"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Posts Per Page"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Offset Starting Post"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Note: The offset will skip the number of posts set, and will use the next post as the starting post."
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Offset By"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Order By"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Random"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Menu Order"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Order"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Descending"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Ascending"
 msgstr ""
 
@@ -13823,10 +13956,12 @@ msgid "Note: Above setting will only take effect once you are on the live page, 
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "If Posts Not Found"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Display Message"
 msgstr ""
 
@@ -13851,110 +13986,137 @@ msgid "Dots"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Show Featured Image"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Sizes"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Link Complete Box"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Show Title"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Show Author"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Show Date"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Show Comment"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Show Taxonomy"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Taxonomy Position"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "With Meta"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Taxonomy Style"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Highlighted"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Taxonomy Divider"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Show Meta Icon"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Show Excerpt"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Show:"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Excerpt"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Full post"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Max number of words in excerpt"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Read More Link"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Show Read More Link"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Open Links in New Tab"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Content Padding"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Meta"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Taxonomy Text Color"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Highlighted Color"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Background Overlay Color"
 msgstr ""
 
@@ -13975,14 +14137,17 @@ msgid "Top Margin for Dots"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "post"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Note: Enabling this will disable the Pagination. Setting the offset parameter overrides/ignores the paged parameter and breaks pagination. "
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Read more"
 msgstr ""
 
@@ -14051,6 +14216,7 @@ msgid "This spacing is between the Post Grid and the Pagination"
 msgstr ""
 
 #: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Edit the blocks inside the preview below to change the content displayed for each post within the post grid."
 msgstr ""
 
@@ -15370,391 +15536,425 @@ msgstr ""
 msgid "Filter to disable responsive/display condition. "
 msgstr ""
 
-#: dist/blocks.js:17
+#. translators: abbreviation for units
+#: dist/blocks.js:19
+msgid "%s Removed from Quick Action Bar."
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Add to Quick Action Bar"
+msgstr ""
+
+#. translators: abbreviation for units
+#: dist/blocks.js:21
+msgid "%s Added to Quick Action Bar."
+msgstr ""
+
+#: dist/blocks.js:21
+msgid "Already Present in Quick Action Bar"
+msgstr ""
+
+#: dist/blocks.js:21
+msgid "No results found."
+msgstr ""
+
+#: dist/blocks.js:21
+msgid "Learn More"
+msgstr ""
+
+#: dist/blocks.js:21
+msgid "Introducing the Quick Action Bar which makes page building faster and easier by giving you quick access to the blocks you use the most. You can easily disable this feature in the Spectra settings."
+msgstr ""
+
+#: dist/blocks.js:21
 msgid "Add your own CSS code here to customize the page as per your expectations."
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Spectra Page Settings"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
+msgid "Enable Sidebar"
+msgstr ""
+
+#: dist/blocks.js:21
 msgid "Rename"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Enter a custom name for this block."
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Block name"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Tablet & Mobile"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Note: Choose on what breakpoint the columns will stack."
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Theme Container Width"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Inner Width"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Default (10px)"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "No Gap (0px)"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Narrow (5px)"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Extended (15px)"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Wide (20px)"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "XL"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Wider (30px)"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Note: The individual Column Gap can be managed from Column Settings."
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Reverse Columns (Tablet & Mobile)"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Reverse Columns (Mobile)"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Select a variation to start with."
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "One column"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Two columns; equal split"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Two columns; one-third, two-thirds split"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Two columns; two-thirds, one-third split"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Three columns; equal split"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Three columns; wide center column"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Four columns; equal split"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Five columns; equal split"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "columns"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "rows"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Inherit Inner Width from Theme"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "advanced row"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "wrapper"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Content Width (%)"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Immediate child of Advanced Columns"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Field"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Radio & Checkbox"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Override Current Style"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Success/Error Message"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Note: This styling can be only seen at frontend"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Validation Message Position"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Bottom Right Side of Field"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Highlight Borders"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Justified"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Label & Input"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Label Color"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Label Typography"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Input Color"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Input Typography"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Label & Input Gap"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Border Bottom"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Fields Space"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Selected Color"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Checkbox Rounded Corners"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Validation Message Color"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Validation Typography"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Message Background Color"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Highlight Border Color"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Success Message"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Error Message"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Select a Contact Form 7"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Loading"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Highly customize and style your Contact Form 7 forms ."
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "CF7 styler"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "contact form styler"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Tab Index"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Form Title & Description"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Show"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Hide"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Field & Input Label Alignment"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Title & Description Alignment"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Submit Button Alignment"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Field Style & Border"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Field Style"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Text Area Height"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Radio & Checkbox Label"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Radio & Checkbox Border"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Note: This styling can be only seen on frontend"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Field Validation"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Message Color"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Advanced Settings"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Field Background Color"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Error Message Validation"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Success Message Validation"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Label & Input Space"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Select a Gravity Form"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "GF styler"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "gravity form styler"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Showing All Post Masonry Layout."
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Infinite Load Event"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Button Text"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Pagination Button Alignment"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Loader Color"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Input Width"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "Input Box"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "search"
 msgstr ""
 
-#: dist/blocks.js:17
+#: dist/blocks.js:21
 msgid "wp"
 msgstr ""
 

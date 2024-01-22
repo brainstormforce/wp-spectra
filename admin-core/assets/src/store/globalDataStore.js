@@ -18,6 +18,7 @@ const initialState = {
 	enableCopyPasteStyles : '',
 	enableDisplayConditions : '',
 	enableMasonryExtension : '',
+	enableQuickActionSidebarExtension : '',
 	enableAnimationsExtension : '',
 	socialLogin: {
 		recaptchaVersion: 'v2',

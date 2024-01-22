@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.4.2
-Stable tag: 2.11.4
+Stable tag: 2.12.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -214,6 +214,12 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
 
 == Changelog ==
+
+= 2.12.0 - MONDAY, 22nd JANUARY 2024 =
+* New: Introducing a Quick Action Bar - Keep all your essential Spectra blocks right at your fingertips!
+* Feature: AI Assistant - Now you can use the AI Assistant outside the editor!
+* Feature: AI Assistant - Now you can select any text and use it as context when outside the editor!
+* Fix: Forms - Resolved an issue wherein forms would not be submittable when used on a page as well as in the footer.
 
 = 2.11.4 - THURSDAY, 18th JANUARY 2024 =
 * Improvement: Buttons - Handled the inherit-from-theme secondary-button option for Astra child themes.

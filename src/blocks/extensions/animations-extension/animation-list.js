@@ -19,7 +19,7 @@ export const AnimationList = [
 			{ value: 'fade-right', label: __( 'Fade Right', 'ultimate-addons-for-gutenberg' ) },
 		],
 	},
-	
+
 	// Flip.
 	{
 		label: __( 'Flip', 'ultimate-addons-for-gutenberg' ),
@@ -77,7 +77,7 @@ export const AnimationSelectControlObject = {
 	'fade-down': { value: 'fade-down', label: __( 'Fade Down', 'ultimate-addons-for-gutenberg' ) },
 	'fade-up': { value: 'fade-up', label: __( 'Fade Up', 'ultimate-addons-for-gutenberg' ) },
 	'fade-left': { value: 'fade-left', label: __( 'Fade Left', 'ultimate-addons-for-gutenberg' ) },
-	'fade-right': { value: 'fade-right', label: __( 'Fade Right', 'ultimate-addons-for-gutenberg' ) },	
+	'fade-right': { value: 'fade-right', label: __( 'Fade Right', 'ultimate-addons-for-gutenberg' ) },
 
 	// Flip.
 	'flip-down': { value: 'flip-down', label: __( 'Flip Down', 'ultimate-addons-for-gutenberg' ) },

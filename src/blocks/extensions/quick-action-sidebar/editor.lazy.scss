@@ -1,0 +1,294 @@
+// Quick acton bar Editor CSS.
+.spectra-ee-quick-access {
+	// This is applied to the element directly inside the interface skeleton body.
+	display: flex;
+	height: auto;
+	width: 60px;
+	background: #1e1e1e;
+	color: #fff;
+
+	// The sidebar inside the Quick Access area.
+	&__sidebar {
+		width: 60px;
+		height: 100%;
+		background: #1e1e1e;
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		overflow: auto;
+
+		::-webkit-scrollbar {
+			width: 0;
+			background: transparent;
+		}
+
+		// The block buttons area.
+		&--blocks,
+		&--actions {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: center;
+			gap: 15px;
+			overflow-y: overlay;
+			overflow-x: hidden;
+			cursor: pointer;
+			max-height: calc(100vh - 157px);
+
+			// Scrolling will need to be added in the future.
+			&--block {
+				display: flex;
+				cursor: grab;
+				border-radius: 6px;
+				gap: 8px;
+				padding: 12px;
+
+				&--icon {
+					display: flex;
+					width: 24px;
+					height: 24px;
+					justify-content: center;
+					align-items: center;
+
+					&--name {
+						display: flex;
+						flex-direction: row;
+						align-content: center;
+						justify-content: center;
+						align-items: center;
+
+						.components-popover__content {
+							background: none;
+							border: none;
+							box-shadow: none;
+							width: auto;
+						}
+
+						.block-title {
+							display: flex;
+							align-content: center;
+							justify-content: center;
+							align-items: center;
+							font-size: 14px;
+							border-radius: 4px;
+							margin-right: 20px;
+							margin-left: 15px;
+							background: #1e1e1e;
+							color: #fff;
+							padding: 5px 10px;
+							cursor: pointer;
+
+							.spectra-ee-quick-access__sidebar--blocks--block--name {
+								padding-right: 4px;
+
+
+								.block-title-svg {
+									cursor: pointer;
+									margin-top: 5px;
+									width: 15px;
+									height: 15px;
+								}
+							}
+
+						}
+
+					}
+				}
+
+				span {
+					display: none;
+				}
+
+				&:hover {
+
+					span {
+						display: none;
+					}
+
+					background: #1d2939;
+				}
+			}
+		}
+
+		// The sidebar actions area.
+		&--actions {
+			cursor: pointer;
+			position: relative;
+			bottom: 6px;
+			left: 0;
+			margin-top: 10px;
+
+			.spectra-quick-action-sidebar-wrap {
+
+				#plus-icon {
+					display: flex;
+					align-content: center;
+					justify-content: center;
+					align-items: center;
+					padding: 12px 12px;
+					background: #1d2939;
+				}
+			}
+		}
+	}
+}
+.edit-site-layout.is-full-canvas.is-edit-mode .edit-site-layout__view-mode-toggle.components-button {
+	border-bottom: #1e1e1e;
+}
+
+
+.spectra-quick-action-block-popover {
+	margin-left: 15px;
+
+	::-webkit-scrollbar {
+		width: 0;
+		background: transparent;
+	}
+
+	.components-popover__content {
+		width: 348px;
+		height: 279px;
+		background: #fff;
+		padding: 16px;
+		border-radius: 6px;
+		gap: 16px;
+
+		.spectra-quick-action-block-popover-search {
+			input.components-search-control__input {
+				width: 316px;
+				height: 40px;
+				padding: 10px 14px;
+				border-radius: 4px;
+				border: 1px solid #007cba;
+				background: #fff;
+
+				&:focus {
+					border: 1px solid #007cba;
+					box-shadow: none;
+				}
+
+				&::placeholder {
+					color: #aaa;
+					font-size: 12px;
+					font-weight: 500;
+				}
+			}
+
+			svg {
+				fill: #aaa;
+			}
+		}
+
+		.spectra-block-container {
+			display: flex;
+			flex-wrap: wrap;
+			overflow: hidden;
+			flex-direction: row;
+			align-items: stretch;
+
+			.spectra-quick-action-block-popover-header {
+				&__already-present-in-quick-action-bar,
+				&__add-to-quick-action-bar {
+					width: 316px;
+					padding: 16px 0 8px 0;
+
+					.block-editor-inserter__panel-title {
+						color: #50575e;
+						font-size: 13px;
+						font-weight: 400;
+						text-transform: capitalize;
+					}
+				}
+			}
+
+			.spectra-block-wrap {
+				margin: 0;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				position: relative;
+				transition: all 0.05s ease-in-out;
+				align-content: stretch;
+				width: 105.33px;
+				height: 100px;
+				border-radius: 4px;
+
+				.spectra-ee-quick-access__sidebar--blocks--block--icon {
+					width: 64px;
+					height: 48px;
+					padding: 12px 20px;
+					gap: 10px;
+				}
+
+				svg.uagb-editor-icons {
+					rect,
+					path {
+						stroke: #0063a1;
+					}
+				}
+
+				.block-title {
+					color: #1e1e1e;
+					text-align: center;
+					width: 57px;
+					height: 28px;
+					padding: 4px 0 8px 0;
+					gap: 10px;
+					font-size: 12px;
+					line-height: 16px;
+					letter-spacing: 0;
+				}
+
+				&:hover {
+					&::after {
+						background: #007cba;
+						content: "";
+						border-radius: 2px;
+						bottom: 0;
+						left: 0;
+						opacity: 0.04;
+						pointer-events: none;
+						position: absolute;
+						right: 0;
+						top: 0;
+					}
+					.block-title {
+						color: #007cba;
+						filter: brightness(0.95);
+					}
+				}
+			}
+
+			.block-editor-inserter__no-results {
+				padding: 50px 105px;
+			}
+		}
+
+	}
+
+}
+
+.components-popover__fallback-container {
+	svg.block-title-svg {
+		width: 10px;
+		height: 10px;
+		fill: #fff;
+		&:hover {
+			fill: #f00;
+		}
+	}
+}
+
+.edit-site-layout__canvas {
+	.spectra-ee-quick-access__sidebar {
+		padding-top: 1px;
+	}
+}
+
+div#widgets-editor {
+	.spectra-ee-quick-access__sidebar--blocks,
+	.spectra-ee-quick-access__sidebar--actions {
+		max-height: calc(100vh - 180px);
+	}
+}

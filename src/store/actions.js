@@ -26,9 +26,39 @@ export function updateGlobalBlockStylesFontFamilies( value ) {
 		value,
 	};
 }
+
 export function updateInitialState( value ) {
 	return {
 		type: 'UPDATE_INITIAL_STATE',
+		value,
+	};
+}
+
+// This action is used to set the device type. If the Gutenberg stores do not provide device type support, this action serves as a fallback.
+export function setDeviceType( value ) {
+	return {
+		type: 'UPDATE_DEVICE_TYPE',
+		value,
+	};
+}
+
+export function updateEnableQuickActionSidebar( value ) {
+	return {
+		type: 'UPDATE_ENABLE_QUICK_ACTION_SIDEBAR',
+		value,
+	};
+}
+
+export function updateDefaultAllowedQuickSidebarBlocks( value ) {
+	return {
+		type: 'UPDATE_DEFAULT_ALLOWED_QUICK_SIDEBAR_BLOCKS',
+		value,
+	};
+}
+
+export function updateNoticeForQuickSidebarBlocks( value ) {
+	return {
+		type: 'UPDATE_NOTICE_FOR_QUICK_SIDEBAR',
 		value,
 	};
 }

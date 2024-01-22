@@ -1,3 +1,7 @@
+v1.1.0 - 17th January 2024
+- Feature: Made the AI Assistant sidebar accessible outside the editor.
+- Improvement: Added the 'Force Enabled' function to ensure that modules are enabled.
+
 v1.0.9 - 11th January 2024
 - Improvement: Added middleware parameter handling for the plugin slug.
 

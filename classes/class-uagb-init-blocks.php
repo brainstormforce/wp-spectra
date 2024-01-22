@@ -70,6 +70,9 @@ class UAGB_Init_Blocks {
 
 		// For Spectra Global Block Styles.
 		add_action( 'wp_ajax_uag_global_block_styles', array( $this, 'uag_global_block_styles' ) );
+		// For Spectra Global Quick Action Bar.
+		add_action( 'wp_ajax_uag_global_sidebar_enabled', array( $this, 'uag_global_sidebar_enabled' ) );
+		add_action( 'wp_ajax_uag_global_update_allowed_block', array( $this, 'uag_global_update_allowed_block' ) );
 
 		if ( ! is_admin() ) {
 			add_action( 'render_block', array( $this, 'render_block' ), 5, 2 );
@@ -219,7 +222,7 @@ class UAGB_Init_Blocks {
 
 			$attrs                                      = $block['attrs'];
 			$attrs['UAGAnimationDoNotApplyToContainer'] = isset( $attrs['UAGAnimationDoNotApplyToContainer'] ) ? $attrs['UAGAnimationDoNotApplyToContainer'] : false;
-			$block_positioning                          = ! empty( $attrs['UAGPosition'] ) && is_string( $attrs['UAGPosition'] ) ? $attrs['UAGPosition'] : false; 
+			$block_positioning                          = ! empty( $attrs['UAGPosition'] ) && is_string( $attrs['UAGPosition'] ) ? $attrs['UAGPosition'] : false;
 
 			// Container-specific animation attributes.
 			if ( ! $attrs['UAGAnimationDoNotApplyToContainer'] ) {
@@ -730,77 +733,107 @@ class UAGB_Init_Blocks {
 		$container_elements_gap = UAGB_Admin_Helper::get_admin_settings_option( 'uag_container_global_elements_gap', 20 );
 		$screen                 = get_current_screen();
 
+		$uag_enable_quick_action_sidebar = apply_filters( 'uag_enable_quick_action_sidebar', UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_quick_action_sidebar', 'enabled' ) );
+
+		$localized_params = array(
+			'cf7_is_active'                           => class_exists( 'WPCF7_ContactForm' ),
+			'gf_is_active'                            => class_exists( 'GFForms' ),
+			'category'                                => 'uagb',
+			'ajax_url'                                => admin_url( 'admin-ajax.php' ),
+			'cf7_forms'                               => $this->get_cf7_forms(),
+			'gf_forms'                                => $this->get_gravity_forms(),
+			'tablet_breakpoint'                       => UAGB_TABLET_BREAKPOINT,
+			'mobile_breakpoint'                       => UAGB_MOBILE_BREAKPOINT,
+			'image_sizes'                             => UAGB_Helper::get_image_sizes(),
+			'post_types'                              => UAGB_Helper::get_post_types(),
+			'uagb_ajax_nonce'                         => $uagb_ajax_nonce,
+			'uagb_svg_confirmation_nonce'             => current_user_can( 'edit_posts' ) ? wp_create_nonce( 'uagb_confirm_svg_nonce' ) : '',
+			'svg_confirmation'                        => current_user_can( 'edit_posts' ) ? get_option( 'spectra_svg_confirmation' ) : '',
+			'uagb_home_url'                           => home_url(),
+			'user_role'                               => $this->get_user_role(),
+			'uagb_url'                                => UAGB_URL,
+			'uagb_mime_type'                          => UAGB_Helper::get_mime_type(),
+			'uagb_site_url'                           => UAGB_URI,
+			'enableConditions'                        => apply_filters_deprecated( 'enable_block_condition', array( $display_condition ), '1.23.4', 'uag_enable_block_condition' ),
+			'enableConditionsForCoreBlocks'           => apply_filters( 'enable_block_condition_for_core', true ),
+			'enableResponsiveConditionsForCoreBlocks' => apply_filters( 'enable_responsive_condition_for_core', true ),
+			'enableMasonryGallery'                    => apply_filters( 'uag_enable_masonry_gallery', UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_masonry_gallery', 'enabled' ) ),
+			'enableQuickActionSidebar'                => $uag_enable_quick_action_sidebar,
+			'enableAnimationsExtension'               => apply_filters( 'uag_enable_animations_extension', UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_animations_extension', 'enabled' ) ),
+			'enableResponsiveConditions'              => apply_filters( 'enable_block_responsive', UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_responsive', 'enabled' ) ),
+			'number_of_icon_chunks'                   => UAGB_Helper::$number_of_icon_chunks,
+			'uagb_enable_extensions_for_blocks'       => apply_filters( 'uagb_enable_extensions_for_blocks', array() ),
+			'uagb_exclude_blocks_from_extension'      => $uagb_exclude_blocks_from_extension,
+			'uag_load_select_font_globally'           => $enable_selected_fonts,
+			'uag_select_font_globally'                => $selected_fonts,
+			'uagb_old_user_less_than_2'               => get_option( 'uagb-old-user-less-than-2' ),
+			'collapse_panels'                         => UAGB_Admin_Helper::get_admin_settings_option( 'uag_collapse_panels', 'enabled' ),
+			'enable_legacy_blocks'                    => UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_legacy_blocks', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'yes' : 'no' ),
+			'copy_paste'                              => UAGB_Admin_Helper::get_admin_settings_option( 'uag_copy_paste', 'enabled' ),
+			'enable_on_page_css_button'               => UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_on_page_css_button', 'yes' ),
+			'content_width'                           => $content_width,
+			'container_global_padding'                => $container_padding,
+			'container_elements_gap'                  => $container_elements_gap,
+			'recaptcha_site_key_v2'                   => UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v2', '' ),
+			'recaptcha_site_key_v3'                   => UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v3', '' ),
+			'recaptcha_secret_key_v2'                 => UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v2', '' ),
+			'recaptcha_secret_key_v3'                 => UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v3', '' ),
+			'blocks_editor_spacing'                   => apply_filters( 'uagb_default_blocks_editor_spacing', UAGB_Admin_Helper::get_admin_settings_option( 'uag_blocks_editor_spacing', 0 ) ),
+			'load_font_awesome_5'                     => UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_font_awesome_5', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
+			'auto_block_recovery'                     => UAGB_Admin_Helper::get_admin_settings_option( 'uag_auto_block_recovery', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
+			'font_awesome_5_polyfill'                 => array(),
+			'spectra_custom_fonts'                    => apply_filters( 'spectra_system_fonts', array() ),
+			'spectra_pro_status'                      => is_plugin_active( 'spectra-pro/spectra-pro.php' ),
+			'spectra_custom_css_example'              => __(
+				'Use custom class added in block\'s advanced settings to target your desired block. Examples:
+		.my-class {text-align: center;} // my-class is a custom selector',
+				'ultimate-addons-for-gutenberg'
+			),
+			'is_rtl'                                  => is_rtl(),
+			'insta_linked_accounts'                   => UAGB_Admin_Helper::get_admin_settings_option( 'uag_insta_linked_accounts', array() ),
+			'insta_all_users_media'                   => apply_filters( 'uag_instagram_transients', array() ),
+			'is_site_editor'                          => $screen->id,
+			'current_post_id'                         => get_the_ID(),
+			'btn_inherit_from_theme'                  => UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' ),
+			'wp_version'                              => get_bloginfo( 'version' ),
+			'is_block_theme'                          => UAGB_Admin_Helper::is_block_theme(),
+			'is_customize_preview'                    => is_customize_preview(),
+			'uag_enable_gbs_extension'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_gbs_extension', 'enabled' ),
+			'current_theme'                           => wp_get_theme()->get( 'Name' ),
+			'is_gutenberg_activated'                  => is_plugin_active( 'gutenberg/gutenberg.php' ), // TODO: Once Gutenberg merged the rename functionality code in WP then we need to remove localization part for is_gutenberg_activated.
+		);
+
+		if ( 'enabled' === $uag_enable_quick_action_sidebar ) {
+			$default_allowed_quick_sidebar_blocks = apply_filters(
+				'uagb_quick_sidebar_allowed_blocks',
+				array(
+					'uagb/container',
+					'uagb/advanced-heading',
+					'uagb/image',
+					'uagb/icon',
+					'uagb/buttons',
+					'uagb/info-box',
+					'uagb/call-to-action',
+					'uagb/countdown',
+				)
+			);
+
+			if ( ! is_array( $default_allowed_quick_sidebar_blocks ) ) {
+				$default_allowed_quick_sidebar_blocks = array();
+			}
+
+			$quick_sidebar_allowed_blocks = \UAGB_Admin_Helper::get_admin_settings_option( 'uagb_quick_sidebar_allowed_blocks', $default_allowed_quick_sidebar_blocks );
+			$quick_sidebar_allowed_blocks = ! empty( $quick_sidebar_allowed_blocks ) && is_array( $quick_sidebar_allowed_blocks ) ? $quick_sidebar_allowed_blocks : $default_allowed_quick_sidebar_blocks;
+
+			$localized_params['quick_sidebar_allowed_blocks'] = $quick_sidebar_allowed_blocks;
+		}
+
 		wp_localize_script(
 			'uagb-block-editor-js',
 			'uagb_blocks_info',
-			array(
-				'cf7_is_active'                           => class_exists( 'WPCF7_ContactForm' ),
-				'gf_is_active'                            => class_exists( 'GFForms' ),
-				'category'                                => 'uagb',
-				'ajax_url'                                => admin_url( 'admin-ajax.php' ),
-				'cf7_forms'                               => $this->get_cf7_forms(),
-				'gf_forms'                                => $this->get_gravity_forms(),
-				'tablet_breakpoint'                       => UAGB_TABLET_BREAKPOINT,
-				'mobile_breakpoint'                       => UAGB_MOBILE_BREAKPOINT,
-				'image_sizes'                             => UAGB_Helper::get_image_sizes(),
-				'post_types'                              => UAGB_Helper::get_post_types(),
-				'uagb_ajax_nonce'                         => $uagb_ajax_nonce,
-				'uagb_svg_confirmation_nonce'             => current_user_can( 'edit_posts' ) ? wp_create_nonce( 'uagb_confirm_svg_nonce' ) : '',
-				'svg_confirmation'                        => current_user_can( 'edit_posts' ) ? get_option( 'spectra_svg_confirmation' ) : '',
-				'uagb_home_url'                           => home_url(),
-				'user_role'                               => $this->get_user_role(),
-				'uagb_url'                                => UAGB_URL,
-				'uagb_mime_type'                          => UAGB_Helper::get_mime_type(),
-				'uagb_site_url'                           => UAGB_URI,
-				'enableConditions'                        => apply_filters_deprecated( 'enable_block_condition', array( $display_condition ), '1.23.4', 'uag_enable_block_condition' ),
-				'enableConditionsForCoreBlocks'           => apply_filters( 'enable_block_condition_for_core', true ),
-				'enableResponsiveConditionsForCoreBlocks' => apply_filters( 'enable_responsive_condition_for_core', true ),
-				'enableMasonryGallery'                    => apply_filters( 'uag_enable_masonry_gallery', UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_masonry_gallery', 'enabled' ) ),
-				'enableAnimationsExtension'               => apply_filters( 'uag_enable_animations_extension', UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_animations_extension', 'enabled' ) ),
-				'enableResponsiveConditions'              => apply_filters( 'enable_block_responsive', UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_responsive', 'enabled' ) ),
-				'number_of_icon_chunks'                   => UAGB_Helper::$number_of_icon_chunks,
-				'uagb_enable_extensions_for_blocks'       => apply_filters( 'uagb_enable_extensions_for_blocks', array() ),
-				'uagb_exclude_blocks_from_extension'      => $uagb_exclude_blocks_from_extension,
-				'uag_load_select_font_globally'           => $enable_selected_fonts,
-				'uag_select_font_globally'                => $selected_fonts,
-				'uagb_old_user_less_than_2'               => get_option( 'uagb-old-user-less-than-2' ),
-				'collapse_panels'                         => UAGB_Admin_Helper::get_admin_settings_option( 'uag_collapse_panels', 'enabled' ),
-				'enable_legacy_blocks'                    => UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_legacy_blocks', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'yes' : 'no' ),
-				'copy_paste'                              => UAGB_Admin_Helper::get_admin_settings_option( 'uag_copy_paste', 'enabled' ),
-				'enable_on_page_css_button'               => UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_on_page_css_button', 'yes' ),
-				'content_width'                           => $content_width,
-				'container_global_padding'                => $container_padding,
-				'container_elements_gap'                  => $container_elements_gap,
-				'recaptcha_site_key_v2'                   => UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v2', '' ),
-				'recaptcha_site_key_v3'                   => UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v3', '' ),
-				'recaptcha_secret_key_v2'                 => UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v2', '' ),
-				'recaptcha_secret_key_v3'                 => UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v3', '' ),
-				'blocks_editor_spacing'                   => apply_filters( 'uagb_default_blocks_editor_spacing', UAGB_Admin_Helper::get_admin_settings_option( 'uag_blocks_editor_spacing', 0 ) ),
-				'load_font_awesome_5'                     => UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_font_awesome_5', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
-				'auto_block_recovery'                     => UAGB_Admin_Helper::get_admin_settings_option( 'uag_auto_block_recovery', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
-				'font_awesome_5_polyfill'                 => array(),
-				'spectra_custom_fonts'                    => apply_filters( 'spectra_system_fonts', array() ),
-				'spectra_pro_status'                      => is_plugin_active( 'spectra-pro/spectra-pro.php' ),
-				'spectra_custom_css_example'              => __(
-					'Use custom class added in block\'s advanced settings to target your desired block. Examples:
-			.my-class {text-align: center;} // my-class is a custom selector',
-					'ultimate-addons-for-gutenberg'
-				),
-				'is_rtl'                                  => is_rtl(),
-				'insta_linked_accounts'                   => UAGB_Admin_Helper::get_admin_settings_option( 'uag_insta_linked_accounts', array() ),
-				'insta_all_users_media'                   => apply_filters( 'uag_instagram_transients', array() ),
-				'is_site_editor'                          => $screen->id,
-				'current_post_id'                         => get_the_ID(),
-				'btn_inherit_from_theme'                  => UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' ),
-				'wp_version'                              => get_bloginfo( 'version' ),
-				'is_block_theme'                          => UAGB_Admin_Helper::is_block_theme(),
-				'is_customize_preview'                    => is_customize_preview(),
-				'uag_enable_gbs_extension'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_gbs_extension', 'enabled' ),
-				'current_theme'                           => wp_get_theme()->get( 'Name' ),
-				'is_gutenberg_activated'                  => is_plugin_active( 'gutenberg/gutenberg.php' ), // TODO: Once Gutenberg merged the rename functionality code in WP then we need to remove localization part for is_gutenberg_activated.
-				'is_astra_based_theme'                    => defined( 'ASTRA_THEME_SETTINGS' ),
-			)
+			$localized_params
 		);
+
 		// To match the editor with frontend.
 		// Scripts Dependency.
 		UAGB_Scripts_Utils::enqueue_blocks_dependency_both();
@@ -962,6 +995,52 @@ class UAGB_Init_Blocks {
 	}
 
 	/**
+	 * Function to save enable/disable data.
+	 *
+	 * @since 2.12.0
+	 * @return void
+	 */
+	public function uag_global_sidebar_enabled() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error();
+		}
+
+		if ( ! check_ajax_referer( 'uagb_ajax_nonce', 'security', false ) ) {
+			wp_send_json_error();
+		}
+
+		if ( ! empty( $_POST['enableQuickActionSidebar'] ) ) {
+			$spectra_enable_quick_action_sidebar = ( 'enabled' === $_POST['enableQuickActionSidebar'] ? 'enabled' : 'disabled' );
+			\UAGB_Admin_Helper::update_admin_settings_option( 'uag_enable_quick_action_sidebar', $spectra_enable_quick_action_sidebar );
+			wp_send_json_success();
+		}
+		wp_send_json_error();
+	}
+
+	/**
+	 * Function to save allowed block data.
+	 *
+	 * @since 2.12.0
+	 * @return void
+	 */
+	public function uag_global_update_allowed_block() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error();
+		}
+
+		if ( ! check_ajax_referer( 'uagb_ajax_nonce', 'security', false ) ) {
+			wp_send_json_error();
+		}
+
+		if ( ! empty( $_POST['defaultAllowedQuickSidebarBlocks'] ) ) {
+			$spectra_default_allowed_quick_sidebar_blocks = json_decode( stripslashes( $_POST['defaultAllowedQuickSidebarBlocks'] ), true ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			\UAGB_Admin_Helper::update_admin_settings_option( 'uagb_quick_sidebar_allowed_blocks', $spectra_default_allowed_quick_sidebar_blocks );
+			wp_send_json_success();
+		}
+		wp_send_json_error();
+	}
+
+	/**
 	 * Function to save Spectra Global Block Styles data.
 	 *
 	 * @since 2.9.0
@@ -973,15 +1052,15 @@ class UAGB_Init_Blocks {
 			wp_send_json_error();
 		}
 
-		
+
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error();
 		}
-		
+
 		if ( ! check_ajax_referer( 'uagb_ajax_nonce', 'security', false ) ) {
 			wp_send_json_error();
 		}
-		
+
 		$response_data = array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) );
 
 		if ( empty( $_POST['spectraGlobalStyles'] ) ) {
@@ -994,11 +1073,11 @@ class UAGB_Init_Blocks {
 			update_option( 'spectra_global_block_styles', $global_block_styles );
 			wp_send_json_success( $global_block_styles );
 		}
-		
+
 		if ( empty( $_POST ) || empty( $_POST['attributes'] ) || empty( $_POST['blockName'] ) || empty( $_POST['postId'] ) || empty( $_POST['spectraGlobalStyles'] ) || ! is_array( $global_block_styles ) ) {
 			wp_send_json_error( $response_data );
 		}
-		
+
 		$global_block_styles = is_array( $global_block_styles ) ? $global_block_styles : array();
 		$block_attr          = array();
 
@@ -1007,12 +1086,12 @@ class UAGB_Init_Blocks {
 		foreach ( $global_block_styles as $key => $style ) {
 			if ( ! empty( $_POST['globalBlockStyleId'] ) && ! empty( $style['value'] ) && $style['value'] === $_POST['globalBlockStyleId'] ) {
 				$block_attr = $style['attributes'];
-				
+
 				if ( ! $block_attr ) {
 					wp_send_json_error( $response_data );
 					break;
 				}
-				
+
 				$_block_slug = str_replace( 'uagb/', '', sanitize_text_field( $_POST['blockName'] ) );
 				$_block_css  = UAGB_Block_Module::get_frontend_css( $_block_slug, $block_attr, $block_attr['block_id'], true );
 
@@ -1064,14 +1143,14 @@ class UAGB_Init_Blocks {
 				}
 			}
 		}
-		
+
 		$spectra_gbs_google_fonts = get_option( 'spectra_gbs_google_fonts', array() );
-		
+
 		// Global Font Families.
 		$font_families = array();
 		foreach ( $block_attr as $name => $attribute ) {
 			if ( false !== strpos( $name, 'Family' ) && '' !== $attribute ) {
-				
+
 				$font_families[] = $attribute;
 			}
 		}
@@ -1082,14 +1161,14 @@ class UAGB_Init_Blocks {
 				$spectra_gbs_google_fonts[ $block_attr['globalBlockStyleId'] ] = array_unique( $spectra_gbs_google_fonts[ $block_attr['globalBlockStyleId'] ] );
 			}
 		}
-		
+
 		update_option( 'spectra_gbs_google_fonts', $spectra_gbs_google_fonts );
 
 		if ( ! empty( $_POST['globalBlockStylesFontFamilies'] ) ) {
 			$spectra_gbs_google_fonts_editor = json_decode( stripslashes( $_POST['globalBlockStylesFontFamilies'] ), true ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			update_option( 'spectra_gbs_google_fonts_editor', $spectra_gbs_google_fonts_editor );
 		}
-		
+
 		wp_send_json_success( $global_block_styles );
 	}
 }

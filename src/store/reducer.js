@@ -18,12 +18,29 @@ const DEFAULT_STATE = {
 			label: __( 'None', 'ultimate-addons-for-gutenberg' ),
         }
     ],
-	globalBlockStylesFontFamilies: []
+	globalBlockStylesFontFamilies: [],
+	
+	/**
+	 * This variable is used to set the device type. If the Gutenberg stores do not provide device type support, this variable serves as a fallback.
+	 */
+	deviceType: 'Desktop',
+	enableQuickActionSidebar: 'enabled', // 'enabled' | 'disabled' quick action sidebar.
+	defaultAllowedQuickSidebarBlocks: [ // Default blocks allowed in the quick action sidebar.
+		'uagb/container',
+		'uagb/advanced-heading',
+		'uagb/image',
+		'uagb/icon',
+		'uagb/buttons',
+		'uagb/info-box',
+		'uagb/call-to-action',
+		'uagb/countdown',
+	]
 };
 function reducer( state = DEFAULT_STATE, action ) {
 	switch ( action.type ) {
 		case 'UPDATE_INITIAL_STATE':
             return {
+				...state,
                 ...action.value,
             };
         case 'UPDATE_INITIAL_STATE_FLAG':
@@ -46,7 +63,29 @@ function reducer( state = DEFAULT_STATE, action ) {
 				...state,
 				globalBlockStylesFontFamilies: action.value,
 			};
-			
+		/**
+		 * This action is used to set the device type. If the Gutenberg stores do not provide device type support, this action serves as a fallback.
+		 */
+		case 'UPDATE_DEVICE_TYPE':
+			return {
+				...state,
+				deviceType: action.value,
+			};
+		case 'UPDATE_ENABLE_QUICK_ACTION_SIDEBAR':
+			return {
+				...state,
+				enableQuickActionSidebar: action.value,
+			};
+		case 'UPDATE_DEFAULT_ALLOWED_QUICK_SIDEBAR_BLOCKS':
+			return {
+				...state,
+				defaultAllowedQuickSidebarBlocks: action.value,
+			};
+		case 'UPDATE_NOTICE_FOR_QUICK_SIDEBAR':
+			return {
+				...state,
+				showNoticeForQuickActionSidebar: action.value,
+			};
 	}
 
 	return state;

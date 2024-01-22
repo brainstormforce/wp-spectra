@@ -94,6 +94,11 @@ const globalDataReducer = ( state = {}, action ) => {
                 ...state,
                 enableMasonryExtension: action.payload,
             };
+		case 'UPDATE_ENABLE_QUICK_ACTION_SIDEBAR_EXTENSION':
+            return {
+                ...state,
+                enableQuickActionSidebarExtension: action.payload,
+            };
         case 'UPDATE_ENABLE_ANIMATIONS_EXTENSION':
             return {
                 ...state,

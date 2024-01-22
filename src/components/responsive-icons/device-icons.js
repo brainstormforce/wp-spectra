@@ -2,11 +2,10 @@
  * Internal & External dependencies.
  */
 import { ButtonGroup, Button, Tooltip } from '@wordpress/components';
-import { useDeviceType } from '@Controls/getPreviewType';
+import { useDeviceType, setDeviceType } from '@Controls/getPreviewType';
 import { __, sprintf } from '@wordpress/i18n';
 import { useLayoutEffect } from '@wordpress/element';
 import styles from './editor.lazy.scss';
-import setDeviceType from '@Controls/setDeviceType';
 
 const DeviceIcons = () => {
 	// Add and remove the CSS on the drop and remove of the component.

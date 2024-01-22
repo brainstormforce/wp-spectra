@@ -64,6 +64,7 @@ class Admin_Helper {
 			'enable_on_page_css_button'          => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_on_page_css_button', 'yes' ),
 			'enable_block_condition'             => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_condition', 'disabled' ),
 			'enable_masonry_gallery'             => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_masonry_gallery', 'enabled' ),
+			'enable_quick_action_sidebar'        => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_quick_action_sidebar', 'enabled' ),
 			'enable_block_responsive'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_responsive', 'enabled' ),
 			'enable_dynamic_content'             => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_dynamic_content', 'enabled' ),
 			'enable_animations_extension'        => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_animations_extension', 'enabled' ),
@@ -176,8 +177,7 @@ class Admin_Helper {
 		$general_settings          = self::get_common_settings();
 		$shareable_common_settings = \UAGB_Admin_Helper::get_admin_settings_shareable_data();
 		$options                   = array_merge( $general_settings, $shareable_common_settings );
-
-		$options = apply_filters( 'uag_global_data_options', $options );
+		$options                   = apply_filters( 'uag_global_data_options', $options );
 
 		return $options;
 	}

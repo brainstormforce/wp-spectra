@@ -1,17 +1,17 @@
-# Copyright (C) 2023 Brainstorm Force
+# Copyright (C) 2024 Brainstorm Force
 # This file is distributed under the GPL v2.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zip AI Assistant 1.0.5\n"
+"Project-Id-Version: Zip AI Assistant 1.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/zip-ai\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-11-30T10:27:45+00:00\n"
+"POT-Creation-Date: 2024-01-16T11:19:53+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.8.1\n"
+"X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: zip-ai\n"
 
 #. Plugin Name of the plugin
@@ -27,7 +27,7 @@ msgid "Brainstorm Force"
 msgstr ""
 
 #. translators: %1$s: HTML link start tag, %2$s: HTML link end tag.
-#: classes/admin-configurations.php:402
+#: classes/admin-configurations.php:408
 msgid "Thank you for using %1$sZip AI.%2$s"
 msgstr ""
 
@@ -47,108 +47,113 @@ msgstr ""
 msgid "The Zip AI Middleware encountered an error."
 msgstr ""
 
-#: classes/sidebar-configurations.php:123
+#: classes/sidebar-configurations.php:130
 msgid "The message array was not supplied"
 msgstr ""
 
-#: classes/sidebar-configurations.php:181
-#: classes/sidebar-configurations.php:200
+#: classes/sidebar-configurations.php:188
+#: classes/sidebar-configurations.php:207
 msgid "Something went wrong"
 msgstr ""
 
-#: classes/sidebar-configurations.php:215
+#: classes/sidebar-configurations.php:222
 msgid "Invalid auth token."
 msgstr ""
 
-#: classes/sidebar-configurations.php:216
+#: classes/sidebar-configurations.php:223
 msgid "You have no credits left."
 msgstr ""
 
+#: classes/sidebar-configurations.php:351
+#: sidebar/build/sidebar-app.js:11
+msgid "AI Assistant"
+msgstr ""
+
 #: admin/dashboard-app/build/dashboard-app.js:1
-#: admin/dashboard-app/build/dashboard-app.js:1077
+#: admin/dashboard-app/build/dashboard-app.js:1000
 msgid "Get Started Now"
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:1
-#: admin/dashboard-app/build/dashboard-app.js:1082
+#: admin/dashboard-app/build/dashboard-app.js:1005
 msgid "Go back to the dashboard"
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:1
-#: admin/dashboard-app/build/dashboard-app.js:1112
+#: admin/dashboard-app/build/dashboard-app.js:1035
 msgid "Welcome to the Zip AI Setup Wizard!"
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:1
-#: admin/dashboard-app/build/dashboard-app.js:1115
-#: admin/dashboard-app/build/dashboard-app.js:1300
+#: admin/dashboard-app/build/dashboard-app.js:1038
+#: admin/dashboard-app/build/dashboard-app.js:1223
 msgid "Zip AI is your WordPress assistant, accessible right within your backend. Create persuasive content, generate custom code, and get answers to your WordPress queries in seconds. The possibilities are endless!"
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:1
-#: admin/dashboard-app/build/dashboard-app.js:1139
+#: admin/dashboard-app/build/dashboard-app.js:1062
 msgid "Craft Compelling Content"
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:1
-#: admin/dashboard-app/build/dashboard-app.js:1140
+#: admin/dashboard-app/build/dashboard-app.js:1063
 msgid "With Zip, you can effortlessly create persuasive, engaging copy that resonates with your audience."
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:1
-#: admin/dashboard-app/build/dashboard-app.js:1144
+#: admin/dashboard-app/build/dashboard-app.js:1067
 msgid "AI-Powered Block Patterns"
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:1
-#: admin/dashboard-app/build/dashboard-app.js:1145
+#: admin/dashboard-app/build/dashboard-app.js:1068
 msgid "Zip can personalize and customize the block patterns and section templates tailored to your website's unique needs."
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:1
-#: admin/dashboard-app/build/dashboard-app.js:1149
+#: admin/dashboard-app/build/dashboard-app.js:1072
 msgid "WordPress Wizardry"
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:1
-#: admin/dashboard-app/build/dashboard-app.js:1150
+#: admin/dashboard-app/build/dashboard-app.js:1073
 msgid "Got questions? Zip has the answers. Whether it's troubleshooting, or customizing your site, Zip has your back."
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:1
-#: admin/dashboard-app/build/dashboard-app.js:1154
+#: admin/dashboard-app/build/dashboard-app.js:1077
 msgid "Personalized Templates"
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:1
-#: admin/dashboard-app/build/dashboard-app.js:1155
+#: admin/dashboard-app/build/dashboard-app.js:1078
 msgid "Say goodbye to generic designs and say hello to Zip's personalized page templates, tailored just for you."
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:1
 #: sidebar/build/sidebar-app.js:9
-#: admin/dashboard-app/build/dashboard-app.js:1159
+#: admin/dashboard-app/build/dashboard-app.js:1082
 msgid "Generate Custom Code"
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:1
-#: admin/dashboard-app/build/dashboard-app.js:1160
+#: admin/dashboard-app/build/dashboard-app.js:1083
 msgid "No more struggling with complex coding issues. Zip can whip up custom code, functions, and CSS tailored to your needs."
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:1
-#: admin/dashboard-app/build/dashboard-app.js:1164
+#: admin/dashboard-app/build/dashboard-app.js:1087
 msgid "Custom Pages with AI"
 msgstr ""
 
 #. translators: %s: Percentage Ascii Code
 #: admin/dashboard-app/build/dashboard-app.js:2
-#: admin/dashboard-app/build/dashboard-app.js:1167
+#: admin/dashboard-app/build/dashboard-app.js:1090
 msgid "With Zip AI by your side, you can create beautiful, 100%s custom web pages without the need for any design or coding skills."
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:2
-#: admin/dashboard-app/build/dashboard-app.js:1178
+#: admin/dashboard-app/build/dashboard-app.js:1101
 msgid "From the Team Behind Some Iconic WordPress Products"
 msgstr ""
 
@@ -158,65 +163,65 @@ msgid "Visit Website"
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:2
-#: admin/dashboard-app/build/dashboard-app.js:1326
+#: admin/dashboard-app/build/dashboard-app.js:1249
 msgid "Words Written"
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:2
-#: admin/dashboard-app/build/dashboard-app.js:1334
+#: admin/dashboard-app/build/dashboard-app.js:1257
 msgid "Get more Credits"
 msgstr ""
 
 #. translators: %s: number of words
 #: admin/dashboard-app/build/dashboard-app.js:3
-#: admin/dashboard-app/build/dashboard-app.js:1349
+#: admin/dashboard-app/build/dashboard-app.js:1272
 msgid "of %s"
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:3
-#: admin/dashboard-app/build/dashboard-app.js:1378
+#: admin/dashboard-app/build/dashboard-app.js:1301
 msgid "Enable Zip AI"
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:3
-#: admin/dashboard-app/build/dashboard-app.js:1398
+#: admin/dashboard-app/build/dashboard-app.js:1321
 msgid "You can easily enable or disable Zip AI from this section. Simply toggle the switch on or off with a single click."
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:3
-#: admin/dashboard-app/build/dashboard-app.js:1418
+#: admin/dashboard-app/build/dashboard-app.js:1341
 msgid "Zip is Authorized"
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:3
-#: admin/dashboard-app/build/dashboard-app.js:1425
+#: admin/dashboard-app/build/dashboard-app.js:1348
 msgid "Your website is connected with Zip AI. You can revoke this connection at any time from here."
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:3
-#: admin/dashboard-app/build/dashboard-app.js:1436
-#: admin/dashboard-app/build/dashboard-app.js:1476
+#: admin/dashboard-app/build/dashboard-app.js:1359
+#: admin/dashboard-app/build/dashboard-app.js:1399
 msgid "Revoke Access"
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:3
-#: admin/dashboard-app/build/dashboard-app.js:1478
+#: admin/dashboard-app/build/dashboard-app.js:1401
 msgid "Are you sure you wish to revoke the authorization token?"
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:3
-#: admin/dashboard-app/build/dashboard-app.js:1480
+#: admin/dashboard-app/build/dashboard-app.js:1403
 msgid "You will need to re-authorize Zip to use it again."
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:3
-#: admin/dashboard-app/build/dashboard-app.js:1484
+#: admin/dashboard-app/build/dashboard-app.js:1407
 msgid "Revoke"
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:3
 #: sidebar/build/sidebar-app.js:1
-#: admin/dashboard-app/build/dashboard-app.js:1491
+#: admin/dashboard-app/build/dashboard-app.js:1414
 msgid "Cancel"
 msgstr ""
 
@@ -226,7 +231,7 @@ msgid "Default route fallback"
 msgstr ""
 
 #: admin/dashboard-app/build/dashboard-app.js:3
-#: admin/dashboard-app/build/dashboard-app.js:1225
+#: admin/dashboard-app/build/dashboard-app.js:1148
 msgid "Zip - Your AI Assistant"
 msgstr ""
 
@@ -661,10 +666,6 @@ msgstr ""
 msgid "Choose a prompt bellow or write on your own. Ask me about what you need."
 msgstr ""
 
-#: sidebar/build/sidebar-app.js:11
-msgid "AI Assistant"
-msgstr ""
-
-#: admin/dashboard-app/build/dashboard-app.js:1297
+#: admin/dashboard-app/build/dashboard-app.js:1220
 msgid "Welcome to Zip AI!"
 msgstr ""
