@@ -217,6 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = x.x.x =
 * New: Introducing a Quick Action Bar - Keep all your essential Spectra blocks right at your fingertips!
+* Fix: Forms - Resolved an issue wherein forms would not be submittable when used on a page as well as in the footer.
 
 = 2.11.4 - THURSDAY, 18th JANUARY 2024 =
 * Improvement: Buttons - Handled the inherit-from-theme secondary-button option for Astra child themes.
