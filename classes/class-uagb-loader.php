@@ -86,7 +86,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '2.12.0' );
+			define( 'UAGB_VER', '2.12.1' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'spectra' );
@@ -199,7 +199,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			add_filter( 'zip_ai_auth_redirection_url', array( $this, 'add_zip_ai_redirection_url' ), 20, 1 );
 			add_filter( 'zip_ai_revoke_redirection_url', array( $this, 'add_zip_ai_redirection_url' ), 20, 1 );
 
-			require_once UAGB_DIR . 'lib/zip-ai/zip-ai.php';
+			require_once UAGB_DIR . 'lib/class-uagb-zip-ai.php';
 		}
 
 		/**
@@ -573,7 +573,8 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			// Ensure each module in the list is enabled.
 			foreach ( $modules_to_enable as $module_name ) {
-				if ( class_exists( 'ZipAI\Classes\Module' ) ) {
+				// @phpstan-ignore-next-line
+				if ( class_exists( '\ZipAI\Classes\Module' ) && method_exists( '\ZipAI\Classes\Module', 'force_enabled' ) ) {
 					\ZipAI\Classes\Module::force_enabled( $modules, $module_name );
 				}
 			}
