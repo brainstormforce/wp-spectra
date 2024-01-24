@@ -403,9 +403,9 @@ $m_selectors = array(
 		),
 		$overall_border_mobile
 	),
-	'.uagb-tabs__stack11-mobile > .uagb-tabs__panel .uagb-tab' => $overall_border_mobile,
-	'.uagb-tabs__stack11-mobile > .uagb-tabs__body-wrap'   => $overall_border_mobile,
-	'.uagb-tabs__stack12-mobile .uagb-tab'                 => array_merge(
+	'.uagb-tabs__stack1-mobile > .uagb-tabs__panel .uagb-tab' => $overall_border_mobile,
+	'.uagb-tabs__stack1-mobile > .uagb-tabs__body-wrap'    => $overall_border_mobile,
+	'.uagb-tabs__stack2-mobile .uagb-tab'                  => array_merge(
 		array(
 			'border-bottom-width' => '0px',
 			'border-bottom'       => 0,
@@ -414,16 +414,16 @@ $m_selectors = array(
 		),
 		$overall_border_mobile
 	),
-	'.uagb-tabs__stack12-mobile > .uagb-tabs__body-wrap'   => $overall_border_mobile,
-	'.uagb-tabs__stack13-mobile .uagb-tab'                 => array_merge(
+	'.uagb-tabs__stack2-mobile > .uagb-tabs__body-wrap'    => $overall_border_mobile,
+	'.uagb-tabs__stack3-mobile .uagb-tab'                  => array_merge(
 		array(
 			'border-radius' => '30px',
 		),
 		$overall_border_mobile
 	),
-	'.uagb-tabs__stack13-mobile > .uagb-tabs__body-wrap'   => $overall_border_mobile,
-	'.uagb-tabs__stack14-mobile'                           => $overall_border_mobile,
-	'.uagb-tabs__stack14-mobile .uagb-tab'                 => array(
+	'.uagb-tabs__stack3-mobile > .uagb-tabs__body-wrap'    => $overall_border_mobile,
+	'.uagb-tabs__stack4-mobile'                            => $overall_border_mobile,
+	'.uagb-tabs__stack4-mobile .uagb-tab'                  => array(
 		'border-top-width'    => '0px',
 		'border-right-width'  => '0px',
 		'border-left-width'   => '0px',
@@ -435,7 +435,7 @@ $m_selectors = array(
 		'outline'             => 0,
 		'border-radius'       => 0,
 	),
-	'.uagb-tabs__stack14-mobile .uagb-tab.uagb-tabs__active' => array_merge(
+	'.uagb-tabs__stack4-mobile .uagb-tab.uagb-tabs__active' => array_merge(
 		array(
 			'border-top-width'   => '0px',
 			'border-right-width' => '0px',
@@ -556,8 +556,8 @@ $t_selectors = array(
 		),
 		$overall_border_tablet
 	),
-	'.uagb-tabs__vstyle6-tablet .uagb-tab'                 => $overall_border_tablet,
-	'.uagb-tabs__vstyle6-tablet .uagb-tabs__body-wrap'     => $overall_border_tablet,
+	'.uagb-tabs__vstyle6-tablet > .uagb-tabs__panel .uagb-tab' => $overall_border_tablet,
+	'.uagb-tabs__vstyle6-tablet > .uagb-tabs__body-wrap'   => $overall_border_tablet,
 	'.uagb-tabs__vstyle7-tablet .uagb-tab'                 => array_merge(
 		array(
 			'border-top-width'   => '0px',
