@@ -214,6 +214,8 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
 
 ## Changelog ##
+### x.x.x ###
+* Fix: Image Gallery - Resolved an issue wherein the images would not load as intended due to lazy loading.
 
 ### 2.12.1 - MONDAY, 22nd JANUARY 2024 ###
 * Fix: AI Assistant - Fixed the fatal error issue that would occur with a few other plugins.
