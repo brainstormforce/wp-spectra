@@ -814,7 +814,6 @@ class UAGB_Init_Blocks {
 					'uagb/buttons',
 					'uagb/info-box',
 					'uagb/call-to-action',
-					'uagb/countdown',
 				)
 			);
 
