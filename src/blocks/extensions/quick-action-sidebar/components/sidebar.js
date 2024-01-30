@@ -20,7 +20,7 @@ const Sidebar = ( props ) => {
 		return () => style.unuse();
 	}, [] );
 	// Return null when getEnableQuickActionSidebar is disabled or we are not in fullscreenMode or distractionFree is enabled.
-	if ( 'disabled' === getEnableQuickActionSidebar || ! getFullscreenMode || getDistractionFreeMode ) {
+	if ( 'disabled' === getEnableQuickActionSidebar || ( 'site-editor' !== uagb_blocks_info.is_site_editor && !getFullscreenMode ) || getDistractionFreeMode ) {
 		return null;
 	}
 

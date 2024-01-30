@@ -44,7 +44,7 @@ const SpectraPageSettingsPopup = ( props ) => {
 				className={ 'spectra-sidebar' }
 			>
 				{ /* QAB Setting will be visible only when we are in fullscreenMode and distractionFree is disabled. */ }
-				{ ( getFullscreenMode && ! getDistractionFreeMode ) && 
+				{ ( ( 'site-editor' === uagb_blocks_info.is_site_editor || getFullscreenMode ) && ! getDistractionFreeMode ) && 
 				<PanelBody
 					title={__( 'Quick Action Bar', 'ultimate-addons-for-gutenberg' )}
 					initialOpen={true}
