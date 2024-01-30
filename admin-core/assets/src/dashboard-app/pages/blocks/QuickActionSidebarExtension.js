@@ -2,7 +2,6 @@ import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch } from '@headlessui/react'
 import UAGB_Block_Icons from '@Common/block-icons';
-import { useEffect } from 'react';
 import { uagbClassNames } from '@Utils/Helpers';
 import getApiData from '@Controls/getApiData';
 
@@ -13,23 +12,21 @@ const QuickActionSidebarExtension = () => {
 
 	const QuickActionSidebarStatus = ( 'enabled' === enableQuickActionSidebarExtension );
 
-    useEffect( () => {
-
-        // Create an object with the security and value properties
-        const data = {
-            security: uag_react.enable_quick_action_sidebar_nonce,
-            value: enableQuickActionSidebarExtension,
-        };
-        // Call the getApiData function with the specified parameters
-        const getApiFetchData = getApiData( {
-            url: uag_react.ajax_url,
-            action: 'uag_enable_quick_action_sidebar',
-            data,
-        } );
-        // Wait for the API call to complete, but perform no actions after it finishes
-        getApiFetchData.then( () => {} );
-
-    }, [enableQuickActionSidebarExtension] );
+	const toggleSetting = ( toggleStatus ) => {
+		// Create an object with the security and value properties
+		const data = {
+			security: uag_react.enable_quick_action_sidebar_nonce,
+			value: toggleStatus,
+		};
+		// Call the getApiData function with the specified parameters
+		const getApiFetchData = getApiData( {
+			url: uag_react.ajax_url,
+			action: 'uag_enable_quick_action_sidebar',
+			data,
+		} );
+		// Wait for the API call to complete, but perform no actions after it finishes
+		getApiFetchData.then( () => { } );
+	}
 
     const updateQuickActionSidebarStatus = () => {
 
@@ -39,7 +36,7 @@ const QuickActionSidebarExtension = () => {
 		} else {
 			assetStatus = 'enabled';
 		}
-
+		toggleSetting( assetStatus );
         dispatch( {type: 'UPDATE_ENABLE_QUICK_ACTION_SIDEBAR_EXTENSION', payload: assetStatus } );
         dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
     };

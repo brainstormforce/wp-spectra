@@ -13,7 +13,7 @@ import { store as spectraStore } from '@Store';
 import { STORE_NAME as storeName } from '@Store/constants';
 
 const SpectraPageSettingsPopup = ( props ) => {
-	const { getEnableQuickActionSidebar, updateEnableQuickActionSidebar, getNoticeForQuickActionSidebar, updateNoticeForQuickSidebarBlocks } = props;
+	const { getEnableQuickActionSidebar, updateEnableQuickActionSidebar, getNoticeForQuickActionSidebar, updateNoticeForQuickSidebarBlocks, getFullscreenMode, getDistractionFreeMode } = props;
 	const getSidebarStore = 'site-editor' !== uagb_blocks_info.is_site_editor ? window?.wp?.editPost : window?.wp?.editSite;
 	if ( !getSidebarStore || !getSidebarStore?.PluginSidebar || !getSidebarStore?.PluginSidebarMoreMenuItem ) {
 		return null;
@@ -43,13 +43,16 @@ const SpectraPageSettingsPopup = ( props ) => {
 				title={ __( 'Spectra Page Settings', 'ultimate-addons-for-gutenberg' ) }
 				className={ 'spectra-sidebar' }
 			>
+				{ /* QAB Setting will be visible only when we are in fullscreenMode and distractionFree is disabled. */ }
+				{ ( getFullscreenMode && ! getDistractionFreeMode ) && 
 				<PanelBody
 					title={__( 'Quick Action Bar', 'ultimate-addons-for-gutenberg' )}
 					initialOpen={true}
 					className={'spectra-quick-action-sidebar-panel'}
 				>
-					<ToggleOption label={__( 'Enable Sidebar', 'ultimate-addons-for-gutenberg' )} enableQuickActionSidebar={getEnableQuickActionSidebar} updateEnableQuickActionSidebar={updateEnableQuickActionSidebar} getNoticeForQuickActionSidebar={getNoticeForQuickActionSidebar} updateNoticeForQuickSidebarBlocks={updateNoticeForQuickSidebarBlocks}/>
+					<ToggleOption label={__( 'Enable Quick Action Bar', 'ultimate-addons-for-gutenberg' )} enableQuickActionSidebar={getEnableQuickActionSidebar} updateEnableQuickActionSidebar={updateEnableQuickActionSidebar} getNoticeForQuickActionSidebar={getNoticeForQuickActionSidebar} updateNoticeForQuickSidebarBlocks={updateNoticeForQuickSidebarBlocks}/>
 				</PanelBody>
+				}
 				{ pluginSidebarBefore }
 				{ 'site-editor' !== uagb_blocks_info.is_site_editor && 'yes' === uagb_blocks_info.enable_on_page_css_button && (
 				<PanelBody
@@ -72,11 +75,16 @@ export default compose(
 		const oldPostMeta = select( 'core/editor' ).getCurrentPostAttribute( 'meta' );
 		const getEnableQuickActionSidebar = select( spectraStore ).getEnableQuickActionSidebar();
 		const getNoticeForQuickActionSidebar = select( spectraStore ).getNoticeForQuickActionSidebar();
+		const getFullscreenMode = select( 'core/edit-post' )?.isFeatureActive( 'fullscreenMode' );
+		const getBlockEditorStore = select( 'core/block-editor' );
+		const getDistractionFreeMode = getBlockEditorStore?.getSettings()?.isDistractionFree;
 		return {
 			meta: { ...oldPostMeta, ...postMeta },
 			oldMeta: oldPostMeta,
 			getEnableQuickActionSidebar,
-			getNoticeForQuickActionSidebar
+			getNoticeForQuickActionSidebar,
+			getFullscreenMode,
+			getDistractionFreeMode
 		};
 	} ),
 	withDispatch( ( dispatch ) => ( {

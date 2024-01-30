@@ -12,15 +12,15 @@ import { STORE_NAME as storeName } from '@Store/constants';
 import { Notice } from './notice';
 
 const Sidebar = ( props ) => {
-	const { getEnableQuickActionSidebar, updateDefaultAllowedQuickSidebarBlocks, getDefaultAllowedQuickSidebarBlocks, getNoticeForQuickActionSidebar } = props;
+	const { getEnableQuickActionSidebar, updateDefaultAllowedQuickSidebarBlocks, getDefaultAllowedQuickSidebarBlocks, getNoticeForQuickActionSidebar, getFullscreenMode, getDistractionFreeMode } = props;
 	const [ isPopoverVisible, setPopoverVisible ] = useState( false );
 
 	useLayoutEffect( () => {
 		style.use();
 		return () => style.unuse();
 	}, [] );
-
-	if ( 'disabled' === getEnableQuickActionSidebar ) {
+	// Return null when getEnableQuickActionSidebar is disabled or we are not in fullscreenMode or distractionFree is enabled.
+	if ( 'disabled' === getEnableQuickActionSidebar || ! getFullscreenMode || getDistractionFreeMode ) {
 		return null;
 	}
 
@@ -60,11 +60,16 @@ export default compose(
 		const getNoticeForQuickActionSidebar = spectraQuickActionSelect( spectraStore ).getNoticeForQuickActionSidebar();
 		const getEnableQuickActionSidebar = spectraQuickActionSelect( spectraStore ).getEnableQuickActionSidebar();
 		const getDefaultAllowedQuickSidebarBlocks = spectraQuickActionSelect( spectraStore ).getDefaultAllowedQuickSidebarBlocks();
-		
+		const getFullscreenMode = spectraQuickActionSelect( 'core/edit-post' )?.isFeatureActive( 'fullscreenMode' );
+		const getBlockEditorStore = spectraQuickActionSelect( 'core/block-editor' );
+		const getDistractionFreeMode = getBlockEditorStore?.getSettings()?.isDistractionFree;
+	
 		return {
 			getNoticeForQuickActionSidebar,
 			getEnableQuickActionSidebar,
-			getDefaultAllowedQuickSidebarBlocks
+			getDefaultAllowedQuickSidebarBlocks,
+			getFullscreenMode,
+			getDistractionFreeMode,
 		};
 	} ),
 	withDispatch( ( spectraQuickActionDispatch ) => {

@@ -24,7 +24,7 @@ const DEFAULT_STATE = {
 	 * This variable is used to set the device type. If the Gutenberg stores do not provide device type support, this variable serves as a fallback.
 	 */
 	deviceType: 'Desktop',
-	enableQuickActionSidebar: 'enabled', // 'enabled' | 'disabled' quick action sidebar.
+	enableQuickActionSidebar: 'disabled', // 'enabled' | 'disabled' quick action sidebar.
 	defaultAllowedQuickSidebarBlocks: [ // Default blocks allowed in the quick action sidebar.
 		'uagb/container',
 		'uagb/advanced-heading',
@@ -33,7 +33,6 @@ const DEFAULT_STATE = {
 		'uagb/buttons',
 		'uagb/info-box',
 		'uagb/call-to-action',
-		'uagb/countdown',
 	]
 };
 function reducer( state = DEFAULT_STATE, action ) {

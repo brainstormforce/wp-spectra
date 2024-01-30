@@ -56,7 +56,7 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 			$saved_version = get_option( 'uagb-version', false );
 
 			// Update auto saved version number.
-			if ( ! $saved_version ) {
+			if ( ! $saved_version || ! is_string( $saved_version ) ) {
 
 				// Fresh install updation.
 				$this->fresh_install_update_asset_generation_option();
@@ -76,6 +76,11 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 			// If user is older than 2.0.0 then set the option.
 			if ( version_compare( $saved_version, '2.0.0', '<' ) ) {
 				update_option( 'uagb-old-user-less-than-2', 'yes' );
+			}
+
+			// If user is older than equal to 2.12.1 then set the option.
+			if ( version_compare( $saved_version, '2.12.1', '<=' ) ) {
+				UAGB_Admin_Helper::update_admin_settings_option( 'uag_enable_quick_action_sidebar', 'disabled' );
 			}
 
 			// Enable Legacy Blocks for users older than 2.0.5.

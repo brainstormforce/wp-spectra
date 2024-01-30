@@ -6,6 +6,9 @@ import { createRoot } from 'react-dom';
 import Sidebar from './components/sidebar';
 
 domReady( () => {
+	if ( 'disabled' === uagb_blocks_info.enableQuickActionSidebar ) {
+		return;
+	}
 	// If not FSE editor, attach the sidebar to the DOM.
 	const currentUrl = new URL( window.location.href );
 	if( '/wp-admin/site-editor.php' === currentUrl.pathname ) {
@@ -80,3 +83,10 @@ const attachSidebarAfterLoading = () => {
 	}
 	, 100 );
 }
+
+// get custom event using addEventListener ( Created from toggle status ), then attachSidebar.
+document.addEventListener( 'UAGBQABEditor', function( event ) {
+	if ( 'enabled' === event?.detail?.toggleStatus ){
+		attachSidebar();
+	}
+} );

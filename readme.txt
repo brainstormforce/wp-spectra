@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.4.2
-Stable tag: 2.12.1
+Stable tag: 2.12.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,7 +215,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= x.x.x =
+= 2.12.2 - TUESDAY, 30th JANUARY 2024 =
+* Improvement: Quick Action Bar - Removed the Quick Action Bar when in Distraction-free mode and when not in Full-screen mode.
 * Fix: Image Gallery - Resolved an issue wherein the images would not load as intended due to lazy loading.
 * Fix: Tabs - Resolved an issue wherein the border width would not work as intended for mobile devices.
 
