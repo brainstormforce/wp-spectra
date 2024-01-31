@@ -251,7 +251,6 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 					'uagb/buttons',
 					'uagb/info-box',
 					'uagb/call-to-action',
-					'uagb/countdown',
 				);
 			}
 			
