@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
+* Fix: Container - Resolved an issue wherein the container would move to the right when zooming out on a boxed-width page.
 * Fix: Image Gallery - Resolved an issue wherein the page would not be scrollable when the masonry layout is selected.
 
 ### 2.12.2 - TUESDAY, 30th JANUARY 2024 ###
