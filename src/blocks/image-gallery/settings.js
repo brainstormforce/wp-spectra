@@ -927,7 +927,7 @@ const Settings = ( props ) => {
 							label: 'carouselTransitionSpeed',
 						} }
 						min={ 0 }
-						max={ 5000 }
+						max={ 9999 }
 						displayUnit={ false }
 					/>
 					<ToggleControl

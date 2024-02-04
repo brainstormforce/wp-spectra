@@ -243,7 +243,7 @@ const Settings = ( props ) => {
 										value: autoplaySpeed,
 										label: 'autoplaySpeed',
 									} }
-									min={ 100 }
+									min={ 0 }
 									max={ 15000 }
 									displayUnit={ false }
 								/>
@@ -339,7 +339,7 @@ const Settings = ( props ) => {
 							} }
 							onChange={ ( value ) => setAttributes( { transitionSpeed: value } ) }
 							min={ 100 }
-							max={ 5000 }
+							max={ 9999 }
 							displayUnit={ false }
 						/>
 						{ afterTransitionOptions }
