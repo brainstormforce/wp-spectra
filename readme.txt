@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Fix: Image Gallery - Resolved an issue wherein the page would not be scrollable when the masonry layout is selected.
 
 = 2.12.2 - TUESDAY, 30th JANUARY 2024 =
 * Improvement: Quick Action Bar - Removed the Quick Action Bar when in Distraction-free mode and when not in Full-screen mode.
