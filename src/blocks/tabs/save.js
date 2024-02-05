@@ -46,11 +46,11 @@ export default function save( props ) {
 							data-tab={ index }
 							role="tab"
 						>
-							{ showIcon && ( iconPosition === 'left' || iconPosition === 'top' ) && (
+							{ showIcon && icon &&( iconPosition === 'left' || iconPosition === 'top' ) && (
 								<span className="uagb-tabs__icon">{ renderSVG( icon ) }</span>
 							) }
 							<RichText.Content tagName='div' value={ header } />
-							{ showIcon && ( iconPosition === 'right' || iconPosition === 'bottom' ) && (
+							{ showIcon && icon &&( iconPosition === 'right' || iconPosition === 'bottom' ) && (
 								<span className="uagb-tabs__icon">{ renderSVG( icon ) }</span>
 							) }
 						</a>

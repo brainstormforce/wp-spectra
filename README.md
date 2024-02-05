@@ -218,6 +218,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ### x.x.x ###
 * Fix: Container - Resolved an issue wherein the container would move to the right when zooming out on a boxed-width page.
 * Fix: Image Gallery - Resolved an issue wherein the page would not be scrollable when the masonry layout is selected.
+* Fix: Tabs - Resolved an issue wherein the block would break when icons are enabled and a new tab is added in the editor.
 
 ### 2.12.2 - TUESDAY, 30th JANUARY 2024 ###
 * Improvement: Quick Action Bar - Removed the Quick Action Bar when in Distraction-free mode and when not in Full-screen mode.
