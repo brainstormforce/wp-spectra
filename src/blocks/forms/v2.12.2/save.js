@@ -19,7 +19,6 @@ export default function save( props ) {
 		reCaptchaEnable,
 		reCaptchaType,
 		buttonSize,
-		variationSelected,
 	} = attributes;
 
 	const renderButtonHtml = () => {
@@ -33,10 +32,7 @@ export default function save( props ) {
 			</button>
 		);
 	};
-
-	if ( ! variationSelected ) { // If no preset selected then return.
-		return;
-	}
+	
 	return (
 		<div
 			className={ classnames(
