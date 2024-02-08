@@ -182,6 +182,18 @@ UAGBTableOfContents = {
 		e.preventDefault();
 
 		let hash = e.target.getAttribute( 'href' );
+
+		/*
+		* There may be instances where we don't receive the hash value from the href attribute.
+		* This can occur when the click event's target is not an anchor tag.
+		* However, the target element might be nested within an anchor tag.
+		* In these cases, we need to check if the parent element has an available hash value.
+		*/
+		if ( ! hash && e.target.tagName !== 'A' ) {
+			const getHash = e.target.closest( 'a' );
+			hash = getHash.getAttribute( 'href' );
+		}
+
 		if ( hash ) {
 			const node = document.querySelector( '.wp-block-uagb-table-of-contents' );
 

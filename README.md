@@ -219,7 +219,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Container - Resolved an issue wherein the justify-content options would not work as intended in the frontend for mobile devices. 
 * Fix: Container - Resolved an issue wherein the container would move to the right when zooming out on a boxed-width page.
 * Fix: Forms - Resolved an issue wherein the block would not load as intended in the editor when the confirmation type was set to URL text.
-* Fix: Image Gallery - Resolved an issue wherein the page would not be scrollable when the masonry layout is selected.
+* Fix: Image Gallery - Resolved an issue wherein the page would not be scrollable when the masonry layout was selected.
+* Fix: Table Of Contents - Resolved an issue wherein the headings would not work as intended when translated with the Chrome translator extension.
 * Fix: Tabs - Resolved an issue wherein the block would break when icons are enabled and a new tab is added in the editor.
 
 ### 2.12.2 - TUESDAY, 30th JANUARY 2024 ###
