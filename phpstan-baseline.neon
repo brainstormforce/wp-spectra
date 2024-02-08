@@ -5988,7 +5988,7 @@ parameters:
 			path: classes/class-uagb-update.php
 
 		-
-			message: "#^Cannot access offset 'advanced\\-heading'\\|'buttons'\\|'call\\-to\\-action'\\|'container'\\|'countdown'\\|'icon'\\|'image'\\|'info\\-box' on mixed\\.$#"
+			message: "#^Cannot access offset 'advanced\\-heading'\\|'buttons'\\|'call\\-to\\-action'\\|'container'\\|'countdown'\\|'icon'\\|'image'\\|'info\\-box'|'popup\\-builder' on mixed\\.$#"
 			count: 1
 			path: classes/class-uagb-update.php
 

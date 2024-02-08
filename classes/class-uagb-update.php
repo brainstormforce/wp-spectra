@@ -123,6 +123,14 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 						'countdown'
 					);
 				}
+
+				// If user is older than 2.12.3 then enable the popup-builder Block that was added to the Core Blocks in this release.
+				if ( version_compare( $saved_version, '2.12.3', '<' ) ) {
+					array_push(
+						$core_blocks,
+						'popup-builder'
+					);
+				}
 			}
 
 			// If the core block array is not empty, update the enabled blocks option.
