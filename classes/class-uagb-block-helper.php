@@ -239,6 +239,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				);
 			}
+			$selectors[ ' .uagb-button__wrapper ' . $wrapper . '.wp-block-button__link' ] = array(
+				'margin-top'    => UAGB_Helper::get_css_value( $attr['topMargin'], $attr['marginType'] ),
+				'margin-bottom' => UAGB_Helper::get_css_value( $attr['bottomMargin'], $attr['marginType'] ),
+				'margin-left'   => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['marginType'] ),
+				'margin-right'  => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['marginType'] ),
+				'box-shadow'    => $box_shadow_css,
+			);
+			
 			$m_selectors[ ' .uagb-button__wrapper ' . $wrapper . '.wp-block-button__link' ] = array(
 				'margin-top'    => UAGB_Helper::get_css_value( $attr['topMarginMobile'], $attr['marginType'] ),
 				'margin-bottom' => UAGB_Helper::get_css_value( $attr['bottomMarginMobile'], $attr['marginType'] ),

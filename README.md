@@ -218,6 +218,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ### x.x.x ###
 * Fix: Container - Resolved an issue wherein the justify-content options would not work as intended in the frontend for mobile devices. 
 * Fix: Container - Resolved an issue wherein the container would move to the right when zooming out on a boxed-width page.
+* Fix: Buttons - Resolved an issue wherein the button-child margins would not work as intended on the frontend when inherit from theme is selected.
 * Fix: Forms - Resolved an issue wherein the block would not load as intended in the editor when the confirmation type was set to URL text.
 * Fix: Image Gallery - Resolved an issue wherein the page would not be scrollable when the masonry layout was selected.
 * Fix: Table Of Contents - Resolved an issue wherein the headings would not work as intended when translated with the Chrome translator extension.
