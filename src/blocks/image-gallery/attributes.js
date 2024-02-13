@@ -22,7 +22,10 @@ const attributes = {
 	},
 
 	// Editor Requirements
-
+	enableLazyLoad: {
+		type: 'boolean',
+		default: true,
+	},
 	readyToRender: {
 		type: 'boolean',
 		default: false,

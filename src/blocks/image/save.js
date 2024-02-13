@@ -29,6 +29,7 @@ export default function Save( props ) {
 		overlayContentPosition,
 		seperatorStyle,
 		seperatorPosition,
+		enableLazyLoad,
 	} = props.attributes;
 
 	const image = (
@@ -44,7 +45,7 @@ export default function Save( props ) {
 				width={ width ? width : naturalWidth }
 				height={ height ? height : naturalHeight }
 				title={ title }
-				loading="lazy"
+				loading={ enableLazyLoad ? 'lazy' : undefined }
 			/>
 		)
 	);
@@ -99,7 +100,6 @@ export default function Save( props ) {
 			rel={ getRel() }
 		></a>
 	);
-
 	return (
 		<div
 			className={ classnames(

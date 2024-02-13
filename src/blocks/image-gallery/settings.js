@@ -236,6 +236,7 @@ const Settings = ( props ) => {
 		imageBoxShadowBlurHover,
 		imageBoxShadowSpreadHover,
 		imageBoxShadowPositionHover,
+		enableLazyLoad,
 	} = attributes;
 
 	// Get the Image Sizes Available.
@@ -720,6 +721,13 @@ const Settings = ( props ) => {
 				mediaIDs={ mediaIDs }
 				allowedTypes={ [ 'image' ] }
 				createGallery={ true }
+			/>
+			<ToggleControl
+						label={ __( 'Enable Lazy Loading', 'ultimate-addons-for-gutenberg' ) }
+						checked={ enableLazyLoad }
+						onChange={ () => {
+							setAttributes( { enableLazyLoad: ! enableLazyLoad } );
+						} }
 			/>
 			<UAGSelectControl
 				label={ __( 'Type', 'ultimate-addons-for-gutenberg' ) }

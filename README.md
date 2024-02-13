@@ -216,6 +216,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
+* Improvement: Image Gallery - Added a toggle to enable or disable lazy loading.
+* Improvement: Image - Added a toggle to enable or disable lazy loading.
 * Fix: Container - Resolved an issue wherein the justify-content options would not work as intended in the frontend for mobile devices. 
 * Fix: Container - Resolved an issue wherein the container would move to the right when zooming out on a boxed-width page.
 * Fix: Buttons - Resolved an issue wherein the button-child margins would not work as intended on the frontend when inherit from theme is selected.

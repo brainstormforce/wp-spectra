@@ -289,7 +289,7 @@ const deprecated = [
 	{
 		attributes: attributes,
 		save: saveV2_5_1,
-	}
+	},
 ];
 
 export default deprecated;

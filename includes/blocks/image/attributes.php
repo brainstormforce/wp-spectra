@@ -175,6 +175,7 @@ return array_merge(
 		// For Global Block Styles.
 		'globalBlockStyleName'        => '',
 		'globalBlockStyleId'          => '',
+		'enableLazyLoad'              => true,
 	),
 	$image_attribute,
 	$overlay_attribute

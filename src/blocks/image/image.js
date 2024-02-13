@@ -32,6 +32,7 @@ export default function Image( {
 		height,
 		heightTablet,
 		heightMobile,
+		enableLazyLoad,
 	},
 	setAttributes,
 	isSelected,
@@ -134,7 +135,7 @@ export default function Image( {
 					} );
 				} }
 				ref={ imageRef }
-				loading="lazy"
+				loading={ enableLazyLoad ? 'lazy' : undefined }
 			/>
 			{ temporaryURL && <Spinner /> }
 		</>

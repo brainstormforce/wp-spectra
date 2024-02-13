@@ -210,6 +210,7 @@ export default function Settings( props ) {
 		captionLetterSpacingTablet,
 		captionLetterSpacingMobile,
 		captionLetterSpacingType,
+		enableLazyLoad
 	} = attributes;
 
 	const { imageSizes } = useSelect(
@@ -462,6 +463,13 @@ export default function Settings( props ) {
 				backgroundImage={ { url } }
 				onRemoveImage={ onRemoveImage }
 				disableLabel={ true }
+			/>
+			<ToggleControl
+						label={ __( 'Enable Lazy Loading', 'ultimate-addons-for-gutenberg' ) }
+						checked={ enableLazyLoad }
+						onChange={ () => {
+							setAttributes( { enableLazyLoad: ! enableLazyLoad } );
+						} }
 			/>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }

@@ -53,6 +53,7 @@ return array_merge(
 		'galleryImageSizeTablet'             => 'large',
 		'galleryImageSizeMobile'             => 'medium',
 		'imageClickEvent'                    => 'none',
+		'enableLazyLoad'                     => true,
 		// Lightbox Settings.
 		'lightboxDisplayCaptions'            => false,
 		'lightboxThumbnails'                 => false,
