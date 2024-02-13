@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Improvement: Buttons - Added aria-label to icon-only buttons.
 * Improvement: Image Gallery - Added a toggle to enable or disable lazy loading.
 * Improvement: Image - Added a toggle to enable or disable lazy loading.
 * Fix: Container - Resolved an issue wherein the justify-content options would not work as intended in the frontend for mobile devices. 
