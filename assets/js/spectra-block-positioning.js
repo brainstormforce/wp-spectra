@@ -151,9 +151,8 @@ const UAGBBlockPositioning = {
 					} else {
 						element.style.top = `calc(${ haltAtPosition } - ${ window.innerHeight }px)`
 						element.style.left = `${ stickyDimensions.left }px`;
-						setTimeout( () => {
-							element.style.top = haltAtPosition;
-						} , 50 );
+						element.style.top = haltAtPosition;
+						
 					}					
 					element.style.width = `${ stickyDimensions.width }px`;
 					element.style.zIndex = '999';
