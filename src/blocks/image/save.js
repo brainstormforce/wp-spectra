@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import { RichText } from '@wordpress/block-editor';
 
 export default function Save( props ) {
+	const { attributes } = props;
 	const {
 		block_id,
 		layout,
@@ -122,7 +123,7 @@ export default function Save( props ) {
 								'-'
 							) }` }
 						>
-							{ imageOverlayLink }
+							{ ( attributes?.dynamicContent?.bgImageLink?.enable === true || href ) && imageOverlayLink }
 							{ 'before_title' === seperatorPosition && separator }
 							{ imageHeading }
 							{ 'after_title' === seperatorPosition && separator }

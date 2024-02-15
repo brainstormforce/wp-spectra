@@ -1,4 +1,3 @@
-import attributes from './attributes';
 import { __ } from '@wordpress/i18n';
 import { RichText } from '@wordpress/block-editor';
 import classnames from 'classnames';
@@ -8,10 +7,12 @@ import attributesV2_2_0 from './deprecated/v2_2_0/attribute';
 import saveV2_2_0 from './deprecated/v2_2_0/save';
 import saveV2_4_2 from './deprecated/v2_4_2/save';
 import saveV2_5_1 from './deprecated/v2_5_1/save';
+import saveV2_12_2 from './deprecated/v2_12_2/save';
+import newAttributesV2_12_2 from './deprecated/v2_12_2/attributes';
 
 const deprecated = [
 	{
-		attributes,
+		attributes: newAttributesV2_12_2,
 		save: ( props ) => {
 			const {
 				block_id,
@@ -143,7 +144,7 @@ const deprecated = [
 		},
 	},
 	{
-		attributes,
+		attributes: newAttributesV2_12_2,
 		save: ( props ) => {
 			const {
 				block_id,
@@ -283,13 +284,17 @@ const deprecated = [
 		save: saveV2_2_0,
 	},
 	{
-		attributes: attributes,
+		attributes: newAttributesV2_12_2,
 		save: saveV2_4_2,
 	},
 	{
-		attributes: attributes,
+		attributes: newAttributesV2_12_2,
 		save: saveV2_5_1,
 	},
+	{
+		attributes: newAttributesV2_12_2,
+		save: saveV2_12_2,
+	}
 ];
 
 export default deprecated;

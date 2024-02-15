@@ -232,6 +232,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Tabs - Resolved an issue wherein the block would break when icons are enabled and a new tab is added in the editor.
 * Fix: Popup Builder - Resolved an issue wherein the Popup Builder would not work as intended when all blocks were deactivated.
 * Fix: Post Grid - Resolved an issue wherein the read-more link hover color would not work as intended on the frontend.
+* Fix: Image - Resolved an issue wherein an empty anchor tag would be rendered on the frontend when a link was not added. 
 
 ### 2.12.2 - TUESDAY, 30th JANUARY 2024 ###
 * Improvement: Quick Action Bar - Removed the Quick Action Bar when in Distraction-free mode and when not in Full-screen mode.
