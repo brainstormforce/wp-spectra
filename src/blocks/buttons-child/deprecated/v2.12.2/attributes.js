@@ -619,8 +619,8 @@ const attributes = {
 		type: 'boolean',
 		default: true,
 	},
-	boxShadowColor:{
-		type:'string',
+	boxShadowColor: {
+		type: 'string',
 		default: '#00000026',
 		isGBSStyle: true,
 		UAGCopyPaste: {
@@ -705,8 +705,8 @@ const attributes = {
 			styleType: 'btn-box-shadow-position-hover'
 		},
 	},
-	iconColor:{
-		type:'string',
+	iconColor: {
+		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'btn-icon-color',
 		},

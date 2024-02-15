@@ -41,6 +41,7 @@ export default function save( props ) {
 		}
 		return '';
 	};
+
 	const iconHtml = ( curr_position ) => {
 		if ( showIcon && '' !== icon && curr_position === iconPosition ) {
 			return (
@@ -52,7 +53,7 @@ export default function save( props ) {
 		return null;
 	};
 	const openNewWindow = opensInNewTab ? '_blank' : '_self';
-	
+
 	return (
 		<div
 			className={ classnames(

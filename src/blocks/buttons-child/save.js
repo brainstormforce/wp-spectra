@@ -71,7 +71,6 @@ export default function save( props ) {
 					aria-label={ removeText ? label : '' }
 					style={ borderStyle }
 					href={ ( '' === link || dynamicContent?.link?.enable ) ? '#' : link }
-					onClick={ ( '' === link || '#' === link ) && ( ! dynamicContent?.link?.enable ) ? 'return false;' : 'return true;' }
 					rel={ noFollow ? 'nofollow noopener' : 'follow noopener' }
 					target={ openNewWindow }
 				>
