@@ -1340,7 +1340,7 @@ class UAGB_Post_Assets {
 	 * Get static & dynamic css for block.
 	 *
 	 * @param array $blocks Blocks array.
-	 * @since x.x.x
+	 * @since 2.12.3
 	 * @return array Of static and dynamic css and js.
 	 */
 	public function get_static_and_dynamic_assets( $blocks ) {
@@ -1659,7 +1659,7 @@ class UAGB_Post_Assets {
 	 * Get static and dynamic assets data for a post. Its a helper function used by starter templates and GT library.
 	 *
 	 * @param int $post_id The post id.
-	 * @since x.x.x
+	 * @since 2.12.3
 	 * @return array of Static and dynamic css and js.
 	 */
 	public function get_static_and_dynamic_css( $post_id ) {
