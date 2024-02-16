@@ -155,7 +155,7 @@ if ( ! class_exists( '\ZipAI\Loader' ) ) {
 			define( 'ZIP_AI_FILE', __FILE__ );
 			define( 'ZIP_AI_DIR', plugin_dir_path( ZIP_AI_FILE ) );
 			define( 'ZIP_AI_URL', plugins_url( '/', ZIP_AI_FILE ) );
-			define( 'ZIP_AI_VERSION', '1.1.0' );
+			define( 'ZIP_AI_VERSION', '1.1.1' );
 			define( 'ZIP_AI_MENU_SLUG', 'zip-ai' );
 			define( 'ZIP_AI_MIDDLEWARE', 'https://app.zipwp.com/auth/' );
 			define( 'ZIP_AI_CREDIT_SERVER_API', 'https://credits.startertemplates.com/api/' );

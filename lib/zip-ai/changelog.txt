@@ -1,3 +1,8 @@
+v1.1.1 - 16th February 2024
+- Improvement: Added middleware parameter handling for the affiliate ID.
+- Improvement: Locally loaded Google Fonts for the AI Assistant sidebar.
+- Fix: Restricted front-end assets for non-admin users.
+
 v1.1.0 - 17th January 2024
 - Feature: Made the AI Assistant sidebar accessible outside the editor.
 - Improvement: Added the 'Force Enabled' function to ensure that modules are enabled.

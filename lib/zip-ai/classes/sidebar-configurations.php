@@ -248,6 +248,10 @@ class Sidebar_Configurations {
 	 * @since 1.0.0
 	 */
 	public function load_sidebar_assets() {
+		// If the adminbar is not visible on this screen, abandon ship.
+		if ( ! is_admin_bar_showing() ) {
+			return;
+		}
 
 		// Set the required variables.
 		$handle            = 'zip-ai-sidebar';
@@ -289,36 +293,12 @@ class Sidebar_Configurations {
 			ZIP_AI_VERSION
 		);
 
-		// Register the sidebar Google Fonts.
-		wp_register_style(
-			$handle . '-google-fonts',
-			'https://fonts.googleapis.com/css2?family=Courier+Prime&family=Inter:wght@400;500;600;700&display=swap',
-			array(),
-			ZIP_AI_VERSION
-		);
-
 		// Enqueue the sidebar scripts.
 		wp_enqueue_script( $handle );
 		// Set the script translations.
 		wp_set_script_translations( $handle, 'zip-ai' );
 		// Enqueue the sidebar styles.
 		wp_enqueue_style( $handle );
-		// Enqueue the Google Font styles.
-		wp_enqueue_style( $handle . '-google-fonts' );
-
-		// Create the middleware parameters array.
-		$middleware_params = [];
-
-		// Get the collab product details, and extract the slug from there if it exists.
-		$collab_product_details = apply_filters( 'zip_ai_collab_product_details', null );
-
-		// If the collab details is an array and has the plugin slug, add it to the middleware params.
-		if ( is_array( $collab_product_details )
-			&& ! empty( $collab_product_details['product_slug'] )
-			&& is_string( $collab_product_details['product_slug'] )
-		) {
-			$middleware_params['plugin'] = sanitize_text_field( $collab_product_details['product_slug'] );
-		}
 
 		// Create the middleware parameters array.
 		$middleware_params = [];
@@ -376,6 +356,10 @@ class Sidebar_Configurations {
 	 * @return void
 	 */
 	public static function render_sidebar_markup() {
+		// If the current user does not have the required capability, then don't render the empty div.
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			return;
+		}
 		// If the adminbar is visible on this screen, render the admin trigger.
 		if ( is_admin_bar_showing() ) {
 			?>
