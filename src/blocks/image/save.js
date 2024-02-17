@@ -30,7 +30,7 @@ export default function Save( props ) {
 		overlayContentPosition,
 		seperatorStyle,
 		seperatorPosition,
-		enableLazyLoad,
+		disableLazyLoad,
 	} = props.attributes;
 
 	const image = (
@@ -46,7 +46,7 @@ export default function Save( props ) {
 				width={ width ? width : naturalWidth }
 				height={ height ? height : naturalHeight }
 				title={ title }
-				loading={ enableLazyLoad ? 'lazy' : undefined }
+				loading={ disableLazyLoad ? undefined : 'lazy' }
 			/>
 		)
 	);

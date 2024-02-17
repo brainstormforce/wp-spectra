@@ -18,9 +18,9 @@ const attributes = {
 			styleType: 'image-layout',
 		},
 	},
-	enableLazyLoad: {
+	disableLazyLoad: {
 		type: 'boolean',
-		default: true,
+		default: false,
 	},
 	url: {
 		type: 'string',
