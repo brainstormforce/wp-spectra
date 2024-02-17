@@ -176,8 +176,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				};
 				$selectors[ $wrapper . '.wp-block-button__link' ]       = $border_css;
-				$m_selectors[ $wrapper . '.wp-block-button__link' ]     = $border_css_mobile;
-				$t_selectors[ $wrapper . '.wp-block-button__link' ]     = $border_css_tablet;
 				$selectors[ $wrapper . '.wp-block-button__link:hover' ] = array(
 					'border-color' => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['borderHColor'],
 				);
@@ -215,30 +213,43 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'font-size'   => UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] ),
 					'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
 				);
-				$m_selectors[ $wrapper . '.wp-block-button__link' ]  = array(
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['topMobilePadding'], $attr['mobilePaddingUnit'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomMobilePadding'], $attr['mobilePaddingUnit'] ),
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['leftMobilePadding'], $attr['mobilePaddingUnit'] ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['rightMobilePadding'], $attr['mobilePaddingUnit'] ),
-					'margin-top'     => UAGB_Helper::get_css_value( $attr['topMarginMobile'], $attr['marginType'] ),
-					'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMarginMobile'], $attr['marginType'] ),
-					'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginMobile'], $attr['marginType'] ),
-					'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginMobile'], $attr['marginType'] ),
-
+				$m_selectors[ $wrapper . '.wp-block-button__link' ]  = array_merge(
+					array(
+						'padding-top'    => UAGB_Helper::get_css_value( $attr['topMobilePadding'], $attr['mobilePaddingUnit'] ),
+						'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomMobilePadding'], $attr['mobilePaddingUnit'] ),
+						'padding-left'   => UAGB_Helper::get_css_value( $attr['leftMobilePadding'], $attr['mobilePaddingUnit'] ),
+						'padding-right'  => UAGB_Helper::get_css_value( $attr['rightMobilePadding'], $attr['mobilePaddingUnit'] ),
+						'margin-top'     => UAGB_Helper::get_css_value( $attr['topMarginMobile'], $attr['marginType'] ),
+						'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMarginMobile'], $attr['marginType'] ),
+						'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginMobile'], $attr['marginType'] ),
+						'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginMobile'], $attr['marginType'] ),
+					),
+					$border_css_mobile
 				);
 
-				$t_selectors[ $wrapper . '.wp-block-button__link' ] = array(
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['topTabletPadding'], $attr['tabletPaddingUnit'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomTabletPadding'], $attr['tabletPaddingUnit'] ),
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['leftTabletPadding'], $attr['tabletPaddingUnit'] ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['rightTabletPadding'], $attr['tabletPaddingUnit'] ),
-					'margin-top'     => UAGB_Helper::get_css_value( $attr['topMarginTablet'], $attr['marginType'] ),
-					'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMarginTablet'], $attr['marginType'] ),
-					'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginTablet'], $attr['marginType'] ),
-					'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginTablet'], $attr['marginType'] ),
+				$t_selectors[ $wrapper . '.wp-block-button__link' ] = array_merge(
+					array(
+						'padding-top'    => UAGB_Helper::get_css_value( $attr['topTabletPadding'], $attr['tabletPaddingUnit'] ),
+						'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomTabletPadding'], $attr['tabletPaddingUnit'] ),
+						'padding-left'   => UAGB_Helper::get_css_value( $attr['leftTabletPadding'], $attr['tabletPaddingUnit'] ),
+						'padding-right'  => UAGB_Helper::get_css_value( $attr['rightTabletPadding'], $attr['tabletPaddingUnit'] ),
+						'margin-top'     => UAGB_Helper::get_css_value( $attr['topMarginTablet'], $attr['marginType'] ),
+						'margin-bottom'  => UAGB_Helper::get_css_value( $attr['bottomMarginTablet'], $attr['marginType'] ),
+						'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginTablet'], $attr['marginType'] ),
+						'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginTablet'], $attr['marginType'] ),
 
+					),
+					$border_css_tablet
 				);
 			}
+			$selectors[ ' .uagb-button__wrapper ' . $wrapper . '.wp-block-button__link' ] = array(
+				'margin-top'    => UAGB_Helper::get_css_value( $attr['topMargin'], $attr['marginType'] ),
+				'margin-bottom' => UAGB_Helper::get_css_value( $attr['bottomMargin'], $attr['marginType'] ),
+				'margin-left'   => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['marginType'] ),
+				'margin-right'  => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['marginType'] ),
+				'box-shadow'    => $box_shadow_css,
+			);
+			
 			$m_selectors[ ' .uagb-button__wrapper ' . $wrapper . '.wp-block-button__link' ] = array(
 				'margin-top'    => UAGB_Helper::get_css_value( $attr['topMarginMobile'], $attr['marginType'] ),
 				'margin-bottom' => UAGB_Helper::get_css_value( $attr['bottomMarginMobile'], $attr['marginType'] ),
@@ -699,6 +710,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			$selectors['.uagb-post-grid .wp-block-button.uagb-post__text.uagb-post__cta:hover .uagb-text-link.wp-block-button__link'] = array(
 				'border-color' => $attr['btnBorderHColor'],
+				'color'        => $attr['ctaHColor'],
 			);
 			$selectors[' .uagb-post__text.uagb-post__cta:hover a.uagb-text-link'] = array(
 				'color'        => $attr['ctaHColor'],

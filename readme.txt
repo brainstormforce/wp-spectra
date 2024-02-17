@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
-Tested up to: 6.4.2
-Stable tag: 2.12.2
+Tested up to: 6.4.3
+Stable tag: 2.12.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -214,6 +214,25 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
 
 == Changelog ==
+
+= 2.12.3 - SATURDAY, 17th FEBRUARY 2024 =
+* Improvement: Image - Added a toggle to enable or disable lazy loading.
+* Improvement: Buttons - Implemented page scroll-to-top when an empty hash link is added.
+* Improvement: Buttons - Added aria-label to icon-only buttons.
+* Improvement: Image Gallery - Added a toggle to enable or disable lazy loading.
+* Fix: Container - Resolved an issue wherein the Header template would not load as intended when Sticky Container is enabled.
+* Fix: Container - Resolved an issue wherein the justify-content options would not work as intended in the frontend for mobile devices. 
+* Fix: Container - Resolved an issue wherein the container would move to the right when zooming out on a boxed-width page.
+* Fix: Image - Resolved an issue wherein an empty anchor tag would be rendered on the frontend when a link was not added.
+* Fix: Buttons - Resolved an issue wherein the button-child margins would not work as intended on the frontend when inherit-from-theme is selected.
+* Fix: Buttons - Resolved an issue wherein the button responsive border-radius would not work as intended. 
+* Fix: Forms - Resolved an issue wherein the block would not load as intended in the editor when the confirmation type was set to URL text.
+* Fix: Image Gallery - Resolved an issue wherein the page would not be scrollable when the masonry layout was selected.
+* Fix: Post Grid - Resolved an issue wherein the read-more link hover color would not work as intended on the frontend.
+* Fix: Table Of Contents - Resolved an issue wherein the headings would not work as intended when translated with the Chrome translator extension.
+* Fix: Table Of Contents - Added compatibility with translation plugins.
+* Fix: Tabs - Resolved an issue wherein the block would break in the editor when icons are enabled and a new tab is added.
+* Fix: Popup Builder - Resolved an issue wherein the Popup Builder would not work as intended when all blocks were deactivated.
 
 = 2.12.2 - TUESDAY, 30th JANUARY 2024 =
 * Improvement: Quick Action Bar - Removed the Quick Action Bar when in Distraction-free mode and when not in Full-screen mode.

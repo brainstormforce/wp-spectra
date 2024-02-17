@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zip AI Assistant 1.1.0\n"
+"Project-Id-Version: Zip AI Assistant 1.1.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/zip-ai\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-01-16T11:19:53+00:00\n"
+"POT-Creation-Date: 2024-02-12T13:08:13+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: zip-ai\n"
@@ -64,7 +64,7 @@ msgstr ""
 msgid "You have no credits left."
 msgstr ""
 
-#: classes/sidebar-configurations.php:351
+#: classes/sidebar-configurations.php:345
 #: sidebar/build/sidebar-app.js:11
 msgid "AI Assistant"
 msgstr ""

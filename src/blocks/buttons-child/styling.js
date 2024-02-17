@@ -295,6 +295,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 				'margin-right': generateCSSUnit( rightMargin, marginType ),
 				'margin-top': generateCSSUnit( topMargin, marginType ),
 				'margin-bottom': generateCSSUnit( bottomMargin, marginType ),
+				'box-shadow': boxShadowCSS,
 			}
 
 		mobileSelectors[

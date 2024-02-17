@@ -53,7 +53,6 @@ const Render = ( props ) => {
 	if ( props?.loopWidth ) {
 		attributes = { ...attributes, width: props.loopWidth };
 	}
-
 	const {
 		block_id,
 		layout,

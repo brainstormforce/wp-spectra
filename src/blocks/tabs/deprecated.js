@@ -11,6 +11,8 @@ import newAttributesV2_0_14 from './deprecated/v2_0_14/attributes';
 import newSaveV2_0_14 from './deprecated/v2_0_14/save';
 import newAttributesV2_11_3 from './deprecated/v2_11_3/attributes';
 import newSaveV2_11_3 from './deprecated/v2_11_3/save';
+import newAttributesV2_12_2 from './deprecated/v2.12.2/attributes';
+import newSaveV2_12_2 from './deprecated/v2.12.2/save';
 
 const borderAttributes = getBorderAttributes( 'tab' );
 
@@ -844,6 +846,10 @@ const deprecated = [
 	{
 		attributes: newAttributesV2_11_3,
 		save: newSaveV2_11_3,
+	},
+	{
+		attributes: newAttributesV2_12_2,
+		save: newSaveV2_12_2,
 	}
 ];
 

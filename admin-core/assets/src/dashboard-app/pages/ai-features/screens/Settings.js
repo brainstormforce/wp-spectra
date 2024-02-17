@@ -199,7 +199,7 @@ const Settings = () => {
 				<div className='flex items-center gap-2'>
 					<h3 className="text-slate-800 text-xl font-medium">
 						{ __(
-							'Zip is Connected',
+							'ZipWP is Connected',
 							'ultimate-addons-for-gutenberg'
 						) }
 					</h3>

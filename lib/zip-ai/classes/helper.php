@@ -259,6 +259,7 @@ class Helper {
 	 * @return string The authorization middleware url.
 	 */
 	public static function get_auth_middleware_url( $params = [] ) {
+
 		// Create the Redirect URL.
 		$redirect_url = add_query_arg(
 			array(
@@ -285,6 +286,18 @@ class Helper {
 			$auth_url = add_query_arg(
 				'plugin',
 				sanitize_text_field( $params['plugin'] ),
+				$auth_url
+			);
+		}
+
+		// Add the affiliate param if passed.
+		$affiliate = get_option( 'zipwp_partner_url_param', '' );
+		$affiliate = is_string( $affiliate ) ? sanitize_text_field( $affiliate ) : '';
+
+		if ( ! empty( $affiliate ) ) {
+			$auth_url = add_query_arg(
+				'aff',
+				$affiliate,
 				$auth_url
 			);
 		}

@@ -57,6 +57,7 @@ const initialState = {
 		'info-box',
 		'call-to-action',
 		'countdown',
+		'popup-builder'
 	],
 	spectraFSEFonts: [],
 	themeFonts: [],

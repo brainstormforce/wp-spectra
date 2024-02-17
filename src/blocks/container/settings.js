@@ -1508,6 +1508,8 @@ const Settings = ( props ) => {
 		);
 	};
 
+    const marginHelpText =  'alignwide' === contentWidth ? __( 'The left-right margins will be inherited from theme for boxed containers.', 'ultimate-addons-for-gutenberg' ) : __( 'The left-right margins will not be applied for full-width containers.', 'ultimate-addons-for-gutenberg' );
+
 	const spacingSettings = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Spacing', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
@@ -1742,6 +1744,7 @@ const Settings = ( props ) => {
 						value: marginLink,
 						label: 'marginLink',
 					} }
+					help = { 'default' !== contentWidth && marginHelpText }
 				/>
 			</UAGAdvancedPanelBody>
 		);

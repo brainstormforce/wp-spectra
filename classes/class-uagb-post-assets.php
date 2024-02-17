@@ -1329,10 +1329,25 @@ class UAGB_Post_Assets {
 	 * @since 1.1.0
 	 */
 	public function get_blocks_assets( $blocks ) {
+		$static_and_dynamic_assets = $this->get_static_and_dynamic_assets( $blocks );
+		return array(
+			'css' => $static_and_dynamic_assets['static'] . $static_and_dynamic_assets['dynamic'],
+			'js'  => $static_and_dynamic_assets['js'],
+		);
+	}
 
-		$desktop = '';
-		$tablet  = '';
-		$mobile  = '';
+	/**
+	 * Get static & dynamic css for block.
+	 *
+	 * @param array $blocks Blocks array.
+	 * @since 2.12.3
+	 * @return array Of static and dynamic css and js.
+	 */
+	public function get_static_and_dynamic_assets( $blocks ) {
+		$desktop    = '';
+		$tablet     = '';
+		$mobile     = '';
+		$static_css = '';
 
 		$tab_styling_css = '';
 		$mob_styling_css = '';
@@ -1377,7 +1392,7 @@ class UAGB_Post_Assets {
 					$css = $block_assets['css'];
 
 					if ( ! empty( $css['common'] ) ) {
-						$desktop .= $css['common'];
+						$static_css .= $css['common'];
 					}
 
 					if ( isset( $css['desktop'] ) ) {
@@ -1402,8 +1417,9 @@ class UAGB_Post_Assets {
 			$mob_styling_css .= '}';
 		}
 		return array(
-			'css' => $block_css . $desktop . $tab_styling_css . $mob_styling_css,
-			'js'  => $js,
+			'static'  => $static_css,
+			'dynamic' => $block_css . $desktop . $tab_styling_css . $mob_styling_css,
+			'js'      => $js,
 		);
 	}
 
@@ -1637,5 +1653,35 @@ class UAGB_Post_Assets {
 		$pattern = $registry->get_registered( $slug );
 
 		return $this->get_blocks_assets( parse_blocks( $pattern['content'] ) );
+	}
+
+	/**
+	 * Get static and dynamic assets data for a post. Its a helper function used by starter templates and GT library.
+	 *
+	 * @param int $post_id The post id.
+	 * @since 2.12.3
+	 * @return array of Static and dynamic css and js.
+	 */
+	public function get_static_and_dynamic_css( $post_id ) {
+
+		$this_post = get_post( $post_id );
+
+		if ( empty( $this_post ) || empty( $this_post->ID ) ) {
+			return array();
+		}
+
+		if ( has_blocks( $this_post->ID ) && ! empty( $this_post->post_content ) ) {
+
+			$blocks = $this->parse_blocks( $this_post->post_content );
+
+			if ( ! is_array( $blocks ) || empty( $blocks ) ) {
+				return array();
+			}
+
+			return $this->get_static_and_dynamic_assets( $blocks );
+		}
+
+		return array();
+
 	}
 }

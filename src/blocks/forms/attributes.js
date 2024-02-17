@@ -1353,5 +1353,9 @@ const attributes = {
 			styleType: 'btn-h-gradient-angle',
 		},
 	},
+	variationSelected: {
+		type: 'boolean',
+		default: false,
+	},
 };
 export default attributes;

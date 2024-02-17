@@ -80,11 +80,6 @@ function reducer( state = DEFAULT_STATE, action ) {
 				...state,
 				defaultAllowedQuickSidebarBlocks: action.value,
 			};
-		case 'UPDATE_NOTICE_FOR_QUICK_SIDEBAR':
-			return {
-				...state,
-				showNoticeForQuickActionSidebar: action.value,
-			};
 	}
 
 	return state;

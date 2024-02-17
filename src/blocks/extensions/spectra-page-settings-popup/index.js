@@ -13,7 +13,7 @@ import { store as spectraStore } from '@Store';
 import { STORE_NAME as storeName } from '@Store/constants';
 
 const SpectraPageSettingsPopup = ( props ) => {
-	const { getEnableQuickActionSidebar, updateEnableQuickActionSidebar, getNoticeForQuickActionSidebar, updateNoticeForQuickSidebarBlocks, getFullscreenMode, getDistractionFreeMode } = props;
+	const { getEnableQuickActionSidebar, updateEnableQuickActionSidebar, getFullscreenMode, getDistractionFreeMode } = props;
 	const getSidebarStore = 'site-editor' !== uagb_blocks_info.is_site_editor ? window?.wp?.editPost : window?.wp?.editSite;
 	if ( !getSidebarStore || !getSidebarStore?.PluginSidebar || !getSidebarStore?.PluginSidebarMoreMenuItem ) {
 		return null;
@@ -50,7 +50,7 @@ const SpectraPageSettingsPopup = ( props ) => {
 					initialOpen={true}
 					className={'spectra-quick-action-sidebar-panel'}
 				>
-					<ToggleOption label={__( 'Enable Quick Action Bar', 'ultimate-addons-for-gutenberg' )} enableQuickActionSidebar={getEnableQuickActionSidebar} updateEnableQuickActionSidebar={updateEnableQuickActionSidebar} getNoticeForQuickActionSidebar={getNoticeForQuickActionSidebar} updateNoticeForQuickSidebarBlocks={updateNoticeForQuickSidebarBlocks}/>
+					<ToggleOption label={__( 'Enable Quick Action Bar', 'ultimate-addons-for-gutenberg' )} enableQuickActionSidebar={getEnableQuickActionSidebar} updateEnableQuickActionSidebar={updateEnableQuickActionSidebar} />
 				</PanelBody>
 				}
 				{ pluginSidebarBefore }
@@ -74,7 +74,6 @@ export default compose(
 		const postMeta = select( 'core/editor' ).getEditedPostAttribute( 'meta' );
 		const oldPostMeta = select( 'core/editor' ).getCurrentPostAttribute( 'meta' );
 		const getEnableQuickActionSidebar = select( spectraStore ).getEnableQuickActionSidebar();
-		const getNoticeForQuickActionSidebar = select( spectraStore ).getNoticeForQuickActionSidebar();
 		const getFullscreenMode = select( 'core/edit-post' )?.isFeatureActive( 'fullscreenMode' );
 		const getBlockEditorStore = select( 'core/block-editor' );
 		const getDistractionFreeMode = getBlockEditorStore?.getSettings()?.isDistractionFree;
@@ -82,7 +81,6 @@ export default compose(
 			meta: { ...oldPostMeta, ...postMeta },
 			oldMeta: oldPostMeta,
 			getEnableQuickActionSidebar,
-			getNoticeForQuickActionSidebar,
 			getFullscreenMode,
 			getDistractionFreeMode
 		};
@@ -90,6 +88,5 @@ export default compose(
 	withDispatch( ( dispatch ) => ( {
 		setMetaFieldValue: ( value, field ) => dispatch( 'core/editor' ).editPost( { meta: { [ field ]: value } } ),
 		updateEnableQuickActionSidebar: ( value ) => dispatch( storeName ).updateEnableQuickActionSidebar( value ),
-		updateNoticeForQuickSidebarBlocks: ( value ) => dispatch( storeName ).updateNoticeForQuickSidebarBlocks( value ),
 	} ) )
 )( SpectraPageSettingsPopup );
