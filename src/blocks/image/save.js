@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import { RichText } from '@wordpress/block-editor';
 
 export default function Save( props ) {
+	const { attributes } = props;
 	const {
 		block_id,
 		layout,
@@ -29,6 +30,7 @@ export default function Save( props ) {
 		overlayContentPosition,
 		seperatorStyle,
 		seperatorPosition,
+		disableLazyLoad,
 	} = props.attributes;
 
 	const image = (
@@ -44,7 +46,7 @@ export default function Save( props ) {
 				width={ width ? width : naturalWidth }
 				height={ height ? height : naturalHeight }
 				title={ title }
-				loading="lazy"
+				loading={ disableLazyLoad ? undefined : 'lazy' }
 			/>
 		)
 	);
@@ -99,7 +101,6 @@ export default function Save( props ) {
 			rel={ getRel() }
 		></a>
 	);
-
 	return (
 		<div
 			className={ classnames(
@@ -122,7 +123,7 @@ export default function Save( props ) {
 								'-'
 							) }` }
 						>
-							{ imageOverlayLink }
+							{ ( attributes?.dynamicContent?.bgImageLink?.enable === true || href ) && imageOverlayLink }
 							{ 'before_title' === seperatorPosition && separator }
 							{ imageHeading }
 							{ 'after_title' === seperatorPosition && separator }

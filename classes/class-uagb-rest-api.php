@@ -259,11 +259,6 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 				'uagb_quick_sidebar_allowed_blocks' => $spectra_default_allowed_quick_sidebar_blocks,
 			);
 
-			// If db value is empty then add a notice value 1 to initial state variable.
-			if ( empty( $db_value ) ) {
-				// Notice for Quick Action Bar db value.
-				$initial_state['uag_show_notice_for_qab'] = 1;
-			}
 			return $initial_state;
 		}
 

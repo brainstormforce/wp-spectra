@@ -18,6 +18,10 @@ const attributes = {
 			styleType: 'image-layout',
 		},
 	},
+	disableLazyLoad: {
+		type: 'boolean',
+		default: false,
+	},
 	url: {
 		type: 'string',
 		default: '',

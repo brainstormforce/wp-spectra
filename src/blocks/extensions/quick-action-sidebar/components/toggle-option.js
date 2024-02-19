@@ -3,12 +3,10 @@
  */
 import { ToggleControl } from '@wordpress/components';
 import getApiData from '@Controls/getApiData';
-import { dispatch } from '@wordpress/data';
-import { sidebarNoticeID } from './notice';
 import { useState } from '@wordpress/element';
 
 const ToggleOption = ( props ) => {
-	const { label, enableQuickActionSidebar, getNoticeForQuickActionSidebar, updateNoticeForQuickSidebarBlocks, updateEnableQuickActionSidebar } = props;
+	const { label, enableQuickActionSidebar, updateEnableQuickActionSidebar } = props;
 	const [isEventTriggered, setIsEventTriggered] = useState( false );
 	const saveOptionToDatabase = ( toggleStatus ) => {
 		updateEnableQuickActionSidebar( toggleStatus );
@@ -37,11 +35,6 @@ const ToggleOption = ( props ) => {
 			} );
 			setIsEventTriggered( true );
 			document?.dispatchEvent( loadQABEditor );
-		}
-		// If getNoticeForQuickActionSidebar is 1, then remove notice using id and update notice value to hide.
-		if ( 1 === getNoticeForQuickActionSidebar ) {
-			dispatch( 'core/notices' ).removeNotice( sidebarNoticeID );
-			updateNoticeForQuickSidebarBlocks( 'hide' );
 		}
 
 		saveOptionToDatabase( toggleStatus );

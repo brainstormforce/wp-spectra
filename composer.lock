@@ -105,16 +105,16 @@
         },
         {
             "name": "brainstormforce/gutenberg-templates",
-            "version": "2.1.9",
+            "version": "2.1.13",
             "source": {
                 "type": "git",
                 "url": "git@github.com:brainstormforce/gutenberg-templates.git",
-                "reference": "23210deb7d28e6b56a8086df0536b3998235940d"
+                "reference": "3bedf231b6d22cacd75b4c0c86e7720923971a10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brainstormforce/gutenberg-templates/zipball/23210deb7d28e6b56a8086df0536b3998235940d",
-                "reference": "23210deb7d28e6b56a8086df0536b3998235940d",
+                "url": "https://api.github.com/repos/brainstormforce/gutenberg-templates/zipball/3bedf231b6d22cacd75b4c0c86e7720923971a10",
+                "reference": "3bedf231b6d22cacd75b4c0c86e7720923971a10",
                 "shasum": ""
             },
             "require": {
@@ -168,23 +168,23 @@
             ],
             "description": "Gutenberg single page templates, and blocks library to imported your website easily.",
             "support": {
-                "source": "https://github.com/brainstormforce/gutenberg-templates/tree/2.1.9",
+                "source": "https://github.com/brainstormforce/gutenberg-templates/tree/2.1.13",
                 "issues": "https://github.com/brainstormforce/gutenberg-templates/issues"
             },
-            "time": "2024-01-08T12:19:52+00:00"
+            "time": "2024-02-12T08:40:12+00:00"
         },
         {
             "name": "brainstormforce/zip-ai",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:brainstormforce/zip-ai.git",
-                "reference": "eac7b53a62ae64f58fd6217268b0acd1a1669ced"
+                "reference": "522666bb95d2636275a78ca3921ce515456ea33e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brainstormforce/zip-ai/zipball/eac7b53a62ae64f58fd6217268b0acd1a1669ced",
-                "reference": "eac7b53a62ae64f58fd6217268b0acd1a1669ced",
+                "url": "https://api.github.com/repos/brainstormforce/zip-ai/zipball/522666bb95d2636275a78ca3921ce515456ea33e",
+                "reference": "522666bb95d2636275a78ca3921ce515456ea33e",
                 "shasum": ""
             },
             "require": {
@@ -233,10 +233,10 @@
             ],
             "description": "Library which interacts with SCS and provide multiple useful modules",
             "support": {
-                "source": "https://github.com/brainstormforce/zip-ai/tree/1.1.0",
+                "source": "https://github.com/brainstormforce/zip-ai/tree/1.1.1",
                 "issues": "https://github.com/brainstormforce/zip-ai/issues"
             },
-            "time": "2024-01-17T09:13:19+00:00"
+            "time": "2024-02-16T07:23:14+00:00"
         },
         {
             "name": "composer/installers",
@@ -6871,5 +6871,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }

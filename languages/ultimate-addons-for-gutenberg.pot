@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.12.2\n"
+"Project-Id-Version: Spectra 2.12.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-01-30T04:29:49+00:00\n"
+"POT-Creation-Date: 2024-02-16T11:03:08+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: admin-core/inc/admin-menu.php:171
 #: admin-core/inc/admin-menu.php:182
 #: admin-core/inc/admin-menu.php:261
-#: classes/class-uagb-admin-helper.php:422
+#: classes/class-uagb-admin-helper.php:421
 #: classes/class-uagb-init-blocks.php:574
 msgid "Spectra"
 msgstr ""
@@ -108,7 +108,7 @@ msgid "Unable to verify authenticity."
 msgstr ""
 
 #: admin-core/api/common-settings.php:98
-#: classes/class-uagb-rest-api.php:410
+#: classes/class-uagb-rest-api.php:399
 msgid "Sorry, you cannot list resources."
 msgstr ""
 
@@ -153,21 +153,21 @@ msgstr ""
 msgid "Google Map for "
 msgstr ""
 
-#: blocks-config/image-gallery/class-spectra-image-gallery.php:239
-#: includes/blocks/image-gallery/attributes.php:73
+#: blocks-config/image-gallery/class-spectra-image-gallery.php:243
+#: includes/blocks/image-gallery/attributes.php:74
 #: dist/blocks.js:3
 #: dist/blocks.js:17
 msgid "No Caption"
 msgstr ""
 
-#: blocks-config/image-gallery/class-spectra-image-gallery.php:470
-#: includes/blocks/image-gallery/attributes.php:135
+#: blocks-config/image-gallery/class-spectra-image-gallery.php:474
+#: includes/blocks/image-gallery/attributes.php:136
 #: dist/blocks.js:3
 #: dist/blocks.js:17
 msgid "Load More Images"
 msgstr ""
 
-#: blocks-config/image-gallery/class-spectra-image-gallery.php:1415
+#: blocks-config/image-gallery/class-spectra-image-gallery.php:1419
 #: dist/blocks.js:17
 msgid "Unable to load image"
 msgstr ""
@@ -7612,15 +7612,15 @@ msgstr ""
 msgid "Travel"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:430
+#: classes/class-uagb-admin-helper.php:429
 msgid "Astra Theme"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:434
+#: classes/class-uagb-admin-helper.php:433
 msgid "Filter added through any 3rd Party Theme/Plugin."
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:439
+#: classes/class-uagb-admin-helper.php:438
 msgid "Full Site Editor's Global Styles"
 msgstr ""
 
@@ -7762,8 +7762,8 @@ msgid ""
 msgstr ""
 
 #: classes/class-uagb-init-blocks.php:863
-#: classes/class-uagb-rest-api.php:293
-#: classes/class-uagb-rest-api.php:308
+#: classes/class-uagb-rest-api.php:282
+#: classes/class-uagb-rest-api.php:297
 #: dist/blocks.js:1
 #: dist/blocks.js:11
 #: dist/blocks.js:15
@@ -7803,7 +7803,7 @@ msgstr ""
 msgid "Spectra <p>Rollback to Previous Version</p>"
 msgstr ""
 
-#: classes/class-uagb-update.php:204
+#: classes/class-uagb-update.php:217
 msgid "Heads up!"
 msgstr ""
 
@@ -8110,6 +8110,7 @@ msgstr ""
 
 #: includes/blocks/forms/attributes.php:37
 #: dist/blocks.js:3
+#: dist/blocks.js:17
 msgid "Spectra Form"
 msgstr ""
 
@@ -9443,7 +9444,7 @@ msgid "This setting allows you to enable or disable the AI features on your webs
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:12
-msgid "Zip is Connected"
+msgid "ZipWP is Connected"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:12
@@ -10580,6 +10581,14 @@ msgid "Link Color"
 msgstr ""
 
 #: dist/blocks.js:11
+msgid "The left-right margins will be inherited from theme for boxed containers."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "The left-right margins will not be applied for full-width containers."
+msgstr ""
+
+#: dist/blocks.js:11
 #: dist/blocks.js:17
 msgid "Row"
 msgstr ""
@@ -11146,6 +11155,11 @@ msgstr ""
 
 #: dist/blocks.js:15
 msgid "Image Dimensions"
+msgstr ""
+
+#: dist/blocks.js:15
+#: dist/blocks.js:17
+msgid "Enable Lazy Loading"
 msgstr ""
 
 #: dist/blocks.js:15
@@ -15560,14 +15574,6 @@ msgstr ""
 
 #: dist/blocks.js:21
 msgid "No results found."
-msgstr ""
-
-#: dist/blocks.js:21
-msgid "Learn More"
-msgstr ""
-
-#: dist/blocks.js:21
-msgid "Introducing the Quick Action Bar which makes page building faster and easier by giving you quick access to the blocks you use the most. You can easily disable this feature in the Spectra settings."
 msgstr ""
 
 #: dist/blocks.js:21

@@ -206,8 +206,22 @@ class Plugin {
 		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
 		$block_id     = isset( $_REQUEST['id'] ) ? absint( $_REQUEST['id'] ) : '';
 		$block_type   = isset( $_REQUEST['type'] ) ? sanitize_text_field( $_REQUEST['type'] ) : '';
-		$complete_url = AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-json/wp/v2/' . $block_type . '/' . $block_id . '/?site_url=' . site_url();
-		$response     = wp_remote_get( $complete_url );
+
+		if ( 'site-pages' === $block_type ) {
+			// Use this for premium pages.
+			$request_params = apply_filters(
+				'astra_sites_api_params',
+				array(
+					'purchase_key' => '',
+					'site_url'     => site_url(),
+				)
+			);
+
+			$complete_url = add_query_arg( $request_params, trailingslashit( AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-json/wp/v2/' . $block_type . '/' . $block_id ) );
+		} else {
+			$complete_url = AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-json/wp/v2/' . $block_type . '/' . $block_id . '/?site_url=' . site_url();
+		}
+		$response = wp_remote_get( $complete_url );
 
 		if ( is_wp_error( $response ) ) {
 			wp_send_json_error( __( 'Something went wrong', 'ast-block-templates' ) );
@@ -1027,7 +1041,7 @@ class Plugin {
 			$business_details = array(
 				'business_name' => isset( $zip_user_business_details['business_name'] ) ? $zip_user_business_details['business_name'] : '',
 				'business_description' => isset( $zip_user_business_details['business_description'] ) ? $zip_user_business_details['business_description'] : '',
-				'business_category' => isset( $zip_user_business_details['category_name'] ) ? strtolower( $zip_user_business_details['category_name'] ) : '',
+				'business_category' => isset( $zip_user_business_details['category_slug'] ) ? $zip_user_business_details['category_slug'] : '',
 				'images' => $filtered_images,
 				'image_keywords' => isset( $zip_user_business_details['image_keyword'] ) ? $zip_user_business_details['image_keyword'] : array(),
 				'business_address' => isset( $zip_user_business_details['business_address'] ) ? $zip_user_business_details['business_address'] : '',

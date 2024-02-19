@@ -14,11 +14,16 @@ import newAttributesV2_1_1 from './deprecated/v2.1.1/attributes';
 import newAttributesV2_7_11 from './deprecated/v2.7.11/attributes';
 import newSaveV2_1_1 from './deprecated/v2.1.1/save';
 import saveV2_6_2 from './deprecated/v2.6.2/save';
+import attributesV2_6_2 from './deprecated/v2.6.2/attributes';
 import saveV2_7_11 from './deprecated/v2.7.11/save';
 import saveV2_6_7 from './deprecated/v2.6.7/save';
+import attributesV2_6_7 from './deprecated/v2.6.7/attributes';
 import saveV2_6_9 from './deprecated/v2.6.9/save';
+import attributesV2_6_9 from './deprecated/v2.6.9/attributes';
 import saveV2_7_0 from './deprecated/v2.7.0/save';
-import attributesV2_6_2 from './attributes';
+import attributesV2_7_0 from './deprecated/v2.7.0/attributes';
+import saveV2_12_2 from './deprecated/v2.12.2/save';
+import newAttributesV2_12_2 from './deprecated/v2.12.2/attributes';
 
 const borderAttributes = getBorderAttributes( 'btn' );
 const attributes = {
@@ -258,20 +263,24 @@ const deprecated = [
 		save: saveV2_6_2,
 	},
 	{
-		attributes: attributesV2_6_2,
+		attributes: attributesV2_6_7,
 		save: saveV2_6_7,
 	},
 	{
-		attributes: attributesV2_6_2,
+		attributes: attributesV2_6_9,
 		save: saveV2_6_9,
 	},
 	{
-		attributes: attributesV2_6_2,
+		attributes: attributesV2_7_0,
 		save: saveV2_7_0,
 	},
 	{
 		attributes: newAttributesV2_7_11,
 		save: saveV2_7_11,
+	},
+	{
+		attributes: newAttributesV2_12_2,
+		save: saveV2_12_2,
 	},
 ];
 

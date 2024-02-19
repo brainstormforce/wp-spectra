@@ -50,6 +50,7 @@ const UAGBFormsEdit = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
+			variationSelected,
 		},
 		setAttributes,
 		clientId,
@@ -80,6 +81,13 @@ const UAGBFormsEdit = ( props ) => {
 		};
 	}, [] );
 
+	useEffect( () => {
+		// Developer Comment: This was added to resolve block recovery issue due to innerblocks to check if preset is selected in save.js
+		if( ! variationSelected && hasInnerBlocks ) {
+			setAttributes( { variationSelected : true } )
+		}
+	}, [ hasInnerBlocks ] )
+	
 	useEffect( () => {
 		if ( bgColor ) {
 			if ( undefined === toggleColor ) {
