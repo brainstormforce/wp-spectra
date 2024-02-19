@@ -9,10 +9,9 @@ import { withSelect, withDispatch } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 import PopoverModal from './modal';
 import { STORE_NAME as storeName } from '@Store/constants';
-import { Notice } from './notice';
 
 const Sidebar = ( props ) => {
-	const { getEnableQuickActionSidebar, updateDefaultAllowedQuickSidebarBlocks, getDefaultAllowedQuickSidebarBlocks, getNoticeForQuickActionSidebar, getFullscreenMode, getDistractionFreeMode } = props;
+	const { getEnableQuickActionSidebar, updateDefaultAllowedQuickSidebarBlocks, getDefaultAllowedQuickSidebarBlocks, getFullscreenMode, getDistractionFreeMode } = props;
 	const [ isPopoverVisible, setPopoverVisible ] = useState( false );
 
 	useLayoutEffect( () => {
@@ -30,8 +29,6 @@ const Sidebar = ( props ) => {
 
 	return (
 		<>
-		{ /* if getNoticeForQuickActionSidebar is 1 then only show notice. */ }
-		{ 1 === getNoticeForQuickActionSidebar && <Notice {...props}/> }
 		<div className='spectra-ee-quick-access'>
 		<div className='spectra-ee-quick-access__sidebar'>
 			{/* The block selection buttons will come here. */}
@@ -57,7 +54,6 @@ const Sidebar = ( props ) => {
 
 export default compose(
 	withSelect( ( spectraQuickActionSelect ) => {
-		const getNoticeForQuickActionSidebar = spectraQuickActionSelect( spectraStore ).getNoticeForQuickActionSidebar();
 		const getEnableQuickActionSidebar = spectraQuickActionSelect( spectraStore ).getEnableQuickActionSidebar();
 		const getDefaultAllowedQuickSidebarBlocks = spectraQuickActionSelect( spectraStore ).getDefaultAllowedQuickSidebarBlocks();
 		const getFullscreenMode = spectraQuickActionSelect( 'core/edit-post' )?.isFeatureActive( 'fullscreenMode' );
@@ -65,7 +61,6 @@ export default compose(
 		const getDistractionFreeMode = getBlockEditorStore?.getSettings()?.isDistractionFree;
 	
 		return {
-			getNoticeForQuickActionSidebar,
 			getEnableQuickActionSidebar,
 			getDefaultAllowedQuickSidebarBlocks,
 			getFullscreenMode,
@@ -76,7 +71,6 @@ export default compose(
 		return {
 			updateDefaultAllowedQuickSidebarBlocks: ( value ) => spectraQuickActionDispatch( storeName ).updateDefaultAllowedQuickSidebarBlocks( value ),
 			updateEnableQuickActionSidebar: ( value ) => spectraQuickActionDispatch( storeName ).updateEnableQuickActionSidebar( value ),
-			updateNoticeForQuickSidebarBlocks: ( value ) => spectraQuickActionDispatch( storeName ).updateNoticeForQuickSidebarBlocks( value ),
 		};
 	} ),
 )( Sidebar );

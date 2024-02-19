@@ -71,6 +71,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 		columnsDesk,
 		columnsTab,
 		columnsMob,
+		disableLazyLoad,
 	} = attributes;
 
 	// Range Fallback.
@@ -598,6 +599,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 					] ) }
 					src={ setImageURL( mediaObject ) }
 					alt={ mediaObject.alt }
+					loading={ disableLazyLoad ? undefined : 'lazy' }
 				/>
 				<div className="spectra-image-gallery__media-thumbnail-blurrer" />
 				{ imageDisplayCaption ? (

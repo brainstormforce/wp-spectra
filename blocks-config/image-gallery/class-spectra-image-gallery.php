@@ -137,6 +137,10 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 								'type'    => 'object',
 								'default' => array(),
 							),
+							'disableLazyLoad'  => array(
+								'type'    => 'boolean',
+								'default' => false,
+							),
 						),
 						// Gallery Settings.
 						array(
@@ -1368,7 +1372,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 				<picture>
 					<source media="(min-width: 1024px)" srcset="<?php echo esc_url( $image_url ); ?>">
 					<source media="(min-width: 768px)" srcset="<?php echo esc_url( $image_url_tab ); ?>">
-					<img class="spectra-image-gallery__media-thumbnail spectra-image-gallery__media-thumbnail--<?php echo esc_attr( $atts['feedLayout'] ); ?>" src="<?php echo esc_url( $image_url_mob ); ?>" alt="<?php echo esc_attr( $mediaArray['alt'] ); ?>" />
+					<img class="spectra-image-gallery__media-thumbnail spectra-image-gallery__media-thumbnail--<?php echo esc_attr( $atts['feedLayout'] ); ?>" src="<?php echo esc_url( $image_url_mob ); ?>" alt="<?php echo esc_attr( $mediaArray['alt'] ); ?>" <?php echo esc_attr( $atts['disableLazyLoad'] ) ? '' : 'loading="lazy"'; ?> />
 				</picture>
 				<div class="spectra-image-gallery__media-thumbnail-blurrer"></div>
 				<?php

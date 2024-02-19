@@ -59,7 +59,7 @@ class Admin_Configurations {
 	 */
 	public function __construct() {
 		// Setup the Admin Scripts.
-		add_action( 'admin_init', array( $this, 'settings_admin_scripts' ) );
+		// add_action( 'admin_init', array( $this, 'settings_admin_scripts' ) ); - This can be added later if required.
 
 		// Verify Zip AI Authorization.
 		add_action( 'admin_init', array( $this, 'verify_authorization' ) );

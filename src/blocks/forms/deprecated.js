@@ -4,7 +4,8 @@ import { __ } from '@wordpress/i18n';
 import { getBorderAttributes } from '@Controls/generateAttributes';
 import saveV2_6_7 from './v2.6.7/save';
 import saveV2_7_10 from './v2.7.10/save';
-import newAttributes from './attributes';
+import newAttributesV2_12_2 from './v2.12.2/attributes';
+import saveV2_12_2 from './v2.12.2/save';
 const inputBorderAttributes = getBorderAttributes( 'field' );
 const submitBorderAttributes = getBorderAttributes( 'btn' );
 const toggleBorderAttributes = getBorderAttributes( 'checkBoxToggle' );
@@ -518,12 +519,16 @@ const deprecated = [
 		},
 	},
 	{
-		attributes: newAttributes,
+		attributes: newAttributesV2_12_2,
 		save: saveV2_6_7,
 	},
 	{
-		attributes: newAttributes,
+		attributes: newAttributesV2_12_2,
 		save: saveV2_7_10,
+	},
+	{
+		attributes: newAttributesV2_12_2,
+		save: saveV2_12_2,
 	}
 ];
 

@@ -449,7 +449,10 @@ const loadLightBoxImages = ( blockScope, lightboxSwiper, pageNum, attr, thumbnai
 		}, 100 );
 		setTimeout( () => {
 			lightbox.style.opacity = 1;
-			theBody.style.overflow = 'hidden';
+			if ( lightbox?.classList.contains( 'spectra-image-gallery__control-lightbox' ) ) {
+				theBody.style.overflow = 'hidden';
+			}
+			
 		}, 250 );
 	}
 

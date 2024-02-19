@@ -91,5 +91,17 @@ class Updater {
 				// Do something for that version.
 				break;
 		}
+		
+		if ( version_compare( $old_version, '2.1.12', '<' ) ) {
+			$ast_business_details = get_option( 'ast-templates-business-details', false );
+			
+			if ( isset( $ast_business_details['business_category'] ) ) {
+				$zip_user_business_details = get_option( 'zipwp_user_business_details', false );
+				if ( ! empty( $zip_user_business_details ) ) {
+					$ast_business_details['business_category'] = strtolower( str_replace( ' ', '-', $ast_business_details['business_category'] ) );
+					update_option( 'ast-templates-business-details', $ast_business_details );
+				}
+			}
+		}        
 	}
 }

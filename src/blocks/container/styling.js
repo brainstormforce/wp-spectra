@@ -679,7 +679,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		}
 	} else {
 		selectors[ '.wp-block-uagb-container' ] = containerCSS;
-		selectors[ '.wp-block-uagb-container:not(uagb-is-root-container)'] = {
+		selectors[ '.wp-block-uagb-container:not(.uagb-is-root-container)'] = {
 			'margin-left': generateCSSUnit( innerLeftMarginDesktop, marginType ) + ' !important',
 			'margin-right': generateCSSUnit( innerRightMarginDesktop, marginType ) + ' !important',
 		}
@@ -696,7 +696,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			...borderCSSTablet,
 			...containerBackgroundCSSTablet,
 		};
-		tablet_selectors[ '.wp-block-uagb-container:not(uagb-is-root-container)'] = {
+		tablet_selectors[ '.wp-block-uagb-container:not(.uagb-is-root-container)'] = {
 			'margin-left': generateCSSUnit( innerLeftMarginTablet, marginTypeTablet ) + ' !important',
 			'margin-right': generateCSSUnit( innerRightMarginTablet, marginTypeTablet ) + ' !important',
 		}
@@ -713,7 +713,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			...borderCSSMobile,
 			...containerBackgroundCSSMobile
 		};
-		mobile_selectors[ '.wp-block-uagb-container:not(uagb-is-root-container)'] = {
+		mobile_selectors[ '.wp-block-uagb-container:not(.uagb-is-root-container)'] = {
 			'margin-left': generateCSSUnit( innerLeftMarginMobile, marginTypeMobile ) + ' !important',
 			'margin-right': generateCSSUnit( innerRightMarginMobile, marginTypeMobile ) + ' !important',
 		}
