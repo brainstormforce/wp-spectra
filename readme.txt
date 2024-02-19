@@ -215,6 +215,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+
 = 2.12.3 - SATURDAY, 17th FEBRUARY 2024 =
 * Improvement: Image - Added a toggle to enable or disable lazy loading.
 * Improvement: Buttons - Implemented page scroll-to-top when an empty hash link is added.
