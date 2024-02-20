@@ -6,7 +6,7 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 
-import { RichText } from '@wordpress/block-editor';
+import { RichText, InnerBlocks } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { attributes, className } = props;
@@ -14,7 +14,6 @@ export default function save( props ) {
 	const {
 		block_id,
 		noticeTitle,
-		noticeContent,
 		noticeAlignment,
 		headingTag,
 		icon,
@@ -46,7 +45,9 @@ export default function save( props ) {
 				{imageIconHtml}
 			</button>
 			<RichText.Content value={noticeTitle} tagName={headingTag} className="uagb-notice-title" />
-			<RichText.Content value={noticeContent} tagName="div" className="uagb-notice-text" />
+			<div className='uagb-notice-text'>
+				<InnerBlocks.Content />
+			</div>
 		</div>
 	);
 }

@@ -1,7 +1,7 @@
 // Import block dependencies and components
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useInnerBlocksProps } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 import { useLayoutEffect, memo } from '@wordpress/element';
 import styles from './editor.lazy.scss';
@@ -29,6 +29,27 @@ const Render = ( props ) => {
 		imageIconHtml = renderSVG( icon, setAttributes );
 	}
 
+	const innerBlockOptions = {
+		allowedBlocks: ['core/paragraph'],
+		template: [
+			[
+				'core/paragraph',
+				{
+					content: noticeContent,
+				},
+			],
+		],
+		templateLock: false,
+		renderAppender: false
+	};
+
+	const innerBlocksProps = useInnerBlocksProps(
+		{
+			className: 'uagb-notice-text',
+		},
+		innerBlockOptions
+	);
+
 	return (
 		<div
 			className={ classnames(
@@ -50,13 +71,7 @@ const Render = ( props ) => {
 				className="uagb-notice-title"
 				onChange={ ( value ) => setAttributes( { noticeTitle: value } ) }
 			/>
-			<RichText
-				tagName="div"
-				placeholder={ __( 'Add Content…', 'ultimate-addons-for-gutenberg' ) }
-				value={ noticeContent }
-				className="uagb-notice-text"
-				onChange={ ( value ) => setAttributes( { noticeContent: value } ) }
-			/>
+			<div {...innerBlocksProps} />
 		</div>
 	);
 };
