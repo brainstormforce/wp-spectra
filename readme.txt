@@ -217,6 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = x.x.x =
 * Improvement: Inline Notice - Added support for paragraph tags instead of line breaks for an improved semantic HTML structure.
+* Fix: Star Rating - Resolved an issue wherein the title would not be editable in some cases.
 
 = 2.12.3 - SATURDAY, 17th FEBRUARY 2024 =
 * Improvement: Image - Added a toggle to enable or disable lazy loading.
