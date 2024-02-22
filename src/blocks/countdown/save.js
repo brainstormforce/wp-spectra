@@ -5,7 +5,16 @@ import CountdownBox from './components/CountdownBox';
 
 export default function Save( props ) {
 	const {
-		attributes: { block_id, showLabels, labelDays, labelHours, labelMinutes, labelSeconds, timerEndAction },
+		attributes: {
+			block_id,
+			showLabels,
+			labelDays,
+			labelHours,
+			labelMinutes,
+			labelSeconds,
+			timerEndAction,
+			ariaLiveType,
+		},
 		name,
 	} = props;
 
@@ -22,10 +31,10 @@ export default function Save( props ) {
 	return (
 		<>
 			<div { ...blockProps }>
-				<CountdownBox unitType="days" showLabels={ showLabels } label={ labelDays } />
-				<CountdownBox unitType="hours" showLabels={ showLabels } label={ labelHours } />
-				<CountdownBox unitType="minutes" showLabels={ showLabels } label={ labelMinutes } />
-				<CountdownBox unitType="seconds" showLabels={ showLabels } label={ labelSeconds } />
+				<CountdownBox role='timer' ariaLiveType={ ariaLiveType } unitType="days" showLabels={ showLabels } label={ labelDays } />
+				<CountdownBox role='timer' ariaLiveType={ ariaLiveType } unitType="hours" showLabels={ showLabels } label={ labelHours } />
+				<CountdownBox role='timer' ariaLiveType={ ariaLiveType } unitType="minutes" showLabels={ showLabels } label={ labelMinutes } />
+				<CountdownBox role='timer' ariaLiveType={ ariaLiveType } unitType="seconds" showLabels={ showLabels } label={ labelSeconds } />
 				{ innerblocks_structure }
 			</div>
 		</>

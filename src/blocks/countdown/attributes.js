@@ -89,6 +89,10 @@ const attributes = {
 			styleType: 'countdown-separator-type',
 		},
 	},
+	ariaLiveType: {
+		type: 'string',
+		default: 'off',
+	},
 
 	// Countdown Expiry Settings.
 	// zero - keep at zero
