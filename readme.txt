@@ -218,6 +218,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 = x.x.x =
 * Improvement: Countdown - Added role and aria-live to Countdown for better accessibility.
 * Improvement: Inline Notice - Added support for paragraph tags instead of line breaks for an improved semantic HTML structure.
+* Fix: Post Grid - Resolved an issue wherein the read-more button background hover color would not work as intended.
 * Fix: Star Rating - Resolved an issue wherein the title would not be editable in some cases.
 
 = 2.12.3 - SATURDAY, 17th FEBRUARY 2024 =
