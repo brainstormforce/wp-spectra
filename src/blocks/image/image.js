@@ -24,6 +24,7 @@ export default function Image( {
 		urlTablet = '',
 		urlMobile = '',
 		alt,
+		title,
 		align,
 		id,
 		width,
@@ -102,6 +103,7 @@ export default function Image( {
 
 	const filename = getFilename( url );
 	let defaultedAlt;
+	let defaultedTitle;
 
 	if ( alt ) {
 		defaultedAlt = alt;
@@ -113,6 +115,18 @@ export default function Image( {
 		);
 	} else {
 		defaultedAlt = __( 'This image has an empty alt attribute', 'ultimate-addons-for-gutenberg' );
+	}
+
+	if ( title ) {
+		defaultedTitle = title;
+	} else if ( filename ) {
+		defaultedTitle = sprintf(
+			/* translators: %s: file name */
+			__( 'This image has an empty title attribute; its file name is %s', 'ultimate-addons-for-gutenberg' ),
+			filename
+		);
+	} else {
+		defaultedTitle = __( 'This image has an empty title attribute', 'ultimate-addons-for-gutenberg' );
 	}
 
 	// Check if table and mobile devices has different images then set srcset attribute add in image tag.
@@ -128,6 +142,7 @@ export default function Image( {
 				}` : null }
 				src={ temporaryURL || url }
 				alt={ defaultedAlt }
+				title= { defaultedTitle }
 				onLoad={ ( event ) => {
 					setLoadedNaturalSize( {
 						loadedNaturalWidth: event.target?.naturalWidth,

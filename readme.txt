@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Improvement: Image - Added a title settings for images.
 * Improvement: Countdown - Added role and aria-live to Countdown for better accessibility.
 * Improvement: Modal - Improved the accessibility of the opened Modal.
 * Improvement: Popup Builder - Added a setting for close icon hover color and improved accessibility.

@@ -50,6 +50,9 @@ const Render = ( props ) => {
 	if ( props?.loopAlt ) {
 		attributes = { ...attributes, alt: props.loopAlt };
 	}
+	if ( props?.loopTitle ) {
+		attributes = { ...attributes, title: props.loopTitle };
+	}
 	if ( props?.loopWidth ) {
 		attributes = { ...attributes, width: props.loopWidth };
 	}
@@ -58,6 +61,7 @@ const Render = ( props ) => {
 		layout,
 		url,
 		alt,
+		title,
 		caption,
 		align,
 		id,
@@ -88,6 +92,11 @@ const Render = ( props ) => {
 	useEffect( () => {
 		altRef.current = alt;
 	}, [ alt ] );
+
+	const titleRef = useRef();
+	useEffect( () => {
+		titleRef.current = title;
+	}, [ title ] );
 
 	const captionRef = useRef();
 	useEffect( () => {
@@ -179,6 +188,7 @@ const Render = ( props ) => {
 			mediaAttributes = {
 				...mediaAttributes,
 				alt: mediaAttributes.alt,
+				title: mediaAttributes.title,
 				id: mediaAttributes.id,
 				link: mediaAttributes.link,
 			};
