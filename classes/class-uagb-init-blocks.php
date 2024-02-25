@@ -107,14 +107,16 @@ class UAGB_Init_Blocks {
 			'name'               => _x( 'Popup Builder', 'plural', 'ultimate-addons-for-gutenberg' ),
 			'singular_name'      => _x( 'Spectra Popup', 'singular', 'ultimate-addons-for-gutenberg' ),
 			'view_item'          => __( 'View Popup', 'ultimate-addons-for-gutenberg' ),
-			'add_new_item'       => __( 'Create New Popup', 'ultimate-addons-for-gutenberg' ),
 			'add_new'            => __( 'Create Popup', 'ultimate-addons-for-gutenberg' ),
+			'add_new_item'       => __( 'Create New Popup', 'ultimate-addons-for-gutenberg' ),
 			'edit_item'          => __( 'Edit Popup', 'ultimate-addons-for-gutenberg' ),
+			'new_item'           => __( 'New Popup', 'ultimate-addons-for-gutenberg' ),
 			'search_items'       => __( 'Search Popups', 'ultimate-addons-for-gutenberg' ),
-			'update_item'        => __( 'Update Popup', 'ultimate-addons-for-gutenberg' ),
-			'item_updated'       => __( 'Popup Updated', 'ultimate-addons-for-gutenberg' ),
 			'not_found'          => __( 'No Popups Found', 'ultimate-addons-for-gutenberg' ),
 			'not_found_in_trash' => __( 'No Popups in Trash', 'ultimate-addons-for-gutenberg' ),
+			'all_items'          => __( 'All Popups', 'ultimate-addons-for-gutenberg' ),
+			'item_published'     => __( 'Popup Published', 'ultimate-addons-for-gutenberg' ),
+			'item_updated'       => __( 'Popup Updated', 'ultimate-addons-for-gutenberg' ),
 		);
 
 		$type_args = array(

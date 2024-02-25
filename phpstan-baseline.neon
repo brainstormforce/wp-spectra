@@ -6904,7 +6904,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$attr might not be defined\\.$#"
-			count: 230
+			count: 232
 			path: includes/blocks/popup-builder/frontend.css.php
 
 		-
@@ -6929,7 +6929,7 @@ parameters:
 
 		-
 			message: "#^Variable \\$attr might not be defined\\.$#"
-			count: 9
+			count: 12
 			path: includes/blocks/popup-builder/frontend.js.php
 
 		-

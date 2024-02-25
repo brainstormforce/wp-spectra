@@ -8,6 +8,7 @@ import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import { getBlockTypes } from '@wordpress/blocks';
 import renderSVG from '@Controls/renderIcon';
 import { uagbClassNames } from '@Utils/Helpers';
+import { __ } from '@wordpress/i18n';
 
 const Render = ( props ) => {
 	const {
@@ -73,10 +74,10 @@ const Render = ( props ) => {
 		] ),
 	} );
 
+	const ariaLabel = ( 'popup' === variantType ) ?  __( 'Close Popup', 'ultimate-addons-for-gutenberg' ) : __( 'Close Info Bar', 'ultimate-addons-for-gutenberg' );
+
 	const hasChildBlocks = getBlockOrder( clientId ).length > 0;
-
 	const ALLOWED_BLOCKS = getBlockTypes().map( block => block.name ).filter( blockName => ! excludeBlocks.includes( blockName ) );
-
 	const innerBlocksParams = {
 		allowedBlocks: ALLOWED_BLOCKS,
 		templateLock: false,
@@ -91,17 +92,17 @@ const Render = ( props ) => {
 				'uagb-popup-builder__wrapper',
 				`uagb-popup-builder__wrapper--${ variantType }`,
 			] ) }>
-				{ ( isDismissable && closeIcon ) && (
-					<div className='uagb-popup-builder__close'>
-						{ renderSVG( closeIcon, setAttributes ) }
-					</div>
-				) }
 				<div className={ uagbClassNames( [
 					'uagb-popup-builder__container',
 					`uagb-popup-builder__container--${ variantType }`,
 				] ) }>
 					<InnerBlocks { ...innerBlocksParams } />
 				</div>
+				{ ( isDismissable && closeIcon ) && (
+					<button className='uagb-popup-builder__close' aria-label={ ariaLabel }>
+						{ renderSVG( closeIcon, setAttributes ) }
+					</button>
+				) }
 			</div>
 		</div>
 	);

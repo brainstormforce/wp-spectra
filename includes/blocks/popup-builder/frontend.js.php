@@ -67,10 +67,17 @@ ob_start();
 				// If this is a popup which prevent background interaction, hide the scrollbar.
 				if ( 'popup' === $attr['variantType'] && $attr['haltBackgroundInteraction'] ) :
 					?>
-					theBody.classList.add( 'uagb-popup-builder__body--overflow-hidden' );
-					blockScope.classList.add( 'spectra-popup--open' );
-				<?php endif; ?>
-				blockScope.style.opacity = 1;
+						theBody.classList.add( 'uagb-popup-builder__body--overflow-hidden' );
+						blockScope.classList.add( 'spectra-popup--open' );
+						<?php // Once this popup is active, create a focusable element to add focus onto the popup and then remove it. ?>
+						const focusElement = document.createElement( 'button' );
+						focusElement.style.position = 'absolute';
+						focusElement.style.opacity = '0';
+						const popupFocus = blockScope.insertBefore( focusElement, blockScope.firstChild );
+						popupFocus.focus();
+						popupFocus.remove();
+					<?php endif; ?>
+					blockScope.style.opacity = 1;
 				<?php
 			}
 			?>
@@ -86,7 +93,7 @@ ob_start();
 		<?php endif; ?>
 
 		const closePopup = ( event = null ) => {
-			if ( event && blockScope !== event.target ) {
+			if ( event && blockScope !== event?.target ) {
 				return;
 			}
 			if ( popupSesh[0] > 0 ) {
@@ -128,6 +135,15 @@ ob_start();
 				const closeButton = blockScope.querySelector( '.uagb-popup-builder__close' );
 				closeButton.style.cursor = 'pointer';
 				closeButton.addEventListener( 'click', () => closePopup() );
+				<?php
+				endif;
+			if ( $attr['closeEscapePress'] && 'popup' === $attr['variantType'] && $attr['haltBackgroundInteraction'] ) :
+				?>
+				document.addEventListener( 'keyup', ( event ) => {
+					if ( 27 === event.keyCode && blockScope.classList.contains( 'spectra-popup--open' ) ) {
+						return closePopup();
+					}
+				} );
 				<?php
 				endif;
 			endif;

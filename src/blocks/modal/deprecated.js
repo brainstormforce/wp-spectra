@@ -1,10 +1,12 @@
-import attributes from './attributes';
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
+import attributesV2_12_3 from './deprecated/v2_12_3/attributes';
+import saveV2_12_3 from './deprecated/v2_12_3/save';
+
 const deprecated = [
 	{
-		attributes,
+		attributesV2_12_3,
 		save: ( props ) => {
 			const {
 				block_id,
@@ -108,6 +110,10 @@ const deprecated = [
 				</div>
 			);
 		},
+	},
+	{
+		attributes: attributesV2_12_3,
+		save: saveV2_12_3,
 	},
 ];
 

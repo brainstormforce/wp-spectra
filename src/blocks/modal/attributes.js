@@ -230,7 +230,7 @@ const attributes = {
 	},
 	escPress: {
 		type: 'boolean',
-		default: false,
+		default: true,
 	},
 	overlayClick: {
 		type: 'boolean',

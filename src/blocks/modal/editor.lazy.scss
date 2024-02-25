@@ -25,6 +25,14 @@
 				margin: 30px;
 			}
 
+			// The default button appearance.
+			button.uagb-modal-popup-close {
+				border: none;
+				background: transparent;
+				background-color: transparent;
+				padding: 0;
+			}
+
 			&.active {
 				background: rgba(0, 0, 0, 0.6);
 				border: 2px none #ddd;
