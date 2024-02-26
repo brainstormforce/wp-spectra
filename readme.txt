@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.4.3
-Stable tag: 2.12.3
+Stable tag: 2.12.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= x.x.x =
+= 2.12.4 - TUESDAY, 27th FEBRUARY 2024 =
 * Improvement: Image - Added a title settings for images.
 * Improvement: Countdown - Added role and aria-live to Countdown for better accessibility.
 * Improvement: Modal - Improved the accessibility of the opened Modal.
