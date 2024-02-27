@@ -6,7 +6,7 @@ import saveV2_12_3 from './deprecated/v2_12_3/save';
 
 const deprecated = [
 	{
-		attributesV2_12_3,
+		attributes: attributesV2_12_3,
 		save: ( props ) => {
 			const {
 				block_id,
