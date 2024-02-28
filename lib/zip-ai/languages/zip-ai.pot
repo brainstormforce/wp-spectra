@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zip AI Assistant 1.1.1\n"
+"Project-Id-Version: Zip AI Assistant 1.1.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/zip-ai\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-02-12T13:08:13+00:00\n"
+"POT-Creation-Date: 2024-02-27T10:13:23+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: zip-ai\n"
@@ -45,6 +45,22 @@ msgstr ""
 
 #: classes/helper.php:190
 msgid "The Zip AI Middleware encountered an error."
+msgstr ""
+
+#: classes/helper.php:209
+msgid "The ZipWP Endpoint was not declared"
+msgstr ""
+
+#: classes/helper.php:219
+msgid "The ZipWP Token is not set."
+msgstr ""
+
+#: classes/helper.php:243
+msgid "The ZipWP API server is not responding."
+msgstr ""
+
+#: classes/helper.php:253
+msgid "The ZipWP API server encountered an error."
 msgstr ""
 
 #: classes/sidebar-configurations.php:130

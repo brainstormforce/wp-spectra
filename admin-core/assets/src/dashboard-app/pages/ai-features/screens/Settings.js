@@ -18,6 +18,7 @@ import {
 import ManageFeaturesPopup from '@DashboardApp/pages/ai-features/elements/ManageFeaturesPopup';
 import { uagbClassNames, displayInThousands } from '@Utils/Helpers';
 import ConfirmationPopup from '@Common/components/ConfirmationPopup';
+import ReactHtmlParser from 'react-html-parser';
 
 const Settings = () => {
 	// Set the required states.
@@ -33,8 +34,9 @@ const Settings = () => {
 		}
 	}, [] );
 
-	// Set the credit details.
+	// Set the credit details and the team name.
 	const creditDetails = uag_react.zip_ai_credit_details;
+	const teamName = uag_react?.zip_ai_current_plan?.team_name;
 
 	// Set the credit level to low, and then compare the credit percentage with the credit threshold medium and high values using a switch case.
 	let creditClass = 'bg-green-500';
@@ -68,7 +70,7 @@ const Settings = () => {
 	const renderWelcomeCard = () => (
 		<>
 			{ applyFilters( 'zip_ai_render_welcome_card', true ) &&
-				<section className="rounded-lg bg-white p-12 pt-10 gap-11 overflow-hidden shadow-sm flex flex-col justify-start h-auto min-h-full">
+				<section className="rounded-lg bg-white p-12 gap-12 overflow-hidden shadow-sm flex flex-col justify-start h-auto min-h-full">
 					{/* The header area with the logos and title. */}
 					<div className="flex flex-col gap-4">
 						<div className="flex gap-2 items-center justify-start">
@@ -87,7 +89,7 @@ const Settings = () => {
 						</h1>
 					</div>
 					{/* The 2 column grid, with lines dividing each row */}
-					<div>
+					<div className='flex-1 flex flex-col justify-end'>
 						<div className="grid grid-cols-2 gap-x-12 pb-8 border-b border-b-slate-200">
 							{ renderGridDetail( {
 								icon: WandIcon,
@@ -140,7 +142,7 @@ const Settings = () => {
 		<>
 			{ applyFilters( 'zip_ai_render_credits_card', true ) &&
 				<section className="box-border flex flex-col gap-4 p-8 rounded-lg bg-white shadow-sm overflow-hidden transition hover:shadow-hover">
-					<div className="flex gap-2 pb-4 items-start justify-between w-full">
+					<div className="flex gap-2 items-start justify-between w-full">
 						<h3 className="text-slate-800 text-xl font-medium">
 							{ applyFilters( 'zip_ai_credits_card_header', __( 'Credit Usage', 'ultimate-addons-for-gutenberg' ) ) }
 						</h3>
@@ -196,14 +198,29 @@ const Settings = () => {
 
 		return (
 			<section className="box-border rounded-lg flex flex-col items-start gap-4 p-8 bg-white shadow-sm overflow-hidden transition hover:shadow-hover">
-				<div className='flex items-center gap-2'>
-					<h3 className="text-slate-800 text-xl font-medium">
-						{ __(
-							'ZipWP is Connected',
-							'ultimate-addons-for-gutenberg'
-						) }
-					</h3>
-					{ CheckmarkBadgeIcon( { width: 24, height: 24, color: '#16a34a'} ) }
+				<div>
+					<div className='flex items-center gap-2'>
+						<h3 className="text-slate-800 text-xl font-medium">
+							{ __(
+								'ZipWP is Connected',
+								'ultimate-addons-for-gutenberg'
+							) }
+						</h3>
+						{ CheckmarkBadgeIcon( { width: 24, height: 24, color: '#16a34a'} ) }
+					</div>
+					{ teamName && (
+						<p className="text-slate-700 mt-2 text-lg font-medium">
+							{ ReactHtmlParser(
+								sprintf(
+									/* translators: %1$s: The opening span tag, %2$s: The team name, %3$s: The closing span tag */
+									__( 'Organization: %1$s%2$s%3$s', 'ultimate-addons-for-gutenberg' ),
+									'<span class="font-normal">',
+									teamName,
+									'</span>',
+								)
+							) }
+						</p>
+					) }
 				</div>
 				<p className="text-slate-500 text-sm">
 					{ __(
@@ -286,7 +303,7 @@ const Settings = () => {
 					description: `${
 						__( 'Are you sure you wish to revoke the authorization token?', 'ultimate-addons-for-gutenberg' )
 					}\n${
-						__( 'You will need to re-authorize Zip to use it again.', 'ultimate-addons-for-gutenberg' )
+						__( 'You will need to re-authorize ZipWP to use it again.', 'ultimate-addons-for-gutenberg' )
 					}`,
 				},
 				popupAccept: {

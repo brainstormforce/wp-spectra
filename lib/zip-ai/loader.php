@@ -155,9 +155,10 @@ if ( ! class_exists( '\ZipAI\Loader' ) ) {
 			define( 'ZIP_AI_FILE', __FILE__ );
 			define( 'ZIP_AI_DIR', plugin_dir_path( ZIP_AI_FILE ) );
 			define( 'ZIP_AI_URL', plugins_url( '/', ZIP_AI_FILE ) );
-			define( 'ZIP_AI_VERSION', '1.1.1' );
+			define( 'ZIP_AI_VERSION', '1.1.2' );
 			define( 'ZIP_AI_MENU_SLUG', 'zip-ai' );
 			define( 'ZIP_AI_MIDDLEWARE', 'https://app.zipwp.com/auth/' );
+			define( 'ZIP_AI_ZIPWP_API', 'https://api.zipwp.com/api/' );
 			define( 'ZIP_AI_CREDIT_SERVER_API', 'https://credits.startertemplates.com/api/' );
 			define( 'ZIP_AI_CREDIT_TOPUP_URL', 'https://app.zipwp.com/credits-pricing' );
 			define( 'ZIP_AI_CREDIT_THRESHOLD_MEDIUM', 65 );
