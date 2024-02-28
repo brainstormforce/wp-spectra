@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.4.3
-Stable tag: 2.12.3
+Stable tag: 2.12.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -214,6 +214,15 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
 
 == Changelog ==
+
+= 2.12.4 - WEDNESDAY, 28th FEBRUARY 2024 =
+* Improvement: Image - Added a title settings for images.
+* Improvement: Countdown - Added role and aria-live to Countdown for better accessibility.
+* Improvement: Modal - Improved the accessibility of the opened Modal.
+* Improvement: Popup Builder - Added a setting for close icon hover color and improved accessibility.
+* Improvement: Inline Notice - Added support for paragraph tags instead of line breaks for an improved semantic HTML structure.
+* Fix: Post Grid - Resolved an issue wherein the read-more button background hover color would not work as intended.
+* Fix: Star Rating - Resolved an issue wherein the title would not be editable in some cases.
 
 = 2.12.3 - SATURDAY, 17th FEBRUARY 2024 =
 * Improvement: Image - Added a toggle to enable or disable lazy loading.

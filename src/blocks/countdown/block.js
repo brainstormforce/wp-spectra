@@ -4,6 +4,7 @@
 
 import UAGB_Block_Icons from '@Controls/block-icons';
 import attributes from './attributes';
+import deprecated from './deprecated';
 import Edit from './edit';
 import save from './save';
 import './style.scss';
@@ -35,4 +36,5 @@ registerBlockType( 'uagb/countdown', {
 	category: uagb_blocks_info.category,
 	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="countdown" /> : <Edit { ...props } /> ),
 	save,
+	deprecated,
 } );

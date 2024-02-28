@@ -9,6 +9,8 @@ const CountdownBox = ( props ) => {
 			] ) }
 		>
 			<div
+			    role={ props.role }
+				aria-live={ props.ariaLiveType }
 				className={ uagbClassNames( [
 					'wp-block-uagb-countdown__time',
 					'wp-block-uagb-countdown__time-' + props.unitType,

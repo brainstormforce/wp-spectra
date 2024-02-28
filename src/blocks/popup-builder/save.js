@@ -5,6 +5,7 @@
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import { uagbClassNames } from '@Utils/Helpers';
 import renderSVG from '@Controls/renderIcon';
+import { __ } from '@wordpress/i18n';
 
 export default function save( props ) {
 	const {
@@ -23,6 +24,7 @@ export default function save( props ) {
 	} = attributes;
 
 	const blockProps = useBlockProps.save();
+	const ariaLabel = ( 'popup' === variantType ) ?  __( 'Close Popup', 'ultimate-addons-for-gutenberg' ) : __( 'Close Info Bar', 'ultimate-addons-for-gutenberg' );
 
 	return variationSelected && (
 		<div
@@ -37,17 +39,17 @@ export default function save( props ) {
 				'uagb-popup-builder__wrapper',
 				`uagb-popup-builder__wrapper--${ variantType }`,
 			] ) }>
-				{ ( isDismissable && closeIcon ) && (
-					<div className='uagb-popup-builder__close'>
-						{ renderSVG( closeIcon ) }
-					</div>
-				) }
 				<div className={ uagbClassNames( [
 					'uagb-popup-builder__container',
 					`uagb-popup-builder__container--${ variantType }`,
 				] ) }>
 					<InnerBlocks.Content/>
 				</div>
+				{ ( isDismissable && closeIcon ) && (
+					<button className='uagb-popup-builder__close' aria-label={ ariaLabel }>
+						{ renderSVG( closeIcon ) }
+					</button>
+				) }
 			</div>
 		</div>
 	);

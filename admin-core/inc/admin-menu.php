@@ -291,6 +291,27 @@ class Admin_Menu {
 					'zip_ai_credit_details'   => Zip_Ai_Helper::get_credit_details(),
 				)
 			);
+
+			// In Zip AI version 1.1.2, the ZIPWP API constant was added - if this is available, get the current plan details.
+			if ( defined( 'ZIP_AI_ZIPWP_API' ) ) {
+				$response_zipwp_plan = Zip_Ai_Helper::get_current_plan_details();
+
+				// If the response is not an error, then proceed to localize the required details.
+				if ( is_array( $response_zipwp_plan ) && 'error' !== $response_zipwp_plan['status'] ) {
+					// Create the base array to be localized.
+					$current_zipwp_plan = array();
+
+					// Add the team name if it exists.
+					if ( ! empty( $response_zipwp_plan['team']['name'] ) ) {
+						$current_zipwp_plan['team_name'] = $response_zipwp_plan['team']['name'];
+					}
+
+					// If the final array is not empty, localize it.
+					if ( ! empty( $current_zipwp_plan ) ) {
+						$localize['zip_ai_current_plan'] = $current_zipwp_plan;
+					}
+				}
+			}
 		}
 
 		$this->settings_app_scripts( $localize );

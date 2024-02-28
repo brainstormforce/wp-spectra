@@ -1,3 +1,6 @@
+v1.1.2 - 27th February 2024
+- Improvement: Added ZipWP API server helper functions to get the current plan.
+
 v1.1.1 - 16th February 2024
 - Improvement: Added middleware parameter handling for the affiliate ID.
 - Improvement: Locally loaded Google Fonts for the AI Assistant sidebar.

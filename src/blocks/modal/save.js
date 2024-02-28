@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
+import { __ } from '@wordpress/i18n';
 
 export default function Save( props ) {
 	const {
@@ -98,19 +99,27 @@ export default function Save( props ) {
 					[ `uagb-modal-position-${ modalPosition }` ]: isPro && 'popup' === openModalAs,
 				} ) }
 			>
-				{ isPro && ( 'window-top-left' === closeIconPosition || 'window-top-right' === closeIconPosition ) && (
-					<div className={ classnames( 'uagb-modal-popup-close', closeIconPosition ) }>
-						{ '' !== closeIcon && renderSVG( closeIcon ) }
-					</div>
-				) }
 				<div className="uagb-modal-popup-wrap">
 					<div className="uagb-modal-popup-content">
 						<InnerBlocks.Content />
 					</div>
 					{ ( 'popup-top-left' === closeIconPosition || 'popup-top-right' === closeIconPosition ) && (
-						<div className="uagb-modal-popup-close">{ '' !== closeIcon && renderSVG( closeIcon ) }</div>
+						<button
+							className="uagb-modal-popup-close"
+							aria-label={ __( 'Close Modal', 'ultimate-addons-for-gutenberg' ) }
+						>
+							{ '' !== closeIcon && renderSVG( closeIcon ) }
+						</button>
 					) }
 				</div>
+				{ isPro && ( 'window-top-left' === closeIconPosition || 'window-top-right' === closeIconPosition ) && (
+					<button
+						className={ classnames( 'uagb-modal-popup-close', closeIconPosition ) }
+						aria-label={ __( 'Close Modal', 'ultimate-addons-for-gutenberg' ) }
+					>
+						{ '' !== closeIcon && renderSVG( closeIcon ) }
+					</button>
+				) }
 			</div>
 		</div>
 	);

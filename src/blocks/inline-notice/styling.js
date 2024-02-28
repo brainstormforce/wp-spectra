@@ -204,7 +204,25 @@ function styling( attributes, clientId, name, deviceType ) {
 			'padding-bottom': generateCSSUnit( titlePaddingBottom, titlePaddingUnit ),
 			'letter-spacing': generateCSSUnit( titleLetterSpacing, titleLetterSpacingType ),
 		},
-		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': {
+		' .uagb-notice-text.block-editor-block-list__layout p': {
+			'color': textColor,
+		},
+		' .uagb-notice-text.block-editor-block-list__layout': {
+			'color': textColor,
+			'padding-left': generateCSSUnit( contentPaddingLeft, contentPaddingUnit ),
+			'padding-right': generateCSSUnit( contentPaddingRight, contentPaddingUnit ),
+			'padding-top': generateCSSUnit( contentPaddingTop, contentPaddingUnit ),
+			'padding-bottom': generateCSSUnit( contentPaddingBottom, contentPaddingUnit ),
+			'font-size': generateCSSUnit( descFontSize, descFontSizeType ),
+			'font-weight': descFontWeight,
+			'font-family': descFontFamily,
+			'font-style': descFontStyle,
+			'text-decoration': descDecoration,
+			'text-transform': descTransform,
+			'line-height': generateCSSUnit( descLineHeight, descLineHeightType ),
+			'letter-spacing': generateCSSUnit( descLetterSpacing, descLetterSpacingType ),
+		},
+		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': { // Old User case.
 			'color': textColor,
 			'padding-left': generateCSSUnit( contentPaddingLeft, contentPaddingUnit ),
 			'padding-right': generateCSSUnit( contentPaddingRight, contentPaddingUnit ),
@@ -249,7 +267,15 @@ function styling( attributes, clientId, name, deviceType ) {
 			'padding-bottom': generateCSSUnit( titlePaddingBottomMobile, mobileTitlePaddingUnit ),
 			'letter-spacing': generateCSSUnit( titleLetterSpacingMobile, titleLetterSpacingType ),
 		},
-
+		' .uagb-notice-text.block-editor-block-list__layout': { // Old User case.
+			'font-size': generateCSSUnit( descFontSizeMobile, descFontSizeType ),
+			'line-height': generateCSSUnit( descLineHeightMobile, descLineHeightType ),
+			'letter-spacing': generateCSSUnit( descLetterSpacingMobile, descLetterSpacingType ),
+			'padding-left': generateCSSUnit( conttentPaddingLeftMobile, mobileContentPaddingUnit ),
+			'padding-right': generateCSSUnit( contentPaddingRightMobile, mobileContentPaddingUnit ),
+			'padding-top': generateCSSUnit( contentPaddingTopMobile, mobileContentPaddingUnit ),
+			'padding-bottom': generateCSSUnit( contentPaddingBottomMobile, mobileContentPaddingUnit ),
+		},
 		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': {
 			'font-size': generateCSSUnit( descFontSizeMobile, descFontSizeType ),
 			'line-height': generateCSSUnit( descLineHeightMobile, descLineHeightType ),
@@ -282,7 +308,15 @@ function styling( attributes, clientId, name, deviceType ) {
 			'padding-bottom': generateCSSUnit( titlePaddingBottomTablet, tabletTitlePaddingUnit ),
 			'letter-spacing': generateCSSUnit( titleLetterSpacingTablet, titleLetterSpacingType ),
 		},
-
+		' .uagb-notice-text.block-editor-block-list__layout': { // Old User case.
+			'font-size': generateCSSUnit( descFontSizeTablet, descFontSizeType ),
+			'line-height': generateCSSUnit( descLineHeightTablet, descLineHeightType ),
+			'letter-spacing': generateCSSUnit( descLetterSpacingTablet, descLetterSpacingType ),
+			'padding-left': generateCSSUnit( contentPaddingLeftTablet, tabletContentPaddingUnit ),
+			'padding-right': generateCSSUnit( contentPaddingRightTablet, tabletContentPaddingUnit ),
+			'padding-top': generateCSSUnit( contentPaddingTopTablet, tabletContentPaddingUnit ),
+			'padding-bottom': generateCSSUnit( contentPaddingBottomTablet, tabletContentPaddingUnit ),
+		},
 		' .rich-text.block-editor-rich-text__editable.uagb-notice-text': {
 			'font-size': generateCSSUnit( descFontSizeTablet, descFontSizeType ),
 			'line-height': generateCSSUnit( descLineHeightTablet, descLineHeightType ),
@@ -315,12 +349,21 @@ function styling( attributes, clientId, name, deviceType ) {
 			'3px';
 		selectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-text' ][
 			'background-color'
-		] = contentBgColor;
+		] = contentBgColor; // Old User case.
 		selectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-text' ].border =
-			'2px solid ' + noticeColor;
+			'2px solid ' + noticeColor; // Old User case.
 		selectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-text' ][ 'border-bottom-left-radius' ] =
-			'3px';
+			'3px'; // Old User case.
 		selectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-text' ][ 'border-bottom-right-radius' ] =
+			'3px'; // Old User case.
+		selectors[' .uagb-notice-text.block-editor-block-list__layout'][
+			'background-color'
+		] = contentBgColor;
+		selectors[' .uagb-notice-text.block-editor-block-list__layout'].border =
+			'2px solid ' + noticeColor;
+		selectors[' .uagb-notice-text.block-editor-block-list__layout']['border-bottom-left-radius'] =
+			'3px';
+		selectors[' .uagb-notice-text.block-editor-block-list__layout']['border-bottom-right-radius'] =
 			'3px';
 		selectors[ '.uagb-inline_notice__align-right button[type="button"] svg' ] = {
 			'left': generateCSSUnit( titlePaddingLeft, titlePaddingUnit ),
@@ -340,13 +383,22 @@ function styling( attributes, clientId, name, deviceType ) {
 		selectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-text' ][
 			'background-color'
 		] = contentBgColor;
+		selectors[' .uagb-notice-text.block-editor-block-list__layout'][
+			'background-color'
+		] = contentBgColor;
 		selectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-text' ][ 'border-left' ] =
+			generateCSSUnit( highlightWidthFallback, 'px' ) + ' solid ' + noticeColor; // Old User case.
+		selectors[' .uagb-notice-text.block-editor-block-list__layout']['border-left'] =
 			generateCSSUnit( highlightWidthFallback, 'px' ) + ' solid ' + noticeColor;
 		mobileSelectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-text' ][ 'border-left' ] =
+			generateCSSUnit( highlightWidthMobileFallback, 'px' ) + ' solid ' + noticeColor; // Old User case.
+		mobileSelectors[' .uagb-notice-text.block-editor-block-list__layout']['border-left'] =
 			generateCSSUnit( highlightWidthMobileFallback, 'px' ) + ' solid ' + noticeColor;
 		mobileSelectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-title' ][ 'border-left' ] =
 			generateCSSUnit( highlightWidthMobileFallback, 'px' ) + ' solid ' + noticeColor;
 		tabletSelectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-text' ][ 'border-left' ] =
+			generateCSSUnit( highlightWidthTabletFallback, 'px' ) + ' solid ' + noticeColor; // Old User case.
+		tabletSelectors[' .uagb-notice-text.block-editor-block-list__layout']['border-left'] =
 			generateCSSUnit( highlightWidthTabletFallback, 'px' ) + ' solid ' + noticeColor;
 		tabletSelectors[ ' .rich-text.block-editor-rich-text__editable.uagb-notice-title' ][ 'border-left' ] =
 			generateCSSUnit( highlightWidthTabletFallback, 'px' ) + ' solid ' + noticeColor;

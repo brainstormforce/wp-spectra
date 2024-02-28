@@ -975,8 +975,6 @@ select {
   justify-content: space-between;
 }.gap-1 {
   gap: 0.25rem;
-}.gap-11 {
-  gap: 2.75rem;
 }.gap-12 {
   gap: 3rem;
 }.gap-16 {
@@ -1292,8 +1290,6 @@ select {
   padding-top: 0px;
 }.pt-0\.5 {
   padding-top: 0.125rem;
-}.pt-10 {
-  padding-top: 2.5rem;
 }.pt-4 {
   padding-top: 1rem;
 }.pt-5 {
