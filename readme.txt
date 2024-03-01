@@ -215,6 +215,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+
 = 2.12.4 - WEDNESDAY, 28th FEBRUARY 2024 =
 * Improvement: Image - Added a title settings for images.
 * Improvement: Countdown - Added role and aria-live to Countdown for better accessibility.
