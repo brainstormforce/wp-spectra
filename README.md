@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
+* Improvement: Quick Action Bar - Added support for non-Spectra blocks.
 
 ### 2.12.4 - WEDNESDAY, 28th FEBRUARY 2024 ###
 * Improvement: Image - Added a title settings for images.
