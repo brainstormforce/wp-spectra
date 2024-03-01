@@ -34,11 +34,29 @@ body {
 			text-align: center;
 			cursor: pointer;
 			fill: #fff;
+
+			svg {
+				-webkit-transition-property: filter, transform;
+				-moz-transition-property: filter, transform;
+				-o-transition-property: filter, transform;
+				transition-property: filter, transform;
+				-webkit-transition-duration: 250ms;
+				-moz-transition-duration: 250ms;
+				-o-transition-duration: 250ms;
+				transition-duration: 250ms;
+			}
+
+			&:focus svg {
+				transform: scale(1.2);
+			}
 		}
 	}
 
 	.uagb-modal-popup-close {
 		display: none;
+		border: none;
+		background: transparent;
+		padding: 0;
 	}
 
 	.uagb-modal-popup-content {

@@ -196,23 +196,108 @@ class Helper {
 	}
 
 	/**
+	 * Get a response from the ZipWP API server.
+	 *
+	 * @param string $endpoint The endpoint to get the response from.
+	 * @since 1.1.2
+	 * @return array The ZipWP API Response.
+	 */
+	public static function get_zipwp_api_response( $endpoint ) {
+		// If the endpoint is not a string, then abandon ship.
+		if ( ! is_string( $endpoint ) ) {
+			return array(
+				'error' => __( 'The ZipWP Endpoint was not declared', 'zip-ai' ),
+			);
+		}
+
+		// Get the ZipWP Token from the Zip AI Settings.
+		$zipwp_token = self::get_decrypted_zipwp_token();
+
+		// If the ZipWP Token is not set, then abandon ship.
+		if ( empty( $zipwp_token ) || ! is_string( $zipwp_token ) ) {
+			return array(
+				'error' => __( 'The ZipWP Token is not set.', 'zip-ai' ),
+			);
+		}
+
+		// Set the API URL.
+		$api_url = ZIP_AI_ZIPWP_API . $endpoint;
+
+		// Get the response from the endpoint.
+		$response = wp_remote_get(
+			$api_url,
+			array(
+				'headers'   => array(
+					'Content-Type'  => 'application/json',
+					'Accept'        => 'application/json',
+					'Authorization' => 'Bearer ' . $zipwp_token,
+				),
+				'sslverify' => false,
+				'timeout'   => 30, // phpcs:ignore WordPressVIPMinimum.Performance.RemoteRequestTimeout.timeout_timeout -- 30 seconds is required sometime for the ZipWP API response
+			)
+		);
+
+		// If the response was an error, or not a 200 status code, then abandon ship.
+		if ( is_wp_error( $response ) || empty( $response['response'] ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
+			return array(
+				'error' => __( 'The ZipWP API server is not responding.', 'zip-ai' ),
+			);
+		}
+
+		// Get the response body.
+		$response_body = wp_remote_retrieve_body( $response );
+
+		// If the response body is not a JSON, then abandon ship.
+		if ( empty( $response_body ) || ! json_decode( $response_body ) ) {
+			return array(
+				'error' => __( 'The ZipWP API server encountered an error.', 'zip-ai' ),
+			);
+		}
+
+		// Return the response body.
+		return json_decode( $response_body, true );
+	}
+
+	/**
+	 * Get the decrypted token from the Zip AI Settings.
+	 *
+	 * @param string $token_name The name of the token.
+	 * @since 1.1.2
+	 * @return string The decrypted token.
+	 */
+	private static function get_decrypted_token( $token_name ) {
+		// Get the Zip AI Settings.
+		$zip_ai_token = self::get_setting( $token_name );
+
+		// Return early if the ZipWP token is not set.
+		if ( empty( $zip_ai_token ) || ! is_string( $zip_ai_token ) ) {
+			return '';
+		}
+
+		// Return the decrypted ZipWP token.
+		return ! empty( trim( $zip_ai_token ) ) ? Utils::decrypt( $zip_ai_token ) : '';
+	}
+
+	/**
 	 * Get the decrypted auth token.
 	 *
 	 * @since 1.0.0
 	 * @return string The decrypted auth token.
 	 */
 	public static function get_decrypted_auth_token() {
-		// Get the Zip AI Settings.
-		$auth_token = self::get_setting( 'auth_token' );
-
-		// Return early if the auth token is not set.
-		if ( empty( $auth_token ) || ! is_string( $auth_token ) ) {
-			return '';
-		}
-
-		// Return the decrypted auth token.
-		return ! empty( trim( $auth_token ) ) ? Utils::decrypt( $auth_token ) : '';
+		return self::get_decrypted_token( 'auth_token' );
 	}
+
+	/**
+	 * Get the decrypted ZipWP token.
+	 *
+	 * @since 1.1.2
+	 * @return string The decrypted ZipWP token.
+	 */
+	public static function get_decrypted_zipwp_token() {
+		return self::get_decrypted_token( 'zip_token' );
+	}
+
 
 	/**
 	 * This helper function returns credit details.
@@ -249,6 +334,35 @@ class Helper {
 		}
 
 		return $credit_details;
+	}
+
+
+	/**
+	 * This helper function returns the current plan details.
+	 *
+	 * @since 1.1.2
+	 * @return array
+	 */
+	public static function get_current_plan_details() {
+		$current_plan_details = [];
+
+		// Get the response from the endpoint.
+		$response = self::get_zipwp_api_response( 'plan/current-plan' );
+
+		// If the response is not an error, then use it - else create an error response array.
+		if ( empty( $response['error'] ) && is_array( $response ) ) {
+			$current_plan_details = $response;
+			if ( empty( $current_plan_details['status'] ) ) {
+				$current_plan_details['status'] = 'ok';
+			}
+		} else {
+			$current_plan_details['status'] = 'error';
+			if ( ! empty( $response['error'] ) ) {
+				$current_plan_details['error'] = $response['error'];
+			}
+		}
+
+		return $current_plan_details;
 	}
 
 	/**

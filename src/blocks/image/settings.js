@@ -53,6 +53,7 @@ export default function Settings( props ) {
 		alignTablet,
 		alignMobile,
 		alt,
+		title,
 		sizeSlug,
 		sizeSlugTablet,
 		sizeSlugMobile,
@@ -604,6 +605,18 @@ export default function Settings( props ) {
 						data={ {
 							value: alt,
 							label: 'alt',
+						} }
+					/>
+					<UAGTextControl
+						label={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
+						enableDynamicContent={ true }
+						dynamicContentType="text"
+						value={ title }
+						name="title"
+						setAttributes={ setAttributes }
+						data={ {
+							value: title,
+							label: 'title',
 						} }
 					/>
 				</>

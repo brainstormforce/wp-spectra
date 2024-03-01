@@ -10,6 +10,14 @@
 	max-width: 100% !important;
 	z-index: initial !important;
 
+	// The default button appearance.
+	button.uagb-popup-builder__close {
+		border: none;
+		background: transparent;
+		background-color: transparent;
+		padding: 0;
+	}
+
 	// The z-index is lowered in the editor to avoid overlapping the Block Controls.
 	&__close {
 		z-index: 30;

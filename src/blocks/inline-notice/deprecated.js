@@ -8,6 +8,9 @@ import renderSVG from '@Controls/deprecatedRenderIcon';
 import { RichText } from '@wordpress/block-editor';
 import attributes from './attributes';
 import newSaveV2_10_3 from './v2.10.3/save';
+import attributesV2_10_3 from './v2.10.3/attributes';
+import attributesV2_12_2 from './v2.12.2/attributes';
+import newSaveV2_12_2 from './v2.12.2/save';
 
 const deprecated = [
 	{
@@ -57,8 +60,12 @@ const deprecated = [
 		},
 	},
 	{
-		attributes,
+		attributes: attributesV2_10_3,
 		save: newSaveV2_10_3,
+	},
+	{
+		attributes: attributesV2_12_2,
+		save: newSaveV2_12_2,
 	}
 ];
 

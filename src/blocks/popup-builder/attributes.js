@@ -127,6 +127,10 @@ const attributes = {
 		type: 'boolean',
 		default: true,
 	},
+	closeEscapePress: {
+		type: 'boolean',
+		default: true,
+	},
 
 	// ------------------------- POPUP STYLING ( BACKGROUND ).
 
@@ -442,6 +446,13 @@ const attributes = {
 		default: '',
 		UAGCopyPaste: {
 			styleType: 'close-icon-color'
+		}
+	},
+	closeIconColorHover: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'close-icon-color-hover'
 		}
 	},
 

@@ -28,6 +28,7 @@ return array_merge(
 		'showMinutes'                  => true,
 		'showSeparator'                => true,
 		'separatorType'                => ':',
+		'ariaLiveType'                 => 'off',
 		'showLabels'                   => true,
 		'labelDays'                    => __( 'DAYS', 'ultimate-addons-for-gutenberg' ),
 		'labelHours'                   => __( 'HOURS', 'ultimate-addons-for-gutenberg' ),

@@ -226,6 +226,38 @@ UAGBCountdown = {
 				window.UAGBCountdownTimeSignal[ mainSelector ] = true;
 			}
 		}
+		
+		// Check if the page is reloaded by checking the presence of a specific cookie
+		const reloadCookieName = 'spectraPageReloaded_' + mainSelector;
+		const isPageReloaded = this.getCookie( reloadCookieName ) === 'true';
+		const resetDays = '' !== data?.resetDays && 0 < data.resetDays ? data.resetDays : 30;
+		
+		
+		if ( data?.isFrontend ) {
+			// Execute the code only in front-end.
+			if( isPageReloaded && ! isOvertime && this.getCookie( reloadCookieName ) !== 'false' ) {
+				this.createCookie( reloadCookieName, 'false',  0, 'days' );
+			}
+
+			if ( !isPageReloaded && isOvertime && 'content' === data?.timerEndAction && data?.reloadOnExpire && data?.autoReload ) {
+			  location.reload();
+			  	this.createCookie( reloadCookieName, 'true', resetDays, 'days' );
+			}
+
+			if ( isOvertime && 'content' === data?.timerEndAction && ! data?.reloadOnExpire && ! data?.autoReload ) {
+				
+				const timeUnits = [ 'days', 'hours', 'minutes', 'seconds' ];
+				const countdownSelectors = timeUnits.map( unit => ref.querySelector( `.wp-block-uagb-countdown__box-${unit}` ) );
+				const innerBlocksWrapper = ref.querySelector( `.uagb-block-countdown-innerblocks-${data.block_id}` );
+				innerBlocksWrapper.style.display = 'block';
+				countdownSelectors.forEach( selector => {
+					if ( selector ) {
+						selector.style.display = 'none';
+					}
+				} );
+
+			}
+		  }
 	},
 
 	getEvergreenEndDate( days, hours, minutes ) {

@@ -44,6 +44,7 @@ function Settings( props ) {
 			labelSeconds,
 			showSeparator,
 			separatorType,
+			ariaLiveType,
 			// digit.
 			digitLoadGoogleFonts,
 			digitFontFamily,
@@ -330,6 +331,28 @@ function Settings( props ) {
 					onChange={ () => setAttributes( { showMinutes: ! showMinutes } ) }
 				/>
 			) }
+			<MultiButtonsControl
+						setAttributes={ setAttributes }
+						label={ __( 'Aria Live Type', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							value: ariaLiveType,
+							label: 'ariaLiveType',
+						} }
+						options={ [
+							{
+								value: 'off',
+								label: __( 'Off', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'polite',
+								label: __( 'Polite', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'assertive',
+								label: __( 'Assertive', 'ultimate-addons-for-gutenberg' ),
+							},
+						] }
+					/>
 		</UAGAdvancedPanelBody>
 	);
 

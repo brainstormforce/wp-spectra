@@ -39,7 +39,16 @@
 	}
 
 	.uagb-notice-text {
-		margin-top: -2px;
+		margin-top: -3px;
+		margin-bottom: 0;
+	}
+
+	.uagb-notice-text p:last-child {
+		margin-bottom: 0;
+	}
+
+	.uagb-notice-text p:first-child {
+		margin-top: 0 !important;
 	}
 
 	span.uagb-notice-dismiss svg {

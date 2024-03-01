@@ -46,6 +46,7 @@ const transforms = {
                 return createBlock( 'uagb/image', {
                     url: _attributes.url,
                     alt: _attributes.alt,
+                    title: _attributes.title,
                     enableCaption: hasCaption,
                     headingColor: getCaptionColor,
                     heading: hasCaption ? firstInnerBlockAttributes.content : '',
@@ -107,6 +108,7 @@ const transforms = {
                 return createBlock( 'uagb/image', {
                     url: _attributes.mediaUrl,
                     alt: _attributes.mediaAlt,
+                    title: _attributes.mediaTitle,
                     enableCaption: hasCaption,
                     captionColor: getCaptionColor,
                     caption: hasCaption ? firstInnerBlockAttributes.content : '',
