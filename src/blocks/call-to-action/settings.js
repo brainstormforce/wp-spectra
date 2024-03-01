@@ -19,6 +19,7 @@ import { ToggleControl, Icon } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import ResponsiveSlider from '@Components/responsive-slider';
 import renderGBSSettings from '@Controls/renderGBSSettings';
+import UAGSelectControl from '@Components/select-control';
 import styling from './inline-styles';
 
 const Settings = ( props ) => {
@@ -66,6 +67,7 @@ const Settings = ( props ) => {
 		descSpaceMobile,
 		descSpaceType,
 		buttonAlign,
+		htmlTag,
 		ctaType,
 		ctaText,
 		ctaLink,
@@ -1593,6 +1595,48 @@ const Settings = ( props ) => {
 	const layouts = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+				<UAGSelectControl
+						label={ __( 'HTML Tag', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							value: htmlTag,
+							label: 'htmlTag',
+						} }
+						setAttributes={ setAttributes }
+						options={ [
+							{
+								value: 'div',
+								label: __( 'div', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'header',
+								label: __( 'header', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'footer',
+								label: __( 'footer', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'main',
+								label: __( 'main', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'article',
+								label: __( 'article', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'section',
+								label: __( 'section', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'aside',
+								label: __( 'aside', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'nav',
+								label: __( 'nav', 'ultimate-addons-for-gutenberg' ),
+							},
+						] }
+					/>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Overall Alignment', 'ultimate-addons-for-gutenberg' ) }

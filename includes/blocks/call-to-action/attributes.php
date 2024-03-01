@@ -22,6 +22,7 @@ return array_merge(
 		'descColor'                       => '',
 		'ctaPosition'                     => 'right',
 		'titleTag'                        => '',
+		'htmlTag'                         => 'div',
 		'titleFontSize'                   => '',
 		'titleFontSizeType'               => 'px',
 		'titleFontSizeTypeTablet'         => 'px',
