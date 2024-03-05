@@ -218,6 +218,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ### x.x.x ###
 * Improvement: Call To Action - Added element type option.
 * Improvement: Quick Action Bar - Added support for non-Spectra blocks.
+* Fix: Container - Resolved an issue wherein the animation would be delayed on page load.
 
 ### 2.12.4 - WEDNESDAY, 28th FEBRUARY 2024 ###
 * Improvement: Image - Added a title settings for images.
