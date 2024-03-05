@@ -7,7 +7,7 @@ import renderSVG from '@Controls/renderIcon';
 import { RichText } from '@wordpress/block-editor';
 
 export default function save( props ) {
-	const { attributes, className } = props;
+	const { attributes, className, setAttributes } = props;
 
 	const {
 		block_id,
@@ -41,11 +41,17 @@ export default function save( props ) {
 		}
 		return '';
 	};
+
+	const extraProps = {
+		'aria-hidden': 'true',
+		'focussable':'false',
+	};
+
 	const iconHtml = ( curr_position ) => {
 		if ( showIcon && '' !== icon && curr_position === iconPosition ) {
 			return (
 				<span className={ classnames( 'uagb-button__icon', `uagb-button__icon-position-${ iconPosition }` ) }>
-					{ renderSVG( icon ) }
+					{ renderSVG( icon, setAttributes, extraProps ) }
 				</span>
 			);
 		}

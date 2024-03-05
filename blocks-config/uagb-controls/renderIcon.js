@@ -6,7 +6,7 @@
  */
 
 import parseSVG from './parseIcon';
-function renderSVG( svg, setAttributes = false ) {
+function renderSVG( svg, setAttributes = false, extraProps = {} ) {
 	svg = parseSVG( svg );
 	let fontAwesome;
 	// Load Polyfiller Array if needed.
@@ -50,11 +50,11 @@ function renderSVG( svg, setAttributes = false ) {
 	}
 
 	return ! setAttributes || 'not_set' === setAttributes ? (
-		<svg xmlns="https://www.w3.org/2000/svg" viewBox={ viewBox }>
+		<svg xmlns="https://www.w3.org/2000/svg" viewBox={ viewBox } {...extraProps}>
 			<path d={ path }></path>
 		</svg>
 	) : (
-		<svg width="20" height="20" xmlns="https://www.w3.org/2000/svg" viewBox={ viewBox }>
+		<svg width="20" height="20" xmlns="https://www.w3.org/2000/svg" viewBox={ viewBox } {...extraProps}>
 			<path d={ path }></path>
 		</svg>
 	);
