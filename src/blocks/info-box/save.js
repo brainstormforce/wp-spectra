@@ -29,10 +29,13 @@ export default function save( props ) {
 		showDesc,
 		icon,
 		seperatorPosition,
+		htmlTag,
 	} = attributes;
 
 	// Get icon/Image components.
 	let isImage = '';
+
+	const CustomTag = htmlTag || 'div';
 
 	if ( source_type === 'icon' && icon !== '' ) {
 		isImage = <Icon attributes={ attributes } />;
@@ -157,7 +160,7 @@ export default function save( props ) {
 	}
 
 	return (
-		<div
+		<CustomTag
 			className={ classnames(
 				`uagb-block-${ block_id }`,
 				'uagb-infobox__content-wrap',
@@ -176,6 +179,6 @@ export default function save( props ) {
 				></a>
 			) }
 			{ output }
-		</div>
+		</CustomTag>
 	);
 }

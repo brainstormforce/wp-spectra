@@ -36,6 +36,7 @@ const Render = ( props ) => {
 		block_id,
 		imageWidthType,
 		imageWidth,
+		htmlTag,
 	} = attributes;
 	// Get icon/Image components.
 	let isImage = '';
@@ -44,6 +45,8 @@ const Render = ( props ) => {
 	} else {
 		isImage = <InfoBoxIconImage attributes={ attributes } />;
 	}
+
+	const CustomTag = htmlTag || 'div';
 
 	let iconImageHtml = isImage;
 	let seperatorPos = seperatorPosition;
@@ -169,7 +172,7 @@ const Render = ( props ) => {
 	);
 
 	return (
-		<div
+		<CustomTag
 			className={ classnames(
 				`uagb-block-${ block_id }`,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
@@ -187,7 +190,7 @@ const Render = ( props ) => {
 				></a>
 			) }
 			{ output }
-		</div>
+		</CustomTag>
 	);
 };
 export default memo( Render );

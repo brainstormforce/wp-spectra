@@ -198,6 +198,7 @@ const Settings = ( props ) => {
 		showDesc,
 		spacingLink,
 		paddingspacingLink,
+		htmlTag,
 		headTransform,
 		headDecoration,
 		headLetterSpacing,
@@ -489,6 +490,48 @@ const Settings = ( props ) => {
 	const typographySettings = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+				<UAGSelectControl
+						label={ __( 'HTML Tag', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							value: htmlTag,
+							label: 'htmlTag',
+						} }
+						setAttributes={ setAttributes }
+						options={ [
+							{
+								value: 'div',
+								label: __( 'div', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'header',
+								label: __( 'header', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'footer',
+								label: __( 'footer', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'main',
+								label: __( 'main', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'article',
+								label: __( 'article', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'section',
+								label: __( 'section', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'aside',
+								label: __( 'aside', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'nav',
+								label: __( 'nav', 'ultimate-addons-for-gutenberg' ),
+							},
+						] }
+					/>
 				{ ( false === showIcon ||
 					( iconimgPosition &&
 						( iconimgPosition === 'above-title' || iconimgPosition === 'below-title' ) ) ) && (

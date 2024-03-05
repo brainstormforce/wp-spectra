@@ -87,6 +87,7 @@ return array_merge(
 		'seperatorColor'             => '#333',
 		'seperatorThickness'         => '2',
 		'thicknessUnit'              => 'px',
+		'htmlTag'                    => 'div',
 		'ctaType'                    => 'none',
 		'ctaBgType'                  => 'color',
 		'ctaBgHoverType'             => 'color',

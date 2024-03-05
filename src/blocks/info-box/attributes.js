@@ -712,6 +712,10 @@ const attributes = {
 			styleType: 'separator-thickness-unit',
 		},
 	},
+	htmlTag: {
+		type: 'string',
+		default: 'div',
+	},
 	ctaType: {
 		type: 'string',
 		default: 'none',
