@@ -224,6 +224,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Quick Action Bar - Added support for non-Spectra blocks.
 * Fix: Container - Resolved an issue wherein the animation would be delayed on page load.
 * Fix: Heading - Resolved an issue wherein the link color would not be correctly applied in the editor when added inside the loop builder with dynamic link enabled.
+* Fix: Image - Resolved an issue wherein the caption alignment would not work as intended.
 * Fix: Tabs - Resolved an issue wherein the block's static CSS would not update when file generation was off and only specific blocks were activated.
 
 = 2.12.4 - WEDNESDAY, 28th FEBRUARY 2024 =

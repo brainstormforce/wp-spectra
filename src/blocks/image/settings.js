@@ -691,7 +691,7 @@ export default function Settings( props ) {
 							className="uagb-multi-button-alignment-control"
 							options={ [
 								{
-									value: 'left',
+									value: 'start',
 									icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
 									tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ),
 								},
@@ -701,7 +701,7 @@ export default function Settings( props ) {
 									tooltip: __( 'Center', 'ultimate-addons-for-gutenberg' ),
 								},
 								{
-									value: 'right',
+									value: 'end',
 									icon: <Icon icon={ renderSVG( 'fa fa-align-right' ) } />,
 									tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
 								},
