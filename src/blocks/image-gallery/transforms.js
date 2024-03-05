@@ -1,5 +1,6 @@
 import { createBlock } from '@wordpress/blocks';
 import { pickRelevantMediaFiles } from './transformsFunctions';
+import { getUnit, getNumber } from '@Utils/Helpers';
 
 const transforms = {
     from: [
@@ -30,29 +31,5 @@ const transforms = {
         },
     ],
 };
-
-function getNumber( input ) {
-    const regex = /(\d+(\.\d+)?)/;
-    const match = input.match( regex );
-
-    if ( match ) {
-        return parseFloat( match[1] );
-    }
-    return 0;
-}
-
-function getUnit( input ) {
-    const regex = /(px|em|rem|%)/;
-    const match = input.match( regex );
-    if ( match ) {
-        const unit = match[1];
-        if ( ['px', 'em', '%'].includes( unit ) ) {
-            return unit;
-        } else if ( unit === 'rem' ) {
-            return 'em';
-        }
-    }
-    return 'px';
-}
 
 export default transforms;

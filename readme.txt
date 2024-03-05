@@ -216,6 +216,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Feature: Transform to - Added transform to option from Core Cover to Spectra Container.
+* Feature: Transform to - Added transform to option from Core Separator, Page Break and Spacer to Spectra Separator.
 * Improvement: Call To Action - Added element type option.
 * Improvement: Quick Action Bar - Added support for non-Spectra blocks.
 * Fix: Heading - Resolved an issue wherein the link color would not be correctly applied in the editor when added inside the loop builder with dynamic link enabled.

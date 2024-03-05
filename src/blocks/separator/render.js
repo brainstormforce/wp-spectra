@@ -23,20 +23,14 @@ const Render = ( props ) => {
 			className,
 			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 			`uagb-block-${ block_id }`,
+			'wp-block-uagb-separator',
 			hasElement
 		] ),
 	} );
 
 	return (
 		<div { ...blockProps }>
-			<div
-				className={ uagbClassNames( [
-					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-					`uagb-block-${ block_id }`,
-					'wp-block-uagb-separator',
-					`${ elementType !== 'none' ? 'wp-block-uagb-separator--' + elementType : '' }`
-				] ) }
-			>
+			<div >
 				<div className="wp-block-uagb-separator__inner" style={ { '--my-background-image': `${ customSVG }` } }>
 					{ elementType !== 'none' && (
 						<div className="wp-block-uagb-separator-element">

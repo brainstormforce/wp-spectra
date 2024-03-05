@@ -2,6 +2,8 @@
  * WordPress dependencies
  */
 import { createBlock, createBlocksFromInnerBlocksTemplate } from '@wordpress/blocks';
+import colourNameToHex from '@Controls/changeColorNameToHex';
+import { getNumber, getUnitDimension, getUnit, parseHeightAttributes } from '@Utils/Helpers';
 
 // A function that converts text-based image position values to the
 // new container's object based image position values.
@@ -615,6 +617,100 @@ const transforms = {
 				);
 			},
 		},
+		{
+			type: 'block',
+			blocks: ['core/cover'],
+			transform: ( _attributes, innerBlocks ) => {
+				
+				const spectraOneMapping ={
+                    'xxx-small': '4px',
+                    'xx-small': '8px',
+                    'x-small': '16px',
+                    'small': '28px',
+                    'medium': '36px',
+                    'large': '56px',
+                    'x-large': '72px',
+                    'xx-large': '100px',
+                };
+                
+				const padding_temp_y = parseHeightAttributes( _attributes?.style?.spacing?.padding?.top || '' );
+                const padding_temp_x = parseHeightAttributes( _attributes?.style?.spacing?.padding?.right || '' );
+				const margin_temp_y = parseHeightAttributes( _attributes?.style?.spacing?.margin?.top || '' );
+				// Check if the variable part is a key in the spectraOneMapping
+                const isSpectraOnePaddingTopBottom = padding_temp_y && spectraOneMapping.hasOwnProperty( padding_temp_y );
+				const isSpectraOnePaddingLeftRight = padding_temp_x && spectraOneMapping.hasOwnProperty( padding_temp_x );
+				const isSpectraOneMarginTopBottom = margin_temp_y && spectraOneMapping.hasOwnProperty( margin_temp_y );
+
+                const spectraOneTopBottomPadding = isSpectraOnePaddingTopBottom ? getNumber( spectraOneMapping[padding_temp_y] ) : '' ;
+				const spectraOneRightLeftPadding = isSpectraOnePaddingLeftRight ? getNumber( spectraOneMapping[padding_temp_x] ) : '';
+                const spectraOneTopBottomMargin = isSpectraOneMarginTopBottom ?  getNumber( spectraOneMapping[margin_temp_y] ) : '';
+				let newBackgroundType = 'color';
+				if ( _attributes?.url ) {
+				newBackgroundType = 'image';
+				} else if ( _attributes?.overlayColor || _attributes?.customOverlayColor ) {
+				newBackgroundType = 'color';
+				} else if ( _attributes?.customGradient ) {
+				newBackgroundType = 'gradient';
+				}
+				let newOverlayType = 'color';
+				if ( _attributes?.overlayColor || _attributes?.customOverlayColor ) {
+				newOverlayType = 'color';
+				} else if ( _attributes?.customGradient ) {
+				newOverlayType = 'gradient';
+				}
+				const borderRadiusUnit = getUnitDimension( ( typeof _attributes?.style?.border?.radius !== 'object' && _attributes?.style?.border?.radius ) || ( _attributes?.style?.border?.radius?.topRight || _attributes?.style?.border?.radius?.topLeft || _attributes?.style?.border?.radius?.bottomRight || _attributes?.style?.border?.radius?.bottomLeft || '' ) );	
+
+				const newBorderColor = _attributes?.style?.border?.color || colourNameToHex( _attributes?.borderColor || '' ) || _attributes?.style?.border?.top?.color || colourNameToHex( _attributes?.style?.border?.top?.color || '' )
+				const newOpacity = _attributes.dimRatio !== 0 ? _attributes.dimRatio / 100 : 0;
+				const newAttributes = {
+					contentWidth: 'alignwide',
+					widthDesktop: 1200,
+					minHeightDesktop: ( _attributes?.minHeight !== undefined ) ? _attributes.minHeight :  350 ,
+					minHeightType: /^(px|vh)$/.test( _attributes?.minHeightUnit ) ? _attributes?.minHeightUnit : 'px',
+					widthType: 'px',
+					variationSelected: true,
+					backgroundImageDesktop: {
+						id:_attributes?.id,
+						url: _attributes?.url,
+					},
+					backgroundType: newBackgroundType ,
+					backgroundPositionDesktop: _attributes?.focalPoint || {	x: 0.5,	y: 0.5},
+					gradientValue: _attributes?.customGradient || '',
+					backgroundColor: _attributes?.customOverlayColor || colourNameToHex( _attributes?.overlayColor ),
+					overlayOpacity: newOpacity ,
+					backgroundOverlayImageColor : _attributes?.customOverlayColor || colourNameToHex( _attributes?.overlayColor ) || '',
+					backgroundImageColor: _attributes?.customOverlayColor || colourNameToHex( _attributes?.overlayColor ) || '#000001',
+					backgroundRepeatDesktop: ( _attributes?.isRepeated )? 'repeat' : 'no-repeat',
+					backgroundAttachmentDesktop: ( _attributes?.hasParallax )? 'fixed' : 'scroll',
+					overlayType: newOverlayType,
+					//Margin Padding
+					topPaddingDesktop: isSpectraOnePaddingTopBottom ? spectraOneTopBottomPadding : getNumber( _attributes?.style?.spacing?.padding?.top || '' ),
+					bottomPaddingDesktop: isSpectraOnePaddingTopBottom ? spectraOneTopBottomPadding : getNumber( _attributes?.style?.spacing?.padding?.bottom || '' ),
+					leftPaddingDesktop: isSpectraOnePaddingLeftRight ? spectraOneRightLeftPadding : getNumber( _attributes?.style?.spacing?.padding?.left || '' ),
+					rightPaddingDesktop: isSpectraOnePaddingLeftRight ? spectraOneRightLeftPadding : getNumber( _attributes?.style?.spacing?.padding?.right || '' ),
+					topMarginDesktop: isSpectraOneMarginTopBottom ? spectraOneTopBottomMargin : getNumber( _attributes?.style?.spacing?.margin?.top || '' ),
+					bottomMarginDesktop: isSpectraOneMarginTopBottom ? spectraOneTopBottomMargin : getNumber( _attributes?.style?.spacing?.margin?.bottom || '' ),
+					marginType: isSpectraOneMarginTopBottom? 'px' : getUnit( _attributes?.style?.spacing?.margin?.top || 'px' ),
+					paddingType: spectraOneRightLeftPadding ? 'px' :  getUnit( _attributes?.style?.spacing?.padding?.top || 'px' ),
+					// Border 
+					containerBorderTopWidth: getNumber( _attributes?.style?.border?.width || _attributes?.style?.border?.top?.width || '' ),
+                    containerBorderBottomWidth: getNumber( _attributes?.style?.border?.width || _attributes?.style?.border?.bottom?.width || '' ),
+                    containerBorderLeftWidth: getNumber( _attributes?.style?.border?.width || _attributes?.style?.border?.left?.width || '' ),
+                    containerBorderRightWidth: getNumber( _attributes?.style?.border?.width || _attributes?.style?.border?.right?.width || '' ),
+                    borderRadius: getNumber( ( typeof _attributes?.style?.border?.radius !== 'object' && _attributes?.style?.border?.radius ) || ( _attributes?.style?.border?.radius?.topRight || '' ) ),
+					borderColor: newBorderColor ,
+					borderStyle: _attributes?.style?.border?.style || ( ( _attributes?.style?.border?.width || _attributes?.style?.border?.top?.width ) ? ( _attributes?.style?.border?.top?.style || _attributes?.style?.border?.style || 'solid' ) : 'none' ),
+					containerBorderBottomLeftRadius:getNumber( ( typeof _attributes?.style?.border?.radius !== 'object' && _attributes?.style?.border?.radius ) || ( _attributes?.style?.border?.radius?.bottomLeft || '' ) ),
+					containerBorderBottomRightRadius:  getNumber( ( typeof _attributes?.style?.border?.radius !== 'object' && _attributes?.style?.border?.radius ) || ( _attributes?.style?.border?.radius?.bottomRight || '' ) ),
+					containerBorderTopLeftRadius:getNumber( ( typeof _attributes?.style?.border?.radius !== 'object' && _attributes?.style?.border?.radius ) || ( _attributes?.style?.border?.radius?.topLeft || '' ) ),
+					containerBorderTopRightRadius:getNumber( ( typeof _attributes?.style?.border?.radius !== 'object' && _attributes?.style?.border?.radius ) || ( _attributes?.style?.border?.radius?.topRight || '' ) ),
+					containerBorderRadiusUnit: borderRadiusUnit,
+				};
+				
+				return createBlock( 'uagb/container', newAttributes, innerBlocks );
+			},
+		},
+		
 	],
 };
 
