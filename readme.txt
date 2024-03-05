@@ -227,6 +227,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Inline Notice - Added support for paragraph tags instead of line breaks for an improved semantic HTML structure.
 * Fix: Post Grid - Resolved an issue wherein the read-more button background hover color would not work as intended.
 * Fix: Star Rating - Resolved an issue wherein the title would not be editable in some cases.
+* Fix: Tabs - Resolved an issue wherein the block's static css would not update when file generation was off and only specific blocks were activated.
 
 = 2.12.3 - SATURDAY, 17th FEBRUARY 2024 =
 * Improvement: Image - Added a toggle to enable or disable lazy loading.
