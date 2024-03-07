@@ -227,6 +227,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Image - Resolved an issue wherein the caption alignment would not work as intended.
 * Fix: FAQ - Resolved an issue wherein the answer section would have an extra bottom margin in the Astra theme.
 * Fix: Tabs - Resolved an issue wherein the block's static CSS would not update when file generation was off and only specific blocks were activated.
+* Fix: Global - Resolved an issue in which Twenty Twenty-Two themes running on PHP 8.1 would encounter a few PHP warnings.
 
 ### 2.12.4 - WEDNESDAY, 28th FEBRUARY 2024 ###
 * Improvement: Image - Added a title settings for images.
