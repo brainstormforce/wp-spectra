@@ -220,6 +220,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Feature: Transform to - Added transform to option from Core Separator, Page Break and Spacer to Spectra Separator.
 * Improvement: Buttons - Enabled aria-hidden and disabled focusable on the SVG inside the button.
 * Improvement: Info Box - Added an element type option.
+* Improvement: Info Box - Added block margin settings.
 * Improvement: Call To Action - Added an element type option.
 * Improvement: Quick Action Bar - Added support for non-Spectra blocks.
 * Fix: Container - Resolved an issue wherein the animation would be delayed on page load.

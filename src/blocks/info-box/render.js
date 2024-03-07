@@ -36,6 +36,10 @@ const Render = ( props ) => {
 		block_id,
 		imageWidthType,
 		imageWidth,
+		blockBottomMargin,
+		blockLeftMargin,
+		blockRightMargin,
+		blockTopMargin,
 		htmlTag,
 	} = attributes;
 	// Get icon/Image components.
@@ -46,6 +50,8 @@ const Render = ( props ) => {
 		isImage = <InfoBoxIconImage attributes={ attributes } />;
 	}
 
+	const marginVariables = [blockBottomMargin, blockLeftMargin, blockRightMargin, blockTopMargin];
+	const hasMargin = marginVariables.some( ( margin ) => typeof margin === 'number' );
 	const CustomTag = htmlTag || 'div';
 
 	let iconImageHtml = isImage;
@@ -171,7 +177,7 @@ const Render = ( props ) => {
 		</>
 	);
 
-	return (
+	const ifbInnerContent = (
 		<CustomTag
 			className={ classnames(
 				`uagb-block-${ block_id }`,
@@ -192,5 +198,16 @@ const Render = ( props ) => {
 			{ output }
 		</CustomTag>
 	);
+
+	return ( hasMargin ? (
+		<div className='uagb-infobox-margin-wrapper'>
+			{ ifbInnerContent }
+		</div>
+	) : (
+		<>
+			{ ifbInnerContent }
+		</>
+	) );
+	  
 };
 export default memo( Render );

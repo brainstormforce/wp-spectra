@@ -29,6 +29,10 @@ export default function save( props ) {
 		showDesc,
 		icon,
 		seperatorPosition,
+		blockBottomMargin,
+		blockLeftMargin,
+		blockRightMargin,
+		blockTopMargin,
 		htmlTag,
 	} = attributes;
 
@@ -43,6 +47,9 @@ export default function save( props ) {
 		isImage = <InfoBoxIconImage attributes={ attributes } />;
 	}
 
+	const marginVariables = [blockBottomMargin, blockLeftMargin, blockRightMargin, blockTopMargin];
+	const hasMargin = marginVariables.some( ( margin ) => typeof margin === 'number' );
+	
 	let iconImageHtml = isImage;
 	let position = seperatorPosition;
 	const seperatorHtml = <InfoBoxSeparator attributes={ attributes } />;
@@ -159,7 +166,7 @@ export default function save( props ) {
 		linkClick = 'return true;';
 	}
 
-	return (
+	const ifbInnerContent = (
 		<CustomTag
 			className={ classnames(
 				`uagb-block-${ block_id }`,
@@ -180,5 +187,15 @@ export default function save( props ) {
 			) }
 			{ output }
 		</CustomTag>
-	);
+	)
+
+	return ( hasMargin ? (
+		<div className='uagb-infobox-margin-wrapper'>
+			{ ifbInnerContent }
+		</div>
+	) : (
+		<>
+			{ ifbInnerContent }
+		</>
+	) );
 }

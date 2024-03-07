@@ -1629,6 +1629,116 @@ const attributes = {
 		type: 'boolean',
 		default: true,
 	},
+	// margin
+	blockTopMargin: {
+		type: 'number',
+		isGBSStyle : true,
+		UAGCopyPaste: {
+			styleType: 'block-top-margin',
+		},
+	},
+	blockRightMargin: {
+		type: 'number',
+		isGBSStyle : true,
+		UAGCopyPaste: {
+			styleType: 'block-right-margin',
+		},
+	},
+	blockLeftMargin: {
+		type: 'number',
+		isGBSStyle : true,
+		UAGCopyPaste: {
+			styleType: 'block-left-margin',
+		},
+	},
+	blockBottomMargin: {
+		type: 'number',
+		isGBSStyle : true,
+		UAGCopyPaste: {
+			styleType: 'block-bottom-margin',
+		},
+	},
+	blockTopMarginTablet: {
+		type: 'number',
+		isGBSStyle : true,
+		UAGCopyPaste: {
+			styleType: 'block-top-margin-tablet',
+		},
+	},
+	blockRightMarginTablet: {
+		type: 'number',
+		isGBSStyle : true,
+		UAGCopyPaste: {
+			styleType: 'block-right-margin-tablet',
+		},
+	},
+	blockLeftMarginTablet: {
+		type: 'number',
+		isGBSStyle : true,
+		UAGCopyPaste: {
+			styleType: 'block-left-margin-tablet',
+		},
+	},
+	blockBottomMarginTablet: {
+		type: 'number',
+		isGBSStyle : true,
+		UAGCopyPaste: {
+			styleType: 'block-bottom-margin-tablet',
+		},
+	},
+	blockTopMarginMobile: {
+		type: 'number',
+		isGBSStyle : true,
+		UAGCopyPaste: {
+			styleType: 'block-top-margin-mobile',
+		},
+	},
+	blockRightMarginMobile: {
+		type: 'number',
+		isGBSStyle : true,
+		UAGCopyPaste: {
+			styleType: 'block-right-margin-mobile',
+		},
+	},
+	blockLeftMarginMobile: {
+		type: 'number',
+		isGBSStyle : true,
+		UAGCopyPaste: {
+			styleType: 'block-left-margin-mobile',
+		},
+	},
+	blockBottomMarginMobile: {
+		type: 'number',
+		isGBSStyle : true,
+		UAGCopyPaste: {
+			styleType: 'block-bottom-margin-mobile',
+		},
+	},
+	blockMarginUnit: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'block-margin-unit',
+		},
+	},
+	blockMarginUnitTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'block-margin-unit-tablet',
+		},
+	},
+	blockMarginUnitMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'block-margin-unit-mobile',
+		},
+	},
+	blockMarginLink: {
+		type: 'boolean',
+		default: true,
+	},
 	separatorTopMargin: {
 		type: 'number',
 		isGBSStyle: true,
