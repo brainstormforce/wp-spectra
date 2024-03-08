@@ -222,6 +222,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Info Box - Added an element type option.
 * Improvement: Info Box - Added block margin settings.
 * Improvement: Call To Action - Added an element type option.
+* Improvement: Icon - Added an option to select the icon type for improved accessibility.
 * Improvement: Quick Action Bar - Added support for non-Spectra blocks.
 * Fix: Container - Resolved an issue wherein the animation would be delayed on page load.
 * Fix: Heading - Resolved an issue wherein the link color would not be correctly applied in the editor when added inside the loop builder with dynamic link enabled.

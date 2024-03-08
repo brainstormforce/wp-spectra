@@ -170,6 +170,14 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	iconAccessabilityMode: {
+		type: 'string',
+		default: 'svg',
+	},
+	iconAccessabilityDesc: {
+		type: 'string',
+		default: '',
+	},
 	// Padding.
 	iconTopPadding: {
 		type: 'number',

@@ -3,12 +3,21 @@
  * Frontend CSS.
  *
  * @since 2.4.0
+ * @var mixed[] $attr
  *
  * @package uagb
  */
 
-$icon_width       = UAGB_Helper::get_css_value( $attr['iconSize'], $attr['iconSizeUnit'] );
-$transformation   = UAGB_Helper::get_css_value( $attr['rotation'], $attr['rotationUnit'] );
+$icon_width = UAGB_Helper::get_css_value(
+	$attr['iconSize'],
+	is_string( $attr['iconSizeUnit'] ) ? $attr['iconSizeUnit'] : ''
+);
+
+$transformation = UAGB_Helper::get_css_value(
+	$attr['rotation'],
+	is_string( $attr['rotationUnit'] ) ? $attr['rotationUnit'] : ''
+);
+
 $background       = 'classic' === $attr['iconBackgroundColorType'] ? $attr['iconBackgroundColor'] : $attr['iconBackgroundGradientColor'];
 $hover_background = 'classic' === $attr['iconHoverBackgroundColorType'] ? $attr['iconHoverBackgroundColor'] : $attr['iconHoverBackgroundGradientColor'];
 
