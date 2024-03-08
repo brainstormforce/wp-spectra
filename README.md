@@ -219,6 +219,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Feature: Transform to - Added transform to option from Core Cover to Spectra Container.
 * Feature: Transform to - Added transform to option from Core Separator, Page Break and Spacer to Spectra Separator.
 * Improvement: Buttons - Enabled aria-hidden and disabled focusable on the SVG inside the button.
+* Improvement: Image - Added an option to select the Image role for improved accessibility.
 * Improvement: Info Box - Added an element type option.
 * Improvement: Info Box - Added block margin settings.
 * Improvement: Call To Action - Added an element type option.

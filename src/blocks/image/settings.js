@@ -211,7 +211,8 @@ export default function Settings( props ) {
 		captionLetterSpacingTablet,
 		captionLetterSpacingMobile,
 		captionLetterSpacingType,
-		disableLazyLoad
+		disableLazyLoad,
+		imgRole,
 	} = attributes;
 
 	const { imageSizes } = useSelect(
@@ -595,30 +596,53 @@ export default function Settings( props ) {
 						imageWidth={ naturalWidth }
 						imageHeight={ naturalHeight }
 					/>
-					<UAGTextControl
-						label={ __( 'Alt Text', 'ultimate-addons-for-gutenberg' ) }
-						enableDynamicContent={ true }
-						dynamicContentType="text"
-						value={ alt }
-						name="alt"
-						setAttributes={ setAttributes }
-						data={ {
-							value: alt,
-							label: 'alt',
-						} }
-					/>
-					<UAGTextControl
-						label={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
-						enableDynamicContent={ true }
-						dynamicContentType="text"
-						value={ title }
-						name="title"
-						setAttributes={ setAttributes }
-						data={ {
-							value: title,
-							label: 'title',
-						} }
-					/>
+					<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__( 'Image Role', 'ultimate-addons-for-gutenberg' )}
+					data={{
+						value: imgRole,
+						label: 'imgRole',
+					} }
+					options={[
+						{
+						value: 'img',
+						label: __( 'Image', 'ultimate-addons-for-gutenberg' )
+						},
+						{
+						value: 'presentation',
+						label: __( 'Presentation', 'ultimate-addons-for-gutenberg' )
+						},
+					] }
+				/>
+				{ 'presentation' !== imgRole &&	
+					<>	
+						<UAGTextControl
+							label={ __( 'Alt Text', 'ultimate-addons-for-gutenberg' ) }
+							enableDynamicContent={ true }
+							dynamicContentType="text"
+							value={ alt }
+							name="alt"
+							setAttributes={ setAttributes }
+							data={ {
+								value: alt,
+								label: 'alt',
+							} }
+						/>
+					
+						<UAGTextControl
+							label={ __( 'Title', 'ultimate-addons-for-gutenberg' ) }
+							enableDynamicContent={ true }
+							dynamicContentType="text"
+							value={ title }
+							name="title"
+							setAttributes={ setAttributes }
+							data={ {
+								value: title,
+								label: 'title',
+							} }
+						/>
+					</>
+				}
 				</>
 			) }
 			<ResponsiveSelectControl

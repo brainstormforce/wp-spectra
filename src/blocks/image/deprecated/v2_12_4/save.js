@@ -31,7 +31,6 @@ export default function Save( props ) {
 		seperatorStyle,
 		seperatorPosition,
 		disableLazyLoad,
-		imgRole,
 	} = props.attributes;
 
 	const image = (
@@ -42,13 +41,12 @@ export default function Save( props ) {
 				}` }
 				sizes="(max-width: 480px) 150px"
 				src={ url }
-				alt={ imgRole === 'presentation' ? '' : alt }
+				alt={ alt }
 				className={ id ? `uag-image-${ id }` : null }
 				width={ width ? width : naturalWidth }
 				height={ height ? height : naturalHeight }
-				title={ imgRole === 'presentation' ? '' : title }
+				title={ title }
 				loading={ disableLazyLoad ? undefined : 'lazy' }
-				role={ imgRole }
 			/>
 		)
 	);
