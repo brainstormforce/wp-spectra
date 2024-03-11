@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.4.3
-Stable tag: 2.12.4
+Stable tag: 2.12.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= x.x.x =
+= 2.12.5 - Wednesday, 13th March 2024 =
 * Feature: Transform to - Added transform to option from Core Cover to Spectra Container.
 * Feature: Transform to - Added transform to option from Core Separator, Page Break and Spacer to Spectra Separator.
 * Improvement: Buttons - Enabled aria-hidden and disabled focusable on the SVG inside the button.

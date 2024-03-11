@@ -2,7 +2,7 @@
 /**
  * Spectra - Icon
  *
- * @since x.x.x
+ * @since 2.12.5
  * @package UAGB
  */
 
@@ -15,14 +15,14 @@ if ( ! class_exists( 'Spectra_Icon' ) ) {
 	/**
 	 * Class Spectra_Icon.
 	 * 
-	 * @since x.x.x
+	 * @since 2.12.5
 	 */
 	final class Spectra_Icon {
 
 		/**
 		 * Member Variable
 		 *
-		 * @since x.x.x
+		 * @since 2.12.5
 		 * @var Spectra_Icon
 		 */
 		private static $instance;
@@ -30,7 +30,7 @@ if ( ! class_exists( 'Spectra_Icon' ) ) {
 		/**
 		 *  Initiator
 		 *
-		 * @since x.x.x
+		 * @since 2.12.5
 		 * @return Spectra_Icon
 		 */
 		public static function get_instance() {
@@ -43,7 +43,7 @@ if ( ! class_exists( 'Spectra_Icon' ) ) {
 		/**
 		 * Constructor
 		 * 
-		 * @since x.x.x
+		 * @since 2.12.5
 		 */
 		public function __construct() {
 			add_action( 'init', array( $this, 'register_icon' ) );
@@ -53,7 +53,7 @@ if ( ! class_exists( 'Spectra_Icon' ) ) {
 		/**
 		 * Registers the `icon` block on server.
 		 *
-		 * @since x.x.x
+		 * @since 2.12.5
 		 * @return void
 		 */
 		public function register_icon() {
@@ -394,7 +394,7 @@ if ( ! class_exists( 'Spectra_Icon' ) ) {
 		/**
 		 * Check if a URL has a protocol (http/https).
 		 *
-		 * @since x.x.x
+		 * @since 2.12.5
 		 * 
 		 * @param string $url The URL to check.
 		 * @return bool Whether the URL has a protocol.
@@ -411,7 +411,7 @@ if ( ! class_exists( 'Spectra_Icon' ) ) {
 		/**
 		 * Prepend 'http://' to a URL if it doesn't have a protocol.
 		 *
-		 * @since x.x.x
+		 * @since 2.12.5
 		 * 
 		 * @param string $url The URL to prepend 'http://' to.
 		 * @return string The modified URL.
@@ -426,7 +426,7 @@ if ( ! class_exists( 'Spectra_Icon' ) ) {
 		 *
 		 * @param array $attributes Array of block attributes.
 		 *
-		 * @since x.x.x
+		 * @since 2.12.5
 		 * @return string|false
 		 */
 		public function render_uagb_icon( $attributes ) {
