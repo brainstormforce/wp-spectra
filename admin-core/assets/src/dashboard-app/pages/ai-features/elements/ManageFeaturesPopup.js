@@ -5,6 +5,7 @@ import { Fragment, useState, useEffect, useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import { Dialog, Transition } from '@headlessui/react';
+import { CheckCircleIcon, XCircleIcon, DotsCircleHorizontalIcon } from '@heroicons/react/outline';
 import getApiData from '@Controls/getApiData';
 
 const ManageFeaturesPopup = ( props ) => {
@@ -106,13 +107,26 @@ const ManageFeaturesPopup = ( props ) => {
 
 	// Render the AI features table.
 	const renderAiFeatures = () => {
+
+		// Render the required Status Icon.
+		const renderStatusIcon = ( moduleName, moduleStatus ) => {
+			if ( undefined === moduleStatus || isUpdating[ moduleName ] ) {
+				return <DotsCircleHorizontalIcon className="h-5 w-5 text-slate-500" aria-hidden="true" />
+			}
+			return moduleStatus
+				? <CheckCircleIcon className="h-5 w-5 text-green-600" aria-hidden="true" />
+				: <XCircleIcon className="h-5 w-5 text-red-600" aria-hidden="true" />;
+		};
 		
 		return(
 			<div className='flex flex-col px-5 border border-slate-200 rounded-md'>
 				<div className='flex py-5 justify-between items-center border-b border-b-slate-200'>
-					<p className=' font-semibold text-sm text-slate-800'>
-						{ __( 'AI Assistant', 'ultimate-addons-for-gutenberg' ) }
-					</p>
+					<div className='flex gap-2 items-center'>
+						<p className='font-semibold text-sm text-slate-800'>
+							{ __( 'AI Assistant', 'ultimate-addons-for-gutenberg' ) }
+						</p>
+						{ renderStatusIcon( 'ai_assistant', zipAiAssistantStatus ) }
+					</div>
 					{ undefined === zipAiAssistantStatus ? (
 						<p className='text-slate-400 cursor-default'>
 							{ __( 'Coming Soon', 'ultimate-addons-for-gutenberg' ) }
@@ -132,9 +146,12 @@ const ManageFeaturesPopup = ( props ) => {
 					) }
 				</div>
 				<div className='flex py-5 justify-between items-center border-b border-b-slate-200'>
-					<p className=' font-semibold text-sm text-slate-800'>
-						{ __( 'AI Design Copilot', 'ultimate-addons-for-gutenberg' ) }
-					</p>
+					<div className='flex gap-2 items-center'>
+						<p className='font-semibold text-sm text-slate-800'>
+							{ __( 'AI Design Copilot', 'ultimate-addons-for-gutenberg' ) }
+						</p>
+						{ renderStatusIcon( 'ai_design_copilot', zipAiDesignCopilotStatus ) }
+					</div>
 					{ undefined === zipAiDesignCopilotStatus ? (
 						<p className='text-slate-400 cursor-default'>
 							{ __( 'Coming Soon', 'ultimate-addons-for-gutenberg' ) }

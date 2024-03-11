@@ -163,7 +163,7 @@ const Authorization = () => {
 			{ /* The Info-box Section */ }
 			<section className="flex flex-col items-center gap-6">
 				<h1 className="text-2xl leading-7 font-bold text-center text-slate-900">
-					{ __( 'Build 10x faster with Spectra & ZipWP', 'ultimate-addons-for-gutenberg' ) }
+					{ __( 'Build 10x faster with Spectra AI', 'ultimate-addons-for-gutenberg' ) }
 				</h1>
 				<p className="text-sm font-normal text-center text-slate-500">
 					{ __( 'Spectra offers AI features powered by ZipWP to help you build your website 10x faster. Design beautiful pages, create persuasive content, and generate custom code in seconds. The possibilities are endless!', 'ultimate-addons-for-gutenberg' ) }
