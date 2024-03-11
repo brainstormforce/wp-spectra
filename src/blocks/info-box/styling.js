@@ -728,7 +728,13 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		};
 	}
 
-	selectors[ '.uagb-infobox__content-wrap' ] = {
+	selectors[ '.uagb-infobox__content-wrap:not(.wp-block-uagb-info-box--has-margin)' ] = {
+		'padding-top': generateCSSUnit( blockTopPadding, blockPaddingUnit ),
+		'padding-right': generateCSSUnit( blockRightPadding, blockPaddingUnit ),
+		'padding-bottom': generateCSSUnit( blockBottomPadding, blockPaddingUnit ),
+		'padding-left': generateCSSUnit( blockLeftPadding, blockPaddingUnit ),
+	};
+	selectors[ '.uagb-infobox__content-wrap.wp-block-uagb-info-box--has-margin .uagb-infobox-margin-wrapper' ] = {
 		'padding-top': generateCSSUnit( blockTopPadding, blockPaddingUnit ),
 		'padding-right': generateCSSUnit( blockRightPadding, blockPaddingUnit ),
 		'padding-bottom': generateCSSUnit( blockBottomPadding, blockPaddingUnit ),
@@ -738,7 +744,13 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		'margin-bottom': generateCSSUnit( blockBottomMargin, blockMarginUnit ),
 		'margin-left': generateCSSUnit( blockLeftMargin, blockMarginUnit ),
 	};
-	tabletSelectors[ '.uagb-infobox__content-wrap' ] = {
+	tabletSelectors[ '.uagb-infobox__content-wrap:not(.wp-block-uagb-info-box--has-margin)' ] = {
+		'padding-top': generateCSSUnit( blockTopPaddingTablet, blockPaddingUnitTablet ),
+		'padding-right': generateCSSUnit( blockRightPaddingTablet, blockPaddingUnitTablet ),
+		'padding-bottom': generateCSSUnit( blockBottomPaddingTablet, blockPaddingUnitTablet ),
+		'padding-left': generateCSSUnit( blockLeftPaddingTablet, blockPaddingUnitTablet ),
+	};
+	tabletSelectors[ '.uagb-infobox__content-wrap.wp-block-uagb-info-box--has-margin .uagb-infobox-margin-wrapper' ] = {
 		'padding-top': generateCSSUnit( blockTopPaddingTablet, blockPaddingUnitTablet ),
 		'padding-right': generateCSSUnit( blockRightPaddingTablet, blockPaddingUnitTablet ),
 		'padding-bottom': generateCSSUnit( blockBottomPaddingTablet, blockPaddingUnitTablet ),
@@ -748,7 +760,13 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		'margin-bottom': generateCSSUnit( blockBottomMarginTablet, blockMarginUnitTablet ),
 		'margin-left': generateCSSUnit( blockLeftMarginTablet, blockMarginUnitTablet ),
 	};
-	mobileSelectors[ '.uagb-infobox__content-wrap' ] = {
+	mobileSelectors[ '.uagb-infobox__content-wrap:not(.wp-block-uagb-info-box--has-margin)' ] = {
+		'padding-top': generateCSSUnit( blockTopPaddingMobile, blockPaddingUnitMobile ),
+		'padding-right': generateCSSUnit( blockRightPaddingMobile, blockPaddingUnitMobile ),
+		'padding-bottom': generateCSSUnit( blockBottomPaddingMobile, blockPaddingUnitMobile ),
+		'padding-left': generateCSSUnit( blockLeftPaddingMobile, blockPaddingUnitMobile ),
+	};
+	mobileSelectors[ '.uagb-infobox__content-wrap.wp-block-uagb-info-box--has-margin .uagb-infobox-margin-wrapper' ] = {
 		'padding-top': generateCSSUnit( blockTopPaddingMobile, blockPaddingUnitMobile ),
 		'padding-right': generateCSSUnit( blockRightPaddingMobile, blockPaddingUnitMobile ),
 		'padding-bottom': generateCSSUnit( blockBottomPaddingMobile, blockPaddingUnitMobile ),

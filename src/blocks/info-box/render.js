@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import { uagbClassNames } from '@Utils/Helpers';
 import InfoBoxPositionClasses from './style-classes';
 import { useEffect, useLayoutEffect, memo } from '@wordpress/element';
 import Title from './components/Title';
@@ -178,15 +178,7 @@ const Render = ( props ) => {
 	);
 
 	const ifbInnerContent = (
-		<CustomTag
-			className={ classnames(
-				`uagb-block-${ block_id }`,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				'uagb-infobox__content-wrap',
-				ctaType === 'all' ? ' uagb-infobox_cta-type-all' : '',
-				...InfoBoxPositionClasses( attributes )
-			) }
-		>
+		<>
 			{ ctaType === 'all' && (
 				<a // eslint-disable-line jsx-a11y/anchor-has-content
 					className={ 'uagb-infobox-link-wrap uagb-infbox__link-to-all' }
@@ -196,18 +188,31 @@ const Render = ( props ) => {
 				></a>
 			) }
 			{ output }
-		</CustomTag>
+		</>
 	);
 
-	return ( hasMargin ? (
-		<div className='uagb-infobox-margin-wrapper'>
-			{ ifbInnerContent }
-		</div>
-	) : (
-		<>
-			{ ifbInnerContent }
-		</>
-	) );
+	return ( 
+		<CustomTag
+			className={ uagbClassNames( [
+				`uagb-block-${ block_id }`,
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+				'uagb-infobox__content-wrap',
+				ctaType === 'all' ? ' uagb-infobox_cta-type-all' : '',
+				...InfoBoxPositionClasses( attributes ),
+				hasMargin ? 'wp-block-uagb-info-box--has-margin' : '',
+			] ) }
+		>
+			{ hasMargin ? (
+			<div className='uagb-infobox-margin-wrapper'>
+				{ ifbInnerContent }
+			</div>
+			)  : (
+			<>
+				{ ifbInnerContent }
+			</>
+			) }
+		</CustomTag>
+	);
 	  
 };
 export default memo( Render );

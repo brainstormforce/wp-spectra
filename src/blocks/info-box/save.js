@@ -3,7 +3,7 @@
  */
 
 // Import block dependencies and components.
-import classnames from 'classnames';
+import { uagbClassNames } from '@Utils/Helpers';
 import Icon from './components/Icons';
 import InfoBoxPositionClasses from './style-classes';
 import InfoBoxSeparator from './components/Separator';
@@ -167,14 +167,7 @@ export default function save( props ) {
 	}
 
 	const ifbInnerContent = (
-		<CustomTag
-			className={ classnames(
-				`uagb-block-${ block_id }`,
-				'uagb-infobox__content-wrap',
-				ctaType === 'all' ? ' uagb-infobox_cta-type-all' : '',
-				...InfoBoxPositionClasses( attributes )
-			) }
-		>
+		<>
 			{ ctaType === 'all' && (
 				<a // eslint-disable-line jsx-a11y/anchor-has-content
 					href={ ctaLink ? ctaLink : '' }
@@ -186,16 +179,28 @@ export default function save( props ) {
 				></a>
 			) }
 			{ output }
-		</CustomTag>
+		</>
 	)
 
-	return ( hasMargin ? (
-		<div className='uagb-infobox-margin-wrapper'>
-			{ ifbInnerContent }
-		</div>
-	) : (
-		<>
-			{ ifbInnerContent }
-		</>
-	) );
+	return (
+		<CustomTag
+			className={ uagbClassNames( [
+				`uagb-block-${ block_id }`,
+				'uagb-infobox__content-wrap',
+				ctaType === 'all' ? ' uagb-infobox_cta-type-all' : '',
+				...InfoBoxPositionClasses( attributes ),
+				hasMargin ? 'wp-block-uagb-info-box--has-margin' : '',
+			] ) }
+		>
+			{ hasMargin ? (
+			<div className='uagb-infobox-margin-wrapper'>
+				{ ifbInnerContent }
+			</div>
+			)  : (
+			<>
+				{ ifbInnerContent }
+			</>
+			) }
+		</CustomTag>
+	);
 }
