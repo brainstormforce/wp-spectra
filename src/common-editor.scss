@@ -710,6 +710,17 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	}
 }
 
+/* Toolbar Icon Color Set To Black */
+[data-toolbar-item="true"] .block-editor-block-icon.has-colors svg.uagb-editor-icons {
+	stroke: #000;
+
+	path,
+	rect,
+	circle {
+		stroke: #000;
+	}
+}
+
 /* Block Editor Block Icons Color*/
 .block-editor-block-icon.has-colors svg.uagb-editor-icons {
 	stroke: $spectra-color-secondary;

@@ -803,6 +803,7 @@ class UAGB_Init_Blocks {
 			'uag_enable_gbs_extension'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_gbs_extension', 'enabled' ),
 			'current_theme'                           => wp_get_theme()->get( 'Name' ),
 			'is_gutenberg_activated'                  => is_plugin_active( 'gutenberg/gutenberg.php' ), // TODO: Once Gutenberg merged the rename functionality code in WP then we need to remove localization part for is_gutenberg_activated.
+			'is_astra_based_theme'                    => defined( 'ASTRA_THEME_SETTINGS' ),
 		);
 
 		if ( 'enabled' === $uag_enable_quick_action_sidebar ) {

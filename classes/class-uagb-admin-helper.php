@@ -216,6 +216,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			$is_already_icon_list = false;
 			$is_already_button    = false;
 			$is_already_faq       = false;
+			$is_already_tabs      = false;
 			$blocks_info          = UAGB_Block_Module::get_blocks_info();
 
 			foreach ( $blocks_info as $key => $block ) {
@@ -286,6 +287,15 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 							$combined[]     = 'faq';
 							$combined[]     = 'faq-child';
 							$is_already_faq = true;
+						}
+						break;
+					
+					case 'tabs-child':
+					case 'tabs':
+						if ( ! $is_already_tabs ) {
+							$combined[]      = 'tabs';
+							$combined[]      = 'tabs-child';
+							$is_already_tabs = true;
 						}
 						break;
 

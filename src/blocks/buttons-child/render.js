@@ -41,11 +41,16 @@ const Render = ( props ) => {
 		}
 	}
 
+	const extraProps = {
+		'aria-hidden': 'true',
+		'focussable':'false',
+	};
+
 	const iconHtml = ( curr_position ) => {
 		if ( showIcon && '' !== icon && curr_position === iconPosition ) {
 			return (
 				<span className={ classnames( 'uagb-button__icon', `uagb-button__icon-position-${ iconPosition }` ) }>
-					{ renderSVG( icon, setAttributes ) }
+					{ renderSVG( icon, setAttributes, extraProps ) }
 				</span>
 			);
 		}

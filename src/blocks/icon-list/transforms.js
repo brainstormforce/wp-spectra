@@ -1,5 +1,6 @@
 import colourNameToHex from '@Controls/changeColorNameToHex';
 import {  createBlock } from '@wordpress/blocks';
+import { getUnit, getNumber } from '@Utils/Helpers';
 
 const  transforms = {
     from: 
@@ -17,7 +18,7 @@ const  transforms = {
                 return createBlock( 'uagb/icon-list', {
                     iconColor: _attributes?.style?.color?.text || colourNameToHex( _attributes?.textColor ) || '',
                     fontWeight: _attributes?.style?.typography?.fontWeight || '' ,
-                    fontSize: getNumber( _attributes?.style?.typography?.fontSize || '' ),
+                    fontSize: getNumber( _attributes?.style?.typography?.fontSize || '16' ),
                     fontSizeType: getUnit( _attributes?.style?.typography?.fontSize || '' ),
                     labelColor:  _attributes?.style?.color?.text ||  colourNameToHex( _attributes?.textColor ) || '',
                     labelLetterSpacing: getNumber( _attributes?.style?.typography?.letterSpacing || '0' ),
@@ -35,7 +36,7 @@ const  transforms = {
                     blockLeftPadding: getNumber( _attributes?.style?.spacing?.padding?.left  || '38' ),
                     blockBottomPadding: getNumber( _attributes?.style?.spacing?.padding?.bottom  || '20' ),
                     blockPaddingUnit: getUnit( _attributes?.style?.spacing?.padding?.top  || 'px' ),
-                    size: getNumber( _attributes?.style?.typography?.fontSize || '' ),
+                    size: getNumber( _attributes?.style?.typography?.fontSize || '16' ),
                     sizeType: getUnit( _attributes?.style?.typography?.fontSize || '' ),
                 }, 
                 iconListChildBlocks );
@@ -43,30 +44,5 @@ const  transforms = {
         },
     ],
 };
-
-function getNumber( input ) {
-    const regex = /(\d+(\.\d+)?)/;
-    const match = input.match( regex );
-
-    if ( match ) {
-        return parseFloat( match[1] );
-    }
-
-    return 16;
-}
-
-function getUnit( input ) {
-    const regex = /(px|em|rem)/;
-    const match = input.match( regex );
-    if ( match ) {
-        const unit = match[1];
-        if ( ['px', 'em'].includes( unit ) ) {
-            return unit;
-        } else if ( unit === 'rem' ) {
-            return 'em';
-        }
-    }
-    return 'px';
-}
 
 export default transforms;
