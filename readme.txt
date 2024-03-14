@@ -215,6 +215,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+
 = 2.12.5 - THURSDAY, 14th MARCH 2024 =
 * Feature: Transform to - Added transform to option from Core Cover to Spectra Container.
 * Feature: Transform to - Added transform to option from Core Separator, Page Break and Spacer to Spectra Separator.
