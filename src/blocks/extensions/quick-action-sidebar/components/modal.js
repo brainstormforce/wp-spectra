@@ -82,11 +82,16 @@ const PopoverModal = ( { closePopover, updateDefaultAllowedQuickSidebarBlocks, g
 			unusedArray.push( item );
 		}
 	} );
-
+	// Function to check if an item has either a parent or ancestor or both
+	const noParentNoAncestor = ( item ) =>{
+		if ( ! item.parent && ! item.ancestor && 'uagb/popup-builder' !== item.name ){ 
+			return item;
+		}
+	}
 	const addToSidebar = () => {
 		return (
 			unusedArray.map( ( item, index ) => (
-				item?.name?.includes( 'uagb/' ) && !item.parent &&
+				noParentNoAncestor( item ) &&
 				<div
 					key={index}
 					className="spectra-block-wrap"
@@ -109,7 +114,7 @@ const PopoverModal = ( { closePopover, updateDefaultAllowedQuickSidebarBlocks, g
 	const alreadyPresentInSidebar = () => {
 		return (
 			usedArray.map( ( item, index ) => (
-				item?.name?.includes( 'uagb/' ) && !item.parent &&
+				!item.parent &&
 				<div
 					key={index}
 					className="spectra-block-wrap"
@@ -140,7 +145,7 @@ const PopoverModal = ( { closePopover, updateDefaultAllowedQuickSidebarBlocks, g
 				className="spectra-quick-action-block-popover-search"
 			/>
 			<div className="spectra-block-container">
-				{unusedArray.some( item => item?.name?.includes( 'uagb/' ) && !item.parent && item.title.toLowerCase().includes( searchTerm.toLowerCase() ) ) && (
+				{unusedArray.some( item => !item.parent && item.title.toLowerCase().includes( searchTerm.toLowerCase() ) ) && (
 				<div className="block-editor-inserter__panel-header spectra-quick-action-block-popover-header__add-to-quick-action-bar">
 					<h2 className="block-editor-inserter__panel-title">
 						{__( 'Add to Quick Action Bar', 'ultimate-addons-for-gutenberg' )}
@@ -148,7 +153,7 @@ const PopoverModal = ( { closePopover, updateDefaultAllowedQuickSidebarBlocks, g
 				</div> 
 				) }
 				{addToSidebar()}
-				{usedArray.some( item => item?.name?.includes( 'uagb/' ) && !item.parent && item.title.toLowerCase().includes( searchTerm.toLowerCase() ) ) && (
+				{usedArray.some( item => !item.parent && item.title.toLowerCase().includes( searchTerm.toLowerCase() ) ) && (
 				<div className="block-editor-inserter__panel-header spectra-quick-action-block-popover-header__already-present-in-quick-action-bar">
 					<h2 className="block-editor-inserter__panel-title">
 						{__( 'Already Present in Quick Action Bar', 'ultimate-addons-for-gutenberg' )}
@@ -156,7 +161,7 @@ const PopoverModal = ( { closePopover, updateDefaultAllowedQuickSidebarBlocks, g
 				</div>
 				) }
 				{alreadyPresentInSidebar()}
-				{ ! unusedArray.some( item => item?.name?.includes( 'uagb/' ) && !item.parent && item.title.toLowerCase().includes( searchTerm.toLowerCase() ) ) && ! usedArray.some( item => item?.name?.includes( 'uagb/' ) && !item.parent && item.title.toLowerCase().includes( searchTerm.toLowerCase() ) ) && (
+				{ ! unusedArray.some( item => !item.parent && item.title.toLowerCase().includes( searchTerm.toLowerCase() ) ) && ! usedArray.some( item => !item.parent && item.title.toLowerCase().includes( searchTerm.toLowerCase() ) ) && (
 				<div className="block-editor-inserter__no-results">
 					<p>{__( 'No results found.', 'ultimate-addons-for-gutenberg' )}</p>
 				</div>

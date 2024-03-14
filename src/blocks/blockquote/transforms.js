@@ -1,5 +1,6 @@
 import colourNameToHex from '@Controls/changeColorNameToHex';
 import {  createBlock } from '@wordpress/blocks';
+import { getUnit, getNumber } from '@Utils/Helpers';
 
 const transforms = {
     from: [
@@ -27,8 +28,8 @@ const transforms = {
                     enableTweet:false,
                     descColor:  attribute?.style?.color?.text ||  colourNameToHex( attribute?.textColor ) || '',
                     authorColor:  attribute?.style?.color?.text ||  colourNameToHex( attribute?.textColor ) || '',
-                    descFontSize:  getNumber( attribute?.style?.typography?.fontSize || '' ),
-                    authorFontSize: getNumber( attribute?.style?.typography?.fontSize || '' ),
+                    descFontSize:  getNumber( attribute?.style?.typography?.fontSize || '16' ),
+                    authorFontSize: getNumber( attribute?.style?.typography?.fontSize || '16' ),
                     descFontSizeType: getUnit( attribute?.style?.typography?.fontSize || '' ),
                     authorFontSizeType: getUnit( attribute?.style?.typography?.fontSize || '' ),
                     descFontWeight: attribute?.style?.typography?.fontWeight || '' ,
@@ -47,7 +48,7 @@ const transforms = {
                     quoteStyle: 'style_1',
                     descFontStyle: 'normal',
                     quoteColor:  attribute?.style?.color?.text ||  colourNameToHex( attribute?.textColor ) || '',
-                    quoteSize: getNumber( attribute?.style?.typography?.fontSize || '' ),
+                    quoteSize: getNumber( attribute?.style?.typography?.fontSize || '16' ),
                     quoteSizeType: getUnit( attribute?.style?.typography?.fontSize || '' ),
                 } );
             },
@@ -130,30 +131,5 @@ const transforms = {
         },
     ],
 };
-
-function getNumber( input ) {
-    const regex = /(\d+(\.\d+)?)/;
-    const match = input.match( regex );
-
-    if ( match ) {
-        return parseFloat( match[1] );
-    }
-
-    return 16;
-}
-
-function getUnit( input ) {
-    const regex = /(px|em|rem)/;
-    const match = input.match( regex );
-    if ( match ) {
-        const unit = match[1];
-        if ( ['px', 'em'].includes( unit ) ) {
-            return unit;
-        } else if ( unit === 'rem' ) {
-            return 'em';
-        }
-    }
-    return 'px';
-}
 
 export default transforms;

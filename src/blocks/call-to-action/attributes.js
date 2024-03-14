@@ -415,6 +415,10 @@ const attributes = {
 			styleType: 'btn-icon-space',
 		},
 	},
+	htmlTag: {
+		type: 'string',
+		default: 'div',
+	},
 	ctaType: {
 		type: 'string',
 		default: 'button',

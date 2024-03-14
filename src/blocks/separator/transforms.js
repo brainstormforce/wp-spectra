@@ -1,6 +1,7 @@
 import { createBlock } from '@wordpress/blocks';
 import colourNameToHex from '@Controls/changeColorNameToHex';
 export { colourNameToHex, createBlock };
+import { getNumber, getUnitDimension } from '@Utils/Helpers';
 
 const transforms = {
     from: [
@@ -8,8 +9,27 @@ const transforms = {
             type: 'block',
             blocks: ['core/spacer'],
             transform: ( _attributes ) => {
+                const spectraOneMapping ={
+                    'xxx-small': '0px',
+                    'xx-small': '0px',
+                    'x-small': '4px',
+                    'small': '8px',
+                    'medium': '12px',
+                    'large': '22px',
+                    'x-large': '30px',
+                    'xx-large': '48px',
+                };
+                const parts = _attributes.height ? _attributes.height.split( '|' ) : [];
+                const variablePart = parts.length === 3 ? parts[2].trim() : null;
+
+                // Check if the variable part is a key in the spectraOneMapping
+                const isSpectraOne = variablePart && spectraOneMapping.hasOwnProperty( variablePart );
+                const sepHeight = isSpectraOne? getNumber( spectraOneMapping[variablePart] )  : getNumber( _attributes.height || '0' ) / 2;
+                const sepHeightType = isSpectraOne? getUnitDimension( spectraOneMapping[variablePart] ) : getUnitDimension( _attributes.height || 'px' ); 
                 return createBlock( 'uagb/separator', {
-                    separatorHeight: parseInt( _attributes.height ) / 2,
+                    separatorStyle: 'none',
+                    separatorHeight: sepHeight,
+                    separatorHeightType: sepHeightType,
                 } );
             },
         },

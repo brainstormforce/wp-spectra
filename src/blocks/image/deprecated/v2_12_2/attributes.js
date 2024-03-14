@@ -34,6 +34,10 @@ const attributes = {
 		type: 'string',
 		default: '',
 	},
+	imgRole: {
+		type: 'string',
+		default: 'img',
+	},
 	enableCaption: {
 		type: 'boolean',
 		default: false,

@@ -24,6 +24,8 @@ import saveV2_7_0 from './deprecated/v2.7.0/save';
 import attributesV2_7_0 from './deprecated/v2.7.0/attributes';
 import saveV2_12_2 from './deprecated/v2.12.2/save';
 import newAttributesV2_12_2 from './deprecated/v2.12.2/attributes';
+import attributesV2_12_3 from './deprecated/v2.12.3/attributes';
+import saveV2_12_3 from './deprecated/v2.12.3/save';
 
 const borderAttributes = getBorderAttributes( 'btn' );
 const attributes = {
@@ -282,6 +284,10 @@ const deprecated = [
 		attributes: newAttributesV2_12_2,
 		save: saveV2_12_2,
 	},
+	{
+		attributes: attributesV2_12_3,
+		save: saveV2_12_3,
+	}
 ];
 
 export default deprecated;

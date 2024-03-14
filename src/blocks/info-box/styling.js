@@ -231,7 +231,22 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		iconBackgroundColor,
 		iconBackgroundHoverColor,
 		iconBorderWidth,
-
+		// margin
+		blockTopMargin,
+		blockRightMargin,
+		blockLeftMargin,
+		blockBottomMargin,
+		blockTopMarginTablet,
+		blockRightMarginTablet,
+		blockLeftMarginTablet,
+		blockBottomMarginTablet,
+		blockTopMarginMobile,
+		blockRightMarginMobile,
+		blockLeftMarginMobile,
+		blockBottomMarginMobile,
+		blockMarginUnit,
+		blockMarginUnitTablet,
+		blockMarginUnitMobile,
 		// padding
 		blockTopPadding,
 		blockRightPadding,
@@ -713,23 +728,53 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		};
 	}
 
-	selectors[ '.uagb-infobox__content-wrap' ] = {
+	selectors[ '.uagb-infobox__content-wrap:not(.wp-block-uagb-info-box--has-margin)' ] = {
 		'padding-top': generateCSSUnit( blockTopPadding, blockPaddingUnit ),
 		'padding-right': generateCSSUnit( blockRightPadding, blockPaddingUnit ),
 		'padding-bottom': generateCSSUnit( blockBottomPadding, blockPaddingUnit ),
 		'padding-left': generateCSSUnit( blockLeftPadding, blockPaddingUnit ),
 	};
-	tabletSelectors[ '.uagb-infobox__content-wrap' ] = {
+	selectors[ '.uagb-infobox__content-wrap.wp-block-uagb-info-box--has-margin .uagb-infobox-margin-wrapper' ] = {
+		'padding-top': generateCSSUnit( blockTopPadding, blockPaddingUnit ),
+		'padding-right': generateCSSUnit( blockRightPadding, blockPaddingUnit ),
+		'padding-bottom': generateCSSUnit( blockBottomPadding, blockPaddingUnit ),
+		'padding-left': generateCSSUnit( blockLeftPadding, blockPaddingUnit ),
+		'margin-top': generateCSSUnit( blockTopMargin, blockMarginUnit ),
+		'margin-right': generateCSSUnit( blockRightMargin, blockMarginUnit ),
+		'margin-bottom': generateCSSUnit( blockBottomMargin, blockMarginUnit ),
+		'margin-left': generateCSSUnit( blockLeftMargin, blockMarginUnit ),
+	};
+	tabletSelectors[ '.uagb-infobox__content-wrap:not(.wp-block-uagb-info-box--has-margin)' ] = {
 		'padding-top': generateCSSUnit( blockTopPaddingTablet, blockPaddingUnitTablet ),
 		'padding-right': generateCSSUnit( blockRightPaddingTablet, blockPaddingUnitTablet ),
 		'padding-bottom': generateCSSUnit( blockBottomPaddingTablet, blockPaddingUnitTablet ),
 		'padding-left': generateCSSUnit( blockLeftPaddingTablet, blockPaddingUnitTablet ),
 	};
-	mobileSelectors[ '.uagb-infobox__content-wrap' ] = {
+	tabletSelectors[ '.uagb-infobox__content-wrap.wp-block-uagb-info-box--has-margin .uagb-infobox-margin-wrapper' ] = {
+		'padding-top': generateCSSUnit( blockTopPaddingTablet, blockPaddingUnitTablet ),
+		'padding-right': generateCSSUnit( blockRightPaddingTablet, blockPaddingUnitTablet ),
+		'padding-bottom': generateCSSUnit( blockBottomPaddingTablet, blockPaddingUnitTablet ),
+		'padding-left': generateCSSUnit( blockLeftPaddingTablet, blockPaddingUnitTablet ),
+		'margin-top': generateCSSUnit( blockTopMarginTablet, blockMarginUnitTablet ),
+		'margin-right': generateCSSUnit( blockRightMarginTablet, blockMarginUnitTablet ),
+		'margin-bottom': generateCSSUnit( blockBottomMarginTablet, blockMarginUnitTablet ),
+		'margin-left': generateCSSUnit( blockLeftMarginTablet, blockMarginUnitTablet ),
+	};
+	mobileSelectors[ '.uagb-infobox__content-wrap:not(.wp-block-uagb-info-box--has-margin)' ] = {
 		'padding-top': generateCSSUnit( blockTopPaddingMobile, blockPaddingUnitMobile ),
 		'padding-right': generateCSSUnit( blockRightPaddingMobile, blockPaddingUnitMobile ),
 		'padding-bottom': generateCSSUnit( blockBottomPaddingMobile, blockPaddingUnitMobile ),
 		'padding-left': generateCSSUnit( blockLeftPaddingMobile, blockPaddingUnitMobile ),
+	};
+	mobileSelectors[ '.uagb-infobox__content-wrap.wp-block-uagb-info-box--has-margin .uagb-infobox-margin-wrapper' ] = {
+		'padding-top': generateCSSUnit( blockTopPaddingMobile, blockPaddingUnitMobile ),
+		'padding-right': generateCSSUnit( blockRightPaddingMobile, blockPaddingUnitMobile ),
+		'padding-bottom': generateCSSUnit( blockBottomPaddingMobile, blockPaddingUnitMobile ),
+		'padding-left': generateCSSUnit( blockLeftPaddingMobile, blockPaddingUnitMobile ),
+		'margin-top': generateCSSUnit( blockTopMarginMobile, blockMarginUnitMobile ),
+		'margin-right': generateCSSUnit( blockRightMarginMobile, blockMarginUnitMobile ),
+		'margin-bottom': generateCSSUnit( blockBottomMarginMobile, blockMarginUnitMobile ),
+		'margin-left': generateCSSUnit( blockLeftMarginMobile, blockMarginUnitMobile ),
 	};
 
 	if ( imageWidthType ) {

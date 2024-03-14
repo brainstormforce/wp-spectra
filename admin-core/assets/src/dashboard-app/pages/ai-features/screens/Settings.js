@@ -85,7 +85,7 @@ const Settings = () => {
 							{ ZipWPLogo( { className: 'h-6', width: 24, height: 24, color: '#ff580e' } ) }
 						</div>
 						<h1 className="text-slate-800 text-2xl font-semibold text-left">
-							{ __( 'Build 10x Faster with Spectra & ZipWP', 'ultimate-addons-for-gutenberg' ) }
+							{ __( 'Build 10x Faster with Spectra AI', 'ultimate-addons-for-gutenberg' ) }
 						</h1>
 					</div>
 					{/* The 2 column grid, with lines dividing each row */}
@@ -202,7 +202,7 @@ const Settings = () => {
 					<div className='flex items-center gap-2'>
 						<h3 className="text-slate-800 text-xl font-medium">
 							{ __(
-								'ZipWP is Connected',
+								'AI is Connected',
 								'ultimate-addons-for-gutenberg'
 							) }
 						</h3>
@@ -224,7 +224,7 @@ const Settings = () => {
 				</div>
 				<p className="text-slate-500 text-sm">
 					{ __(
-						'Your website is connected with ZipWP. You can revoke this connection at any time.',
+						'Your website is connected with AI. You can revoke this connection at any time.',
 						'ultimate-addons-for-gutenberg'
 					) }
 				</p>
@@ -303,7 +303,7 @@ const Settings = () => {
 					description: `${
 						__( 'Are you sure you wish to revoke the authorization token?', 'ultimate-addons-for-gutenberg' )
 					}\n${
-						__( 'You will need to re-authorize ZipWP to use it again.', 'ultimate-addons-for-gutenberg' )
+						__( 'You will need to re-authorize to use it again.', 'ultimate-addons-for-gutenberg' )
 					}`,
 				},
 				popupAccept: {

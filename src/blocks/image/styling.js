@@ -268,7 +268,7 @@ export default function styling( attributes, clientId, name, deviceType, gbsSele
 			'margin-right': generateCSSUnit( captionRightMargin, captionMarginUnit ),
 			'margin-bottom': generateCSSUnit( captionBottomMargin, captionMarginUnit ),
 			'margin-left': generateCSSUnit( captionLeftMargin, captionMarginUnit ),
-			'text-align': captionAlign,
+			'align-self': captionAlign,
 		},
 		'.wp-block-uagb-image .wp-block-uagb-image__figure figcaption a': {
 			'color': captionColor,

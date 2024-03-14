@@ -157,7 +157,7 @@ class Sidebar_Configurations {
 				$messages,
 				array(
 					'role'    => 'system',
-					'content' => 'You are Zip - a content writer that writes content for my website.\n\n\nYou will only generate content for what you are asked.',
+					'content' => 'You are my AI Assistant. You are a content writer that writes content for my website.\n\n\nYou will only generate content for what you are asked.',
 				)
 			);
 		}

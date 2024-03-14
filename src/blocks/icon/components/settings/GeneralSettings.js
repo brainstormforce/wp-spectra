@@ -32,8 +32,9 @@ const GeneralSettings = ( props ) => {
 		link,
 		target,
 		disableLink,
+		iconAccessabilityMode,
+		iconAccessabilityDesc,
 	} = attributes;
-
 	return (
 		<>
 			<UAGAdvancedPanelBody title={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
@@ -42,6 +43,45 @@ const GeneralSettings = ( props ) => {
 					value={ icon }
 					onChange={ ( value ) => setAttributes( { icon: value } ) }
 				/>
+
+				<MultiButtonsControl
+					setAttributes={setAttributes}
+					label={__( 'Accessibility Mode', 'ultimate-addons-for-gutenberg' )}
+					data={{
+						value: iconAccessabilityMode,
+						label: 'iconAccessabilityMode',
+					} }
+					options={[
+						{
+						value: 'svg',
+						label: __( 'SVG', 'ultimate-addons-for-gutenberg' )
+						},
+						{
+						value: 'image',
+						label: __( 'Image', 'ultimate-addons-for-gutenberg' )
+						},
+						{
+						value: 'presentation',
+						label: __( 'Decorative', 'ultimate-addons-for-gutenberg' )
+						},
+					] }
+				/>
+
+					{ iconAccessabilityMode !== 'presentation' && (
+						<>
+							<UAGTextControl
+								label={ __( 'Accessibility Label', 'ultimate-addons-for-gutenberg' ) }
+								data={ {
+									value: iconAccessabilityDesc,
+									label: 'iconAccessabilityDesc',
+								} }
+								value={ iconAccessabilityDesc }
+								setAttributes={ setAttributes }
+								onChange={ ( value ) => setAttributes( { iconAccessabilityDesc: value } ) }
+							/>
+						</>
+					) }
+					
 				<ResponsiveSlider
 					label={ __( 'Size', 'ultimate-addons-for-gutenberg' ) }
 					data={ {

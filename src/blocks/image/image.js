@@ -34,6 +34,7 @@ export default function Image( {
 		heightTablet,
 		heightMobile,
 		disableLazyLoad,
+		imgRole,
 	},
 	setAttributes,
 	isSelected,
@@ -141,8 +142,8 @@ export default function Image( {
 					urlMobile ? ', ' + urlMobile + ' 360w' : ''
 				}` : null }
 				src={ temporaryURL || url }
-				alt={ defaultedAlt }
-				title= { defaultedTitle }
+				alt={ imgRole === 'presentation' ? '' : defaultedAlt }
+				title= { imgRole === 'presentation' ? '' : defaultedTitle }
 				onLoad={ ( event ) => {
 					setLoadedNaturalSize( {
 						loadedNaturalWidth: event.target?.naturalWidth,
@@ -151,6 +152,7 @@ export default function Image( {
 				} }
 				ref={ imageRef }
 				loading={ disableLazyLoad ? undefined : 'lazy' }
+				role={ imgRole }
 			/>
 			{ temporaryURL && <Spinner /> }
 		</>

@@ -95,13 +95,13 @@
 					}
 				}
 
-				span {
+				span:not(.dashicon) {
 					display: none;
 				}
 
 				&:hover {
 
-					span {
+					span:not(.dashicon) {
 						display: none;
 					}
 
@@ -290,5 +290,169 @@ div#widgets-editor {
 	.spectra-ee-quick-access__sidebar--blocks,
 	.spectra-ee-quick-access__sidebar--actions {
 		max-height: calc(100vh - 180px);
+	}
+}
+
+.spectra-ee-quick-access-container {
+	.spectra-ee-quick-access__sidebar {
+		.spectra-ee-quick-access__sidebar--blocks {
+			.spectra-ee-quick-access__sidebar--blocks--block {
+				.spectra-ee-quick-access__sidebar--blocks--block--icon {
+					&.spectra-ee-quick-access__sidebar-icon {
+
+						&__core,
+						&__wcfb,
+						&__wpsp {
+
+							svg {
+
+								path,
+								rect,
+								circle {
+									fill: #fff;
+									stroke-width: 1.4px;
+								}
+							}
+						}
+
+						&__woocommerce {
+
+							&--cart,
+							&--checkout,
+							&--mini-cart-contents,
+							&--product-top-rated,
+							&--store-notices,
+							&--featured-category,
+							&--active-filters {
+
+								svg {
+
+									path:first-child {
+										fill: none;
+									}
+
+								}
+							}
+
+							svg {
+
+								path,
+								rect,
+								circle {
+									fill: #fff;
+									stroke-width: 1.4px;
+								}
+							}
+						}
+
+						&__jetpack {
+
+							&--gif,
+							&--map,
+							&--markdown {
+
+								path:last-child {
+									fill: #fff;
+								}
+							}
+
+							&--business-hours,
+							&--button,
+							&--calendly,
+							&--contact-info,
+							&--donations,
+							&--eventbrite,
+							&--google-calendar,
+							&--image-compare,
+							&--like,
+							&--opentable,
+							&--pinterest,
+							&--podcast-player,
+							&--rating-star,
+							&--repeat-visitor,
+							&--send-a-message,
+							&--slideshow,
+							&--story,
+							&--tiled-gallery,
+							&--tock,
+							&--payments-intro,
+							&--blogroll,
+							&--nextdoor,
+							&--sharing-buttons {
+
+								svg {
+
+									path,
+									rect,
+									circle {
+										fill: #fff;
+										stroke-width: 1.4px;
+									}
+								}
+							}
+						}
+
+						&__premium-content {
+
+							&--container,
+							&--buttons,
+							&--login-button {
+
+								svg {
+
+									path,
+									rect,
+									circle {
+										fill: #fff;
+										stroke-width: 1.4px;
+									}
+								}
+							}
+						}
+
+						&__mailpoet {
+
+							svg {
+
+								path,
+								rect,
+								circle {
+									fill: #fff;
+									stroke-width: 1.4px;
+								}
+							}
+						}
+
+						&__surecart {
+
+							svg {
+
+								path,
+								rect,
+								circle {
+									fill: #fff;
+									stroke-width: 1.4px;
+								}
+							}
+
+							&--cart-menu-icon,
+							&--order-confirmation,
+							&--cart {
+
+								svg {
+
+									path,
+									rect,
+									circle {
+										fill: none;
+										stroke-width: 1.4px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
