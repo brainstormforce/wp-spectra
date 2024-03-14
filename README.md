@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### 2.12.5 - Wednesday, 13th March 2024 ###
+### 2.12.5 - THURSDAY, 14th MARCH 2024 ###
 * Feature: Transform to - Added transform to option from Core Cover to Spectra Container.
 * Feature: Transform to - Added transform to option from Core Separator, Page Break and Spacer to Spectra Separator.
 * Improvement: Buttons - Enabled aria-hidden and disabled focusable on the SVG inside the button.
