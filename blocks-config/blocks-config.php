@@ -23,6 +23,7 @@ require_once UAGB_DIR . 'blocks-config/image-gallery/class-spectra-image-gallery
 require_once UAGB_DIR . 'blocks-config/popup-builder/class-uagb-popup-builder.php';
 require_once UAGB_DIR . 'blocks-config/buttons-child/class-uagb-buttons-child.php';
 require_once UAGB_DIR . 'blocks-config/google-map/class-uagb-google-map.php';
+require_once UAGB_DIR . 'blocks-config/icon/class-spectra-icon.php';
 
 // Require the advanced settings PHP classes.
 require_once UAGB_DIR . 'blocks-config/advanced-settings/class-uagb-block-positioning.php';

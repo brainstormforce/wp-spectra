@@ -3,7 +3,7 @@
  */
 
 // Import block dependencies and components.
-import classnames from 'classnames';
+import { uagbClassNames } from '@Utils/Helpers';
 import Icon from './components/Icons';
 import InfoBoxPositionClasses from './style-classes';
 import InfoBoxSeparator from './components/Separator';
@@ -29,10 +29,17 @@ export default function save( props ) {
 		showDesc,
 		icon,
 		seperatorPosition,
+		blockBottomMargin,
+		blockLeftMargin,
+		blockRightMargin,
+		blockTopMargin,
+		htmlTag,
 	} = attributes;
 
 	// Get icon/Image components.
 	let isImage = '';
+
+	const CustomTag = htmlTag || 'div';
 
 	if ( source_type === 'icon' && icon !== '' ) {
 		isImage = <Icon attributes={ attributes } />;
@@ -40,6 +47,9 @@ export default function save( props ) {
 		isImage = <InfoBoxIconImage attributes={ attributes } />;
 	}
 
+	const marginVariables = [blockBottomMargin, blockLeftMargin, blockRightMargin, blockTopMargin];
+	const hasMargin = marginVariables.some( ( margin ) => typeof margin === 'number' );
+	
 	let iconImageHtml = isImage;
 	let position = seperatorPosition;
 	const seperatorHtml = <InfoBoxSeparator attributes={ attributes } />;
@@ -156,15 +166,8 @@ export default function save( props ) {
 		linkClick = 'return true;';
 	}
 
-	return (
-		<div
-			className={ classnames(
-				`uagb-block-${ block_id }`,
-				'uagb-infobox__content-wrap',
-				ctaType === 'all' ? ' uagb-infobox_cta-type-all' : '',
-				...InfoBoxPositionClasses( attributes )
-			) }
-		>
+	const ifbInnerContent = (
+		<>
 			{ ctaType === 'all' && (
 				<a // eslint-disable-line jsx-a11y/anchor-has-content
 					href={ ctaLink ? ctaLink : '' }
@@ -176,6 +179,28 @@ export default function save( props ) {
 				></a>
 			) }
 			{ output }
-		</div>
+		</>
+	)
+
+	return (
+		<CustomTag
+			className={ uagbClassNames( [
+				`uagb-block-${ block_id }`,
+				'uagb-infobox__content-wrap',
+				ctaType === 'all' ? ' uagb-infobox_cta-type-all' : '',
+				...InfoBoxPositionClasses( attributes ),
+				hasMargin ? 'wp-block-uagb-info-box--has-margin' : '',
+			] ) }
+		>
+			{ hasMargin ? (
+			<div className='uagb-infobox-margin-wrapper'>
+				{ ifbInnerContent }
+			</div>
+			)  : (
+			<>
+				{ ifbInnerContent }
+			</>
+			) }
+		</CustomTag>
 	);
 }

@@ -18,7 +18,14 @@ const Render = ( props ) => {
 	const { setAttributes, attributes, deviceType } = props;
 
 	// Setup the attributes.
-	const { block_id, ctaType, enabledSecondCtaButton } = attributes;
+	const { 
+		block_id,
+		ctaType,
+		enabledSecondCtaButton,
+		htmlTag,
+	} = attributes;
+
+	const CustomTag = htmlTag || 'div';
 
 	const isCta = <CTA attributes={ attributes } setAttributes={ setAttributes } />;
 
@@ -51,7 +58,7 @@ const Render = ( props ) => {
 	};
 
 	return (
-		<div
+		<CustomTag
 			className={ classnames(
 				`uagb-block-${ block_id }`,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
@@ -73,7 +80,7 @@ const Render = ( props ) => {
 				</>
 			) }
 			{ ctaType !== 'all' && output() }
-		</div>
+		</CustomTag>
 	);
 };
 

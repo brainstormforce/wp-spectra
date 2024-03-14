@@ -12,7 +12,16 @@ import CTA from './components/CallToActionNew';
 import SecondCTAButton from './components/SecondCTAButton';
 
 export default function save( props ) {
-	const { block_id, ctaType, ctaLink, ctaTarget, ctaTitle, description, enabledSecondCtaButton } = props.attributes;
+	const { 
+		block_id,
+		htmlTag,
+		ctaType,
+		ctaLink,
+		ctaTarget,
+		ctaTitle,
+		description,
+		enabledSecondCtaButton,
+	} = props.attributes;
 
 	const isCta = <CTA attributes={ props.attributes } setAttributes="not_set" />;
 
@@ -28,6 +37,8 @@ export default function save( props ) {
 
 	// Get Title components.
 	const titleText = <>{ '' !== ctaTitle && <Title attributes={ props.attributes } setAttributes="not_set" /> }</>;
+
+	const CustomTag = htmlTag || 'div';
 
 	const output = (
 		<>
@@ -48,7 +59,7 @@ export default function save( props ) {
 	}
 
 	return (
-		<div className={ classnames( `uagb-block-${ block_id }`, 'button' === ctaType ? 'wp-block-button' : '' ) }>
+		<CustomTag className={ classnames( `uagb-block-${ block_id }`, 'button' === ctaType ? 'wp-block-button' : '' ) }>
 			{ ctaType === 'all' && (
 				<>
 					{ /* eslint-disable-next-line */ }
@@ -62,6 +73,6 @@ export default function save( props ) {
 				</>
 			) }
 			{ ctaType !== 'all' && output }
-		</div>
+		</CustomTag>
 	);
 }

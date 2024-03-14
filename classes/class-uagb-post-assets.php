@@ -637,7 +637,9 @@ class UAGB_Post_Assets {
 			$blocks = array();
 		if ( UAGB_Admin_Helper::is_block_theme() ) {
 			global $_wp_current_template_content;
-			$blocks = parse_blocks( $_wp_current_template_content );
+			if ( isset( $_wp_current_template_content ) ) {
+				$blocks = parse_blocks( $_wp_current_template_content );
+			}
 		}
 			// Global Required assets.
 			// If the current template has content and contains blocks, execute this code block.

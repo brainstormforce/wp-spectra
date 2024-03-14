@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.12.4\n"
+"Project-Id-Version: Spectra 2.12.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-02-26T10:39:49+00:00\n"
+"POT-Creation-Date: 2024-03-11T11:39:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: admin-core/inc/admin-menu.php:171
 #: admin-core/inc/admin-menu.php:182
 #: admin-core/inc/admin-menu.php:261
-#: classes/class-uagb-admin-helper.php:421
+#: classes/class-uagb-admin-helper.php:431
 #: classes/class-uagb-init-blocks.php:576
 msgid "Spectra"
 msgstr ""
@@ -59,7 +59,7 @@ msgid "Successfully saved data!"
 msgstr ""
 
 #: admin-core/ajax/common-settings.php:176
-#: classes/class-uagb-init-blocks.php:1065
+#: classes/class-uagb-init-blocks.php:1066
 msgid "No post data found!"
 msgstr ""
 
@@ -132,7 +132,7 @@ msgid "AI Features"
 msgstr ""
 
 #. translators: %1$s: Opening Strong Tag, %2$s: Closing Strong Tag, %3$s Anchor Tag with Star Symbol Codes.
-#: admin-core/inc/admin-menu.php:480
+#: admin-core/inc/admin-menu.php:501
 msgid "Enjoyed %1$sSpectra%2$s? Please leave us a %3$s rating. We really appreciate your support!"
 msgstr ""
 
@@ -7612,15 +7612,15 @@ msgstr ""
 msgid "Travel"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:429
+#: classes/class-uagb-admin-helper.php:439
 msgid "Astra Theme"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:433
+#: classes/class-uagb-admin-helper.php:443
 msgid "Filter added through any 3rd Party Theme/Plugin."
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:438
+#: classes/class-uagb-admin-helper.php:448
 msgid "Full Site Editor's Global Styles"
 msgstr ""
 
@@ -7769,7 +7769,7 @@ msgid ""
 "\t\t.my-class {text-align: center;} // my-class is a custom selector"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:865
+#: classes/class-uagb-init-blocks.php:866
 #: classes/class-uagb-rest-api.php:282
 #: classes/class-uagb-rest-api.php:297
 #: dist/blocks.js:1
@@ -7780,21 +7780,21 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:894
-#: classes/class-uagb-init-blocks.php:927
+#: classes/class-uagb-init-blocks.php:895
+#: classes/class-uagb-init-blocks.php:928
 #: dist/blocks.js:23
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:908
+#: classes/class-uagb-init-blocks.php:909
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:941
+#: classes/class-uagb-init-blocks.php:942
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:957
+#: classes/class-uagb-init-blocks.php:958
 msgid "Invalid request"
 msgstr ""
 
@@ -8864,7 +8864,7 @@ msgstr ""
 #: admin-core/assets/build/dashboard-app.js:3
 #: admin-core/assets/build/dashboard-app.js:5
 #: admin-core/assets/build/dashboard-app.js:9
-#: admin-core/assets/build/dashboard-app.js:12
+#: admin-core/assets/build/dashboard-app.js:13
 #: dist/blocks.js:11
 #: dist/blocks.js:19
 #: dist/blocks.js:23
@@ -9362,7 +9362,7 @@ msgid "Getting Started with 1000 Free Monthly Credits"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:9
-msgid "Build 10x faster with Spectra & ZipWP"
+msgid "Build 10x faster with Spectra AI"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:9
@@ -9435,7 +9435,7 @@ msgid "From the Team Behind Some Iconic WordPress Products"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:10
-msgid "Build 10x Faster with Spectra & ZipWP"
+msgid "Build 10x Faster with Spectra AI"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:11
@@ -9456,30 +9456,35 @@ msgid "This setting allows you to enable or disable the AI features on your webs
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:12
-msgid "ZipWP is Connected"
+msgid "AI is Connected"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:12
-msgid "Your website is connected with ZipWP. You can revoke this connection at any time."
+#. translators: %1$s: The opening span tag, %2$s: The team name, %3$s: The closing span tag
+#: admin-core/assets/build/dashboard-app.js:13
+msgid "Organization: %1$s%2$s%3$s"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:12
+#: admin-core/assets/build/dashboard-app.js:13
+msgid "Your website is connected with AI. You can revoke this connection at any time."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:13
 msgid "Revoke Access"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:12
+#: admin-core/assets/build/dashboard-app.js:13
 msgid "Are you sure you wish to revoke the authorization token?"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:12
-msgid "You will need to re-authorize Zip to use it again."
+#: admin-core/assets/build/dashboard-app.js:13
+msgid "You will need to re-authorize to use it again."
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:12
+#: admin-core/assets/build/dashboard-app.js:13
 msgid "Revoke"
 msgstr ""
 
-#: admin-core/assets/build/dashboard-app.js:12
+#: admin-core/assets/build/dashboard-app.js:13
 msgid "Default route fallback"
 msgstr ""
 
@@ -10716,36 +10721,43 @@ msgid "HTML Tag"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "div"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "header"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "footer"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "main"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "article"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "section"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "aside"
 msgstr ""
@@ -10763,6 +10775,7 @@ msgid "summary"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "nav"
 msgstr ""
@@ -11194,6 +11207,14 @@ msgstr ""
 
 #: dist/blocks.js:15
 msgid "Border Distance From EDGE"
+msgstr ""
+
+#: dist/blocks.js:15
+msgid "Image Role"
+msgstr ""
+
+#: dist/blocks.js:15
+msgid "Presentation"
 msgstr ""
 
 #: dist/blocks.js:15
@@ -11733,6 +11754,22 @@ msgstr ""
 
 #: dist/blocks.js:19
 msgid "call to action"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Accessibility Mode"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "SVG"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Decorative"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Accessibility Label"
 msgstr ""
 
 #: dist/blocks.js:19

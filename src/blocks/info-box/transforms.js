@@ -1,5 +1,6 @@
 import colourNameToHex from '@Controls/changeColorNameToHex';
 import { createBlock } from '@wordpress/blocks';
+import { getNumber, getUnit } from '@Utils/Helpers';
 
 
 const transforms = {
@@ -56,33 +57,6 @@ const transforms = {
       },
     ],
   };
-
-function getNumber( input ) {
-    const regex = /\d+(\.\d+)?/;
-    const match = input.match( regex );
-
-    if ( match ) {
-        const numberString = match[0];
-        const isFloat = numberString.includes( '.' );
-        return isFloat ? parseFloat( numberString ) : parseInt( numberString, 10 );
-    }
-
-    return parseInt( '' );
-}
-
-function getUnit( input ) {
-    const regex = /(px|em|rem)/;
-    const match = input.match( regex );
-    if ( match ) {
-        const unit = match[1];
-        if ( ['px', 'em'].includes( unit ) ) {
-            return unit;
-        } else if ( unit === 'rem' ) {
-            return 'em';
-        }
-    }
-    return 'px';
-}
   
   export default transforms;
   

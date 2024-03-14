@@ -95,5 +95,7 @@ return array_merge(
 		// For Global Block Styles.
 		'globalBlockStyleName'             => '',
 		'globalBlockStyleId'               => '',
+		'iconAccessabilityMode'            => '',
+		'iconAccessabilityDesc'            => '',
 	)
 );

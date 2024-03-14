@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.4.3
-Stable tag: 2.12.4
+Stable tag: 2.12.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -214,6 +214,23 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
 
 == Changelog ==
+
+= 2.12.5 - THURSDAY, 14th MARCH 2024 =
+* Feature: Transform to - Added transform to option from Core Cover to Spectra Container.
+* Feature: Transform to - Added transform to option from Core Separator, Page Break and Spacer to Spectra Separator.
+* Improvement: Buttons - Enabled aria-hidden and disabled focusable on the SVG inside the button.
+* Improvement: Image - Added an option to select the Image role for improved accessibility.
+* Improvement: Info Box - Added an element type option.
+* Improvement: Info Box - Added block margin settings.
+* Improvement: Call To Action - Added an element type option.
+* Improvement: Icon - Added an option to select the icon type for improved accessibility.
+* Improvement: Quick Action Bar - Added support for non-Spectra blocks.
+* Fix: Container - Resolved an issue wherein the animation would be delayed on page load.
+* Fix: Heading - Resolved an issue wherein the link color would not be correctly applied in the editor when added inside the loop builder with dynamic link enabled.
+* Fix: Image - Resolved an issue wherein the caption alignment would not work as intended.
+* Fix: FAQ - Resolved an issue wherein the answer section would have an extra bottom margin in the Astra theme.
+* Fix: Tabs - Resolved an issue wherein the block's static CSS would not update when file generation was off and only specific blocks were activated.
+* Fix: Global - Resolved an issue in which Twenty Twenty-Two themes running on PHP 8.1 would encounter a few PHP warnings.
 
 = 2.12.4 - WEDNESDAY, 28th FEBRUARY 2024 =
 * Improvement: Image - Added a title settings for images.

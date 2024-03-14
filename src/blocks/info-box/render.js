@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import { uagbClassNames } from '@Utils/Helpers';
 import InfoBoxPositionClasses from './style-classes';
 import { useEffect, useLayoutEffect, memo } from '@wordpress/element';
 import Title from './components/Title';
@@ -36,6 +36,11 @@ const Render = ( props ) => {
 		block_id,
 		imageWidthType,
 		imageWidth,
+		blockBottomMargin,
+		blockLeftMargin,
+		blockRightMargin,
+		blockTopMargin,
+		htmlTag,
 	} = attributes;
 	// Get icon/Image components.
 	let isImage = '';
@@ -44,6 +49,10 @@ const Render = ( props ) => {
 	} else {
 		isImage = <InfoBoxIconImage attributes={ attributes } />;
 	}
+
+	const marginVariables = [blockBottomMargin, blockLeftMargin, blockRightMargin, blockTopMargin];
+	const hasMargin = marginVariables.some( ( margin ) => typeof margin === 'number' );
+	const CustomTag = htmlTag || 'div';
 
 	let iconImageHtml = isImage;
 	let seperatorPos = seperatorPosition;
@@ -168,16 +177,8 @@ const Render = ( props ) => {
 		</>
 	);
 
-	return (
-		<div
-			className={ classnames(
-				`uagb-block-${ block_id }`,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				'uagb-infobox__content-wrap',
-				ctaType === 'all' ? ' uagb-infobox_cta-type-all' : '',
-				...InfoBoxPositionClasses( attributes )
-			) }
-		>
+	const ifbInnerContent = (
+		<>
 			{ ctaType === 'all' && (
 				<a // eslint-disable-line jsx-a11y/anchor-has-content
 					className={ 'uagb-infobox-link-wrap uagb-infbox__link-to-all' }
@@ -187,7 +188,31 @@ const Render = ( props ) => {
 				></a>
 			) }
 			{ output }
-		</div>
+		</>
 	);
+
+	return ( 
+		<CustomTag
+			className={ uagbClassNames( [
+				`uagb-block-${ block_id }`,
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+				'uagb-infobox__content-wrap',
+				ctaType === 'all' ? ' uagb-infobox_cta-type-all' : '',
+				...InfoBoxPositionClasses( attributes ),
+				hasMargin ? 'wp-block-uagb-info-box--has-margin' : '',
+			] ) }
+		>
+			{ hasMargin ? (
+			<div className='uagb-infobox-margin-wrapper'>
+				{ ifbInnerContent }
+			</div>
+			)  : (
+			<>
+				{ ifbInnerContent }
+			</>
+			) }
+		</CustomTag>
+	);
+	  
 };
 export default memo( Render );

@@ -210,7 +210,15 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			'color': linkColor,
 			...gradientLinkColor,
 		},
+		'.wp-block-uagb-advanced-heading span': {
+			'color': linkColor,
+			...gradientLinkColor,
+		},
 		'.wp-block-uagb-advanced-heading a:hover': {
+			'color': linkHColor,
+			...gradientLinkHoverColor,
+		},
+		'.wp-block-uagb-advanced-heading span:hover': {
 			'color': linkHColor,
 			...gradientLinkHoverColor,
 		},

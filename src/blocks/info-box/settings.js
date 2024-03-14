@@ -198,6 +198,7 @@ const Settings = ( props ) => {
 		showDesc,
 		spacingLink,
 		paddingspacingLink,
+		htmlTag,
 		headTransform,
 		headDecoration,
 		headLetterSpacing,
@@ -286,7 +287,24 @@ const Settings = ( props ) => {
 		iconBackgroundColor,
 		iconBackgroundHoverColor,
 		iconBorderWidth,
-
+		
+		// margin
+		blockTopMargin,
+		blockRightMargin,
+		blockLeftMargin,
+		blockBottomMargin,
+		blockTopMarginTablet,
+		blockRightMarginTablet,
+		blockLeftMarginTablet,
+		blockBottomMarginTablet,
+		blockTopMarginMobile,
+		blockRightMarginMobile,
+		blockLeftMarginMobile,
+		blockBottomMarginMobile,
+		blockMarginUnit,
+		blockMarginUnitTablet,
+		blockMarginUnitMobile,
+		blockMarginLink,
 		// padding
 		blockTopPadding,
 		blockRightPadding,
@@ -489,6 +507,48 @@ const Settings = ( props ) => {
 	const typographySettings = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+				<UAGSelectControl
+						label={ __( 'HTML Tag', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							value: htmlTag,
+							label: 'htmlTag',
+						} }
+						setAttributes={ setAttributes }
+						options={ [
+							{
+								value: 'div',
+								label: __( 'div', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'header',
+								label: __( 'header', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'footer',
+								label: __( 'footer', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'main',
+								label: __( 'main', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'article',
+								label: __( 'article', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'section',
+								label: __( 'section', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'aside',
+								label: __( 'aside', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'nav',
+								label: __( 'nav', 'ultimate-addons-for-gutenberg' ),
+							},
+						] }
+					/>
 				{ ( false === showIcon ||
 					( iconimgPosition &&
 						( iconimgPosition === 'above-title' || iconimgPosition === 'below-title' ) ) ) && (
@@ -2225,6 +2285,76 @@ const Settings = ( props ) => {
 					link={ {
 						value: blockPaddingLink,
 						label: 'blockPaddingLink',
+					} }
+				/>
+				<SpacingControl
+					label={ __( 'Margin', 'ultimate-addons-for-gutenberg' ) }
+					valueTop={ {
+						value: blockTopMargin,
+						label: 'blockTopMargin',
+					} }
+					valueRight={ {
+						value: blockRightMargin,
+						label: 'blockRightMargin',
+					} }
+					valueBottom={ {
+						value: blockBottomMargin,
+						label: 'blockBottomMargin',
+					} }
+					valueLeft={ {
+						value: blockLeftMargin,
+						label: 'blockLeftMargin',
+					} }
+					valueTopTablet={ {
+						value: blockTopMarginTablet,
+						label: 'blockTopMarginTablet',
+					} }
+					valueRightTablet={ {
+						value: blockRightMarginTablet,
+						label: 'blockRightMarginTablet',
+					} }
+					valueBottomTablet={ {
+						value: blockBottomMarginTablet,
+						label: 'blockBottomMarginTablet',
+					} }
+					valueLeftTablet={ {
+						value: blockLeftMarginTablet,
+						label: 'blockLeftMarginTablet',
+					} }
+					valueTopMobile={ {
+						value: blockTopMarginMobile,
+						label: 'blockTopMarginMobile',
+					} }
+					valueRightMobile={ {
+						value: blockRightMarginMobile,
+						label: 'blockRightMarginMobile',
+					} }
+					valueBottomMobile={ {
+						value: blockBottomMarginMobile,
+						label: 'blockBottomMarginMobile',
+					} }
+					valueLeftMobile={ {
+						value: blockLeftMarginMobile,
+						label: 'blockLeftMarginMobile',
+					} }
+					unit={ {
+						value: blockMarginUnit,
+						label: 'blockMarginUnit',
+					} }
+					mUnit={ {
+						value: blockMarginUnitMobile,
+						label: 'blockMarginUnitMobile',
+					} }
+					tUnit={ {
+						value: blockMarginUnitTablet,
+						label: 'blockMarginUnitTablet',
+					} }
+					deviceType={ deviceType }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+					link={ {
+						value: blockMarginLink,
+						label: 'blockMarginLink',
 					} }
 				/>
 			</UAGAdvancedPanelBody>

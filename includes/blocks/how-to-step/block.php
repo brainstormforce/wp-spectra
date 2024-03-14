@@ -13,6 +13,7 @@ $block_data = array(
 	'title'          => __( 'Step', 'ultimate-addons-for-gutenberg' ),
 	'description'    => __( 'Add relevant content for this step.', 'ultimate-addons-for-gutenberg' ),
 	'default'        => true,
+	'is_child'       => true,
 	'dynamic_assets' => array(
 		'dir' => 'how-to-step',
 	),

@@ -35,6 +35,66 @@ export function getPanelIdFromRef( ref ) {
 	return null;
 }
 
+export function getNumber( input ) {
+    if ( input.includes( '#' ) ) {
+        // Handeling special case for padding controls
+        return '';
+    }
+    const regex = /\d+(\.\d+)?/;
+    const match = input.match( regex );
+
+    if ( match ) {
+        const numberString = match[0];
+        const isFloat = numberString.includes( '.' );
+        return isFloat ? parseFloat( numberString ) : parseInt( numberString, 10 );
+    }
+    return parseInt( '' );
+}
+
+export function getUnit( input ) {
+    if ( typeof input !== 'string' ) {
+        return 'px';
+    }
+    const regex = /(px|em|rem|%)/;
+    const match = input.match( regex );
+    if ( match ) {
+        const unit = match[0];
+        if ( ['px', 'em', '%'].includes( unit ) ) {
+            return unit;
+        } else if ( unit === 'rem' ) {
+            return 'em';
+        }
+    }
+    return 'px';
+}
+
+export function getUnitDimension( input ) {
+    const regex = /(px|%)$/;
+    const match = input.match( regex );
+    if ( match ) {
+        return match[1];
+    }
+    return 'px';
+}
+
+export function convertToPixel( lengthString ) {
+    const regex = /\bspacing\s*\|\s*(\d+)\b/;
+    const noUnitSlider = lengthString.match( regex );
+    if( noUnitSlider ){
+        return parseInt( noUnitSlider[1] );
+    }
+    const match = lengthString.match( /^(\d+(\.\d+)?)\s*(px|rem|em)$/i );
+    return match ? parseFloat( match[1] ) * ( match[3].toLowerCase() === 'rem' || match[3].toLowerCase() === 'em' ? 16 : 1 ) : 10;
+}
+
+export function parseHeightAttributes( value ) {
+    const parts = value ? value.split( '|' ) : [];
+    const variablePart = parts.length === 3 ? parts[2].trim() : '';
+  
+    return variablePart;
+  }
+  
+
 export const uagbClassNames = ( classes ) => ( classes.filter( Boolean ).join( ' ' ) );
 
 /**

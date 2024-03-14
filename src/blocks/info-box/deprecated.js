@@ -26,6 +26,8 @@ import newAttributesV2_10_1 from './deprecated/v2_10_1/attributes';
 import newSaveV2_10_1 from './deprecated/v2_10_1/save';
 import newAttributesV2_11_0 from './deprecated/v2_11_0/attributes';
 import newSaveV2_11_0 from './deprecated/v2_11_0/save';
+import newAttributesV2_12_4 from './deprecated/v2_12_4/attributes';
+import newSaveV2_12_4 from './deprecated/v2_12_4/save';
 import InfoBoxIconImageNewVer from './components/DeprecatedIconImagesV_2_0_13';
 import AttributesNewVer from './attributes';
 import InfoBoxSeparatorNewVer from './components/Separator';
@@ -1982,6 +1984,10 @@ const deprecated = [
 	{
 		attributes: newAttributesV2_11_0,
 		save: newSaveV2_11_0,
+	},
+	{
+		attributes: newAttributesV2_12_4,
+		save: newSaveV2_12_4,
 	}
 ];
 
