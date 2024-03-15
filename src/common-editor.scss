@@ -90,6 +90,10 @@
 	.block-editor-block-list__block:not( [contenteditable] ):focus::after {
 		box-shadow: 0 0 0 1.5px $spectra-color-primary;
 		border-radius: 2px;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
 	}
 
 	.block-editor-block-list__block:not( [contenteditable] ):focus {
@@ -97,10 +101,14 @@
 	}
 }
 
+.edit-post-visual-editor .editor-styles-wrapper > .block-editor-block-list__layout .block-editor-block-list__block:hover::after,
+.ast-highlight-wpblock-onhover .edit-post-visual-editor .editor-styles-wrapper > .block-editor-block-list__layout .block-editor-block-list__block:not(.editor-post-title__input):hover,
+.edit-post-visual-editor .editor-styles-wrapper > .block-editor-block-list__layout .block-editor-block-list__block.is-selected:not([contenteditable]):focus::after,
 .block-editor-block-list__layout .block-editor-block-list__block.is-selected {
 	// Added CSS for better clarity to the users to indicates which block is selected & being edited.
-	box-shadow: 0 0 0 1.5px $spectra-color-primary;
+	outline: 1.5px solid $spectra-color-primary;
 	border-radius: 2px;
+	box-shadow: none;
 }
 
 /* UAG Control Label CSS*/

@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Fix: Global - Resolved an issue in the editor wherein a double border would appear on hover or focus of blocks used inside any block.
 
 = 2.12.5 - THURSDAY, 14th MARCH 2024 =
 * Feature: Transform to - Added transform to option from Core Cover to Spectra Container.
