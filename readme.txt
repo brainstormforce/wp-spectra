@@ -218,6 +218,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 = x.x.x =
 * Improvement: Heading - Added an element type option.
 * Fix: Google Maps - Resolved an issue in which the responsive height would not be correctly applied in the editor.
+* Fix: Global - Resolved an issue wherein the typography component would not use the values for tablet and mobile when in the customizer widget editor.
 * Fix: Global - Resolved an issue in the editor wherein a double border would appear on hover or focus of blocks used inside any block.
 
 = 2.12.5 - THURSDAY, 14th MARCH 2024 =
