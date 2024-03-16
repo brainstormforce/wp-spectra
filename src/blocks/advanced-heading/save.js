@@ -18,7 +18,10 @@ export default function save( props ) {
 		headingId,
 		seperatorPosition,
 		headingDescPosition,
+		headingWrapper,
 	} = props.attributes;
+
+	const Element = headingWrapper || 'div';
 
 	let seprator = '';
 	if ( seperatorStyle !== 'none' ) {
@@ -52,11 +55,11 @@ export default function save( props ) {
 	}
 
 	return (
-		<div className={ classnames( props.className, `uagb-block-${ block_id }` ) }>
+		<Element className={ classnames( props.className, `uagb-block-${ block_id }` ) }>
 			{ headingDescToggle && 'above-heading' === headingDescPosition ? descText : '' }
 			{ headingTitleToggle && headingText }
 			{ headingDescToggle && 'below-heading' === headingDescPosition ? descText : '' }
 			{ ! headingDescToggle && ! headingTitleToggle ? seprator : '' }
-		</div>
+		</Element>
 	);
 }
