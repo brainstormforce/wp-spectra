@@ -126,6 +126,10 @@
 
 .uagb-inspector-tab label.components-toggle-control__label {
 	margin-bottom: 0;
+
+	&:hover {
+		cursor: pointer;
+	}
 }
 
 /* Editor panel sidebar - scrollbar design CSS start */
