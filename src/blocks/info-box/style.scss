@@ -94,7 +94,7 @@ a.uagb-infobox-link-wrap,
 .uagb-infobox-icon-above-title.uagb-infobox__content-wrap,
 .uagb-infobox-icon-below-title.uagb-infobox__content-wrap {
 	display: block;
-	width: auto;
+	width: 100%;
 }
 
 /* Left/Right of Title */
@@ -501,4 +501,10 @@ a.uagb-infbox__link-to-all {
 
 .uagb-disable-link {
 	pointer-events: none;
+}
+
+@media only screen and (min-width: 977px) {
+	.uagb-infobox-margin-wrapper {
+		display: flex;
+	}
 }

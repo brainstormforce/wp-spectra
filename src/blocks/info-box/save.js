@@ -33,6 +33,14 @@ export default function save( props ) {
 		blockLeftMargin,
 		blockRightMargin,
 		blockTopMargin,
+		blockBottomMarginTablet,
+		blockLeftMarginTablet,
+		blockRightMarginTablet,
+		blockTopMarginTablet,
+		blockBottomMarginMobile,
+		blockLeftMarginMobile,
+		blockRightMarginMobile,
+		blockTopMarginMobile,
 		htmlTag,
 	} = attributes;
 
@@ -47,7 +55,7 @@ export default function save( props ) {
 		isImage = <InfoBoxIconImage attributes={ attributes } />;
 	}
 
-	const marginVariables = [blockBottomMargin, blockLeftMargin, blockRightMargin, blockTopMargin];
+	const marginVariables = [ blockBottomMargin, blockLeftMargin, blockRightMargin, blockTopMargin, blockBottomMarginTablet, blockLeftMarginTablet, blockRightMarginTablet, blockTopMarginTablet, blockBottomMarginMobile, blockLeftMarginMobile, blockRightMarginMobile, blockTopMarginMobile, ];
 	const hasMargin = marginVariables.some( ( margin ) => typeof margin === 'number' );
 	
 	let iconImageHtml = isImage;
