@@ -43,6 +43,7 @@ const Settings = ( props ) => {
 		subHeadSpaceType,
 		separatorColor,
 		headingTag,
+		headingWrapper,
 		headFontFamily,
 		headFontWeight,
 		headFontStyle,
@@ -304,6 +305,7 @@ const Settings = ( props ) => {
 					onChange={ () => setAttributes( { headingTitleToggle: ! headingTitleToggle } ) }
 				/>
 				{ headingTitleToggle && (
+				<>
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
 						label={ __( 'Heading Tag', 'ultimate-addons-for-gutenberg' ) }
@@ -346,6 +348,26 @@ const Settings = ( props ) => {
 							},
 						] }
 					/>
+
+					<MultiButtonsControl
+						setAttributes={ setAttributes }
+						label={ __( 'Heading Wrapper', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							value: headingWrapper,
+							label: 'headingWrapper',
+						} }
+						options={ [
+							{
+								value: 'div',
+								label: __( 'Div', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'header',
+								label: __( 'Header', 'ultimate-addons-for-gutenberg' ),
+							},
+						] }
+					/>
+				</>
 				) }
 			</UAGAdvancedPanelBody>
 		);

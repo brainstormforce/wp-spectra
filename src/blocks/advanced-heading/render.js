@@ -12,11 +12,13 @@ const Render = ( props ) => {
 			seperatorStyle,
 			seperatorPosition,
 			headingDescPosition,
+			headingWrapper,
 		},
 		className,
 		deviceType
 	} = props;
 
+	const Element = headingWrapper || 'div';
 	const separator = seperatorStyle !== 'none' && (
 		<div className="uagb-separator-wrap">
 			<div className="uagb-separator"></div>
@@ -40,7 +42,7 @@ const Render = ( props ) => {
 	);
 
 	return (
-		<div
+		<Element
 			className={ uagbClassNames( [
 				className,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
@@ -51,7 +53,7 @@ const Render = ( props ) => {
 			{ headingTitleToggle && headingText }
 			{ headingDescToggle && 'below-heading' === headingDescPosition ? descText : '' }
 			{ ! headingDescToggle && ! headingTitleToggle ? separator : '' }
-		</div>	
+		</Element>	
 	);
 };
 export default memo( Render );

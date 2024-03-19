@@ -31,6 +31,11 @@
 		.uagb-reset {
 			padding: 0;
 
+			&.is-pressed,
+			&:focus:not(:disabled) {
+				border: 0;
+			}
+
 			&:only-child,
 			&:disabled {
 				margin-right: 0;
@@ -60,6 +65,11 @@
 				width: 100%;
 				cursor: pointer;
 				padding-right: 5px;
+
+				&.is-pressed,
+				&:focus:not(:disabled) {
+					border: 0;
+				}
 
 				&:first-child {
 					padding-left: 10px;

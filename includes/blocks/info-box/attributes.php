@@ -202,7 +202,8 @@ return array_merge(
 		'separatorMarginLeftMobile'  => '',
 		'separatorMobileMarginUnit'  => 'px',
 		'separatorTabletMarginUnit'  => 'px',
-
+		'stack'                      => 'tablet',
+		
 		'subHeadTabletSpace'         => '',
 		'subHeadMobileSpace'         => '',
 		'subHeadSpaceUnit'           => 'px',

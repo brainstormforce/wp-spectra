@@ -2,8 +2,7 @@
  * WordPress dependencies
  */
 import Range from '@Components/range/Range.js';
-// Extend component
-import { useSelect } from '@wordpress/data';
+import { useDeviceType } from '@Controls/getPreviewType';
 /**
  * Build the Measure controls
  *
@@ -11,9 +10,7 @@ import { useSelect } from '@wordpress/data';
  * @return {Object} Measure settings.
  */
 export default function RangeTypographyControl( props ) {
-	const deviceType = useSelect( ( select ) => {
-		return select( 'core/edit-post' )?.__experimentalGetPreviewDeviceType();
-	}, [] );
+	const deviceType = useDeviceType();
 
 	const {
 		sizeText,

@@ -25,6 +25,10 @@
 			-moz-border-radius: 0 $spectra-control-border-radius $spectra-control-border-radius 0;
 			border-radius: 0 $spectra-control-border-radius $spectra-control-border-radius 0;
 		}
+
+		&:focus:not(:disabled) {
+			border: 0;
+		}
 	}
 
 	button.uagb-multi-button.is-secondary {
