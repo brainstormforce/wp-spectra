@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= 2.12.6 - MONDAY, 18th MARCH 2024 =
+= 2.12.6 - TUESDAY, 19th MARCH 2024 =
 * Improvement: Heading - Added an element type option.
 * Improvement: Global - Added a filter `uagb_asset_version` to update the asset version for cache busting purposes.
 * Fix: Google Maps - Resolved an issue in which the responsive height would not be correctly applied in the editor.

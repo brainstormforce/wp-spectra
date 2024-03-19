@@ -422,7 +422,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		},
 		' .uagb-forms-main-form .uagb-forms-input:focus': {
 			'outline': ' none !important',
-			'border': '2px solid ' + fieldBorderHColor,
+			'border': fieldBorderHColor,
 			'background-color': `${ bgActiveColor } !important`,
 		},
 		' .uagb-forms-main-form .components-select-control__input:focus': {
