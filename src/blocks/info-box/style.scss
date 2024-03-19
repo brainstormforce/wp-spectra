@@ -502,3 +502,9 @@ a.uagb-infbox__link-to-all {
 .uagb-disable-link {
 	pointer-events: none;
 }
+
+@media only screen and (min-width: 977px) {
+	.uagb-infobox-margin-wrapper {
+		display: flex;
+	}
+}

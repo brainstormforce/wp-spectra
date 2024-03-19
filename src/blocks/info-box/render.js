@@ -40,6 +40,14 @@ const Render = ( props ) => {
 		blockLeftMargin,
 		blockRightMargin,
 		blockTopMargin,
+		blockBottomMarginTablet,
+		blockLeftMarginTablet,
+		blockRightMarginTablet,
+		blockTopMarginTablet,
+		blockBottomMarginMobile,
+		blockLeftMarginMobile,
+		blockRightMarginMobile,
+		blockTopMarginMobile,
 		htmlTag,
 	} = attributes;
 	// Get icon/Image components.
@@ -50,7 +58,7 @@ const Render = ( props ) => {
 		isImage = <InfoBoxIconImage attributes={ attributes } />;
 	}
 
-	const marginVariables = [blockBottomMargin, blockLeftMargin, blockRightMargin, blockTopMargin];
+	const marginVariables = [ blockBottomMargin, blockLeftMargin, blockRightMargin, blockTopMargin, blockBottomMarginTablet, blockLeftMarginTablet, blockRightMarginTablet, blockTopMarginTablet, blockBottomMarginMobile, blockLeftMarginMobile, blockRightMarginMobile, blockTopMarginMobile, ];
 	const hasMargin = marginVariables.some( ( margin ) => typeof margin === 'number' );
 	const CustomTag = htmlTag || 'div';
 

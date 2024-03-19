@@ -15,10 +15,9 @@ const Render = ( props ) => {
 
 	const {
 		className,
-		attributes: { zoom, address, language, height },
+		attributes: { zoom, address, language, height, block_id },
 		deviceType,
 		name,
-		block_id
 	} = props;
 
 	const blockName = name.replace( 'uagb/', '' );

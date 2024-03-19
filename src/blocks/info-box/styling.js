@@ -151,6 +151,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		headDecoration,
 		subHeadTransform,
 		subHeadDecoration,
+		stack,
 
 		prefixFontStyle,
 		headFontStyle,
@@ -703,6 +704,26 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			'line-height': generateCSSUnit( iconSizeFallbackMobile, iconSizeType ),
 		},
 	};
+
+	if( iconimgPosition === 'left' || iconimgPosition === 'right' ) {
+		if( stack === 'none' ) {
+			tabletSelectors[ ' .uagb-infobox-margin-wrapper' ] = {
+				'display': 'flex',
+			}
+			mobileSelectors[ ' .uagb-infobox-margin-wrapper' ] = {
+				'display': 'flex',
+			}
+		} else if( stack === 'mobile' ) {
+			tabletSelectors[ ' .uagb-infobox-margin-wrapper' ] = {
+				'display': 'flex',
+			}
+			mobileSelectors[ ' .uagb-infobox-margin-wrapper' ] = {
+				'display': 'block',
+			}
+		}
+	}
+
+	
 
 	if ( iconimgPosition === 'above-title' ) {
 		selectors[ '.uagb-infobox-icon-above-title' ] = {

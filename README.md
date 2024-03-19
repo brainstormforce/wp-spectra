@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.4.3  
-**Stable tag:** 2.12.5  
+**Stable tag:** 2.12.6  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -215,6 +215,16 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+<<<<<<< HEAD
+=======
+### 2.12.6 - TUESDAY, 19th MARCH 2024 ###
+* Improvement: Heading - Added an element type option.
+* Improvement: Global - Added a filter `uagb_asset_version` to update the asset version for cache busting purposes.
+* Fix: Google Maps - Resolved an issue in which the responsive height would not be correctly applied in the editor.
+* Fix: Global - Resolved an issue wherein the typography component would not use the values for tablet and mobile when in the customizer widget editor.
+* Fix: Global - Resolved an issue in the editor wherein a double border would appear on hover or focus of blocks used inside any block.
+
+>>>>>>> f96b2a1e415a8e267d9277f39b55d4400b785fd0
 ### 2.12.5 - THURSDAY, 14th MARCH 2024 ###
 * Feature: Transform to - Added transform to option from Core Cover to Spectra Container.
 * Feature: Transform to - Added transform to option from Core Separator, Page Break and Spacer to Spectra Separator.
