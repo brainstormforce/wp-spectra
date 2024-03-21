@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Improvement: Buttons - Added an inherit-gap-from-theme option.
 
 = 2.12.6 - TUESDAY, 19th MARCH 2024 =
 * Improvement: Heading - Added an element type option.
