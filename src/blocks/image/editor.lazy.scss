@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .uagb-inspector-tab {
 	&.uagb-tab-content-general {
 		.uag-advance-panel-body-image {
@@ -134,6 +136,14 @@
 			.components-button {
 				margin-right: 10px;
 			}
+		}
+	}
+
+	.block-editor-media-placeholder__url-input-container {
+		.components-button.is-pressed:hover:not(:disabled),
+		.components-button.is-pressed {
+			background-color: $spectra-color-plain-background;
+
 		}
 	}
 }

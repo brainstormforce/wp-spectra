@@ -1,5 +1,7 @@
 /* --------- Common Popup Used In The Settings Panel --------- */
 
+@import "./variables";
+
 .spectra-control-popup {
 	position: relative;
 	top: $spectra-control-popup-vertical-gap;
@@ -71,6 +73,11 @@
 				&:focus:not( :disabled ) {
 					box-shadow: none;
 					outline: none;
+
+					&.is-pressed {
+						box-shadow: none;
+						outline: none;
+					}
 				}
 
 				&:hover {
@@ -82,6 +89,12 @@
 		&.active {
 			.spectra-control-popup__options--action-button {
 				color: $spectra-color-primary;
+				background-color: $spectra-color-plain-background;
+
+				&:hover {
+					color: $spectra-color-primary;
+					background-color: $spectra-color-plain-background;
+				}
 			}
 		}
 	}
