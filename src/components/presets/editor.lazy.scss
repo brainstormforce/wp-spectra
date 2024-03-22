@@ -11,6 +11,10 @@
 	.uag-presets-radio-input-label {
 		position: relative;
 		display: inline-block;
+
+		&:hover {
+			cursor: pointer;
+		}
 	}
 
 	svg {
