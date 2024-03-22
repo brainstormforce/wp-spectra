@@ -217,6 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = x.x.x =
 * Improvement: Buttons - Added an inherit-gap-from-theme option.
+* Fix: Container - Resolved an issue wherein the 'open in new window' option would not be available when Spectra Pro is actived.
 
 = 2.12.6 - TUESDAY, 19th MARCH 2024 =
 * Improvement: Heading - Added an element type option.
