@@ -219,6 +219,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Added compatibility with WordPress v6.5.
 * Improvement: Buttons - Added an inherit-gap-from-theme option.
 * Fix: Container - Resolved an issue wherein the 'open in new window' option would not be available when Spectra Pro is actived.
+* Fix: Icon - Resolved an issue wherein icon links for 'tel' and 'mailto' would not work as intended.
 
 ### 2.12.6 - TUESDAY, 19th MARCH 2024 ###
 * Improvement: Heading - Added an element type option.
