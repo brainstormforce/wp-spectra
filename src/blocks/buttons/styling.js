@@ -252,6 +252,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		};
 		selectors[ '.uagb-editor-preview-mode-desktop .block-editor-block-list__layout' ] = {
 			'align-items': vAlign,
+			'justify-content': align,
 		};
 	} else {
 		selectors[ '.uagb-editor-preview-mode-desktop .block-editor-block-list__layout' ] = {
@@ -268,6 +269,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		};
 		tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-block-list__layout' ] = {
 			'align-items': vAlign,
+			'justify-content':alignTablet,
 		};
 	} else {
 		tabletSelectors[ '.uagb-editor-preview-mode-tablet .block-editor-block-list__layout' ] = {
@@ -288,6 +290,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		};
 		mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
 			'align-items': vAlign,
+			'justify-content':alignMobile,
 		};
 	} else {
 		mobileSelectors[ '.uagb-editor-preview-mode-mobile .block-editor-block-list__layout' ] = {
