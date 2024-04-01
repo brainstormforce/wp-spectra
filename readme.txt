@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+* Fix: Counter - Resolved an issue wherein the total number resets to default on end number change. 
+
 = 2.12.7 - TUESDAY, 26th MARCH 2024 =
 * Improvement: Added compatibility with WordPress v6.5.
 * Improvement: Buttons - Added an inherit-gap-from-theme option.

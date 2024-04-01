@@ -289,9 +289,9 @@ export default function Settings( props ) {
 		}
 	}, [ startNumber, endNumber ] );
 
-	// If total number is more than minTotal, set it to minTotal.
+	// If total number is more than endnumber, set it to minTotal.
 	useEffect( () => {
-		if ( totalNumber < minTotal ) {
+		if ( totalNumber < endNumber && startNumber < endNumber ) {
 			setAttributes( { totalNumber: minTotal } );
 		}
 	}, [ minTotal ] );
