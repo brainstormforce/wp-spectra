@@ -217,6 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ### x.x.x ###
 * Improvement: Google Maps - Added a toggle to switch between Roadmap View and Satellite View.
+* Fix: Container - Resolved an issue wherein the link control content and edit icon would overflow out-of-screen after entering lengthy URLs.
 * Fix: Counter - Resolved an issue wherein the total number resets to default on end number change. 
 
 ### 2.12.7 - TUESDAY, 26th MARCH 2024 ###
