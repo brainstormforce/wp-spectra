@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
+* Improvement: Google Maps - Added a toggle to switch between Roadmap View and Satellite View.
 * Fix: Counter - Resolved an issue wherein the total number resets to default on end number change. 
 
 ### 2.12.7 - TUESDAY, 26th MARCH 2024 ###

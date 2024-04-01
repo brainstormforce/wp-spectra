@@ -15,7 +15,7 @@ const Render = ( props ) => {
 
 	const {
 		className,
-		attributes: { zoom, address, language, height, block_id },
+		attributes: { zoom, address, language, height, block_id, enableSatelliteView, },
 		deviceType,
 		name,
 	} = props;
@@ -24,8 +24,9 @@ const Render = ( props ) => {
 
 	const encoded_address = encodeURI( address );
 	const lang_par = language ? language : 'en';
+	const mapType = enableSatelliteView ? 'k' : 'm';
 
-	const url = `https://maps.google.com/maps?q=${ encoded_address }&z=${ getFallbackNumber( zoom, 'zoom', blockName ) }&hl=${ lang_par }&t=m&output=embed&iwloc=near`;
+	const url = `https://maps.google.com/maps?q=${ encoded_address }&z=${ getFallbackNumber( zoom, 'zoom', blockName ) }&hl=${ lang_par }&t=${ mapType }&output=embed&iwloc=near`;
 
 	return (
 		<div

@@ -14,9 +14,10 @@ const UAGBGoogleMap = ( props ) => {
 	const {
 		isSelected,
 		attributes,
-		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
+		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob, enableSatelliteView, zoom },
 		name,
-		deviceType
+		deviceType,
+		setAttributes,
 	} = props;
 
 	const blockStyling = useMemo( () => styling( attributes, name, deviceType ), [ attributes, deviceType ] );
@@ -28,6 +29,14 @@ const UAGBGoogleMap = ( props ) => {
 	useEffect( () => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
+
+	useEffect( () => {
+
+		if( enableSatelliteView && zoom === 22 ) {
+			setAttributes( { zoom: 21 } );
+		}
+		
+	}, [ enableSatelliteView] );
 
 	return (
 		<>
