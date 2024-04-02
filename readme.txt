@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = 2.12.7 - TUESDAY, 26th MARCH 2024 =
+* Security Fix: Hardened the security of the plugin. Props: Wordfence.
 * Improvement: Added compatibility with WordPress v6.5.
 * Improvement: Buttons - Added an inherit-gap-from-theme option.
 * Fix: Container - Resolved an issue wherein the 'open in new window' option would not be available when Spectra Pro is actived.

@@ -176,15 +176,15 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 
 				$block_dir = $main_dir . 'includes/blocks/' . $blocks[ $slug ]['dir'];
 
-				$assets_file = $block_dir . '/frontend.' . $type . '.php';
+				$assets_file = realpath( $block_dir . '/frontend.' . $type . '.php' );
 
-				if ( file_exists( $assets_file ) ) {
+				if ( is_string( $assets_file ) && file_exists( $assets_file ) ) {
 
 					
 					// Set default attributes.
-					$attr_file = $block_dir . '/attributes.php';
+					$attr_file = realpath( $block_dir . '/attributes.php' );
 					
-					if ( file_exists( $attr_file ) ) {
+					if ( is_string( $attr_file ) && file_exists( $attr_file ) ) {
 						
 						$default_attr = include $attr_file;
 						
