@@ -7,7 +7,9 @@ import { InnerBlocks } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { className } = props;
-	const { block_id, buttonSize, buttonSizeTablet, buttonSizeMobile } = props.attributes;
+	const { block_id, buttonSize, buttonSizeTablet, buttonSizeMobile, inheritGap, } = props.attributes;
+
+	const inheritGapClass = inheritGap ? 'is-layout-flex' : '';
 
 	return (
 		<div
@@ -20,7 +22,7 @@ export default function save( props ) {
 				`uagb-block-${ block_id }`,
 			) }
 		>
-			<div className="uagb-buttons__wrap uagb-buttons-layout-wrap">
+			<div className={`uagb-buttons__wrap uagb-buttons-layout-wrap ${inheritGapClass}`}>
 				<InnerBlocks.Content />
 			</div>
 		</div>

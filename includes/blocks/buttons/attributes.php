@@ -43,6 +43,7 @@ return array(
 	'gap'                     => 10,
 	'gapTablet'               => '',
 	'gapMobile'               => '',
+	'inheritGap'              => false,
 	'stack'                   => 'none',
 	'fontFamily'              => '',
 	'fontWeight'              => '',

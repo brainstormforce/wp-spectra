@@ -1,10 +1,10 @@
 import classnames from 'classnames';
-import { InnerBlocks } from '@wordpress/block-editor';
+import { useInnerBlocksProps } from '@wordpress/block-editor';
 import { useLayoutEffect, useMemo, memo } from '@wordpress/element';
 
 import styles from './editor.lazy.scss';
 
-const ALLOWED_BLOCKS = [ 'uagb/buttons-child' ];
+const AllowedBlocks = [ 'uagb/buttons-child' ];
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -16,7 +16,17 @@ const Render = ( props ) => {
 	}, [] );
 
 	const { attributes, deviceType } = props;
-	const { className, btn_count, buttons, stack, buttonSize, buttonSizeTablet, buttonSizeMobile, block_id } = attributes;
+	const { 
+		className,
+		btn_count,
+		buttons,
+		stack,
+		buttonSize,
+		buttonSizeTablet,
+		buttonSizeMobile,
+		block_id,
+		inheritGap,
+	} = attributes;
 
 	const getButtonTemplate = useMemo( () => {
 		const childButtons = [];
@@ -27,6 +37,21 @@ const Render = ( props ) => {
 
 		return childButtons;
 	}, [ btn_count, buttons ] );
+
+	const moverDirection = 'desktop' === stack ? 'vertical' : 'horizontal';
+	const innerBlockOptions = {
+		template: getButtonTemplate,
+		templateLock: false,
+		allowedBlocks: AllowedBlocks,
+		__experimentalMoverDirection: moverDirection,
+	};
+
+	const innerBlocksProps = useInnerBlocksProps(
+		{
+			className: inheritGap ? 'is-layout-flex' : '',
+		},
+		innerBlockOptions
+	);
 
 	return (
 		<div
@@ -41,12 +66,9 @@ const Render = ( props ) => {
 			) }
 		>
 			<div className={ classnames( 'uagb-buttons__wrap', `uagb-buttons-stack-${ stack }` ) }>
-				<InnerBlocks
-					template={ getButtonTemplate }
-					templateLock={ false }
-					allowedBlocks={ ALLOWED_BLOCKS }
-					__experimentalMoverDirection={ 'desktop' === stack ? 'vertical' : 'horizontal' }
-				/>
+				<div className='block-editor-inner-blocks'>
+					<div {...innerBlocksProps}/>
+				</div>
 			</div>
 		</div>
 	);

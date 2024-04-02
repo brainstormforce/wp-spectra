@@ -24,6 +24,7 @@ export default function save( props ) {
 		backgroundVideo,
 		topInvert,
 		bottomInvert,
+		linkTarget,
 	} = props.attributes;
 
 	const topDividerHtml = 'none' !== topType && (
@@ -64,22 +65,27 @@ export default function save( props ) {
 	const CustomTag = 'a' === htmlTag ? 'div' : `${ htmlTag }`;
 	const customTagLinkAttributes = {};
 	if ( htmlTag === 'a' ) {
-        customTagLinkAttributes.rel = 'noopener';
-        if ( isPro ) {
-            if ( htmlTagLink?.url ) {
-                customTagLinkAttributes.href = htmlTagLink?.url;
-            }
-        } else {
-            if ( htmlTagLink?.url ) {
-                customTagLinkAttributes.href = htmlTagLink?.url;
-            }
-            if ( htmlTagLink?.opensInNewTab ) {
-                customTagLinkAttributes.target = '_blank';
-            }
-            if ( htmlTagLink?.noFollow ) {
-                customTagLinkAttributes.rel = 'nofollow noopener';
-            }
-        }
+		customTagLinkAttributes.rel = 'noopener';
+		if ( isPro ) {
+			if ( linkTarget ) {
+				customTagLinkAttributes.target = '_blank';
+			}
+			if ( htmlTagLink?.url ) {
+				customTagLinkAttributes.href = htmlTagLink?.url;
+			} else if ( htmlTagLink && ! htmlTagLink?.url ) {
+				customTagLinkAttributes.href = htmlTagLink;
+			}
+		} else {
+			if ( htmlTagLink?.url ) {
+				customTagLinkAttributes.href = htmlTagLink?.url;
+			}
+			if ( htmlTagLink?.opensInNewTab ) {
+				customTagLinkAttributes.target = '_blank';
+			}
+			if ( htmlTagLink?.noFollow ) {
+				customTagLinkAttributes.rel = 'nofollow noopener';
+			}
+		}
 	}
 
 	const blockProps = useBlockProps.save();
