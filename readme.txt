@@ -215,6 +215,13 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+* Improvement: Added WPML compatibility to the 'How To', 'Buttons', 'Forms' and 'Marketing Button' blocks.
+* Improvement: Google Maps - Added a toggle to switch between Roadmap View and Satellite View.
+* Fix: Container - Resolved an issue wherein the link control content and edit icon would overflow out-of-screen after entering lengthy URLs.
+* Fix: Counter - Resolved an issue wherein the total number resets to default on end number change. 
+* Fix: Global - Resolved an issue that would cause block-styling to break when used for a custom archive template of specific post types in FSE themes.
+
 = 2.12.7 - TUESDAY, 2nd APRIL 2024 =
 * Security Fix: Hardened the security of the plugin. Props: Wordfence.
 * Improvement: Added compatibility with WordPress v6.5.
