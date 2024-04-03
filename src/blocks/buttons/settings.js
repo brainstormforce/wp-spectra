@@ -9,7 +9,7 @@ import ResponsiveSelectControl from '@Components/responsive-select';
 import { InspectorControls, BlockControls, AlignmentToolbar, BlockVerticalAlignmentControl } from '@wordpress/block-editor';
 import { select } from '@wordpress/data';
 
-import { Icon } from '@wordpress/components';
+import { Icon, ToggleControl } from '@wordpress/components';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 
@@ -26,6 +26,7 @@ const Settings = ( props ) => {
 		gap,
 		gapTablet,
 		gapMobile,
+		inheritGap,
 		stack,
 		loadGoogleFonts,
 		fontFamily,
@@ -262,6 +263,13 @@ const Settings = ( props ) => {
 					/>
 				) }
 				{ buttonsCount > 1 && (
+					<>
+					<ToggleControl
+						label={ __( 'Inherit gap from theme', 'ultimate-addons-for-gutenberg' ) }
+						checked={ inheritGap }
+						onChange={ () => setAttributes( { inheritGap: ! inheritGap } ) }
+					/>
+					{ ! inheritGap && ( 
 					<ResponsiveSlider
 						label={ __( 'Gap Between Buttons', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
@@ -282,7 +290,8 @@ const Settings = ( props ) => {
 						max={ 200 }
 						displayUnit={ false }
 						setAttributes={ setAttributes }
-					/>
+					/> ) }
+					</>
 				) }
 				<ResponsiveSelectControl
 					label={ __( 'Button Size', 'ultimate-addons-for-gutenberg' ) }

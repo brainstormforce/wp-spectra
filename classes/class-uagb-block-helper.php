@@ -1920,7 +1920,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array              All default attributes for the specified block.
 		 */
 		private static function get_block_default_attributes( $block_name ) {
-			return require UAGB_DIR . 'includes/blocks/' . $block_name . '/attributes.php';
+			$assets_file = realpath( UAGB_DIR . 'includes/blocks/' . $block_name . '/attributes.php' );
+			return ( is_string( $assets_file ) && file_exists( $assets_file ) ) ? require $assets_file : array();
 		}
 
 		/**

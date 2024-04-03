@@ -14,6 +14,10 @@ const attributes = {
 	htmlTagLink: {
 		type: 'object',
 	},
+	linkTarget: {
+		type: 'boolean',
+		default: false,
+	},
 	contentWidth: {
 		type: 'string',
 		default: 'alignfull',

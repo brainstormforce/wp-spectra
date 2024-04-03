@@ -255,7 +255,8 @@ const Settings = ( props ) => {
 		gradientType,
 		gradientAngle,
 		selectGradient,
-		backgroundVideoFallbackImage
+		backgroundVideoFallbackImage,
+		linkTarget,
 	} = attributes;
 
 	const isPro = uagb_blocks_info.spectra_pro_status;
@@ -736,14 +737,21 @@ const Settings = ( props ) => {
 					/>
 					{htmlTag === 'a' && (
 						( isPro ? (
-							<UAGTextControl
-								label={__( 'Link', 'ultimate-addons-for-gutenberg' )}
-								enableDynamicContent={true}
-								name="htmlTagLink"
-								value={htmlTagLink?.url}
-								onChange={( value ) => setAttributes( { htmlTagLink: {...htmlTagLink, url: value } } )}
-								data={{value: htmlTagLink?.url, label: 'htmlTagLink'}}
-							/>
+							<>
+							  	<UAGTextControl
+								    label={__( 'Link', 'ultimate-addons-for-gutenberg' )}
+									enableDynamicContent={true}
+									name="htmlTagLink"
+									value={htmlTagLink?.url}
+									onChange={( value ) => setAttributes( { htmlTagLink: {...htmlTagLink, url: value } } )}
+									data={{value: htmlTagLink?.url, label: 'htmlTagLink'}}
+								/>
+								<ToggleControl
+								    checked={ linkTarget }
+									onChange={ () => setAttributes( { linkTarget: ! linkTarget } ) }
+									label={ __( 'Open in new window', 'ultimate-addons-for-gutenberg' ) }
+								/>
+							</>
 						) : (
 							<LinkControl
 								searchInputPlaceholder={__( 'Search here…', 'ultimate-addons-for-gutenberg' )}

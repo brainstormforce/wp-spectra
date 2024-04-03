@@ -403,7 +403,7 @@ if ( ! class_exists( 'Spectra_Icon' ) ) {
 			$urlParts = wp_parse_url( $url );
 
 			if ( is_array( $urlParts ) ) {
-				return isset( $urlParts['scheme'] ) && in_array( $urlParts['scheme'], array( 'http', 'https' ) );
+				return isset( $urlParts['scheme'] );
 			}
 			return false;
 		}

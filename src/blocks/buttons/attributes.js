@@ -92,6 +92,10 @@ const attributes = {
 			styleType: 'btn-gap-mobile',
 		},
 	},
+	inheritGap: {
+		type: 'boolean',
+		default: false,
+	},
 	stack: {
 		type: 'string',
 		default: 'none',
