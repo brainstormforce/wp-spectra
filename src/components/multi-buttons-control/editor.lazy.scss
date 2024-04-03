@@ -26,8 +26,19 @@
 			border-radius: 0 $spectra-control-border-radius $spectra-control-border-radius 0;
 		}
 
-		&:focus:not(:disabled) {
-			border: 0;
+		&.is-secondary,
+		&.is-pressed {
+			&:focus:not(:disabled) {
+				border: unset;
+			}
+		}
+
+		&.is-pressed {
+			box-shadow: inset 0 0 0 1px $spectra-color-border;
+			&:hover,
+			&:not(:hover) {
+				box-shadow: inset 0 0 0 1px $spectra-color-border;
+			}
 		}
 	}
 
@@ -36,10 +47,18 @@
 		box-shadow: inset 0 0 0 1px $spectra-color-border;
 	}
 
-	.uagb-multi-button.is-secondary:hover:not( :disabled ),
-	.uagb-multi-button-grou[aria-label="Gap"] .uagb-multi-button.is-tertiary:hover:not( :disabled ) {
-		color: $spectra-color-heading;
-		box-shadow: inset 0 0 0 1px $spectra-color-border;
+	.uagb-multi-button.is-secondary,
+	.uagb-multi-button-group[aria-label="Gap"] .uagb-multi-button.is-tertiary {
+		&:not( :disabled ) {
+			color: $spectra-color-body;
+			background-color: $spectra-color-plain-background;
+
+			&:hover {
+				color: $spectra-color-heading;
+				background-color: $spectra-color-plain-background;
+				box-shadow: inset 0 0 0 1px $spectra-color-border;
+			}
+		}
 	}
 
 	.uagb-multi-button.is-secondary,
