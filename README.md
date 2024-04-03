@@ -222,7 +222,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Counter - Resolved an issue wherein the total number resets to default on end number change. 
 * Fix: Global - Resolved an issue that would cause block-styling to break when used for a custom archive template of specific post types in FSE themes.
 
-### 2.12.7 - TUESDAY, 26th MARCH 2024 ###
+### 2.12.7 - TUESDAY, 2nd APRIL 2024 ###
+* Security Fix: Hardened the security of the plugin. Props: Wordfence.
 * Improvement: Added compatibility with WordPress v6.5.
 * Improvement: Buttons - Added an inherit-gap-from-theme option.
 * Fix: Container - Resolved an issue wherein the 'open in new window' option would not be available when Spectra Pro is actived.
