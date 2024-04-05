@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Improvement: Global - Improved the block-name identification for the default fallback attributes.
 * Improvement: Added WPML compatibility to the 'How To', 'Buttons', 'Forms' and 'Marketing Button' blocks.
 * Improvement: Google Maps - Added a toggle to switch between Roadmap View and Satellite View.
 * Fix: Container - Resolved an issue wherein the link control content and edit icon would overflow out-of-screen after entering lengthy URLs.
