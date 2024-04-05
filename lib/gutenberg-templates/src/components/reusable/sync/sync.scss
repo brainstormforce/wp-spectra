@@ -1,0 +1,62 @@
+.ast-block-templates-sync {
+	position: relative;
+	padding: 0 18px;
+	cursor: pointer;
+	color: #6d7882;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&:hover .ast-block-templates-icon {
+		color: #6d7882;
+	}
+
+	.ast-block-templates-icon {
+		font-size: 16px;
+		color: #a4afb7;
+	}
+
+	.ast-block-templates-tooltip {
+		text-align: center;
+		width: 100px;
+	}
+
+	&:hover .ast-block-templates-tooltip {
+		display: block;
+	}
+}
+
+.search-form {
+	margin-right: 60px;
+}
+
+.ast-block-templates-sync__title {
+	position: absolute;
+	bottom: -15px;
+	left: -139px;
+	background: #fff;
+	width: 200px;
+	border-radius: 0;
+	padding: 3px 8px;
+	text-align: left;
+	border: 1px solid #e6e9ec;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.ast-block-templates-sync--processing .ast-block-templates-icon {
+	animation: rotation 2s infinite linear;
+}
+
+.ast-blocks-templates-menu {
+	display: flex;
+	align-items: center;
+	margin-left: 10px;
+}
+
+.ast-block-edit-business-details {
+	color: #a9a9a9;
+	cursor: pointer;
+	font-size: 18px;
+	margin-right: 10px;
+}

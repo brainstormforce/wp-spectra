@@ -1,0 +1,21 @@
+# Dependency directories
+vendor/
+node_modules/
+
+# Logs
+*.log
+
+# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Other
+*.zip
+.DS_Store
+artifacts/
+ast-block-templates/

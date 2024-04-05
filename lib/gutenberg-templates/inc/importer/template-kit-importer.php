@@ -39,7 +39,7 @@ class Template_Kit_Importer {
 	 */
 	public function template_importer() {
 
-		if ( ! current_user_can( 'edit_posts' ) ) {
+		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
 		}
 		// Verify Nonce.
@@ -100,7 +100,7 @@ class Template_Kit_Importer {
 	 */
 	public function import_template_kit() {
 
-		if ( ! current_user_can( 'edit_posts' ) ) {
+		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 			wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
 		}
 		// Verify Nonce.

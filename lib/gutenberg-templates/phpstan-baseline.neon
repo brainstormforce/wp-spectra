@@ -1,0 +1,501 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Parameter \\#1 \\$str of function sanitize_text_field expects string, string\\|null given\\.$#"
+			count: 1
+			path: inc/api/description.php
+
+		-
+			message: "#^Parameter \\#2 \\$args of function wp_remote_post expects array\\{method\\?\\: string, timeout\\?\\: float, redirection\\?\\: int, httpversion\\?\\: string, user\\-agent\\?\\: string, reject_unsafe_urls\\?\\: bool, blocking\\?\\: bool, headers\\?\\: array\\|string, \\.\\.\\.\\}, array\\{body\\: string\\|false, headers\\: array\\{Content\\-Type\\: 'application/json'\\}, timeout\\: 100\\} given\\.$#"
+			count: 1
+			path: inc/api/description.php
+
+		-
+			message: "#^Cannot access offset mixed on 0\\|0\\.0\\|''\\|'0'\\|array\\{\\}\\|false\\|null\\.$#"
+			count: 1
+			path: inc/api/favorite.php
+
+		-
+			message: "#^Cannot assign new offset to string\\.$#"
+			count: 1
+			path: inc/api/favorite.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function sanitize_text_field expects string, string\\|null given\\.$#"
+			count: 1
+			path: inc/api/favorite.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function sanitize_text_field expects string, string\\|null given\\.$#"
+			count: 1
+			path: inc/api/images.php
+
+		-
+			message: "#^Parameter \\#2 \\$args of function wp_remote_post expects array\\{method\\?\\: string, timeout\\?\\: float, redirection\\?\\: int, httpversion\\?\\: string, user\\-agent\\?\\: string, reject_unsafe_urls\\?\\: bool, blocking\\?\\: bool, headers\\?\\: array\\|string, \\.\\.\\.\\}, array\\{body\\: string\\|false, headers\\: array\\{Content\\-Type\\: 'application/json'\\}, timeout\\: 100\\} given\\.$#"
+			count: 1
+			path: inc/api/images.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function sanitize_text_field expects string, string\\|null given\\.$#"
+			count: 1
+			path: inc/api/keywords.php
+
+		-
+			message: "#^Parameter \\#2 \\$args of function wp_remote_post expects array\\{method\\?\\: string, timeout\\?\\: float, redirection\\?\\: int, httpversion\\?\\: string, user\\-agent\\?\\: string, reject_unsafe_urls\\?\\: bool, blocking\\?\\: bool, headers\\?\\: array\\|string, \\.\\.\\.\\}, array\\{body\\: string\\|false, headers\\: array\\{Content\\-Type\\: 'application/json'\\}, timeout\\: 100\\} given\\.$#"
+			count: 1
+			path: inc/api/keywords.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function sanitize_text_field expects string, string\\|null given\\.$#"
+			count: 1
+			path: inc/api/page-description.php
+
+		-
+			message: "#^Parameter \\#2 \\$args of function wp_remote_post expects array\\{method\\?\\: string, timeout\\?\\: float, redirection\\?\\: int, httpversion\\?\\: string, user\\-agent\\?\\: string, reject_unsafe_urls\\?\\: bool, blocking\\?\\: bool, headers\\?\\: array\\|string, \\.\\.\\.\\}, array\\{body\\: string\\|false, headers\\: array\\{Content\\-Type\\: 'application/json'\\}, timeout\\: 100\\} given\\.$#"
+			count: 1
+			path: inc/api/page-description.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function sanitize_text_field expects string, string\\|null given\\.$#"
+			count: 1
+			path: inc/api/settings.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
+			count: 1
+			path: inc/block/spectra-ai-block.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|null given\\.$#"
+			count: 1
+			path: inc/block/spectra-ai-block.php
+
+		-
+			message: "#^Constant AST_BLOCK_TEMPLATES_IMAGE_COUNT not found\\.$#"
+			count: 2
+			path: inc/content/ai-content.php
+
+		-
+			message: "#^Else branch is unreachable because ternary operator condition is always true\\.$#"
+			count: 1
+			path: inc/content/ai-content.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Content\\\\Ai_Content\\:\\:get_ai_content\\(\\) has parameter \\$post_data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/content/ai-content.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Content\\\\Ai_Content\\:\\:get_club_of_category\\(\\) has parameter \\$categories with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/content/ai-content.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Content\\\\Ai_Content\\:\\:get_club_of_category\\(\\) has parameter \\$post_data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/content/ai-content.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Content\\\\Ai_Content\\:\\:get_matching_categories\\(\\) has parameter \\$categories with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/content/ai-content.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Content\\\\Ai_Content\\:\\:get_matching_categories\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/content/ai-content.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Content\\\\Ai_Content\\:\\:maybe_regenerate_images\\(\\) has parameter \\$images with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/content/ai-content.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Content\\\\Ai_Content\\:\\:maybe_regenerate_images\\(\\) has parameter \\$keywords with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/content/ai-content.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Content\\\\Ai_Content\\:\\:maybe_regenerate_images\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/content/ai-content.php
+
+		-
+			message: "#^Parameter \\#1 \\$keywords of method Gutenberg_Templates\\\\Inc\\\\Content\\\\Ai_Content\\:\\:maybe_regenerate_images\\(\\) expects array, string given\\.$#"
+			count: 1
+			path: inc/content/ai-content.php
+
+		-
+			message: "#^Parameter \\#2 \\$args of function wp_remote_post expects array\\{method\\?\\: string, timeout\\?\\: float, redirection\\?\\: int, httpversion\\?\\: string, user\\-agent\\?\\: string, reject_unsafe_urls\\?\\: bool, blocking\\?\\: bool, headers\\?\\: array\\|string, \\.\\.\\.\\}, array\\{body\\: string\\|false, headers\\: array\\{Content\\-Type\\: 'application/json'\\}, timeout\\: 100\\} given\\.$#"
+			count: 1
+			path: inc/content/ai-content.php
+
+		-
+			message: "#^Parameter \\#2 \\$args of function wp_remote_post expects array\\{method\\?\\: string, timeout\\?\\: float, redirection\\?\\: int, httpversion\\?\\: string, user\\-agent\\?\\: string, reject_unsafe_urls\\?\\: bool, blocking\\?\\: bool, headers\\?\\: array\\|string, \\.\\.\\.\\}, array\\{body\\: string\\|false, headers\\: array\\{Content\\-Type\\: 'application/json'\\}, timeout\\: 50\\} given\\.$#"
+			count: 1
+			path: inc/content/ai-content.php
+
+		-
+			message: "#^Call to function is_bool\\(\\) with non\\-empty\\-array will always evaluate to false\\.$#"
+			count: 4
+			path: inc/importer/block-editor.php
+
+		-
+			message: "#^Parameter \\#2 \\$replace of function str_replace expects array\\|string, int given\\.$#"
+			count: 2
+			path: inc/importer/block-editor.php
+
+		-
+			message: "#^If condition is always true\\.$#"
+			count: 1
+			path: inc/importer/image-importer.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Image_Importer\\:\\:get_saved_image\\(\\) should return string but returns array\\<string, array\\<string, mixed\\>\\|true\\>\\.$#"
+			count: 1
+			path: inc/importer/image-importer.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Image_Importer\\:\\:get_saved_image\\(\\) should return string but returns array\\<string, string\\|false\\>\\.$#"
+			count: 1
+			path: inc/importer/image-importer.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Image_Importer\\:\\:get_saved_image\\(\\) should return string but returns array\\<string, string\\|true\\>\\.$#"
+			count: 1
+			path: inc/importer/image-importer.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Image_Importer\\:\\:import\\(\\) has parameter \\$attachment with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/importer/image-importer.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Image_Importer\\:\\:import\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/importer/image-importer.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Image_Importer\\:\\:process\\(\\) has parameter \\$attachments with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/importer/image-importer.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Image_Importer\\:\\:process\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/importer/image-importer.php
+
+		-
+			message: "#^Offset 'attachment' does not exist on string\\.$#"
+			count: 2
+			path: inc/importer/image-importer.php
+
+		-
+			message: "#^Offset 'status' does not exist on string\\.$#"
+			count: 1
+			path: inc/importer/image-importer.php
+
+		-
+			message: "#^Offset 'url' does not exist on string\\.$#"
+			count: 4
+			path: inc/importer/image-importer.php
+
+		-
+			message: "#^Parameter \\#1 \\$attachment of method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Image_Importer\\:\\:get_saved_image\\(\\) expects string, array given\\.$#"
+			count: 1
+			path: inc/importer/image-importer.php
+
+		-
+			message: "#^Parameter \\#1 \\$message of method Gutenberg_Templates\\\\Inc\\\\Traits\\\\Helper\\:\\:ast_block_templates_log\\(\\) expects string, string\\|false given\\.$#"
+			count: 2
+			path: inc/importer/image-importer.php
+
+		-
+			message: "#^Parameter \\#2 \\$args of function wp_safe_remote_get expects array\\{method\\?\\: string, timeout\\?\\: float, redirection\\?\\: int, httpversion\\?\\: string, user\\-agent\\?\\: string, reject_unsafe_urls\\?\\: bool, blocking\\?\\: bool, headers\\?\\: array\\|string, \\.\\.\\.\\}, array\\{timeout\\: '60'\\} given\\.$#"
+			count: 1
+			path: inc/importer/image-importer.php
+
+		-
+			message: "#^Property Gutenberg_Templates\\\\Inc\\\\Importer\\\\Image_Importer\\:\\:\\$already_imported_ids is never read, only written\\.$#"
+			count: 1
+			path: inc/importer/image-importer.php
+
+		-
+			message: "#^Property Gutenberg_Templates\\\\Inc\\\\Importer\\\\Image_Importer\\:\\:\\$already_imported_ids type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/importer/image-importer.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Images\\:\\:create_image_from_url\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: inc/importer/images.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Images\\:\\:download_image\\(\\) has parameter \\$image with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/importer/images.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Images\\:\\:get_image\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/importer/images.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Images\\:\\:get_images\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/importer/images.php
+
+		-
+			message: "#^Property Gutenberg_Templates\\\\Inc\\\\Importer\\\\Images\\:\\:\\$images type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/importer/images.php
+
+		-
+			message: "#^Cannot use array destructuring on array\\<int\\|string, int\\|string\\>\\|false\\.$#"
+			count: 1
+			path: inc/importer/importer-helper.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Importer_Helper\\:\\:get_business_details\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: inc/importer/importer-helper.php
+
+		-
+			message: "#^PHPDoc tag @return contains unresolvable type\\.$#"
+			count: 1
+			path: inc/importer/importer-helper.php
+
+		-
+			message: "#^Result of && is always true\\.$#"
+			count: 1
+			path: inc/importer/importer-helper.php
+
+		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 1
+			path: inc/importer/importer-helper.php
+
+		-
+			message: "#^Variable \\$height in isset\\(\\) always exists and is not nullable\\.$#"
+			count: 1
+			path: inc/importer/importer-helper.php
+
+		-
+			message: "#^Variable \\$width in isset\\(\\) always exists and is not nullable\\.$#"
+			count: 1
+			path: inc/importer/importer-helper.php
+
+		-
+			message: "#^Array has 2 duplicate keys with value 'wpforms_status' \\('wpforms_status', 'wpforms_status'\\)\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:get_contents\\(\\)\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Call to static method allow_file_generation\\(\\) on an unknown class UAGB_Helper\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Call to static method bsf_is_active_license\\(\\) on an unknown class BSF_License_Manager\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Call to static method create_specific_stylesheet\\(\\) on an unknown class UAGB_Admin_Helper\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Call to static method delete_uag_asset_dir\\(\\) on an unknown class UAGB_Helper\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Call to static method update_admin_settings_option\\(\\) on an unknown class UAGB_Admin_Helper\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Cannot access property \\$status on array\\<string, array\\<int\\|string, int\\|string\\|WP_Http_Cookie\\>\\|string\\|WP_HTTP_Requests_Response\\|WpOrg\\\\Requests\\\\Utility\\\\CaseInsensitiveDictionary\\|null\\>\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Function ast_block_templates_log not found\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Function astra_get_palette_colors not found\\.$#"
+			count: 2
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Plugin\\:\\:activate_plugin\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Plugin\\:\\:allowed_tags_and_attributes\\(\\) has parameter \\$allowedposttags with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Plugin\\:\\:allowed_tags_and_attributes\\(\\) has parameter \\$context with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Plugin\\:\\:allowed_tags_and_attributes\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Plugin\\:\\:custom_upload_mimes\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Plugin\\:\\:custom_upload_mimes\\(\\) has parameter \\$mimes with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Plugin\\:\\:download_file\\(\\) has parameter \\$overrides with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Plugin\\:\\:download_file\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Plugin\\:\\:get_all_blocks\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Plugin\\:\\:get_all_sites\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Plugin\\:\\:get_default_color_palette\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Plugin\\:\\:get_default_color_palette\\(\\) should return array but returns array\\<int, string\\>\\|string\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Plugin\\:\\:import_block\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Plugin\\:\\:replace\\(\\) has parameter \\$dynamic_content with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Plugin\\:\\:template_assets\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Parameter \\#1 \\$json of function json_decode expects string, WP_Error given\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Static property Gutenberg_Templates\\\\Inc\\\\Importer\\\\Plugin\\:\\:\\$color_palette \\(string\\) does not accept array\\<int, string\\>\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Static property Gutenberg_Templates\\\\Inc\\\\Importer\\\\Plugin\\:\\:\\$color_palette \\(string\\) does not accept default value of type array\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Variable \\$key in isset\\(\\) always exists and is not nullable\\.$#"
+			count: 1
+			path: inc/importer/plugin.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Sync_Library_WP_CLI\\:\\:sync\\(\\) has parameter \\$args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/importer/sync-library-wp-cli.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Sync_Library_WP_CLI\\:\\:sync\\(\\) has parameter \\$assoc_args with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/importer/sync-library-wp-cli.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Sync_Library\\:\\:check_checksum_and_get_blocks_data\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/importer/sync-library.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Sync_Library\\:\\:get_default_assets\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/importer/sync-library.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Sync_Library\\:\\:get_total_blocks_requests\\(\\) should return int but return statement is missing\\.$#"
+			count: 1
+			path: inc/importer/sync-library.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Sync_Library\\:\\:process_data_sync\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/importer/sync-library.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Sync_Library\\:\\:set_default_assets\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: inc/importer/sync-library.php
+
+		-
+			message: "#^Result of method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Sync_Library\\:\\:import_blocks\\(\\) \\(void\\) is used\\.$#"
+			count: 1
+			path: inc/importer/sync-library.php
+
+		-
+			message: "#^Result of method Gutenberg_Templates\\\\Inc\\\\Importer\\\\Sync_Library\\:\\:import_categories\\(\\) \\(void\\) is used\\.$#"
+			count: 1
+			path: inc/importer/sync-library.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Traits\\\\Helper\\:\\:ast_block_templates_doing_wp_cli\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: inc/traits/helper.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Traits\\\\Helper\\:\\:ast_block_templates_is_valid_image\\(\\) should return bool but returns int\\|false\\.$#"
+			count: 1
+			path: inc/traits/helper.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Traits\\\\Helper\\:\\:ast_block_templates_log\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: inc/traits/helper.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Traits\\\\Helper\\:\\:get_default_ai_categories\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: inc/traits/helper.php
+
+		-
+			message: "#^Method Gutenberg_Templates\\\\Inc\\\\Traits\\\\Upgrade\\:\\:skip_spectra_pro_onboarding\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: inc/traits/upgrade.php

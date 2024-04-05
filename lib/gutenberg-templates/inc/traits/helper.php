@@ -314,5 +314,134 @@ class Helper {
 	public function is_debug_mode() {
 		return defined( 'GT_DEBUG' ) && GT_DEBUG;
 	}
+
+	/**
+	 * Create files/directories.
+	 * 
+	 * @param array<int, array<string, string>> $files The files array.
+	 * 
+	 * @return void
+	 */
+	public function create_files( $files = array() ) {
+		// Install files and folders for uploading files and prevent hotlinking.
+
+		foreach ( $files as $file ) {
+			if ( wp_mkdir_p( $file['file_base'] ) && ! file_exists( trailingslashit( $file['file_base'] ) . $file['file_name'] ) ) {
+				$file_handle = @fopen( trailingslashit( $file['file_base'] ) . $file['file_name'], 'w' ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged, WordPress.WP.AlternativeFunctions.file_system_read_fopen
+				if ( $file_handle ) {
+					fwrite( $file_handle, $file['file_content'] ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_read_fwrite, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_fwrite
+					fclose( $file_handle ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_read_fclose
+					self::ast_block_templates_log( 'File: ' . $file['file_name'] . ' Created Successfully!' );
+				}
+			}
+		}
+	}
+
+	/**
+	 * Update files/directories.
+	 * 
+	 * @param string     $file_path The file path.
+	 * @param string|int $file_content The file content.
+	 * 
+	 * @return void
+	 */
+	public function update_json_file( $file_path, $file_content ) {
+
+		if ( file_exists( AST_BLOCK_TEMPLATES_JSON_DIR . $file_path ) && file_put_contents( AST_BLOCK_TEMPLATES_JSON_DIR . $file_path, wp_json_encode( $file_content ) ) !== false ) { //phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_file_put_contents
+			self::ast_block_templates_log( 'File: ' . $file_path . ' Updated Successfully!' );
+		} else {
+			self::ast_block_templates_log( 'File: ' . $file_path . ' Not Updated!' );
+		}
+		
+	}
+
+	/**
+	 * Get files/directories.
+	 * 
+	 * @param string $file_name The file name.
+	 * @param bool   $get_array Is The file content array.
+	 * 
+	 * @return mixed
+	 */
+	public function get_json_file_content( $file_name, $get_array = true ) {
+
+		if ( file_exists( AST_BLOCK_TEMPLATES_JSON_DIR . $file_name ) ) {
+			// Ignoring the rule as it is not a remote file.
+			$file_content = file_get_contents( AST_BLOCK_TEMPLATES_JSON_DIR . $file_name ); //phpcs:ignore WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown
+			
+			if ( $get_array ) {
+				return json_decode( (string) $file_content, true );
+			} else {
+				return $file_content;
+			}
+		}
+
+		return '';
+	}
+
+	/**
+	 * Get block categories.
+	 * 
+	 * @return array<int, array<string, string>>
+	 */
+	public function get_block_template_category() {
+		return self::get_json_file_content( 'ast-block-templates-categories.json', true );
+	}
+
+	/**
+	 * Get customiser CSS.
+	 * 
+	 * @return string
+	 */
+	public function get_block_template_customiser_css() {
+		return self::get_json_file_content( 'ast-block-templates-customizer-css.json', false );
+	}   
+
+	/**
+	 * Get last exported checksum.
+	 * 
+	 * @return string
+	 */
+	public function get_last_exported_checksum() {
+		return self::get_json_file_content( 'ast-block-templates-last-export-checksums.json', false );
+	}
+
+	/**
+	 * Get site request count.
+	 * 
+	 * @return int
+	 */
+	public function get_site_request() {
+		return self::get_json_file_content( 'ast-block-templates-site-requests.json', false );
+	}
+
+	/**
+	 * Get block request count.
+	 * 
+	 * @return int
+	 */
+	public function get_block_templates_requests() {
+		return self::get_json_file_content( 'ast-block-templates-block-requests.json', false );
+	}
+
+	/**
+	 * Get blocks page wise.
+	 * 
+	 * @param int $page The page number.
+	 * @return  array<int, mixed>
+	 */
+	public function get_blocks_templates( $page = 0 ) {
+		return self::get_json_file_content( 'ast-block-templates-blocks-' . $page . '.json', true );
+	}
+
+	/**
+	 * Get sites page wise.
+	 * 
+	 * @param int $page The page number.
+	 * @return array<int, mixed>
+	 */
+	public function get_sites_templates( $page = 0 ) {
+		return self::get_json_file_content( 'ast-block-templates-sites-' . $page . '.json', true );
+	}
 }
 

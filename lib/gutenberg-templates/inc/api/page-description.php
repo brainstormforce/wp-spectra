@@ -91,7 +91,7 @@ class PageDescription extends Api_Base {
 	 */
 	public function get_item_permissions_check( $request ) {
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 			return new \WP_Error(
 				'gt_rest_cannot_access',
 				__( 'Sorry, you are not allowed to do that.', 'ast-block-templates' ),
@@ -121,7 +121,7 @@ class PageDescription extends Api_Base {
 			);
 		}
 
-		$api_endpoint = AST_BLOCK_TEMPLATES_LIBRARY_URL . '/wp-json/ai/v1/page-description';
+		$api_endpoint = AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-json/ai/v1/page-description';
 
 		$token = Importer_Helper::get_business_details( 'token' );
 

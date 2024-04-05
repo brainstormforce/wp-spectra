@@ -71,18 +71,20 @@ class Importer_Helper {
 	 */
 	public static function get_business_details( $key = '' ) {
 		$details = get_option(
-			'ast-templates-business-details',
+			'zipwp_user_business_details',
 			array(
 				'business_name'    => '',
 				'business_address' => '',
 				'business_phone'   => '',
+				'business_category'   => '',
 				'business_email'   => '',
 				'social_profiles'  => array(),
 				'business_description' => '',
-				'openai_key' => '',
 				'token' => '',
 				'images' => array(),
-				'image_keywords' => array(),
+				'image_keyword' => array(),
+				'templates' => array(),
+				'language' => 'en',
 			)
 		);
 
@@ -90,13 +92,15 @@ class Importer_Helper {
 			'business_name'    => ( ! empty( $details['business_name'] ) ) ? $details['business_name'] : '',
 			'business_address' => ( ! empty( $details['business_address'] ) ) ? $details['business_address'] : '2360 Hood Avenue, San Diego, CA, 92123',
 			'business_phone'   => ( ! empty( $details['business_phone'] ) ) ? $details['business_phone'] : '202-555-0188',
+			'business_category'   => ( ! empty( $details['business_category'] ) ) ? $details['business_category'] : '',
 			'business_email'   => ( ! empty( $details['business_email'] ) ) ? $details['business_email'] : 'contact@example.com',
 			'social_profiles'  => ( ! empty( $details['social_profiles'] ) ) ? $details['social_profiles'] : array(),
 			'business_description' => ( ! empty( $details['business_description'] ) ) ? $details['business_description'] : '',
-			'openai_key' => ( ! empty( $details['openai_key'] ) ) ? $details['openai_key'] : '',
-			'token' => ( ! empty( $details['token'] ) ) ? Helper::decrypt( $details['token'] ) : '',
+			'token' => Helper::get_decrypted_auth_token(),
 			'images' => ( ! empty( $details['images'] ) ) ? $details['images'] : array(),
-			'image_keywords' => ( ! empty( $details['image_keywords'] ) ) ? $details['image_keywords'] : array(),
+			'image_keyword' => ( ! empty( $details['image_keyword'] ) ) ? $details['image_keyword'] : array(),
+			'templates' => ( ! empty( $details['templates'] ) ) ? $details['templates'] : array(),
+			'language' => ( ! empty( $details['language'] ) ) ? $details['language'] : '',
 		);
 
 		if ( ! empty( $key ) ) {

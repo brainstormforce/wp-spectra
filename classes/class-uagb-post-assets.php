@@ -356,7 +356,7 @@ class UAGB_Post_Assets {
 	 *
 	 * @param object $archive_object of current post.
 	 * @param array  $template_type_slug name.
-	 * @since x.x.x
+	 * @since 2.12.8
 	 * @return string The determined archive post type.
 	 */
 	public function get_archive_page_template( $archive_object, $template_type_slug ) {

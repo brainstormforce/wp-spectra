@@ -57,6 +57,7 @@ class Api_Init {
 			'\Gutenberg_Templates\Inc\Api\Pages',
 			'\Gutenberg_Templates\Inc\Api\RevokeAccess',
 			'\Gutenberg_Templates\Inc\Api\Blocks',
+			'\Gutenberg_Templates\Inc\Api\Initialize_Setup',
 		);
 
 		foreach ( $controllers as $controller ) {

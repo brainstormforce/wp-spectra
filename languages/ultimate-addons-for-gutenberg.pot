@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.12.7\n"
+"Project-Id-Version: Spectra 2.12.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-03-22T12:19:37+00:00\n"
+"POT-Creation-Date: 2024-04-05T06:52:09+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -148,7 +148,7 @@ msgstr ""
 msgid "Form Submission"
 msgstr ""
 
-#: blocks-config/google-map/class-uagb-google-map.php:184
+#: blocks-config/google-map/class-uagb-google-map.php:194
 #: dist/blocks.js:19
 msgid "Google Map for "
 msgstr ""
@@ -8836,6 +8836,19 @@ msgid "Facing issues with style, layout, color or another page element? Use this
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:1
+msgid "Please note that after regeneration, it is recommended to purge all your cache to ensure that old assets are not served, preventing potential frontend breaking issues."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Regenerate"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+#: dist/blocks.js:11
+msgid "Close"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
 msgid "Enable Templates Button"
 msgstr ""
 
@@ -10219,10 +10232,6 @@ msgstr ""
 
 #: dist/blocks.js:11
 msgid "Icon Library"
-msgstr ""
-
-#: dist/blocks.js:11
-msgid "Close"
 msgstr ""
 
 #: dist/blocks.js:11
@@ -12923,6 +12932,10 @@ msgstr ""
 
 #: dist/blocks.js:19
 msgid "Type the address"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Enable Satellite View"
 msgstr ""
 
 #: dist/blocks.js:19
