@@ -222,6 +222,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Container - Resolved an issue wherein the link control content and edit icon would overflow out-of-screen after entering lengthy URLs.
 * Fix: Counter - Resolved an issue wherein the total number resets to default on end number change. 
 * Fix: Global - Resolved an issue that would cause block-styling to break when used for a custom archive template of specific post types in FSE themes.
+* Fix: Icon - Resolved an issue wherein a few icons would not load on the frontend.
 
 = 2.12.7 - TUESDAY, 2nd APRIL 2024 =
 * Security Fix: Hardened the security of the plugin. Props: Wordfence.
