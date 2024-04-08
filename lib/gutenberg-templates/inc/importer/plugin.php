@@ -961,6 +961,10 @@ class Plugin {
 		$business_details = ( $business_details ) ? $business_details : array();
 		$business_details = array_merge( $business_details, array( 'token' => Helper::get_setting( 'auth_token', '' ) ) );
 
+		if ( ! empty( $business_details['social_profiles'] ) ) {
+			$business_details = $this->maybe_parse_social_profiles( $business_details );
+		}
+
 		wp_localize_script(
 			'ast-block-templates',
 			'ast_block_template_vars',
@@ -1048,6 +1052,43 @@ class Plugin {
 				)
 			)
 		);
+	}
+
+	/**
+	 * Get Spec Credit Details
+	 *
+	 * @since 2.1.24
+	 * @param  array<string, mixed> $business_details business details.
+	 * @return array<string, mixed>
+	 */
+	public function maybe_parse_social_profiles( $business_details ) {
+
+		$social_profiles = $business_details['social_profiles'];
+		$save = false;
+		foreach ( $social_profiles as $index => $icon ) {
+
+			if ( ! isset( $icon['type'] ) || empty( $icon['type'] ) ) {
+
+				$url_parts = wp_parse_url( $icon['url'] );
+				$host = isset( $url_parts['host'] ) ? $url_parts['host'] : false;
+
+				if ( $host ) {
+					$domain_parts = explode( '.', $host );
+					$type = reset( $domain_parts ); 
+					$social_profiles[ $index ]['type'] = strtolower( $type );
+					$social_profiles[ $index ]['id'] = strtolower( $type );
+				}
+
+				$save = true;
+			}       
+		}
+
+		if ( $save ) {
+			$business_details['social_profiles'] = $social_profiles;
+			update_option( 'zipwp_user_business_details', $business_details );
+		}
+
+		return $business_details;
 	}
 
 	/**

@@ -137,7 +137,7 @@ class Updater {
 				break;
 		}
 		
-		if ( version_compare( $old_version, '2.1.23', '<' ) ) {
+		if ( version_compare( $old_version, '2.1.24', '<' ) ) {
 			// Create new files.
 			Sync_Library::instance()->set_default_assets();
 
