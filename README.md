@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### 2.12.8 - Tuesday, 9th April 2024 ###
+### 2.12.8 - Wednesday, 10th April 2024 ###
 * Improvement: Google Maps - Added a toggle to switch between Roadmap View and Satellite View.
 * Improvement: Global - Improved the block-name identification for the default fallback attributes.
 * Improvement: Global - Added WPML compatibility to the 'How To', 'Buttons', 'Forms' and 'Marketing Button' blocks.

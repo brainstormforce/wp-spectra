@@ -1,3 +1,6 @@
+v2.1.27 - 9-April-2024
+- Fix: Design library button not showing sometime.
+
 v2.1.26 - 9-April-2024
 - Fix: Fixed Media library not working.
 
