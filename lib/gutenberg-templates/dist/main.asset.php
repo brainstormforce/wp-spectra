@@ -1,1 +1,0 @@
-<?php return array('dependencies' => array('lodash', 'react', 'react-dom', 'wp-api-fetch', 'wp-compose', 'wp-data', 'wp-dom-ready', 'wp-element', 'wp-i18n', 'wp-plugins'), 'version' => 'd3cb77681e9479ef82ee');

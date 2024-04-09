@@ -873,8 +873,7 @@ class Plugin {
 
 		$this->sync_disable_ai_settings();
 
-		wp_enqueue_script( 'ast-block-templates', AST_BLOCK_TEMPLATES_URI . 'dist/main.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'masonry', 'imagesloaded', 'updates', 'lodash' ), AST_BLOCK_TEMPLATES_VER, true );
-		wp_enqueue_script( 'ast-block-templates-controls', AST_BLOCK_TEMPLATES_URI . 'gutenberg-control/main.js', array(), AST_BLOCK_TEMPLATES_VER, true );
+		wp_enqueue_script( 'ast-block-templates', AST_BLOCK_TEMPLATES_URI . 'dist/main.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'masonry', 'imagesloaded', 'updates' ), AST_BLOCK_TEMPLATES_VER, true );
 		wp_add_inline_script( 'ast-block-templates', 'window.lodash = _.noConflict();', 'after' );
 
 		wp_enqueue_style( 'ast-block-templates', AST_BLOCK_TEMPLATES_URI . 'dist/style.css', array(), AST_BLOCK_TEMPLATES_VER, 'all' );

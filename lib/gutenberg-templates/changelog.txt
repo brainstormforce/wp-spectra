@@ -1,3 +1,6 @@
+v2.1.26 - 9-April-2024
+- Fix: Fixed Media library not working.
+
 v2.1.25 - 8-April-2024
 - Fix: Custom permission fix for search category API.
 - Fix: Fixed an issue where the Personalisation of the library was failing.
