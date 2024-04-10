@@ -1,19 +1,65 @@
-v2.1.13 - 12-February-2023
+v2.1.27 - 9-April-2024
+- Fix: Design library button not showing sometime.
+
+v2.1.26 - 9-April-2024
+- Fix: Fixed Media library not working.
+
+v2.1.25 - 8-April-2024
+- Fix: Custom permission fix for search category API.
+- Fix: Fixed an issue where the Personalisation of the library was failing.
+
+v2.1.24 - 5-April-2024
+- Fix: Improved parsing mechanism for social media icons to ensure error-free processing.
+
+v2.1.23 - 5-April-2024
+- Fix: Pre-selected images were not displaying.
+
+v2.1.22 - 4-April-2024
+- Improvement: Updated image replacement mechanisms to enhance compatibility with the ZipWP.
+
+v2.1.21 - 3 April-2024
+- New: Added business type selection option in onboarding.
+- Improvement: Using a ZipWP constant instead of a URL to facilitate easy overriding from the WordPress configuration.
+- Improvement: Automatically prefill business details for sites created through ZipWP.
+- Improvement: Moved JSON folder from plugin directory to WP upload folder to address memory issues.
+
+v2.1.20 - 1-April-2024
+- Improvement: Added Compatibility for Rank Match SEO plugin.
+
+v2.1.19 - 29-March-2024
+- Improvement: Updated the way to call REST API.
+
+v2.1.18 - 14-March-2024
+- Improvement: Added a filter to bypass the auth for non authenticated users to be able to import Templates
+
+v2.1.17 - 11-March-2024
+- Fix: Fixed broken patterns and pages caused by missing Spectra Plugin.
+
+v2.1.16 - 07-March-2024
+- Fix: Resolved an issue where the AI description won't get generated on WordPress.com sites.
+
+v2.1.15 - 01-March-2024
+- Improvement: Rename Template kits to Design Library and updated UI.
+
+v2.1.14 - 20-February-2024
+- Fix: Changed the button position and fixed console errors.
+
+v2.1.13 - 12-February-2024
 - Fix: Resolved an issue where the Template Kit button was not visible due to console error.
 
-v2.1.12 - 07-February-2023
+v2.1.12 - 07-February-2024
 - Fix: Resolved an issue where the Template Kit button was not visible.
 
-v2.1.11 - 30-January-2023
+v2.1.11 - 30-January-2024
 - Improvement: Moved the Template Kits button to the left of the post header center element.
 
-v2.1.10 - 29-January-2023
+v2.1.10 - 29-January-2024
 - Fix: Resolved premium pages import issue in the kits section.
 
-v2.1.9 - 08-January-2023
+v2.1.9 - 08-January-2024
 - Fix: Reverted capabilities check from manage_options to edit_post.
 
-v2.1.8 - 08-January-2023
+v2.1.8 - 08-January-2024
 - Improvement: Show three dots loading indicator when regenerating content for a specific category.
 - Improvement: Prevent unnecessary re-render to improve performance and UX.
 - Improvement: Improved access control by transitioning from 'edit_post' to 'manage_options' for enhanced user capabilities. 
@@ -21,22 +67,22 @@ v2.1.8 - 08-January-2023
 - Fix: Not showing loading skeleton while regenerating content.
 - Fix: 503 Error by removing kits data from the localize variable.
 
-v2.1.7 - 04-January-2023
+v2.1.7 - 04-January-2024
 - Fix: Extra check added for checking wpforms-lite plugin.
 
-v2.1.6 - 03-January-2023
+v2.1.6 - 03-January-2024
 - Fix: Spelling "organization" changed to "organisation".
 
-v2.1.5 - 03-January-2023
+v2.1.5 - 03-January-2024
 - Fix: Tightened the plugin security while importing.
 
-v2.1.4 - 02-January-2023
+v2.1.4 - 02-January-2024
 - Fix: Suggested items were not showing on the empty search results screen.
 
-v2.1.3 - 02-January-2023
+v2.1.3 - 02-January-2024
 - Fix: Showing invalid message on the toaster while generating content.
 
-v2.1.2 - 02-January-2023
+v2.1.2 - 02-January-2024
 - Improvement: Enhanced user experience and streamlined workflow.
 
 v2.1.1 - 30-December-2023

@@ -37,15 +37,26 @@ class Plugin {
 	public static $color_palette = array();
 
 	/**
+	 * Custom Capability
+	 *
+	 * @since 2.1.14
+	 * @access public
+	 * @var string capabilities.
+	 */
+	public static $custom_capability = 'manage_ast_block_templates';
+
+	/**
 	 * Constructor.
 	 *
 	 * @since 2.0.0
 	 */
 	private function __construct() {
+		$this->define_constants();
 		add_action( 'enqueue_block_editor_assets', array( $this, 'template_assets' ), 999 );
 		add_action( 'admin_init', array( $this, 'init' ), 999 );
+		add_action( 'admin_init', array( $this, 'add_custom_capabilities' ), 10 );
 
-		if ( ( isset( $_GET['action'] ) && 'edit' === $_GET['action'] ) || ( isset( $_SERVER['REQUEST_URI'] ) && strpos( esc_url_raw( $_SERVER['REQUEST_URI'] ), 'post-new.php' ) !== false ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( ( isset( $_GET['action'] ) && 'edit' === $_GET['action'] ) || ( isset( $_SERVER['PHP_SELF'] ) && 'site-editor.php' === basename( sanitize_text_field( $_SERVER['PHP_SELF'] ) ) ) || ( isset( $_SERVER['REQUEST_URI'] ) && strpos( esc_url_raw( $_SERVER['REQUEST_URI'] ), 'post-new.php' ) !== false ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			add_filter( 'zip_ai_auth_redirection_flag', '__return_false', 999 );
 		}
 		add_action( 'wp_ajax_ast_block_templates_importer', array( $this, 'template_importer' ) );
@@ -57,6 +68,63 @@ class Plugin {
 		add_filter( 'upload_mimes', array( $this, 'custom_upload_mimes' ) );
 		add_action( 'wp_ajax_ast_block_templates_data_option', array( $this, 'api_request' ) );
 		$this->get_default_color_palette();
+	}
+
+	/**
+	 * Add custom capabilities.
+	 *
+	 * @since 2.1.14
+	 * @return void
+	 */
+	public function add_custom_capabilities() {
+		$this->remove_custom_capability_from_other_roles();
+		$roles = apply_filters( 'ast_block_template_capability_additional_roles', array( 'administrator' ) );
+
+		// Loop through each role and add the custom capability.
+		foreach ( $roles as $role_slug ) {
+			$role_object = get_role( $role_slug );
+			if ( $role_object ) {
+				$role_object->add_cap( self::$custom_capability );
+			}
+		}
+	}
+
+	/**
+	 * Remove custom capabilities.
+	 *
+	 * @since 2.1.14
+	 * @return void
+	 */
+	public function remove_custom_capability_from_other_roles() {
+		// Default role to retain the custom capability.
+		$default_role = 'administrator';
+
+		// Get the default role object.
+		$default_role_object = get_role( $default_role );
+	
+		// Remove the custom capability from all roles except the default role.
+		if ( $default_role_object ) {
+			$roles = wp_roles()->role_names;
+			unset( $roles[ $default_role ] ); // Exclude the default role.
+	
+			foreach ( $roles as $role_slug => $role_name ) {
+				$role_object = get_role( $role_slug );
+				if ( $role_object && $role_object->has_cap( self::$custom_capability ) ) {
+					$role_object->remove_cap( self::$custom_capability );
+				}
+			}
+		}
+	}
+
+	/**
+	 * Define constants.
+	 * 
+	 * @return void
+	 */
+	public function define_constants() {
+		if ( ! defined( 'ZIPWP_APP' ) ) {
+			define( 'ZIPWP_APP', apply_filters( 'ast_block_templates_zip_app_url', 'https://app.zipwp.com/auth' ) );
+		}
 	}
 
 	/**
@@ -114,15 +182,6 @@ class Plugin {
 				return;
 			}
 
-			$token = isset( $_GET['credit_token'] ) ? sanitize_text_field( wp_unslash( $_GET['credit_token'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$business_details = get_option( 'ast-templates-business-details', false );
-			if ( ! $business_details ) {
-				$business_details = array();
-			}
-
-			$business_details['token'] = Helper::encrypt( $token );
-			update_option( 'ast-templates-business-details', $business_details );
-
 			// Update the variables for ZipAI.
 			$spec_ai_settings = Helper::get_setting();
 
@@ -142,23 +201,6 @@ class Plugin {
 			}
 
 			update_option( 'zip_ai_settings', $spec_ai_settings );
-		}
-
-		// Add token if user already authorised from ZipAI.
-		if ( empty( Importer_Helper::get_business_details( 'token' ) ) ) {
-			$spec_ai_auth_token = Helper::get_setting( 'auth_token' );
-
-			if ( ! empty( $spec_ai_auth_token ) ) {
-				$business_details['token'] = $spec_ai_auth_token;
-				update_option( 'ast-templates-business-details', $business_details );
-			}
-		}
-
-		// Remove token if user revoke access from ZipAI.
-		if ( empty( Helper::get_setting( 'auth_token' ) ) && defined( 'ZIP_AI_DIR' ) ) {
-
-			$business_details['token'] = '';
-			update_option( 'ast-templates-business-details', $business_details );
 		}
 	}
 
@@ -198,7 +240,7 @@ class Plugin {
 	 */
 	public function api_request() {
 
-		if ( ! current_user_can( 'edit_posts' ) ) {
+		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
 		}
 
@@ -246,7 +288,7 @@ class Plugin {
 	 */
 	public function hide_notices() {
 
-		if ( ! current_user_can( 'edit_posts' ) ) {
+		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
 		}
 
@@ -290,7 +332,7 @@ class Plugin {
 	 */
 	public function get_color_palette() {
 
-		if ( ! current_user_can( 'edit_posts' ) ) {
+		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
 		}
 
@@ -314,7 +356,7 @@ class Plugin {
 	 */
 	public function import_wpforms( $wpforms_url = '' ) {
 
-		if ( ! current_user_can( 'edit_posts' ) ) {
+		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
 		}
 		// Verify Nonce.
@@ -404,7 +446,7 @@ class Plugin {
 	 */
 	public function import_block() {
 
-		if ( ! current_user_can( 'edit_posts' ) ) {
+		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
 		}
 		// Verify Nonce.
@@ -745,7 +787,7 @@ class Plugin {
 	 */
 	public function template_importer() {
 
-		if ( ! current_user_can( 'edit_posts' ) ) {
+		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
 		}
 		// Verify Nonce.
@@ -807,6 +849,10 @@ class Plugin {
 	 */
 	public function template_assets() {
 		
+		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
+			return;
+		}
+
 		$post_types = get_post_types( array( 'public' => true ), 'names' );
 
 		$current_screen = get_current_screen();
@@ -826,8 +872,6 @@ class Plugin {
 		}
 
 		$this->sync_disable_ai_settings();
-
-		$this->maybe_update_business_details();
 
 		wp_enqueue_script( 'ast-block-templates', AST_BLOCK_TEMPLATES_URI . 'dist/main.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'masonry', 'imagesloaded', 'updates' ), AST_BLOCK_TEMPLATES_VER, true );
 		wp_add_inline_script( 'ast-block-templates', 'window.lodash = _.noConflict();', 'after' );
@@ -855,11 +899,13 @@ class Plugin {
 
 		if ( ! file_exists( $common_style_url ) ) {
 			$this->regenerate_spectra_css();
+			$common_css_content = file_exists( $common_style_url ) ? file_get_contents( $common_style_url ) : '';
 		}
 
-		$common_css_content = file_exists( $common_style_url ) ? file_get_contents( $common_style_url ) : '';
+		if ( empty( $common_css_content ) ) {
+			$common_css_content = Sync_Library::instance()->get_server_spectra_common_css();
+		}
 
-		$blocks = $this->get_all_blocks();
 		$ast_header = '';
 		$ast_footer = '';
 		$static_css_path = '';
@@ -880,10 +926,10 @@ class Plugin {
 			
 		}
 
-		$server_astra_customizer_css = get_option( 'ast-block-templates-customizer-css', '' );
+		$server_astra_customizer_css = Helper::instance()->get_block_template_customiser_css();
 		if ( empty( $server_astra_customizer_css ) ) {
 			Sync_Library::instance()->get_server_astra_customizer_css();
-			$server_astra_customizer_css = get_option( 'ast-block-templates-customizer-css', '' );
+			$server_astra_customizer_css = Helper::instance()->get_block_template_customiser_css();
 		}
 		
 		$settings = get_option( 'ast_block_templates_ai_settings', array() );
@@ -904,11 +950,20 @@ class Plugin {
 			'success_url' => isset( $_SERVER['REQUEST_URI'] ) ? urlencode( $this->remove_query_params( network_home_url() . $_SERVER['REQUEST_URI'], $remove_parameters ) . '&ast_action=credits' ) : '', // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		);
 
-		$spec_ai_auth_url = add_query_arg( $request_params, 'https://app.zipwp.com/auth/' );
+		$spec_ai_auth_url = add_query_arg( $request_params, ZIPWP_APP );
 		$spec_ai_signup_url = add_query_arg( $request_params, 'https://app.zipwp.com/register/' );
 		$credit_purchase_url = add_query_arg( $credit_request_params, 'https://app.zipwp.com/credits-pricing/' );
 		$ai_features = get_option( 'zip_ai_modules', array() );
 		$site_host = wp_parse_url( get_site_url(), PHP_URL_HOST );
+
+		$business_details = get_option( 'zipwp_user_business_details', false );
+		$business_details = ( $business_details ) ? $business_details : array();
+		$business_details = array_merge( $business_details, array( 'token' => Helper::get_setting( 'auth_token', '' ) ) );
+
+		if ( ! empty( $business_details['social_profiles'] ) ) {
+			$business_details = $this->maybe_parse_social_profiles( $business_details );
+		}
+
 		wp_localize_script(
 			'ast-block-templates',
 			'ast_block_template_vars',
@@ -918,7 +973,6 @@ class Plugin {
 					'popup_class'             => defined( 'UAGB_PLUGIN_SHORT_NAME' ) ? 'uag-block-templates-lightbox' : 'ast-block-templates-lightbox',
 					'ajax_url'                => admin_url( 'admin-ajax.php' ),
 					'uri'                     => AST_BLOCK_TEMPLATES_URI,
-					'allCategories'           => get_option( 'ast-block-templates-categories', array() ),
 					'wpforms_status'          => $this->get_plugin_status( 'wpforms-lite/wpforms.php' ),
 					'spectra_status'          => $this->get_plugin_status( 'ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php' ),
 					'spectra_pro_status'      => $this->get_plugin_status( 'spectra-pro/spectra-pro.php' ),
@@ -926,7 +980,7 @@ class Plugin {
 					'wpforms_status'          => $this->get_plugin_status( 'spectra-pro/spectra-pro.php' ),
 					'astra_sites_status'          => $this->get_plugin_status( 'astra-sites/astra-sites.php' ),
 					'_ajax_nonce'             => wp_create_nonce( 'ast-block-templates-ajax-nonce' ),
-					'button_text'             => esc_html__( 'Template Kits', 'ast-block-templates' ),
+					'button_text'             => esc_html__( 'Design Library', 'ast-block-templates' ),
 					'display_button_logo'     => true,
 					'popup_logo_uri'          => AST_BLOCK_TEMPLATES_URI . 'dist/spectra-logo.svg',
 					'button_logo'             => AST_BLOCK_TEMPLATES_URI . 'dist/spectra.svg',
@@ -943,15 +997,15 @@ class Plugin {
 					'spectra_common_styles'   => preg_replace( '/(?<!-)(\\bbody\\b)(?!-)/i', '.st-block-container', $common_css_content ) . ' .st-block-container .uagb-button__wrapper a { text-decoration: none; }',
 					'block_color_palette'     => $this->get_block_palette_colors(),
 					'page_color_palette'      => $this->get_page_palette_colors(),
-					'ai_content_ajax_nonce'             => ( current_user_can( 'manage_options' ) ) ? wp_create_nonce( 'ast-block-templates-ai-content' ) : '',
-					'reset_details_ajax_nonce'             => ( current_user_can( 'manage_options' ) ) ? wp_create_nonce( 'ast-block-templates-reset-business-details' ) : '',
-					'business_details'  => get_option( 'ast-templates-business-details', false ),
-					'rest_api_nonce' => ( current_user_can( 'manage_options' ) ) ? wp_create_nonce( 'wp_rest' ) : '',
+					'ai_content_ajax_nonce'             => wp_create_nonce( 'ast-block-templates-ai-content' ),
+					'reset_details_ajax_nonce'             => wp_create_nonce( 'ast-block-templates-reset-business-details' ),
+					'business_details'  => $business_details,
+					'rest_api_nonce' => wp_create_nonce( 'wp_rest' ),
 					'default_ai_categories' => Helper::instance()->get_default_ai_categories(),
 					'user_email' => get_option( 'admin_email' ),
 					'skip_zip_ai_onboarding_nonce'             => wp_create_nonce( 'skip-spectra-pro-onboarding-nonce' ),
 					'skip_zip_ai_onboarding' => get_option( 'ast_skip_zip_ai_onboarding', false ),
-					'show_onboarding' => ( current_user_can( 'manage_options' ) ) ? ( 'no' !== get_option( 'ast-block-templates-show-onboarding', true ) ) : false,
+					'show_onboarding' => ( 'no' !== get_option( 'ast-block-templates-show-onboarding', true ) ),
 					'dynamic_content' => get_option( 'ast-templates-ai-content', array() ),
 					'favorites' => get_option(
 						'ast_block_templates_favorites', array(
@@ -992,67 +1046,48 @@ class Plugin {
 					'ai_design_copilot' => isset( $ai_features['ai_design_copilot']['status'] ) ? $ai_features['ai_design_copilot']['status'] : 'disabled',
 					'ai_assistant' => isset( $ai_features['ai_assistant']['status'] ) ? $ai_features['ai_assistant']['status'] : 'disabled',
 					'hide_notice' => $this->is_show_personalize_ai_notice(),
+					'is_sync_business_details' => get_option( 'ast-templates-business-details-synced', false ),
+					'bypassAuth' => apply_filters( 'ast_block_templates_bypass_auth', false ),
 				)
 			)
 		);
 	}
 
 	/**
-	 * Sync business details with Zip.
+	 * Get Spec Credit Details
 	 *
-	 * @since 2.1.2
-	 *
-	 * @return void
+	 * @since 2.1.24
+	 * @param  array<string, mixed> $business_details business details.
+	 * @return array<string, mixed>
 	 */
-	public function maybe_update_business_details() {
+	public function maybe_parse_social_profiles( $business_details ) {
 
-		$ast_business_details = get_option( 'ast-templates-business-details', false );
+		$social_profiles = $business_details['social_profiles'];
+		$save = false;
+		foreach ( $social_profiles as $index => $icon ) {
 
-		if ( ! isset( $ast_business_details['business_name'] ) ) {
+			if ( ! isset( $icon['type'] ) || empty( $icon['type'] ) ) {
 
-			$zip_user_business_details = get_option( 'zipwp_user_business_details', false );
+				$url_parts = wp_parse_url( $icon['url'] );
+				$host = isset( $url_parts['host'] ) ? $url_parts['host'] : false;
 
-			$social_profiles = isset( $zip_user_business_details['social_profiles'] ) ? $zip_user_business_details['social_profiles'] : array();
-
-			if ( is_array( $social_profiles ) ) {
-				foreach ( $social_profiles as $index => $profile ) {
-					if ( isset( $profile['type'] ) ) {
-						$social_profiles[ $index ]['id'] = $profile['type'];
-						unset( $social_profiles[ $index ]['type'] );
-					}
+				if ( $host ) {
+					$domain_parts = explode( '.', $host );
+					$type = reset( $domain_parts ); 
+					$social_profiles[ $index ]['type'] = strtolower( $type );
+					$social_profiles[ $index ]['id'] = strtolower( $type );
 				}
-			}
 
-			$images = isset( $zip_user_business_details['images'] ) ? $zip_user_business_details['images'] : array();
-			$filtered_images = array();
-			
-			if ( is_array( $images ) ) {
-				foreach ( $images as $index => $image ) {
-					$oriantation = Importer_Helper::get_image_orientation( $image['url'] );
-
-					if ( 'landscape' === $oriantation ) {
-						$filtered_images['landscape'][] = $image;
-					} else {
-						$filtered_images['portrait'][] = $image;
-					}
-				}   
-			}
-
-			$business_details = array(
-				'business_name' => isset( $zip_user_business_details['business_name'] ) ? $zip_user_business_details['business_name'] : '',
-				'business_description' => isset( $zip_user_business_details['business_description'] ) ? $zip_user_business_details['business_description'] : '',
-				'business_category' => isset( $zip_user_business_details['category_slug'] ) ? $zip_user_business_details['category_slug'] : '',
-				'images' => $filtered_images,
-				'image_keywords' => isset( $zip_user_business_details['image_keyword'] ) ? $zip_user_business_details['image_keyword'] : array(),
-				'business_address' => isset( $zip_user_business_details['business_address'] ) ? $zip_user_business_details['business_address'] : '',
-				'business_phone' => isset( $zip_user_business_details['business_phone'] ) ? $zip_user_business_details['business_phone'] : '',
-				'business_email' => isset( $zip_user_business_details['business_email'] ) ? $zip_user_business_details['business_email'] : '',
-				'social_profiles' => $social_profiles,
-				'token' => isset( $ast_business_details['token'] ) ? $ast_business_details['token'] : '',
-			);
-
-			update_option( 'ast-templates-business-details', $business_details );
+				$save = true;
+			}       
 		}
+
+		if ( $save ) {
+			$business_details['social_profiles'] = $social_profiles;
+			update_option( 'zipwp_user_business_details', $business_details );
+		}
+
+		return $business_details;
 	}
 
 	/**
@@ -1295,14 +1330,14 @@ class Plugin {
 	 * @return array page builder sites.
 	 */
 	public function get_all_sites() {
-		$total_requests = (int) get_option( 'ast-block-templates-site-requests', 0 );
+		$total_requests = (int) Helper::instance()->get_site_request();
 
 		$sites = array();
 
 		if ( $total_requests ) {
 
 			for ( $page = 1; $page <= $total_requests; $page++ ) {
-				$current_page_data = get_option( 'ast-block-templates-sites-' . $page, array() );
+				$current_page_data = Helper::instance()->get_sites_templates( $page );
 				if ( ! empty( $current_page_data ) ) {
 					foreach ( $current_page_data as $site_id => $site_data ) {
 
@@ -1327,7 +1362,7 @@ class Plugin {
 						}
 
 						// Replace `id-` from the site ID.
-						$site_data['ID'] = str_replace( 'id-', '', $site_id );
+						$site_data['ID'] = str_replace( 'id-', '', (string) $site_id );
 
 						if ( count( $site_data['pages'] ) ) {
 							foreach ( $site_data['pages'] as $page_id => $page_data ) {
@@ -1368,13 +1403,13 @@ class Plugin {
 		$blocks         = array();
 		$blocks_pages   = array();
 		$blocks_wireframe   = array();
-		$total_requests = (int) get_option( 'ast-block-templates-block-requests', 0 );
+		$total_requests = (int) Helper::instance()->get_block_templates_requests();
 
 		for ( $page = 1; $page <= $total_requests; $page++ ) {
-			$current_page_data = get_option( 'ast-block-templates-blocks-' . $page, array() );
+			$current_page_data = Helper::instance()->get_blocks_templates( $page );
 			if ( ! empty( $current_page_data ) ) {
 				foreach ( $current_page_data as $page_id => $page_data ) {
-					$page_data['ID'] = str_replace( 'id-', '', $page_id );
+					$page_data['ID'] = str_replace( 'id-', '', (string) $page_id );
 
 					if ( isset( $page_data['type'] ) && 'wireframe' === $page_data['type'] ) {
 						$blocks_wireframe[] = $page_data;

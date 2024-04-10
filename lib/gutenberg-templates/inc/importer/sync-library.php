@@ -11,7 +11,6 @@ namespace Gutenberg_Templates\Inc\Importer;
 use Gutenberg_Templates\Inc\Traits\Instance;
 use Gutenberg_Templates\Inc\Traits\Helper;
 use Gutenberg_Templates\Inc\Importer\Plugin;
-use WP_CLI;
 
 /**
  * Sync Library
@@ -39,7 +38,6 @@ class Sync_Library {
 	public function __construct() {
 		add_action( 'wp_ajax_ast-block-templates-check-sync-library-status', array( $this, 'sync_via_ajax' ) );
 		add_action( 'wp_ajax_ast-block-templates-import-blocks', array( $this, 'ajax_import_blocks' ) );
-		add_action( 'admin_init', array( $this, 'setup_templates' ), 10 );
 		add_action( 'sync_blocks', array( $this, 'sync_blocks' ) );
 		add_action( 'wp_ajax_ast-block-templates-get-sites-request-count', array( $this, 'ajax_sites_requests_count' ) );
 		add_action( 'wp_ajax_ast-block-templates-import-sites', array( $this, 'ajax_import_sites' ) );
@@ -59,7 +57,7 @@ class Sync_Library {
 		);
 
 		$query_args = array();
-		$api_url = add_query_arg( $query_args, trailingslashit( AST_BLOCK_TEMPLATES_LIBRARY_URL ) . 'wp-json/astra-blocks/v2/get-customizer-css' );
+		$api_url = add_query_arg( $query_args, AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-json/astra-blocks/v2/get-customizer-css' );
 
 		Helper::instance()->ast_block_templates_log( 'BLOCK: ' . $api_url );
 
@@ -69,10 +67,48 @@ class Sync_Library {
 			$res_data = json_decode( wp_remote_retrieve_body( $response ), true );
 
 			if ( isset( $res_data['data']['customizer_css'] ) ) {
-				update_option( 'ast-block-templates-customizer-css', $res_data['data']['customizer_css'] );
+				Helper::instance()->update_json_file( 'ast-block-templates-customizer-css.json', $res_data['data']['customizer_css'] );
 				do_action( 'ast_block_templates_customizer_css', $res_data['data']['customizer_css'] );
 			}
 		}
+	}
+
+	/**
+	 * Get Spectra Common CSS.
+	 *
+	 * @return string
+	 */
+	public function get_server_spectra_common_css() {
+
+		Helper::instance()->ast_block_templates_log( 'BLOCK: Getting Spectra Common CSS' );
+
+		$common_css_content = get_option( 'ast-block-templates-spectra-common-styles', '' );
+
+		if ( ! empty( $common_css_content ) ) {
+			return $common_css_content;
+		}
+
+		$api_args = array(
+			'timeout' => 50,
+		);
+
+		$query_args = array();
+		$api_url = add_query_arg( $query_args, AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-json/astra-blocks/v2/spectra-common-styles' );
+
+		Helper::instance()->ast_block_templates_log( 'BLOCK: ' . $api_url );
+
+		$response = wp_remote_get( $api_url, $api_args );
+
+		if ( ! is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) === 200 ) {
+			$res_data = json_decode( wp_remote_retrieve_body( $response ), true );
+
+			if ( isset( $res_data['data']['spectra-common-styles'] ) ) {
+				update_option( 'ast-block-templates-spectra-common-styles', $res_data['data']['spectra-common-styles'] );
+				return $res_data['data']['spectra-common-styles'];
+			}
+		}
+
+		return '';
 	}
 
 	/**
@@ -99,17 +135,23 @@ class Sync_Library {
 	 */
 	public function set_default_assets() {
 
-		$dir        = AST_BLOCK_TEMPLATES_DIR . 'dist/json';
 		$list_files = $this->get_default_assets();
+		$files    = array();
+
 		foreach ( $list_files as $key => $file_name ) {
-			if ( file_exists( $dir . '/' . $file_name . '.json' ) ) {
-				$data = Helper::instance()->ast_block_templates_get_filesystem()->get_contents( $dir . '/' . $file_name . '.json' );
-				if ( ! empty( $data ) ) {
-					update_option( $file_name, json_decode( $data, true ) );
-				}
-			}
+
+			$content = '';
+
+			$file_data = array(
+				'file_name' => $file_name . '.json',
+				'file_content' => $content,
+				'file_base' => AST_BLOCK_TEMPLATES_JSON_DIR,
+			);
+			
+			array_push( $files, $file_data );
 		}
 
+		Helper::instance()->create_files( $files );
 	}
 
 	/**
@@ -131,13 +173,8 @@ class Sync_Library {
 			return;
 		}
 
-		// Bail if not on admin screen.
-		if ( ! is_admin() ) {
-			return;
-		}
-
 		update_option( 'ast_blocks_sync_in_progress', 'yes', 'no' );
-		wp_schedule_single_event( time() + 1, 'sync_blocks' );
+		$this->sync_blocks();
 	}
 
 	/**
@@ -153,7 +190,7 @@ class Sync_Library {
 
 		if ( empty( $result_data ) ) {
 			Helper::instance()->ast_block_templates_log( 'Blocks are up to date.' );
-			update_option( 'ast-block-templates-last-export-checksums-time', time(), 'no' );
+			Helper::instance()->update_json_file( 'ast-block-templates-last-export-checksums-time.json', time() );
 			update_option( 'ast_blocks_sync_in_progress', 'no', 'no' );
 			return;
 		}
@@ -170,7 +207,7 @@ class Sync_Library {
 	 */
 	public function check_checksum_and_get_blocks_data() {
 
-		$old_last_export_checksums = get_option( 'ast-block-templates-last-export-checksums', '' );
+		$old_last_export_checksums = Helper::instance()->get_last_exported_checksum();
 
 		$api_args = array(
 			'timeout' => 100,
@@ -190,7 +227,7 @@ class Sync_Library {
 			'last_export_checksums' => urlencode( $old_last_export_checksums ),
 		);
 
-		$api_url = add_query_arg( $query_args, trailingslashit( AST_BLOCK_TEMPLATES_LIBRARY_URL ) . 'wp-json/astra-sites/v2/checksum/' );
+		$api_url = add_query_arg( $query_args, AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-json/astra-sites/v2/checksum/' );
 
 		$response = wp_remote_get( $api_url, $api_args );
 
@@ -213,15 +250,14 @@ class Sync_Library {
 		Helper::instance()->ast_block_templates_log( 'Sync process for Gutenberg Blocks has started.' );
 
 		if ( isset( $data['categories'] ) && ! empty( $data['categories'] ) ) {
-			$option_name = 'ast-block-templates-categories';
-			Helper::instance()->ast_block_templates_log( 'CATEGORY: Storing in option ' . $option_name );
-			update_option( $option_name, $data['categories'], 'no' );
+			Helper::instance()->ast_block_templates_log( 'CATEGORY: Storing in ast-block-templates-categories.json' );
+			Helper::instance()->update_json_file( 'ast-block-templates-categories.json', $data['categories'] );
 			do_action( 'ast_block_templates_sync_categories', $data['categories'] );
 		}
 
 		if ( isset( $data['count']['pages'] ) && ! empty( $data['count']['pages'] ) ) {
 			Helper::instance()->ast_block_templates_log( 'BLOCK: Requests count ' . $data['count']['pages'] );
-			update_option( 'ast-block-templates-block-requests', $data['count']['pages'], 'no' );
+			Helper::instance()->update_json_file( 'ast-block-templates-block-requests.json', $data['count']['pages'] );
 			do_action( 'ast_block_templates_sync_blocks_requests', $data['count']['pages'] );
 		}
 
@@ -278,7 +314,7 @@ class Sync_Library {
 
 		if ( ! Helper::instance()->ast_block_templates_doing_wp_cli() ) {
 
-			if ( ! current_user_can( 'edit_posts' ) ) {
+			if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 				wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
 			}
 			// Verify Nonce.
@@ -298,14 +334,14 @@ class Sync_Library {
 			);
 		}
 		if ( isset( $result_data['categories'] ) && ! empty( $result_data['categories'] ) ) {
-			$option_name = 'ast-block-templates-categories';
-			Helper::instance()->ast_block_templates_log( 'CATEGORY: Storing in option ' . $option_name );
-			update_option( $option_name, $result_data['categories'], 'no' );
+		
+			Helper::instance()->ast_block_templates_log( 'CATEGORY: Storing in option ast-block-templates-categories.json' );
+			Helper::instance()->update_json_file( 'ast-block-templates-categories.json', $result_data['categories'] );
 			do_action( 'ast_block_templates_sync_categories', $result_data['categories'] );
 		}
 		if ( isset( $result_data['count']['pages'] ) && ! empty( $result_data['count']['pages'] ) ) {
 			Helper::instance()->ast_block_templates_log( 'BLOCK: Requests count ' . $result_data['count']['pages'] );
-			update_option( 'ast-block-templates-block-requests', $result_data['count']['pages'], 'no' );
+			Helper::instance()->update_json_file( 'ast-block-templates-block-requests.json', $result_data['count']['pages'] );
 			do_action( 'ast_block_templates_sync_blocks_requests', $result_data['count']['pages'] );
 		}
 		$this->update_latest_checksums( $result_data['checksum'] );
@@ -327,7 +363,7 @@ class Sync_Library {
 	 */
 	public function get_last_export_checksums() {
 
-		$old_last_export_checksums = get_option( 'ast-block-templates-last-export-checksums', '' );
+		$old_last_export_checksums = Helper::instance()->get_last_exported_checksum();
 
 		$new_last_export_checksums = $this->set_last_export_checksums();
 
@@ -362,7 +398,7 @@ class Sync_Library {
 
 		$query_args = array();
 
-		$api_url = add_query_arg( $query_args, trailingslashit( AST_BLOCK_TEMPLATES_LIBRARY_URL ) . 'wp-json/astra-sites/v1/get-last-export-checksums/' );
+		$api_url = add_query_arg( $query_args, AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-json/astra-sites/v1/get-last-export-checksums/' );
 
 		$response = wp_remote_get( $api_url, $api_args );
 
@@ -391,7 +427,7 @@ class Sync_Library {
 	 * @return void
 	 */
 	public function update_latest_checksums( $new_checksum ) {
-		update_option( 'ast-block-templates-last-export-checksums', $new_checksum, 'no' );
+		Helper::instance()->update_json_file( 'ast-block-templates-last-export-checksums.json', $new_checksum );
 		update_option( 'ast-block-templates-last-export-checksums-time', time(), 'no' );
 		update_option( 'ast_blocks_sync_in_progress', 'no', 'no' );
 		do_action( 'ast_block_templates_sync_export_checksum', $new_checksum );
@@ -405,7 +441,7 @@ class Sync_Library {
 	 */
 	public function ajax_import_categories() {
 
-		if ( ! current_user_can( 'edit_posts' ) ) {
+		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 			wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
 		}
 		// Verify Nonce.
@@ -430,7 +466,7 @@ class Sync_Library {
 	 */
 	public function ajax_import_blocks() {
 
-		if ( ! current_user_can( 'edit_posts' ) ) {
+		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 			wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
 		}
 		// Verify Nonce.
@@ -448,7 +484,7 @@ class Sync_Library {
 
 			if ( isset( $_POST['total'] ) && $_POST['total'] === $_POST['page_no'] ) {
 				$data['data']['allBlocks'] = Plugin::instance()->get_all_blocks();
-				$data['data']['categories'] = get_option( 'ast-block-templates-categories', array() );
+				$data['data']['categories'] = Helper::instance()->get_block_template_category();
 			}
 
 			wp_send_json_success(
@@ -473,7 +509,7 @@ class Sync_Library {
 	 */
 	public function ajax_blocks_requests_count() {
 
-		if ( ! current_user_can( 'edit_posts' ) ) {
+		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 			wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
 		}
 		// Verify Nonce.
@@ -523,7 +559,7 @@ class Sync_Library {
 			)
 		);
 
-		$api_url = add_query_arg( $query_args, trailingslashit( AST_BLOCK_TEMPLATES_LIBRARY_URL ) . 'wp-json/astra-blocks/v2/get-blocks-count/' );
+		$api_url = add_query_arg( $query_args, AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-json/astra-blocks/v2/get-blocks-count/' );
 
 		Helper::instance()->ast_block_templates_log( 'BLOCK: ' . $api_url );
 
@@ -534,9 +570,7 @@ class Sync_Library {
 
 			if ( isset( $total_requests['pages'] ) ) {
 				Helper::instance()->ast_block_templates_log( 'BLOCK: Requests count ' . $total_requests['pages'] );
-
-				update_option( 'ast-block-templates-block-requests', $total_requests['pages'], 'no' );
-
+				Helper::instance()->update_json_file( 'ast-block-templates-block-requests.json', $total_requests['pages'] );
 				do_action( 'ast_block_templates_sync_blocks_requests', $total_requests['pages'] );
 				return $total_requests['pages'];
 			}
@@ -566,7 +600,7 @@ class Sync_Library {
 			)
 		);
 
-		$api_url = add_query_arg( $query_args, trailingslashit( AST_BLOCK_TEMPLATES_LIBRARY_URL ) . 'wp-json/wp/v2/blocks-category/' );
+		$api_url = add_query_arg( $query_args, AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-json/wp/v2/blocks-category/' );
 
 		$response = wp_remote_get( $api_url, $api_args );
 
@@ -582,15 +616,13 @@ class Sync_Library {
 				}
 			} else {
 
-				$option_name = 'ast-block-templates-categories';
-				Helper::instance()->ast_block_templates_log( 'CATEGORY:Storing in option ' . $option_name );
-
-				update_option( $option_name, $all_categories, 'no' );
+				Helper::instance()->ast_block_templates_log( 'CATEGORY:Storing in file ast-block-templates-categories' );
+				Helper::instance()->update_json_file( 'ast-block-templates-categories.json', $all_categories );
 
 				do_action( 'ast_block_templates_sync_categories', $all_categories );
 
 				if ( Helper::instance()->ast_block_templates_doing_wp_cli() ) {
-					Helper::instance()->ast_block_templates_log( 'CATEGORY:Generating ' . $option_name . '.json file' );
+					Helper::instance()->ast_block_templates_log( 'CATEGORY:Generating ast-block-templates-categories.json file' );
 				}
 			}
 		} else {
@@ -625,7 +657,7 @@ class Sync_Library {
 			)
 		);
 
-		$api_url = add_query_arg( $query_args, trailingslashit( AST_BLOCK_TEMPLATES_LIBRARY_URL ) . 'wp-json/astra-blocks/v2/blocks/' );
+		$api_url = add_query_arg( $query_args, AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-json/astra-blocks/v2/blocks/' );
 
 		Helper::instance()->ast_block_templates_log( 'BLOCK: ' . $api_url );
 
@@ -642,16 +674,14 @@ class Sync_Library {
 					Helper::instance()->ast_block_templates_log( 'BLOCK: HTTP Request Error!' );
 				}
 			} else {
-				$option_name = 'ast-block-templates-blocks-' . $page;
-				Helper::instance()->ast_block_templates_log( 'BLOCK: Storing in option ' . $option_name );
+				$file_name = 'ast-block-templates-blocks-' . $page;
+				Helper::instance()->ast_block_templates_log( 'BLOCK: Storing in file ' . $file_name );
 
-				$category_content = get_option( 'ast-templates-ai-content', array() );
-
-				update_option( $option_name, $all_blocks, 'no' );
+				Helper::instance()->update_json_file( $file_name . '.json', $all_blocks );
 
 				if ( Helper::instance()->ast_block_templates_doing_wp_cli() ) {
 					do_action( 'ast_block_templates_sync_blocks', $page, $all_blocks );
-					Helper::instance()->ast_block_templates_log( 'BLOCK: Genearting ' . $option_name . '.json file' );
+					Helper::instance()->ast_block_templates_log( 'BLOCK: Genearting ' . $file_name . '.json file' );
 				}
 			}
 		} else {
@@ -693,8 +723,7 @@ class Sync_Library {
 
 			if ( isset( $total_requests['pages'] ) ) {
 				Helper::instance()->ast_block_templates_log( 'SITE: Request count ' . $total_requests['pages'] );
-
-				update_option( 'ast-block-templates-site-requests', $total_requests['pages'], 'no' );
+				Helper::instance()->update_json_file( 'ast-block-templates-site-requests.json', $total_requests['pages'] );
 
 				do_action( 'ast_block_templates_sync_get_total_pages', $total_requests['pages'] );
 				return $total_requests['pages'];
@@ -746,15 +775,14 @@ class Sync_Library {
 				}
 			} else {
 
-				$option_name = 'ast-block-templates-sites-' . $page;
-				Helper::instance()->ast_block_templates_log( 'SITE: Storing in option ' . $option_name );
-
-				update_option( $option_name, $all_blocks, 'no' );
+				$file_name = 'ast-block-templates-sites-' . $page;
+				Helper::instance()->ast_block_templates_log( 'SITE: Storing in file ' . $file_name );
+				Helper::instance()->update_json_file( $file_name . '.json', $all_blocks );
 
 				do_action( 'ast_block_templates_sync_sites', $page, $all_blocks );
 
 				if ( Helper::instance()->ast_block_templates_doing_wp_cli() ) {
-					Helper::instance()->ast_block_templates_log( 'SITE: Generating ' . $option_name . '.json file' );
+					Helper::instance()->ast_block_templates_log( 'SITE: Generating ' . $file_name . '.json file' );
 				}
 			}
 		} else {
@@ -772,7 +800,7 @@ class Sync_Library {
 	 */
 	public function ajax_sites_requests_count() {
 
-		if ( ! current_user_can( 'edit_posts' ) ) {
+		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 			wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
 		}
 		// Verify Nonce.
@@ -807,7 +835,7 @@ class Sync_Library {
 	 */
 	public function ajax_import_sites() {
 
-		if ( ! current_user_can( 'edit_posts' ) ) {
+		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 			wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
 		}
 		// Verify Nonce.
@@ -824,7 +852,7 @@ class Sync_Library {
 
 			if ( isset( $_POST['total'] ) && $_POST['total'] === $_POST['page_no'] ) {
 				$data['data']['allBlocks'] = Plugin::instance()->get_all_blocks();
-				$data['data']['categories'] = get_option( 'ast-block-templates-categories', array() );
+				$data['data']['categories'] = Helper::instance()->get_block_template_category();
 				$data['data']['allSites'] = Plugin::instance()->get_all_sites();
 			}
 

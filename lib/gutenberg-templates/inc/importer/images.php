@@ -36,13 +36,9 @@ class Images {
 	 * Image index
 	 *
 	 * @since {{since}}
-	 * @var (array) image_index
+	 * @var (int) image_index
 	 */
-	public static $image_index = array(
-		'landscape' => 0,
-		'portrait'  => 0,
-		'square'    => 0,
-	);
+	public static $image_index = 0;
 
 	/**
 	 * Get Images
@@ -51,21 +47,21 @@ class Images {
 	 * @since {{since}}
 	 */
 	public function get_images() {
+
 		return Importer_Helper::get_business_details( 'images' );
 	}
 
 	/**
 	 * Get Image for the specified index and orientation
 	 *
-	 * @param string $orientation Orientation of the image.
-	 * @param int    $index Index of the image.
+	 * @param int $index Index of the image.
 	 * @return array|boolean Array of images or false.
 	 * @since {{since}}
 	 */
-	public function get_image( $orientation = 'landscape', $index = 0 ) {
+	public function get_image( $index = 0 ) {
 		$images = $this->get_images();
-		error_log( 'Fetching ' . $orientation . ' image with index ' . $index );
-		return ( isset( $images[ $orientation ][ $index ] ) ) ? $images[ $orientation ][ $index ] : false;
+		error_log( 'Fetching image with index ' . $index );
+		return ( isset( $images[ $index ] ) ) ? $images[ $index ] : false;
 	}
 
 	/**

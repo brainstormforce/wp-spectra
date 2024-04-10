@@ -5,7 +5,7 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 import UAGSelectControl from '@Components/select-control';
 import ResponsiveSlider from '@Components/responsive-slider';
-
+import { ToggleControl } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import UAGTextControl from '@Components/text-control';
 import { memo } from '@wordpress/element';
@@ -14,9 +14,11 @@ const Settings = ( props ) => {
 
 	const {
 		setAttributes,
-		attributes: { height, heightTablet, heightMobile, zoom, address, language },
+		attributes: { height, heightTablet, heightMobile, zoom, address, language, enableSatelliteView },
 	} = props;
 
+
+	const maxZoomRange = enableSatelliteView ? 21 : 22;
 	return (
 		<InspectorControls>
 			<InspectorTabs tabs={ [ 'general', 'advance' ] }>
@@ -42,6 +44,11 @@ const Settings = ( props ) => {
 							setAttributes={ setAttributes }
 							placeholder={ __( 'Type the address', 'ultimate-addons-for-gutenberg' ) }
 						/>
+						<ToggleControl
+							label={ __( 'Enable Satellite View', 'ultimate-addons-for-gutenberg' ) }
+							checked={ enableSatelliteView }
+							onChange={ () => setAttributes( { enableSatelliteView: ! enableSatelliteView } ) }
+						/>
 						<Range
 							label={ __( 'Zoom', 'ultimate-addons-for-gutenberg' ) }
 							value={ zoom }
@@ -51,7 +58,7 @@ const Settings = ( props ) => {
 								label: 'zoom',
 							} }
 							min={ 1 }
-							max={ 22 }
+							max={ maxZoomRange }
 							displayUnit={ false }
 						/>
 						<ResponsiveSlider
