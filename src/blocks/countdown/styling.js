@@ -16,6 +16,7 @@ export default function styling( attributes, clientId, name, deviceType, gbsSele
 		showDays,
 		showHours,
 		showMinutes,
+		showSeconds,
 		// digit.
 		digitFontFamily,
 		digitFontWeight,
@@ -191,6 +192,27 @@ export default function styling( attributes, clientId, name, deviceType, gbsSele
 		childSelectorType +
 		'-child) .wp-block-uagb-countdown__time::' +
 		pseudoElementSelectorType;
+	
+    // On showSeconds disable this selector is used to remove the separator after minutes. 
+	const minSeparatorRemovalSelector = 
+	'.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-minutes:not(:' +
+	childSelectorType +
+	'-child) .wp-block-uagb-countdown__time.wp-block-uagb-countdown__time-minutes::' +
+	pseudoElementSelectorType;
+
+	// On showSeconds and showMinutes disable this selector is used to remove the separator after hours. 
+	 const hoursSeparatorRemovalSelector = 
+	 '.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-hours:not(:' +
+	 childSelectorType +
+	 '-child) .wp-block-uagb-countdown__time.wp-block-uagb-countdown__time-hours::' +
+	 pseudoElementSelectorType;
+
+	// On showSeconds, showMinutes and showHours disable this selector is used to remove the separator after days.
+	const daysSeparatorRemovalSelector = 
+	'.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-days:not(:' +
+	childSelectorType +
+	'-child) .wp-block-uagb-countdown__time.wp-block-uagb-countdown__time-days::' +
+	pseudoElementSelectorType;
 
 	// Fallbacks.
 
@@ -269,10 +291,13 @@ export default function styling( attributes, clientId, name, deviceType, gbsSele
 			'display': showDays ? '' : 'none',
 		},
 		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-hours': {
-			'display': showDays || showHours ? '' : 'none',
+			'display': showHours ? '' : 'none',
 		},
 		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-minutes': {
-			'display': showDays || showHours || showMinutes ? '' : 'none',
+			'display': showMinutes ? '' : 'none',
+		},
+		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-seconds': {
+			'display': showSeconds ? '' : 'none',
 		},
 		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box': {
 			// eslint-disable-next-line no-nested-ternary
@@ -296,8 +321,14 @@ export default function styling( attributes, clientId, name, deviceType, gbsSele
 		'.wp-block-uagb-countdown:hover .wp-block-uagb-countdown__box': {
 			'border-color': boxBorderHColor,
 		},
-		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box:not(:last-child)': {
-			'margin-right': generateCSSUnit( boxSpacingFallback, 'px' ),
+		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-minutes:not(:last-child)': {
+			'margin-right': showSeconds ? generateCSSUnit( boxSpacingFallback, 'px' ) : 'unset',
+		},
+		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-hours:not(:last-child)': {
+			'margin-right': ( showSeconds || showMinutes ) ? generateCSSUnit( boxSpacingFallback, 'px' ) : 'unset',
+		},
+		'.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-days:not(:last-child)': {
+			'margin-right': ( showSeconds || showMinutes || showHours ) ? generateCSSUnit( boxSpacingFallback, 'px' ) : 'unset',
 		},
 		'.wp-block-uagb-countdown .wp-block-uagb-countdown__time': {
 			'font-family': digitFontFamily,
@@ -359,8 +390,14 @@ export default function styling( attributes, clientId, name, deviceType, gbsSele
 		...boxBorderCSSTablet,
 	};
 
-	tabletSelectors[ '.wp-block-uagb-countdown .wp-block-uagb-countdown__box:not(:last-child)' ] = {
-		'margin-right': generateCSSUnit( boxSpacingFallbackTablet, 'px' ),
+	tabletSelectors[ '.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-minutes:not(:last-child)' ] = {
+		'margin-right': showSeconds ? generateCSSUnit( boxSpacingFallbackTablet, 'px' ) : 'unset',
+	};
+	tabletSelectors[ '.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-hours:not(:last-child)' ] = {
+		'margin-right': ( showSeconds || showMinutes ) ? generateCSSUnit( boxSpacingFallbackTablet, 'px' ) : 'unset',
+	};
+	tabletSelectors[ '.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-days:not(:last-child)' ] = {
+		'margin-right': ( showSeconds || showMinutes || showHours ) ? generateCSSUnit( boxSpacingFallbackTablet, 'px' ) : 'unset',
 	};
 
 	tabletSelectors[ '.wp-block-uagb-countdown .wp-block-uagb-countdown__box:not(:first-child)' ] = {}; // Empty ruleset to prevent undefined error (for RTL Box Gap).
@@ -406,8 +443,14 @@ export default function styling( attributes, clientId, name, deviceType, gbsSele
 		...boxBorderCSSMobile,
 	};
 
-	mobileSelectors[ '.wp-block-uagb-countdown .wp-block-uagb-countdown__box:not(:last-child)' ] = {
-		'margin-right': generateCSSUnit( boxSpacingFallbackMobile, 'px' ),
+	mobileSelectors[ '.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-minutes:not(:last-child)' ] = {
+		'margin-right': showSeconds ? generateCSSUnit( boxSpacingFallbackMobile, 'px' ) : 'unset',
+	};
+	mobileSelectors[ '.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-hours:not(:last-child)' ] = {
+		'margin-right': ( showSeconds || showMinutes ) ? generateCSSUnit( boxSpacingFallbackMobile, 'px' ) : 'unset',
+	};
+	mobileSelectors[ '.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-days:not(:last-child)' ] = {
+		'margin-right': ( showSeconds || showMinutes || showHours ) ? generateCSSUnit( boxSpacingFallbackMobile, 'px' ) : 'unset',
 	};
 
 	mobileSelectors[ '.wp-block-uagb-countdown .wp-block-uagb-countdown__box:not(:first-child)' ] = {}; // Empty ruleset to prevent undefined error (for RTL Box Gap).
@@ -438,6 +481,18 @@ export default function styling( attributes, clientId, name, deviceType, gbsSele
 
 			'right': separatorRightSpacingFallback ? generateCSSUnit( -separatorRightSpacingFallback, 'px' ) : '',
 			'top': generateCSSUnit( separatorTopSpacingFallback, 'px' ),
+		};
+
+		selectors[ minSeparatorRemovalSelector ] = {
+			'display': showSeconds ? '' : 'none',
+		};
+
+		selectors[ hoursSeparatorRemovalSelector ] = {
+			'display': showMinutes || showSeconds ? '' : 'none',
+		};
+
+		selectors[ daysSeparatorRemovalSelector ] = {
+			'display': showHours || showMinutes || showSeconds ? '' : 'none',
 		};
 
 		tabletSelectors[ separatorSelector ] = {

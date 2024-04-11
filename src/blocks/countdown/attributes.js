@@ -49,6 +49,10 @@ const attributes = {
 		type: 'boolean',
 		default: true,
 	},
+	showSeconds: {
+		type: 'boolean',
+		default: true,
+	},
 	// Labels.
 	showLabels: {
 		type: 'boolean',

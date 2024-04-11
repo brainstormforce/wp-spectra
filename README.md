@@ -4,7 +4,7 @@
 **Tags:** gutenberg, blocks, gutenberg blocks, editor, block  
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
-**Tested up to:** 6.5.2 
+**Tested up to:** 6.5.2  
 **Stable tag:** 2.12.8  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
+* Improvement: Countdown - Modified options to remove days, hours, minutes and seconds fields.
 * Fix: Theme Fonts - Resolved a font rendering issue for some Latin characters in FSE themes.
 
 ### 2.12.8 - Wednesday, 10th April 2024 ###

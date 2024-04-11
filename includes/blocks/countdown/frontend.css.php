@@ -18,6 +18,24 @@ $pseudo_element_selector_type = $is_rtl ? 'before' : 'after';
 
 $separator_selector = '.wp-block-uagb-countdown .wp-block-uagb-countdown__box:not(:' . $child_selector_type . '-child) .wp-block-uagb-countdown__time::' . $pseudo_element_selector_type;
 
+// On showSeconds disable this selector is used to remove the separator after minutes.
+$min_separator_removal_selector = '.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-minutes:not(:' .
+$child_selector_type .
+'-child) .wp-block-uagb-countdown__time.wp-block-uagb-countdown__time-minutes::' .
+$pseudo_element_selector_type;
+
+// On showSeconds and showMinutes disable this selector is used to remove the separator after hours.
+$hour_separator_removal_selector = '.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-hours:not(:' .
+$child_selector_type .
+'-child) .wp-block-uagb-countdown__time.wp-block-uagb-countdown__time-hours::' .
+$pseudo_element_selector_type;
+
+// On showSeconds, showMinutes and showHours disable this selector is used to remove the separator after days.
+$days_separator_removal_selector = '.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-days:not(:' .
+$child_selector_type .
+'-child) .wp-block-uagb-countdown__time.wp-block-uagb-countdown__time-days::' .
+$pseudo_element_selector_type;
+
 // Box Border CSS.
 $box_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'box' );
 $box_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'box', 'tablet' );
@@ -67,11 +85,15 @@ $selectors = array(
 	),
 
 	'.wp-block-uagb-countdown .wp-block-uagb-countdown__box-hours' => array(
-		'display' => ( $attr['showDays'] || $attr['showHours'] ) ? '' : 'none',
+		'display' => $attr['showHours'] ? '' : 'none',
 	),
 
 	'.wp-block-uagb-countdown .wp-block-uagb-countdown__box-minutes' => array(
-		'display' => ( $attr['showDays'] || $attr['showHours'] || $attr['showMinutes'] ) ? '' : 'none',
+		'display' => $attr['showMinutes'] ? '' : 'none',
+	),
+
+	'.wp-block-uagb-countdown .wp-block-uagb-countdown__box-seconds' => array(
+		'display' => $attr['showSeconds'] ? '' : 'none',
 	),
 
 	'.wp-block-uagb-countdown .wp-block-uagb-countdown__box' => array_merge(
@@ -98,8 +120,16 @@ $selectors = array(
 		'border-color' => $attr['boxBorderHColor'],
 	),
 
-	'.wp-block-uagb-countdown .wp-block-uagb-countdown__box:not(:last-child)' => array(
-		'margin-right' => UAGB_Helper::get_css_value( $attr['boxSpacing'], 'px' ),
+	'.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-minutes:not(:last-child)' => array(
+		'margin-right' => $attr['showSeconds'] ? UAGB_Helper::get_css_value( $attr['boxSpacing'], 'px' ) : 'unset',
+	),
+
+	'.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-hours:not(:last-child)' => array(
+		'margin-right' => ( $attr['showSeconds'] || $attr['showMinutes'] ) ? UAGB_Helper::get_css_value( $attr['boxSpacing'], 'px' ) : 'unset',
+	),
+
+	'.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-days:not(:last-child)' => array(
+		'margin-right' => ( $attr['showSeconds'] || $attr['showMinutes'] || $attr['showHours'] ) ? UAGB_Helper::get_css_value( $attr['boxSpacing'], 'px' ) : 'unset',
 	),
 
 	'.wp-block-uagb-countdown .wp-block-uagb-countdown__time' => array(
@@ -164,8 +194,16 @@ $t_selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__box'] = array_m
 	$box_border_css_tablet
 );
 
-$t_selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__box:not(:last-child)'] = array(
-	'margin-right' => UAGB_Helper::get_css_value( $attr['boxSpacingTablet'], 'px' ),
+$t_selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-minutes:not(:last-child)'] = array(
+	'margin-right' => $attr['showSeconds'] ? UAGB_Helper::get_css_value( $attr['boxSpacingTablet'], 'px' ) : 'unset',
+);
+
+$t_selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-hours:not(:last-child)'] = array(
+	'margin-right' => ( $attr['showSeconds'] || $attr['showMinutes'] ) ? UAGB_Helper::get_css_value( $attr['boxSpacingTablet'], 'px' ) : 'unset',
+);
+
+$t_selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-days:not(:last-child)'] = array(
+	'margin-right' => ( $attr['showSeconds'] || $attr['showMinutes'] || $attr['showHours'] ) ? UAGB_Helper::get_css_value( $attr['boxSpacingTablet'], 'px' ) : 'unset',
 );
 
 $t_selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__time'] = array(
@@ -212,8 +250,16 @@ $m_selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__box'] = array_m
 	$box_border_css_mobile
 );
 
-$m_selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__box:not(:last-child)'] = array(
-	'margin-right' => UAGB_Helper::get_css_value( $attr['boxSpacingMobile'], 'px' ),
+$m_selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-minutes:not(:last-child)'] = array(
+	'margin-right' => $attr['showSeconds'] ? UAGB_Helper::get_css_value( $attr['boxSpacingMobile'], 'px' ) : 'unset',
+);
+
+$m_selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-hours:not(:last-child)'] = array(
+	'margin-right' => ( $attr['showSeconds'] || $attr['showMinutes'] ) ? UAGB_Helper::get_css_value( $attr['boxSpacingMobile'], 'px' ) : 'unset',
+);
+
+$m_selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__box.wp-block-uagb-countdown__box-days:not(:last-child)'] = array(
+	'margin-right' => ( $attr['showSeconds'] || $attr['showMinutes'] || $attr['showHours'] ) ? UAGB_Helper::get_css_value( $attr['boxSpacingMobile'], 'px' ) : 'unset',
 );
 
 $m_selectors['.wp-block-uagb-countdown .wp-block-uagb-countdown__time'] = array(
@@ -241,6 +287,18 @@ if ( true === $attr['showSeparator'] ) {
 		'color'       => $attr['separatorColor'],
 		'right'       => is_int( $attr['separatorRightSpacing'] ) ? UAGB_Helper::get_css_value( -$attr['separatorRightSpacing'], 'px' ) : '',
 		'top'         => UAGB_Helper::get_css_value( $attr['separatorTopSpacing'], 'px' ),
+	);
+
+	$selectors[ $min_separator_removal_selector ] = array(
+		'display' => $attr['showSeconds'] ? '' : 'none',
+	);
+
+	$selectors[ $hour_separator_removal_selector ] = array(
+		'display' => ( $attr['showMinutes'] || $attr['showSeconds'] ) ? '' : 'none',
+	);
+
+	$selectors[ $days_separator_removal_selector ] = array(
+		'display' => ( $attr['showHours'] || $attr['showMinutes'] || $attr['showSeconds'] ) ? '' : 'none',
 	);
 
 	$t_selectors[ $separator_selector ] = array(
