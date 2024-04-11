@@ -14,6 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use Gutenberg_Templates\Inc\Traits\Instance;
+use Gutenberg_Templates\Inc\Traits\Helper;
 use Gutenberg_Templates\Inc\Api\Api_Base;
 /**
  * Progress
@@ -62,7 +63,7 @@ class Category extends Api_Base {
 	 * @return object|boolean
 	 */
 	public function get_item_permissions_check( $request ) {
-
+		
 		// To do: Check api token or JWT token for permission.
 		return true;
 	}
@@ -75,7 +76,7 @@ class Category extends Api_Base {
 	 */
 	public function get( $request ) {
 
-		$categories = get_option( 'ast-block-templates-categories', array() );
+		$categories = Helper::instance()->get_block_template_category();
 		$response = new \WP_REST_Response(
 			array(
 				'success' => true,

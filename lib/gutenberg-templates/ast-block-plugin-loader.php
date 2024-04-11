@@ -18,6 +18,7 @@ use Gutenberg_Templates\Inc\Content\Ai_Content;
 use Gutenberg_Templates\Inc\Traits\Upgrade;
 use Gutenberg_Templates\Inc\Importer\Template_Kit_Importer;
 use Gutenberg_Templates\Inc\Block\Spectra_AI_Block;
+use Gutenberg_Templates\Inc\Classes\Ast_Block_Templates_Zipwp_Api;
 
 /**
  * Ast_Block_Plugin_Loader
@@ -98,6 +99,7 @@ class Ast_Block_Plugin_Loader {
 	 * @since  2.0.0
 	 */
 	public function load_classes() {
+		Ast_Block_Templates_Zipwp_Api::instance();
 		Api_Init::instance();
 		Template_Kit_Importer::instance();
 		Plugin::instance();

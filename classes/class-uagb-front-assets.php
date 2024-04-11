@@ -147,13 +147,22 @@ class UAGB_Front_Assets {
 				$id = get_option( 'woocommerce_myaccount_page_id' );
 			} elseif ( is_checkout() ) {
 
-				$id = get_option( 'woocommerce_checkout_page_id' );
+				if ( is_order_received_page() ) {
+
+					$id = get_option( 'woocommerce_checkout_order_received_endpoint', 'order-received' );
+				} else {
+
+					$id = get_option( 'woocommerce_checkout_page_id' );
+				}
 			} elseif ( is_checkout_pay_page() ) {
 
 				$id = get_option( 'woocommerce_pay_page_id' );
 			} elseif ( is_shop() ) {
 
 				$id = get_option( 'woocommerce_shop_page_id' );
+			} elseif ( is_order_received_page() ) {
+
+				$id = get_option( 'woocommerce_checkout_order_received_endpoint', 'order-received' );
 			}
 
 			if ( ! empty( $id ) ) {

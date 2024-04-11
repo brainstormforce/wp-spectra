@@ -12,7 +12,7 @@ use Gutenberg_Templates\Inc\Traits\Instance;
 use Gutenberg_Templates\Inc\Importer\Importer_Helper;
 use Gutenberg_Templates\Inc\Importer\Plugin;
 use Gutenberg_Templates\Inc\Traits\Helper;
-use Gutenberg_Templates\Inc\Importer\Image_Importer;
+use Gutenberg_Templates\Inc\Importer\Images;
 
 /**
  * Sync Library
@@ -46,7 +46,7 @@ class Ai_Content {
 		if ( isset( $_GET['debug'] ) && Helper::instance()->is_debug_mode() ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			echo '<xmp>';
 			print_r( get_option( 'ast_block_ai_content_log', array() ) ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
-			print_r( get_option( 'ast-templates-business-details' ) ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
+			print_r( get_option( 'zipwp_user_business_details' ) ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
 			echo '</xmp>';
 		}
 	}
@@ -73,22 +73,13 @@ class Ai_Content {
 		check_ajax_referer( 'ast-block-templates-reset-business-details', 'security' );
 
 		delete_option( 'ast-block-templates-show-onboarding' );
-		delete_option( 'ast-templates-business-details' );
+		delete_option( 'zipwp_user_business_details' );
 		delete_option( 'ast_block_ai_content_log' );
 		delete_option( 'ast-templates-ai-content' );
-
-		$business_details = array();
-		$auth_token = Helper::get_setting( 'auth_token' );
-
-		if ( ! empty( $auth_token ) ) {
-			$business_details['token'] = Helper::get_setting( 'auth_token' );
-			update_option( 'ast-templates-business-details', $business_details );
-		}
 
 		wp_send_json_success(
 			array(
 				'status'  => true,
-				'token'    => $business_details['token'] ?? '',
 			)
 		);
 	}
@@ -193,7 +184,7 @@ class Ai_Content {
 	 */
 	public function get_ai_content( $post_data, $category_content ) {
 
-		$api_endpoint = Helper::instance()->is_debug_mode() ? AST_BLOCK_TEMPLATES_LIBRARY_URL . '/wp-json/ai/v1/content?debug=yes' : AST_BLOCK_TEMPLATES_LIBRARY_URL . '/wp-json/ai/v1/content';
+		$api_endpoint = Helper::instance()->is_debug_mode() ? AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-json/ai/v1/content?debug=yes' : AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-json/ai/v1/content';
 
 		$request_args = array(
 			'body' => wp_json_encode( $post_data ),
@@ -228,7 +219,7 @@ class Ai_Content {
 				if ( $response_data['status'] ) {
 
 					if ( ! $post_data['regenerate'] ) {
-						$categories = get_option( 'ast-block-templates-categories', array() );
+						$categories = Helper::instance()->get_block_template_category();
 						// Find the club of the current category.
 						$club = $this->get_club_of_category( $categories, $post_data );
 						// Find all other categories with the same club.
@@ -308,7 +299,7 @@ class Ai_Content {
 		// Verify Nonce.
 		check_ajax_referer( 'ast-block-templates-ai-content', 'security' );
 
-		$keywords = isset( $_POST['image_keywords'] ) ? json_decode( wp_unslash( $_POST['image_keywords'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$keywords = isset( $_POST['image_keyword'] ) ? json_decode( wp_unslash( $_POST['image_keyword'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		$images = isset( $_POST['images'] ) ? json_decode( wp_unslash( $_POST['images'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		$social_profiles = isset( $_POST['social_profiles'] ) ? json_decode( wp_unslash( $_POST['social_profiles'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		$save_only = isset( $_POST['save_only'] ) ? filter_var( $_POST['save_only'], FILTER_VALIDATE_BOOLEAN ) : false;
@@ -345,32 +336,19 @@ class Ai_Content {
 			}
 		}
 
-		$all_images = array(
-			'landscape' => array(),
-			'portrait' => array(),
-		);
-
-		foreach ( $images as $key => $image ) {
-			if ( 'landscape' === $image['orientation'] ) {
-				$all_images['landscape'][] = $image;
-			} else {
-				$all_images['portrait'][] = $image;
-			}
-		}
-
-		$business_details = get_option( 'ast-templates-business-details', array() );
+		$business_details = get_option( 'zipwp_user_business_details', array() );
 		$business_details['business_name'] = isset( $_POST['business_name'] ) ? sanitize_text_field( wp_unslash( $_POST['business_name'] ) ) : '';
 		$business_details['business_description'] = isset( $_POST['business_desc'] ) ? sanitize_text_field( wp_unslash( $_POST['business_desc'] ) ) : '';
 		$business_details['business_category'] = isset( $_POST['business_category'] ) ? sanitize_text_field( wp_unslash( $_POST['business_category'] ) ) : '';
-		$business_details['images'] = $all_images;
-		$business_details['image_keywords'] = $keywords;
+		$business_details['images'] = $images;
+		$business_details['image_keyword'] = $keywords;
 		$business_details['business_address'] = ( isset( $_POST['business_address'] ) ) ? sanitize_text_field( wp_unslash( $_POST['business_address'] ) ) : '';
 		$business_details['business_phone']   = ( isset( $_POST['business_phone'] ) ) ? sanitize_text_field( wp_unslash( $_POST['business_phone'] ) ) : '';
 		$business_details['business_email']   = ( isset( $_POST['business_email'] ) ) ? sanitize_email( wp_unslash( $_POST['business_email'] ) ) : '';
 		$business_details['social_profiles']  = $social_profiles;
 
 		update_option( 'ast-block-templates-show-onboarding', 'no' );
-		update_option( 'ast-templates-business-details', $business_details );
+		update_option( 'zipwp_user_business_details', $business_details );
 
 		if ( ! $save_only ) {
 			delete_option( 'ast-templates-ai-content' );
@@ -379,11 +357,10 @@ class Ai_Content {
 		// Schedule event to download images in background.
 		wp_schedule_single_event( time() + 1, 'ast_templates_download_selected_images' );
 
-		$images = array();
 		wp_send_json_success(
 			array(
 				'status'  => true,
-				'images' => $image_count < AST_BLOCK_TEMPLATES_IMAGE_COUNT ? array_merge( $images, $all_images['landscape'], $all_images['portrait'] ) : array(),
+				'images' => $images,
 			)
 		);
 	}
@@ -397,14 +374,14 @@ class Ai_Content {
 	 */
 	public function download_selected_images() {
 
-		$image = get_option( 'ast-templates-business-details', array() );
+		$image = get_option( 'zipwp_user_business_details', array() );
 		$all_images = isset( $image['images'] ) ? $image['images'] : array();
 
 		if ( empty( $all_images ) ) {
 			return;
 		}
 
-		$images = array_merge( $all_images['landscape'], $all_images['portrait'] );
+		$images = $all_images;
 		$downloaded_ids = array();
 
 		foreach ( $images as $image ) {
@@ -415,8 +392,8 @@ class Ai_Content {
 				'description'  => $image['description'],
 				'engine'  => $image['engine'],
 			);
-			$new_attachment = Image_Importer::instance()->import( $image );
-			$downloaded_ids[ $image['id'] ] = $new_attachment['id'];
+			$image_id = Images::instance()->download_image( $image );
+			$downloaded_ids[ $image['id'] ] = $image_id;
 		}
 
 		update_option( 'ast_block_downloaded_images', $downloaded_ids );
@@ -434,18 +411,14 @@ class Ai_Content {
 	 */
 	public function maybe_regenerate_images( $keywords, $images, $required_image_count ) {
 
-		$api_endpoint = AST_BLOCK_TEMPLATES_LIBRARY_URL . '/wp-json/image/v1/images';
-		$image_division = floor( $required_image_count / 2 );
-		$orientations = array(
-			'landscape' => $image_division,
-			'portrait' => $required_image_count - $image_division,
-		);
+		$api_endpoint = AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-json/image/v1/images';
+	
 		$existing_images_ids = is_array( $images ) ? array_column( $images, 'id' ) : array();
 		$new_images = array();
 
 		$post_data = array(
 			'keywords' => $keywords,
-			'per_page' => 30,
+			'per_page' => 20,
 			'page' => 1,
 			'orientation' => '',
 			'engine' => 'pexels',
@@ -459,32 +432,24 @@ class Ai_Content {
 			'timeout' => 100,
 		);
 
-		foreach ( $orientations as $orientation => $required_count ) {
-			$counter = $required_count;
-			$post_data['orientation'] = $orientation;
-			$request_args['body'] = wp_json_encode( $post_data );
+		$request_args['body'] = wp_json_encode( $post_data );
 
-			$response = wp_remote_post( $api_endpoint, $request_args );
+		$response = wp_remote_post( $api_endpoint, $request_args );
 
-			if ( ! is_wp_error( $response ) ) {
-				$response_code = wp_remote_retrieve_response_code( $response );
-				$response_body = wp_remote_retrieve_body( $response );
+		if ( ! is_wp_error( $response ) ) {
+			$response_code = wp_remote_retrieve_response_code( $response );
+			$response_body = wp_remote_retrieve_body( $response );
 
-				if ( 200 === $response_code ) {
-					$response_data = json_decode( $response_body, true );
-					$orientation_images = array();
+			if ( 200 === $response_code ) {
+				$response_data = json_decode( $response_body, true );
 
-					foreach ( $response_data as $image ) {
-
-						if ( ! in_array( (string) $image['id'], $existing_images_ids, true ) ) {
-							$orientation_images[] = $image;
-							$counter--;
-						}
-
-						if ( 0 == $counter ) {
-							$new_images = array_merge( $new_images, $orientation_images );
-							break;
-						}
+				foreach ( $response_data as $image ) {
+					if ( ! in_array( (string) $image['id'], $existing_images_ids, true ) ) {
+						$new_images[] = $image;
+						$required_image_count--;
+					}
+					if ( 0 == $required_image_count ) {
+						break;
 					}
 				}
 			}

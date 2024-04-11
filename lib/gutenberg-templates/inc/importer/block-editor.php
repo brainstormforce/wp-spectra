@@ -43,7 +43,7 @@ class BlockEditor {
 	 * @return array<mixed> $block Block.
 	 */
 	public function parse_spectra_container( $block ) {
-		$orientation = 'landscape';
+		
 		if (
 			! isset( $block['attrs']['backgroundImageDesktop'] ) ||
 			empty( $block['attrs']['backgroundImageDesktop'] ) ||
@@ -52,8 +52,7 @@ class BlockEditor {
 			return $block;
 		}
 
-		$orientation = Importer_Helper::get_image_orientation( $block['attrs']['backgroundImageDesktop']['url'] );
-		$image       = Images::instance()->get_image( $orientation, Images::$image_index[ $orientation ] );
+		$image = Images::instance()->get_image( Images::$image_index );
 		if ( empty( $image ) || ! is_array( $image ) || is_bool( $image ) ) {
 			return $block;
 		}
@@ -72,9 +71,9 @@ class BlockEditor {
 
 		self::$old_images[] = $block['attrs']['backgroundImageDesktop']['id'];
 
-		error_log( 'Replacing Image from ' . $block['attrs']['backgroundImageDesktop']['url'] . 'to "' . $attachment['url'] . '" for ' . $block['blockName'] . ' with orientation "' . $orientation . '" with index "' . Images::$image_index[ $orientation ] . '"' );
+		error_log( 'Replacing Image from ' . $block['attrs']['backgroundImageDesktop']['url'] . 'to "' . $attachment['url'] . '" for ' . $block['blockName'] . '" with index "' . Images::$image_index . '"' );
 		$block['attrs']['backgroundImageDesktop'] = $attachment;
-		Images::$image_index[ $orientation ]++;
+		Images::$image_index++;
 
 		return $block;
 	}
@@ -87,7 +86,7 @@ class BlockEditor {
 	 * @return array<mixed> $block Block.
 	 */
 	public function parse_spectra_infobox( $block ) {
-		$orientation = 'landscape';
+		
 		if (
 			! isset( $block['attrs']['iconImage'] ) ||
 			empty( $block['attrs']['iconImage'] ) ||
@@ -96,8 +95,7 @@ class BlockEditor {
 			return $block;
 		}
 
-		$orientation = Importer_Helper::get_image_orientation( $block['attrs']['iconImage']['url'] );
-		$image       = Images::instance()->get_image( $orientation, Images::$image_index[ $orientation ] );
+		$image = Images::instance()->get_image( Images::$image_index );
 		if ( empty( $image ) || ! is_array( $image ) || is_bool( $image ) ) {
 			return $block;
 		}
@@ -118,7 +116,7 @@ class BlockEditor {
 		self::$old_images[] = $block['attrs']['iconImage']['id'];
 
 		if ( ! empty( $block['attrs']['iconImage']['url'] ) ) {
-			error_log( 'Replacing Image from ' . $block['attrs']['iconImage']['url'] . ' to "' . $attachment['url'] . '" for ' . $block['blockName'] . ' with orientation "' . $orientation . '" with index "' . Images::$image_index[ $orientation ] . '"' );
+			error_log( 'Replacing Image from ' . $block['attrs']['iconImage']['url'] . ' to "' . $attachment['url'] . '" for ' . $block['blockName'] . '" with index "' . Images::$image_index . '"' );
 			$block['innerHTML'] = str_replace( $block['attrs']['iconImage']['url'], $attachment['url'], $block['innerHTML'] );
 		}
 
@@ -130,7 +128,7 @@ class BlockEditor {
 			$block['innerContent'][ $key ] = str_replace( $block['attrs']['iconImage']['url'], $attachment['url'], $block['innerContent'][ $key ] );
 		}
 		$block['attrs']['iconImage'] = $attachment;
-		Images::$image_index[ $orientation ]++;
+		Images::$image_index++;
 
 		return $block;
 	}
@@ -143,7 +141,7 @@ class BlockEditor {
 	 * @return array<mixed> $block Block.
 	 */
 	public function parse_spectra_image( $block ) {
-		$orientation = 'landscape';
+		
 		if (
 			! isset( $block['attrs']['url'] ) ||
 			Importer_Helper::is_skipable( $block['attrs']['url'] )
@@ -151,8 +149,7 @@ class BlockEditor {
 			return $block;
 		}
 
-		$orientation = Importer_Helper::get_image_orientation( $block['attrs']['url'] );
-		$image       = Images::instance()->get_image( $orientation, Images::$image_index[ $orientation ] );
+		$image = Images::instance()->get_image( Images::$image_index );
 		if ( empty( $image ) || ! is_array( $image ) ) {
 			return $block;
 		}
@@ -170,7 +167,7 @@ class BlockEditor {
 		}
 
 		self::$old_images[] = $block['attrs']['id'];
-		error_log( 'Replacing Image from ' . $block['attrs']['url'] . ' to "' . $attachment['url'] . '" for ' . $block['blockName'] . ' with orientation "' . $orientation . '" with index "' . Images::$image_index[ $orientation ] . '"' );
+		error_log( 'Replacing Image from ' . $block['attrs']['url'] . ' to "' . $attachment['url'] . '" for ' . $block['blockName'] . '" with index "' . Images::$image_index . '"' );
 		$block['innerHTML'] = str_replace( $block['attrs']['url'], $attachment['url'], $block['innerHTML'] );
 		$block['innerHTML'] = str_replace( $block['attrs']['id'], $attachment['id'], $block['innerHTML'] );
 
@@ -215,7 +212,7 @@ class BlockEditor {
 
 		$block['attrs']['url'] = $attachment['url'];
 		$block['attrs']['id']  = $attachment['id'];
-		Images::$image_index[ $orientation ]++;
+		Images::$image_index++;
 
 		return $block;
 	}
@@ -239,9 +236,8 @@ class BlockEditor {
 			) {
 				continue;
 			}
-			$orientation = 'landscape';
-			$orientation = Importer_Helper::get_image_orientation( $image['url'] );
-			$new_image   = Images::instance()->get_image( $orientation, Images::$image_index[ $orientation ] );
+			
+			$new_image = Images::instance()->get_image( Images::$image_index );
 			if ( empty( $new_image ) || ! is_array( $new_image ) || is_bool( $new_image ) ) {
 				continue;
 			}
@@ -262,7 +258,7 @@ class BlockEditor {
 			$gallery_ids[] = $attachment['id'];
 
 			self::$old_images[] = $image['id'];
-			error_log( 'Replacing Image from ' . $image['url'] . ' to "' . $attachment['url'] . '" for ' . $block['blockName'] . ' with orientation "' . $orientation . '" with index "' . Images::$image_index[ $orientation ] . '"' );
+			error_log( 'Replacing Image from ' . $image['url'] . ' to "' . $attachment['url'] . '" for ' . $block['blockName'] . '" with index "' . Images::$image_index . '"' );
 			$image['url']     = ! empty( $attachment['url'] ) ? $attachment['url'] : $image['url'];
 			$image['sizes']   = ! empty( $attachment['sizes'] ) ? $attachment['sizes'] : $image['sizes'];
 			$image['mime']    = ! empty( $attachment['mime'] ) ? $attachment['mime'] : $image['mime'];
@@ -271,7 +267,7 @@ class BlockEditor {
 			$image['id']      = ! empty( $attachment['id'] ) ? $attachment['id'] : $image['id'];
 			$image['alt']     = ! empty( $attachment['alt'] ) ? $attachment['alt'] : $image['alt'];
 			$image['link']    = ! empty( $attachment['link'] ) ? $attachment['link'] : $image['link'];
-			Images::$image_index[ $orientation ]++;
+			Images::$image_index++;
 		}
 		$block['attrs']['mediaGallery'] = $images;
 		$block['attrs']['mediaIDs']     = $gallery_ids;
@@ -311,8 +307,8 @@ class BlockEditor {
 		if ( false === $thumb_id ) {
 			return;
 		}
-		$thumb       = wp_prepare_attachment_for_js( $thumb_id );
-		$orientation = 'landscape';
+		$thumb = wp_prepare_attachment_for_js( $thumb_id );
+		
 		if (
 			! isset( $thumb['url'] ) ||
 			Importer_Helper::is_skipable( $thumb['url'] )
@@ -320,8 +316,7 @@ class BlockEditor {
 			return;
 		}
 
-		$orientation = Importer_Helper::get_image_orientation( $thumb['url'] );
-		$image       = Images::instance()->get_image( $orientation, Images::$image_index[ $orientation ] );
+		$image = Images::instance()->get_image( Images::$image_index );
 		if ( empty( $image ) || ! is_array( $image ) || is_bool( $image ) ) {
 			return;
 		}
@@ -339,11 +334,11 @@ class BlockEditor {
 		}
 
 		self::$old_images[] = $thumb['id'];
-		error_log( 'Replacing Image from ' . $thumb['url'] . ' to "' . $attachment['url'] . '" with orientation "' . $orientation . '" with index "' . Images::$image_index[ $orientation ] . '"' );
+		error_log( 'Replacing Image from ' . $thumb['url'] . ' to "' . $attachment['url'] . '" with index "' . Images::$image_index . '"' );
 
 		set_post_thumbnail( $post, $attachment['id'] );
 
-		Images::$image_index[ $orientation ]++;
+		Images::$image_index++;
 	}
 
 	/**
@@ -360,7 +355,12 @@ class BlockEditor {
 		$business_details = Importer_Helper::get_business_details();
 
 		$social_profiles = $business_details['social_profiles'];
-		$social_icons = array_combine( array_column( $social_profiles, 'id' ), array_column( $social_profiles, 'url' ) );
+
+		if ( ! is_array( $social_profiles ) ) {
+			return $ai_content;
+		}
+		
+		$social_icons = array_combine( array_column( $social_profiles, 'type' ), array_column( $social_profiles, 'url' ) );
 
 		switch ( $key ) {
 			case '2360 Hood Avenue, San Diego, CA, 92123':

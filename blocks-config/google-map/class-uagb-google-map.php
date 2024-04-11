@@ -59,34 +59,38 @@ if ( ! class_exists( 'UAGB_Google_Map' ) ) {
 				'uagb/google-map',
 				array(
 					'attributes'      => array(
-						'block_id'     => array(
+						'block_id'            => array(
 							'type' => 'string',
 						),
-						'address'      => array(
+						'address'             => array(
 							'type'    => 'string',
 							'default' => 'Brainstorm Force',
 						),
-						'height'       => array(
+						'height'              => array(
 							'type'    => 'number',
 							'default' => 300,
 						),
-						'heightTablet' => array(
+						'heightTablet'        => array(
 							'type'    => 'number',
 							'default' => 300,
 						),
-						'heightMobile' => array(
+						'heightMobile'        => array(
 							'type'    => 'number',
 							'default' => 300,
 						),
-						'zoom'         => array(
+						'zoom'                => array(
 							'type'    => 'number',
 							'default' => 12,
 						),
-						'language'     => array(
+						'language'            => array(
 							'type'    => 'string',
 							'default' => 'en',
 						),
-						'isPreview'    => array(
+						'isPreview'           => array(
+							'type'    => 'boolean',
+							'default' => false,
+						),
+						'enableSatelliteView' => array(
 							'type'    => 'boolean',
 							'default' => false,
 						),
@@ -162,13 +166,19 @@ if ( ! class_exists( 'UAGB_Google_Map' ) ) {
 			$zoom     = ! empty( $attributes['zoom'] ) ? $attributes['zoom'] : 12;
 			$language = ! empty( $attributes['language'] ) ? $attributes['language'] : 'en';
 			$height   = ! empty( $attributes['height'] ) ? $attributes['height'] : 300;
+			$map_type = 'm';
+
+			if ( is_array( $attributes ) && isset( $attributes['enableSatelliteView'] ) ) {
+				$map_type = $attributes['enableSatelliteView'] ? 'k' : 'm';
+			}
+
 
 			$updated_url = add_query_arg(
 				array(
 					'q'      => $address,
 					'z'      => $zoom,
 					'hl'     => $language,
-					't'      => 'm',
+					't'      => $map_type,
 					'output' => 'embed',
 					'iwloc'  => 'near',
 				),

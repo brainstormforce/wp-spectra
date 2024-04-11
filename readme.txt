@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
-Tested up to: 6.5
-Stable tag: 2.12.7
+Tested up to: 6.5.2
+Stable tag: 2.12.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,36 +215,28 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= 2.12.7 - TUESDAY, 2nd APRIL 2024 =
+= 2.12.8 - Wednesday, 10th April 2024 =
+* Improvement: Google Maps - Added a toggle to switch between Roadmap View and Satellite View.
+* Improvement: Global - Improved the block-name identification for the default fallback attributes.
+* Improvement: Global - Added WPML compatibility to the 'How To', 'Buttons', 'Forms' and 'Marketing Button' blocks.
+* Fix: Container - Resolved an issue wherein the link control content and edit icon would overflow out-of-screen after entering lengthy URLs.
+* Fix: Counter - Resolved an issue wherein the total number resets to default on end number change. 
+* Fix: Icon - Resolved an issue wherein a few icons would not load on the frontend.
+* Fix: Global - Resolved an issue that would cause block-styling to break when used for a custom archive template of specific post types in FSE themes.
+
+= 2.12.7 - Tuesday, 2nd April 2024 =
 * Security Fix: Hardened the security of the plugin. Props: Wordfence.
 * Improvement: Added compatibility with WordPress v6.5.
 * Improvement: Buttons - Added an inherit-gap-from-theme option.
 * Fix: Container - Resolved an issue wherein the 'open in new window' option would not be available when Spectra Pro is actived.
 * Fix: Icon - Resolved an issue wherein icon links for 'tel' and 'mailto' would not work as intended.
 
-= 2.12.6 - TUESDAY, 19th MARCH 2024 =
+= 2.12.6 - Tuesday, 19th March 2024 =
 * Improvement: Heading - Added an element type option.
 * Improvement: Global - Added a filter `uagb_asset_version` to update the asset version for cache busting purposes.
 * Fix: Google Maps - Resolved an issue in which the responsive height would not be correctly applied in the editor.
 * Fix: Global - Resolved an issue wherein the typography component would not use the values for tablet and mobile when in the customizer widget editor.
 * Fix: Global - Resolved an issue in the editor wherein a double border would appear on hover or focus of blocks used inside any block.
-
-= 2.12.5 - THURSDAY, 14th MARCH 2024 =
-* Feature: Transform to - Added transform to option from Core Cover to Spectra Container.
-* Feature: Transform to - Added transform to option from Core Separator, Page Break and Spacer to Spectra Separator.
-* Improvement: Buttons - Enabled aria-hidden and disabled focusable on the SVG inside the button.
-* Improvement: Image - Added an option to select the Image role for improved accessibility.
-* Improvement: Info Box - Added an element type option.
-* Improvement: Info Box - Added block margin settings.
-* Improvement: Call To Action - Added an element type option.
-* Improvement: Icon - Added an option to select the icon type for improved accessibility.
-* Improvement: Quick Action Bar - Added support for non-Spectra blocks.
-* Fix: Container - Resolved an issue wherein the animation would be delayed on page load.
-* Fix: Heading - Resolved an issue wherein the link color would not be correctly applied in the editor when added inside the loop builder with dynamic link enabled.
-* Fix: Image - Resolved an issue wherein the caption alignment would not work as intended.
-* Fix: FAQ - Resolved an issue wherein the answer section would have an extra bottom margin in the Astra theme.
-* Fix: Tabs - Resolved an issue wherein the block's static CSS would not update when file generation was off and only specific blocks were activated.
-* Fix: Global - Resolved an issue in which Twenty Twenty-Two themes running on PHP 8.1 would encounter a few PHP warnings.
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 

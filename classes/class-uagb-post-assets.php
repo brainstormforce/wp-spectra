@@ -258,35 +258,88 @@ class UAGB_Post_Assets {
 	public function get_woocommerce_template() {
 		// Check if WooCommerce is active.
 		if ( class_exists( 'WooCommerce' ) ) {
+			$is_order_received_page            = function_exists( 'is_order_received_page' ) && is_order_received_page();
+			$is_checkout                       = function_exists( 'is_checkout' ) && is_checkout();
+			$is_wc_order_received_endpoint_url = function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( 'order-received' );
 			// Check other WooCommerce pages.
 			switch ( true ) {
+				// Check if the current page is the shop page.
 				case is_cart():
 					return 'page-cart';
-				case is_checkout():
+
+				// Check if the current page is the checkout page.
+				case $is_checkout:
+					// Check if the current page is the order received page.
+					if ( $is_order_received_page ) {
+						return 'order-confirmation';
+					}
 					return 'page-checkout';
+
+				// Check if the current page is the order received page.
+				case $is_wc_order_received_endpoint_url:
+					return 'order-confirmation';
+
+				// Check if the current page is a product page.
 				case is_product():
 					return 'single-product';
+
+				// Check if the current page is an archive page.
 				case is_archive():
-					$object          = get_queried_object();
+					// Retrieve the queried object.
+					$object = get_queried_object();
+
+					// Get all block templates.
+					$template_types = get_block_templates();
+
+					// Extract the 'slug' column from the block templates array.
+					$template_type_slug = array_column( $template_types, 'slug' );
+
+					// Check if the current request is a search and if the post type archive is for 'product'.
 					$searchCondition = is_search() && is_post_type_archive( 'product' );
 
+					// Switch statement to determine the template based on various conditions.
 					switch ( true ) {
+						// Case when the current page is a product taxonomy and the taxonomy is 'product_tag'.
+						case ( is_product_taxonomy() && is_tax( 'product_tag' ) ) && $object instanceof WP_Term && ! in_array( 'taxonomy-' . $object->taxonomy . '-' . $object->slug, $template_type_slug ):
+							// Check if 'taxonomy-product_tag' template exists in the template type slugs array.
+							if ( in_array( 'taxonomy-product_tag', $template_type_slug ) ) {
+								// Prepare assets for the 'taxonomy-product_tag' template.
+								$this->prepare_assets_for_templates_based_post_type( 'taxonomy-product_tag' );
+							}
+							// Return the appropriate template based on the search condition.
+							return $searchCondition ? 'product-search-results' : 'archive-product';
+						
+						// Case when the current page is a product taxonomy and the object is a term.
 						case is_product_taxonomy() && $object instanceof WP_Term:
+							// Check if the taxonomy is a product attribute.
 							if ( taxonomy_is_product_attribute( $object->taxonomy ) ) {
+								// Prepare assets for the 'archive-product' template if it exists in the template type slugs array.
+								if ( in_array( 'archive-product', $template_type_slug ) ) {
+									$this->prepare_assets_for_templates_based_post_type( 'archive-product' );
+								}
+								// Return the 'product-search-results' or 'taxonomy-product_attribute' template based on the search condition.
 								return $searchCondition ? 'product-search-results' : 'taxonomy-product_attribute';
-							} elseif ( in_array( $object->taxonomy, array( 'product_cat', 'product_tag' ) ) ) {
-								return $searchCondition ? 'product-search-results' : 'taxonomy-' . $object->taxonomy;
+							} elseif ( ( is_tax( 'product_cat' ) || is_tax( 'product_tag' ) ) && in_array( 'taxonomy-' . $object->taxonomy . '-' . $object->slug, $template_type_slug ) ) {
+								// Return the specific taxonomy template based on the search condition.
+								return $searchCondition ? 'product-search-results' : 'taxonomy-' . $object->taxonomy . '-' . $object->slug;
+							} else {
+								// Prepare assets for the 'taxonomy-product_cat' template if it exists in the template type slugs array.
+								if ( in_array( 'taxonomy-product_cat', $template_type_slug ) ) {
+									$this->prepare_assets_for_templates_based_post_type( 'taxonomy-product_cat' );
+								}
+								// Return the appropriate template based on the search condition.
+								return $searchCondition ? 'product-search-results' : 'archive-product';
 							}
 							break;
-
-						case is_product_tag() || is_product_category():
-							return $searchCondition ? 'product-search-results' : ( 'taxonomy-' . ( is_product_tag() ? 'product_tag' : 'product_cat' ) );
-
+						
+						// Case when the current page is the shop page.
 						case is_shop():
+							// Return the appropriate template based on the search condition.
 							return $searchCondition ? 'product-search-results' : 'archive-product';
-
+						
 						default:
-							return $searchCondition ? 'product-search-results' : 'archive-product';
+							// Return the appropriate template based on the search condition and the type of the queried object.
+							return $searchCondition ? 'product-search-results' : ( ( $object instanceof WP_Post || $object instanceof WP_Post_Type || $object instanceof WP_Term || $object instanceof WP_User ) ? $this->get_archive_page_template( $object, $template_type_slug ) : 'archive-product' );
 					}
 					break;
 
@@ -299,6 +352,35 @@ class UAGB_Post_Assets {
 	}
 
 	/**
+	 * Get archive page template for current post.
+	 *
+	 * @param object $archive_object of current post.
+	 * @param array  $template_type_slug name.
+	 * @since 2.12.8
+	 * @return string The determined archive post type.
+	 */
+	public function get_archive_page_template( $archive_object, $template_type_slug ) {
+		if ( is_author() && $archive_object instanceof WP_User ) { // For author archive or more specific author template.
+			$author_slug = 'author-' . $archive_object->user_nicename;
+			return in_array( $author_slug, $template_type_slug ) ? $author_slug : ( in_array( 'author', $template_type_slug ) ? 'author' : 'archive' );
+		} elseif ( $archive_object instanceof WP_Term ) {
+			if ( is_category() ) { // For category archive or more specific category template.
+				$category_slug = 'category-' . $archive_object->slug;
+				return in_array( $category_slug, $template_type_slug ) ? $category_slug : ( in_array( 'category', $template_type_slug ) ? 'category' : 'archive' );
+			} elseif ( is_tag() ) { // For tag archive or more specific tag template.
+				$tag_slug = 'tag-' . $archive_object->slug;
+				return in_array( $tag_slug, $template_type_slug ) ? $tag_slug : ( in_array( 'tag', $template_type_slug ) ? 'tag' : 'archive' );
+			}
+		} elseif ( is_date() && in_array( 'date', $template_type_slug ) ) { // For date archive template.
+			return 'date';
+		} elseif ( $archive_object instanceof WP_Post_Type && is_post_type_archive() ) { // For custom post type archive or more specific custom post type archive template.
+			$post_type_archive_slug = 'archive-' . $archive_object->name;
+			return in_array( $post_type_archive_slug, $template_type_slug ) ? $post_type_archive_slug : ( in_array( 'archive', $template_type_slug ) ? 'archive' : 'archive-' . $archive_object->name );
+		}
+		return 'archive';
+	}
+
+	/**
 	 * Determine template post type function.
 	 *
 	 * @param int $post_id of current post.
@@ -306,17 +388,17 @@ class UAGB_Post_Assets {
 	 * @return string The determined post type.
 	 */
 	private function determine_template_post_type( $post_id ) {
+		$get_woocommerce_template = $this->get_woocommerce_template(); // Get WooCommerce template.
+		if ( is_string( $get_woocommerce_template ) ) { // Check if WooCommerce template is found.
+			return $get_woocommerce_template; // WooCommerce templates to post type.
+		}
+
 		// Check if post id is passed.
 		if ( ! empty( $post_id ) ) {
 			$template_slug = get_page_template_slug( $post_id );
 			if ( ! empty( $template_slug ) ) {
 				return $template_slug;
 			}
-		}
-
-		$get_woocommerce_template = $this->get_woocommerce_template(); // Get WooCommerce template.
-		if ( is_string( $get_woocommerce_template ) ) { // Check if WooCommerce template is found.
-			return $get_woocommerce_template; // WooCommerce templates to post type.
 		}
 
 		$conditional_to_post_type = array(
@@ -343,22 +425,8 @@ class UAGB_Post_Assets {
 		} elseif ( $is_front_page_template ) { // Run only when is_home and is_front_page() and get_front_page_template() is true. i.e front-page template.
 			return 'front-page';
 		} elseif ( is_archive() ) { // Applies to archive pages.
-			if ( is_author() && $object instanceof WP_User ) { // For author archive or more specific author template.
-				$author_slug = 'author-' . $object->user_nicename;
-				return in_array( $author_slug, $template_type_slug ) ? $author_slug : ( in_array( 'author', $template_type_slug ) ? 'author' : 'archive' );
-			} elseif ( $object instanceof WP_Term ) {
-				if ( is_category() ) { // For category archive or more specific category template.
-					$category_slug = 'category-' . $object->slug;
-					return in_array( $category_slug, $template_type_slug ) ? $category_slug : ( in_array( 'category', $template_type_slug ) ? 'category' : 'archive' );
-				} elseif ( is_tag() ) { // For tag archive or more specific tag template.
-					$tag_slug = 'tag-' . $object->slug;
-					return in_array( $tag_slug, $template_type_slug ) ? $tag_slug : ( in_array( 'tag', $template_type_slug ) ? 'tag' : 'archive' );
-				}
-			} elseif ( is_date() && in_array( 'date', $template_type_slug ) ) { // For date archive template.
-				return 'date';
-			}
 			// If none of the above condition matches, return archive template.
-			return 'archive';
+			return ( $object instanceof WP_Post || $object instanceof WP_Post_Type || $object instanceof WP_Term || $object instanceof WP_User ) ? $this->get_archive_page_template( $object, $template_type_slug ) : 'archive';
 		} else {
 			if ( $object instanceof WP_Post && ! empty( $object->post_type ) ) {
 				if ( is_singular() ) { // Applies to single post of any post type ( attachment, page, custom post types).
@@ -393,7 +461,7 @@ class UAGB_Post_Assets {
 	 */
 	public function prepare_assets_for_templates_based_post_type( $post_type ) {
 		$template_slug    = $post_type;
-		$current_template = get_block_templates( array( 'slug__in' => array( $template_slug ) ) );
+		$current_template = get_block_templates( array( 'slug__in' => array( $template_slug ) ) ); // Get block templates based on post type.
 		// Check if block templates were found.
 		if ( ! empty( $current_template ) && is_array( $current_template ) ) {
 			// Ensure the first template has content.
