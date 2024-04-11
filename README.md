@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Fix: Theme Fonts - Resolved a font rendering issue for some Latin characters in FSE themes.
+
 ### 2.12.8 - Wednesday, 10th April 2024 ###
 * Improvement: Google Maps - Added a toggle to switch between Roadmap View and Satellite View.
 * Improvement: Global - Improved the block-name identification for the default fallback attributes.
