@@ -307,11 +307,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param  array $icon Decoded fontawesome json file data.
 		 */
 		public static function render_svg_html( $icon ) {
-			$icon = str_replace( 'far', '', $icon );
-			$icon = str_replace( 'fas', '', $icon );
-			$icon = str_replace( 'fab', '', $icon );
-			$icon = str_replace( 'fa-', '', $icon );
-			$icon = str_replace( 'fa', '', $icon );
 			$icon = sanitize_text_field( esc_attr( $icon ) );
 
 			$json = self::backend_load_font_awesome_icons();

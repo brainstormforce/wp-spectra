@@ -29,7 +29,7 @@ class Upgrade {
 	 */
 	public function skip_spectra_pro_onboarding() {
 
-		if ( ! current_user_can( 'edit_posts' ) ) {
+		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
 		}
 
