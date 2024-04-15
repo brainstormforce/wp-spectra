@@ -739,6 +739,17 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	}
 }
 
+//  Toolbar Icon Height and Width WordPress 6.5 Fix
+.block-editor-block-toolbar {
+	.components-button {
+		height: 48px;
+
+		&.has-icon {
+			min-width: 48px;
+		}
+	}
+}
+
 /* Block Editor Block Icons Color*/
 .block-editor-block-icon.has-colors svg.uagb-editor-icons {
 	stroke: $spectra-color-secondary;
