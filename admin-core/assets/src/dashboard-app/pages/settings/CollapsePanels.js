@@ -67,7 +67,7 @@ const CollapsePanels = () => {
                 </Switch>
             </div>
             <p className="mt-2 w-9/12 text-sm text-slate-500">
-                { __( 'Enable the "Collapse Panels" option if you want to Collapse all other Panels in your Blocks Settings except for the one which is clicked This way you have only one Panel of Settings in front of you to Focus on.', 'ultimate-addons-for-gutenberg' ) }
+                { __( 'Enable the "Collapse Panels" option if you want to Collapse all other Panels in your Blocks Settings except for the one which is clicked. This way you have only one Panel of Settings in front of you to Focus on.', 'ultimate-addons-for-gutenberg' ) }
             </p>
         </section>
     );
