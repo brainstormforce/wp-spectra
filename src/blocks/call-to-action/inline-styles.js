@@ -273,6 +273,7 @@ function CtaStyle( attributes, clientId, name, deviceType, gbsSelector = false )
 	selectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper svg' ] = {
 		'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 		'width': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
+		'height': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 		'line-height': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 		'fill': ctaBtnLinkColor,
 		'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),

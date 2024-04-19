@@ -437,7 +437,6 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'btn-font-size',
 		},
-		default: 14,
 	},
 	ctaFontSizeType: {
 		type: 'string',

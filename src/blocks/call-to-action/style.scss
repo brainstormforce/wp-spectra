@@ -168,6 +168,12 @@ a.uagb-cta__block-link-wrap {
 	width: inherit;
 }
 
+// This width and height is used as default width and height of svg in frontend.
+.uagb-cta__button-link-wrapper svg {
+	width: 20px;
+	height: 20px;
+}
+
 .uagb-cta__align-button-after {
 	margin-left: 5px;
 }

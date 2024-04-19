@@ -218,6 +218,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 = x.x.x =
 * Improvement: Buttons - Added a flex-wrap toggle for multiple button rows instead of shrink-to-fit buttons.
 * Improvement: Countdown - Modified options to remove days, hours, minutes and seconds fields.
+* Improvement: Info Box - Modified CTA padding to inherit padding from theme by default.
+* Improvement: Call To Action - Modified button text font-size to inherit from theme by default.
 * Fix: Global - Resolved an issue wherein the editor sidebar would appear a bit shaky while switching between panels.
 * Fix: Heading - Resolved an issue wherein toolbar icon would not appear as indended.
 * Fix: Theme Fonts - Resolved a font rendering issue for some Latin characters in FSE themes.
