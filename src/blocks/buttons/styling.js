@@ -18,6 +18,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		gapTablet,
 		gapMobile,
 		inheritGap,
+		flexWrap,
 		stack,
 		align,
 		fontStyle,
@@ -147,65 +148,60 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			'padding-bottom': generateCSSUnit( bottomMobilePadding, mobilePaddingUnit ),
 		};
 	}
+
     if( !inheritGap ) {
 		if ( 'desktop' === stack ) {
 			selectors[ '.uagb-buttons__outer-wrap .block-editor-block-list__layout' ] = {
 				'flex-direction': 'column',
-				'row-gap': generateCSSUnit( getFallbackNumber( gap, 'gap', blockName ), 'px' ),
+				'gap': generateCSSUnit( getFallbackNumber( gap, 'gap', blockName ), 'px' ),
 			};
 			tabletSelectors[ '.uagb-buttons__outer-wrap .block-editor-block-list__layout' ] = {
 				'flex-direction': 'column',
-				'row-gap': generateCSSUnit( gapTablet, 'px' ),
+				'gap': generateCSSUnit( gapTablet, 'px' ),
 			};
 			mobileSelectors[ '.uagb-buttons__outer-wrap .block-editor-block-list__layout' ] = {
 				'flex-direction': 'column',
-				'row-gap': generateCSSUnit( gapMobile, 'px' ),
+				'gap': generateCSSUnit( gapMobile, 'px' ),
 			};
 		} else if ( 'tablet' === stack ) {
 			selectors[ '.uagb-buttons__outer-wrap .block-editor-block-list__layout' ] = {
 				'flex-direction': 'row',
-				'column-gap': generateCSSUnit( getFallbackNumber( gap, 'gap', blockName ), 'px' ),
-				'row-gap': generateCSSUnit( getFallbackNumber( gap, 'gap', blockName ), 'px' ),
+				'gap': generateCSSUnit( getFallbackNumber( gap, 'gap', blockName ), 'px' ),
 		    };
 			tabletSelectors[ '.uagb-buttons__outer-wrap .block-editor-block-list__layout' ] = {
 				'flex-direction': 'column',
-				'row-gap': generateCSSUnit( gapTablet, 'px' ),
-				'column-gap': generateCSSUnit( gapTablet, 'px' ),
+				'gap': generateCSSUnit( gapTablet, 'px' ),
 			};
 			mobileSelectors[ '.uagb-buttons__outer-wrap .block-editor-block-list__layout' ] = {
 				'flex-direction': 'column',
-				'row-gap': generateCSSUnit( gapMobile, 'px' ),
-				'column-gap': generateCSSUnit( gapMobile, 'px' ),
+				'gap': generateCSSUnit( gapMobile, 'px' ),
 			};
 		} else if ( 'mobile' === stack ) {
 			selectors[ '.uagb-buttons__outer-wrap .block-editor-block-list__layout' ] = {
 				'flex-direction': 'row',
-				'column-gap': generateCSSUnit( getFallbackNumber( gap, 'gap', blockName ), 'px' ),
-				'row-gap': generateCSSUnit( getFallbackNumber( gap, 'gap', blockName ), 'px' ),
+				'gap': generateCSSUnit( getFallbackNumber( gap, 'gap', blockName ), 'px' ),
 		    };
 			tabletSelectors[
 				'.uagb-buttons__outer-wrap .block-editor-block-list__layout'
 			] = {
 				'flex-direction': 'row',
-				'column-gap': generateCSSUnit( gapTablet, 'px' ),
-				'row-gap': generateCSSUnit( gapTablet, 'px' ),
+				'gap': generateCSSUnit( gapTablet, 'px' ),
 			};
 			mobileSelectors[
 				'.uagb-buttons__outer-wrap .block-editor-block-list__layout'
 			] = {
 				'flex-direction': 'column',
-				'row-gap': generateCSSUnit( gapMobile, 'px' ),
-				'column-gap': generateCSSUnit( gapMobile, 'px' ),
+				'gap': generateCSSUnit( gapMobile, 'px' ),
 			};
 		} else if ( 'none' === stack ) {
 			selectors[ '.uagb-buttons__outer-wrap .block-editor-block-list__layout' ] = {
-				'column-gap': generateCSSUnit( getFallbackNumber( gap, 'gap', blockName ), 'px' ),
+				'gap': generateCSSUnit( getFallbackNumber( gap, 'gap', blockName ), 'px' ),
 			};
 			tabletSelectors[ '.uagb-buttons__outer-wrap .block-editor-block-list__layout' ] = {
-				'column-gap': generateCSSUnit( gapTablet, 'px' ),
+				'gap': generateCSSUnit( gapTablet, 'px' ),
 			};
 			mobileSelectors[ '.uagb-buttons__outer-wrap .block-editor-block-list__layout' ] = {
-				'column-gap': generateCSSUnit( gapMobile, 'px' ),
+				'gap': generateCSSUnit( gapMobile, 'px' ),
 			};
 		}
 	} else if( inheritGap ) {
@@ -244,6 +240,10 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 				'flex-direction': 'column',
 			};
 		}
+	}
+
+	if( flexWrap ) {
+		selectors[ '.uagb-buttons__outer-wrap .block-editor-block-list__layout' ][ 'flex-wrap' ] = 'wrap';
 	}
 
 	if ( align !== 'full' ) {

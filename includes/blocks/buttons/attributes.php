@@ -44,6 +44,7 @@ return array(
 	'gapTablet'               => '',
 	'gapMobile'               => '',
 	'inheritGap'              => false,
+	'flexWrap'                => false,
 	'stack'                   => 'none',
 	'fontFamily'              => '',
 	'fontWeight'              => '',
