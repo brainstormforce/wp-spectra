@@ -221,6 +221,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Global - Resolved an issue wherein the editor sidebar would appear a bit shaky while switching between panels.
 * Fix: Heading - Resolved an issue wherein toolbar icon would not appear as indended.
 * Fix: Theme Fonts - Resolved a font rendering issue for some Latin characters in FSE themes.
+* Fix: Testimonial - Resolved an issue wherein the padding would not work as intended in responsive devices.
 
 ### 2.12.8 - Wednesday, 10th April 2024 ###
 * Improvement: Google Maps - Added a toggle to switch between Roadmap View and Satellite View.
