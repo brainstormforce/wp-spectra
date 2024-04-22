@@ -14,12 +14,12 @@ $arrows = ( 'arrows' === $attr['arrowDots'] || 'arrowDots' === $attr['arrowDots'
 $slick_options = apply_filters(
 	'uagb_testimonials_slick_options',
 	array(
-		'slidesToShow'   => is_int( $attr['columns'] ) ? $attr['columns'] : intval( $attr['columns'] ),
+		'slidesToShow'   => is_int( $attr['columns'] ) ? $attr['columns'] : (int) $attr['columns'],
 		'slidesToScroll' => 1,
 		'autoplaySpeed'  => esc_html( $attr['autoplaySpeed'] ),
-		'autoplay'       => is_bool( $attr['autoplay'] ) ? $attr['autoplay'] : (bool) $attr['autoplay'],
-		'infinite'       => is_bool( $attr['infiniteLoop'] ) ? $attr['infiniteLoop'] : (bool) $attr['infiniteLoop'],
-		'pauseOnHover'   => is_bool( $attr['pauseOnHover'] ) ? $attr['pauseOnHover'] : (bool) $attr['pauseOnHover'],
+		'autoplay'       => is_bool( $attr['autoplay'] ) ? $attr['autoplay'] : true,
+		'infinite'       => is_bool( $attr['infiniteLoop'] ) ? $attr['infiniteLoop'] : true,
+		'pauseOnHover'   => is_bool( $attr['pauseOnHover'] ) ? $attr['pauseOnHover'] : true,
 		'speed'          => esc_html( $attr['transitionSpeed'] ),
 		'arrows'         => $arrows,
 		'dots'           => $dots,
@@ -30,14 +30,14 @@ $slick_options = apply_filters(
 			array(
 				'breakpoint' => 1024,
 				'settings'   => array(
-					'slidesToShow'   => is_int( $attr['tcolumns'] ) ? $attr['tcolumns'] : intval( $attr['tcolumns'] ),
+					'slidesToShow'   => is_int( $attr['tcolumns'] ) ? $attr['tcolumns'] : (int) $attr['tcolumns'],
 					'slidesToScroll' => 1,
 				),
 			),
 			array(
 				'breakpoint' => 767,
 				'settings'   => array(
-					'slidesToShow'   => is_int( $attr['mcolumns'] ) ? $attr['mcolumns'] : intval( $attr['mcolumns'] ),
+					'slidesToShow'   => is_int( $attr['mcolumns'] ) ? $attr['mcolumns'] : (int) $attr['mcolumns'],
 					'slidesToScroll' => 1,
 				),
 			),

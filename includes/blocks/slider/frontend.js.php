@@ -20,7 +20,7 @@ $slider_options = apply_filters(
 			'pauseOnMouseEnter'    => 'hover' === $attr['pauseOn'] ? true : false,
 			'stopOnLastSlide'      => $attr['infiniteLoop'] ? false : true,
 		) : false,
-		'loop'       => is_bool( $attr['infiniteLoop'] ) ? $attr['infiniteLoop'] : (bool) $attr['infiniteLoop'],
+		'loop'       => is_bool( $attr['infiniteLoop'] ) ? $attr['infiniteLoop'] : true,
 		'speed'      => is_int( $attr['transitionSpeed'] ) ? $attr['transitionSpeed'] : (int) $attr['transitionSpeed'],
 		'effect'     => $attr['transitionEffect'],
 		'direction'  => $attr['verticalMode'] ? 'vertical' : 'horizontal',
