@@ -224,6 +224,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Heading - Resolved an issue wherein toolbar icon would not appear as indended.
 * Fix: Theme Fonts - Resolved a font rendering issue for some Latin characters in FSE themes.
 * Fix: Testimonial - Resolved an issue wherein the padding would not work as intended in responsive devices.
+* Fix: Forms - Resolved an issue wherein the padding unit would not work as expected in responsive devices.
 
 ### 2.12.9 - Monday, 22nd April 2024 ###
 * Security Fix: Hardened the security of the plugin. Props: Wordfence.
