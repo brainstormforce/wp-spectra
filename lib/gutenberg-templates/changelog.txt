@@ -1,3 +1,6 @@
+v2.1.28 - 12-April-2024
+- Fix: Resolved line-height issue for blocks.
+
 v2.1.27 - 9-April-2024
 - Fix: Design library button not showing sometime.
 

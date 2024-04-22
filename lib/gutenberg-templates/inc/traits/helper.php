@@ -394,7 +394,7 @@ class Helper {
 	 * @return string
 	 */
 	public function get_block_template_customiser_css() {
-		return self::get_json_file_content( 'ast-block-templates-customizer-css.json', false );
+		return trim( self::get_json_file_content( 'ast-block-templates-customizer-css.json', false ), '"' );
 	}   
 
 	/**
@@ -403,7 +403,7 @@ class Helper {
 	 * @return string
 	 */
 	public function get_last_exported_checksum() {
-		return self::get_json_file_content( 'ast-block-templates-last-export-checksums.json', false );
+		return trim( self::get_json_file_content( 'ast-block-templates-last-export-checksums.json', false ), '"' );
 	}
 
 	/**

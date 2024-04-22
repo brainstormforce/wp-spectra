@@ -333,6 +333,7 @@ class Sync_Library {
 				)
 			);
 		}
+		$this->get_server_astra_customizer_css();
 		if ( isset( $result_data['categories'] ) && ! empty( $result_data['categories'] ) ) {
 		
 			Helper::instance()->ast_block_templates_log( 'CATEGORY: Storing in option ast-block-templates-categories.json' );
@@ -345,7 +346,6 @@ class Sync_Library {
 			do_action( 'ast_block_templates_sync_blocks_requests', $result_data['count']['pages'] );
 		}
 		$this->update_latest_checksums( $result_data['checksum'] );
-
 		wp_send_json_success(
 			array(
 				'message' => 'in-progress',
