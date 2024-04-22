@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.5.2  
-**Stable tag:** 2.12.8  
+**Stable tag:** 2.12.9  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -225,12 +225,15 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Theme Fonts - Resolved a font rendering issue for some Latin characters in FSE themes.
 * Fix: Testimonial - Resolved an issue wherein the padding would not work as intended in responsive devices.
 
+### 2.12.9 - Monday, 22nd April 2024 ###
+* Security Fix: Hardened the security of the plugin. Props: Wordfence.
+
 ### 2.12.8 - Wednesday, 10th April 2024 ###
 * Improvement: Google Maps - Added a toggle to switch between Roadmap View and Satellite View.
 * Improvement: Global - Improved the block-name identification for the default fallback attributes.
 * Improvement: Global - Added WPML compatibility to the 'How To', 'Buttons', 'Forms' and 'Marketing Button' blocks.
 * Fix: Container - Resolved an issue wherein the link control content and edit icon would overflow out-of-screen after entering lengthy URLs.
-* Fix: Counter - Resolved an issue wherein the total number resets to default on end number change. 
+* Fix: Counter - Resolved an issue wherein the total number resets to default on end number change.
 * Fix: Icon - Resolved an issue wherein a few icons would not load on the frontend.
 * Fix: Global - Resolved an issue that would cause block-styling to break when used for a custom archive template of specific post types in FSE themes.
 
