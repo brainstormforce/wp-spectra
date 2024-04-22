@@ -11,21 +11,17 @@
 $selector   = '.uagb-block-' . $id . ' .uagb-swiper';
 $block_name = 'slider';
 
-$js_attr = array(
-	'block_id' => $attr['block_id'],
-);
-
 $slider_options = apply_filters(
 	'uagb_slider_options',
 	array(
 		'autoplay'   => $attr['autoplay'] ? array(
-			'delay'                => (int) $attr['autoplaySpeed'],
+			'delay'                => is_int( $attr['autoplaySpeed'] ) ? $attr['autoplaySpeed'] : (int) $attr['autoplaySpeed'],
 			'disableOnInteraction' => 'click' === $attr['pauseOn'] ? true : false,
 			'pauseOnMouseEnter'    => 'hover' === $attr['pauseOn'] ? true : false,
 			'stopOnLastSlide'      => $attr['infiniteLoop'] ? false : true,
 		) : false,
-		'loop'       => $attr['infiniteLoop'],
-		'speed'      => (int) $attr['transitionSpeed'],
+		'loop'       => is_bool( $attr['infiniteLoop'] ) ? $attr['infiniteLoop'] : true,
+		'speed'      => is_int( $attr['transitionSpeed'] ) ? $attr['transitionSpeed'] : (int) $attr['transitionSpeed'],
 		'effect'     => $attr['transitionEffect'],
 		'direction'  => $attr['verticalMode'] ? 'vertical' : 'horizontal',
 		'flipEffect' => array(
