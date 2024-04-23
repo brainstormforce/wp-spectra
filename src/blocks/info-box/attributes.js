@@ -720,6 +720,13 @@ const attributes = {
 		type: 'string',
 		default: 'none',
 	},
+	ctaButtonType: {
+		type: 'string',
+		default: 'primary',
+		UAGCopyPaste: {
+			styleType: 'cta-btn-type',
+		},
+	},
 	ctaBgType: {
 		type: 'string',
 		default: 'color',

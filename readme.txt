@@ -220,6 +220,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Countdown - Modified options to remove days, hours, minutes and seconds fields.
 * Improvement: Info Box - Modified CTA padding to inherit padding from theme by default.
 * Improvement: Call To Action - Modified button text font-size to inherit from theme by default.
+* Improvement: Info Box – Added the inherit-from-theme secondary-button option for Astra child themes.
+* Improvement: Call To Action – Added the inherit-from-theme secondary-button option for Astra child themes.
 * Fix: Global - Resolved an issue wherein the editor sidebar would appear a bit shaky while switching between panels.
 * Fix: Heading - Resolved an issue wherein toolbar icon would not appear as indended.
 * Fix: Theme Fonts - Resolved a font rendering issue for some Latin characters in FSE themes.

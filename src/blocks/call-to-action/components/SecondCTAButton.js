@@ -11,6 +11,14 @@ const SecondCTAButton = ( props ) => {
 		target = '_blank';
 	}
 
+	
+	const inheritAstraSecondary = attributes.secInheritFromTheme && 'secondary' === attributes.secCtaButtonType;
+	const buttonTypeClass = inheritAstraSecondary ? 'ast-outline-button' : 'wp-block-button__link';
+	//border-width is added to revert the border related styles by default.
+	const borderStyle = inheritAstraSecondary ? { borderWidth: 'revert-layer' } : {};
+
+	const CustomTag = inheritAstraSecondary ? 'div' : 'a';
+
 	let secondCtaIconOutput = '';
 	if ( attributes.showSecondIcon && attributes.secondCtaIcon !== '' ) {
 		if ( setAttributes !== 'not_set' ) {
@@ -33,11 +41,12 @@ const SecondCTAButton = ( props ) => {
 	if ( setAttributes !== 'not_set' ) {
 		return (
 			<>
-				<a
+				<CustomTag
 					href={ link }
-					className={ classnames( 'uagb-cta-second__button', 'wp-block-button__link' ) }
+					className={ classnames( 'uagb-cta-second__button', buttonTypeClass ) }
 					target={ target }
 					rel={ rel }
+					style={ borderStyle }
 					onClick={ preventDefaultFunc }
 				>
 					{ attributes.secondCtaIconPosition === 'before' && secondCtaIconOutput }
@@ -49,7 +58,7 @@ const SecondCTAButton = ( props ) => {
 						allowedFormats={ [] } // Removed the WP default link/bold/italic from the toolbar for button.
 					/>
 					{ attributes.secondCtaIconPosition === 'after' && secondCtaIconOutput }
-				</a>
+				</CustomTag>
 			</>
 		);
 	}
@@ -58,9 +67,10 @@ const SecondCTAButton = ( props ) => {
 		<>
 			<a
 				href={ link }
-				className={ classnames( 'uagb-cta-second__button', 'wp-block-button__link' ) }
+				className={ classnames( 'uagb-cta-second__button', buttonTypeClass ) }
 				target={ target }
 				rel={ rel }
+				style={ borderStyle }
 				onClick={ preventDefaultFunc }
 			>
 				{ attributes.secondCtaIconPosition === 'before' && secondCtaIconOutput }

@@ -230,8 +230,12 @@ const Settings = ( props ) => {
 		btncontentWidthMobile,
 		btncontentWidthType,
 		inheritFromTheme,
+		ctaButtonType,
+		secCtaButtonType,
 		secInheritFromTheme
 	} = attributes;
+
+	const currentTheme = uagb_blocks_info.current_theme;
 
 	const secBtnSettings = () => {
 		return (
@@ -263,6 +267,26 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 						/>
+						{ secInheritFromTheme && 'Astra' === currentTheme && (
+					<MultiButtonsControl
+						setAttributes={ setAttributes }
+						label={ __( `Button Type`, 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							value: secCtaButtonType,
+							label: 'secCtaButtonType',
+						} }
+						options={ [
+							{
+								value: 'primary',
+								label: __( 'Primary', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'secondary',
+								label: __( 'Secondary', 'ultimate-addons-for-gutenberg' ),
+							},
+						] }
+					/>
+						) }
 						<MultiButtonsControl
 							setAttributes={ setAttributes }
 							label={ __( 'Stack Orientation', 'ultimate-addons-for-gutenberg' ) }
@@ -708,6 +732,26 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							) }
 						/>
+						{ inheritFromTheme && 'Astra' === currentTheme && (
+					<MultiButtonsControl
+						setAttributes={ setAttributes }
+						label={ __( `Button Type`, 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							value: ctaButtonType,
+							label: 'ctaButtonType',
+						} }
+						options={ [
+							{
+								value: 'primary',
+								label: __( 'Primary', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'secondary',
+								label: __( 'Secondary', 'ultimate-addons-for-gutenberg' ),
+							},
+						] }
+					/>
+						) }
 					</>
 				) }
 				{ stack !== 'desktop' && ctaType !== 'all' && ctaType !== 'none' && (

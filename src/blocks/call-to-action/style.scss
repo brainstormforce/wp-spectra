@@ -21,7 +21,8 @@
 	display: inline-flex;
 }
 
-.wp-block-uagb-call-to-action .wp-block-button__link {
+.wp-block-uagb-call-to-action .wp-block-button__link,
+.wp-block-uagb-call-to-action .ast-outline-button {
 	fill: currentColor;
 	justify-content: center;
 }

@@ -6,7 +6,14 @@ import { __ } from '@wordpress/i18n';
 const InfoBoxCta = ( props ) => {
 	const { attributes, setAttributes = 'not_set' } = props;
 
-	const ctaBtnClass = 'uagb-infobox-cta-link wp-block-button__link';
+	const inheritAstraSecondary = attributes.inheritFromTheme && 'secondary' === attributes.ctaButtonType;
+	const buttonTypeClass = inheritAstraSecondary ? 'ast-outline-button' : 'wp-block-button__link';
+	//border-width is added to revert the border related styles by default.
+	const borderStyle = inheritAstraSecondary ? { borderWidth: 'revert-layer' } : {};
+
+	const ctaBtnClass = `uagb-infobox-cta-link ${buttonTypeClass}`;
+
+	const CustomTag = inheritAstraSecondary ? 'div' : 'a';
 
 	let target = '_self';
 	const rel = 'noopener noreferrer';
@@ -41,13 +48,14 @@ const InfoBoxCta = ( props ) => {
 			<div className="uagb-ifb-cta">
 				{ ( attributes.ctaType === 'text' && attributes.inheritFromTheme ) && (
 					<div className={ classnames( 'uagb-ifb-button-wrapper', 'uagb-ifb-button-type-text', 'wp-block-button' ) }>
-						<a // eslint-disable-line jsx-a11y/anchor-is-valid
+						<CustomTag // eslint-disable-line jsx-a11y/anchor-is-valid
 							target={ target }
-							className={ classnames( 'uagb-infobox-cta-link', 'wp-block-button__link' ) }
+							className={ classnames( ctaBtnClass  ) }
 							rel={ rel }
+							style={ borderStyle }
 						>
 							{ ctaTextOutput }
-						</a>
+						</CustomTag>
 					</div>
 				) }
 				{ ( attributes.ctaType === 'text' && ! attributes.inheritFromTheme ) && (
@@ -61,13 +69,14 @@ const InfoBoxCta = ( props ) => {
 				) }
 				{ attributes.ctaType === 'button' && (
 					<div className={ classnames( 'uagb-ifb-button-wrapper', 'wp-block-button' ) }>
-						<a // eslint-disable-line jsx-a11y/anchor-is-valid
+						<CustomTag // eslint-disable-line jsx-a11y/anchor-is-valid
 							className={ ctaBtnClass }
 							target={ target }
 							rel={ rel }
+							style={ borderStyle }
 						>
 							{ ctaTextOutput }
-						</a>
+						</CustomTag>
 					</div>
 				) }
 			</div>
@@ -95,8 +104,9 @@ const InfoBoxCta = ( props ) => {
 						onClick={
 							( '' === attributes.ctaLink || '#' === attributes.ctaLink ) && ( ! attributes?.dynamicContent?.ctaLink?.enable ) ? 'return false;' : 'return true;'
 						}
-						className={ 'uagb-infobox-cta-link wp-block-button__link' }
+						className={ ctaBtnClass }
 						rel={ rel }
+						style={ borderStyle }
 						alt=""
 					>
 						{ ctaTextOutputFrontend }
@@ -126,6 +136,7 @@ const InfoBoxCta = ( props ) => {
 						className={ ctaBtnClass }
 						target={ target }
 						rel={ rel }
+						style={ borderStyle }
 						onClick={
 							( '' === attributes.ctaLink || '#' === attributes.ctaLink ) && ( ! attributes?.dynamicContent?.ctaLink?.enable ) ? 'return false;' : 'return true;'
 						}

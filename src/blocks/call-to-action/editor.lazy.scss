@@ -37,8 +37,15 @@
 		display: inline-flex;
 	}
 
-	.uagb-cta__outer-wrap a.wp-block-button__link {
+	.uagb-cta__outer-wrap a.wp-block-button__link,
+	.uagb-cta__outer-wrap a.ast-outline-button {
 		justify-content: center;
+	}
+
+	.uagb-cta__outer-wrap .uagb-cta__button-link-wrapper,
+	.uagb-cta__outer-wrap .uagb-cta-second__button {
+		fill: currentColor;
+		width: 100%;
 	}
 
 	.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper,
