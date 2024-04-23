@@ -2157,7 +2157,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param array $grid_object  Array containing the necessary grid properties.
 		 * @return string  The generated grid CSS or an empty string on early return.
 		 *
-		 * @since x.x.x
+		 * @since 2.13.0
 		 */
 		public static function grid_css_creator( $grid_object ) {
 			$grid_css = '';
@@ -2186,7 +2186,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $device_type Device type ex : Desktop, Tablet, Mobile.
 		 * @return array Array of the css object ex : array( 'grid-template-columns' => '1fr 1fr 1fr', 'grid-template-rows' => '1fr 1fr 1fr' )
 		 * 
-		 * @since X.X.X
+		 * @since 2.13.0
 		 */
 		public static function grid_css_object( $attr, $device_type = 'Desktop' ) {
 			$grid_css = array();
