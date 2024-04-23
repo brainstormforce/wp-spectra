@@ -1,5 +1,8 @@
 import { useEffect } from '@wordpress/element';
 import { select } from '@wordpress/data';
+
+const headingDescToggleDefault = 'yes' === uagb_blocks_info.uagb_old_user_less_than_2;
+
 const getUniqId = ( blocks ) => blocks
 	.reduce( ( result, block ) => {
 		if ( block?.attributes?.block_id && block.name.includes( 'uagb' ) ) {
@@ -114,6 +117,9 @@ const addInitialAttr = ( ChildComponent ) => {
 				attributeObject.classMigrate = true;
 			}
 
+			if ( 'uagb/advanced-heading' === name ) {
+				attributeObject.headingDescToggle = headingDescToggleDefault;
+			}
 
 			/**
 			 * Resolve issue of reusable block.
