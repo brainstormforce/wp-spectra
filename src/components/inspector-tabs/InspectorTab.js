@@ -3,6 +3,7 @@ import { useRef, useEffect } from '@wordpress/element';
 import getUAGEditorStateLocalStorage from '@Controls/getUAGEditorStateLocalStorage';
 import { select } from '@wordpress/data';
 import GbsNotice from '@Components/global-block-link/GbsNotice.js';
+import GridItemSettings from '@Components/grid-item-settings';
 
 const InspectorTab = ( props ) => {
 	const { children, isActive, type } = props;
@@ -73,6 +74,11 @@ const InspectorTab = ( props ) => {
 		GBSNotice = <GbsNotice { ...props.parentProps.attributes } />;
 	}
 
+	let GridItemSetting = null;
+	if( 'uagb/container' === blockName && 'general' === type ){
+		GridItemSetting = <GridItemSettings { ...props } />;
+	}
+
 	return (
 		<div
 			style={ {
@@ -85,6 +91,7 @@ const InspectorTab = ( props ) => {
 			{ GBSNotice }
 			{ Array.isArray( children ) ? children.map( ( item ) => item ) : children }
 			{ tabContent() }
+			{ GridItemSetting }
 			{ inspectorTabAfter }
 		</div>
 	);

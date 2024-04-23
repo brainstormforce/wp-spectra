@@ -2,6 +2,7 @@ const { enableMasonryGallery } = uagb_blocks_info;
 import { addFilter } from '@wordpress/hooks';
 import AnimationAttributes from '@Blocks/extensions/animations-extension/attributes.js';
 import positionAttributes from '@Blocks/extensions/advanced-positioning/attributes.js';
+import GridAttributes from '@Components/grid-item-settings/attributes.js';
 
 function addAttributes( settings ) {
 	const excludeBlock = uagb_blocks_info.uagb_exclude_blocks_from_extension;
@@ -63,6 +64,12 @@ function addAttributes( settings ) {
 			} );
 		}
 	}
+
+	// Grid setting attributes specific to the uagb/container block.
+	if ( 'uagb/container' === settings.name && settings?.attributes ) {
+			settings.attributes = { ...settings.attributes, ...GridAttributes };
+	}
+
 	return settings;
 }
 

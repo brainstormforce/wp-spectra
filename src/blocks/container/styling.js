@@ -8,6 +8,7 @@ import generateBackgroundCSS from '@Controls/generateBackgroundCSS';
 import backgroundCss from './backgroundCss';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import generateBorderCSS from '@Controls/generateBorderCSS';
+import gridCssObject from '@Controls/gridCssCreator';
 
 function styling( attributes, clientId, name, deviceType, gbsSelector = false ) {
 	const blockName = name.replace( 'uagb/', '' );
@@ -189,10 +190,40 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		childrenWidthDesktop,
 		childrenWidthTablet,
 		childrenWidthMobile,
+		// Layout grid related attributes.
+		layout,
+        isGridCssInParent,
+		gridColumnStart,
+        gridColumnEnd,
+        gridRowStart,
+        gridRowEnd,
+        gridAlignItems,
+        gridJustifyItems,
+        gridColumnSpan,
+        gridRowSpan,
+		gridSettingType,
+		gridColumnStartTablet,
+		gridColumnEndTablet,
+		gridRowStartTablet,
+		gridRowEndTablet,
+		gridColumnStartMobile,
+		gridColumnEndMobile,
+		gridRowStartMobile,
+		gridRowEndMobile,
+		gridColumnSpanTablet,
+		gridRowSpanTablet,
+		gridColumnSpanMobile,
+		gridRowSpanMobile,
+		gridAlignItemsTablet,
+		gridJustifyItemsTablet,
+		gridAlignItemsMobile,
+		gridJustifyItemsMobile,
 	} = attributes;
 
 	// Background Image CSS is now added here as well so that we can generate CSS for the psuedo-element.
 	const getContainerBGStyle = backgroundCss( attributes, deviceType, clientId, { 'hasPseudo': true, 'forStyleSheet': true } );
+
+	const isLayoutGrid = 'grid' === layout;
 
 	const innerContentCustomWidthDesktopFallback = getFallbackNumber(
 		innerContentCustomWidthDesktop,
@@ -471,44 +502,54 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			'.wp-block-uagb-container > .block-editor-inner-blocks > .block-editor-block-list__layout';
 	}
 
-	selectors[ containerFlexSelector ] = {
+	const gbsWidthSelector = gbsSelector ? gbsSelector : `#block-${ clientId }`;
+	const widthSelectorsDesktop = {};
+	const widthSelectorsTablet = {};
+	const widthSelectorsMobile = {};
+
+	selectors[ containerFlexSelector ] = { 
 		'min-height': generateCSSUnit( minHeightDesktop, minHeightType ),
-		'flex-direction': directionDesktop,
-		'align-items': alignItemsDesktop,
-		'justify-content': justifyContentDesktop,
-		'flex-wrap': wrapDesktop,
-		'align-content': alignContentDesktop,
-		'row-gap': generateCSSUnit( rowGapDesktopFallback, rowGapType ),
-		'column-gap': generateCSSUnit( columnGapDesktopFallback, columnGapType ),
-	};
+	}
+
 	selectors[ '.block-editor-block-list__block' ] = {
 		'min-height': generateCSSUnit( minHeightDesktop, minHeightType ),
-		'flex-direction': directionDesktop,
-		'align-items': alignItemsDesktop,
-		'justify-content': justifyContentDesktop,
-		'flex-wrap': wrapDesktop,
-		'align-content': alignContentDesktop,
-	};
-	const gbsWidthSelector = gbsSelector ? gbsSelector : `#block-${ clientId }`;
-	const widthSelectorsDesktop = {
-		[ `.is-root-container > .block-editor-block-list__block .block-editor-block-list__block${ gbsWidthSelector } ` ]: {
+	}
+
+	if( ! isLayoutGrid ){
+		selectors[ containerFlexSelector ] = {
+			'flex-direction': directionDesktop,
+			'align-items': alignItemsDesktop,
+			'justify-content': justifyContentDesktop,
+			'flex-wrap': wrapDesktop,
+			'align-content': alignContentDesktop,
+			'row-gap': generateCSSUnit( rowGapDesktopFallback, rowGapType ),
+			'column-gap': generateCSSUnit( columnGapDesktopFallback, columnGapType ),
+			...selectors[ containerFlexSelector ],
+		};
+		selectors[ '.block-editor-block-list__block' ] = {
+			'flex-direction': directionDesktop,
+			'align-items': alignItemsDesktop,
+			'justify-content': justifyContentDesktop,
+			'flex-wrap': wrapDesktop,
+			'align-content': alignContentDesktop,
+			...selectors[ '.block-editor-block-list__block' ],
+		};
+
+	}
+
+	widthSelectorsDesktop[ `.is-root-container > .block-editor-block-list__block .block-editor-block-list__block${ gbsWidthSelector } ` ] = {
 			'max-width': generateCSSUnit( widthDesktopFallback, widthType ),
 			'width': '100%',
-		},
+		};
+
+	widthSelectorsTablet[ `.is-root-container > .block-editor-block-list__block .uagb-editor-preview-mode-tablet.block-editor-block-list__block${ gbsWidthSelector } ` ] = {
+		'max-width': generateCSSUnit( widthTablet, widthTypeTablet ),
+		'width': '100%',
 	};
 
-	const widthSelectorsTablet = {
-		[ `.is-root-container > .block-editor-block-list__block .uagb-editor-preview-mode-tablet.block-editor-block-list__block${ gbsWidthSelector } ` ]: {
-			'max-width': generateCSSUnit( widthTablet, widthTypeTablet ),
-			'width': '100%',
-		},
-	};
-
-	const widthSelectorsMobile = {
-		[ `.is-root-container > .block-editor-block-list__block .uagb-editor-preview-mode-mobile.block-editor-block-list__block${ gbsWidthSelector } ` ]: {
-			'max-width': generateCSSUnit( widthMobile, widthTypeMobile ),
-			'width': '100%',
-		},
+	widthSelectorsMobile[ `.is-root-container > .block-editor-block-list__block .uagb-editor-preview-mode-mobile.block-editor-block-list__block${ gbsWidthSelector } ` ] = {
+		'max-width': generateCSSUnit( widthMobile, widthTypeMobile ),
+		'width': '100%',
 	};
 
 	if ( 'alignfull' === contentWidth && 'alignwide' === innerContentWidth ) {
@@ -595,8 +636,38 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		},
 		' > .uagb-container__shape-bottom svg': {
 			'height': generateCSSUnit( bottomHeightMobile, 'px' ),
-		},
-	};
+			},
+		};
+
+	// Display grid css.
+	if ( isLayoutGrid ) {
+		// Grid style settings for desktop.
+		const gridStyles = {};
+
+		// Set column and row gap css. for gap we will use existing rowGap and columnGap attributes.
+		gridStyles['grid-column-gap'] = generateCSSUnit( columnGapDesktopFallback, columnGapType );
+		gridStyles['grid-row-gap'] = generateCSSUnit( rowGapDesktopFallback, rowGapType );
+		
+		selectors[ containerFlexSelector ] = { ...gridStyles, ...gridCssObject( attributes, 'Desktop' ) };
+
+		// Grid style settings for tablet.
+		const gridStylesTablet = {};
+
+		// Set column and row gap css. for gap we will use existing rowGap and columnGap attributes.
+		gridStylesTablet['grid-column-gap'] = generateCSSUnit( columnGapTablet, columnGapTypeTablet );
+		gridStylesTablet['grid-row-gap'] = generateCSSUnit( rowGapTablet, rowGapTypeTablet );
+		
+		tablet_selectors[ containerFlexSelector ] = { ...gridStylesTablet, ...gridCssObject( attributes, 'Tablet' ) };
+
+		// Grid style settings for mobile.
+		const gridStylesMobile = {};
+
+		// Set column and row gap css. for gap we will use existing rowGap and columnGap attributes.
+		gridStylesMobile['grid-column-gap'] = generateCSSUnit( columnGapMobile, columnGapTypeMobile );
+		gridStylesMobile['grid-row-gap'] = generateCSSUnit( rowGapMobile, rowGapTypeMobile );
+		
+		mobile_selectors[ containerFlexSelector ] = { ...gridStylesMobile, ...gridCssObject( attributes, 'Mobile' ) };
+	}
 
 	if ( 'video' === backgroundType ) {
 		selectors[ ' .uagb-container__video-wrap' ] = {
@@ -841,6 +912,118 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			mobile_selectors[ containerSelector ] = setWidth;
 			mobile_selectors[ containerSelector2 ] = setWidth;
 		}
+	}
+
+	// Add css grid children settings.
+	if( isGridCssInParent ){
+		const gridChildrenCSS = {};
+		const gridChildrenCSSTablet = {};
+		const gridChildrenCSSMobile = {};
+		
+		if( 'advance' === gridSettingType ){
+			// For desktop.
+			if( gridColumnStart && gridColumnEnd ){
+				gridChildrenCSS['grid-column'] = `${gridColumnStart} / ${gridColumnEnd}`;
+				
+				// Add css for the Tablet and Mobile. if both device css not set then it will inherit the desktop css.
+				gridChildrenCSSTablet['grid-column'] = 'span 1';
+				gridChildrenCSSMobile['grid-column'] = 'span 1';
+			}
+
+			if( gridRowStart && gridRowEnd ){
+				gridChildrenCSS['grid-row'] = `${gridRowStart} / ${gridRowEnd}`;
+
+				// Add css for the Tablet and Mobile. if both device css not set then it will inherit the desktop css.
+				gridChildrenCSSTablet['grid-row'] = 'span 1';
+				gridChildrenCSSMobile['grid-row'] = 'span 1';
+			}
+
+			// For tablet.
+			if( gridColumnStartTablet && gridColumnEndTablet ){
+				gridChildrenCSSTablet['grid-column'] = `${gridColumnStartTablet} / ${gridColumnEndTablet}`;
+			}
+
+			if( gridRowStartTablet && gridRowEndTablet ){
+				gridChildrenCSSTablet['grid-row'] = `${gridRowStartTablet} / ${gridRowEndTablet}`;
+			}
+
+			// For mobile.
+			if( gridColumnStartMobile && gridColumnEndMobile ){
+				gridChildrenCSSMobile['grid-column'] = `${gridColumnStartMobile} / ${gridColumnEndMobile}`;
+			}
+
+			if( gridRowStartMobile && gridRowEndMobile ){
+				gridChildrenCSSMobile['grid-row'] = `${gridRowStartMobile} / ${gridRowEndMobile}`;
+			}
+		}else{
+			// For desktop.
+			if( gridColumnSpan ){
+				gridChildrenCSS['grid-column'] = `span ${gridColumnSpan}`;
+
+				// Add css for the Tablet and Mobile. if both device css not set then it will inherit the desktop css.
+				gridChildrenCSSTablet['grid-column'] = 'span 1';
+				gridChildrenCSSMobile['grid-column'] = 'span 1';
+			}
+
+			if( gridRowSpan ){
+				gridChildrenCSS['grid-row'] = `span ${gridRowSpan}`;
+
+				// Add css for the Tablet and Mobile. if both device css not set then it will inherit the desktop css.
+				gridChildrenCSSTablet['grid-row'] = 'span 1';
+				gridChildrenCSSMobile['grid-row'] = 'span 1';
+			}
+
+			// For tablet.
+			if( gridColumnSpanTablet ){
+				gridChildrenCSSTablet['grid-column'] = `span ${gridColumnSpanTablet}`;
+			}
+
+			if( gridRowSpanTablet ){
+				gridChildrenCSSTablet['grid-row'] = `span ${gridRowSpanTablet}`;
+			}
+
+			// For mobile.
+			if( gridColumnSpanMobile ){
+				gridChildrenCSSMobile['grid-column'] = `span ${gridColumnSpanMobile}`;
+			}
+
+			if( gridRowSpanMobile ){
+				gridChildrenCSSMobile['grid-row'] = `span ${gridRowSpanMobile}`;
+			}
+		}
+
+		// For desktop.
+		if( gridAlignItems ){
+			gridChildrenCSS['align-self'] = gridAlignItems;
+		}
+
+		if( gridJustifyItems ){
+			gridChildrenCSS['justify-self'] = gridJustifyItems;
+		}
+
+		// For tablet.
+		if( gridAlignItemsTablet ){
+			gridChildrenCSSTablet['align-self'] = gridAlignItemsTablet;
+		}
+
+		if( gridJustifyItemsTablet ){
+			gridChildrenCSSTablet['justify-self'] = gridJustifyItemsTablet;
+		}
+
+		// For mobile.
+		if( gridAlignItemsMobile ){
+			gridChildrenCSSMobile['align-self'] = gridAlignItemsMobile;
+		}
+
+		if( gridJustifyItemsMobile ){
+			gridChildrenCSSMobile['justify-self'] = gridJustifyItemsMobile;
+		}
+
+		widthSelectorsDesktop[ '.block-editor-block-list__layout > #block-' + clientId ] = gridChildrenCSS;
+
+		widthSelectorsTablet[ '.block-editor-block-list__layout > #block-' + clientId ] = gridChildrenCSSTablet;
+
+		widthSelectorsMobile[ '.block-editor-block-list__layout > #block-' + clientId ] = gridChildrenCSSMobile;
 	}
 
 	const base_selector = gbsSelector ? '.editor-styles-wrapper ' + gbsSelector : `.editor-styles-wrapper #block-${ clientId }`;

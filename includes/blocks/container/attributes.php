@@ -11,6 +11,23 @@ $border_attribute     = UAGB_Block_Helper::uag_generate_border_attribute( 'conta
 $default_width        = UAGB_Admin_Helper::get_global_content_width();
 $default_padding      = UAGB_Admin_Helper::get_admin_settings_option( 'uag_container_global_padding', '' );
 $default_elements_gap = UAGB_Admin_Helper::get_admin_settings_option( 'uag_container_global_elements_gap', 20 );
+$grid_css_object      = array(
+	array(
+		'default' => 'custom',
+		'min'     => array(
+			'unit'  => 'px',
+			'value' => 10,
+		),
+		'max'     => array(
+			'unit'  => 'fr',
+			'value' => 1,
+		),
+		'custom'  => array(
+			'unit'  => 'fr',
+			'value' => 1,
+		),
+	),
+);
 
 return array_merge(
 	array(
@@ -240,6 +257,26 @@ return array_merge(
 		'childrenWidthDesktop'               => '',
 		'childrenWidthTablet'                => '',
 		'childrenWidthMobile'                => '',
+		// Grid attributes.
+		'layout'                             => '',
+		'gridColumnDesktop'                  => $grid_css_object,
+		'gridColumnTablet'                   => $grid_css_object,
+		'gridColumnMobile'                   => $grid_css_object,
+		'gridRowDesktop'                     => $grid_css_object,
+		'gridRowTablet'                      => $grid_css_object,
+		'gridRowMobile'                      => $grid_css_object,
+		'gridAlignItemsDesktop'              => 'stretch',
+		'gridAlignItemsTablet'               => 'stretch',
+		'gridAlignItemsMobile'               => 'stretch',
+		'gridJustifyItemsDesktop'            => 'stretch',
+		'gridJustifyItemsTablet'             => 'stretch',
+		'gridJustifyItemsMobile'             => 'stretch',
+		'gridAlignContentDesktop'            => 'stretch',
+		'gridAlignContentTablet'             => 'stretch',
+		'gridAlignContentMobile'             => 'stretch',
+		'gridJustifyContentDesktop'          => 'stretch',
+		'gridJustifyContentTablet'           => 'stretch',
+		'gridJustifyContentMobile'           => 'stretch',
 	),
 	$border_attribute
 );

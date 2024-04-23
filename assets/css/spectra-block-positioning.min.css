@@ -1,1 +1,1 @@
-body .uagb-position__sticky{transition-property:top,bottom;transition-duration:250ms;transition-timing-function:ease}body .uagb-position__sticky--stuck{position:fixed}body .uagb-position__sticky--restricted{position:absolute}
+body .wp-block-uagb-container.uagb-position__sticky{transition-property:top,bottom;transition-duration:250ms;transition-timing-function:ease}body .wp-block-uagb-container.uagb-position__sticky--stuck{position:fixed}body .wp-block-uagb-container.uagb-position__sticky--restricted{position:absolute}

@@ -1590,6 +1590,25 @@ const UAGB_Block_Icons = {
 			strokeWidth: 1.4,
 		} )
 	),
+	pencilIcon: el(
+		'svg',
+		{ width: 20, height: 20, viewBox: '0 0 20 20', fill: 'none', className: 'uagb-editor-icons' },
+		el( 'path', {
+			d:
+				'M10 18.5H18M12.5 4L16 7M3.5 13L13.3595 2.79619C14.4211 1.73461 16.1422 1.7346 17.2038 2.79619C18.2654 3.85777 18.2654 5.57894 17.2038 6.64052L7 16.5L2 18L3.5 13Z',
+			stroke: '#94A3B8',
+			strokeWidth: 1.8,
+			strokeLinecap: 'round',
+			strokeLinejoin: 'round',
+		} )
+	),
+	trashIcon: el(
+		'svg',
+		{ width: 20, height: 20, xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 448 512', className: 'trash-font' },
+		el( 'path', {
+			d: 'M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z',
+		} )
+	),
 };
 
 export const renderLegacyBlockEditorIcon = ( blockName ) => (

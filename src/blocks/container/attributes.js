@@ -1,6 +1,23 @@
 import { getBorderAttributes } from '@Controls/generateAttributes';
 
 const inputBorderAttributes = getBorderAttributes( 'container' );
+const gridCssArray = [
+	{
+		default: 'custom', // This value will be either custom or minmax and in minmax value we will create css by combining min and max values.
+		min:{
+			unit: 'px',
+			value: 10,
+		},
+		max:{
+			unit: 'fr',
+			value: 1,
+		},
+		custom:{
+			unit: 'fr',
+			value: 1,
+		}
+	}
+];
 
 const attributes = {
 	block_id: {
@@ -1566,6 +1583,83 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'container-bg-image-desktop',
 		},
+	},
+	// --------------------------------------------------------------
+	layout: { // Layout will be either grid or flex and by default it will be flex if not set.
+		type: 'string',
+		default: '',
+	},
+	gridColumnDesktop: {
+		type:'array',
+		default: [ ...gridCssArray ],
+	},
+	gridColumnTablet: {
+		type:'array',
+		default: [ ...gridCssArray ],
+	},
+	gridColumnMobile: {
+		type:'array',
+		default: [ ...gridCssArray ],
+	},
+	gridRowDesktop:{
+		type: 'array',
+		default: [ ...gridCssArray ],
+	},
+	gridRowTablet:{
+		type: 'array',
+		default: [ ...gridCssArray ],
+	},
+	gridRowMobile:{
+		type: 'array',
+		default: [ ...gridCssArray ],
+	},
+	gridAlignItemsDesktop: {
+		type:'string',
+		default: 'stretch',
+	},
+	gridAlignItemsTablet: {
+		type:'string',
+		default: 'stretch',
+	},
+	gridAlignItemsMobile: {
+		type:'string',
+		default: 'stretch',
+	},
+	gridJustifyItemsDesktop: {
+		type:'string',
+		default: 'stretch',
+	},
+	gridJustifyItemsTablet: {
+		type:'string',
+		default: 'stretch',
+	},
+	gridJustifyItemsMobile: {
+		type:'string',
+		default: 'stretch',
+	},
+	gridAlignContentDesktop: {
+		type:'string',
+		default: 'stretch',
+	},
+	gridAlignContentTablet: {
+		type:'string',
+		default: 'stretch',
+	},	
+	gridAlignContentMobile: {
+		type:'string',
+		default: 'stretch',
+	},	
+	gridJustifyContentDesktop: {
+		type:'string',
+		default: 'stretch',
+	},
+	gridJustifyContentTablet: {
+		type:'string',
+		default: 'stretch',
+	},
+	gridJustifyContentMobile: {
+		type:'string',
+		default: 'stretch',
 	},
 };
 

@@ -215,19 +215,6 @@
 .wp-block-uagb-container {
 	display: flex;
 
-	& > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks,
-	& > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout,
-	& > .block-editor-inner-blocks,
-	& > .block-editor-inner-blocks > .block-editor-block-list__layout {
-		display: flex;
-		width: 100%;
-		height: 100%;
-
-		.wp-block[data-type*="uagb/"] {
-			width: inherit;
-		}
-	}
-
 	.block-editor-block-list__layout {
 		.block-list-appender.wp-block {
 			width: auto;
@@ -244,6 +231,49 @@
 				}
 			}
 		}
+	}
+}
+
+.wp-block-uagb-container:not(.uagb-layout-grid) {
+	& > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks,
+	& > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout,
+	& > .block-editor-inner-blocks,
+	& > .block-editor-inner-blocks > .block-editor-block-list__layout {
+		display: flex;
+		width: 100%;
+		height: 100%;
+
+		.wp-block[data-type*="uagb/"] {
+			width: inherit;
+		}
+	}
+}
+
+.wp-block-uagb-container.uagb-layout-grid {
+
+	& > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks,
+	& > .block-editor-inner-blocks {
+		display: flex;
+		width: 100%;
+		height: 100%;
+	}
+
+	& > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout,
+	& > .block-editor-inner-blocks > .block-editor-block-list__layout {
+		display: grid;
+		width: 100%;
+		height: 100%;
+
+		> .wp-block[data-type*="uagb/"] {
+			width: auto !important;
+		}
+	}
+
+	// Keeping max-width unset container block if that block is inside container block.
+
+	& > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block-uagb-container,
+	& > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block-uagb-container {
+		max-width: unset !important;
 	}
 }
 
@@ -279,4 +309,99 @@
 .is-root-container > .block-editor-block-list__block.wp-block-uagb-container .block-editor-block-list__block:not(.is-selected):hover {
 	outline: 1.5px solid #2271b1;
 	outline-offset: 0;
+}
+
+// Container grid setting css.
+.uagb-grid-repeater-container {
+	> .components-base-control__field {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+	}
+	.uagb-grid-repeater-head {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		>label {
+			margin-bottom: 0;
+		}
+		> button {
+			all: unset;
+			background-color: #dcf2ff;
+			border-color: #cde9f9;
+			box-shadow: inset 0 0 0 1px #cde9f9;
+			border-radius: 2px;
+			cursor: pointer;
+			height: 20px;
+			width: 20px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 3px;
+			>span {
+				color: #007cba;
+				font-size: 18px;
+			}
+		}
+	}
+	.uagb-grid-repeater-items {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+	.uagb-grid-repeater-item {
+		display: flex;
+		justify-content: space-between;
+		gap: 8px;
+		align-items: center;
+	}
+	.uagb-grid-repeater-content {
+		border: 1px solid #e6e7e9;
+		flex: 1;
+		padding: 8px;
+		border-radius: 3px;
+		display: flex;
+		justify-content: space-between;
+		>label {
+			margin-bottom: 0;
+		}
+		> button {
+			all: unset;
+			cursor: pointer;
+			> svg {
+				width: 15px;
+				height: 15px;
+			}
+		}
+	}
+	.uagb-grid-repeater-delete {
+		> button {
+			all: unset;
+			cursor: pointer;
+			> svg {
+				width: 15px;
+				height: 15px;
+				fill: #94a3b8;
+			}
+			&:hover {
+				> svg {
+					fill: #ef4444;
+				}
+			}
+		}
+	}
+
+}
+
+.uagb-grid-settings {
+	width: 255px;
+	padding: 15px;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	box-shadow: 0 2px 8px 0 #0003;
+	border-radius: 2px;
+	.components-base-control__help {
+		margin-bottom: 0;
+	}
 }
