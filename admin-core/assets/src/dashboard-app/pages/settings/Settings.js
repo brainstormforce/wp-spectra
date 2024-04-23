@@ -5,7 +5,6 @@ import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import AssetsGeneration from '@DashboardApp/pages/settings/AssetsGeneration';
 import RegenerateAssets from '@DashboardApp/pages/settings/RegenerateAssets';
-import TemplatesButton from '@DashboardApp/pages/settings/TemplatesButton';
 import OnPageCSS from '@DashboardApp/pages/settings/OnPageCSS';
 import RollBack from '@DashboardApp/pages/settings/RollBack';
 import BetaUpdates from '@DashboardApp/pages/settings/BetaUpdates';
@@ -14,7 +13,6 @@ import SelectedFontFamilies from '@DashboardApp/pages/settings/SelectedFontFamil
 import FSEFontFamilies from '@DashboardApp/pages/settings/FSEFontFamilies';
 import LoadFontsLocally from '@DashboardApp/pages/settings/LoadFontsLocally';
 import PreloadLocalFonts from '@DashboardApp/pages/settings/PreloadLocalFonts';
-import CollapsePanels from '@DashboardApp/pages/settings/CollapsePanels';
 import CopyPasteStyles from '@DashboardApp/pages/settings/CopyPasteStyles';
 import DynamicContent from './dynamic-content';
 import ContentWidth from '@DashboardApp/pages/settings/ContentWidth';
@@ -27,8 +25,18 @@ import AutoBlockRecovery from '@DashboardApp/pages/settings/AutoBlockRecovery';
 import ContainerGlobalPadding from '@DashboardApp/pages/settings/ContainerGlobalPadding';
 import ContainerGlobalElementsGap from '@DashboardApp/pages/settings/ContainerGlobalElementsGap';
 import MyAccount from '@DashboardApp/pages/settings/MyAccount';
-import InstagramUsers from '@DashboardApp/pages/settings/block-settings/InstagramUsers';
 import InheritFromTheme from '@DashboardApp/pages/settings/InheritFromTheme';
+
+// Import Block Settings ( Integrations ).
+import InstagramUsers from '@DashboardApp/pages/settings/block-settings/InstagramUsers';
+
+// Import Editor Enhancements.
+import TemplatesButton from '@DashboardApp/pages/settings/editor-enhancements/TemplatesButton';
+import QuickActionBar from '@DashboardApp/pages/settings/editor-enhancements/QuickActionBar';
+import HeaderTitlebar from '@DashboardApp/pages/settings/editor-enhancements/HeaderTitlebar';
+import CollapsePanels from '@DashboardApp/pages/settings/editor-enhancements/CollapsePanels';
+
+
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import { useEffect } from '@wordpress/element';
 import { uagbClassNames } from '@Utils/Helpers';
@@ -46,7 +54,7 @@ const Settings = () => {
 	const navigation = [
 		{ name: __( 'Editor Options', 'ultimate-addons-for-gutenberg' ), slug: 'global-settings', icon: SettingsIcons['global-settings'] },
         { name: __( 'Asset Generation', 'ultimate-addons-for-gutenberg' ), slug: 'asset-generation', icon: SettingsIcons['asset-generation'] },
-        { name: __( 'Templates', 'ultimate-addons-for-gutenberg' ), slug: 'templates', icon: SettingsIcons.templates },
+        { name: __( 'Editor Enhancements', 'ultimate-addons-for-gutenberg' ), slug: 'editor-enhancements', icon: SettingsIcons.templates },
         { name: __( 'Version Control', 'ultimate-addons-for-gutenberg' ), slug: 'version-control', icon: SettingsIcons['version-control'] },
         { name: __( 'Performance', 'ultimate-addons-for-gutenberg' ), slug: 'fonts-performance', icon: SettingsIcons['fonts-performance'] },
 		{ name: __( 'Integrations', 'ultimate-addons-for-gutenberg' ), slug: 'block-settings', icon: SettingsIcons['block-settings'] },
@@ -126,7 +134,6 @@ const Settings = () => {
 										<BlocksEditorSpacing />
 								) }
 								<OnPageCSS/>
-                                <CollapsePanels/>
                                 <CopyPasteStyles/>
                                 <AutoBlockRecovery/>
                                 {  'yes' === uag_react.global_data.uagb_old_user_less_than_2 &&
@@ -140,9 +147,14 @@ const Settings = () => {
                                 <RegenerateAssets/>
                             </>
                         }
-                        { 'templates' === activeSettingsNavigationTab &&
-                            <TemplatesButton/>
-                        }
+                        { 'editor-enhancements' === activeSettingsNavigationTab && (
+                            <>
+								<QuickActionBar/>
+								<HeaderTitlebar/>
+                                <CollapsePanels/>
+								<TemplatesButton/>
+							</>
+                        ) }
                         { 'version-control' === activeSettingsNavigationTab &&
                             <>
                                 <RollBack/>

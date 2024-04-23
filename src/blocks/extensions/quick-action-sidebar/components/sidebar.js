@@ -11,7 +11,13 @@ import PopoverModal from './modal';
 import { STORE_NAME as storeName } from '@Store/constants';
 
 const Sidebar = ( props ) => {
-	const { getEnableQuickActionSidebar, updateDefaultAllowedQuickSidebarBlocks, getDefaultAllowedQuickSidebarBlocks, getFullscreenMode, getDistractionFreeMode } = props;
+	const {
+		getEnableQuickActionSidebar,
+		updateDefaultAllowedQuickSidebarBlocks,
+		getDefaultAllowedQuickSidebarBlocks,
+		getFullscreenMode,
+		getDistractionFreeMode,
+	} = props;
 	const [ isPopoverVisible, setPopoverVisible ] = useState( false );
 
 	useLayoutEffect( () => {

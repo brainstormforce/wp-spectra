@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* New: Introducing the Header Titlebar - Make more space for editing!
 * Improvement: Buttons - Added a flex-wrap toggle for multiple button rows instead of shrink-to-fit buttons.
 * Improvement: Countdown - Modified options to remove days, hours, minutes and seconds fields.
 * Improvement: Info Box - Modified CTA padding to inherit padding from theme by default.

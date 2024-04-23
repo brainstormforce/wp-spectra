@@ -204,7 +204,18 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 					),
 				)
 			);
-			
+
+			register_rest_route(
+				'spectra/v1',
+				'check-custom-fields-support',
+				array(
+					array(
+						'methods'             => 'GET',
+						'callback'            => array( $this, 'check_custom_fields_support' ),
+						'permission_callback' => array( $this, 'get_items_permissions_check' ),
+					),
+				)
+			);
 		}
 
 		/**
@@ -524,6 +535,60 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 			}
 
 			return $args;
+		}
+
+		/**
+		 * Supported arguments to check if the given post type supports custom fields.
+		 *
+		 * @since x.x.x
+		 * @return array The array of supported arguments.
+		 */
+		public function check_custom_fields_support_args() {
+			$args = array();
+
+			$args['post_type'] = array(
+				'type'     => 'string',
+				'required' => false,
+			);
+
+			return $args;
+		}
+
+		/**
+		 * Checks if the given post type supports custom fields.
+		 *
+		 * @param WP_REST_Request $request All the details about the request.
+		 * @since x.x.x
+		 * @return WP_REST_Response The response.
+		 */
+		public function check_custom_fields_support( $request ) {
+			$post_type = $request->get_param( 'post_type' );
+
+			// If the post type was not passed, abandon ship.
+			if ( empty( $post_type ) || ! is_string( $post_type ) ) {
+				$response = new \WP_REST_Response(
+					array(
+						'success' => false,
+					)
+				);
+				$response->set_status( 400 );
+				return $response;
+			}
+
+			// Sanitize the post type, and check if the post type supports custom fields.
+			$post_type              = sanitize_text_field( $post_type );
+			$supports_custom_fields = post_type_supports( $post_type, 'custom-fields' );
+
+			// Return the successful response, with whether or not custom fields is supported.
+			$response = new \WP_REST_Response(
+				array(
+					'success'                => true,
+					'supports_custom_fields' => $supports_custom_fields,
+				)
+			);
+			$response->set_status( 200 );
+
+			return $response;
 		}
 	}
 
