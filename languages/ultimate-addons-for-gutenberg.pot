@@ -9,12 +9,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-04-22T07:46:02+00:00\n"
+"POT-Creation-Date: 2024-04-23T04:56:10+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.9.0\n"
+"X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
 
 #. Plugin Name of the plugin
+#: ultimate-addons-for-gutenberg.php
 #: admin-core/inc/admin-menu.php:135
 #: admin-core/inc/admin-menu.php:136
 #: admin-core/inc/admin-menu.php:147
@@ -29,14 +30,17 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
+#: ultimate-addons-for-gutenberg.php
 msgid "https://www.brainstormforce.com"
 msgstr ""
 
 #. Description of the plugin
+#: ultimate-addons-for-gutenberg.php
 msgid "The Spectra extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster."
 msgstr ""
 
 #. Author of the plugin
+#: ultimate-addons-for-gutenberg.php
 msgid "Brainstorm Force"
 msgstr ""
 
@@ -7759,7 +7763,7 @@ msgstr ""
 msgid "Spectra requires&nbsp;%3$sBlock Editor%4$s. You can change your editor settings to Block Editor from&nbsp;%1$shere%2$s. Plugin is currently NOT RUNNING."
 msgstr ""
 
-#: classes/class-uagb-fse-fonts-compatibility.php:163
+#: classes/class-uagb-fse-fonts-compatibility.php:165
 #: classes/class-uagb-init-blocks.php:716
 #: dist/blocks.js:11
 #: dist/blocks.js:15
@@ -7768,21 +7772,21 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: classes/class-uagb-fse-fonts-compatibility.php:167
-#: classes/class-uagb-fse-fonts-compatibility.php:179
+#: classes/class-uagb-fse-fonts-compatibility.php:169
+#: classes/class-uagb-fse-fonts-compatibility.php:181
 msgid "400"
 msgstr ""
 
-#: classes/class-uagb-fse-fonts-compatibility.php:173
-#: classes/class-uagb-fse-fonts-compatibility.php:185
+#: classes/class-uagb-fse-fonts-compatibility.php:175
+#: classes/class-uagb-fse-fonts-compatibility.php:187
 msgid "normal"
 msgstr ""
 
-#: classes/class-uagb-fse-fonts-compatibility.php:621
+#: classes/class-uagb-fse-fonts-compatibility.php:625
 msgid "There was some error in deleting the font."
 msgstr ""
 
-#: classes/class-uagb-fse-fonts-compatibility.php:647
+#: classes/class-uagb-fse-fonts-compatibility.php:651
 msgid "Successfully deleted font."
 msgstr ""
 
@@ -8030,25 +8034,25 @@ msgstr ""
 msgid "Create a timeline displaying contents of your site."
 msgstr ""
 
-#: includes/blocks/countdown/attributes.php:33
+#: includes/blocks/countdown/attributes.php:34
 #: dist/blocks.js:3
 #: dist/blocks.js:19
 msgid "DAYS"
 msgstr ""
 
-#: includes/blocks/countdown/attributes.php:34
+#: includes/blocks/countdown/attributes.php:35
 #: dist/blocks.js:3
 #: dist/blocks.js:19
 msgid "HOURS"
 msgstr ""
 
-#: includes/blocks/countdown/attributes.php:35
+#: includes/blocks/countdown/attributes.php:36
 #: dist/blocks.js:3
 #: dist/blocks.js:19
 msgid "MINUTES"
 msgstr ""
 
-#: includes/blocks/countdown/attributes.php:36
+#: includes/blocks/countdown/attributes.php:37
 #: dist/blocks.js:3
 #: dist/blocks.js:19
 msgid "SECONDS"
@@ -8718,7 +8722,7 @@ msgid "Add a search widget to let users search posts from your website."
 msgstr ""
 
 #: lib/class-uagb-ast-block-templates.php:65
-msgid "Template Kits"
+msgid "Design Library"
 msgstr ""
 
 #. translators: %s: PHP version
@@ -9089,7 +9093,7 @@ msgid "Collapse Panels"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:5
-msgid "Enable the \"Collapse Panels\" option if you want to Collapse all other Panels in your Blocks Settings except for the one which is clicked This way you have only one Panel of Settings in front of you to Focus on."
+msgid "Enable the \"Collapse Panels\" option if you want to Collapse all other Panels in your Blocks Settings except for the one which is clicked. This way you have only one Panel of Settings in front of you to Focus on."
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:5
@@ -9573,7 +9577,7 @@ msgid "Organization: %1$s%2$s%3$s"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:13
-msgid "Your website is connected with AI. You can revoke this connection at any time."
+msgid "Your website is connected to AI. You can disconnect at any time."
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:13
@@ -9581,11 +9585,11 @@ msgid "Revoke Access"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:13
-msgid "Are you sure you wish to revoke the authorization token?"
+msgid "Are you sure you want to disconnect?"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:13
-msgid "You will need to re-authorize to use it again."
+msgid "You will need to reconnect to use AI features again."
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:13
@@ -11580,6 +11584,10 @@ msgid "Inherit gap from theme"
 msgstr ""
 
 #: dist/blocks.js:19
+msgid "Flex wrap"
+msgstr ""
+
+#: dist/blocks.js:19
 msgid "Gap Between Buttons"
 msgstr ""
 
@@ -11926,6 +11934,10 @@ msgstr ""
 
 #: dist/blocks.js:19
 msgid "Show Minutes"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Show Seconds"
 msgstr ""
 
 #: dist/blocks.js:19
