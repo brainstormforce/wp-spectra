@@ -37,6 +37,7 @@ const UAGBContainer = ( props ) => {
 			globalBlockStyleId,
 			backgroundType,
 			backgroundVideoOpacity,
+			isGridCssInParent,
 		},
 		clientId,
 		setAttributes,
@@ -45,24 +46,26 @@ const UAGBContainer = ( props ) => {
 		context,
 		hasDynamicContent
 	} = props;
-	
 	const {
 		isParentOfSelectedBlock,
 		variations,
 		defaultVariation,
 		getBlockParents,
 		parentBlocks,
+		parentAttributes,
 	} = useSelect( ( select ) => {
 		const coreBlocks = select( 'core/blocks' );
 		const coreBlockEditor = select( 'core/block-editor' );
 		const getBlockParentStore = coreBlockEditor?.getBlockParents( clientId );
 
+		const parentClientId = coreBlockEditor.getBlockRootClientId( props.clientId );
 		return {
 			defaultVariation: coreBlocks?.getDefaultBlockVariation( name ),
 			variations: coreBlocks?.getBlockVariations( name ),
 			isParentOfSelectedBlock: coreBlockEditor?.hasSelectedInnerBlock( clientId, true ),
 			getBlockParents : getBlockParentStore,
 			parentBlocks : coreBlockEditor?.getBlocksByClientId( getBlockParentStore ),
+			parentAttributes : coreBlockEditor.getBlockAttributes( parentClientId ),
 		};
 	} );
 
@@ -113,6 +116,14 @@ const UAGBContainer = ( props ) => {
 			emptyBlockInserter.style.display = 'none';
 		}
 	}
+
+	useEffect( () => {
+    	const gridCssInParent = 'grid' === parentAttributes?.layout;
+		 // If the parent block is a grid block, then we need to set the grid item settings.
+        if ( gridCssInParent !== isGridCssInParent ) {
+            setAttributes( { isGridCssInParent: gridCssInParent } );
+        }
+    }, [ parentAttributes?.layout ] );
 
 	useEffect( () => {
 		// Check if a parent of this container is one of these special blocks.

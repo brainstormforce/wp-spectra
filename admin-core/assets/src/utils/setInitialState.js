@@ -50,6 +50,7 @@ const setInitialState = ( store ) => {
             btnInheritFromTheme: data.uag_btn_inherit_from_theme,
 	        enableGBSExtension: data.uag_enable_gbs_extension,
             zipAiModules: data.zip_ai_modules,
+			enableHeaderTitlebar: data.uag_enable_header_titlebar,
         };
 
         store.dispatch( {type: 'UPDATE_INITIAL_STATE', payload: initialState} );

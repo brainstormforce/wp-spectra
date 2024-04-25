@@ -104,6 +104,11 @@ const globalDataReducer = ( state = {}, action ) => {
                 ...state,
                 enableAnimationsExtension: action.payload,
             };
+		case 'UPDATE_ENABLE_HEADER_TITLEBAR':
+			return {
+				...state,
+				enableHeaderTitlebar: action.payload,
+			};
         case 'UPDATE_RECAPTCHA_VERSION':
             return {
                 ...state,

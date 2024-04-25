@@ -273,6 +273,7 @@ function CtaStyle( attributes, clientId, name, deviceType, gbsSelector = false )
 	selectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper svg' ] = {
 		'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 		'width': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
+		'height': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 		'line-height': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 		'fill': ctaBtnLinkColor,
 		'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
@@ -421,6 +422,15 @@ function CtaStyle( attributes, clientId, name, deviceType, gbsSelector = false )
 		mobileSelectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
 			[ leftSideMargin ]: secondCtaIconSpacingMobile,
 		};
+		selectors[ '.uagb-cta__outer-wrap div.uagb-cta-second__button > svg' ] = {
+			[ leftSideMargin ]: secondCtaIconSpacing,
+		};
+		tabletSelectors[ '.uagb-cta__outer-wrap div.uagb-cta-second__button > svg' ] = {
+			[ leftSideMargin ]: secondCtaIconspacingTablet,
+		};
+		mobileSelectors[ '.uagb-cta__outer-wrap div.uagb-cta-second__button > svg' ] = {
+			[ leftSideMargin ]: secondCtaIconSpacingMobile,
+		};
 	} else {
 
 		const rightSideMargin = uagb_blocks_info.is_rtl === '1' ? 'margin-right' : 'margin-left';
@@ -432,6 +442,15 @@ function CtaStyle( attributes, clientId, name, deviceType, gbsSelector = false )
 			[ rightSideMargin ]: secondCtaIconspacingTablet,
 		};
 		mobileSelectors[ '.uagb-cta__outer-wrap a.uagb-cta-second__button > svg' ] = {
+			[ rightSideMargin ]: secondCtaIconSpacingMobile,
+		};
+		selectors[ '.uagb-cta__outer-wrap div.uagb-cta-second__button > svg' ] = {
+			[ rightSideMargin ]: secondCtaIconSpacing,
+		};
+		tabletSelectors[ '.uagb-cta__outer-wrap div.uagb-cta-second__button > svg' ] = {
+			[ rightSideMargin ]: secondCtaIconspacingTablet,
+		};
+		mobileSelectors[ '.uagb-cta__outer-wrap div.uagb-cta-second__button > svg' ] = {
 			[ rightSideMargin ]: secondCtaIconSpacingMobile,
 		};
 	}
@@ -453,6 +472,15 @@ function CtaStyle( attributes, clientId, name, deviceType, gbsSelector = false )
 		mobileSelectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
 			[ leftSideMargin ] : ctaIconSpacingMobile,
 		};
+		selectors[ '.uagb-cta__outer-wrap div.uagb-cta__button-link-wrapper > svg' ] = {
+			[ leftSideMargin ]: ctaIconSpacing,
+		};
+		tabletSelectors[ '.uagb-cta__outer-wrap div.uagb-cta__button-link-wrapper > svg' ] = {
+			[ leftSideMargin ]: ctaIconSpacingTablet,
+		};
+		mobileSelectors[ '.uagb-cta__outer-wrap div.uagb-cta__button-link-wrapper > svg' ] = {
+			[ leftSideMargin ] : ctaIconSpacingMobile,
+		};
 	} else {
 
 		const rightSideMargin = uagb_blocks_info.is_rtl === '1' ? 'margin-right' : 'margin-left';
@@ -464,6 +492,15 @@ function CtaStyle( attributes, clientId, name, deviceType, gbsSelector = false )
 			[ rightSideMargin ]: ctaIconSpacingTablet,
 		};
 		mobileSelectors[ '.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper > svg' ] = {
+			[ rightSideMargin ] : ctaIconSpacingMobile,
+		};
+		selectors[ '.uagb-cta__outer-wrap div.uagb-cta__button-link-wrapper > svg' ] = {
+			[ rightSideMargin ]: ctaIconSpacing,
+		};
+		tabletSelectors[ '.uagb-cta__outer-wrap div.uagb-cta__button-link-wrapper > svg' ] = {
+			[ rightSideMargin ]: ctaIconSpacingTablet,
+		};
+		mobileSelectors[ '.uagb-cta__outer-wrap div.uagb-cta__button-link-wrapper > svg' ] = {
 			[ rightSideMargin ] : ctaIconSpacingMobile,
 		};
 	}
@@ -682,7 +719,7 @@ function CtaStyle( attributes, clientId, name, deviceType, gbsSelector = false )
 
 		// Core Theme CSS
 		selectors[
-			'.uagb-cta__outer-wrap.wp-block-button:not(.is-style-outline) a.uagb-cta__button-link-wrapper.wp-block-button__link:not(.has-background)'
+			`.uagb-cta__outer-wrap.wp-block-button:not(.is-style-outline) a.uagb-cta__button-link-wrapper .wp-block-button__link:not(.has-background)`
 		] = {
 			'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			'font-family': ctaFontFamily,
@@ -699,14 +736,14 @@ function CtaStyle( attributes, clientId, name, deviceType, gbsSelector = false )
 			...ctaBorderCSS,
 		};
 		selectors[
-			'.uagb-cta__outer-wrap.wp-block-button:not(.is-style-outline) a.uagb-cta__button-link-wrapper.wp-block-button__link:not(.has-background):hover'
+			`.uagb-cta__outer-wrap.wp-block-button:not(.is-style-outline) a.uagb-cta__button-link-wrapper.wp-block-button__link:not(.has-background):hover`
 		] = {
 			'color': ctaLinkHoverColor,
 			'background-color': ctaBgHoverType === 'color' ? ctaBgHoverColor : 'transparent',
 			'border-color': btnBorderHColor,
 		};
 		tabletSelectors[
-			'.uagb-cta__outer-wrap.wp-block-button:not(.is-style-outline) a.uagb-cta__button-link-wrapper.wp-block-button__link:not(.has-background)'
+			`.uagb-cta__outer-wrap.wp-block-button:not(.is-style-outline) a.uagb-cta__button-link-wrapper.wp-block-button__link:not(.has-background)`
 		] = {
 			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeTypeTablet ),
 			'padding-top': generateCSSUnit( ctaTopPaddingTablet, tabletCTAPaddingUnit ),
@@ -717,7 +754,7 @@ function CtaStyle( attributes, clientId, name, deviceType, gbsSelector = false )
 			...ctaBorderCSSTablet,
 		};
 		mobileSelectors[
-			'.uagb-cta__outer-wrap.wp-block-button:not(.is-style-outline) a.uagb-cta__button-link-wrapper.wp-block-button__link:not(.has-background)'
+			`.uagb-cta__outer-wrap.wp-block-button:not(.is-style-outline) a.uagb-cta__button-link-wrapper.wp-block-button__link:not(.has-background)`
 		] = {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeTypeMobile ),
 			'padding-top': generateCSSUnit( ctaTopPaddingMobile, mobileCTAPaddingUnit ),

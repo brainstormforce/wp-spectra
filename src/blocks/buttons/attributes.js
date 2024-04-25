@@ -96,6 +96,10 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	flexWrap: {
+		type: 'boolean',
+		default: false,
+	},
 	stack: {
 		type: 'string',
 		default: 'none',

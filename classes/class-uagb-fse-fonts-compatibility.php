@@ -123,6 +123,7 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 				UAGB_Admin_Helper::update_admin_settings_option( 'uag_load_fse_font_globally', 'enabled' );
 			}
 			$new_font_families = array();
+			$new_font_faces    = array();
 			if ( empty( $families ) || ! is_array( $families ) ) {
 				return;
 			}
@@ -134,14 +135,15 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 				$font_weight      = 'Default';
 				$font_style       = 'normal';
 				$final_font_files = $this->get_fonts_file_url( $font_family, $font_weight, $font_style );
-				$new_font_faces   = array(
-					array(
+				// Loop through each font file and create a font face for it.
+				foreach ( $final_font_files as $src ) {
+					$new_font_faces[] = array(
 						'fontFamily' => $font_family,
 						'fontStyle'  => $font_style,
 						'fontWeight' => $font_weight,
-						'src'        => $final_font_files,
-					),
-				);
+						'src'        => array( $src ),
+					);
+				}
 				$this->add_or_update_theme_font_faces( $font_family, $font_slug, $new_font_faces );
 			}
 
@@ -217,13 +219,15 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 						$font_style = ! empty( $style['value'] ) ? $style['value'] : '';
 
 						$final_font_files = $this->get_fonts_file_url( $font_family, $font_weight, $font_style );
-						// Add each variant as one font face.
-						$new_font_faces[] = array(
-							'fontFamily' => $font_family,
-							'fontStyle'  => $font_style,
-							'fontWeight' => $font_weight,
-							'src'        => $final_font_files,
-						);
+						// Loop through each font file and create a font face for it.
+						foreach ( $final_font_files as $src ) {
+							$new_font_faces[] = array(
+								'fontFamily' => $font_family,
+								'fontStyle'  => $font_style,
+								'fontWeight' => $font_weight,
+								'src'        => array( $src ),
+							);
+						}
 					}
 				}
 				$this->add_or_update_theme_font_faces( $font_family, $font_slug, $new_font_faces );

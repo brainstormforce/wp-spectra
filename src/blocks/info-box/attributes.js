@@ -720,6 +720,13 @@ const attributes = {
 		type: 'string',
 		default: 'none',
 	},
+	ctaButtonType: {
+		type: 'string',
+		default: 'primary',
+		UAGCopyPaste: {
+			styleType: 'cta-btn-type',
+		},
+	},
 	ctaBgType: {
 		type: 'string',
 		default: 'color',
@@ -941,22 +948,6 @@ const attributes = {
 		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'cta-btn-border-style',
-		},
-	},
-	ctaBtnVertPadding: {
-		type: 'number',
-		default: 10,
-		isGBSStyle: true,
-		UAGCopyPaste: {
-			styleType: 'btn-vertical-padding',
-		},
-	},
-	ctaBtnHrPadding: {
-		type: 'number',
-		default: 14,
-		isGBSStyle: true,
-		UAGCopyPaste: {
-			styleType: 'btn-horizontal-padding',
 		},
 	},
 	ctaBorderWidth: {

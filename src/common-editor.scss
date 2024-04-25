@@ -672,7 +672,6 @@ button.components-button.uagb-review-select-btn.is-secondary {
 }
 
 .edit-post-layout .interface-interface-skeleton__sidebar { // Resolved an issue of margin added by spectra for the sidebar causing background color visible in site editor https://d.pr/i/PRlLIf.
-	overflow-y: overlay;
 	margin-bottom: 10px;
 	overflow-x: hidden;
 
@@ -736,6 +735,17 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	rect,
 	circle {
 		stroke: #000;
+	}
+}
+
+//  Toolbar Icon Height and Width WordPress 6.5 Fix
+.block-editor-block-toolbar {
+	.components-button {
+		height: 48px;
+
+		&.has-icon {
+			min-width: 48px;
+		}
 	}
 }
 

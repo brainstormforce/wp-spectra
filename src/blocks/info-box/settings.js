@@ -116,6 +116,7 @@ const Settings = ( props ) => {
 		seperatorThickness,
 		thicknessUnit,
 		ctaType,
+		ctaButtonType,
 		ctaBgType,
 		ctaBgHoverType,
 		ctaLink,
@@ -355,6 +356,8 @@ const Settings = ( props ) => {
 	if ( iconImage && iconImage.sizes ) {
 		imageSizeOptions = getImageSize( iconImage.sizes );
 	}
+
+	const currentTheme = uagb_blocks_info.current_theme;
 
 	// Global Controls.
 	const imageIconPanel = () => {
@@ -778,6 +781,26 @@ const Settings = ( props ) => {
 								'ultimate-addons-for-gutenberg'
 							)}
 						/>
+						{ inheritFromTheme && 'Astra' === currentTheme && (
+					<MultiButtonsControl
+						setAttributes={ setAttributes }
+						label={ __( `Button Type`, 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							value: ctaButtonType,
+							label: 'ctaButtonType',
+						} }
+						options={ [
+							{
+								value: 'primary',
+								label: __( 'Primary', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'secondary',
+								label: __( 'Secondary', 'ultimate-addons-for-gutenberg' ),
+							},
+						] }
+					/>
+				) }
 						<ToggleControl
 							label={ __( 'Show Icon', 'ultimate-addons-for-gutenberg' ) }
 							checked={ showCtaIcon }

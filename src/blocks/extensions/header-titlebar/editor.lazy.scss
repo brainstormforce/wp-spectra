@@ -1,0 +1,176 @@
+/* stylelint-disable at-rule-no-unknown */
+
+// Common variables for easier editing.
+$common-padding: 7px 14px;
+$common-background: #f9fafb;
+$commom-border: 1px solid #d1d5db;
+$common-border-radius: 4px;
+$common-text-color: #1f2937;
+$common-hover-color: #007cba;
+
+// Mixin to add the required transition properties.
+@mixin transition( $properies: all, $duration: 150ms, $delay: 0s, $timing-function: ease-in-out ) {
+	// Add each property to a comma separate list of transitions.
+	$transitions: ();
+
+	// Loop through each property, and add it to the final transitions.
+	@each $property in $properies {
+		$transitions: append(( $transitions ), $property $duration $delay $timing-function, $separator: comma);
+	}
+
+	// Add the transition.
+	-webkit-transition: $transitions;
+	-moz-transition: $transitions;
+	-o-transition: $transitions;
+	transition: $transitions;
+}
+
+// The top titlebar.
+.spectra-editor__top-titlebar {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	// The wrapper of the titlebar.
+	&--wrapper {
+		display: flex;
+		align-items: stretch;
+		justify-content: center;
+		gap: 0;
+		max-width: 438px;
+		min-width: 0;
+		max-height: 36px;
+		margin: 0 16px;
+		width: 100%;
+		opacity: 1;
+
+		// Include transitions for the opacity of the entire header titlebar wrapper.
+		@include transition( opacity );
+	}
+
+	// The button of the top titlebar.
+	&--button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		height: 100%;
+		padding: $common-padding;
+		background-color: $common-background;
+		border: $commom-border;
+		border-left: none;
+		border-radius: 0 $common-border-radius $common-border-radius 0;
+
+		// The icon inside the button.
+		svg {
+			color: $common-text-color;
+
+			// Include transitions for the color of the SVG.
+			@include transition( color );
+		}
+
+		// The interactive states of the button.
+		&:active,
+		&:focus,
+		&:focus-visible {
+			box-shadow: 0 0;
+			outline: 0;
+			border: $commom-border;
+			border-left: none;
+		}
+
+		// The interactive states of the button SVG.
+		&:hover svg,
+		&:focus-visible svg {
+			color: $common-hover-color;
+		}
+
+	}
+
+	// A modifier added to format the input field if the button exists.
+	&--has-button.spectra-editor__top-titlebar {
+
+		// The input field wrapper.
+		.components-base-control__field input {
+			border-radius: $common-border-radius 0 0 $common-border-radius;
+		}
+	}
+
+	// A modifier added to format the input field if the button exists.
+	&--is-hidden.spectra-editor__top-titlebar--wrapper {
+		opacity: 0.5;
+	}
+
+	// The input field wrapper.
+	.components-base-control__field {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		// The input field.
+		input {
+			margin: 0;
+			width: 100%;
+			height: 100%;
+			color: $common-text-color;
+			font-size: 14px;
+			font-weight: 500;
+			line-height: 20px;
+			padding: $common-padding;
+			background-color: $common-background;
+			border: $commom-border;
+			border-radius: $common-border-radius;
+
+			// Include transitions for the border of the input field.
+			@include transition( border );
+
+			// The interactive states of the input field.
+			&:active,
+			&:focus,
+			&:focus-visible {
+				box-shadow: 0 0;
+				outline: 0;
+				border: 1px solid $common-hover-color;
+			}
+
+			// The placeholder.
+			&::placeholder {
+				color: #9ca3af;
+			}
+		}
+	}
+}
+
+// RTL CSS for the top titlebar.
+body.rtl .spectra-editor__top-titlebar {
+
+	// The button of the top titlebar.
+	&--button {
+		border: $commom-border;
+		border-right: none;
+		border-radius: $common-border-radius 0 0 $common-border-radius;
+
+		// The interactive states of the button.
+		&:active,
+		&:focus,
+		&:focus-visible {
+			box-shadow: 0 0;
+			outline: 0;
+			border: $commom-border;
+			border-right: none;
+		}
+	}
+
+	// A modifier added to format the input field if the button exists.
+	&--has-button.spectra-editor__top-titlebar {
+
+		// The input field wrapper.
+		.components-base-control__field input {
+			border-radius: 0 $common-border-radius $common-border-radius 0;
+		}
+	}
+}

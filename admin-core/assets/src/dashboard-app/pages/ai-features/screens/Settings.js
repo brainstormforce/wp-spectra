@@ -224,7 +224,7 @@ const Settings = () => {
 				</div>
 				<p className="text-slate-500 text-sm">
 					{ __(
-						'Your website is connected with AI. You can revoke this connection at any time.',
+						'Your website is connected to AI. You can disconnect at any time.',
 						'ultimate-addons-for-gutenberg'
 					) }
 				</p>
@@ -301,9 +301,9 @@ const Settings = () => {
 				popupContent: {
 					title: __( 'Revoke Access', 'ultimate-addons-for-gutenberg' ),
 					description: `${
-						__( 'Are you sure you wish to revoke the authorization token?', 'ultimate-addons-for-gutenberg' )
+						__( 'Are you sure you want to disconnect?', 'ultimate-addons-for-gutenberg' )
 					}\n${
-						__( 'You will need to re-authorize to use it again.', 'ultimate-addons-for-gutenberg' )
+						__( 'You will need to reconnect to use AI features again.', 'ultimate-addons-for-gutenberg' )
 					}`,
 				},
 				popupAccept: {

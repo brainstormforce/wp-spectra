@@ -40,7 +40,7 @@ const ResponsiveSlider = ( props ) => {
 					props?.onChange
 						? ( value ) => {
 								if ( props?.onChange ) {
-									props.onChange( value );
+									props.onChange( value, 'Desktop' );
 								}
 						  }
 						: false
@@ -67,7 +67,7 @@ const ResponsiveSlider = ( props ) => {
 					props?.onChange
 						? ( value ) => {
 								if ( props?.onChange ) {
-									props.onChange( value );
+									props.onChange( value, 'Tablet' );
 								}
 						  }
 						: false
@@ -94,7 +94,7 @@ const ResponsiveSlider = ( props ) => {
 					props?.onChange
 						? ( value ) => {
 								if ( props?.onChange ) {
-									props.onChange( value );
+									props.onChange( value, 'Mobile' );
 								}
 						  }
 						: false

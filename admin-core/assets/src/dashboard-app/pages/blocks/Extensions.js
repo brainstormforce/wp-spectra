@@ -4,7 +4,6 @@ import ResponsiveConditionsExtention from '@DashboardApp/pages/blocks/Responsive
 import AnimationsExtension from '@DashboardApp/pages/blocks/AnimationsExtension';
 import DynamicContentExtension from '@DashboardApp/pages/blocks/DynamicContentExtension';
 import GlobalBlockStyleExtension from '@DashboardApp/pages/blocks/GlobalBlockStyleExtension';
-import QuickActionSidebarExtension from '@DashboardApp/pages/blocks/QuickActionSidebarExtension';
 
 const Extensions = ( { currentTab } ) => {
 	// All extensions should be sorted in Alphabetical Order of their labels.
@@ -17,7 +16,6 @@ const Extensions = ( { currentTab } ) => {
 				<DynamicContentExtension/>
 				<GlobalBlockStyleExtension/>
 				<MasonryGalleryExtension/>
-				<QuickActionSidebarExtension/>
 				<ResponsiveConditionsExtention/>
 			</>
 		);

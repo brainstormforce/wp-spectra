@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.5.2
-Stable tag: 2.12.9
+Stable tag: 2.13.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,6 +215,21 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= 2.13.0 - Thursday, 25th April 2024 =
+* New: Introducing the Header Title-bar - Make more space for editing!
+* Feature: Container - Added new layout type 'grid'.
+* Improvement: Buttons - Added a flex-wrap toggle for multiple button rows instead of shrink-to-fit buttons.
+* Improvement: Countdown - Modified options to remove days, hours, minutes and seconds fields.
+* Improvement: Call To Action - Modified button text font-size to inherit from theme by default.
+* Improvement: Info Box - Modified CTA padding to inherit padding from theme by default.
+* Improvement: Info Box – Added the inherit-from-theme secondary-button option for Astra child themes.
+* Improvement: Call To Action – Added the inherit-from-theme secondary-button option for Astra child themes.
+* Fix: Heading - Resolved an issue wherein toolbar icon would not appear as indended.
+* Fix: Forms - Resolved an issue wherein the padding unit would not work as expected in responsive devices.
+* Fix: Theme Fonts - Resolved a font rendering issue for some Latin characters in FSE themes.
+* Fix: Testimonial - Resolved an issue wherein the padding would not work as intended in responsive devices.
+* Fix: Global - Resolved an issue wherein the editor sidebar would appear a bit shaky while switching between panels.
+
 = 2.12.9 - Monday, 22nd April 2024 =
 * Security Fix: Hardened the security of the plugin. Props: Wordfence.
 
@@ -223,7 +238,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Global - Improved the block-name identification for the default fallback attributes.
 * Improvement: Global - Added WPML compatibility to the 'How To', 'Buttons', 'Forms' and 'Marketing Button' blocks.
 * Fix: Container - Resolved an issue wherein the link control content and edit icon would overflow out-of-screen after entering lengthy URLs.
-* Fix: Counter - Resolved an issue wherein the total number resets to default on end number change. 
+* Fix: Counter - Resolved an issue wherein the total number resets to default on end number change.
 * Fix: Icon - Resolved an issue wherein a few icons would not load on the frontend.
 * Fix: Global - Resolved an issue that would cause block-styling to break when used for a custom archive template of specific post types in FSE themes.
 
@@ -233,13 +248,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Buttons - Added an inherit-gap-from-theme option.
 * Fix: Container - Resolved an issue wherein the 'open in new window' option would not be available when Spectra Pro is actived.
 * Fix: Icon - Resolved an issue wherein icon links for 'tel' and 'mailto' would not work as intended.
-
-= 2.12.6 - Tuesday, 19th March 2024 =
-* Improvement: Heading - Added an element type option.
-* Improvement: Global - Added a filter `uagb_asset_version` to update the asset version for cache busting purposes.
-* Fix: Google Maps - Resolved an issue in which the responsive height would not be correctly applied in the editor.
-* Fix: Global - Resolved an issue wherein the typography component would not use the values for tablet and mobile when in the customizer widget editor.
-* Fix: Global - Resolved an issue in the editor wherein a double border would appear on hover or focus of blocks used inside any block.
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 

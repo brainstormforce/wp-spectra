@@ -1642,11 +1642,11 @@ const Settings = ( props ) => {
 					value: formPaddingUnit,
 					label: 'formPaddingUnit',
 				} }
-				mUnit={ {
+				tUnit={ {
 					value: formPaddingUnitTab,
 					label: 'formPaddingUnitTab',
 				} }
-				tUnit={ {
+				mUnit={ {
 					value: formPaddingUnitMob,
 					label: 'formPaddingUnitMob',
 				} }

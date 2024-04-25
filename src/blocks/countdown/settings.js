@@ -37,6 +37,7 @@ function Settings( props ) {
 			showDays,
 			showHours,
 			showMinutes,
+			showSeconds,
 			showLabels,
 			labelDays,
 			labelHours,
@@ -315,22 +316,35 @@ function Settings( props ) {
 			<ToggleControl
 				label={ __( 'Show Days', 'ultimate-addons-for-gutenberg' ) }
 				checked={ showDays }
-				onChange={ () => setAttributes( { showDays: ! showDays } ) }
+				onChange={ () => {
+					if ( !showHours && !showMinutes && !showSeconds ) return; // Prevent turning off the last toggle
+					setAttributes( { showDays: !showDays } );
+				} }
 			/>
-			{ ! showDays && (
-				<ToggleControl
-					label={ __( 'Show Hours', 'ultimate-addons-for-gutenberg' ) }
-					checked={ showHours }
-					onChange={ () => setAttributes( { showHours: ! showHours } ) }
-				/>
-			) }
-			{ ! showDays && ! showHours && (
-				<ToggleControl
-					label={ __( 'Show Minutes', 'ultimate-addons-for-gutenberg' ) }
-					checked={ showMinutes }
-					onChange={ () => setAttributes( { showMinutes: ! showMinutes } ) }
-				/>
-			) }
+			<ToggleControl
+				label={ __( 'Show Hours', 'ultimate-addons-for-gutenberg' ) }
+				checked={ showHours }
+				onChange={ () => {
+					if ( !showDays && !showMinutes && !showSeconds ) return; // Prevent turning off the last toggle
+					setAttributes( { showHours: !showHours } );
+				} }
+			/>
+			<ToggleControl
+				label={ __( 'Show Minutes', 'ultimate-addons-for-gutenberg' ) }
+				checked={ showMinutes }
+				onChange={ () => {
+					if ( !showDays && !showHours && !showSeconds ) return; // Prevent turning off the last toggle
+					setAttributes( { showMinutes: !showMinutes } );
+				} }
+			/>
+			<ToggleControl
+				label={ __( 'Show Seconds', 'ultimate-addons-for-gutenberg' ) }
+				checked={ showSeconds }
+				onChange={ () => {
+					if ( !showDays && !showHours && !showMinutes ) return; // Prevent turning off the last toggle
+					setAttributes( { showSeconds: !showSeconds } );
+				} }
+			/>
 			<MultiButtonsControl
 						setAttributes={ setAttributes }
 						label={ __( 'Aria Live Type', 'ultimate-addons-for-gutenberg' ) }
@@ -384,7 +398,7 @@ function Settings( props ) {
 							setAttributes={ setAttributes }
 						/>
 					) }
-					{ ( showDays || showHours ) && (
+					{ showHours && (
 						<UAGTextControl
 							label={ __( 'Hours', 'ultimate-addons-for-gutenberg' ) }
 							variant="full-width"
@@ -396,7 +410,7 @@ function Settings( props ) {
 							setAttributes={ setAttributes }
 						/>
 					) }
-					{ ( showDays || showHours || showMinutes ) && (
+					{ showMinutes && (
 						<UAGTextControl
 							label={ __( 'Minutes', 'ultimate-addons-for-gutenberg' ) }
 							variant="full-width"
@@ -408,16 +422,18 @@ function Settings( props ) {
 							setAttributes={ setAttributes }
 						/>
 					) }
-					<UAGTextControl
-						label={ __( 'Seconds', 'ultimate-addons-for-gutenberg' ) }
-						variant="full-width"
-						value={ labelSeconds }
-						data={ {
-							value: labelSeconds,
-							label: 'labelSeconds',
-						} }
-						setAttributes={ setAttributes }
-					/>
+					{ showSeconds && (
+						<UAGTextControl
+						    label={ __( 'Seconds', 'ultimate-addons-for-gutenberg' ) }
+							variant="full-width"
+							value={ labelSeconds }
+							data={ {
+								value: labelSeconds,
+								label: 'labelSeconds',
+						    } }
+							setAttributes={ setAttributes }
+						/>
+					) }
 				</>
 			) }
 		</UAGAdvancedPanelBody>

@@ -20,6 +20,7 @@ const initialState = {
 	enableMasonryExtension : '',
 	enableQuickActionSidebarExtension : '',
 	enableAnimationsExtension : '',
+	enableHeaderTitlebar : '',
 	socialLogin: {
 		recaptchaVersion: 'v2',
 		recaptchaSiteKey: '',

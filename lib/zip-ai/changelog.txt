@@ -1,3 +1,9 @@
+v1.1.5 - 25th April 2024
+- Fix: Copy and Regenerate buttons are now visible by default instead of being displayed on hover.
+
+v1.1.4 - 23rd April 2024
+- Replaced "AI Assistant" text with a Sparkles icon for clearer visual representation.
+
 v1.1.3 - 14th March 2024
 - Removed the highlight color for Richtexts.
 - Replaced ZipWP logo with the AI Sparkle icon for all AI-Assistant-related buttons.

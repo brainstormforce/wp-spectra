@@ -78,12 +78,11 @@ const FilterTabs = () => {
 
         if ( 'extensions' === activeBlocksFilterTab || 'all' === activeBlocksFilterTab ) {
             // Update Extensions Statuses.
-            dispatch( {type: 'UPDATE_ENABLE_MASONRY_EXTENSION', payload: 'enabled' } );
-            dispatch( {type: 'UPDATE_ENABLE_DISPLAY_CONDITIONS', payload: 'enabled' } );
-			dispatch( {type: 'UPDATE_ENABLE_RESPONSIVE_CONDITIONS', payload: 'enabled' } );
-			dispatch( {type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: 'enabled' } );
-            dispatch( {type: 'UPDATE_ENABLE_ANIMATIONS_EXTENSION', payload: 'enabled' } );
-			dispatch( {type: 'UPDATE_ENABLE_QUICK_ACTION_SIDEBAR_EXTENSION', payload: 'enabled' } );
+            dispatch( { type: 'UPDATE_ENABLE_MASONRY_EXTENSION', payload: 'enabled' } );
+            dispatch( { type: 'UPDATE_ENABLE_DISPLAY_CONDITIONS', payload: 'enabled' } );
+			dispatch( { type: 'UPDATE_ENABLE_RESPONSIVE_CONDITIONS', payload: 'enabled' } );
+			dispatch( { type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: 'enabled' } );
+            dispatch( { type: 'UPDATE_ENABLE_ANIMATIONS_EXTENSION', payload: 'enabled' } );
         }
 
         if ( 'pro' === activeBlocksFilterTab ) {
@@ -104,7 +103,7 @@ const FilterTabs = () => {
         } );
         // Wait for the API call to complete, then update the state to show a notification that the settings have been saved
         getApiFetchData.then( () => {
-            dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
+            dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
         } );
 	};
 
@@ -124,12 +123,10 @@ const FilterTabs = () => {
 
         if ( 'extensions' === activeBlocksFilterTab || 'all' === activeBlocksFilterTab ) {
             // Update Extensions Statuses.
-            dispatch( {type: 'UPDATE_ENABLE_MASONRY_EXTENSION', payload: 'disabled' } );
-            dispatch( {type: 'UPDATE_ENABLE_DISPLAY_CONDITIONS', payload: 'disabled' } );
-			dispatch( {type: 'UPDATE_ENABLE_RESPONSIVE_CONDITIONS', payload: 'disabled' } );
-			dispatch( {type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: 'disabled' } );
-            dispatch( {type: 'UPDATE_ENABLE_ANIMATIONS_EXTENSION', payload: 'disabled' } );
-			dispatch( {type: 'UPDATE_ENABLE_QUICK_ACTION_SIDEBAR_EXTENSION', payload: 'disabled' } );
+            dispatch( { type: 'UPDATE_ENABLE_MASONRY_EXTENSION', payload: 'disabled' } );
+            dispatch( { type: 'UPDATE_ENABLE_DISPLAY_CONDITIONS', payload: 'disabled' } );
+			dispatch( { type: 'UPDATE_ENABLE_RESPONSIVE_CONDITIONS', payload: 'disabled' } );
+			dispatch( { type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: 'disabled' } );
         }
 
         if ( 'pro' === activeBlocksFilterTab ) {
@@ -150,7 +147,7 @@ const FilterTabs = () => {
         } );
         // Wait for the API call to complete, then update the state to show a notification that the settings have been saved
         getApiFetchData.then( () => {
-            dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
+            dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
         } );
 	};
 

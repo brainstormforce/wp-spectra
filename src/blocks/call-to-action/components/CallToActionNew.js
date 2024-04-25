@@ -11,6 +11,13 @@ const CTA = ( props ) => {
 		target = '_blank';
 	}
 
+	const inheritAstraSecondary = attributes.inheritFromTheme && 'secondary' === attributes.ctaButtonType;
+	const buttonTypeClass = inheritAstraSecondary ? 'ast-outline-button' : 'wp-block-button__link';
+	//border-width is added to revert the border related styles by default.
+	const borderStyle = inheritAstraSecondary ? { borderWidth: 'revert-layer' } : {};
+
+	const CustomTag = inheritAstraSecondary ? 'div' : 'a';
+
 	let ctaIconOutput = '';
 	if ( attributes.showIcon && attributes.ctaIcon !== '' ) {
 		if ( setAttributes !== 'not_set' ) {
@@ -34,14 +41,15 @@ const CTA = ( props ) => {
 		return (
 			<>
 				{ ( attributes.ctaType === 'button' || attributes.ctaType === 'text' ) && (
-					<a
+					<CustomTag
 						href={ link }
 						className={ classnames(
 							'uagb-cta__button-link-wrapper',
-							'button' === attributes.ctaType ? 'wp-block-button__link' : ''
+							'button' === attributes.ctaType ? buttonTypeClass : ''
 						) }
 						target={ target }
 						rel={ rel }
+						style={ borderStyle }
 						onClick={ preventDefaultFunc }
 					>
 						{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
@@ -53,7 +61,7 @@ const CTA = ( props ) => {
 							allowedFormats={ [] } // Removed the WP default link/bold/italic from the toolbar for button.
 						/>
 						{ attributes.ctaIconPosition === 'after' && ctaIconOutput }
-					</a>
+					</CustomTag>
 				) }
 			</>
 		);
@@ -66,10 +74,11 @@ const CTA = ( props ) => {
 					href={ link }
 					className={ classnames(
 						'uagb-cta__button-link-wrapper',
-						'button' === attributes.ctaType ? 'wp-block-button__link' : ''
+						'button' === attributes.ctaType ? buttonTypeClass : ''
 					) }
 					target={ target }
 					rel={ rel }
+					style={ borderStyle }
 					onClick={ preventDefaultFunc }
 				>
 					{ attributes.ctaIconPosition === 'before' && ctaIconOutput }

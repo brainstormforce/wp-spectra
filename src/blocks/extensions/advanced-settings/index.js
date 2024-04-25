@@ -374,6 +374,7 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 		zIndexMobile,
 		UAGDisplayConditions,
 		UAGResponsiveConditions,
+		layout,
 	} = attributes;
 
 	//Filter to add responsive condition compatibility for third party blocks.
@@ -413,6 +414,11 @@ function ApplyExtraClass( extraProps, blockType, attributes ) {
 			'--z-index-mobile': zIndexMobile + ';',
 		};
 	}
+	
+	// For adding layout class to the block, block should be a container block and layout should be either grid or flex.
+	if ( 'uagb/container' === blockType?.name && ( 'grid' === layout || 'flex' === layout ) ) {
+		extraProps.className = classnames( extraProps.className, 'uagb-layout-' + layout );
+	}
 
 	return extraProps;
 }
@@ -427,6 +433,7 @@ const withAOSWrapperProps = createHigherOrderComponent( ( BlockListBlock ) => {
 			UAGAnimationDelay,
 			UAGAnimationEasing,
 			UAGAnimationRepeat,
+			layout,
 		} = attributes;
 
 		const wrapperProps = {
@@ -440,6 +447,10 @@ const withAOSWrapperProps = createHigherOrderComponent( ( BlockListBlock ) => {
 			if ( ! UAGAnimationRepeat ) {
 				wrapperProps[ 'data-aos-once' ] = 'true';
 			}
+		}
+
+		if( [ 'grid', 'flex' ].includes( layout ) ) {
+			wrapperProps.className = classnames( wrapperProps.className, 'uagb-layout-' + layout );
 		}
 
 		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;

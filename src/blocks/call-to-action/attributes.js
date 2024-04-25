@@ -12,6 +12,20 @@ const attributes = {
 		type: 'boolean',
 		default: 'enabled' === uagb_blocks_info.btn_inherit_from_theme,
 	},
+	ctaButtonType: {
+		type: 'string',
+		default: 'primary',
+		UAGCopyPaste: {
+			styleType: 'cta-btn-type',
+		},
+	},
+	secCtaButtonType: {
+		type: 'string',
+		default: 'primary',
+		UAGCopyPaste: {
+			styleType: 'sec-cta-btn-type',
+		},
+	},
 	secInheritFromTheme: {
 		type: 'boolean',
 		default: 'enabled' === uagb_blocks_info.btn_inherit_from_theme,
@@ -437,7 +451,6 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'btn-font-size',
 		},
-		default: 14,
 	},
 	ctaFontSizeType: {
 		type: 'string',

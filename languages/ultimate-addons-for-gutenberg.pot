@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.12.9\n"
+"Project-Id-Version: Spectra 2.13.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-04-22T07:46:02+00:00\n"
+"POT-Creation-Date: 2024-04-25T13:41:37+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: admin-core/inc/admin-menu.php:171
 #: admin-core/inc/admin-menu.php:182
 #: admin-core/inc/admin-menu.php:261
-#: classes/class-uagb-admin-helper.php:431
+#: classes/class-uagb-admin-helper.php:432
 #: classes/class-uagb-init-blocks.php:576
 msgid "Spectra"
 msgstr ""
@@ -52,63 +52,63 @@ msgstr ""
 msgid "Sorry, something went wrong."
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:160
-#: admin-core/ajax/common-settings.php:714
+#: admin-core/ajax/common-settings.php:161
+#: admin-core/ajax/common-settings.php:715
 #: classes/class-uagb-init-blocks.php:539
 msgid "Successfully saved data!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:176
-#: classes/class-uagb-init-blocks.php:1066
+#: admin-core/ajax/common-settings.php:177
+#: classes/class-uagb-init-blocks.php:1075
 msgid "No post data found!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:212
+#: admin-core/ajax/common-settings.php:213
 msgid "Plugin Successfully Activated"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:807
+#: admin-core/ajax/common-settings.php:808
 msgid "Successfully refreshed tokens!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:809
+#: admin-core/ajax/common-settings.php:810
 msgid "Failed to refresh tokens"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:946
+#: admin-core/ajax/common-settings.php:947
 msgid "Module not found!"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:964
+#: admin-core/ajax/common-settings.php:965
 msgid "%s disabled!"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:974
+#: admin-core/ajax/common-settings.php:975
 msgid "Unable to disable %s"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:986
+#: admin-core/ajax/common-settings.php:987
 msgid "%s enabled!"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:996
+#: admin-core/ajax/common-settings.php:997
 msgid "Unable to enable %s"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:1004
+#: admin-core/ajax/common-settings.php:1005
 msgid "Unable to save setting."
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:1023
+#: admin-core/ajax/common-settings.php:1024
 msgid "Unable to verify authenticity."
 msgstr ""
 
 #: admin-core/api/common-settings.php:98
-#: classes/class-uagb-rest-api.php:399
+#: classes/class-uagb-rest-api.php:410
 msgid "Sorry, you cannot list resources."
 msgstr ""
 
@@ -7707,15 +7707,15 @@ msgstr ""
 msgid "Travel"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:439
+#: classes/class-uagb-admin-helper.php:440
 msgid "Astra Theme"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:443
+#: classes/class-uagb-admin-helper.php:444
 msgid "Filter added through any 3rd Party Theme/Plugin."
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:448
+#: classes/class-uagb-admin-helper.php:449
 msgid "Full Site Editor's Global Styles"
 msgstr ""
 
@@ -7759,7 +7759,7 @@ msgstr ""
 msgid "Spectra requires&nbsp;%3$sBlock Editor%4$s. You can change your editor settings to Block Editor from&nbsp;%1$shere%2$s. Plugin is currently NOT RUNNING."
 msgstr ""
 
-#: classes/class-uagb-fse-fonts-compatibility.php:163
+#: classes/class-uagb-fse-fonts-compatibility.php:165
 #: classes/class-uagb-init-blocks.php:716
 #: dist/blocks.js:11
 #: dist/blocks.js:15
@@ -7768,21 +7768,21 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: classes/class-uagb-fse-fonts-compatibility.php:167
-#: classes/class-uagb-fse-fonts-compatibility.php:179
+#: classes/class-uagb-fse-fonts-compatibility.php:169
+#: classes/class-uagb-fse-fonts-compatibility.php:181
 msgid "400"
 msgstr ""
 
-#: classes/class-uagb-fse-fonts-compatibility.php:173
-#: classes/class-uagb-fse-fonts-compatibility.php:185
+#: classes/class-uagb-fse-fonts-compatibility.php:175
+#: classes/class-uagb-fse-fonts-compatibility.php:187
 msgid "normal"
 msgstr ""
 
-#: classes/class-uagb-fse-fonts-compatibility.php:621
+#: classes/class-uagb-fse-fonts-compatibility.php:625
 msgid "There was some error in deleting the font."
 msgstr ""
 
-#: classes/class-uagb-fse-fonts-compatibility.php:647
+#: classes/class-uagb-fse-fonts-compatibility.php:651
 msgid "Successfully deleted font."
 msgstr ""
 
@@ -7858,15 +7858,15 @@ msgstr ""
 msgid "Please select a valid Contact Form 7."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:789
+#: classes/class-uagb-init-blocks.php:797
 msgid ""
 "Use custom class added in block's advanced settings to target your desired block. Examples:\n"
 "\t\t.my-class {text-align: center;} // my-class is a custom selector"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:866
-#: classes/class-uagb-rest-api.php:282
-#: classes/class-uagb-rest-api.php:297
+#: classes/class-uagb-init-blocks.php:875
+#: classes/class-uagb-rest-api.php:293
+#: classes/class-uagb-rest-api.php:308
 #: dist/blocks.js:1
 #: dist/blocks.js:11
 #: dist/blocks.js:15
@@ -7875,21 +7875,21 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:895
-#: classes/class-uagb-init-blocks.php:928
+#: classes/class-uagb-init-blocks.php:904
+#: classes/class-uagb-init-blocks.php:937
 #: dist/blocks.js:23
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:909
+#: classes/class-uagb-init-blocks.php:918
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:942
+#: classes/class-uagb-init-blocks.php:951
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:958
+#: classes/class-uagb-init-blocks.php:967
 msgid "Invalid request"
 msgstr ""
 
@@ -7906,7 +7906,7 @@ msgstr ""
 msgid "Spectra <p>Rollback to Previous Version</p>"
 msgstr ""
 
-#: classes/class-uagb-update.php:217
+#: classes/class-uagb-update.php:222
 msgid "Heads up!"
 msgstr ""
 
@@ -8030,25 +8030,25 @@ msgstr ""
 msgid "Create a timeline displaying contents of your site."
 msgstr ""
 
-#: includes/blocks/countdown/attributes.php:33
+#: includes/blocks/countdown/attributes.php:34
 #: dist/blocks.js:3
 #: dist/blocks.js:19
 msgid "DAYS"
 msgstr ""
 
-#: includes/blocks/countdown/attributes.php:34
+#: includes/blocks/countdown/attributes.php:35
 #: dist/blocks.js:3
 #: dist/blocks.js:19
 msgid "HOURS"
 msgstr ""
 
-#: includes/blocks/countdown/attributes.php:35
+#: includes/blocks/countdown/attributes.php:36
 #: dist/blocks.js:3
 #: dist/blocks.js:19
 msgid "MINUTES"
 msgstr ""
 
-#: includes/blocks/countdown/attributes.php:36
+#: includes/blocks/countdown/attributes.php:37
 #: dist/blocks.js:3
 #: dist/blocks.js:19
 msgid "SECONDS"
@@ -8718,7 +8718,7 @@ msgid "Add a search widget to let users search posts from your website."
 msgstr ""
 
 #: lib/class-uagb-ast-block-templates.php:65
-msgid "Template Kits"
+msgid "Design Library"
 msgstr ""
 
 #. translators: %s: PHP version
@@ -8898,11 +8898,6 @@ msgid "Global Block Style"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:1
-#: dist/blocks.js:23
-msgid "Quick Action Bar"
-msgstr ""
-
-#: admin-core/assets/build/dashboard-app.js:1
 msgid "File Generation"
 msgstr ""
 
@@ -8941,14 +8936,6 @@ msgstr ""
 #: admin-core/assets/build/dashboard-app.js:1
 #: dist/blocks.js:11
 msgid "Close"
-msgstr ""
-
-#: admin-core/assets/build/dashboard-app.js:1
-msgid "Enable Templates Button"
-msgstr ""
-
-#: admin-core/assets/build/dashboard-app.js:1
-msgid "Spectra comes with a stunning library of page templates and block patterns. This library is accessible with the Templates button while editing the page or post. Manage the visibility of that button with this option."
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:1
@@ -9026,6 +9013,7 @@ msgid "Font Families"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:5
+#: admin-core/assets/build/dashboard-app.js:7
 #: admin-core/assets/build/dashboard-app.js:9
 msgid "Successfully saved!"
 msgstr ""
@@ -9082,14 +9070,6 @@ msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:5
 msgid "This option will load the font files right away on page load. Preloading Local Fonts can speeds up your website even further."
-msgstr ""
-
-#: admin-core/assets/build/dashboard-app.js:5
-msgid "Collapse Panels"
-msgstr ""
-
-#: admin-core/assets/build/dashboard-app.js:5
-msgid "Enable the \"Collapse Panels\" option if you want to Collapse all other Panels in your Blocks Settings except for the one which is clicked This way you have only one Panel of Settings in front of you to Focus on."
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:5
@@ -9260,6 +9240,14 @@ msgid "License successfully deactivated!"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:7
+msgid "Button - Inherit From Theme"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:7
+msgid "Enable the \"Inherit From Theme\" option to make all buttons in Spectra blocks across your website inherit their styles from the theme."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:7
 msgid "Unlink User"
 msgstr ""
 
@@ -9377,11 +9365,35 @@ msgid "Linked Users"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:9
-msgid "Button - Inherit From Theme"
+msgid "Enable Templates Button"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:9
-msgid "Enable the \"Inherit From Theme\" option to make all buttons in Spectra blocks across your website inherit their styles from the theme."
+msgid "Spectra comes with a stunning library of page templates and block patterns. This library is accessible with the Templates button while editing the page or post. Manage the visibility of that button with this option."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Enable Quick Action Bar"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "The Spectra Quick Action Bar lets you have all your frequently used Spectra blocks right at your fingertips!"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Move Title to Top"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Move the page title to the top, allowing you to have a much more cleaner editor."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Collapse Panels"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Enable the \"Collapse Panels\" option if you want to Collapse all other Panels in your Blocks Settings except for the one which is clicked. This way you have only one Panel of Settings in front of you to Focus on."
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:9
@@ -9393,7 +9405,7 @@ msgid "Asset Generation"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:9
-msgid "Templates"
+msgid "Editor Enhancements"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:9
@@ -9573,7 +9585,7 @@ msgid "Organization: %1$s%2$s%3$s"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:13
-msgid "Your website is connected with AI. You can revoke this connection at any time."
+msgid "Your website is connected to AI. You can disconnect at any time."
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:13
@@ -9581,11 +9593,11 @@ msgid "Revoke Access"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:13
-msgid "Are you sure you wish to revoke the authorization token?"
+msgid "Are you sure you want to disconnect?"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:13
-msgid "You will need to re-authorize to use it again."
+msgid "You will need to reconnect to use AI features again."
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:13
@@ -9829,6 +9841,10 @@ msgid "Divider"
 msgstr ""
 
 #: dist/blocks.js:3
+msgid "Please add a option props to MultiButtonsControl"
+msgstr ""
+
+#: dist/blocks.js:3
 msgid "Reset"
 msgstr ""
 
@@ -9875,15 +9891,88 @@ msgid "Margin"
 msgstr ""
 
 #: dist/blocks.js:7
+#: dist/blocks.js:11
+msgid "Start"
+msgstr ""
+
+#: dist/blocks.js:7
+#: dist/blocks.js:11
+#: dist/blocks.js:15
+#: dist/blocks.js:19
+#: dist/blocks.js:23
+msgid "Center"
+msgstr ""
+
+#: dist/blocks.js:7
+#: dist/blocks.js:11
+msgid "End"
+msgstr ""
+
+#: dist/blocks.js:7
+#: dist/blocks.js:11
+msgid "Stretch"
+msgstr ""
+
+#: dist/blocks.js:7
+msgid "Grid Item Settings"
+msgstr ""
+
+#: dist/blocks.js:7
+msgid "Simple"
+msgstr ""
+
+#: dist/blocks.js:7
+msgid "Advance"
+msgstr ""
+
+#: dist/blocks.js:7
+msgid "Column Width"
+msgstr ""
+
+#: dist/blocks.js:7
+msgid "Row Height"
+msgstr ""
+
+#: dist/blocks.js:7
+msgid "Column Start"
+msgstr ""
+
+#: dist/blocks.js:7
+msgid "Column End"
+msgstr ""
+
+#: dist/blocks.js:7
+msgid "Row Start"
+msgstr ""
+
+#: dist/blocks.js:7
+msgid "Row End"
+msgstr ""
+
+#: dist/blocks.js:7
+#: dist/blocks.js:11
+msgid "Align Items"
+msgstr ""
+
+#: dist/blocks.js:7
+msgid "Define the vertical alignment for grid items content."
+msgstr ""
+
+#: dist/blocks.js:7
+#: dist/blocks.js:11
+msgid "Justify Items"
+msgstr ""
+
+#: dist/blocks.js:7
+msgid "Define the horizontal alignment for grid items content."
+msgstr ""
+
+#: dist/blocks.js:7
 msgid "Clear"
 msgstr ""
 
 #: dist/blocks.js:7
 msgid "Select Color"
-msgstr ""
-
-#: dist/blocks.js:7
-msgid "Please add a option props to MultiButtonsControl"
 msgstr ""
 
 #: dist/blocks.js:7
@@ -10498,13 +10587,6 @@ msgid "Flex Start"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:15
-#: dist/blocks.js:19
-#: dist/blocks.js:23
-msgid "Center"
-msgstr ""
-
-#: dist/blocks.js:11
 msgid "Flex End"
 msgstr ""
 
@@ -10696,6 +10778,95 @@ msgid "Equal"
 msgstr ""
 
 #: dist/blocks.js:11
+msgid "Fr"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Px"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Space Between"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Space Around"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Min"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Max"
+msgstr ""
+
+#: dist/blocks.js:11
+#: dist/blocks.js:15
+#: dist/blocks.js:19
+#: dist/blocks.js:23
+msgid "Height"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "The column-width will be automatic."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "The row-height will be automatic."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Grid Property"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Min/Max"
+msgstr ""
+
+#: dist/blocks.js:11
+#: dist/blocks.js:19
+#: dist/blocks.js:23
+msgid "Columns"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Column "
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Rows"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Row "
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Define the vertical alignment for grid items inside the container."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Define the horizontal alignment for grid items within the container."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Align Content"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Define the vertical alignment of the entire grid within its container."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Justify Content"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Define the horizontal alignment of the entire grid within its container."
+msgstr ""
+
+#: dist/blocks.js:11
 msgid "Define the vertical alignment inside this container."
 msgstr ""
 
@@ -10737,18 +10908,6 @@ msgid "Column Reverse"
 msgstr ""
 
 #: dist/blocks.js:11
-msgid "Stretch"
-msgstr ""
-
-#: dist/blocks.js:11
-msgid "Space Between"
-msgstr ""
-
-#: dist/blocks.js:11
-msgid "Space Around"
-msgstr ""
-
-#: dist/blocks.js:11
 msgid "Space Evenly"
 msgstr ""
 
@@ -10778,10 +10937,7 @@ msgid "Visible"
 msgstr ""
 
 #: dist/blocks.js:11
-#: dist/blocks.js:15
-#: dist/blocks.js:19
-#: dist/blocks.js:23
-msgid "Layout"
+msgid "Container Type"
 msgstr ""
 
 #: dist/blocks.js:11
@@ -10910,7 +11066,19 @@ msgid "Overflow"
 msgstr ""
 
 #: dist/blocks.js:11
-msgid "Flex Properties"
+#: dist/blocks.js:15
+#: dist/blocks.js:19
+#: dist/blocks.js:23
+msgid "Layout"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Flex"
+msgstr ""
+
+#: dist/blocks.js:11
+#: dist/blocks.js:19
+msgid "Grid"
 msgstr ""
 
 #: dist/blocks.js:11
@@ -10922,19 +11090,7 @@ msgid "Define the direction in which blocks inside this container will be placed
 msgstr ""
 
 #: dist/blocks.js:11
-msgid "Align Items"
-msgstr ""
-
-#: dist/blocks.js:11
-msgid "Justify Content"
-msgstr ""
-
-#: dist/blocks.js:11
 msgid "Define whether the items are forced in a single line (No Wrap) or can be flowed into multiple lines (Wrap)."
-msgstr ""
-
-#: dist/blocks.js:11
-msgid "Align Content"
 msgstr ""
 
 #: dist/blocks.js:11
@@ -11036,13 +11192,6 @@ msgstr ""
 #: dist/blocks.js:11
 #: dist/blocks.js:23
 msgid "Arrow Split"
-msgstr ""
-
-#: dist/blocks.js:11
-#: dist/blocks.js:15
-#: dist/blocks.js:19
-#: dist/blocks.js:23
-msgid "Height"
 msgstr ""
 
 #: dist/blocks.js:11
@@ -11580,6 +11729,10 @@ msgid "Inherit gap from theme"
 msgstr ""
 
 #: dist/blocks.js:19
+msgid "Flex wrap"
+msgstr ""
+
+#: dist/blocks.js:19
 msgid "Gap Between Buttons"
 msgstr ""
 
@@ -11926,6 +12079,10 @@ msgstr ""
 
 #: dist/blocks.js:19
 msgid "Show Minutes"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Show Seconds"
 msgstr ""
 
 #: dist/blocks.js:19
@@ -12415,10 +12572,6 @@ msgid "Accordion"
 msgstr ""
 
 #: dist/blocks.js:19
-msgid "Grid"
-msgstr ""
-
-#: dist/blocks.js:19
 msgid "Collapse other items"
 msgstr ""
 
@@ -12440,11 +12593,6 @@ msgstr ""
 
 #: dist/blocks.js:19
 msgid "Question Tag"
-msgstr ""
-
-#: dist/blocks.js:19
-#: dist/blocks.js:23
-msgid "Columns"
 msgstr ""
 
 #: dist/blocks.js:19
@@ -15778,15 +15926,15 @@ msgid "No results found."
 msgstr ""
 
 #: dist/blocks.js:23
+msgid "Add Title"
+msgstr ""
+
+#: dist/blocks.js:23
 msgid "Add your own CSS code here to customize the page as per your expectations."
 msgstr ""
 
 #: dist/blocks.js:23
 msgid "Spectra Page Settings"
-msgstr ""
-
-#: dist/blocks.js:23
-msgid "Enable Quick Action Bar"
 msgstr ""
 
 #: dist/blocks.js:23

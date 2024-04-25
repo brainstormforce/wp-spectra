@@ -2150,5 +2150,73 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$horizontal . ' ' . $vertical . ' ' . $blur . ( $spread ? " {$spread}" : '' ) . ' ' . ( $color ? $color : $alt_color ) . ( 'outset' === $position ? '' : " {$position}" )
 			);
 		}
+
+		/**
+		 * Generate the Grid CSS.
+		 *
+		 * @param array $grid_object  Array containing the necessary grid properties.
+		 * @return string  The generated grid CSS or an empty string on early return.
+		 *
+		 * @since 2.13.0
+		 */
+		public static function grid_css_creator( $grid_object ) {
+			$grid_css = '';
+			foreach ( $grid_object as $grid ) {
+				if ( $grid_css ) {
+					$grid_css = $grid_css . ' ';
+				}
+				$create_css = '';
+				if ( 'custom' === $grid['default'] && ( $grid['custom']['value'] || 0 === $grid['custom']['value'] ) ) {
+					$create_css = 'minmax( 1px, ' . $grid['custom']['value'] . $grid['custom']['unit'] . ')';
+				} elseif ( 'minmax' === $grid['default'] ) {
+					$create_css = 'minmax(' . $grid['min']['value'] . $grid['min']['unit'] . ', ' . $grid['max']['value'] . $grid['max']['unit'] . ')';
+				} elseif ( 'auto' === $grid['default'] ) {
+					$create_css = 'auto';
+				}
+
+				$grid_css .= $create_css . ' ';
+			}
+			return $grid_css;
+		}
+
+		/**
+		 * Generate the Grid CSS object according to the device type.
+		 *
+		 * @param array  $attr Array containing the necessary grid properties.
+		 * @param string $device_type Device type ex : Desktop, Tablet, Mobile.
+		 * @return array Array of the css object ex : array( 'grid-template-columns' => '1fr 1fr 1fr', 'grid-template-rows' => '1fr 1fr 1fr' )
+		 * 
+		 * @since 2.13.0
+		 */
+		public static function grid_css_object( $attr, $device_type = 'Desktop' ) {
+			$grid_css = array();
+			
+			// Check attribute is not empty and should be array.
+			if ( ! empty( $attr[ 'gridColumn' . $device_type ] ) && is_array( $attr[ 'gridColumn' . $device_type ] ) ) {
+				$grid_css['grid-template-columns'] = self::grid_css_creator( $attr[ 'gridColumn' . $device_type ] );
+			}
+		
+			if ( ! empty( $attr[ 'gridRow' . $device_type ] ) && is_array( $attr[ 'gridRow' . $device_type ] ) ) {
+				$grid_css['grid-template-rows'] = self::grid_css_creator( $attr[ 'gridRow' . $device_type ] );
+			}
+		
+			if ( ! empty( $attr[ 'gridAlignItems' . $device_type ] ) ) {
+				$grid_css['align-items'] = $attr[ 'gridAlignItems' . $device_type ];
+			}
+		
+			if ( ! empty( $attr[ 'gridJustifyItems' . $device_type ] ) ) {
+				$grid_css['justify-items'] = $attr[ 'gridJustifyItems' . $device_type ];
+			}
+		
+			if ( ! empty( $attr[ 'gridAlignContent' . $device_type ] ) ) {
+				$grid_css['align-content'] = $attr[ 'gridAlignContent' . $device_type ];
+			}
+		
+			if ( ! empty( $attr[ 'gridJustifyContent' . $device_type ] ) ) {
+				$grid_css['justify-content'] = $attr[ 'gridJustifyContent' . $device_type ];
+			}
+			
+			return $grid_css;
+		}
 	}
 }

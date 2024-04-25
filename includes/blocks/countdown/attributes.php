@@ -26,6 +26,7 @@ return array_merge(
 		'showDays'                     => true,
 		'showHours'                    => true,
 		'showMinutes'                  => true,
+		'showSeconds'                  => true,
 		'showSeparator'                => true,
 		'separatorType'                => ':',
 		'ariaLiveType'                 => 'off',

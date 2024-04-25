@@ -9,8 +9,7 @@ import { applyFilters } from '@wordpress/hooks';
 const UAGReset = ( props ) => {
 	const [ panelNameForHook, setPanelNameForHook ] = useState( null );
 	const panelRef = useRef( null );
-
-	const { onReset, attributeNames, setAttributes } = props;
+	const { onReset, attributeNames, setAttributes, resetStateEnabled, isReset } = props;
 
 	const [ refreshPresets, toggleRefreshPresets ] = useState( false );
 
@@ -65,7 +64,7 @@ const UAGReset = ( props ) => {
 		return resetDisableState;
 	};
 
-	const resetDisableState = getResetState();
+	const resetDisableState = resetStateEnabled ?  false : getResetState();
 
 	const resetHandler = () => {
 		const defaultValues = getBlockResetValue();
@@ -84,6 +83,10 @@ const UAGReset = ( props ) => {
 
 		if ( onReset ) {
 			onReset( defaultValues );
+		}
+
+		if( isReset ) {
+			isReset( true );
 		}
 	};
 

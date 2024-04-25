@@ -68,7 +68,7 @@ return array_merge(
 		'ctaIconSpaceMobile'              => '',
 		'ctaType'                         => 'button',
 		'ctaLink'                         => '#',
-		'ctaFontSize'                     => 14,
+		'ctaFontSize'                     => '',
 		'ctaFontSizeType'                 => 'px',
 		'ctaFontSizeTypeTablet'           => 'px',
 		'ctaFontSizeTypeMobile'           => 'px',

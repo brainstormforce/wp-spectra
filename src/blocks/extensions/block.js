@@ -4,6 +4,7 @@ import './copy-paste-styles';
 import './condition-block';
 import './uagb-selected-block-editor-css';
 import './quick-action-sidebar';
+import './header-titlebar';
 import { registerPlugin } from '@wordpress/plugins';
 import SpectraPageSettingsPopup from './spectra-page-settings-popup';
 import SpectraRenameOption from './rename-option'; // TODO: Once Gutenberg merged the rename functionality code in WP then we need to remove import SpectraRenameOption.

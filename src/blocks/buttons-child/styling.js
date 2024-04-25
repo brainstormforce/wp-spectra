@@ -179,7 +179,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 				'letter-spacing': generateCSSUnit( letterSpacing, letterSpacingType ),
 		};
 		selectors[ ' .wp-block-button__link.uagb-buttons-repeater' ] = borderCSS;
-		selectors[ ' .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
+		selectors[ '.uagb-buttons__outer-wrap .uagb-button__wrapper .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
 			'border-color': btnBorderHColor,
 		};
 		if ( useSeparateBoxShadows ) {

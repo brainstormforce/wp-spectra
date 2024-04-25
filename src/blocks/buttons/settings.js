@@ -27,6 +27,7 @@ const Settings = ( props ) => {
 		gapTablet,
 		gapMobile,
 		inheritGap,
+		flexWrap,
 		stack,
 		loadGoogleFonts,
 		fontFamily,
@@ -264,11 +265,20 @@ const Settings = ( props ) => {
 				) }
 				{ buttonsCount > 1 && (
 					<>
-					<ToggleControl
-						label={ __( 'Inherit gap from theme', 'ultimate-addons-for-gutenberg' ) }
-						checked={ inheritGap }
-						onChange={ () => setAttributes( { inheritGap: ! inheritGap } ) }
-					/>
+					{ ! flexWrap && (
+					        <ToggleControl
+						    label={ __( 'Inherit gap from theme', 'ultimate-addons-for-gutenberg' ) }
+						    checked={ inheritGap }
+						    onChange={ () => setAttributes( { inheritGap: ! inheritGap } ) }
+					    /> 
+					) }
+					{ ! inheritGap && (
+					        <ToggleControl
+							    label={ __( 'Flex wrap', 'ultimate-addons-for-gutenberg' ) }
+						        checked={ flexWrap }
+						        onChange={ () => setAttributes( { flexWrap: ! flexWrap } ) }
+					        /> 
+					) }
 					{ ! inheritGap && ( 
 					<ResponsiveSlider
 						label={ __( 'Gap Between Buttons', 'ultimate-addons-for-gutenberg' ) }

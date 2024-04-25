@@ -148,16 +148,6 @@ UAGBCountdown = {
 			return;
 		}
 
-		// If show days or show hours is true, set the further units to true ( hours, minutes ).
-		if ( data?.showDays ) {
-			data.showHours = true;
-			data.showMinutes = true;
-		}
-
-		if ( data?.showHours ) {
-			data.showMinutes = true;
-		}
-
 		// Wrappers.
 		let daysWrap;
 		let hoursWrap;

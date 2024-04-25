@@ -78,14 +78,19 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 				update_option( 'uagb-old-user-less-than-2', 'yes' );
 			}
 
+			// Enable Legacy Blocks for users older than 2.0.5.
+			if ( version_compare( $saved_version, '2.0.5', '<' ) ) {
+				UAGB_Admin_Helper::update_admin_settings_option( 'uag_enable_legacy_blocks', 'yes' );
+			}
+
 			// If user is older than equal to 2.12.1 then set the option.
 			if ( version_compare( $saved_version, '2.12.1', '<=' ) ) {
 				UAGB_Admin_Helper::update_admin_settings_option( 'uag_enable_quick_action_sidebar', 'disabled' );
 			}
 
-			// Enable Legacy Blocks for users older than 2.0.5.
-			if ( version_compare( $saved_version, '2.0.5', '<' ) ) {
-				UAGB_Admin_Helper::update_admin_settings_option( 'uag_enable_legacy_blocks', 'yes' );
+			// If user is older than equal to 2.12.9 then set the option.
+			if ( version_compare( $saved_version, '2.12.9', '<=' ) ) {
+				UAGB_Admin_Helper::update_admin_settings_option( 'uag_enable_header_titlebar', 'disabled' );
 			}
 
 			// Create a Core Block Array for all versions in which a Core Spectra Block was added.

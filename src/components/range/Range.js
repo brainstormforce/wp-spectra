@@ -79,7 +79,15 @@ const Range = ( props ) => {
 	};
 
 	const onChangeUnits = ( newValue ) => {
-		props.setAttributes( { [ props.unit.label ]: newValue } );
+		// Validating that setAttributes is available.
+		if ( props?.setAttributes ) {
+			props.setAttributes( { [ props.unit.label ]: newValue } );
+		}
+
+		// If props has onChange units, then call it.
+		if ( props?.onChangeUnits ) {
+			props.onChangeUnits( newValue );
+		}
 
 		max = limitMax( newValue, props );
 		min = limitMin( newValue, props );
@@ -151,6 +159,8 @@ const Range = ( props ) => {
 								onReset={ resetValues }
 								attributeNames={ [ props.data.label, props.displayUnit ? props.unit.label : false ] }
 								setAttributes={ props.setAttributes }
+								resetStateEnabled={ props?.resetStateEnabled }
+								isReset={ props?.isReset }
 							/>
 						) }
 						{ props.displayUnit && (
@@ -209,6 +219,8 @@ Range.defaultProps = {
 	responsive: false,
 	help: false,
 	marks: false,
+	resetStateEnabled: false,
+	isReset: false,
 };
 
 export default Range;

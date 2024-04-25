@@ -226,7 +226,8 @@ a.uagb-infobox-link-wrap,
 		cursor: pointer;
 	}
 
-	.wp-block-button__link svg {
+	.wp-block-button__link svg,
+	.ast-outline-button svg {
 		fill: currentColor;
 	}
 }

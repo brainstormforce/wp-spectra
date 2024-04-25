@@ -36,7 +36,6 @@ const UAGBAdvancedHeading = ( props ) => {
 	// Including condition in props for child component.
 	props = { ...props, headingHasDynamicContent, descriptionHasDynamicContent };
 
-
 	useEffect( () => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
