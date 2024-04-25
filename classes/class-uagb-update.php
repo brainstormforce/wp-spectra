@@ -88,8 +88,8 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 				UAGB_Admin_Helper::update_admin_settings_option( 'uag_enable_quick_action_sidebar', 'disabled' );
 			}
 
-			// If user is older than equal to 2.12.2 then set the option.
-			if ( version_compare( $saved_version, '2.12.2', '<=' ) ) {
+			// If user is older than equal to 2.12.9 then set the option.
+			if ( version_compare( $saved_version, '2.12.9', '<=' ) ) {
 				UAGB_Admin_Helper::update_admin_settings_option( 'uag_enable_header_titlebar', 'disabled' );
 			}
 

@@ -631,23 +631,25 @@ if ( ! $is_layout_grid ) {
 
 	if ( ! empty( $attr['isGridCssInParent'] ) ) {
 		$gridChildrenCSS       = array();
-		$gridChildrenCSSTab    = array();
-		$gridChildrenCSSMobile = array();
+		$gridChildrenCSSTab    = array(
+			// Add default css for the Tablet.
+			'grid-column' => 'span 1',
+			'grid-row'    => 'span 1',
+		);
+		$gridChildrenCSSMobile = array(
+			// Add default css for the Mobile.
+			'grid-column' => 'span 1',
+			'grid-row'    => 'span 1',
+		);
 	
 		if ( ! empty( $attr['gridSettingType'] ) && 'advance' === $attr['gridSettingType'] ) {
 			// For desktop.
 			if ( ! empty( $attr['gridColumnStart'] ) && ! empty( $attr['gridColumnEnd'] ) ) {
 				$gridChildrenCSS['grid-column'] = $attr['gridColumnStart'] . ' / ' . $attr['gridColumnEnd'];
-				// Add css for the Tablet and Mobile. if both device css not set then it will inherit the desktop css.
-				$gridChildrenCSSTab['grid-column']    = 'span 1';
-				$gridChildrenCSSMobile['grid-column'] = 'span 1';
 			}
 
 			if ( ! empty( $attr['gridRowStart'] ) && ! empty( $attr['gridRowEnd'] ) ) {
 				$gridChildrenCSS['grid-row'] = $attr['gridRowStart'] . ' / ' . $attr['gridRowEnd'];
-				// Add css for the Tablet and Mobile. if both device css not set then it will inherit the desktop css.
-				$gridChildrenCSSTab['grid-row']    = 'span 1';
-				$gridChildrenCSSMobile['grid-row'] = 'span 1';
 			}
 
 			// For tablet.
@@ -671,18 +673,10 @@ if ( ! $is_layout_grid ) {
 			// For desktop.
 			if ( ! empty( $attr['gridColumnSpan'] ) ) {
 				$gridChildrenCSS['grid-column'] = 'span ' . $attr['gridColumnSpan'];
-
-				// Add css for the Tablet and Mobile. if both device css not set then it will inherit the desktop css.
-				$gridChildrenCSSTab['grid-column']    = 'span 1';
-				$gridChildrenCSSMobile['grid-column'] = 'span 1';
 			}
 
 			if ( ! empty( $attr['gridRowSpan'] ) ) {
 				$gridChildrenCSS['grid-row'] = 'span ' . $attr['gridRowSpan'];
-
-				// Add css for the Tablet and Mobile. if both device css not set then it will inherit the desktop css.
-				$gridChildrenCSSTab['grid-row']    = 'span 1';
-				$gridChildrenCSSMobile['grid-row'] = 'span 1';
 			}
 
 			// For tablet.

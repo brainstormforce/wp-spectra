@@ -917,25 +917,26 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 	// Add css grid children settings.
 	if( isGridCssInParent ){
 		const gridChildrenCSS = {};
-		const gridChildrenCSSTablet = {};
-		const gridChildrenCSSMobile = {};
+		const gridChildrenCSSTablet = {
+			// Add default css for the Tablet.
+			'grid-column': 'span 1',
+			'grid-row': 'span 1',
+		};
+
+		const gridChildrenCSSMobile = {
+			// Add default css for the Mobile.
+			'grid-column': 'span 1',
+			'grid-row': 'span 1',
+		};
 		
 		if( 'advance' === gridSettingType ){
 			// For desktop.
 			if( gridColumnStart && gridColumnEnd ){
 				gridChildrenCSS['grid-column'] = `${gridColumnStart} / ${gridColumnEnd}`;
-				
-				// Add css for the Tablet and Mobile. if both device css not set then it will inherit the desktop css.
-				gridChildrenCSSTablet['grid-column'] = 'span 1';
-				gridChildrenCSSMobile['grid-column'] = 'span 1';
 			}
 
 			if( gridRowStart && gridRowEnd ){
 				gridChildrenCSS['grid-row'] = `${gridRowStart} / ${gridRowEnd}`;
-
-				// Add css for the Tablet and Mobile. if both device css not set then it will inherit the desktop css.
-				gridChildrenCSSTablet['grid-row'] = 'span 1';
-				gridChildrenCSSMobile['grid-row'] = 'span 1';
 			}
 
 			// For tablet.
@@ -959,18 +960,10 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			// For desktop.
 			if( gridColumnSpan ){
 				gridChildrenCSS['grid-column'] = `span ${gridColumnSpan}`;
-
-				// Add css for the Tablet and Mobile. if both device css not set then it will inherit the desktop css.
-				gridChildrenCSSTablet['grid-column'] = 'span 1';
-				gridChildrenCSSMobile['grid-column'] = 'span 1';
 			}
 
 			if( gridRowSpan ){
 				gridChildrenCSS['grid-row'] = `span ${gridRowSpan}`;
-
-				// Add css for the Tablet and Mobile. if both device css not set then it will inherit the desktop css.
-				gridChildrenCSSTablet['grid-row'] = 'span 1';
-				gridChildrenCSSMobile['grid-row'] = 'span 1';
 			}
 
 			// For tablet.

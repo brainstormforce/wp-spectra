@@ -95,6 +95,10 @@ const HeaderTitle = ( props ) => {
 		default:
 			titleMeta = {};
 	}
+	// If the meta is not available, return.
+	if ( ! meta ) {
+		return;
+	}
 
 	// Add common conditions for easier usage down the line.
 	const isCompatibleTheme = ( isAstraBased || isSpectraOne );
