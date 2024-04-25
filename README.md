@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### 2.13.0 - Wednesday, 24th April 2024 ###
+### 2.13.0 - Thursday, 25th April 2024 ###
 * New: Introducing the Header Title-bar - Make more space for editing!
 * Feature: Container - Added new layout type 'grid'.
 * Improvement: Buttons - Added a flex-wrap toggle for multiple button rows instead of shrink-to-fit buttons.
