@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+* Improvement: Core - Updated asset URL generation logic to prevent caching issues.
+
 = 2.13.0 - Thursday, 25th April 2024 =
 * New: Introducing the Header Title-bar - Make more space for editing!
 * Feature: Container - Added new layout type 'grid'.

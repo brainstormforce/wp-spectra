@@ -4,7 +4,7 @@
 **Tags:** gutenberg, blocks, gutenberg blocks, editor, block  
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
-**Tested up to:** 6.5.2 
+**Tested up to:** 6.5.2  
 **Stable tag:** 2.13.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
@@ -214,6 +214,9 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
 
 ## Changelog ##
+
+### x.x.x ###
+* Improvement: Core - Updated asset URL generation logic to prevent caching issues.
 
 ### 2.13.0 - Thursday, 25th April 2024 ###
 * New: Introducing the Header Title-bar - Make more space for editing!
