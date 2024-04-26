@@ -217,6 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = x.x.x =
 * Improvement: Core - Updated asset URL generation logic to prevent caching issues.
+* Improvement: Buttons - Improved the accessibility for better user interaction.
 
 = 2.13.0 - Thursday, 25th April 2024 =
 * New: Introducing the Header Title-bar - Make more space for editing!
