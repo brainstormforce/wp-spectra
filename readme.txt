@@ -9,7 +9,7 @@ Stable tag: 2.13.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Power-up the Gutenberg editor with advanced and powerful blocks that help you build websites in no time! This first Gutenberg plugin is here to make website building an ultimate journey.
+Power-up Gutenberg with advanced blocks for faster website creation. Build your WordPress website effortlessly using powerful building blocks!
 
 == Description ==
 
