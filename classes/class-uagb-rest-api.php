@@ -61,7 +61,7 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 		 * Function to delete post assets.
 		 *
 		 * @param int $post_id post_id of deleted post.
-		 * @since x.x.x
+		 * @since 2.13.1
 		 * @return void 
 		 */
 		public function delete_page_assets_on_trash( $post_id ) {
@@ -565,7 +565,7 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 		/**
 		 * Supported arguments to check if the given post type supports custom fields.
 		 *
-		 * @since x.x.x
+		 * @since 2.13.1
 		 * @return array The array of supported arguments.
 		 */
 		public function check_custom_fields_support_args() {
@@ -583,7 +583,7 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 		 * Checks if the given post type supports custom fields.
 		 *
 		 * @param WP_REST_Request $request All the details about the request.
-		 * @since x.x.x
+		 * @since 2.13.1
 		 * @return WP_REST_Response The response.
 		 */
 		public function check_custom_fields_support( $request ) {

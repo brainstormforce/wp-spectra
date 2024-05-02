@@ -1030,7 +1030,7 @@ class Common_Settings extends Ajax_Base {
 	/**
 	 * Save setting - Enables the header titlebar.
 	 *
-	 * @since x.x.x
+	 * @since 2.13.1
 	 * @return void
 	 */
 	public function enable_header_titlebar() {

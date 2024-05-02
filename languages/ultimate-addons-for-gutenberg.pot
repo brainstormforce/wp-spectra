@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.13.0\n"
+"Project-Id-Version: Spectra 2.13.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-04-25T13:41:37+00:00\n"
+"POT-Creation-Date: 2024-05-02T11:39:37+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: admin-core/inc/admin-menu.php:171
 #: admin-core/inc/admin-menu.php:182
 #: admin-core/inc/admin-menu.php:261
-#: classes/class-uagb-admin-helper.php:432
+#: classes/class-uagb-admin-helper.php:428
 #: classes/class-uagb-init-blocks.php:576
 msgid "Spectra"
 msgstr ""
@@ -53,7 +53,7 @@ msgid "Sorry, something went wrong."
 msgstr ""
 
 #: admin-core/ajax/common-settings.php:161
-#: admin-core/ajax/common-settings.php:715
+#: admin-core/ajax/common-settings.php:717
 #: classes/class-uagb-init-blocks.php:539
 msgid "Successfully saved data!"
 msgstr ""
@@ -67,48 +67,48 @@ msgstr ""
 msgid "Plugin Successfully Activated"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:808
+#: admin-core/ajax/common-settings.php:810
 msgid "Successfully refreshed tokens!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:810
+#: admin-core/ajax/common-settings.php:812
 msgid "Failed to refresh tokens"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:947
+#: admin-core/ajax/common-settings.php:949
 msgid "Module not found!"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:965
+#: admin-core/ajax/common-settings.php:967
 msgid "%s disabled!"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:975
+#: admin-core/ajax/common-settings.php:977
 msgid "Unable to disable %s"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:987
+#: admin-core/ajax/common-settings.php:989
 msgid "%s enabled!"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:997
+#: admin-core/ajax/common-settings.php:999
 msgid "Unable to enable %s"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:1005
+#: admin-core/ajax/common-settings.php:1007
 msgid "Unable to save setting."
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:1024
+#: admin-core/ajax/common-settings.php:1026
 msgid "Unable to verify authenticity."
 msgstr ""
 
 #: admin-core/api/common-settings.php:98
-#: classes/class-uagb-rest-api.php:410
+#: classes/class-uagb-rest-api.php:435
 msgid "Sorry, you cannot list resources."
 msgstr ""
 
@@ -7707,15 +7707,15 @@ msgstr ""
 msgid "Travel"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:440
+#: classes/class-uagb-admin-helper.php:436
 msgid "Astra Theme"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:444
+#: classes/class-uagb-admin-helper.php:440
 msgid "Filter added through any 3rd Party Theme/Plugin."
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:449
+#: classes/class-uagb-admin-helper.php:445
 msgid "Full Site Editor's Global Styles"
 msgstr ""
 
@@ -7865,8 +7865,8 @@ msgid ""
 msgstr ""
 
 #: classes/class-uagb-init-blocks.php:875
-#: classes/class-uagb-rest-api.php:293
-#: classes/class-uagb-rest-api.php:308
+#: classes/class-uagb-rest-api.php:318
+#: classes/class-uagb-rest-api.php:333
 #: dist/blocks.js:1
 #: dist/blocks.js:11
 #: dist/blocks.js:15
