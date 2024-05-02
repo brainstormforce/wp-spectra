@@ -129,7 +129,7 @@ class Keywords extends Api_Base {
 			),
 			'timeout' => 100,
 		);
-		$response = wp_remote_post( $api_endpoint, $request_args );
+		$response = wp_safe_remote_post( $api_endpoint, $request_args );
 
 		if ( is_wp_error( $response ) ) {
 			// There was an error in the request.

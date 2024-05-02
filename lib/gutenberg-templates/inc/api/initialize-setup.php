@@ -95,6 +95,7 @@ class Initialize_Setup extends Api_Base {
 		$response = new \WP_REST_Response(
 			array(
 				'success' => true,
+				'syncing' => $is_fresh_site,
 			)
 		);
 		$response->set_status( 200 );

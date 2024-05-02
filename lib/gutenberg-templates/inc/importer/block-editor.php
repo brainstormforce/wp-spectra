@@ -9,6 +9,7 @@
 namespace Gutenberg_Templates\Inc\Importer;
 
 use Gutenberg_Templates\Inc\Traits\Instance;
+use Gutenberg_Templates\Inc\Traits\Helper;
 use Gutenberg_Templates\Inc\Importer\Importer_Helper;
 use Gutenberg_Templates\Inc\Importer\Images;
 
@@ -60,7 +61,7 @@ class BlockEditor {
 		$image = Images::instance()->download_image( $image );
 
 		if ( is_wp_error( $image ) ) {
-			error_log( 'Replacing Image problem : ' . $block['attrs']['backgroundImageDesktop']['url'] . ' Warning: ' . wp_json_encode( $image ) );
+			Helper::instance()->ast_block_templates_log( 'Replacing Image problem : ' . $block['attrs']['backgroundImageDesktop']['url'] . ' Warning: ' . wp_json_encode( $image ) );
 			return $block;
 		}
 
@@ -71,7 +72,7 @@ class BlockEditor {
 
 		self::$old_images[] = $block['attrs']['backgroundImageDesktop']['id'];
 
-		error_log( 'Replacing Image from ' . $block['attrs']['backgroundImageDesktop']['url'] . 'to "' . $attachment['url'] . '" for ' . $block['blockName'] . '" with index "' . Images::$image_index . '"' );
+		Helper::instance()->ast_block_templates_log( 'Replacing Image from ' . $block['attrs']['backgroundImageDesktop']['url'] . 'to "' . $attachment['url'] . '" for ' . $block['blockName'] . '" with index "' . Images::$image_index . '"' );
 		$block['attrs']['backgroundImageDesktop'] = $attachment;
 		Images::$image_index++;
 
@@ -103,7 +104,7 @@ class BlockEditor {
 		$image = Images::instance()->download_image( $image );
 
 		if ( is_wp_error( $image ) ) {
-			error_log( 'Replacing Image problem : ' . $block['attrs']['iconImage']['url'] . ' Warning: ' . wp_json_encode( $image ) );
+			Helper::instance()->ast_block_templates_log( 'Replacing Image problem : ' . $block['attrs']['iconImage']['url'] . ' Warning: ' . wp_json_encode( $image ) );
 			return $block;
 		}
 
@@ -116,7 +117,7 @@ class BlockEditor {
 		self::$old_images[] = $block['attrs']['iconImage']['id'];
 
 		if ( ! empty( $block['attrs']['iconImage']['url'] ) ) {
-			error_log( 'Replacing Image from ' . $block['attrs']['iconImage']['url'] . ' to "' . $attachment['url'] . '" for ' . $block['blockName'] . '" with index "' . Images::$image_index . '"' );
+			Helper::instance()->ast_block_templates_log( 'Replacing Image from ' . $block['attrs']['iconImage']['url'] . ' to "' . $attachment['url'] . '" for ' . $block['blockName'] . '" with index "' . Images::$image_index . '"' );
 			$block['innerHTML'] = str_replace( $block['attrs']['iconImage']['url'], $attachment['url'], $block['innerHTML'] );
 		}
 
@@ -157,7 +158,7 @@ class BlockEditor {
 		$image = Images::instance()->download_image( $image );
 
 		if ( is_wp_error( $image ) ) {
-			error_log( 'Replacing Image problem : ' . $block['attrs']['url'] . ' Warning: ' . wp_json_encode( $image ) );
+			Helper::instance()->ast_block_templates_log( 'Replacing Image problem : ' . $block['attrs']['url'] . ' Warning: ' . wp_json_encode( $image ) );
 			return $block;
 		}
 
@@ -167,7 +168,7 @@ class BlockEditor {
 		}
 
 		self::$old_images[] = $block['attrs']['id'];
-		error_log( 'Replacing Image from ' . $block['attrs']['url'] . ' to "' . $attachment['url'] . '" for ' . $block['blockName'] . '" with index "' . Images::$image_index . '"' );
+		Helper::instance()->ast_block_templates_log( 'Replacing Image from ' . $block['attrs']['url'] . ' to "' . $attachment['url'] . '" for ' . $block['blockName'] . '" with index "' . Images::$image_index . '"' );
 		$block['innerHTML'] = str_replace( $block['attrs']['url'], $attachment['url'], $block['innerHTML'] );
 		$block['innerHTML'] = str_replace( $block['attrs']['id'], $attachment['id'], $block['innerHTML'] );
 
@@ -245,7 +246,7 @@ class BlockEditor {
 			$new_image = Images::instance()->download_image( $new_image );
 
 			if ( is_wp_error( $new_image ) ) {
-				error_log( 'Replacing Image problem : ' . $image['url'] . ' Warning: ' . wp_json_encode( $new_image ) );
+				Helper::instance()->ast_block_templates_log( 'Replacing Image problem : ' . $image['url'] . ' Warning: ' . wp_json_encode( $new_image ) );
 				continue;
 			}
 
@@ -258,7 +259,7 @@ class BlockEditor {
 			$gallery_ids[] = $attachment['id'];
 
 			self::$old_images[] = $image['id'];
-			error_log( 'Replacing Image from ' . $image['url'] . ' to "' . $attachment['url'] . '" for ' . $block['blockName'] . '" with index "' . Images::$image_index . '"' );
+			Helper::instance()->ast_block_templates_log( 'Replacing Image from ' . $image['url'] . ' to "' . $attachment['url'] . '" for ' . $block['blockName'] . '" with index "' . Images::$image_index . '"' );
 			$image['url']     = ! empty( $attachment['url'] ) ? $attachment['url'] : $image['url'];
 			$image['sizes']   = ! empty( $attachment['sizes'] ) ? $attachment['sizes'] : $image['sizes'];
 			$image['mime']    = ! empty( $attachment['mime'] ) ? $attachment['mime'] : $image['mime'];
@@ -289,7 +290,7 @@ class BlockEditor {
 			return $block;
 		}
 
-		error_log( 'Replacing Google Map from ' . $block['attrs']['address'] . ' to "' . $address );
+		Helper::instance()->ast_block_templates_log( 'Replacing Google Map from ' . $block['attrs']['address'] . ' to "' . $address );
 		$block['attrs']['address'] = $address;
 
 		return $block;
@@ -324,7 +325,7 @@ class BlockEditor {
 		$image = Images::instance()->download_image( $image );
 
 		if ( is_wp_error( $image ) ) {
-			error_log( 'Replacing Image problem : ' . $thumb['url'] . ' Warning: ' . wp_json_encode( $image ) );
+			Helper::instance()->ast_block_templates_log( 'Replacing Image problem : ' . $thumb['url'] . ' Warning: ' . wp_json_encode( $image ) );
 			return;
 		}
 
@@ -334,7 +335,7 @@ class BlockEditor {
 		}
 
 		self::$old_images[] = $thumb['id'];
-		error_log( 'Replacing Image from ' . $thumb['url'] . ' to "' . $attachment['url'] . '" with index "' . Images::$image_index . '"' );
+		Helper::instance()->ast_block_templates_log( 'Replacing Image from ' . $thumb['url'] . ' to "' . $attachment['url'] . '" with index "' . Images::$image_index . '"' );
 
 		set_post_thumbnail( $post, $attachment['id'] );
 

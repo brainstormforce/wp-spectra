@@ -9,6 +9,7 @@
 namespace Gutenberg_Templates\Inc\Importer;
 
 use Gutenberg_Templates\Inc\Traits\Instance;
+use Gutenberg_Templates\Inc\Traits\Helper;
 use Gutenberg_Templates\Inc\Importer\Importer_Helper;
 
 /**
@@ -60,7 +61,7 @@ class Images {
 	 */
 	public function get_image( $index = 0 ) {
 		$images = $this->get_images();
-		error_log( 'Fetching image with index ' . $index );
+		Helper::instance()->ast_block_templates_log( 'Fetching image with index ' . $index );
 		return ( isset( $images[ $index ] ) ) ? $images[ $index ] : false;
 	}
 
@@ -81,15 +82,15 @@ class Images {
 			return $downloaded_ids[ $id ];
 		}
 		/* This is a Pixabay code $name = $image['tags']; Pixabay. */
-		$name = sanitize_title( $id ); // Unsplash.
+		$name = 'zipwp-image-' . sanitize_title( $id );
 		/* This is a Pixabay code $url  = $image['largeImageURL']; Pixabay. */
 		$url = $image['url']; // Unsplash.
 
 		$description = isset( $image['description'] ) ? $image['description'] : '';
 
-		$name = preg_replace( '/\.[^.]+$/', '', $name ) . '-' . $id . '.jpg';
+		$name = preg_replace( '/\.[^.]+$/', '', $name ) . '.jpg';
 
-		error_log( 'Downloading Image as "' . $name . '" : ' . $url );
+		Helper::instance()->ast_block_templates_log( 'Downloading Image as "' . $name . '" : ' . $url );
 
 		$wp_id = $this->create_image_from_url( $url, $name, $id, $description );
 		$downloaded_ids[ $id ] = $wp_id;

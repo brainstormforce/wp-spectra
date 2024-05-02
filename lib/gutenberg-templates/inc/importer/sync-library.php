@@ -61,13 +61,13 @@ class Sync_Library {
 
 		Helper::instance()->ast_block_templates_log( 'BLOCK: ' . $api_url );
 
-		$response = wp_remote_get( $api_url, $api_args );
+		$response = wp_safe_remote_get( $api_url, $api_args );
 
 		if ( ! is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) === 200 ) {
 			$res_data = json_decode( wp_remote_retrieve_body( $response ), true );
 
 			if ( isset( $res_data['data']['customizer_css'] ) ) {
-				Helper::instance()->update_json_file( 'ast-block-templates-customizer-css.json', $res_data['data']['customizer_css'] );
+				Helper::instance()->update_json_file( 'ast-block-templates-customizer-css', $res_data['data']['customizer_css'] );
 				do_action( 'ast_block_templates_customizer_css', $res_data['data']['customizer_css'] );
 			}
 		}
@@ -97,7 +97,7 @@ class Sync_Library {
 
 		Helper::instance()->ast_block_templates_log( 'BLOCK: ' . $api_url );
 
-		$response = wp_remote_get( $api_url, $api_args );
+		$response = wp_safe_remote_get( $api_url, $api_args );
 
 		if ( ! is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) === 200 ) {
 			$res_data = json_decode( wp_remote_retrieve_body( $response ), true );
@@ -190,7 +190,7 @@ class Sync_Library {
 
 		if ( empty( $result_data ) ) {
 			Helper::instance()->ast_block_templates_log( 'Blocks are up to date.' );
-			Helper::instance()->update_json_file( 'ast-block-templates-last-export-checksums-time.json', time() );
+			update_option( 'ast-block-templates-last-export-checksums-time', time() );
 			update_option( 'ast_blocks_sync_in_progress', 'no', 'no' );
 			return;
 		}
@@ -229,7 +229,7 @@ class Sync_Library {
 
 		$api_url = add_query_arg( $query_args, AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-json/astra-sites/v2/checksum/' );
 
-		$response = wp_remote_get( $api_url, $api_args );
+		$response = wp_safe_remote_get( $api_url, $api_args );
 
 		if ( ! is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) === 200 ) {
 			$result = json_decode( wp_remote_retrieve_body( $response ), true );
@@ -251,13 +251,13 @@ class Sync_Library {
 
 		if ( isset( $data['categories'] ) && ! empty( $data['categories'] ) ) {
 			Helper::instance()->ast_block_templates_log( 'CATEGORY: Storing in ast-block-templates-categories.json' );
-			Helper::instance()->update_json_file( 'ast-block-templates-categories.json', $data['categories'] );
+			Helper::instance()->update_json_file( 'ast-block-templates-categories', $data['categories'] );
 			do_action( 'ast_block_templates_sync_categories', $data['categories'] );
 		}
 
 		if ( isset( $data['count']['pages'] ) && ! empty( $data['count']['pages'] ) ) {
 			Helper::instance()->ast_block_templates_log( 'BLOCK: Requests count ' . $data['count']['pages'] );
-			Helper::instance()->update_json_file( 'ast-block-templates-block-requests.json', $data['count']['pages'] );
+			Helper::instance()->update_json_file( 'ast-block-templates-block-requests', $data['count']['pages'] );
 			do_action( 'ast_block_templates_sync_blocks_requests', $data['count']['pages'] );
 		}
 
@@ -337,12 +337,12 @@ class Sync_Library {
 		if ( isset( $result_data['categories'] ) && ! empty( $result_data['categories'] ) ) {
 		
 			Helper::instance()->ast_block_templates_log( 'CATEGORY: Storing in option ast-block-templates-categories.json' );
-			Helper::instance()->update_json_file( 'ast-block-templates-categories.json', $result_data['categories'] );
+			Helper::instance()->update_json_file( 'ast-block-templates-categories', $result_data['categories'] );
 			do_action( 'ast_block_templates_sync_categories', $result_data['categories'] );
 		}
 		if ( isset( $result_data['count']['pages'] ) && ! empty( $result_data['count']['pages'] ) ) {
 			Helper::instance()->ast_block_templates_log( 'BLOCK: Requests count ' . $result_data['count']['pages'] );
-			Helper::instance()->update_json_file( 'ast-block-templates-block-requests.json', $result_data['count']['pages'] );
+			Helper::instance()->update_json_file( 'ast-block-templates-block-requests', $result_data['count']['pages'] );
 			do_action( 'ast_block_templates_sync_blocks_requests', $result_data['count']['pages'] );
 		}
 		$this->update_latest_checksums( $result_data['checksum'] );
@@ -400,7 +400,7 @@ class Sync_Library {
 
 		$api_url = add_query_arg( $query_args, AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-json/astra-sites/v1/get-last-export-checksums/' );
 
-		$response = wp_remote_get( $api_url, $api_args );
+		$response = wp_safe_remote_get( $api_url, $api_args );
 
 		if ( ! is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) === 200 ) {
 			$result = json_decode( wp_remote_retrieve_body( $response ), true );
@@ -427,7 +427,7 @@ class Sync_Library {
 	 * @return void
 	 */
 	public function update_latest_checksums( $new_checksum ) {
-		Helper::instance()->update_json_file( 'ast-block-templates-last-export-checksums.json', $new_checksum );
+		Helper::instance()->update_json_file( 'ast-block-templates-last-export-checksums', $new_checksum );
 		update_option( 'ast-block-templates-last-export-checksums-time', time(), 'no' );
 		update_option( 'ast_blocks_sync_in_progress', 'no', 'no' );
 		do_action( 'ast_block_templates_sync_export_checksum', $new_checksum );
@@ -563,14 +563,14 @@ class Sync_Library {
 
 		Helper::instance()->ast_block_templates_log( 'BLOCK: ' . $api_url );
 
-		$response = wp_remote_get( $api_url, $api_args );
+		$response = wp_safe_remote_get( $api_url, $api_args );
 
 		if ( ! is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) === 200 ) {
 			$total_requests = json_decode( wp_remote_retrieve_body( $response ), true );
 
 			if ( isset( $total_requests['pages'] ) ) {
 				Helper::instance()->ast_block_templates_log( 'BLOCK: Requests count ' . $total_requests['pages'] );
-				Helper::instance()->update_json_file( 'ast-block-templates-block-requests.json', $total_requests['pages'] );
+				Helper::instance()->update_json_file( 'ast-block-templates-block-requests', $total_requests['pages'] );
 				do_action( 'ast_block_templates_sync_blocks_requests', $total_requests['pages'] );
 				return $total_requests['pages'];
 			}
@@ -602,7 +602,7 @@ class Sync_Library {
 
 		$api_url = add_query_arg( $query_args, AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-json/wp/v2/blocks-category/' );
 
-		$response = wp_remote_get( $api_url, $api_args );
+		$response = wp_safe_remote_get( $api_url, $api_args );
 
 		if ( ! is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) === 200 ) {
 			$all_categories = json_decode( wp_remote_retrieve_body( $response ), true );
@@ -617,7 +617,7 @@ class Sync_Library {
 			} else {
 
 				Helper::instance()->ast_block_templates_log( 'CATEGORY:Storing in file ast-block-templates-categories' );
-				Helper::instance()->update_json_file( 'ast-block-templates-categories.json', $all_categories );
+				Helper::instance()->update_json_file( 'ast-block-templates-categories', $all_categories );
 
 				do_action( 'ast_block_templates_sync_categories', $all_categories );
 
@@ -661,7 +661,7 @@ class Sync_Library {
 
 		Helper::instance()->ast_block_templates_log( 'BLOCK: ' . $api_url );
 
-		$response = wp_remote_get( $api_url, $api_args );
+		$response = wp_safe_remote_get( $api_url, $api_args );
 
 		if ( ! is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) === 200 ) {
 			$all_blocks = json_decode( wp_remote_retrieve_body( $response ), true );
@@ -677,7 +677,7 @@ class Sync_Library {
 				$file_name = 'ast-block-templates-blocks-' . $page;
 				Helper::instance()->ast_block_templates_log( 'BLOCK: Storing in file ' . $file_name );
 
-				Helper::instance()->update_json_file( $file_name . '.json', $all_blocks );
+				Helper::instance()->update_json_file( $file_name, $all_blocks );
 
 				if ( Helper::instance()->ast_block_templates_doing_wp_cli() ) {
 					do_action( 'ast_block_templates_sync_blocks', $page, $all_blocks );
@@ -716,14 +716,14 @@ class Sync_Library {
 
 		Helper::instance()->ast_block_templates_log( 'SITE: ' . $api_url );
 
-		$response = wp_remote_get( $api_url, $api_args );
+		$response = wp_safe_remote_get( $api_url, $api_args );
 
 		if ( ! is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) === 200 ) {
 			$total_requests = json_decode( wp_remote_retrieve_body( $response ), true );
 
 			if ( isset( $total_requests['pages'] ) ) {
 				Helper::instance()->ast_block_templates_log( 'SITE: Request count ' . $total_requests['pages'] );
-				Helper::instance()->update_json_file( 'ast-block-templates-site-requests.json', $total_requests['pages'] );
+				Helper::instance()->update_json_file( 'ast-block-templates-site-requests', $total_requests['pages'] );
 
 				do_action( 'ast_block_templates_sync_get_total_pages', $total_requests['pages'] );
 				return $total_requests['pages'];
@@ -761,7 +761,7 @@ class Sync_Library {
 
 		Helper::instance()->ast_block_templates_log( 'SITE: ' . $api_url );
 
-		$response = wp_remote_get( $api_url, $api_args );
+		$response = wp_safe_remote_get( $api_url, $api_args );
 
 		if ( ! is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) === 200 ) {
 			$all_blocks = json_decode( wp_remote_retrieve_body( $response ), true );
@@ -777,7 +777,7 @@ class Sync_Library {
 
 				$file_name = 'ast-block-templates-sites-' . $page;
 				Helper::instance()->ast_block_templates_log( 'SITE: Storing in file ' . $file_name );
-				Helper::instance()->update_json_file( $file_name . '.json', $all_blocks );
+				Helper::instance()->update_json_file( $file_name, $all_blocks );
 
 				do_action( 'ast_block_templates_sync_sites', $page, $all_blocks );
 

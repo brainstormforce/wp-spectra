@@ -105,6 +105,8 @@ class Ai_Content {
 			'regenerate' => isset( $_POST['regenerate'] ) ? filter_var( $_POST['regenerate'], FILTER_VALIDATE_BOOLEAN ) : false,
 			'block_type' => isset( $_POST['block_type'] ) ? sanitize_text_field( $_POST['block_type'] ) : 'block',
 			'is_last_category' => isset( $_POST['is_last_category'] ) ? filter_var( $_POST['is_last_category'], FILTER_VALIDATE_BOOLEAN ) : false,
+			'language_slug' => isset( $details['language'] ) ? sanitize_text_field( $details['language']['code'] ) : '',
+			'language_name' => isset( $details['language'] ) ? sanitize_text_field( $details['language']['name'] ) : '',
 		);
 
 		$category_content = get_option( 'ast-templates-ai-content', array() );
@@ -193,12 +195,11 @@ class Ai_Content {
 			),
 			'timeout' => 50,
 		);
-		$response = wp_remote_post( $api_endpoint, $request_args );
+		$response = wp_safe_remote_post( $api_endpoint, $request_args );
 
 		$log = get_option( 'ast_block_ai_content_log', array() );
 
 		$log[ $post_data['category'] ] = array();
-
 		if ( is_wp_error( $response ) ) {
 			$log[ $post_data['category'] ] = 'Error: ' . $response->get_error_message();
 			update_option( 'ast_block_ai_content_log', $log );
@@ -308,33 +309,31 @@ class Ai_Content {
 			$keywords[ $key ] = sanitize_text_field( wp_unslash( $keyword ) );
 		}
 
-		$image_count = count( $images );
-		if ( $image_count < AST_BLOCK_TEMPLATES_IMAGE_COUNT ) {
-			$new_images = $this->maybe_regenerate_images( implode( ' ', $keywords ), $images, AST_BLOCK_TEMPLATES_IMAGE_COUNT - $image_count );
-			$images = ! empty( $new_images ) ? array_merge( $images, $new_images ) : $images;
-		}
+		if ( ! empty( $images ) ) {
+			foreach ( $images as $key => $image ) {
+				foreach ( $image as $j => $image_attr ) {
+					switch ( $image_attr ) {
+						case 'author_name':
+						case 'orientation':
+						case 'author_url':
+						case 'description':
+						case 'engine':
+						case 'id':
+							$images[ $key ][ $image_attr ] = sanitize_text_field( wp_unslash( $image_attr ) );
+							break;
 
-		foreach ( $images as $key => $image ) {
-			foreach ( $image as $j => $image_attr ) {
-				switch ( $image_attr ) {
-					case 'author_name':
-					case 'orientation':
-					case 'author_url':
-					case 'description':
-					case 'engine':
-					case 'id':
-						$images[ $key ][ $image_attr ] = sanitize_text_field( wp_unslash( $image_attr ) );
-						break;
-
-					case 'engine_url':
-					case 'author_url':
-					case 'optimized_url':
-					case 'url':
-						$images[ $key ][ $image_attr ] = esc_url_raw( wp_unslash( $image_attr ) );
-						break;
+						case 'engine_url':
+						case 'author_url':
+						case 'optimized_url':
+						case 'url':
+							$images[ $key ][ $image_attr ] = esc_url_raw( wp_unslash( $image_attr ) );
+							break;
+					}
 				}
 			}
 		}
+
+		$language = isset( $_POST['language'] ) ? json_decode( wp_unslash( $_POST['language'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 		$business_details = get_option( 'zipwp_user_business_details', array() );
 		$business_details['business_name'] = isset( $_POST['business_name'] ) ? sanitize_text_field( wp_unslash( $_POST['business_name'] ) ) : '';
@@ -346,6 +345,7 @@ class Ai_Content {
 		$business_details['business_phone']   = ( isset( $_POST['business_phone'] ) ) ? sanitize_text_field( wp_unslash( $_POST['business_phone'] ) ) : '';
 		$business_details['business_email']   = ( isset( $_POST['business_email'] ) ) ? sanitize_email( wp_unslash( $_POST['business_email'] ) ) : '';
 		$business_details['social_profiles']  = $social_profiles;
+		$business_details['language']  = $language;
 
 		update_option( 'ast-block-templates-show-onboarding', 'no' );
 		update_option( 'zipwp_user_business_details', $business_details );
@@ -399,62 +399,4 @@ class Ai_Content {
 		update_option( 'ast_block_downloaded_images', $downloaded_ids );
 	}
 
-	/**
-	 * Maybe Regenerate Images
-	 *
-	 * @since 2.0.0
-	 * @param array $keywords Keywords.
-	 * @param array $images Images.
-	 * @param int   $required_image_count Required Image Count.
-	 *
-	 * @return array
-	 */
-	public function maybe_regenerate_images( $keywords, $images, $required_image_count ) {
-
-		$api_endpoint = AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-json/image/v1/images';
-	
-		$existing_images_ids = is_array( $images ) ? array_column( $images, 'id' ) : array();
-		$new_images = array();
-
-		$post_data = array(
-			'keywords' => $keywords,
-			'per_page' => 20,
-			'page' => 1,
-			'orientation' => '',
-			'engine' => 'pexels',
-		);
-
-		$request_args = array(
-			'body' => '',
-			'headers' => array(
-				'Content-Type' => 'application/json',
-			),
-			'timeout' => 100,
-		);
-
-		$request_args['body'] = wp_json_encode( $post_data );
-
-		$response = wp_remote_post( $api_endpoint, $request_args );
-
-		if ( ! is_wp_error( $response ) ) {
-			$response_code = wp_remote_retrieve_response_code( $response );
-			$response_body = wp_remote_retrieve_body( $response );
-
-			if ( 200 === $response_code ) {
-				$response_data = json_decode( $response_body, true );
-
-				foreach ( $response_data as $image ) {
-					if ( ! in_array( (string) $image['id'], $existing_images_ids, true ) ) {
-						$new_images[] = $image;
-						$required_image_count--;
-					}
-					if ( 0 == $required_image_count ) {
-						break;
-					}
-				}
-			}
-		}
-
-		return $new_images;
-	}
 }
