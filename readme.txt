@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Security Fix: Hardened the security of the plugin. Props: Ngô Thiên An (ancorn_).
 * Improvement: Core - Updated asset URL generation logic to prevent caching issues.
 * Improvement: Buttons - Improved the accessibility for better user interaction.
 * Fix: Global - Resolved an issue wherein the sidebar block border not displayed.

@@ -97,7 +97,7 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 		 * @return array
 		 */
 		public static function get_frontend_css( $slug, $attr, $id, $is_gbs = false ) {
-			return self::get_frontend_assets( $slug, $attr, $id, 'css', $is_gbs );
+			return self::get_frontend_assets( $slug, $attr, esc_attr( $id ), 'css', $is_gbs );
 		}
 
 		/**
@@ -111,7 +111,7 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 		 * @return array
 		 */
 		public static function get_frontend_js( $slug, $attr, $id ) {
-			return self::get_frontend_assets( $slug, $attr, $id, 'js' );
+			return self::get_frontend_assets( $slug, $attr, esc_attr( $id ), 'js' );
 		}
 
 		/**
