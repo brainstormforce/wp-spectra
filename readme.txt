@@ -5,11 +5,11 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.5.2
-Stable tag: 2.13.0
+Stable tag: 2.13.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Power-up the Gutenberg editor with advanced and powerful blocks that help you build websites in no time! This first Gutenberg plugin is here to make website building an ultimate journey.
+Power-up Gutenberg with advanced blocks for faster website creation. Build your WordPress website effortlessly using powerful building blocks!
 
 == Description ==
 
@@ -215,6 +215,12 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= 2.13.1 - Friday, 3rd May 2024 =
+* Security Fix: Hardened the security of the plugin. Props: Ngô Thiên An (ancorn_).
+* Improvement: Core - Updated asset URL generation logic to prevent caching issues.
+* Improvement: Buttons - Improved the accessibility for better user interaction.
+* Fix: Global - Resolved an issue wherein the sidebar block border not displayed.
+
 = 2.13.0 - Thursday, 25th April 2024 =
 * New: Introducing the Header Title-bar - Make more space for editing!
 * Feature: Container - Added new layout type 'grid'.
@@ -241,13 +247,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Counter - Resolved an issue wherein the total number resets to default on end number change.
 * Fix: Icon - Resolved an issue wherein a few icons would not load on the frontend.
 * Fix: Global - Resolved an issue that would cause block-styling to break when used for a custom archive template of specific post types in FSE themes.
-
-= 2.12.7 - Tuesday, 2nd April 2024 =
-* Security Fix: Hardened the security of the plugin. Props: Wordfence.
-* Improvement: Added compatibility with WordPress v6.5.
-* Improvement: Buttons - Added an inherit-gap-from-theme option.
-* Fix: Container - Resolved an issue wherein the 'open in new window' option would not be available when Spectra Pro is actived.
-* Fix: Icon - Resolved an issue wherein icon links for 'tel' and 'mailto' would not work as intended.
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 

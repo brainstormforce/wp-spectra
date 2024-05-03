@@ -74,7 +74,7 @@ class Template_Kit_Importer {
 		$demo_api_uri = esc_url_raw( add_query_arg( $request_params, $api_uri ) );
 
 		// API Call.
-		$response = wp_remote_get( $demo_api_uri, $api_args );
+		$response = wp_safe_remote_get( $demo_api_uri, $api_args );
 
 		if ( is_wp_error( $response ) ) {
 			if ( isset( $response->status ) ) {

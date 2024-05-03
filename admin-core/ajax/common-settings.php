@@ -708,8 +708,10 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function regenerate_assets() {
 		$this->check_permission_nonce( 'uag_regenerate_assets' );
-
-		$this->delete_all_assets();
+		
+		/* Update the asset version */
+		\UAGB_Admin_Helper::create_specific_stylesheet();
+		\UAGB_Admin_Helper::update_admin_settings_option( '__uagb_asset_version', time() );
 
 		$response_data = array(
 			'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ),
@@ -1028,7 +1030,7 @@ class Common_Settings extends Ajax_Base {
 	/**
 	 * Save setting - Enables the header titlebar.
 	 *
-	 * @since x.x.x
+	 * @since 2.13.1
 	 * @return void
 	 */
 	public function enable_header_titlebar() {

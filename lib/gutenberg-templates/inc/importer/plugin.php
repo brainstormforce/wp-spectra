@@ -263,7 +263,7 @@ class Plugin {
 		} else {
 			$complete_url = AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-json/wp/v2/' . $block_type . '/' . $block_id . '/?site_url=' . site_url();
 		}
-		$response = wp_remote_get( $complete_url );
+		$response = wp_safe_remote_get( $complete_url );
 
 		if ( is_wp_error( $response ) ) {
 			wp_send_json_error( __( 'Something went wrong', 'ast-block-templates' ) );
@@ -675,13 +675,13 @@ class Plugin {
 								$selected_words = array_slice( $words, 0, absint( 10 ) ); // Added atstic 10 words. Here fallback logic will be added.
 								$ai_content     = implode( ' ', $selected_words );
 							}
-							error_log( 'No content found for "' . $key );
+							Helper::instance()->ast_block_templates_log( 'No content found for "' . $key );
 						}
 
 						$ai_content = BlockEditor::instance()->replace_contact_details( $key, $ai_content );
 
 						if ( ! empty( $ai_content ) ) {
-							error_log( 'Replacing content from the "' . $key . '" to "' . $ai_content . '"' );
+							Helper::instance()->ast_block_templates_log( 'Replacing content from the "' . $key . '" to "' . $ai_content . '"' );
 							$text               = str_replace( $key, $ai_content, $block['innerHTML'] );
 							$block['innerHTML'] = $text;
 							foreach ( $block['innerContent'] as $k => $inner_content ) {
@@ -820,7 +820,7 @@ class Plugin {
 		$demo_api_uri = add_query_arg( $request_params, $api_uri );
 
 		// API Call.
-		$response = wp_remote_get( $demo_api_uri, $api_args );
+		$response = wp_safe_remote_get( $demo_api_uri, $api_args );
 
 		if ( is_wp_error( $response ) || ( isset( $response->status ) && 0 === $response->status ) ) {
 			if ( isset( $response->status ) ) {
@@ -873,9 +873,10 @@ class Plugin {
 
 		$this->sync_disable_ai_settings();
 
-		wp_enqueue_script( 'ast-block-templates', AST_BLOCK_TEMPLATES_URI . 'dist/main.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'masonry', 'imagesloaded', 'updates' ), AST_BLOCK_TEMPLATES_VER, true );
+		wp_enqueue_script( 'ast-block-templates', AST_BLOCK_TEMPLATES_URI . 'dist/main.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'masonry', 'imagesloaded', 'updates', 'media-upload', 'wp-util' ), AST_BLOCK_TEMPLATES_VER, true );
 		wp_add_inline_script( 'ast-block-templates', 'window.lodash = _.noConflict();', 'after' );
-
+		wp_enqueue_media();
+		
 		wp_enqueue_style( 'ast-block-templates', AST_BLOCK_TEMPLATES_URI . 'dist/style.css', array(), AST_BLOCK_TEMPLATES_VER, 'all' );
 
 		wp_enqueue_script(

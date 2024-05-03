@@ -129,7 +129,7 @@ class Description extends Api_Base {
 			),
 			'timeout' => 100,
 		);
-		$response = wp_remote_post( $api_endpoint, $request_args );
+		$response = wp_safe_remote_post( $api_endpoint, $request_args );
 
 
 

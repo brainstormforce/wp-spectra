@@ -79,6 +79,7 @@ export default function save( props ) {
 					href={ ( '' === link || dynamicContent?.link?.enable ) ? '#' : link }
 					rel={ noFollow ? 'nofollow noopener' : 'follow noopener' }
 					target={ openNewWindow }
+					role="button"
 				>
 					{ iconHtml( 'before' ) }
 					{ btnText() }

@@ -65,5 +65,6 @@ module.exports = {
 		Isotope: true,
 		imagesLoaded: true,
 		UAGBTabs: true,
+		UAGBButtonChild: true,
 	},
 };

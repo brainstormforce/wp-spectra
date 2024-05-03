@@ -23,11 +23,14 @@ class Helper {
 	 * @param string $message   Log message.
 	 */
 	public function ast_block_templates_log( $message = '' ) {
+		
 		if ( self::$instance->ast_block_templates_doing_wp_cli() ) {
 			\WP_CLI::line( $message );
 		} else {
-			error_log( $message ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
-		}
+			if ( defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG && function_exists( 'error_log' ) && apply_filters( 'ast_block_templates_debug_logs', false ) ) {
+				error_log( $message ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
+			}
+		}   
 	}
 
 	/**
@@ -235,7 +238,7 @@ class Helper {
 		$api_url = $server_url . $endpoint;
 
 		// Get the response from the endpoint.
-		$response = wp_remote_post(
+		$response = wp_safe_remote_post(
 			$api_url,
 			array(
 				'headers' => array(
@@ -324,15 +327,25 @@ class Helper {
 	 */
 	public function create_files( $files = array() ) {
 		// Install files and folders for uploading files and prevent hotlinking.
-
 		foreach ( $files as $file ) {
-			if ( wp_mkdir_p( $file['file_base'] ) && ! file_exists( trailingslashit( $file['file_base'] ) . $file['file_name'] ) ) {
-				$file_handle = @fopen( trailingslashit( $file['file_base'] ) . $file['file_name'], 'w' ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged, WordPress.WP.AlternativeFunctions.file_system_read_fopen
-				if ( $file_handle ) {
-					fwrite( $file_handle, $file['file_content'] ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_read_fwrite, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_fwrite
-					fclose( $file_handle ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_read_fclose
-					self::ast_block_templates_log( 'File: ' . $file['file_name'] . ' Created Successfully!' );
-				}
+			$this->create_single_file( $file );
+		}
+	}
+
+	/**
+	 * Create file/directories.
+	 * 
+	 * @param array<string, string> $file The file array.
+	 * 
+	 * @return void
+	 */
+	public function create_single_file( $file ) {
+		if ( wp_mkdir_p( $file['file_base'] ) && ! file_exists( trailingslashit( $file['file_base'] ) . $file['file_name'] ) ) {
+			$file_handle = @fopen( trailingslashit( $file['file_base'] ) . $file['file_name'], 'w' ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged, WordPress.WP.AlternativeFunctions.file_system_read_fopen
+			if ( $file_handle ) {
+				fwrite( $file_handle, $file['file_content'] ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_read_fwrite, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_fwrite
+				fclose( $file_handle ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_read_fclose
+				self::ast_block_templates_log( 'File: ' . $file['file_name'] . ' Created Successfully!' );
 			}
 		}
 	}
@@ -340,17 +353,29 @@ class Helper {
 	/**
 	 * Update files/directories.
 	 * 
-	 * @param string     $file_path The file path.
+	 * @param string     $file_name The file path.
 	 * @param string|int $file_content The file content.
 	 * 
 	 * @return void
 	 */
-	public function update_json_file( $file_path, $file_content ) {
+	public function update_json_file( $file_name, $file_content ) {
 
-		if ( file_exists( AST_BLOCK_TEMPLATES_JSON_DIR . $file_path ) && file_put_contents( AST_BLOCK_TEMPLATES_JSON_DIR . $file_path, wp_json_encode( $file_content ) ) !== false ) { //phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_file_put_contents
-			self::ast_block_templates_log( 'File: ' . $file_path . ' Updated Successfully!' );
+		$file_name = $file_name . '.json';
+
+		if ( ! file_exists( AST_BLOCK_TEMPLATES_JSON_DIR . $file_name ) ) {
+			$file_data = array(
+				'file_name' => $file_name,
+				'file_content' => '',
+				'file_base' => AST_BLOCK_TEMPLATES_JSON_DIR,
+			);
+
+			$this->create_single_file( $file_data );
+		}
+
+		if ( file_exists( AST_BLOCK_TEMPLATES_JSON_DIR . $file_name ) && file_put_contents( AST_BLOCK_TEMPLATES_JSON_DIR . $file_name, wp_json_encode( $file_content ) ) !== false ) { //phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_file_put_contents
+			self::ast_block_templates_log( 'File: ' . $file_name . ' Updated Successfully!' );
 		} else {
-			self::ast_block_templates_log( 'File: ' . $file_path . ' Not Updated!' );
+			self::ast_block_templates_log( 'File: ' . $file_name . ' Not Updated!' );
 		}
 		
 	}

@@ -149,7 +149,7 @@ class Ast_Block_Templates_Zipwp_Api {
 			'headers' => $this->get_api_headers(),
 			'timeout' => 100,
 		);
-		$response = wp_remote_get( $api_endpoint, $request_args );
+		$response = wp_safe_remote_get( $api_endpoint, $request_args );
 		if ( is_wp_error( $response ) ) {
 			// There was an error in the request.
 			wp_send_json_error(
@@ -201,12 +201,12 @@ class Ast_Block_Templates_Zipwp_Api {
 			);
 		}
 
-		$api_endpoint = $this->get_api_domain() . '/sites/languages/';
+		$api_endpoint = $this->get_api_domain() . 'sites/languages/';
 		$request_args = array(
 			'headers' => $this->get_api_headers(),
 			'timeout' => 100,
 		);
-		$response = wp_remote_get( $api_endpoint, $request_args );
+		$response = wp_safe_remote_get( $api_endpoint, $request_args );
 
 		if ( is_wp_error( $response ) ) {
 			// There was an error in the request.

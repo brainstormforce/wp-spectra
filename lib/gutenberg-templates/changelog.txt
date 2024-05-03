@@ -1,3 +1,8 @@
+v2.2.0 - 26-April-2024
+- Improvement: Revamped AI onboarding with language compatibility.
+- Improvement: User Interface Enhancements & tweaks.
+- Fix: JSON file names renamed correctly.
+
 v2.1.28 - 12-April-2024
 - Fix: Resolved line-height issue for blocks.
 

@@ -45,6 +45,8 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 
 			// We have added this action here to support both the ways of post updations, Rest API & Normal.
 			add_action( 'save_post', array( 'UAGB_Helper', 'delete_page_assets' ), 10, 1 );
+			// Adding this action to delete post assets if the post is moved to trash.
+			add_action( 'wp_trash_post', array( $this, 'delete_page_assets_on_trash' ) );
 			global $wp_customize;
 			if ( $wp_customize ) { // Check whether the $wp_customize is set.
 				add_filter( 'render_block_data', array( $this, 'content_pre_render' ) ); // Add a inline style for block when it rendered in customizer.
@@ -53,6 +55,29 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 				add_action( 'rest_after_save_widget', array( $this, 'after_widget_save_action' ) ); // Update the assets on widget save.
 			}
 
+		}
+
+		/**
+		 * Function to delete post assets.
+		 *
+		 * @param int $post_id post_id of deleted post.
+		 * @since 2.13.1
+		 * @return void 
+		 */
+		public function delete_page_assets_on_trash( $post_id ) {
+			
+				$css_asset_info = UAGB_Scripts_Utils::get_asset_info( 'css', $post_id );
+				$js_asset_info  = UAGB_Scripts_Utils::get_asset_info( 'js', $post_id );
+
+				$css_file_path = $css_asset_info['css'];
+				$js_file_path  = $js_asset_info['js'];
+
+			if ( file_exists( $css_file_path ) ) {
+				wp_delete_file( $css_file_path );
+			}
+			if ( file_exists( $js_file_path ) ) {
+				wp_delete_file( $js_file_path );
+			}
 		}
 
 		/**
@@ -540,7 +565,7 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 		/**
 		 * Supported arguments to check if the given post type supports custom fields.
 		 *
-		 * @since x.x.x
+		 * @since 2.13.1
 		 * @return array The array of supported arguments.
 		 */
 		public function check_custom_fields_support_args() {
@@ -558,7 +583,7 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 		 * Checks if the given post type supports custom fields.
 		 *
 		 * @param WP_REST_Request $request All the details about the request.
-		 * @since x.x.x
+		 * @since 2.13.1
 		 * @return WP_REST_Response The response.
 		 */
 		public function check_custom_fields_support( $request ) {

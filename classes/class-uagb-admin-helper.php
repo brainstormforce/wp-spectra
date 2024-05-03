@@ -312,10 +312,6 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			$wp_upload_dir = UAGB_Helper::get_uag_upload_dir_path();
 			$combined_path = $wp_upload_dir . 'custom-style-blocks.css';
 
-			if ( file_exists( $combined_path ) ) {
-				wp_delete_file( $combined_path );
-			}
-
 			$style = '';
 
 			$wp_filesystem = uagb_filesystem();
