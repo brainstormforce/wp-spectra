@@ -216,7 +216,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
-* Improvement: Info Box - Added an option to enable semantic paragraph.
+* Improvement: Info Box - Added an option to enable semantic paragraphs.
+* Fix: Forms - Resolved an issue wherein the submit button would not work as intended when full width is selected.
 
 = 2.13.1 - Friday, 3rd May 2024 =
 * Security Fix: Hardened the security of the plugin. Props: Ngô Thiên An (ancorn_).

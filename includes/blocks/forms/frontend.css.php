@@ -640,7 +640,7 @@ if ( ! $attr['inheritFromTheme'] ) {
 		'border-color'     => ! empty( $attr['btnBorderHColor'] ) ? $attr['btnBorderHColor'] : $attr['submitborderHoverColor'],
 	);
 
-	$selectors[' .uagb-forms__full-btn .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button']                 = array(
+	$selectors['.uagb-forms__full-btn .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button']                  = array(
 		'width'   => '100%',
 		'padding' => '10px 15px',
 	);
