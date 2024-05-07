@@ -254,3 +254,9 @@ a.uagb-cta__link-to-all {
 		width: 100% !important;
 	}
 }
+
+// Styling for multiline paragraph
+.uagb-cta__desc p:last-child {
+	margin-bottom: 0;
+}
+

@@ -4,6 +4,7 @@
 
 // Import block dependencies and components.
 import classnames from 'classnames';
+import { InnerBlocks } from '@wordpress/block-editor';
 
 // Import icon.
 import Title from './components/Title';
@@ -21,6 +22,7 @@ export default function save( props ) {
 		ctaTitle,
 		description,
 		enabledSecondCtaButton,
+		enableMultilineParagraph,
 	} = props.attributes;
 
 	const isCta = <CTA attributes={ props.attributes } setAttributes="not_set" />;
@@ -33,7 +35,9 @@ export default function save( props ) {
 		);
 
 	// Get description and seperator components.
-	const desc = <>{ '' !== description && <Description attributes={ props.attributes } setAttributes="not_set" /> }</>;
+	const desc = enableMultilineParagraph 
+    ? <div className='uagb-cta__desc'> <InnerBlocks.Content /> </div> 
+    : '' !== description && <Description attributes={ props.attributes } setAttributes="not_set" />;
 
 	// Get Title components.
 	const titleText = <>{ '' !== ctaTitle && <Title attributes={ props.attributes } setAttributes="not_set" /> }</>;

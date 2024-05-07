@@ -232,7 +232,8 @@ const Settings = ( props ) => {
 		inheritFromTheme,
 		ctaButtonType,
 		secCtaButtonType,
-		secInheritFromTheme
+		secInheritFromTheme,
+		enableMultilineParagraph,
 	} = attributes;
 
 	const currentTheme = uagb_blocks_info.current_theme;
@@ -1681,6 +1682,17 @@ const Settings = ( props ) => {
 							},
 						] }
 					/>
+
+				<ToggleControl
+					checked={ enableMultilineParagraph }
+					onChange={ () => setAttributes( { enableMultilineParagraph : ! enableMultilineParagraph } ) }
+					label={ __( 'Enable Semantic Markup', 'ultimate-addons-for-gutenberg' ) }
+					help={ ! enableMultilineParagraph ? __(
+						'Use Core/Paragraph: Improve accessibility and SEO with semantic HTML markup. Note: Existing Rich Text content will not be preserved.',
+						'ultimate-addons-for-gutenberg'
+					) : '' }
+				/>
+
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Overall Alignment', 'ultimate-addons-for-gutenberg' ) }

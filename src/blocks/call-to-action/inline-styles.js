@@ -262,6 +262,22 @@ function CtaStyle( attributes, clientId, name, deviceType, gbsSelector = false )
 			'color': descColor,
 			'margin-bottom': generateCSSUnit( descSpaceFallback, descSpaceType ),
 		},
+		// Multiline Paragraph style .
+		' .uagb-cta__desc': {
+			'font-size': generateCSSUnit( descFontSize, descFontSizeType ),
+			'font-family': descFontFamily,
+			'font-style': descFontStyle,
+			'text-transform': descTransform,
+			'font-weight': descFontWeight,
+			'letter-spacing': generateCSSUnit( descLetterSpacing, descLetterSpacingType ),
+			'color': descColor,
+			'margin-bottom': generateCSSUnit( descSpaceFallback, descSpaceType ),
+		},
+		' .uagb-cta__desc p': {
+			'color': descColor,
+			'line-height': generateCSSUnit( descLineHeight, descLineHeightType ),
+			'text-decoration': descDecoration,
+		},
 	};
 
 	if ( ctaPosition === 'right' ) {
@@ -321,6 +337,15 @@ function CtaStyle( attributes, clientId, name, deviceType, gbsSelector = false )
 			'letter-spacing': generateCSSUnit( descLetterSpacingTablet, descLetterSpacingType ),
 			'margin-bottom': generateCSSUnit( descSpaceTablet, descSpaceType ),
 		},
+		// Multiline Paragraph Style 
+		' .uagb-cta__desc': {
+			'font-size': generateCSSUnit( descFontSizeTablet, descFontSizeTypeTablet ),
+			'letter-spacing': generateCSSUnit( descLetterSpacingTablet, descLetterSpacingType ),
+			'margin-bottom': generateCSSUnit( descSpaceTablet, descSpaceType ),
+		},
+		' .uagb-cta__desc p': {
+			'line-height': generateCSSUnit( descLineHeightTablet, descLineHeightType ),
+		},
 		'.uagb-cta__outer-wrap a.uagb-cta__button-link-wrapper svg': {
 			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeTypeTablet ),
 			'height': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeTypeTablet ),
@@ -372,6 +397,15 @@ function CtaStyle( attributes, clientId, name, deviceType, gbsSelector = false )
 			'line-height': generateCSSUnit( descLineHeightMobile, descLineHeightType ),
 			'letter-spacing': generateCSSUnit( descLetterSpacingMobile, descLetterSpacingType ),
 			'margin-bottom': generateCSSUnit( descSpaceMobile, descSpaceType ),
+		},
+		// Multiline Paragraph Style 
+		' .uagb-cta__desc': {
+			'font-size': generateCSSUnit( descFontSizeMobile, descFontSizeTypeMobile ),
+			'letter-spacing': generateCSSUnit( descLetterSpacingMobile, descLetterSpacingType ),
+			'margin-bottom': generateCSSUnit( descSpaceMobile, descSpaceType ),
+		},
+		' .uagb-cta__desc p': {
+			'line-height': generateCSSUnit( descLineHeightMobile, descLineHeightType ),
 		},
 		' .uagb-cta__button-wrapper a.uagb-cta-typeof-text': {
 			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeTypeMobile ),
