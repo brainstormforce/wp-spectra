@@ -1,4 +1,4 @@
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useInnerBlocksProps } from '@wordpress/block-editor';
 
 import { __ } from '@wordpress/i18n';
 
@@ -7,9 +7,31 @@ import { applyFilters } from '@wordpress/hooks';
 
 const InfoBoxDesc = ( props ) => {
 	const { attributes, setAttributes, mergeBlocks, insertBlocksAfter, onReplace, context, hasDescriptionDC } = props;
-	let { headingDesc } = attributes;
+	let { headingDesc, enableMultilineParagraph } = attributes;
 
-	if( 'not_set' === setAttributes ){
+
+	const innerBlockOptions = {
+        allowedBlocks: ['core/paragraph'],
+        template: [
+            [
+                'core/paragraph',
+                {
+                    content: headingDesc,
+                },
+            ],
+        ],
+        templateLock: false,
+        renderAppender: false
+    };
+
+    const innerBlocksProps = useInnerBlocksProps(
+        {
+            className: 'uagb-ifb-desc',
+        },
+        innerBlockOptions
+    );
+
+	if( 'not_set' === setAttributes && ! enableMultilineParagraph ){
 		return <RichText.Content tagName="p" value={ headingDesc } className="uagb-ifb-desc" />
 	}
 
@@ -23,18 +45,19 @@ const InfoBoxDesc = ( props ) => {
 			headingDesc = renderedMarkup;
 		}
 	}
-
-	return (
-		<RichText
-			tagName="p"
-			value={ headingDesc }
-			placeholder={ __( 'Write a Description', 'ultimate-addons-for-gutenberg' ) }
-			className="uagb-ifb-desc"
-			onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
-			onMerge={ mergeBlocks }
-			onSplit={
-				insertBlocksAfter
-					? ( before, after, ...blocks ) => {
+	
+	const originalContent = (
+		<>
+			<RichText
+				tagName="p"
+				value={ headingDesc }
+				placeholder={ __( 'Write a Description', 'ultimate-addons-for-gutenberg' ) }
+				className="uagb-ifb-desc"
+				onChange={ ( value ) => setAttributes( { headingDesc: value, tempHeadingDesc: value } ) }
+				onMerge={ mergeBlocks }
+				onSplit={
+					insertBlocksAfter
+						? ( before, after, ...blocks ) => {
 							setAttributes( { content: before } );
 							insertBlocksAfter( [
 								...blocks,
@@ -43,11 +66,21 @@ const InfoBoxDesc = ( props ) => {
 								} ),
 							] );
 						}
-					: undefined
+						: undefined
+				}
+				onRemove={ () => onReplace( [] ) }
+				allowedFormats={ allowedFormats }
+			/>
+		</>
+	);
+
+	return (
+		<>
+			{ enableMultilineParagraph ? 
+				<div {...innerBlocksProps} />
+				: originalContent
 			}
-			onRemove={ () => onReplace( [] ) }
-			allowedFormats={ allowedFormats }
-		/>
+    	</>
 	);
 };
 

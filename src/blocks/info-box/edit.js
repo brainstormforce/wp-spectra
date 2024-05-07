@@ -34,6 +34,8 @@ const UAGBInfoBox = ( props ) => {
 			UAGHideTab,
 			UAGHideMob,
 			globalBlockStyleId,
+			enableMultilineParagraph,
+			tempHeadingDesc
 		},
 		name,
 		clientId,
@@ -61,6 +63,10 @@ const UAGBInfoBox = ( props ) => {
 
 		if ( showCtaIcon === undefined ) {
 			setAttributes( { showCtaIcon: true } );
+		}
+
+		if ( enableMultilineParagraph ) {
+			setAttributes( { headingDesc: tempHeadingDesc } );
 		}
 
 		// Backward Border Migration

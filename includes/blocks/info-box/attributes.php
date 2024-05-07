@@ -294,6 +294,7 @@ return array_merge(
 		// For Global Block Styles.
 		'globalBlockStyleName'       => '',
 		'globalBlockStyleId'         => '',
+		'enableMultilineParagraph'   => false,
 	),
 	$cta_border_attribute
 );

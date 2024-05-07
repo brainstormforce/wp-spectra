@@ -35,6 +35,16 @@ const attributes = {
 			'ultimate-addons-for-gutenberg'
 		),
 	},
+	tempHeadingDesc: {
+		type: 'string',
+		default: __( 'Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.'
+		, 'ultimate-addons-for-gutenberg' )
+		,
+	},
+	enableMultilineParagraph: {
+		type: 'boolean',
+		default: false,
+	},
 	headingAlign: {
 		type: 'string',
 		default: 'center',

@@ -9,7 +9,7 @@ import InfoBoxPositionClasses from './style-classes';
 import InfoBoxSeparator from './components/Separator';
 import CallToAction from './components/CTA';
 import InfoBoxIconImage from './components/IconImages';
-import { RichText } from '@wordpress/block-editor';
+import { RichText, InnerBlocks } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { attributes } = props; 
@@ -42,6 +42,7 @@ export default function save( props ) {
 		blockRightMarginMobile,
 		blockTopMarginMobile,
 		htmlTag,
+		enableMultilineParagraph,
 	} = attributes;
 
 	// Get icon/Image components.
@@ -62,6 +63,13 @@ export default function save( props ) {
 	let position = seperatorPosition;
 	const seperatorHtml = <InfoBoxSeparator attributes={ attributes } />;
 	let showSeperator = true;
+
+	// Function to render seperator.
+	const renderSeparator = ( requiredPosition ) => {
+		if ( 'none' !== seperatorStyle && position === requiredPosition && showSeperator ) {
+			return seperatorHtml;
+		}
+	};
 
 	if ( position === 'after_icon' && ( iconimgPosition === 'above-title' || iconimgPosition === 'below-title' ) ) {
 		showSeperator = false;
@@ -93,22 +101,34 @@ export default function save( props ) {
 		);
 	}
 	// Get description and seperator components.
-	const desc = (
+	const desc = enableMultilineParagraph ? (
 		<>
-			{ 'none' !== seperatorStyle && position === 'after_title' && showSeperator && seperatorHtml }
+			{ renderSeparator( 'after_title' ) }
+			{ showDesc &&  (
+				<div className='uagb-ifb-desc'>
+					<InnerBlocks.Content />
+				</div>
+			) }
+			{ renderSeparator( 'after_desc' ) }
+			{ ctaType !== 'none' && <CallToAction attributes={ attributes } /> }
+		</>
+		) : (
+		<>
+			{ renderSeparator( 'after_title' ) }
 			{ showDesc && '' !== headingDesc && (
 				<RichText.Content tagName="p" value={ attributes.headingDesc } className="uagb-ifb-desc" />
 			) }
-			{ 'none' !== seperatorStyle && position === 'after_desc' && seperatorHtml }
+			{ renderSeparator( 'after_desc' ) }
 			{ ctaType !== 'none' && <CallToAction attributes={ attributes } /> }
 		</>
 	);
+	
 
 	// Get Title and Prefix components.
 	const titleText = (
 		<div className="uagb-ifb-title-wrap">
 			{ showPrefix && '' !== prefixTitle && <RichText.Content tagName={attributes.prefixHeadingTag} value={ attributes.prefixTitle } className="uagb-ifb-title-prefix" /> }
-			{ 'none' !== seperatorStyle && position === 'after_prefix' && seperatorHtml }
+			{ renderSeparator( 'after_prefix' ) }
 			{showTitle && '' !== infoBoxTitle &&
 				<RichText.Content
 					tagName={attributes.headingTag}
