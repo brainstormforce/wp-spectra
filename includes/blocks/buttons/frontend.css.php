@@ -135,9 +135,12 @@ if ( 'full' !== $attr['align'] ) {
 }
 
 if ( 'full' !== $attr['alignTablet'] ) {
-	$t_selectors['.uagb-buttons__outer-wrap .uagb-buttons__wrap '] = array(
+	$t_selectors['.uagb-buttons__outer-wrap .uagb-buttons__wrap ']                 = array(
 		'justify-content' => $attr['alignTablet'],
 		'align-items'     => $vAlign,
+	);
+	$t_selectors['.uagb-buttons__outer-wrap .uagb-buttons__wrap .wp-block-button'] = array(
+		'width' => 'auto',
 	);
 } else {
 	$t_selectors['.uagb-buttons__outer-wrap .uagb-buttons__wrap']                   = array(
@@ -149,9 +152,12 @@ if ( 'full' !== $attr['alignTablet'] ) {
 }
 
 if ( 'full' !== $attr['alignMobile'] ) {
-	$m_selectors['.uagb-buttons__outer-wrap .uagb-buttons__wrap '] = array(
+	$m_selectors['.uagb-buttons__outer-wrap .uagb-buttons__wrap ']                 = array(
 		'justify-content' => $attr['alignMobile'],
 		'align-items'     => $vAlign,
+	);
+	$m_selectors['.uagb-buttons__outer-wrap .uagb-buttons__wrap .wp-block-button'] = array(
+		'width' => 'auto',
 	);
 } else {
 	$m_selectors['.uagb-buttons__outer-wrap .uagb-buttons__wrap']                   = array(
