@@ -22,6 +22,8 @@ const BlockCard = ( props ) => {
     const isCoreBlock = coreBlocks.includes( slug );
 
     const blockActivationStatus = ( 'disabled' === blocksStatuses[slug] && ! isCoreBlock ) ? false : true;
+    // Added it here so it bacomes easy to modify the blocks to skip later on
+    const blockToSkipLiveDemo = [ 'image', ];
 
     const updateBlockStatus = () => {
 
@@ -82,9 +84,11 @@ const BlockCard = ( props ) => {
                         </div>
                     ) }
                 </p>
-				<a className="focus-visible:text-slate-500 active:text-slate-500 hover:text-slate-500 focus:text-slate-400 text-slate-400 text-sm truncate" href={ `https://wpspectra.com/blocks/${ link }` } target="_blank"rel="noreferrer">
-					{ __( 'Live Demo', 'ultimate-addons-for-gutenberg' ) }
-				</a>                
+				{ ! blockToSkipLiveDemo.includes( slug ) &&
+                    <a className="focus-visible:text-slate-500 active:text-slate-500 hover:text-slate-500 focus:text-slate-400 text-slate-400 text-sm truncate" href={ `https://wpspectra.com/blocks/${ link }` } target="_blank"rel="noreferrer">
+                        { __( 'Live Demo', 'ultimate-addons-for-gutenberg' ) }
+                    </a> 
+                }               
             </div>
             { pro_filler ? (
                 <div className="inline-block align-text-bottom max-h-4 px-1.5 py-[3px] ml-1.5 text-[10px] leading-[10px] border border-slate-800 bg-slate-800 text-white rounded spectra-admin__block-label">
