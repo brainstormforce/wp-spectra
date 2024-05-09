@@ -172,14 +172,14 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'modal-width',
 		},
-		default: 600,
+		default: '',
 	},
 	modalWidthMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'modal-width',
 		},
-		default: 340,
+		default: '',
 	},
 	modalWidthType: {
 		type: 'string',
@@ -200,14 +200,14 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'modal-height',
 		},
-		default: 350,
+		default: '',
 	},
 	modalHeightMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'modal-height',
 		},
-		default: 300,
+		default: '',
 	},
 	modalHeightType: {
 		type: 'string',

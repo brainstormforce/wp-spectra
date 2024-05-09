@@ -220,6 +220,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Call To Action - Added an option to enable semantic paragraphs.
 * Fix: Buttons - Resolved an issue wherein the overall button alignment would not work as intended in responsive devices.
 * Fix: Forms - Resolved an issue wherein the submit button would not work as intended when full width is selected.
+* Fix: Modal - Resolved an issue wherein modal does not work as expected for responsive devices.
 
 = 2.13.1 - Friday, 3rd May 2024 =
 * Security Fix: Hardened the security of the plugin. Props: Ngô Thiên An (ancorn_).
