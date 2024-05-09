@@ -4,8 +4,8 @@
 **Tags:** gutenberg, blocks, gutenberg blocks, editor, block  
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
-**Tested up to:** 6.5.2  
-**Stable tag:** 2.13.1  
+**Tested up to:** 6.5  
+**Stable tag:** 2.13.2  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### x.x.x ###
+### 2.13.2 - Monday, 13th May 2024 ###
 * Improvement: Info Box - Added an option to enable semantic paragraphs.
 * Improvement: Call To Action - Added an option to enable semantic paragraphs.
 * Fix: Container - Resolved an issue wherein an extra margin would appear towards the left of the container.
