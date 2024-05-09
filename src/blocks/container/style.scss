@@ -1,4 +1,4 @@
-.wp-block-uagb-container:not(.uagb-layout-grid) {
+.wp-block-uagb-container {
 	display: flex;
 	position: relative;
 	box-sizing: border-box;
@@ -62,7 +62,6 @@
 .wp-block-uagb-container.uagb-layout-grid {
 	display: grid;
 	width: 100%;
-	box-sizing: border-box;
 
 	> .uagb-container-inner-blocks-wrap {
 		display: inherit;
@@ -79,8 +78,6 @@
 	}
 
 	&.uagb-is-root-container {
-		margin-left: auto;
-		margin-right: auto;
 		> .wp-block-uagb-container {
 			max-width: unset !important;
 			width: unset !important;
@@ -88,6 +85,7 @@
 	}
 
 	&.alignfull.uagb-is-root-container .uagb-container-inner-blocks-wrap {
+		display: inherit;
 		position: relative;
 		box-sizing: border-box;
 		margin-left: auto !important;

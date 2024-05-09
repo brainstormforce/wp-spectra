@@ -218,6 +218,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 = x.x.x =
 * Improvement: Info Box - Added an option to enable semantic paragraphs.
 * Improvement: Call To Action - Added an option to enable semantic paragraphs.
+* Fix: Container - Resolved an issue wherein an extra margin would appear towards the left of the container.
+* Fix: Container - Resolved an issue wherein animations would not work as intended.
 * Fix: Buttons - Resolved an issue wherein the overall button alignment would not work as intended in responsive devices.
 * Fix: Forms - Resolved an issue wherein the submit button would not work as intended when full width is selected.
 * Fix: Modal - Resolved an issue wherein modal does not work as expected for responsive devices.
