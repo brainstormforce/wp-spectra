@@ -132,6 +132,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'classes/class-uagb-install.php';
 			require_once UAGB_DIR . 'classes/class-uagb-filesystem.php';
 			require_once UAGB_DIR . 'classes/class-uagb-update.php';
+			require_once UAGB_DIR . 'classes/migrations/class-spectra-migrate-advanced-heading.php';
 			require_once UAGB_DIR . 'classes/class-uagb-block.php';
 
 			if ( is_admin() ) {
