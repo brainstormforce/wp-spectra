@@ -431,11 +431,34 @@ if ( ! class_exists( 'Spectra_Icon' ) ) {
 		 */
 		public function render_uagb_icon( $attributes ) {
 			
-			$block_id     = 'uagb-block-' . $attributes['block_id'];
+			$block_id               = 'uagb-block-' . $attributes['block_id'];
+			$iconBottomMargin       = isset( $attributes['iconBottomMargin'] ) ? $attributes['iconBottomMargin'] : '';
+			$iconLeftMargin         = isset( $attributes['iconLeftMargin'] ) ? $attributes['iconLeftMargin'] : '';
+			$iconRightMargin        = isset( $attributes['iconRightMargin'] ) ? $attributes['iconRightMargin'] : '';
+			$iconTopMargin          = isset( $attributes['iconTopMargin'] ) ? $attributes['iconTopMargin'] : '';
+			$iconBottomTabletMargin = isset( $attributes['iconBottomTabletMargin'] ) ? $attributes['iconBottomTabletMargin'] : '';
+			$iconLeftTabletMargin   = isset( $attributes['iconLeftTabletMargin'] ) ? $attributes['iconLeftTabletMargin'] : '';
+			$iconRightTabletMargin  = isset( $attributes['iconRightTabletMargin'] ) ? $attributes['iconRightTabletMargin'] : '';
+			$iconTopTabletMargin    = isset( $attributes['iconTopTabletMargin'] ) ? $attributes['iconTopTabletMargin'] : '';
+			$iconBottomMobileMargin = isset( $attributes['iconBottomMobileMargin'] ) ? $attributes['iconBottomMobileMargin'] : '';
+			$iconLeftMobileMargin   = isset( $attributes['iconLeftMobileMargin'] ) ? $attributes['iconLeftMobileMargin'] : '';
+			$iconRightMobileMargin  = isset( $attributes['iconRightMobileMargin'] ) ? $attributes['iconRightMobileMargin'] : '';
+			$iconTopMobileMargin    = isset( $attributes['iconTopMobileMargin'] ) ? $attributes['iconTopMobileMargin'] : '';
+			$margin_variables       = array( $iconBottomMargin, $iconLeftMargin, $iconRightMargin, $iconTopMargin, $iconBottomTabletMargin, $iconLeftTabletMargin, $iconRightTabletMargin, $iconTopTabletMargin, $iconBottomMobileMargin, $iconLeftMobileMargin, $iconRightMobileMargin, $iconTopMobileMargin );
+
+			$has_margin = false;
+			foreach ( $margin_variables as $margin ) {
+				if ( is_numeric( $margin ) ) {
+					$has_margin = true;
+					break;
+				}
+			}
+			$margin_class = $has_margin ? 'wp-block-uagb-icon--has-margin' : '';
 			$main_classes = array(
 				'uagb-icon-wrapper',
 				$block_id,
 				( is_array( $attributes ) && isset( $attributes['className'] ) ) ? $attributes['className'] : '',
+				$margin_class,
 			);
 	
 			$iconSvg     = isset( $attributes['icon'] ) ? $attributes['icon'] : 'circle-check';
@@ -482,13 +505,17 @@ if ( ! class_exists( 'Spectra_Icon' ) ) {
 
 			ob_start();
 			?>      
-
-	<div class="<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>"	>
-	<span class="uagb-svg-wrapper"<?php echo esc_attr( $aria_label_attr ); ?>>		
-			<?php echo $iconHtml; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-	</span>
-	</div>
-
+			<div class="<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>"	>
+				<?php if ( $has_margin ) : ?>
+				<div class='uagb-icon-margin-wrapper'>
+				<?php endif; ?>
+					<span class="uagb-svg-wrapper"<?php echo esc_attr( $aria_label_attr ); ?>>		
+						<?php echo $iconHtml; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					</span>
+				<?php if ( $has_margin ) : ?>
+				</div>
+				<?php endif; ?>
+			</div>
 			<?php
 			return ob_get_clean();
 
