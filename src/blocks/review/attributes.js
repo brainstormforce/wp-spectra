@@ -42,7 +42,7 @@ const attributes = {
 	},
 	datecreated: {
 		type: 'string',
-		default: 'Dec 19 2020',
+		default: 'Dec 19 2030',
 	},
 	directorname: {
 		type: 'string',
@@ -282,11 +282,11 @@ const attributes = {
 	},
 	offerExpiry: {
 		type: 'string',
-		default: 'Dec 19 2020',
+		default: 'Dec 19 2030',
 	},
 	datepublish: {
 		type: 'string',
-		default: 'Dec 19 2020',
+		default: 'Dec 19 2030',
 	},
 	featuresTitle: {
 		type: 'string',
@@ -858,6 +858,26 @@ const attributes = {
 	imgTagWidth: {
 		type: 'number',
 		default: 0,
+	},
+	courseMode: {
+		type: 'string',
+		default: 'Online',
+	},
+	repeatCount: {
+		type: 'number',
+		default: 1,
+	},
+	repeatFrequency: {
+		type: 'string',
+		default: 'Daily',
+	},
+	courseLocation: {
+		type: 'string',
+		default: 'University',
+	},
+	categoryOfCourse: {
+		type: 'string',
+		default: 'Free',
 	},
 };
 

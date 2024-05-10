@@ -216,7 +216,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
-* Improvement: Forms - Added a seperate alignment option for labels.
+* Improvement: Forms - Added a separate alignment option for labels.
+* Fix: Review - Resolved an issue where the Rich result test would throw an error when selecting a course item schema. 
 
 ### 2.13.2 - Monday, 13th May 2024 ###
 * Improvement: Info Box - Added an option to enable semantic paragraphs.
