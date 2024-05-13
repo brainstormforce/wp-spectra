@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
-Tested up to: 6.5.2
-Stable tag: 2.13.1
+Tested up to: 6.5
+Stable tag: 2.13.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -214,6 +214,15 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
 
 == Changelog ==
+
+= 2.13.2 - Monday, 13th May 2024 =
+* Improvement: Info Box - Added an option to enable semantic paragraphs.
+* Improvement: Call To Action - Added an option to enable semantic paragraphs.
+* Fix: Container - Resolved an issue wherein an extra margin would appear towards the left of the container.
+* Fix: Container - Resolved an issue wherein animations would not work as intended.
+* Fix: Buttons - Resolved an issue wherein the overall button alignment would not work as intended in responsive devices.
+* Fix: Forms - Resolved an issue wherein the submit button would not work as intended when full width is selected.
+* Fix: Modal - Resolved an issue wherein modal does not work as expected for responsive devices.
 
 = 2.13.1 - Friday, 3rd May 2024 =
 * Security Fix: Hardened the security of the plugin. Props: Ngô Thiên An (ancorn_).

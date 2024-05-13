@@ -15,6 +15,8 @@ import attributes from './old-attributes';
 import CTANew from './components/CallToActionNew';
 import SecondCTAButton from './components/SecondCTAButton';
 import saveV2_7_0 from './deprecated/v2_7_0/save';
+import saveV2_13_1 from './deprecated/v2_13_1/save';
+import newAttributesV2_13_1 from './deprecated/v2_13_1/attributes';
 
 import { __ } from '@wordpress/i18n';
 
@@ -404,6 +406,10 @@ const deprecated = [
 	{
 		attributes,
 		saveV2_7_0,
+	},
+	{
+		attributes: newAttributesV2_13_1,
+		save: saveV2_13_1,
 	}
 ];
 

@@ -36,6 +36,8 @@ const UAGBCallToAction = ( props ) => {
 			ctaBorderhoverColor,
 			ctaBorderRadius,
 			globalBlockStyleId,
+			enableMultilineParagraph,
+			tempDesc,
 		},
 		clientId,
 		name,
@@ -57,6 +59,10 @@ const UAGBCallToAction = ( props ) => {
 			if ( undefined === overallBlockLeftMargin && 'left' === textAlign && 'right' === ctaPosition ) {
 				setAttributes( { overallBlockLeftMargin: ctaLeftSpace } );
 			}
+		}
+
+		if ( enableMultilineParagraph ) {
+			setAttributes( { description: tempDesc } );
 		}
 
 		// border

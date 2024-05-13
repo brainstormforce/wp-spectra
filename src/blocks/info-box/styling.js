@@ -430,6 +430,24 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			'margin-right': generateCSSUnit( headRightMargin, headSpaceUnit ),
 		},
 		// Description Style
+		' .uagb-ifb-desc.block-editor-block-list__layout p': {
+			'color': subHeadingColor,
+			'line-height': generateCSSUnit( subHeadLineHeight, subHeadLineHeightType ),
+			'text-decoration': subHeadDecoration,
+		},
+		' .uagb-ifb-desc.block-editor-block-list__layout': {
+			'font-size': generateCSSUnit( subHeadFontSize, subHeadFontSizeType ),
+			'font-family': subHeadFontFamily,
+			'font-weight': subHeadFontWeight,
+			'font-style': subHeadFontStyle,
+			'text-transform': subHeadTransform,
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacing, subHeadLetterSpacingType ),
+			'color': subHeadingColor,
+			'margin-bottom': generateCSSUnit( subHeadSpace, subHeadSpaceUnit ),
+			'margin-top': generateCSSUnit( subHeadTopMargin, subHeadSpaceUnit ),
+			'margin-left': generateCSSUnit( subHeadLeftMargin, subHeadSpaceUnit ),
+			'margin-right': generateCSSUnit( subHeadRightMargin, subHeadSpaceUnit ),
+		},
 		' .block-editor-rich-text__editable.uagb-ifb-desc': {
 			'font-size': generateCSSUnit( subHeadFontSize, subHeadFontSizeType ),
 			'font-family': subHeadFontFamily,
@@ -506,6 +524,17 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			'margin-right': generateCSSUnit( subHeadMarginRightTablet, subHeadTabletMarginUnit ),
 			'font-size': generateCSSUnit( subHeadFontSizeTablet, subHeadFontSizeTypeTablet ),
 			'line-height': generateCSSUnit( subHeadLineHeightTablet, subHeadLineHeightType ),
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacingTablet, subHeadLetterSpacingType ),
+		},
+		' .uagb-ifb-desc.block-editor-block-list__layout p': {
+			'line-height': generateCSSUnit( subHeadLineHeightTablet, subHeadLineHeightType ),
+		},
+		' .uagb-ifb-desc.block-editor-block-list__layout': {
+			'margin-bottom': generateCSSUnit( subHeadTabletSpace, subHeadTabletMarginUnit ),
+			'margin-top': generateCSSUnit( subHeadMarginTopTablet, subHeadTabletMarginUnit ),
+			'margin-left': generateCSSUnit( subHeadMarginLeftTablet, subHeadTabletMarginUnit ),
+			'margin-right': generateCSSUnit( subHeadMarginRightTablet, subHeadTabletMarginUnit ),
+			'font-size': generateCSSUnit( subHeadFontSizeTablet, subHeadFontSizeTypeTablet ),
 			'letter-spacing': generateCSSUnit( subHeadLetterSpacingTablet, subHeadLetterSpacingType ),
 		},
 		' .block-editor-rich-text__editable.uagb-ifb-title': {
@@ -604,9 +633,19 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			'padding-bottom': generateCSSUnit( iconMarginBottomMobile, iconMobileMarginUnit ),
 			'padding-left': generateCSSUnit( iconMarginLeftMobile, iconMobileMarginUnit ),
 		},
+		' .uagb-ifb-desc.block-editor-block-list__layout p': {
+			'line-height': generateCSSUnit( subHeadLineHeightMobile, subHeadLineHeightType ),
+		},
 		' .block-editor-rich-text__editable.uagb-ifb-desc': {
 			'font-size': generateCSSUnit( subHeadFontSizeMobile, subHeadFontSizeTypeMobile ),
-			'line-height': generateCSSUnit( subHeadLineHeightMobile, subHeadLineHeightType ),
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacingMobile, subHeadLetterSpacingType ),
+			'margin-bottom': generateCSSUnit( subHeadMobileSpace, subHeadMobileMarginUnit ),
+			'margin-top': generateCSSUnit( subHeadMarginTopMobile, subHeadMobileMarginUnit ),
+			'margin-left': generateCSSUnit( subHeadMarginLeftMobile, subHeadMobileMarginUnit ),
+			'margin-right': generateCSSUnit( subHeadMarginRightMobile, subHeadMobileMarginUnit ),
+		},
+		' .uagb-ifb-desc.block-editor-block-list__layout': {
+			'font-size': generateCSSUnit( subHeadFontSizeMobile, subHeadFontSizeTypeMobile ),
 			'letter-spacing': generateCSSUnit( subHeadLetterSpacingMobile, subHeadLetterSpacingType ),
 			'margin-bottom': generateCSSUnit( subHeadMobileSpace, subHeadMobileMarginUnit ),
 			'margin-top': generateCSSUnit( subHeadMarginTopMobile, subHeadMobileMarginUnit ),

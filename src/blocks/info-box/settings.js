@@ -323,7 +323,8 @@ const Settings = ( props ) => {
 		blockPaddingUnitTablet,
 		blockPaddingUnitMobile,
 		blockPaddingLink,
-		inheritFromTheme
+		inheritFromTheme,
+		enableMultilineParagraph,
 	} = attributes;
 
 	/*
@@ -452,6 +453,7 @@ const Settings = ( props ) => {
 						] }
 					/>
 				) }
+
 				{ showIcon && (
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
@@ -656,6 +658,21 @@ const Settings = ( props ) => {
 					onChange={ () => setAttributes( { showDesc: ! showDesc } ) }
 					label={ __( 'Enable Description', 'ultimate-addons-for-gutenberg' ) }
 				/>
+
+				{ showDesc && (
+					<>
+						<ToggleControl
+						checked={ enableMultilineParagraph }
+						onChange={ () => setAttributes( { enableMultilineParagraph : ! enableMultilineParagraph } ) }
+						label={ __( 'Enable Semantic Markup', 'ultimate-addons-for-gutenberg' ) }
+						help={ ! enableMultilineParagraph ? __(
+							'Use Core/Paragraph: Improve accessibility and SEO with semantic HTML markup. Note: Existing Rich Text content will not be preserved.',
+							'ultimate-addons-for-gutenberg'
+						) : '' }
+						/>
+					</>
+				) }
+
 			</UAGAdvancedPanelBody>
 		);
 	};

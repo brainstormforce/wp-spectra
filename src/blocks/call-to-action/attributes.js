@@ -47,6 +47,17 @@ const attributes = {
 			'ultimate-addons-for-gutenberg'
 		),
 	},
+	tempDesc: {
+		type: 'string',
+		default: __( 
+			'Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 
+			'ultimate-addons-for-gutenberg' 
+		),
+	},
+	enableMultilineParagraph: {
+		type: 'boolean',
+		default: false,
+	},
 	textAlign: {
 		type: 'string',
 		default: 'left',
