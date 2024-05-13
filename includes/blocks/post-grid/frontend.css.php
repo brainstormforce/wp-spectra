@@ -93,6 +93,67 @@ if ( 'top' === $attr['imgPosition'] ) {
 	);
 }
 
+if ( $attr['isLeftToRightLayout'] ) {
+	$selectors['.wp-block-uagb-post-grid'] = array(
+		'display'        => 'flex',
+		'flex-direction' => 'column',
+	);
+
+	$selectors['.wp-block-uagb-post-grid article'] = array(
+		'display'        => 'flex',
+		'flex-direction' => $attr['wrapperAlign'],
+		'width'          => '100%',
+	);
+
+	$selectors['.wp-block-uagb-post-grid .uagb-post__image'] = array(
+		'flex'  => 'none',
+		'width' => ( 'top' === $attr['imgPosition'] ) ? '35%' : '100%',
+	);
+	
+}
+
+
+$selectors['.wp-block-uagb-post-grid .uag-post-grid-wrapper'] = array(
+	'padding-top'     => UAGB_Helper::get_css_value( $attr['wrapperTopPadding'], $attr['wrapperPaddingUnit'] ),
+	'padding-right'   => UAGB_Helper::get_css_value( $attr['wrapperRightPadding'], $attr['wrapperPaddingUnit'] ),
+	'padding-bottom'  => UAGB_Helper::get_css_value( $attr['wrapperBottomPadding'], $attr['wrapperPaddingUnit'] ),
+	'padding-left'    => UAGB_Helper::get_css_value( $attr['wrapperLeftPadding'], $attr['wrapperPaddingUnit'] ),
+	'width'           => '100%',
+	'display'         => 'flex',
+	'flex-direction'  => 'column',
+	'justify-content' => $attr['wrapperAlignPosition'],
+);
+
+$t_selectors['.wp-block-uagb-post-grid .uag-post-grid-wrapper'] = array(
+	'padding-top'    => UAGB_Helper::get_css_value( $attr['wrapperTopPaddingTablet'], $attr['wrapperPaddingUnitTablet'] ),
+	'padding-right'  => UAGB_Helper::get_css_value( $attr['wrapperRightPaddingTablet'], $attr['wrapperPaddingUnitTablet'] ),
+	'padding-bottom' => UAGB_Helper::get_css_value( $attr['wrapperBottomPaddingTablet'], $attr['wrapperPaddingUnitTablet'] ),
+	'padding-left'   => UAGB_Helper::get_css_value( $attr['wrapperLeftPaddingTablet'], $attr['wrapperPaddingUnitTablet'] ),
+);
+
+$m_selectors['.wp-block-uagb-post-grid .uag-post-grid-wrapper'] = array(
+	'padding-top'    => UAGB_Helper::get_css_value( $attr['wrapperTopPaddingMobile'], $attr['wrapperPaddingUnitMobile'] ),
+	'padding-right'  => UAGB_Helper::get_css_value( $attr['wrapperRightPaddingMobile'], $attr['wrapperPaddingUnitMobile'] ),
+	'padding-bottom' => UAGB_Helper::get_css_value( $attr['wrapperBottomPaddingMobile'], $attr['wrapperPaddingUnitMobile'] ),
+	'padding-left'   => UAGB_Helper::get_css_value( $attr['wrapperLeftPaddingMobile'], $attr['wrapperPaddingUnitMobile'] ),
+	'width'          => 'unset',
+);
+
+if ( $attr['isLeftToRightLayout'] ) {
+	$m_selectors['.wp-block-uagb-post-grid .uagb-post__image'] = array(
+		'width' => ( 'top' === $attr['imgPosition'] ) ? 'unset' : '100%',
+	);
+	$t_selectors['.wp-block-uagb-post-grid .uagb-post__image'] = array(
+		'width' => ( 'top' === $attr['imgPosition'] ) ? '45%' : '100%',
+	);
+}
+
+$m_selectors['.wp-block-uagb-post-grid']         = ( $attr['isLeftToRightLayout'] ? array(
+	'display' => 'grid',
+) : array() );
+$m_selectors['.wp-block-uagb-post-grid article'] = ( $attr['isLeftToRightLayout'] ? array(
+	'display' => 'inline-block',
+) : array() );
 
 $combined_selectors = array(
 	'desktop' => $selectors,

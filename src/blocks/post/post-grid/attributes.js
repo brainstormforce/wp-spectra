@@ -127,6 +127,10 @@ const attributes = {
 			'uagb/post-button',
 		],
 	},
+	isLeftToRightLayout: {
+		type: 'boolean',
+		default: false,
+	},
 	post_type: {
 		type: 'string',
 		default: 'grid',
@@ -1278,6 +1282,132 @@ const attributes = {
 	paginationType: {
 		type: 'string',
 		default: 'ajax',
+	},
+	// margin
+	wrapperTopPadding: {
+		type: 'number',
+		isGBSStyle : true,
+		UAGCopyPaste: {
+			styleType: 'block-top-padding',
+		},
+	},
+	wrapperRightPadding: {
+		type: 'number',
+		default: 20,
+		isGBSStyle : true,
+		UAGCopyPaste: {
+			styleType: 'block-right-padding',
+		},
+	},
+	wrapperLeftPadding: {
+		type: 'number',
+		default: 20,
+		isGBSStyle : true,
+		UAGCopyPaste: {
+			styleType: 'block-left-padding',
+		},
+	},
+	wrapperBottomPadding: {
+		type: 'number',
+		isGBSStyle : true,
+		UAGCopyPaste: {
+			styleType: 'block-bottom-padding',
+		},
+	},
+	wrapperTopPaddingTablet: {
+		type: 'number',
+		isGBSStyle : true,
+		UAGCopyPaste: {
+			styleType: 'block-top-padding-tablet',
+		},
+	},
+	wrapperRightPaddingTablet: {
+		type: 'number',
+		isGBSStyle : true,
+		UAGCopyPaste: {
+			styleType: 'block-right-padding-tablet',
+		},
+	},
+	wrapperLeftPaddingTablet: {
+		type: 'number',
+		isGBSStyle : true,
+		UAGCopyPaste: {
+			styleType: 'block-left-padding-tablet',
+		},
+	},
+	wrapperBottomPaddingTablet: {
+		type: 'number',
+		isGBSStyle : true,
+		UAGCopyPaste: {
+			styleType: 'block-bottom-padding-tablet',
+		},
+	},
+	wrapperTopPaddingMobile: {
+		type: 'number',
+		isGBSStyle : true,
+		UAGCopyPaste: {
+			styleType: 'block-top-padding-mobile',
+		},
+	},
+	wrapperRightPaddingMobile: {
+		type: 'number',
+		isGBSStyle : true,
+		UAGCopyPaste: {
+			styleType: 'block-right-padding-mobile',
+		},
+	},
+	wrapperLeftPaddingMobile: {
+		type: 'number',
+		isGBSStyle : true,
+		UAGCopyPaste: {
+			styleType: 'block-left-padding-mobile',
+		},
+	},
+	wrapperBottomPaddingMobile: {
+		type: 'number',
+		isGBSStyle : true,
+		UAGCopyPaste: {
+			styleType: 'block-bottom-padding-mobile',
+		},
+	},
+	wrapperPaddingUnit: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'block-padding-unit',
+		},
+	},
+	wrapperPaddingUnitTablet: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'block-padding-unit-tablet',
+		},
+	},
+	wrapperPaddingUnitMobile: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'block-padding-unit-mobile',
+		},
+	},
+	wrapperPaddingLink: {
+		type: 'boolean',
+		default: false,
+	},
+	wrapperAlign: {
+		type: 'string',
+		default: 'row',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment',
+		},
+	},
+	wrapperAlignPosition: {
+		type: 'string',
+		default: 'center',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment',
+		},
 	},
 	...btnBorderAttributes,
 	...overallBorderAttributes,

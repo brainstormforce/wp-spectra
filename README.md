@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
+* Feature: Post Grid - Introduced new left and right post layouts.
 * Improvement: Forms - Added a separate alignment option for labels.
 * Fix: Review - Resolved an issue where the Rich result test would throw an error when selecting a course item schema. 
 
