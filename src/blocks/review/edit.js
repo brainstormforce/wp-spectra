@@ -64,6 +64,11 @@ const ReviewComponent = ( props ) => {
 			enableDescription,
 			enableImage,
 			bookAuthorName,
+			courseMode,
+			repeatCount,
+			repeatFrequency,
+			categoryOfCourse,
+			courseLocation
 		},
 		setAttributes,
 		deviceType
@@ -119,7 +124,23 @@ const ReviewComponent = ( props ) => {
 					'name': rTitle,
 					'description': rContent,
 					'image': [],
-					provider,
+					'provider': {
+						'@type': 'Organization',
+						'name': provider
+					},
+					'offers': [{
+						'@type': 'Offer',
+						'category': categoryOfCourse
+					}],
+					'hasCourseInstance': [{
+						'@type': 'CourseInstance',
+						courseMode,
+						'courseSchedule': {
+							'@type': 'Schedule',
+							repeatCount,
+							repeatFrequency
+						}
+					}]
 				};
 				break;
 
@@ -176,6 +197,14 @@ const ReviewComponent = ( props ) => {
 
 		if ( mainimage ) {
 			jsonData.itemReviewed.image = mainimage.url;
+		}
+
+		if ( 'Course' === itemType ) {
+			jsonData.itemReviewed.hasCourseInstance[0].location = courseLocation;
+			jsonData.provider = {
+				'@type': 'Organization',
+				'name': provider
+			};
 		}
 
 		if ( itemType === 'Product' ) {

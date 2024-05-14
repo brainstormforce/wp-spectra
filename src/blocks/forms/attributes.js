@@ -777,6 +777,41 @@ const attributes = {
 			styleType: 'overall-alignment',
 		},
 	},
+	overallAlignmentTablet: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment',
+		},
+	},
+	overallAlignmentMobile: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'overall-alignment',
+		},
+	},
+	labelAlignment: {
+		type: 'string',
+		default: null,
+		UAGCopyPaste: {
+			styleType: 'label-alignment',
+		},
+	},
+	labelAlignmentTablet: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'label-alignment',
+		},
+	},
+	labelAlignmentMobile: {
+		type: 'string',
+		default: '',
+		UAGCopyPaste: {
+			styleType: 'label-alignment',
+		},
+	},
 
 	//recaptha.
 	reCaptchaEnable: {

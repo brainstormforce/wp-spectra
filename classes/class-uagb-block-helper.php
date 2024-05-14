@@ -609,11 +609,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					),
 					$overall_border_css
 				),
-				'.is-grid .uagb-post__inner-wrap .uagb-post__image:first-child' => array(
+				'.is-grid .uagb-post__inner-wrap .uagb-post__image:first-child' => ! $attr['isLeftToRightLayout'] ? array(
 					'margin-left'  => UAGB_Helper::get_css_value( ( - (int) $paddingLeft ), $attr['contentPaddingUnit'] ),
 					'margin-right' => UAGB_Helper::get_css_value( ( - (int) $paddingRight ), $attr['contentPaddingUnit'] ),
 					'margin-top'   => UAGB_Helper::get_css_value( ( - (int) $paddingTop ), $attr['contentPaddingUnit'] ),
-				),
+				) : array(),
 				':not(.is-grid) .uagb-post__inner-wrap > .uagb-post__text:last-child' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $paddingBottom, $attr['contentPaddingUnit'] ),
 				),
@@ -923,11 +923,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-right' => UAGB_Helper::get_css_value( ( - (int) $rowGapTablet / 2 ), $attr['rowGapUnit'] ),
 					'margin-left'  => UAGB_Helper::get_css_value( ( - (int) $rowGapTablet / 2 ), $attr['rowGapUnit'] ),
 				),
-				'.is-grid .uagb-post__inner-wrap .uagb-post__image:first-child' => array(
+				'.is-grid .uagb-post__inner-wrap .uagb-post__image:first-child' => ! $attr['isLeftToRightLayout'] ? array(
 					'margin-left'  => UAGB_Helper::get_css_value( - (int) ( $paddingLeftTablet ), $attr['tabletPaddingUnit'] ),
 					'margin-right' => UAGB_Helper::get_css_value( - (int) ( $paddingRightTablet ), $attr['tabletPaddingUnit'] ),
 					'margin-top'   => UAGB_Helper::get_css_value( - (int) ( $paddingTopTablet ), $attr['tabletPaddingUnit'] ),
-				),
+				) : array(),
 				':not(.is-grid) .uagb-post__inner-wrap .uagb-post__text:last-child' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $paddingBottomTablet, $attr['tabletPaddingUnit'] ),
 				),

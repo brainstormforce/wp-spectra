@@ -229,6 +229,28 @@ function styling( attributes, clientId, deviceType ) {
 		tcolumns,
 		mcolumns,
 
+		// margin
+		wrapperTopPadding,
+		wrapperRightPadding,
+		wrapperLeftPadding,
+		wrapperBottomPadding,
+		wrapperTopPaddingTablet,
+		wrapperRightPaddingTablet,
+		wrapperLeftPaddingTablet,
+		wrapperBottomPaddingTablet,
+		wrapperTopPaddingMobile,
+		wrapperRightPaddingMobile,
+		wrapperLeftPaddingMobile,
+		wrapperBottomPaddingMobile,
+		wrapperPaddingUnit,
+		wrapperPaddingUnitTablet,
+		wrapperPaddingUnitMobile,
+
+		wrapperAlign,
+	
+		wrapperAlignPosition,
+		isLeftToRightLayout,
+
 		// row spacing controls between content and dots
 		dotsMarginTop,
 		dotsMarginTopTablet,
@@ -317,6 +339,7 @@ function styling( attributes, clientId, deviceType ) {
 	const selectors = {
 		'.wp-block-uagb-post-grid': {
 			'grid-template-columns': 'repeat(' + columns + ' , minmax(0, 1fr))',
+			...( isLeftToRightLayout ? {'display': 'flex', 'flex-direction': 'column'} : {} )
 		},
 		'.wp-block-uagb-post-grid.uagb-post__items': {
 			'column-gap': generateCSSUnit( columnGapFallback, columnGapUnit ),
@@ -334,6 +357,11 @@ function styling( attributes, clientId, deviceType ) {
 		' .uagb-post__inner-wrap': {
 			'background': bgColor,
 			'text-align': align,
+			...( isLeftToRightLayout ? {
+				'display': 'flex',
+				'flex-direction': wrapperAlign,
+				'width': '100%',
+			  } : {} )
 		},
 		'.is_carousel .uagb-post__inner-wrap': {
 			'background': bgType ? bgColor : 'transparent',
@@ -364,6 +392,8 @@ function styling( attributes, clientId, deviceType ) {
 		},
 		' .uagb-post__inner-wrap .uagb-post__image': {
 			'padding-bottom': generateCSSUnit( imageBottomSpaceFallback, imageBottomSpaceUnit ),
+			...( isLeftToRightLayout && 'top' === imgPosition ? {'flex': 'none', 'width': '35%' } : {} ),
+			...( isLeftToRightLayout && 'background' === imgPosition ? {'flex': 'none','width': '100%' } : {} )
 		},
 		' .uagb-post__inner-wrap .uagb-post__image + .uagb-post__title ': {
 			'margin-top': '0px',
@@ -384,6 +414,17 @@ function styling( attributes, clientId, deviceType ) {
 		' .uagb-post-pagination-wrap': {
 			'margin-top': generateCSSUnit( paginationSpacingFallback, paginationSpacingUnit ),
 			'justify-content': paginationAlignment,
+		},
+		' .uag-post-grid-wrapper': {
+			'padding-top': generateCSSUnit( wrapperTopPadding, wrapperPaddingUnit ),
+			'padding-right': generateCSSUnit( wrapperRightPadding, wrapperPaddingUnit ),
+			'padding-bottom': generateCSSUnit( wrapperBottomPadding, wrapperPaddingUnit ),
+			'padding-left': generateCSSUnit( wrapperLeftPadding, wrapperPaddingUnit ),
+			'width': '100%',
+			'display': 'flex',
+			'flex-direction': 'column',
+			'justify-content': wrapperAlignPosition,
+			
 		},
 	};
 
@@ -650,6 +691,7 @@ function styling( attributes, clientId, deviceType ) {
 	mobileSelectors = {
 		'.wp-block-uagb-post-grid': {
 			'grid-template-columns': 'repeat(' + mcolumns + ' , minmax(0, 1fr))',
+			...( isLeftToRightLayout ? { 'display': 'grid' } : {} )
 		},
 		'.uagb-post__arrow-outside.uagb-post-grid .slick-prev': {
 			'left': generateCSSUnit( arrowDistanceMobile, 'px' ),
@@ -724,6 +766,8 @@ function styling( attributes, clientId, deviceType ) {
 		},
 		' .uagb-post__inner-wrap .uagb-post__image': {
 			'padding-bottom': generateCSSUnit( imageBottomSpaceMobile, imageBottomSpaceUnit ),
+			...( isLeftToRightLayout && 'top' === imgPosition ? { 'width': 'unset', 'display': 'flex', 'align-items': 'center' } : {} ),
+			...( isLeftToRightLayout && 'background' === imgPosition ? { 'width': '100%' } : {} )
 		},
 		'.uagb-post__items': {
 			'margin-right': generateCSSUnit( -rowGapMobileFallback / 2, rowGapUnit ),
@@ -753,6 +797,17 @@ function styling( attributes, clientId, deviceType ) {
 		},
 		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:last-child': {
 			'margin-bottom': generateCSSUnit( paddingBottomMobile, mobilePaddingUnit ),
+		},
+		' .uagb-post__inner-wrap': {
+			...( isLeftToRightLayout ? { 'flex-direction': 'column' } : {} )
+		},
+		' .uag-post-grid-wrapper': {
+			'padding-top': generateCSSUnit( wrapperTopPaddingMobile, wrapperPaddingUnitMobile ),
+			'padding-right': generateCSSUnit( wrapperRightPaddingMobile, wrapperPaddingUnitMobile ),
+			'padding-bottom': generateCSSUnit( wrapperBottomPaddingMobile, wrapperPaddingUnitMobile ),
+			'padding-left': generateCSSUnit( wrapperLeftPaddingMobile, wrapperPaddingUnitMobile ),
+			'width': 'unset',
+			
 		},
 	};
 
@@ -844,6 +899,7 @@ function styling( attributes, clientId, deviceType ) {
 		},
 		' .uagb-post__inner-wrap .uagb-post__image': {
 			'padding-bottom': generateCSSUnit( imageBottomSpaceTablet, imageBottomSpaceUnit ),
+			...( isLeftToRightLayout && 'top' === imgPosition ? {'width': '45%' } : {} ),
 		},
 		'.uagb-post__items': {
 			'margin-right': generateCSSUnit( -rowGapTabletFallback / 2, rowGapUnit ),
@@ -874,6 +930,13 @@ function styling( attributes, clientId, deviceType ) {
 		},
 		':not(.wp-block-uagb-post-grid) .uagb-post__inner-wrap .uagb-post__text:last-child': {
 			'margin-bottom': generateCSSUnit( paddingBottomTablet, tabletPaddingUnit ),
+		},
+		' .uag-post-grid-wrapper': {
+			'padding-top': generateCSSUnit( wrapperTopPaddingTablet, wrapperPaddingUnitTablet ),
+			'padding-right': generateCSSUnit( wrapperRightPaddingTablet, wrapperPaddingUnitTablet ),
+			'padding-bottom': generateCSSUnit( wrapperBottomPaddingTablet, wrapperPaddingUnitTablet ),
+			'padding-left': generateCSSUnit( wrapperLeftPaddingTablet, wrapperPaddingUnitTablet ),
+			
 		},
 	};
 
@@ -946,6 +1009,7 @@ function styling( attributes, clientId, deviceType ) {
 		'padding-left': generateCSSUnit( paddingLeftMobile, mobilePaddingUnit ),
 		'padding-right': generateCSSUnit( paddingRightMobile, mobilePaddingUnit ),
 		...overallBorderCSSMobile,
+		...( isLeftToRightLayout ? { 'display': 'inline-block' } : {} ),
 	};
 	tabletSelectors[ ' .uagb-post__cta .uagb-text-link' ] = borderCSSTablet;
 	mobileSelectors[ ' .uagb-post__cta .uagb-text-link' ] = borderCSSMobile;
@@ -957,21 +1021,24 @@ function styling( attributes, clientId, deviceType ) {
 		};
 	}
 
-	if ( imgPosition !== 'background' ) {
+	if ( imgPosition !== 'background' && ! isLeftToRightLayout ) {
 		selectors[ '.wp-block-uagb-post-grid .uagb-post__inner-wrap  > .uagb-post__image:first-child' ] = {
 			'margin-top': generateCSSUnit( -paddingTop, contentPaddingUnit ),
 			'margin-left': generateCSSUnit( -paddingLeft, contentPaddingUnit ),
 			'margin-right': generateCSSUnit( -paddingRight, contentPaddingUnit ),
 		};
-		mobileSelectors[ '.wp-block-uagb-post-grid .uagb-post__inner-wrap  > .uagb-post__image:first-child' ] = {
-			'margin-top': generateCSSUnit( -paddingTopMobile, mobilePaddingUnit ),
-			'margin-left': generateCSSUnit( -paddingLeftMobile, mobilePaddingUnit ),
-			'margin-right': generateCSSUnit( -paddingRightMobile, mobilePaddingUnit ),
-		};
 		tabletSelectors[ '.wp-block-uagb-post-grid .uagb-post__inner-wrap  > .uagb-post__image:first-child' ] = {
 			'margin-top': generateCSSUnit( -paddingTopTablet, tabletPaddingUnit ),
 			'margin-left': generateCSSUnit( -paddingLeftTablet, tabletPaddingUnit ),
 			'margin-right': generateCSSUnit( -paddingRightTablet, tabletPaddingUnit ),
+		};
+	}
+
+	if ( imgPosition !== 'background' ) {
+		mobileSelectors[ '.wp-block-uagb-post-grid .uagb-post__inner-wrap  > .uagb-post__image:first-child' ] = {
+			'margin-top': generateCSSUnit( -paddingTopMobile, mobilePaddingUnit ),
+			'margin-left': generateCSSUnit( -paddingLeftMobile, mobilePaddingUnit ),
+			'margin-right': generateCSSUnit( -paddingRightMobile, mobilePaddingUnit ),
 		};
 	}
 
