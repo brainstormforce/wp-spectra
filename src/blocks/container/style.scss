@@ -78,10 +78,17 @@
 	}
 
 	&.uagb-is-root-container {
+		margin-left: auto;
+		margin-right: auto;
 		> .wp-block-uagb-container {
 			max-width: unset !important;
 			width: unset !important;
 		}
+	}
+
+	&.alignwide.uagb-is-root-container {
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	&.alignfull.uagb-is-root-container .uagb-container-inner-blocks-wrap {
