@@ -171,6 +171,7 @@ export default function styling( attributes, clientId, name, deviceType, gbsSele
 		customHeightSetDesktop,
 		customHeightSetTablet,
 		customHeightSetMobile,
+		layout,
 	} = attributes;
 
 	const seperatorWidthFallback = getFallbackNumber( seperatorWidth, 'seperatorWidth', blockName );
@@ -268,7 +269,7 @@ export default function styling( attributes, clientId, name, deviceType, gbsSele
 			'margin-right': generateCSSUnit( captionRightMargin, captionMarginUnit ),
 			'margin-bottom': generateCSSUnit( captionBottomMargin, captionMarginUnit ),
 			'margin-left': generateCSSUnit( captionLeftMargin, captionMarginUnit ),
-			'align-self': captionAlign,
+			'align-self': layout !== 'overlay' ? captionAlign : '',
 		},
 		'.wp-block-uagb-image .wp-block-uagb-image__figure figcaption a': {
 			'color': captionColor,
