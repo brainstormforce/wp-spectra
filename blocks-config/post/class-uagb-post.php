@@ -1829,7 +1829,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 										} );
 									imagesLoaded( scope, function() { isotope	});
 									window.addEventListener( 'resize', function() {	isotope	});
-									UAGBImageGalleryMasonry.initByOffset( scope, isotope );
 								}, 500 );
 							}
 							// This CSS is for Post BG Image Spacing

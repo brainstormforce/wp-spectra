@@ -220,7 +220,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Forms - Added a separate alignment option for labels.
 * Fix: Image - Resolved an issue wherein the image overlay caption alignment would not work as expected.
 * Fix: Image - Resolved an issue wherein the hover box shadow would not work as intended in the overlay layout.
-* Fix: Review - Resolved an issue where the Rich result test would throw an error when selecting a course item schema. 
+* Fix: Review - Resolved an issue where the Rich result test would throw an error when selecting a course item schema.
+* Fix: Post Masonry - Removed a console error that would say "UAGB Image Gallery" was not defined.
 
 ### 2.13.2 - Monday, 13th May 2024 ###
 * Improvement: Info Box - Added an option to enable semantic paragraphs.
