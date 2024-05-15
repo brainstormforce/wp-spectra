@@ -371,11 +371,11 @@ export default function styling( attributes, clientId, name, deviceType, gbsSele
 
 	// Box Shadow.
 	if ( useSeparateBoxShadows ) {
-		selectors['.wp-block-uagb-image--layout-default figure img:hover'] = {
+		selectors['.wp-block-uagb-image--layout-default figure:hover img'] = {
 			'box-shadow' : boxShadowHoverCSS,
 		}
 
-		selectors['.wp-block-uagb-image--layout-overlay figure img:hover'] = {
+		selectors['.wp-block-uagb-image--layout-overlay figure:hover img'] = {
 			'box-shadow' : boxShadowHoverCSS,
 		}
 	}

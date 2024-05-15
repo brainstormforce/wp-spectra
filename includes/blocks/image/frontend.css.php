@@ -213,11 +213,11 @@ if ( 'hover' === $attr['seperatorShowOn'] ) {
 
 // If using separate box shadow hover settings, then generate CSS for it.
 if ( $attr['useSeparateBoxShadows'] ) {
-	$selectors['.wp-block-uagb-image--layout-default figure img:hover'] = array(
+	$selectors['.wp-block-uagb-image--layout-default figure:hover img'] = array(
 		'box-shadow' => $box_shadow_hover_css,
 	);
 
-	$selectors['.wp-block-uagb-image--layout-overlay figure img:hover'] = array(
+	$selectors['.wp-block-uagb-image--layout-overlay figure:hover img'] = array(
 		'box-shadow' => $box_shadow_hover_css,
 	);
 
