@@ -21,6 +21,12 @@ const Render = ( props ) => {
 
 	const { block_id, phoneRequired, phoneName, pattern, selectPhoneCode, autocomplete } = attributes;
 
+	useLayoutEffect( () => {
+		// Handle backward case of wrong country code.
+		if( '+42' === selectPhoneCode ) {
+			setAttributes( { selectPhoneCode: '+420' } )
+		}
+	}, [] );
 	let phone_html = '';
 
 	let placeholder = '';

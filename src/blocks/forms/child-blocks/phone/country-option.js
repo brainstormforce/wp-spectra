@@ -140,8 +140,8 @@ const countryOptions = [
 	<option key="" data-countryCode="CY" value="+357">
 		Cyprus South (+357)
 	</option>,
-	<option key="" data-countryCode="CZ" value="+42">
-		Czech Republic (+42)
+	<option key="" data-countryCode="CZ" value="+420">
+		Czech Republic (+420)
 	</option>,
 	<option key="" data-countryCode="DK" value="+45">
 		Denmark (+45)
