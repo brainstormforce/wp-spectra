@@ -1754,7 +1754,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 *
 		 * @param array $attributes Array of block attributes.
 		 *
-		 * @since x.x.x
+		 * @since 2.13.3
 		 * @return void
 		 */
 		public function render_innerblocks_with_wrapper( $attributes ) {
