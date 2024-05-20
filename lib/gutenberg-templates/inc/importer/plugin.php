@@ -516,7 +516,7 @@ class Plugin {
 			$dynamic_content = ( isset( $category_content[ $category ] ) ) ? $category_content[ $category ] : array();
 			$content = $this->replace( $content, $dynamic_content );
 		} else {
-			$this->maybe_import_images( $content );
+			$content = $this->maybe_import_images( $content );
 		}
 
 		// Update content.
@@ -527,7 +527,7 @@ class Plugin {
 	 * Import Images if required.
 	 *
 	 * @param string $content block content.
-	 * @return void
+	 * @return string
 	 */
 	public function maybe_import_images( $content ) {
 
@@ -538,7 +538,7 @@ class Plugin {
 
 		// Not have any link.
 		if ( empty( $all_links ) ) {
-			return;
+			return $content;
 		}
 
 		$link_mapping = array();
@@ -590,6 +590,7 @@ class Plugin {
 			$new_url = str_replace( '/', '/\\', $new_url );
 			$content = str_replace( $old_url, $new_url, $content );
 		}
+		return $content;
 	}
 
 	/**
@@ -964,6 +965,7 @@ class Plugin {
 		if ( ! empty( $business_details['social_profiles'] ) ) {
 			$business_details = $this->maybe_parse_social_profiles( $business_details );
 		}
+		$pro_url = apply_filters( 'ast_block_templates_pro_url', 'https://wpastra.com/starter-templates-plans/?utm_source=gutenberg-templates&utm_medium=dashboard&utm_campaign=Starter-Template-Backend' );
 
 		wp_localize_script(
 			'ast-block-templates',
@@ -991,7 +993,7 @@ class Plugin {
 					'suggestion_link'         => 'https://wpastra.com/sites-suggestions/?utm_source=demo-import-panel&utm_campaign=astra-sites&utm_medium=suggestions',
 					'license_status'          => $license_status,
 					'isPro'                   => defined( 'ASTRA_PRO_SITES_NAME' ) ? true : false,
-					'getProURL'               => defined( 'ASTRA_PRO_SITES_NAME' ) ? esc_url( admin_url( 'plugins.php?bsf-inline-license-form=astra-pro-sites' ) ) : esc_url( 'https://wpastra.com/starter-templates-plans/?utm_source=gutenberg-templates&utm_medium=dashboard&utm_campaign=Starter-Template-Backend' ),
+					'getProURL'               => esc_url( defined( 'ASTRA_PRO_SITES_NAME' ) ? ( admin_url( 'plugins.php?bsf-inline-license-form=astra-pro-sites' ) ) : $pro_url ),
 					'astra_theme_css'         => isset( $astra_theme_css ) ? $astra_theme_css : '',
 					'site_url'                => site_url(),
 					'global-styles'           => preg_replace( '/(?<!-)(\\bbody\\b)(?!-)/i', '.st-block-container', wp_get_global_stylesheet() ),
