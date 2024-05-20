@@ -139,10 +139,12 @@ class Helper {
 	 * Get the Zip AI Response from the Zip Credit Server.
 	 *
 	 * @param string $endpoint The endpoint to get the response from.
+	 * @param array  $body The data to be passed as the request body, if any.
+	 * @param array  $extra_args Extra arguments to be passed to the request, if any.
 	 * @since 1.0.0
 	 * @return array The Zip AI Response.
 	 */
-	public static function get_credit_server_response( $endpoint ) {
+	public static function get_credit_server_response( $endpoint, $body = [], $extra_args = [] ) {
 		// If the endpoint is not a string, then abandon ship.
 		if ( ! is_string( $endpoint ) ) {
 			return array(
@@ -161,17 +163,31 @@ class Helper {
 		}
 
 		// Set the API URL.
-		$api_url = ZIP_AI_CREDIT_SERVER_API . $endpoint;
+		$api_url  = ZIP_AI_CREDIT_SERVER_API . $endpoint;
+		$api_args = array(
+			'headers' => array(
+				'Authorization' => 'Bearer ' . $auth_token,
+			),
+			'timeout' => 30, // phpcs:ignore WordPressVIPMinimum.Performance.RemoteRequestTimeout.timeout_timeout -- 30 seconds is required sometime for open ai responses
+		);
+
+		// If the data array was passed, add it to the args.
+		if ( ! empty( $body ) && is_array( $body ) ) {
+			$api_args['body'] = $body;
+		}
+
+		// If there are any extra arguments, then we can overwrite the required arguments.
+		if ( ! empty( $extra_args ) && is_array( $extra_args ) ) {
+			$api_args = array_merge(
+				$api_args,
+				$extra_args
+			);
+		}
 
 		// Get the response from the endpoint.
 		$response = wp_remote_post(
 			$api_url,
-			array(
-				'headers' => array(
-					'Authorization' => 'Bearer ' . $auth_token,
-				),
-				'timeout' => 30, // phpcs:ignore WordPressVIPMinimum.Performance.RemoteRequestTimeout.timeout_timeout -- 30 seconds is required sometime for open ai responses
-			)
+			$api_args
 		);
 
 		// If the response was an error, or not a 200 status code, then abandon ship.
