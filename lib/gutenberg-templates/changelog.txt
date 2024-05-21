@@ -1,3 +1,8 @@
+v2.2.1 - 02-May-2024
+- Improvement: Better error message handling.
+- Improvement: Blocked everything after clicking on the continue button.
+- Fix: Removed the hotlinking of websitedemos link after import.
+
 v2.2.0 - 26-April-2024
 - Improvement: Revamped AI onboarding with language compatibility.
 - Improvement: User Interface Enhancements & tweaks.
