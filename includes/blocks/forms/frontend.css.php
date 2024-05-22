@@ -131,7 +131,7 @@ $selectors = array(
 	),
 	' .uagb-forms-input-label'                             => array(
 		'display'    => $attr['displayLabels'] ? 'block' : 'none',
-		'text-align' => $attr['labelAlignment'],
+		'text-align' => null === $attr['labelAlignment'] ? $attr['overallAlignment'] : $attr['labelAlignment'],
 	),
 	' .uagb-forms-main-form .uagb-forms-field-set'         => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['fieldGap'], $attr['fieldGapType'] ),

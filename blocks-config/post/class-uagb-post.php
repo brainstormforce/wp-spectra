@@ -1695,6 +1695,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 				do_action( "uagb_post_before_article_{$attributes['post_type']}", get_the_ID(), $attributes );
 				$post_classes = ( $post_class_enabled ) ? implode( ' ', get_post_class( 'uagb-post__inner-wrap' ) ) : 'uagb-post__inner-wrap';
+				$isLeftRight  = ( is_array( $attributes ) && isset( $attributes['isLeftToRightLayout'] ) ) ? $attributes['isLeftToRightLayout'] : false;
 				?>
 				<?php do_action( "uagb_post_before_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
 				<?php
@@ -1704,7 +1705,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				);
 				?>
 					<?php
-					if ( is_array( $attributes ) && $attributes['isLeftToRightLayout'] ) {
+					if ( $isLeftRight ) {
 						$this->render_innerblocks_with_wrapper( $attributes );
 					} else {
 						$this->render_innerblocks( $attributes );

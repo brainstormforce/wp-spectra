@@ -161,9 +161,7 @@ const PostGridComponent = ( props ) => {
 			}
 			
 		}
-		else {
-			setAttributes( { wrapperLeftPadding: '', wrapperRightPadding: '', wrapperBottomPadding: '', wrapperTopPadding: '' } );
-		}
+		
 	}, [  isLeftToRightLayout, wrapperAlign, displayPostImage ] );
 
 	const blockStyling = useMemo( () => styling( attributes, clientId, deviceType ), [ attributes, deviceType ] );
