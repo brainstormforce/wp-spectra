@@ -220,6 +220,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = 2.13.3 - Wednesday, 22nd May 2024 =
 * Feature: Post Grid - Introduced new left and right post layouts.
+* Improvement: Asset Generation - Regenerating post assets on current post update to avoid any conflicts with the cached version.
 * Improvement: Forms - Added a separate alignment option for labels.
 * Fix: Image - Resolved an issue wherein the image overlay caption alignment would not work as expected.
 * Fix: Image - Resolved an issue wherein the hover box shadow would not work as intended in the overlay layout.
