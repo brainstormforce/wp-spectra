@@ -13,6 +13,7 @@ import renderSVG from '@Controls/renderIcon';
 import { ToggleControl, DateTimePicker, Icon } from '@wordpress/components';
 import UAGTextControl from '@Components/text-control';
 import { memo } from '@wordpress/element';
+import UAGNumberControl from '@Components/number-control';
 
 let imageSizeOptions = [
 	{
@@ -144,6 +145,11 @@ const Settings = ( props ) => {
 		contentLetterSpacingTablet,
 		contentLetterSpacingMobile,
 		contentLetterSpacingType,
+		courseMode,
+		repeatCount,
+		repeatFrequency,
+		categoryOfCourse,
+		courseLocation
 	} = attributes;
 
 	const onItemTypeChange = ( value ) => {
@@ -1104,6 +1110,128 @@ const Settings = ( props ) => {
 						} }
 						setAttributes={ setAttributes }
 						onChange={ ( value ) => setAttributes( { provider: value } ) }
+						help={__(
+							'Note: This is a mandatory field for the Review schema, It contain information about the organization that created the content for the course.',
+							'ultimate-addons-for-gutenberg'
+						)}
+					/>
+					<UAGSelectControl
+						label={__( 'Mode', 'ultimate-addons-for-gutenberg' )}
+						data={{
+							value: courseMode,
+							label: 'courseMode',
+						}}
+						setAttributes={setAttributes}
+						options={[
+							{
+								value: 'Online',
+								label: __( 'Online', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'Onsite',
+								label: __( 'Onsite', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'Blended',
+								label: __( 'Blended', 'ultimate-addons-for-gutenberg' ),
+							}
+						]}
+						help={__(
+							'Note: This is a mandatory field for the Review schema, It contain information of medium through which the course will be delivered.',
+							'ultimate-addons-for-gutenberg'
+						)}
+					/>
+					{ ( 'Onsite' === courseMode || 'Blended' === courseMode ) &&
+						<UAGTextControl
+							label={__( 'Location', 'ultimate-addons-for-gutenberg' )}
+							value={courseLocation}
+							data={{
+								value: courseLocation,
+								label: 'courseLocation',
+							}}
+							setAttributes={setAttributes}
+							onChange={( value ) => setAttributes( { courseLocation: value } )}
+							help={__(
+								'Note: This property is only required for Onsite or Blended courses, It contain name or address (or both) of the physical location where the course will be taught.',
+								'ultimate-addons-for-gutenberg'
+							)}
+						/>
+					}
+					<UAGSelectControl
+						label={__( 'Frequency', 'ultimate-addons-for-gutenberg' )}
+						layout={'stack'}
+						data={{
+							value: repeatFrequency,
+							label: 'repeatFrequency',
+						}}
+						setAttributes={setAttributes}
+						options={[
+							{
+								value: 'Daily',
+								label: __( 'Daily', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'Weekly',
+								label: __( 'Weekly', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'Monthly',
+								label: __( 'Monthly', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'Yearly',
+								label: __( 'Yearly', 'ultimate-addons-for-gutenberg' ),
+							}
+						]}
+						help={__(
+							'Note: This is a mandatory field for the Review schema, It contain information of course happens Daily / Weekly / Monthly or Yearly.',
+							'ultimate-addons-for-gutenberg'
+						)}
+					/>
+					<UAGNumberControl
+						label={__( 'Duration', 'ultimate-addons-for-gutenberg' )}
+						value={repeatCount}
+						data={{
+							value: repeatCount,
+							label: 'repeatCount',
+						}}
+						displayUnit={false}
+						setAttributes={setAttributes}
+						min={1}
+						help={__( 'Note: This is a mandatory field for the Review schema, It contain the numerical value for how long the course lasts for in Frequency units. For example, if the Frequency is monthly and the Duration is 4, the course lasts for 4 months.', 'ultimate-addons-for-gutenberg' )}
+						showControlHeader={false}
+						name='totalNumber'
+					/>
+					<UAGSelectControl
+						label={__( 'Pricing Category', 'ultimate-addons-for-gutenberg' )}
+						layout={'stack'}
+						data={{
+							value: categoryOfCourse,
+							label: 'categoryOfCourse',
+						}}
+						setAttributes={setAttributes}
+						options={[
+							{
+								value: 'Free',
+								label: __( 'Free', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'Partially Free',
+								label: __( 'Partially Free', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'Subscription',
+								label: __( 'Subscription', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'Paid',
+								label: __( 'Paid', 'ultimate-addons-for-gutenberg' ),
+							}
+						]}
+						help={__(
+							'Note: This is a mandatory field for the Review schema, It contain information of pricing category of the course.',
+							'ultimate-addons-for-gutenberg'
+						)}
 					/>
 				</>
 			);

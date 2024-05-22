@@ -143,16 +143,17 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			'padding-right': generateCSSUnit( iconRightPadding, iconPaddingUnit ),
 			'padding-bottom': generateCSSUnit( iconBottomPadding, iconPaddingUnit ),
 			'padding-left': generateCSSUnit( iconLeftPadding, iconPaddingUnit ),
-			// margin
-			'margin-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
-			'margin-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
-			'margin-bottom': generateCSSUnit( iconBottomMargin, iconMarginUnit ),
-			'margin-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 			// border
 			'border-style': iconBorderStyle,
 			'border-color': iconBorderColor,
 			...generateBorderCSS( attributes, 'icon' ),
 			'box-shadow': boxShadow,
+		},
+		'.uagb-icon-wrapper.wp-block-uagb-icon--has-margin .uagb-icon-margin-wrapper': {
+			'margin-top': generateCSSUnit( iconTopMargin, iconMarginUnit ),
+			'margin-right': generateCSSUnit( iconRightMargin, iconMarginUnit ),
+			'margin-bottom': generateCSSUnit( iconBottomMargin, iconMarginUnit ),
+			'margin-left': generateCSSUnit( iconLeftMargin, iconMarginUnit ),
 		},
 		'.uagb-icon-wrapper .uagb-svg-wrapper:hover': {
 			'border-color': iconBorderHColor,
@@ -182,12 +183,13 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			'padding-right': generateCSSUnit( iconRightTabletPadding, iconTabletPaddingUnit ),
 			'padding-bottom': generateCSSUnit( iconBottomTabletPadding, iconTabletPaddingUnit ),
 			'padding-left': generateCSSUnit( iconLeftTabletPadding, iconTabletPaddingUnit ),
-			// margin
+			...generateBorderCSS( attributes, 'icon', 'tablet' ),
+		},
+		'.uagb-icon-wrapper.wp-block-uagb-icon--has-margin .uagb-icon-margin-wrapper': {
 			'margin-top': generateCSSUnit( iconTopTabletMargin, iconTabletMarginUnit ),
 			'margin-right': generateCSSUnit( iconRightTabletMargin, iconTabletMarginUnit ),
 			'margin-bottom': generateCSSUnit( iconBottomTabletMargin, iconTabletMarginUnit ),
 			'margin-left': generateCSSUnit( iconLeftTabletMargin, iconTabletMarginUnit ),
-			...generateBorderCSS( attributes, 'icon', 'tablet' ),
 		},
 		'.uagb-icon-wrapper .uagb-svg-wrapper svg': {
 			'width': generateCSSUnit( iconSizeTablet, iconSizeUnit ),
@@ -204,11 +206,13 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			'padding-right': generateCSSUnit( iconRightMobilePadding, iconMobilePaddingUnit ),
 			'padding-bottom': generateCSSUnit( iconBottomMobilePadding, iconMobilePaddingUnit ),
 			'padding-left': generateCSSUnit( iconLeftMobilePadding, iconMobilePaddingUnit ),
+			...generateBorderCSS( attributes, 'icon', 'mobile' ),
+		},
+		'.uagb-icon-wrapper.wp-block-uagb-icon--has-margin .uagb-icon-margin-wrapper': {
 			'margin-top': generateCSSUnit( iconTopMobileMargin, iconMobileMarginUnit ),
 			'margin-right': generateCSSUnit( iconRightMobileMargin, iconMobileMarginUnit ),
 			'margin-bottom': generateCSSUnit( iconBottomMobileMargin, iconMobileMarginUnit ),
 			'margin-left': generateCSSUnit( iconLeftMobileMargin, iconMobileMarginUnit ),
-			...generateBorderCSS( attributes, 'icon', 'mobile' ),
 		},
 		'.uagb-icon-wrapper .uagb-svg-wrapper svg': {
 			'width': generateCSSUnit( iconSizeMobile, iconSizeUnit ),

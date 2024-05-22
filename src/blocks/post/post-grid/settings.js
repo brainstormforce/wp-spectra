@@ -253,6 +253,28 @@ const Settings = ( props ) => {
 		imageRatio,
 		imgEqualHeight,
 		paginationType,
+		// padding
+		wrapperTopPadding,
+		wrapperRightPadding,
+		wrapperLeftPadding,
+		wrapperBottomPadding,
+		wrapperTopPaddingTablet,
+		wrapperRightPaddingTablet,
+		wrapperLeftPaddingTablet,
+		wrapperBottomPaddingTablet,
+		wrapperTopPaddingMobile,
+		wrapperRightPaddingMobile,
+		wrapperLeftPaddingMobile,
+		wrapperBottomPaddingMobile,
+		wrapperPaddingUnit,
+		wrapperPaddingUnitTablet,
+		wrapperPaddingUnitMobile,
+		wrapperPaddingLink,
+
+		wrapperAlign,
+		wrapperAlignPosition,
+		isLeftToRightLayout,
+
 	} = attributes;
 	
 	const setImgEqualheight = ( value ) => {
@@ -535,27 +557,29 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
-				<ResponsiveSlider
-					label={ __( 'Columns', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						desktop: {
-							value: columns,
-							label: 'columns',
-						},
-						tablet: {
-							value: tcolumns,
-							label: 'tcolumns',
-						},
-						mobile: {
-							value: mcolumns,
-							label: 'mcolumns',
-						},
-					} }
-					min={ 0 }
-					max={ MAX_POSTS_COLUMNS }
-					displayUnit={ false }
-					setAttributes={ setAttributes }
-				/>
+				{ ! isLeftToRightLayout && (
+					<ResponsiveSlider
+						label={ __( 'Columns', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							desktop: {
+								value: columns,
+								label: 'columns',
+							},
+							tablet: {
+								value: tcolumns,
+								label: 'tcolumns',
+							},
+							mobile: {
+								value: mcolumns,
+								label: 'mcolumns',
+							},
+						} }
+						min={ 0 }
+						max={ MAX_POSTS_COLUMNS }
+						displayUnit={ false }
+						setAttributes={ setAttributes }
+					/>
+				) }
 				<ToggleControl
 					label={ __( 'Equal Height', 'ultimate-addons-for-gutenberg' ) }
 					checked={ equalHeight }
@@ -598,6 +622,7 @@ const Settings = ( props ) => {
 			</UAGAdvancedPanelBody>
 		);
 	};
+
 	const paginationSettings = () => {
 		if ( true !== postPagination ) {
 			return;
@@ -785,6 +810,62 @@ const Settings = ( props ) => {
 						onChange={ () => setAttributes( { linkBox: ! linkBox } ) }
 					/>
 				) }
+
+				{ displayPostImage && (
+					<ToggleControl
+						label={ __( 'Enable Left Right Position', 'ultimate-addons-for-gutenberg' ) }
+						checked={ isLeftToRightLayout }
+						onChange={ () => setAttributes( { isLeftToRightLayout: ! isLeftToRightLayout } ) }
+					/>
+				) }
+					{ isLeftToRightLayout && 'Mobile' !== deviceType && 'background' !== imgPosition  && (
+						<>
+							<MultiButtonsControl
+								setAttributes={ setAttributes }
+								label={ __( 'Image Alignment', 'ultimate-addons-for-gutenberg' ) }
+								data={ {
+										value: wrapperAlign,
+										label: 'wrapperAlign',
+								} }
+								options={ [
+									{
+										value: 'row',
+										icon: <Icon icon={ renderSVG( 'fa fa-align-left' ) } />,
+										tooltip: __( 'Left', 'ultimate-addons-for-gutenberg' ),
+									},
+									{
+										value: 'row-reverse',
+										icon: <Icon icon={ renderSVG( 'fa fa-align-right' ) } />,
+										tooltip: __( 'Right', 'ultimate-addons-for-gutenberg' ),
+									},
+								] }
+								showIcons={ true }
+							/>
+
+								<MultiButtonsControl
+									setAttributes={ setAttributes }
+									label={ __( 'Content Position', 'ultimate-addons-for-gutenberg' ) }
+									data={ {
+										value: wrapperAlignPosition,
+										label: 'wrapperAlignPosition',
+									} }
+									options={ [
+										{
+											value: 'flex-start',
+											label: __( 'Top', 'ultimate-addons-for-gutenberg' ),
+										},
+										{
+											value: 'center',
+											label: __( 'Center', 'ultimate-addons-for-gutenberg' ),
+										},
+										{
+											value: 'flex-end',
+											label: __( 'Bottom', 'ultimate-addons-for-gutenberg' ),
+										},
+									] }
+								/>
+							</>
+						) }
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -1004,11 +1085,15 @@ const Settings = ( props ) => {
 				/>
 				{ displayPostLink && (
 					<>
-						<ToggleControl
-							label={ __( 'Buttons on Equal Height', 'ultimate-addons-for-gutenberg' ) }
-							checked={ equalHeightInlineButtons }
-							onChange={ () => setAttributes( { equalHeightInlineButtons: ! equalHeightInlineButtons } ) }
-						/>
+						{ ! isLeftToRightLayout && (
+							<>
+							<ToggleControl
+								label={ __( 'Buttons on Equal Height', 'ultimate-addons-for-gutenberg' ) }
+								checked={ equalHeightInlineButtons }
+								onChange={ () => setAttributes( { equalHeightInlineButtons: ! equalHeightInlineButtons } ) }
+							/>
+							</>
+						) }
 						<ToggleControl
 							label={ __( 'Open Links in New Tab', 'ultimate-addons-for-gutenberg' ) }
 							checked={ newTab }
@@ -1165,6 +1250,82 @@ const Settings = ( props ) => {
 						label: 'spacingLinkPadding',
 					} }
 				/>
+			{ isLeftToRightLayout && (
+				<>
+					<SpacingControl
+						label={ __( 'Wrapper Padding', 'ultimate-addons-for-gutenberg' ) }
+						valueTop={ {
+							value: wrapperTopPadding,
+							label: 'wrapperTopPadding',
+						} }
+						valueRight={ {
+							value: wrapperRightPadding,
+							label: 'wrapperRightPadding',
+						} }
+						valueBottom={ {
+							value: wrapperBottomPadding,
+							label: 'wrapperBottomPadding',
+						} }
+						valueLeft={ {
+							value: wrapperLeftPadding,
+							label: 'wrapperLeftPadding',
+						} }
+						valueTopTablet={ {
+							value: wrapperTopPaddingTablet,
+							label: 'wrapperTopPaddingTablet',
+						} }
+						valueRightTablet={ {
+							value: wrapperRightPaddingTablet,
+							label: 'wrapperRightPaddingTablet',
+						} }
+						valueBottomTablet={ {
+							value: wrapperBottomPaddingTablet,
+							label: 'wrapperBottomPaddingTablet',
+						} }
+						valueLeftTablet={ {
+							value: wrapperLeftPaddingTablet,
+							label: 'wrapperLeftPaddingTablet',
+						} }
+						valueTopMobile={ {
+							value: wrapperTopPaddingMobile,
+							label: 'wrapperTopPaddingMobile',
+						} }
+						valueRightMobile={ {
+							value: wrapperRightPaddingMobile,
+							label: 'wrapperRightPaddingMobile',
+						} }
+						valueBottomMobile={ {
+							value: wrapperBottomPaddingMobile,
+							label: 'wrapperBottomPaddingMobile',
+						} }
+						valueLeftMobile={ {
+							value: wrapperLeftPaddingMobile,
+							label: 'wrapperLeftPaddingMobile',
+						} }
+						unit={ {
+							value: wrapperPaddingUnit,
+							label: 'wrapperPaddingUnit',
+						} }
+						mUnit={ {
+							value: wrapperPaddingUnitMobile,
+							label: 'wrapperPaddingUnitMobile',
+						} }
+						tUnit={ {
+							value: wrapperPaddingUnitTablet,
+							label: 'wrapperPaddingUnitTablet',
+						} }
+						deviceType={ deviceType }
+						attributes={ attributes }
+						setAttributes={ setAttributes }
+						link={ {
+							value: wrapperPaddingLink,
+							label: 'wrapperPaddingLink',
+						} }
+						help={ __( 'Note: This padding setting applies to the inner content wrapper in Left Right Layout.',
+								   'ultimate-addons-for-gutenberg' ) }
+					/>
+				</>
+			)   }
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -1768,30 +1929,34 @@ const Settings = ( props ) => {
 					deviceType={ deviceType }
 					disabledBorderTitle={ false }
 				/>
-				<ResponsiveSlider
-					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						desktop: {
-							value: ctaBottomSpace,
-							label: 'ctaBottomSpace',
-						},
-						tablet: {
-							value: ctaBottomSpaceTablet,
-							label: 'ctaBottomSpaceTablet',
-						},
-						mobile: {
-							value: ctaBottomSpaceMobile,
-							label: 'ctaBottomSpaceMobile',
-						},
-					} }
-					min={ 0 }
-					max={ 300 }
-					unit={ {
-						value: ctaBottomSpaceUnit,
-						label: 'ctaBottomSpaceUnit',
-					} }
-					setAttributes={ setAttributes }
-				/>
+				{ ! isLeftToRightLayout && (
+					<>
+						<ResponsiveSlider
+							label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
+							data={ {
+								desktop: {
+									value: ctaBottomSpace,
+									label: 'ctaBottomSpace',
+								},
+								tablet: {
+									value: ctaBottomSpaceTablet,
+									label: 'ctaBottomSpaceTablet',
+								},
+								mobile: {
+									value: ctaBottomSpaceMobile,
+									label: 'ctaBottomSpaceMobile',
+								},
+							} }
+							min={ 0 }
+							max={ 300 }
+							unit={ {
+								value: ctaBottomSpaceUnit,
+								label: 'ctaBottomSpaceUnit',
+							} }
+							setAttributes={ setAttributes }
+						/>
+					</> 
+				) }
 				<SpacingControl
 					{ ...props }
 					label={ __( 'Button Padding', 'ultimate-addons-for-gutenberg' ) }
@@ -2210,6 +2375,7 @@ const Settings = ( props ) => {
 						{ displayPostImage === true && imageStyle() }
 						{ borderSettings() }
 						{ boxShadowSettings() }
+						{ isLeftToRightLayout }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.advance } parentProps={ props.parentProps }></InspectorTab>
 				</InspectorTabs>

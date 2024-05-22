@@ -7,7 +7,7 @@ import classnames from 'classnames';
 
 // Import icon.
 import Title from './components/Title';
-import Description from './components/Description';
+import Description from './deprecated/DescriptionDeprecated';
 import CtaPositionClasses from './classes';
 import CallToAction from './components/CallToAction';
 import CTA from './components/CTA';

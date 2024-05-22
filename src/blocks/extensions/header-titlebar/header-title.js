@@ -8,7 +8,6 @@ import style from './editor.lazy.scss';
 import { useDeviceType } from '@Controls/getPreviewType';
 import {
 	alterEditorTitleStyling,
-	removeEditorAlteringStyles,
 	checkCustomFieldsSupport,
 } from './utils';
 import { uagbClassNames } from '@Utils/Helpers';
@@ -21,7 +20,7 @@ const HeaderTitle = ( props ) => {
 	} = props;
 
 	const deviceType = useDeviceType();
-	const [ supportsCustomFields, setSupportsCustomFields ] = useState( true );
+	const [ supportsCustomFields, setSupportsCustomFields ] = useState( false );
 
 	// Use the editor styling for the header titlebar.
 	useLayoutEffect( () => {
@@ -33,9 +32,6 @@ const HeaderTitle = ( props ) => {
 
 	// Add the editor-manipulating styles whenever the device type changes, or distraction free mode status changes.
 	useEffect( () => {
-		if ( ! supportsCustomFields ) {
-			return;
-		}
 		alterEditorTitleStyling( getDistractionFreeMode );
 	}, [
 		deviceType,
@@ -53,9 +49,8 @@ const HeaderTitle = ( props ) => {
 
 	// Check if custom fields are supported. If not supported, disable the top titlebar.
 	checkCustomFieldsSupport( postType ).then( ( data ) => {
-		if ( ! data?.success || ! data?.supports_custom_fields ) {
-			setSupportsCustomFields( false );
-			removeEditorAlteringStyles();
+		if ( data?.success && data?.supports_custom_fields ) {
+			setSupportsCustomFields( true );
 		}
 	} );
 
@@ -95,14 +90,10 @@ const HeaderTitle = ( props ) => {
 		default:
 			titleMeta = {};
 	}
-	// If the meta is not available, return.
-	if ( ! meta ) {
-		return;
-	}
 
 	// Add common conditions for easier usage down the line.
 	const isCompatibleTheme = ( isAstraBased || isSpectraOne );
-	const isHidden = ( titleMeta?.hidden === meta[ titleMeta?.key ] );
+	const isHidden = meta && ( titleMeta?.hidden === meta[ titleMeta?.key ] );
 
 	// Add the required functionality based on the theme.
 	const updateVisibility = () => {
@@ -117,15 +108,15 @@ const HeaderTitle = ( props ) => {
 	};
 
 	// Render the header titlebar, with auto-focus for new or draft posts.
-	return supportsCustomFields && (
+	return (
 		<div className={ uagbClassNames( [
 			'spectra-editor__top-titlebar--wrapper',
-			( isCompatibleTheme && isHidden ) && 'spectra-editor__top-titlebar--is-hidden',
+			( isCompatibleTheme && supportsCustomFields && isHidden ) && 'spectra-editor__top-titlebar--is-hidden',
 		] ) }>
 			<TextControl
 				className={ uagbClassNames( [
 					'spectra-editor__top-titlebar',
-					isCompatibleTheme && 'spectra-editor__top-titlebar--has-button',
+					isCompatibleTheme && supportsCustomFields && 'spectra-editor__top-titlebar--has-button',
 				] ) }
 				placeholder={ __( 'Add Title', 'ultimate-addons-for-gutenberg' ) }
 				value={ title }
@@ -134,7 +125,7 @@ const HeaderTitle = ( props ) => {
 				} }
 				autoComplete="off"
 			/>
-			{ isCompatibleTheme && (
+			{ isCompatibleTheme && supportsCustomFields && (
 				<button
 					className="spectra-editor__top-titlebar--button"
 					onClick={ () => updateVisibility() }
