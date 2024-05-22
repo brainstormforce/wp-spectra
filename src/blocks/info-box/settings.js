@@ -491,6 +491,18 @@ const Settings = ( props ) => {
 							backgroundImage={ iconImage }
 							onRemoveImage={ onRemoveImage }
 						/>
+						<UAGTextControl
+							label={ __( 'Alternate Text', 'ultimate-addons-for-gutenberg' ) }
+							data={ {
+								value: iconImage.alt,
+								label: 'iconImage',
+							} }
+							onChange={( value ) => {
+								const altText = typeof value === 'object' ? '' : value;
+								setAttributes( { iconImage: { ...iconImage, alt: altText } } );
+							}}
+							value={ iconImage.alt }
+						/>
 						{ iconImage && iconImage.url !== 'null' && iconImage.url !== '' && (
 							<UAGSelectControl
 								label={ __( 'Image Size', 'ultimate-addons-for-gutenberg' ) }

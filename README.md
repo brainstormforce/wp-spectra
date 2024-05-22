@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Improvement: Infobox - Added a control to set alt attribute to the Image.
+
 ### 2.13.3 - Wednesday, 22nd May 2024 ###
 * Feature: Post Grid - Introduced new left and right post layouts.
 * Improvement: Forms - Added a separate alignment option for labels.
