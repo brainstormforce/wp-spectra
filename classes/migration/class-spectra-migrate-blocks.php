@@ -1,6 +1,6 @@
 <?php
 /**
- * Spectra advanced heading migrator
+ * Spectra block migrator
  *
  * Class to execute cron event when the plugin is updated.
  *
@@ -17,16 +17,23 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @package UAGB
  */
-class Spectra_Migrate_Advanced_Heading {
+class Spectra_Migrate_Blocks {
 
 
 	/**
 	 * Member Variable
 	 *
 	 * @since x.x.x
-	 * @var Spectra_Migrate_Advanced_Heading
+	 * @var Spectra_Migrate_Blocks
 	 */
 	private static $instance;
+
+	/**
+	 * Info Box Mapping Array
+	 * 
+	 * @var array<string,array<string,bool|int>> $info_box_mapping
+	 */
+	public static $info_box_mapping;
 
 	/**
 	 * Advanced Heading Mapping Array
@@ -39,7 +46,7 @@ class Spectra_Migrate_Advanced_Heading {
 	 *  Initiator
 	 *
 	 * @since x.x.x
-	 * @return Spectra_Migrate_Advanced_Heading
+	 * @return Spectra_Migrate_Blocks
 	 */
 	public static function get_instance() {
 		if ( null === self::$instance ) {
@@ -54,6 +61,11 @@ class Spectra_Migrate_Advanced_Heading {
 	 * @since x.x.x
 	 */
 	public function __construct() {
+		self::$info_box_mapping         = array(
+			'imageWidth' => array(
+				'old' => 120,
+			),
+		);
 		self::$advanced_heading_mapping = array(
 			'headingAlign'      => array(
 				'old' => 'center',
@@ -64,8 +76,8 @@ class Spectra_Migrate_Advanced_Heading {
 				'new' => false,
 			),
 		);
-		add_action( 'uagb_update_before', array( $this, 'migrate_advanced_heading' ) );
-		add_action( 'advanced_heading_migration_event', array( $this, 'advanced_heading_migration' ) );
+		add_action( 'uagb_update_before', array( $this, 'migrate_blocks' ) );
+		add_action( 'spectra_blocks_migration_event', array( $this, 'blocks_migration' ) );
 		add_action( 'admin_init', array( $this, 'query_migrate_to_new' ) );
 	}
 
@@ -77,7 +89,7 @@ class Spectra_Migrate_Advanced_Heading {
 	 */
 	public function query_migrate_to_new() {
 		if ( isset( $_GET['migrate_to_new'] ) && 'yes' === $_GET['migrate_to_new'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$this->migrate_advanced_heading();
+			$this->migrate_blocks();
 		}
 	}
 
@@ -87,36 +99,36 @@ class Spectra_Migrate_Advanced_Heading {
 	 * @since x.x.x
 	 * @return void
 	 */
-	public function migrate_advanced_heading() {
+	public function migrate_blocks() {
 		if ( 'yes' !== get_option( 'uagb-old-user-less-than-2', false ) ) {
 			return;
 		}
 
-		// Code to migrate advanced heading block.
-		if ( false !== get_option( 'uag_advanced_heading_migration', false ) ) {
+		// Code to migrate info box and advanced heading blocks.
+		if ( false !== get_option( 'uag_blocks_migration', false ) ) {
 			return;
 		}
 
 		// If user is older than 2.13.1 then set the option.
-		if ( ! version_compare( UAGB_VER, '2.13.2', '<' ) ) {
+		if ( ! version_compare( UAGB_VER, '2.13.4', '<' ) ) {
 			return;
 		}
 		
-		if ( ! wp_next_scheduled( 'advanced_heading_migration_event' ) ) {
-			wp_schedule_single_event( time(), 'advanced_heading_migration_event' );
+		if ( ! wp_next_scheduled( 'spectra_blocks_migration_event' ) ) {
+			wp_schedule_single_event( time(), 'spectra_blocks_migration_event' );
 		}
-		update_option( 'uag_advanced_heading_migration', 'yes' );
+		update_option( 'uag_blocks_migration', 'yes' );
 	}
 
 	/**
-	 * Advanced Heading Migration
+	 * Blocks Migration
 	 * 
 	 * @since x.x.x
 	 * @return void
 	 */
-	public function advanced_heading_migration() {
+	public function blocks_migration() {
 
-		// Code to update advanced heading block.
+		// Code to update info box and advanced heading blocks.
 		$posts_per_page = 10;
 		$page           = 1;
 	
@@ -190,6 +202,15 @@ class Spectra_Migrate_Advanced_Heading {
 				if ( ! isset( $block['blockName'] ) ) {
 					continue;
 				}
+				if ( 'uagb/info-box' === $block['blockName'] ) {
+					$attributes = $block['attrs'];
+					foreach ( self::$info_box_mapping as $key => $value ) {
+						if ( ! isset( $attributes[ $key ] ) ) { // Meaning this is set to default, so no need to update.
+							$attributes[ $key ] = $value['old'];
+						}
+					}
+					$block['attrs'] = $attributes;
+				}
 				if ( 'uagb/advanced-heading' === $block['blockName'] ) {
 					$attributes = $block['attrs'];
 					foreach ( self::$advanced_heading_mapping as $key => $value ) {
@@ -209,4 +230,4 @@ class Spectra_Migrate_Advanced_Heading {
  *  Prepare if class 'UAGB_Init_Blocks' exist.
  *  Kicking this off by calling 'get_instance()' method
  */
-Spectra_Migrate_Advanced_Heading::get_instance();
+Spectra_Migrate_Blocks::get_instance();

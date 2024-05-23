@@ -4,8 +4,6 @@
 import { getBorderAttributes } from '@Controls/generateAttributes';
 import { __ } from '@wordpress/i18n';
 
-const imageWidthDefault = 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ? 120 : '';
-
 const borderAttributes = getBorderAttributes( 'btn' );
 
 const attributes = {
@@ -1023,7 +1021,6 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'image-width',
 		},
-		default: imageWidthDefault,
 	},
 	imageWidthMobile: {
 		type: 'number',
