@@ -31,5 +31,6 @@ window.addEventListener( 'load', function() {
 	UAGBCountdown.init( '<?php echo esc_attr( $selector ); ?>', <?php echo wp_json_encode( $countdown_options ); ?> );
 });
 <?php
-return ob_get_clean();
+$dynamic_js = apply_filters( 'spectra_countdown_frontend_dynamic_js', ob_get_clean(), $selector, $countdown_options );
+return $dynamic_js;
 ?>
