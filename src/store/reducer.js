@@ -33,7 +33,7 @@ const DEFAULT_STATE = {
 		'uagb/buttons',
 		'uagb/info-box',
 		'uagb/call-to-action',
-	]
+	],
 };
 function reducer( state = DEFAULT_STATE, action ) {
 	switch ( action.type ) {

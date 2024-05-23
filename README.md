@@ -211,12 +211,14 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 ## Credits ##
 
-Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT.
+Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT. Additionally, we incorporate [React beautiful dnd](https://github.com/atlassian/react-beautiful-dnd) licensed under the Apache License, Version 2.0.
 
 ## Changelog ##
 
 ### x.x.x ###
+* Improvement: Quick Action Bar - Easily rearrange blocks in the Quick Action Bar for a personalized workflow.
 * Improvement: Infobox - Added a control to set alt attribute to the Image.
+* Improvement: Asset Generation - Regenerating post assets on current post update to avoid any conflicts with the cached version.
 
 ### 2.13.3 - Wednesday, 22nd May 2024 ###
 * Feature: Post Grid - Introduced new left and right post layouts.

@@ -86,9 +86,11 @@ const DraggableBlock = ( props ) => {
 			</div>
 		</Popover>
 	);
+
 	const separatedArray = block.name.split( '/' );
 	const slug = separatedArray[0];
 	const blockName = separatedArray[1];
+	
 	return (
 		<>
 			<Draggable elementId="draggable-panel"
