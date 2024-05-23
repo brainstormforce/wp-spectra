@@ -3,7 +3,7 @@
  * Frontend CSS & Google Fonts loading File.
  *
  * @since 2.0.0
- *
+ * @var mixed[] $attr
  * @package uagb
  */
 
@@ -121,7 +121,7 @@ $selectors = array(
 		'margin-right'  => UAGB_Helper::get_css_value( $attr['captionRightMargin'], $attr['captionMarginUnit'] ),
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['captionBottomMargin'], $attr['captionMarginUnit'] ),
 		'margin-left'   => UAGB_Helper::get_css_value( $attr['captionLeftMargin'], $attr['captionMarginUnit'] ),
-		'align-self'    => $attr['captionAlign'],
+		'align-self'    => ( 'overlay' !== $attr['layout'] ? $attr['captionAlign'] : '' ),
 	),
 	'.wp-block-uagb-image .wp-block-uagb-image__figure figcaption a' => array(
 		'color' => $attr['captionColor'],
@@ -213,11 +213,11 @@ if ( 'hover' === $attr['seperatorShowOn'] ) {
 
 // If using separate box shadow hover settings, then generate CSS for it.
 if ( $attr['useSeparateBoxShadows'] ) {
-	$selectors['.wp-block-uagb-image--layout-default figure img:hover'] = array(
+	$selectors['.wp-block-uagb-image--layout-default figure:hover img'] = array(
 		'box-shadow' => $box_shadow_hover_css,
 	);
 
-	$selectors['.wp-block-uagb-image--layout-overlay figure img:hover'] = array(
+	$selectors['.wp-block-uagb-image--layout-overlay figure:hover img'] = array(
 		'box-shadow' => $box_shadow_hover_css,
 	);
 

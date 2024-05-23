@@ -59,11 +59,6 @@ export const alterEditorTitleStyling = ( isDistractionFree ) => {
 	}, 100 );
 };
 
-export const removeEditorAlteringStyles = () => {
-	const styleTag = document.getElementById( editorAlteringStyleId );
-	styleTag?.remove();
-};
-
 // Checks if the current post type supports Custom Fields.
 export const checkCustomFieldsSupport = async ( postType ) => {
 	const queryParams = {

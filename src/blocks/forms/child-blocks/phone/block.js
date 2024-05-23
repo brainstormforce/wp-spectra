@@ -13,6 +13,8 @@ import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
 import Version from './deprecated/';
 import Version2_7_2 from './2_7_2';
+import Version_2_13_2 from './2_13_2/index';
+
 let phoneCommonData = {};
 phoneCommonData = applyFilters( 'uagb/forms-phone', addCommonDataToSpectraBlocks( phoneCommonData ) );
 registerBlockType( 'uagb/forms-phone', {
@@ -30,5 +32,5 @@ registerBlockType( 'uagb/forms-phone', {
 		html: false,
 	},
 	save,
-	deprecated : [ Version2_7_2, Version ],
+	deprecated : [ Version2_7_2, Version, Version_2_13_2 ],
 } );

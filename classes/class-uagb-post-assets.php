@@ -308,7 +308,7 @@ class UAGB_Post_Assets {
 							}
 							// Return the appropriate template based on the search condition.
 							return $searchCondition ? 'product-search-results' : 'archive-product';
-						
+
 						// Case when the current page is a product taxonomy and the object is a term.
 						case is_product_taxonomy() && $object instanceof WP_Term:
 							// Check if the taxonomy is a product attribute.
@@ -331,12 +331,12 @@ class UAGB_Post_Assets {
 								return $searchCondition ? 'product-search-results' : 'archive-product';
 							}
 							break;
-						
+
 						// Case when the current page is the shop page.
 						case is_shop():
 							// Return the appropriate template based on the search condition.
 							return $searchCondition ? 'product-search-results' : 'archive-product';
-						
+
 						default:
 							// Return the appropriate template based on the search condition and the type of the queried object.
 							return $searchCondition ? 'product-search-results' : ( ( $object instanceof WP_Post || $object instanceof WP_Post_Type || $object instanceof WP_Term || $object instanceof WP_User ) ? $this->get_archive_page_template( $object, $template_type_slug ) : 'archive-product' );
@@ -721,12 +721,8 @@ class UAGB_Post_Assets {
 
 		// UAG Flag specific.
 		if ( $this->is_allowed_assets_generation ) {
-
-			// Prepare font css and files.
-			$this->generate_fonts();
-
 			$this->generate_assets();
-			$this->generate_asset_files();
+			$this->regenerate_post_assets();
 		}
 		if ( $this->uag_flag ) {
 
@@ -804,8 +800,8 @@ class UAGB_Post_Assets {
 	}
 	/**
 	 * This is the action where we create dynamic asset files.
-	 * CSS Path : uploads/uag-plugin/uag-style-{post_id}-{timestamp}.css
-	 * JS Path : uploads/uag-plugin/uag-script-{post_id}-{timestamp}.js
+	 * CSS Path : uploads/uag-plugin/uag-style-{post_id}.css
+	 * JS Path : uploads/uag-plugin/uag-script-{post_id}.js
 	 *
 	 * @since 1.15.0
 	 */
@@ -913,8 +909,8 @@ class UAGB_Post_Assets {
 		*/
 		$uagb_asset_ver = apply_filters( 'uagb_asset_version', UAGB_ASSET_VER );
 
-		if ( empty( $uagb_asset_ver ) || ! is_string( $uagb_asset_ver ) ) { 
-			$uagb_asset_ver = UAGB_ASSET_VER; 
+		if ( empty( $uagb_asset_ver ) || ! is_string( $uagb_asset_ver ) ) {
+			$uagb_asset_ver = UAGB_ASSET_VER;
 		}
 
 		if ( isset( $file_handler['css_url'] ) ) {
@@ -1279,6 +1275,23 @@ class UAGB_Post_Assets {
 
 		/* Update page assets */
 		$this->update_page_assets();
+	}
+
+	/**
+	 * Re-generate Spectra based assets.
+	 *
+	 * This is reusable function which compile fonts, assets and generate asset files.
+	 *
+	 * @since x.x.x
+	 * @return void
+	 */
+	public function regenerate_post_assets() {
+		$this_post = get_post( $this->post_id );
+		if ( is_object( $this_post ) ) {
+			$this->prepare_assets( $this_post );
+		}
+		$this->generate_fonts();
+		$this->generate_asset_files();
 	}
 
 	/**

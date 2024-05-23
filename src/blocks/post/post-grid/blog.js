@@ -20,6 +20,7 @@ const Blog = ( props ) => {
 		postPagination,
 		layoutConfig,
 		equalHeightInlineButtons,
+		isLeftToRightLayout,
 	} = attributes;
 
 	const postsToShowFallback = getFallbackNumber( postsToShow, 'postsToShow', blockName );
@@ -64,7 +65,8 @@ const Blog = ( props ) => {
 							props.attributes,
 							props.categoriesList,
 							setAttributes,
-							article
+							article,
+							isLeftToRightLayout,
 						) }
 					</article>
 				) ) }

@@ -95,6 +95,11 @@ function styling( attributes, clientId, name, deviceType ) {
 		fieldGapMobile,
 		formStyle,
 		overallAlignment,
+		overallAlignmentTablet,
+		overallAlignmentMobile,
+		labelAlignment,
+		labelAlignmentTablet,
+		labelAlignmentMobile,
 		toggleSize,
 		toggleSizeTablet,
 		toggleSizeMobile,
@@ -354,7 +359,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		},
 		' .uagb-forms-input-label': {
 			'display': displayLabels ? 'block' : 'none',
-			'text-align': overallAlignment,
+			'text-align': labelAlignment,
 		},
 
 		' .uagb-forms-main-form .uagb-forms-field-set': {
@@ -627,6 +632,16 @@ function styling( attributes, clientId, name, deviceType ) {
 			'line-height': generateCSSUnit( inputLineHeightTablet, inputLineHeightType ),
 			'letter-spacing': generateCSSUnit( inputLetterSpacingTablet, inputLetterSpacingType ),
 		},
+		' .uagb-forms-input': {
+			'text-align': overallAlignmentTablet,
+		},
+		' .uagb-forms-input-label': {
+			'display': displayLabels ? 'block' : 'none',
+			'text-align': labelAlignmentTablet,
+		},
+		' .uagb-forms-main-form textarea': {
+			'text-align': overallAlignmentTablet,
+		},
 	};
 
 	if ( buttonAlignTablet !== 'full' ) {
@@ -708,6 +723,16 @@ function styling( attributes, clientId, name, deviceType ) {
 			'font-size': generateCSSUnit( inputFontSizeMobile, inputFontSizeType ),
 			'line-height': generateCSSUnit( inputLineHeightMobile, inputLineHeightType ),
 			'letter-spacing': generateCSSUnit( inputLetterSpacingMobile, inputLetterSpacingType ),
+		},
+		' .uagb-forms-input': {
+			'text-align': overallAlignmentMobile,
+		},
+		' .uagb-forms-input-label': {
+			'display': displayLabels ? 'block' : 'none',
+			'text-align': labelAlignmentMobile,
+		},
+		' .uagb-forms-main-form textarea': {
+			'text-align': overallAlignmentMobile,
 		},
 	};
 

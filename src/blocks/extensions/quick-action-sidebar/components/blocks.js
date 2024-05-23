@@ -5,10 +5,12 @@ import { useSelect } from '@wordpress/data';
 import { createBlock, getBlockTypes } from '@wordpress/blocks';
 import DraggableBlock from './draggable-block';
 import { STORE_NAME as storeName } from '@Store/constants';
+import DragAndDropComponent from './move-up-down';
 
-const Blocks = () => {
+const Blocks = ( props ) => {
+	const { enableRearrange } = props;
 	const getDefaultAllowedQuickSidebarBlocks = useSelect( ( select ) => select( storeName ).getDefaultAllowedQuickSidebarBlocks() );
-    const blocks = getBlockTypes();
+	const blocks = getBlockTypes();
 	const { blockInsertionPoint, getSelectedBlockClientId, getSelectedBlockAllowedBlocks, getBlockRootClientId } = useSelect( ( select ) => {
 		const blockEditor = select( 'core/block-editor' );
 		const { index } = blockEditor.getBlockInsertionPoint();
@@ -27,13 +29,18 @@ const Blocks = () => {
 		return getDefaultAllowedQuickSidebarBlocks?.includes( block.name );
 	} );
 
-
 	const create = ( name ) => { return createBlock( name ); }
 
+	// Loop through each object and add id
+	uagbBlocks.forEach( ( item, index ) => {
+		item.id = `${index + 1}`;
+	} );
+
+	const sortedY = getDefaultAllowedQuickSidebarBlocks.map( item => uagbBlocks.find( ( {name} ) => name === item ) );
 
 	return (
 		<>
-			{uagbBlocks.map( ( block, index ) => (
+			{!enableRearrange && sortedY.map( ( block, index ) => (
 				<DraggableBlock
 					key={index}
 					id={index}
@@ -47,6 +54,9 @@ const Blocks = () => {
 					}}
 				/>
 			) )}
+			{ enableRearrange &&
+				<DragAndDropComponent initialItems={sortedY} />
+			}
 		</>
 	);
 

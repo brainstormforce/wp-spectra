@@ -57,6 +57,13 @@ const PostGridComponent = ( props ) => {
 			UAGHideTab,
 			UAGHideMob,
 			postDisplaytext,
+			isLeftToRightLayout,
+			wrapperAlign,
+			align,
+			displayPostImage,
+			wrapperRightPadding,
+			wrapperLeftPadding,
+			ctaBottomSpace, 
 		},
 		setAttributes,
 		clientId,
@@ -133,6 +140,29 @@ const PostGridComponent = ( props ) => {
 	useEffect( () => {
 		scrollBlockToView();
 	}, [ deviceType ] );
+
+	useEffect( () => {
+		// Setting attributes so UI looks consistent
+		if( true === isLeftToRightLayout ) {
+			const alignment = wrapperAlign === 'row' ? 'left' : 'right';
+    		setAttributes( { align: align !== 'center' ? alignment : align } );
+			setAttributes( { equalHeightInlineButtons: false, ctaBottomSpace: 0 } );
+			if( undefined === ctaBottomSpace ){
+				setAttributes( { ctaBottomSpace: 0 } )
+			}
+			if( ! wrapperLeftPadding && wrapperLeftPadding !== 0 ){
+				setAttributes( { wrapperLeftPadding: 20 } )
+			}
+			if( ! wrapperRightPadding && wrapperLeftPadding !== 0 ){
+				setAttributes( { wrapperRightPadding: 20 } )
+			}
+			if( ! displayPostImage ) {
+				setAttributes( { isLeftToRightLayout : false } )
+			}
+			
+		}
+		
+	}, [  isLeftToRightLayout, wrapperAlign, displayPostImage ] );
 
 	const blockStyling = useMemo( () => styling( attributes, clientId, deviceType ), [ attributes, deviceType ] );
 

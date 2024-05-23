@@ -32,16 +32,25 @@ export const DEFAULT_POST_LIST_LAYOUT = [
 	[ 'uagb/post-excerpt' ],
 	[ 'uagb/post-button' ],
 ];
-export const renderPostLayout = ( blockName, post, layoutConfig, attributes, categoriesList, setAttributes ) => {
+export const renderPostLayout = ( blockName, post, layoutConfig, attributes, categoriesList, setAttributes, article, isLeftToRightLayout ) => {
 	if ( ! layoutConfig ) {
 		return;
 	}
 
 	const blockMap = getBlockMap( blockName );
 	let children = []; // eslint-disable-line no-unused-vars
-	return layoutConfig.map( ( [ name, props = {} ], key ) => {
+
+	const mapFunction = ( [ name, props = {} ], key, addWrapper = null ) => {
+		if ( 1 === addWrapper && 'uagb/post-image' ===  name  ) {
+			return ;
+		}
+
+		if ( 0 === addWrapper && 'uagb/post-image' !==  name  ) {
+			return ;
+		}
+
 		if ( !! props.children && props.children.length > 0 ) {
-			children = renderPostLayout( blockName, post, props.children, attributes, categoriesList, setAttributes );
+			children = renderPostLayout( blockName, post, props.children, attributes, categoriesList, setAttributes, article, isLeftToRightLayout );
 		}
 
 		const LayoutComponent = blockMap[ name ];
@@ -60,7 +69,21 @@ export const renderPostLayout = ( blockName, post, layoutConfig, attributes, cat
 				/>
 			</Suspense>
 		);
-	} );
+	};
+
+	const leftRightWrapper = (
+		<>
+		  {layoutConfig.map( ( [name, props = {}], key ) => mapFunction( [name, props], key, 0 ) )}
+		  <div className='uag-post-grid-wrapper'>
+			{layoutConfig.map( ( [name, props = {}], key ) => mapFunction( [name, props], key, 1 ) )}
+		  </div>
+		</>
+	  );
+
+	const noWrapper = layoutConfig.map( ( [name, props = {}], key ) => mapFunction( [name, props], key, null ) )
+	return isLeftToRightLayout ? leftRightWrapper : noWrapper;
+	  
+	
 };
 const registeredBlockComponents = {};
 

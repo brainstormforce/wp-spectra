@@ -51,6 +51,8 @@ const UAGBFormsEdit = ( props ) => {
 			UAGHideTab,
 			UAGHideMob,
 			variationSelected,
+			overallAlignment,
+			labelAlignment,
 		},
 		setAttributes,
 		clientId,
@@ -80,7 +82,13 @@ const UAGBFormsEdit = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
-
+	useEffect( () => {
+		// Developer Comment: This is added to set default value for backward user
+		if( null === labelAlignment ) {
+			setAttributes( { labelAlignment: overallAlignment } )
+		}
+	},  [] );
+	
 	useEffect( () => {
 		// Developer Comment: This was added to resolve block recovery issue due to innerblocks to check if preset is selected in save.js
 		if( ! variationSelected && hasInnerBlocks ) {

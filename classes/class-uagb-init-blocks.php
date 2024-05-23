@@ -815,30 +815,6 @@ class UAGB_Init_Blocks {
 			'is_astra_based_theme'                    => defined( 'ASTRA_THEME_SETTINGS' ),
 		);
 
-		if ( 'enabled' === $uag_enable_quick_action_sidebar ) {
-			$default_allowed_quick_sidebar_blocks = apply_filters(
-				'uagb_quick_sidebar_allowed_blocks',
-				array(
-					'uagb/container',
-					'uagb/advanced-heading',
-					'uagb/image',
-					'uagb/icon',
-					'uagb/buttons',
-					'uagb/info-box',
-					'uagb/call-to-action',
-				)
-			);
-
-			if ( ! is_array( $default_allowed_quick_sidebar_blocks ) ) {
-				$default_allowed_quick_sidebar_blocks = array();
-			}
-
-			$quick_sidebar_allowed_blocks = \UAGB_Admin_Helper::get_admin_settings_option( 'uagb_quick_sidebar_allowed_blocks', $default_allowed_quick_sidebar_blocks );
-			$quick_sidebar_allowed_blocks = ! empty( $quick_sidebar_allowed_blocks ) && is_array( $quick_sidebar_allowed_blocks ) ? $quick_sidebar_allowed_blocks : $default_allowed_quick_sidebar_blocks;
-
-			$localized_params['quick_sidebar_allowed_blocks'] = $quick_sidebar_allowed_blocks;
-		}
-
 		wp_localize_script(
 			'uagb-block-editor-js',
 			'uagb_blocks_info',

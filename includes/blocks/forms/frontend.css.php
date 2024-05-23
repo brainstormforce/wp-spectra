@@ -131,7 +131,7 @@ $selectors = array(
 	),
 	' .uagb-forms-input-label'                             => array(
 		'display'    => $attr['displayLabels'] ? 'block' : 'none',
-		'text-align' => $attr['overallAlignment'],
+		'text-align' => null === $attr['labelAlignment'] ? $attr['overallAlignment'] : $attr['labelAlignment'],
 	),
 	' .uagb-forms-main-form .uagb-forms-field-set'         => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['fieldGap'], $attr['fieldGapType'] ),
@@ -234,6 +234,15 @@ $t_selectors = array(
 		'background-position' => 'top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRightTablet'] ? $attr['paddingFieldRightTablet'] : 12, $attr['paddingFieldUnitTablet'] ),
 		'padding-right'       => UAGB_Helper::get_css_value( $forms_padding_right_tablet_fallback, $attr['paddingFieldUnitTablet'] ) . ' !important',
 	),
+	' .uagb-forms-main-form textarea'                => array(
+		'text-align' => $attr['overallAlignmentTablet'],
+	),
+	' .uagb-forms-input'                             => array(
+		'text-align' => $attr['overallAlignmentTablet'],
+	),
+	' .uagb-forms-input-label'                       => array(
+		'text-align' => $attr['labelAlignmentTablet'],
+	),
 );
 
 if ( 'full' !== $attr['buttonAlignTablet'] ) {
@@ -270,6 +279,15 @@ $m_selectors = array(
 	' .uagb-form-phone-country'                      => array(
 		'background-position' => 'top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRightMobile'] ? $attr['paddingFieldRightMobile'] : 6, $attr['paddingFieldUnitmobile'] ),
 		'padding-right'       => UAGB_Helper::get_css_value( $forms_padding_right_mobile_fallback, $attr['paddingFieldUnitmobile'] ) . ' !important',
+	),
+	' .uagb-forms-main-form textarea'                => array(
+		'text-align' => $attr['overallAlignmentMobile'],
+	),
+	' .uagb-forms-input'                             => array(
+		'text-align' => $attr['overallAlignmentMobile'],
+	),
+	' .uagb-forms-input-label'                       => array(
+		'text-align' => $attr['labelAlignmentMobile'],
 	),
 );
 if ( 'full' !== $attr['buttonAlignMobile'] ) {
