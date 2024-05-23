@@ -219,6 +219,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Quick Action Bar - Easily rearrange blocks in the Quick Action Bar for a personalized workflow.
 * Improvement: Info Box - Added an option to set the alt attribute to the image.
 * Improvement: Asset Generation - Regenerating post assets on current post update to avoid any conflicts with the cached version.
+* Fix: Buttons - Resolved an issue wherein the button typography styles would not work when applied from the parent in the Astra theme.
 * Fix: Image Gallery - Added accessibility improvements to the lightbox close and gallery pagination buttons.
 
 = 2.13.3 - Wednesday, 22nd May 2024 =
