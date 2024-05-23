@@ -107,7 +107,6 @@ const InfoBoxCta = ( props ) => {
 						className={ ctaBtnClass }
 						rel={ rel }
 						style={ borderStyle }
-						alt=""
 					>
 						{ ctaTextOutputFrontend }
 					</a>
@@ -123,7 +122,6 @@ const InfoBoxCta = ( props ) => {
 							}
 							className={'uagb-infobox-cta-link'}
 							rel={rel}
-							alt=""
 						>
 							{ ctaTextOutputFrontend }
 						</a>
@@ -140,7 +138,6 @@ const InfoBoxCta = ( props ) => {
 						onClick={
 							( '' === attributes.ctaLink || '#' === attributes.ctaLink ) && ( ! attributes?.dynamicContent?.ctaLink?.enable ) ? 'return false;' : 'return true;'
 						}
-						alt=""
 					>
 						{ ctaTextOutputFrontend }
 					</a>
