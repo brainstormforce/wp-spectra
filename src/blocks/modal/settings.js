@@ -293,6 +293,19 @@ export default function Settings( props ) {
 		}
 	}
 
+	const isProActivated = Boolean( uagb_blocks_info.spectra_pro_status );
+	// Options from Free and Pro 
+	const freeAndProOptions = [
+		{ label: __( 'Button', 'ultimate-addons-for-gutenberg' ), value: 'button', disabled: false },
+		{ label: __( 'Icon', 'ultimate-addons-for-gutenberg' ), value: 'icon', disabled: false },
+		{ label: __( 'Image', 'ultimate-addons-for-gutenberg' ), value: 'image', disabled: false },
+		{ label: __( 'Text', 'ultimate-addons-for-gutenberg' ), value: 'text', disabled: false },
+		{ label: __( 'Custom Class (Spectra Pro)', 'ultimate-addons-for-gutenberg' ), value: 'custom-class', disabled: ! isProActivated },
+		{ label: __( 'Custom ID (Spectra Pro)', 'ultimate-addons-for-gutenberg' ), value: 'custom-id', disabled: ! isProActivated },
+		{ label: __( 'Automatic (Spectra Pro)', 'ultimate-addons-for-gutenberg' ), value: 'automatic', disabled: ! isProActivated }
+	  ];
+	  
+
 	// This setting panel will only be open by default if Pro is not active.
 	const modalTriggerPanel = (
 		<UAGAdvancedPanelBody title={ __( 'Trigger', 'ultimate-addons-for-gutenberg' ) } initialOpen={ ! isPro }>
@@ -303,24 +316,7 @@ export default function Settings( props ) {
 					value: modalTrigger,
 					label: 'modalTrigger',
 				} }
-				options={ [
-					{
-						value: 'button',
-						label: __( 'Button', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'icon',
-						label: __( 'Icon', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'image',
-						label: __( 'Image', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'text',
-						label: __( 'Text', 'ultimate-addons-for-gutenberg' ),
-					},
-				] }
+				options={ freeAndProOptions }
 			/>
 			{ modalTrigger === 'icon' && (
 				<>

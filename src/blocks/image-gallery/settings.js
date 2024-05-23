@@ -709,6 +709,15 @@ const Settings = ( props ) => {
 		</UAGAdvancedPanelBody>
 	);
 
+	const isProActivated = Boolean( uagb_blocks_info.spectra_pro_status );
+	// Options from Free and Pro 
+	const freeAndProOptions = [
+		{ label: __( 'None', 'ultimate-addons-for-gutenberg' ), value: 'none', disabled: false },
+		{ label: __( 'Lightbox', 'ultimate-addons-for-gutenberg' ), value: 'lightbox', disabled: false },
+		{ label: __( 'Open Image', 'ultimate-addons-for-gutenberg' ), value: 'image', disabled: false },
+		{ label: __( 'Custom URL (Spectra Pro)', 'ultimate-addons-for-gutenberg' ), value: 'url', disabled: ! isProActivated }
+	];
+
 	const layoutSettings = () => (
 		<UAGAdvancedPanelBody title={ __( 'Layout', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 			<MultiMediaSelector
@@ -806,20 +815,7 @@ const Settings = ( props ) => {
 					label: 'imageClickEvent',
 				} }
 				setAttributes={ setAttributes }
-				options={ [
-					{
-						label: __( 'None', 'ultimate-addons-for-gutenberg' ),
-						value: 'none',
-					},
-					{
-						label: __( 'Lightbox', 'ultimate-addons-for-gutenberg' ),
-						value: 'lightbox',
-					},
-					{
-						label: __( 'Open Image', 'ultimate-addons-for-gutenberg' ),
-						value: 'image',
-					},
-				] }
+				options={ freeAndProOptions }
 			/>
 		</UAGAdvancedPanelBody>
 	);

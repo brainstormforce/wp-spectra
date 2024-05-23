@@ -16,9 +16,19 @@ const UAGBModalEdit = ( props ) => {
 		attributes,
 		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob, block_id },
 		clientId,
+		setAttributes,
 		name,
 		deviceType
 	} = props;
+
+	const { modalTrigger, } = attributes;
+	
+	useEffect( () => {
+		// Select the default option if pro is deactivated 
+		if(	! uagb_blocks_info.spectra_pro_status && ( 'custom-class' === modalTrigger ||'custom-id' === modalTrigger || 'automatic' === modalTrigger ) ) {
+			setAttributes( { modalTrigger: 'button' } )
+		}
+	}, [ ] );
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.

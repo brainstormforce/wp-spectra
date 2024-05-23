@@ -24,6 +24,8 @@ const UAGBImageGallery = ( props ) => {
 		deviceType
 	} = props;
 
+	const { imageClickEvent, } = attributes;
+
 	useEffect( () => {
 		// Replacing the old Focus List Array with the Object List.
 		if ( Array.isArray( focusList ) && focusList.length ) {
@@ -37,6 +39,10 @@ const UAGBImageGallery = ( props ) => {
 				focusList: [],
 				focusListObject: { ...convertedList },
 			} );
+		}
+		// Select the default option if pro is deactivated 
+		if(	! uagb_blocks_info.spectra_pro_status && 'url' === imageClickEvent ) {
+			setAttributes( { imageClickEvent: 'none' } )
 		}
 	}, [] );
 
