@@ -118,12 +118,43 @@ const Settings = ( props ) => {
 		prefixLetterSpacingTablet,
 		prefixLetterSpacingMobile,
 		prefixLetterSpacingType,
+
+		inheritFromTheme,
+		buttonType,
 	} = attributes;
 
+	const currentTheme = uagb_blocks_info.current_theme;
+	const isAstraBasedTheme = uagb_blocks_info.is_astra_based_theme;
+	
 	const generalSettings = () => {
 		return (
 			<>
 				<UAGAdvancedPanelBody title={ __( 'Content & Heading', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+				<ToggleControl
+					checked={ inheritFromTheme }
+					onChange={ () => setAttributes( { inheritFromTheme: ! inheritFromTheme } ) }
+					label={ __( 'Inherit From Theme', 'ultimate-addons-for-gutenberg' ) }
+				/>
+				{ inheritFromTheme && ( 'Astra' === currentTheme || isAstraBasedTheme ) && (
+					<MultiButtonsControl
+						setAttributes={ setAttributes }
+						label={ __( `Button Type`, 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							value: buttonType,
+							label: 'buttonType',
+						} }
+						options={ [
+							{
+								value: 'primary',
+								label: __( 'Primary', 'ultimate-addons-for-gutenberg' ),
+							},
+							{
+								value: 'secondary',
+								label: __( 'Secondary', 'ultimate-addons-for-gutenberg' ),
+							},
+						] }
+					/>
+				) }
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
 						label={ __( 'Heading Tag', 'ultimate-addons-for-gutenberg' ) }
@@ -903,7 +934,7 @@ const Settings = ( props ) => {
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general }>
-						{ presetSettings() }
+						{ !inheritFromTheme && presetSettings() }
 						{ generalSettings() }
 						{ buttonSettings() }
 					</InspectorTab>
@@ -912,8 +943,8 @@ const Settings = ( props ) => {
 						{ showDescription && descriptionSettings() }
 						{ '' !== icon && iconSettings() }
 						{ backgroundSettings() }
-						{ borderSettings() }
-						{ btnPaddingSettings() }
+						{ !inheritFromTheme && borderSettings() }
+						{ !inheritFromTheme && btnPaddingSettings() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
 				</InspectorTabs>

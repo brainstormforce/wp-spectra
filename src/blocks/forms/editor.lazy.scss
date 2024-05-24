@@ -96,8 +96,3 @@ select.uagb-forms-select-box.uagb-forms-input {
 		}
 	}
 }
-
-// Intentionally placed outside for lover specificity, and to override the user agent stylesheet of browsers.
-.uagb-forms-main-submit-button {
-	border-width: 0;
-}

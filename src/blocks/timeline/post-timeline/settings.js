@@ -205,9 +205,14 @@ const Settings = ( props ) => {
 		horizontalSpaceUnit,
 		horizontalSpaceUnitTablet,
 		horizontalSpaceUnitMobile,
+		inheritFromTheme,
+		buttonType,
 	} = attributes;
 
 	let device = deviceType;
+
+	const currentTheme = uagb_blocks_info.current_theme;
+	const isAstraBasedTheme = uagb_blocks_info.is_astra_based_theme;
 
 	// For desktop, attribute name does not have `desktop` suffix to support backward compatibility.
 	if ( 'Desktop' === deviceType ) {
@@ -656,13 +661,38 @@ const Settings = ( props ) => {
 							setAttributes={ setAttributes }
 							onChange={ ( value ) => setAttributes( { readMoreText: value } ) }
 						/>
-					</>
+				        <ToggleControl
+					        label={ __( 'Open link in New Tab', 'ultimate-addons-for-gutenberg' ) }
+					        checked={ linkTarget }
+					        onChange={ () => setAttributes( { linkTarget: ! linkTarget } ) }
+				        />
+				        <ToggleControl
+					        checked={ inheritFromTheme }
+					        onChange={ () => setAttributes( { inheritFromTheme: ! inheritFromTheme } ) }
+					        label={ __( 'Inherit From Theme', 'ultimate-addons-for-gutenberg' ) }
+				        />
+				        { inheritFromTheme && ( 'Astra' === currentTheme || isAstraBasedTheme ) && (
+					        <MultiButtonsControl
+						        setAttributes={ setAttributes }
+						        label={ __( `Button Type`, 'ultimate-addons-for-gutenberg' ) }
+						        data={ {
+							        value: buttonType,
+							        label: 'buttonType',
+						        } }
+						        options={ [
+							        {
+								        value: 'primary',
+								        label: __( 'Primary', 'ultimate-addons-for-gutenberg' ),
+							        },
+							        {
+								        value: 'secondary',
+								        label: __( 'Secondary', 'ultimate-addons-for-gutenberg' ),
+							        },
+						        ] }
+					        />
+				        ) }
+				    </>
 				) }
-				<ToggleControl
-					label={ __( 'Open link in New Tab', 'ultimate-addons-for-gutenberg' ) }
-					checked={ linkTarget }
-					onChange={ () => setAttributes( { linkTarget: ! linkTarget } ) }
-				/>
 				<ResponsiveSlider
 					label={ __( 'Border Radius', 'ultimate-addons-for-gutenberg' ) }
 					data={ {

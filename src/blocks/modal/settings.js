@@ -134,6 +134,8 @@ export default function Settings( props ) {
 		mobilePaddingBtnUnit,
 		tabletPaddingBtnUnit,
 
+		inheritFromTheme,
+		buttonType,
 		btnFontFamily,
 		btnFontWeight,
 		btnFontStyle,
@@ -211,6 +213,10 @@ export default function Settings( props ) {
 		modalTriggerBgHoverType,
 		openModalAs,
 	} = attributes;
+
+	const currentTheme = uagb_blocks_info.current_theme;
+	const isAstraBasedTheme = uagb_blocks_info.is_astra_based_theme;
+
 
 	/*
 	 * Event to set Image as while adding.
@@ -348,12 +354,43 @@ export default function Settings( props ) {
 				</>
 			) }
 			{ modalTrigger === 'button' && (
+				<> 
+			        <ToggleControl
+				    checked={ inheritFromTheme }
+				    onChange={ () => setAttributes( { inheritFromTheme: ! inheritFromTheme } ) }
+				    label={ __( 'Inherit From Theme', 'ultimate-addons-for-gutenberg' ) }
+			        />
+				    { inheritFromTheme && ( 'Astra' === currentTheme || isAstraBasedTheme ) && (
+					    <MultiButtonsControl
+						    setAttributes={ setAttributes }
+						    label={ __( `Button Type`, 'ultimate-addons-for-gutenberg' ) }
+						    data={ {
+							    value: buttonType,
+							    label: 'buttonType',
+						    } }
+						    options={ [
+							    {
+								    value: 'primary',
+								    label: __( 'Primary', 'ultimate-addons-for-gutenberg' ),
+							    },
+							    {
+								    value: 'secondary',
+								    label: __( 'Secondary', 'ultimate-addons-for-gutenberg' ),
+							    },
+						    ] }
+					    />
+				    ) }
+				</>
+			) }
+			{ modalTrigger === 'button' && (
 				<>
-					<UAGPresets
-						setAttributes={ setAttributes }
-						presets={ buttonsPresets }
-						presetInputType="radioImage"
-					/>
+				    { !inheritFromTheme && ( 
+					    <UAGPresets
+						    setAttributes={ setAttributes }
+						    presets={ buttonsPresets }
+						    presetInputType="radioImage"
+					    />
+					) }
 					<ToggleControl
 						label={ __( 'Enable Icon', 'ultimate-addons-for-gutenberg' ) }
 						checked={ showBtnIcon }
@@ -1472,7 +1509,7 @@ export default function Settings( props ) {
 					</InspectorTab>
 
 					<InspectorTab { ...UAGTabs.style }>
-						{ triggerStylePanel }
+						{ !inheritFromTheme && modalTrigger !== 'button' && triggerStylePanel }
 						{ contentStylePanel }
 						{ '' !== closeIcon && closeStylePanel }
 						{ backgroundSettings }

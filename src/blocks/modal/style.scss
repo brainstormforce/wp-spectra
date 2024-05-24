@@ -127,7 +127,22 @@ div.uagb-spectra-button-wrapper {
 
 	a.uagb-modal-button-link.uagb-modal-trigger {
 		display: inline-flex;
-		text-decoration: none;
+		text-decoration: inherit;
+		align-items: center;
+		cursor: pointer;
+
+		svg {
+			fill: currentColor;
+			font-style: normal;
+			vertical-align: top;
+			width: 15px;
+			height: 15px;
+			font-size: 15px;
+		}
+	}
+
+	div.uagb-modal-button-link.uagb-modal-trigger {
+		display: inline-flex;
 		align-items: center;
 		cursor: pointer;
 

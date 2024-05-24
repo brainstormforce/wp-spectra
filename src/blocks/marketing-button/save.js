@@ -22,9 +22,19 @@ export default function save( props ) {
 		linkTarget,
 		titleTag,
 		showDescription,
+		inheritFromTheme,
+		buttonType
 	} = attributes;
 
 	const target = linkTarget ? '_blank' : '';
+
+	const inheritAstraSecondary = inheritFromTheme && 'secondary' === buttonType;
+	const buttonTypeClass = inheritAstraSecondary ? 'ast-outline-button' : 'wp-block-button__link';
+	//border-width is added to revert the border related styles by default.
+	const borderStyle = inheritAstraSecondary ? { borderWidth: 'revert-layer' } : {};
+    
+	const marketingBtnClass = `uagb-marketing-btn__link ${buttonTypeClass}`;
+
 
 	const iconHTML = <>{ '' !== icon && renderSVG( icon ) }</>;
 	const titleHTML = (
@@ -50,9 +60,10 @@ export default function save( props ) {
 		>
 			<a
 				href={ link }
-				className="uagb-marketing-btn__link wp-block-button__link"
+				className={ marketingBtnClass }
 				target={ target }
 				rel="noopener noreferrer"
+				style={ borderStyle }
 			>
 				{ 'before' === iconPosition && (
 					<>

@@ -20,17 +20,28 @@ export default function save( props ) {
 		reCaptchaType,
 		buttonSize,
 		variationSelected,
+		inheritFromTheme,
+		submitButtonType,
 	} = attributes;
+
+	const inheritAstraSecondary = inheritFromTheme && 'secondary' === submitButtonType;
+	const buttonTypeClass = inheritAstraSecondary ? 'ast-outline-button' : 'wp-block-button__link';
+	//border-width is added to revert the border related styles by default.
+	const borderStyle = inheritAstraSecondary ? { borderWidth: 'revert-layer' } : {};
+
+	const submitBtnClass = `uagb-forms-main-submit-button ${buttonTypeClass}`;
+
+	const CustomTag = inheritAstraSecondary ? 'div' : 'a';
 
 	const renderButtonHtml = () => {
 		return (
-			<button className="uagb-forms-main-submit-button wp-block-button__link">
+			<CustomTag className={ submitBtnClass } style={ borderStyle }>
 				<RichText.Content
 					tagName="div"
 					value={ submitButtonText.replace( /<(?!br\s*V?)[^>]+>/g, '' ) }
 					className="uagb-forms-main-submit-button-text"
 				/>
-			</button>
+			</CustomTag>
 		);
 	};
 

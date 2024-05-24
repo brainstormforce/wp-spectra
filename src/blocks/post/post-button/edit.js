@@ -9,6 +9,14 @@ export const PostButton = ( props ) => {
 
 	const target = attributes.newTab ? '_blank' : '_self';
 
+	const inheritAstraSecondary = attributes.inheritFromThemeBtn && 'secondary' === attributes.buttonType;
+	const buttonTypeClass = inheritAstraSecondary ? 'ast-outline-button' : 'wp-block-button__link';
+	//border-width is added to revert the border related styles by default.
+	const borderStyle = inheritAstraSecondary ? { borderWidth: 'revert-layer' } : {};
+    
+	const postBtnClass = `'uagb-text-link' ${buttonTypeClass}`;
+
+
 	if ( attributes.displayPostLink ) {
 		return (
 			<div className="uagb-post__text">
@@ -16,9 +24,10 @@ export const PostButton = ( props ) => {
 					<RichText
 						value={ attributes.ctaText ? attributes.ctaText : __( 'Read More', 'ultimate-addons-for-gutenberg' ) }
 						onChange={ ( value ) => setAttributes( { ctaText: value } ) }
-						className={ classnames( 'uagb-text-link', 'wp-block-button__link' ) }
+						className={ classnames( postBtnClass ) }
 						href={ post.link }
 						target={ target }
+						style={ borderStyle }
 						rel="noopener noreferrer"
 					/>
 				</div>

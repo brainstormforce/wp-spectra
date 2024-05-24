@@ -70,6 +70,7 @@ const Settings = ( props ) => {
 		submitTextLineHeightTablet,
 		submitTextLineHeightMobile,
 		inheritFromTheme,
+		submitButtonType,
 		labelloadGoogleFonts,
 		labelFontFamily,
 		labelFontWeight,
@@ -209,6 +210,8 @@ const Settings = ( props ) => {
 		selectGradient,
 	} = attributes;
 
+	const currentTheme = uagb_blocks_info.current_theme;
+
 	const presetSettings = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
@@ -227,6 +230,26 @@ const Settings = ( props ) => {
 					checked={ inheritFromTheme }
 					onChange={ () => setAttributes( { inheritFromTheme: ! inheritFromTheme } ) }
 			/>
+			{ inheritFromTheme && 'Astra' === currentTheme && (
+				<MultiButtonsControl
+					setAttributes={ setAttributes }
+					label={ __( `Button Type`, 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						value: submitButtonType,
+						label: 'submitButtonType',
+					} }
+					options={ [
+						{
+							value: 'primary',
+							label: __( 'Primary', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'secondary',
+							label: __( 'Secondary', 'ultimate-addons-for-gutenberg' ),
+						},
+					] }
+				/>
+			) }
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
 				label={ __( 'Button Alignment', 'ultimate-addons-for-gutenberg' ) }
