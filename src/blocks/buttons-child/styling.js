@@ -359,16 +359,16 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
             [ leftSideMargin ]: iconMargin,
         };
         tabletSelectors[ ' .uagb-button__icon-position-before' ] = {
-            [ rightSideMargin ]: tabletIconMargin,
-        };
-        tabletSelectors[ ' .uagb-button__icon-position-after' ] = {
             [ leftSideMargin ]: tabletIconMargin,
         };
+        tabletSelectors[ ' .uagb-button__icon-position-after' ] = {
+            [ rightSideMargin ]: tabletIconMargin,
+        };
         mobileSelectors[ ' .uagb-button__icon-position-before' ] = {
-            [ rightSideMargin ]: mobileIconMargin,
+            [ leftSideMargin ]: mobileIconMargin,
         };
         mobileSelectors[ ' .uagb-button__icon-position-after' ] = {
-            [ leftSideMargin ]: mobileIconMargin,
+            [ rightSideMargin ]: mobileIconMargin,
         };
     }
 
