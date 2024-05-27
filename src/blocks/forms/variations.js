@@ -2,15 +2,18 @@
  * WordPress dependencies
  */
 
-import { __ } from '@wordpress/i18n';
+import { __experimentalBlockVariationPicker as BlockVariationPicker, useBlockProps } from '@wordpress/block-editor';
 import UAGB_Block_Icons from '@Controls/block-icons';
+import { __ } from '@wordpress/i18n';
+import { useDispatch } from '@wordpress/data';
+import { createBlocksFromInnerBlocksTemplate } from '@wordpress/blocks';
 /**
  * Template option choices for predefined form layouts.
  *
  * @constant
  * @type {Array}
  */
-const variations = [
+export const variations = [
 	{
 		name: 'simple-contact-form',
 		label: __( 'Simple Contact Form', 'ultimate-addons-for-gutenberg' ),
@@ -103,4 +106,34 @@ const variations = [
 	},
 ];
 
-export default variations;
+export const VariationPicker = ( props ) => {
+	const { clientId, setAttributes, defaultVariation } = props;
+	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
+
+	const blockVariationPickerOnSelect = ( nextVariation = defaultVariation ) => {
+		if ( nextVariation.attributes ) {
+			setAttributes( nextVariation.attributes );
+		}
+
+		if ( nextVariation.innerBlocks ) {
+			replaceInnerBlocks( clientId, createBlocksFromInnerBlocksTemplate( nextVariation.innerBlocks ) );
+		}
+	};
+
+	return (
+		<div { ...useBlockProps() } className="uagb-variation-picker uagb-variation-picker--fill">
+			<BlockVariationPicker
+				icon={ UAGB_Block_Icons.forms }
+				label={ __( 'Forms', 'ultimate-addons-for-gutenberg' ) }
+				instructions={
+					__(
+						'Select a form layout to start with.',
+						'ultimate-addons-for-gutenberg'
+					)
+				}
+				variations={ variations }
+				onSelect={ ( nextVariation ) => blockVariationPickerOnSelect( nextVariation ) }
+			/>
+		</div>
+	);
+};
