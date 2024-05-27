@@ -183,18 +183,30 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'modal-width',
 		},
-		default: '',
+		default: 600,
 	},
 	modalWidthMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'modal-width',
 		},
-		default: '',
+		default: 220,
 	},
 	modalWidthType: {
 		type: 'string',
 		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'modal-width-type',
+		},
+	},
+	modalWidthTypeTablet: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'modal-width-type',
+		},
+	},
+	modalWidthTypeMobile: {
+		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'modal-width-type',
 		},
@@ -211,18 +223,30 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'modal-height',
 		},
-		default: '',
+		default: 350,
 	},
 	modalHeightMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'modal-height',
 		},
-		default: '',
+		default: 300,
 	},
 	modalHeightType: {
 		type: 'string',
 		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'modal-height-type',
+		},
+	},
+	modalHeightTypeTablet: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'modal-height-type',
+		},
+	},
+	modalHeightTypeMobile: {
+		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'modal-height-type',
 		},

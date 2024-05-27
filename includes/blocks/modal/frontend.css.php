@@ -55,7 +55,7 @@ $bg_obj_desktop           = array(
 );
 $container_bg_css_desktop = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_desktop );
 
-$selectors               = array(
+$selectors                = array(
 	'.uagb-modal-popup .uagb-modal-popup-wrap'   => array(
 		'width'                      => UAGB_Helper::get_css_value( $attr['modalWidth'], $attr['modalWidthType'] ),
 		'height'                     => UAGB_Helper::get_css_value( $attr['modalHeight'], $attr['modalHeightType'] ),
@@ -108,7 +108,7 @@ $selectors               = array(
 		'border-radius' => UAGB_Helper::get_css_value( $attr['iconimgBorderRadius'], $attr['iconimgBorderRadiusUnit'] ),
 	),
 );
-$bg_obj_tablet           = array(
+$bg_obj_tablet            = array(
 	'backgroundType'           => $attr['backgroundType'],
 	'backgroundImage'          => $attr['backgroundImageTablet'],
 	'backgroundColor'          => $attr['backgroundColor'],
@@ -134,14 +134,16 @@ $bg_obj_tablet           = array(
 	'yPosition'                => $attr['yPositionTablet'],
 	'yPositionType'            => $attr['yPositionTypeTablet'],
 );
-$container_bg_css_tablet = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_tablet );
-$t_selectors             = array(
+$container_bg_css_tablet  = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_tablet );
+$modal_width_tablet_type  = isset( $attr['modalWidthTypeTablet'] ) ? $attr['modalWidthTypeTablet'] : $attr['modalWidthType'];
+$modal_height_tablet_type = isset( $attr['modalHeightTypeTablet'] ) ? $attr['modalHeightTypeTablet'] : $attr['modalHeightType'];
+$t_selectors              = array(
 	'.uagb-modal-wrapper'                      => array(
 		'text-align' => $attr['modalAlignTablet'],
 	),
 	'.uagb-modal-popup .uagb-modal-popup-wrap' => array(
-		'width'                      => UAGB_Helper::get_css_value( $attr['modalWidthTablet'], $attr['modalWidthType'] ),
-		'height'                     => UAGB_Helper::get_css_value( $attr['modalHeightTablet'], $attr['modalHeightType'] ),
+		'width'                      => UAGB_Helper::get_css_value( $attr['modalWidthTablet'], $modal_width_tablet_type ),
+		'height'                     => UAGB_Helper::get_css_value( $attr['modalHeightTablet'], $modal_height_tablet_type ),
 		'border-style'               => 'none',
 		'border-color'               => 'none',
 		'border-top-left-radius'     => UAGB_Helper::get_css_value( $attr['contentBorderTopLeftRadiusTablet'], $attr['contentBorderRadiusUnitTablet'] ),
@@ -160,7 +162,7 @@ $t_selectors             = array(
 		$container_bg_css_tablet
 	),
 );
-$bg_obj_mobile           = array(
+$bg_obj_mobile            = array(
 	'backgroundType'           => $attr['backgroundType'],
 	'backgroundImage'          => $attr['backgroundImageMobile'],
 	'backgroundColor'          => $attr['backgroundColor'],
@@ -186,14 +188,16 @@ $bg_obj_mobile           = array(
 	'yPosition'                => $attr['yPositionMobile'],
 	'yPositionType'            => $attr['yPositionTypeMobile'],
 );
-$container_bg_css_mobile = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_mobile );
-$m_selectors             = array(
+$container_bg_css_mobile  = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_mobile );
+$modal_mobile_width_type  = isset( $attr['modalWidthTypeMobile'] ) ? $attr['modalWidthTypeMobile'] : $attr['modalWidthType'];
+$modal_mobile_height_type = isset( $attr['modalHeightTypeMobile'] ) ? $attr['modalHeightTypeMobile'] : $attr['modalHeightType'];
+$m_selectors              = array(
 	'.uagb-modal-wrapper'                      => array(
 		'text-align' => $attr['modalAlignMobile'],
 	),
 	'.uagb-modal-popup .uagb-modal-popup-wrap' => array(
-		'width'                      => UAGB_Helper::get_css_value( $attr['modalWidthMobile'], $attr['modalWidthType'] ),
-		'height'                     => UAGB_Helper::get_css_value( $attr['modalHeightMobile'], $attr['modalHeightType'] ),
+		'width'                      => UAGB_Helper::get_css_value( $attr['modalWidthMobile'], $modal_mobile_width_type ),
+		'height'                     => UAGB_Helper::get_css_value( $attr['modalHeightMobile'], $modal_mobile_height_type ),
 		'border-style'               => 'none',
 		'border-color'               => 'none',
 		'border-top-left-radius'     => UAGB_Helper::get_css_value( $attr['contentBorderTopLeftRadiusMobile'], $attr['contentBorderRadiusUnitMobile'] ),

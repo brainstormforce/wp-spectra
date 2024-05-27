@@ -25,10 +25,14 @@ export default function styling( attributes, clientId, name, deviceType ) {
 		modalWidthTablet,
 		modalWidthMobile,
 		modalWidthType,
+		modalWidthTypeTablet,
+		modalWidthTypeMobile,
 		modalHeight,
 		modalHeightTablet,
 		modalHeightMobile,
 		modalHeightType,
+		modalHeightTypeTablet,
+		modalHeightTypeMobile,
 		contentBorderHColor,
 		closeIconSize,
 		closeIconPosition,
@@ -306,8 +310,8 @@ export default function styling( attributes, clientId, name, deviceType ) {
 	const modalPopupContentBackgroundCSSTablet = generateBackgroundCSS( backgroundAttributesTablet );
 	let tabletSelectors = {
 		' .uagb-modal-popup-wrap': {
-			'height': generateCSSUnit( modalHeightTablet, modalHeightType ),
-			'width': generateCSSUnit( modalWidthTablet, modalWidthType ),
+			'height': generateCSSUnit( modalHeightTablet, modalHeightTypeTablet ),
+			'width': generateCSSUnit( modalWidthTablet, modalWidthTypeTablet ),
 		},
 		' .uagb-modal-popup-content': {
 			'padding-left': generateCSSUnit( paddingModalLeftTablet, tabletPaddingModalUnit ),
@@ -353,8 +357,8 @@ export default function styling( attributes, clientId, name, deviceType ) {
 	const modalPopupContentBackgroundCSSMobile = generateBackgroundCSS( backgroundAttributesMobile );
 	let mobileSelectors = {
 		' .uagb-modal-popup-wrap': {
-			'height': generateCSSUnit( modalHeightMobile, modalHeightType ),
-			'width': generateCSSUnit( modalWidthMobile, modalWidthType ),
+			'height': generateCSSUnit( modalHeightMobile, modalHeightTypeMobile ),
+			'width': generateCSSUnit( modalWidthMobile, modalWidthTypeMobile ),
 		},
 		' .uagb-modal-popup-content': {
 			'padding-left': generateCSSUnit( paddingModalLeftMobile, mobilePaddingModalUnit ),
@@ -385,12 +389,12 @@ export default function styling( attributes, clientId, name, deviceType ) {
 		};
 		tabletSelectors[ ' .uagb-modal-popup-wrap' ] = {
 			'height': 'auto',
-			'width': generateCSSUnit( modalWidthTablet, modalWidthType ),
+			'width': generateCSSUnit( modalWidthTablet, modalWidthTypeTablet ),
 			'max-height': generateCSSUnit( maxHeightTablet, maxHeightType ),
 		};
 		mobileSelectors[ ' .uagb-modal-popup-wrap' ] = {
 			'height': 'auto',
-			'width': generateCSSUnit( modalWidthMobile, modalWidthType ),
+			'width': generateCSSUnit( modalWidthMobile, modalWidthTypeMobile ),
 			'max-height': generateCSSUnit( maxHeightMobile, maxHeightType ),
 		};
 	}

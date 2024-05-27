@@ -56,10 +56,14 @@ export default function Settings( props ) {
 		modalWidthTablet,
 		modalWidthMobile,
 		modalWidthType,
+		modalWidthTypeTablet,
+		modalWidthTypeMobile,
 		modalHeight,
 		modalHeightTablet,
 		modalHeightMobile,
 		modalHeightType,
+		modalHeightTypeTablet,
+		modalHeightTypeMobile,
 		closeIconSize,
 		closeIconPosition,
 		overlayColor,
@@ -470,21 +474,33 @@ export default function Settings( props ) {
 					desktop: {
 						value: modalWidth,
 						label: 'modalWidth',
+						unit: {
+							value: modalWidthType,
+							label: 'modalWidthType',
+						},
+						min: ( '%' === modalWidthType ) ? 10 : '0', // Adding 0 as string to resolve issue with slider getting stuck.
+						max: ( '%' === modalWidthType ) ? 100 : 1500, 
 					},
 					tablet: {
 						value: modalWidthTablet,
 						label: 'modalWidthTablet',
+						unit: {
+							value: modalWidthTypeTablet,
+							label: 'modalWidthTypeTablet',
+						},
+						min: ( '%' === modalWidthTypeTablet ) ? 10 : '0', // Adding 0 as string to resolve issue with slider getting stuck.
+						max: ( '%' === modalWidthTypeTablet ) ? 100 : 1500, 
 					},
 					mobile: {
 						value: modalWidthMobile,
 						label: 'modalWidthMobile',
+						unit: {
+							value: modalWidthTypeMobile,
+							label: 'modalWidthTypeMobile',
+						},
+						min: ( '%' === modalWidthTypeMobile ) ? 10 : '0', // Adding 0 as string to resolve issue with slider getting stuck.
+						max: ( '%' === modalWidthTypeMobile ) ? 100 : 1500,
 					},
-				} }
-				min={ '%' === modalWidthType ? 10 : 0 }
-				max={ '%' === modalWidthType ? 100 : 1500 }
-				unit={ {
-					value: modalWidthType,
-					label: 'modalWidthType',
 				} }
 				units={ [
 					{
@@ -559,21 +575,33 @@ export default function Settings( props ) {
 						desktop: {
 							value: modalHeight,
 							label: 'modalHeight',
+							unit: {
+								value: modalHeightType,
+								label: 'modalHeightType',
+							},
+							min: ( '%' === modalHeightType ) ? 10 : 130,
+							max: ( '%' === modalHeightType ) ? 100 : 1500,
 						},
 						tablet: {
 							value: modalHeightTablet,
 							label: 'modalHeightTablet',
+							unit: {
+								value: modalHeightTypeTablet,
+								label: 'modalHeightTypeTablet',
+							},
+							min: ( '%' === modalHeightTypeTablet ) ? 10 : 130,
+							max: ( '%' === modalHeightTypeTablet ) ? 100 : 1500,
 						},
 						mobile: {
 							value: modalHeightMobile,
 							label: 'modalHeightMobile',
+							unit: {
+								value: modalHeightTypeMobile,
+								label: 'modalHeightTypeMobile',
+							},
+							min: ( '%' === modalHeightTypeMobile ) ? 10 : 130,
+							max: ( '%' === modalHeightTypeMobile ) ? 100 : 1500,
 						},
-					} }
-					min={ '%' === modalHeightType ? 10 : 130 }
-					max={ '%' === modalHeightType ? 100 : 1500 }
-					unit={ {
-						value: modalHeightType,
-						label: 'modalHeightType',
 					} }
 					units={ [
 						{

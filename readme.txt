@@ -220,6 +220,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Info Box - Added an option to set the alt attribute to the image.
 * Improvement: Asset Generation - Regenerating post assets on current post update to avoid any conflicts with the cached version.
 * Improvement: Added the inherit-from-theme primary and secondary-button option in blocks that contain buttons for Astra themes.
+* Improvement: Modal - Added responsive units for modal height and width.
 * Fix: Buttons - Resolved an issue wherein the button typography styles would not work when applied from the parent in the Astra theme.
 : Fix: Buttons - Resolved an issue where in button icon spacing would not work as expected in responsive devices.
 * Fix: Image Gallery - Added accessibility improvements to the lightbox close and gallery pagination buttons.
