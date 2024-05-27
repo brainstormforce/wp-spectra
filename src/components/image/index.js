@@ -234,7 +234,7 @@ const UAGMediaPicker = ( props ) => {
 								title={ selectMediaLabel }
 								onSelect={ onSelectImage }
 								allowedTypes={ allow }
-								value={ backgroundImage }
+								value={ backgroundImage?.id }
 								render={ ( { open } ) => renderMediaUploader( open ) }
 							/>
 							{ ! disableRemove && backgroundImage?.url && (

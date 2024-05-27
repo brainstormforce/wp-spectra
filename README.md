@@ -225,6 +225,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 : Fix: Buttons - Resolved an issue where in button icon spacing would not work as expected in responsive devices.
 * Fix: Image Gallery - Added accessibility improvements to the lightbox close and gallery pagination buttons.
 * Fix: Quick Action Bar - Removed a console error that would occur in the editor whenever a block was dragged.
+* Fix: Global - Resolved an issue in which the media pickers would not show the selected image in the popup.
 
 ### 2.13.3 - Wednesday, 22nd May 2024 ###
 * Feature: Post Grid - Introduced new left and right post layouts.
