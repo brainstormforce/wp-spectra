@@ -1282,7 +1282,7 @@ class UAGB_Post_Assets {
 	 *
 	 * This is reusable function which compile fonts, assets and generate asset files.
 	 *
-	 * @since x.x.x
+	 * @since 2.13.4
 	 * @return void
 	 */
 	public function regenerate_post_assets() {
