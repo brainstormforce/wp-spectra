@@ -204,6 +204,7 @@ return array_merge(
 		'dotsMarginTopMobile'        => '',
 		'dotsMarginTopUnit'          => 'px',
 		'useSeparateBoxShadows'      => true,
+		'inheritFromThemeBtn'        => false,
 	),
 	$btn_border_attribute,
 	$overall_border_attribute

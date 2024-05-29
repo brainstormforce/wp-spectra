@@ -25,10 +25,14 @@ export default function styling( attributes, clientId, name, deviceType ) {
 		modalWidthTablet,
 		modalWidthMobile,
 		modalWidthType,
+		modalWidthTypeTablet,
+		modalWidthTypeMobile,
 		modalHeight,
 		modalHeightTablet,
 		modalHeightMobile,
 		modalHeightType,
+		modalHeightTypeTablet,
+		modalHeightTypeMobile,
 		contentBorderHColor,
 		closeIconSize,
 		closeIconPosition,
@@ -174,7 +178,8 @@ export default function styling( attributes, clientId, name, deviceType ) {
 		contentBorderBottomLeftRadius,
 		contentBorderBottomRightRadius,
 		contentBorderRadiusUnit,
-		block_id
+		block_id,
+		inheritFromTheme,
 	} = attributes;
 
 	const blockName = name.replace( 'uagb/', '' );
@@ -274,46 +279,6 @@ export default function styling( attributes, clientId, name, deviceType ) {
 		'.uagb-modal-wrapper img.uagb-modal-trigger': {
 			'border-radius': generateCSSUnit( iconimgBorderRadius, iconimgBorderRadiusUnit ),
 		},
-		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger': {
-			'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
-			'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
-			'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
-			'padding-bottom': generateCSSUnit( paddingBtnBottom, paddingBtnUnit ),
-			'font-family': btnFontFamily,
-			'font-style': btnFontStyle,
-			'text-decoration': btnDecoration,
-			'text-transform': btnTransform,
-			'font-weight': btnFontWeight,
-			'font-size': generateCSSUnit( btnFontSize, btnFontSizeType ),
-			'line-height': generateCSSUnit( btnLineHeight, btnLineHeightType ),
-			'letter-spacing': generateCSSUnit( btnLetterSpacing, btnLetterSpacingType ),
-			'color': btnLinkColor,
-			'background-color': modalTriggerBgType === 'color' ? btnBgColor : 'transparent',
-			...borderCSS,
-		},
-		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger svg': {
-			'font-size': generateCSSUnit( btnFontSize, btnFontSizeType ),
-			'width': generateCSSUnit( btnFontSize, btnFontSizeType ),
-			'height': generateCSSUnit( btnFontSize, btnFontSizeType ),
-			'line-height': generateCSSUnit( btnFontSize, btnFontSizeType ),
-			'fill': btnLinkColor,
-		},
-		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:hover': {
-			'color': btnLinkHoverColor,
-			'background-color': modalTriggerBgHoverType === 'color' ? btnBgHoverColor : 'transparent',
-			'border-color': btnBorderHColor,
-		},
-		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:hover svg': {
-			'fill': btnLinkHoverColor,
-		},
-		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:focus': {
-			'color': btnLinkHoverColor,
-			'background-color': modalTriggerBgHoverType === 'color' ? btnBgHoverColor : 'transparent',
-			'border-color': btnBorderHColor,
-		},
-		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:focus svg': {
-			'fill': btnLinkHoverColor,
-		},
 	};
 	const backgroundAttributesTablet = {
 		'backgroundType': backgroundType,
@@ -345,8 +310,8 @@ export default function styling( attributes, clientId, name, deviceType ) {
 	const modalPopupContentBackgroundCSSTablet = generateBackgroundCSS( backgroundAttributesTablet );
 	let tabletSelectors = {
 		' .uagb-modal-popup-wrap': {
-			'height': generateCSSUnit( modalHeightTablet, modalHeightType ),
-			'width': generateCSSUnit( modalWidthTablet, modalWidthType ),
+			'height': generateCSSUnit( modalHeightTablet, modalHeightTypeTablet ),
+			'width': generateCSSUnit( modalWidthTablet, modalWidthTypeTablet ),
 		},
 		' .uagb-modal-popup-content': {
 			'padding-left': generateCSSUnit( paddingModalLeftTablet, tabletPaddingModalUnit ),
@@ -360,22 +325,6 @@ export default function styling( attributes, clientId, name, deviceType ) {
 			'font-size': generateCSSUnit( textFontSizeTablet, textFontSizeType ),
 			'line-height': generateCSSUnit( textLineHeightTablet, textLineHeightType ),
 			'letter-spacing': generateCSSUnit( textLetterSpacingTablet, textLetterSpacingType ),
-		},
-		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger': {
-			'padding-left': generateCSSUnit( paddingBtnLeftTablet, tabletPaddingBtnUnit ),
-			'padding-right': generateCSSUnit( paddingBtnRightTablet, tabletPaddingBtnUnit ),
-			'padding-top': generateCSSUnit( paddingBtnTopTablet, tabletPaddingBtnUnit ),
-			'padding-bottom': generateCSSUnit( paddingBtnBottomTablet, tabletPaddingBtnUnit ),
-			'font-size': generateCSSUnit( btnFontSizeTablet, btnFontSizeType ),
-			'line-height': generateCSSUnit( btnLineHeightTablet, btnLineHeightType ),
-			'letter-spacing': generateCSSUnit( btnLetterSpacingTablet, btnLetterSpacingType ),
-			...borderCSSTablet,
-		},
-		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger svg': {
-			'font-size': generateCSSUnit( btnFontSizeTablet, btnFontSizeType ),
-			'width': generateCSSUnit( btnFontSizeTablet, btnFontSizeType ),
-			'height': generateCSSUnit( btnFontSizeTablet, btnFontSizeType ),
-			'line-height': generateCSSUnit( btnFontSizeTablet, btnFontSizeType ),
 		},
 	};
 	const backgroundAttributesMobile = {
@@ -408,8 +357,8 @@ export default function styling( attributes, clientId, name, deviceType ) {
 	const modalPopupContentBackgroundCSSMobile = generateBackgroundCSS( backgroundAttributesMobile );
 	let mobileSelectors = {
 		' .uagb-modal-popup-wrap': {
-			'height': generateCSSUnit( modalHeightMobile, modalHeightType ),
-			'width': generateCSSUnit( modalWidthMobile, modalWidthType ),
+			'height': generateCSSUnit( modalHeightMobile, modalHeightTypeMobile ),
+			'width': generateCSSUnit( modalWidthMobile, modalWidthTypeMobile ),
 		},
 		' .uagb-modal-popup-content': {
 			'padding-left': generateCSSUnit( paddingModalLeftMobile, mobilePaddingModalUnit ),
@@ -424,23 +373,94 @@ export default function styling( attributes, clientId, name, deviceType ) {
 			'line-height': generateCSSUnit( textLineHeightMobile, textLineHeightType ),
 			'letter-spacing': generateCSSUnit( textLetterSpacingMobile, textLetterSpacingType ),
 		},
-		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger': {
-			'padding-left': generateCSSUnit( paddingBtnLeftMobile, mobilePaddingBtnUnit ),
-			'padding-right': generateCSSUnit( paddingBtnRightMobile, mobilePaddingBtnUnit ),
-			'padding-top': generateCSSUnit( paddingBtnTopMobile, mobilePaddingBtnUnit ),
-			'padding-bottom': generateCSSUnit( paddingBtnBottomMobile, mobilePaddingBtnUnit ),
-			'font-size': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),
-			'line-height': generateCSSUnit( btnLineHeightMobile, btnLineHeightType ),
-			'letter-spacing': generateCSSUnit( btnLetterSpacingMobile, btnLetterSpacingType ),
-			...borderCSSMobile,
-		},
-		' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger svg': {
-			'font-size': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),
-			'width': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),
-			'height': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),
-			'line-height': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),
-		},
 	};
+
+	if( !inheritFromTheme ) {
+		selectors = {
+			...selectors,
+			' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger': {
+				'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
+				'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
+				'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
+				'padding-bottom': generateCSSUnit( paddingBtnBottom, paddingBtnUnit ),
+				'font-family': btnFontFamily,
+				'font-style': btnFontStyle,
+				'text-decoration': btnDecoration,
+				'text-transform': btnTransform,
+				'font-weight': btnFontWeight,
+				'font-size': generateCSSUnit( btnFontSize, btnFontSizeType ),
+				'line-height': generateCSSUnit( btnLineHeight, btnLineHeightType ),
+				'letter-spacing': generateCSSUnit( btnLetterSpacing, btnLetterSpacingType ),
+				'color': btnLinkColor,
+				'background-color': modalTriggerBgType === 'color' ? btnBgColor : 'transparent',
+				...borderCSS,
+			},
+			' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger svg': {
+				'font-size': generateCSSUnit( btnFontSize, btnFontSizeType ),
+				'width': generateCSSUnit( btnFontSize, btnFontSizeType ),
+				'height': generateCSSUnit( btnFontSize, btnFontSizeType ),
+				'line-height': generateCSSUnit( btnFontSize, btnFontSizeType ),
+				'fill': btnLinkColor,
+			},
+			' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:hover': {
+				'color': btnLinkHoverColor,
+				'background-color': modalTriggerBgHoverType === 'color' ? btnBgHoverColor : 'transparent',
+				'border-color': btnBorderHColor,
+			},
+			' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:hover svg': {
+				'fill': btnLinkHoverColor,
+			},
+			' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:focus': {
+				'color': btnLinkHoverColor,
+				'background-color': modalTriggerBgHoverType === 'color' ? btnBgHoverColor : 'transparent',
+				'border-color': btnBorderHColor,
+			},
+			' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:focus svg': {
+				'fill': btnLinkHoverColor,
+			},
+		};
+
+		tabletSelectors = {
+			...tabletSelectors,
+			' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger': {
+				'padding-left': generateCSSUnit( paddingBtnLeftTablet, tabletPaddingBtnUnit ),
+				'padding-right': generateCSSUnit( paddingBtnRightTablet, tabletPaddingBtnUnit ),
+				'padding-top': generateCSSUnit( paddingBtnTopTablet, tabletPaddingBtnUnit ),
+				'padding-bottom': generateCSSUnit( paddingBtnBottomTablet, tabletPaddingBtnUnit ),
+				'font-size': generateCSSUnit( btnFontSizeTablet, btnFontSizeType ),
+				'line-height': generateCSSUnit( btnLineHeightTablet, btnLineHeightType ),
+				'letter-spacing': generateCSSUnit( btnLetterSpacingTablet, btnLetterSpacingType ),
+				...borderCSSTablet,
+			},
+			' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger svg': {
+				'font-size': generateCSSUnit( btnFontSizeTablet, btnFontSizeType ),
+				'width': generateCSSUnit( btnFontSizeTablet, btnFontSizeType ),
+				'height': generateCSSUnit( btnFontSizeTablet, btnFontSizeType ),
+				'line-height': generateCSSUnit( btnFontSizeTablet, btnFontSizeType ),
+			},
+		};
+
+		mobileSelectors = {
+			...mobileSelectors,
+			' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger': {
+				'padding-left': generateCSSUnit( paddingBtnLeftMobile, mobilePaddingBtnUnit ),
+				'padding-right': generateCSSUnit( paddingBtnRightMobile, mobilePaddingBtnUnit ),
+				'padding-top': generateCSSUnit( paddingBtnTopMobile, mobilePaddingBtnUnit ),
+				'padding-bottom': generateCSSUnit( paddingBtnBottomMobile, mobilePaddingBtnUnit ),
+				'font-size': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),
+				'line-height': generateCSSUnit( btnLineHeightMobile, btnLineHeightType ),
+				'letter-spacing': generateCSSUnit( btnLetterSpacingMobile, btnLetterSpacingType ),
+				...borderCSSMobile,
+			},
+			' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger svg': {
+				'font-size': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),
+				'width': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),
+				'height': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),
+				'line-height': generateCSSUnit( btnFontSizeMobile, btnFontSizeType ),
+			},
+		};
+
+	}
 
 	if ( modalBoxHeight !== 'custom' ) {
 		selectors[ ' .uagb-modal-popup-wrap' ] = {
@@ -456,12 +476,12 @@ export default function styling( attributes, clientId, name, deviceType ) {
 		};
 		tabletSelectors[ ' .uagb-modal-popup-wrap' ] = {
 			'height': 'auto',
-			'width': generateCSSUnit( modalWidthTablet, modalWidthType ),
+			'width': generateCSSUnit( modalWidthTablet, modalWidthTypeTablet ),
 			'max-height': generateCSSUnit( maxHeightTablet, maxHeightType ),
 		};
 		mobileSelectors[ ' .uagb-modal-popup-wrap' ] = {
 			'height': 'auto',
-			'width': generateCSSUnit( modalWidthMobile, modalWidthType ),
+			'width': generateCSSUnit( modalWidthMobile, modalWidthTypeMobile ),
 			'max-height': generateCSSUnit( maxHeightMobile, maxHeightType ),
 		};
 	}
@@ -526,6 +546,8 @@ export default function styling( attributes, clientId, name, deviceType ) {
 		return 'center';
 	}
 
+
+
 	const alignment = getFlexAlignment( modalAlign );
 	const alignmentTablet = getFlexAlignment( modalAlignTablet );
 	const alignmentMobile = getFlexAlignment( modalAlignMobile );
@@ -547,7 +569,7 @@ export default function styling( attributes, clientId, name, deviceType ) {
 			}
 		}
 	} else {
-		selectors[ ' .wp-block-button__link.uagb-modal-trigger' ] = {
+		selectors[ ' .uagb-modal-trigger' ] = {
 			'width': '100%',
 			'justify-content': 'center',
 		};

@@ -462,7 +462,7 @@ export default function Settings( props ) {
 		<UAGAdvancedPanelBody title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 			<UAGMediaPicker
 				onSelectImage={ onSelectImage }
-				backgroundImage={ { url } }
+				backgroundImage={ { id, url } }
 				onRemoveImage={ onRemoveImage }
 				disableLabel={ true }
 			/>

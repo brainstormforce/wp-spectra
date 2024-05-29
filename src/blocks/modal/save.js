@@ -24,6 +24,8 @@ export default function Save( props ) {
 		showBtnIcon,
 		openModalAs,
 		modalPosition,
+		inheritFromTheme,
+		buttonType,
 	} = props.attributes;
 
 	const textHTML = (
@@ -63,23 +65,31 @@ export default function Save( props ) {
 		buttonIconOutput = renderSVG( buttonIcon );
 	}
 
-	const buttonClasses = 'uagb-modal-button-link wp-block-button__link uagb-modal-trigger';
+	const inheritAstraSecondary = inheritFromTheme && 'secondary' === buttonType;
+	const buttonTypeClass = inheritAstraSecondary ? 'ast-outline-button' : 'wp-block-button__link';
+	//border-width is added to revert the border related styles by default.
+	const borderStyle = inheritAstraSecondary ? { borderWidth: 'revert-layer' } : {};
+
+	const buttonClasses = `uagb-modal-button-link ${ buttonTypeClass } uagb-modal-trigger`;
+
+	const CustomTag = inheritAstraSecondary ? 'div' : 'a';
 
 	const buttonHTML = (
 		<div className={ classnames( 'uagb-spectra-button-wrapper', 'wp-block-button' ) }>
-			<a // eslint-disable-line jsx-a11y/anchor-is-valid
+			<CustomTag // eslint-disable-line jsx-a11y/anchor-is-valid
 				className={ buttonClasses }
 				href={ '#' }
 				onClick={ 'return false;' }
 				target="_self"
 				rel="noopener noreferrer"
+				style={ borderStyle }
 			>
 				<span className="uagb-modal-content-wrapper">
 					{ showBtnIcon && buttonIconPosition === 'before' && buttonIconOutput }
 					<RichText.Content tagName="span" value={ buttonText } className="uagb-inline-editing" />
 					{ showBtnIcon && buttonIconPosition === 'after' && buttonIconOutput }
 				</span>
-			</a>
+			</CustomTag>
 		</div>
 	);
 

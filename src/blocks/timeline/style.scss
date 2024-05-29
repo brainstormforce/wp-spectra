@@ -17,7 +17,6 @@
 		a {
 			margin-bottom: inherit;
 			text-decoration: none;
-			font-size: inherit;
 
 			&.uagb-timeline__image {
 				position: relative;
@@ -39,7 +38,6 @@
 
 		a.uagb-timeline__link {
 			display: inline-block;
-			padding: 5px 10px;
 		}
 
 		&.uagb-timeline__left.hide-events .uagb-timeline__events-inner-new,

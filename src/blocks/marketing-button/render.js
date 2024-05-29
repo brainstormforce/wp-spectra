@@ -16,7 +16,16 @@ const Render = ( props ) => {
 
 	const { attributes, setAttributes, className, mergeBlocks, insertBlocksAfter, createBlock, onReplace, deviceType } = props;
 
-	const { block_id, align, textAlign, heading, prefix, icon, iconPosition, titleTag, showDescription } = attributes;
+	const { block_id, align, textAlign, heading, prefix, icon, iconPosition, titleTag, showDescription, inheritFromTheme, buttonType } = attributes;
+
+	const inheritAstraSecondary = inheritFromTheme && 'secondary' === buttonType;
+	const buttonTypeClass = inheritAstraSecondary ? 'ast-outline-button' : 'wp-block-button__link';
+	//border-width is added to revert the border related styles by default.
+	const borderStyle = inheritAstraSecondary ? { borderWidth: 'revert-layer' } : {};
+    
+	const marketingBtnClass = `uagb-marketing-btn__link ${buttonTypeClass}`;
+
+	const CustomTag = inheritAstraSecondary ? 'div' : 'a';
 
 	const iconHTML = <>{ '' !== icon && renderSVG( icon, setAttributes ) }</>;
 	const titleHTML = (
@@ -62,8 +71,9 @@ const Render = ( props ) => {
 				'wp-block-button'
 			) }
 		>
-			<a // eslint-disable-line jsx-a11y/anchor-is-valid
-				className="uagb-marketing-btn__link wp-block-button__link"
+			<CustomTag // eslint-disable-line jsx-a11y/anchor-is-valid
+				className={ marketingBtnClass }
+				style={ borderStyle }
 			>
 				{ 'before' === iconPosition && (
 					<>
@@ -104,7 +114,7 @@ const Render = ( props ) => {
 						}
 					/>
 				) }
-			</a>
+			</CustomTag>
 		</div>
 	);
 };

@@ -101,6 +101,7 @@ return array_merge(
 		'borderRadius'              => '',
 		'borderColor'               => '',
 		'borderHoverColor'          => '',
+		'inheritFromTheme'          => false,
 	),
 	$button_attribute
 );

@@ -1192,6 +1192,13 @@ const attributes = {
 		type: 'boolean',
 		default: 'enabled' === uagb_blocks_info.btn_inherit_from_theme,
 	},
+	submitButtonType: {
+		type: 'string',
+		default: 'primary',
+		UAGCopyPaste: {
+			styleType: 'btn-type',
+		},
+	},
 	isPreview: {
 		type: 'boolean',
 		default: false,

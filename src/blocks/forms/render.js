@@ -22,7 +22,14 @@ import { InnerBlocks, RichText } from '@wordpress/block-editor';
 const Render = ( props ) => {
 
 	const { attributes, setAttributes, deviceType } = props;
-	const { block_id, submitButtonText, formLabel, buttonSize, reCaptchaEnable, reCaptchaType } = attributes;
+	const { block_id, submitButtonText, formLabel, buttonSize, reCaptchaEnable, reCaptchaType, submitButtonType, inheritFromTheme } = attributes;
+
+	const inheritAstraSecondary = inheritFromTheme && 'secondary' === submitButtonType;
+	const buttonTypeClass = inheritAstraSecondary ? 'ast-outline-button' : 'wp-block-button__link';
+	//border-width is added to revert the border related styles by default.
+	const borderStyle = inheritAstraSecondary ? { borderWidth: 'revert-layer' } : {};
+
+	const submitBtnClass = `uagb-forms-main-submit-button ${buttonTypeClass}`;
 
 	const onSubmitClick = useCallback( ( e ) => {
 		e.preventDefault();
@@ -30,7 +37,7 @@ const Render = ( props ) => {
 
 	const renderButtonHtml = () => {
 		return (
-			<button onClick={ onSubmitClick } className="uagb-forms-main-submit-button wp-block-button__link">
+			<button onClick={ onSubmitClick } className={ submitBtnClass } style={ borderStyle } >
 				<RichText
 					tagName="div"
 					placeholder={ __( 'Submit', 'ultimate-addons-for-gutenberg' ) }

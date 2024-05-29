@@ -20,6 +20,10 @@
 	}
 }
 
+.uagb-timeline__link_parent > div {
+	display: inline-block;
+}
+
 .uagb-editor-preview-mode-tablet.uagb-timeline,
 .uagb-editor-preview-mode-mobile.uagb-timeline {
 	.uagb-timeline__image img {

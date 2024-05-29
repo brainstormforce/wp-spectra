@@ -40,10 +40,19 @@ const Render = ( props ) => {
 		openModalAs,
 		modalPosition,
 		defaultTemplate,
+		inheritFromTheme,
+		buttonType,
 	} = attributes;
 
 	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 	const isPro = uagb_blocks_info.spectra_pro_status;
+
+	const inheritAstraSecondary = inheritFromTheme && 'secondary' === buttonType;
+	const buttonTypeClass = inheritAstraSecondary ? 'ast-outline-button' : 'wp-block-button__link';
+	//border-width is added to revert the border related styles by default.
+	const borderStyle = inheritAstraSecondary ? { borderWidth: 'revert-layer' } : {};
+
+	const CustomTag = inheritAstraSecondary ? 'div' : 'a';
 
 	const ALLOWED_BLOCKS = wp.blocks
 		.getBlockTypes()
@@ -105,14 +114,15 @@ const Render = ( props ) => {
 		buttonIconOutput = renderSVG( buttonIcon, setAttributes );
 	}
 
-	const buttonClasses = 'uagb-modal-button-link wp-block-button__link uagb-modal-trigger';
+	const buttonClasses = `uagb-modal-button-link ${buttonTypeClass} uagb-modal-trigger`;
 
 	const buttonHTML = (
 		<div className={ classnames( 'uagb-spectra-button-wrapper', 'wp-block-button' ) }>
-			<a // eslint-disable-line jsx-a11y/anchor-is-valid
+			<CustomTag // eslint-disable-line jsx-a11y/anchor-is-valid
 				className={ buttonClasses }
 				target="_self"
 				rel="noopener noreferrer"
+				style={ borderStyle }
 			>
 				<span className="uagb-modal-content-wrapper">
 					{ showBtnIcon && buttonIconPosition === 'before' && buttonIconOutput }
@@ -126,7 +136,7 @@ const Render = ( props ) => {
 					/>
 					{ showBtnIcon && buttonIconPosition === 'after' && buttonIconOutput }
 				</span>
-			</a>
+			</CustomTag>
 		</div>
 	);
 
