@@ -58,7 +58,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 			$options = array(
 				'uagb_beta'                         => self::get_admin_settings_option( 'uagb_beta', 'no' ),
-				'uag_enable_legacy_blocks'          => self::get_admin_settings_option( 'uag_enable_legacy_blocks', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'yes' : 'no' ),
+				'uag_enable_legacy_blocks'          => self::get_admin_settings_option( 'uag_enable_legacy_blocks' ),
 				'_uagb_allow_file_generation'       => self::get_admin_settings_option( '_uagb_allow_file_generation', 'enabled' ),
 				'uag_enable_templates_button'       => self::get_admin_settings_option( 'uag_enable_templates_button', 'yes' ),
 				'uag_enable_on_page_css_button'     => self::get_admin_settings_option( 'uag_enable_on_page_css_button', 'yes' ),
@@ -80,8 +80,8 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 				'uag_container_global_elements_gap' => self::get_admin_settings_option( 'uag_container_global_elements_gap', 20 ),
 				'uag_btn_inherit_from_theme'        => self::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' ),
 				'uag_blocks_editor_spacing'         => apply_filters( 'uagb_default_blocks_editor_spacing', self::get_admin_settings_option( 'uag_blocks_editor_spacing', 0 ) ),
-				'uag_load_font_awesome_5'           => self::get_admin_settings_option( 'uag_load_font_awesome_5', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
-				'uag_auto_block_recovery'           => self::get_admin_settings_option( 'uag_auto_block_recovery', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'enabled' : 'disabled' ),
+				'uag_load_font_awesome_5'           => self::get_admin_settings_option( 'uag_load_font_awesome_5' ),
+				'uag_auto_block_recovery'           => self::get_admin_settings_option( 'uag_auto_block_recovery' ),
 				'uag_content_width'                 => $content_width,
 				'spectra_core_blocks'               => apply_filters(
 					'spectra_core_blocks',

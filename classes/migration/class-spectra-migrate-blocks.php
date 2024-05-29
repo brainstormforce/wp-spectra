@@ -118,6 +118,8 @@ class Spectra_Migrate_Blocks {
 			wp_schedule_single_event( time(), 'spectra_blocks_migration_event' );
 		}
 		update_option( 'uag_blocks_migration', 'yes' );
+		update_option( 'uag_enable_legacy_blocks', 'yes' );
+		update_option( 'uag_load_font_awesome_5', 'enabled' );
 	}
 
 	/**

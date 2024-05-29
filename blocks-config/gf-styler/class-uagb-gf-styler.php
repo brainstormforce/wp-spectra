@@ -54,9 +54,9 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 				return;
 			}
 
-			$enable_legacy_blocks = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_legacy_blocks', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'yes' : 'no' );
+			$enable_legacy_blocks = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_legacy_blocks' );
 
-			if ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) || 'yes' === $enable_legacy_blocks ) {
+			if ( 'yes' === $enable_legacy_blocks ) {
 				register_block_type(
 					'uagb/gf-styler',
 					array(

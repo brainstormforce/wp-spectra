@@ -11,7 +11,7 @@ $disable_v_h_padding = apply_filters( 'uagb_disable_v_h_padding', false );
 
 $border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
 
-$enable_legacy_blocks = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_legacy_blocks', ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 'yes' : 'no' );
+$enable_legacy_blocks = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_legacy_blocks' );
 
 $inherit_from_theme = 'enabled' === UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' );
 

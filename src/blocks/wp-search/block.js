@@ -16,7 +16,7 @@ import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
 let searchCommonData = {};
 searchCommonData = applyFilters( 'uagb/wp-search', addCommonDataToSpectraBlocks( searchCommonData ) );
-if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks ) {
+if ( 'yes' === uagb_blocks_info.enable_legacy_blocks ) {
 	registerBlockType( 'uagb/wp-search', {
 		...searchCommonData,
 		title: __( 'Search', 'ultimate-addons-for-gutenberg' ),
