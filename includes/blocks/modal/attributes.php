@@ -20,6 +20,7 @@ $additional_attributes     = is_array( $additional_attributes ) ? $additional_at
 return array_merge(
 	array(
 		'modalTrigger'                => 'button',
+		'inheritFromTheme'            => false,
 		'buttonIconSpace'             => '5',
 		'buttonIconSpaceTablet'       => '',
 		'buttonIconSpaceMobile'       => '',

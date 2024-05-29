@@ -191,6 +191,7 @@ function styling( attributes, clientId, name, deviceType ) {
 
 	if( !inheritFromTheme ) {
 		selectors = {
+			...selectors,
 			' .block-editor-rich-text__editable.uagb-marketing-btn__title': {
 				'font-size': generateCSSUnit( titleFontSize, titleFontSizeType ),
 				'line-height': generateCSSUnit( titleLineHeight, titleLineHeightType ),
@@ -247,6 +248,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		};
 
 		tabletSelectors = {
+			...tabletSelectors,
 			' .block-editor-rich-text__editable.uagb-marketing-btn__title': {
 				'font-size': generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
 				'line-height': generateCSSUnit( titleLineHeightTablet, titleLineHeightType ),
@@ -267,6 +269,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		};
 
 		mobileSelectors = {
+			...mobileSelectors,
 			' .block-editor-rich-text__editable.uagb-marketing-btn__title': {
 				'font-size': generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
 				'line-height': generateCSSUnit( titleLineHeightMobile, titleLineHeightType ),

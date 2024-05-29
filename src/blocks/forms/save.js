@@ -31,17 +31,15 @@ export default function save( props ) {
 
 	const submitBtnClass = `uagb-forms-main-submit-button ${buttonTypeClass}`;
 
-	const CustomTag = inheritAstraSecondary ? 'div' : 'a';
-
 	const renderButtonHtml = () => {
 		return (
-			<CustomTag className={ submitBtnClass } style={ borderStyle }>
+			<button className={ submitBtnClass } style={ borderStyle }>
 				<RichText.Content
 					tagName="div"
 					value={ submitButtonText.replace( /<(?!br\s*V?)[^>]+>/g, '' ) }
 					className="uagb-forms-main-submit-button-text"
 				/>
-			</CustomTag>
+			</button>
 		);
 	};
 

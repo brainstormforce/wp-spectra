@@ -116,6 +116,7 @@ function styling( attributes, clientId, deviceType ) {
 		columnGapMobile,
 		bgType,
 		bgColor,
+		inheritFromThemeBtn,
 
 		paginationColor,
 		paginationBgColor,
@@ -336,7 +337,7 @@ function styling( attributes, clientId, deviceType ) {
 		'altColor': boxShadowColor,
 	} );
 
-	const selectors = {
+	let selectors = {
 		'.wp-block-uagb-post-grid': {
 			'grid-template-columns': 'repeat(' + columns + ' , minmax(0, 1fr))',
 			...( isLeftToRightLayout ? {'display': 'flex', 'flex-direction': 'column'} : {} )
@@ -540,44 +541,6 @@ function styling( attributes, clientId, deviceType ) {
 		'text-transform': excerptTransform,
 		'text-decoration': excerptDecoration,
 		'letter-spacing': generateCSSUnit( excerptLetterSpacing, excerptLetterSpacingType ),
-	};
-	selectors[ ' .uagb-post__cta .uagb-text-link' ] = {
-		'pointer-events': 'visible',
-		'color': ctaColor,
-		'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
-		'font-family': ctaFontFamily,
-		'font-weight': ctaFontWeight,
-		'font-style': ctaFontStyle,
-		'line-height': generateCSSUnit( ctaLineHeight, ctaLineHeightType ),
-		'background': ctaBgType === 'color' ? ctaBgColor : 'transparent',
-		'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
-		'padding-bottom': generateCSSUnit( paddingBtnBottom, paddingBtnUnit ),
-		'text-transform': ctaTransform,
-		'text-decoration': ctaDecoration,
-		'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
-		'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
-		...borderCSS,
-		'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
-	};
-	selectors[
-		' .uagb-post__inner-wrap .uagb-post__text .wp-block-button.uagb-post__cta:not(.is-style-outline) .uagb-text-link.wp-block-button__link:not(.has-background) '
-	] = {
-		'pointer-events': 'visible',
-		'color': ctaColor,
-		'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
-		'font-family': ctaFontFamily,
-		'font-weight': ctaFontWeight,
-		'font-style': ctaFontStyle,
-		'line-height': generateCSSUnit( ctaLineHeight, ctaLineHeightType ),
-		'background': ctaBgColor,
-		'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
-		'padding-bottom': generateCSSUnit( paddingBtnBottom, paddingBtnUnit ),
-		'text-transform': ctaTransform,
-		'text-decoration': ctaDecoration,
-		'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
-		'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
-		...borderCSS,
-		'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
 	};
 	selectors[
 		' .uagb-post__inner-wrap .uagb-post__text .wp-block-button.uagb-post__cta:not(.is-style-outline) .uagb-text-link.wp-block-button__link:not(.has-background):hover'
@@ -1079,6 +1042,53 @@ function styling( attributes, clientId, deviceType ) {
 			'left': generateCSSUnit( paddingLeftMobile, mobilePaddingUnit ),
 			'right': generateCSSUnit( paddingRightMobile, mobilePaddingUnit ),
 		};
+	}
+
+	if( !inheritFromThemeBtn ) {
+		selectors = {
+			...selectors,
+			' .uagb-post__cta .uagb-text-link' : {
+				'pointer-events': 'visible',
+				'color': ctaColor,
+				'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
+				'font-family': ctaFontFamily,
+				'font-weight': ctaFontWeight,
+				'font-style': ctaFontStyle,
+				'line-height': generateCSSUnit( ctaLineHeight, ctaLineHeightType ),
+				'background': ctaBgType === 'color' ? ctaBgColor : 'transparent',
+				'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
+				'padding-bottom': generateCSSUnit( paddingBtnBottom, paddingBtnUnit ),
+				'text-transform': ctaTransform,
+				'text-decoration': ctaDecoration,
+				'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
+				'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
+				...borderCSS,
+				'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
+
+			},
+
+			' .uagb-post__inner-wrap .uagb-post__text .wp-block-button.uagb-post__cta:not(.is-style-outline) .uagb-text-link.wp-block-button__link:not(.has-background) ' : {
+				'pointer-events': 'visible',
+				'color': ctaColor,
+				'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
+				'font-family': ctaFontFamily,
+				'font-weight': ctaFontWeight,
+				'font-style': ctaFontStyle,
+				'line-height': generateCSSUnit( ctaLineHeight, ctaLineHeightType ),
+				'background': ctaBgColor,
+				'padding-top': generateCSSUnit( paddingBtnTop, paddingBtnUnit ),
+				'padding-bottom': generateCSSUnit( paddingBtnBottom, paddingBtnUnit ),
+				'text-transform': ctaTransform,
+				'text-decoration': ctaDecoration,
+				'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
+				'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
+				...borderCSS,
+				'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
+			}
+
+		}
+		tabletSelectors[ ' .uagb-post__cta .uagb-text-link' ] = borderCSSTablet;
+		mobileSelectors[ ' .uagb-post__cta .uagb-text-link' ] = borderCSSMobile;
 	}
 
 	let stylingCss = '';

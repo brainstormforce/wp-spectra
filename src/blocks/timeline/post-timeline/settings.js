@@ -1349,6 +1349,8 @@ const Settings = ( props ) => {
 	const ctaStyleSettings = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'CTA', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+				{ !inheritFromTheme && (
+				<>
 				<AdvancedPopColorControl
 					label={ __( 'Color', 'ultimate-addons-for-gutenberg' ) }
 					colorValue={ ctaColor ? ctaColor : '' }
@@ -1444,6 +1446,8 @@ const Settings = ( props ) => {
 						label: 'ctaDecoration',
 					} }
 				/>
+				</>
+				) }
 				<ResponsiveSlider
 					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
