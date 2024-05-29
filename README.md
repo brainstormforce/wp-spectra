@@ -222,7 +222,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Global - Added the inherit-from-theme primary and secondary-button options in blocks that contain buttons for Astra themes.
 * Improvement: Asset Generation - Regenerating post assets on current post update to avoid any conflicts with the cached version.
 * Fix: Buttons - Resolved an issue wherein the button typography styles would not work when applied from the parent in the Astra theme.
-: Fix: Buttons - Resolved an issue wherein button icon spacing would not work as expected in responsive devices.
+* Fix: Buttons - Resolved an issue wherein button icon spacing would not work as expected in responsive devices.
 * Fix: Image Gallery - Added accessibility improvements to the lightbox close and gallery pagination buttons.
 * Fix: Quick Action Bar - Removed a console error that would occur in the editor whenever a block was dragged.
 * Fix: Global - Resolved an issue in which the media pickers would not show the selected image in the popup.
