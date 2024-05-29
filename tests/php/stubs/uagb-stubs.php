@@ -1560,7 +1560,7 @@ namespace {
          * @param int     $post_id Post ID.
          * @param WP_Post $post    Post object.
          * @param bool    $update  Whether this is an existing post being updated.
-         * @since x.x.x
+         * @since 2.13.4
          * @return mixed void if not an update, otherwise null.
          */
         public function trigger_regeneration_event($post_id, $post, $update)
@@ -1572,7 +1572,7 @@ namespace {
          * By passing everything and update assets once post is updated.
          *
          * @param int $post_id Post ID.
-         * @since x.x.x
+         * @since 2.13.4
          * @return void
          */
         public function update_current_post_assets($post_id)
@@ -3518,7 +3518,7 @@ namespace {
          *
          * This is reusable function which compile fonts, assets and generate asset files.
          *
-         * @since x.x.x
+         * @since 2.13.4
          * @return void
          */
         public function regenerate_post_assets()

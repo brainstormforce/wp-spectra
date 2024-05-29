@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.13.3\n"
+"Project-Id-Version: Spectra 2.13.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-05-23T12:03:52+00:00\n"
+"POT-Creation-Date: 2024-05-28T07:48:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -214,18 +214,18 @@ msgstr ""
 msgid "Unset"
 msgstr ""
 
-#: blocks-config/post-timeline/class-uagb-post-timeline.php:523
+#: blocks-config/post-timeline/class-uagb-post-timeline.php:531
 #: blocks-config/post/class-uagb-post.php:622
-#: blocks-config/post/class-uagb-post.php:2265
+#: blocks-config/post/class-uagb-post.php:2279
 #: includes/blocks/post-carousel/attributes.php:116
-#: includes/blocks/post-grid/attributes.php:107
+#: includes/blocks/post-grid/attributes.php:108
 #: includes/blocks/post-masonry/attributes.php:110
 #: dist/blocks.js:3
 #: dist/blocks.js:19
 msgid "Read More"
 msgstr ""
 
-#: blocks-config/post-timeline/class-uagb-post-timeline.php:885
+#: blocks-config/post-timeline/class-uagb-post-timeline.php:893
 msgid "No posts found"
 msgstr ""
 
@@ -12849,14 +12849,6 @@ msgid "Form Padding"
 msgstr ""
 
 #: dist/blocks.js:19
-msgid "Forms"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "Select a form layout to start with."
-msgstr ""
-
-#: dist/blocks.js:19
 msgid "Simple Contact Form"
 msgstr ""
 
@@ -12918,6 +12910,14 @@ msgstr ""
 
 #: dist/blocks.js:19
 msgid "Enter your subject"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Forms"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Select a form layout to start with."
 msgstr ""
 
 #: dist/blocks.js:19

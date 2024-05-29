@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.5
-Stable tag: 2.13.3
+Stable tag: 2.13.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,14 +215,14 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= x.x.x =
-* Improvement: Quick Action Bar - Easily rearrange blocks in the Quick Action Bar for a personalized workflow.
-* Improvement: Info Box - Added an option to set the alt attribute to the image.
-* Improvement: Asset Generation - Regenerating post assets on current post update to avoid any conflicts with the cached version.
-* Improvement: Added the inherit-from-theme primary and secondary-button option in blocks that contain buttons for Astra themes.
+= 2.13.4 - Thursday, 30th May 2024 =
+* Feature: Quick Action Bar - Easily rearrange blocks in the Quick Action Bar for a personalized workflow.
+* Improvement: Info Box - Added an option to set the alt attribute of the image.
 * Improvement: Modal - Added responsive units for modal height and width.
+* Improvement: Global - Added the inherit-from-theme primary and secondary-button options in blocks that contain buttons for Astra themes.
+* Improvement: Asset Generation - Regenerating post assets on current post update to avoid any conflicts with the cached version.
 * Fix: Buttons - Resolved an issue wherein the button typography styles would not work when applied from the parent in the Astra theme.
-: Fix: Buttons - Resolved an issue where in button icon spacing would not work as expected in responsive devices.
+* Fix: Buttons - Resolved an issue wherein button icon spacing would not work as expected in responsive devices.
 * Fix: Image Gallery - Added accessibility improvements to the lightbox close and gallery pagination buttons.
 * Fix: Quick Action Bar - Removed a console error that would occur in the editor whenever a block was dragged.
 * Fix: Global - Resolved an issue in which the media pickers would not show the selected image in the popup.
@@ -250,21 +250,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Core - Updated asset URL generation logic to prevent caching issues.
 * Improvement: Buttons - Improved the accessibility for better user interaction.
 * Fix: Global - Resolved an issue wherein the sidebar block border not displayed.
-
-= 2.13.0 - Thursday, 25th April 2024 =
-* New: Introducing the Header Title-bar - Make more space for editing!
-* Feature: Container - Added new layout type 'grid'.
-* Improvement: Buttons - Added a flex-wrap toggle for multiple button rows instead of shrink-to-fit buttons.
-* Improvement: Countdown - Modified options to remove days, hours, minutes and seconds fields.
-* Improvement: Call To Action - Modified button text font-size to inherit from theme by default.
-* Improvement: Info Box - Modified CTA padding to inherit padding from theme by default.
-* Improvement: Info Box – Added the inherit-from-theme secondary-button option for Astra child themes.
-* Improvement: Call To Action – Added the inherit-from-theme secondary-button option for Astra child themes.
-* Fix: Heading - Resolved an issue wherein toolbar icon would not appear as indended.
-* Fix: Forms - Resolved an issue wherein the padding unit would not work as expected in responsive devices.
-* Fix: Theme Fonts - Resolved a font rendering issue for some Latin characters in FSE themes.
-* Fix: Testimonial - Resolved an issue wherein the padding would not work as intended in responsive devices.
-* Fix: Global - Resolved an issue wherein the editor sidebar would appear a bit shaky while switching between panels.
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 
