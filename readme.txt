@@ -221,6 +221,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Modal - Added responsive units for modal height and width.
 * Improvement: Global - Added the inherit-from-theme primary and secondary-button options in blocks that contain buttons for Astra themes.
 * Improvement: Asset Generation - Regenerating post assets on current post update to avoid any conflicts with the cached version.
+* Fix: Container - Resolved an issue wherein the Image block would not display as expected in nested containers.
 * Fix: Buttons - Resolved an issue wherein the button typography styles would not work when applied from the parent in the Astra theme.
 * Fix: Buttons - Resolved an issue wherein button icon spacing would not work as expected in responsive devices.
 * Fix: Image Gallery - Added accessibility improvements to the lightbox close and gallery pagination buttons.
