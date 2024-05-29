@@ -330,6 +330,10 @@
 		border: none;
 		display: inline-block;
 		background: none;
+
+		.ast-outline-button {
+			display: inline-flex;
+		}
 	}
 
 	.uagb-post__excerpt p {

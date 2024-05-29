@@ -14,7 +14,7 @@ export const PostButton = ( props ) => {
 	//border-width is added to revert the border related styles by default.
 	const borderStyle = inheritAstraSecondary ? { borderWidth: 'revert-layer' } : {};
     
-	const postBtnClass = `'uagb-text-link' ${buttonTypeClass}`;
+	const postBtnClass = `uagb-text-link ${buttonTypeClass}`;
 
 
 	if ( attributes.displayPostLink ) {

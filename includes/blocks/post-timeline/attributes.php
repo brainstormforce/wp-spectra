@@ -10,6 +10,7 @@
 return array(
 	'block_id'                   => '',
 	'blockName'                  => 'post-timeline',
+	'inheritFromTheme'           => false,
 	'postsToShow'                => 6,
 	'postsOffset'                => 0,
 	'exerptLength'               => 15,

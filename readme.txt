@@ -215,13 +215,15 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+* Fix: Container - Resolved an issue wherein the Image block would not display as expected in nested containers.
+
 = 2.13.4 - Thursday, 30th May 2024 =
 * Feature: Quick Action Bar - Easily rearrange blocks in the Quick Action Bar for a personalized workflow.
 * Improvement: Info Box - Added an option to set the alt attribute of the image.
 * Improvement: Modal - Added responsive units for modal height and width.
 * Improvement: Global - Added the inherit-from-theme primary and secondary-button options in blocks that contain buttons for Astra themes.
 * Improvement: Asset Generation - Regenerating post assets on current post update to avoid any conflicts with the cached version.
-* Fix: Container - Resolved an issue wherein the Image block would not display as expected in nested containers.
 * Fix: Buttons - Resolved an issue wherein the button typography styles would not work when applied from the parent in the Astra theme.
 * Fix: Buttons - Resolved an issue wherein button icon spacing would not work as expected in responsive devices.
 * Fix: Image Gallery - Added accessibility improvements to the lightbox close and gallery pagination buttons.

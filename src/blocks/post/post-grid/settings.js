@@ -1115,11 +1115,6 @@ const Settings = ( props ) => {
 						        ] }
 					        />
 				        ) }
-						<ToggleControl
-							label={ __( 'Buttons on Equal Height', 'ultimate-addons-for-gutenberg' ) }
-							checked={ equalHeightInlineButtons }
-							onChange={ () => setAttributes( { equalHeightInlineButtons: ! equalHeightInlineButtons } ) }
-						/>
 						{ ! isLeftToRightLayout && (
 							<>
 							<ToggleControl

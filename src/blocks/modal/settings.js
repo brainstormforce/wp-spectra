@@ -1537,7 +1537,7 @@ export default function Settings( props ) {
 					</InspectorTab>
 
 					<InspectorTab { ...UAGTabs.style }>
-						{ !inheritFromTheme && modalTrigger !== 'button' && triggerStylePanel }
+						{ !inheritFromTheme && triggerStylePanel }
 						{ contentStylePanel }
 						{ '' !== closeIcon && closeStylePanel }
 						{ backgroundSettings }

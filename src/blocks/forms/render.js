@@ -31,15 +31,13 @@ const Render = ( props ) => {
 
 	const submitBtnClass = `uagb-forms-main-submit-button ${buttonTypeClass}`;
 
-	const CustomTag = inheritAstraSecondary ? 'div' : 'a';
-
 	const onSubmitClick = useCallback( ( e ) => {
 		e.preventDefault();
 	} );
 
 	const renderButtonHtml = () => {
 		return (
-			<CustomTag onClick={ onSubmitClick } className={ submitBtnClass } style={ borderStyle } >
+			<button onClick={ onSubmitClick } className={ submitBtnClass } style={ borderStyle } >
 				<RichText
 					tagName="div"
 					placeholder={ __( 'Submit', 'ultimate-addons-for-gutenberg' ) }
@@ -53,7 +51,7 @@ const Render = ( props ) => {
 					multiline={ false }
 					allowedFormats={ [] } // Removed the WP default link/bold/italic from the toolbar for button.
 				/>
-			</CustomTag>
+			</button>
 		);
 	};
 
