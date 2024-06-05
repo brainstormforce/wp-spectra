@@ -218,6 +218,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ### x.x.x ###
 * Fix: Container - Resolved an issue wherein the Image block would not display as expected in nested containers.
 * Fix: Taxonomy List - Handled the "Taxonomy Not Available." message on the front-end when using categories from the "Create And Assign Categories For Pages" plugin.
+* Fix: Testimonial - Resolved an issue wherein the image height would not work as intended.
 
 ### 2.13.4 - Thursday, 30th May 2024 ###
 * Feature: Quick Action Bar - Easily rearrange blocks in the Quick Action Bar for a personalized workflow.
