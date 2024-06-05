@@ -24,7 +24,7 @@ const Blocks = ( props ) => {
 			getBlockRootClientId: rootClientId,
 		};
 	} );
-
+	
 	const uagbBlocks = blocks.filter( ( block ) => {
 		return getDefaultAllowedQuickSidebarBlocks?.includes( block.name );
 	} );
@@ -35,12 +35,15 @@ const Blocks = ( props ) => {
 	uagbBlocks.forEach( ( item, index ) => {
 		item.id = `${index + 1}`;
 	} );
-
-	const sortedY = getDefaultAllowedQuickSidebarBlocks.map( item => uagbBlocks.find( ( {name} ) => name === item ) );
+	
+	const sortedY = getDefaultAllowedQuickSidebarBlocks
+		.filter( item => item !== undefined && item !== null )
+		.map( item => uagbBlocks.find( ( { name } ) => name === item ) )
+		.filter( item => item !== undefined ); // Remove undefined objects
 
 	return (
 		<>
-			{!enableRearrange && sortedY.map( ( block, index ) => (
+			{!enableRearrange && sortedY?.map( ( block, index ) => (
 				<DraggableBlock
 					key={index}
 					id={index}
