@@ -507,6 +507,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			}
 
+			$inherit_from_theme = 'enabled' === ( 'deleted' !== UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme_fallback', 'deleted' ) ? 'disabled' : UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' ) );
+
 			return array_merge(
 				$btn_border_attribute,
 				$overall_border_attribute,
@@ -623,7 +625,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					),
 					'inheritFromThemeBtn'           => array(
 						'type'    => 'boolean',
-						'default' => false,
+						'default' => $inherit_from_theme,
 					),
 					'buttonType'                    => array(
 						'type'    => 'string',

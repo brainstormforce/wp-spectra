@@ -1768,6 +1768,8 @@ const UAGBPostCarousel = ( props ) => {
 				title={ __( 'Read More Link', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+				{ !inheritFromThemeBtn && (
+					<>
 				<UAGTabsControl
 					tabs={ [
 						{
@@ -1926,30 +1928,6 @@ const UAGBPostCarousel = ( props ) => {
 						label: 'ctaDecoration',
 					} }
 				/>
-				<ResponsiveSlider
-					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						desktop: {
-							value: ctaBottomSpace,
-							label: 'ctaBottomSpace',
-						},
-						tablet: {
-							value: ctaBottomSpaceTablet,
-							label: 'ctaBottomSpaceTablet',
-						},
-						mobile: {
-							value: ctaBottomSpaceMobile,
-							label: 'ctaBottomSpaceMobile',
-						},
-					} }
-					min={ 0 }
-					max={ 300 }
-					unit={ {
-						value: ctaBottomSpaceUnit,
-						label: 'ctaBottomSpaceUnit',
-					} }
-					setAttributes={ setAttributes }
-				/>
 				<ResponsiveBorder
 					setAttributes={ setAttributes }
 					prefix={ 'btn' }
@@ -2027,6 +2005,32 @@ const UAGBPostCarousel = ( props ) => {
 						value: spacingLink,
 						label: 'spacingLink',
 					} }
+				/>
+				</>
+				) }
+				<ResponsiveSlider
+					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: ctaBottomSpace,
+							label: 'ctaBottomSpace',
+						},
+						tablet: {
+							value: ctaBottomSpaceTablet,
+							label: 'ctaBottomSpaceTablet',
+						},
+						mobile: {
+							value: ctaBottomSpaceMobile,
+							label: 'ctaBottomSpaceMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 300 }
+					unit={ {
+						value: ctaBottomSpaceUnit,
+						label: 'ctaBottomSpaceUnit',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
@@ -2152,7 +2156,7 @@ const UAGBPostCarousel = ( props ) => {
 					{ ( displayPostAuthor || displayPostDate || displayPostComment || displayPostTaxonomy ) &&
 						metaStyle() }
 					{ displayPostExcerpt && excerptStyle() }
-					{ !inheritFromThemeBtn && displayPostLink && readMoreLinkStyleSettings() }
+					{ displayPostLink && readMoreLinkStyleSettings() }
 					{ displayPostImage && imageStyle() }
 					{ carouselStyle() }
 				</InspectorTab>

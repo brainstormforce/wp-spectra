@@ -37,17 +37,15 @@ $selectors = array(
 		'color'      => $attr['authorColor'],
 		'text-align' => $attr['align'],
 	),
+	' .uagb-timeline__link'                               => array(
+		'text-align'    => $attr['align'],
+		'margin-bottom' => UAGB_Helper::get_css_value( $attr['ctaBottomSpacing'], 'px' ),
+	),
 	' .dashicons-admin-users'                             => array(
 		'color'       => $attr['authorColor'],
 		'font-size'   => UAGB_Helper::get_css_value( $attr['authorFontSize'], $attr['authorFontSizeType'] ),
 		'font-weight' => $attr['authorFontWeight'],
 		'line-height' => UAGB_Helper::get_css_value( $attr['authorLineHeight'], $attr['authorLineHeightType'] ),
-	),
-	' .uagb-timeline__link'                               => array(
-		'color'            => $attr['ctaColor'],
-		'background-color' => $attr['ctaBackground'],
-		'text-align'       => $attr['align'],
-		'margin-bottom'    => UAGB_Helper::get_css_value( $attr['ctaBottomSpacing'], 'px' ),
 	),
 	' .uagb-timeline__heading a'                          => array(
 		'text-align' => $attr['align'],
@@ -196,6 +194,20 @@ $m_selectors = array(
 	),
 );
 
+if ( ! $attr['inheritFromTheme'] ) { 
+	$selectors = array_merge(
+		$selectors,
+		array(
+			' .uagb-timeline__link' => array(
+				'color'            => $attr['ctaColor'],
+				'background-color' => $attr['ctaBackground'],
+				'text-align'       => $attr['align'],
+				'margin-bottom'    => UAGB_Helper::get_css_value( $attr['ctaBottomSpacing'], 'px' ),
+			),      
+		)
+	);
+}
+
 $mobile_selectors = UAGB_Block_Helper::get_timeline_mobile_selectors( $attr );
 $m_selectors      = array_merge( $m_selectors, $mobile_selectors );
 
@@ -210,7 +222,10 @@ $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'date', ' .uagb-ti
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'date', ' .uagb-timeline__date-new', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-timeline-desc-content', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'author', ' .uagb-timeline__author-link', $combined_selectors );
-$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'cta', ' .uagb-timeline__link', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'head', ' .uagb-timeline__heading a', $combined_selectors );
+
+if ( ! $attr['inheritFromTheme'] ) {
+	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'cta', ' .uagb-timeline__link', $combined_selectors );
+}
 
 return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id . '.uagb-timeline__outer-wrap' );
