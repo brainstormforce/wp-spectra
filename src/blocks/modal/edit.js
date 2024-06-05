@@ -18,12 +18,6 @@ const UAGBModalEdit = ( props ) => {
 					  UAGHideTab, 
 					  UAGHideMob, 
 					  block_id, 
-					  modalWidthType, 
-					  modalWidthTypeTablet, 
-					  modalWidthTypeMobile, 
-					  modalHeightType, 
-					  modalHeightTypeTablet, 
-					  modalHeightTypeMobile,
 					},
 		clientId,
 		setAttributes,
@@ -57,24 +51,6 @@ const UAGBModalEdit = ( props ) => {
 
 		document.dispatchEvent( loadModalBlockEditor );
 	}, [ attributes, deviceType ] );
-
-	// handle backward case 
-	useEffect( () => {
-		if( undefined === modalWidthTypeTablet ){
-			setAttributes( { modalWidthTypeTablet: modalWidthType } )
-		}
-		if( undefined === modalWidthTypeMobile ){
-			setAttributes( { modalWidthTypeMobile: modalWidthType } )
-		}
-
-		if( undefined ===modalHeightTypeTablet ){
-			setAttributes( { modalHeightTypeTablet: modalHeightType } )
-		}
-		if( undefined ===modalHeightTypeMobile ){
-			setAttributes( { modalHeightTypeMobile: modalHeightType } )
-		}
-
-	}, [  ] );
 
 	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 

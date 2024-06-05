@@ -8,7 +8,7 @@ import Icon from '../../components/Icons';
 import InfoBoxPositionClasses from '../../style-classes';
 import InfoBoxSeparator from '../../components/Separator';
 import CallToAction from './CTA';
-import InfoBoxIconImage from '../../components/IconImages';
+import InfoBoxIconImage from './IconImages';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
 
 export default function save( props ) {

@@ -218,7 +218,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 = 2.13.4 - Wednesday, 5th June 2024 =
 * Feature: Quick Action Bar - Easily rearrange blocks in the Quick Action Bar for a personalized workflow.
 * Improvement: Info Box - Added an option to set the alt attribute of the image.
-* Improvement: Modal - Added responsive units for modal height and width.
+* Improvement: Modal - Added separate units ( default 'px' ) for responsive modal width and height.
 * Improvement: Global - Added the inherit-from-theme primary and secondary-button options in blocks that contain buttons for Astra themes.
 * Improvement: Asset Generation - Regenerating post assets on current post update to avoid any conflicts with the cached version.
 * Fix: Buttons - Resolved an issue wherein the button typography styles would not work when applied from the parent in the Astra theme.
