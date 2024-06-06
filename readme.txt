@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= 2.13.4 - Wednesday, 5th June 2024 =
+= 2.13.4 - Thursday, 6th June 2024 =
 * Feature: Quick Action Bar - Easily rearrange blocks in the Quick Action Bar for a personalized workflow.
 * Improvement: Info Box - Added an option to set the alt attribute of the image.
 * Improvement: Modal - Added separate units ( default 'px' ) for responsive modal width and height.
