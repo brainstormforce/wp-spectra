@@ -3,6 +3,25 @@ import { useRef, useEffect, useState, useLayoutEffect } from '@wordpress/element
 import { __ } from '@wordpress/i18n';
 import editorStyles from './editor.lazy.scss';
 
+export const applyScopedCSS = ( customCSS ) => {
+	// This makes sure CSS only gets applied to blocks and not the editor elements.
+    const scopedCSS = customCSS
+        .split( '}' )
+        .map( rule => rule.trim() ? `.block-editor-block-list__layout ${rule}}` : '' )
+        .join( ' ' );
+
+    const isExistStyle = document.getElementById( 'uagb-blocks-editor-custom-css' );
+    
+    if ( !isExistStyle ) {
+        const node = document.createElement( 'style' );
+        node.setAttribute( 'id', 'uagb-blocks-editor-custom-css' );
+        node.textContent = scopedCSS;
+        document.head.appendChild( node );
+    } else {
+        isExistStyle.textContent = scopedCSS;
+    }
+};
+
 const PageCustomCSS = () => {
 	const tabRef = useRef( null );
 	const [ customCSS, setCustomCSS ] = useState(
@@ -17,17 +36,7 @@ const PageCustomCSS = () => {
 	}, [] );
 
 	useEffect( () => {
-		const isExistStyle = document.getElementById(
-			'uagb-blocks-editor-custom-css'
-		);
-		if( ! isExistStyle ){
-			const node = document.createElement( 'style' )
-			node.setAttribute( 'id', 'uagb-blocks-editor-custom-css' );
-			node.textContent = customCSS;
-			document.head.appendChild( node )
-		}else{
-			isExistStyle.textContent = customCSS
-		}
+		applyScopedCSS( customCSS );
 	}, [ customCSS ] );
 
 	useEffect( () => {

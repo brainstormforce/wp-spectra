@@ -2,10 +2,10 @@
  * Meta Options build.
  */
 import { compose } from '@wordpress/compose';
-import { withSelect, withDispatch } from '@wordpress/data';
+import { withSelect, withDispatch, select as selectData } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import SettingsIcons from './icons.js';
-import PageCustomCSS from '../custom-page-css';
+import PageCustomCSS, { applyScopedCSS } from '../custom-page-css';
 import { PanelBody } from '@wordpress/components';
 import { applyFilters } from '@wordpress/hooks';
 
@@ -20,6 +20,8 @@ const SpectraPageSettingsPopup = ( props ) => {
 	if ( 'function' !== typeof PluginSidebarMoreMenuItem || 'function' !== typeof PluginSidebar ) {
 		return null;
 	}
+	const customCSS = selectData( 'core/editor' ).getEditedPostAttribute( 'meta' )?._uag_custom_page_level_css;
+	applyScopedCSS( customCSS );
 
 	const pluginSidebarBefore = applyFilters( `spectra.page-sidebar.before`, '', props );
 	const pluginSidebarAfter = applyFilters( `spectra.page-sidebar.after`, '', props );
