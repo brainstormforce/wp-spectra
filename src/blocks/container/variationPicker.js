@@ -2,7 +2,7 @@
  * Internal dependencies
  */
 import rowIcons from './icons';
-import { __experimentalBlockVariationPicker as BlockVariationPicker } from '@wordpress/block-editor';
+import { __experimentalBlockVariationPicker as BlockVariationPicker, useBlockProps } from '@wordpress/block-editor';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
 import { useDispatch } from '@wordpress/data';
@@ -221,7 +221,7 @@ export const VariationPicker = ( props ) => {
 	};
 
 	return (
-		<div className="uagb-container-variation-picker">
+		<div {...useBlockProps()} className="uagb-container-variation-picker">
 			<BlockVariationPicker
 				icon={ UAGB_Block_Icons.container }
 				label={ __( 'Container', 'ultimate-addons-for-gutenberg' ) }

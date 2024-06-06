@@ -507,6 +507,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			}
 
+			$inherit_from_theme = 'enabled' === ( 'deleted' !== UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme_fallback', 'deleted' ) ? 'disabled' : UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' ) );
+
 			return array_merge(
 				$btn_border_attribute,
 				$overall_border_attribute,
@@ -620,6 +622,14 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'ctaText'                       => array(
 						'type'    => 'string',
 						'default' => __( 'Read More', 'ultimate-addons-for-gutenberg' ),
+					),
+					'inheritFromThemeBtn'           => array(
+						'type'    => 'boolean',
+						'default' => $inherit_from_theme,
+					),
+					'buttonType'                    => array(
+						'type'    => 'string',
+						'default' => 'primary',
 					),
 					'btnHPadding'                   => array(
 						'type'    => 'number',
@@ -2258,6 +2268,12 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since 0.0.1
 		 */
 		public function render_button( $attributes ) {
+			$inherit_astra_secondary = $attributes['inheritFromThemeBtn'] && 'secondary' === $attributes['buttonType'];
+			$button_type_class       = $inherit_astra_secondary ? 'ast-outline-button' : 'wp-block-button__link';
+
+			// Initialize an empty string for border style.
+			$border_style = $inherit_astra_secondary ? 'border-width: revert-layer;' : '';
+
 			if ( ! $attributes['displayPostLink'] ) {
 				return;
 			}
@@ -2265,10 +2281,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$cta_text = ( $attributes['ctaText'] ) ? $attributes['ctaText'] : __( 'Read More', 'ultimate-addons-for-gutenberg' );
 			do_action( "uagb_single_post_before_cta_{$attributes['post_type']}", get_the_ID(), $attributes );
 			$wrap_classes = 'uagb-post__text uagb-post__cta wp-block-button';
-			$link_classes = 'wp-block-button__link uagb-text-link';
+			$link_classes = $button_type_class . ' uagb-text-link';
 			?>
 			<div class="<?php echo esc_attr( $wrap_classes ); ?>">
-				<a class="<?php echo esc_attr( $link_classes ); ?>" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_attr( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo wp_kses_post( $cta_text ); ?></a>
+				<a class="<?php echo esc_attr( $link_classes ); ?>" style="<?php echo esc_attr( $border_style ); ?>" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_attr( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo wp_kses_post( $cta_text ); ?></a>
 			</div>
 			<?php
 			do_action( "uagb_single_post_after_cta_{$attributes['post_type']}", get_the_ID(), $attributes );

@@ -56,10 +56,14 @@ export default function Settings( props ) {
 		modalWidthTablet,
 		modalWidthMobile,
 		modalWidthType,
+		modalWidthTypeTablet,
+		modalWidthTypeMobile,
 		modalHeight,
 		modalHeightTablet,
 		modalHeightMobile,
 		modalHeightType,
+		modalHeightTypeTablet,
+		modalHeightTypeMobile,
 		closeIconSize,
 		closeIconPosition,
 		overlayColor,
@@ -134,6 +138,8 @@ export default function Settings( props ) {
 		mobilePaddingBtnUnit,
 		tabletPaddingBtnUnit,
 
+		inheritFromTheme,
+		buttonType,
 		btnFontFamily,
 		btnFontWeight,
 		btnFontStyle,
@@ -211,6 +217,10 @@ export default function Settings( props ) {
 		modalTriggerBgHoverType,
 		openModalAs,
 	} = attributes;
+
+	const currentTheme = uagb_blocks_info.current_theme;
+	const isAstraBasedTheme = uagb_blocks_info.is_astra_based_theme;
+
 
 	/*
 	 * Event to set Image as while adding.
@@ -293,6 +303,19 @@ export default function Settings( props ) {
 		}
 	}
 
+	const isProActivated = Boolean( uagb_blocks_info.spectra_pro_status );
+	// Options from Free and Pro 
+	const freeAndProOptions = [
+		{ label: __( 'Button', 'ultimate-addons-for-gutenberg' ), value: 'button', disabled: false },
+		{ label: __( 'Icon', 'ultimate-addons-for-gutenberg' ), value: 'icon', disabled: false },
+		{ label: __( 'Image', 'ultimate-addons-for-gutenberg' ), value: 'image', disabled: false },
+		{ label: __( 'Text', 'ultimate-addons-for-gutenberg' ), value: 'text', disabled: false },
+		{ label: __( 'Custom Class (Spectra Pro)', 'ultimate-addons-for-gutenberg' ), value: 'custom-class', disabled: ! isProActivated },
+		{ label: __( 'Custom ID (Spectra Pro)', 'ultimate-addons-for-gutenberg' ), value: 'custom-id', disabled: ! isProActivated },
+		{ label: __( 'Automatic (Spectra Pro)', 'ultimate-addons-for-gutenberg' ), value: 'automatic', disabled: ! isProActivated }
+	  ];
+	  
+
 	// This setting panel will only be open by default if Pro is not active.
 	const modalTriggerPanel = (
 		<UAGAdvancedPanelBody title={ __( 'Trigger', 'ultimate-addons-for-gutenberg' ) } initialOpen={ ! isPro }>
@@ -303,24 +326,7 @@ export default function Settings( props ) {
 					value: modalTrigger,
 					label: 'modalTrigger',
 				} }
-				options={ [
-					{
-						value: 'button',
-						label: __( 'Button', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'icon',
-						label: __( 'Icon', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'image',
-						label: __( 'Image', 'ultimate-addons-for-gutenberg' ),
-					},
-					{
-						value: 'text',
-						label: __( 'Text', 'ultimate-addons-for-gutenberg' ),
-					},
-				] }
+				options={ freeAndProOptions }
 			/>
 			{ modalTrigger === 'icon' && (
 				<>
@@ -352,12 +358,43 @@ export default function Settings( props ) {
 				</>
 			) }
 			{ modalTrigger === 'button' && (
+				<> 
+			        <ToggleControl
+				    checked={ inheritFromTheme }
+				    onChange={ () => setAttributes( { inheritFromTheme: ! inheritFromTheme } ) }
+				    label={ __( 'Inherit From Theme', 'ultimate-addons-for-gutenberg' ) }
+			        />
+				    { inheritFromTheme && ( 'Astra' === currentTheme || isAstraBasedTheme ) && (
+					    <MultiButtonsControl
+						    setAttributes={ setAttributes }
+						    label={ __( `Button Type`, 'ultimate-addons-for-gutenberg' ) }
+						    data={ {
+							    value: buttonType,
+							    label: 'buttonType',
+						    } }
+						    options={ [
+							    {
+								    value: 'primary',
+								    label: __( 'Primary', 'ultimate-addons-for-gutenberg' ),
+							    },
+							    {
+								    value: 'secondary',
+								    label: __( 'Secondary', 'ultimate-addons-for-gutenberg' ),
+							    },
+						    ] }
+					    />
+				    ) }
+				</>
+			) }
+			{ modalTrigger === 'button' && (
 				<>
-					<UAGPresets
-						setAttributes={ setAttributes }
-						presets={ buttonsPresets }
-						presetInputType="radioImage"
-					/>
+				    { !inheritFromTheme && ( 
+					    <UAGPresets
+						    setAttributes={ setAttributes }
+						    presets={ buttonsPresets }
+						    presetInputType="radioImage"
+					    />
+					) }
 					<ToggleControl
 						label={ __( 'Enable Icon', 'ultimate-addons-for-gutenberg' ) }
 						checked={ showBtnIcon }
@@ -437,21 +474,33 @@ export default function Settings( props ) {
 					desktop: {
 						value: modalWidth,
 						label: 'modalWidth',
+						unit: {
+							value: modalWidthType,
+							label: 'modalWidthType',
+						},
+						min: ( '%' === modalWidthType ) ? 10 : '0', // Adding 0 as string to resolve issue with slider getting stuck.
+						max: ( '%' === modalWidthType ) ? 100 : 1500, 
 					},
 					tablet: {
 						value: modalWidthTablet,
 						label: 'modalWidthTablet',
+						unit: {
+							value: modalWidthTypeTablet,
+							label: 'modalWidthTypeTablet',
+						},
+						min: ( '%' === modalWidthTypeTablet ) ? 10 : '0', // Adding 0 as string to resolve issue with slider getting stuck.
+						max: ( '%' === modalWidthTypeTablet ) ? 100 : 1500, 
 					},
 					mobile: {
 						value: modalWidthMobile,
 						label: 'modalWidthMobile',
+						unit: {
+							value: modalWidthTypeMobile,
+							label: 'modalWidthTypeMobile',
+						},
+						min: ( '%' === modalWidthTypeMobile ) ? 10 : '0', // Adding 0 as string to resolve issue with slider getting stuck.
+						max: ( '%' === modalWidthTypeMobile ) ? 100 : 1500,
 					},
-				} }
-				min={ '%' === modalWidthType ? 10 : 0 }
-				max={ '%' === modalWidthType ? 100 : 1500 }
-				unit={ {
-					value: modalWidthType,
-					label: 'modalWidthType',
 				} }
 				units={ [
 					{
@@ -526,21 +575,33 @@ export default function Settings( props ) {
 						desktop: {
 							value: modalHeight,
 							label: 'modalHeight',
+							unit: {
+								value: modalHeightType,
+								label: 'modalHeightType',
+							},
+							min: ( '%' === modalHeightType ) ? 10 : 130,
+							max: ( '%' === modalHeightType ) ? 100 : 1500,
 						},
 						tablet: {
 							value: modalHeightTablet,
 							label: 'modalHeightTablet',
+							unit: {
+								value: modalHeightTypeTablet,
+								label: 'modalHeightTypeTablet',
+							},
+							min: ( '%' === modalHeightTypeTablet ) ? 10 : 130,
+							max: ( '%' === modalHeightTypeTablet ) ? 100 : 1500,
 						},
 						mobile: {
 							value: modalHeightMobile,
 							label: 'modalHeightMobile',
+							unit: {
+								value: modalHeightTypeMobile,
+								label: 'modalHeightTypeMobile',
+							},
+							min: ( '%' === modalHeightTypeMobile ) ? 10 : 130,
+							max: ( '%' === modalHeightTypeMobile ) ? 100 : 1500,
 						},
-					} }
-					min={ '%' === modalHeightType ? 10 : 130 }
-					max={ '%' === modalHeightType ? 100 : 1500 }
-					unit={ {
-						value: modalHeightType,
-						label: 'modalHeightType',
 					} }
 					units={ [
 						{
@@ -1476,7 +1537,7 @@ export default function Settings( props ) {
 					</InspectorTab>
 
 					<InspectorTab { ...UAGTabs.style }>
-						{ triggerStylePanel }
+						{ ! ( inheritFromTheme && modalTrigger === 'button' ) && triggerStylePanel }
 						{ contentStylePanel }
 						{ '' !== closeIcon && closeStylePanel }
 						{ backgroundSettings }

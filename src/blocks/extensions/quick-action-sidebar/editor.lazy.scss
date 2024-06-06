@@ -29,11 +29,11 @@
 			flex-direction: column;
 			justify-content: flex-start;
 			align-items: center;
-			gap: 15px;
 			overflow-y: overlay;
 			overflow-x: hidden;
 			cursor: pointer;
-			max-height: calc(100vh - 157px);
+			max-height: calc(100vh - 212px);
+			flex-grow: 1;
 
 			// Scrolling will need to be added in the future.
 			&--block {
@@ -120,13 +120,33 @@
 
 			.spectra-quick-action-sidebar-wrap {
 
-				#plus-icon {
+				#plus-icon,
+				#rearrange-icon {
 					display: flex;
 					align-content: center;
 					justify-content: center;
 					align-items: center;
 					padding: 12px 12px;
-					background: #1d2939;
+					flex-direction: column;
+				}
+			}
+		}
+
+		&--tab {
+			display: inline-block;
+			cursor: pointer;
+		}
+
+		&--tabs {
+			display: flex;
+			flex-direction: column;
+
+			.tab.active {
+
+				#plus-icon,
+				#rearrange-icon {
+					background-color: #1d2939;
+					color: #fff;
 				}
 			}
 		}
@@ -455,4 +475,18 @@ div#widgets-editor {
 			}
 		}
 	}
+}
+
+.spectra-ee-quick-access__sidebar--blocks-sortable {
+	display: flex;
+	flex-direction: column;
+	overflow: auto; /* Prevent horizontal scrolling */
+
+	&--block {
+		margin-bottom: 10px; /* Adjust as needed */
+	}
+}
+
+.spectra-ee-quick-access__sidebar--prevent-editor-interactions {
+	pointer-events: none;
 }

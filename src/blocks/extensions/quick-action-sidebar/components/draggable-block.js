@@ -18,7 +18,7 @@ const DraggableBlock = ( props ) => {
 	const { createNotice } = useDispatch( 'core/notices' );
 	const [uniqueId, setUniqueId] = useState( 0 );
 	const removedNoticeID = `quick-action-sidebar/remove-notices-flow/removed-notice/${uniqueId}`;
-	
+
 	const handleMouseOver = () => setHovering( true );
 
 	const handleMouseOut = () => setHovering( false );
@@ -86,47 +86,52 @@ const DraggableBlock = ( props ) => {
 			</div>
 		</Popover>
 	);
+
 	const separatedArray = block.name.split( '/' );
 	const slug = separatedArray[0];
 	const blockName = separatedArray[1];
+	
 	return (
-		<>
-			<Draggable elementId="draggable-panel"
+		<div id={`draggable-box__${slug}--${blockName}`}>
+			<Draggable elementId={`draggable-box__${slug}--${blockName}`}
 			__experimentalTransferDataType="wp-blocks"
 			transferData={ {
 				type: 'inserter',
 				blocks: [ create( block.name ) ],
 			} }>
-				{ ( { onDraggableStart } ) => (
-				<div
-					className='spectra-ee-quick-access__sidebar--blocks--block'
-					key={id}
-					onClick = { ( e ) => {
-						handleOnClick( e, block );
-					} }
-					draggable
-					onDragStart={ ( event ) => {
-						isDragging.current = true;
-						if( onDraggableStart ) {
-							onDraggableStart( event );
-						}
-					} }
-					onDragEnd={ () => {
-					}  }
-					onMouseOver={ handleMouseOver }
-					onMouseOut={ handleMouseOut }
-					onFocus={ handleMouseOver }
-					onBlur={ handleMouseOut }
-				>
-					<div className={`spectra-ee-quick-access__sidebar-icon__${slug} spectra-ee-quick-access__sidebar-icon__${slug}--${blockName} spectra-ee-quick-access__sidebar--blocks--block--icon`}>
-						<Icon icon={ block.icon?.src ? block.icon.src : block.icon } />
+				{ ( { onDraggableStart, onDraggableEnd } ) => (
+					<div
+						className='spectra-ee-quick-access__sidebar--blocks--block'
+						key={id}
+						onClick = { ( e ) => {
+							handleOnClick( e, block );
+						} }
+						draggable
+						onDragStart={ ( event ) => {
+							isDragging.current = true;
+							if( onDraggableStart ) {
+								onDraggableStart( event );
+							}
+						} }
+						onDragEnd={ ( event ) => {
+							isDragging.current = false;
+							if ( onDraggableEnd ) {
+								onDraggableEnd( event );
+							}
+						} }
+						onMouseOver={ handleMouseOver }
+						onMouseOut={ handleMouseOut }
+						onFocus={ handleMouseOver }
+						onBlur={ handleMouseOut }
+					>
+						<div className={`spectra-ee-quick-access__sidebar-icon__${slug} spectra-ee-quick-access__sidebar-icon__${slug}--${blockName} spectra-ee-quick-access__sidebar--blocks--block--icon`}>
+							<Icon icon={ block.icon?.src ? block.icon.src : block.icon } />
+						</div>
+						{ hovering && hoverPopover }
 					</div>
-					{ hovering && hoverPopover }
-				</div>
-				)}
+				) }
 			</Draggable>
-
-		</>
+		</div>
 	);
 };
 

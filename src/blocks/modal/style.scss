@@ -94,7 +94,7 @@ body {
 .entry {
 	.entry-content {
 		a.uagb-modal-button-link {
-			text-decoration: none;
+			text-decoration: inherit;
 			align-items: center;
 		}
 
@@ -125,9 +125,8 @@ img.uagb-modal-trigger {
 div.uagb-spectra-button-wrapper {
 	line-height: 1;
 
-	a.uagb-modal-button-link.uagb-modal-trigger {
+	.uagb-modal-button-link.uagb-modal-trigger {
 		display: inline-flex;
-		text-decoration: none;
 		align-items: center;
 		cursor: pointer;
 

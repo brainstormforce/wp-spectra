@@ -1071,7 +1071,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 								</div>
 							<?php endif; ?>
 							<?php if ( $attributes['lightboxCloseIcon'] ) : ?>
-								<button class='spectra-image-gallery__control-lightbox--close'>
+								<button class='spectra-image-gallery__control-lightbox--close' aria-label="Close">
 									<?php UAGB_Helper::render_svg_html( $attributes['lightboxCloseIcon'] ); ?>
 								</button>
 							<?php endif; ?>
@@ -1152,7 +1152,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 			ob_start();
 			?>
 			<div class="spectra-image-gallery__control-wrapper">
-				<button data-role="none" class="spectra-image-gallery__control-arrows spectra-image-gallery__control-arrows--<?php echo esc_attr( $attributes['feedLayout'] ); ?>" aria-label="Prev" tabIndex="0" data-direction="Prev"<?php echo ( 'grid' === $attributes['feedLayout'] && 1 === $attributes['gridPageNumber'] ) ? ' disabled' : ''; ?>>
+				<button data-role="none" class="spectra-image-gallery__control-arrows spectra-image-gallery__control-arrows--<?php echo esc_attr( $attributes['feedLayout'] ); ?>" aria-label="Previous" tabIndex="0" data-direction="Prev"<?php echo ( 'grid' === $attributes['feedLayout'] && 1 === $attributes['gridPageNumber'] ) ? ' disabled' : ''; ?>>
 					<svg width=20 height=20 viewBox="0 0 256 512" aria-hidden="true">
 						<path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z">
 						</path>
@@ -1161,9 +1161,10 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 				<ul class="spectra-image-gallery__control-dots">
 					<?php
 					for ( $i = 0; $i < $attributes['gridPages']; $i++ ) {
+						$current_page = strval( $i + 1 );
 						?>
-						<li class="spectra-image-gallery__control-dot<?php echo ( ( $attributes['gridPageNumber'] - 1 ) === $i ) ? ' spectra-image-gallery__control-dot--active' : ''; ?>" data-go-to=<?php echo esc_attr( $i + 1 ); ?>>
-							<button></button>
+						<li class="spectra-image-gallery__control-dot<?php echo ( ( $attributes['gridPageNumber'] - 1 ) === $i ) ? ' spectra-image-gallery__control-dot--active' : ''; ?>" data-go-to=<?php echo esc_attr( $current_page ); ?>>
+							<button aria-label="Page <?php echo esc_attr( $current_page ); ?>"></button>
 						</li>
 						<?php
 					}

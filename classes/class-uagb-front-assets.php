@@ -58,6 +58,8 @@ class UAGB_Front_Assets {
 	public function __construct() {
 		add_action( 'wp', array( $this, 'set_initial_variables' ), 99 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_asset_files' ) );
+		add_action( 'spectra_regenerate_post_assets', array( $this, 'update_current_post_assets' ) );
+		add_action( 'wp_insert_post', array( $this, 'trigger_regeneration_event' ), 10, 3 );
 	}
 
 	/**
@@ -171,6 +173,47 @@ class UAGB_Front_Assets {
 			}
 		}
 
+	}
+
+	/**
+	 * Trigger post assets update.
+	 *
+	 * @param int     $post_id Post ID.
+	 * @param WP_Post $post    Post object.
+	 * @param bool    $update  Whether this is an existing post being updated.
+	 * @since 2.13.4
+	 * @return mixed void if not an update, otherwise null.
+	 */
+	public function trigger_regeneration_event( $post_id, $post, $update ) {
+
+		if ( ! $update ) {
+			return;
+		}
+
+		if ( ! wp_next_scheduled( 'spectra_regenerate_post_assets' ) && ! wp_installing() ) {
+			$post_assets_regeneration_buffer_time = apply_filters( 'spectra_post_assets_regeneration_buffer_time', 30 );
+			wp_schedule_single_event( time() + $post_assets_regeneration_buffer_time, 'spectra_regenerate_post_assets', array( $post_id ) ); // Schedule for 30 seconds later.
+		}
+	}
+
+	/**
+	 * Update post assets.
+	 *
+	 * By passing everything and update assets once post is updated.
+	 *
+	 * @param int $post_id Post ID.
+	 * @since 2.13.4
+	 * @return void
+	 */
+	public function update_current_post_assets( $post_id ) {
+		/**
+		 * Case: If previous asset version is same then we need to update the assets, resultant will reduce cache conflicts.
+		 */
+		$page_assets = (array) get_post_meta( $post_id, '_uag_page_assets', true );
+		if ( isset( $page_assets['uag_version'] ) && UAGB_ASSET_VER === $page_assets['uag_version'] ) {
+			$page_assets['uag_version'] = '';
+			update_post_meta( $post_id, '_uag_page_assets', $page_assets );
+		}
 	}
 
 	/**

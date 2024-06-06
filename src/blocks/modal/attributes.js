@@ -10,6 +10,17 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	inheritFromTheme: {
+		type: 'boolean',
+		default: 'enabled' === uagb_blocks_info.btn_inherit_from_theme_fallback,
+	},
+	buttonType: {
+		type: 'string',
+		default: 'primary',
+		UAGCopyPaste: {
+			styleType: 'btn-type',
+		},
+	},
 	defaultTemplate: {
 		type: 'boolean',
 		default: false,
@@ -172,18 +183,28 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'modal-width',
 		},
-		default: '',
 	},
 	modalWidthMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'modal-width',
 		},
-		default: '',
 	},
 	modalWidthType: {
 		type: 'string',
 		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'modal-width-type',
+		},
+	},
+	modalWidthTypeTablet: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'modal-width-type',
+		},
+	},
+	modalWidthTypeMobile: {
+		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'modal-width-type',
 		},
@@ -200,18 +221,28 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'modal-height',
 		},
-		default: '',
 	},
 	modalHeightMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'modal-height',
 		},
-		default: '',
 	},
 	modalHeightType: {
 		type: 'string',
 		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'modal-height-type',
+		},
+	},
+	modalHeightTypeTablet: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'modal-height-type',
+		},
+	},
+	modalHeightTypeMobile: {
+		type: 'string',
 		UAGCopyPaste: {
 			styleType: 'modal-height-type',
 		},

@@ -253,6 +253,8 @@ const Settings = ( props ) => {
 		imageRatio,
 		imgEqualHeight,
 		paginationType,
+		inheritFromThemeBtn,
+		buttonType,
 		// padding
 		wrapperTopPadding,
 		wrapperRightPadding,
@@ -276,6 +278,9 @@ const Settings = ( props ) => {
 		isLeftToRightLayout,
 
 	} = attributes;
+
+	const currentTheme = uagb_blocks_info.current_theme;
+	const isAstraBasedTheme = uagb_blocks_info.is_astra_based_theme;
 	
 	const setImgEqualheight = ( value ) => {
 		setAttributes( { imgEqualHeight: value } );
@@ -1085,6 +1090,31 @@ const Settings = ( props ) => {
 				/>
 				{ displayPostLink && (
 					<>
+					    <ToggleControl
+					        checked={ inheritFromThemeBtn }
+					        onChange={ () => setAttributes( { inheritFromThemeBtn: ! inheritFromThemeBtn } ) }
+					        label={ __( 'Inherit From Theme', 'ultimate-addons-for-gutenberg' ) }
+				        />
+				        { inheritFromThemeBtn && ( 'Astra' === currentTheme || isAstraBasedTheme ) && (
+					        <MultiButtonsControl
+						        setAttributes={ setAttributes }
+						        label={ __( `Button Type`, 'ultimate-addons-for-gutenberg' ) }
+						        data={ {
+							        value: buttonType,
+							        label: 'buttonType',
+						        } }
+						        options={ [
+							        {
+								        value: 'primary',
+								        label: __( 'Primary', 'ultimate-addons-for-gutenberg' ),
+							        },
+							        {
+								        value: 'secondary',
+								        label: __( 'Secondary', 'ultimate-addons-for-gutenberg' ),
+							        },
+						        ] }
+					        />
+				        ) }
 						{ ! isLeftToRightLayout && (
 							<>
 							<ToggleControl
@@ -1109,11 +1139,13 @@ const Settings = ( props ) => {
 							setAttributes={ setAttributes }
 							onChange={ ( value ) => setAttributes( { ctaText: value } ) }
 						/>
-						<UAGPresets
-							setAttributes={ setAttributes }
-							presets={ buttonsPresets }
-							presetInputType="radioImage"
-						/>
+						{ ! inheritFromThemeBtn && (
+                            <UAGPresets
+							    setAttributes={ setAttributes }
+							    presets={ buttonsPresets }
+							    presetInputType="radioImage"
+						    />
+						) }
 					</>
 				) }
 			</UAGAdvancedPanelBody>
@@ -1765,6 +1797,8 @@ const Settings = ( props ) => {
 				title={ __( 'Read More Link', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+				{ !inheritFromThemeBtn && ( 
+					<>
 				<UAGTabsControl
 					tabs={ [
 						{
@@ -1929,34 +1963,6 @@ const Settings = ( props ) => {
 					deviceType={ deviceType }
 					disabledBorderTitle={ false }
 				/>
-				{ ! isLeftToRightLayout && (
-					<>
-						<ResponsiveSlider
-							label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
-							data={ {
-								desktop: {
-									value: ctaBottomSpace,
-									label: 'ctaBottomSpace',
-								},
-								tablet: {
-									value: ctaBottomSpaceTablet,
-									label: 'ctaBottomSpaceTablet',
-								},
-								mobile: {
-									value: ctaBottomSpaceMobile,
-									label: 'ctaBottomSpaceMobile',
-								},
-							} }
-							min={ 0 }
-							max={ 300 }
-							unit={ {
-								value: ctaBottomSpaceUnit,
-								label: 'ctaBottomSpaceUnit',
-							} }
-							setAttributes={ setAttributes }
-						/>
-					</> 
-				) }
 				<SpacingControl
 					{ ...props }
 					label={ __( 'Button Padding', 'ultimate-addons-for-gutenberg' ) }
@@ -2028,6 +2034,36 @@ const Settings = ( props ) => {
 						label: 'spacingLink',
 					} }
 				/>
+				</>
+				) }
+				{ ! isLeftToRightLayout && (
+					<>
+						<ResponsiveSlider
+							label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
+							data={ {
+								desktop: {
+									value: ctaBottomSpace,
+									label: 'ctaBottomSpace',
+								},
+								tablet: {
+									value: ctaBottomSpaceTablet,
+									label: 'ctaBottomSpaceTablet',
+								},
+								mobile: {
+									value: ctaBottomSpaceMobile,
+									label: 'ctaBottomSpaceMobile',
+								},
+							} }
+							min={ 0 }
+							max={ 300 }
+							unit={ {
+								value: ctaBottomSpaceUnit,
+								label: 'ctaBottomSpaceUnit',
+							} }
+							setAttributes={ setAttributes }
+						/>
+					</> 
+				) }
 			</UAGAdvancedPanelBody>
 		);
 	};

@@ -64,6 +64,8 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 				return;
 			}
 
+			$inherit_from_theme = 'enabled' === ( 'deleted' !== UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme_fallback', 'deleted' ) ? 'disabled' : UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' ) );
+
 			register_block_type(
 				'uagb/post-timeline',
 				array(
@@ -489,6 +491,14 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						'displayPostLink'            => array(
 							'type'    => 'boolean',
 							'default' => true,
+						),
+						'inheritFromTheme'           => array(
+							'type'    => 'boolean',
+							'default' => $inherit_from_theme,
+						),
+						'buttonType'                 => array(
+							'type'    => 'string',
+							'default' => 'primary',
 						),
 						'exerptLength'               => array(
 							'type'    => 'number',
@@ -1038,6 +1048,13 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 		 */
 		public function get_cta( $attributes ) {
 
+			$inherit_astra_secondary = $attributes['inheritFromTheme'] && 'secondary' === $attributes['buttonType'];
+			$button_type_class       = $inherit_astra_secondary ? 'ast-outline-button' : 'wp-block-button__link';
+
+			// Initialize an empty string for border style.
+			$border_style  = $inherit_astra_secondary ? 'border-width: revert-layer;' : '';
+			$cta_btn_class = "uagb-timeline__link $button_type_class";
+
 			if ( ! $attributes['displayPostLink'] ) {
 				return;
 			}
@@ -1045,7 +1062,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 			do_action( "uagb_single_post_before_cta_{$attributes['post_type']}", get_the_ID(), $attributes );
 			?>
 			<div class="uagb-timeline__link_parent wp-block-button">
-				<a class="uagb-timeline__link wp-block-button__link" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_attr( $target ); ?>" rel=" noopener noreferrer"><?php echo wp_kses_post( $attributes['readMoreText'] ); ?></a>
+				<a class="<?php echo esc_attr( $cta_btn_class ); ?>" style="<?php echo esc_attr( $border_style ); ?>" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_attr( $target ); ?>" rel=" noopener noreferrer"><?php echo wp_kses_post( $attributes['readMoreText'] ); ?></a>
 			</div>
 			<?php
 			do_action( "uagb_single_post_after_cta_{$attributes['post_type']}", get_the_ID(), $attributes );

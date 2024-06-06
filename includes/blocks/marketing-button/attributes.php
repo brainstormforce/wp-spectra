@@ -7,9 +7,10 @@
  * @package uagb
  */
 
-$button_attribute = UAGB_Block_Helper::uag_generate_border_attribute(
+$button_attribute   = UAGB_Block_Helper::uag_generate_border_attribute(
 	'btn'
 );
+$inherit_from_theme = 'enabled' === ( 'deleted' !== UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme_fallback', 'deleted' ) ? 'disabled' : UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' ) );
 
 return array_merge(
 	array(
@@ -101,6 +102,7 @@ return array_merge(
 		'borderRadius'              => '',
 		'borderColor'               => '',
 		'borderHoverColor'          => '',
+		'inheritFromTheme'          => $inherit_from_theme,
 	),
 	$button_attribute
 );

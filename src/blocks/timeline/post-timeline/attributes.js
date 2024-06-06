@@ -6,6 +6,17 @@ const attributes = {
 		type: 'string',
 		default: 'post-timeline',
 	},
+	inheritFromTheme: {
+		type: 'boolean',
+		default: 'enabled' === uagb_blocks_info.btn_inherit_from_theme_fallback,
+	},
+	buttonType: {
+		type: 'string',
+		default: 'primary',
+		UAGCopyPaste: {
+			styleType: 'btn-type',
+		},
+	},
 	align: {
 		type: 'string',
 		default: '',

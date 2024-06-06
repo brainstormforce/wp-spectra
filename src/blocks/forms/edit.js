@@ -3,17 +3,13 @@
  */
 import { useLayoutEffect, useEffect, useCallback, useMemo } from '@wordpress/element';
 import styling from './styling';
-import UAGB_Block_Icons from '@Controls/block-icons';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
-import { useSelect, useDispatch } from '@wordpress/data';
+import { useSelect } from '@wordpress/data';
 import { compose, createHigherOrderComponent } from '@wordpress/compose';
-import { createBlocksFromInnerBlocksTemplate } from '@wordpress/blocks';
-import { __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 import { withNotices } from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import styles from './editor.lazy.scss';
 import { addFilter } from '@wordpress/hooks';
@@ -22,7 +18,7 @@ import DynamicFontLoader from './dynamicFontLoader';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 import addInitialAttr from '@Controls/addInitialAttr';
 import { uagbClassNames } from '@Utils/Helpers';
-
+import { VariationPicker } from './variations';
 import getApiData from '@Controls/getApiData';
 
 const UAGBFormsEdit = ( props ) => {
@@ -74,7 +70,6 @@ const UAGBFormsEdit = ( props ) => {
 			variations: typeof getBlockVariations === 'undefined' ? null : getBlockVariations( name ),
 		};
 	} );
-	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
 		styles.use();
@@ -246,16 +241,6 @@ const UAGBFormsEdit = ( props ) => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	const blockVariationPickerOnSelect = useCallback( ( nextVariation = defaultVariation ) => {
-		if ( nextVariation.attributes ) {
-			setAttributes( nextVariation.attributes );
-		}
-
-		if ( nextVariation.innerBlocks ) {
-			replaceInnerBlocks( clientId, createBlocksFromInnerBlocksTemplate( nextVariation.innerBlocks ) );
-		}
-	} );
-
 	const renderReadyClasses = useCallback( ( id ) => {
 		const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
 		let mainDiv;
@@ -317,23 +302,7 @@ const UAGBFormsEdit = ( props ) => {
 	} );
 
 	if ( ! hasInnerBlocks ) {
-		return (
-			<div className="uagb-variation-picker uagb-variation-picker--fill">
-				<__experimentalBlockVariationPicker
-					icon={ UAGB_Block_Icons.forms }
-					label={ __( 'Forms', 'ultimate-addons-for-gutenberg' ) }
-					instructions={
-						__(
-							'Select a form layout to start with.',
-							'ultimate-addons-for-gutenberg'
-						)
-					}
-					variations={ variations }
-					allowSkip
-					onSelect={ ( nextVariation ) => blockVariationPickerOnSelect( nextVariation ) }
-				/>
-			</div>
-		);
+		return <VariationPicker {...{ ...props, variations, defaultVariation }} />;
 	}
 
 	return (

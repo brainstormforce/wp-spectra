@@ -325,6 +325,7 @@ const Settings = ( props ) => {
 		blockPaddingLink,
 		inheritFromTheme,
 		enableMultilineParagraph,
+		imageAlt,
 	} = attributes;
 
 	/*
@@ -345,6 +346,7 @@ const Settings = ( props ) => {
 			imageSizeOptions = new_img;
 		}
 		setAttributes( { iconImage: media } );
+		setAttributes( { imageAlt: media.alt } )
 	};
 
 	/*
@@ -490,6 +492,18 @@ const Settings = ( props ) => {
 							onSelectImage={ onSelectImage }
 							backgroundImage={ iconImage }
 							onRemoveImage={ onRemoveImage }
+						/>
+						<UAGTextControl
+							label={ __( 'Alternate Text', 'ultimate-addons-for-gutenberg' ) }
+							enableDynamicContent={ true }
+							dynamicContentType="text"
+							value={ imageAlt }
+							name="imageAlt"
+							setAttributes={ setAttributes }
+							data={ {
+								value: imageAlt,
+								label: 'imageAlt',
+							} }
 						/>
 						{ iconImage && iconImage.url !== 'null' && iconImage.url !== '' && (
 							<UAGSelectControl

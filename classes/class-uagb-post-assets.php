@@ -308,7 +308,7 @@ class UAGB_Post_Assets {
 							}
 							// Return the appropriate template based on the search condition.
 							return $searchCondition ? 'product-search-results' : 'archive-product';
-						
+
 						// Case when the current page is a product taxonomy and the object is a term.
 						case is_product_taxonomy() && $object instanceof WP_Term:
 							// Check if the taxonomy is a product attribute.
@@ -331,12 +331,12 @@ class UAGB_Post_Assets {
 								return $searchCondition ? 'product-search-results' : 'archive-product';
 							}
 							break;
-						
+
 						// Case when the current page is the shop page.
 						case is_shop():
 							// Return the appropriate template based on the search condition.
 							return $searchCondition ? 'product-search-results' : 'archive-product';
-						
+
 						default:
 							// Return the appropriate template based on the search condition and the type of the queried object.
 							return $searchCondition ? 'product-search-results' : ( ( $object instanceof WP_Post || $object instanceof WP_Post_Type || $object instanceof WP_Term || $object instanceof WP_User ) ? $this->get_archive_page_template( $object, $template_type_slug ) : 'archive-product' );
@@ -686,7 +686,7 @@ class UAGB_Post_Assets {
 		$this->current_block_list  = $page_assets['current_block_list'];
 		$this->uag_flag            = $page_assets['uag_flag'];
 		$this->stylesheet          = apply_filters( 'uag_page_assets_css', $page_assets['css'] );
-		$this->script              = $page_assets['js'];
+		$this->script              = apply_filters( 'uag_page_assets_js', $page_assets['js'] );
 		$this->gfonts              = $page_assets['gfonts'];
 		$this->gfonts_files        = $page_assets['gfonts_files'];
 		$this->gfonts_url          = $page_assets['gfonts_url'];
@@ -702,15 +702,15 @@ class UAGB_Post_Assets {
 	 * @since 1.23.0
 	 */
 	public function enqueue_scripts() {
-			$blocks = array();
+		$blocks = array();
 		if ( UAGB_Admin_Helper::is_block_theme() ) {
 			global $_wp_current_template_content;
 			if ( isset( $_wp_current_template_content ) ) {
 				$blocks = parse_blocks( $_wp_current_template_content );
 			}
 		}
-			// Global Required assets.
-			// If the current template has content and contains blocks, execute this code block.
+		// Global Required assets.
+		// If the current template has content and contains blocks, execute this code block.
 		if ( has_blocks( $this->post_id ) || has_blocks( $blocks ) ) {
 			/* Print conditional css for all blocks */
 			add_action( 'wp_head', array( $this, 'print_conditional_css' ), 80 );
@@ -804,8 +804,8 @@ class UAGB_Post_Assets {
 	}
 	/**
 	 * This is the action where we create dynamic asset files.
-	 * CSS Path : uploads/uag-plugin/uag-style-{post_id}-{timestamp}.css
-	 * JS Path : uploads/uag-plugin/uag-script-{post_id}-{timestamp}.js
+	 * CSS Path : uploads/uag-plugin/uag-style-{post_id}.css
+	 * JS Path : uploads/uag-plugin/uag-script-{post_id}.js
 	 *
 	 * @since 1.15.0
 	 */
@@ -913,8 +913,8 @@ class UAGB_Post_Assets {
 		*/
 		$uagb_asset_ver = apply_filters( 'uagb_asset_version', UAGB_ASSET_VER );
 
-		if ( empty( $uagb_asset_ver ) || ! is_string( $uagb_asset_ver ) ) { 
-			$uagb_asset_ver = UAGB_ASSET_VER; 
+		if ( empty( $uagb_asset_ver ) || ! is_string( $uagb_asset_ver ) ) {
+			$uagb_asset_ver = UAGB_ASSET_VER;
 		}
 
 		if ( isset( $file_handler['css_url'] ) ) {

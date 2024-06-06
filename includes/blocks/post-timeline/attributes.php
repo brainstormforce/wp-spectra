@@ -7,9 +7,12 @@
  * @package uagb
  */
 
+$inherit_from_theme = 'enabled' === ( 'deleted' !== UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme_fallback', 'deleted' ) ? 'disabled' : UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' ) );
+
 return array(
 	'block_id'                   => '',
 	'blockName'                  => 'post-timeline',
+	'inheritFromTheme'           => $inherit_from_theme,
 	'postsToShow'                => 6,
 	'postsOffset'                => 0,
 	'exerptLength'               => 15,

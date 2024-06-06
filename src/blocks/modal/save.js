@@ -24,6 +24,8 @@ export default function Save( props ) {
 		showBtnIcon,
 		openModalAs,
 		modalPosition,
+		inheritFromTheme,
+		buttonType,
 	} = props.attributes;
 
 	const textHTML = (
@@ -63,7 +65,12 @@ export default function Save( props ) {
 		buttonIconOutput = renderSVG( buttonIcon );
 	}
 
-	const buttonClasses = 'uagb-modal-button-link wp-block-button__link uagb-modal-trigger';
+	const inheritAstraSecondary = inheritFromTheme && 'secondary' === buttonType;
+	const buttonTypeClass = inheritAstraSecondary ? 'ast-outline-button' : 'wp-block-button__link';
+	//border-width is added to revert the border related styles by default.
+	const borderStyle = inheritAstraSecondary ? { borderWidth: 'revert-layer' } : {};
+
+	const buttonClasses = `uagb-modal-button-link ${ buttonTypeClass } uagb-modal-trigger`;
 
 	const buttonHTML = (
 		<div className={ classnames( 'uagb-spectra-button-wrapper', 'wp-block-button' ) }>
@@ -73,6 +80,7 @@ export default function Save( props ) {
 				onClick={ 'return false;' }
 				target="_self"
 				rel="noopener noreferrer"
+				style={ borderStyle }
 			>
 				<span className="uagb-modal-content-wrapper">
 					{ showBtnIcon && buttonIconPosition === 'before' && buttonIconOutput }

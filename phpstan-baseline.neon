@@ -1073,11 +1073,6 @@ parameters:
 			path: blocks-config/image-gallery/class-spectra-image-gallery.php
 
 		-
-			message: "#^Parameter \\#1 \\$text of function esc_attr expects string, int\\<1, max\\> given\\.$#"
-			count: 1
-			path: blocks-config/image-gallery/class-spectra-image-gallery.php
-
-		-
 			message: "#^Parameter \\#1 \\(array\\) of echo cannot be converted to string\\.$#"
 			count: 3
 			path: blocks-config/image-gallery/class-spectra-image-gallery.php

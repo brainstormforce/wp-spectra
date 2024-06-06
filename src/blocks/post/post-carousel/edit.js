@@ -271,7 +271,9 @@ const UAGBPostCarousel = ( props ) => {
 			UAGHideTab,
 			UAGHideMob,
 			equalHeight,
-			block_id
+			block_id,
+			inheritFromThemeBtn,
+			buttonType,
 		},
 		setAttributes,
 		deviceType,
@@ -434,7 +436,9 @@ const UAGBPostCarousel = ( props ) => {
 			uagb_carousel_unset_height( block_id ); // eslint-disable-line no-undef
 		}
 	}, [ attributes, deviceType ] );
-
+    const currentTheme = uagb_blocks_info.current_theme;
+	const isAstraBasedTheme = uagb_blocks_info.is_astra_based_theme;
+	
 	let blockStyling = useMemo( () => styling( attributes, clientId, deviceType ), [ attributes, deviceType ] );
 
 	blockStyling +=
@@ -1112,6 +1116,31 @@ const UAGBPostCarousel = ( props ) => {
 				/>
 				{ displayPostLink && (
 					<>
+					    <ToggleControl
+					        checked={ inheritFromThemeBtn }
+					        onChange={ () => setAttributes( { inheritFromThemeBtn: ! inheritFromThemeBtn } ) }
+					        label={ __( 'Inherit From Theme', 'ultimate-addons-for-gutenberg' ) }
+				        />
+					    { inheritFromThemeBtn && ( 'Astra' === currentTheme || isAstraBasedTheme ) && (
+                            <MultiButtonsControl
+						        setAttributes={ setAttributes }
+						        label={ __( `Button Type`, 'ultimate-addons-for-gutenberg' ) }
+						        data={ {
+							        value: buttonType,
+							        label: 'buttonType',
+						        } }
+						        options={ [
+							        {
+								        value: 'primary',
+								        label: __( 'Primary', 'ultimate-addons-for-gutenberg' ),
+							        },
+							        {
+								        value: 'secondary',
+								        label: __( 'Secondary', 'ultimate-addons-for-gutenberg' ),
+							        },
+						        ] }
+					        />
+				        ) }
 						<ToggleControl
 							label={ __( 'Open Links in New Tab', 'ultimate-addons-for-gutenberg' ) }
 							checked={ newTab }
@@ -1127,11 +1156,13 @@ const UAGBPostCarousel = ( props ) => {
 							setAttributes={ setAttributes }
 							onChange={ ( value ) => setAttributes( { ctaText: value } ) }
 						/>
-						<UAGPresets
-							setAttributes={ setAttributes }
-							presets={ buttonsPresets }
-							presetInputType="radioImage"
-						/>
+						{ !inheritFromThemeBtn && (
+                            <UAGPresets
+                                setAttributes={ setAttributes }
+							    presets={ buttonsPresets }
+							    presetInputType="radioImage"
+						    />
+						) }
 					</>
 				) }
 			</UAGAdvancedPanelBody>
@@ -1737,6 +1768,8 @@ const UAGBPostCarousel = ( props ) => {
 				title={ __( 'Read More Link', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+				{ !inheritFromThemeBtn && (
+					<>
 				<UAGTabsControl
 					tabs={ [
 						{
@@ -1895,30 +1928,6 @@ const UAGBPostCarousel = ( props ) => {
 						label: 'ctaDecoration',
 					} }
 				/>
-				<ResponsiveSlider
-					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						desktop: {
-							value: ctaBottomSpace,
-							label: 'ctaBottomSpace',
-						},
-						tablet: {
-							value: ctaBottomSpaceTablet,
-							label: 'ctaBottomSpaceTablet',
-						},
-						mobile: {
-							value: ctaBottomSpaceMobile,
-							label: 'ctaBottomSpaceMobile',
-						},
-					} }
-					min={ 0 }
-					max={ 300 }
-					unit={ {
-						value: ctaBottomSpaceUnit,
-						label: 'ctaBottomSpaceUnit',
-					} }
-					setAttributes={ setAttributes }
-				/>
 				<ResponsiveBorder
 					setAttributes={ setAttributes }
 					prefix={ 'btn' }
@@ -1996,6 +2005,32 @@ const UAGBPostCarousel = ( props ) => {
 						value: spacingLink,
 						label: 'spacingLink',
 					} }
+				/>
+				</>
+				) }
+				<ResponsiveSlider
+					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: ctaBottomSpace,
+							label: 'ctaBottomSpace',
+						},
+						tablet: {
+							value: ctaBottomSpaceTablet,
+							label: 'ctaBottomSpaceTablet',
+						},
+						mobile: {
+							value: ctaBottomSpaceMobile,
+							label: 'ctaBottomSpaceMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 300 }
+					unit={ {
+						value: ctaBottomSpaceUnit,
+						label: 'ctaBottomSpaceUnit',
+					} }
+					setAttributes={ setAttributes }
 				/>
 			</UAGAdvancedPanelBody>
 		);
