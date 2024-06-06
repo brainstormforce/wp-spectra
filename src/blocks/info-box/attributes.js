@@ -1011,6 +1011,10 @@ const attributes = {
 			alt: '',
 		},
 	},
+	imageAlt:{ 
+		type: 'string',
+		default: ''
+	},
 	imageSize: {
 		type: 'string',
 		default: 'thumbnail',

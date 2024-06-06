@@ -211,7 +211,7 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 
 == Credits ==
 
-Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT. Additionally, we incorporate [React beautiful dnd](https://github.com/atlassian/react-beautiful-dnd) licensed under the Apache License, Version 2.0.
+Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT. Additionally, we incorporate [dnd kit](https://github.com/clauderic/dnd-kit) licensed under the MIT License.
 
 == Changelog ==
 
@@ -220,10 +220,10 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Taxonomy List - Handled the "Taxonomy Not Available." message on the front-end when using categories from the "Create And Assign Categories For Pages" plugin.
 * Fix: Testimonial - Resolved an issue wherein the image height would not work as intended.
 
-= 2.13.4 - Thursday, 30th May 2024 =
+= 2.13.4 - Thursday, 6th June 2024 =
 * Feature: Quick Action Bar - Easily rearrange blocks in the Quick Action Bar for a personalized workflow.
 * Improvement: Info Box - Added an option to set the alt attribute of the image.
-* Improvement: Modal - Added responsive units for modal height and width.
+* Improvement: Modal - Added separate units ( default 'px' ) for responsive modal width and height.
 * Improvement: Global - Added the inherit-from-theme primary and secondary-button options in blocks that contain buttons for Astra themes.
 * Improvement: Asset Generation - Regenerating post assets on current post update to avoid any conflicts with the cached version.
 * Fix: Buttons - Resolved an issue wherein the button typography styles would not work when applied from the parent in the Astra theme.

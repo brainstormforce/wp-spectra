@@ -64,6 +64,8 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 				return;
 			}
 
+			$inherit_from_theme = 'enabled' === ( 'deleted' !== UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme_fallback', 'deleted' ) ? 'disabled' : UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' ) );
+
 			register_block_type(
 				'uagb/post-timeline',
 				array(
@@ -492,7 +494,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						),
 						'inheritFromTheme'           => array(
 							'type'    => 'boolean',
-							'default' => false,
+							'default' => $inherit_from_theme,
 						),
 						'buttonType'                 => array(
 							'type'    => 'string',

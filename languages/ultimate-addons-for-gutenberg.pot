@@ -9,13 +9,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-05-28T07:48:06+00:00\n"
+"POT-Creation-Date: 2024-06-06T03:33:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.10.0\n"
+"X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
 
 #. Plugin Name of the plugin
-#: ultimate-addons-for-gutenberg.php
 #: admin-core/inc/admin-menu.php:135
 #: admin-core/inc/admin-menu.php:136
 #: admin-core/inc/admin-menu.php:147
@@ -29,17 +28,14 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
-#: ultimate-addons-for-gutenberg.php
 msgid "https://www.brainstormforce.com"
 msgstr ""
 
 #. Description of the plugin
-#: ultimate-addons-for-gutenberg.php
 msgid "The Spectra extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster."
 msgstr ""
 
 #. Author of the plugin
-#: ultimate-addons-for-gutenberg.php
 msgid "Brainstorm Force"
 msgstr ""
 
@@ -55,58 +51,58 @@ msgstr ""
 msgid "Sorry, something went wrong."
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:161
-#: admin-core/ajax/common-settings.php:717
+#: admin-core/ajax/common-settings.php:165
+#: admin-core/ajax/common-settings.php:721
 #: classes/class-uagb-init-blocks.php:539
 msgid "Successfully saved data!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:177
-#: classes/class-uagb-init-blocks.php:1051
+#: admin-core/ajax/common-settings.php:181
+#: classes/class-uagb-init-blocks.php:1054
 msgid "No post data found!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:213
+#: admin-core/ajax/common-settings.php:217
 msgid "Plugin Successfully Activated"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:810
+#: admin-core/ajax/common-settings.php:814
 msgid "Successfully refreshed tokens!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:812
+#: admin-core/ajax/common-settings.php:816
 msgid "Failed to refresh tokens"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:949
+#: admin-core/ajax/common-settings.php:953
 msgid "Module not found!"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:967
+#: admin-core/ajax/common-settings.php:971
 msgid "%s disabled!"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:977
+#: admin-core/ajax/common-settings.php:981
 msgid "Unable to disable %s"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:989
+#: admin-core/ajax/common-settings.php:993
 msgid "%s enabled!"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:999
+#: admin-core/ajax/common-settings.php:1003
 msgid "Unable to enable %s"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:1007
+#: admin-core/ajax/common-settings.php:1011
 msgid "Unable to save setting."
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:1026
+#: admin-core/ajax/common-settings.php:1030
 msgid "Unable to verify authenticity."
 msgstr ""
 
@@ -145,7 +141,7 @@ msgid "Please try logging in again to verify that you are not a robot."
 msgstr ""
 
 #: blocks-config/forms/class-uagb-forms.php:429
-#: includes/blocks/forms/attributes.php:71
+#: includes/blocks/forms/attributes.php:70
 #: dist/blocks.js:3
 #: dist/blocks.js:19
 msgid "Form Submission"
@@ -214,18 +210,18 @@ msgstr ""
 msgid "Unset"
 msgstr ""
 
-#: blocks-config/post-timeline/class-uagb-post-timeline.php:531
-#: blocks-config/post/class-uagb-post.php:622
-#: blocks-config/post/class-uagb-post.php:2279
-#: includes/blocks/post-carousel/attributes.php:116
-#: includes/blocks/post-grid/attributes.php:108
-#: includes/blocks/post-masonry/attributes.php:110
+#: blocks-config/post-timeline/class-uagb-post-timeline.php:533
+#: blocks-config/post/class-uagb-post.php:624
+#: blocks-config/post/class-uagb-post.php:2281
+#: includes/blocks/post-carousel/attributes.php:118
+#: includes/blocks/post-grid/attributes.php:109
+#: includes/blocks/post-masonry/attributes.php:111
 #: dist/blocks.js:3
 #: dist/blocks.js:19
 msgid "Read More"
 msgstr ""
 
-#: blocks-config/post-timeline/class-uagb-post-timeline.php:893
+#: blocks-config/post-timeline/class-uagb-post-timeline.php:895
 msgid "No posts found"
 msgstr ""
 
@@ -7861,13 +7857,13 @@ msgstr ""
 msgid "Please select a valid Contact Form 7."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:797
+#: classes/class-uagb-init-blocks.php:799
 msgid ""
 "Use custom class added in block's advanced settings to target your desired block. Examples:\n"
 "\t\t.my-class {text-align: center;} // my-class is a custom selector"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:851
+#: classes/class-uagb-init-blocks.php:854
 #: classes/class-uagb-rest-api.php:318
 #: classes/class-uagb-rest-api.php:333
 #: dist/blocks.js:1
@@ -7878,21 +7874,21 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:880
-#: classes/class-uagb-init-blocks.php:913
+#: classes/class-uagb-init-blocks.php:883
+#: classes/class-uagb-init-blocks.php:916
 #: dist/blocks.js:23
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:894
+#: classes/class-uagb-init-blocks.php:897
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:927
+#: classes/class-uagb-init-blocks.php:930
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:943
+#: classes/class-uagb-init-blocks.php:946
 msgid "Invalid request"
 msgstr ""
 
@@ -7909,7 +7905,7 @@ msgstr ""
 msgid "Spectra <p>Rollback to Previous Version</p>"
 msgstr ""
 
-#: classes/class-uagb-update.php:222
+#: classes/class-uagb-update.php:228
 msgid "Heads up!"
 msgstr ""
 
@@ -8212,29 +8208,29 @@ msgstr ""
 msgid "Add a URL input field in your form."
 msgstr ""
 
-#: includes/blocks/forms/attributes.php:36
+#: includes/blocks/forms/attributes.php:35
 #: dist/blocks.js:3
 #: dist/blocks.js:19
 msgid "Submit"
 msgstr ""
 
-#: includes/blocks/forms/attributes.php:37
+#: includes/blocks/forms/attributes.php:36
 #: dist/blocks.js:3
 #: dist/blocks.js:19
 msgid "Spectra Form"
 msgstr ""
 
-#: includes/blocks/forms/attributes.php:42
+#: includes/blocks/forms/attributes.php:41
 msgid "The form has been submitted Successfully!"
 msgstr ""
 
-#: includes/blocks/forms/attributes.php:128
+#: includes/blocks/forms/attributes.php:127
 #: dist/blocks.js:3
 #: dist/blocks.js:19
 msgid "There has been some error while submitting the form. Please verify all form fields again."
 msgstr ""
 
-#: includes/blocks/forms/attributes.php:175
+#: includes/blocks/forms/attributes.php:174
 #: dist/blocks.js:3
 #: dist/blocks.js:19
 msgid "Please fill up the above captcha."

@@ -686,7 +686,7 @@ class UAGB_Post_Assets {
 		$this->current_block_list  = $page_assets['current_block_list'];
 		$this->uag_flag            = $page_assets['uag_flag'];
 		$this->stylesheet          = apply_filters( 'uag_page_assets_css', $page_assets['css'] );
-		$this->script              = $page_assets['js'];
+		$this->script              = apply_filters( 'uag_page_assets_js', $page_assets['js'] );
 		$this->gfonts              = $page_assets['gfonts'];
 		$this->gfonts_files        = $page_assets['gfonts_files'];
 		$this->gfonts_url          = $page_assets['gfonts_url'];
@@ -702,15 +702,15 @@ class UAGB_Post_Assets {
 	 * @since 1.23.0
 	 */
 	public function enqueue_scripts() {
-			$blocks = array();
+		$blocks = array();
 		if ( UAGB_Admin_Helper::is_block_theme() ) {
 			global $_wp_current_template_content;
 			if ( isset( $_wp_current_template_content ) ) {
 				$blocks = parse_blocks( $_wp_current_template_content );
 			}
 		}
-			// Global Required assets.
-			// If the current template has content and contains blocks, execute this code block.
+		// Global Required assets.
+		// If the current template has content and contains blocks, execute this code block.
 		if ( has_blocks( $this->post_id ) || has_blocks( $blocks ) ) {
 			/* Print conditional css for all blocks */
 			add_action( 'wp_head', array( $this, 'print_conditional_css' ), 80 );
@@ -721,8 +721,12 @@ class UAGB_Post_Assets {
 
 		// UAG Flag specific.
 		if ( $this->is_allowed_assets_generation ) {
+
+			// Prepare font css and files.
+			$this->generate_fonts();
+
 			$this->generate_assets();
-			$this->regenerate_post_assets();
+			$this->generate_asset_files();
 		}
 		if ( $this->uag_flag ) {
 
@@ -1275,23 +1279,6 @@ class UAGB_Post_Assets {
 
 		/* Update page assets */
 		$this->update_page_assets();
-	}
-
-	/**
-	 * Re-generate Spectra based assets.
-	 *
-	 * This is reusable function which compile fonts, assets and generate asset files.
-	 *
-	 * @since 2.13.4
-	 * @return void
-	 */
-	public function regenerate_post_assets() {
-		$this_post = get_post( $this->post_id );
-		if ( is_object( $this_post ) ) {
-			$this->prepare_assets( $this_post );
-		}
-		$this->generate_fonts();
-		$this->generate_asset_files();
 	}
 
 	/**

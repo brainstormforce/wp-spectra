@@ -694,38 +694,46 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'color' => $attr['metaColor'],
 			);
 			$selectors[' .uagb-post__text.uagb-post__excerpt']['color']                          = $attr['excerptColor'];
-			if ( ! $attr['inheritFromThemeBtn'] ) {
-				$selectors['.uagb-post-grid .wp-block-button.uagb-post__text.uagb-post__cta .uagb-text-link.wp-block-button__link '] = array_merge(
-					array(
-						'color'      => $attr['ctaColor'],
-						'background' => ( 'color' === $attr['ctaBgType'] ) ? $attr['ctaBgColor'] : 'transparent',
-					),
-					$border_css
-				);
-				$selectors['.uagb-post-grid .uagb-post__inner-wrap .wp-block-button.uagb-post__text.uagb-post__cta a']               = array(
-					'color'          => $attr['ctaColor'],
-					'padding-top'    => UAGB_Helper::get_css_value( $paddingBtnTop, $attr['paddingBtnUnit'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $paddingBtnBottom, $attr['paddingBtnUnit'] ),
-					'padding-left'   => UAGB_Helper::get_css_value( $paddingBtnLeft, $attr['paddingBtnUnit'] ),
-					'padding-right'  => UAGB_Helper::get_css_value( $paddingBtnRight, $attr['paddingBtnUnit'] ),
 
-				);
-				$selectors['.uagb-post-grid .wp-block-button.uagb-post__text.uagb-post__cta:hover .uagb-text-link.wp-block-button__link'] = array(
-					'border-color' => $attr['btnBorderHColor'],
-					'color'        => $attr['ctaHColor'],
-					'background'   => ( 'color' === $attr['ctaBgHType'] ) ? $attr['ctaBgHColor'] : 'transparent',
-				);
-				$selectors[' .uagb-post__text.uagb-post__cta:hover a.uagb-text-link'] = array(
-					'color'        => $attr['ctaHColor'],
-					'border-color' => $attr['btnBorderHColor'],
-				);
-				$selectors[' .uagb-post__text.uagb-post__cta a.uagb-text-link:focus'] = array(
-					'color'        => $attr['ctaHColor'],
-					'background'   => ( 'color' === $attr['ctaBgHType'] ) ? $attr['ctaBgHColor'] : 'transparent',
-					'border-color' => $attr['btnBorderHColor'],
+			if ( ! $attr['inheritFromThemeBtn'] ) {
+				$selectors = array_merge(
+					$selectors,
+					array(
+						'.uagb-post-grid .wp-block-button.uagb-post__text.uagb-post__cta .uagb-text-link.wp-block-button__link ' => array_merge(
+							array(
+								'color'      => $attr['ctaColor'],
+								'background' => ( 'color' === $attr['ctaBgType'] ) ? $attr['ctaBgColor'] : 'transparent',
+								$border_css,
+							),
+							$border_css
+						),
+						'.uagb-post-grid .uagb-post__inner-wrap .wp-block-button.uagb-post__text.uagb-post__cta a'               => array_merge(
+							array(
+								'color'          => $attr['ctaColor'],
+								'padding-top'    => UAGB_Helper::get_css_value( $paddingBtnTop, $attr['paddingBtnUnit'] ),
+								'padding-bottom' => UAGB_Helper::get_css_value( $paddingBtnBottom, $attr['paddingBtnUnit'] ),
+								'padding-left'   => UAGB_Helper::get_css_value( $paddingBtnLeft, $attr['paddingBtnUnit'] ),
+								'padding-right'  => UAGB_Helper::get_css_value( $paddingBtnRight, $attr['paddingBtnUnit'] ),
+							)
+						),
+						'.uagb-post-grid .wp-block-button.uagb-post__text.uagb-post__cta:hover .uagb-text-link.wp-block-button__link' => array(
+							'border-color' => $attr['btnBorderHColor'],
+							'color'        => $attr['ctaHColor'],
+							'background'   => ( 'color' === $attr['ctaBgHType'] ) ? $attr['ctaBgHColor'] : 'transparent',
+						),
+						' .uagb-post__text.uagb-post__cta:hover a.uagb-text-link' => array(
+							'color'        => $attr['ctaHColor'],
+							'border-color' => $attr['btnBorderHColor'],
+						),
+						' .uagb-post__text.uagb-post__cta a.uagb-text-link:focus' => array(
+							'color'        => $attr['ctaHColor'],
+							'background'   => ( 'color' === $attr['ctaBgHType'] ) ? $attr['ctaBgHColor'] : 'transparent',
+							'border-color' => $attr['btnBorderHColor'],
+						),
+					)
 				);
 			}
-
+			
 			return $selectors;
 
 		}
@@ -829,8 +837,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-left' => UAGB_Helper::get_css_value( $paddingLeftMobile, $attr['mobilePaddingUnit'] ),
 				),
 			);
+
 			if ( ! $attr['inheritFromThemeBtn'] ) {
-				$m_selector['.uagb-post-grid .wp-block-button.uagb-post__text.uagb-post__cta .uagb-text-link.wp-block-button__link '] = $border_css_mobile;
+				$m_selector = array_merge(
+					$m_selector,
+					array(
+						'.uagb-post-grid .wp-block-button.uagb-post__text.uagb-post__cta .uagb-text-link.wp-block-button__link ' => $border_css_mobile,
+					)
+				);
 			}
 			return $m_selector;
 		}
@@ -936,17 +950,20 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 			if ( ! $attr['inheritFromThemeBtn'] ) {
-				$t_selector = array(
-					'.uagb-post-grid .wp-block-button.uagb-post__text.uagb-post__cta .uagb-text-link.wp-block-button__link ' => $border_css_tablet,
-					' .uagb-post__cta a' => array_merge(
-						array(
-							'padding-top'    => UAGB_Helper::get_css_value( $paddingBtnTopTablet, $attr['tabletPaddingBtnUnit'] ),
-							'padding-bottom' => UAGB_Helper::get_css_value( $paddingBtnBottomTablet, $attr['tabletPaddingBtnUnit'] ),
-							'padding-left'   => UAGB_Helper::get_css_value( $paddingBtnLeftTablet, $attr['tabletPaddingBtnUnit'] ),
-							'padding-right'  => UAGB_Helper::get_css_value( $paddingBtnRightTablet, $attr['tabletPaddingBtnUnit'] ),
+				$t_selector = array_merge(
+					$t_selector,
+					array(
+						'.uagb-post-grid .wp-block-button.uagb-post__text.uagb-post__cta .uagb-text-link.wp-block-button__link ' => $border_css_tablet,
+						' .uagb-post__cta a' => array_merge(
+							array(
+								'padding-top'    => UAGB_Helper::get_css_value( $paddingBtnTopTablet, $attr['tabletPaddingBtnUnit'] ),
+								'padding-bottom' => UAGB_Helper::get_css_value( $paddingBtnBottomTablet, $attr['tabletPaddingBtnUnit'] ),
+								'padding-left'   => UAGB_Helper::get_css_value( $paddingBtnLeftTablet, $attr['tabletPaddingBtnUnit'] ),
+								'padding-right'  => UAGB_Helper::get_css_value( $paddingBtnRightTablet, $attr['tabletPaddingBtnUnit'] ),
+							),
+							$border_css_tablet
 						),
-						$border_css_tablet
-					),
+					)
 				);
 			}
 			return $t_selector;

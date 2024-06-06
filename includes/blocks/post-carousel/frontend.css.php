@@ -128,8 +128,10 @@ $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'meta', ' span.uag
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'meta', ' .uagb-post__inner-wrap .uagb-post__taxonomy.highlighted', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'meta', ' .uagb-post__taxonomy', $combined_selectors );
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'excerpt', ' .uagb-post__text.uagb-post__excerpt', $combined_selectors );
-$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'cta', ' .uagb-post__text.uagb-post__cta', $combined_selectors );
-$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'cta', ' .uagb-post__text.uagb-post__cta a', $combined_selectors );
 
+if ( ! $attr['inheritFromThemeBtn'] ) {
+	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'cta', ' .uagb-post__text.uagb-post__cta', $combined_selectors );
+	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'cta', ' .uagb-post__text.uagb-post__cta a', $combined_selectors );
+}
 
 return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );

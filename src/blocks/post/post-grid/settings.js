@@ -1797,6 +1797,8 @@ const Settings = ( props ) => {
 				title={ __( 'Read More Link', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
+				{ !inheritFromThemeBtn && ( 
+					<>
 				<UAGTabsControl
 					tabs={ [
 						{
@@ -1961,34 +1963,6 @@ const Settings = ( props ) => {
 					deviceType={ deviceType }
 					disabledBorderTitle={ false }
 				/>
-				{ ! isLeftToRightLayout && (
-					<>
-						<ResponsiveSlider
-							label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
-							data={ {
-								desktop: {
-									value: ctaBottomSpace,
-									label: 'ctaBottomSpace',
-								},
-								tablet: {
-									value: ctaBottomSpaceTablet,
-									label: 'ctaBottomSpaceTablet',
-								},
-								mobile: {
-									value: ctaBottomSpaceMobile,
-									label: 'ctaBottomSpaceMobile',
-								},
-							} }
-							min={ 0 }
-							max={ 300 }
-							unit={ {
-								value: ctaBottomSpaceUnit,
-								label: 'ctaBottomSpaceUnit',
-							} }
-							setAttributes={ setAttributes }
-						/>
-					</> 
-				) }
 				<SpacingControl
 					{ ...props }
 					label={ __( 'Button Padding', 'ultimate-addons-for-gutenberg' ) }
@@ -2060,6 +2034,36 @@ const Settings = ( props ) => {
 						label: 'spacingLink',
 					} }
 				/>
+				</>
+				) }
+				{ ! isLeftToRightLayout && (
+					<>
+						<ResponsiveSlider
+							label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
+							data={ {
+								desktop: {
+									value: ctaBottomSpace,
+									label: 'ctaBottomSpace',
+								},
+								tablet: {
+									value: ctaBottomSpaceTablet,
+									label: 'ctaBottomSpaceTablet',
+								},
+								mobile: {
+									value: ctaBottomSpaceMobile,
+									label: 'ctaBottomSpaceMobile',
+								},
+							} }
+							min={ 0 }
+							max={ 300 }
+							unit={ {
+								value: ctaBottomSpaceUnit,
+								label: 'ctaBottomSpaceUnit',
+							} }
+							setAttributes={ setAttributes }
+						/>
+					</> 
+				) }
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -2402,7 +2406,7 @@ const Settings = ( props ) => {
 						{ ( displayPostAuthor || displayPostDate || displayPostComment || displayPostTaxonomy ) &&
 							metaStyle() }
 						{ displayPostExcerpt && excerptStyle() }
-						{ !inheritFromThemeBtn && displayPostLink && readMoreLinkStyleSettings() }
+						{ displayPostLink && readMoreLinkStyleSettings() }
 						{ postPagination && paginationStyle() }
 						{ displayPostImage === true && imageStyle() }
 						{ borderSettings() }

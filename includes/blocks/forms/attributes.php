@@ -12,8 +12,7 @@ $failed_message_border_attribute  = UAGB_Block_Helper::uag_generate_border_attri
 $input_border_attribute           = UAGB_Block_Helper::uag_generate_border_attribute( 'field' );
 $toggle_border_attribute          = UAGB_Block_Helper::uag_generate_border_attribute( 'checkBoxToggle' );
 $submit_border_attribute          = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
-
-$inherit_from_theme = 'enabled' === UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' );
+$inherit_from_theme               = 'enabled' === ( 'deleted' !== UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme_fallback', 'deleted' ) ? 'disabled' : UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' ) );
 
 return array_merge(
 	array(

@@ -744,6 +744,8 @@ class UAGB_Init_Blocks {
 			),
 		);
 
+		$inherit_from_theme = 'deleted' !== UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme_fallback', 'deleted' ) ? 'disabled' : UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' );
+
 		$localized_params = array(
 			'cf7_is_active'                           => class_exists( 'WPCF7_ContactForm' ),
 			'gf_is_active'                            => class_exists( 'GFForms' ),
@@ -805,6 +807,7 @@ class UAGB_Init_Blocks {
 			'is_site_editor'                          => $screen->id,
 			'current_post_id'                         => get_the_ID(),
 			'btn_inherit_from_theme'                  => UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' ),
+			'btn_inherit_from_theme_fallback'         => $inherit_from_theme,
 			'wp_version'                              => get_bloginfo( 'version' ),
 			'is_block_theme'                          => UAGB_Admin_Helper::is_block_theme(),
 			'is_customize_preview'                    => is_customize_preview(),

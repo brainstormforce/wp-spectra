@@ -9,6 +9,7 @@
 
 $btn_border_attribute     = UAGB_Block_Helper::uag_generate_border_attribute( 'btn' );
 $overall_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'overall' );
+$inherit_from_theme       = 'enabled' === ( 'deleted' !== UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme_fallback', 'deleted' ) ? 'disabled' : UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' ) );
 return array_merge(
 	array(
 		'blockName'                   => 'post-grid',
@@ -209,7 +210,7 @@ return array_merge(
 		'paddingBottom'               => 20,
 		'paddingRight'                => 20,
 		'paddingLeft'                 => 20,
-		'inheritFromThemeBtn'         => false,
+		'inheritFromThemeBtn'         => $inherit_from_theme,
 		'isLeftToRightLayout'         => false,
 		'wrapperTopPadding'           => '',
 		'wrapperRightPadding'         => 20,

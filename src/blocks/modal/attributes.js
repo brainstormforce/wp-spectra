@@ -12,7 +12,7 @@ const attributes = {
 	},
 	inheritFromTheme: {
 		type: 'boolean',
-		default: 'enabled' === uagb_blocks_info.btn_inherit_from_theme,
+		default: 'enabled' === uagb_blocks_info.btn_inherit_from_theme_fallback,
 	},
 	buttonType: {
 		type: 'string',
@@ -183,14 +183,12 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'modal-width',
 		},
-		default: 600,
 	},
 	modalWidthMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'modal-width',
 		},
-		default: 220,
 	},
 	modalWidthType: {
 		type: 'string',
@@ -223,14 +221,12 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'modal-height',
 		},
-		default: 350,
 	},
 	modalHeightMobile: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'modal-height',
 		},
-		default: 300,
 	},
 	modalHeightType: {
 		type: 'string',
