@@ -291,7 +291,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			$icons_chunks = apply_filters( 'uagb_icons_chunks', $icons_chunks );
-			
+
 			if ( ! is_array( $icons_chunks ) || empty( $icons_chunks ) ) {
 				$icons_chunks = array();
 			}
