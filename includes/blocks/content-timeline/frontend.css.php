@@ -19,10 +19,12 @@ $bottom_margin = isset( $attr['bottomMargin'] ) ? $attr['bottomMargin'] : $attr[
 $left_margin   = isset( $attr['leftMargin'] ) ? $attr['leftMargin'] : $attr['horizontalSpace'];
 $right_margin  = isset( $attr['rightMargin'] ) ? $attr['rightMargin'] : $attr['horizontalSpace'];
 
-$top_padding    = isset( $attr['topPadding'] ) ? $attr['topPadding'] : $attr['bgPadding'];
-$bottom_padding = isset( $attr['bottomPadding'] ) ? $attr['bottomPadding'] : $attr['bgPadding'];
-$left_padding   = isset( $attr['leftPadding'] ) ? $attr['leftPadding'] : $attr['bgPadding'];
-$right_padding  = isset( $attr['rightPadding'] ) ? $attr['rightPadding'] : $attr['bgPadding'];
+$top_padding         = isset( $attr['topPadding'] ) ? $attr['topPadding'] : $attr['bgPadding'];
+$bottom_padding      = isset( $attr['bottomPadding'] ) ? $attr['bottomPadding'] : $attr['bgPadding'];
+$left_padding        = isset( $attr['leftPadding'] ) ? $attr['leftPadding'] : $attr['bgPadding'];
+$right_padding       = isset( $attr['rightPadding'] ) ? $attr['rightPadding'] : $attr['bgPadding'];
+$date_font_size      = '' !== $attr['dateFontSize'] ? $attr['dateFontSize'] : $attr['dateFontsize'];
+$date_font_size_type = '' !== $attr['dateFontSizeType'] ? $attr['dateFontSizeType'] : $attr['dateFontsizeType'];
 
 $selectors = array(
 	' .uagb-timeline__heading'                             => array(
@@ -156,13 +158,13 @@ $selectors = array(
 	),
 	' .uagb-timeline__date-new'                            => array(
 		'color'     => $attr['dateColor'],
-		'font-size' => UAGB_Helper::get_css_value( $attr['dateFontsize'], $attr['dateFontsizeType'] ),
+		'font-size' => UAGB_Helper::get_css_value( $date_font_size, $date_font_size_type ),
 	),
 	'.uagb-timeline__right-block .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
-		'font-size' => UAGB_Helper::get_css_value( $attr['dateFontsize'], $attr['dateFontsizeType'] ),
+		'font-size' => UAGB_Helper::get_css_value( $date_font_size, $date_font_size_type ),
 	),
 	'.uagb-timeline__left-block .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
-		'font-size' => UAGB_Helper::get_css_value( $attr['dateFontsize'], $attr['dateFontsizeType'] ),
+		'font-size' => UAGB_Helper::get_css_value( $date_font_size, $date_font_size_type ),
 	),
 	' .uagb-events-new .uagb-timeline__events-inner-new'   => array(  // Old user CSS.
 		'padding' => UAGB_Helper::get_css_value( $attr['bgPadding'], 'px' ),

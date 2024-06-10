@@ -216,6 +216,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Fix: Post Timeline - Resolved an issue wherein fontsize would not work as intended in responsive devices.
+
+= 2.13.5 =
 * Fix: Container - Resolved an issue wherein the Image block would not display as expected in nested containers.
 * Fix: Global - Resolved an issue wherein Custom CSS would not display on editor reload.
 * Fix: Taxonomy List - Handled the "Taxonomy Not Available." message on the front-end when using categories from the "Create And Assign Categories For Pages" plugin.

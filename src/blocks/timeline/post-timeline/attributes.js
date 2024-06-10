@@ -531,6 +531,30 @@ const attributes = {
 			styleType: 'date-font-size-mobile',
 		},
 	},
+	dateFontSizeType: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'date-font-size-type',
+		},
+	},
+	dateFontSize: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'date-font-size',
+		},
+	},
+	dateFontSizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'date-font-size-tablet',
+		},
+	},
+	dateFontSizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'date-font-size-mobile',
+		},
+	},
 	dateFontFamily: {
 		type: 'string',
 		default: '',
