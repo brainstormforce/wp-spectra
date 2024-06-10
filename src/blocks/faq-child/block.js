@@ -5,7 +5,6 @@
 import UAGB_Block_Icons from '@Controls/block-icons';
 import attributes from './attributes';
 import Edit from './edit';
-import save from './save';
 import './style.scss';
 import deprecated from './deprecated';
 import { registerBlockType } from '@wordpress/blocks';
@@ -32,6 +31,6 @@ registerBlockType( 'uagb/faq-child', {
 		anchor: true,
 		html: false,
 	},
-	save,
+	save: () => null,
 	deprecated,
 } );

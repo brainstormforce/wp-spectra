@@ -6,6 +6,8 @@
 import classnames from 'classnames';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { getBorderAttributes } from '@Controls/generateAttributes';
+import save2_13_3 from './v2.13.3/save';
+import attributes2_13_3 from './v2.13.3/attributes';
 
 const borderAttributes = getBorderAttributes( 'overall' );
 
@@ -464,6 +466,10 @@ const deprecated = [
 			);
 		},
 	},
+	{
+		attributes: attributes2_13_3,
+		save: save2_13_3,
+	}
 ];
 
 export default deprecated;
