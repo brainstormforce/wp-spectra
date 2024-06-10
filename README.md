@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
+* Fix: Forms - Resolved an issue wherein the select dropdown padding would not work as intended with the Astra theme.
 * Fix: Post Timeline - Resolved an issue wherein fontsize would not work as intended in responsive devices.
 
 ### 2.13.5 ###
