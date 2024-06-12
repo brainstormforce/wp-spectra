@@ -550,6 +550,9 @@ function styling( attributes, clientId, name, deviceType ) {
 		' .uagb-forms-phone-flex:hover .components-base-control__field .components-select-control__input': {
 			'background-color': bgHoverColor,
 		},
+		' .uagb-forms-phone-flex .components-base-control__field .components-select-control__input': {
+			'height': 'auto',
+		},
 	};
 
 	if ( buttonAlign !== 'full' ) {

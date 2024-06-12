@@ -994,9 +994,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$date_bottom_space_fallback = self::get_fallback_number( $attr['dateBottomspace'], 'dateBottomspace', $attr['blockName'] );
 			$head_top_spacing_fallback  = 'post-timeline' === $attr['blockName'] ? self::get_fallback_number( $attr['headTopSpacing'], 'headTopSpacing', $attr['blockName'] ) : $attr['contentPadding'];
 
-			$connector_size = UAGB_Helper::get_css_value( $connector_bg_size_fallback, 'px' );
-
-			$selectors = array(
+			$connector_size      = UAGB_Helper::get_css_value( $connector_bg_size_fallback, 'px' );
+			$date_font_size      = '' !== $attr['dateFontSize'] ? $attr['dateFontSize'] : $attr['dateFontsize'];
+			$date_font_size_type = '' !== $attr['dateFontSizeType'] ? $attr['dateFontSizeType'] : $attr['dateFontsizeType'];
+			$selectors           = array(
 				' .uagb-timeline__heading'               => array(
 					'margin-top'    => UAGB_Helper::get_css_value( $head_top_spacing_fallback, 'px' ),
 					'margin-bottom' => UAGB_Helper::get_css_value( $head_space_fallback, 'px' ),
@@ -1081,7 +1082,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-timeline__date-new'              => array(
 					'color'     => $attr['dateColor'],
-					'font-size' => UAGB_Helper::get_css_value( $attr['dateFontsize'], $attr['dateFontsizeType'] ),
+					'font-size' => UAGB_Helper::get_css_value( $date_font_size, $date_font_size_type ),
 				),
 				' .uagb-timeline__events-inner-new'      => array(
 					'background-color' => $attr['backgroundColor'],

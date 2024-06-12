@@ -368,6 +368,18 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 						'dateFontsizeMobile'         => array(
 							'type' => 'number',
 						),
+						'dateFontSizeType'           => array(
+							'type' => 'string',
+						),
+						'dateFontSize'               => array(
+							'type' => 'number',
+						),
+						'dateFontSizeTablet'         => array(
+							'type' => 'number',
+						),
+						'dateFontSizeMobile'         => array(
+							'type' => 'number',
+						),
 						'dateFontFamily'             => array(
 							'type'    => 'string',
 							'default' => '',

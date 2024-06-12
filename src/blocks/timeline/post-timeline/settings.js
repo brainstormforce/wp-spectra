@@ -104,10 +104,10 @@ const Settings = ( props ) => {
 		iconColor,
 		dateColor,
 		ctaColor,
-		dateFontsizeType,
-		dateFontsize,
-		dateFontsizeTablet,
-		dateFontsizeMobile,
+		dateFontSizeType,
+		dateFontSize,
+		dateFontSizeTablet,
+		dateFontSizeMobile,
 		dateFontFamily,
 		dateFontWeight,
 		dateFontStyle,
@@ -1264,20 +1264,20 @@ const Settings = ( props ) => {
 						label: 'dateFontStyle',
 					} }
 					fontSizeType={ {
-						value: dateFontsizeType,
-						label: 'dateFontsizeType',
+						value: dateFontSizeType,
+						label: 'dateFontSizeType',
 					} }
 					fontSize={ {
-						value: dateFontsize,
-						label: 'dateFontsize',
+						value: dateFontSize,
+						label: 'dateFontSize',
 					} }
 					fontSizeMobile={ {
-						value: dateFontsizeMobile,
-						label: 'dateFontsizeMobile',
+						value: dateFontSizeMobile,
+						label: 'dateFontSizeMobile',
 					} }
 					fontSizeTablet={ {
-						value: dateFontsizeTablet,
-						label: 'dateFontsizeTablet',
+						value: dateFontSizeTablet,
+						label: 'dateFontSizeTablet',
 					} }
 					lineHeightType={ {
 						value: dateLineHeightType,

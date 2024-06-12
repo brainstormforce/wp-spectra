@@ -20,7 +20,22 @@ const ContentTimelineComponent = ( props ) => {
 		setAttributes,
 		clientId,
 		attributes,
-		attributes: { timelinAlignmentTablet, timelinAlignmentMobile, stack, UAGHideDesktop, UAGHideTab, UAGHideMob },
+		attributes: { 
+			timelinAlignmentTablet, 
+			timelinAlignmentMobile, 
+			stack, 
+			UAGHideDesktop, 
+			UAGHideTab, 
+			UAGHideMob,
+			dateFontSizeType,
+			dateFontSize,
+			dateFontSizeTablet,
+			dateFontSizeMobile,
+			dateFontsizeType,
+			dateFontsize,
+			dateFontsizeTablet,
+			dateFontsizeMobile,
+		},
 		isSelected,
 		name,
 		deviceType
@@ -47,6 +62,23 @@ const ContentTimelineComponent = ( props ) => {
 				}
 			}
 		}
+	}, [] );
+
+	// Migrate Attributes 
+	useEffect( () => {
+		if ( undefined === dateFontSizeType ) {
+			setAttributes( { dateFontSizeType: dateFontsizeType } );
+		}
+		if ( undefined === dateFontSize ) {
+			setAttributes( { dateFontSize: dateFontsize } );
+		}
+		if ( undefined === dateFontSizeTablet ) {
+			setAttributes( { dateFontSizeTablet: dateFontsizeTablet } );
+		}
+		if ( undefined === dateFontSizeMobile ) {
+			setAttributes( { dateFontSizeMobile: dateFontsizeMobile } );
+		}
+		
 	}, [] );
 
 	useEffect( () => {
