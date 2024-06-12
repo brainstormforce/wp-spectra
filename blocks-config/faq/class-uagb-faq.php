@@ -3,7 +3,7 @@
  * UAGB faq.
  *
  * @package UAGB
- * @since x.x.x
+ * @since 2.13.5
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -15,7 +15,7 @@ if ( ! class_exists( 'UAGB_Faq' ) ) {
 	/**
 	 * Class UAGB_Faq.
 	 *
-	 * @since x.x.x
+	 * @since 2.13.5
 	 */
 	class UAGB_Faq {
 
@@ -23,7 +23,7 @@ if ( ! class_exists( 'UAGB_Faq' ) ) {
 		 * Member Variable
 		 *
 		 * @var UAGB_Faq
-		 * @since x.x.x
+		 * @since 2.13.5
 		 */
 		private static $instance;
 
@@ -31,7 +31,7 @@ if ( ! class_exists( 'UAGB_Faq' ) ) {
 		 * Initiator
 		 *
 		 * @return UAGB_Faq
-		 * @since x.x.x
+		 * @since 2.13.5
 		 */
 		public static function get_instance() {
 			if ( null === self::$instance ) {
@@ -43,7 +43,7 @@ if ( ! class_exists( 'UAGB_Faq' ) ) {
 		/**
 		 * Constructor
 		 *
-		 * @since x.x.x
+		 * @since 2.13.5
 		 */
 		public function __construct() {
 			add_action( 'init', array( $this, 'register_blocks' ) );
@@ -52,7 +52,7 @@ if ( ! class_exists( 'UAGB_Faq' ) ) {
 		/**
 		 * Registers the `faq` block on server.
 		 *
-		 * @since x.x.x
+		 * @since 2.13.5
 		 * @return void
 		 */
 		public function register_blocks() {
@@ -1180,7 +1180,7 @@ if ( ! class_exists( 'UAGB_Faq' ) ) {
 		 * @param  array    $attributes Block attributes.
 		 * @param  string   $content    Block default content.
 		 * @param  WP_Block $block      Block instance.
-		 * @since x.x.x
+		 * @since 2.13.5
 		 * @return string Rendered block HTML.
 		 */
 		public function render_faq_block( $attributes, $content, $block ) {
@@ -1280,7 +1280,7 @@ if ( ! class_exists( 'UAGB_Faq' ) ) {
 		 *
 		 * @param string $icon Icon name.
 		 * @param string $class Icon class.
-		 * @since x.x.x
+		 * @since 2.13.5
 		 * @return string|false Rendered icon HTML.
 		 */
 		public function faq_render_icon( $icon, $class ) {
@@ -1301,7 +1301,7 @@ if ( ! class_exists( 'UAGB_Faq' ) ) {
 		 * @param  array    $attributes Block attributes.
 		 * @param  string   $content    Block default content.
 		 * @param  WP_Block $block      Block instance.
-		 * @since x.x.x
+		 * @since 2.13.5
 		 * @return string Rendered block HTML.
 		 */
 		public function render_faq_child_block( $attributes, $content, $block ) {
