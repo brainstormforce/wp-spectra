@@ -48,36 +48,6 @@ const FaqComponent = ( props ) => {
 		deviceType
 	} = props;
 
-	const updatePageSchema = () => {
-		const allBlocks = select( 'core/block-editor' ).getBlocks( clientId );
-		let pageURL = '';
-		if ( select( 'core/editor' ) ) {
-			pageURL = select( 'core/editor' ).getPermalink();
-		}
-		const jsonData = {
-			'@context': 'https://schema.org',
-			'@type': 'FAQPage',
-			'@id': pageURL,
-			'mainEntity': [],
-		};
-
-		allBlocks.forEach( ( block ) => {
-			let faqData = {};
-
-			faqData = {
-				'@type': 'Question',
-				'name': block.attributes.question,
-				'acceptedAnswer': {
-					'@type': 'Answer',
-					'text': block.attributes.answer,
-				},
-			};
-			jsonData.mainEntity.push( faqData );
-		} );
-
-		setAttributes( { schema: JSON.stringify( jsonData ) } );
-	};
-
 	useEffect( () => {
 		
 		if ( 10 === questionBottomPaddingDesktop && 10 !== vquestionPaddingDesktop ) {
@@ -142,11 +112,6 @@ const FaqComponent = ( props ) => {
 			);
 		}
 
-		const postSaveButton = document.getElementsByClassName( 'editor-post-publish-button' )?.[ 0 ];
-
-		if ( postSaveButton ) {
-			postSaveButton.addEventListener( 'click', updatePageSchema );
-		}
 	}, [] );
 
 	useEffect( () => {
@@ -225,14 +190,6 @@ const FaqComponent = ( props ) => {
 			}
 		}
 
-		const postSaveButton = document.getElementsByClassName( 'editor-post-publish-button' )?.[ 0 ];
-
-		if ( postSaveButton ) {
-			postSaveButton.addEventListener( 'click', updatePageSchema );
-			return () => {
-				postSaveButton?.removeEventListener( 'click', updatePageSchema );
-			};
-		}
 	}, [ attributes ] );
 
 	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
