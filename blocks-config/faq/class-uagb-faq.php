@@ -1185,7 +1185,7 @@ if ( ! class_exists( 'UAGB_Faq' ) ) {
 		 */
 		public function render_faq_block( $attributes, $content, $block ) {
 			global $post; // Use the global post object to get the current post.
-			$block_id            = $attributes['block_id'];
+			$block_id            = isset( $attributes['block_id'] ) ? $attributes['block_id'] : '';
 			$enable_schema       = $attributes['enableSchemaSupport'];
 			$equal_height        = $attributes['equalHeight'];
 			$icon_align          = $attributes['iconAlign'];
@@ -1306,7 +1306,7 @@ if ( ! class_exists( 'UAGB_Faq' ) ) {
 		 */
 		public function render_faq_child_block( $attributes, $content, $block ) {
 			// Extract attributes.
-			$block_id    = $attributes['block_id'];
+			$block_id    = isset( $attributes['block_id'] ) ? $attributes['block_id'] : '';
 			$question    = $attributes['question'];
 			$answer      = $attributes['answer'];
 			$icon        = isset( $attributes['icon'] ) ? $attributes['icon'] : 'plus';
@@ -1317,9 +1317,10 @@ if ( ! class_exists( 'UAGB_Faq' ) ) {
 			// Render icon and active icon.
 			$icon_output        = $this->faq_render_icon( $icon, 'uagb-icon' );
 			$icon_active_output = $this->faq_render_icon( $icon_active, 'uagb-icon-active' );
+			$class_name         = ( isset( $attributes['className'] ) ) ? $attributes['className'] : '';
 
 			// Build the block's HTML.
-			$output  = '<div class="' . esc_attr( "wp-block-uagb-faq-child uagb-faq-child__outer-wrap uagb-faq-item uagb-block-{$block_id}" ) . '" role="tab" tabindex="0">';
+			$output  = '<div class="' . esc_attr( "wp-block-uagb-faq-child uagb-faq-child__outer-wrap uagb-faq-item uagb-block-{$block_id} {$class_name}" ) . '" role="tab" tabindex="0">';
 			$output .= '<div class="uagb-faq-questions-button uagb-faq-questions">';
 			if ( 'accordion' === $layout ) {
 				$output .= $icon_output;
