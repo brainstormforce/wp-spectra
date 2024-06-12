@@ -4,6 +4,9 @@ import { __ } from '@wordpress/i18n';
 import editorStyles from './editor.lazy.scss';
 
 export const applyScopedCSS = ( customCSS ) => {
+	if ( 'string' !== typeof customCSS ) {
+        return;
+    }
 	// This makes sure CSS only gets applied to blocks and not the editor elements.
     const scopedCSS = customCSS
         .split( '}' )
