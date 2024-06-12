@@ -76,9 +76,13 @@ class Spectra_Migrate_Blocks {
 				'new' => false,
 			),
 		);
-		add_action( 'uagb_update_before', array( $this, 'migrate_blocks' ) );
 		add_action( 'spectra_blocks_migration_event', array( $this, 'blocks_migration' ) );
 		add_action( 'admin_init', array( $this, 'query_migrate_to_new' ) );
+
+		// Check migration status and run migrate_blocks if necessary
+		if ( 'yes' === get_option( 'uag_blocks_migration_status', 'no' ) ) {
+			$this->migrate_blocks();
+		}
 	}
 
 	/**
@@ -110,12 +114,12 @@ class Spectra_Migrate_Blocks {
 		}
 
 		// If user is older than 2.13.1 then set the option.
-		if ( ! version_compare( UAGB_VER, '2.13.4', '<' ) ) {
+		if ( ! version_compare( UAGB_VER, '2.13.6', '<' ) ) {
 			return;
 		}
 		
 		if ( ! wp_next_scheduled( 'spectra_blocks_migration_event' ) ) {
-			wp_schedule_single_event( time(), 'spectra_blocks_migration_event' );
+			wp_schedule_single_event( time() + 1, 'spectra_blocks_migration_event' );
 		}
 		update_option( 'uag_blocks_migration', 'yes' );
 		update_option( 'uag_enable_legacy_blocks', 'yes' );
@@ -123,55 +127,63 @@ class Spectra_Migrate_Blocks {
 	}
 
 	/**
-	 * Blocks Migration
-	 * 
-	 * @since x.x.x
-	 * @return void
-	 */
-	public function blocks_migration() {
+     * Blocks Migration
+     * 
+     * @since x.x.x
+     * @return void
+     */
+    public function blocks_migration() {
+        // Initialize an array to hold log entries.
+        $migration_log = array();
 
-		// Code to update info box and advanced heading blocks.
-		$posts_per_page = 10;
-		$page           = 1;
-	
-		do {
-	
-			$query = new WP_Query(
-				array(
-					'post_type'      => array( 'post', 'page' ),
-					'posts_per_page' => $posts_per_page,
-					'paged'          => $page,
-				) 
-			);
-	
-			$posts = $query->posts;
-	
-			foreach ( $posts as $post ) {
+        // Code to update info box and advanced heading blocks.
+        $posts_per_page = 10;
+        $page = 1;
 
-				if ( ! is_object( $post ) ) {
-					continue; // Skip if $post is not an object.
-				}
+        do {
+            $query = new WP_Query(
+                array(
+                    'post_type'      => array('post', 'page'),
+                    'posts_per_page' => $posts_per_page,
+                    'paged'          => $page,
+                )
+            );
 
-				if ( ! is_a( $post, 'WP_Post' ) ) {
-					continue; // Skip if $post is not a WP_Post object.
-				}
-				$new_content = $this->get_updated_content( $post->post_content );
-	
-				// Fix to alter the Astra global color variables.
-				$new_content = str_replace( 'var(\u002d\u002dast', 'var(--ast', $new_content );
-				$new_content = str_replace( 'var(u002du002dast', 'var(--ast', $new_content );
-	
-				wp_update_post(
-					array(
-						'ID'           => $post->ID,
-						'post_content' => $new_content,
-					) 
-				);
-			}
-	
-			$page++;
-		} while ( $query->max_num_pages >= $page );
-	}
+            $posts = $query->posts;
+
+            foreach ($posts as $post) {
+                if (!is_object($post)) {
+                    continue; // Skip if $post is not an object.
+                }
+
+                if (!is_a($post, 'WP_Post')) {
+                    continue; // Skip if $post is not a WP_Post object.
+                }
+
+                $new_content = $this->get_updated_content($post->post_content);
+
+                // Fix to alter the Astra global color variables.
+                $new_content = str_replace('var(\u002d\u002dast', 'var(--ast', $new_content);
+                $new_content = str_replace('var(u002du002dast', 'var(--ast', $new_content);
+
+                // Update the post content.
+                wp_update_post(
+                    array(
+                        'ID'           => $post->ID,
+                        'post_content' => $new_content,
+                    )
+                );
+
+                // Log the update.
+                $migration_log[] = 'Updated post ID ' . $post->ID . ': ' . $post->post_title;
+            }
+
+            $page++;
+        } while ($query->max_num_pages >= $page);
+
+        // Store the log in a transient.
+        set_transient('uag_migration_log', $migration_log, 30 * MINUTE_IN_SECONDS);
+    }
 	
 
 	/**
