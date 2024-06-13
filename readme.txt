@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.5
-Stable tag: 2.13.5
+Stable tag: 2.13.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+### 2.13.6 - Thursday, 13th June 2024 ###
+* Fix: FAQ - Resolved an issue wherein the FAQ questions could not utilize line breaks or bold text.
+
 = 2.13.5 - Wednesday, 12th June 2024 =
 * Improvement: FAQ - Implemented the server-side rendering approach for this block.
 * Fix: Container - Resolved an issue wherein the Image block would not display as expected in nested containers.
@@ -242,15 +245,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Forms - Resolved an issue wherein the country code for Czech Republic was incorrect.
 * Fix: Review - Resolved an issue where the Rich result test would throw an error when selecting a course item schema.
 * Fix: Post Masonry - Removed a console error that would say "UAGB Image Gallery" was not defined.
-
-= 2.13.2 - Monday, 13th May 2024 =
-* Improvement: Info Box - Added an option to enable semantic paragraphs.
-* Improvement: Call To Action - Added an option to enable semantic paragraphs.
-* Fix: Container - Resolved an issue wherein an extra margin would appear towards the left of the container.
-* Fix: Container - Resolved an issue wherein animations would not work as intended.
-* Fix: Buttons - Resolved an issue wherein the overall button alignment would not work as intended in responsive devices.
-* Fix: Forms - Resolved an issue wherein the submit button would not work as intended when full width is selected.
-* Fix: Modal - Resolved an issue wherein modal does not work as expected for responsive devices.
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 
