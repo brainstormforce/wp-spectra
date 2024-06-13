@@ -59,8 +59,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			// Handle migration action.
 			add_action( 'admin_post_uag_migrate', array( $this, 'handle_migration_action' ) );
-
-			// add_action( 'admin_head', 'uag_admin_styles' );
 		}
 
 		/**
