@@ -135,6 +135,7 @@ class Spectra_Migrate_Blocks {
     public function blocks_migration() {
         // Initialize an array to hold log entries.
         $migration_log = array();
+		$migration_status = 'Migration processing...';
 
         // Code to update info box and advanced heading blocks.
         $posts_per_page = 10;
@@ -182,7 +183,7 @@ class Spectra_Migrate_Blocks {
         } while ($query->max_num_pages >= $page);
 
         // Store the log in a transient.
-        set_transient('uag_migration_log', $migration_log, 30 * MINUTE_IN_SECONDS);
+        set_transient('uag_migration_log', $migration_log);
     }
 	
 

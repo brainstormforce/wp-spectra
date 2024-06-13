@@ -166,60 +166,63 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 		
 		/**
- * Handle migration action.
- *
- * @since 2.0.1
- * @access public
- */
-public function handle_migration_action() {
-    if (!current_user_can('manage_options')) {
-		wp_die(__('You do not have permission to access this page.', 'ultimate-addons-for-gutenberg'));
-	}
+        * Handle migration action.
+        *
+        * @since 2.0.1
+        * @access public
+        */
+        public function handle_migration_action() {
+            if (!current_user_can('manage_options')) {
+		        wp_die(__('You do not have permission to access this page.', 'ultimate-addons-for-gutenberg'));
+	        }
 
-	// Trigger the migration.
-	Spectra_Migrate_Blocks::get_instance()->blocks_migration();
+	        // Trigger the migration.
+	        Spectra_Migrate_Blocks::get_instance()->blocks_migration();
 
-	update_option( 'uag_blocks_migration_status', 'yes' );
+	        update_option( 'uag_blocks_migration_status', 'yes' );
 
-	// Check if the migration was successful.
-	$migration_log = get_transient( 'uag_migration_log' );
+	        // Check if the migration was successful.
+	        $migration_log = get_transient( 'uag_migration_log' );
 
-	// Your migration log code
-if ( $migration_log ) {
-    ob_start();
-    echo '<div class="uag-migration-log">';
-    echo '<div class="uag-migration-log-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; background-color: green;">';
-    echo '<strong style="font-size: 18px; color: #fff; padding: 10px" ">' . __( 'Spectra Migration Log', 'ultimate-addons-for-gutenberg' ) . '</strong>';
-    echo '<a href="' . esc_url( admin_url( 'index.php' ) ) . '" class="button" style="text-decoration: none; background: #007cba; border-color: #007cba; color: #fff; border-radius: 3px;">' . __( 'Back', 'ultimate-addons-for-gutenberg' ) . '</a>'; // Redirects to dashboard
-    echo '</div>';
-	echo '<hr style="margin-bottom: 10px;">'; // Separator line
-	echo '<h4>Starting migration...</h4>';
-    echo '<ul padding-left: 50px;">';
-    foreach ( $migration_log as $log_entry ) {
-        echo '<li style="margin-bottom: 5px;">' . esc_html( $log_entry ) . '</li>';
-    }
-    echo '</ul>
-	<h4>Migration completed successfully...</h4></div>';
+	        $migration_status =  'yes' !== get_option( 'uag_blocks_migration', false ) ? 'Migration processing' : 'Migration completed successfully...'; 
+
+	        // Your migration log code
+            if ( $migration_log ) {
+                ob_start();
+                echo '<div class="uag-migration-log">';
+                echo '<div class="uag-migration-log-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">';
+                echo '<strong style="font-size: 18px; padding: 10px" ">' . __( 'Spectra Migration Log', 'ultimate-addons-for-gutenberg' ) . '</strong>';
+	            echo '<h4>'.esc_html($migration_status).'</h4>';
+                echo '<a href="' . esc_url( admin_url( 'index.php' ) ) . '" class="button" style="text-decoration: none; background: #007cba; border-color: #007cba; color: #fff; border-radius: 3px;">' . __( 'Back', 'ultimate-addons-for-gutenberg' ) . '</a>'; // Redirects to dashboard
+                echo '</div>';
+	            echo '<hr style="margin-bottom: 10px;">'; // Separator line
+	            echo '<h4>Starting migration...</h4>';
+                echo '<ul padding-left: 50px;">';
+                foreach ( $migration_log as $log_entry ) {
+                    echo '<li style="margin-bottom: 5px;">' . esc_html( $log_entry ) . '</li>';
+                }
+                echo '</ul>
+	            <h4>'.esc_html($migration_status).'</h4></div>';
     
-    // Capture the output.
-    $log_output = ob_get_clean();
+                // Capture the output.
+                $log_output = ob_get_clean();
 
-    // Use wp_die to display the log with a back link.
-    wp_die(
-        $log_output,
-        __( 'Migration Log', 'ultimate-addons-for-gutenberg' ),
-        array(
-            'back_link' => false,
-            'response'  => 200,
-        )
-    );
+                // Use wp_die to display the log with a back link.
+                wp_die(
+                    $log_output,
+                    __( 'Migration Log', 'ultimate-addons-for-gutenberg' ),
+                    array(
+                        'back_link' => false,
+                        'response'  => 200,
+                    )
+                );
 
-    // Delete the transient after showing the message.
-    delete_transient( 'uag_migration_log' );
-}
+                // Delete the transient after showing the message.
+                delete_transient( 'uag_migration_log' );
+            }
 
 
-}
+        }
 
 		/**
 		 * Filters and Returns a list of allowed tags and attributes for a given context.
