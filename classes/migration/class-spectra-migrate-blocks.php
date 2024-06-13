@@ -79,7 +79,7 @@ class Spectra_Migrate_Blocks {
 		add_action( 'spectra_blocks_migration_event', array( $this, 'blocks_migration' ) );
 		add_action( 'admin_init', array( $this, 'query_migrate_to_new' ) );
 
-		// Check migration status and run migrate_blocks if necessary
+		// Check migration status and run migrate_blocks if necessary.
 		if ( 'yes' === get_option( 'uag_blocks_migration_status', 'no' ) ) {
 			$this->migrate_blocks();
 		}

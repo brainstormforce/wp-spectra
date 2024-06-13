@@ -200,7 +200,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				echo '<div class="uag-migration-log-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">';
 				echo '<strong style="font-size: 18px; padding: 10px" ">' . esc_html( __( 'Spectra Migration Log', 'ultimate-addons-for-gutenberg' ) ) . '</strong>';
 				echo '<h4>' . esc_html( $migration_status ) . '</h4>';
-				echo '<a href="' . esc_url( admin_url( 'index.php' ) ) . '" class="button" style="text-decoration: none; background: #007cba; border-color: #007cba; color: #fff; border-radius: 3px;">' . esc_html( __( 'Back', 'ultimate-addons-for-gutenberg' ) ) . '</a>'; // Redirects to dashboard
+				echo '<a href="' . esc_url( admin_url( 'index.php' ) ) . '" class="button" style="text-decoration: none; background: #007cba; border-color: #007cba; color: #fff; border-radius: 3px;">' . esc_html( __( 'Back', 'ultimate-addons-for-gutenberg' ) ) . '</a>';
 				echo '</div>';
 				echo '<hr style="margin-bottom: 10px;">';
 				echo '<h4>Starting migration...</h4>';
@@ -218,7 +218,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 				// Use wp_die to display the log with a back link.
 				wp_die(
-					$log_output ?: '',  //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					$log_output ? $log_output : '',
 					esc_html( __( 'Migration Log', 'ultimate-addons-for-gutenberg' ) ),
 					array(
 						'back_link' => false,
