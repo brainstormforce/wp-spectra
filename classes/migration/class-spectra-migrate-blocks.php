@@ -86,7 +86,7 @@ class Spectra_Migrate_Blocks {
 	}
 
 	/**
-	 * Query migrate to new
+	 * Query migrate to new.
 	 * 
 	 * @since x.x.x
 	 * @return void

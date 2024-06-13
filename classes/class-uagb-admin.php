@@ -173,7 +173,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		public function handle_migration_action() {
 			if ( ! current_user_can( 'manage_options' ) ) {
-				wp_die( __( 'You do not have permission to access this page.', 'ultimate-addons-for-gutenberg' ) );
+				wp_die( esc_html( __( 'You do not have permission to access this page.', 'ultimate-addons-for-gutenberg' ) ) );
 			}
 
 			// Trigger the migration.
@@ -193,16 +193,16 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				$migration_status = '';
 			}
 
-			// Your migration log code
+			// Your migration log code.
 			if ( $migration_log ) {
 				ob_start();
 				echo '<div class="uag-migration-log">';
 				echo '<div class="uag-migration-log-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">';
-				echo '<strong style="font-size: 18px; padding: 10px" ">' . __( 'Spectra Migration Log', 'ultimate-addons-for-gutenberg' ) . '</strong>';
+				echo '<strong style="font-size: 18px; padding: 10px" ">' . esc_html( __( 'Spectra Migration Log', 'ultimate-addons-for-gutenberg' ) ) . '</strong>';
 				echo '<h4>' . esc_html( $migration_status ) . '</h4>';
-				echo '<a href="' . esc_url( admin_url( 'index.php' ) ) . '" class="button" style="text-decoration: none; background: #007cba; border-color: #007cba; color: #fff; border-radius: 3px;">' . __( 'Back', 'ultimate-addons-for-gutenberg' ) . '</a>'; // Redirects to dashboard
+				echo '<a href="' . esc_url( admin_url( 'index.php' ) ) . '" class="button" style="text-decoration: none; background: #007cba; border-color: #007cba; color: #fff; border-radius: 3px;">' . esc_html( __( 'Back', 'ultimate-addons-for-gutenberg' ) ) . '</a>'; // Redirects to dashboard
 				echo '</div>';
-				echo '<hr style="margin-bottom: 10px;">'; // Separator line
+				echo '<hr style="margin-bottom: 10px;">';
 				echo '<h4>Starting migration...</h4>';
 				echo '<ul padding-left: 50px;">';
 				foreach ( $migration_log as $log_entry ) {
@@ -218,8 +218,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 				// Use wp_die to display the log with a back link.
 				wp_die(
-					$log_output ?: '',  // Ensure $log_output is a string.
-					__( 'Migration Log', 'ultimate-addons-for-gutenberg' ),
+					$log_output ?: '',  //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					esc_html( __( 'Migration Log', 'ultimate-addons-for-gutenberg' ) ),
 					array(
 						'back_link' => false,
 						'response'  => 200,
@@ -313,7 +313,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 						'id'                         => 'uagb-block-migration_state',
 						'type'                       => '',
 						'message'                    => sprintf(
-							// Translators: %1$s: Spectra logo, %2$s: migration note , %3$s: The closing tag, %4$s: Migration button   */
+							// Translators: %1$s: Spectra logo, %2$s: migration note , %3$s: The closing tag, %4$s: Migration button.
 							'<div class="notice-image">
 							<img src="%1$s" class="custom-logo" alt="Spectra" itemprop="logo"></div>
 							<div class="notice-content">
