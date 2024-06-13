@@ -127,64 +127,66 @@ class Spectra_Migrate_Blocks {
 	}
 
 	/**
-     * Blocks Migration
-     * 
-     * @since x.x.x
-     * @return void
-     */
-    public function blocks_migration() {
-        // Initialize an array to hold log entries.
-        $migration_log = array();
+	 * Blocks Migration
+	 * 
+	 * @since x.x.x
+	 * @return void
+	 */
+	public function blocks_migration() {
+		// Initialize an array to hold log entries.
+		$migration_log    = array();
 		$migration_status = 'Migration processing...';
 
-        // Code to update info box and advanced heading blocks.
-        $posts_per_page = 10;
-        $page = 1;
+		// Code to update info box and advanced heading blocks.
+		$posts_per_page = 10;
+		$page           = 1;
 
-        do {
-            $query = new WP_Query(
-                array(
-                    'post_type'      => array('post', 'page'),
-                    'posts_per_page' => $posts_per_page,
-                    'paged'          => $page,
-                )
-            );
+		do {
+			$query = new WP_Query(
+				array(
+					'post_type'      => array( 'post', 'page' ),
+					'posts_per_page' => $posts_per_page,
+					'paged'          => $page,
+				)
+			);
 
-            $posts = $query->posts;
+			$posts = $query->posts;
 
-            foreach ($posts as $post) {
-                if (!is_object($post)) {
-                    continue; // Skip if $post is not an object.
-                }
+			foreach ( $posts as $post ) {
+				if ( ! is_object( $post ) ) {
+					continue; // Skip if $post is not an object.
+				}
 
-                if (!is_a($post, 'WP_Post')) {
-                    continue; // Skip if $post is not a WP_Post object.
-                }
+				if ( ! is_a( $post, 'WP_Post' ) ) {
+					continue; // Skip if $post is not a WP_Post object.
+				}
 
-                $new_content = $this->get_updated_content($post->post_content);
+				$new_content = $this->get_updated_content( $post->post_content );
 
-                // Fix to alter the Astra global color variables.
-                $new_content = str_replace('var(\u002d\u002dast', 'var(--ast', $new_content);
-                $new_content = str_replace('var(u002du002dast', 'var(--ast', $new_content);
+				// Fix to alter the Astra global color variables.
+				$new_content = str_replace( 'var(\u002d\u002dast', 'var(--ast', $new_content );
+				$new_content = str_replace( 'var(u002du002dast', 'var(--ast', $new_content );
 
-                // Update the post content.
-                wp_update_post(
-                    array(
-                        'ID'           => $post->ID,
-                        'post_content' => $new_content,
-                    )
-                );
+				// Update the post content.
+				wp_update_post(
+					array(
+						'ID'           => $post->ID,
+						'post_content' => $new_content,
+					)
+				);
 
-                // Log the update.
-                $migration_log[] = 'Updated post ID ' . $post->ID . ': ' . $post->post_title;
-            }
+				// Log the update.
+				$migration_log[] = 'Updated post ID ' . $post->ID . ': ' . $post->post_title;
+			}
 
-            $page++;
-        } while ($query->max_num_pages >= $page);
+			$page++;
+		} while ( $query->max_num_pages >= $page );
+		$migration_status = 'Migration completed successfully...';
 
-        // Store the log in a transient.
-        set_transient('uag_migration_log', $migration_log);
-    }
+		// Store the log in a transient.
+		set_transient( 'uag_migration_log', $migration_log );
+		set_transient( 'uag_migration_status', $migration_status );
+	}
 	
 
 	/**
