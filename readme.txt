@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+### x.x.x ###
+* Fix: FAQ - Resolved an issue wherein the FAQ questions could not utilize line breaks or bold text.
+
 = 2.13.5 - Wednesday, 12th June 2024 =
 * Improvement: FAQ - Implemented the server-side rendering approach for this block.
 * Fix: Container - Resolved an issue wherein the Image block would not display as expected in nested containers.
