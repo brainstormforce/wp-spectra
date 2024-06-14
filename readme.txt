@@ -218,6 +218,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 = x.x.x =
 * Fix: Global - Labels from icon library are not available for translation on wordpress.org.
 * Fix: Forms - Resolved an issue wherein the select dropdown padding would not work as intended with the Astra theme.
+* Fix: Post Grid - Resolved an issue causing an error when selecting `Post type` as `Site Builder` and `Image Layout Background`.
 * Fix: Post Timeline - Resolved an issue wherein fontsize would not work as intended in responsive devices.
 
 = 2.13.6 - Thursday, 13th June 2024 =

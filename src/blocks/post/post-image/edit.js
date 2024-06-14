@@ -18,7 +18,7 @@ export const PostImage = ( props ) => {
 
 		return (
 			<div className="uagb-post__image">
-				{ undefined !== post.uagb_featured_image_src && undefined !== src[ 0 ] && (
+				{ ( post.uagb_featured_image_src && src && src[ 0 ] ) && (
 					<a
 						href={ post.link }
 						target={ target }
