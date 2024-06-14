@@ -220,6 +220,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Forms - Resolved an issue wherein the select dropdown padding would not work as intended with the Astra theme.
 * Fix: Post Grid - Resolved an issue causing an error when selecting `Post type` as `Site Builder` and `Image Layout Background`.
 * Fix: Post Timeline - Resolved an issue wherein fontsize would not work as intended in responsive devices.
+* Fix: How-To - Resolved an issue that would cause all blocks to encounter an error when using the How-To steps with a dynamic image.
 
 = 2.13.6 - Thursday, 13th June 2024 =
 * Fix: FAQ - Resolved an issue wherein the FAQ questions could not utilize line breaks or bold text.

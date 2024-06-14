@@ -56,11 +56,13 @@ const Render = ( props ) => {
 		getImageHeightWidth( imageUrl, setAttributes );
 	}, [ imageUrl ] );
 
+	const defaultedAlt = image?.alt || '';
+
 	const imageMarkup = (
 		<img
 			className="uagb-how-to-step-image"
 			src={ imageUrl }
-			alt={ image.alt }
+			alt={ defaultedAlt }
 			width={ imgTagWidth }
 			height={ imgTagHeight }
 			loading="lazy"
