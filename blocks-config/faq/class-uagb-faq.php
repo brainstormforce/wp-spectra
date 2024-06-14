@@ -1325,9 +1325,9 @@ if ( ! class_exists( 'UAGB_Faq' ) ) {
 			if ( 'accordion' === $layout ) {
 				$output .= $icon_output;
 				$output .= $icon_active_output;
-				$output .= '<' . esc_attr( $heading_tag ) . ' class="uagb-question">' . esc_html( $question ) . '</' . esc_attr( $heading_tag ) . '>';
+				$output .= '<' . esc_attr( $heading_tag ) . ' class="uagb-question">' . wp_kses_post( $question ) . '</' . esc_attr( $heading_tag ) . '>';
 			} else {
-				$output .= '<' . esc_attr( $heading_tag ) . ' class="uagb-question">' . esc_html( $question ) . '</' . esc_attr( $heading_tag ) . '>';
+				$output .= '<' . esc_attr( $heading_tag ) . ' class="uagb-question">' . wp_kses_post( $question ) . '</' . esc_attr( $heading_tag ) . '>';
 			}
 			$output .= '</div>';
 			$output .= '<div class="uagb-faq-content"><p>' . wp_kses_post( $answer ) . '</p></div>';
