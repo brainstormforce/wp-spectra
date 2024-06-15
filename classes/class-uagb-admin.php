@@ -66,7 +66,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 * Updates the Gutenberg templates pro URL.
 		 * This function returns the URL for the pro version of Gutenberg templates.
 		 * 
-		 * @since x.x.x
+		 * @since 2.13.7
 		 * @return string The URL for Spectra Webpage.
 		 */
 		public function update_gutenberg_templates_pro_url() { 
