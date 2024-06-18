@@ -306,11 +306,11 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				)
 			);
 
-			if ( 'no' === get_option( 'uag_blocks_migration_status', 'no' ) && 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) {
+			if ( ! get_option( 'uag_blocks_migration_status', false ) && 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) {
 			
 				Astra_Notices::add_notice(
 					array(
-						'id'                         => 'uagb-block-migration_state',
+						'id'                         => 'uagb-block-migration_status_1',
 						'type'                       => '',
 						'message'                    => sprintf(
 							// Translators: %1$s: Spectra logo, %2$s: migration note , %3$s: The closing tag, %4$s: Migration button.

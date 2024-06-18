@@ -19,7 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Spectra_Migrate_Blocks {
 
-
 	/**
 	 * Member Variable
 	 *
@@ -114,7 +113,7 @@ class Spectra_Migrate_Blocks {
 		}
 
 		// If user is older than 2.13.1 then set the option.
-		if ( ! version_compare( UAGB_VER, '2.13.6', '<' ) ) {
+		if ( ! version_compare( UAGB_VER, '2.13.8', '<' ) ) {
 			return;
 		}
 		
@@ -141,10 +140,12 @@ class Spectra_Migrate_Blocks {
 		$posts_per_page = 10;
 		$page           = 1;
 
+		$post_types = get_post_types( array( 'public' => true ), 'names' );
+
 		do {
 			$query = new WP_Query(
 				array(
-					'post_type'      => array( 'post', 'page' ),
+					'post_type'      => $post_types,
 					'posts_per_page' => $posts_per_page,
 					'paged'          => $page,
 				)
@@ -248,3 +249,4 @@ class Spectra_Migrate_Blocks {
  *  Kicking this off by calling 'get_instance()' method
  */
 Spectra_Migrate_Blocks::get_instance();
+?>
