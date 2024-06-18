@@ -9,6 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+if ( ! defined( 'WP_CONTENT_DIR' ) ) {
+	define( 'WP_CONTENT_DIR', ABSPATH . 'wp-content' );
+}
+
 if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 	/**
@@ -37,38 +41,117 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 * Constructor
 		 */
 		public function __construct() {
-
 			if ( ! is_admin() ) {
 				return;
 			}
-
+		
 			add_action( 'admin_notices', array( $this, 'register_notices' ) );
-
 			add_filter( 'wp_kses_allowed_html', array( $this, 'add_data_attributes' ), 10, 2 );
-
 			add_action( 'admin_enqueue_scripts', array( $this, 'notice_styles_scripts' ) );
-
 			add_filter( 'rank_math/researches/toc_plugins', array( $this, 'toc_plugin' ) );
-
-			// Activation hook.
 			add_action( 'admin_init', array( $this, 'activation_redirect' ) );
-
 			add_action( 'admin_init', array( $this, 'update_old_user_option_by_url_params' ) );
-
 			add_action( 'admin_post_uag_rollback', array( $this, 'post_uagb_rollback' ) );
-
-			// Handle migration action.
 			add_action( 'admin_post_uag_migrate', array( $this, 'handle_migration_action' ) );
+			add_action( 'admin_menu', array( $this, 'register_migration_log_page' ) );
 		}
 
 		/**
-		 * Update Old user option using URL Param.
+		 * Handle migration action.
 		 *
-		 * If any user wants to set the site as old user then just add the URL param as true.
-		 *
-		 * @since 2.0.1
+		 * @since x.x.x
 		 * @access public
+		 * 
+		 * @return void
 		 */
+		public function handle_migration_action() {
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_die( esc_html__( 'You do not have permission to access this page.', 'ultimate-addons-for-gutenberg' ) );
+			}
+
+			// Trigger the migration.
+			Spectra_Migrate_Blocks::get_instance()->blocks_migration();
+			update_option( 'uag_blocks_migration_status', 'yes' );
+
+			// Check if the migration was successful.
+			$migration_log    = get_transient( 'uag_migration_log' );
+			$migration_status = get_transient( 'uag_migration_status' );
+
+			if ( ! is_array( $migration_log ) ) {
+				$migration_log = array();
+			}
+
+			if ( ! is_string( $migration_status ) ) {
+				$migration_status = '';
+			}
+
+			// Store migration log in a file.
+			$log_file_path = WP_CONTENT_DIR . '/migration_log.txt';
+			file_put_contents( $log_file_path, implode( "\n", $migration_log ) );
+
+			// Redirect to the log display page.
+			wp_redirect( add_query_arg( array( 'migration_log' => 'true' ), admin_url( 'admin.php?page=migration-log' ) ) );
+			exit();
+		}
+
+		/**
+		 * Callback function to display migration log page content.
+		 * 
+		 * @since x.x.x
+		 * @return void
+		 */
+		public function display_migration_log_page() {
+			$migration_log      = get_transient( 'uag_migration_log' );
+			$migration_progress = get_transient( 'uag_migration_progress' );
+
+			$content = '<div class="wrap"><h1>' . esc_html__( 'Migration Log', 'ultimate-addons-for-gutenberg' ) . '</h1>';
+
+			if ( ! empty( $migration_progress ) && is_string( $migration_progress ) ) {
+				$content .= '<h1>' . esc_html__( 'Migration Progress', 'ultimate-addons-for-gutenberg' ) . '</h1>';
+				$content .= '<p>' . esc_html( $migration_progress ) . '</p>';
+			} elseif ( ! empty( $migration_log ) ) {
+				$log_file_path = WP_CONTENT_DIR . '/migration_log.txt';
+				if ( file_exists( $log_file_path ) ) {
+					$log_content = file_get_contents( $log_file_path );
+					if ( is_string( $log_content ) ) {
+						$content .= '<pre>' . esc_html( $log_content ) . '</pre>';
+					}
+					$content .= '<h3>' . esc_html__( 'Migration Successful..!', 'ultimate-addons-for-gutenberg' ) . '</h3>';
+				} else {
+					$content .= '<p>' . esc_html__( 'Migration log not found.', 'ultimate-addons-for-gutenberg' ) . '</p>';
+					$content .= '<h3>' . esc_html__( 'Migration failed..!', 'ultimate-addons-for-gutenberg' ) . '</h3>';
+				}
+			} else {
+				$content .= '<p>' . esc_html__( 'Migration log not found.', 'ultimate-addons-for-gutenberg' ) . '</p>';
+			}
+
+			$content .= '</div>';
+			echo $content;
+		}
+
+		/**
+		 * Register migration log page.
+		 * 
+		 * @since x.x.x
+		 * @return void 
+		 */
+		public function register_migration_log_page() {
+			add_submenu_page(
+				'',
+				__( 'Migration Log', 'ultimate-addons-for-gutenberg' ), // page title
+				__( 'Migration Log', 'ultimate-addons-for-gutenberg' ), // menu title
+				'manage_options', // capability
+				'migration-log', // menu slug
+				array( $this, 'display_migration_log_page' ) // callback function to display the page content
+			);
+		}       /**
+				 * Update Old user option using URL Param.
+				 *
+				 * If any user wants to set the site as old user then just add the URL param as true.
+				 *
+				 * @since 2.0.1
+				 * @access public
+				 */
 		public function update_old_user_option_by_url_params() {
 
 			if ( ! current_user_can( 'manage_options' ) ) {
@@ -162,77 +245,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			}
 		}
 
-		
-		/**
-		 * Handle migration action.
-		 *
-		 * @since 2.0.1
-		 * @access public
-		 * 
-		 * @return void
-		 */
-		public function handle_migration_action() {
-			if ( ! current_user_can( 'manage_options' ) ) {
-				wp_die( esc_html( __( 'You do not have permission to access this page.', 'ultimate-addons-for-gutenberg' ) ) );
-			}
-
-			// Trigger the migration.
-			Spectra_Migrate_Blocks::get_instance()->blocks_migration();
-
-			update_option( 'uag_blocks_migration_status', 'yes' );
-
-			// Check if the migration was successful.
-			$migration_log    = get_transient( 'uag_migration_log' );
-			$migration_status = get_transient( 'uag_migration_status' );
-
-			if ( ! is_array( $migration_log ) ) {
-				$migration_log = array();
-			}
-
-			if ( ! is_string( $migration_status ) ) {
-				$migration_status = '';
-			}
-
-			// Your migration log code.
-			if ( $migration_log ) {
-				ob_start();
-				echo '<div class="uag-migration-log">';
-				echo '<div class="uag-migration-log-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">';
-				echo '<strong style="font-size: 18px; padding: 10px" ">' . esc_html( __( 'Spectra Migration Log', 'ultimate-addons-for-gutenberg' ) ) . '</strong>';
-				echo '<h4>' . esc_html( $migration_status ) . '</h4>';
-				echo '<a href="' . esc_url( admin_url( 'index.php' ) ) . '" class="button" style="text-decoration: none; background: #007cba; border-color: #007cba; color: #fff; border-radius: 3px;">' . esc_html( __( 'Back', 'ultimate-addons-for-gutenberg' ) ) . '</a>';
-				echo '</div>';
-				echo '<hr style="margin-bottom: 10px;">';
-				echo '<h4>Starting migration...</h4>';
-				echo '<ul padding-left: 50px;">';
-				foreach ( $migration_log as $log_entry ) {
-					if ( is_string( $log_entry ) ) {
-						echo '<li style="margin-bottom: 5px;">' . esc_html( $log_entry ) . '</li>';
-					}
-				}
-				echo '</ul>
-	            <h4>' . esc_html( $migration_status ) . '</h4></div>';
-	
-				// Capture the output.
-				$log_output = ob_get_clean();
-
-				// Use wp_die to display the log with a back link.
-				wp_die(
-					$log_output ? $log_output : '',
-					esc_html( __( 'Migration Log', 'ultimate-addons-for-gutenberg' ) ),
-					array(
-						'back_link' => false,
-						'response'  => 200,
-					)
-				);
-
-				// Delete the transient after showing the message.
-				delete_transient( 'uag_migration_log' );
-			}
-
-
-		}
-
 		/**
 		 * Filters and Returns a list of allowed tags and attributes for a given context.
 		 *
@@ -310,7 +322,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			
 				Astra_Notices::add_notice(
 					array(
-						'id'                         => 'uagb-block-migration_status_1',
+						'id'                         => 'uagb-block-migration_status',
 						'type'                       => '',
 						'message'                    => sprintf(
 							// Translators: %1$s: Spectra logo, %2$s: migration note , %3$s: The closing tag, %4$s: Migration button.
@@ -368,11 +380,17 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 * @since 1.8.0
 		 */
 		public function notice_styles_scripts() {
-			// Admin Notice Styles.
-			wp_enqueue_style( 'uagb-notice-settings', UAGB_URL . 'admin/assets/admin-notice.css', array(), UAGB_VER );
-			// Admin Spectra Submenu Styles.
-			wp_enqueue_style( 'uagb-submenu-settings', UAGB_URL . 'admin/assets/spectra-submenu.css', array(), UAGB_VER );
+			$screen = get_current_screen();
+	
+			if ( $screen && 'admin_page_migration-log' === $screen->base ) {
+				wp_enqueue_style( 'uag-admin-css', UAGB_URL . 'admin/assets/admin-notice.css', array(), UAGB_VER );
+		
+				// Add inline CSS to hide elements with the 'notice' class
+				$custom_css = '.notice { display: none !important; }';
+				wp_add_inline_style( 'uag-admin-css', $custom_css );
+			}
 		}
+
 
 		/**
 		 * Rank Math SEO filter to add kb-elementor to the TOC list.

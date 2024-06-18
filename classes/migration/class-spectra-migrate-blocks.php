@@ -177,7 +177,7 @@ class Spectra_Migrate_Blocks {
 				);
 
 				// Log the update.
-				$migration_log[] = 'Updated post ID ' . $post->ID . ': ' . $post->post_title;
+				$migration_log[] = '[' . date( 'Y-m-d H:i:s' ) . '] Updated post ID ' . $post->ID . ': ' . $post->post_title;
 			}
 
 			$page++;
@@ -249,4 +249,4 @@ class Spectra_Migrate_Blocks {
  *  Kicking this off by calling 'get_instance()' method
  */
 Spectra_Migrate_Blocks::get_instance();
-?>
+
