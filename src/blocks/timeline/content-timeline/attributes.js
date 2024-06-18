@@ -491,6 +491,30 @@ const attributes = {
 			styleType: 'prefix-font-size-mobile',
 		},
 	},
+	dateFontSizeType: {
+		type: 'string',
+		UAGCopyPaste: {
+			styleType: 'prefix-font-size-type',
+		},
+	},
+	dateFontSize: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'prefix-font-size',
+		},
+	},
+	dateFontSizeTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'prefix-font-size-tablet',
+		},
+	},
+	dateFontSizeMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'prefix-font-size-mobile',
+		},
+	},
 	dateFontFamily: {
 		type: 'string',
 		UAGCopyPaste: {

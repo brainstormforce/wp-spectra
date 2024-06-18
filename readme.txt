@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.5
-Stable tag: 2.13.6
+Stable tag: 2.13.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,7 +215,14 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-### 2.13.6 - Thursday, 13th June 2024 ###
+= 2.13.7 - Tuesday, 18th June 2024. =
+* Fix: Forms - Resolved an issue wherein the select dropdown padding would not work as intended with the Astra theme.
+* Fix: How-To - Resolved an issue that would cause all blocks to encounter an error when using the How-To steps with a dynamic image.
+* Fix: Post Grid - Resolved an issue that would cause an error when selecting the Post Type as Site Builder and the Image Layout as Background.
+* Fix: Post Timeline - Resolved an issue wherein the font size would not work as intended in responsive devices.
+* Fix: Global - Resolved an issue wherein labels from the icon library would not be available for translation on wordpress.org.
+
+= 2.13.6 - Thursday, 13th June 2024 =
 * Fix: FAQ - Resolved an issue wherein the FAQ questions could not utilize line breaks or bold text.
 
 = 2.13.5 - Wednesday, 12th June 2024 =
@@ -236,15 +243,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Image Gallery - Added accessibility improvements to the lightbox close and gallery pagination buttons.
 * Fix: Quick Action Bar - Removed a console error that would occur in the editor whenever a block was dragged.
 * Fix: Global - Resolved an issue in which the media pickers would not show the selected image in the popup.
-
-= 2.13.3 - Wednesday, 22nd May 2024 =
-* Feature: Post Grid - Introduced new left and right post layouts.
-* Improvement: Forms - Added a separate alignment option for labels.
-* Fix: Image - Resolved an issue wherein the image overlay caption alignment would not work as expected.
-* Fix: Image - Resolved an issue wherein the hover box shadow would not work as intended in the overlay layout.
-* Fix: Forms - Resolved an issue wherein the country code for Czech Republic was incorrect.
-* Fix: Review - Resolved an issue where the Rich result test would throw an error when selecting a course item schema.
-* Fix: Post Masonry - Removed a console error that would say "UAGB Image Gallery" was not defined.
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 

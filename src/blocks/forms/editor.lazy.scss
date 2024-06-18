@@ -36,6 +36,12 @@
 	}
 }
 
+.components-select-control__input {
+	height: auto;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
 .ast-outline-button {
 	display: inline-flex;
 }

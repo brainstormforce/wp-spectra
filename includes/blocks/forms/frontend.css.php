@@ -232,7 +232,7 @@ $t_selectors = array(
 	// Drop icon position css.
 	' .uagb-form-phone-country'                      => array(
 		'background-position' => 'top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRightTablet'] ? $attr['paddingFieldRightTablet'] : 12, $attr['paddingFieldUnitTablet'] ),
-		'padding-right'       => UAGB_Helper::get_css_value( $forms_padding_right_tablet_fallback, $attr['paddingFieldUnitTablet'] ) . ' !important',
+		'padding-right'       => UAGB_Helper::get_css_value( $forms_padding_right_tablet_fallback, $attr['paddingFieldUnitTablet'] ),
 	),
 	' .uagb-forms-main-form textarea'                => array(
 		'text-align' => $attr['overallAlignmentTablet'],
@@ -278,7 +278,7 @@ $m_selectors = array(
 	// Drop icon position css.
 	' .uagb-form-phone-country'                      => array(
 		'background-position' => 'top 50% right ' . UAGB_Helper::get_css_value( $attr['paddingFieldRightMobile'] ? $attr['paddingFieldRightMobile'] : 6, $attr['paddingFieldUnitmobile'] ),
-		'padding-right'       => UAGB_Helper::get_css_value( $forms_padding_right_mobile_fallback, $attr['paddingFieldUnitmobile'] ) . ' !important',
+		'padding-right'       => UAGB_Helper::get_css_value( $forms_padding_right_mobile_fallback, $attr['paddingFieldUnitmobile'] ),
 	),
 	' .uagb-forms-main-form textarea'                => array(
 		'text-align' => $attr['overallAlignmentMobile'],

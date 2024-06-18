@@ -159,6 +159,14 @@
 	// Toggle Css End
 }
 
+.uagb-forms-select-box,
+.uagb-form-phone-country,
+.uagb-forms-phone-wrap .uagb-forms-phone-input {
+	height: auto;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
 .uagb-forms-radio-wrap input[type="radio"]:checked + label::before {
 	line-height: 1.2;
 	content: " ";
