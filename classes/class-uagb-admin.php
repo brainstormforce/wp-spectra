@@ -346,7 +346,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 							__( 'Migrate', 'ultimate-addons-for-gutenberg' )
 						),
 						'priority'                   => 20,
-						'display-with-other-notices' => false,
+						'display-with-other-notices' => true,
 					)
 				);
 			}
