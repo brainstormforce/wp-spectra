@@ -77,11 +77,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				$migration_log = array();
 			}
 
-			// Store migration log in a file.
-			$upload_dir    = wp_get_upload_dir();
-			$log_file_path = $upload_dir['basedir'] . '/migration_log.txt';
-			file_put_contents( $log_file_path, implode( "\n", $migration_log ) );
-
 			// Redirect to the log display page.
 			wp_safe_redirect( add_query_arg( array( 'migration_log' => 'true' ), admin_url( 'admin.php?page=migration-log' ) ) );
 			exit();
@@ -105,23 +100,28 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			);
 			$log_allowed_tags  = array_merge( $log_post_kses, $log_specific_kses );
 
-
-			$upload_dir    = wp_get_upload_dir();
-			$log_file_path = $upload_dir['basedir'] . '/migration_log.txt';
-			if ( file_exists( $log_file_path ) ) {
-				$log_content = file_get_contents( $log_file_path );
-				if ( is_string( $log_content ) ) {
-					$content .= '<style>pre.spectra_log { background-color: white; height: 400px; overflow-y: scroll; padding: 10px; border: 1px solid #ccc; }</style>';
-					$content .= '<pre class="spectra_log">' . esc_html( $log_content ) . '</pre>';
-					$content .= '<h3>' . esc_html__( 'Migration Completed Successfully...!', 'ultimate-addons-for-gutenberg' ) . '</h3>';
-					$content .= '<a href="' . esc_url( admin_url( 'index.php' ) ) . '" class="button" style="text-decoration: none; background: #007cba; border-color: #007cba; color: #fff; border-radius: 3px;">' . __( 'Back', 'ultimate-addons-for-gutenberg' ) . '</a>';
+			if ( $migration_log ) {
+				$content .= '<style>pre.spectra_log { background-color: white; height: 400px; overflow-y: scroll; padding: 10px; border: 1px solid #ccc; }</style>';
+				$content .= '<pre class="spectra_log">';
+				foreach ( $migration_log as $key => $value ) {
+					// Assuming $value is also an array, otherwise just echo $value.
+					if ( is_array( $value ) ) {
+						$content .= "<strong>{$key}:</strong><br>";
+						foreach ( $value as $sub_key => $sub_value ) {
+							$content .= "$sub_key: $sub_value<br>";
+						}
+					} else {
+						$content .= "$value<br>";
+					}
 				}
+				$content .= '</pre>';
+				$content .= '<h3>' . esc_html__( 'Migration Completed Successfully...!', 'ultimate-addons-for-gutenberg' ) . '</h3>';
+				$content .= '<a href="' . esc_url( admin_url( 'index.php' ) ) . '" class="button" style="text-decoration: none; background: #007cba; border-color: #007cba; color: #fff; border-radius: 3px;">' . __( 'Back', 'ultimate-addons-for-gutenberg' ) . '</a>';
 			} else {
 				$content .= '<h3>' . esc_html__( 'Migration failed...!', 'ultimate-addons-for-gutenberg' ) . '</h3>';
 			}
 
 			$content .= '</div>';
-			delete_transient( 'uag_migration_log' );
 			echo wp_kses( $content, $log_allowed_tags );
 		}
 
