@@ -127,6 +127,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			}
 		
 			$content .= '</div>';
+			delete_option( 'uagb-old-user-less-than-2' );
 			echo wp_kses( $content, $log_allowed_tags );
 		}
 		
