@@ -76,23 +76,19 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			update_option( 'uag_migration_status', 'yes' );
 
 			// Check if the migration was successful.
-			$migration_log    = get_transient( 'uag_migration_log' );
-			$migration_status = get_transient( 'uag_migration_status' );
+			$migration_log = get_transient( 'uag_migration_log' );
 
 			if ( ! is_array( $migration_log ) ) {
 				$migration_log = array();
 			}
 
-			if ( ! is_string( $migration_status ) ) {
-				$migration_status = '';
-			}
-
 			// Store migration log in a file.
-			$log_file_path = WP_CONTENT_DIR . '/migration_log.txt';
+			$upload_dir    = wp_get_upload_dir();
+			$log_file_path = $upload_dir['basedir'] . '/migration_log.txt';
 			file_put_contents( $log_file_path, implode( "\n", $migration_log ) );
 
 			// Redirect to the log display page.
-			wp_redirect( add_query_arg( array( 'migration_log' => 'true' ), admin_url( 'admin.php?page=migration-log' ) ) );
+			wp_safe_redirect( add_query_arg( array( 'migration_log' => 'true' ), admin_url( 'admin.php?page=migration-log' ) ) );
 			exit();
 		}
 
@@ -103,33 +99,24 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 * @return void
 		 */
 		public function display_migration_log_page() {
-			$migration_log      = get_transient( 'uag_migration_log' );
-			$migration_progress = get_transient( 'uag_migration_progress' );
+			$migration_log = get_transient( 'uag_migration_log' );
 
 			$content = '<div class="wrap"><h1>' . esc_html__( 'Migration Log', 'ultimate-addons-for-gutenberg' ) . '</h1>';
 
-			if ( ! empty( $migration_progress ) && is_string( $migration_progress ) ) {
-				$content .= '<h1>' . esc_html__( 'Migration Progress', 'ultimate-addons-for-gutenberg' ) . '</h1>';
-				$content .= '<p>' . esc_html( $migration_progress ) . '</p>';
-			} elseif ( ! empty( $migration_log ) ) {
-				$log_file_path = WP_CONTENT_DIR . '/migration_log.txt';
-				if ( file_exists( $log_file_path ) ) {
-					$log_content = file_get_contents( $log_file_path );
-					if ( is_string( $log_content ) ) {
-						$content .= '<pre>' . esc_html( $log_content ) . '</pre>';
-					}
-					$content .= '<h3>' . esc_html__( 'Migration Successful..!', 'ultimate-addons-for-gutenberg' ) . '</h3>';
-				} else {
-					$content .= '<p>' . esc_html__( 'Migration log not found.', 'ultimate-addons-for-gutenberg' ) . '</p>';
-					$content .= '<h3>' . esc_html__( 'Migration failed..!', 'ultimate-addons-for-gutenberg' ) . '</h3>';
+			$upload_dir    = wp_get_upload_dir();
+			$log_file_path = $upload_dir['basedir'] . '/migration_log.txt';
+			if ( file_exists( $log_file_path ) ) {
+				$log_content = file_get_contents( $log_file_path );
+				if ( is_string( $log_content ) ) {
+					$content .= '<pre>' . esc_html( $log_content ) . '</pre>';
+					$content .= '<h3>' . esc_html__( 'Migration Completed Successfully...!', 'ultimate-addons-for-gutenberg' ) . '</h3>';
 				}
 			} else {
-				$content .= '<p>' . esc_html__( 'Migration log not found.', 'ultimate-addons-for-gutenberg' ) . '</p>';
+					$content .= '<h3>' . esc_html__( 'Migration failed...!', 'ultimate-addons-for-gutenberg' ) . '</h3>';
 			}
 
 			$content .= '</div>';
 			delete_transient( 'uag_migration_log' );
-			delete_transient( 'uag_migration_status' );
 			echo $content;
 		}
 
@@ -148,14 +135,16 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				'migration-log', // menu slug.
 				array( $this, 'display_migration_log_page' ) // callback function to display the page content.
 			);
-		}       /**
-				 * Update Old user option using URL Param.
-				 *
-				 * If any user wants to set the site as old user then just add the URL param as true.
-				 *
-				 * @since 2.0.1
-				 * @access public
-				 */
+		}
+
+		/**
+		 * Update Old user option using URL Param.
+		 *
+		 * If any user wants to set the site as old user then just add the URL param as true.
+		 *
+		 * @since 2.0.1
+		 * @access public
+		 */
 		public function update_old_user_option_by_url_params() {
 
 			if ( ! current_user_can( 'manage_options' ) ) {

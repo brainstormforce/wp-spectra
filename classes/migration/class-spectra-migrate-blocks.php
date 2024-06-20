@@ -127,8 +127,7 @@ class Spectra_Migrate_Blocks {
 	 */
 	public function blocks_migration() {
 		// Initialize an array to hold log entries.
-		$migration_log    = array();
-		$migration_status = 'Migration processing...';
+		$migration_log = array();
 
 		// Code to update info box and advanced heading blocks.
 		$posts_per_page = 10;
@@ -171,16 +170,14 @@ class Spectra_Migrate_Blocks {
 				);
 
 				// Log the update.
-				$migration_log[] = '[' . date( 'Y-m-d H:i:s' ) . '] Updated post ID ' . $post->ID . ': ' . $post->post_title;
+				$migration_log[] = '[' . gmdate( 'Y-m-d H:i:s' ) . '] Updated post ID ' . $post->ID . ': ' . $post->post_title;
 			}
 
 			$page++;
 		} while ( $query->max_num_pages >= $page );
-		$migration_status = 'Migration completed successfully...';
 
 		// Store the log in a transient.
 		set_transient( 'uag_migration_log', $migration_log );
-		set_transient( 'uag_migration_status', $migration_status );
 	}
 	
 
