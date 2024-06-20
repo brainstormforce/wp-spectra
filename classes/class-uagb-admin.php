@@ -9,8 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+$upload_dir = wp_upload_dir( null, false );
+
 if ( ! defined( 'WP_CONTENT_DIR' ) ) {
-	define( 'WP_CONTENT_DIR', ABSPATH . 'wp-content' );
+	define( 'WP_CONTENT_DIR', $upload_dir . 'wp-content' );
 }
 
 if ( ! class_exists( 'UAGB_Admin' ) ) {
@@ -126,6 +128,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			}
 
 			$content .= '</div>';
+			delete_transient( 'uag_migration_log' );
+			delete_transient( 'uag_migration_status' );
 			echo $content;
 		}
 
@@ -271,9 +275,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			}
 
 			$image_path = UAGB_URL . 'admin-core/assets/images/uag-logo.svg';
-
-			// Check if the migration was successful.
-			$migration_success = get_transient( 'uag_migration_success' ) || false !== get_option( 'uag_blocks_migration', false );
 
 			Astra_Notices::add_notice(
 				array(

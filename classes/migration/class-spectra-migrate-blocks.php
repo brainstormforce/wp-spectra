@@ -107,11 +107,6 @@ class Spectra_Migrate_Blocks {
 			return;
 		}
 
-		// Code to migrate info box and advanced heading blocks.
-		if ( false !== get_option( 'uag_blocks_migration', false ) ) {
-			return;
-		}
-
 		// If user is older than 2.13.1 then set the option.
 		if ( ! version_compare( UAGB_VER, '2.13.8', '<' ) ) {
 			return;
@@ -120,7 +115,6 @@ class Spectra_Migrate_Blocks {
 		if ( ! wp_next_scheduled( 'spectra_blocks_migration_event' ) ) {
 			wp_schedule_single_event( time() + 1, 'spectra_blocks_migration_event' );
 		}
-		update_option( 'uag_blocks_migration', 'yes' );
 		update_option( 'uag_enable_legacy_blocks', 'yes' );
 		update_option( 'uag_load_font_awesome_5', 'enabled' );
 	}
