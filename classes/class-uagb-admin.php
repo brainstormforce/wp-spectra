@@ -9,11 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-$upload_dir = wp_get_upload_dir( null, false );
-
-if ( ! defined( 'WP_CONTENT_DIR' ) ) {
-	define( 'WP_CONTENT_DIR', $upload_dir . 'wp-content' );
-}
 
 if ( ! class_exists( 'UAGB_Admin' ) ) {
 
@@ -103,21 +98,31 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			$content = '<div class="wrap"><h1>' . esc_html__( 'Migration Log', 'ultimate-addons-for-gutenberg' ) . '</h1>';
 
+			$log_post_kses = wp_kses_allowed_html( 'post' ); 
+
+			$log_specific_kses = array(
+				'style' => array(),
+			);
+			$log_allowed_tags  = array_merge( $log_post_kses, $log_specific_kses );
+
+
 			$upload_dir    = wp_get_upload_dir();
 			$log_file_path = $upload_dir['basedir'] . '/migration_log.txt';
 			if ( file_exists( $log_file_path ) ) {
 				$log_content = file_get_contents( $log_file_path );
 				if ( is_string( $log_content ) ) {
-					$content .= '<pre>' . esc_html( $log_content ) . '</pre>';
+					$content .= '<style>pre.spectra_log { background-color: white; height: 400px; overflow-y: scroll; padding: 10px; border: 1px solid #ccc; }</style>';
+					$content .= '<pre class="spectra_log">' . esc_html( $log_content ) . '</pre>';
 					$content .= '<h3>' . esc_html__( 'Migration Completed Successfully...!', 'ultimate-addons-for-gutenberg' ) . '</h3>';
+					$content .= '<a href="' . esc_url( admin_url( 'index.php' ) ) . '" class="button" style="text-decoration: none; background: #007cba; border-color: #007cba; color: #fff; border-radius: 3px;">' . __( 'Back', 'ultimate-addons-for-gutenberg' ) . '</a>';
 				}
 			} else {
-					$content .= '<h3>' . esc_html__( 'Migration failed...!', 'ultimate-addons-for-gutenberg' ) . '</h3>';
+				$content .= '<h3>' . esc_html__( 'Migration failed...!', 'ultimate-addons-for-gutenberg' ) . '</h3>';
 			}
 
 			$content .= '</div>';
 			delete_transient( 'uag_migration_log' );
-			echo wp_kses_post( $content );
+			echo wp_kses( $content, $log_allowed_tags );
 		}
 
 		/**
@@ -319,12 +324,12 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 							'<div class="notice-image">
 							<img src="%1$s" class="custom-logo" alt="Spectra" itemprop="logo"></div>
 							<div class="notice-content">
-							<h3 class="notice-heading">
+							<h3 style="margin: 0.5em 0" class="notice-heading">
 							%2$s
 						</h3>
 								%3$s<br />
 								%4$s<br />
-								<div class="astra-review-notice-container">
+								<div style="margin-bottom: 0.5em" class="astra-review-notice-container">
 									<a href="%5$s" class="uagb-review-notice button-primary">
 									%6$s
 									</a>
