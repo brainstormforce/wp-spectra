@@ -117,7 +117,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			$content .= '</div>';
 			delete_transient( 'uag_migration_log' );
-			echo $content;
+			echo wp_kses_post( $content );
 		}
 
 		/**
@@ -273,9 +273,9 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 						'<div class="notice-image">
 							<img src="%1$s" class="custom-logo" alt="Spectra" itemprop="logo"></div>
 							<div class="notice-content">
-								<div class="notice-heading">
+								<h1 class="notice-heading">
 									%2$s
-								</div>
+								</h1>
 								%3$s<br />
 								<div class="astra-review-notice-container">
 									<a href="%4$s" class="astra-notice-close uagb-review-notice button-primary" target="_blank">
@@ -315,25 +315,27 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 						'id'                         => 'uagb-block-migration_status',
 						'type'                       => '',
 						'message'                    => sprintf(
-							// Translators: %1$s: Spectra logo, %2$s: migration note , %3$s: The closing tag, %4$s: Migration button.
+							// Translators: %1$s: Spectra logo, %2$s: migration note , %3$s: The closing tag, %4$s: migration description, %5$s: Migration button.
 							'<div class="notice-image">
 							<img src="%1$s" class="custom-logo" alt="Spectra" itemprop="logo"></div>
 							<div class="notice-content">
-								<div class="notice-heading">
-									%2$s
-								</div>
+							<h3 class="notice-heading">
+							%2$s
+						</h3>
 								%3$s<br />
+								%4$s<br />
 								<div class="astra-review-notice-container">
-									<a href="%4$s" class="uagb-review-notice button-primary">
-									%5$s
+									<a href="%5$s" class="uagb-review-notice button-primary">
+									%6$s
 									</a>
 								</div>
-							</div>',
+							</div><br />',
 							$image_path,
-							__( 'The Spectra notice to migrate users less than version 2.0.0', 'ultimate-addons-for-gutenberg' ),
-							__( 'This is to notify user who created pages with version below 2.0.0 to migrate and get compatibility', 'ultimate-addons-for-gutenberg' ),
+							__( 'Spectra database update required', 'ultimate-addons-for-gutenberg' ),
+							__( 'It appears that your pages were created with an older version of our plugin.', 'ultimate-addons-for-gutenberg' ),
+							__( 'To ensure compatibility and optimal performance, a database update is required. Please proceed with the migration to maintain smooth functionality', 'ultimate-addons-for-gutenberg' ),
 							add_query_arg( 'action', 'uag_migrate', admin_url( 'admin-post.php' ) ),
-							__( 'Migrate', 'ultimate-addons-for-gutenberg' )
+							__( 'Update Spectra database', 'ultimate-addons-for-gutenberg' )
 						),
 						'priority'                   => 20,
 						'display-with-other-notices' => true,

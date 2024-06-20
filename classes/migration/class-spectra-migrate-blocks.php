@@ -128,12 +128,16 @@ class Spectra_Migrate_Blocks {
 	public function blocks_migration() {
 		// Initialize an array to hold log entries.
 		$migration_log = array();
+		
 
 		// Code to update info box and advanced heading blocks.
 		$posts_per_page = 10;
 		$page           = 1;
 
 		$post_types = get_post_types( array( 'public' => true ), 'names' );
+
+		// Set a new option to know that the migration process has started.
+        update_option( 'uag_migration_progress_status', 'in-progress' );
 
 		do {
 			$query = new WP_Query(
@@ -175,6 +179,8 @@ class Spectra_Migrate_Blocks {
 
 			$page++;
 		} while ( $query->max_num_pages >= $page );
+		// Delete the option once the migration progress is complete as it is not required.
+        delete_option( 'uag_migration_progress_status' );
 
 		// Store the log in a transient.
 		set_transient( 'uag_migration_log', $migration_log );
