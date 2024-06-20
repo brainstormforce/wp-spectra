@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-$upload_dir = wp_upload_dir( null, false );
+$upload_dir = wp_get_upload_dir( null, false );
 
 if ( ! defined( 'WP_CONTENT_DIR' ) ) {
 	define( 'WP_CONTENT_DIR', $upload_dir . 'wp-content' );

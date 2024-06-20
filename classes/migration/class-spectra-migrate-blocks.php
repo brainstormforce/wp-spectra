@@ -137,7 +137,7 @@ class Spectra_Migrate_Blocks {
 		$post_types = get_post_types( array( 'public' => true ), 'names' );
 
 		// Set a new option to know that the migration process has started.
-        update_option( 'uag_migration_progress_status', 'in-progress' );
+		update_option( 'uag_migration_progress_status', 'in-progress' );
 
 		do {
 			$query = new WP_Query(
@@ -180,7 +180,7 @@ class Spectra_Migrate_Blocks {
 			$page++;
 		} while ( $query->max_num_pages >= $page );
 		// Delete the option once the migration progress is complete as it is not required.
-        delete_option( 'uag_migration_progress_status' );
+		delete_option( 'uag_migration_progress_status' );
 
 		// Store the log in a transient.
 		set_transient( 'uag_migration_log', $migration_log );
