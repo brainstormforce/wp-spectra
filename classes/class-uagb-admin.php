@@ -116,7 +116,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 							$content .= "$sub_key: $sub_value<br>";
 						}
 					} else {
-						$content .= "$key: $value<br>";
+						$content .= "$value<br>";
 					}
 				}
 				$content .= '</pre>';
