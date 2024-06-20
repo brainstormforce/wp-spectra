@@ -71,7 +71,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			// Trigger the migration.
 			Spectra_Migrate_Blocks::get_instance()->blocks_migration();
-			update_option( 'uag_blocks_migration_status', 'yes' );
+			update_option( 'uag_migration_status', 'yes' );
 
 			// Check if the migration was successful.
 			$migration_log    = get_transient( 'uag_migration_log' );
@@ -138,11 +138,11 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		public function register_migration_log_page() {
 			add_submenu_page(
 				'',
-				__( 'Migration Log', 'ultimate-addons-for-gutenberg' ), // page title
-				__( 'Migration Log', 'ultimate-addons-for-gutenberg' ), // menu title
-				'manage_options', // capability
-				'migration-log', // menu slug
-				array( $this, 'display_migration_log_page' ) // callback function to display the page content
+				__( 'Migration Log', 'ultimate-addons-for-gutenberg' ), // page title.
+				__( 'Migration Log', 'ultimate-addons-for-gutenberg' ), // menu title.
+				'manage_options', // capability.
+				'migration-log', // menu slug.
+				array( $this, 'display_migration_log_page' ) // callback function to display the page content.
 			);
 		}       /**
 				 * Update Old user option using URL Param.
@@ -318,7 +318,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				)
 			);
 
-			if ( ! get_option( 'uag_blocks_migration_status', false ) && 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) {
+			if ( ! get_option( 'uag_migration_status', false ) && 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) {
 			
 				Astra_Notices::add_notice(
 					array(
@@ -385,7 +385,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			if ( $screen && 'admin_page_migration-log' === $screen->base ) {
 				wp_enqueue_style( 'uag-admin-css', UAGB_URL . 'admin/assets/admin-notice.css', array(), UAGB_VER );
 		
-				// Add inline CSS to hide elements with the 'notice' class
+				// Add inline CSS to hide elements with the 'notice' class.
 				$custom_css = '.notice { display: none !important; }';
 				wp_add_inline_style( 'uag-admin-css', $custom_css );
 			}
