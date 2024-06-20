@@ -90,17 +90,22 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		public function display_migration_log_page() {
 			$migration_log = get_transient( 'uag_migration_log' );
-
+		
+			// Ensure $migration_log is an array.
+			if ( ! is_array( $migration_log ) ) {
+				$migration_log = array();
+			}
+		
 			$content = '<div class="wrap"><h1>' . esc_html__( 'Migration Log', 'ultimate-addons-for-gutenberg' ) . '</h1>';
-
+		
 			$log_post_kses = wp_kses_allowed_html( 'post' ); 
-
+		
 			$log_specific_kses = array(
 				'style' => array(),
 			);
 			$log_allowed_tags  = array_merge( $log_post_kses, $log_specific_kses );
-
-			if ( $migration_log ) {
+		
+			if ( ! empty( $migration_log ) ) {
 				$content .= '<style>pre.spectra_log { background-color: white; height: 400px; overflow-y: scroll; padding: 10px; border: 1px solid #ccc; }</style>';
 				$content .= '<pre class="spectra_log">';
 				foreach ( $migration_log as $key => $value ) {
@@ -111,19 +116,20 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 							$content .= "$sub_key: $sub_value<br>";
 						}
 					} else {
-						$content .= "$value<br>";
+						$content .= "$key: $value<br>";
 					}
 				}
 				$content .= '</pre>';
-				$content .= '<h3>' . esc_html__( 'Migration Completed Successfully...!', 'ultimate-addons-for-gutenberg' ) . '</h3>';
+				$content .= '<h3>' . esc_html__( 'Migration Completed Successfully...', 'ultimate-addons-for-gutenberg' ) . '</h3>';
 				$content .= '<a href="' . esc_url( admin_url( 'index.php' ) ) . '" class="button" style="text-decoration: none; background: #007cba; border-color: #007cba; color: #fff; border-radius: 3px;">' . __( 'Back', 'ultimate-addons-for-gutenberg' ) . '</a>';
 			} else {
-				$content .= '<h3>' . esc_html__( 'Migration failed...!', 'ultimate-addons-for-gutenberg' ) . '</h3>';
+				$content .= '<h3>' . esc_html__( 'Migration failed...', 'ultimate-addons-for-gutenberg' ) . '</h3>';
 			}
-
+		
 			$content .= '</div>';
 			echo wp_kses( $content, $log_allowed_tags );
 		}
+		
 
 		/**
 		 * Register migration log page.
