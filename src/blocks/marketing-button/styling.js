@@ -124,36 +124,13 @@ function styling( attributes, clientId, name, deviceType ) {
 			'width': generateCSSUnit( iconFontSizeFallback, iconFontSizeType ),
 			'height': generateCSSUnit( iconFontSizeFallback, iconFontSizeType ),
 		},
+		' .uagb-marketing-btn__link:hover svg': {
+			'fill': setIconHoverColor,
+		},
+		' .uagb-marketing-btn__link:focus svg': {
+			'fill': setIconHoverColor,
+		},
 	};
-
-	if ( 'transparent' === backgroundType ) {
-		selectors[ ':not(.is-style-outline) .uagb-marketing-btn__link:not(.has-background)' ] = {
-			'background-color': 'transparent',
-		};
-	} else if ( 'color' === backgroundType ) {
-		selectors[ ':not(.is-style-outline) .uagb-marketing-btn__link:not(.has-background)' ] = {
-			'background-color': backgroundColor,
-		};
-
-		// Hover Background
-		selectors[ ':not(.is-style-outline) .uagb-marketing-btn__link:not(.has-background):hover' ] = {
-			'background-color': backgroundHoverColor,
-		};
-	} else if ( 'gradient' === backgroundType ) {
-		selectors[ ':not(.is-style-outline) .uagb-marketing-btn__link:not(.has-background)' ] = {
-			'background-color': 'transparent',
-		};
-
-		if ( 'linear' === gradientType ) {
-			selectors[ ':not(.is-style-outline) .uagb-marketing-btn__link:not(.has-background)' ][
-				'background-image'
-			] = `linear-gradient(${ gradientAngleFallback }deg, ${ gradientColor1 } ${ gradientLocation1Fallback }%, ${ gradientColor2 } ${ gradientLocation2Fallback }%)`;
-		} else {
-			selectors[ ':not(.is-style-outline) .uagb-marketing-btn__link:not(.has-background)' ][
-				'background-image'
-			] = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocation1Fallback }%, ${ gradientColor2 } ${ gradientLocation2Fallback }%)`;
-		}
-	}
 
 	let marginType;
 	if ( uagb_blocks_info.is_rtl !== '1' ) {
@@ -190,6 +167,34 @@ function styling( attributes, clientId, name, deviceType ) {
 	mobileSelectors[ ' svg' ][ marginType ] = generateCSSUnit( iconSpaceMobile, 'px' );
 
 	if( !inheritFromTheme ) {
+		if ( 'transparent' === backgroundType ) {
+			selectors[ ':not(.is-style-outline) .uagb-marketing-btn__link:not(.has-background)' ] = {
+				'background-color': 'transparent',
+			};
+		} else if ( 'color' === backgroundType ) {
+			selectors[ ':not(.is-style-outline) .uagb-marketing-btn__link:not(.has-background)' ] = {
+				'background-color': backgroundColor,
+			};
+	
+			// Hover Background
+			selectors[ ':not(.is-style-outline) .uagb-marketing-btn__link:not(.has-background):hover' ] = {
+				'background-color': backgroundHoverColor,
+			};
+		} else if ( 'gradient' === backgroundType ) {
+			selectors[ ':not(.is-style-outline) .uagb-marketing-btn__link:not(.has-background)' ] = {
+				'background-color': 'transparent',
+			};
+	
+			if ( 'linear' === gradientType ) {
+				selectors[ ':not(.is-style-outline) .uagb-marketing-btn__link:not(.has-background)' ][
+					'background-image'
+				] = `linear-gradient(${ gradientAngleFallback }deg, ${ gradientColor1 } ${ gradientLocation1Fallback }%, ${ gradientColor2 } ${ gradientLocation2Fallback }%)`;
+			} else {
+				selectors[ ':not(.is-style-outline) .uagb-marketing-btn__link:not(.has-background)' ][
+					'background-image'
+				] = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocation1Fallback }%, ${ gradientColor2 } ${ gradientLocation2Fallback }%)`;
+			}
+		}
 		selectors = {
 			...selectors,
 			' .block-editor-rich-text__editable.uagb-marketing-btn__title': {
@@ -226,12 +231,6 @@ function styling( attributes, clientId, name, deviceType ) {
 			' .uagb-marketing-btn__link:focus .block-editor-rich-text__editable.uagb-marketing-btn__prefix': {
 				'color': prefixHoverColor,
 			},
-			' .uagb-marketing-btn__link:hover svg': {
-				'fill': setIconHoverColor,
-			},
-			' .uagb-marketing-btn__link:focus svg': {
-				'fill': setIconHoverColor,
-			},
 			' .uagb-marketing-btn__link:not(.has-background)': {
 				'padding-left': generateCSSUnit( paddingBtnLeft, paddingBtnUnit ),
 				'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
@@ -245,6 +244,7 @@ function styling( attributes, clientId, name, deviceType ) {
 			' .uagb-marketing-btn__link:focus': {
 				'border-color': btnBorderHColor,
 			},
+
 		};
 
 		tabletSelectors = {

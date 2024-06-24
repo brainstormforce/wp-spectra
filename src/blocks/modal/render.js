@@ -52,8 +52,6 @@ const Render = ( props ) => {
 	//border-width is added to revert the border related styles by default.
 	const borderStyle = inheritAstraSecondary ? { borderWidth: 'revert-layer' } : {};
 
-	const CustomTag = inheritAstraSecondary ? 'div' : 'a';
-
 	const ALLOWED_BLOCKS = wp.blocks
 		.getBlockTypes()
 		.map( ( block ) => block.name )
@@ -118,7 +116,7 @@ const Render = ( props ) => {
 
 	const buttonHTML = (
 		<div className={ classnames( 'uagb-spectra-button-wrapper', 'wp-block-button' ) }>
-			<CustomTag // eslint-disable-line jsx-a11y/anchor-is-valid
+			<div // eslint-disable-line jsx-a11y/anchor-is-valid
 				className={ buttonClasses }
 				target="_self"
 				rel="noopener noreferrer"
@@ -136,7 +134,7 @@ const Render = ( props ) => {
 					/>
 					{ showBtnIcon && buttonIconPosition === 'after' && buttonIconOutput }
 				</span>
-			</CustomTag>
+			</div>
 		</div>
 	);
 

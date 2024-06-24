@@ -72,11 +72,9 @@ export default function Save( props ) {
 
 	const buttonClasses = `uagb-modal-button-link ${ buttonTypeClass } uagb-modal-trigger`;
 
-	const CustomTag = inheritAstraSecondary ? 'div' : 'a';
-
 	const buttonHTML = (
 		<div className={ classnames( 'uagb-spectra-button-wrapper', 'wp-block-button' ) }>
-			<CustomTag // eslint-disable-line jsx-a11y/anchor-is-valid
+			<a // eslint-disable-line jsx-a11y/anchor-is-valid
 				className={ buttonClasses }
 				href={ '#' }
 				onClick={ 'return false;' }
@@ -89,7 +87,7 @@ export default function Save( props ) {
 					<RichText.Content tagName="span" value={ buttonText } className="uagb-inline-editing" />
 					{ showBtnIcon && buttonIconPosition === 'after' && buttonIconOutput }
 				</span>
-			</CustomTag>
+			</a>
 		</div>
 	);
 

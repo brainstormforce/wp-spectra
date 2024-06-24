@@ -206,8 +206,14 @@ class UAGB_Front_Assets {
 	 * @return void
 	 */
 	public function update_current_post_assets( $post_id ) {
-		$spectra_post_assets = new UAGB_Post_Assets( $post_id );
-		$spectra_post_assets->regenerate_post_assets();
+		/**
+		 * Case: If previous asset version is same then we need to update the assets, resultant will reduce cache conflicts.
+		 */
+		$page_assets = (array) get_post_meta( $post_id, '_uag_page_assets', true );
+		if ( isset( $page_assets['uag_version'] ) && UAGB_ASSET_VER === $page_assets['uag_version'] ) {
+			$page_assets['uag_version'] = '';
+			update_post_meta( $post_id, '_uag_page_assets', $page_assets );
+		}
 	}
 
 	/**

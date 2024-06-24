@@ -57,7 +57,22 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			add_action( 'admin_init', array( $this, 'update_old_user_option_by_url_params' ) );
 
 			add_action( 'admin_post_uag_rollback', array( $this, 'post_uagb_rollback' ) );
+			
+			// Update get access url in Template Kits.
+			add_filter( 'ast_block_templates_pro_url', array( $this, 'update_gutenberg_templates_pro_url' ) );
 		}
+
+		/**
+		 * Updates the Gutenberg templates pro URL.
+		 * This function returns the URL for the pro version of Gutenberg templates.
+		 * 
+		 * @since 2.13.7
+		 * @return string The URL for Spectra Webpage.
+		 */
+		public function update_gutenberg_templates_pro_url() { 
+			return 'https://wpspectra.com/pricing/?utm_source=gutenberg-templates&utm_medium=dashboard&utm_campaign=Starter-Template-Backend';
+		}
+ 
 
 		/**
 		 * Update Old user option using URL Param.

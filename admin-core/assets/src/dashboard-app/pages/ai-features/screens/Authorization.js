@@ -24,9 +24,14 @@ import ManageFeaturesPopup from '@DashboardApp/pages/ai-features/elements/Manage
 import getApiData from '@Controls/getApiData';
 
 const Authorization = () => {
+	// Set the default message based on whether the user is new or has linked before.
+	const buttonText = ( 'disconnected' === uag_react?.zip_ai_status
+		? __( 'Reconnect and Continue Using AI Features', 'ultimate-addons-for-gutenberg' )
+		: __( 'Get Started with 1000 Free Monthly Credits', 'ultimate-addons-for-gutenberg' )
+	);
 	// Set the required states.
 	const [ showPopup, setShowPopup ] = useState( false );
-	const [ buttonLabel, setButtonLabel ] = useState(  __( 'Get Started with 1000 Free Monthly Credits', 'ultimate-addons-for-gutenberg' ) );
+	const [ buttonLabel, setButtonLabel ] = useState( buttonText );
 
 	// If the page is openend with the 'manage-features' query param, open the popup.
 	useEffect( () => {
@@ -66,7 +71,10 @@ const Authorization = () => {
 		let iterations = 0;
 
 		// Update the texts.
-		setButtonLabel( __( 'Getting Started with 1000 Free Monthly Credits', 'ultimate-addons-for-gutenberg' ) );
+		setButtonLabel( 'disconnected' === uag_react?.zip_ai_status
+			? __( 'Reconnecting to Use AI Features', 'ultimate-addons-for-gutenberg' )
+			: __( 'Getting Started with 1000 Free Monthly Credits', 'ultimate-addons-for-gutenberg' )
+		);
 
 		// Set an interval to check if the option was updated.
 		const authVerificationInterval = setInterval( () => {
@@ -78,7 +86,7 @@ const Authorization = () => {
 				}
 				// Reset the texts and enable the button.
 				clearInterval( authVerificationInterval );
-				setButtonLabel( __( 'Get Started with 1000 Free Monthly Credits', 'ultimate-addons-for-gutenberg' ) );
+				setButtonLabel( buttonText );
 				authButtons.forEach( ( authButton ) => {
 					authButton.disabled = false;
 				} );
@@ -98,7 +106,7 @@ const Authorization = () => {
 					localStorage.setItem( 'zipAiAuthorizationStatus', true );
 					clearInterval( authVerificationInterval );
 					window.location.reload();
-					setButtonLabel( __( 'Get Started with 1000 Free Monthly Credits', 'ultimate-addons-for-gutenberg' ) );
+					setButtonLabel( buttonText );
 				}
 			} );
 			iterations++;

@@ -392,6 +392,8 @@ const Settings = ( props ) => {
 						} }
 					/>
 				) }
+				{ !inheritFromTheme  && (
+					<>
 				<TypographyControl
 					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }
 					attributes={ attributes }
@@ -504,6 +506,8 @@ const Settings = ( props ) => {
 					}
 					disableBottomSeparator={ true }
 				/>
+				</>
+				) }
 			</UAGAdvancedPanelBody>
 		);
 	};
@@ -940,11 +944,15 @@ const Settings = ( props ) => {
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ titleSettings() }
-						{ showDescription && descriptionSettings() }
+						{ ! inheritFromTheme && showDescription && descriptionSettings() }
 						{ '' !== icon && iconSettings() }
-						{ backgroundSettings() }
-						{ !inheritFromTheme && borderSettings() }
-						{ !inheritFromTheme && btnPaddingSettings() }
+						{ ! inheritFromTheme && (
+							<>
+						        { backgroundSettings() }
+						        { borderSettings() }
+						        { btnPaddingSettings() }
+						    </>
+						) }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
 				</InspectorTabs>

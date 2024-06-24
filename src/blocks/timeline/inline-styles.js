@@ -27,10 +27,10 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 		borderRadiusTablet,
 		borderRadiusMobile,
 		iconColor,
-		dateFontsizeType,
-		dateFontsize,
-		dateFontsizeTablet,
-		dateFontsizeMobile,
+		dateFontSizeType,
+		dateFontSize,
+		dateFontSizeTablet,
+		dateFontSizeMobile,
 		dateFontFamily,
 		dateFontWeight,
 		dateLineHeightType,
@@ -169,6 +169,7 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 		horizontalSpaceUnit,
 		horizontalSpaceUnitTablet,
 		horizontalSpaceUnitMobile,
+		inheritFromTheme,
 	} = attributes;
 
 	const iconSizeFallback = getFallbackNumber( iconSize, 'iconSize', blockName );
@@ -182,7 +183,7 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 	const dateBottomSpaceFallback = getFallbackNumber( dateBottomspace, 'dateBottomspace', blockName );
 	const ctaBottomSpacingFallback = getFallbackNumber( ctaBottomSpacing, 'ctaBottomSpacing', blockName );
 
-	const selectors = {
+	let selectors = {
 		' .uagb-timeline__heading': {
 			'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
 			'font-family': headFontFamily,
@@ -289,7 +290,7 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new': {
 			'margin-bottom': generateCSSUnit( dateBottomSpaceFallback, 'px' ),
 			'color': dateColor,
-			'font-size': generateCSSUnit( dateFontsize, dateFontsizeType ),
+			'font-size': generateCSSUnit( dateFontSize, dateFontSizeType ),
 			'font-family': dateFontFamily,
 			'font-weight': dateFontWeight,
 			'line-height': generateCSSUnit( dateLineHeight, dateLineHeightType ),
@@ -302,7 +303,7 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner': {
 			'margin-bottom': generateCSSUnit( dateBottomSpaceFallback, 'px' ),
 			'color': dateColor,
-			'font-size': generateCSSUnit( dateFontsize, dateFontsizeType ),
+			'font-size': generateCSSUnit( dateFontSize, dateFontSizeType ),
 			'font-family': dateFontFamily,
 			'font-weight': dateFontWeight,
 			'line-height': generateCSSUnit( dateLineHeight, dateLineHeightType ),
@@ -320,7 +321,7 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 		},
 		' .uagb-timeline__date-new': {
 			'color': dateColor,
-			'font-size': generateCSSUnit( dateFontsize, dateFontsizeType ),
+			'font-size': generateCSSUnit( dateFontSize, dateFontSizeType ),
 			'font-family': dateFontFamily,
 			'font-weight': dateFontWeight,
 			'line-height': generateCSSUnit( dateLineHeight, dateLineHeightType ),
@@ -382,24 +383,14 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 		' .uagb-timeline__link_parent': {
 			'text-align': align,
 		},
-		' .uagb-timeline__link': {
+        ' .uagb-timeline__link': {
 			'text-align': align,
-			'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
-			'font-family': ctaFontFamily,
-			'font-weight': ctaFontWeight,
-			'line-height': generateCSSUnit( ctaLineHeight, ctaLineHeightType ),
-			'color': ctaColor,
-			'background-color': ctaBackground,
-			'font-style': ctaFontStyle,
-			'text-decoration': ctaDecoration,
-			'text-transform': ctaTransform,
 			'margin-bottom': generateCSSUnit( ctaBottomSpacingFallback, 'px' ),
-			'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
 		},
 	};
 
 	/* Generate Responsive CSS for timeline */
-	const tabletSelectors = {
+	let tabletSelectors = {
 		' .uagb-timeline__day-new': {
 			'text-align': alignTablet,
 		},
@@ -408,20 +399,20 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 		},
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner': {
 			'text-align': alignTablet,
-			'font-size': generateCSSUnit( dateFontsizeTablet, dateFontsizeType ),
+			'font-size': generateCSSUnit( dateFontSizeTablet, dateFontSizeType ),
 			'line-height': generateCSSUnit( dateLineHeightTablet, dateLineHeightType ),
 			'margin-bottom': generateCSSUnit( dateBottomspaceTablet, 'px' ),
 			'letter-spacing': generateCSSUnit( dateLetterSpacingTablet, dateLetterSpacingType ),
 		},
 		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new': {
 			'text-align': alignTablet,
-			'font-size': generateCSSUnit( dateFontsizeTablet, dateFontsizeType ),
+			'font-size': generateCSSUnit( dateFontSizeTablet, dateFontSizeType ),
 			'line-height': generateCSSUnit( dateLineHeightTablet, dateLineHeightType ),
 			'margin-bottom': generateCSSUnit( dateBottomspaceTablet, 'px' ),
 			'letter-spacing': generateCSSUnit( dateLetterSpacingTablet, dateLetterSpacingType ),
 		},
 		' .uagb-timeline__date-new': {
-			'font-size': generateCSSUnit( dateFontsizeTablet, dateFontsizeType ),
+			'font-size': generateCSSUnit( dateFontSizeTablet, dateFontSizeType ),
 			'line-height': generateCSSUnit( dateLineHeightTablet, dateLineHeightType ),
 			'margin-bottom': generateCSSUnit( dateBottomspaceTablet, 'px' ),
 			'letter-spacing': generateCSSUnit( dateLetterSpacingTablet, dateLetterSpacingType ),
@@ -513,12 +504,9 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 			'line-height': generateCSSUnit( authorLineHeightTablet, authorLineHeightType ),
 			'letter-spacing': generateCSSUnit( authorLetterSpacingTablet, authorLetterSpacingType ),
 		},
-		' .uagb-timeline__link': {
+        ' .uagb-timeline__link': {
 			'text-align': alignTablet,
-			'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
-			'line-height': generateCSSUnit( ctaLineHeightTablet, ctaLineHeightType ),
 			'margin-bottom': generateCSSUnit( ctaBottomSpacingTablet, 'px' ),
-			'letter-spacing': generateCSSUnit( ctaLetterSpacingTablet, ctaLetterSpacingType ),
 		},
 		' .uagb-timeline__events-inner-new': {
 			'border-radius': generateCSSUnit( borderRadiusTablet, 'px' ),
@@ -534,7 +522,7 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 		},
 	};
 
-	const mobileSelectors = {
+	let mobileSelectors = {
 		' .uagb-timeline__day-new': {
 			'text-align': alignMobile,
 		},
@@ -543,20 +531,20 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 		},
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner': {
 			'text-align': alignMobile,
-			'font-size': generateCSSUnit( dateFontsizeMobile, dateFontsizeType ),
+			'font-size': generateCSSUnit( dateFontSizeMobile, dateFontSizeType ),
 			'line-height': generateCSSUnit( dateLineHeightMobile, dateLineHeightType ),
 			'margin-bottom': generateCSSUnit( dateBottomspaceMobile, 'px' ),
 			'letter-spacing': generateCSSUnit( dateLetterSpacingMobile, dateLetterSpacingType ),
 		},
 		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new': {
 			'text-align': alignMobile,
-			'font-size': generateCSSUnit( dateFontsizeMobile, dateFontsizeType ),
+			'font-size': generateCSSUnit( dateFontSizeMobile, dateFontSizeType ),
 			'line-height': generateCSSUnit( dateLineHeightMobile, dateLineHeightType ),
 			'margin-bottom': generateCSSUnit( dateBottomspaceMobile, 'px' ),
 			'letter-spacing': generateCSSUnit( dateLetterSpacingMobile, dateLetterSpacingType ),
 		},
 		' .uagb-timeline__date-new': {
-			'font-size': generateCSSUnit( dateFontsizeMobile, dateFontsizeType ),
+			'font-size': generateCSSUnit( dateFontSizeMobile, dateFontSizeType ),
 			'line-height': generateCSSUnit( dateLineHeightMobile, dateLineHeightType ),
 			'margin-bottom': generateCSSUnit( dateBottomspaceMobile, 'px' ),
 			'letter-spacing': generateCSSUnit( dateLetterSpacingMobile, dateLetterSpacingType ),
@@ -655,12 +643,9 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 			'line-height': generateCSSUnit( authorLineHeightMobile, authorLineHeightType ),
 			'letter-spacing': generateCSSUnit( authorLetterSpacingMobile, authorLetterSpacingType ),
 		},
-		' .uagb-timeline__link': {
+        ' .uagb-timeline__link': {
 			'text-align': alignMobile,
-			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
-			'line-height': generateCSSUnit( ctaLineHeightMobile, ctaLineHeightType ),
 			'margin-bottom': generateCSSUnit( ctaBottomSpacingMobile, 'px' ),
-			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
 		},
 		' .uagb-timeline__events-inner--content': {
 			'padding-left': generateCSSUnit( leftPaddingMobile, mobilePaddingUnit ),
@@ -675,6 +660,42 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 			'margin-bottom': generateCSSUnit( verticalSpaceMobile, verticalSpaceUnitMobile ),
 		},
 	};
+
+	if( !inheritFromTheme ) {
+		selectors = {
+			...selectors,
+			' .uagb-timeline__link_parent .uagb-timeline__link': {
+				'font-size': generateCSSUnit( ctaFontSize, ctaFontSizeType ),
+				'font-family': ctaFontFamily,
+				'font-weight': ctaFontWeight,
+				'line-height': generateCSSUnit( ctaLineHeight, ctaLineHeightType ),
+				'color': ctaColor,
+				'background-color': ctaBackground,
+				'font-style': ctaFontStyle,
+				'text-decoration': ctaDecoration,
+				'text-transform': ctaTransform,
+				'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
+			},
+		}
+		tabletSelectors = {
+			...tabletSelectors,
+			' .uagb-timeline__link_parent .uagb-timeline__link': {
+				'font-size': generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
+				'line-height': generateCSSUnit( ctaLineHeightTablet, ctaLineHeightType ),
+				'letter-spacing': generateCSSUnit( ctaLetterSpacingTablet, ctaLetterSpacingType ),
+			},
+		}
+		mobileSelectors = {
+			...mobileSelectors,
+		' .uagb-timeline__link_parent .uagb-timeline__link': {
+			'font-size': generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+			'line-height': generateCSSUnit( ctaLineHeightMobile, ctaLineHeightType ),
+			'letter-spacing': generateCSSUnit( ctaLetterSpacingMobile, ctaLetterSpacingType ),
+		},
+	}
+
+
+	}
 
 	let stylingCss = '';
 	const id = `.editor-styles-wrapper .uagb-block-${ block_id }.uagb-timeline__outer-wrap`;

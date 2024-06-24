@@ -36,6 +36,16 @@
 	}
 }
 
+.components-select-control__input {
+	height: auto;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+.ast-outline-button {
+	display: inline-flex;
+}
+
 .uagb-form-notice {
 	padding: 8px 10px;
 	background-color: #fff8e5;

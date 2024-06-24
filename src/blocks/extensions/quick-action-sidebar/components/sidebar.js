@@ -40,11 +40,26 @@ const Sidebar = ( props ) => {
 		};
 
 		// Add event listener when component mounts
-		document.body.addEventListener( 'click', handleOutsideClick );
+		const currentUrl = new URL( window.location.href ) ;
+		if ( '/wp-admin/site-editor.php' === currentUrl.pathname ) {
+			const getAllIframes = document.querySelectorAll( 'iframe' );
+			getAllIframes.forEach( function ( iframe ) {
+				iframe.contentWindow.addEventListener( 'click', handleOutsideClick );
+			} );
+		} else {
+			document.body.addEventListener( 'click', handleOutsideClick );
+		}
 
 		// Remove event listener when component unmounts
 		return () => {
-			document.body.removeEventListener( 'click', handleOutsideClick );
+			if ( '/wp-admin/site-editor.php' === currentUrl.pathname ) {
+				const getAllIframes = document.querySelectorAll( 'iframe' );
+				getAllIframes.forEach( function ( iframe ) {
+					iframe.contentWindow.addEventListener( 'click', handleOutsideClick );
+				} );
+			} else {
+				document.body.removeEventListener( 'click', handleOutsideClick );
+			}
 		};
 	}, [] ); // Empty array ensures this effect runs only once when the component mounts
 

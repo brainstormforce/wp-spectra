@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import { uagbClassNames } from '@Utils/Helpers';
 import { useLayoutEffect, memo } from '@wordpress/element';
 import styles from './editor.lazy.scss';
 import { decodeEntities } from '@wordpress/html-entities';
@@ -31,7 +31,7 @@ const Render = ( props ) => {
 	} = attributes;
 
 	const showhierarchy = 'post_tag' === taxonomyType ? false : attributes.showhierarchy;
-	
+
 	let Tag;
 	if ( 'grid' === layout ) {
 		Tag = titleTag ? titleTag : 'h4';
@@ -96,7 +96,7 @@ const Render = ( props ) => {
 					{ showhierarchy && !!childCategories.length && (
 						<ul className="uagb-taxonomy-list-children">
 							{childCategories.map( ( childCategory ) =>
-								renderCategoryListItem( childCategory )	
+								renderCategoryListItem( childCategory )
 							)}
 						</ul>
 					)}
@@ -105,14 +105,14 @@ const Render = ( props ) => {
 		}
 	};
 
-	return (
+	return categoriesList.length ? (
 		<div
-			className={ classnames(
+			className={ uagbClassNames( [
 				'uagb-taxonomy__outer-wrap',
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-layout-${ layout }`,
 				`uagb-block-${ block_id }`
-			) }
+			] ) }
 		>
 			{ 'grid' === layout &&
 				categoriesList.map( ( p, index ) => (
@@ -133,7 +133,7 @@ const Render = ( props ) => {
 					</div>
 				) ) }
 
-			{'list' === layout && 'list' === listDisplayStyle && (
+			{ 'list' === layout && 'list' === listDisplayStyle && (
 				<ul className="uagb-list-wrap">
 					{ renderCategoryList() }
 				</ul>
@@ -149,9 +149,17 @@ const Render = ( props ) => {
 					) ) }
 				</select>
 			) }
-
-			{ /* If no Taxonomy is available. */ }
-			{ categoriesList === '' && <div className="uagb-tax-not-available">{ noTaxDisplaytext }</div> }
+		</div>
+	) : (
+		<div
+			className={ uagbClassNames( [
+				'uagb-taxonomy__outer-wrap',
+				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+				`uagb-layout-${ layout }`,
+				`uagb-block-${ block_id }`
+			] ) }
+		>
+			<div className="uagb-tax-not-available">{ noTaxDisplaytext }</div>
 		</div>
 	);
 };

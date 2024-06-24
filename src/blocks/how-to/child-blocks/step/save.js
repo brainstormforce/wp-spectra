@@ -45,11 +45,13 @@ export default function save( props ) {
 		target = '_blank';
 	}
 
+	const defaultedAlt = image?.alt || '';
+
 	const imageMarkup = (
 		<img
 			className="uagb-how-to-step-image"
 			src={ imageUrl }
-			alt={ image.alt }
+			alt={ defaultedAlt }
 			width={ imgTagWidth }
 			height={ imgTagHeight }
 			loading="lazy"

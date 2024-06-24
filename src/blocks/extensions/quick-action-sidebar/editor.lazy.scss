@@ -476,3 +476,17 @@ div#widgets-editor {
 		}
 	}
 }
+
+.spectra-ee-quick-access__sidebar--blocks-sortable {
+	display: flex;
+	flex-direction: column;
+	overflow: auto; /* Prevent horizontal scrolling */
+
+	&--block {
+		margin-bottom: 10px; /* Adjust as needed */
+	}
+}
+
+.spectra-ee-quick-access__sidebar--prevent-editor-interactions {
+	pointer-events: none;
+}
