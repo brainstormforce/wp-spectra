@@ -19,7 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Spectra_Migrate_Blocks {
 
-
 	/**
 	 * Member Variable
 	 *
@@ -79,14 +78,14 @@ class Spectra_Migrate_Blocks {
 		add_action( 'spectra_blocks_migration_event', array( $this, 'blocks_migration' ) );
 		add_action( 'admin_init', array( $this, 'query_migrate_to_new' ) );
 
-		// Check migration status and run migrate_blocks if necessary
-		if ( 'yes' === get_option( 'uag_blocks_migration_status', 'no' ) ) {
+		// Check migration status and run migrate_blocks if necessary.
+		if ( 'yes' === get_option( 'uag_migration_status', 'no' ) ) {
 			$this->migrate_blocks();
 		}
 	}
 
 	/**
-	 * Query migrate to new
+	 * Query migrate to new.
 	 * 
 	 * @since x.x.x
 	 * @return void
@@ -107,21 +106,10 @@ class Spectra_Migrate_Blocks {
 		if ( 'yes' !== get_option( 'uagb-old-user-less-than-2', false ) ) {
 			return;
 		}
-
-		// Code to migrate info box and advanced heading blocks.
-		if ( false !== get_option( 'uag_blocks_migration', false ) ) {
-			return;
-		}
-
-		// If user is older than 2.13.1 then set the option.
-		if ( ! version_compare( UAGB_VER, '2.13.6', '<' ) ) {
-			return;
-		}
 		
 		if ( ! wp_next_scheduled( 'spectra_blocks_migration_event' ) ) {
-			wp_schedule_single_event( time() + 1, 'spectra_blocks_migration_event' );
+			wp_schedule_single_event( time(), 'spectra_blocks_migration_event' );
 		}
-		update_option( 'uag_blocks_migration', 'yes' );
 		update_option( 'uag_enable_legacy_blocks', 'yes' );
 		update_option( 'uag_load_font_awesome_5', 'enabled' );
 	}
@@ -140,10 +128,15 @@ class Spectra_Migrate_Blocks {
 		$posts_per_page = 10;
 		$page           = 1;
 
+		$post_types = get_post_types( array( 'public' => true ), 'names' );
+
+		// Set a new option to know that the migration process has started.
+		update_option( 'uag_migration_progress_status', 'in-progress' );
+
 		do {
 			$query = new WP_Query(
 				array(
-					'post_type'      => array( 'post', 'page' ),
+					'post_type'      => $post_types,
 					'posts_per_page' => $posts_per_page,
 					'paged'          => $page,
 				)
@@ -175,14 +168,16 @@ class Spectra_Migrate_Blocks {
 				);
 
 				// Log the update.
-				$migration_log[] = 'Updated post ID ' . $post->ID . ': ' . $post->post_title;
+				$migration_log[] = '[' . gmdate( 'Y-m-d H:i:s' ) . '] Updated post ID ' . $post->ID . ': ' . $post->post_title;
 			}
 
 			$page++;
 		} while ( $query->max_num_pages >= $page );
+		// Delete the option once the migration progress is complete as it is not required.
+		delete_option( 'uag_migration_progress_status' );
 
 		// Store the log in a transient.
-		set_transient( 'uag_migration_log', $migration_log, 30 * MINUTE_IN_SECONDS );
+		set_transient( 'uag_migration_log', $migration_log );
 	}
 	
 
@@ -245,3 +240,4 @@ class Spectra_Migrate_Blocks {
  *  Kicking this off by calling 'get_instance()' method
  */
 Spectra_Migrate_Blocks::get_instance();
+

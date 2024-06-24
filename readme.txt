@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x = 
+* Fix: Global: Added update notice to update the old user database to provide compatibility.
+
 = 2.13.4 - Thursday, 30th May 2024 =
 * Feature: Quick Action Bar - Easily rearrange blocks in the Quick Action Bar for a personalized workflow.
 * Improvement: Info Box - Added an option to set the alt attribute of the image.
