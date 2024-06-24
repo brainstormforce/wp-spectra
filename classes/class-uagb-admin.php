@@ -339,7 +339,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				Astra_Notices::add_notice(
 					array(
 
-					'id'                         => 'uagb-block-migration_status',
+						'id'                         => 'uagb-block-migration_status',
 						'type'                       => '',
 						'message'                    => sprintf(
 							// Translators: %1$s: Spectra logo, %2$s: migration note , %3$s: The closing tag, %4$s: migration description, %5$s: Migration button.
