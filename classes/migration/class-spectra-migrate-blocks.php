@@ -4,7 +4,7 @@
  *
  * Class to execute cron event when the plugin is updated.
  *
- * @since x.x.x
+ * @since 2.13.8
  * @package UAGB
  */
 
@@ -22,7 +22,7 @@ class Spectra_Migrate_Blocks {
 	/**
 	 * Member Variable
 	 *
-	 * @since x.x.x
+	 * @since 2.13.8
 	 * @var Spectra_Migrate_Blocks
 	 */
 	private static $instance;
@@ -44,7 +44,7 @@ class Spectra_Migrate_Blocks {
 	/**
 	 *  Initiator
 	 *
-	 * @since x.x.x
+	 * @since 2.13.8
 	 * @return Spectra_Migrate_Blocks
 	 */
 	public static function get_instance() {
@@ -57,7 +57,7 @@ class Spectra_Migrate_Blocks {
 	/**
 	 * Constructor
 	 * 
-	 * @since x.x.x
+	 * @since 2.13.8
 	 */
 	public function __construct() {
 		self::$info_box_mapping         = array(
@@ -87,7 +87,7 @@ class Spectra_Migrate_Blocks {
 	/**
 	 * Query migrate to new.
 	 * 
-	 * @since x.x.x
+	 * @since 2.13.8
 	 * @return void
 	 */
 	public function query_migrate_to_new() {
@@ -99,7 +99,7 @@ class Spectra_Migrate_Blocks {
 	/**
 	 * Schedule a single event
 	 * 
-	 * @since x.x.x
+	 * @since 2.13.8
 	 * @return void
 	 */
 	public function migrate_blocks() {
@@ -117,7 +117,7 @@ class Spectra_Migrate_Blocks {
 	/**
 	 * Blocks Migration
 	 * 
-	 * @since x.x.x
+	 * @since 2.13.8
 	 * @return void
 	 */
 	public function blocks_migration() {
@@ -185,7 +185,7 @@ class Spectra_Migrate_Blocks {
 	 * Get Updated Content
 	 * 
 	 * @param string $content The content to update.
-	 * @since x.x.x
+	 * @since 2.13.8
 	 * @return string The updated content.
 	 */
 	public function get_updated_content( $content ) {
@@ -201,7 +201,7 @@ class Spectra_Migrate_Blocks {
 	 * 
 	 * @param array $blocks The blocks to update.
 	 * @return array The updated blocks.
-	 * @since x.x.x
+	 * @since 2.13.8
 	 */
 	public function get_updated_blocks( $blocks ) {
 		foreach ( $blocks as &$block ) {

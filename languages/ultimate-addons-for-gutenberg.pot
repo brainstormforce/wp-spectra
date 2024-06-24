@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.13.7\n"
+"Project-Id-Version: Spectra 2.13.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-06-14T11:54:42+00:00\n"
+"POT-Creation-Date: 2024-06-24T07:26:02+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -131,7 +131,7 @@ msgid "AI Features"
 msgstr ""
 
 #. translators: %1$s: Opening Strong Tag, %2$s: Closing Strong Tag, %3$s Anchor Tag with Star Symbol Codes.
-#: admin-core/inc/admin-menu.php:501
+#: admin-core/inc/admin-menu.php:502
 msgid "Enjoyed %1$sSpectra%2$s? Please leave us a %3$s rating. We really appreciate your support!"
 msgstr ""
 
@@ -7735,43 +7735,78 @@ msgstr ""
 msgid "Theme"
 msgstr ""
 
-#: classes/class-uagb-admin.php:114
+#: classes/class-uagb-admin.php:68
+#: classes/class-uagb-admin.php:203
 msgid "You do not have permission to access this page."
 msgstr ""
 
-#: classes/class-uagb-admin.php:115
+#: classes/class-uagb-admin.php:101
 #: classes/class-uagb-admin.php:146
+#: classes/class-uagb-admin.php:147
+msgid "Migration Log"
+msgstr ""
+
+#: classes/class-uagb-admin.php:125
+msgid "Migration Completed Successfully..."
+msgstr ""
+
+#: classes/class-uagb-admin.php:126
+msgid "Back"
+msgstr ""
+
+#: classes/class-uagb-admin.php:128
+msgid "Migration failed..."
+msgstr ""
+
+#: classes/class-uagb-admin.php:204
+#: classes/class-uagb-admin.php:235
 #: admin-core/assets/build/dashboard-app.js:1
 #: admin-core/assets/build/dashboard-app.js:3
 msgid "Rollback to Previous Version"
 msgstr ""
 
-#: classes/class-uagb-admin.php:128
+#: classes/class-uagb-admin.php:217
 msgid "Error occurred, The version selected is invalid. Try selecting different version."
 msgstr ""
 
-#: classes/class-uagb-admin.php:232
+#: classes/class-uagb-admin.php:321
 msgid "Wow! The Spectra has already powered over 5 pages on your website!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:233
+#: classes/class-uagb-admin.php:322
 msgid "Would you please mind sharing your views and give it a 5 star rating on the WordPress repository?"
 msgstr ""
 
-#: classes/class-uagb-admin.php:235
+#: classes/class-uagb-admin.php:324
 msgid "Ok, you deserve it"
 msgstr ""
 
-#: classes/class-uagb-admin.php:237
+#: classes/class-uagb-admin.php:326
 msgid "Nope, maybe later"
 msgstr ""
 
-#: classes/class-uagb-admin.php:238
+#: classes/class-uagb-admin.php:327
 msgid "I already did"
 msgstr ""
 
+#: classes/class-uagb-admin.php:361
+msgid "Spectra database update required"
+msgstr ""
+
+#: classes/class-uagb-admin.php:362
+msgid "It appears that your pages were created with an older version of our plugin."
+msgstr ""
+
+#: classes/class-uagb-admin.php:363
+msgid "To ensure compatibility and optimal performance, a database update is required. Please proceed with the migration to maintain smooth functionality"
+msgstr ""
+
+#: classes/class-uagb-admin.php:365
+msgid "Update Spectra database"
+msgstr ""
+
 #. translators: %s: html tags
-#: classes/class-uagb-admin.php:257
+#: classes/class-uagb-admin.php:382
 msgid "Spectra requires&nbsp;%3$sBlock Editor%4$s. You can change your editor settings to Block Editor from&nbsp;%1$shere%2$s. Plugin is currently NOT RUNNING."
 msgstr ""
 
@@ -7910,11 +7945,11 @@ msgid "Invalid request"
 msgstr ""
 
 #. translators: %s: html tags
-#: classes/class-uagb-loader.php:378
+#: classes/class-uagb-loader.php:379
 msgid "The %1$sSpectra%2$s plugin requires %1$sGutenberg%2$s plugin installed & activated."
 msgstr ""
 
-#: classes/class-uagb-loader.php:381
+#: classes/class-uagb-loader.php:382
 msgid "Install Gutenberg"
 msgstr ""
 
@@ -9490,7 +9525,15 @@ msgid "Go Back"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:9
+msgid "Reconnect and Continue Using AI Features"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
 msgid "Get Started with 1000 Free Monthly Credits"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Reconnecting to Use AI Features"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:9
@@ -9605,7 +9648,7 @@ msgid "Your website is connected to AI. You can disconnect at any time."
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:13
-msgid "Revoke Access"
+msgid "Disconnect AI"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:13
@@ -9617,7 +9660,7 @@ msgid "You will need to reconnect to use AI features again."
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:13
-msgid "Revoke"
+msgid "Disconnect"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:13

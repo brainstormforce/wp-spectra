@@ -58,7 +58,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Handle migration action.
 		 *
-		 * @since x.x.x
+		 * @since 2.13.8
 		 * @access public
 		 * 
 		 * @return void
@@ -87,7 +87,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Callback function to display migration log page content.
 		 * 
-		 * @since x.x.x
+		 * @since 2.13.8
 		 * @return void
 		 */
 		public function display_migration_log_page() {
@@ -137,7 +137,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Register migration log page.
 		 * 
-		 * @since x.x.x
+		 * @since 2.13.8
 		 * @return void 
 		 */
 		public function register_migration_log_page() {
