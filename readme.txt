@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+* Improvement: Separator - Added block Margin and Padding settings.
+
 = 2.13.8 - Tuesday, 25th June 2024 = 
 * Fix: Global: Added update notice to update the old user database to provide compatibility.
 

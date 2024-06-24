@@ -19,10 +19,29 @@ const UAGBSeparator = ( props ) => {
 	const {
 		isSelected,
 		attributes,
-		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
+		attributes: { 
+			UAGHideDesktop, 
+			UAGHideTab, 
+			UAGHideMob, 
+			separatorHeight, 
+			separatorHeightTablet, 
+			separatorHeightMobile,
+			separatorHeightType,
+			blockTopPadding,
+			blockBottomPadding,
+			blockTopPaddingTablet,
+			blockBottomPaddingTablet,
+			blockTopPaddingMobile,
+			blockBottomPaddingMobile,
+			blockPaddingUnit,
+			blockPaddingUnitTablet,
+			blockPaddingUnitMobile,
+
+		},
 		name,
 		clientId,
 		deviceType,
+		setAttributes,
 	} = props;
 
 	useEffect( () => {
@@ -32,6 +51,40 @@ const UAGBSeparator = ( props ) => {
 	useEffect( () => {
 		scrollBlockToView();
 	}, [ deviceType ] );
+
+	useEffect( () => {
+		// Migrating attributes. 
+		if( undefined === blockTopPadding ) {
+			setAttributes( { blockTopPadding: separatorHeight } )
+		}
+		if( undefined === blockBottomPadding ) {
+			setAttributes( { blockBottomPadding: separatorHeight } )
+		}
+		if( undefined === blockTopPaddingTablet ) {
+			setAttributes( { blockTopPaddingTablet: separatorHeightTablet } )
+		}
+		if( undefined === blockBottomPaddingTablet ) {
+			setAttributes( { blockBottomPaddingTablet: separatorHeightTablet } )
+		}
+		if( undefined === blockTopPaddingMobile ) {
+			setAttributes( { blockTopPaddingMobile: separatorHeightMobile } )
+		}
+		if( undefined === blockBottomPaddingMobile ) {
+			setAttributes( { blockBottomPaddingMobile: separatorHeightMobile } )
+		}
+		if( undefined === blockPaddingUnit ) {
+			setAttributes( { blockPaddingUnit: separatorHeightType } )
+		}
+		if( undefined === blockPaddingUnitTablet ) {
+			setAttributes( { blockPaddingUnitTablet: separatorHeightType } )
+		}
+		if( undefined === blockPaddingUnitMobile ) {
+			setAttributes( { blockPaddingUnitMobile: separatorHeightType } )
+		}
+		// Reset old attribute to undefined. 
+		setAttributes( { separatorHeight: undefined, separatorHeightTablet: undefined, separatorHeightMobile: undefined } );
+		
+	}, [  ] );
 
 	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 
