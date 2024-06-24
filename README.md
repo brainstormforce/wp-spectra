@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
+* Feature: What's New - Ability to see the new updates for Spectra in the form of a feed under the Dashboard.
 * Improvement: Separator - Added block Margin and Padding settings.
 
 ### 2.13.8 - Tuesday, 25th June 2024 ###

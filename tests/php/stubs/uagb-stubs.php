@@ -4933,15 +4933,6 @@ namespace UagAdmin\Inc {
         {
         }
         /**
-         * Get Changelogs from API.
-         *
-         * @since 2.0.0
-         * @return array $changelog_data Changelog Data.
-         */
-        public static function get_changelog_feed_data()
-        {
-        }
-        /**
          * Get blocks.
          */
         public static function get_blocks()
