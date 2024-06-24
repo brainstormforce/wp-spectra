@@ -7,6 +7,13 @@
  * @package uagb
  */
 
+/**
+ * Adding this comment to avoid PHPStan errors of undefined variable as these variables are defined else where.
+ *
+ * @var mixed[] $attr
+ */
+$attr = isset( $attr ) ? $attr : array();
+
 // Adds Fonts.
 UAGB_Block_JS::blocks_image_gallery_gfont( $attr );
 
@@ -36,6 +43,9 @@ $image_border_css_mobile      = UAGB_Block_Helper::uag_generate_border_css( $att
 $main_title_border_css        = UAGB_Block_Helper::uag_generate_border_css( $attr, 'mainTitle' );
 $main_title_border_css_tablet = UAGB_Block_Helper::uag_generate_border_css( $attr, 'mainTitle', 'tablet' );
 $main_title_border_css_mobile = UAGB_Block_Helper::uag_generate_border_css( $attr, 'mainTitle', 'mobile' );
+
+// Text Decoration compatibility CSS.
+$text_decoration_prop = '' === $attr['captionDecoration'] && defined( 'ASTRA_THEME_SETTINGS' ) && function_exists( 'astra_get_font_extras' ) && function_exists( 'astra_get_option' ) ? astra_get_font_extras( astra_get_option( 'body-font-extras' ), 'text-decoration' ) : $attr['captionDecoration'];
 
 // Box Shadow CSS.
 
@@ -277,7 +287,7 @@ $selectors = array(
 		'font-family'     => 'Default' === $attr['captionFontFamily'] ? '' : $attr['captionFontFamily'],
 		'font-weight'     => $attr['captionFontWeight'],
 		'font-style'      => $attr['captionFontStyle'],
-		'text-decoration' => $attr['captionDecoration'],
+		'text-decoration' => $text_decoration_prop,
 		'text-transform'  => $attr['captionTransform'],
 		'font-size'       => UAGB_Helper::get_css_value( $attr['captionFontSize'], $attr['captionFontSizeType'] ),
 		'line-height'     => UAGB_Helper::get_css_value( $attr['captionLineHeight'], $attr['captionLineHeightType'] ),
@@ -774,7 +784,7 @@ if ( 'outset' === $attr['imageBoxShadowPositionHover'] ) {
 $selectors[' .spectra-image-gallery__layout--carousel .slick-dots']['margin-bottom'] = '30px !important';
 
 $combined_selectors = UAGB_Helper::get_combined_selectors(
-	'image-gallery', 
+	'image-gallery',
 	array(
 		'desktop' => $selectors,
 		'tablet'  => $t_selectors,
