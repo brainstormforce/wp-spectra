@@ -218,6 +218,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 = x.x.x =
 * Feature: What's New - Ability to see the new updates for Spectra in the form of a feed under the Dashboard.
 * Improvement: Separator - Added block Margin and Padding settings.
+* Fix: Image - Resolved an issue wherein the tablet and mobile alignment options would not work as expected when set for desktop.
 
 = 2.13.8 - Tuesday, 25th June 2024 = 
 * Fix: Global: Added update notice to update the old user database to provide compatibility.
