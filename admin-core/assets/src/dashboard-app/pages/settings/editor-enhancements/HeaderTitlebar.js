@@ -1,8 +1,8 @@
 import { __ } from '@wordpress/i18n';
-import { useEffect } from '@wordpress/element';
+import { useCallback } from '@wordpress/element';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch } from '@headlessui/react'
-import { uagbClassNames } from '@Helpers/Helpers';
+import { uagbClassNames, debounce } from '@Helpers/Helpers';
 import getApiData from '@Controls/getApiData';
 
 const HeaderTitlebar = () => {
@@ -12,10 +12,12 @@ const HeaderTitlebar = () => {
 
     const headerTitlebarStatus = ( 'enabled' === enableHeaderTitlebar );
 
-    useEffect( () => {
+	// Debounce function to limit the rate of execution of a function.
+	const debouncedApiCall = useCallback(
+		debounce( ( status ) => {
 		const data = {
 			security: uag_react.enable_header_titlebar_nonce,
-			value: enableHeaderTitlebar,
+			value: status,
 		};
 		
 		const getApiDataFetch = getApiData( {
@@ -25,13 +27,16 @@ const HeaderTitlebar = () => {
 		} );
 
 		getApiDataFetch.then( () => {} );
-    }, [ enableHeaderTitlebar ] );
+		}, 300 ), // Adjust the delay as needed.
+		[ enableHeaderTitlebar ]
+	);
 
     const updateHeaderTitlebarStatus = () => {
         const assetStatus = ( enableHeaderTitlebar === 'disabled' ) ? 'enabled' : 'disabled' ;
         dispatch( { type: 'UPDATE_ENABLE_HEADER_TITLEBAR', payload: assetStatus } );
         dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
-    };
+		debouncedApiCall( assetStatus ); // Call the debounced function.
+	};
 
     return (
         <section className='block border-b border-solid border-slate-200 px-12 py-8 justify-between'>

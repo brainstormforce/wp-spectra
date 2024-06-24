@@ -273,6 +273,17 @@ const globalDataReducer = ( state = {}, action ) => {
 				...state,
 				zipAiModules: action.payload,
 				};
+		case 'UPDATE_ALL_EXTENSIONS':
+			const enableAll = 'enabled' === action.payload ? 'enabled' : 'disabled';
+			return {
+				...state,
+				enableGBSExtension: enableAll,
+				enableAnimationsExtension: enableAll,
+				enableMasonryExtension: enableAll,
+				enableDisplayConditions: enableAll,
+				enableDynamicContentExtension: enableAll,
+				enableResponsiveConditions: enableAll
+			}; 
         default:
             return state;
     }

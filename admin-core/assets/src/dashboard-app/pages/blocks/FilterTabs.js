@@ -76,24 +76,16 @@ const FilterTabs = () => {
         // Update Blocks Statuses.
         dispatch( {type:'UPDATE_BLOCK_STATUSES', payload: value} );
 
-        if ( 'extensions' === activeBlocksFilterTab || 'all' === activeBlocksFilterTab ) {
+		if ( 'extensions' === activeBlocksFilterTab || 'all' === activeBlocksFilterTab || 'pro' === activeBlocksFilterTab ) {
             // Update Extensions Statuses.
-            dispatch( { type: 'UPDATE_ENABLE_MASONRY_EXTENSION', payload: 'enabled' } );
-            dispatch( { type: 'UPDATE_ENABLE_DISPLAY_CONDITIONS', payload: 'enabled' } );
-			dispatch( { type: 'UPDATE_ENABLE_RESPONSIVE_CONDITIONS', payload: 'enabled' } );
-			dispatch( { type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: 'enabled' } );
-            dispatch( { type: 'UPDATE_ENABLE_ANIMATIONS_EXTENSION', payload: 'enabled' } );
-        }
-
-        if ( 'pro' === activeBlocksFilterTab ) {
-            // Update Extensions Statuses.
-			dispatch( { type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: 'enabled' } );
+			dispatch( { type: 'UPDATE_ALL_EXTENSIONS', payload: 'enabled' } );
         }
 
 		// Create an object with the security and value properties
         const data = {
             security: uag_react.blocks_activation_and_deactivation_nonce,
             value: JSON.stringify( value ),
+			status: 'enabled',
         };
         // Call the getApiData function with the specified parameters
         const getApiFetchData = getApiData( {
@@ -121,23 +113,16 @@ const FilterTabs = () => {
         // Update Blocks Statuses.
         dispatch( {type:'UPDATE_BLOCK_STATUSES', payload: value} );
 
-        if ( 'extensions' === activeBlocksFilterTab || 'all' === activeBlocksFilterTab ) {
+		if ( 'extensions' === activeBlocksFilterTab || 'all' === activeBlocksFilterTab || 'pro' === activeBlocksFilterTab ) {
             // Update Extensions Statuses.
-            dispatch( { type: 'UPDATE_ENABLE_MASONRY_EXTENSION', payload: 'disabled' } );
-            dispatch( { type: 'UPDATE_ENABLE_DISPLAY_CONDITIONS', payload: 'disabled' } );
-			dispatch( { type: 'UPDATE_ENABLE_RESPONSIVE_CONDITIONS', payload: 'disabled' } );
-			dispatch( { type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: 'disabled' } );
-        }
-
-        if ( 'pro' === activeBlocksFilterTab ) {
-            // Update Extensions Statuses.
-			dispatch( { type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: 'disabled' } );
+			dispatch( { type: 'UPDATE_ALL_EXTENSIONS', payload: 'disabled' } );
         }
 
 		// Create an object with the security and value properties
         const data = {
             security: uag_react.blocks_activation_and_deactivation_nonce,
             value: JSON.stringify( value ),
+			status: 'disabled',
         };
         // Call the getApiData function with the specified parameters
         const getApiFetchData = getApiData( {
