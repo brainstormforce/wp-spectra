@@ -265,17 +265,6 @@ export default function styling( attributes, clientId, name, deviceType ) {
 			'font-size': generateCSSUnit( iconSize, 'px' ),
 			'fill': iconColor,
 		},
-		' .uagb-modal-text.uagb-modal-trigger': {
-			'color': textColor,
-			'font-family': textFontFamily,
-			'font-style': textFontStyle,
-			'text-decoration': textDecoration,
-			'text-transform': textTransform,
-			'font-weight': textFontWeight,
-			'font-size': generateCSSUnit( textFontSize, textFontSizeType ),
-			'line-height': generateCSSUnit( textLineHeight, textLineHeightType ),
-			'letter-spacing': generateCSSUnit( textLetterSpacing, textLetterSpacingType ),
-		},
 		'.uagb-modal-wrapper img.uagb-modal-trigger': {
 			'border-radius': generateCSSUnit( iconimgBorderRadius, iconimgBorderRadiusUnit ),
 		},
@@ -417,6 +406,17 @@ export default function styling( attributes, clientId, name, deviceType ) {
 			},
 			' .uagb-spectra-button-wrapper .uagb-modal-button-link.uagb-modal-trigger:focus svg': {
 				'fill': btnLinkHoverColor,
+			},
+			' .uagb-modal-text.uagb-modal-trigger': {
+				'color': textColor,
+				'font-family': textFontFamily,
+				'font-style': textFontStyle,
+				'text-decoration': textDecoration,
+				'text-transform': textTransform,
+				'font-weight': textFontWeight,
+				'font-size': generateCSSUnit( textFontSize, textFontSizeType ),
+				'line-height': generateCSSUnit( textLineHeight, textLineHeightType ),
+				'letter-spacing': generateCSSUnit( textLetterSpacing, textLetterSpacingType ),
 			},
 		};
 

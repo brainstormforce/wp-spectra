@@ -18,7 +18,7 @@ const DraggableBlock = ( props ) => {
 	const { createNotice } = useDispatch( 'core/notices' );
 	const [uniqueId, setUniqueId] = useState( 0 );
 	const removedNoticeID = `quick-action-sidebar/remove-notices-flow/removed-notice/${uniqueId}`;
-	
+
 	const handleMouseOver = () => setHovering( true );
 
 	const handleMouseOut = () => setHovering( false );

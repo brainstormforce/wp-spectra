@@ -542,13 +542,6 @@ function styling( attributes, clientId, deviceType ) {
 		'text-decoration': excerptDecoration,
 		'letter-spacing': generateCSSUnit( excerptLetterSpacing, excerptLetterSpacingType ),
 	};
-	selectors[
-		' .uagb-post__inner-wrap .uagb-post__text .wp-block-button.uagb-post__cta:not(.is-style-outline) .uagb-text-link.wp-block-button__link:not(.has-background):hover'
-	] = {
-		'color': ctaHColor,
-		'background': ctaBgHType === 'color' ? ctaBgHColor : 'transparent',
-		'border-color': btnBorderHColor,
-	};
 
 	if ( true === postPagination ) {
 		if ( 'filled' === paginationLayout ) {
@@ -1084,11 +1077,22 @@ function styling( attributes, clientId, deviceType ) {
 				'padding-right': generateCSSUnit( paddingBtnRight, paddingBtnUnit ),
 				...borderCSS,
 				'letter-spacing': generateCSSUnit( ctaLetterSpacing, ctaLetterSpacingType ),
-			}
-
+			},
+			' .uagb-post__inner-wrap .uagb-post__text .wp-block-button.uagb-post__cta:not(.is-style-outline) .uagb-text-link.wp-block-button__link:not(.has-background):hover' : {
+				'color': ctaHColor,
+				'background': ctaBgHType === 'color' ? ctaBgHColor : 'transparent',
+				'border-color': btnBorderHColor,
+			},
 		}
-		tabletSelectors[ ' .uagb-post__cta .uagb-text-link' ] = borderCSSTablet;
-		mobileSelectors[ ' .uagb-post__cta .uagb-text-link' ] = borderCSSMobile;
+		tabletSelectors = {
+			...tabletSelectors,
+		' .uagb-post__cta .uagb-text-link' : borderCSSTablet
+		}
+
+		mobileSelectors = {
+			...mobileSelectors,
+		' .uagb-post__cta .uagb-text-link' : borderCSSMobile
+		}
 	}
 
 	let stylingCss = '';

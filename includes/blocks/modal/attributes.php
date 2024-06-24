@@ -16,11 +16,12 @@ $content_border_attributes = UAGB_Block_Helper::uag_generate_border_attribute(
 );
 $additional_attributes     = apply_filters( 'spectra_modal_attributes', array() );
 $additional_attributes     = is_array( $additional_attributes ) ? $additional_attributes : array();
+$inherit_from_theme        = 'enabled' === ( 'deleted' !== UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme_fallback', 'deleted' ) ? 'disabled' : UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' ) );
 
 return array_merge(
 	array(
 		'modalTrigger'                => 'button',
-		'inheritFromTheme'            => false,
+		'inheritFromTheme'            => $inherit_from_theme,
 		'buttonIconSpace'             => '5',
 		'buttonIconSpaceTablet'       => '',
 		'buttonIconSpaceMobile'       => '',
@@ -30,13 +31,17 @@ return array_merge(
 		'modalAlignTablet'            => '',
 		'modalAlignMobile'            => '',
 		'modalWidth'                  => 600,
-		'modalWidthTablet'            => 600,
-		'modalWidthMobile'            => 220,
+		'modalWidthTablet'            => '',
+		'modalWidthMobile'            => '',
 		'modalWidthType'              => 'px',
+		'modalWidthTypeTablet'        => '',
+		'modalWidthTypeMobile'        => '',
 		'modalHeight'                 => 350,
-		'modalHeightTablet'           => 350,
-		'modalHeightMobile'           => 300,
+		'modalHeightTablet'           => '',
+		'modalHeightMobile'           => '',
 		'modalHeightType'             => 'px',
+		'modalHeightTypeTablet'       => '',
+		'modalHeightTypeMobile'       => '',
 		'closeIconSize'               => 25,
 		'closeIconPosition'           => 'popup-top-right',
 		'overlayColor'                => 'rgba(0,0,0,0.75)',

@@ -24,10 +24,11 @@ const InfoBoxIconImage = ( props ) => {
 					<div className="uagb-ifb-image-content">
 						<img
 							src={ url }
-							alt={ attributes.iconImage.alt }
+							alt={ attributes.imageAlt }
 							width={ imageWidthType ? imageWidth : imgTagWidth }
 							height={ imgTagHeight }
 							loading="lazy"
+							style={ { display: url ? undefined : 'none' } }
 						/>
 					</div>
 				) }

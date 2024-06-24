@@ -63,7 +63,7 @@ const PostGridComponent = ( props ) => {
 			displayPostImage,
 			wrapperRightPadding,
 			wrapperLeftPadding,
-			ctaBottomSpace, 
+			ctaBottomSpace,
 		},
 		setAttributes,
 		clientId,

@@ -3514,17 +3514,6 @@ namespace {
         {
         }
         /**
-         * Re-generate Spectra based assets.
-         *
-         * This is reusable function which compile fonts, assets and generate asset files.
-         *
-         * @since 2.13.4
-         * @return void
-         */
-        public function regenerate_post_assets()
-        {
-        }
-        /**
          * Generates stylesheet in loop.
          *
          * @param object $this_post Current Post Object.
@@ -6320,7 +6309,17 @@ namespace ZipAI\Classes {
         {
         }
         /**
-         * Fetches ai data from the middleware server - this will be merged with the get_credit_server_response() function.
+         * Update ZIP AI Assistant options.
+         *
+         * @param array $params Parameters for updating options.
+         * @since 1.1.6
+         * @return void
+         */
+        public function update_zip_ai_assistant_options($params)
+        {
+        }
+        /**
+         * Fetches ai data from the middleware server.
          *
          * @param \WP_REST_Request $request request object.
          * @since 1.0.0
@@ -6520,10 +6519,12 @@ namespace ZipAI\Classes {
          * Get the Zip AI Response from the Zip Credit Server.
          *
          * @param string $endpoint The endpoint to get the response from.
+         * @param array  $body The data to be passed as the request body, if any.
+         * @param array  $extra_args Extra arguments to be passed to the request, if any.
          * @since 1.0.0
          * @return array The Zip AI Response.
          */
-        public static function get_credit_server_response($endpoint)
+        public static function get_credit_server_response($endpoint, $body = [], $extra_args = [])
         {
         }
         /**
@@ -7223,7 +7224,7 @@ namespace Gutenberg_Templates\Inc\Importer {
          * Import Images if required.
          *
          * @param string $content block content.
-         * @return void
+         * @return string
          */
         public function maybe_import_images($content)
         {
@@ -10481,7 +10482,7 @@ namespace {
     {
     }
     \define('AST_BLOCK_TEMPLATES_LIBRARY_URL', \trailingslashit(\apply_filters('ast_block_templates_library_url', 'https://websitedemos.net/')));
-    \define('AST_BLOCK_TEMPLATES_VER', '2.2.0');
+    \define('AST_BLOCK_TEMPLATES_VER', '2.2.1');
     \define('AST_BLOCK_TEMPLATES_FILE', __FILE__);
     \define('AST_BLOCK_TEMPLATES_BASE', \plugin_basename(\AST_BLOCK_TEMPLATES_FILE));
     \define('AST_BLOCK_TEMPLATES_DIR', \plugin_dir_path(\AST_BLOCK_TEMPLATES_FILE));
@@ -10492,7 +10493,7 @@ namespace {
      * Plugin URI: https://www.brainstormforce.com
      * Author: Brainstorm Force
      * Author URI: https://www.brainstormforce.com
-     * Version: 2.13.3
+     * Version: 2.13.4
      * Description: The Spectra extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster.
      * Text Domain: ultimate-addons-for-gutenberg
      *

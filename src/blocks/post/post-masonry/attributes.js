@@ -10,7 +10,7 @@ const attributes = {
 	},
 	inheritFromThemeBtn: {
 		type: 'boolean',
-		default: 'enabled' === uagb_blocks_info.btn_inherit_from_theme,
+		default: 'enabled' === uagb_blocks_info.btn_inherit_from_theme_fallback,
 	},
 	buttonType: {
 		type: 'string',

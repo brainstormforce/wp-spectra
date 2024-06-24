@@ -22,7 +22,7 @@ import ReactHtmlParser from 'react-html-parser';
 
 const Settings = () => {
 	// Set the required states.
-	const [ showRevokePopup, setShowRevokePopup ] = useState( false );
+	const [ showDisconnectionPopup, setShowDisconnectionPopup ] = useState( false );
 	const [ showFeaturesPopup, setShowFeaturesPopup ] = useState( false );
 
 	// If the page is openend with the 'manage-features' query param, open the popup.
@@ -189,11 +189,11 @@ const Settings = () => {
 		</>
 	);
 
-	// Render the community card.
-	const renderRevokeCard = () => {
-		// Function to revoke access.
-		const revokeAccess = () => {
-			setShowRevokePopup( true );
+	// Render the disconnection card.
+	const renderDisconnectionCard = () => {
+		// Function to disconnect the AI features.
+		const disconnectAI = () => {
+			setShowDisconnectionPopup( true );
 		};
 
 		return (
@@ -230,10 +230,10 @@ const Settings = () => {
 				</p>
 				<button
 					className="w-fit text-base transition-colors text-red-600 focus-visible:text-red-700 hover:text-red-700"
-					onClick={ revokeAccess }
+					onClick={ disconnectAI }
 				>
 					{ applyFilters( 'zip_ai_render_revoke_card_button', __(
-						'Revoke Access',
+						'Disconnect AI',
 						'ultimate-addons-for-gutenberg'
 					) ) }
 				</button>
@@ -288,18 +288,18 @@ const Settings = () => {
 							{ applyFilters( 'zip_ai_before_welcome_sidebar' ) }
 							{ renderCreditsCard() }
 							{ renderFeaturesCard() }
-							{ renderRevokeCard() }
+							{ renderDisconnectionCard() }
 							{ applyFilters( 'zip_ai_after_welcome_sidebar' ) }
 						</div>
 					</div>
 				</div>
 			</main>
-			{ /* The Revoke Access Confirmation Popup */ }
+			{ /* The Disconnection Confirmation Popup */ }
 			<ConfirmationPopup { ...{
-				showPopup: showRevokePopup,
-				setShowPopup: setShowRevokePopup,
+				showPopup: showDisconnectionPopup,
+				setShowPopup: setShowDisconnectionPopup,
 				popupContent: {
-					title: __( 'Revoke Access', 'ultimate-addons-for-gutenberg' ),
+					title: __( 'Disconnect AI', 'ultimate-addons-for-gutenberg' ),
 					description: `${
 						__( 'Are you sure you want to disconnect?', 'ultimate-addons-for-gutenberg' )
 					}\n${
@@ -307,7 +307,7 @@ const Settings = () => {
 					}`,
 				},
 				popupAccept: {
-					label: __( 'Revoke', 'ultimate-addons-for-gutenberg' ),
+					label: __( 'Disconnect', 'ultimate-addons-for-gutenberg' ),
 					callback: () => {
 						localStorage.removeItem( 'zipAiAuthorizationStatus' );
 						window.location.assign( uag_react.zip_ai_auth_revoke_url );
@@ -316,7 +316,7 @@ const Settings = () => {
 				popupCancel: {
 					label: __( 'Cancel', 'ultimate-addons-for-gutenberg' ),
 					callback: () => {
-						setShowRevokePopup( false );
+						setShowDisconnectionPopup( false );
 					},
 				},
 			} } />
