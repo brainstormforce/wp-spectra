@@ -1,3 +1,12 @@
+v1.1.8 - 27th June 2024
+- Improved security.
+
+v1.1.7 - 24th June 2024
+- Feature: Added tooltips for icons in the Chat sidebar for improved user experience.
+- Improvement: Added disconnection status to the settings option to avoid deletion after disconnecting.
+- Fix: Resolved the empty text glitch that would occur when editing the first message in the chat.
+- Fix: Resolved PHP warnings in the widget editor for PluginSidebar and PluginSidebarMoreMenuItem.
+
 v1.1.6 - 15th May 2024
 - Improvement: Added dropdown menu for common Zip AI Assistant actions in the toolbar.
 - Improvement: Upgraded the `get_credit_server_response` helper function to support data.

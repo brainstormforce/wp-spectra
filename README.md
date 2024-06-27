@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* This update addressed a security bug. Props to Patchstack for privately reporting it to our team. Please make sure you are using the latest version on your website.
+
 ### 2.13.7 - Tuesday, 18th June 2024. ###
 * Fix: Forms - Resolved an issue wherein the select dropdown padding would not work as intended with the Astra theme.
 * Fix: How-To - Resolved an issue that would cause all blocks to encounter an error when using the How-To steps with a dynamic image.
