@@ -57,13 +57,15 @@ class Sidebar_Configurations {
 	 * @return void
 	 */
 	public function __construct() {
+		if ( ! current_user_can( 'manage_zip_ai_assistant' ) ) {
+			return;
+		}
 		// Setup the Sidebar Rest Routes.
 		add_action( 'rest_api_init', array( $this, 'register_route' ) );
+		add_action( 'admin_bar_menu', array( $this, 'add_admin_trigger' ), 999 );
 
 		// Setup the Sidebar Auth Ajax.
 		add_action( 'wp_ajax_verify_zip_ai_authenticity', array( $this, 'verify_authenticity' ) );
-
-		add_action( 'admin_bar_menu', array( $this, 'add_admin_trigger' ), 999 );
 
 		// Render the Sidebar React App in the Footer in the Gutenberg Editor, Admin, and the Front-end.
 		add_action( 'admin_footer', array( $this, 'render_sidebar_markup' ) );
@@ -90,7 +92,7 @@ class Sidebar_Configurations {
 					'methods'             => \WP_REST_Server::CREATABLE,
 					'callback'            => array( $this, 'generate_ai_content' ),
 					'permission_callback' => function () {
-						return current_user_can( 'edit_posts' );
+						return current_user_can( 'manage_zip_ai_assistant' );
 					},
 					'args'                => array(
 						'use_system_message' => array(
@@ -287,7 +289,7 @@ class Sidebar_Configurations {
 	 * @since 1.0.0
 	 */
 	public function load_sidebar_assets() {
-		// If the adminbar is not visible on this screen, abandon ship.
+		// If the admin bar is not visible, we don't want to load the sidebar assets.
 		if ( ! is_admin_bar_showing() ) {
 			return;
 		}
@@ -314,6 +316,13 @@ class Sidebar_Configurations {
 				'wp-rich-text',
 			]
 		) : $script_info['dependencies'];
+
+		// Resolving conflict with wigdget page query monitor warning.
+		global $pagenow;
+		if ( 'widgets.php' === $pagenow ) {
+			$script_dep = array_diff( $script_info['dependencies'], [ 'wp-edit-post' ] );
+		}
+		$screen = is_admin() ? get_current_screen() : null;
 
 		// Register the sidebar scripts.
 		wp_register_script(
@@ -368,6 +377,8 @@ class Sidebar_Configurations {
 				'is_customize_preview'     => is_customize_preview(),
 				'collab_product_details'   => $collab_product_details,
 				'zip_ai_assistant_options' => get_option( 'zip_ai_assistant_option' ),
+				'is_widgets_page'          => $screen->id ?? null,
+				'current_status'           => Helper::get_setting( 'status' ),
 			)
 		);
 	}
@@ -398,10 +409,6 @@ class Sidebar_Configurations {
 	 * @return void
 	 */
 	public static function render_sidebar_markup() {
-		// If the current user does not have the required capability, then don't render the empty div.
-		if ( ! current_user_can( 'edit_posts' ) ) {
-			return;
-		}
 		// If the adminbar is visible on this screen, render the admin trigger.
 		if ( is_admin_bar_showing() ) {
 			?>

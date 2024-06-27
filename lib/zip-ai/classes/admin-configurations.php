@@ -39,6 +39,15 @@ class Admin_Configurations {
 	private static $instance;
 
 	/**
+	 * Custom Capability
+	 *
+	 * @since 1.1.8
+	 * @access public
+	 * @var string capabilities.
+	 */
+	public static $custom_capability = 'manage_zip_ai_assistant';
+
+	/**
 	 * Initiator of this class.
 	 *
 	 * @since 1.0.0
@@ -63,6 +72,17 @@ class Admin_Configurations {
 
 		// Verify Zip AI Authorization.
 		add_action( 'admin_init', array( $this, 'verify_authorization' ) );
+		/**
+		 * This action hook is used to add custom capabilities to the administrator role.
+		 * The custom capability is 'manage_zip_ai_assistant'.
+		 * This action hook is triggered when the admin initiates, meaning when the admin
+		 * goes to the admin dashboard, this action hook is triggered.
+		 * The priority of this action hook is set to 10, meaning it will be executed before
+		 * other action hooks with lower priorities.
+		 * The callback function for this action hook is the 'add_custom_capabilities' method
+		 * of the same class.
+		 */
+		add_action( 'admin_init', array( $this, 'add_custom_capabilities' ), 10 );
 
 		// Setup the Admin Menu Page.
 		// add_action( 'admin_menu', array( $this, 'setup_menu_page' ) ); - This can be added later if required.
@@ -70,6 +90,82 @@ class Admin_Configurations {
 		// Setup the Admin Ajax Actions.
 		add_action( 'wp_ajax_zip_ai_toggle_assistant_status_ajax', array( $this, 'toggle_assistant_status_ajax' ) );
 		add_action( 'wp_ajax_zip_ai_disabler_ajax', array( $this, 'disabler_ajax' ) );
+	}
+
+	/**
+	 * Add custom capabilities.
+	 *
+	 * @since 1.1.8
+	 * @return void
+	 */
+	public function add_custom_capabilities() {
+		// Remove the custom capability from all roles except the roles specified in the filter.
+		$this->remove_custom_capability_from_other_roles();
+
+		/**
+		 * Get the additional roles to add the custom capability.
+		 *
+		 * The additional roles are filtered by the `zip_ai_assistant_capability_additional_roles` filter.
+		 * If this filter is not used, then only the 'administrator' role will get the custom capability.
+		 * The default additional roles are 'administrator' and 'editor'.
+		 *
+		 * @since 1.1.8
+		 *
+		 * @return array The additional roles to add the custom capability.
+		 */
+		$roles = apply_filters(
+			'zip_ai_assistant_capability_additional_roles',
+			array( 'administrator', 'editor' )
+		);
+
+		// Loop through each role and add the custom capability to the role object.
+		foreach ( $roles as $role_slug ) {
+			// Get the role object by the role slug.
+			$role_object = get_role( $role_slug );
+
+			// Check if the role object exists.
+			if ( $role_object ) {
+				// Add the custom capability to the role object.
+				$role_object->add_cap( self::$custom_capability );
+			}
+		}
+	}
+
+	/**
+	 * Remove custom capabilities.
+	 *
+	 * @since 1.1.8
+	 * @return void
+	 */
+	public function remove_custom_capability_from_other_roles() {
+		// Set the default role to retain the custom capability.
+		$default_role = 'administrator';
+
+		// Get the default role object.
+		$default_role_object = get_role( $default_role );
+
+		// Remove the custom capability from all roles except the default role.
+		// Here, we are iterating through all the roles and removing the custom capability
+		// from each role except the default role.
+		if ( $default_role_object ) {
+			// Get all the role names.
+			$roles = wp_roles()->role_names;
+
+			// Exclude the default role from the list of roles.
+			unset( $roles[ $default_role ] );
+
+			// Loop through each role.
+			foreach ( $roles as $role_slug => $role_name ) {
+				// Get the role object by the role slug.
+				$role_object = get_role( $role_slug );
+
+				// Check if the role object exists and if the role object has the custom capability.
+				if ( $role_object && $role_object->has_cap( self::$custom_capability ) ) {
+					// Remove the custom capability from the role object.
+					$role_object->remove_cap( self::$custom_capability );
+				}
+			}
+		}
 	}
 
 
@@ -122,8 +218,8 @@ class Admin_Configurations {
 		// Redirect to the settings page if the user is trying to revoke the token.
 		if ( isset( $_GET['revoke_zip_ai_authorization_token'] ) && 'definitely' === sanitize_text_field( $_GET['revoke_zip_ai_authorization_token'] ) ) {
 
-			// Delete the Zip AI settings.
-			Helper::delete_admin_settings_option( 'zip_ai_settings' );
+			// Clear out the Zip AI settings and disconnect the user.
+			Helper::update_admin_settings_option( 'zip_ai_settings', [ 'status' => 'disconnected' ] );
 
 			// Redirect to the settings page.
 			$redirection_url = apply_filters( 'zip_ai_revoke_redirection_url', admin_url() );
@@ -138,6 +234,9 @@ class Admin_Configurations {
 
 		// Get the existing options, and update the auth token before updating the option.
 		$db_settings_options = Helper::get_setting();
+
+		// At this point, the user is connected with Zip AI.
+		$db_settings_options['status'] = 'connected';
 
 		// Update the auth token if needed.
 		if ( isset( $_GET['credit_token'] ) && is_string( $_GET['credit_token'] ) ) {

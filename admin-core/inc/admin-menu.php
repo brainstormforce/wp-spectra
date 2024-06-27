@@ -289,6 +289,7 @@ class Admin_Menu {
 					'zip_ai_is_chat_enabled'  => Zip_Ai_Module::is_enabled( 'ai_assistant' ),
 					'zip_ai_admin_nonce'      => wp_create_nonce( 'zip_ai_admin_nonce' ),
 					'zip_ai_credit_details'   => Zip_Ai_Helper::get_credit_details(),
+					'zip_ai_status'           => Zip_AI_Helper::get_setting( 'status' ),
 				)
 			);
 

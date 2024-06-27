@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.5
-Stable tag: 2.13.7
+Stable tag: 2.13.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,7 +215,10 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= 2.13.7 - Tuesday, 18th June 2024. =
+= 2.13.8 - Thursday, 27th June 2024 =
+* This update addressed a security bug. Props to Patchstack for privately reporting it to our team. Please make sure you are using the latest version on your website.
+
+= 2.13.7 - Tuesday, 18th June 2024 =
 * Fix: Forms - Resolved an issue wherein the select dropdown padding would not work as intended with the Astra theme.
 * Fix: How-To - Resolved an issue that would cause all blocks to encounter an error when using the How-To steps with a dynamic image.
 * Fix: Post Grid - Resolved an issue that would cause an error when selecting the Post Type as Site Builder and the Image Layout as Background.
@@ -231,18 +234,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Taxonomy List - Handled the "Taxonomy Not Available." message on the front-end when using categories from the "Create And Assign Categories For Pages" plugin.
 * Fix: Testimonial - Resolved an issue wherein the image height would not work as intended.
 * Fix: Global - Resolved an issue wherein Custom CSS would not display on editor reload.
-
-= 2.13.4 - Thursday, 6th June 2024 =
-* Feature: Quick Action Bar - Easily rearrange blocks in the Quick Action Bar for a personalized workflow.
-* Improvement: Info Box - Added an option to set the alt attribute of the image.
-* Improvement: Modal - Added separate units ( default 'px' ) for responsive modal width and height.
-* Improvement: Global - Added the inherit-from-theme primary and secondary-button options in blocks that contain buttons for Astra themes.
-* Improvement: Asset Generation - Regenerating post assets on current post update to avoid any conflicts with the cached version.
-* Fix: Buttons - Resolved an issue wherein the button typography styles would not work when applied from the parent in the Astra theme.
-* Fix: Buttons - Resolved an issue wherein button icon spacing would not work as expected in responsive devices.
-* Fix: Image Gallery - Added accessibility improvements to the lightbox close and gallery pagination buttons.
-* Fix: Quick Action Bar - Removed a console error that would occur in the editor whenever a block was dragged.
-* Fix: Global - Resolved an issue in which the media pickers would not show the selected image in the popup.
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 
