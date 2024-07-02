@@ -449,7 +449,7 @@ module.exports = function ( grunt ) {
 	function mergeCustomCategories( getDownloadedIcons, getCategoriesCustomTitle, getCustomCategoryTitle ) {
 		for ( const shortCategoryKey in getCategoriesCustomTitle ) {
 			const shortCategory = getCategoriesCustomTitle[shortCategoryKey];
-	
+
 			if ( typeof shortCategory === 'object' && shortCategory.hasOwnProperty( 'original_cate' ) ) {
 				if ( shortCategory.original_cate.includes( 'brands' ) ) {
 					for ( const iconKey of getCustomCategoryTitle.brands.icons ) {
