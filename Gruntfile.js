@@ -162,6 +162,19 @@ module.exports = function ( grunt ) {
 					},
 				],
 			},
+			textdomain_update: {
+				src: [
+					'lib/zip-ai/admin/dashboard-app/build/*.js',
+					'lib/zip-ai/sidebar/build/*.js',
+				],
+				overwrite: true,
+				replacements: [
+					{
+						from: /,"zip-ai"/ig,
+						to: ',"ultimate-addons-for-gutenberg"',
+					},
+				],
+			},
 		},
 		wp_readme_to_markdown: {
 			your_target: {
@@ -282,7 +295,8 @@ module.exports = function ( grunt ) {
 	] );
 	grunt.registerTask( 'release-no-clean', [ 'clean:zip', 'copy' ] );
 	grunt.registerTask( 'textdomain', [ 'addtextdomain' ] );
-	grunt.registerTask( 'i18n', [ 'addtextdomain', 'makepot' ] );
+	grunt.registerTask( 'synctextdomains', [ 'replace:textdomain_update' ] );
+	grunt.registerTask( 'i18n', [ 'synctextdomains', 'addtextdomain', 'makepot' ] );
 
 	// Clean up svg icon json file.
 	grunt.registerTask( 'clean-icon-svg-json-file', [ 'clean:SpectraIconsV6' ] );

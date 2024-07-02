@@ -186,6 +186,9 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			$enable_templates_button = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_templates_button', 'yes' );
 
+			// Sync the Zip AI Library textdomain with the Spectra textdomain.
+			add_filter( 'zip_ai_library_textdomain', array( $this, 'sync_library_textdomain' ) );
+
 			if ( 'yes' === $enable_templates_button ) {
 				require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';
 			} else {
@@ -200,6 +203,17 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			add_filter( 'zip_ai_revoke_redirection_url', array( $this, 'add_zip_ai_redirection_url' ), 20, 1 );
 
 			require_once UAGB_DIR . 'lib/class-uagb-zip-ai.php';
+		}
+
+		/**
+		 * Sync the Zip AI Library textdomain with the Spectra textdomain.
+		 *
+		 * @param string $textdomain The textdomain for the Zip AI Library.
+		 * @since x.x.x
+		 * @return string The Spectra textdomain.
+		 */
+		public function sync_library_textdomain( $textdomain ) {
+			return 'ultimate-addons-for-gutenberg';
 		}
 
 		/**
