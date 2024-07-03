@@ -18,7 +18,7 @@ import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
 let columnsCommonData = {};
 columnsCommonData = applyFilters( 'uagb/columns', addCommonDataToSpectraBlocks( columnsCommonData ) );
-if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks ) {
+if ( 'yes' === uagb_blocks_info.enable_legacy_blocks ) {
 	registerBlockType( 'uagb/columns', {
 		...columnsCommonData,
 		title: __( 'Advanced Columns', 'ultimate-addons-for-gutenberg' ),

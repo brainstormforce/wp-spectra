@@ -133,6 +133,8 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'classes/class-uagb-filesystem.php';
 			require_once UAGB_DIR . 'classes/class-uagb-update.php';
 			require_once UAGB_DIR . 'classes/class-uagb-block.php';
+			require_once UAGB_DIR . 'classes/migration/class-spectra-migrate-blocks.php';
+			require_once UAGB_DIR . 'classes/migration/class-uagb-background-process.php';
 
 			if ( is_admin() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-beta-updates.php';

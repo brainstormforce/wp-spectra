@@ -19,7 +19,7 @@ let CF7CommonData = {};
 CF7CommonData = applyFilters( 'cf7-styler', addCommonDataToSpectraBlocks( CF7CommonData ) );
 if (
 	uagb_blocks_info.cf7_is_active &&
-	( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks )
+	( 'yes' === uagb_blocks_info.enable_legacy_blocks )
 ) {
 	registerBlockType( 'uagb/cf7-styler', {
 		...CF7CommonData,
