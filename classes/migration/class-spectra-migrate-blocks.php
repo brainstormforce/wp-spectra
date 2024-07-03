@@ -4,7 +4,7 @@
  *
  * Class to execute cron event when the plugin is updated.
  *
- * @since x.x.x
+ * @since 2.13.9
  * @package UAGB
  */
 
@@ -20,14 +20,14 @@ if ( ! class_exists( 'Uagb_Background_Process' ) ) {
  * Spectra_Update_Features.
  *
  * @package UAGB
- * @since x.x.x
+ * @since 2.13.9
  */
 class Spectra_Migrate_Blocks {
 
 	/**
 	 * Member Variable
 	 *
-	 * @since x.x.x
+	 * @since 2.13.9
 	 * @var Spectra_Migrate_Blocks
 	 */
 	private static $instance;
@@ -56,7 +56,7 @@ class Spectra_Migrate_Blocks {
 	/**
 	 *  Initiator
 	 *
-	 * @since x.x.x
+	 * @since 2.13.9
 	 * @return Spectra_Migrate_Blocks
 	 */
 	public static function get_instance() {
@@ -69,7 +69,7 @@ class Spectra_Migrate_Blocks {
 	/**
 	 * Constructor function.
 	 *
-	 * @since x.x.x
+	 * @since 2.13.9
 	 */
 	public function __construct() {
 		self::$info_box_mapping         = array(
@@ -106,7 +106,7 @@ class Spectra_Migrate_Blocks {
 	/**
 	 * Trigger migration via query parameter.
 	 *
-	 * @since x.x.x
+	 * @since 2.13.9
 	 * @return void
 	 */
 	public function query_migrate_to_new() {
@@ -124,7 +124,7 @@ class Spectra_Migrate_Blocks {
 	/**
 	 * Schedule and run blocks migration.
 	 *
-	 * @since x.x.x
+	 * @since 2.13.9
 	 * @return void
 	 */
 	public function migrate_blocks() {
@@ -142,7 +142,7 @@ class Spectra_Migrate_Blocks {
 	/**
 	 * Execute blocks migration process.
 	 *
-	 * @since x.x.x
+	 * @since 2.13.9
 	 * @return void
 	 */
 	public function blocks_migration() {
@@ -188,7 +188,7 @@ class Spectra_Migrate_Blocks {
 	/**
 	 * Check the status of the migration process.
 	 *
-	 * @since x.x.x
+	 * @since 2.13.9
 	 * @return void
 	 */
 	public function check_migration_status() {
@@ -235,7 +235,7 @@ class Spectra_Migrate_Blocks {
 	/**
 	 * Add migration status checking script to admin footer.
 	 *
-	 * @since x.x.x
+	 * @since 2.13.9
 	 * @return void
 	 */
 	public function add_migration_status_script() {
@@ -297,7 +297,7 @@ class Spectra_Migrate_Blocks {
 	/**
 	 * Update the content blocks.
 	 *
-	 * @since x.x.x
+	 * @since 2.13.9
 	 * @param string $content Content to be updated.
 	 * @return string Updated content.
 	 */
@@ -310,7 +310,7 @@ class Spectra_Migrate_Blocks {
 	/**
 	 * Update blocks with new attributes.
 	 *
-	 * @since x.x.x
+	 * @since 2.13.9
 	 * @param array $blocks Blocks to be updated.
 	 * @return array Updated blocks.
 	 */
@@ -350,7 +350,7 @@ class Spectra_Migrate_Blocks {
  * Prepare if class 'UAGB_Init_Blocks' exist.
  * Kicking this off by calling 'get_instance()' method.
  *
- * @since x.x.x
+ * @since 2.13.9
  */
 Spectra_Migrate_Blocks::get_instance();
 ?>

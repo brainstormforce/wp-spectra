@@ -60,7 +60,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Handle migration action AJAX.
 		 * 
-		 * @since x.x.x
+		 * @since 2.13.9
 		 * @return void
 		 */
 		public function handle_migration_action_ajax() {
@@ -94,7 +94,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Callback function to display migration log page content.
 		 *
-		 * @since x.x.x
+		 * @since 2.13.9
 		 * @return void
 		 */
 		public function handle_log_download() {
@@ -440,7 +440,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Enqueue script to reload the page on migration complete.
 		 * 
-		 * @since x.x.x
+		 * @since 2.13.9
 		 * @return void
 		 */
 		public function reload_on_migration_complete() {

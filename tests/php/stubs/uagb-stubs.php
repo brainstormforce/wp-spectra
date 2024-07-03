@@ -4116,7 +4116,7 @@ namespace {
          * Sync the Zip AI Library textdomain with the Spectra textdomain.
          *
          * @param string $textdomain The textdomain for the Zip AI Library.
-         * @since x.x.x
+         * @since 2.13.9
          * @return string The Spectra textdomain.
          */
         public function sync_library_textdomain($textdomain)

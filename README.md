@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.5  
-**Stable tag:** 2.13.8  
+**Stable tag:** 2.13.9  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### x.x.x ###
+### 2.13.9 - Wednesday, 3rd July 2024 ###
 * Fix: Global: Added update notice to update the old user database to provide compatibility.
 * Fix: Container - Resolved an issue wherein WordPress core blocks inside the container were aligning to the center in tablet/mobile view in the editor.
 

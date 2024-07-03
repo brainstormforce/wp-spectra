@@ -85,64 +85,8 @@ if ( ! class_exists( '\ZipAI\Loader' ) ) {
 
 			spl_autoload_register( [ $this, 'autoload' ] );
 
-			add_action( 'plugins_loaded', [ $this, 'load_textdomain' ] );
 			add_action( 'plugins_loaded', [ $this, 'setup_classes' ], 20 );
 			$this->define_constants();
-		}
-
-		/**
-		 * Load Plugin Text Domain.
-		 * This will load the translation textdomain depending on the file priorities.
-		 *      1. Global Languages /wp-content/languages/zip-ai/ folder
-		 *      2. Local directory /wp-content/plugins/zip-ai/languages/ folder
-		 *
-		 * @since 1.0.0
-		 * @return void
-		 */
-		public function load_textdomain() {
-			// Default languages directory.
-			$lang_dir = ZIP_AI_DIR . 'languages/';
-
-			/**
-			 * Filters the languages directory path to use for plugin.˜
-			 *
-			 * @param string $lang_dir The languages directory path.
-			 */
-			$lang_dir = apply_filters( 'zip_ai_languages_directory', $lang_dir );
-
-			// Traditional WordPress plugin locale filter.
-			global $wp_version;
-
-			$get_locale = get_locale();
-
-			if ( $wp_version >= 4.7 ) {
-				$get_locale = get_user_locale();
-			}
-
-			/**
-			 * Language Locale for plugin
-			 *
-			 * @var $get_locale The locale to use.
-			 * Uses get_user_locale()` in WordPress 4.7 or greater,
-			 * otherwise uses `get_locale()`.
-			 */
-			$locale = apply_filters( 'plugin_locale', $get_locale, 'zip-ai' );
-			$mofile = sprintf( '%1$s-%2$s.mo', 'zip-ai', $locale );
-
-			// Setup paths to current locale file.
-			$mofile_global = WP_LANG_DIR . '/plugins/' . $mofile;
-			$mofile_local  = $lang_dir . $mofile;
-
-			if ( file_exists( $mofile_global ) ) {
-				// Look in global /wp-content/languages/zip-ai/ folder.
-				load_textdomain( 'zip-ai', $mofile_global );
-			} elseif ( file_exists( $mofile_local ) ) {
-				// Look in local /wp-content/plugins/zip-ai/languages/ folder.
-				load_textdomain( 'zip-ai', $mofile_local );
-			} else {
-				// Load the default language files.
-				load_plugin_textdomain( 'zip-ai', false, $lang_dir );
-			}
 		}
 
 		/**
@@ -155,7 +99,7 @@ if ( ! class_exists( '\ZipAI\Loader' ) ) {
 			define( 'ZIP_AI_FILE', __FILE__ );
 			define( 'ZIP_AI_DIR', plugin_dir_path( ZIP_AI_FILE ) );
 			define( 'ZIP_AI_URL', plugins_url( '/', ZIP_AI_FILE ) );
-			define( 'ZIP_AI_VERSION', '1.1.8' );
+			define( 'ZIP_AI_VERSION', '1.1.9' );
 			define( 'ZIP_AI_MENU_SLUG', 'zip-ai' );
 			define( 'ZIP_AI_MIDDLEWARE', 'https://app.zipwp.com/auth/' );
 			define( 'ZIP_AI_ZIPWP_API', 'https://api.zipwp.com/api/' );

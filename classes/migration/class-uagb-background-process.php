@@ -4,7 +4,7 @@
  *
  * Class to execute cron event when the plugin is updated.
  *
- * @since x.x.x
+ * @since 2.13.9
  * @package UAGB
  */
 
@@ -23,7 +23,7 @@ if ( ! class_exists( 'WP_Background_Process' ) ) {
 /**
  * Spectra migration log.
  *
- * @since x.x.x
+ * @since 2.13.9
  * @package UAGB
  *
  * @param string $message The message to log.
@@ -45,7 +45,7 @@ if ( ! class_exists( 'class_spectra_migrate_blocks' ) ) {
 	 *
 	 * Handles background processing for block migrations.
 	 *
-	 * @since x.x.x
+	 * @since 2.13.9
 	 * @package UAGB
 	 */
 	class Uagb_Background_Process extends WP_Background_Process {
@@ -96,7 +96,7 @@ if ( ! class_exists( 'class_spectra_migrate_blocks' ) ) {
 		/**
 		 * Complete the migration process.
 		 * 
-		 * @since x.x.x
+		 * @since 2.13.9
 		 * @return void
 		 */
 		protected function complete() {
