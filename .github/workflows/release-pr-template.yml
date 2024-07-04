@@ -33,7 +33,7 @@ jobs:
             - [ ] Verify constant `UAGB_VER` in `class-uagb-loader.php` with latest version of Spectra
             - [ ] Generate README.md : `grunt readme`
             - [ ] Verify changelog `date` and `content` as per Spectra standards
-            - [ ] Generate POT file : `npm run makepot`
+            - [ ] Generate POT file : `grunt i18n` and `npm run makepot`
             - [ ] Update version in `package.json` and `package-lock.json`
             ---
           body-update-action: 'suffix'
