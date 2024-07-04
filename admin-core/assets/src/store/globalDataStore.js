@@ -45,9 +45,9 @@ const initialState = {
 	blocksEditorSpacing: '',
 	containerGlobalPadding: '',
 	containerGlobalElementsGap: 20,
-	enableFontAwesome5: ( 'yes' === uag_react.global_data.uagb_old_user_less_than_2 ) ? 'enabled' : 'disabled',
-	enableAutoBlockRecovery: ( 'yes' === uag_react.global_data.uagb_old_user_less_than_2 ) ? 'enabled' : 'disabled',
-	enableLegacyBlocks: ( 'yes' === uag_react.global_data.uagb_old_user_less_than_2 ) ? 'yes' : 'no',
+	enableFontAwesome5: 'disabled',
+	enableAutoBlockRecovery: 'disabled',
+	enableLegacyBlocks: 'no',
 	instaLinkedAccounts: '',
 	coreBlocks: [
 		'container',

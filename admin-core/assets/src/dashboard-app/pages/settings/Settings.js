@@ -136,9 +136,7 @@ const Settings = () => {
 								<OnPageCSS/>
                                 <CopyPasteStyles/>
                                 <AutoBlockRecovery/>
-                                {  'yes' === uag_react.global_data.uagb_old_user_less_than_2 &&
-                                    <LoadFontAwesome5/>
-                                }
+                                <LoadFontAwesome5/>
                             </>
                         }
                         { 'asset-generation' === activeSettingsNavigationTab &&
@@ -159,9 +157,7 @@ const Settings = () => {
                             <>
                                 <RollBack/>
                                 <BetaUpdates/>
-								{  'yes' !== uag_react.global_data.uagb_old_user_less_than_2 &&
-                                    <LegacyBlocks/>
-                                }
+                                <LegacyBlocks/>
                             </>
                         }
                         { 'fonts-performance' === activeSettingsNavigationTab &&

@@ -66,7 +66,7 @@ class Do_It_Later extends Api_Base {
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 			return new \WP_Error(
 				'gt_rest_cannot_access',
-				__( 'Sorry, you are not allowed to do that.', 'ast-block-templates' ),
+				__( 'Sorry, you are not allowed to do that.', 'ultimate-addons-for-gutenberg' ),
 				array( 'status' => rest_authorization_required_code() )
 			);
 		}

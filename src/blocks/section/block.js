@@ -16,7 +16,7 @@ import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
 let sectionCommonData = {};
 sectionCommonData = applyFilters( 'uagb/section', addCommonDataToSpectraBlocks( sectionCommonData ) );
-if ( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks ) {
+if ( 'yes' === uagb_blocks_info.enable_legacy_blocks ) {
 	registerBlockType( 'uagb/section', {
 		...sectionCommonData,
 		title: __( 'Advanced Row', 'ultimate-addons-for-gutenberg' ),

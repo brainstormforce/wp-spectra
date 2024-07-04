@@ -153,7 +153,7 @@ class Sidebar_Configurations {
 		if ( ! empty( $last_message_tone ) ) {
 			$current_options['last_used']['changeTone'] = [
 				'value' => $last_message_tone,
-				'label' => __( ucfirst( $last_message_tone ), 'zip-ai' ), //phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
+				'label' => __( ucfirst( $last_message_tone ), 'ultimate-addons-for-gutenberg' ), //phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
 			];
 		}
 
@@ -180,7 +180,7 @@ class Sidebar_Configurations {
 
 		// If the nessage array doesn't exist, abandon ship.
 		if ( empty( $params['message_array'] ) || ! is_array( $params['message_array'] ) ) {
-			wp_send_json_error( array( 'message' => __( 'The message array was not supplied', 'zip-ai' ) ) );
+			wp_send_json_error( array( 'message' => __( 'The message array was not supplied', 'ultimate-addons-for-gutenberg' ) ) );
 		}
 
 		// Set the token count to 0, and create messages array.
@@ -246,7 +246,7 @@ class Sidebar_Configurations {
 			wp_send_json_success( array( 'message' => $response['choices'][0]['message']['content'] ) );
 		} else {
 			// If you've reached here, then something has definitely gone amuck. Abandon ship.
-			wp_send_json_error( array( 'message' => __( 'Something went wrong', 'zip-ai' ) ) );
+			wp_send_json_error( array( 'message' => __( 'Something went wrong', 'ultimate-addons-for-gutenberg' ) ) );
 		}//end if
 	}
 
@@ -260,8 +260,8 @@ class Sidebar_Configurations {
 	 */
 	private function custom_message( $code ) {
 		$message_array = array(
-			'no_auth'              => __( 'Invalid auth token.', 'zip-ai' ),
-			'insufficient_credits' => __( 'You have no credits left.', 'zip-ai' ),
+			'no_auth'              => __( 'Invalid auth token.', 'ultimate-addons-for-gutenberg' ),
+			'insufficient_credits' => __( 'You have no credits left.', 'ultimate-addons-for-gutenberg' ),
 		);
 
 		return isset( $message_array[ $code ] ) ? $message_array[ $code ] : '';
@@ -344,7 +344,7 @@ class Sidebar_Configurations {
 		// Enqueue the sidebar scripts.
 		wp_enqueue_script( $handle );
 		// Set the script translations.
-		wp_set_script_translations( $handle, 'zip-ai' );
+		wp_set_script_translations( $handle, apply_filters( 'zip_ai_library_textdomain', 'zip-ai' ) );
 		// Enqueue the sidebar styles.
 		wp_enqueue_style( $handle );
 

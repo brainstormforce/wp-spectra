@@ -484,7 +484,7 @@ class Admin_Configurations {
 		// Enqueue the admin scripts.
 		wp_enqueue_script( $handle );
 		// Set the script translations.
-		wp_set_script_translations( $handle, 'zip-ai' );
+		wp_set_script_translations( $handle, apply_filters( 'zip_ai_library_textdomain', 'zip-ai' ) );
 		// Enqueue the Google Fonts.
 		wp_enqueue_style( 'zip-ai-admin-google-fonts' );
 		// Enqueue the admin styles.
@@ -504,7 +504,7 @@ class Admin_Configurations {
 	public function add_footer_link() {
 		return '<span id="footer-thankyou">' . sprintf(
 			/* translators: %1$s: HTML link start tag, %2$s: HTML link end tag. */
-			__( 'Thank you for using %1$sZip AI.%2$s', 'zip-ai' ),
+			__( 'Thank you for using %1$sZip AI.%2$s', 'ultimate-addons-for-gutenberg' ),
 			'<a href="https://wpspectra.com/zip-ai/" class="focus:text-spec-hover active:text-spec-hover hover:text-spec-hover" target="_blank" rel="noopener noreferrer">',
 			'</a>'
 		) . '</span>';

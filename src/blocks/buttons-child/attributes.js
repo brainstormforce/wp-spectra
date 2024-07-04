@@ -6,11 +6,6 @@ import { __ } from '@wordpress/i18n';
 
 const borderAttributes = getBorderAttributes( 'btn' );
 
-const vPaddingDefault =
-	'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks ? 10 : '';
-const hPaddingDefault =
-	'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks ? 14 : '';
-
 const attributes = {
 	isPreview: {
 		type: 'boolean',
@@ -90,22 +85,6 @@ const attributes = {
 		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-size',
-		},
-	},
-	vPadding: {
-		type: 'number',
-		default: vPaddingDefault,
-		isGBSStyle: true,
-		UAGCopyPaste: {
-			styleType: 'btn-vertical-padding',
-		},
-	},
-	hPadding: {
-		type: 'number',
-		default: hPaddingDefault,
-		isGBSStyle: true,
-		UAGCopyPaste: {
-			styleType: 'btn-horizontal-padding',
 		},
 	},
 	topPadding: {

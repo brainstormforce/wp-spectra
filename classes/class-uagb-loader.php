@@ -86,7 +86,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '2.13.8' );
+			define( 'UAGB_VER', '2.13.9' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'spectra' );
@@ -133,6 +133,8 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'classes/class-uagb-filesystem.php';
 			require_once UAGB_DIR . 'classes/class-uagb-update.php';
 			require_once UAGB_DIR . 'classes/class-uagb-block.php';
+			require_once UAGB_DIR . 'classes/migration/class-spectra-migrate-blocks.php';
+			require_once UAGB_DIR . 'classes/migration/class-uagb-background-process.php';
 
 			if ( is_admin() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-beta-updates.php';
@@ -186,6 +188,9 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			$enable_templates_button = UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_templates_button', 'yes' );
 
+			// Sync the Zip AI Library textdomain with the Spectra textdomain.
+			add_filter( 'zip_ai_library_textdomain', array( $this, 'sync_library_textdomain' ) );
+
 			if ( 'yes' === $enable_templates_button ) {
 				require_once UAGB_DIR . 'lib/class-uagb-ast-block-templates.php';
 			} else {
@@ -200,6 +205,17 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			add_filter( 'zip_ai_revoke_redirection_url', array( $this, 'add_zip_ai_redirection_url' ), 20, 1 );
 
 			require_once UAGB_DIR . 'lib/class-uagb-zip-ai.php';
+		}
+
+		/**
+		 * Sync the Zip AI Library textdomain with the Spectra textdomain.
+		 *
+		 * @param string $textdomain The textdomain for the Zip AI Library.
+		 * @since 2.13.9
+		 * @return string The Spectra textdomain.
+		 */
+		public function sync_library_textdomain( $textdomain ) {
+			return 'ultimate-addons-for-gutenberg';
 		}
 
 		/**

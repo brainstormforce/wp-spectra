@@ -16,7 +16,7 @@ let gfStylerCommonData = {};
 gfStylerCommonData = applyFilters( 'uagb/gf-styler', addCommonDataToSpectraBlocks( gfStylerCommonData ) );
 if (
 	uagb_blocks_info.gf_is_active &&
-	( 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 || 'yes' === uagb_blocks_info.enable_legacy_blocks )
+	( 'yes' === uagb_blocks_info.enable_legacy_blocks )
 ) {
 	registerBlockType( 'uagb/gf-styler', {
 		...gfStylerCommonData,

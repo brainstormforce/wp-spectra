@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.5
-Stable tag: 2.13.8
+Stable tag: 2.13.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,6 +215,10 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= 2.13.9 - Thursday, 4th July 2024 =
+* Improvement: Global - Added an update notice for users that used to use `Ultimate Addons for Gutenberg` to update their database to ensure compatibility with the Heading and Info-box block defaults. Read more [here](https://wpspectra.com/docs/spectra-database-update-instructions/).
+* Fix: Container - Resolved an issue wherein WordPress core blocks inside the container were aligning to the center in tablet/mobile view in the editor.
+
 = 2.13.8 - Thursday, 27th June 2024 =
 * This update addressed a security bug. Props to Patchstack for privately reporting it to our team. Please make sure you are using the latest version on your website.
 
@@ -227,13 +231,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = 2.13.6 - Thursday, 13th June 2024 =
 * Fix: FAQ - Resolved an issue wherein the FAQ questions could not utilize line breaks or bold text.
-
-= 2.13.5 - Wednesday, 12th June 2024 =
-* Improvement: FAQ - Implemented the server-side rendering approach for this block.
-* Fix: Container - Resolved an issue wherein the Image block would not display as expected in nested containers.
-* Fix: Taxonomy List - Handled the "Taxonomy Not Available." message on the front-end when using categories from the "Create And Assign Categories For Pages" plugin.
-* Fix: Testimonial - Resolved an issue wherein the image height would not work as intended.
-* Fix: Global - Resolved an issue wherein Custom CSS would not display on editor reload.
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 
