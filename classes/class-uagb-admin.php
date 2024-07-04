@@ -319,7 +319,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
                             %2$s
                         </h4>
                                 %3$s<br />
-                                %4$s<br />
+                                <strong>%4$s</strong>
                                 <div style="margin-bottom: 0.5em" class="astra-review-notice-container">
                                     <a style="margin-right: 0.5em" id="trigger_migration" class="uagb-review-notice button-primary">
                                     %5$s
@@ -331,8 +331,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
                                 </div><br />',
 							$image_path,
 							__( 'Spectra database update required', 'ultimate-addons-for-gutenberg' ),
-							__( 'It appears that your pages were created with an older version of our plugin.', 'ultimate-addons-for-gutenberg' ),
-							__( 'To ensure your page designs remain intact and perform optimally, a database update is required. Please proceed with the migration to maintain the current look and feel of your pages', 'ultimate-addons-for-gutenberg' ),
+							__( "We've detected that some of your pages were created with an older version of Spectra. To ensure your designs remain unaffected, we recommend updating the Spectra database now. Updating the Spectra database will not impact any other parts of your website.", 'ultimate-addons-for-gutenberg' ),
+							__( 'To be on the safer side, please be sure to back up your site before updating.', 'ultimate-addons-for-gutenberg' ),
 							__( 'Update Spectra Database', 'ultimate-addons-for-gutenberg' ),
 							esc_url( 'https://wpspectra.com/docs/spectra-database-update-instructions/' ),
 							__( 'Learn More About This', 'ultimate-addons-for-gutenberg' )
@@ -361,7 +361,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
                                 </div><br />',
 							$image_path,
 							__( 'Spectra database update in progress', 'ultimate-addons-for-gutenberg' ),
-							__( 'Spectra is updating the database in the background. The update process may take a little while, so please be patient.', 'ultimate-addons-for-gutenberg' )
+							__( 'Great! This should only take a few minutes. Thanks for hanging in there.', 'ultimate-addons-for-gutenberg' )
 						),
 						'dismissible'                => false,
 						'priority'                   => 20,
@@ -386,8 +386,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 								</div>
 							</div><br />',
 							$image_path,
-							__( 'Spectra database update completed', 'ultimate-addons-for-gutenberg' ),
-							__( 'Spectra database update has been successfully completed. Thank you for your patience.', 'ultimate-addons-for-gutenberg' ) . ' <a href="' . esc_url( admin_url( 'admin-post.php?action=uag_download_log' ) ) . '">' . __( 'View Log', 'ultimate-addons-for-gutenberg' ) . '</a>'
+							__( 'Update Successful!', 'ultimate-addons-for-gutenberg' ),
+							__( 'Your Spectra database is now up-to-date. Your website will continue to function as before.', 'ultimate-addons-for-gutenberg' ) . ' <a href="' . esc_url( admin_url( 'admin-post.php?action=uag_download_log' ) ) . '">' . __( 'View Log', 'ultimate-addons-for-gutenberg' ) . '</a>'
 						),
 						'dismissible'                => true,
 						'priority'                   => 20,
