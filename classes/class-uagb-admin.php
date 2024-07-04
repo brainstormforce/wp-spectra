@@ -317,9 +317,9 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
                             <div class="notice-content">
                             <h4 style="margin: 0.5em 0" class="notice-heading">
                             %2$s
-                        </h4>
-                                %3$s<br />
-                                <strong>%4$s</strong>
+                            </h4>
+						    %3$s<br /><br />
+						     <strong>%4$s</strong>
                                 <div style="margin-bottom: 0.5em" class="astra-review-notice-container">
                                     <a style="margin-right: 0.5em" id="trigger_migration" class="uagb-review-notice button-primary">
                                     %5$s
