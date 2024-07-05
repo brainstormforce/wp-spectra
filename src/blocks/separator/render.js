@@ -30,7 +30,7 @@ const Render = ( props ) => {
 
 	return (
 		<div { ...blockProps }>
-			<div >
+			<div className='uagb-separator-spacing-wrapper'>
 				<div className="wp-block-uagb-separator__inner" style={ { '--my-background-image': `${ customSVG }` } }>
 					{ elementType !== 'none' && (
 						<div className="wp-block-uagb-separator-element">

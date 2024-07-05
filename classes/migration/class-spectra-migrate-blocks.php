@@ -131,7 +131,6 @@ class Spectra_Migrate_Blocks {
 		if ( 'yes' !== get_option( 'uagb-old-user-less-than-2', false ) ) {
 			return;
 		}
-
 		if ( ! wp_next_scheduled( 'spectra_blocks_migration_event' ) ) {
 			wp_schedule_single_event( time(), 'spectra_blocks_migration_event' );
 		}
@@ -325,7 +324,7 @@ class Spectra_Migrate_Blocks {
 				if ( 'uagb/info-box' === $block['blockName'] ) {
 					$attributes = $block['attrs'];
 					foreach ( self::$info_box_mapping as $key => $value ) {
-						if ( ! isset( $attributes[ $key ] ) ) {
+						if ( ! isset( $attributes[ $key ] ) ) { // Meaning this is set to default, so no need to update.
 							$attributes[ $key ] = $value['old'];
 						}
 					}
@@ -334,7 +333,7 @@ class Spectra_Migrate_Blocks {
 				if ( 'uagb/advanced-heading' === $block['blockName'] ) {
 					$attributes = $block['attrs'];
 					foreach ( self::$advanced_heading_mapping as $key => $value ) {
-						if ( ! isset( $attributes[ $key ] ) ) {
+						if ( ! isset( $attributes[ $key ] ) ) { // Meaning this is set to default, so no need to update.
 							$attributes[ $key ] = $value['old'];
 						}
 					}

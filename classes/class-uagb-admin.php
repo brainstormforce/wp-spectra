@@ -9,6 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+
 if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 	/**
@@ -480,6 +481,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			</script>
 			<?php
 		}
+
 
 		/**
 		 * Rank Math SEO filter to add kb-elementor to the TOC list.

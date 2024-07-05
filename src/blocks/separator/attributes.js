@@ -77,14 +77,12 @@ const attributes = {
 	},
 	separatorBorderHeightMobile: {
 		type: 'number',
-		default: 3,
 		UAGCopyPaste: {
 			styleType: 'separator-height-mobile',
 		},
 	},
 	separatorBorderHeightTablet: {
 		type: 'number',
-		default: 3,
 		UAGCopyPaste: {
 			styleType: 'separator-height-tablet',
 		},
@@ -440,6 +438,223 @@ const attributes = {
 		type: 'string',
 		default: 'px',
 	},
+		// padding
+		blockTopPadding: {
+			type: 'number',
+			isGBSStyle : true,
+			UAGCopyPaste: {
+				styleType: 'block-top-padding',
+			},
+		},
+		blockRightPadding: {
+			type: 'number',
+			isGBSStyle : true,
+			UAGCopyPaste: {
+				styleType: 'block-right-padding',
+			},
+		},
+		blockLeftPadding: {
+			type: 'number',
+			isGBSStyle : true,
+			UAGCopyPaste: {
+				styleType: 'block-left-padding',
+			},
+		},
+		blockBottomPadding: {
+			type: 'number',
+			isGBSStyle : true,
+			UAGCopyPaste: {
+				styleType: 'block-bottom-padding',
+			},
+		},
+		blockTopPaddingTablet: {
+			type: 'number',
+			isGBSStyle : true,
+			UAGCopyPaste: {
+				styleType: 'block-top-padding-tablet',
+			},
+		},
+		blockRightPaddingTablet: {
+			type: 'number',
+			isGBSStyle : true,
+			UAGCopyPaste: {
+				styleType: 'block-right-padding-tablet',
+			},
+		},
+		blockLeftPaddingTablet: {
+			type: 'number',
+			isGBSStyle : true,
+			UAGCopyPaste: {
+				styleType: 'block-left-padding-tablet',
+			},
+		},
+		blockBottomPaddingTablet: {
+			type: 'number',
+			isGBSStyle : true,
+			UAGCopyPaste: {
+				styleType: 'block-bottom-padding-tablet',
+			},
+		},
+		blockTopPaddingMobile: {
+			type: 'number',
+			isGBSStyle : true,
+			UAGCopyPaste: {
+				styleType: 'block-top-padding-mobile',
+			},
+		},
+		blockRightPaddingMobile: {
+			type: 'number',
+			isGBSStyle : true,
+			UAGCopyPaste: {
+				styleType: 'block-right-padding-mobile',
+			},
+		},
+		blockLeftPaddingMobile: {
+			type: 'number',
+			isGBSStyle : true,
+			UAGCopyPaste: {
+				styleType: 'block-left-padding-mobile',
+			},
+		},
+		blockBottomPaddingMobile: {
+			type: 'number',
+			isGBSStyle : true,
+			UAGCopyPaste: {
+				styleType: 'block-bottom-padding-mobile',
+			},
+		},
+		blockPaddingUnit: {
+			type: 'string',
+			UAGCopyPaste: {
+				styleType: 'block-padding-unit',
+			},
+		},
+		blockPaddingUnitTablet: {
+			type: 'string',
+			UAGCopyPaste: {
+				styleType: 'block-padding-unit-tablet',
+			},
+		},
+		blockPaddingUnitMobile: {
+			type: 'string',
+			UAGCopyPaste: {
+				styleType: 'block-padding-unit-mobile',
+			},
+		},
+		blockPaddingLink: {
+			type: 'boolean',
+			default: false,
+		},
+		// margin
+		blockTopMargin: {
+			type: 'number',
+			isGBSStyle : true,
+			UAGCopyPaste: {
+				styleType: 'block-top-margin',
+			},
+		},
+		blockRightMargin: {
+			type: 'number',
+			isGBSStyle : true,
+			UAGCopyPaste: {
+				styleType: 'block-right-margin',
+			},
+		},
+		blockLeftMargin: {
+			type: 'number',
+			isGBSStyle : true,
+			UAGCopyPaste: {
+				styleType: 'block-left-margin',
+			},
+		},
+		blockBottomMargin: {
+			type: 'number',
+			isGBSStyle : true,
+			UAGCopyPaste: {
+				styleType: 'block-bottom-margin',
+			},
+		},
+		blockTopMarginTablet: {
+			type: 'number',
+			isGBSStyle : true,
+			UAGCopyPaste: {
+				styleType: 'block-top-margin-tablet',
+			},
+		},
+		blockRightMarginTablet: {
+			type: 'number',
+			isGBSStyle : true,
+			UAGCopyPaste: {
+				styleType: 'block-right-margin-tablet',
+			},
+		},
+		blockLeftMarginTablet: {
+			type: 'number',
+			isGBSStyle : true,
+			UAGCopyPaste: {
+				styleType: 'block-left-margin-tablet',
+			},
+		},
+		blockBottomMarginTablet: {
+			type: 'number',
+			isGBSStyle : true,
+			UAGCopyPaste: {
+				styleType: 'block-bottom-margin-tablet',
+			},
+		},
+		blockTopMarginMobile: {
+			type: 'number',
+			isGBSStyle : true,
+			UAGCopyPaste: {
+				styleType: 'block-top-margin-mobile',
+			},
+		},
+		blockRightMarginMobile: {
+			type: 'number',
+			isGBSStyle : true,
+			UAGCopyPaste: {
+				styleType: 'block-right-margin-mobile',
+			},
+		},
+		blockLeftMarginMobile: {
+			type: 'number',
+			isGBSStyle : true,
+			UAGCopyPaste: {
+				styleType: 'block-left-margin-mobile',
+			},
+		},
+		blockBottomMarginMobile: {
+			type: 'number',
+			isGBSStyle : true,
+			UAGCopyPaste: {
+				styleType: 'block-bottom-margin-mobile',
+			},
+		},
+		blockMarginUnit: {
+			type: 'string',
+			default: 'px',
+			UAGCopyPaste: {
+				styleType: 'block-margin-unit',
+			},
+		},
+		blockMarginUnitTablet: {
+			type: 'string',
+			default: 'px',
+			UAGCopyPaste: {
+				styleType: 'block-margin-unit-tablet',
+			},
+		},
+		blockMarginUnitMobile: {
+			type: 'string',
+			default: 'px',
+			UAGCopyPaste: {
+				styleType: 'block-margin-unit-mobile',
+			},
+		},
+		blockMarginLink: {
+			type: 'boolean',
+			default: false,
+		},
 };
 
 export default attributes;

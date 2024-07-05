@@ -3,6 +3,7 @@
 **/vendor/**
 admin/bsf-analytics/
 assets/css/blocks/
+admin-core/assets/src/utils/whats-new-library/
 lib/
 dist/
 build

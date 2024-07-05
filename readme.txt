@@ -215,6 +215,12 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+* Feature: What's New - Ability to see the new updates for Spectra in the form of a feed under the Dashboard.
+* Improvement: Separator - Added block Margin and Padding settings.
+* Fix: Image - Resolved an issue wherein the tablet and mobile alignment options would not work as expected when set for desktop.
+* Fix: Image / Image Gallery - Resolved an issue wherein the caption's text-decoration would not sync with the Astra theme's body font settings when "Default" is set.
+
 = 2.13.9 - Thursday, 4th July 2024 =
 * Improvement: Global - Added an update notice for users that used to use `Ultimate Addons for Gutenberg` to update their database to ensure compatibility with the Heading and Info-box block defaults. Read more [here](https://wpspectra.com/docs/spectra-database-update-instructions/).
 * Fix: Container - Resolved an issue wherein WordPress core blocks inside the container were aligning to the center in tablet/mobile view in the editor.

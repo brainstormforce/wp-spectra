@@ -299,6 +299,9 @@ function styling( attributes, clientId, name, deviceType ) {
 		imageBoxShadowColorHover ? ` ${ imageBoxShadowColorHover }` : ''
 	}${ 'inset' === imageBoxShadowPositionHover ? ` ${ imageBoxShadowPositionHover }` : '' }`;
 
+	// Text decoration compatibility CSS.
+	const captionDecorationStyle = '' === captionDecoration && uagb_blocks_info.is_astra_based_theme ? uagb_blocks_info.astra_body_text_decoration : captionDecoration;
+
 	let selectors = {
 		// Feed Selectors
 
@@ -469,7 +472,7 @@ function styling( attributes, clientId, name, deviceType ) {
 			'font-family': 'Default' === captionFontFamily ? '' : captionFontFamily,
 			'font-weight': captionFontWeight,
 			'font-style': captionFontStyle,
-			'text-decoration': captionDecoration,
+			'text-decoration': captionDecorationStyle,
 			'text-transform': captionTransform,
 			'font-size': generateCSSUnit( captionFontSize, captionFontSizeType ),
 			'line-height': generateCSSUnit( captionLineHeight, captionLineHeightType ),

@@ -76,11 +76,17 @@ if ( 'none' === $attr['elementType'] ) {
 	}
 }
 
-$selectors = array(
-	'.wp-block-uagb-separator' => array_merge(
+$new_padding_top        = empty( $attr['blockTopPadding'] ) && ! is_numeric( $attr['blockTopPadding'] ) ? $attr['separatorHeight'] : '';
+$new_padding_bottom     = empty( $attr['blockBottomPadding'] ) && ! is_numeric( $attr['blockBottomPadding'] ) ? $attr['separatorHeight'] : '';
+$new_padding_unit       = empty( $attr['blockTopPaddingUnit'] ) ? $attr['separatorHeightType'] : '';
+$blockPaddingUnitTablet = ! empty( $attr['blockPaddingUnitTablet'] ) ? $attr['blockPaddingUnitTablet'] : 'px';
+$blockPaddingUnitMobile = ! empty( $attr['blockPaddingUnitMobile'] ) ? $attr['blockPaddingUnitMobile'] : 'px';
+$blockPaddingUnit       = ! empty( $attr['blockPaddingUnit'] ) ? $attr['blockPaddingUnit'] : 'px';
+$selectors              = array(
+	'.wp-block-uagb-separator'         => array_merge(
 		array(
-			'padding-bottom' => UAGB_Helper::get_css_value( $attr['separatorHeight'], $attr['separatorHeightType'] ),
-			'padding-top'    => UAGB_Helper::get_css_value( $attr['separatorHeight'], $attr['separatorHeightType'] ),
+			'padding-bottom' => UAGB_Helper::get_css_value( $new_padding_top, $new_padding_unit ),
+			'padding-top'    => UAGB_Helper::get_css_value( $new_padding_bottom, $new_padding_unit ),
 			'text-align'     => $attr['separatorAlign'],
 		)
 	),
@@ -103,8 +109,18 @@ $selectors = array(
 		'color'       => $attr['elementColor'],
 		'fill'        => $attr['elementColor'],
 	),
+	' .uagb-separator-spacing-wrapper' => array(
+		'margin-top'     => UAGB_Helper::get_css_value( $attr['blockTopMargin'], $attr['blockMarginUnit'] ),
+		'margin-right'   => UAGB_Helper::get_css_value( $attr['blockRightMargin'], $attr['blockMarginUnit'] ),
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['blockBottomMargin'], $attr['blockMarginUnit'] ),
+		'margin-left'    => UAGB_Helper::get_css_value( $attr['blockLeftMargin'], $attr['blockMarginUnit'] ),
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['blockTopPadding'], $blockPaddingUnit ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['blockRightPadding'], $blockPaddingUnit ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['blockBottomPadding'], $blockPaddingUnit ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['blockLeftPadding'], $blockPaddingUnit ),
+	),
 );
-$selectors = array_merge( $selectors, $border_style, $icon_spacing_style );
+$selectors              = array_merge( $selectors, $border_style, $icon_spacing_style );
 
 // Tablet.
 $border_css_tablet = array(
@@ -164,11 +180,14 @@ if ( 'none' === $attr['elementType'] ) {
 		);
 	}
 }
-$t_selectors = array(
-	'.wp-block-uagb-separator' => array_merge(
+$new_padding_top_tablet    = empty( $attr['blockTopPaddingTablet'] ) && ! is_numeric( $attr['blockTopPaddingTablet'] ) ? $attr['separatorHeightTablet'] : '';
+$new_padding_bottom_tablet = empty( $attr['blockBottomPaddingTablet'] ) && ! is_numeric( $attr['blockBottomPaddingTablet'] ) ? $attr['separatorHeightTablet'] : '';
+$new_padding_unit_tablet   = empty( $attr['blockTopPaddingUnitTablet'] ) ? $attr['separatorHeightType'] : '';
+$t_selectors               = array(
+	'.wp-block-uagb-separator'         => array_merge(
 		array(
-			'padding-bottom' => UAGB_Helper::get_css_value( $attr['separatorHeightTablet'], $attr['separatorHeightType'] ),
-			'padding-top'    => UAGB_Helper::get_css_value( $attr['separatorHeightTablet'], $attr['separatorHeightType'] ),
+			'padding-bottom' => UAGB_Helper::get_css_value( $new_padding_top_tablet, $new_padding_unit_tablet ),
+			'padding-top'    => UAGB_Helper::get_css_value( $new_padding_bottom_tablet, $new_padding_unit_tablet ),
 			'text-align'     => $attr['separatorAlignTablet'],
 		)
 ),
@@ -191,6 +210,16 @@ $t_selectors = array(
 		'line-height' => UAGB_Helper::get_css_value( $attr['elementIconWidthTablet'], $attr    ['elementIconWidthType'] ),
 		'color'       => $attr['elementColor'],
 		'fill'        => $attr['elementColor'],
+	),
+	' .uagb-separator-spacing-wrapper' => array(
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['blockTopPaddingTablet'], $blockPaddingUnitTablet ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['blockRightPaddingTablet'], $blockPaddingUnitTablet ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['blockBottomPaddingTablet'], $blockPaddingUnitTablet ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['blockLeftPaddingTablet'], $blockPaddingUnitTablet ),
+		'margin-top'     => UAGB_Helper::get_css_value( $attr['blockTopMarginTablet'], $attr['blockMarginUnitTablet'] ),
+		'margin-right'   => UAGB_Helper::get_css_value( $attr['blockRightMarginTablet'], $attr['blockMarginUnitTablet'] ),
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['blockBottomMarginTablet'], $attr['blockMarginUnitTablet'] ),
+		'margin-left'    => UAGB_Helper::get_css_value( $attr['blockLeftMarginTablet'], $attr['blockMarginUnitTablet'] ),
 	),
 );
 
@@ -255,11 +284,14 @@ if ( 'none' === $attr['elementType'] ) {
 		);
 	}
 }
-$m_selectors = array(
-	'.wp-block-uagb-separator' => array_merge(
+$new_padding_top_mobile    = empty( $attr['blockTopPaddingMobile'] ) && ! is_numeric( $attr['blockTopPaddingMobile'] ) ? $attr['separatorHeightMobile'] : '';
+$new_padding_bottom_mobile = empty( $attr['blockBottomPaddingMobile'] ) && ! is_numeric( $attr['blockBottomPaddingMobile'] ) ? $attr['separatorHeightMobile'] : '';
+$new_padding_unit_mobile   = empty( $attr['blockTopPaddingUnitMobile'] ) ? $attr['separatorHeightType'] : '';
+$m_selectors               = array(
+	'.wp-block-uagb-separator'         => array_merge(
 		array(
-			'padding-bottom' => UAGB_Helper::get_css_value( $attr['separatorHeightMobile'], $attr['separatorHeightType'] ),
-			'padding-top'    => UAGB_Helper::get_css_value( $attr['separatorHeightMobile'], $attr['separatorHeightType'] ),
+			'padding-bottom' => UAGB_Helper::get_css_value( $new_padding_top_mobile, $new_padding_unit_mobile ),
+			'padding-top'    => UAGB_Helper::get_css_value( $new_padding_bottom_mobile, $new_padding_unit_mobile ),
 			'text-align'     => $attr['separatorAlignMobile'],
 		)
 ),
@@ -283,8 +315,18 @@ $m_selectors = array(
 		'color'       => $attr['elementColor'],
 		'fill'        => $attr['elementColor'],
 	),
+	' .uagb-separator-spacing-wrapper' => array(
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['blockTopPaddingMobile'], $blockPaddingUnitMobile ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['blockRightPaddingMobile'], $blockPaddingUnitMobile ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['blockBottomPaddingMobile'], $blockPaddingUnitMobile ),
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['blockLeftPaddingMobile'], $blockPaddingUnitMobile ),
+		'margin-top'     => UAGB_Helper::get_css_value( $attr['blockTopMarginMobile'], $attr['blockMarginUnitMobile'] ),
+		'margin-right'   => UAGB_Helper::get_css_value( $attr['blockRightMarginMobile'], $attr['blockMarginUnitMobile'] ),
+		'margin-bottom'  => UAGB_Helper::get_css_value( $attr['blockBottomMarginMobile'], $attr['blockMarginUnitMobile'] ),
+		'margin-left'    => UAGB_Helper::get_css_value( $attr['blockLeftMarginMobile'], $attr['blockMarginUnitMobile'] ),
+	),
 );
-$m_selectors = array_merge( $m_selectors, $border_style_mobile, $icon_spacing_style_mobile );
+$m_selectors               = array_merge( $m_selectors, $border_style_mobile, $icon_spacing_style_mobile );
 
 
 $combined_selectors = array(

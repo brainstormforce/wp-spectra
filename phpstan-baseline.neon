@@ -253,11 +253,6 @@ parameters:
 			path: admin-core/inc/admin-helper.php
 
 		-
-			message: "#^Method UagAdmin\\\\Inc\\\\Admin_Helper\\:\\:get_changelog_feed_data\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: admin-core/inc/admin-helper.php
-
-		-
 			message: "#^Method UagAdmin\\\\Inc\\\\Admin_Helper\\:\\:get_visibility_page\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: admin-core/inc/admin-helper.php
@@ -6735,11 +6730,6 @@ parameters:
 		-
 			message: "#^Parameter \\#3 \\$right of static method UAGB_Block_Helper\\:\\:generate_spacing\\(\\) expects int\\|null, float\\|int given\\.$#"
 			count: 2
-			path: includes/blocks/image-gallery/frontend.css.php
-
-		-
-			message: "#^Variable \\$attr might not be defined\\.$#"
-			count: 353
 			path: includes/blocks/image-gallery/frontend.css.php
 
 		-
