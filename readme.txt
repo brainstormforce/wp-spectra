@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.5
-Stable tag: 2.13.8
+Stable tag: 2.13.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -220,10 +220,14 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Separator - Added block Margin and Padding settings.
 * Fix: Image - Resolved an issue wherein the tablet and mobile alignment options would not work as expected when set for desktop.
 
-= 2.13.8 - Tuesday, 25th June 2024 = 
-* Fix: Global: Added update notice to update the old user database to provide compatibility.
+= 2.13.9 - Thursday, 4th July 2024 =
+* Improvement: Global - Added an update notice for users that used to use `Ultimate Addons for Gutenberg` to update their database to ensure compatibility with the Heading and Info-box block defaults. Read more [here](https://wpspectra.com/docs/spectra-database-update-instructions/).
+* Fix: Container - Resolved an issue wherein WordPress core blocks inside the container were aligning to the center in tablet/mobile view in the editor.
 
-= 2.13.7 - Tuesday, 18th June 2024. =
+= 2.13.8 - Thursday, 27th June 2024 =
+* This update addressed a security bug. Props to Patchstack for privately reporting it to our team. Please make sure you are using the latest version on your website.
+
+= 2.13.7 - Tuesday, 18th June 2024 =
 * Fix: Forms - Resolved an issue wherein the select dropdown padding would not work as intended with the Astra theme.
 * Fix: Image Block - Caption's text decoration does not sync with Astra theme's body font settings when "Default" is set.
 * Fix: How-To - Resolved an issue that would cause all blocks to encounter an error when using the How-To steps with a dynamic image.
@@ -233,25 +237,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = 2.13.6 - Thursday, 13th June 2024 =
 * Fix: FAQ - Resolved an issue wherein the FAQ questions could not utilize line breaks or bold text.
-
-= 2.13.5 - Wednesday, 12th June 2024 =
-* Improvement: FAQ - Implemented the server-side rendering approach for this block.
-* Fix: Container - Resolved an issue wherein the Image block would not display as expected in nested containers.
-* Fix: Taxonomy List - Handled the "Taxonomy Not Available." message on the front-end when using categories from the "Create And Assign Categories For Pages" plugin.
-* Fix: Testimonial - Resolved an issue wherein the image height would not work as intended.
-* Fix: Global - Resolved an issue wherein Custom CSS would not display on editor reload.
-
-= 2.13.4 - Thursday, 6th June 2024 =
-* Feature: Quick Action Bar - Easily rearrange blocks in the Quick Action Bar for a personalized workflow.
-* Improvement: Info Box - Added an option to set the alt attribute of the image.
-* Improvement: Modal - Added separate units ( default 'px' ) for responsive modal width and height.
-* Improvement: Global - Added the inherit-from-theme primary and secondary-button options in blocks that contain buttons for Astra themes.
-* Improvement: Asset Generation - Regenerating post assets on current post update to avoid any conflicts with the cached version.
-* Fix: Buttons - Resolved an issue wherein the button typography styles would not work when applied from the parent in the Astra theme.
-* Fix: Buttons - Resolved an issue wherein button icon spacing would not work as expected in responsive devices.
-* Fix: Image Gallery - Added accessibility improvements to the lightbox close and gallery pagination buttons.
-* Fix: Quick Action Bar - Removed a console error that would occur in the editor whenever a block was dragged.
-* Fix: Global - Resolved an issue in which the media pickers would not show the selected image in the popup.
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 

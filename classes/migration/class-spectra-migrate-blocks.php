@@ -1,10 +1,10 @@
 <?php
 /**
- * Spectra block migrator
+ * Spectra block migrator.
  *
  * Class to execute cron event when the plugin is updated.
  *
- * @since 2.13.8
+ * @since 2.13.9
  * @package UAGB
  */
 
@@ -12,17 +12,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+if ( ! class_exists( 'Uagb_Background_Process' ) ) {
+	require_once UAGB_DIR . 'classes/migration/class-uagb-background-process.php';
+}
+
 /**
  * Spectra_Update_Features.
  *
  * @package UAGB
+ * @since 2.13.9
  */
 class Spectra_Migrate_Blocks {
 
 	/**
 	 * Member Variable
 	 *
-	 * @since 2.13.8
+	 * @since 2.13.9
 	 * @var Spectra_Migrate_Blocks
 	 */
 	private static $instance;
@@ -42,9 +47,16 @@ class Spectra_Migrate_Blocks {
 	public static $advanced_heading_mapping;
 
 	/**
+	 * Migration process instance.
+	 *
+	 * @var Uagb_Background_Process
+	 */
+	public $migration_process;
+
+	/**
 	 *  Initiator
 	 *
-	 * @since 2.13.8
+	 * @since 2.13.9
 	 * @return Spectra_Migrate_Blocks
 	 */
 	public static function get_instance() {
@@ -55,9 +67,9 @@ class Spectra_Migrate_Blocks {
 	}
 
 	/**
-	 * Constructor
-	 * 
-	 * @since 2.13.8
+	 * Constructor function.
+	 *
+	 * @since 2.13.9
 	 */
 	public function __construct() {
 		self::$info_box_mapping         = array(
@@ -75,38 +87,50 @@ class Spectra_Migrate_Blocks {
 				'new' => false,
 			),
 		);
+
+		// Initialize the background process handler.
+		$this->migration_process = new Uagb_Background_Process();
+
 		add_action( 'spectra_blocks_migration_event', array( $this, 'blocks_migration' ) );
 		add_action( 'admin_init', array( $this, 'query_migrate_to_new' ) );
+		add_action( 'wp_ajax_check_migration_status', array( $this, 'check_migration_status' ) );
+		add_action( 'wp_ajax_nopriv_check_migration_status', array( $this, 'check_migration_status' ) );
 
-		// Check migration status and run migrate_blocks if necessary.
 		if ( 'yes' === get_option( 'uag_migration_status', 'no' ) ) {
 			$this->migrate_blocks();
 		}
+
+		add_action( 'admin_footer', array( $this, 'add_migration_status_script' ) );
 	}
 
 	/**
-	 * Query migrate to new.
-	 * 
-	 * @since 2.13.8
+	 * Trigger migration via query parameter.
+	 *
+	 * @since 2.13.9
 	 * @return void
 	 */
 	public function query_migrate_to_new() {
-		if ( isset( $_GET['migrate_to_new'] ) && 'yes' === $_GET['migrate_to_new'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$this->migrate_blocks();
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
+		$migrate_to_new = isset( $_GET['migrate_to_new'] ) ? sanitize_text_field( $_GET['migrate_to_new'] ) : false; //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( 'yes' === $migrate_to_new ) {
+			spectra_log( 'Migration triggered via query parameter by an authorized user.' );
+				$this->migrate_blocks();
 		}
 	}
 
 	/**
-	 * Schedule a single event
-	 * 
-	 * @since 2.13.8
+	 * Schedule and run blocks migration.
+	 *
+	 * @since 2.13.9
 	 * @return void
 	 */
 	public function migrate_blocks() {
 		if ( 'yes' !== get_option( 'uagb-old-user-less-than-2', false ) ) {
 			return;
 		}
-		
 		if ( ! wp_next_scheduled( 'spectra_blocks_migration_event' ) ) {
 			wp_schedule_single_event( time(), 'spectra_blocks_migration_event' );
 		}
@@ -115,95 +139,181 @@ class Spectra_Migrate_Blocks {
 	}
 
 	/**
-	 * Blocks Migration
-	 * 
-	 * @since 2.13.8
+	 * Execute blocks migration process.
+	 *
+	 * @since 2.13.9
 	 * @return void
 	 */
 	public function blocks_migration() {
-		// Initialize an array to hold log entries.
-		$migration_log = array();
 
-		// Code to update info box and advanced heading blocks.
-		$posts_per_page = 10;
+		$posts_per_page = 100;
 		$page           = 1;
 
 		$post_types = get_post_types( array( 'public' => true ), 'names' );
-
-		// Set a new option to know that the migration process has started.
-		update_option( 'uag_migration_progress_status', 'in-progress' );
 
 		do {
 			$query = new WP_Query(
 				array(
 					'post_type'      => $post_types,
+					'post_status'    => 'any',
 					'posts_per_page' => $posts_per_page,
 					'paged'          => $page,
+					// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Reason: Necessary for migration process.
+					'meta_query'     => array(
+						array(
+							'key'     => 'uag_migration_processed',
+							'compare' => 'NOT EXISTS',
+						),
+					),
 				)
 			);
 
-			$posts = $query->posts;
-
-			foreach ( $posts as $post ) {
-				if ( ! is_object( $post ) ) {
-					continue; // Skip if $post is not an object.
+			foreach ( $query->posts as $post ) {
+				if ( ! $post instanceof WP_Post ) {
+					spectra_log( 'Skipped post ID: ' . ( is_object( $post ) ? $post->ID : 'Invalid post type' ) );
+					continue;
 				}
 
-				if ( ! is_a( $post, 'WP_Post' ) ) {
-					continue; // Skip if $post is not a WP_Post object.
-				}
-
-				$new_content = $this->get_updated_content( $post->post_content );
-
-				// Fix to alter the Astra global color variables.
-				$new_content = str_replace( 'var(\u002d\u002dast', 'var(--ast', $new_content );
-				$new_content = str_replace( 'var(u002du002dast', 'var(--ast', $new_content );
-
-				// Update the post content.
-				wp_update_post(
-					array(
-						'ID'           => $post->ID,
-						'post_content' => $new_content,
-					)
-				);
-
-				// Log the update.
-				$migration_log[] = '[' . gmdate( 'Y-m-d H:i:s' ) . '] Updated post ID ' . $post->ID . ': ' . $post->post_title;
+				$this->migration_process->push_to_queue( $post->ID );
+				spectra_log( 'Queued post ID: ' . ( is_object( $post ) ? $post->ID : 'Invalid post type' ) );
 			}
 
 			$page++;
 		} while ( $query->max_num_pages >= $page );
-		// Delete the option once the migration progress is complete as it is not required.
-		delete_option( 'uag_migration_progress_status' );
 
-		// Store the log in a transient.
-		set_transient( 'uag_migration_log', $migration_log );
+		$this->migration_process->save()->dispatch();
 	}
-	
 
 	/**
-	 * Get Updated Content
-	 * 
-	 * @param string $content The content to update.
-	 * @since 2.13.8
-	 * @return string The updated content.
+	 * Check the status of the migration process.
+	 *
+	 * @since 2.13.9
+	 * @return void
+	 */
+	public function check_migration_status() {
+
+		// Sanitize and check if the nonce is valid.
+		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( $_POST['nonce'] ) : '';
+		if ( ! wp_verify_nonce( $nonce, 'check_migration_status_nonce' ) ) {
+			wp_send_json_error(
+				array(
+					'status' => 'fail',
+					'type'   => 'error',
+					'msg'    => 'Invalid nonce',
+				)
+			);
+			return;
+		}
+	
+		$migration_complete = get_option( 'uag_migration_complete', 'no' );
+		$migration_reloaded = get_transient( 'uag_migration_reloaded' ) ? 'yes' : 'no';
+	
+		if ( 'yes' === $migration_complete && 'no' === $migration_reloaded ) {
+			set_transient( 'uag_migration_reloaded', true, 60 );
+		}
+	
+		// Check if the migration status retrieval failed.
+		if ( 'fail' === $migration_complete ) {
+			wp_send_json_error(
+				array(
+					'status' => 'fail',
+					'type'   => 'error',
+					'msg'    => "We couldn't catch current tasks, please try again",
+				)
+			);
+		} else {
+			wp_send_json_success(
+				array(
+					'complete' => $migration_complete,
+					'reloaded' => $migration_reloaded,
+				)
+			);
+		}
+	}
+	
+	/**
+	 * Add migration status checking script to admin footer.
+	 *
+	 * @since 2.13.9
+	 * @return void
+	 */
+	public function add_migration_status_script() {
+		$ajax_nonce = wp_create_nonce( 'check_migration_status_nonce' );
+		?>
+	<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', function() {
+		let shouldStop = false; // Flag to stop further checks.
+		let reloadDone = false; // Flag to track if reload has been done.
+
+		function checkMigrationStatus() {
+			if (shouldStop || reloadDone) {
+				return; // Exit function if shouldStop or reloadDone is true.
+			}
+
+			fetch('<?php echo esc_html( admin_url( 'admin-ajax.php' ) ); ?>', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded',
+				},
+				body: new URLSearchParams({
+					action: 'check_migration_status',
+					nonce: '<?php echo esc_js( $ajax_nonce ); ?>', // Add the nonce here.
+				}),
+			})
+			.then(response => response.json())
+			.then(data => {
+				if (data.success) {
+					if (data.data.complete === 'yes' && data.data.reloaded === 'no') {
+						reloadDone = true; // Set reloadDone flag to true.
+						setTimeout(function() {
+							location.reload();
+						}, 1000); // Reload after 1 second.
+					} else if (data.data.complete === 'yes' && data.data.reloaded === 'yes') {
+						shouldStop = true; // Stop further checks if migration is complete and reloaded.
+					} else {
+						// Retry after 30 seconds.
+						setTimeout(checkMigrationStatus, 30000); // Retry after 30 seconds.
+					}
+				} else {
+					console.error('Error:', data); // Log the error for debugging.
+					// Retry after 30 seconds.
+					setTimeout(checkMigrationStatus, 30000); // Retry after 30 seconds.
+				}
+			})
+			.catch(error => {
+				console.error('Error:', error); // Log fetch request error.
+				// Retry after 30 seconds.
+				setTimeout(checkMigrationStatus, 30000); // Retry after 30 seconds.
+			});
+		}
+		checkMigrationStatus(); // Initial call to start checking.
+	});
+	</script>
+		<?php
+	}
+
+
+	/**
+	 * Update the content blocks.
+	 *
+	 * @since 2.13.9
+	 * @param string $content Content to be updated.
+	 * @return string Updated content.
 	 */
 	public function get_updated_content( $content ) {
 		$blocks = parse_blocks( $content );
-
 		$blocks = $this->get_updated_blocks( $blocks );
-
 		return serialize_blocks( $blocks );
 	}
 
 	/**
-	 * Get updated Blocks
-	 * 
-	 * @param array $blocks The blocks to update.
-	 * @return array The updated blocks.
-	 * @since 2.13.8
+	 * Update blocks with new attributes.
+	 *
+	 * @since 2.13.9
+	 * @param array $blocks Blocks to be updated.
+	 * @return array Updated blocks.
 	 */
-	public function get_updated_blocks( $blocks ) {
+	public function get_updated_blocks( array $blocks ) {
 		foreach ( $blocks as &$block ) {
 			if ( ! empty( $block['innerBlocks'] ) ) {
 				$block['innerBlocks'] = $this->get_updated_blocks( $block['innerBlocks'] );
@@ -236,8 +346,10 @@ class Spectra_Migrate_Blocks {
 }
 
 /**
- *  Prepare if class 'UAGB_Init_Blocks' exist.
- *  Kicking this off by calling 'get_instance()' method
+ * Prepare if class 'UAGB_Init_Blocks' exist.
+ * Kicking this off by calling 'get_instance()' method.
+ *
+ * @since 2.13.9
  */
 Spectra_Migrate_Blocks::get_instance();
-
+?>

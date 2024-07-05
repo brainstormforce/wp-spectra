@@ -148,7 +148,7 @@ class Helper {
 		// If the endpoint is not a string, then abandon ship.
 		if ( ! is_string( $endpoint ) ) {
 			return array(
-				'error' => __( 'The Zip AI Endpoint was not declared', 'zip-ai' ),
+				'error' => __( 'The Zip AI Endpoint was not declared', 'ultimate-addons-for-gutenberg' ),
 			);
 		}
 
@@ -158,7 +158,7 @@ class Helper {
 		// If the Zip Auth Token is not set, then abandon ship.
 		if ( empty( $auth_token ) || ! is_string( $auth_token ) ) {
 			return array(
-				'error' => __( 'The Zip AI Auth Token is not set.', 'zip-ai' ),
+				'error' => __( 'The Zip AI Auth Token is not set.', 'ultimate-addons-for-gutenberg' ),
 			);
 		}
 
@@ -193,7 +193,7 @@ class Helper {
 		// If the response was an error, or not a 200 status code, then abandon ship.
 		if ( is_wp_error( $response ) || empty( $response['response'] ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
 			return array(
-				'error' => __( 'The Zip AI Middleware is not responding.', 'zip-ai' ),
+				'error' => __( 'The Zip AI Middleware is not responding.', 'ultimate-addons-for-gutenberg' ),
 			);
 		}
 
@@ -203,7 +203,7 @@ class Helper {
 		// If the response body is not a JSON, then abandon ship.
 		if ( empty( $response_body ) || ! json_decode( $response_body ) ) {
 			return array(
-				'error' => __( 'The Zip AI Middleware encountered an error.', 'zip-ai' ),
+				'error' => __( 'The Zip AI Middleware encountered an error.', 'ultimate-addons-for-gutenberg' ),
 			);
 		}
 
@@ -222,7 +222,7 @@ class Helper {
 		// If the endpoint is not a string, then abandon ship.
 		if ( ! is_string( $endpoint ) ) {
 			return array(
-				'error' => __( 'The ZipWP Endpoint was not declared', 'zip-ai' ),
+				'error' => __( 'The ZipWP Endpoint was not declared', 'ultimate-addons-for-gutenberg' ),
 			);
 		}
 
@@ -232,7 +232,7 @@ class Helper {
 		// If the ZipWP Token is not set, then abandon ship.
 		if ( empty( $zipwp_token ) || ! is_string( $zipwp_token ) ) {
 			return array(
-				'error' => __( 'The ZipWP Token is not set.', 'zip-ai' ),
+				'error' => __( 'The ZipWP Token is not set.', 'ultimate-addons-for-gutenberg' ),
 			);
 		}
 
@@ -256,7 +256,7 @@ class Helper {
 		// If the response was an error, or not a 200 status code, then abandon ship.
 		if ( is_wp_error( $response ) || empty( $response['response'] ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
 			return array(
-				'error' => __( 'The ZipWP API server is not responding.', 'zip-ai' ),
+				'error' => __( 'The ZipWP API server is not responding.', 'ultimate-addons-for-gutenberg' ),
 			);
 		}
 
@@ -266,7 +266,7 @@ class Helper {
 		// If the response body is not a JSON, then abandon ship.
 		if ( empty( $response_body ) || ! json_decode( $response_body ) ) {
 			return array(
-				'error' => __( 'The ZipWP API server encountered an error.', 'zip-ai' ),
+				'error' => __( 'The ZipWP API server encountered an error.', 'ultimate-addons-for-gutenberg' ),
 			);
 		}
 

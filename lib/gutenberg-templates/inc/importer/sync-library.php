@@ -315,7 +315,7 @@ class Sync_Library {
 		if ( ! Helper::instance()->ast_block_templates_doing_wp_cli() ) {
 
 			if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
-				wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
+				wp_send_json_error( __( 'You are not allowed to perform this action', 'ultimate-addons-for-gutenberg' ) );
 			}
 			// Verify Nonce.
 			check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
@@ -442,7 +442,7 @@ class Sync_Library {
 	public function ajax_import_categories() {
 
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
-			wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'ultimate-addons-for-gutenberg' ) );
 		}
 		// Verify Nonce.
 		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
@@ -467,7 +467,7 @@ class Sync_Library {
 	public function ajax_import_blocks() {
 
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
-			wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'ultimate-addons-for-gutenberg' ) );
 		}
 		// Verify Nonce.
 		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
@@ -510,7 +510,7 @@ class Sync_Library {
 	public function ajax_blocks_requests_count() {
 
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
-			wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'ultimate-addons-for-gutenberg' ) );
 		}
 		// Verify Nonce.
 		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
@@ -801,7 +801,7 @@ class Sync_Library {
 	public function ajax_sites_requests_count() {
 
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
-			wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'ultimate-addons-for-gutenberg' ) );
 		}
 		// Verify Nonce.
 		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
@@ -836,7 +836,7 @@ class Sync_Library {
 	public function ajax_import_sites() {
 
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
-			wp_send_json_error( __( 'You are not allowed to perform this action', 'astra-sites' ) );
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'ultimate-addons-for-gutenberg' ) );
 		}
 		// Verify Nonce.
 		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );

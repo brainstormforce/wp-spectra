@@ -613,6 +613,11 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 	};
 
 	const mobile_selectors = {
+		// Handeling Edge case for mobile. 
+		'.wp-block-uagb-container .block-editor-inner-blocks .block-editor-block-list__layout .wp-block[data-type="core/quote"]' : {
+			'margin-inline-start': '0px',
+    		'margin-inline-end': '0px',
+		},
 		[ containerFlexSelector ]: {
 			'flex-direction': directionMobile,
 			'align-items': alignItemsMobile,
