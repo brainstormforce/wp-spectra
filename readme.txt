@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.5
-Stable tag: 2.13.9
+Stable tag: 2.14.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -214,6 +214,9 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT. Additionally, we incorporate [dnd kit](https://github.com/clauderic/dnd-kit) licensed under the MIT License.
 
 == Changelog ==
+
+= 2.14.0 - Monday, 8th July 2024 = 
+* Fix: Global - Optimized the `Ultimate Addons for Gutenberg` database updation and resolved the editor refresh and RichText issues. Read more about migration [here](https://wpspectra.com/docs/spectra-database-update-instructions/).
 
 = 2.13.9 - Thursday, 4th July 2024 =
 * Improvement: Global - Added an update notice for users that used to use `Ultimate Addons for Gutenberg` to update their database to ensure compatibility with the Heading and Info-box block defaults. Read more [here](https://wpspectra.com/docs/spectra-database-update-instructions/).

@@ -96,11 +96,10 @@ class Spectra_Migrate_Blocks {
 		add_action( 'wp_ajax_check_migration_status', array( $this, 'check_migration_status' ) );
 		add_action( 'wp_ajax_nopriv_check_migration_status', array( $this, 'check_migration_status' ) );
 
-		if ( 'yes' === get_option( 'uag_migration_status', 'no' ) ) {
+		if ( 'yes' === get_option( 'uag_migration_status', 'no' ) && 'yes' === get_option( 'uagb-old-user-less-than-2', false ) ) {
+			add_action( 'admin_footer', array( $this, 'add_migration_status_script' ) );
 			$this->migrate_blocks();
 		}
-
-		add_action( 'admin_footer', array( $this, 'add_migration_status_script' ) );
 	}
 
 	/**
@@ -131,7 +130,6 @@ class Spectra_Migrate_Blocks {
 		if ( 'yes' !== get_option( 'uagb-old-user-less-than-2', false ) ) {
 			return;
 		}
-
 		if ( ! wp_next_scheduled( 'spectra_blocks_migration_event' ) ) {
 			wp_schedule_single_event( time(), 'spectra_blocks_migration_event' );
 		}
@@ -162,7 +160,7 @@ class Spectra_Migrate_Blocks {
 					// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Reason: Necessary for migration process.
 					'meta_query'     => array(
 						array(
-							'key'     => 'uag_migration_processed',
+							'key'     => '_uag_migration_processed',
 							'compare' => 'NOT EXISTS',
 						),
 					),
@@ -192,7 +190,6 @@ class Spectra_Migrate_Blocks {
 	 * @return void
 	 */
 	public function check_migration_status() {
-
 		// Sanitize and check if the nonce is valid.
 		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( $_POST['nonce'] ) : '';
 		if ( ! wp_verify_nonce( $nonce, 'check_migration_status_nonce' ) ) {
@@ -206,11 +203,12 @@ class Spectra_Migrate_Blocks {
 			return;
 		}
 	
-		$migration_complete = get_option( 'uag_migration_complete', 'no' );
-		$migration_reloaded = get_transient( 'uag_migration_reloaded' ) ? 'yes' : 'no';
+		$migration_complete     = get_option( 'uag_migration_complete', 'no' );
+		$migration_needs_reload = get_transient( 'uag_migration_needs_reload' ) ? 'yes' : 'no';
 	
-		if ( 'yes' === $migration_complete && 'no' === $migration_reloaded ) {
-			set_transient( 'uag_migration_reloaded', true, 60 );
+		// If migration is complete and reload is needed, delete the transient to avoid repeated reloads.
+		if ( 'yes' === $migration_complete && 'yes' === $migration_needs_reload ) {
+			delete_transient( 'uag_migration_needs_reload' );
 		}
 	
 		// Check if the migration status retrieval failed.
@@ -226,7 +224,7 @@ class Spectra_Migrate_Blocks {
 			wp_send_json_success(
 				array(
 					'complete' => $migration_complete,
-					'reloaded' => $migration_reloaded,
+					'reload'   => $migration_needs_reload,
 				)
 			);
 		}
@@ -241,57 +239,49 @@ class Spectra_Migrate_Blocks {
 	public function add_migration_status_script() {
 		$ajax_nonce = wp_create_nonce( 'check_migration_status_nonce' );
 		?>
-	<script type="text/javascript">
-	document.addEventListener('DOMContentLoaded', function() {
-		let shouldStop = false; // Flag to stop further checks.
-		let reloadDone = false; // Flag to track if reload has been done.
-
-		function checkMigrationStatus() {
-			if (shouldStop || reloadDone) {
-				return; // Exit function if shouldStop or reloadDone is true.
-			}
-
-			fetch('<?php echo esc_html( admin_url( 'admin-ajax.php' ) ); ?>', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/x-www-form-urlencoded',
-				},
-				body: new URLSearchParams({
-					action: 'check_migration_status',
-					nonce: '<?php echo esc_js( $ajax_nonce ); ?>', // Add the nonce here.
-				}),
-			})
-			.then(response => response.json())
-			.then(data => {
-				if (data.success) {
-					if (data.data.complete === 'yes' && data.data.reloaded === 'no') {
-						reloadDone = true; // Set reloadDone flag to true.
-						setTimeout(function() {
-							location.reload();
-						}, 1000); // Reload after 1 second.
-					} else if (data.data.complete === 'yes' && data.data.reloaded === 'yes') {
-						shouldStop = true; // Stop further checks if migration is complete and reloaded.
-					} else {
-						// Retry after 30 seconds.
-						setTimeout(checkMigrationStatus, 30000); // Retry after 30 seconds.
-					}
-				} else {
-					console.error('Error:', data); // Log the error for debugging.
-					// Retry after 30 seconds.
-					setTimeout(checkMigrationStatus, 30000); // Retry after 30 seconds.
+		<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded', function() {
+			let reloadDone = false; // Flag to track if reload has been done.
+			function checkMigrationStatus() {
+				if (reloadDone) {
+					return; // Exit function if reloadDone is true.
 				}
-			})
-			.catch(error => {
-				console.error('Error:', error); // Log fetch request error.
-				// Retry after 30 seconds.
-				setTimeout(checkMigrationStatus, 30000); // Retry after 30 seconds.
-			});
-		}
-		checkMigrationStatus(); // Initial call to start checking.
-	});
-	</script>
+
+				fetch('<?php echo esc_html( admin_url( 'admin-ajax.php' ) ); ?>', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded',
+					},
+					body: new URLSearchParams({
+						action: 'check_migration_status',
+						nonce: '<?php echo esc_js( $ajax_nonce ); ?>',
+					}),
+				})
+				.then(response => response.json())
+				.then(data => {
+					if ( data.success ) {
+						if ( data.data.reload === 'yes' ) {
+							reloadDone = true; // Set reloadDone flag to true.
+							location.reload();
+						} else {
+							setTimeout(checkMigrationStatus, 10000); // Retry after 10 seconds.
+						}
+					} else {
+						console.error('Error:', data);
+						setTimeout(checkMigrationStatus, 10000); // Retry after 10 seconds.
+					}
+				})
+				.catch(error => {
+					console.error('Fetch error:', error);
+					setTimeout(checkMigrationStatus, 10000); // Retry after 10 seconds.
+				});
+			}
+			checkMigrationStatus(); // Initial call to start checking.
+		});
+		</script>
 		<?php
 	}
+	
 
 
 	/**
@@ -299,42 +289,49 @@ class Spectra_Migrate_Blocks {
 	 *
 	 * @since 2.13.9
 	 * @param string $content Content to be updated.
-	 * @return string Updated content.
+	 * @return array<string|string> Array of whether migration is required, and the updated content.
 	 */
 	public function get_updated_content( $content ) {
-		$blocks = parse_blocks( $content );
-		$blocks = $this->get_updated_blocks( $blocks );
-		return serialize_blocks( $blocks );
+		$is_migration_needed = false;
+		$blocks              = parse_blocks( $content );
+		$blocks              = $this->get_updated_blocks( $blocks, $is_migration_needed );
+		return array(
+			'requires_migration' => $is_migration_needed,
+			'content'            => serialize_blocks( $blocks ),
+		);
 	}
 
 	/**
 	 * Update blocks with new attributes.
 	 *
+	 * @param array   $blocks Blocks to be updated.
+	 * @param boolean $is_migration_needed Whether the page needs migration or not.
 	 * @since 2.13.9
-	 * @param array $blocks Blocks to be updated.
 	 * @return array Updated blocks.
 	 */
-	public function get_updated_blocks( array $blocks ) {
+	public function get_updated_blocks( array $blocks, &$is_migration_needed ) {
 		foreach ( $blocks as &$block ) {
 			if ( ! empty( $block['innerBlocks'] ) ) {
-				$block['innerBlocks'] = $this->get_updated_blocks( $block['innerBlocks'] );
+				$block['innerBlocks'] = $this->get_updated_blocks( $block['innerBlocks'], $is_migration_needed );
 			} else {
 				if ( ! isset( $block['blockName'] ) ) {
 					continue;
 				}
 				if ( 'uagb/info-box' === $block['blockName'] ) {
-					$attributes = $block['attrs'];
+					$is_migration_needed = true;
+					$attributes          = $block['attrs'];
 					foreach ( self::$info_box_mapping as $key => $value ) {
-						if ( ! isset( $attributes[ $key ] ) ) {
+						if ( ! isset( $attributes[ $key ] ) ) { // Meaning this is set to default, so no need to update.
 							$attributes[ $key ] = $value['old'];
 						}
 					}
 					$block['attrs'] = $attributes;
 				}
 				if ( 'uagb/advanced-heading' === $block['blockName'] ) {
-					$attributes = $block['attrs'];
+					$is_migration_needed = true;
+					$attributes          = $block['attrs'];
 					foreach ( self::$advanced_heading_mapping as $key => $value ) {
-						if ( ! isset( $attributes[ $key ] ) ) {
+						if ( ! isset( $attributes[ $key ] ) ) { // Meaning this is set to default, so no need to update.
 							$attributes[ $key ] = $value['old'];
 						}
 					}

@@ -35,6 +35,7 @@ function spectra_log( $message ) {
 
 	if ( $file ) {
 		fwrite( $file, gmdate( 'Y-m-d H:i:s' ) . ' - ' . $message . PHP_EOL ); //phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_fwrite
+		fclose( $file ); // Close the file after writing.
 	}
 }
 
@@ -64,7 +65,7 @@ if ( ! class_exists( 'class_spectra_migrate_blocks' ) ) {
 		 * @return bool|mixed False if the task is complete, or the post ID for further processing.
 		 */
 		protected function task( $post_id ) {
-			if ( get_post_meta( $post_id, 'uag_migration_processed', true ) ) {
+			if ( get_post_meta( $post_id, '_uag_migration_processed', true ) ) {
 				spectra_log( 'Skipping already processed post ID: ' . $post_id );
 				return false;
 			}
@@ -75,20 +76,30 @@ if ( ! class_exists( 'class_spectra_migrate_blocks' ) ) {
 				return false;
 			}
 
-			$new_content = Spectra_Migrate_Blocks::get_instance()->get_updated_content( $post->post_content );
+			$migration_details = Spectra_Migrate_Blocks::get_instance()->get_updated_content( $post->post_content );
 
-			$new_content = str_replace( 'var(\u002d\u002dast', 'var(--ast', $new_content );
-			$new_content = str_replace( 'var(u002du002dast', 'var(--ast', $new_content );
-
-			wp_update_post(
-				array(
-					'ID'           => $post->ID,
-					'post_content' => $new_content,
-				)
-			);
-
-			update_post_meta( $post->ID, 'uag_migration_processed', '1' );
-			spectra_log( 'Migration processed post ID: ' . $post_id );
+			// Only update when the post needs to be updated - if it has any blocks that needed to be migrated.
+			if ( ! empty( $migration_details['requires_migration'] ) && ! empty( $migration_details['content'] ) && is_string( $migration_details['content'] ) ) {
+				$updated_post_id = wp_update_post(
+					array(
+						'ID'            => $post->ID,
+						'post_content'  => wp_slash( $migration_details['content'] ),
+						'post_date'     => $post->post_date,
+						'post_modified' => $post->post_modified,
+					)
+				);
+	
+				// If the Post ID is correct ( which means the update was successful ) - Update the Post Meta and add to the log.
+				if ( ! empty( $updated_post_id ) ) {
+					update_post_meta( $post->ID, '_uag_migration_processed', '1' );
+					spectra_log( 'Migration processed post ID: ' . $updated_post_id );
+				} else {
+					spectra_log( 'Migration not processed for post ID: ' . $post_id );
+				}
+			} else {
+				update_post_meta( $post->ID, '_uag_migration_processed', '1' );
+				spectra_log( 'Migration not required for post ID: ' . $post_id );
+			}
 
 			return false;
 		}
@@ -111,7 +122,7 @@ if ( ! class_exists( 'class_spectra_migrate_blocks' ) ) {
                     // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Reason: Necessary for migration process.
 					'meta_query'  => array(
 						array(
-							'key'     => 'uag_migration_processed',
+							'key'     => '_uag_migration_processed',
 							'compare' => 'NOT EXISTS',
 						),
 					),
@@ -119,11 +130,12 @@ if ( ! class_exists( 'class_spectra_migrate_blocks' ) ) {
 			);
 
 			if ( ! $query->have_posts() ) {
-				update_option( 'uag_migration_complete', 'yes' );
 				// Delete the option once the migration progress is complete as it is not required.
 				delete_option( 'uag_migration_progress_status' );
+				update_option( 'uag_migration_complete', 'yes' );
 				delete_option( 'uagb-old-user-less-than-2' );
 				spectra_log( 'End of blocks migration' );
+				set_transient( 'uag_migration_needs_reload', true );
 			} else {
 				update_option( 'uag_migration_complete', 'no' );
 			}
@@ -131,4 +143,3 @@ if ( ! class_exists( 'class_spectra_migrate_blocks' ) ) {
 		}
 	}
 }
-
