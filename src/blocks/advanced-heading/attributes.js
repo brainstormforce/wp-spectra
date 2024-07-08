@@ -3,6 +3,8 @@ import { __ } from '@wordpress/i18n';
 
 const highLightBorderAttributes = getBorderAttributes( 'highLight' );
 
+const headingAlignmentDefault = 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ? 'center' : 'left';
+
 const attributes = {
 	block_id: {
 		type: 'string',
@@ -62,7 +64,7 @@ const attributes = {
 	},
 	headingAlign: {
 		type: 'string',
-		default: 'left',
+		default: headingAlignmentDefault,
 		isGBSStyle : true,
 		UAGCopyPaste: {
 			styleType: 'overall-alignment',
