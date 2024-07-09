@@ -11,6 +11,13 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_post_gfont( $attr );
 
+$customDesktopAspectWidth  = isset( $attr['customImageWidthRatio'] ) ? $attr['customImageWidthRatio'] : 16;
+$customTabletAspectWidth   = isset( $attr['customImageWidthRatioTablet'] ) ? $attr['customImageWidthRatioTablet'] : 16;
+$customMobileAspectWidth   = isset( $attr['customImageWidthRatioMobile'] ) ? $attr['customImageWidthRatioMobile'] : 16;
+$customDesktopAspectHeight = isset( $attr['customImageHeightRatio'] ) ? $attr['customImageHeightRatio'] : 9;
+$customTabletAspectHeight  = isset( $attr['customImageHeightRatioTablet'] ) ? $attr['customImageHeightRatioTablet'] : 9;
+$customMobileAspectHeight  = isset( $attr['customImageHeightRatioMobile'] ) ? $attr['customImageHeightRatioMobile'] : 9;
+
 $selectors = UAGB_Block_Helper::get_post_selectors( $attr );
 
 $m_selectors = UAGB_Block_Helper::get_post_mobile_selectors( $attr );
@@ -29,6 +36,19 @@ if ( 'background' === $attr['imgPosition'] && $attr['columns'] === $attr['postsT
 	$selectors[' .uagb-post__image']                    = array(
 		'width'       => '100% !important',
 		'margin-left' => 'unset !important',
+	);
+}
+
+// Custom Image Ratio & Compatibility.
+if ( 'top' === $attr['imgPosition'] ) {
+	$selectors[' .uagb-image-ratio-desktop-custom img']  = array(
+		'aspect-ratio' => $customDesktopAspectWidth . '/' . $customDesktopAspectHeight,
+	);
+	$t_selectors[' .uagb-image-ratio-tablet-custom img'] = array(
+		'aspect-ratio' => $customTabletAspectWidth . '/' . $customTabletAspectHeight,
+	);
+	$m_selectors[' .uagb-image-ratio-mobile-custom img'] = array(
+		'aspect-ratio' => $customMobileAspectWidth . '/' . $customMobileAspectHeight,
 	);
 }
 
