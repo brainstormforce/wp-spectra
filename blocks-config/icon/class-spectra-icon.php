@@ -474,13 +474,13 @@ if ( ! class_exists( 'Spectra_Icon' ) ) {
 	  
 			if ( $iconHtml ) {
 
-				$role_attr        = ( 'image' === $attributes['iconAccessabilityMode'] ) ? 'img' : 'graphics-symbol';
+				$role_attr        = ( 'image' === $attributes['iconAccessabilityMode'] ) ? ' role="img"' : ( ( 'svg' === $attributes['iconAccessabilityMode'] ) ? ' role="graphics-symbol"' : '' );
 				$aria_hidden_attr = ( 'presentation' === $attributes['iconAccessabilityMode'] ) ? 'true' : 'false';
 				$aria_label_attr  = ( 'presentation' !== $attributes['iconAccessabilityMode'] ) ? ' aria-label="' . esc_attr( $attributes['iconAccessabilityDesc'] ) . '"' : '';
 			
 				$iconHtml = preg_replace(
 					'/<svg(.*?)>/',
-					'<svg$1 role="' . esc_attr( $role_attr ) . '" aria-hidden="' . $aria_hidden_attr . '"' . $aria_label_attr . '>',
+					'<svg$1' . $role_attr . ' aria-hidden="' . $aria_hidden_attr . '"' . $aria_label_attr . '>',
 					$iconHtml
 				);
 			}

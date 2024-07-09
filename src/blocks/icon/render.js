@@ -27,9 +27,11 @@ const Render = ( props ) => {
 	} = attributes;
 
 	const extraProps = {
-		'role': iconAccessabilityMode === 'svg' ? 'graphics-symbol' : 'image',
-		...( iconAccessabilityMode !== 'presentation' && { 'aria-label': iconAccessabilityDesc } ),
-		'aria-hidden': iconAccessabilityMode === 'presentation',
+		...( iconAccessabilityMode !== 'presentation' && {
+		  'role': iconAccessabilityMode === 'svg' ? 'graphics-symbol' : 'image',
+		  'aria-label': iconAccessabilityDesc
+		} ),
+		'aria-hidden': iconAccessabilityMode === 'presentation'
 	  };
 	  
 	const marginVariables = [ iconBottomMargin, iconLeftMargin, iconRightMargin, iconTopMargin, iconTopTabletMargin, iconRightTabletMargin, iconLeftTabletMargin, iconBottomTabletMargin, iconTopMobileMargin, iconRightMobileMargin, iconLeftMobileMargin, iconBottomMobileMargin ];
