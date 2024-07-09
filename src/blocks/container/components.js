@@ -8,6 +8,7 @@ import renderCustomIcon from '@Controls/renderCustomIcon';
 import ResponsiveToggle from '@Components/responsive-toggle';
 import getAttributeFallback from '@Controls/getAttributeFallback';
 import UAGB_Block_Icons from '@Controls/block-icons';
+import UAGNumberControl from '@Components/number-control';
 
 export const GridSettings = ( props ) => {
     const {
@@ -25,6 +26,13 @@ export const GridSettings = ( props ) => {
             gridJustifyContentDesktop,
             gridJustifyContentTablet,
             gridJustifyContentMobile,
+            orderDesktop,
+            orderTablet,
+            orderMobile,
+            customOrderDesktop,
+            customOrderTablet,
+            customOrderMobile,
+            isBlockRootParent,
         },
         setAttributes,
         deviceType,
@@ -112,6 +120,26 @@ export const GridSettings = ( props ) => {
                 value: 'stretch',
                 tooltip: __( 'Stretch', 'ultimate-addons-for-gutenberg' ),
                 icon: <Icon icon={ renderCustomIcon( `flex-${value}-strech` ) } />,
+            },
+        ]
+    }
+
+    const orderCommon = () => {
+        return [
+            {
+                value: '-999',
+                tooltip: __( 'Start', 'ultimate-addons-for-gutenberg' ),
+                icon: <Icon icon={ renderCustomIcon( `start-order` ) } />,
+            },
+            {
+                value: '999',
+                tooltip: __( 'End', 'ultimate-addons-for-gutenberg' ),
+                icon: <Icon icon={ renderCustomIcon( `end-order` ) } />,
+            },
+            {
+                value: 'custom',
+                tooltip: __( 'Custom', 'ultimate-addons-for-gutenberg' ),
+                icon: <Icon icon={ renderCustomIcon( `custom-order` ) } />,
             },
         ]
     }
@@ -402,6 +430,80 @@ export const GridSettings = ( props ) => {
                     }
                 </div>
             </BaseControl>
+            { ! isBlockRootParent && (
+                <>
+                    <MultiButtonsControl
+				        setAttributes={ setAttributes }
+                        label={ __( 'Order', 'ultimate-addons-for-gutenberg' ) }
+                        data={ {
+                            desktop: {
+                                value: orderDesktop,
+                                label: 'orderDesktop',
+                            },
+                            tablet: {
+                                value: orderTablet,
+                                label: 'orderTablet',
+                            },
+                            mobile: {
+                                value: orderMobile,
+                                label: 'orderMobile',
+                            },
+                        } }
+                        options={ [ ...orderCommon() ] }
+                        showIcons={ true }
+                        responsive={ true }
+                        help={ __( 'Define the order for grid items inside the container.', 'ultimate-addons-for-gutenberg' ) }
+                    /> 
+                    { 'custom' === orderDesktop && 'Desktop' === deviceType && (
+                        <UAGNumberControl
+                            label={ __( 'Custom Order', 'ultimate-addons-for-gutenberg' ) }
+                            value={ customOrderDesktop }
+                            data={ {
+                                value: customOrderDesktop,
+                                label: 'customOrderDesktop',
+                            } }
+                            displayUnit={ false }
+                            setAttributes={ setAttributes }
+                            min={ Infinity }
+                            step={ 1 }
+                            max={ -Infinity }
+                            showControlHeader={ false }
+                        />
+                    ) }
+                    { 'custom' === orderTablet && 'Tablet' === deviceType && (
+                        <UAGNumberControl
+                            label={ __( 'Custom Order', 'ultimate-addons-for-gutenberg' ) }
+                            value={ customOrderTablet }
+                            data={ {
+                                value: customOrderTablet,
+                                label: 'customOrderTablet',
+                            } }
+                            displayUnit={ false }
+                            setAttributes={ setAttributes }
+                            min={ Infinity }
+                            step={ 1 }
+                            max={ -Infinity }
+                            showControlHeader={ false }
+                        />
+                    ) }
+                    { 'custom' === orderMobile && 'Mobile' === deviceType && (
+                        <UAGNumberControl
+                            label={ __( 'Custom Order', 'ultimate-addons-for-gutenberg' ) }
+                            value={ customOrderMobile }
+                            data={ {
+                                value: customOrderMobile,
+                                label: 'customOrderMobile',
+                            } }
+                            displayUnit={ false }
+                            setAttributes={ setAttributes }
+                            min={ Infinity }
+                            step={ 1 }
+                            max={ -Infinity }
+                            showControlHeader={ false }
+                        />
+                    ) }
+                </>
+            ) }
             <MultiButtonsControl
 				setAttributes={ setAttributes }
                 label={ __( 'Align Items', 'ultimate-addons-for-gutenberg' ) }

@@ -217,6 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = x.x.x =
 * Feature: What's New - Ability to see the new updates for Spectra in the form of a feed under the Dashboard.
+* Improvement: Container - Added an order option for grid layout to set the order in which the inner container should be.
 * Improvement: Separator - Added block Margin and Padding settings.
 * Fix: Image - Resolved an issue wherein the tablet and mobile alignment options would not work as expected when set for desktop.
 * Fix: Image / Image Gallery - Resolved an issue wherein the caption's text-decoration would not sync with the Astra theme's body font settings when "Default" is set.
