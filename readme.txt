@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.5
-Stable tag: 2.13.9
+Stable tag: 2.14.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -220,6 +220,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Separator - Added block Margin and Padding settings.
 * Fix: Image - Resolved an issue wherein the tablet and mobile alignment options would not work as expected when set for desktop.
 * Fix: Image / Image Gallery - Resolved an issue wherein the caption's text-decoration would not sync with the Astra theme's body font settings when "Default" is set.
+
+= 2.14.0 - Monday, 8th July 2024 = 
+* Fix: Global - Optimized the `Ultimate Addons for Gutenberg` database updation and resolved the editor refresh and RichText issues. Read more about migration [here](https://wpspectra.com/docs/spectra-database-update-instructions/).
 
 = 2.13.9 - Thursday, 4th July 2024 =
 * Improvement: Global - Added an update notice for users that used to use `Ultimate Addons for Gutenberg` to update their database to ensure compatibility with the Heading and Info-box block defaults. Read more [here](https://wpspectra.com/docs/spectra-database-update-instructions/).
