@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.5  
-**Stable tag:** 2.14.0  
+**Stable tag:** 2.14.1  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### x.x.x ###
+### 2.14.1 - Thursday, 11th July 2024 ###
 * Improvement: Container - Added an order option for grid layout to set the order in which the inner container should be.
 * Improvement: Post Carousel - Added an Image Ratio option for the post-image sizing.
 * Improvement: Post Grid - Made the Image Ratio options responsive.
@@ -234,16 +234,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ### 2.13.8 - Thursday, 27th June 2024 ###
 * This update addressed a security bug. Props to Patchstack for privately reporting it to our team. Please make sure you are using the latest version on your website.
-
-### 2.13.7 - Tuesday, 18th June 2024 ###
-* Fix: Forms - Resolved an issue wherein the select dropdown padding would not work as intended with the Astra theme.
-* Fix: How-To - Resolved an issue that would cause all blocks to encounter an error when using the How-To steps with a dynamic image.
-* Fix: Post Grid - Resolved an issue that would cause an error when selecting the Post Type as Site Builder and the Image Layout as Background.
-* Fix: Post Timeline - Resolved an issue wherein the font size would not work as intended in responsive devices.
-* Fix: Global - Resolved an issue wherein labels from the icon library would not be available for translation on wordpress.org.
-
-### 2.13.6 - Thursday, 13th June 2024 ###
-* Fix: FAQ - Resolved an issue wherein the FAQ questions could not utilize line breaks or bold text.
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 
