@@ -222,7 +222,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Post Grid & Carousel - Added a "Custom" option for the Image Ratio setting.
 * Improvement: Separator - Added block Margin and Padding settings.
 * Improvement: What's New - Improved the ability to see the new updates for Spectra in the form of a feed under the Dashboard.
-* Fix: Image - Resolved an issue wherein the tablet and mobile alignment options would not work as expected when set for desktop.
 * Fix: Image & Image Gallery - Resolved an issue wherein the caption's text-decoration would not sync with the Astra theme's body font settings when "Default" is set.
 
 ### 2.14.0 - Monday, 8th July 2024 ###
