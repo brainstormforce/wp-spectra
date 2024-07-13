@@ -216,7 +216,11 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
+<<<<<<< HEAD
+* Deprecated: Header Titlebar - Removed the Header Titlebar functionality to allow support for the WordPress 6.6 command palette.
+=======
 * Improvement: What's New - Improved the ability to see the new updates for Spectra in the form of a feed under the Dashboard.
+>>>>>>> b4e01fbc7dc91604020416b1ace5c440ac6e88ac
 
 ### 2.14.0 - Monday, 8th July 2024 ###
 * Fix: Global - Optimized the `Ultimate Addons for Gutenberg` database updation and resolved the editor refresh and RichText issues. Read more about migration [here](https://wpspectra.com/docs/spectra-database-update-instructions/).
@@ -241,6 +245,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 
 ## Upgrade Notice ##
+
+### x.x.x ###
+With WordPress 6.6 introducing the command palette and taking a place at the top of the editor, we had to retire the 'Move Title to Top' functionality in Spectra. However, there's no need for concern. After updating Spectra, the title in your editor will gracefully return to its default position.
 
 ### 2.7.4 ###
 With WordPress 6.3 no longer supporting older versions of PHP, the next Spectra release will also require a minimum of PHP 7.4. For websites running on older version of PHP, we strongly recommend upgrading to PHP 7.4 or above to ensure optimal performance and compatibility.
