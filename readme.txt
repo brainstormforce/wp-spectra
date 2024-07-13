@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+* Improvement: What's New - Improved the ability to see the new updates for Spectra in the form of a feed under the Dashboard.
+
 = 2.14.0 - Monday, 8th July 2024 = 
 * Fix: Global - Optimized the `Ultimate Addons for Gutenberg` database updation and resolved the editor refresh and RichText issues. Read more about migration [here](https://wpspectra.com/docs/spectra-database-update-instructions/).
 

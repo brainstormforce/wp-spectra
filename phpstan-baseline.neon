@@ -253,11 +253,6 @@ parameters:
 			path: admin-core/inc/admin-helper.php
 
 		-
-			message: "#^Method UagAdmin\\\\Inc\\\\Admin_Helper\\:\\:get_changelog_feed_data\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: admin-core/inc/admin-helper.php
-
-		-
 			message: "#^Method UagAdmin\\\\Inc\\\\Admin_Helper\\:\\:get_visibility_page\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: admin-core/inc/admin-helper.php

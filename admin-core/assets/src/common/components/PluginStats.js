@@ -51,10 +51,6 @@ const PluginStats = () => {
 		</svg>
 	);
 
-	const docsTrigger = () => {
-		window.open( 'https://wpspectra.com/docs/', '_blank' );
-	};
-
 	const renderLicenseStatus = () => (
 		uag_react.spectra_pro_installed ? (
 			uag_react.spectra_pro_status ? (
@@ -110,13 +106,15 @@ const PluginStats = () => {
 
 	return (
 		<>
-						<button
-							onClick={ docsTrigger }
-							className='mx-2 text-sm font-medium text-slate-600'
-						>
-							{ __( 'Knowledge Base', 'ultimate-addons-for-gutenberg' ) }
-						</button>
-						{renderDivider()}
+			<a
+				href='https://wpspectra.com/docs/'
+				target='_blank'
+				rel="noreferrer"
+				className='mx-2 text-sm font-medium text-slate-600'
+			>
+				{ __( 'Knowledge Base', 'ultimate-addons-for-gutenberg' ) }
+			</a>
+			{renderDivider()}
 			<div className='mx-2 text-sm text-slate-400'>
 				{ uag_react.plugin_ver }
 			</div>
