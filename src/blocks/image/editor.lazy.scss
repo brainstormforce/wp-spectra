@@ -79,9 +79,11 @@
 		.components-placeholder__label {
 			margin-left: auto;
 			margin-right: auto;
-			margin-bottom: 8px;
+			font-size: 24px;
+			font-weight: 400;
 
 			.block-editor-block-icon {
+				margin-right: 12px;
 
 				svg.uagb-editor-icons {
 
