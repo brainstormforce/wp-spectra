@@ -60,10 +60,12 @@ class Sidebar_Configurations {
 		if ( ! current_user_can( 'manage_zip_ai_assistant' ) ) {
 			return;
 		}
+		global $wp_version;
+		// Set the priority for loading ZIP AI Adminbar trigger.
+		$admin_trigger_priority = version_compare( $wp_version, '6.6', '<' ) ? 999 : 6;
 		// Setup the Sidebar Rest Routes.
 		add_action( 'rest_api_init', array( $this, 'register_route' ) );
-		add_action( 'admin_bar_menu', array( $this, 'add_admin_trigger' ), 999 );
-
+		add_action( 'admin_bar_menu', array( $this, 'add_admin_trigger' ), $admin_trigger_priority );
 		// Setup the Sidebar Auth Ajax.
 		add_action( 'wp_ajax_verify_zip_ai_authenticity', array( $this, 'verify_authenticity' ) );
 
