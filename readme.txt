@@ -216,11 +216,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
-<<<<<<< HEAD
-* Deprecated: Header Titlebar - Removed the Header Titlebar functionality to allow support for the WordPress 6.6 command palette.
-=======
 * Improvement: What's New - Improved the ability to see the new updates for Spectra in the form of a feed under the Dashboard.
->>>>>>> b4e01fbc7dc91604020416b1ace5c440ac6e88ac
+* Deprecated: Header Titlebar - Removed the Header Titlebar functionality to allow support for the WordPress 6.6 command palette.
 
 = 2.14.0 - Monday, 8th July 2024 = 
 * Fix: Global - Optimized the `Ultimate Addons for Gutenberg` database updation and resolved the editor refresh and RichText issues. Read more about migration [here](https://wpspectra.com/docs/spectra-database-update-instructions/).
