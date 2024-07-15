@@ -217,6 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = x.x.x =
 * Improvement: What's New - Improved the ability to see the new updates for Spectra in the form of a feed under the Dashboard.
+* Fix: Global - Resolved an issue wherein the last modified dates would be altered after running the `Ultimate Addons for Gutenberg` database update.
 * Deprecated: Header Titlebar - Removed the Header Titlebar functionality to allow support for the WordPress 6.6 command palette.
 
 = 2.14.0 - Monday, 8th July 2024 = 
