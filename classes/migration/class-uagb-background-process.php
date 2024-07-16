@@ -46,7 +46,7 @@ function spectra_log( $message ) {
  *
  * @param array $new The new post data.
  * @param array $old The old post data.
- * @since x.x.x
+ * @since 2.14.1
  * @return array The modified post data with the original modified date.
  */
 function spectra_stop_modified_date_update( $new, $old ) {
