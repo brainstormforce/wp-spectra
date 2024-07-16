@@ -1,0 +1,34 @@
+name: Mirror the Repository.
+# Mirror the Spectra repository publically on every release.
+
+on:
+  push:
+    branches:
+      # Run this whenever something is pushed to the default branch.
+      - master
+
+jobs:
+  mirror-repository:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the private code
+        uses: actions/checkout@v2
+        with:
+          repository: brainstormforce/ultimate-addons-for-gutenberg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Initialize mandatory git config
+        run: |
+          git config user.name "Sandesh - Automation"
+          git config user.email "sandeshj+automation@bsf.io"
+          
+      - name: Remove any sensitive files
+        run: |
+          rm -rf .github/
+          rm -rf .scripts/
+          
+      - name: Push to the public repo
+        run: |
+          git remote add mirror https://github.com/brainstormforce/wp-spectra.git
+          git push mirror master --force
