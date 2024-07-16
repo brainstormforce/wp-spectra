@@ -40,8 +40,7 @@ class Admin_Helper {
 	 */
 	public static function get_common_settings() {
 
-		$uag_versions   = self::get_rollback_versions_options();
-		$changelog_data = self::get_changelog_feed_data();
+		$uag_versions = self::get_rollback_versions_options();
 
 		$theme_data          = \WP_Theme_JSON_Resolver::get_theme_data();
 		$theme_settings      = $theme_data->get_settings();
@@ -70,7 +69,6 @@ class Admin_Helper {
 			'enable_block_responsive'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_responsive', 'enabled' ),
 			'enable_dynamic_content'             => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_dynamic_content', 'enabled' ),
 			'enable_animations_extension'        => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_animations_extension', 'enabled' ),
-			'enable_header_titlebar'             => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_header_titlebar', 'enabled' ),
 			'enable_gbs_extension'               => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_gbs_extension', 'enabled' ),
 			'select_font_globally'               => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_select_font_globally', array() ),
 			'load_select_font_globally'          => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_select_font_globally', 'disabled' ),
@@ -95,7 +93,6 @@ class Admin_Helper {
 			'visibility_mode'                    => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_visibility_mode', 'disabled' ),
 			'visibility_page'                    => self::get_visibility_page(),
 			'uag_previous_versions'              => $uag_versions,
-			'changelog_data'                     => $changelog_data,
 			'uagb_old_user_less_than_2'          => get_option( 'uagb-old-user-less-than-2' ),
 			'recaptcha_site_key_v2'              => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v2', '' ),
 			'recaptcha_secret_key_v2'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v2', '' ),
@@ -128,30 +125,6 @@ class Admin_Helper {
 		return false;
 	}
 
-	/**
-	 * Get Changelogs from API.
-	 *
-	 * @since 2.0.0
-	 * @return array $changelog_data Changelog Data.
-	 */
-	public static function get_changelog_feed_data() {
-		$posts          = json_decode( wp_remote_retrieve_body( wp_remote_get( 'https://wpspectra.com/wp-json/wp/v2/changelog?per_page=3' ) ) );
-		$changelog_data = array();
-
-		if ( isset( $posts ) && is_array( $posts ) ) {
-			foreach ( $posts as $post ) {
-
-				$changelog_data[] = array(
-					'title'       => $post->title->rendered,
-					'date'        => gmdate( 'l F j, Y', strtotime( $post->date ) ),
-					'description' => $post->content->rendered,
-					'link'        => $post->link,
-				);
-			}
-		}
-
-		return $changelog_data;
-	}
 	/**
 	 * Get blocks.
 	 */

@@ -88,9 +88,11 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 				UAGB_Admin_Helper::update_admin_settings_option( 'uag_enable_quick_action_sidebar', 'disabled' );
 			}
 
-			// If user is older than equal to 2.12.9 then set the option.
-			if ( version_compare( $saved_version, '2.12.9', '<=' ) ) {
-				UAGB_Admin_Helper::update_admin_settings_option( 'uag_enable_header_titlebar', 'disabled' );
+			// Delete any of the unused options that have been unsupported or no longer required.
+
+			// Delete the header titlebar option if it exists- which has been removed from version 2.14.1.
+			if ( UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_header_titlebar' ) ) {
+				UAGB_Admin_Helper::delete_admin_settings_option( 'uag_enable_header_titlebar' );
 			}
 
 			// Create a Core Block Array for all versions in which a Core Spectra Block was added.

@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
-Tested up to: 6.5
-Stable tag: 2.14.0
+Tested up to: 6.6
+Stable tag: 2.14.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,6 +215,12 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= 2.14.1 - Tuesday, 16th July 2024 =
+* Improvement: Added compatibility with WordPress v6.6.
+* Improvement: What's New - Improved the ability to see the new updates for Spectra in the form of a feed under the Dashboard.
+* Fix: Global - Resolved an issue wherein the last modified dates would be altered after running the `Ultimate Addons for Gutenberg` database update.
+* Deprecated: Header Titlebar - Safely removed the Header Titlebar functionality to allow support for the WordPress 6.6 command palette.
+
 = 2.14.0 - Monday, 8th July 2024 = 
 * Fix: Global - Optimized the `Ultimate Addons for Gutenberg` database updation and resolved the editor refresh and RichText issues. Read more about migration [here](https://wpspectra.com/docs/spectra-database-update-instructions/).
 
@@ -232,12 +238,12 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Post Timeline - Resolved an issue wherein the font size would not work as intended in responsive devices.
 * Fix: Global - Resolved an issue wherein labels from the icon library would not be available for translation on wordpress.org.
 
-= 2.13.6 - Thursday, 13th June 2024 =
-* Fix: FAQ - Resolved an issue wherein the FAQ questions could not utilize line breaks or bold text.
-
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 
 == Upgrade Notice ==
+
+= 2.14.1 =
+With WordPress 6.6 introducing the command palette and taking a place at the top of the editor, we had to retire the 'Move Title to Top' functionality in Spectra. However, there's no need for concern. After updating Spectra, the title in your editor will gracefully return to its default position.
 
 = 2.7.4 =
 With WordPress 6.3 no longer supporting older versions of PHP, the next Spectra release will also require a minimum of PHP 7.4. For websites running on older version of PHP, we strongly recommend upgrading to PHP 7.4 or above to ensure optimal performance and compatibility.

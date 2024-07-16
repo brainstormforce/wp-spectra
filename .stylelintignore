@@ -23,6 +23,7 @@ assets/css/custom-style-blocks.css
 admin/bsf-analytics/
 admin/assets/images/
 
+admin-core/assets/src/utils/whats-new-library/
 admin-core/assets/build/
 admin-core/assets/images/
 admin-core/**/*-rtl.css

@@ -1,3 +1,6 @@
+1.1.10 - 15th July 2024
+- Fix: Resolved an issue with the AI Assistant admin-bar trigger loading order in WordPress 6.6.
+
 v1.1.9 - 2nd July 2024
 - Improvement: The library's text-domain support has been removed & translation is now managed from the project level.
 

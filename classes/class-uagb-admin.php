@@ -268,9 +268,9 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 						'<div class="notice-image">
                             <img src="%1$s" class="custom-logo" alt="Spectra" itemprop="logo"></div>
                             <div class="notice-content">
-                                <h1 class="notice-heading">
+                                <div class="notice-heading">
                                     %2$s
-                                </h1>
+                                </div>
                                 %3$s<br />
                                 <div class="astra-review-notice-container">
                                     <a href="%4$s" class="astra-notice-close uagb-review-notice button-primary" target="_blank">
@@ -287,7 +287,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
                                 </div>
                             </div>',
 						$image_path,
-						__( 'Wow! The Spectra has already powered over 5 pages on your website!', 'ultimate-addons-for-gutenberg' ),
+						__( 'Wow! Spectra has already powered over 5 pages on your website!', 'ultimate-addons-for-gutenberg' ),
 						__( 'Would you please mind sharing your views and give it a 5 star rating on the WordPress repository?', 'ultimate-addons-for-gutenberg' ),
 						'https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg/reviews/?filter=5#new-post',
 						__( 'Ok, you deserve it', 'ultimate-addons-for-gutenberg' ),

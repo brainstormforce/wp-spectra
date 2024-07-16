@@ -39,6 +39,22 @@ function spectra_log( $message ) {
 	}
 }
 
+/**
+ * Prevents the modification of the post modified date.
+ *
+ * This function ensures that the post modified date is not updated.
+ *
+ * @param array $new The new post data.
+ * @param array $old The old post data.
+ * @since 2.14.1
+ * @return array The modified post data with the original modified date.
+ */
+function spectra_stop_modified_date_update( $new, $old ) {
+	$new['post_modified']     = $old['post_modified'];
+	$new['post_modified_gmt'] = $old['post_modified_gmt'];
+	return $new;
+}
+
 if ( ! class_exists( 'class_spectra_migrate_blocks' ) ) {
 
 	/**
@@ -80,14 +96,15 @@ if ( ! class_exists( 'class_spectra_migrate_blocks' ) ) {
 
 			// Only update when the post needs to be updated - if it has any blocks that needed to be migrated.
 			if ( ! empty( $migration_details['requires_migration'] ) && ! empty( $migration_details['content'] ) && is_string( $migration_details['content'] ) ) {
+				add_filter( 'wp_insert_post_data', 'spectra_stop_modified_date_update', 99999, 2 );
 				$updated_post_id = wp_update_post(
 					array(
-						'ID'            => $post->ID,
-						'post_content'  => wp_slash( $migration_details['content'] ),
-						'post_date'     => $post->post_date,
-						'post_modified' => $post->post_modified,
+						'ID'           => $post->ID,
+						'post_content' => wp_slash( $migration_details['content'] ),
 					)
 				);
+
+				remove_filter( 'wp_insert_post_data', 'spectra_stop_modified_date_update', 99999 );
 	
 				// If the Post ID is correct ( which means the update was successful ) - Update the Post Meta and add to the log.
 				if ( ! empty( $updated_post_id ) ) {
