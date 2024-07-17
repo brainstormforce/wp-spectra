@@ -1,0 +1,32 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.edit-post-visual-editor .block-editor-block-list__block {
+	.uagb-timeline__field {
+		margin: 0;
+
+		a {
+			text-decoration: none;
+			font-size: inherit;
+			margin: 0;
+		}
+	}
+
+	.wp-block-uagb-post-timeline a {
+		pointer-events: none;
+	}
+}
+
+.uagb-timeline__link_parent > div {
+	display: inline-block;
+}
+
+.uagb-editor-preview-mode-tablet.uagb-timeline,
+.uagb-editor-preview-mode-mobile.uagb-timeline {
+	.uagb-timeline__image img {
+		max-width: 100%;
+	}
+}

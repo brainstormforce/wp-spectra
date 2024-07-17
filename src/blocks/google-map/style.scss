@@ -1,0 +1,16 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+.uagb-google-map__wrap {
+	display: flex;
+
+	.uagb-google-map__iframe {
+		width: 100%;
+		box-shadow: none;
+		border: none;
+		padding: 0;
+		margin: 0;
+	}
+}

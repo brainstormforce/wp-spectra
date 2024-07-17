@@ -1,0 +1,41 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+.block-editor-page #wpwrap {
+	.edit-post-visual-editor a.uagb-infobox-link-wrap {
+		z-index: -1;
+		color: inherit;
+	}
+
+	.uagb-disable-link {
+		pointer-events: all;
+	}
+}
+
+.block-editor-block-list__block .uagb-infobox__content-wrap {
+	.uagb-ifb-icon-wrap svg {
+		height: 30px;
+	}
+}
+
+.uagb-ifb-title-wrap {
+	.block-editor-rich-text__editable.uagb-ifb-title.rich-text {
+		margin-top: 0;
+	}
+}
+
+.uagb-infobox-icon-left,
+.uagb-infobox-icon-right {
+	// This is added since the editor Desktop View applies a default Border Box for all elements.
+	svg {
+		box-sizing: content-box;
+	}
+}
+
+.uagb-infobox-link-wrap {
+	pointer-events: none;
+}

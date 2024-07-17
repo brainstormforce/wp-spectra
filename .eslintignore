@@ -1,0 +1,26 @@
+**/*.min.js
+**/node_modules/**
+**/vendor/**
+admin/bsf-analytics/
+assets/css/blocks/
+admin-core/assets/src/utils/whats-new-library/
+lib/
+dist/
+build
+coverage
+cypress
+node_modules
+vendor
+*.css
+*.scss
+*.min.js
+
+assets/js/js_cookie.min.js
+blocks-config/uagb-controls/fonts.js
+
+**/deprecated/**
+
+# Misc.
+
+# AOS library files.
+assets/js/aos.js

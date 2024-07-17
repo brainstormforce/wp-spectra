@@ -1,0 +1,32 @@
+.wp-block-uagb-faq {
+	width: 100%;
+	&.uagb-faq-layout-accordion .uagb-faq-child__outer-wrap .uagb-faq-questions-button {
+		cursor: pointer;
+	}
+
+	.uagb-faq-content {
+		margin-bottom: 0;
+
+		p {
+			margin: auto;
+		}
+	}
+}
+
+.uagb-faq-layout-grid.uagb-faq-equal-height.uagb-faq__wrap {
+	.uagb-faq-child__outer-wrap,
+	.uagb-faq-item {
+		height: 100%;
+	}
+}
+
+// These fixes are specific to the Astra theme.
+body[class*="astra"] {
+	.uagb-faq-questions {
+		line-height: normal;
+	}
+}
+
+.uagb-faq-item {
+	overflow: hidden;
+}

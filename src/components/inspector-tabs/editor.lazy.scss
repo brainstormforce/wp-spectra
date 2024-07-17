@@ -1,0 +1,197 @@
+@import "../../styles/variables";
+$border-color: #d6d9dd;
+
+.components-panel[data-uagb-tab] {
+	z-index: 99;
+	margin-top: 1px;
+
+	&:not( [data-uagb-tab="advance"] ) {
+		.components-panel__body.block-editor-block-inspector__advanced,
+		.components-panel__body.editor-block-inspector__advanced.block-editor-block-inspector__advanced,
+		.block-editor-block-inspector > div > .components-panel__body {
+			display: none;
+		}
+
+		.block-editor-block-inspector > div > .components-panel__body.uagb-dynamic-content-wrap {
+			display: block;
+			border-bottom: 1px solid #e0e0e0 !important;
+		}
+	}
+
+	.block-editor-block-card {
+		padding-bottom: 25px;
+		position: relative;
+		z-index: 1;
+		overflow: hidden;
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: -16px;
+			right: -16px;
+			bottom: 0;
+			background: #fff;
+			z-index: -1;
+		}
+	}
+
+	.components-panel__body.edit-post-settings-sidebar__panel-block {
+		.block-editor-block-card {
+			overflow: unset;
+
+			&::before {
+				top: -16px;
+			}
+		}
+	}
+}
+
+[dir="rtl"] {
+	.uagb-inspector-tabs {
+		direction: rtl;
+		> div {
+			&:first-child {
+				&.uagb-active {
+					&::after {
+						border-left: 1px solid $border-color;
+						border-right: 0;
+					}
+				}
+			}
+			&:last-child {
+				&.uagb-active {
+					&::after {
+						border-left: 0;
+						border-right: 1px solid $border-color;
+					}
+				}
+			}
+		}
+	}
+}
+
+.uagb-inspector-tabs {
+	display: flex;
+	position: relative;
+	background: #fff;
+	z-index: 9;
+	height: 65px;
+
+	> div {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		background: #fff;
+		cursor: pointer;
+
+		&::after,
+		&::before {
+			content: "";
+			position: absolute;
+			display: block;
+			top: 0;
+			left: 0;
+			width: 100%;
+		}
+
+		&::after {
+			border-bottom: 1px solid $border-color;
+			height: 100%;
+			z-index: 1;
+		}
+		&:first-child {
+			&.uagb-active {
+				&::after {
+					border-left: 0;
+					/* Below CSS used to show border at bottom of the tabs. */
+					box-shadow: inset 0 -3px 0 0 $spectra-color-primary;
+					color: $spectra-color-primary;
+					/* End here. */
+				}
+			}
+		}
+		&:last-child {
+			&.uagb-active {
+				&::after {
+					border-right: 0;
+					/* Below CSS used to show border at bottom of the tabs. */
+					box-shadow: inset 0 -3px 0 0 $spectra-color-primary;
+					color: $spectra-color-primary;
+					/* End here. */
+				}
+			}
+		}
+
+		&.uagb-active {
+			&::after {
+				border-left: 1px solid $border-color;
+				border-right: 1px solid $border-color;
+				border-bottom: 0;
+
+				/* Below CSS used to show border at bottom of the tabs. */
+				box-shadow: inset 0 -3px 0 0 $spectra-color-primary;
+				color: $spectra-color-primary;
+				/* End here. */
+			}
+
+			&::before {
+				height: 0;
+				background-color: transparent;
+				z-index: 2;
+			}
+		}
+
+		h5 {
+			margin: 6px 0 0;
+			font-size: 13px;
+			font-weight: 400;
+			line-height: 1.2;
+		}
+
+		h5,
+		svg {
+			z-index: 2;
+			fill: #585858;
+		}
+
+		&.uagb-active h5 {
+			color: #0085ba;
+		}
+
+		&.uagb-active path {
+			fill: #0085ba;
+		}
+	}
+}
+
+.components-panel .components-panel__body .uagb-inspector-tabs-container {
+	position: static !important;
+	margin-left: -16px;
+	margin-right: -16px;
+	border-top: 0 !important;
+	top: 0 !important;
+}
+
+.uagb-inspector-tabs-container {
+	position: sticky;
+	top: -3px;
+	z-index: 9;
+	border-top: calc(0.1em + 1px) solid #f2f4f5;
+	direction: initial;
+}
+
+.customize-widgets-layout__inspector .uagb-inspector-tabs-container { // CSS to resolve issue in customizer > widget > spectra inspector tab has gap https://share.getcloudapp.com/d5uDXmn0.
+	top: -12px;
+	margin-left: -12px;
+	margin-right: -12px;
+}
+
+.uagb-inspector-tab .components-panel__body:first-child,
+.edit-post-settings-sidebar__panel-block .uagb-inspector-tab .components-panel__body:first-child {
+	margin-top: 0;
+	border-top: none !important;
+}

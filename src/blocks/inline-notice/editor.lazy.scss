@@ -1,0 +1,22 @@
+.editor-styles-wrapper [data-type="uagb/inline-notice"] {
+
+	.uagb-notice-title {
+		margin-bottom: 0;
+	}
+
+	p.block-editor-rich-text__editable.uagb-notice-text.rich-text {
+		margin: 0;
+	}
+
+	p.block-editor-rich-text__editable.uagb-notice-title.rich-text {
+		margin: 0;
+	}
+
+	.uagb-notice-text.block-editor-block-list__layout p:last-child {
+		margin-bottom: 0;
+	}
+
+	.uagb-notice-text.block-editor-block-list__layout p:first-child {
+		margin-top: 0 !important; // Added ! important css to override the default margin-top for the first paragraph.
+	}
+}

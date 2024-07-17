@@ -1,0 +1,124 @@
+@import "../../styles/variables";
+
+.uag-confirm-popup-wrapper {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	padding: 24px;
+	width: 612px;
+	height: 166px;
+	background: #fff;
+	box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+	border-radius: 2px;
+
+	.components-modal__content {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: row;
+		gap: 20px;
+
+		.components-modal__header {
+			display: none;
+		}
+
+		.uag-confirm-popup-icon {
+			display: flex;
+			flex-direction: row;
+			align-items: flex-start;
+			padding: 12px;
+			gap: 8px;
+			width: 54px;
+			height: 54px;
+			background: #dcf2ff;
+			border-radius: 32px;
+			flex: none;
+			order: 0;
+			flex-grow: 0;
+
+			svg {
+				stroke: #007cba;
+			}
+		}
+
+		.uag-confirm-popup-content {
+			box-sizing: border-box;
+			display: flex;
+			flex-direction: column;
+			gap: 24px;
+
+			.uag-confirm-popup-text {
+				display: flex;
+				flex-direction: column;
+				order: 1;
+				gap: 4px;
+
+				.uag-confirm-popup-title {
+					width: 480px;
+					height: 28px;
+					font-style: normal;
+					font-weight: 500;
+					font-size: 20px;
+					line-height: 28px;
+					color: #1d2327;
+					flex: none;
+					order: 0;
+					flex-grow: 0;
+				}
+
+				.uag-confirm-popup-description {
+					width: 480px;
+					height: 20px;
+					font-style: normal;
+					font-weight: 400;
+					font-size: 13px;
+					line-height: 20px;
+					display: flex;
+					align-items: center;
+					color: #50575e;
+					flex: none;
+					order: 1;
+					flex-grow: 0;
+				}
+			}
+
+			.uag-confirm-popup-controls {
+				display: flex;
+				flex-direction: row;
+				align-items: flex-start;
+				gap: 12px;
+				flex: none;
+				order: 2;
+
+				.uag-confirm-popup-buttons {
+					display: flex;
+					flex-direction: row;
+					justify-content: center;
+					align-items: center;
+					padding: 9px 17px;
+					box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+				}
+
+				.uag-popup-confirmation-button {
+					background: #007cba;
+					color: #fff;
+					border-radius: 2px;
+					flex: none;
+					order: 0;
+				}
+
+				.uag-popup-cancellation-button {
+					background: #fff;
+					border: 1px solid #e6e7e9;
+					border-radius: 2px;
+					flex: none;
+					order: 1;
+				}
+			}
+		}
+	}
+}
+
+.uag-confirm-popup-overlay {
+	background-color: #00000070;
+}

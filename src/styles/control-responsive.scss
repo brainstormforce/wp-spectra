@@ -1,0 +1,18 @@
+/* --------- Common Responsive Select CSS --------- */
+
+.uag-responsive-common-button .dashicon {
+	font-size: 10px;
+}
+
+.components-button.uag-responsive-common-button:hover,
+.components-button.uag-responsive-common-button:focus,
+.components-button.uag-responsive-common-button:active {
+	box-shadow: none;
+	outline: none;
+	color: $spectra-color-primary;
+}
+
+.uag-responsive-label-wrap {
+	display: flex;
+	align-items: center;
+}

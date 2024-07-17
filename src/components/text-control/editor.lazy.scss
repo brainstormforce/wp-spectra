@@ -1,0 +1,92 @@
+@import "../../styles/variables";
+
+.uagb-text-control {
+	position: relative;
+
+	&--open-dynamic-content {
+		flex-direction: column;
+		align-items: unset;
+	}
+
+	.components-base-control__field {
+		margin-bottom: 0;
+	}
+
+	.components-text-control__input {
+		padding-right: 30px;
+		margin-left: 0;
+		margin-right: 0;
+		color: $spectra-color-body;
+		border-color: $spectra-color-border;
+
+		&:focus {
+			border-color: $spectra-color-border-hover;
+			box-shadow: unset;
+		}
+	}
+
+	.uagb-control__header {
+		.uagb-number-control__actions {
+			.uagb-reset {
+				height: fit-content;
+			}
+		}
+	}
+
+	&__controls {
+		> .components-button {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			padding: 0 8px;
+			border-radius: $spectra-popup-border-radius;
+			height: $spectra-control-input-height;
+
+			svg {
+				width: 18px;
+				stroke: $spectra-color-icon;
+				stroke-width: 1.4;
+				fill: none;
+			}
+		}
+
+		&-inline {
+			.components-base-control__field {
+				display: flex;
+				align-items: center;
+
+				& > label {
+					flex: 50%;
+					margin-bottom: unset;
+				}
+
+				& > input {
+					flex: 50%;
+				}
+			}
+		}
+
+		&-textarea {
+			position: relative;
+
+			> .components-button {
+				top: 2px;
+				bottom: auto;
+			}
+
+			textarea {
+				color: $spectra-color-body;
+				border-color: $spectra-color-border;
+
+				&:focus {
+					border-color: $spectra-color-border-hover;
+					box-shadow: unset;
+				}
+			}
+		}
+	}
+
+	&.components-base-control > .components-base-control__help {
+		margin-top: $spectra-control-label-bottom-margin;
+	}
+}

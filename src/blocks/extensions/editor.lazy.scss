@@ -1,0 +1,244 @@
+@import "../../styles/variables";
+
+.wp-block-gallery.uag-masonry {
+	/* For Backword */
+	ul.blocks-gallery-grid {
+		column-count: 4;
+		column-gap: 1em;
+		display: block;
+
+		li.blocks-gallery-item {
+			display: block;
+			grid-template-rows: 1fr auto;
+			margin: 0 0 1em 0;
+			break-inside: avoid;
+			width: unset;
+		}
+	}
+
+	/* End Backword */
+	&.blocks-gallery-grid {
+		column-count: 3;
+		column-gap: 1em;
+		display: block;
+
+		figure.wp-block-image:not( #individual-image ) {
+			display: block;
+			grid-template-rows: 1fr auto;
+			margin: 0 0 1em 0;
+			break-inside: avoid;
+			width: unset;
+		}
+	}
+}
+
+.uagb-inspector-tab.uagb-tab-content-advance,
+.block-editor-block-inspector__advanced {
+	.form-check-label {
+		width: 50%;
+		margin-bottom: 8px;
+		display: inline-block;
+
+		.uagb-forms-checkbox {
+			border-radius: 2px;
+			width: 1rem;
+			height: 1rem;
+			margin-right: 7px;
+		}
+	}
+}
+
+.uag-copy-paste-styles-popover {
+	.components-menu-item__shortcut {
+		white-space: nowrap;
+	}
+
+	.components-menu-item__item {
+		min-width: 100%;
+		justify-content: space-around;
+	}
+
+	.components-popover__content {
+		border: 1px solid #1e1e1e;
+		box-shadow: none;
+	}
+
+	.components-button {
+		padding: 10px;
+		justify-content: center;
+
+		&[disabled]:hover {
+			color: unset;
+		}
+	}
+}
+
+/* stylelint-disable */
+.uag-hide-desktop,
+.uagb-editor-preview-at-desktop.uag-hide-desktop,
+.uagb-editor-preview-at-tablet.uag-hide-tab,
+.uagb-editor-preview-at-mobile.uag-hide-mob {
+	display: inherit;
+	background: -o-repeating-linear-gradient(
+		325deg,
+		rgba( 0, 0, 0, 0.3 ),
+		rgba( 0, 0, 0, 0.05 ) 1px,
+		transparent 2px,
+		transparent 9px
+	);
+	background: repeating-linear-gradient(
+		125deg,
+		rgba( 0, 0, 0, 0.3 ),
+		rgba( 0, 0, 0, 0.05 ) 1px,
+		transparent 2px,
+		transparent 9px
+	);
+	border: 1px solid rgba( 0, 0, 0, 0.02 );
+}
+
+.uagb-animation {
+
+	&__play-button {
+		width: 100%;
+		justify-content: center;
+		border-style: solid;
+		border-width: 1px;
+	}
+
+	&__range-control {
+
+		.components-range-control__marks {
+			top: 13px;
+		}
+	}
+
+	&__nested-blocks-button {
+		width: 100%;
+		justify-content: center;
+		margin-bottom: 16px;
+		&.loading::after {
+			content: "";
+			position: absolute;
+			width: 16px;
+			height: 16px;
+			top: 0;
+			right: 4%;
+			bottom: 0;
+			margin: auto;
+			border: 4px dotted transparent;
+			border-top-color: #4f94d4;
+			border-right-color: #4f94d4;
+			border-radius: 50%;
+			animation: button-loading-spinner 1s ease infinite;
+		}
+		
+		&:focus:not(:disabled){
+			box-shadow: inset 0 0 0 1px var(--wp-components-color-accent-darker-10,var(--wp-admin-theme-color-darker-10,#2145e6));
+		}
+	
+		&.loading {
+			pointer-events: none;
+			opacity: 0.7;
+			position: relative;
+			padding-right: 30px;
+		}
+	}
+}
+
+/* stylelint-enable */
+
+// Animation Type - Searchable Select Control CSS.
+.uagb-animation-type-searchable-select {
+
+	& input[type="text"]:focus {
+		box-shadow: unset;
+	}
+
+	.uagb-animation-type-select__container {
+		width: 100%;
+	}
+
+	.uagb-animation-type-select__input input {
+		box-shadow: none;
+		border: none;
+	}
+
+	.uagb-animation-type-select__control {
+		cursor: pointer;
+		border: 1px solid $spectra-color-border;
+		box-shadow: none;
+		height: $spectra-control-input-height;
+		min-height: $spectra-control-input-height;
+		border-radius: $spectra-control-border-radius;
+	}
+
+	.uagb-animation-type-select__indicator-separator {
+		display: none;
+	}
+
+	.uagb-animation-type-select__dropdown-indicator {
+		color: $spectra-color-body;
+		padding-left: 6px;
+
+		svg {
+			height: 14px;
+			width: 14px;
+		}
+	}
+
+	.uagb-animation-type-select__value-container {
+		top: 0;
+		height: $spectra-control-input-height;
+		padding: 0 8px;
+
+		> div {
+			margin: 0;
+			padding: 0;
+		}
+	}
+
+	// Animation Type - Options heading.
+	.uagb-animation-type-select__group-heading {
+		font-weight: 600;
+		font-size: 95%;
+		color: $spectra-color-body;
+	}
+
+	// Animation Type - Options styling.
+	.uagb-animation-type-select__option {
+		color: $spectra-color-body;
+		padding: 8px 20px;
+
+		// This specifically styles the 'None' option.
+		&[id$="option-0"] {
+			padding-left: 12px;
+		}
+
+		&--is-selected,
+		&--is-focused {
+			background-color: $spectra-color-tab-background;
+		}
+	}
+}
+
+// Help tooltip needs readjustment since we are using markers here.
+.block-editor-block-inspector .uagb-inspector-tab div.uagb-animation__range-control-wrapper {
+
+	div.components-base-control {
+
+		p.components-base-control__help {
+			margin-top: 20px;
+		}
+	}
+}
+
+@keyframes button-loading-spinner {
+
+	from {
+		transform: rotate(0turn);
+	}
+
+	to {
+		transform: rotate(1turn);
+	}
+}

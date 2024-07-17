@@ -1,0 +1,16 @@
+.block-editor-image-size-control {
+	margin-bottom: 1em;
+
+	.block-editor-image-size-control__row {
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
+
+		.uag-number-control {
+			.uag-number-control__inline,
+			.uag-number-control__full-width {
+				margin-bottom: 10px;
+			}
+		}
+	}
+}

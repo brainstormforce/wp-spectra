@@ -1,0 +1,36 @@
+/vendor/
+/node_modules/
+build
+coverage
+cypress
+node_modules
+vendor
+
+lib/
+bin/
+dist/
+
+*.json
+*.js
+*.lock
+*-invalid.*
+*.min.css
+
+
+assets/css/blocks/
+assets/css/custom-style-blocks.css
+
+admin/bsf-analytics/
+admin/assets/images/
+
+admin-core/assets/src/utils/whats-new-library/
+admin-core/assets/build/
+admin-core/assets/images/
+admin-core/**/*-rtl.css
+
+# Misc.
+
+src/components/icon-picker/editor.lazy.scss
+
+# AOS libary files
+assets/css/aos.css

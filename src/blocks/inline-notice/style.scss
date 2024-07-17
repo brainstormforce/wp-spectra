@@ -1,0 +1,140 @@
+.uagb-inline_notice__align-right {
+	text-align: right;
+
+	span.uagb-notice-dismiss {
+		left: 13px;
+	}
+}
+
+.uagb-inline_notice__align-center {
+	text-align: center;
+
+	span.uagb-notice-dismiss {
+		right: 13px;
+	}
+}
+
+.uagb-inline_notice__align-left {
+	text-align: left;
+
+	span.uagb-notice-dismiss {
+		right: 13px;
+	}
+}
+
+.wp-block-uagb-inline-notice {
+	width: 100%;
+	position: relative;
+
+	&.uagb-notice__active {
+		display: none;
+	}
+
+	.uagb-notice-title {
+		margin: 0;
+		width: -moz-available;
+		width: -webkit-fill-available;
+		width: fill-available;
+		display: inline-block;
+	}
+
+	.uagb-notice-text {
+		margin-top: -3px;
+		margin-bottom: 0;
+	}
+
+	.uagb-notice-text p:last-child {
+		margin-bottom: 0;
+	}
+
+	.uagb-notice-text p:first-child {
+		margin-top: 0 !important;
+	}
+
+	span.uagb-notice-dismiss svg {
+		width: 16px;
+		height: 16px;
+	}
+
+	span.uagb-notice-dismiss {
+		position: absolute;
+		cursor: pointer;
+		top: 13px;
+		opacity: 0.8;
+		padding: 0;
+		background: none;
+		transition: 0.3s ease;
+	}
+
+	&.uagb-dismissable {
+
+		& > svg { // Backward compatibility.
+			position: absolute;
+			cursor: pointer;
+			opacity: 0.8;
+			padding: 0;
+			background: none;
+			transition: 0.3s ease;
+		}
+
+		button[type="button"] {
+			position: absolute;
+			cursor: pointer;
+			opacity: 0.8;
+			padding: 0;
+			background: none;
+			transition: 0.3s ease;
+		}
+	}
+
+	&.uagb-inline_notice__align-right {
+		text-align: right;
+
+		svg { // Backward compatibility.
+			left: 13px;
+		}
+
+		button[type="button"] {
+			left: 13px;
+			top: 13px;
+			border: none;
+			padding-inline: 0;
+			padding-block: 0;
+			line-height: 0px;
+		}
+	}
+
+	&.uagb-inline_notice__align-center {
+		text-align: center;
+
+		svg { // Backward compatibility.
+			right: 13px;
+		}
+
+		button[type="button"] {
+			right: 13px;
+			top: 13px;
+			border: none;
+			padding-inline: 0;
+			padding-block: 0;
+			line-height: 0px;
+		}
+	}
+
+	&.uagb-inline_notice__align-left {
+		text-align: left;
+
+		svg { // Backward compatibility.
+			right: 13px;
+		}
+
+		button[type="button"] {
+			right: 13px;
+			top: 13px;
+			border: none;
+			padding-inline: 0;
+			padding-block: 0;
+			line-height: 0px;
+		}
+	}
+}

@@ -1,0 +1,151 @@
+@import "../../styles/variables";
+
+.uagb-inspector-tab {
+	&.uagb-tab-content-general {
+		.uag-advance-panel-body-image {
+			.editor-bg-image-control {
+				margin-top: -35px;
+			}
+		}
+	}
+
+	.block-editor-image-size-control .block-editor-image-size-control__row {
+		text-transform: capitalize;
+	}
+
+	.components-base-control label.components-input-control__label {
+		text-transform: capitalize;
+	}
+
+	.block-editor-image-size-control {
+		&__row {
+			.components-button-group {
+				.components-button {
+					border: 1px solid #8f9395;
+					box-shadow: none;
+					font-size: 13px;
+					font-weight: 400;
+					height: 26px;
+
+					&.is-pressed {
+						background: #0085ba;
+						border-color: #0085ba;
+					}
+				}
+			}
+
+			.components-button {
+				span.dashicons-image-rotate {
+					font-size: 9px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					color: #2e92c4;
+				}
+			}
+		}
+	}
+}
+.block-editor-block-list__block.wp-block[data-type="uagb/image"] {
+	width: inherit;
+}
+.wp-block-uagb-image {
+
+	&--effect {
+		&-slide {
+			.wp-block-uagb-image__figure {
+				img,
+				.wp-block-uagb-image--layout-overlay__color-wrapper {
+					width: calc(100% + 40px) !important;
+					max-width: none !important;
+					transform: translate3d(-40px, 0, 0);
+					transition: transform 0.35s ease-in-out;
+				}
+				&:hover {
+					img,
+					.wp-block-uagb-image--layout-overlay__color-wrapper {
+						transform: translate3d(0, 0, 0);
+					}
+				}
+			}
+		}
+	}
+
+	// Initial selection screen/media-placeholder.
+	.components-placeholder.block-editor-media-placeholder {
+		box-shadow: none;
+		border: 1px dashed #555d66;
+
+		.components-placeholder__label {
+			margin-left: auto;
+			margin-right: auto;
+			font-size: 24px;
+			font-weight: 400;
+
+			.block-editor-block-icon {
+				margin-right: 12px;
+
+				svg.uagb-editor-icons {
+
+					path {
+						stroke: #0063a1;
+					}
+				}
+			}
+		}
+
+		.components-placeholder__fieldset {
+			justify-content: center;
+
+			.components-placeholder__instructions {
+				width: 100%;
+				text-align: center;
+				margin-bottom: 32px;
+			}
+		}
+
+		// The 'Media Library' and 'Insert from URL' buttons in the MediaPlaceholder are tertiary,
+		// but we require the styling of secondary buttons.
+		.components-button.is-tertiary {
+			box-shadow: inset 0 0 0 1px var(--wp-components-color-accent, var(--wp-admin-theme-color, #007cba));
+			color: var(--wp-components-color-accent, var(--wp-admin-theme-color, #007cba));
+			padding: 6px 12px;
+
+			&:hover {
+				box-shadow: inset 0 0 0 1px var(--wp-components-color-accent-darker-10, var(--wp-admin-theme-color-darker-10, #006ba1));
+				color: var(--wp-components-color-accent-darker-10, var(--wp-admin-theme-color-darker-10, #006ba1));
+			}
+		}
+	}
+
+	.components-resizable-box__container {
+		max-width: 100% !important;
+		height: auto !important;
+
+		img {
+			max-width: 100% !important;
+		}
+	}
+
+	.components-placeholder.is-medium {
+		.components-placeholder__instructions {
+			display: block !important;
+		}
+
+		.components-placeholder__fieldset {
+			flex-direction: row;
+
+			.components-button {
+				margin-right: 10px;
+			}
+		}
+	}
+
+	.block-editor-media-placeholder__url-input-container {
+		.components-button.is-pressed:hover:not(:disabled),
+		.components-button.is-pressed {
+			background-color: $spectra-color-plain-background;
+
+		}
+	}
+}

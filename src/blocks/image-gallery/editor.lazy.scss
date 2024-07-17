@@ -1,0 +1,200 @@
+/**
+ * Editor styles for the admin
+ */
+
+/* stylelint-disable at-rule-no-unknown */
+
+@mixin grid-columns {
+	&-1 {
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+	}
+
+	&-2 {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	&-3 {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	&-4 {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	&-5 {
+		grid-template-columns: repeat(5, minmax(0, 1fr));
+	}
+
+	&-6 {
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+	}
+
+	&-7 {
+		grid-template-columns: repeat(7, minmax(0, 1fr));
+	}
+
+	&-8 {
+		grid-template-columns: repeat(8, minmax(0, 1fr));
+	}
+}
+
+.spectra-image-gallery-init {
+	&-wrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 2rem;
+		width: 100%;
+		box-sizing: border-box;
+		border: 1px dashed #555d66;
+		border-radius: 2px;
+
+		// Selectors are used this way for higher specificity.
+		& > &__title {
+			display: flex;
+			align-items: center;
+			font-size: 24px;
+			font-weight: 400;
+			margin-bottom: 8px;
+
+			svg {
+				width: 24px;
+				height: 24px;
+				margin-right: 12px;
+			}
+		}
+
+		& > &__help-text {
+			font-size: 13px;
+			margin-top: 0;
+			margin-bottom: 32px !important;  // !important is for editor styling usage, so can be overridden.
+		}
+
+		& .components-input-control__container {
+			box-sizing: border-box;
+			margin: 0;
+			font-weight: var(--heading-weight-500);
+			border: 1px solid #ddd;
+			min-height: 100%;
+			font-size: 13px;
+			line-height: 1.25em;
+			border-radius: 4px;
+
+			&:focus {
+				box-shadow: none;
+				border-color: #aaa;
+				color: #444;
+			}
+
+			&:hover {
+				color: #444;
+			}
+		}
+
+		svg {
+			width: 3em;
+			height: 3em;
+
+			path {
+				stroke: #0063a1;
+			}
+		}
+	}
+}
+
+// Slick Dot Positioning in the Editor.
+.spectra-image-gallery__layout--carousel .slick-dots {
+	bottom: -30px !important;
+}
+
+.spectra-image-gallery__control-lightbox {
+	position: absolute;
+	opacity: 1;
+	width: 100% !important;
+	max-width: 100% !important;
+	height: 100% !important;
+	max-height: 100% !important;
+}
+
+// Applies for the Masonry Layout in the following situations.
+// Twenty Twenty-Two and Spectra One.
+// Responsive Gutenberg Editor.
+.editor-styles-wrapper .is-root-container.edit-site-block-editor__block-list.wp-site-blocks,
+.uagb-editor-preview-mode-tablet,
+.uagb-editor-preview-mode-mobile {
+	.spectra-image-gallery__layout--masonry {
+		height: initial !important;
+		display: grid;
+
+		.spectra-image-gallery__media-wrapper,
+		.spectra-image-gallery__media-wrapper--isotope {
+			width: auto !important;
+			height: auto !important;
+			aspect-ratio: 1;
+
+			.spectra-image-gallery__media--masonry,
+			.spectra-image-gallery__media-thumbnail--masonry {
+				width: 100% !important;
+				height: 100% !important;
+				object-fit: cover;
+			}
+		}
+	}
+}
+
+// Tablet Grid for the Masonry Layout in Responsive Gutenberg Editor.
+.uagb-editor-preview-mode-tablet {
+	.spectra-image-gallery__layout--masonry-col-tab {
+
+		@include grid-columns;
+	}
+}
+
+// Mobile Grid for the Masonry Layout in Responsive Gutenberg Editor.
+.uagb-editor-preview-mode-mobile {
+	.spectra-image-gallery__layout--masonry-col-mob {
+
+		@include grid-columns;
+	}
+}
+
+// Desktop Masonry Grid Compatibility for FSE Themes like Twenty Twenty-Two and Spectra One.
+.editor-styles-wrapper .is-root-container.edit-site-block-editor__block-list.wp-site-blocks {
+	.spectra-image-gallery__layout--masonry-col {
+
+		@include grid-columns;
+	}
+}
+
+// Tablet Grid Properties for FSE Themes like Twenty Twenty-Two and Spectra One.
+.editor-styles-wrapper
+.is-root-container.edit-site-block-editor__block-list.wp-site-blocks
+.uagb-editor-preview-mode-tablet {
+	.spectra-image-gallery__layout--masonry-col-tab,
+	.spectra-image-gallery__layout--grid-col-tab,
+	.spectra-image-gallery__layout--tiled-col-tab {
+
+		@include grid-columns;
+	}
+}
+
+// Mobile Grid Properties for FSE Themes like Twenty Twenty-Two and Spectra One.
+.editor-styles-wrapper
+.is-root-container.edit-site-block-editor__block-list.wp-site-blocks
+.uagb-editor-preview-mode-mobile {
+	.spectra-image-gallery__layout--masonry-col-mob,
+	.spectra-image-gallery__layout--grid-col-mob,
+	.spectra-image-gallery__layout--tiled-col-mob {
+
+		@include grid-columns;
+	}
+}
+
+.editor-styles-wrapper [data-type="uagb/image-gallery"] {
+	width: 100%;
+}
+
+[data-type="uagb/image-gallery"] .slick-arrow {
+	border-width: 0;
+}

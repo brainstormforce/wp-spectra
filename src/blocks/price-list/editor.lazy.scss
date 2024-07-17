@@ -1,0 +1,104 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.editor-styles-wrapper {
+	[data-type="uagb/restaurant-menu"].block-editor-block-list__block {
+		display: flex;
+		width: 100%;
+	}
+
+	.wp-block-uagb-restaurant-menu {
+		width: 100%;
+		display: block;
+
+		.block-editor-block-list__layout {
+			display: grid;
+		}
+
+		.uagb-rm__title {
+			margin-top: 0;
+		}
+
+		.uagb-rm__separator {
+			margin-bottom: 10px;
+		}
+
+		.uagb-rm__price.rich-text {
+			min-width: fit-content !important;
+		}
+
+		& .uagb-rest_menu__wrap .uagb-rm__content {
+			padding-left: unset;
+			padding-right: unset;
+			display: inline-flex;
+		}
+
+		.uagb-rm__desc,
+		.uagb-rm__desc.block-editor-rich-text__editable {
+			margin-bottom: 15px;
+		}
+
+		&.uagb-editor-preview-mode-desktop.uagb-rm__desk-column-1 .block-editor-block-list__layout {
+			grid-template-columns: auto;
+		}
+
+		&.uagb-editor-preview-mode-desktop.uagb-rm__desk-column-2 .block-editor-block-list__layout {
+			grid-template-columns: auto auto;
+		}
+
+		&.uagb-editor-preview-mode-desktop.uagb-rm__desk-column-3 .block-editor-block-list__layout {
+			grid-template-columns: auto auto auto;
+		}
+
+		&.uagb-editor-preview-mode-desktop.uagb-rm__desk-column-4 .block-editor-block-list__layout {
+			grid-template-columns: auto auto auto auto;
+		}
+
+		/*
+		/* Responsive for price-list on tablet in editor
+		*/
+		&.uagb-editor-preview-mode-tablet {
+
+			&.uagb-rm__tablet-column-1 .block-editor-block-list__layout {
+				grid-template-columns: auto;
+			}
+
+			&.uagb-rm__tablet-column-2 .block-editor-block-list__layout {
+				grid-template-columns: auto auto;
+			}
+
+			&.uagb-rm__tablet-column-3 .block-editor-block-list__layout {
+				grid-template-columns: auto auto auto;
+			}
+
+			&.uagb-rm__tablet-column-4 .block-editor-block-list__layout {
+				grid-template-columns: auto auto auto auto;
+			}
+		}
+
+		/*
+		/* Responsive for price-list on mobile in editor
+		*/
+		&.uagb-editor-preview-mode-mobile {
+
+			&.uagb-rm__mobile-column-1 .block-editor-block-list__layout {
+				grid-template-columns: auto;
+			}
+
+			&.uagb-rm__mobile-column-2 .block-editor-block-list__layout {
+				grid-template-columns: auto auto;
+			}
+
+			&.uagb-rm__mobile-column-3 .block-editor-block-list__layout {
+				grid-template-columns: auto auto auto;
+			}
+
+			&.uagb-rm__mobile-column-4 .block-editor-block-list__layout {
+				grid-template-columns: auto auto auto auto;
+			}
+		}
+	}
+}

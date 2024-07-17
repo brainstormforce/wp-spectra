@@ -1,0 +1,339 @@
+// Custom icon picker
+@import '../../styles/variables';
+
+.uag-custom-ip {
+	.uag-control-label {
+		padding-bottom: 4px;
+		display: block;
+	}
+
+	.uag-ip-placeholder-wrap {
+		width: 256px;
+		max-width: 100%;
+		min-height: 96px;
+		display: flex;
+		background-color: $spectra-color-plain-background;
+		border: 1px solid $spectra-color-border;
+		border-radius: $spectra-control-border-radius;
+		position: relative;
+		overflow: hidden;
+		// On wrapper hover functionality.
+		&:hover {
+			.uag-ip-actions {
+				transform: translate( 0, 0 );
+			}
+		}
+
+		.uag-ip-remove-icon > svg,
+		.uag-ip-selected-icon-overlay > svg {
+			fill: $spectra-color-plain-background;
+			width: 18px;
+			height: 18px;
+			background-color: $spectra-color-icon-disabled;
+			padding: 2.4px;
+			border-radius: 50%;
+		}
+
+		.uag-ip-remove-icon {
+			position: absolute;
+			right: 5px;
+			top: 5px;
+			line-height: 0;
+			cursor: pointer;
+			z-index: 6;
+
+			> svg {
+				transition: 0.3s background-color linear;
+
+				&:hover {
+					background-color: #959494;
+				}
+			}
+		}
+
+		.uag-ip-selected-icon {
+			width: 100%;
+			display: flex;
+			cursor: pointer;
+		}
+
+		.uag-ip-selected-icon-overlay {
+			display: flex;
+			width: 100%;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.uag-ip-selected-icon-value {
+			position: absolute;
+			z-index: 1;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			> svg {
+				height: 30px;
+				width: 30px;
+				fill: $spectra-color-body;
+			}
+		}
+
+		.uag-ip-actions {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			display: flex;
+			z-index: 2;
+			transform: translate( 0, 24px );
+			transition: 0.2s all ease-in-out;
+
+			> span {
+				background-color: $spectra-color-light-background;
+				flex: 1;
+				font-size: 13px;
+				font-weight: 400;
+				text-align: center;
+				line-height: 24px;
+				color: $spectra-color-body;
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+// Modal popup style.
+.components-modal__screen-overlay.uagb-ip-modal-wrapper-overlay {
+	background-color: rgba( 0, 0, 0, 0.7 );
+}
+
+.components-modal__frame.uagb-ip-modal-wrapper {
+	width: 1080px;
+	height: 796px;
+	max-height: 80%;
+	max-width: 80%;
+	// max-width: 90%;
+	overflow: unset;
+	box-sizing: border-box;
+	* {
+		box-sizing: border-box;
+	}
+
+	.components-modal__content {
+		padding: 30px 24px;
+		margin: 0;
+		background-color: #fff;
+		overflow: unset;
+		border-radius: $spectra-control-popup-border-radius;
+		> div:not( .components-modal__header ) {
+			height: 100%;
+		}
+		.components-modal__header {
+			height: 0;
+
+			.components-modal__header-heading-container {
+				display: none !important;
+			}
+
+			.components-button {
+				color: #aaa;
+				position: absolute;
+				width: 12px;
+				height: 12px;
+				top: 4px;
+				right: -32px;
+				transition: 0.2s color linear;
+				left: auto;
+				&:hover {
+					color: #fff;
+				}
+			}
+		}
+
+		.uagb-ip-header {
+			display: flex;
+			align-items: baseline;
+			height: 64px;
+
+			> h2 {
+				width: 156px;
+				margin: 0;
+				font-size: 20px;
+				font-weight: 400;
+				color: #1e1e1e;
+			}
+		}
+
+		.uagb-ip-footer {
+			height: 68px;
+			text-align: right;
+			display: flex;
+			align-items: flex-end;
+			justify-content: flex-end;
+
+			> button {
+				font-size: 13px;
+				color: #fff;
+				border: none;
+				background-color: #007cba;
+				border-radius: $spectra-control-popup-border-radius;
+				width: 89px;
+				height: 36px;
+				cursor: pointer;
+
+				&.disable {
+					opacity: 0.7;
+					cursor: not-allowed;
+				}
+			}
+		}
+	}
+
+	.uagb-ip-lr-container {
+		display: flex;
+		// Height 100% - height of footer and header
+		height: calc( 100% - 134px );
+		grid-gap: 24px;
+
+		.uagb-ip-left {
+			width: 156px;
+			overflow: auto;
+		}
+
+		.uagb-ip-right {
+			flex: 1;
+			padding: 14px;
+			padding-right: 0;
+			border: 1px solid #e6e7e9;
+			border-radius: $spectra-control-popup-border-radius;
+			.uagb-ip-modal-container {
+				height: 100%;
+				.ReactVirtualized__Grid__innerScrollContainer {
+					> div {
+						display: flex;
+						justify-content: center;
+						align-items: center;
+					}
+				}
+			}
+		}
+	}
+
+	.uagb-ip-categories-list {
+		> div {
+			padding: 9px 10px;
+			cursor: pointer;
+			border-radius: $spectra-control-popup-border-radius;
+			color: #1d2327;
+			display: flex;
+			justify-content: space-between;
+			font-size: 13px;
+
+			&.selected {
+				background-color: #dcf2ff;
+				color: #0063a1;
+			}
+		}
+	}
+
+	// Search bar.
+	.uagb-ip-search-container {
+		flex: 1;
+		padding-left: 24px;
+
+		.uagb-ip-search-bar {
+			position: relative;
+
+			> svg,
+			> span {
+				width: 14px;
+				height: 14px;
+				position: absolute;
+				top: calc( 18px - 7px );
+				color: #555d66;
+				fill: #555d66;
+				transform: rotateZ( 90deg );
+				left: 12px;
+			}
+
+			> span {
+				width: unset;
+				cursor: pointer;
+			}
+			// Input padding left = left input padding * 2 both input and icon padding + width of icon
+			input {
+				height: 36px;
+				width: 100%;
+				padding: 7px 12px 7px calc( 12px * 2 + 14px );
+				border: 1px solid $spectra-color-border;
+				margin: 0;
+				border-radius: $spectra-control-popup-border-radius;
+				color: #1d2327;
+
+				&::placeholder {
+					color: #50575e;
+				}
+
+				&:focus {
+					border: 1.5px solid #007cba;
+				}
+			}
+		}
+	}
+	// Icons container
+	.uagb-ip-icons {
+		.ReactVirtualized__Grid__innerScrollContainer {
+			overflow-x: hidden !important;
+			max-width: inherit !important;
+		}
+		&.icon-not-found {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.uagb-icon-item {
+			width: 80px;
+			height: 80px;
+			background-color: $spectra-color-plain-background;
+			border: 1px solid $spectra-color-border;
+			border-radius: $spectra-control-border-radius;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			transition: 0.2s transform ease;
+			flex-direction: column;
+			grid-gap: 6px;
+			max-width: 90%;
+			max-height: 90%;
+
+			&.default {
+				border-color: #007cba;
+				box-shadow: 0 0 0 2px #007cba;
+				pointer-events: none;
+			}
+
+			&.selected {
+				border-color: #007cba;
+				box-shadow: 0 0 0 2px #dcf2ff;
+				pointer-events: none;
+			}
+
+			> svg {
+				width: 20.9px;
+				height: 20.27px;
+			}
+
+			> span {
+				font-size: 11px;
+				text-align: center;
+			}
+
+			&:hover {
+				border-color: #e6e7e9;
+				box-shadow: 0 0 0 4px #f0f0f1;
+			}
+		}
+	}
+}

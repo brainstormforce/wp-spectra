@@ -1,0 +1,117 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.wp-block-uagb-table-of-contents {
+	.uagb-toc__wrap {
+		display: inline-block;
+		max-width: -moz-available; /* WebKit-based browsers will ignore this. */
+		max-width: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
+		max-width: fill-available; /* The element will expand to take all available space in it's container. */
+	}
+
+	li.uagb-toc__list {
+		padding-top: 10px;
+	}
+
+	ul.uagb-toc__list,
+	ol.uagb-toc__list {
+		list-style-position: inside;
+		padding-left: 0;
+		margin-bottom: 0;
+		margin-left: 2.2em;
+
+		li {
+			margin: 0;
+		}
+	}
+
+	ul li:empty {
+		display: none;
+	}
+
+	.uagb-toc__title-wrap {
+		display: flex;
+		align-items: center;
+	}
+
+	.uagb-toc__title {
+		display: flex;
+		align-items: center;
+	}
+
+	.uagb-toc__is-collapsible.uagb-toc__title-wrap {
+		cursor: pointer;
+	}
+
+	.uag-toc__collapsible-wrap svg {
+		width: 20px;
+		height: 20px;
+	}
+
+	svg {
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		margin-left: 10px;
+		cursor: pointer;
+	}
+
+	.uag-toc__collapsible-wrap {
+		display: flex;
+		margin-left: 10px;
+		cursor: pointer;
+	}
+
+	&.uagb-toc__collapse .uagb-toc__list-wrap {
+		display: none;
+	}
+}
+
+ol.uagb-toc__list li.uagb-toc__list ul,
+ol.uagb-toc__list ul.uagb-toc__list ul {
+	list-style-type: circle;
+}
+
+ol.uagb-toc__list > ul,
+ol.uagb-toc__list > li {
+	list-style-type: disc;
+}
+
+.uagb-toc__scroll-top {
+	position: fixed;
+	right: 50px;
+	bottom: 50px;
+	display: none;
+	padding: 10px;
+	background: #ccd0d4;
+	cursor: pointer;
+	font-size: 1rem;
+	line-height: 1.85714285714286;
+
+	svg {
+		width: 1.6em;
+		height: 0.6em;
+		margin-left: 0;
+		transform: translate(0, -20%) rotate(180deg);
+		fill: currentColor;
+	}
+
+	&.uagb-toc__show-scroll {
+		display: inline-table;
+	}
+}
+
+// These fixes are specific to the Astra theme.
+body[class*="astra"] {
+	.uagb-toc__list {
+		line-height: normal;
+	}
+}
+
+// Needed for a layout fix in TwentyTwentyTwo theme.
+.uagb-toc__list {
+	margin-top: 0;
+}
