@@ -1,4 +1,5 @@
 let spectraImageGalleryLoadStatus = true;
+let clickedImageId = null;
 
 const UAGBImageGalleryMasonry = {
 	initByOffset( $selector, instance ){
@@ -141,6 +142,12 @@ const UAGBImageGalleryMasonry = {
 			if ( imageURL ) {
 				image.style.cursor = 'pointer';
 				image.addEventListener( 'click', () => UAGBImageGalleryMasonry.openCustomURL( imageURL ) );
+				image.addEventListener( 'keydown', ( event ) => {
+					if ( 13 === event.keyCode || 32 === event.keyCode ) {
+						event.preventDefault();
+						UAGBImageGalleryMasonry.openCustomURL( imageURL );
+					}
+				} );
 			}
 		} );
 	},
@@ -306,7 +313,13 @@ const UAGBImageGalleryPagedGrid = {
 			const imageURL = UAGBImageGalleryPagedGrid.getCustomURL( image, $attr );
 			if ( imageURL ) {
 				image.style.cursor = 'pointer';
+				image.setAttribute( 'tabindex', '0' );
 				image.addEventListener( 'click', () => UAGBImageGalleryPagedGrid.openCustomURL( imageURL ) );
+				image.addEventListener( 'keydown', ( event ) => {
+					if ( 13 === event.keyCode || 32 === event.keyCode ) {
+						UAGBImageGalleryPagedGrid.openCustomURL( imageURL );
+					}
+				} );
 			}
 		} );
 	},
@@ -414,6 +427,11 @@ const loadLightBoxImages = ( blockScope, lightboxSwiper, pageNum, attr, thumbnai
 				lightbox.style.opacity = 0;
 				setTimeout( () => {
 					lightbox.style.display = 'none';
+					if ( clickedImageId ) {
+						const clickedImage = document.querySelector( `[data-spectra-gallery-image-id="${clickedImageId}"]` );
+						clickedImage?.focus();  
+						clickedImageId = null;
+					}
 				}, 250 );
 			}
 		} );
@@ -426,6 +444,11 @@ const loadLightBoxImages = ( blockScope, lightboxSwiper, pageNum, attr, thumbnai
 					lightbox.style.opacity = 0;
 					setTimeout( () => {
 						lightbox.style.display = 'none';
+						if ( clickedImageId ) {
+							const clickedImage = document.querySelector( `[data-spectra-gallery-image-id="${clickedImageId}"]` );
+							clickedImage?.focus();  
+							clickedImageId = null;
+						}
 					}, 250 );
 				} );
 			}
@@ -435,13 +458,11 @@ const loadLightBoxImages = ( blockScope, lightboxSwiper, pageNum, attr, thumbnai
 			lightboxTotal.innerHTML = attr.mediaGallery.length;
 		}
 	}
-	const enableLightbox = ( goTo ) => {
-		if ( ! lightboxSwiper ) {
+	const enableLightbox = ( goTo, clickedImage ) => {
+		if ( ! lightboxSwiper || !lightbox ) {
 			return;
 		}
-		if ( ! lightbox ) {
-			return;
-		}
+		clickedImageId = clickedImage.getAttribute( 'data-spectra-gallery-image-id' );
 		lightbox.style.display = '';
 		lightbox.focus();
 		setTimeout( () => {
@@ -452,7 +473,7 @@ const loadLightBoxImages = ( blockScope, lightboxSwiper, pageNum, attr, thumbnai
 			if ( lightbox?.classList.contains( 'spectra-image-gallery__control-lightbox' ) ) {
 				theBody.style.overflow = 'hidden';
 			}
-			
+
 		}, 250 );
 	}
 
@@ -484,9 +505,20 @@ const addClickListeners = ( $scope, pageNum, enableLightbox, pageLimit, attr )  
 			image.addEventListener( 'click', () => {
 				openImageInWindow( imgURL ); // To avoid opening multiple tab at same when Popup and redirect is enabled.
 			} );
+			image.addEventListener( 'keydown', ( event ) => {
+				if ( 13 === event.keyCode || 32 === event.keyCode ) {
+					openImageInWindow( imgURL );
+				}
+			} );
 		} else {
 			const nextImg = pageNum !== null ? index + ( pageNum - 1 ) * pageLimit : index;
-			image.addEventListener( 'click', () => enableLightbox( nextImg ) );
+		    image.addEventListener( 'click', () => enableLightbox( nextImg, image ) );
+		    image.addEventListener( 'keydown', ( event ) => {
+			if ( 13 === event.keyCode || 32 === event.keyCode ) {
+				event.preventDefault();
+				enableLightbox( nextImg, image );
+			}
+		} );
 		}
 	} );
 }

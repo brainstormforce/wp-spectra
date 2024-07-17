@@ -54,13 +54,13 @@ $box_shadow_hover_css = UAGB_Block_Helper::generate_shadow_css( $box_shadow_hove
 $t_selectors = array();
 $m_selectors = array();
 
-$selectors['.uagb-icon-wrapper']                             = array(
+$selectors['.uagb-icon-wrapper']                                     = array(
 	'text-align' => $attr['align'],
 );
-$selectors['.uagb-icon-wrapper .uagb-svg-wrapper a']         = array(
+$selectors['.uagb-icon-wrapper .uagb-svg-wrapper a']                 = array(
 	'display' => 'contents',
 );
-$selectors['.uagb-icon-wrapper svg']                         = array(
+$selectors['.uagb-icon-wrapper svg']                                 = array(
 	'width'      => $icon_width,
 	'height'     => $icon_width,
 	'transform'  => "rotate($transformation)",
@@ -68,10 +68,13 @@ $selectors['.uagb-icon-wrapper svg']                         = array(
 	'fill'       => $attr['iconColor'],
 	'filter'     => $drop_shadow ? "drop-shadow( $drop_shadow )" : '',
 );
-$selectors['.uagb-icon-wrapper .uagb-svg-wrapper:hover svg'] = array(
+$selectors['.uagb-icon-wrapper .uagb-svg-wrapper:hover svg']         = array(
 	'fill' => $attr['iconHoverColor'],
 );
-$selectors['.uagb-icon-wrapper .uagb-svg-wrapper']           = array_merge(
+$selectors['.uagb-icon-wrapper .uagb-svg-wrapper:focus-visible svg'] = array(
+	'fill' => $attr['iconHoverColor'],
+);
+$selectors['.uagb-icon-wrapper .uagb-svg-wrapper']                   = array_merge(
 	array(
 		'display'        => 'inline-flex',
 		'background'     => $background,
@@ -87,6 +90,14 @@ $selectors['.uagb-icon-wrapper .uagb-svg-wrapper']           = array_merge(
 	),
 	UAGB_Block_Helper::uag_generate_border_css( $attr, 'icon' )
 );
+$selectors['.uagb-icon-wrapper .uagb-svg-wrapper:hover']             = array(
+	'border-color' => $attr['iconBorderHColor'],
+	'background'   => $hover_background,
+);
+$selectors['.uagb-icon-wrapper .uagb-svg-wrapper:focus-visible']     = array(
+	'border-color' => $attr['iconBorderHColor'],
+	'background'   => $hover_background,
+);
 $selectors['.uagb-icon-wrapper.wp-block-uagb-icon--has-margin .uagb-icon-margin-wrapper'] = array(
 	// margin.
 	'margin-top'    => UAGB_Helper::get_css_value( $attr['iconTopMargin'], $attr['iconMarginUnit'] ),
@@ -101,7 +112,12 @@ $selectors['.uagb-icon-wrapper .uagb-svg-wrapper:hover']                        
 
 // If using separate box shadow hover settings, then generate CSS for it.
 if ( $attr['useSeparateBoxShadows'] ) {
-	$selectors['.uagb-icon-wrapper .uagb-svg-wrapper:hover'] = array(
+	$selectors['.uagb-icon-wrapper .uagb-svg-wrapper:hover']         = array(
+		'box-shadow'   => $box_shadow_hover_css,
+		'border-color' => $attr['iconBorderHColor'],
+		'background'   => $hover_background,
+	);
+	$selectors['.uagb-icon-wrapper .uagb-svg-wrapper:focus-visible'] = array(
 		'box-shadow'   => $box_shadow_hover_css,
 		'border-color' => $attr['iconBorderHColor'],
 		'background'   => $hover_background,

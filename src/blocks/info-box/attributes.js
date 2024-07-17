@@ -5,6 +5,9 @@ import { getBorderAttributes } from '@Controls/generateAttributes';
 import { __ } from '@wordpress/i18n';
 
 const borderAttributes = getBorderAttributes( 'btn' );
+const mainWrapperBorderAttributes = getBorderAttributes( 'infobox' );
+
+const imageWidthDefault = 'yes' === uagb_blocks_info.uagb_old_user_less_than_2 ? 120 : '';
 
 const attributes = {
 	inheritFromTheme: {
@@ -1025,6 +1028,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'image-width',
 		},
+		default: imageWidthDefault,
 	},
 	imageWidthMobile: {
 		type: 'number',
@@ -1984,6 +1988,7 @@ const attributes = {
 		default: 0,
 	},
 	...borderAttributes,
+	...mainWrapperBorderAttributes,
 };
 
 export default attributes;

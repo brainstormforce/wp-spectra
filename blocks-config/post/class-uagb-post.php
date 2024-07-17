@@ -87,77 +87,77 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'attributes'      => array_merge(
 						$common_attributes,
 						array(
-							'blockName'                   => array(
+							'blockName'                    => array(
 								'type'    => 'string',
 								'default' => 'post-grid',
 							),
-							'equalHeight'                 => array(
+							'equalHeight'                  => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'postPagination'              => array(
+							'postPagination'               => array(
 								'type'    => 'boolean',
 								'default' => false,
 							),
-							'pageLimit'                   => array(
+							'pageLimit'                    => array(
 								'type'    => 'number',
 								'default' => 10,
 							),
-							'paginationBgActiveColor'     => array(
+							'paginationBgActiveColor'      => array(
 								'type'    => 'string',
 								'default' => '#e4e4e4',
 							),
-							'paginationActiveColor'       => array(
+							'paginationActiveColor'        => array(
 								'type'    => 'string',
 								'default' => '#333333',
 							),
-							'paginationBgColor'           => array(
+							'paginationBgColor'            => array(
 								'type'    => 'string',
 								'default' => '#e4e4e4',
 							),
-							'paginationColor'             => array(
+							'paginationColor'              => array(
 								'type'    => 'string',
 								'default' => '#777777',
 							),
-							'paginationMarkup'            => array(
+							'paginationMarkup'             => array(
 								'type'    => 'string',
 								'default' => '',
 							),
-							'paginationLayout'            => array(
+							'paginationLayout'             => array(
 								'type'    => 'string',
 								'default' => 'filled',
 							),
-							'paginationBorderActiveColor' => array(
+							'paginationBorderActiveColor'  => array(
 								'type' => 'string',
 							),
-							'paginationBorderColor'       => array(
+							'paginationBorderColor'        => array(
 								'type'    => 'string',
 								'default' => '#888686',
 							),
-							'paginationBorderRadius'      => array(
+							'paginationBorderRadius'       => array(
 								'type' => 'number',
 							),
-							'paginationBorderSize'        => array(
+							'paginationBorderSize'         => array(
 								'type'    => 'number',
 								'default' => 1,
 							),
-							'paginationSpacing'           => array(
+							'paginationSpacing'            => array(
 								'type'    => 'number',
 								'default' => 20,
 							),
-							'paginationAlignment'         => array(
+							'paginationAlignment'          => array(
 								'type'    => 'string',
 								'default' => 'left',
 							),
-							'paginationPrevText'          => array(
+							'paginationPrevText'           => array(
 								'type'    => 'string',
 								'default' => '« Previous',
 							),
-							'paginationNextText'          => array(
+							'paginationNextText'           => array(
 								'type'    => 'string',
 								'default' => 'Next »',
 							),
-							'layoutConfig'                => array(
+							'layoutConfig'                 => array(
 								'type'    => 'array',
 								'default' => array(
 									array( 'uagb/post-image' ),
@@ -168,99 +168,131 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									array( 'uagb/post-button' ),
 								),
 							),
-							'post_type'                   => array(
+							'post_type'                    => array(
 								'type'    => 'string',
 								'default' => 'grid',
 							),
-							'equalHeightInlineButtons'    => array(
+							'equalHeightInlineButtons'     => array(
 								'type'    => 'boolean',
 								'default' => false,
 							),
-							'imageRatio'                  => array(
+							'imageRatio'                   => array(
 								'type'    => 'string',
 								'default' => 'inherit',
 							),
-							'imgEqualHeight'              => array(
+							'imageRatioTablet'             => array(
+								'type'    => 'string',
+								'default' => '',
+							),
+							'imageRatioMobile'             => array(
+								'type'    => 'string',
+								'default' => '',
+							),
+							'customImageHeightRatio'       => array(
+								'type'    => 'number',
+								'default' => 9,
+							),
+							'customImageHeightRatioTablet' => array(
+								'type'    => 'number',
+								'default' => 9,
+							),
+							'customImageHeightRatioMobile' => array(
+								'type'    => 'number',
+								'default' => 9,
+							),
+							'customImageWidthRatio'        => array(
+								'type'    => 'number',
+								'default' => 16,
+							),
+							'customImageWidthRatioTablet'  => array(
+								'type'    => 'number',
+								'default' => 16,
+							),
+							'customImageWidthRatioMobile'  => array(
+								'type'    => 'number',
+								'default' => 16,
+							),
+							'imgEqualHeight'               => array(
 								'type'    => 'boolean',
 								'default' => false,
 							),
-							'paginationType'              => array(
+							'paginationType'               => array(
 								'type'    => 'string',
 								'default' => 'ajax',
 							),
-							'isLeftToRightLayout'         => array(
+							'isLeftToRightLayout'          => array(
 								'type'    => 'boolean',
 								'default' => false,
 							),
-							'wrapperTopPadding'           => array(
+							'wrapperTopPadding'            => array(
 								'type'    => 'number',
 								'default' => '',
 							),
-							'wrapperRightPadding'         => array(
+							'wrapperRightPadding'          => array(
 								'type'    => 'number',
 								'default' => '',
 							),
-							'wrapperLeftPadding'          => array(
+							'wrapperLeftPadding'           => array(
 								'type'    => 'number',
 								'default' => '',
 							),
-							'wrapperBottomPadding'        => array(
+							'wrapperBottomPadding'         => array(
 								'type'    => 'number',
 								'default' => '',
 							),
-							'wrapperTopPaddingTablet'     => array(
+							'wrapperTopPaddingTablet'      => array(
 								'type'    => 'number',
 								'default' => '',
 							),
-							'wrapperRightPaddingTablet'   => array(
+							'wrapperRightPaddingTablet'    => array(
 								'type'    => 'number',
 								'default' => '',
 							),
-							'wrapperLeftPaddingTablet'    => array(
+							'wrapperLeftPaddingTablet'     => array(
 								'type'    => 'number',
 								'default' => '',
 							),
-							'wrapperBottomPaddingTablet'  => array(
+							'wrapperBottomPaddingTablet'   => array(
 								'type'    => 'number',
 								'default' => '',
 							),
-							'wrapperTopPaddingMobile'     => array(
+							'wrapperTopPaddingMobile'      => array(
 								'type'    => 'number',
 								'default' => '',
 							),
-							'wrapperRightPaddingMobile'   => array(
+							'wrapperRightPaddingMobile'    => array(
 								'type'    => 'number',
 								'default' => '',
 							),
-							'wrapperLeftPaddingMobile'    => array(
+							'wrapperLeftPaddingMobile'     => array(
 								'type'    => 'number',
 								'default' => '',
 							),
-							'wrapperBottomPaddingMobile'  => array(
+							'wrapperBottomPaddingMobile'   => array(
 								'type'    => 'number',
 								'default' => '',
 							),
-							'wrapperPaddingUnit'          => array(
+							'wrapperPaddingUnit'           => array(
 								'type'    => 'string',
 								'default' => 'px',
 							),
-							'wrapperPaddingUnitTablet'    => array(
+							'wrapperPaddingUnitTablet'     => array(
 								'type'    => 'string',
 								'default' => 'px',
 							),
-							'wrapperPaddingUnitMobile'    => array(
+							'wrapperPaddingUnitMobile'     => array(
 								'type'    => 'string',
 								'default' => 'px',
 							),
-							'wrapperPaddingLink'          => array(
+							'wrapperPaddingLink'           => array(
 								'type'    => 'boolean',
 								'default' => false,
 							),
-							'wrapperAlign'                => array(
+							'wrapperAlign'                 => array(
 								'type'    => 'string',
 								'default' => 'row',
 							),
-							'wrapperAlignPosition'        => array(
+							'wrapperAlignPosition'         => array(
 								'type'    => 'string',
 								'default' => 'center',
 							),
@@ -276,64 +308,64 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'attributes'      => array_merge(
 						$common_attributes,
 						array(
-							'blockName'           => array(
+							'blockName'                    => array(
 								'type'    => 'string',
 								'default' => 'post-carousel',
 							),
-							'pauseOnHover'        => array(
+							'pauseOnHover'                 => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'infiniteLoop'        => array(
+							'infiniteLoop'                 => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'transitionSpeed'     => array(
+							'transitionSpeed'              => array(
 								'type'    => 'number',
 								'default' => 500,
 							),
-							'arrowDots'           => array(
+							'arrowDots'                    => array(
 								'type'    => 'string',
 								'default' => 'arrows_dots',
 							),
-							'autoplay'            => array(
+							'autoplay'                     => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'autoplaySpeed'       => array(
+							'autoplaySpeed'                => array(
 								'type'    => 'number',
 								'default' => 2000,
 							),
-							'arrowSize'           => array(
+							'arrowSize'                    => array(
 								'type'    => 'number',
 								'default' => 24,
 							),
-							'arrowBorderSize'     => array(
+							'arrowBorderSize'              => array(
 								'type'    => 'number',
 								'default' => 0,
 							),
-							'arrowBorderRadius'   => array(
+							'arrowBorderRadius'            => array(
 								'type'    => 'number',
 								'default' => 0,
 							),
-							'arrowColor'          => array(
+							'arrowColor'                   => array(
 								'type'    => 'string',
 								'default' => '#000',
 							),
-							'arrowDistance'       => array(
+							'arrowDistance'                => array(
 								'type' => 'number',
 							),
-							'arrowDistanceTablet' => array(
+							'arrowDistanceTablet'          => array(
 								'type' => 'number',
 							),
-							'arrowDistanceMobile' => array(
+							'arrowDistanceMobile'          => array(
 								'type' => 'number',
 							),
-							'equalHeight'         => array(
+							'equalHeight'                  => array(
 								'type'    => 'boolean',
 								'default' => false,
 							),
-							'layoutConfig'        => array(
+							'layoutConfig'                 => array(
 								'type'    => 'array',
 								'default' => array(
 									array( 'uagb/post-image' ),
@@ -344,25 +376,61 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									array( 'uagb/post-button' ),
 								),
 							),
-							'post_type'           => array(
+							'post_type'                    => array(
 								'type'    => 'string',
 								'default' => 'carousel',
 							),
-							'dotsMarginTop'       => array(
+							'dotsMarginTop'                => array(
 								'type'    => 'number',
 								'default' => '20',
 							),
-							'dotsMarginTopTablet' => array(
+							'dotsMarginTopTablet'          => array(
 								'type'    => 'number',
 								'default' => '20',
 							),
-							'dotsMarginTopMobile' => array(
+							'dotsMarginTopMobile'          => array(
 								'type'    => 'number',
 								'default' => '20',
 							),
-							'dotsMarginTopUnit'   => array(
+							'dotsMarginTopUnit'            => array(
 								'type'    => 'string',
 								'default' => 'px',
+							),
+							'imageRatio'                   => array(
+								'type'    => 'string',
+								'default' => '',
+							),
+							'imageRatioTablet'             => array(
+								'type'    => 'string',
+								'default' => '',
+							),
+							'imageRatioMobile'             => array(
+								'type'    => 'string',
+								'default' => '',
+							),
+							'customImageHeightRatio'       => array(
+								'type'    => 'number',
+								'default' => 9,
+							),
+							'customImageHeightRatioTablet' => array(
+								'type'    => 'number',
+								'default' => 9,
+							),
+							'customImageHeightRatioMobile' => array(
+								'type'    => 'number',
+								'default' => 9,
+							),
+							'customImageWidthRatio'        => array(
+								'type'    => 'number',
+								'default' => 16,
+							),
+							'customImageWidthRatioTablet'  => array(
+								'type'    => 'number',
+								'default' => 16,
+							),
+							'customImageWidthRatioMobile'  => array(
+								'type'    => 'number',
+								'default' => 16,
 							),
 						)
 					),
@@ -1268,7 +1336,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since 0.0.1
 		 */
 		public function post_grid_callback( $attributes ) {
-			
+
 			// Render query.
 			$query = UAGB_Helper::get_query( $attributes, 'grid' );
 
@@ -1285,7 +1353,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * Renders the post grid block on pagination clicks.
 		 *
 		 * @since 2.6.0
-		 * 
+		 *
 		 * @return void
 		 */
 		public function post_grid_pagination_ajax_callback() {
@@ -1297,7 +1365,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				$attr['paged'] = isset( $_POST['page_number'] ) ? sanitize_text_field( $_POST['page_number'] ) : '';
 				$html          = $this->post_grid_callback( $attr );
 				wp_send_json_success( $html );
-				
+
 			}
 
 			wp_send_json_error( ' Something went wrong, failed to load pagination data! ' );
@@ -1665,7 +1733,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		public function masonry_pagination() {
 
 			check_ajax_referer( 'uagb_masonry_ajax_nonce', 'nonce' );
-			
+
 			$post_attribute_array = array();
 			// $_POST['attr'] is sanitized in later stage.
 			$attr = isset( $_POST['attr'] ) ? json_decode( stripslashes( $_POST['attr'] ), true ) : array(); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
@@ -1771,7 +1839,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		public function render_innerblocks_with_wrapper( $attributes ) {
 			$length   = count( $attributes['layoutConfig'] );
 			$img_atts = array();
-		
+
 			// Iterate through the blocks and find the uagb/post-image block.
 			for ( $i = 0; $i < $length; $i++ ) {
 				if ( 'uagb/post-image' === $attributes['layoutConfig'][ $i ][0] ) {
@@ -1783,12 +1851,12 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					$length--;
 				}
 			}
-		
+
 			// Render the uagb/post-image block(s) outside the wrapper, if it exists.
 			foreach ( $img_atts as $img_att ) {
 				echo esc_html( $this->render_layout( $img_att[0], $attributes ) );
 			}
-		
+
 			// Render all blocks except for the uagb/post-image block inside the wrapper.
 			echo '<div class="uag-post-grid-wrapper">';
 			for ( $i = 0; $i < $length; $i++ ) {
@@ -1969,7 +2037,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					if ( empty( $value ) || ! is_array( $value ) ) {
 						return; // Exit early if this is not the attributes array.
 					}
-					if ( ! empty( $value['paginationType'] ) && 'ajax' !== $value['paginationType'] ) { 
+					if ( ! empty( $value['paginationType'] ) && 'ajax' !== $value['paginationType'] ) {
 						return; // Early return when pagination type exists and is not ajax.
 					}
 					?>
@@ -2013,13 +2081,18 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
 			do_action( "uagb_single_post_before_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );
+
+			$desktop_image_ratio_class = ! empty( $attributes['imageRatio'] ) ? ( 'custom' !== $attributes['imageRatio'] ? 'uagb-image-ratio-' . $attributes['imageRatio'] : 'uagb-image-ratio-desktop-custom' ) : '';
+			$tablet_image_ratio_class  = ! empty( $attributes['imageRatioTablet'] ) ? ( 'custom' !== $attributes['imageRatioTablet'] ? 'uagb-image-ratio-tablet-' . $attributes['imageRatioTablet'] : 'uagb-image-ratio-tablet-custom' ) : '';
+			$mobile_image_ratio_class  = ! empty( $attributes['imageRatioMobile'] ) ? ( 'custom' !== $attributes['imageRatioMobile'] ? 'uagb-image-ratio-mobile-' . $attributes['imageRatioMobile'] : 'uagb-image-ratio-mobile-custom' ) : '';
+
 			?>
 			<div class='uagb-post__image'>
 				<?php
 				if ( get_the_post_thumbnail_url() ) {
-					if ( 'post-grid' === $attributes['blockName'] && 'background' !== $attributes['imgPosition'] ) {
+					if ( ( 'post-grid' === $attributes['blockName'] || 'post-carousel' === $attributes['blockName'] ) && 'background' !== $attributes['imgPosition'] ) {
 						?>
-					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_attr( $target ); ?>" rel="bookmark noopener noreferrer" class='uagb-image-ratio-<?php echo esc_attr( $attributes['imageRatio'] ); ?>'><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
+					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_attr( $target ); ?>" rel="bookmark noopener noreferrer" class='<?php echo esc_attr( $desktop_image_ratio_class . ' ' . $tablet_image_ratio_class . ' ' . $mobile_image_ratio_class ); ?>'><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
 					</a>
 				<?php } else { ?>
 					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_attr( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>

@@ -18,6 +18,7 @@ import UAGTabsControl from '@Components/tabs';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import UAGSelectControl from '@Components/select-control';
+import ResponsiveSelectControl from '@Components/responsive-select';
 import renderSVG from '@Controls/renderIcon';
 import presets, { buttonsPresets } from './presets';
 import UAGPresets from '@Components/presets';
@@ -35,7 +36,7 @@ const MAX_POSTS_COLUMNS = 8;
 import addInitialAttr from '@Controls/addInitialAttr';
 import Settings from './settings';
 import Render from './render';
-import { Placeholder, Spinner, ToggleControl, Icon } from '@wordpress/components';
+import { Placeholder, Spinner, ToggleControl, Icon, ExternalLink } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 import { useSelect, useDispatch } from '@wordpress/data';
 
@@ -274,6 +275,16 @@ const UAGBPostCarousel = ( props ) => {
 			block_id,
 			inheritFromThemeBtn,
 			buttonType,
+
+			imageRatio,
+			imageRatioTablet,
+			imageRatioMobile,
+			customImageHeightRatio,
+			customImageHeightRatioTablet,
+			customImageHeightRatioMobile,
+			customImageWidthRatio,
+			customImageWidthRatioTablet,
+			customImageWidthRatioMobile,
 		},
 		setAttributes,
 		deviceType,
@@ -438,7 +449,7 @@ const UAGBPostCarousel = ( props ) => {
 	}, [ attributes, deviceType ] );
     const currentTheme = uagb_blocks_info.current_theme;
 	const isAstraBasedTheme = uagb_blocks_info.is_astra_based_theme;
-	
+
 	let blockStyling = useMemo( () => styling( attributes, clientId, deviceType ), [ attributes, deviceType ] );
 
 	blockStyling +=
@@ -889,6 +900,37 @@ const UAGBPostCarousel = ( props ) => {
 		);
 	};
 
+	const imageRatioOptions = [
+		{
+			label: __( '– Select –', 'ultimate-addons-for-gutenberg' ),
+			value: '',
+		},
+		{
+			label: __( 'Inherit', 'ultimate-addons-for-gutenberg' ),
+			value: 'inherit',
+		},
+		{
+			label: __( '1:1', 'ultimate-addons-for-gutenberg' ),
+			value: '1-1',
+		},
+		{
+			label: __( '2:1', 'ultimate-addons-for-gutenberg' ),
+			value: '1-2',
+		},
+		{
+			label: __( '3:2', 'ultimate-addons-for-gutenberg' ),
+			value: '2-3',
+		},
+		{
+			label: __( '16:9', 'ultimate-addons-for-gutenberg' ),
+			value: '9-16',
+		},
+		{
+			label: __( 'Custom', 'ultimate-addons-for-gutenberg' ),
+			value: 'custom',
+		},
+	];
+
 	const getImagePanelBody = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
@@ -901,6 +943,93 @@ const UAGBPostCarousel = ( props ) => {
 						} )
 					}
 				/>
+				{ displayPostImage === true && imgPosition !== 'background' && (
+					<>
+						<ResponsiveSelectControl
+							label={ __( 'Image Ratio', 'ultimate-addons-for-gutenberg' ) }
+							data={ {
+								desktop: {
+									value: imageRatio,
+									label: 'imageRatio',
+								},
+								tablet: {
+									value: imageRatioTablet,
+									label: 'imageRatioTablet',
+								},
+								mobile: {
+									value: imageRatioMobile,
+									label: 'imageRatioMobile',
+								},
+							} }
+							options={ {
+								desktop: imageRatioOptions,
+								tablet: imageRatioOptions,
+								mobile: imageRatioOptions,
+							} }
+							setAttributes={ setAttributes }
+						/>
+						{ ( ( 'custom' === imageRatio && 'Desktop' === deviceType ) || ( 'custom' === imageRatioTablet && 'Tablet' === deviceType ) || ( 'custom' === imageRatioMobile && 'Mobile' === deviceType ) ) && (
+							<>
+								<ResponsiveSlider
+									label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
+									data={ {
+										desktop: {
+											value: customImageWidthRatio,
+											label: 'customImageWidthRatio',
+										},
+										tablet: {
+											value: customImageWidthRatioTablet,
+											label: 'customImageWidthRatioTablet',
+										},
+										mobile: {
+											value: customImageWidthRatioMobile,
+											label: 'customImageWidthRatioMobile',
+										},
+									} }
+									min={ 1 }
+									max={ 100 }
+									displayUnit={ false }
+									setAttributes={ setAttributes }
+								/>
+								<ResponsiveSlider
+									label={ __( 'Height', 'ultimate-addons-for-gutenberg' ) }
+									data={ {
+										desktop: {
+											value: customImageHeightRatio,
+											label: 'customImageHeightRatio',
+										},
+										tablet: {
+											value: customImageHeightRatioTablet,
+											label: 'customImageHeightRatioTablet',
+										},
+										mobile: {
+											value: customImageHeightRatioMobile,
+											label: 'customImageHeightRatioMobile',
+										},
+									} }
+									min={ 1 }
+									max={ 100 }
+									displayUnit={ false }
+									setAttributes={ setAttributes }
+								/>
+								<p className='components-base-control__help'>
+									{ __(
+										'Calculate a personalized image ratio using this online tool for your image dimensions. ',
+										'ultimate-addons-for-gutenberg'
+									) }
+									<ExternalLink
+										href={
+											'https://www.digitalrebellion.com/webapps/aspectcalc'
+										}
+									>
+										{ __( 'Aspect Ratio Calculator', 'ultimate-addons-for-gutenberg' ) }
+									</ExternalLink>
+								</p>
+								<hr className="uagb-editor__separator" />
+							</>
+						) }
+					</>
+				) }
 				{ displayPostImage === true && (
 					<UAGSelectControl
 						label={ __( 'Sizes', 'ultimate-addons-for-gutenberg' ) }

@@ -277,6 +277,12 @@ return array_merge(
 		'gridJustifyContentDesktop'          => 'stretch',
 		'gridJustifyContentTablet'           => 'stretch',
 		'gridJustifyContentMobile'           => 'stretch',
+		'orderDesktop'                       => 'initial',
+		'orderTablet'                        => 'initial',
+		'orderMobile'                        => 'initial',
+		'customOrderDesktop'                 => '',
+		'customOrderTablet'                  => '',
+		'customOrderMobile'                  => '',
 	),
 	$border_attribute
 );

@@ -112,6 +112,7 @@ $container_css       = array_merge(
 		'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginDesktop'], $attr['marginType'] ),
 		'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginDesktop'], $attr['marginType'] ),
 		'overflow'       => $attr['overflow'],
+		'order'          => $attr['customOrderDesktop'] ? $attr['customOrderDesktop'] : $attr['orderDesktop'],
 	),
 	$border
 );
@@ -196,6 +197,7 @@ $container_tablet_css = array_merge(
 		'margin-bottom'  => UAGB_Helper::get_css_value( $bottom_margin_tablet, $attr['marginTypeTablet'] ) . ' !important',
 		'margin-left'    => UAGB_Helper::get_css_value( $left_margin_tablet, $attr['marginTypeTablet'] ),
 		'margin-right'   => UAGB_Helper::get_css_value( $right_margin_tablet, $attr['marginTypeTablet'] ),
+		'order'          => $attr['customOrderTablet'] ? $attr['customOrderTablet'] : $attr['orderTablet'],
 	),
 	$border_tablet
 );
@@ -243,6 +245,7 @@ $container_mobile_css = array_merge(
 		'margin-right'   => UAGB_Helper::get_css_value( $right_margin_mobile, $attr['marginTypeMobile'] ),
 		'row-gap'        => UAGB_Helper::get_css_value( $attr['rowGapMobile'], $attr['rowGapTypeMobile'] ),
 		'column-gap'     => UAGB_Helper::get_css_value( $attr['columnGapMobile'], $attr['columnGapTypeMobile'] ),
+		'order'          => $attr['customOrderMobile'] ? $attr['customOrderMobile'] : $attr['orderMobile'],
 	),
 	$border_mobile
 );

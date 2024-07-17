@@ -14,7 +14,7 @@ import { __ } from '@wordpress/i18n';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
 import UAGTextControl from '@Components/text-control';
-import { store as blockEditorStore, InspectorControls, BlockControls, BlockAlignmentToolbar } from '@wordpress/block-editor';
+import { store as blockEditorStore, InspectorControls } from '@wordpress/block-editor';
 import { Icon, ToggleControl } from '@wordpress/components';
 import UAGTabsControl from '@Components/tabs';
 import renderSVG from '@Controls/renderIcon';
@@ -458,17 +458,6 @@ export default function Settings( props ) {
 		],
 	};
 
-	const getBlockControls = () => (
-		<BlockControls>
-			<BlockAlignmentToolbar
-				value={ align }
-				onChange={ ( value ) => {
-					setAttributes( { align: value } );
-				} }
-			/>
-		</BlockControls>
-	);
-
 	const generalPanel = (
 		<UAGAdvancedPanelBody title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 			<UAGMediaPicker
@@ -521,6 +510,10 @@ export default function Settings( props ) {
 				] }
 				showIcons={ true }
 				responsive={ true }
+				help={ ( 'left' === align || 'right' === align ) && __(
+					'Note: We use WP core alignment. Left or Right alignments on desktop won`t support responsive alignment.',
+					'ultimate-addons-for-gutenberg'
+				) }
 			/>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
@@ -1881,7 +1874,6 @@ export default function Settings( props ) {
 
 	return (
 		<>
-			{ getBlockControls() }
 			<InspectorControls>
 				<InspectorTabs>
 					<InspectorTab { ...UAGTabs.general } parentProps={ props }>

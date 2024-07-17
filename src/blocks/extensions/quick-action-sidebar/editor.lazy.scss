@@ -315,6 +315,7 @@ div#widgets-editor {
 
 .spectra-ee-quick-access-container {
 	.spectra-ee-quick-access__sidebar {
+		z-index: 1000000;
 		.spectra-ee-quick-access__sidebar--blocks {
 			.spectra-ee-quick-access__sidebar--blocks--block {
 				.spectra-ee-quick-access__sidebar--blocks--block--icon {

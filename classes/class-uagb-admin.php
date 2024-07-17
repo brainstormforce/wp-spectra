@@ -41,7 +41,10 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			if ( ! is_admin() ) {
 				return;
 			}
-		
+
+			add_action( 'admin_enqueue_scripts', array( $this, 'reload_on_migration_complete' ) );
+			add_action( 'wp_ajax_uag_migrate', array( $this, 'handle_migration_action_ajax' ) );
+
 			add_action( 'admin_notices', array( $this, 'register_notices' ) );
 			add_filter( 'wp_kses_allowed_html', array( $this, 'add_data_attributes' ), 10, 2 );
 			add_action( 'admin_enqueue_scripts', array( $this, 'notice_styles_scripts' ) );
@@ -51,106 +54,73 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			add_action( 'admin_post_uag_rollback', array( $this, 'post_uagb_rollback' ) );
 			// Update get access url in Template Kits.
 			add_filter( 'ast_block_templates_pro_url', array( $this, 'update_gutenberg_templates_pro_url' ) );
-			add_action( 'admin_post_uag_migrate', array( $this, 'handle_migration_action' ) );
-			add_action( 'admin_menu', array( $this, 'register_migration_log_page' ) );
+			add_action( 'admin_post_uag_download_log', array( $this, 'handle_log_download' ) );
+
 		}
 
 		/**
-		 * Handle migration action.
-		 *
-		 * @since 2.13.8
-		 * @access public
+		 * Handle migration action AJAX.
 		 * 
+		 * @since 2.13.9
 		 * @return void
 		 */
-		public function handle_migration_action() {
+		public function handle_migration_action_ajax() {
+			check_ajax_referer( 'spectra-migration', 'security' );
+
 			if ( ! current_user_can( 'manage_options' ) ) {
-				wp_die( esc_html__( 'You do not have permission to access this page.', 'ultimate-addons-for-gutenberg' ) );
+				wp_send_json_error( array( 'message' => 'Permission Denied' ) );
 			}
 
 			// Trigger the migration.
 			Spectra_Migrate_Blocks::get_instance()->blocks_migration();
+
+			// Update the migration status to 'no' before starting.
 			update_option( 'uag_migration_status', 'yes' );
 
-			// Check if the migration was successful.
-			$migration_log = get_transient( 'uag_migration_log' );
+			// Set a new option to know that the migration process has started.
+			update_option( 'uag_migration_progress_status', 'in-progress' );
 
-			if ( ! is_array( $migration_log ) ) {
-				$migration_log = array();
-			}
+			// Prepare the response.
+			$response = array(
+				'success' => true,
+				'data'    => array(
+					'message' => esc_html__( 'Migration started successfully.', 'ultimate-addons-for-gutenberg' ),
+				),
+			);
 
-			// Redirect to the log display page.
-			wp_safe_redirect( add_query_arg( array( 'migration_log' => 'true' ), admin_url( 'admin.php?page=migration-log' ) ) );
-			exit();
+			// Send JSON response.
+			wp_send_json_success( $response );
 		}
 
 		/**
 		 * Callback function to display migration log page content.
-		 * 
-		 * @since 2.13.8
+		 *
+		 * @since 2.13.9
 		 * @return void
 		 */
-		public function display_migration_log_page() {
-			$migration_log = get_transient( 'uag_migration_log' );
-		
-			// Ensure $migration_log is an array.
-			if ( ! is_array( $migration_log ) ) {
-				$migration_log = array();
+		public function handle_log_download() {
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_die( esc_html__( 'You do not have permission to access this page.', 'ultimate-addons-for-gutenberg' ) );
 			}
-		
-			$content = '<div class="wrap"><h1>' . esc_html__( 'Migration Log', 'ultimate-addons-for-gutenberg' ) . '</h1>';
-		
-			$log_post_kses = wp_kses_allowed_html( 'post' ); 
-		
-			$log_specific_kses = array(
-				'style' => array(),
-			);
-			$log_allowed_tags  = array_merge( $log_post_kses, $log_specific_kses );
-		
-			if ( ! empty( $migration_log ) ) {
-				$content .= '<style>pre.spectra_log { background-color: white; height: 400px; overflow-y: scroll; padding: 10px; border: 1px solid #ccc; }</style>';
-				$content .= '<pre class="spectra_log">';
-				foreach ( $migration_log as $key => $value ) {
-					// Assuming $value is also an array, otherwise just echo $value.
-					if ( is_array( $value ) ) {
-						$content .= "<strong>{$key}:</strong><br>";
-						foreach ( $value as $sub_key => $sub_value ) {
-							$content .= "$sub_key: $sub_value<br>";
-						}
-					} else {
-						$content .= "$value<br>";
-					}
-				}
-				$content .= '</pre>';
-				$content .= '<h3>' . esc_html__( 'Migration Completed Successfully...', 'ultimate-addons-for-gutenberg' ) . '</h3>';
-				$content .= '<a href="' . esc_url( admin_url( 'index.php' ) ) . '" class="button" style="text-decoration: none; background: #007cba; border-color: #007cba; color: #fff; border-radius: 3px;">' . __( 'Back', 'ultimate-addons-for-gutenberg' ) . '</a>';
+
+			$log_file = ABSPATH . 'wp-content/uploads/migration-log.txt';
+
+			if ( file_exists( $log_file ) ) {
+				header( 'Content-Description: File Transfer' );
+				header( 'Content-Type: application/octet-stream' );
+				header( 'Content-Disposition: attachment; filename="' . basename( $log_file ) . '"' );
+				header( 'Expires: 0' );
+				header( 'Cache-Control: must-revalidate' );
+				header( 'Pragma: public' );
+				header( 'Content-Length: ' . filesize( $log_file ) );
+				flush(); // Flush system output buffer.
+				readfile( $log_file );
+				exit;
 			} else {
-				$content .= '<h3>' . esc_html__( 'Migration failed...', 'ultimate-addons-for-gutenberg' ) . '</h3>';
+				wp_die( esc_html__( 'Log file not found.', 'ultimate-addons-for-gutenberg' ) );
 			}
-		
-			$content .= '</div>';
-			delete_option( 'uagb-old-user-less-than-2' );
-			echo wp_kses( $content, $log_allowed_tags );
 		}
 		
-
-		/**
-		 * Register migration log page.
-		 * 
-		 * @since 2.13.8
-		 * @return void 
-		 */
-		public function register_migration_log_page() {
-			add_submenu_page(
-				'',
-				__( 'Migration Log', 'ultimate-addons-for-gutenberg' ), // page title.
-				__( 'Migration Log', 'ultimate-addons-for-gutenberg' ), // menu title.
-				'manage_options', // capability.
-				'migration-log', // menu slug.
-				array( $this, 'display_migration_log_page' ) // callback function to display the page content.
-			);
-		}
-
 		/**
 		 * Updates the Gutenberg templates pro URL.
 		 * This function returns the URL for the pro version of Gutenberg templates.
@@ -297,28 +267,28 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 					'type'                       => '',
 					'message'                    => sprintf(
 						'<div class="notice-image">
-							<img src="%1$s" class="custom-logo" alt="Spectra" itemprop="logo"></div>
-							<div class="notice-content">
-								<h1 class="notice-heading">
-									%2$s
-								</h1>
-								%3$s<br />
-								<div class="astra-review-notice-container">
-									<a href="%4$s" class="astra-notice-close uagb-review-notice button-primary" target="_blank">
-									%5$s
-									</a>
-								<span class="dashicons dashicons-calendar"></span>
-									<a href="#" data-repeat-notice-after="%6$s" class="astra-notice-close uagb-review-notice">
-									%7$s
-									</a>
-								<span class="dashicons dashicons-smiley"></span>
-									<a href="#" class="astra-notice-close uagb-review-notice">
-									%8$s
-									</a>
-								</div>
-							</div>',
+                            <img src="%1$s" class="custom-logo" alt="Spectra" itemprop="logo"></div>
+                            <div class="notice-content">
+                                <div class="notice-heading">
+                                    %2$s
+                                </div>
+                                %3$s<br />
+                                <div class="astra-review-notice-container">
+                                    <a href="%4$s" class="astra-notice-close uagb-review-notice button-primary" target="_blank">
+                                    %5$s
+                                    </a>
+                                <span class="dashicons dashicons-calendar"></span>
+                                    <a href="#" data-repeat-notice-after="%6$s" class="astra-notice-close uagb-review-notice">
+                                    %7$s
+                                    </a>
+                                <span class="dashicons dashicons-smiley"></span>
+                                    <a href="#" class="astra-notice-close uagb-review-notice">
+                                    %8$s
+                                    </a>
+                                </div>
+                            </div>',
 						$image_path,
-						__( 'Wow! The Spectra has already powered over 5 pages on your website!', 'ultimate-addons-for-gutenberg' ),
+						__( 'Wow! Spectra has already powered over 5 pages on your website!', 'ultimate-addons-for-gutenberg' ),
 						__( 'Would you please mind sharing your views and give it a 5 star rating on the WordPress repository?', 'ultimate-addons-for-gutenberg' ),
 						'https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg/reviews/?filter=5#new-post',
 						__( 'Ok, you deserve it', 'ultimate-addons-for-gutenberg' ),
@@ -334,41 +304,99 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				)
 			);
 
-			if ( ! get_option( 'uag_migration_status', false ) && 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) {
-			
+			if ( ! get_option( 'uag_migration_status', false ) && 'yes' === get_option( 'uagb-old-user-less-than-2' ) && 'in-progress' !== get_option( 'uag_migration_progress_status', '' ) ) {
+
 				Astra_Notices::add_notice(
 					array(
 
 						'id'                         => 'uagb-block-migration_status',
 						'type'                       => '',
 						'message'                    => sprintf(
-							// Translators: %1$s: Spectra logo, %2$s: migration note , %3$s: The closing tag, %4$s: migration description, %5$s: Migration button.
+							// Translators: %1$s: Spectra logo, %2$s: migration note , %3$s: The closing tag, %4$s: migration description, %5$s: migration button placeholder, %6$s: Learn more button, %7$s: learn more placeholder.
 							'<div class="notice-image">
-							<img src="%1$s" class="custom-logo" alt="Spectra" itemprop="logo"></div>
-							<div class="notice-content">
-							<h3 style="margin: 0.5em 0" class="notice-heading">
-							%2$s
-						</h3>
-								%3$s<br />
-								%4$s<br />
-								<div style="margin-bottom: 0.5em" class="astra-review-notice-container">
-									<a href="%5$s" class="uagb-review-notice button-primary">
-									%6$s
-									</a>
-								</div>
-								</div><br />',
+                            <img src="%1$s" class="custom-logo" alt="Spectra" itemprop="logo"></div>
+                            <div class="notice-content">
+                            <h4 style="margin: 0.5em 0" class="notice-heading">
+                            %2$s
+                            </h4>
+						    %3$s<br /><br />
+						     <strong>%4$s</strong>
+                                <div style="margin-bottom: 0.5em" class="astra-review-notice-container">
+                                    <a style="margin-right: 0.5em" id="trigger_migration" class="uagb-review-notice button-primary">
+                                    %5$s
+                                    </a>
+									<a href="%6$s" class="uagb-review-notice button-primary">
+                                    %7$s
+                                    </a>
+                                </div>
+                                </div><br />',
 							$image_path,
 							__( 'Spectra database update required', 'ultimate-addons-for-gutenberg' ),
-							__( 'It appears that your pages were created with an older version of our plugin.', 'ultimate-addons-for-gutenberg' ),
-							__( 'To ensure compatibility and optimal performance, a database update is required. Please proceed with the migration to maintain smooth functionality', 'ultimate-addons-for-gutenberg' ),
-							add_query_arg( 'action', 'uag_migrate', admin_url( 'admin-post.php' ) ),
-							__( 'Update Spectra database', 'ultimate-addons-for-gutenberg' )
+							__( "We've detected that some of your pages were created with an older version of Spectra. To ensure your designs remain unaffected, we recommend updating the Spectra database now. Updating the Spectra database will not impact any other parts of your website.", 'ultimate-addons-for-gutenberg' ),
+							__( 'To be on the safer side, please be sure to back up your site before updating.', 'ultimate-addons-for-gutenberg' ),
+							__( 'Update Spectra Database', 'ultimate-addons-for-gutenberg' ),
+							esc_url( 'https://wpspectra.com/docs/spectra-database-update-instructions/' ),
+							__( 'Learn More About This', 'ultimate-addons-for-gutenberg' )
 						),
 						'priority'                   => 20,
 						'display-with-other-notices' => true,
 					)
 				);
+			} elseif ( 'yes' !== get_option( 'uag_migration_complete', 0 ) && 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) {
+				Astra_Notices::add_notice(
+					array(
+						'id'                         => 'uag_migration_in_progress',
+						'type'                       => 'info',
+						'message'                    => sprintf(
+							// Translators: %1$s: Spectra logo, %2$s: in-progress note.
+							'<div class="notice-image">
+                                <img src="%1$s" class="custom-logo" alt="Spectra" itemprop="logo"></div>
+                                <div class="notice-content">
+                                    <h4 style="margin: 0.5em 0" class="notice-heading">
+                                        %2$s
+                                    </h4>
+                                    <div style="margin-bottom: 0.5em" class="astra-review-notice-container">
+                                        <span class="spinner is-active"></span>
+                                        %3$s
+                                    </div>
+                                </div><br />',
+							$image_path,
+							__( 'Spectra database update in progress', 'ultimate-addons-for-gutenberg' ),
+							__( 'Great! This should only take a few minutes. Thanks for hanging in there.', 'ultimate-addons-for-gutenberg' )
+						),
+						'dismissible'                => false,
+						'priority'                   => 20,
+						'display-with-other-notices' => true,
+					)
+				);
+			} elseif ( 'yes' === get_option( 'uag_migration_complete', 0 ) ) {
+				Astra_Notices::add_notice(
+					array(
+						'id'                         => 'uag_migration_success',
+						'type'                       => 'success',
+						'message'                    => sprintf(
+							// Translators: %1$s: Spectra logo, %2$s: success message, %3$s: additional note.
+							'<div class="notice-image">
+							<img src="%1$s" class="custom-logo" alt="Spectra" itemprop="logo"></div>
+							<div class="notice-content">
+								<h4 style="margin: 0.5em 0" class="notice-heading">
+									%2$s
+								</h4>
+								<div style="margin-bottom: 0.5em" class="astra-review-notice-container">
+									%3$s
+								</div>
+							</div><br />',
+							$image_path,
+							__( 'Update Successful!', 'ultimate-addons-for-gutenberg' ),
+							__( 'Your Spectra database is now up-to-date. Your website will continue to function as before.', 'ultimate-addons-for-gutenberg' ) . ' <a href="' . esc_url( admin_url( 'admin-post.php?action=uag_download_log' ) ) . '">' . __( 'View Log', 'ultimate-addons-for-gutenberg' ) . '</a>'
+						),
+						'dismissible'                => true,
+						'priority'                   => 20,
+						'display-with-other-notices' => true,
+					)
+				);
 			}
+			
 
 			if ( class_exists( 'Classic_Editor' ) ) {
 				$editor_option = get_option( 'classic-editor-replace' );
@@ -408,6 +436,50 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				$custom_css = '.notice { display: none !important; }';
 				wp_add_inline_style( 'uag-admin-css', $custom_css );
 			}
+		}
+
+		/**
+		 * Enqueue script to reload the page on migration complete.
+		 * 
+		 * @since 2.13.9
+		 * @return void
+		 */
+		public function reload_on_migration_complete() {
+			?>
+			<script type="text/javascript">
+				document.addEventListener('DOMContentLoaded', function() {
+					var triggerButton = document.getElementById('trigger_migration');
+
+					if (triggerButton) {
+						triggerButton.addEventListener('click', function(e) {
+							e.preventDefault();
+
+							fetch('<?php echo esc_html( admin_url( 'admin-ajax.php' ) ); ?>', {
+								method: 'POST',
+								headers: {
+									'Content-Type': 'application/x-www-form-urlencoded',
+								},
+								body: 'action=uag_migrate&security=' + encodeURIComponent('<?php echo esc_html( wp_create_nonce( 'spectra-migration' ) ); ?>'),
+							})
+							.then(function(response) {
+								return response.json();
+							})
+							.then(function(data) {
+								if (data.success) {
+									location.reload();
+									// Optionally, reload the page or perform additional actions.
+								} else {
+									return;
+								}
+							})
+							.catch(function(error) {
+								console.error('Error occurred during migration:', error);
+							});
+						});
+					}
+				});
+			</script>
+			<?php
 		}
 
 

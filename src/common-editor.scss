@@ -88,12 +88,13 @@
 	.block-editor-block-list__block:not( .remove-outline ).is-hovered::after,
 	.block-editor-block-list__block:hover::after,
 	.block-editor-block-list__block:not( [contenteditable] ):focus::after {
-		box-shadow: 0 0 0 1.5px $spectra-color-primary;
+		outline: 1.5px solid $spectra-color-primary;
 		border-radius: 2px;
 		top: 0;
 		bottom: 0;
 		left: 0;
 		right: 0;
+		outline-offset: -1.5px;
 	}
 
 	.block-editor-block-list__block:not( [contenteditable] ):focus {
@@ -104,11 +105,13 @@
 .edit-post-visual-editor .editor-styles-wrapper > .block-editor-block-list__layout .block-editor-block-list__block:hover::after,
 .ast-highlight-wpblock-onhover .edit-post-visual-editor .editor-styles-wrapper > .block-editor-block-list__layout .block-editor-block-list__block:not(.editor-post-title__input):hover,
 .edit-post-visual-editor .editor-styles-wrapper > .block-editor-block-list__layout .block-editor-block-list__block.is-selected:not([contenteditable]):focus::after,
-.block-editor-block-list__layout .block-editor-block-list__block.is-selected {
+.block-editor-block-list__layout .block-editor-block-list__block.is-selected,
+.block-editor-block-list__layout .block-editor-block-list__block.is-highlighted::after {
 	// Added CSS for better clarity to the users to indicates which block is selected & being edited.
 	outline: 1.5px solid $spectra-color-primary;
 	border-radius: 2px;
 	box-shadow: none;
+	outline-offset: -1.5px;
 }
 
 /* UAG Control Label CSS*/
@@ -710,13 +713,18 @@ button.components-button.uagb-review-select-btn.is-secondary {
 }
 
 /* Block icons white when toggle is set to select from tools. */
-.block-editor-block-list__block-selection-button .block-editor-block-icon.has-colors svg.uagb-editor-icons {
-	path,
-	rect,
-	circle {
+.block-editor-block-list__block-selection-button,
+.is-selected {
+	.block-editor-block-icon.has-colors svg.uagb-editor-icons {
 		stroke: #fff;
+		path,
+		rect,
+		circle {
+			stroke: #fff;
+		}
 	}
 }
+
 
 /* Block icons turn to secondary color when they are a parent block. */
 .block-editor-block-parent-selector .block-editor-block-icon svg.uagb-editor-icons {
@@ -758,6 +766,11 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	circle {
 		stroke: $spectra-color-secondary;
 	}
+}
+
+// WordPress 6.6 compatibility fix.
+.editor-editor-interface .interface-navigable-region.interface-interface-skeleton__footer {
+	z-index: 1000000;
 }
 
 /* Breadcrumbs css */

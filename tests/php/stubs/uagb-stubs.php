@@ -910,6 +910,75 @@ namespace {
         }
     }
     /**
+     * Class UAGB_Faq.
+     *
+     * @since 2.13.5
+     */
+    class UAGB_Faq
+    {
+        /**
+         * Initiator
+         *
+         * @return UAGB_Faq
+         * @since 2.13.5
+         */
+        public static function get_instance()
+        {
+        }
+        /**
+         * Constructor
+         *
+         * @since 2.13.5
+         */
+        public function __construct()
+        {
+        }
+        /**
+         * Registers the `faq` block on server.
+         *
+         * @since 2.13.5
+         * @return void
+         */
+        public function register_blocks()
+        {
+        }
+        /**
+         * Renders the UAGB FAQ block.
+         *
+         * @param  array    $attributes Block attributes.
+         * @param  string   $content    Block default content.
+         * @param  WP_Block $block      Block instance.
+         * @since 2.13.5
+         * @return string Rendered block HTML.
+         */
+        public function render_faq_block($attributes, $content, $block)
+        {
+        }
+        /**
+         * Render faq icon function.
+         *
+         * @param string $icon Icon name.
+         * @param string $class Icon class.
+         * @since 2.13.5
+         * @return string|false Rendered icon HTML.
+         */
+        public function faq_render_icon($icon, $class)
+        {
+        }
+        /**
+         * Renders the UAGB FAQ child block.
+         *
+         * @param  array    $attributes Block attributes.
+         * @param  string   $content    Block default content.
+         * @param  WP_Block $block      Block instance.
+         * @since 2.13.5
+         * @return string Rendered block HTML.
+         */
+        public function render_faq_child_block($attributes, $content, $block)
+        {
+        }
+    }
+    /**
      * Class UAGB_Image.
      */
     class UAGB_Image
@@ -2345,7 +2414,7 @@ namespace {
          * Generate SVG.
          *
          * @since 1.8.1
-         * @param  array $icon Decoded fontawesome json file data.
+         * @param  string $icon Decoded fontawesome json file data.
          */
         public static function render_svg_html($icon)
         {
@@ -3088,6 +3157,16 @@ namespace {
          * Constructor
          */
         public function __construct()
+        {
+        }
+        /**
+         * Updates the Gutenberg templates pro URL.
+         * This function returns the URL for the pro version of Gutenberg templates.
+         * 
+         * @since 2.13.7
+         * @return string The URL for Spectra Webpage.
+         */
+        public function update_gutenberg_templates_pro_url()
         {
         }
         /**
@@ -4031,6 +4110,16 @@ namespace {
          * @return void
          */
         public function load_plugin()
+        {
+        }
+        /**
+         * Sync the Zip AI Library textdomain with the Spectra textdomain.
+         *
+         * @param string $textdomain The textdomain for the Zip AI Library.
+         * @since 2.13.9
+         * @return string The Spectra textdomain.
+         */
+        public function sync_library_textdomain($textdomain)
         {
         }
         /**
@@ -5740,15 +5829,6 @@ namespace UagAdmin\Ajax {
          * @return void
          */
         public function zip_ai_verify_authenticity()
-        {
-        }
-        /**
-         * Save setting - Enables the header titlebar.
-         *
-         * @since 2.13.1
-         * @return void
-         */
-        public function enable_header_titlebar()
         {
         }
     }
@@ -9438,6 +9518,14 @@ namespace {
      */
     $block_slug = 'uagb/instagram-feed';
     /**
+     * Attributes File.
+     *
+     * @since 2.0.0
+     *
+     * @package uagb
+     */
+    $inherit_from_theme = 'enabled' === ('deleted' !== \UAGB_Admin_Helper::get_admin_settings_option('uag_btn_inherit_from_theme_fallback', 'deleted') ? 'disabled' : \UAGB_Admin_Helper::get_admin_settings_option('uag_btn_inherit_from_theme', 'disabled'));
+    /**
      * Block Information.
      *
      * @since 2.0.0
@@ -10473,7 +10561,7 @@ namespace {
     {
     }
     \define('AST_BLOCK_TEMPLATES_LIBRARY_URL', \trailingslashit(\apply_filters('ast_block_templates_library_url', 'https://websitedemos.net/')));
-    \define('AST_BLOCK_TEMPLATES_VER', '2.2.1');
+    \define('AST_BLOCK_TEMPLATES_VER', '2.2.3');
     \define('AST_BLOCK_TEMPLATES_FILE', __FILE__);
     \define('AST_BLOCK_TEMPLATES_BASE', \plugin_basename(\AST_BLOCK_TEMPLATES_FILE));
     \define('AST_BLOCK_TEMPLATES_DIR', \plugin_dir_path(\AST_BLOCK_TEMPLATES_FILE));
@@ -10484,7 +10572,7 @@ namespace {
      * Plugin URI: https://www.brainstormforce.com
      * Author: Brainstorm Force
      * Author URI: https://www.brainstormforce.com
-     * Version: 2.13.4
+     * Version: 2.13.7
      * Description: The Spectra extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster.
      * Text Domain: ultimate-addons-for-gutenberg
      *

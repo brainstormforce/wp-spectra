@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
-Tested up to: 6.5
-Stable tag: 2.13.9
+Tested up to: 6.6
+Stable tag: 2.15.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -168,7 +168,7 @@ We understand the need for a quality product backed by dedicated support that ca
 
 <strong>WANT TO CONTRIBUTE TO THE PLUGIN? 🙋</strong>
 
-You may now contribute to the plugin on Github: <a href="https://github.com/brainstormforce/ultimate-addons-for-gutenberg" target="_blank" rel="">Spectra on Github</a>
+You may now contribute to the plugin on Github: <a href="https://github.com/brainstormforce/wp-spectra" target="_blank" rel="">Spectra on Github</a>
 
 == Installation ==
 
@@ -215,47 +215,46 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= 2.13.9 - Monday, 1st July 2024 =
-* Feature: What's New - Ability to see the new updates for Spectra in the form of a feed under the Dashboard.
-* Improvement: Separator - Added block Margin and Padding settings.
-* Fix: Image - Resolved an issue wherein the tablet and mobile alignment options would not work as expected when set for desktop.
-* Fix: Image Block - Resolved an issue wherein the caption's text decoration would not sync with the Astra theme's body font settings when "Default" is set.
+= 2.15.0 - Monday, 22nd July 2024 =
+* Improvement: Container - Added an order option for grid layout to set the order in which the inner container should be.
+* Improvement: Info Box - Added an overall border option.
+* Improvement: Post Carousel - Added an image ratio option for the post-image sizing.
+* Improvement: Post Grid - Made the image ratio options responsive.
+* Improvement: Post Grid & Carousel - Added a "Custom" option for the image ratio setting.
+* Improvement: Separator - Added overall block margin and padding settings.
+* Improvement: Image Gallery - Added keyboard accesibility for click events.
+* Improvement: Icon - Added keyboard accesibility for link click.
+* Fix: Image & Image Gallery - Resolved an issue wherein the caption's text-decoration would not sync with the Astra theme's body font settings when "Default" is set.
 
-= 2.13.8 - Tuesday, 25th June 2024 = 
-* Fix: Global: Added update notice to update the old user database to provide compatibility.
+= 2.14.1 - Tuesday, 16th July 2024 =
+* Improvement: Added compatibility with WordPress v6.6.
+* Improvement: What's New - Improved the ability to see the new updates for Spectra in the form of a feed under the Dashboard.
+* Fix: Global - Resolved an issue wherein the last modified dates would be altered after running the `Ultimate Addons for Gutenberg` database update.
+* Deprecated: Header Titlebar - Safely removed the Header Titlebar functionality to allow support for the WordPress 6.6 command palette.
 
-= 2.13.7 - Tuesday, 18th June 2024. =
+= 2.14.0 - Monday, 8th July 2024 = 
+* Fix: Global - Optimized the `Ultimate Addons for Gutenberg` database updation and resolved the editor refresh and RichText issues. Read more about migration [here](https://wpspectra.com/docs/spectra-database-update-instructions/).
+
+= 2.13.9 - Thursday, 4th July 2024 =
+* Improvement: Global - Added an update notice for users that used to use `Ultimate Addons for Gutenberg` to update their database to ensure compatibility with the Heading and Info-box block defaults. Read more [here](https://wpspectra.com/docs/spectra-database-update-instructions/).
+* Fix: Container - Resolved an issue wherein WordPress core blocks inside the container were aligning to the center in tablet/mobile view in the editor.
+
+= 2.13.8 - Thursday, 27th June 2024 =
+* This update addressed a security bug. Props to Patchstack for privately reporting it to our team. Please make sure you are using the latest version on your website.
+
+= 2.13.7 - Tuesday, 18th June 2024 =
 * Fix: Forms - Resolved an issue wherein the select dropdown padding would not work as intended with the Astra theme.
 * Fix: How-To - Resolved an issue that would cause all blocks to encounter an error when using the How-To steps with a dynamic image.
 * Fix: Post Grid - Resolved an issue that would cause an error when selecting the Post Type as Site Builder and the Image Layout as Background.
 * Fix: Post Timeline - Resolved an issue wherein the font size would not work as intended in responsive devices.
 * Fix: Global - Resolved an issue wherein labels from the icon library would not be available for translation on wordpress.org.
 
-= 2.13.6 - Thursday, 13th June 2024 =
-* Fix: FAQ - Resolved an issue wherein the FAQ questions could not utilize line breaks or bold text.
-
-= 2.13.5 - Wednesday, 12th June 2024 =
-* Improvement: FAQ - Implemented the server-side rendering approach for this block.
-* Fix: Container - Resolved an issue wherein the Image block would not display as expected in nested containers.
-* Fix: Taxonomy List - Handled the "Taxonomy Not Available." message on the front-end when using categories from the "Create And Assign Categories For Pages" plugin.
-* Fix: Testimonial - Resolved an issue wherein the image height would not work as intended.
-* Fix: Global - Resolved an issue wherein Custom CSS would not display on editor reload.
-
-= 2.13.4 - Thursday, 6th June 2024 =
-* Feature: Quick Action Bar - Easily rearrange blocks in the Quick Action Bar for a personalized workflow.
-* Improvement: Info Box - Added an option to set the alt attribute of the image.
-* Improvement: Modal - Added separate units ( default 'px' ) for responsive modal width and height.
-* Improvement: Global - Added the inherit-from-theme primary and secondary-button options in blocks that contain buttons for Astra themes.
-* Improvement: Asset Generation - Regenerating post assets on current post update to avoid any conflicts with the cached version.
-* Fix: Buttons - Resolved an issue wherein the button typography styles would not work when applied from the parent in the Astra theme.
-* Fix: Buttons - Resolved an issue wherein button icon spacing would not work as expected in responsive devices.
-* Fix: Image Gallery - Added accessibility improvements to the lightbox close and gallery pagination buttons.
-* Fix: Quick Action Bar - Removed a console error that would occur in the editor whenever a block was dragged.
-* Fix: Global - Resolved an issue in which the media pickers would not show the selected image in the popup.
-
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 
 == Upgrade Notice ==
+
+= 2.14.1 =
+With WordPress 6.6 introducing the command palette and taking a place at the top of the editor, we had to retire the 'Move Title to Top' functionality in Spectra. However, there's no need for concern. After updating Spectra, the title in your editor will gracefully return to its default position.
 
 = 2.7.4 =
 With WordPress 6.3 no longer supporting older versions of PHP, the next Spectra release will also require a minimum of PHP 7.4. For websites running on older version of PHP, we strongly recommend upgrading to PHP 7.4 or above to ensure optimal performance and compatibility.

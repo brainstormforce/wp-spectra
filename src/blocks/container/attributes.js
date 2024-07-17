@@ -1661,6 +1661,30 @@ const attributes = {
 		type:'string',
 		default: 'stretch',
 	},
+	orderDesktop: {
+		type: 'string',
+		default: 'initial',
+	},
+	orderTablet: {
+		type: 'string',
+		default: 'initial',
+	},
+	orderMobile: {
+		type: 'string',
+		default: 'initial',
+	},
+	customOrderDesktop: {
+		type: 'number',
+		default: '',
+	},
+	customOrderTablet: {
+		type: 'number',
+		default: '',
+	},
+	customOrderMobile: {
+		type: 'number',
+		default: '',
+	},
 };
 
 export default attributes;

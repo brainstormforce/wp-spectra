@@ -121,7 +121,7 @@ export const VariationPicker = ( props ) => {
 	};
 
 	return (
-		<div { ...useBlockProps() } className="uagb-variation-picker uagb-variation-picker--fill">
+		<div {...useBlockProps()} className="uagb-forms-variations uagb-variation-picker uagb-variation-picker--fill">
 			<BlockVariationPicker
 				icon={ UAGB_Block_Icons.forms }
 				label={ __( 'Forms', 'ultimate-addons-for-gutenberg' ) }

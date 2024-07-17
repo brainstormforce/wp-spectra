@@ -175,16 +175,16 @@
         },
         {
             "name": "brainstormforce/zip-ai",
-            "version": "1.1.6",
+            "version": "1.1.10",
             "source": {
                 "type": "git",
                 "url": "git@github.com:brainstormforce/zip-ai.git",
-                "reference": "ef56accbd7462aed4d9db7e2c7fdeda2c116475e"
+                "reference": "92535ae6bbd2a0b077a4a7cc7c6c57b419fee746"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brainstormforce/zip-ai/zipball/ef56accbd7462aed4d9db7e2c7fdeda2c116475e",
-                "reference": "ef56accbd7462aed4d9db7e2c7fdeda2c116475e",
+                "url": "https://api.github.com/repos/brainstormforce/zip-ai/zipball/92535ae6bbd2a0b077a4a7cc7c6c57b419fee746",
+                "reference": "92535ae6bbd2a0b077a4a7cc7c6c57b419fee746",
                 "shasum": ""
             },
             "require": {
@@ -233,10 +233,10 @@
             ],
             "description": "Library which interacts with SCS and provide multiple useful modules",
             "support": {
-                "source": "https://github.com/brainstormforce/zip-ai/tree/1.1.6",
+                "source": "https://github.com/brainstormforce/zip-ai/tree/1.1.10",
                 "issues": "https://github.com/brainstormforce/zip-ai/issues"
             },
-            "time": "2024-05-15T11:35:16+00:00"
+            "time": "2024-07-15T13:28:32+00:00"
         },
         {
             "name": "composer/installers",
