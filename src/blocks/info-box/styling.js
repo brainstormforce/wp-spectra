@@ -264,7 +264,8 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		blockPaddingUnit,
 		blockPaddingUnitTablet,
 		blockPaddingUnitMobile,
-		inheritFromTheme
+		inheritFromTheme,
+		infoboxBorderHColor,
 	} = attributes;
 
 	const blockName = name.replace( 'uagb/', '' );
@@ -291,6 +292,9 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 	const boxSizingImage = '%' === imageWidthUnit ? 'border-box' : 'content-box';
 	const boxSizingImageTablet = '%' === imageWidthUnitTablet ? 'border-box' : 'content-box';
 	const boxSizingImageMobile = '%' === imageWidthUnitMobile ? 'border-box' : 'content-box';
+	const mainContainerBorderCSS = generateBorderCSS( attributes, 'infobox' );
+	const mainContainerBorderCSSTablet = generateBorderCSS( attributes, 'infobox', 'tablet' );
+	const mainContainerBorderCSSMobile = generateBorderCSS( attributes, 'infobox', 'mobile' );
 
 	const selectors = {
 		// Icon css
@@ -481,6 +485,10 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		'.uagb-infobox__content-wrap .uagb-ifb-content svg': {
 			'box-sizing': `${ boxSizingIcon }`,
 		},
+		'.uagb-infobox__content-wrap': mainContainerBorderCSS,
+		'.uagb-infobox__content-wrap:hover': {
+			'border-color': infoboxBorderHColor,
+		}
 	};
 
 	if ( 'Stacked' === iconView ) {
@@ -624,6 +632,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			'height': generateCSSUnit( iconSizeFallbackTablet, iconSizeType ),
 			'line-height': generateCSSUnit( iconSizeFallbackTablet, iconSizeType ),
 		},
+		'.uagb-infobox__content-wrap': mainContainerBorderCSSTablet,
 	};
 
 	const mobileSelectors = {
@@ -742,6 +751,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			'height': generateCSSUnit( iconSizeFallbackMobile, iconSizeType ),
 			'line-height': generateCSSUnit( iconSizeFallbackMobile, iconSizeType ),
 		},
+		'.uagb-infobox__content-wrap': mainContainerBorderCSSMobile
 	};
 
 	if( iconimgPosition === 'left' || iconimgPosition === 'right' ) {

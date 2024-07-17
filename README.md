@@ -217,11 +217,11 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ### x.x.x ###
 * Improvement: Container - Added an order option for grid layout to set the order in which the inner container should be.
-* Improvement: Post Carousel - Added an Image Ratio option for the post-image sizing.
-* Improvement: Post Grid - Made the Image Ratio options responsive.
-* Improvement: Post Grid & Carousel - Added a "Custom" option for the Image Ratio setting.
-* Improvement: Separator - Added block Margin and Padding settings.
-* Improvement: What's New - Improved the ability to see the new updates for Spectra in the form of a feed under the Dashboard.
+* Improvement: Info Box - Added an overall border option.
+* Improvement: Post Carousel - Added an image ratio option for the post-image sizing.
+* Improvement: Post Grid - Made the image ratio options responsive.
+* Improvement: Post Grid & Carousel - Added a "Custom" option for the image ratio setting.
+* Improvement: Separator - Added overall block margin and padding settings.
 * Fix: Image & Image Gallery - Resolved an issue wherein the caption's text-decoration would not sync with the Astra theme's body font settings when "Default" is set.
 
 ### 2.14.1 - Tuesday, 16th July 2024 ###
