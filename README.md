@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.6  
-**Stable tag:** 2.14.1  
+**Stable tag:** 2.15.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -168,7 +168,7 @@ We understand the need for a quality product backed by dedicated support that ca
 
 <strong>WANT TO CONTRIBUTE TO THE PLUGIN? 🙋</strong>
 
-You may now contribute to the plugin on Github: <a href="https://github.com/brainstormforce/ultimate-addons-for-gutenberg" target="_blank" rel="">Spectra on Github</a>
+You may now contribute to the plugin on Github: <a href="https://github.com/brainstormforce/wp-spectra" target="_blank" rel="">Spectra on Github</a>
 
 ## Installation ##
 
@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### x.x.x ###
+### 2.15.0 - Monday, 22nd July 2024 ###
 * Improvement: Container - Added an order option for grid layout to set the order in which the inner container should be.
 * Improvement: Info Box - Added an overall border option.
 * Improvement: Post Carousel - Added an image ratio option for the post-image sizing.

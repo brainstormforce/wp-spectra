@@ -525,7 +525,7 @@ if ( ! class_exists( 'Spectra_Icon' ) ) {
 		 * Renders Front-end Click Event.
 		 *
 		 * @param string $id             Block ID.
-		 * @since x.x.x
+		 * @since 2.15.0
 		 * @return string|false                The Output Buffer.
 		 */
 		public static function render_icon_click( $id ) {
