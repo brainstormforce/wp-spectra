@@ -25,13 +25,14 @@
 		-moz-transition-property: border-color;
 		-o-transition-property: border-color;
 		transition-property: border-color;
+		height: auto;
 
 		@include transitionSpeeds();
 
 		svg {
 			width: $spectra-variation-button-icon;
 			height: $spectra-variation-button-icon;
-			fill: none;
+			fill: none !important;
 
 			path,
 			rect,
@@ -68,6 +69,7 @@
 
 		&.components-placeholder {
 			align-items: center;
+			gap: 0;
 		}
 
 		&.is-large .components-placeholder__label,
@@ -77,8 +79,10 @@
 			line-height: 29px;
 			text-align: left;
 			color: $spectra-color-heading;
+			margin-bottom: 16px;
 
 			svg {
+				margin-right: 12px;
 
 				path,
 				rect,
@@ -95,6 +99,9 @@
 
 	.components-placeholder__fieldset {
 		align-items: center;
+		text-align: center;
+		flex-direction: column;
+		max-width: 90%;
 	}
 
 	.components-placeholder__instructions {
@@ -113,6 +120,7 @@
 			margin: $spectra-variation-button-margin;
 			flex-basis: content;
 			width: $spectra-variation-button-width;
+			gap: 16px;
 		}
 
 		.block-editor-block-variation-picker__variation-label {

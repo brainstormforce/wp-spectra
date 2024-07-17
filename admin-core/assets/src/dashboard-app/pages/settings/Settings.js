@@ -33,7 +33,6 @@ import InstagramUsers from '@DashboardApp/pages/settings/block-settings/Instagra
 // Import Editor Enhancements.
 import TemplatesButton from '@DashboardApp/pages/settings/editor-enhancements/TemplatesButton';
 import QuickActionBar from '@DashboardApp/pages/settings/editor-enhancements/QuickActionBar';
-import HeaderTitlebar from '@DashboardApp/pages/settings/editor-enhancements/HeaderTitlebar';
 import CollapsePanels from '@DashboardApp/pages/settings/editor-enhancements/CollapsePanels';
 
 
@@ -148,7 +147,6 @@ const Settings = () => {
                         { 'editor-enhancements' === activeSettingsNavigationTab && (
                             <>
 								<QuickActionBar/>
-								<HeaderTitlebar/>
                                 <CollapsePanels/>
 								<TemplatesButton/>
 							</>

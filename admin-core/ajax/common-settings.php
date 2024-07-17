@@ -100,7 +100,6 @@ class Common_Settings extends Ajax_Base {
 			'btn_inherit_from_theme',
 			'zip_ai_module_status',
 			'zip_ai_verify_authenticity',
-			'enable_header_titlebar',
 		);
 
 		$this->init_ajax_events( $ajax_events );
@@ -1029,18 +1028,5 @@ class Common_Settings extends Ajax_Base {
 		} else {
 			wp_send_json_error( array( 'messsage' => __( 'Unable to verify authenticity.', 'ultimate-addons-for-gutenberg' ) ) );
 		}
-	}
-
-	/**
-	 * Save setting - Enables the header titlebar.
-	 *
-	 * @since 2.13.1
-	 * @return void
-	 */
-	public function enable_header_titlebar() {
-		$this->check_permission_nonce( 'uag_enable_header_titlebar' );
-		$value = $this->check_post_value();
-		$value = 'enabled' === $value ? 'enabled' : 'disabled';
-		$this->save_admin_settings( 'uag_enable_header_titlebar', sanitize_text_field( $value ) );
 	}
 }

@@ -66,7 +66,6 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 				'uag_enable_masonry_gallery'        => self::get_admin_settings_option( 'uag_enable_masonry_gallery', 'enabled' ),
 				'uag_enable_quick_action_sidebar'   => self::get_admin_settings_option( 'uag_enable_quick_action_sidebar', 'enabled' ),
 				'uag_enable_animations_extension'   => self::get_admin_settings_option( 'uag_enable_animations_extension', 'enabled' ),
-				'uag_enable_header_titlebar'        => self::get_admin_settings_option( 'uag_enable_header_titlebar', 'enabled' ),
 				'uag_enable_gbs_extension'          => self::get_admin_settings_option( 'uag_enable_gbs_extension', 'enabled' ),
 				'uag_enable_block_responsive'       => self::get_admin_settings_option( 'uag_enable_block_responsive', 'enabled' ),
 				'uag_select_font_globally'          => self::get_admin_settings_option( 'uag_select_font_globally', array() ),

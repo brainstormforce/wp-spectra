@@ -73,7 +73,7 @@ const attachSidebar = () => {
 // Attaches the sidebar after the page is loaded ( in FSE editor).
 const attachSidebarAfterLoading = () => {
 	const skeletonInterval = setInterval( () => {
-		const skeleton = document.querySelector( '.edit-site-editor__interface-skeleton' );
+		const skeleton = document.querySelector( '.edit-site-editor__interface-skeleton' ) || document.querySelector( '.editor-editor-interface.edit-site-editor__editor-interface' ); // For Old user with 6.5 and below || For New user with 6.6 and above.
 		if( skeleton ) {
 			if( ! skeleton.classList.contains( 'is-loading' ) ) {
 				clearInterval( skeletonInterval );

@@ -5831,15 +5831,6 @@ namespace UagAdmin\Ajax {
         public function zip_ai_verify_authenticity()
         {
         }
-        /**
-         * Save setting - Enables the header titlebar.
-         *
-         * @since 2.13.1
-         * @return void
-         */
-        public function enable_header_titlebar()
-        {
-        }
     }
     /**
      * Class Ajax_Init.

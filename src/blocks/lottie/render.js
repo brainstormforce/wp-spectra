@@ -4,7 +4,8 @@ import classnames from 'classnames';
 import { Player } from '@lottiefiles/react-lottie-player';
 import styles from './editor.lazy.scss';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
-import { MediaPlaceholder } from '@wordpress/block-editor';
+import { MediaPlaceholder, BlockIcon } from '@wordpress/block-editor';
+import UAGB_Block_Icons from '@Controls/block-icons';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -57,15 +58,19 @@ const Render = ( props ) => {
 		return (
 			<div className="uagb-lottie_upload_wrap">
 				<MediaPlaceholder
-					labels={ {
+					icon={<BlockIcon icon={UAGB_Block_Icons.lottie} />}
+					labels={{
 						title: __( 'Lottie', 'ultimate-addons-for-gutenberg' ),
-						instructions: __( 'Allows you to add fancy animation i.e Lottie to your website.', 'ultimate-addons-for-gutenberg' ),
-					} }
-					allowedTypes={ [ 'application/json' ] }
-					accept={ [ 'application/json' ] }
-					value={ jsonLottie }
-					onSelectURL={ ( value ) => onSelectLottieURL( value ) }
-					onSelect={ onSelectLottieJSON }
+						instructions: __(
+							'Allows you to add fancy animation i.e Lottie to your website.',
+							'ultimate-addons-for-gutenberg'
+						),
+					}}
+					accept={['application/json']}
+					allowedTypes={['application/json']}
+					value={jsonLottie}
+					onSelect={onSelectLottieJSON}
+					onSelectURL={( value ) => onSelectLottieURL( value )}
 				/>
 			</div>
 		);
