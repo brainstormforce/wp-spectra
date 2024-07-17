@@ -509,7 +509,7 @@ if ( ! class_exists( 'Spectra_Icon' ) ) {
 				<?php if ( $has_margin ) : ?>
 				<div class='uagb-icon-margin-wrapper'>
 				<?php endif; ?>
-					<span class="uagb-svg-wrapper"<?php echo esc_attr( $aria_label_attr ); ?>>		
+					<span class="uagb-svg-wrapper"<?php echo esc_attr( $aria_label_attr ); ?> tabindex="0">		
 						<?php echo $iconHtml; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					</span>
 				<?php if ( $has_margin ) : ?>
@@ -520,6 +520,41 @@ if ( ! class_exists( 'Spectra_Icon' ) ) {
 			return ob_get_clean();
 
 		}
+
+		/**
+		 * Renders Front-end Click Event.
+		 *
+		 * @param string $id             Block ID.
+		 * @since x.x.x
+		 * @return string|false                The Output Buffer.
+		 */
+		public static function render_icon_click( $id ) {
+			ob_start();
+			?>
+				window.addEventListener( 'DOMContentLoaded', () => {
+					const blockScope = document.querySelector( '.uagb-block-<?php echo esc_html( $id ); ?>' );
+					if ( ! blockScope ) {
+						return;
+					}
+
+					const anchorElement = blockScope.querySelector('a');
+					if (!anchorElement) {
+						return;
+					} 
+
+					<?php // Add event listener for Enter and Space key presses. ?> 
+					blockScope.addEventListener('keydown', (event) => {
+						if ( 13 === event.keyCode || 32 === event.keyCode ) {
+							event.preventDefault();
+							<?php // Trigger the click event on the blockScope. ?> 
+							anchorElement.click();	
+						}
+					} );
+				} );
+			<?php
+			return ob_get_clean();
+		}
+
 	}
 
 		

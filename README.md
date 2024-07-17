@@ -222,6 +222,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Post Grid - Made the image ratio options responsive.
 * Improvement: Post Grid & Carousel - Added a "Custom" option for the image ratio setting.
 * Improvement: Separator - Added overall block margin and padding settings.
+* Improvement: Image Gallery - Added keyboard accesibility for click events.
+* Improvement: Icon - Added keyboard accesibility for link click.
 * Fix: Image & Image Gallery - Resolved an issue wherein the caption's text-decoration would not sync with the Astra theme's body font settings when "Default" is set.
 
 ### 2.14.1 - Tuesday, 16th July 2024 ###
