@@ -216,8 +216,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
-* Fix: Quick Action Bar - Resolved an issue wherein the Quick Access Bar would become non-functional after editing a pattern.
 * Improvement: Container - Added a children-width option for flex columns.
+* Fix: Quick Action Bar - Resolved an issue wherein the Quick Access Bar would become non-functional after editing a pattern.
+* Fix: FAQ - Resolved an issue wherein the question icon color would not appear correctly in the editor as compared to the frontend.
 
 = 2.15.0 - Monday, 22nd July 2024 =
 * Improvement: Container - Added an order option for grid layout to set the order in which the inner container should be.
@@ -229,6 +230,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Image Gallery - Added keyboard accesibility for click events.
 * Improvement: Icon - Added keyboard accesibility for link click.
 * Fix: Image & Image Gallery - Resolved an issue wherein the caption's text-decoration would not sync with the Astra theme's body font settings when "Default" is set.
+
 
 = 2.14.1 - Tuesday, 16th July 2024 =
 * Improvement: Added compatibility with WordPress v6.6.
