@@ -217,6 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = x.x.x =
 * Fix: Quick Action Bar - Resolved an issue wherein the Quick Access Bar would become non-functional after editing a pattern.
+* Improvement: Container - Added a children-width option for flex columns.
 
 = 2.15.0 - Monday, 22nd July 2024 =
 * Improvement: Container - Added an order option for grid layout to set the order in which the inner container should be.
