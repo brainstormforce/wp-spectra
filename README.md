@@ -225,6 +225,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Image Gallery - Added keyboard accesibility for click events.
 * Improvement: Icon - Added keyboard accesibility for link click.
 * Fix: Image & Image Gallery - Resolved an issue wherein the caption's text-decoration would not sync with the Astra theme's body font settings when "Default" is set.
+* Fix: Image Gallery / Social Share - Resolved an issue wherein synced patterns for these blocks would cause the page to freeze.
 
 ### 2.14.1 - Tuesday, 16th July 2024 ###
 * Improvement: Added compatibility with WordPress v6.6.
