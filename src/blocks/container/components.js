@@ -127,12 +127,12 @@ export const GridSettings = ( props ) => {
     const orderCommon = () => {
         return [
             {
-                value: '-999',
+                value: '-99999',
                 tooltip: __( 'Start', 'ultimate-addons-for-gutenberg' ),
                 icon: <Icon icon={ renderCustomIcon( `start-order` ) } />,
             },
             {
-                value: '999',
+                value: '99999',
                 tooltip: __( 'End', 'ultimate-addons-for-gutenberg' ),
                 icon: <Icon icon={ renderCustomIcon( `end-order` ) } />,
             },
@@ -464,10 +464,10 @@ export const GridSettings = ( props ) => {
                             } }
                             displayUnit={ false }
                             setAttributes={ setAttributes }
-                            min={ Infinity }
+                            min={ -Infinity }
                             step={ 1 }
-                            max={ -Infinity }
-                            showControlHeader={ false }
+                            max={ Infinity }
+					        showControlHeader={ false }
                         />
                     ) }
                     { 'custom' === orderTablet && 'Tablet' === deviceType && (
@@ -480,9 +480,9 @@ export const GridSettings = ( props ) => {
                             } }
                             displayUnit={ false }
                             setAttributes={ setAttributes }
-                            min={ Infinity }
+                            min={ -Infinity }
                             step={ 1 }
-                            max={ -Infinity }
+                            max={ Infinity }
                             showControlHeader={ false }
                         />
                     ) }
@@ -496,9 +496,9 @@ export const GridSettings = ( props ) => {
                             } }
                             displayUnit={ false }
                             setAttributes={ setAttributes }
-                            min={ Infinity }
+                            min={ -Infinity }
                             step={ 1 }
-                            max={ -Infinity }
+                            max={ Infinity }
                             showControlHeader={ false }
                         />
                     ) }
