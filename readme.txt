@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= 2.15.0 - Thursday, 25th July 2024 =
+= 2.15.0 - Monday, 29th July 2024 =
 * Improvement: Container - Added an order option for grid layout to set the order in which the inner container should be.
 * Improvement: Info Box - Added an overall border option.
 * Improvement: Post Carousel - Added an image ratio option for the post-image sizing.
