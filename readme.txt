@@ -168,7 +168,7 @@ We understand the need for a quality product backed by dedicated support that ca
 
 <strong>WANT TO CONTRIBUTE TO THE PLUGIN? 🙋</strong>
 
-You may now contribute to the plugin on Github: <a href="https://github.com/brainstormforce/ultimate-addons-for-gutenberg" target="_blank" rel="">Spectra on Github</a>
+You may now contribute to the plugin on Github: <a href="https://github.com/brainstormforce/wp-spectra" target="_blank" rel="">Spectra on Github</a>
 
 == Installation ==
 
