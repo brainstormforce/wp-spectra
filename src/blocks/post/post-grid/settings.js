@@ -20,7 +20,6 @@ import BoxShadowControl from '@Components/box-shadow';
 import { decodeEntities } from '@wordpress/html-entities';
 import UAGNumberControl from '@Components/number-control';
 import UAGTextControl from '@Components/text-control';
-import ResponsiveSelectControl from '@Components/responsive-select';
 import { memo } from '@wordpress/element';
 
 const MAX_POSTS_COLUMNS = 8;
@@ -252,14 +251,6 @@ const Settings = ( props ) => {
 		enableOffset,
 		equalHeightInlineButtons,
 		imageRatio,
-		imageRatioTablet,
-		imageRatioMobile,
-		customImageHeightRatio,
-		customImageHeightRatioTablet,
-		customImageHeightRatioMobile,
-		customImageWidthRatio,
-		customImageWidthRatioTablet,
-		customImageWidthRatioMobile,
 		imgEqualHeight,
 		paginationType,
 		inheritFromThemeBtn,
@@ -295,12 +286,8 @@ const Settings = ( props ) => {
 		setAttributes( { imgEqualHeight: value } );
 		if ( value ) {
 			setAttributes( { imageRatio: '2-3' } );
-			setAttributes( { imageRatioTablet: '2-3' } );
-			setAttributes( { imageRatioMobile: '2-3' } );
 		} else {
 			setAttributes( { imageRatio: 'inherit' } );
-			setAttributes( { imageRatioTablet: 'inherit' } );
-			setAttributes( { imageRatioMobile: 'inherit' } );
 		}
 	};
 
@@ -737,36 +724,6 @@ const Settings = ( props ) => {
 			</UAGAdvancedPanelBody>
 		);
 	};
-	const imageRatioOptions = [
-		{
-			label: __( '– Select –', 'ultimate-addons-for-gutenberg' ),
-			value: '',
-		},
-		{
-			label: __( 'Inherit', 'ultimate-addons-for-gutenberg' ),
-			value: 'inherit',
-		},
-		{
-			label: __( '1:1', 'ultimate-addons-for-gutenberg' ),
-			value: '1-1',
-		},
-		{
-			label: __( '2:1', 'ultimate-addons-for-gutenberg' ),
-			value: '1-2',
-		},
-		{
-			label: __( '3:2', 'ultimate-addons-for-gutenberg' ),
-			value: '2-3',
-		},
-		{
-			label: __( '16:9', 'ultimate-addons-for-gutenberg' ),
-			value: '9-16',
-		},
-		{
-			label: __( 'Custom', 'ultimate-addons-for-gutenberg' ),
-			value: 'custom',
-		},
-	];
 	const imageSettings = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
@@ -787,89 +744,36 @@ const Settings = ( props ) => {
 							onChange={ setImgEqualheight }
 						/>
 						{ ! imgEqualHeight && (
-							<ResponsiveSelectControl
+							<UAGSelectControl
 								label={ __( 'Image Ratio', 'ultimate-addons-for-gutenberg' ) }
+								options={ [
+									{
+										label: __( 'Inherit', 'ultimate-addons-for-gutenberg' ),
+										value: 'inherit',
+									},
+									{
+										label: __( '1:1', 'ultimate-addons-for-gutenberg' ),
+										value: '1-1',
+									},
+									{
+										label: __( '3:2', 'ultimate-addons-for-gutenberg' ),
+										value: '2-3',
+									},
+									{
+										label: __( '16:9', 'ultimate-addons-for-gutenberg' ),
+										value: '9-16',
+									},
+									{
+										label: __( '2:1', 'ultimate-addons-for-gutenberg' ),
+										value: '1-2',
+									},
+								] }
 								data={ {
-									desktop: {
-										value: imageRatio,
-										label: 'imageRatio',
-									},
-									tablet: {
-										value: imageRatioTablet,
-										label: 'imageRatioTablet',
-									},
-									mobile: {
-										value: imageRatioMobile,
-										label: 'imageRatioMobile',
-									},
-								} }
-								options={ {
-									desktop: imageRatioOptions,
-									tablet: imageRatioOptions,
-									mobile: imageRatioOptions,
+									value: imageRatio,
+									label: 'imageRatio',
 								} }
 								setAttributes={ setAttributes }
 							/>
-						) }
-						{ ! imgEqualHeight && ( ( 'custom' === imageRatio && 'Desktop' === deviceType ) || ( 'custom' === imageRatioTablet && 'Tablet' === deviceType ) || ( 'custom' === imageRatioMobile && 'Mobile' === deviceType ) ) && (
-							<>
-								<ResponsiveSlider
-									label={ __( 'Width', 'ultimate-addons-for-gutenberg' ) }
-									data={ {
-										desktop: {
-											value: customImageWidthRatio,
-											label: 'customImageWidthRatio',
-										},
-										tablet: {
-											value: customImageWidthRatioTablet,
-											label: 'customImageWidthRatioTablet',
-										},
-										mobile: {
-											value: customImageWidthRatioMobile,
-											label: 'customImageWidthRatioMobile',
-										},
-									} }
-									min={ 1 }
-									max={ 100 }
-									displayUnit={ false }
-									setAttributes={ setAttributes }
-								/>
-								<ResponsiveSlider
-									label={ __( 'Height', 'ultimate-addons-for-gutenberg' ) }
-									data={ {
-										desktop: {
-											value: customImageHeightRatio,
-											label: 'customImageHeightRatio',
-										},
-										tablet: {
-											value: customImageHeightRatioTablet,
-											label: 'customImageHeightRatioTablet',
-										},
-										mobile: {
-											value: customImageHeightRatioMobile,
-											label: 'customImageHeightRatioMobile',
-										},
-									} }
-									min={ 1 }
-									max={ 100 }
-									displayUnit={ false }
-									setAttributes={ setAttributes }
-								/>
-								<p className='components-base-control__help'>
-									{ __(
-										'Calculate a personalized image ratio using this online tool for your image dimensions. ',
-										'ultimate-addons-for-gutenberg'
-									) }
-									<ExternalLink
-										href={
-											'https://www.digitalrebellion.com/webapps/aspectcalc'
-										}
-									>
-										{ __( 'Aspect Ratio Calculator', 'ultimate-addons-for-gutenberg' ) }
-									</ExternalLink>
-								</p>
-								<hr className="uagb-editor__separator" />
-							</>
 						) }
 					</>
 				) }

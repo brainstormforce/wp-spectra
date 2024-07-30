@@ -218,9 +218,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 = 2.15.0 - Monday, 29th July 2024 =
 * Improvement: Container - Added an order option for grid layout to set the order in which the inner container should be.
 * Improvement: Info Box - Added an overall border option.
-* Improvement: Post Carousel - Added an image ratio option for the post-image sizing.
-* Improvement: Post Grid - Made the image ratio options responsive.
-* Improvement: Post Grid & Carousel - Added a "Custom" option for the image ratio setting.
 * Improvement: Separator - Added overall block margin and padding settings.
 * Improvement: Image Gallery - Added keyboard accesibility for click events.
 * Improvement: Icon - Added keyboard accesibility for link click.
@@ -233,7 +230,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Global - Resolved an issue wherein the last modified dates would be altered after running the `Ultimate Addons for Gutenberg` database update.
 * Deprecated: Header Titlebar - Safely removed the Header Titlebar functionality to allow support for the WordPress 6.6 command palette.
 
-= 2.14.0 - Monday, 8th July 2024 = 
+= 2.14.0 - Monday, 8th July 2024 =
 * Fix: Global - Optimized the `Ultimate Addons for Gutenberg` database updation and resolved the editor refresh and RichText issues. Read more about migration [here](https://wpspectra.com/docs/spectra-database-update-instructions/).
 
 = 2.13.9 - Thursday, 4th July 2024 =

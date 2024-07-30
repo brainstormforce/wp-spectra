@@ -18,13 +18,6 @@ $paddingRightTablet = isset( $attr['paddingRightTablet'] ) ? $attr['paddingRight
 $paddingLeft        = isset( $attr['paddingLeft'] ) ? $attr['paddingLeft'] : $attr['contentPadding'];
 $paddingRight       = isset( $attr['paddingRight'] ) ? $attr['paddingRight'] : $attr['contentPadding'];
 
-$customDesktopAspectWidth  = isset( $attr['customImageWidthRatio'] ) ? $attr['customImageWidthRatio'] : 16;
-$customTabletAspectWidth   = isset( $attr['customImageWidthRatioTablet'] ) ? $attr['customImageWidthRatioTablet'] : 16;
-$customMobileAspectWidth   = isset( $attr['customImageWidthRatioMobile'] ) ? $attr['customImageWidthRatioMobile'] : 16;
-$customDesktopAspectHeight = isset( $attr['customImageHeightRatio'] ) ? $attr['customImageHeightRatio'] : 9;
-$customTabletAspectHeight  = isset( $attr['customImageHeightRatioTablet'] ) ? $attr['customImageHeightRatioTablet'] : 9;
-$customMobileAspectHeight  = isset( $attr['customImageHeightRatioMobile'] ) ? $attr['customImageHeightRatioMobile'] : 9;
-
 $selectors = UAGB_Block_Helper::get_post_selectors( $attr );
 // Pagination CSS.
 $selectors[' .uagb-post-pagination-wrap'] = array(
@@ -84,17 +77,6 @@ if ( 'top' === $attr['imgPosition'] ) {
 	$m_selectors['.uagb-equal_height_inline-read-more-buttons .uagb-post__inner-wrap .uagb-post__text:last-child'] = array(
 		'left'  => UAGB_Helper::get_css_value( $paddingLeftTablet, $attr['tabletPaddingUnit'] ),
 		'right' => UAGB_Helper::get_css_value( $paddingRightTablet, $attr['tabletPaddingUnit'] ),
-	);
-
-	// Custom Image Ratio & Compatibility.
-	$selectors[' .uagb-image-ratio-desktop-custom img']  = array(
-		'aspect-ratio' => $customDesktopAspectWidth . '/' . $customDesktopAspectHeight,
-	);
-	$t_selectors[' .uagb-image-ratio-tablet-custom img'] = array(
-		'aspect-ratio' => $customTabletAspectWidth . '/' . $customTabletAspectHeight,
-	);
-	$m_selectors[' .uagb-image-ratio-mobile-custom img'] = array(
-		'aspect-ratio' => $customMobileAspectWidth . '/' . $customMobileAspectHeight,
 	);
 } else {
 	$selectors['.uagb-equal_height_inline-read-more-buttons .uagb-post__inner-wrap .uagb-post__text:nth-last-child(2)']   = array(
