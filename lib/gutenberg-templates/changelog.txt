@@ -1,3 +1,8 @@
+v.2.3.3 - 30-July-2024
+Fix: Resolved issue where the Favorites functionality was not working in certain cases.
+Fix: Addressed problem where related block pages were not displaying in some scenarios.
+Fix: Content regeneration for a category was not working.
+
 v.2.3.2 - 26-July-2024
 Fix: Resolved visibility issue with the "Design Library" button in WordPress 6.6 with full site editor.
 

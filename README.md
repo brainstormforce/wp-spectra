@@ -215,17 +215,15 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### 2.15.0 - Monday, 29th July 2024 ###
+### 2.15.0 - Tuesday, 30th July 2024 ###
 * Improvement: Container - Added an order option for grid layout to set the order in which the inner container should be.
 * Improvement: Info Box - Added an overall border option.
-* Improvement: Post Carousel - Added an image ratio option for the post-image sizing.
-* Improvement: Post Grid - Made the image ratio options responsive.
-* Improvement: Post Grid & Carousel - Added a "Custom" option for the image ratio setting.
 * Improvement: Separator - Added overall block margin and padding settings.
-* Improvement: Image Gallery - Added keyboard accesibility for click events.
-* Improvement: Icon - Added keyboard accesibility for link click.
+* Improvement: Image Gallery - Added keyboard accessibility for click events.
+* Improvement: Icon - Added keyboard accessibility for link click.
 * Fix: Image & Image Gallery - Resolved an issue wherein the caption's text-decoration would not sync with the Astra theme's body font settings when "Default" is set.
 * Fix: Image Gallery & Social Share - Resolved an issue wherein synced patterns for these blocks would cause the page to freeze.
+* Fix: Global - Resolved an issue causing the editor to freeze when dynamic content was used in the sync pattern.
 
 ### 2.14.1 - Tuesday, 16th July 2024 ###
 * Improvement: Added compatibility with WordPress v6.6.

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-07-29T04:25:12+00:00\n"
+"POT-Creation-Date: 2024-07-30T07:46:39+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -8822,6 +8822,14 @@ msgstr ""
 #: lib/gutenberg-templates/inc/classes/ast-block-templates-zipwp-api.php:138
 #: lib/gutenberg-templates/inc/classes/ast-block-templates-zipwp-api.php:197
 msgid "Nonce verification failed."
+msgstr ""
+
+#: lib/gutenberg-templates/inc/api/favorite.php:178
+msgid "Action Completed"
+msgstr ""
+
+#: lib/gutenberg-templates/inc/api/favorite.php:178
+msgid "Action failed"
 msgstr ""
 
 #: lib/gutenberg-templates/inc/api/settings.php:182
