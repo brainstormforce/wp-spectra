@@ -100,10 +100,13 @@ const UAGBInfoBox = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		if( ( hasDynamicImg || hasDescriptionDC || hasPrefixTitleDC || hasTitleDC ) && ! attributes?.context ){
-			setAttributes( { context } );
+		if ( ( hasDynamicImg || hasDescriptionDC || hasPrefixTitleDC || hasTitleDC ) && ! attributes?.context?.postId ){
+			setAttributes( ( prevAttributes ) => ( {
+				...prevAttributes,
+				context,
+			} ) );
 		}
-	}, [ context ] )
+	}, [ hasDynamicImg, hasDescriptionDC, hasPrefixTitleDC, hasTitleDC, context?.postId ] )
 
 	useEffect( () => {
 		responsiveConditionPreview( props );

@@ -994,11 +994,14 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 					),
 				);
 				$media_args             = array(
-					'div'     => array(
+					'div'     => 'carousel' !== $attributes['feedLayout'] ? array(
 						'class'                         => true,
 						'data-spectra-gallery-image-id' => true,
 						'tabindex'                      => true,
-					),
+					) : array(
+						'class'                         => true,
+						'data-spectra-gallery-image-id' => true,
+					), 
 					'picture' => array(),
 					'source'  => array(
 						'media'  => true,
@@ -1098,7 +1101,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 					<div class="swiper-wrapper">
 						<?php for ( $i = 0; $i < $total_images; $i++ ) { ?>							
 							<div class="swiper-slide">
-								<img class="swiper-lazy" data-src="<?php echo esc_url( $attributes['mediaGallery'][ $i ]['url'] ); ?>" tabindex="0" alt="<?php echo esc_attr( $attributes['mediaGallery'][ $i ]['alt'] ); ?>"/>
+								<img class="swiper-lazy" data-src="<?php echo esc_url( $attributes['mediaGallery'][ $i ]['url'] ); ?>" alt="<?php echo esc_attr( $attributes['mediaGallery'][ $i ]['alt'] ); ?>"/>
 								<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
 								<?php if ( $attributes['lightboxDisplayCaptions'] ) : ?>
 									<div class="spectra-image-gallery__control-lightbox--caption" data-spectra-gallery-image-id='<?php echo esc_attr( $attributes['mediaGallery'][ $i ]['id'] ); ?>'>

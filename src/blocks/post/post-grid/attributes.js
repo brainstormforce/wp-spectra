@@ -1290,38 +1290,6 @@ const attributes = {
 		type: 'string',
 		default: 'inherit',
 	},
-	imageRatioTablet: {
-		type: 'string',
-		default: '',
-	},
-	imageRatioMobile: {
-		type: 'string',
-		default: '',
-	},
-	customImageHeightRatio: {
-		type: 'number',
-		default: 9,
-	},
-	customImageHeightRatioTablet: {
-		type: 'number',
-		default: 9,
-	},
-	customImageHeightRatioMobile: {
-		type: 'number',
-		default: 9,
-	},
-	customImageWidthRatio: {
-		type: 'number',
-		default: 16,
-	},
-	customImageWidthRatioTablet: {
-		type: 'number',
-		default: 16,
-	},
-	customImageWidthRatioMobile: {
-		type: 'number',
-		default: 16,
-	},
 	paginationType: {
 		type: 'string',
 		default: 'ajax',

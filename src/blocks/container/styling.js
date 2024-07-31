@@ -273,6 +273,12 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 	rightMarginTablet = 'undefined' !== typeof rightMarginTablet ? rightMarginTablet : rightMarginDesktop;
 	rightMarginMobile = 'undefined' !== typeof rightMarginMobile ? rightMarginMobile : rightMarginTablet;
 
+	orderTablet = 'initial' !== orderTablet ? orderTablet : orderDesktop;
+	orderMobile = 'initial' !== orderMobile ? orderMobile : orderTablet;
+
+	customOrderTablet = 'undefined' !== typeof customOrderTablet ? customOrderTablet : customOrderDesktop;
+	customOrderMobile = 'undefined' !== typeof customOrderMobile ? customOrderMobile : customOrderTablet;
+
 	const innerLeftMarginDesktop = leftMarginDesktop;
 	const innerRightMarginDesktop = rightMarginDesktop;
 	const innerLeftMarginTablet = leftMarginTablet;
@@ -496,7 +502,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		...borderCSS,
 		...containerBackgroundCSSDesktop,
 		'overflow': overflow,
-		'order': customOrderDesktop ? customOrderDesktop : orderDesktop,
+		'order': 'custom' === orderDesktop ? customOrderDesktop : orderDesktop,
 	};
 
 	boxShadowBlurHover = isNaN( boxShadowBlurHover ) ? '' : boxShadowBlurHover;
@@ -778,7 +784,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			'min-height': generateCSSUnit( minHeightTablet, minHeightTypeTablet, true ),
 			...borderCSSTablet,
 			...containerBackgroundCSSTablet,
-			'order': customOrderTablet ? customOrderTablet : orderTablet,
+			'order': 'custom' === orderTablet ? customOrderTablet : orderTablet,
 		};
 		tablet_selectors[ '.wp-block-uagb-container:not(.uagb-is-root-container)'] = {
 			'margin-left': generateCSSUnit( innerLeftMarginTablet, marginTypeTablet ) + ' !important',
@@ -796,7 +802,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			'min-height': generateCSSUnit( minHeightMobile, minHeightTypeMobile ),
 			...borderCSSMobile,
 			...containerBackgroundCSSMobile,
-			'order': customOrderMobile ? customOrderMobile : orderMobile,
+			'order': 'custom' === orderMobile ? customOrderMobile : orderMobile,
 		};
 		mobile_selectors[ '.wp-block-uagb-container:not(.uagb-is-root-container)'] = {
 			'margin-left': generateCSSUnit( innerLeftMarginMobile, marginTypeMobile ) + ' !important',

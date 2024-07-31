@@ -1,3 +1,41 @@
+v.2.3.3 - 30-July-2024
+Fix: Resolved issue where the Favorites functionality was not working in certain cases.
+Fix: Addressed problem where related block pages were not displaying in some scenarios.
+Fix: Content regeneration for a category was not working.
+
+v.2.3.2 - 26-July-2024
+Fix: Resolved visibility issue with the "Design Library" button in WordPress 6.6 with full site editor.
+
+v.2.3.1 - 3-July-2024
+Fix: Resolved an issue where adding social media URLs caused an error when proceeding to the next step.
+
+v.2.3.0 - 2-July-2024
+New: Added a page preview feature along with other page options.
+Improvement: Introduced a new "Favorites" tab, separated from Patterns, Pages, and Kits.
+Improvement: Added clickable navigation in the sidebar, allowing users to jump to previous steps.
+Improvement: Disbaled live preview while inserting the kit into a page.
+Improvement: Improved UI/UX for a better user experience.
+Fix: Resolved an issue where the Design Library button was not displayed in the Spectra One theme editor when the Gutenberg Plugin was activated.
+Fix: Fixed a console error that occurred on the screen of the image when AI data was prefilled.
+Fix: Addressed a blank screen issue when accessing the "Design Library" on Bedrock-powered sites.
+Fix: Fixed option 'ast-block-templates_data-' was not getting deleted after importing the site template.
+
+v2.2.5 - 27-June-2024
+- Fix: Fixed console error causing blank screen in GT AI onboarding if already prefilled.
+
+v2.2.4 - 17-June-2024
+- New: Added error boundaries for better error management.
+- Improvement: Improved UI for better consistency.
+- Improvement: Enhanced error handling during the import process.
+- Improvement: Blocked all other actions while inserting the kit into a page.
+- Improvement: Added an admin notice for missing file permissions.
+- Improvement: Removed validation for the mobile field in AI onboarding.
+- Improvement: Added loader while inserting the block.
+- Fix: Prevented adding block to new page after Spectra installation.
+- Fix: Shuffling of images if changes the orientation multiple times.
+- Fix: AI generated business description response count was not working as expected.
+- Fix: Fixed issue with authentication redirection.
+
 v2.2.3 - 06-June-2024
 - Fix: Resolved Console error for undefined images.
 

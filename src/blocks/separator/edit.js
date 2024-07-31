@@ -82,7 +82,7 @@ const UAGBSeparator = ( props ) => {
 			setAttributes( { blockPaddingUnitMobile: separatorHeightType } )
 		}
 		// Reset old attribute to undefined. 
-		setAttributes( { separatorHeight: undefined, separatorHeightTablet: undefined, separatorHeightMobile: undefined } );
+		setAttributes( { separatorHeight: 0, separatorHeightTablet: 0, separatorHeightMobile: 0 } );
 		
 	}, [  ] );
 

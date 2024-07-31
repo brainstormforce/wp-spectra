@@ -96,6 +96,11 @@ class Ai_Content {
 
 		$details = Importer_Helper::get_business_details();
 
+		$language = 'en';
+		if ( isset( $details['language'] ) ) {
+			$language = is_array( $details['language'] ) ? $details['language']['code'] : $details['language'];
+		}
+
 		$post_data = array(
 			'business_name' => isset( $details['business_name'] ) ? sanitize_text_field( $details['business_name'] ) : '',
 			'business_description' => isset( $details['business_description'] ) ? sanitize_text_field( $details['business_description'] ) : '',
@@ -105,8 +110,7 @@ class Ai_Content {
 			'regenerate' => isset( $_POST['regenerate'] ) ? filter_var( $_POST['regenerate'], FILTER_VALIDATE_BOOLEAN ) : false,
 			'block_type' => isset( $_POST['block_type'] ) ? sanitize_text_field( $_POST['block_type'] ) : 'block',
 			'is_last_category' => isset( $_POST['is_last_category'] ) ? filter_var( $_POST['is_last_category'], FILTER_VALIDATE_BOOLEAN ) : false,
-			'language_slug' => isset( $details['language'] ) ? sanitize_text_field( $details['language']['code'] ) : '',
-			'language_name' => isset( $details['language'] ) ? sanitize_text_field( $details['language']['name'] ) : '',
+			'language_slug' => $language,
 		);
 
 		$category_content = get_option( 'ast-templates-ai-content', array() );

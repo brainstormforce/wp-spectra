@@ -101,12 +101,12 @@ class Plugin {
 
 		// Get the default role object.
 		$default_role_object = get_role( $default_role );
-	
+
 		// Remove the custom capability from all roles except the default role.
 		if ( $default_role_object ) {
 			$roles = wp_roles()->role_names;
 			unset( $roles[ $default_role ] ); // Exclude the default role.
-	
+
 			foreach ( $roles as $role_slug => $role_name ) {
 				$role_object = get_role( $role_slug );
 				if ( $role_object && $role_object->has_cap( self::$custom_capability ) ) {
@@ -118,7 +118,7 @@ class Plugin {
 
 	/**
 	 * Define constants.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function define_constants() {
@@ -212,7 +212,7 @@ class Plugin {
 	 * @return void
 	 */
 	public function sync_disable_ai_settings() {
-		
+
 		$ast_ai_settings = get_option( 'ast_block_templates_ai_settings', array() );
 		$zip_ai_modules_settings = Helper::get_admin_settings_option( 'zip_ai_modules' );
 
@@ -223,7 +223,7 @@ class Plugin {
 			if ( 'disabled' === $zi_copipt_status ) {
 				$ast_ai_settings['disable_ai'] = true;
 			}
-	
+
 			if ( 'enabled' === $zi_copipt_status ) {
 				$ast_ai_settings['disable_ai'] = false;
 			}
@@ -278,13 +278,13 @@ class Plugin {
 		update_option( 'ast-block-templates_data-' . $block_id, $body );
 		wp_send_json_success( $body );
 	}
-	
+
 
 	/**
 	 * Hide notice.
 	 *
 	 * @since 2.1.1
-	 * @return void 
+	 * @return void
 	 */
 	public function hide_notices() {
 
@@ -311,16 +311,16 @@ class Plugin {
 				case 'credit-danger':
 					set_transient( 'ast_block_templates_hide_credit_danger_notice', true, 30 * DAY_IN_SECONDS );
 					break;
-				
+
 				default:
 					break;
-			}       
+			}
 		}
 
 		wp_send_json_success(
 			array(
 				'status' => true,
-			) 
+			)
 		);
 	}
 
@@ -342,7 +342,7 @@ class Plugin {
 			array(
 				'block' => $this->get_block_palette_colors(),
 				'page' => $this->get_page_palette_colors(),
-			) 
+			)
 		);
 	}
 
@@ -445,7 +445,7 @@ class Plugin {
 	 * Import Block
 	 */
 	public function import_block() {
-
+		
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 			wp_send_json_error( __( 'You are not allowed to perform this action', 'ultimate-addons-for-gutenberg' ) );
 		}
@@ -849,7 +849,7 @@ class Plugin {
 	 * @since 1.0.0
 	 */
 	public function template_assets() {
-		
+
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 			return;
 		}
@@ -877,7 +877,7 @@ class Plugin {
 		wp_enqueue_script( 'ast-block-templates', AST_BLOCK_TEMPLATES_URI . 'dist/main.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'masonry', 'imagesloaded', 'updates', 'media-upload', 'wp-util' ), AST_BLOCK_TEMPLATES_VER, true );
 		wp_add_inline_script( 'ast-block-templates', 'window.lodash = _.noConflict();', 'after' );
 		wp_enqueue_media();
-		
+
 		wp_enqueue_style( 'ast-block-templates', AST_BLOCK_TEMPLATES_URI . 'dist/style.css', array(), AST_BLOCK_TEMPLATES_VER, 'all' );
 
 		wp_enqueue_script(
@@ -925,7 +925,7 @@ class Plugin {
 			// $ast_footer = ob_get_clean();
 			// $static_css_path = ASTRA_THEME_DIR . 'assets/css/minified/main.min.css';
 			//phpcs:enable
-			
+
 		}
 
 		$server_astra_customizer_css = Helper::instance()->get_block_template_customiser_css();
@@ -933,7 +933,7 @@ class Plugin {
 			Sync_Library::instance()->get_server_astra_customizer_css();
 			$server_astra_customizer_css = Helper::instance()->get_block_template_customiser_css();
 		}
-		
+
 		$settings = get_option( 'ast_block_templates_ai_settings', array() );
 		$disable_ai = isset( $settings['disable_ai'] ) ? $settings['disable_ai'] : false;
 		$adaptive_mode = isset( $settings['adaptive_mode'] ) ? $settings['adaptive_mode'] : true;
@@ -944,10 +944,9 @@ class Plugin {
 			'ast_block_templates_authorization_url_param', array(
 				'type' => 'token',
 				'scs-authorize' => true,
-				'redirect_url' => isset( $_SERVER['REQUEST_URI'] ) ? urlencode( network_home_url() . $_SERVER['REQUEST_URI'] . '&ast_action=auth&nonce=' . wp_create_nonce( 'zip_ai_auth_nonce' ) ) : '', // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			)
 		);
-		
+
 		$credit_request_params = array(
 			'success_url' => isset( $_SERVER['REQUEST_URI'] ) ? urlencode( $this->remove_query_params( network_home_url() . $_SERVER['REQUEST_URI'], $remove_parameters ) . '&ast_action=credits' ) : '', // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		);
@@ -996,6 +995,7 @@ class Plugin {
 					'getProURL'               => esc_url( defined( 'ASTRA_PRO_SITES_NAME' ) ? ( admin_url( 'plugins.php?bsf-inline-license-form=astra-pro-sites' ) ) : $pro_url ),
 					'astra_theme_css'         => isset( $astra_theme_css ) ? $astra_theme_css : '',
 					'site_url'                => site_url(),
+					'home_url'                => home_url(),
 					'global-styles'           => preg_replace( '/(?<!-)(\\bbody\\b)(?!-)/i', '.st-block-container', wp_get_global_stylesheet() ),
 					'spectra_common_styles'   => preg_replace( '/(?<!-)(\\bbody\\b)(?!-)/i', '.st-block-container', $common_css_content ) . ' .st-block-container .uagb-button__wrapper a { text-decoration: none; }',
 					'block_color_palette'     => $this->get_block_palette_colors(),
@@ -1051,6 +1051,8 @@ class Plugin {
 					'hide_notice' => $this->is_show_personalize_ai_notice(),
 					'is_sync_business_details' => get_option( 'ast-templates-business-details-synced', false ),
 					'bypassAuth' => apply_filters( 'ast_block_templates_bypass_auth', false ),
+					'zipwp_ai_auth_nonce' => wp_create_nonce( 'zip_ai_auth_nonce' ),
+					'gutenberg_plugin_status' => is_plugin_active( 'gutenberg/gutenberg.php' ),
 				)
 			)
 		);
@@ -1076,13 +1078,13 @@ class Plugin {
 
 				if ( $host ) {
 					$domain_parts = explode( '.', $host );
-					$type = reset( $domain_parts ); 
+					$type = reset( $domain_parts );
 					$social_profiles[ $index ]['type'] = strtolower( $type );
 					$social_profiles[ $index ]['id'] = strtolower( $type );
 				}
 
 				$save = true;
-			}       
+			}
 		}
 
 		if ( $save ) {
@@ -1222,7 +1224,7 @@ class Plugin {
 			$settings = get_option( 'ast_block_templates_ai_settings', array() );
 			$adaptive_mode = isset( $settings['adaptive_mode'] ) ? $settings['adaptive_mode'] : true;
 		}
-		
+
 		if ( class_exists( 'Astra_Global_Palette' ) && $adaptive_mode ) {
 			$astra_palette_colors = astra_get_palette_colors();
 			$default_palette_color = $astra_palette_colors['palettes'][ $astra_palette_colors['currentPalette'] ];
@@ -1512,7 +1514,7 @@ class Plugin {
 
 	/**
 	 * Remove query parameters from the URL.
-	 * 
+	 *
 	 * @param  String   $url URL.
 	 * @param  String[] $params Query parameters.
 	 *

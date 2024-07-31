@@ -15,9 +15,6 @@ export const PostImage = ( props ) => {
 		( attributes.displayPostImage === true && attributes.imgPosition === 'background' )
 	) {
 		const src = post.uagb_featured_image_src[ attributes.imgSize ];
-		const desktopImageRatioClass = 'custom' !== attributes.imageRatio ? `uagb-image-ratio-${ attributes.imageRatio }` : 'uagb-image-ratio-desktop-custom';
-		const tabletImageRatioClass = 'custom' !== attributes.imageRatioTablet ? `uagb-image-ratio-tablet-${ attributes.imageRatioTablet }` : 'uagb-image-ratio-tablet-custom';
-		const mobileImageRatioClass = 'custom' !== attributes.imageRatioMobile ? `uagb-image-ratio-mobile-${ attributes.imageRatioMobile }` : 'uagb-image-ratio-mobile-custom';
 
 		return (
 			<div className="uagb-post__image">
@@ -27,7 +24,7 @@ export const PostImage = ( props ) => {
 						target={ target }
 						rel="noopener noreferrer"
 						className={ classnames(
-							`${ '' !== attributes.imageRatio ? desktopImageRatioClass : '' } ${ '' !== attributes.imageRatioTablet ? tabletImageRatioClass : '' } ${ '' !== attributes.imageRatioMobile ? mobileImageRatioClass : '' }`
+							attributes.blockName === 'post-grid' ? `uagb-image-ratio-${ attributes.imageRatio }` : ''
 						) }
 					>
 						<img

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-07-17T11:10:05+00:00\n"
+"POT-Creation-Date: 2024-07-30T07:46:39+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -180,7 +180,7 @@ msgstr ""
 msgid "Load More Images"
 msgstr ""
 
-#: blocks-config/image-gallery/class-spectra-image-gallery.php:1421
+#: blocks-config/image-gallery/class-spectra-image-gallery.php:1424
 #: dist/blocks.js:19
 msgid "Unable to load image"
 msgstr ""
@@ -226,8 +226,8 @@ msgid "Unset"
 msgstr ""
 
 #: blocks-config/post-timeline/class-uagb-post-timeline.php:545
-#: blocks-config/post/class-uagb-post.php:692
-#: blocks-config/post/class-uagb-post.php:2354
+#: blocks-config/post/class-uagb-post.php:624
+#: blocks-config/post/class-uagb-post.php:2282
 #: includes/blocks/post-carousel/attributes.php:118
 #: includes/blocks/post-grid/attributes.php:109
 #: includes/blocks/post-masonry/attributes.php:111
@@ -8792,7 +8792,7 @@ msgid "Every %d Minutes"
 msgstr ""
 
 #: lib/class-uagb-ast-block-templates.php:65
-#: lib/gutenberg-templates/inc/importer/plugin.php:986
+#: lib/gutenberg-templates/inc/importer/plugin.php:985
 msgid "Design Library"
 msgstr ""
 
@@ -8824,8 +8824,28 @@ msgstr ""
 msgid "Nonce verification failed."
 msgstr ""
 
+#: lib/gutenberg-templates/inc/api/favorite.php:178
+msgid "Action Completed"
+msgstr ""
+
+#: lib/gutenberg-templates/inc/api/favorite.php:178
+msgid "Action failed"
+msgstr ""
+
 #: lib/gutenberg-templates/inc/api/settings.php:182
 msgid "Sorry, settings are not saved."
+msgstr ""
+
+#: lib/gutenberg-templates/inc/classes/ast-block-templates-notices.php:49
+msgid "File Permissions Needed - Importing patterns, pages, and templates from Design Library requires proper file permissions. For guidance on resolving this issue and ensuring smooth importing processes, please refer to the accompanying documentation."
+msgstr ""
+
+#: lib/gutenberg-templates/inc/classes/ast-block-templates-notices.php:53
+msgid "Doc: "
+msgstr ""
+
+#: lib/gutenberg-templates/inc/classes/ast-block-templates-notices.php:53
+msgid "Resolve file permission issue"
 msgstr ""
 
 #: lib/gutenberg-templates/inc/importer/plugin.php:244
@@ -8841,7 +8861,7 @@ msgstr ""
 #: lib/gutenberg-templates/inc/importer/sync-library.php:804
 #: lib/gutenberg-templates/inc/importer/sync-library.php:839
 #: lib/gutenberg-templates/inc/importer/template-kit-importer.php:43
-#: lib/gutenberg-templates/inc/importer/template-kit-importer.php:104
+#: lib/gutenberg-templates/inc/importer/template-kit-importer.php:109
 #: lib/gutenberg-templates/inc/traits/upgrade.php:33
 msgid "You are not allowed to perform this action"
 msgstr ""
@@ -8862,7 +8882,7 @@ msgid "Something wrong"
 msgstr ""
 
 #. Translators: %s is API URL.
-#: lib/gutenberg-templates/inc/importer/template-kit-importer.php:54
+#: lib/gutenberg-templates/inc/importer/template-kit-importer.php:56
 msgid "Invalid Request URL - %s"
 msgstr ""
 
@@ -14571,30 +14591,6 @@ msgid "Showing All Post Grid Layout."
 msgstr ""
 
 #: dist/blocks.js:19
-msgid "– Select –"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "Inherit"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "1:1"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "2:1"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "3:2"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "16:9"
-msgstr ""
-
-#: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Post Type"
 msgstr ""
@@ -14691,18 +14687,6 @@ msgstr ""
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Show Featured Image"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "Image Ratio"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "Calculate a personalized image ratio using this online tool for your image dimensions. "
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "Aspect Ratio Calculator"
 msgstr ""
 
 #: dist/blocks.js:19
@@ -14892,6 +14876,30 @@ msgstr ""
 
 #: dist/blocks.js:19
 msgid "Next Text"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Image Ratio"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Inherit"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "1:1"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "3:2"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "16:9"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "2:1"
 msgstr ""
 
 #: dist/blocks.js:19

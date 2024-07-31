@@ -486,7 +486,7 @@ if ( ! class_exists( 'Spectra_Icon' ) ) {
 			}
 			
 
-			$aria_label_attr = ( 'presentation' !== $attributes['iconAccessabilityMode'] ) ? ' aria-label="' . esc_attr( implode( '', str_split( $attributes['icon'] ) ) ) . '"' : '';
+			$aria_label_attr = ( 'presentation' !== $attributes['iconAccessabilityMode'] ) ? ( empty( $attributes['iconAccessabilityDesc'] ) ? implode( '', str_split( $attributes['icon'] ) ) : $attributes['iconAccessabilityDesc'] ) : '';
 
 			// Check and prepend the protocol if necessary.
 			if ( '#' !== $linkUrl ) {
@@ -509,7 +509,13 @@ if ( ! class_exists( 'Spectra_Icon' ) ) {
 				<?php if ( $has_margin ) : ?>
 				<div class='uagb-icon-margin-wrapper'>
 				<?php endif; ?>
-					<span class="uagb-svg-wrapper"<?php echo esc_attr( $aria_label_attr ); ?> tabindex="0">		
+					<span class="uagb-svg-wrapper" 
+					<?php 
+					if ( $aria_label_attr ) {
+						echo ' aria-label="' . esc_attr( $aria_label_attr ) . '"';
+					} 
+					?>
+					tabindex="0">		
 						<?php echo $iconHtml; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					</span>
 				<?php if ( $has_margin ) : ?>

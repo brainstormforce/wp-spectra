@@ -1675,15 +1675,12 @@ const attributes = {
 	},
 	customOrderDesktop: {
 		type: 'number',
-		default: '',
 	},
 	customOrderTablet: {
 		type: 'number',
-		default: '',
 	},
 	customOrderMobile: {
 		type: 'number',
-		default: '',
 	},
 };
 

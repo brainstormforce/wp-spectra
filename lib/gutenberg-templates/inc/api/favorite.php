@@ -147,15 +147,11 @@ class Favorite extends Api_Base {
 		// Empty favorite then add favorite in respective array tye and early return.
 		if ( empty( $favorites ) && $status ) {
 			$favorites[ $block_type ][] = $id;
-			$update_status = update_option( 'ast_block_templates_favorites', $favorites );
-			return rest_ensure_response( array( 'success' => $update_status ) );
 		}
 
 		// Empty patterns OR blocks array then add favorite and return early.
 		if ( empty( $favorites[ $block_type ] ) && $status ) {
 			$favorites[ $block_type ][] = $id;
-			$update_status = update_option( 'ast_block_templates_favorites', $favorites );
-			return rest_ensure_response( array( 'success' => $update_status ) );
 		}
 
 		if ( $status ) {
@@ -176,6 +172,13 @@ class Favorite extends Api_Base {
 
 		$update_status = update_option( 'ast_block_templates_favorites', $favorites );
 
-		return rest_ensure_response( array( 'success' => $update_status ) );
+
+		$data = array( 
+			'success' => $update_status, 
+			'message' => $update_status ? __( 'Action Completed', 'ultimate-addons-for-gutenberg' ) : __( 'Action failed', 'ultimate-addons-for-gutenberg' ),
+			'data' => $favorites, 
+		);
+
+		return rest_ensure_response( $data );
 	}
 }

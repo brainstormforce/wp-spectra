@@ -220,16 +220,15 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Quick Action Bar - Resolved an issue wherein the Quick Access Bar would become non-functional after editing a pattern.
 * Fix: FAQ - Resolved an issue wherein the question icon color would not appear correctly in the editor as compared to the frontend.
 
-= 2.15.0 - Monday, 22nd July 2024 =
+= 2.15.0 - Tuesday, 30th July 2024 =
 * Improvement: Container - Added an order option for grid layout to set the order in which the inner container should be.
 * Improvement: Info Box - Added an overall border option.
-* Improvement: Post Carousel - Added an image ratio option for the post-image sizing.
-* Improvement: Post Grid - Made the image ratio options responsive.
-* Improvement: Post Grid & Carousel - Added a "Custom" option for the image ratio setting.
 * Improvement: Separator - Added overall block margin and padding settings.
-* Improvement: Image Gallery - Added keyboard accesibility for click events.
-* Improvement: Icon - Added keyboard accesibility for link click.
+* Improvement: Image Gallery - Added keyboard accessibility for click events.
+* Improvement: Icon - Added keyboard accessibility for link click.
 * Fix: Image & Image Gallery - Resolved an issue wherein the caption's text-decoration would not sync with the Astra theme's body font settings when "Default" is set.
+* Fix: Image Gallery & Social Share - Resolved an issue wherein synced patterns for these blocks would cause the page to freeze.
+* Fix: Global - Resolved an issue causing the editor to freeze when dynamic content was used in the sync pattern.
 
 
 = 2.14.1 - Tuesday, 16th July 2024 =
@@ -238,7 +237,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Global - Resolved an issue wherein the last modified dates would be altered after running the `Ultimate Addons for Gutenberg` database update.
 * Deprecated: Header Titlebar - Safely removed the Header Titlebar functionality to allow support for the WordPress 6.6 command palette.
 
-= 2.14.0 - Monday, 8th July 2024 = 
+= 2.14.0 - Monday, 8th July 2024 =
 * Fix: Global - Optimized the `Ultimate Addons for Gutenberg` database updation and resolved the editor refresh and RichText issues. Read more about migration [here](https://wpspectra.com/docs/spectra-database-update-instructions/).
 
 = 2.13.9 - Thursday, 4th July 2024 =

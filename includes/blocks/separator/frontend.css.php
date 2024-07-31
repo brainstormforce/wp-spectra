@@ -16,19 +16,24 @@ $t_selectors = array();
 $border_size = '100%';
 
 
-$border_css = array(
+$border_css             = array(
 	'-webkit-mask-size' => ( UAGB_Helper::get_css_value( $attr['separatorSize'], $attr['separatorSizeType'] ) . ' ' . $border_size ),
 	'border-top-width'  => UAGB_Helper::get_css_value( $attr['separatorBorderHeight'], $attr['separatorBorderHeightUnit'] ),
 	'width'             => UAGB_Helper::get_css_value( $attr['separatorWidth'], $attr['separatorWidthType'] ),
 	'border-top-color'  => $attr['separatorColor'],
 	'border-top-style'  => $attr['separatorStyle'],
 );
+$border_default_margins = array(
+	'margin-top'    => '5px',
+	'margin-bottom' => '5px',
+);
 
 $border_style       = array();
 $icon_spacing_style = array();
 
 if ( 'none' === $attr['elementType'] ) {
-	$border_style['.wp-block-uagb-separator:not(.wp-block-uagb-separator--text):not(.wp-block-uagb-separator--icon) .wp-block-uagb-separator__inner'] = $border_css;
+	$combined_border_styles = array_merge( $border_css, $border_default_margins );
+	$border_style['.wp-block-uagb-separator:not(.wp-block-uagb-separator--text):not(.wp-block-uagb-separator--icon) .wp-block-uagb-separator__inner'] = $combined_border_styles;
 
 } else { 
 	$align_css    = UAGB_Helper::alignment_css( $attr['separatorAlign'] );
@@ -134,7 +139,8 @@ $border_css_tablet = array(
 $border_style_tablet       = array();
 $icon_spacing_style_tablet = array();
 if ( 'none' === $attr['elementType'] ) {
-	$border_style_tablet['.wp-block-uagb-separator:not(.wp-block-uagb-separator--text):not(.wp-block-uagb-separator--icon) .wp-block-uagb-separator__inner'] = $border_css_tablet;
+	$combined_border_styles_tablet = array_merge( $border_css_tablet, $border_default_margins );
+	$border_style_tablet['.wp-block-uagb-separator:not(.wp-block-uagb-separator--text):not(.wp-block-uagb-separator--icon) .wp-block-uagb-separator__inner'] = $combined_border_styles_tablet;
 
 } else {
 	$align_css           = UAGB_Helper::alignment_css( $attr['separatorAlignTablet'] );
@@ -237,7 +243,8 @@ $border_css_mobile         = array(
 $border_style_mobile       = array();
 $icon_spacing_style_mobile = array();
 if ( 'none' === $attr['elementType'] ) {
-	$border_style_mobile['.wp-block-uagb-separator:not(.wp-block-uagb-separator--text):not(.wp-block-uagb-separator--icon) .wp-block-uagb-separator__inner'] = $border_css_mobile;
+	$combined_border_styles_mobile = array_merge( $border_css_mobile, $border_default_margins );
+	$border_style_mobile['.wp-block-uagb-separator:not(.wp-block-uagb-separator--text):not(.wp-block-uagb-separator--icon) .wp-block-uagb-separator__inner'] = $combined_border_styles_mobile;
 
 } else {
 	$align_css           = UAGB_Helper::alignment_css( $attr['separatorAlignMobile'] );

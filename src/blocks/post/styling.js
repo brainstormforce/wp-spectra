@@ -257,13 +257,6 @@ function styling( attributes, clientId, deviceType ) {
 		dotsMarginTopTablet,
 		dotsMarginTopMobile,
 		dotsMarginTopUnit,
-
-		customImageHeightRatio,
-		customImageHeightRatioTablet,
-		customImageHeightRatioMobile,
-		customImageWidthRatio,
-		customImageWidthRatioTablet,
-		customImageWidthRatioMobile,
 	} = attributes;
 	const previewType = deviceType.toLowerCase();
 	const overlayOpacityFallback = getFallbackNumber( overlayOpacity, 'overlayOpacity', blockName );
@@ -320,14 +313,6 @@ function styling( attributes, clientId, deviceType ) {
 		'dotsMarginTopMobile',
 		'post-carousel'
 	);
-
-	const customImageHeightRatioFallback = undefined !== customImageHeightRatio ? getFallbackNumber( customImageHeightRatio, 'customImageHeightRatio', blockName ) : '';
-	const customImageHeightRatioTabletFallback = undefined !== customImageHeightRatioTablet ? getFallbackNumber( customImageHeightRatioTablet, 'customImageHeightRatioTablet', blockName ) : '';
-	const customImageHeightRatioMobileFallback = undefined !== customImageHeightRatioMobile ? getFallbackNumber( customImageHeightRatioMobile, 'customImageHeightRatioMobile', blockName ) : '';
-
-	const customImageWidthRatioFallback = undefined !== customImageWidthRatio ? getFallbackNumber( customImageWidthRatio, 'customImageWidthRatio', blockName ) : '';
-	const customImageWidthRatioTabletFallback = undefined !== customImageWidthRatioTablet ? getFallbackNumber( customImageWidthRatioTablet, 'customImageWidthRatioTablet', blockName ) : '';
-	const customImageWidthRatioMobileFallback = undefined !== customImageWidthRatioMobile ? getFallbackNumber( customImageWidthRatioMobile, 'customImageWidthRatioMobile', blockName ) : '';
 
 	let mobileSelectors = {};
 	let tabletSelectors = {};
@@ -440,9 +425,6 @@ function styling( attributes, clientId, deviceType ) {
 			'display': 'flex',
 			'flex-direction': 'column',
 			'justify-content': wrapperAlignPosition,
-		},
-		' .uagb-image-ratio-desktop-custom': {
-			'aspect-ratio': customImageWidthRatioFallback + '/' + customImageHeightRatioFallback,
 		},
 	};
 
@@ -781,9 +763,6 @@ function styling( attributes, clientId, deviceType ) {
 			'padding-left': generateCSSUnit( wrapperLeftPaddingMobile, wrapperPaddingUnitMobile ),
 			'width': 'unset',
 		},
-		' .uagb-image-ratio-mobile-custom': {
-			'aspect-ratio': customImageWidthRatioMobileFallback + '/' + customImageHeightRatioMobileFallback,
-		},
 	};
 
 	if( useSeparateBoxShadows ){
@@ -911,9 +890,6 @@ function styling( attributes, clientId, deviceType ) {
 			'padding-right': generateCSSUnit( wrapperRightPaddingTablet, wrapperPaddingUnitTablet ),
 			'padding-bottom': generateCSSUnit( wrapperBottomPaddingTablet, wrapperPaddingUnitTablet ),
 			'padding-left': generateCSSUnit( wrapperLeftPaddingTablet, wrapperPaddingUnitTablet ),
-		},
-		' .uagb-image-ratio-tablet-custom': {
-			'aspect-ratio': customImageWidthRatioTabletFallback + '/' + customImageHeightRatioTabletFallback,
 		},
 	};
 
