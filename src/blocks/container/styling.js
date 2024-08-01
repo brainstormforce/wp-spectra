@@ -898,7 +898,6 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		};
 	}
 
-	const flexDirections = [ 'row-reverse', 'row' ];
 	const autoWidth = { 'width': 'auto' };
 	const setWidth = { 'width': '100%' };
 	const containerSelector = '.wp-block-uagb-container > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block';
@@ -906,7 +905,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 
 	// Add auto width to the inner blocks in desktop.
 	if( directionDesktop ){
-		if( flexDirections.includes( directionDesktop ) && 'auto' === childrenWidthDesktop ) {
+		if( 'auto' === childrenWidthDesktop ) {
 			selectors[ containerSelector ] = autoWidth;
 			selectors[ containerSelector2 ] = autoWidth;
 		}
@@ -914,7 +913,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 
 	// Add auto width to the inner blocks in tablet.
 	if( directionTablet ){
-		if( flexDirections.includes( directionTablet ) && 'auto' === childrenWidthTablet ) {
+		if( 'auto' === childrenWidthTablet ) {
 			tablet_selectors[ containerSelector ] = autoWidth;
 			tablet_selectors[ containerSelector2 ] = autoWidth;
 		}else{
@@ -925,7 +924,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 
 	// Add auto width to the inner blocks in mobile.
 	if( directionMobile ){
-		if( flexDirections.includes( directionMobile ) && 'auto' === childrenWidthMobile ) {
+		if( 'auto' === childrenWidthMobile ) {
 			mobile_selectors[ containerSelector ] = autoWidth;
 			mobile_selectors[ containerSelector2 ] = autoWidth;
 		} else{

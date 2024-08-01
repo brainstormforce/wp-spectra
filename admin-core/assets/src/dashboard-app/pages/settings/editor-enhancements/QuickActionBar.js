@@ -1,8 +1,8 @@
 import { __ } from '@wordpress/i18n';
-import { useEffect } from '@wordpress/element';
+import { useCallback } from '@wordpress/element';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch } from '@headlessui/react'
-import { uagbClassNames } from '@Helpers/Helpers';
+import { uagbClassNames, debounce } from '@Helpers/Helpers';
 import getApiData from '@Controls/getApiData';
 
 const QuickActionBar = () => {
@@ -12,23 +12,24 @@ const QuickActionBar = () => {
 
 	const QuickActionSidebarStatus = ( 'enabled' === enableQuickActionSidebarExtension );
 
-    useEffect( () => {
+	// Debounce function to limit the rate of execution of a function.
+	const debouncedApiCall = useCallback(
+		debounce( ( status ) => {
+			const data = {
+				security: uag_react.enable_quick_action_sidebar_nonce,
+				value: status,
+			};
 
-        // Create an object with the security and value properties
-        const data = {
-            security: uag_react.enable_quick_action_sidebar_nonce,
-            value: enableQuickActionSidebarExtension,
-        };
-        // Call the getApiData function with the specified parameters
-        const getApiFetchData = getApiData( {
-            url: uag_react.ajax_url,
-            action: 'uag_enable_quick_action_sidebar',
-            data,
-        } );
-        // Wait for the API call to complete, but perform no actions after it finishes
-        getApiFetchData.then( () => {} );
+			const getApiFetchData = getApiData( {
+				url: uag_react.ajax_url,
+				action: 'uag_enable_quick_action_sidebar',
+				data,
+			} );
 
-    }, [enableQuickActionSidebarExtension] );
+			getApiFetchData.then( () => { } );
+		}, 300 ), // Adjust the delay as needed.
+		[ enableQuickActionSidebarExtension ]
+	);
 
     const updateQuickActionSidebarStatus = () => {
 
@@ -41,7 +42,8 @@ const QuickActionBar = () => {
 
         dispatch( {type: 'UPDATE_ENABLE_QUICK_ACTION_SIDEBAR_EXTENSION', payload: assetStatus } );
         dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
-    };
+		debouncedApiCall( assetStatus ); // Call the debounced function.
+	};
 
     return (
         <section className='block border-b border-solid border-slate-200 px-12 py-8 justify-between'>
@@ -51,7 +53,7 @@ const QuickActionBar = () => {
                 </h3>
                 <Switch
                     checked={ QuickActionSidebarStatus }
-                    onChange={ updateQuickActionSidebarStatus }
+					onChange={ updateQuickActionSidebarStatus }
                     className={ uagbClassNames( [
                         QuickActionSidebarStatus ? 'bg-spectra' : 'bg-slate-200',
                         'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none',

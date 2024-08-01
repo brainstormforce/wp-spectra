@@ -2,7 +2,8 @@ import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch } from '@headlessui/react'
 import UAGB_Block_Icons from '@Common/block-icons';
-import { useEffect } from 'react';
+import { useCallback } from '@wordpress/element';
+import { debounce } from '@Helpers/Helpers';
 
 import getApiData from '@Controls/getApiData';
 
@@ -17,12 +18,14 @@ const DynamicContentExtension = () => {
 
     const dynamicContentStatus = 'disabled' === enableDynamicContentExtension ? false : true;
 
-    useEffect( () => {
+	// Debounce function to limit the rate of execution of a function.
+	const debouncedApiCall = useCallback(
+		debounce( ( status ) => {
 
         // Create an object with the security and enableDynamicContentExtension properties
         const data = {
             security: uag_react.enable_dynamic_content_nonce,
-            value: enableDynamicContentExtension,
+			value: status,
         };
 
         // Call the getApiData function with the specified parameters
@@ -35,7 +38,9 @@ const DynamicContentExtension = () => {
         // Wait for the API call to complete, but perform no actions after it finishes
         getApiFetchData.then( () => {} );
 
-    }, [enableDynamicContentExtension] );
+		}, 300 ), // Adjust the delay as needed.
+		[ enableDynamicContentExtension ]
+	);
 
     const updatedynamicContentStatus = () => {
 
@@ -48,7 +53,7 @@ const DynamicContentExtension = () => {
 
         dispatch( {type: 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION', payload: assetStatus } );
 		dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
-
+		debouncedApiCall( assetStatus ); // Call the debounced function.
     };
 
     return (

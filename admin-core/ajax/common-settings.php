@@ -627,16 +627,50 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function blocks_activation_and_deactivation() {
 		$this->check_permission_nonce( 'uag_blocks_activation_and_deactivation' );
-		$value = $this->check_post_value();
-
+		$value  = $this->check_post_value();
+		$status = $this->check_post_value( 'status' );
+		if ( '' !== $status ) {
+			$status_value = 'disabled' === $status ? 'disabled' : 'enabled';
+		}
 		// will sanitize $value in later stage.
 		$value = json_decode( stripslashes( $value ), true );
 
 		if ( 'disabled' === \UAGB_Helper::$file_generation ) {
 			\UAGB_Admin_Helper::create_specific_stylesheet(); // Get Specific Stylesheet.
 		}
-
-		$this->save_admin_settings( '_uagb_blocks', $this->sanitize_form_inputs( $value ) );
+		if ( '' !== $status ) {
+			// Update all extensions.
+			$update_all_extensions = array(
+				'uag_enable_animations_extension',
+				'uag_enable_dynamic_content',
+				'uag_enable_block_condition',
+				'uag_enable_block_responsive',
+				'uag_enable_masonry_gallery',
+				'uag_enable_gbs_extension',
+				'_uagb_blocks',
+			);
+			// Create an array with the new status for each extension.
+			$change_extension = array();
+			// Iterate over the array and set the new status for each item.
+			foreach ( $update_all_extensions as $item ) {
+				if ( '_uagb_blocks' === $item ) {
+					$change_extension[ $item ] = $value;
+					continue;
+				}
+				$change_extension[ $item ] = $status_value;
+			}
+			// Iterate over the array and call save_admin_settings for each item.
+			foreach ( $change_extension as $key => $val ) {
+				if ( '_uagb_blocks' === $key ) {
+					\UAGB_Admin_Helper::update_admin_settings_option( '_uagb_blocks', $val );
+					continue;
+				}
+				// Update all extensions.
+				\UAGB_Admin_Helper::update_admin_settings_option( $key, $val );
+			}
+		} else {
+			$this->save_admin_settings( '_uagb_blocks', $this->sanitize_form_inputs( $value ) );
+		}
 	}
 
 	/**
