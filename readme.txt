@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= 2.15.0 - Tuesday, 30th July 2024 =
+= 2.15.0 - Thursday, 1st August 2024 =
 * Improvement: Container - Added an order option for grid layout to set the order in which the inner container should be.
 * Improvement: Info Box - Added an overall border option.
 * Improvement: Separator - Added overall block margin and padding settings.
@@ -237,16 +237,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 = 2.13.9 - Thursday, 4th July 2024 =
 * Improvement: Global - Added an update notice for users that used to use `Ultimate Addons for Gutenberg` to update their database to ensure compatibility with the Heading and Info-box block defaults. Read more [here](https://wpspectra.com/docs/spectra-database-update-instructions/).
 * Fix: Container - Resolved an issue wherein WordPress core blocks inside the container were aligning to the center in tablet/mobile view in the editor.
-
-= 2.13.8 - Thursday, 27th June 2024 =
-* This update addressed a security bug. Props to Patchstack for privately reporting it to our team. Please make sure you are using the latest version on your website.
-
-= 2.13.7 - Tuesday, 18th June 2024 =
-* Fix: Forms - Resolved an issue wherein the select dropdown padding would not work as intended with the Astra theme.
-* Fix: How-To - Resolved an issue that would cause all blocks to encounter an error when using the How-To steps with a dynamic image.
-* Fix: Post Grid - Resolved an issue that would cause an error when selecting the Post Type as Site Builder and the Image Layout as Background.
-* Fix: Post Timeline - Resolved an issue wherein the font size would not work as intended in responsive devices.
-* Fix: Global - Resolved an issue wherein labels from the icon library would not be available for translation on wordpress.org.
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 
