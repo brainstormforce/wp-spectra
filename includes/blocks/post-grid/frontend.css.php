@@ -109,7 +109,7 @@ if ( $attr['isLeftToRightLayout'] ) {
 		'flex'  => 'none',
 		'width' => ( 'top' === $attr['imgPosition'] ) ? '35%' : '100%',
 	);
-	
+
 }
 
 

@@ -47,6 +47,8 @@ class Template_Kit_Importer {
 
 		$api_uri = ( isset( $_REQUEST['api_uri'] ) ) ? esc_url_raw( $_REQUEST['api_uri'] ) : '';
 
+		$block_id = isset( $_REQUEST['id'] ) ? absint( $_REQUEST['id'] ) : 0;
+
 		if ( ! Plugin::instance()->is_valid_url( $api_uri ) ) {
 			wp_send_json_error(
 				array(
@@ -89,6 +91,9 @@ class Template_Kit_Importer {
 		}
 
 		$data = json_decode( wp_remote_retrieve_body( $response ), true );
+
+		// Flush the object when import is successful.
+		delete_option( 'ast-block-templates_data-' . $block_id );
 
 		wp_send_json_success( $data['original_content'] );
 	}

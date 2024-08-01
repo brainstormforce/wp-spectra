@@ -83,6 +83,12 @@ $bottom_margin_mobile = '' !== $attr['bottomMarginMobile'] ? $attr['bottomMargin
 
 $column_gap_mobile = ! empty( $attr['columnGapMobile'] ) ? $attr['columnGapMobile'] : $column_gap_tablet;
 
+$order_tablet = 'initial' !== $attr['orderTablet'] ? $attr['orderTablet'] : $attr['orderDesktop'];
+$order_mobile = 'initial' !== $attr['orderMobile'] ? $attr['orderMobile'] : $order_tablet;
+
+$custom_order_tablet = '' !== $attr['customOrderTablet'] ? $attr['customOrderTablet'] : $attr['customOrderDesktop'];
+$custom_order_mobile = '' !== $attr['customOrderMobile'] ? $attr['customOrderMobile'] : $custom_order_tablet;
+
 $is_layout_grid        = 'grid' === $attr['layout'];
 $has_inner_blocks_wrap = 'alignwide' === $attr['innerContentWidth'] && 'alignfull' === $attr['contentWidth'];
 
@@ -112,6 +118,7 @@ $container_css       = array_merge(
 		'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginDesktop'], $attr['marginType'] ),
 		'margin-right'   => UAGB_Helper::get_css_value( $attr['rightMarginDesktop'], $attr['marginType'] ),
 		'overflow'       => $attr['overflow'],
+		'order'          => 'custom' === $attr['orderDesktop'] ? $attr['customOrderDesktop'] : $attr['orderDesktop'],
 	),
 	$border
 );
@@ -196,6 +203,7 @@ $container_tablet_css = array_merge(
 		'margin-bottom'  => UAGB_Helper::get_css_value( $bottom_margin_tablet, $attr['marginTypeTablet'] ) . ' !important',
 		'margin-left'    => UAGB_Helper::get_css_value( $left_margin_tablet, $attr['marginTypeTablet'] ),
 		'margin-right'   => UAGB_Helper::get_css_value( $right_margin_tablet, $attr['marginTypeTablet'] ),
+		'order'          => 'custom' === $order_tablet ? $custom_order_tablet : $order_tablet,
 	),
 	$border_tablet
 );
@@ -243,6 +251,7 @@ $container_mobile_css = array_merge(
 		'margin-right'   => UAGB_Helper::get_css_value( $right_margin_mobile, $attr['marginTypeMobile'] ),
 		'row-gap'        => UAGB_Helper::get_css_value( $attr['rowGapMobile'], $attr['rowGapTypeMobile'] ),
 		'column-gap'     => UAGB_Helper::get_css_value( $attr['columnGapMobile'], $attr['columnGapTypeMobile'] ),
+		'order'          => 'custom' === $order_mobile ? $custom_order_mobile : $order_mobile,
 	),
 	$border_mobile
 );

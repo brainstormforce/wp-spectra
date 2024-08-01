@@ -28,10 +28,13 @@ function UAGBImageEdit( props ) {
 	} = props;
 
 	useEffect( () => {
-		if ( hasDynamicContent && ! attributes?.context ) {
-			setAttributes( { context } );
+		if ( hasDynamicContent && ! attributes?.context?.postId ) {
+			setAttributes( ( prevAttributes ) => ( {
+				...prevAttributes,
+				context,
+			} ) );
 		}
-	}, [ context ] )
+	}, [ hasDynamicContent, context?.postId ] )
 
 	useEffect( () => {
 		scrollBlockToView();

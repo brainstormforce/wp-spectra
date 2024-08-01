@@ -38,7 +38,7 @@ export default function styling( attributes, clientId, name, deviceType, gbsSele
 		imageMarginUnit,
 		imageMarginUnitTablet,
 		imageMarginUnitMobile,
-		// cpation
+		// caption
 		captionShowOn,
 		captionAlign,
 		captionFontFamily,
@@ -234,6 +234,9 @@ export default function styling( attributes, clientId, name, deviceType, gbsSele
 	const blockAlignTablet = getBlockAlign( alignTablet );
 	const blockAlignMobile = getBlockAlign( alignMobile );
 
+	// Text decoration compatibility CSS.
+	const captionDecorationStyle = '' === captionDecoration && uagb_blocks_info.is_astra_based_theme ? uagb_blocks_info.astra_body_text_decoration : captionDecoration;
+
 	const selectors = {
 		'.wp-block-uagb-image': {
 			'margin-top': generateCSSUnit( imageTopMargin, imageMarginUnit ),
@@ -258,7 +261,7 @@ export default function styling( attributes, clientId, name, deviceType, gbsSele
 		'.wp-block-uagb-image .wp-block-uagb-image__figure figcaption': {
 			'font-family': captionFontFamily,
 			'font-style': captionFontStyle,
-			'text-decoration': captionDecoration,
+			'text-decoration': captionDecorationStyle,
 			'text-transform': captionTransform,
 			'font-weight': captionFontWeight,
 			'font-size': generateCSSUnit( captionFontSize, captionFontSizeType ),

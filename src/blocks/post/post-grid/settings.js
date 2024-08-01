@@ -281,7 +281,7 @@ const Settings = ( props ) => {
 
 	const currentTheme = uagb_blocks_info.current_theme;
 	const isAstraBasedTheme = uagb_blocks_info.is_astra_based_theme;
-	
+
 	const setImgEqualheight = ( value ) => {
 		setAttributes( { imgEqualHeight: value } );
 		if ( value ) {
@@ -1797,7 +1797,7 @@ const Settings = ( props ) => {
 				title={ __( 'Read More Link', 'ultimate-addons-for-gutenberg' ) }
 				initialOpen={ false }
 			>
-				{ !inheritFromThemeBtn && ( 
+				{ !inheritFromThemeBtn && (
 					<>
 				<UAGTabsControl
 					tabs={ [
@@ -2062,7 +2062,7 @@ const Settings = ( props ) => {
 							} }
 							setAttributes={ setAttributes }
 						/>
-					</> 
+					</>
 				) }
 			</UAGAdvancedPanelBody>
 		);

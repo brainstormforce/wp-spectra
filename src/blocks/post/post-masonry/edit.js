@@ -301,148 +301,193 @@ const UAGBPostMasonry = ( props ) => {
 	useEffect( () => {
 		if ( vpaginationButtonPaddingDesktop ) {
 			if ( ! paginationButtonPaddingTop ) {
-				setAttributes( {
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
 					paginationButtonPaddingTop: vpaginationButtonPaddingDesktop,
-				} );
+				} ) );
 			}
 			if ( ! paginationButtonPaddingBottom ) {
-				setAttributes( {
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
 					paginationButtonPaddingBottom: vpaginationButtonPaddingDesktop,
-				} );
+				} ) );
 			}
 		}
 		if ( hpaginationButtonPaddingDesktop ) {
 			if ( ! paginationButtonPaddingRight ) {
-				setAttributes( {
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
 					paginationButtonPaddingRight: hpaginationButtonPaddingDesktop,
-				} );
+				} ) );
 			}
 			if ( ! paginationButtonPaddingLeft ) {
-				setAttributes( {
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
 					paginationButtonPaddingLeft: hpaginationButtonPaddingDesktop,
-				} );
+				} ) );
 			}
 		}
 		if ( vpaginationButtonPaddingTablet ) {
 			if ( ! paginationButtonPaddingTopTablet ) {
-				setAttributes( {
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
 					paginationButtonPaddingTopTablet: vpaginationButtonPaddingTablet,
-				} );
+				} ) );
 			}
 			if ( ! paginationButtonPaddingBottomTablet ) {
-				setAttributes( {
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
 					paginationButtonPaddingBottomTablet: vpaginationButtonPaddingTablet,
-				} );
+				} ) );
 			}
 		}
 		if ( hpaginationButtonPaddingTablet ) {
 			if ( ! paginationButtonPaddingRightTablet ) {
-				setAttributes( {
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
 					paginationButtonPaddingRightTablet: hpaginationButtonPaddingTablet,
-				} );
+				} ) );
 			}
 			if ( ! paginationButtonPaddingLeftTablet ) {
-				setAttributes( {
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
 					paginationButtonPaddingLeftTablet: hpaginationButtonPaddingTablet,
-				} );
+				} ) );
 			}
 		}
 		if ( vpaginationButtonPaddingMobile ) {
 			if ( ! paginationButtonPaddingTopMobile ) {
-				setAttributes( {
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
 					paginationButtonPaddingTopMobile: vpaginationButtonPaddingMobile,
-				} );
+				} ) );
 			}
 			if ( ! paginationButtonPaddingBottomMobile ) {
-				setAttributes( {
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
 					paginationButtonPaddingBottomMobile: vpaginationButtonPaddingMobile,
-				} );
+				} ) );
 			}
 		}
 		if ( hpaginationButtonPaddingMobile ) {
 			if ( ! paginationButtonPaddingRightMobile ) {
-				setAttributes( {
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
 					paginationButtonPaddingRightMobile: hpaginationButtonPaddingMobile,
-				} );
+				} ) );
 			}
 			if ( ! paginationButtonPaddingLeftMobile ) {
-				setAttributes( {
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
 					paginationButtonPaddingLeftMobile: hpaginationButtonPaddingMobile,
-				} );
+				} ) );
 			}
 		}
 		if ( btnVPadding ) {
 			if ( undefined === paddingBtnTop ) {
-				setAttributes( { paddingBtnTop: btnVPadding } );
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
+					paddingBtnTop: btnVPadding,
+				} ) );
 			}
 			if ( undefined === paddingBtnBottom ) {
-				setAttributes( { paddingBtnBottom: btnVPadding } );
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
+					paddingBtnBottom: btnVPadding,
+				} ) );
 			}
 		}
 		if ( btnHPadding ) {
 			if ( undefined === paddingBtnRight ) {
-				setAttributes( { paddingBtnRight: btnHPadding } );
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
+					paddingBtnRight: btnHPadding,
+				} ) );
 			}
 			if ( undefined === paddingBtnLeft ) {
-				setAttributes( { paddingBtnLeft: btnHPadding } );
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
+					paddingBtnLeft: btnHPadding,
+				} ) );
 			}
 		}
 		if ( contentPadding ) {
 			if ( undefined === paddingTop ) {
-				setAttributes( { paddingTop: contentPadding } );
+				// setAttributes( { paddingTop: contentPadding } );
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
+					paddingTop: contentPadding,
+				} ) );
 			}
 			if ( undefined === paddingBottom ) {
-				setAttributes( { paddingBottom: contentPadding } );
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
+					paddingBottom: contentPadding,
+				} ) );
 			}
 			if ( undefined === paddingRight ) {
-				setAttributes( { paddingRight: contentPadding } );
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
+					paddingRight: contentPadding,
+				} ) );
 			}
 			if ( undefined === paddingLeft ) {
-				setAttributes( { paddingLeft: contentPadding } );
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
+					paddingLeft: contentPadding,
+				} ) );
 			}
 		}
 		if ( contentPaddingTablet ) {
 			if ( undefined === paddingTopTablet ) {
-				setAttributes( {
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
 					paddingTopTablet: contentPaddingTablet,
-				} );
+				} ) );
 			}
 			if ( undefined === paddingBottomTablet ) {
-				setAttributes( {
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
 					paddingBottomTablet: contentPaddingTablet,
-				} );
+				} ) );
 			}
 			if ( undefined === paddingRightTablet ) {
-				setAttributes( {
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
 					paddingRightTablet: contentPaddingTablet,
-				} );
+				} ) );
 			}
 			if ( undefined === paddingLeftTablet ) {
-				setAttributes( {
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
 					paddingLeftTablet: contentPaddingTablet,
-				} );
+				} ) );
 			}
 		}
 		if ( contentPaddingMobile ) {
 			if ( undefined === paddingTopMobile ) {
-				setAttributes( {
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
 					paddingTopMobile: contentPaddingMobile,
-				} );
+				} ) );
 			}
 			if ( undefined === paddingBottomMobile ) {
-				setAttributes( {
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
 					paddingBottomMobile: contentPaddingMobile,
-				} );
+				} ) );
 			}
 			if ( undefined === paddingRightMobile ) {
-				setAttributes( {
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
 					paddingRightMobile: contentPaddingMobile,
-				} );
+				} ) );
 			}
 			if ( undefined === paddingLeftMobile ) {
-				setAttributes( {
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
 					paddingLeftMobile: contentPaddingMobile,
-				} );
+				} ) );
 			}
 		}
 	}, [] );

@@ -248,7 +248,7 @@ function styling( attributes, clientId, deviceType ) {
 		wrapperPaddingUnitMobile,
 
 		wrapperAlign,
-	
+
 		wrapperAlignPosition,
 		isLeftToRightLayout,
 
@@ -425,7 +425,6 @@ function styling( attributes, clientId, deviceType ) {
 			'display': 'flex',
 			'flex-direction': 'column',
 			'justify-content': wrapperAlignPosition,
-			
 		},
 	};
 
@@ -763,7 +762,6 @@ function styling( attributes, clientId, deviceType ) {
 			'padding-bottom': generateCSSUnit( wrapperBottomPaddingMobile, wrapperPaddingUnitMobile ),
 			'padding-left': generateCSSUnit( wrapperLeftPaddingMobile, wrapperPaddingUnitMobile ),
 			'width': 'unset',
-			
 		},
 	};
 
@@ -892,7 +890,6 @@ function styling( attributes, clientId, deviceType ) {
 			'padding-right': generateCSSUnit( wrapperRightPaddingTablet, wrapperPaddingUnitTablet ),
 			'padding-bottom': generateCSSUnit( wrapperBottomPaddingTablet, wrapperPaddingUnitTablet ),
 			'padding-left': generateCSSUnit( wrapperLeftPaddingTablet, wrapperPaddingUnitTablet ),
-			
 		},
 	};
 

@@ -510,6 +510,10 @@ export default function Settings( props ) {
 				] }
 				showIcons={ true }
 				responsive={ true }
+				help={ ( 'left' === align || 'right' === align ) && __(
+					'Note: We use WP core alignment. Left or Right alignments on desktop won`t support responsive alignment.',
+					'ultimate-addons-for-gutenberg'
+				) }
 			/>
 			<MultiButtonsControl
 				setAttributes={ setAttributes }

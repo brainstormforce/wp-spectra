@@ -2,20 +2,19 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.14.1\n"
+"Project-Id-Version: Spectra 2.15.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-07-15T17:01:39+00:00\n"
+"POT-Creation-Date: 2024-07-31T15:35:05+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.10.0\n"
+"X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
 
 #. Plugin Name of the plugin
-#: ultimate-addons-for-gutenberg.php
 #: admin-core/inc/admin-menu.php:135
 #: admin-core/inc/admin-menu.php:136
 #: admin-core/inc/admin-menu.php:147
@@ -29,17 +28,14 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
-#: ultimate-addons-for-gutenberg.php
 msgid "https://www.brainstormforce.com"
 msgstr ""
 
 #. Description of the plugin
-#: ultimate-addons-for-gutenberg.php
 msgid "The Spectra extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster."
 msgstr ""
 
 #. Author of the plugin
-#: ultimate-addons-for-gutenberg.php
 msgid "Brainstorm Force"
 msgstr ""
 
@@ -62,7 +58,7 @@ msgid "Successfully saved data!"
 msgstr ""
 
 #: admin-core/ajax/common-settings.php:180
-#: classes/class-uagb-init-blocks.php:1053
+#: classes/class-uagb-init-blocks.php:1057
 msgid "No post data found!"
 msgstr ""
 
@@ -184,7 +180,7 @@ msgstr ""
 msgid "Load More Images"
 msgstr ""
 
-#: blocks-config/image-gallery/class-spectra-image-gallery.php:1420
+#: blocks-config/image-gallery/class-spectra-image-gallery.php:1424
 #: dist/blocks.js:19
 msgid "Unable to load image"
 msgstr ""
@@ -199,6 +195,7 @@ msgstr ""
 
 #: blocks-config/popup-builder/class-uagb-popup-builder.php:230
 #: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Type"
@@ -230,7 +227,7 @@ msgstr ""
 
 #: blocks-config/post-timeline/class-uagb-post-timeline.php:545
 #: blocks-config/post/class-uagb-post.php:624
-#: blocks-config/post/class-uagb-post.php:2281
+#: blocks-config/post/class-uagb-post.php:2282
 #: includes/blocks/post-carousel/attributes.php:118
 #: includes/blocks/post-grid/attributes.php:109
 #: includes/blocks/post-masonry/attributes.php:111
@@ -974,7 +971,7 @@ msgid "Bong"
 msgstr ""
 
 #: blocks-config/uagb-controls/spectra-icons-v6-0.php:2088
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Book"
@@ -3617,7 +3614,6 @@ msgstr ""
 #: blocks-config/uagb-controls/spectra-icons-v6-1.php:4567
 #: includes/blocks/advanced-heading/block.php:16
 #: dist/blocks-placeholder.js:9
-#: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:19
 msgid "Heading"
@@ -4006,7 +4002,7 @@ msgid "ioxhost"
 msgstr ""
 
 #: blocks-config/uagb-controls/spectra-icons-v6-2.php:176
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Italic"
 msgstr ""
 
@@ -4262,7 +4258,7 @@ msgid "Lines Leaning"
 msgstr ""
 
 #: blocks-config/uagb-controls/spectra-icons-v6-2.php:889
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 msgid "Link"
 msgstr ""
@@ -4901,7 +4897,7 @@ msgid "Outdent"
 msgstr ""
 
 #: blocks-config/uagb-controls/spectra-icons-v6-2.php:2645
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "P"
@@ -7036,7 +7032,7 @@ msgid "Uncharted Software"
 msgstr ""
 
 #: blocks-config/uagb-controls/spectra-icons-v6-3.php:3401
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:23
 msgid "Underline"
 msgstr ""
@@ -7740,92 +7736,92 @@ msgstr ""
 msgid "Theme"
 msgstr ""
 
-#: classes/class-uagb-admin.php:86
+#: classes/class-uagb-admin.php:87
 msgid "Migration started successfully."
 msgstr ""
 
-#: classes/class-uagb-admin.php:102
-#: classes/class-uagb-admin.php:172
+#: classes/class-uagb-admin.php:103
+#: classes/class-uagb-admin.php:173
 msgid "You do not have permission to access this page."
 msgstr ""
 
-#: classes/class-uagb-admin.php:119
+#: classes/class-uagb-admin.php:120
 msgid "Log file not found."
 msgstr ""
 
-#: classes/class-uagb-admin.php:173
-#: classes/class-uagb-admin.php:204
+#: classes/class-uagb-admin.php:174
+#: classes/class-uagb-admin.php:205
 #: admin-core/assets/build/dashboard-app.js:1
 #: admin-core/assets/build/dashboard-app.js:3
 msgid "Rollback to Previous Version"
 msgstr ""
 
-#: classes/class-uagb-admin.php:186
+#: classes/class-uagb-admin.php:187
 msgid "Error occurred, The version selected is invalid. Try selecting different version."
 msgstr ""
 
-#: classes/class-uagb-admin.php:290
-msgid "Wow! The Spectra has already powered over 5 pages on your website!"
-msgstr ""
-
-#: classes/class-uagb-admin.php:291
-msgid "Would you please mind sharing your views and give it a 5 star rating on the WordPress repository?"
-msgstr ""
-
 #: classes/class-uagb-admin.php:293
-msgid "Ok, you deserve it"
+msgid "Wow! Spectra has helped you build over 5 pages!!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:295
-msgid "Nope, maybe later"
+#: classes/class-uagb-admin.php:294
+msgid "We're a small independent team passionate about creating plugins like this one. It would mean the world to us if you could spend just a minute to leave a 5-star review on WordPress' official website. Your support really helps us a lot!"
 msgstr ""
 
 #: classes/class-uagb-admin.php:296
+msgid "Ok, you deserve it"
+msgstr ""
+
+#: classes/class-uagb-admin.php:298
+msgid "Nope, maybe later"
+msgstr ""
+
+#: classes/class-uagb-admin.php:299
 msgid "I already did"
 msgstr ""
 
-#: classes/class-uagb-admin.php:333
+#: classes/class-uagb-admin.php:336
 msgid "Spectra database update required"
 msgstr ""
 
-#: classes/class-uagb-admin.php:334
+#: classes/class-uagb-admin.php:337
 msgid "We've detected that some of your pages were created with an older version of Spectra. To ensure your designs remain unaffected, we recommend updating the Spectra database now. Updating the Spectra database will not impact any other parts of your website."
 msgstr ""
 
-#: classes/class-uagb-admin.php:335
+#: classes/class-uagb-admin.php:338
 msgid "To be on the safer side, please be sure to back up your site before updating."
 msgstr ""
 
-#: classes/class-uagb-admin.php:336
+#: classes/class-uagb-admin.php:339
 msgid "Update Spectra Database"
 msgstr ""
 
-#: classes/class-uagb-admin.php:338
+#: classes/class-uagb-admin.php:341
 msgid "Learn More About This"
 msgstr ""
 
-#: classes/class-uagb-admin.php:363
+#: classes/class-uagb-admin.php:366
 msgid "Spectra database update in progress"
 msgstr ""
 
-#: classes/class-uagb-admin.php:364
+#: classes/class-uagb-admin.php:367
 msgid "Great! This should only take a few minutes. Thanks for hanging in there."
 msgstr ""
 
-#: classes/class-uagb-admin.php:389
+#: classes/class-uagb-admin.php:392
 msgid "Update Successful!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:390
+#: classes/class-uagb-admin.php:393
 msgid "Your Spectra database is now up-to-date. Your website will continue to function as before."
 msgstr ""
 
-#: classes/class-uagb-admin.php:390
+#: classes/class-uagb-admin.php:393
 msgid "View Log"
 msgstr ""
 
 #. translators: %s: html tags
-#: classes/class-uagb-admin.php:409
+#: classes/class-uagb-admin.php:412
 msgid "Spectra requires&nbsp;%3$sBlock Editor%4$s. You can change your editor settings to Block Editor from&nbsp;%1$shere%2$s. Plugin is currently NOT RUNNING."
 msgstr ""
 
@@ -7928,13 +7924,13 @@ msgstr ""
 msgid "Please select a valid Contact Form 7."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:799
+#: classes/class-uagb-init-blocks.php:801
 msgid ""
 "Use custom class added in block's advanced settings to target your desired block. Examples:\n"
 "\t\t.my-class {text-align: center;} // my-class is a custom selector"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:853
+#: classes/class-uagb-init-blocks.php:857
 #: classes/class-uagb-rest-api.php:318
 #: classes/class-uagb-rest-api.php:333
 #: dist/blocks.js:1
@@ -7945,21 +7941,21 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:882
-#: classes/class-uagb-init-blocks.php:915
+#: classes/class-uagb-init-blocks.php:886
+#: classes/class-uagb-init-blocks.php:919
 #: dist/blocks.js:23
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:896
+#: classes/class-uagb-init-blocks.php:900
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:929
+#: classes/class-uagb-init-blocks.php:933
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:945
+#: classes/class-uagb-init-blocks.php:949
 msgid "Invalid request"
 msgstr ""
 
@@ -7981,7 +7977,7 @@ msgid "Heads up!"
 msgstr ""
 
 #: includes/blocks/advanced-heading/block.php:17
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Add heading, sub heading and a separator using one block."
 msgstr ""
 
@@ -8048,7 +8044,7 @@ msgid "Highly customize and style your Contact Form 7 forms."
 msgstr ""
 
 #: includes/blocks/column/block.php:14
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Column"
@@ -8070,13 +8066,13 @@ msgstr ""
 
 #: includes/blocks/container/block.php:16
 #: dist/blocks-placeholder.js:13
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 msgid "Container"
 msgstr ""
 
 #: includes/blocks/container/block.php:17
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Create beautiful layouts with flexbox powered container block."
 msgstr ""
 
@@ -8210,7 +8206,7 @@ msgid "Add an email address field in your form"
 msgstr ""
 
 #: includes/blocks/forms-hidden/block.php:14
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 msgid "Hidden"
 msgstr ""
@@ -8657,7 +8653,6 @@ msgstr ""
 
 #: includes/blocks/separator/block.php:16
 #: dist/blocks-placeholder.js:34
-#: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:19
 msgid "Separator"
@@ -8797,7 +8792,7 @@ msgid "Every %d Minutes"
 msgstr ""
 
 #: lib/class-uagb-ast-block-templates.php:65
-#: lib/gutenberg-templates/inc/importer/plugin.php:986
+#: lib/gutenberg-templates/inc/importer/plugin.php:985
 msgid "Design Library"
 msgstr ""
 
@@ -8829,8 +8824,28 @@ msgstr ""
 msgid "Nonce verification failed."
 msgstr ""
 
+#: lib/gutenberg-templates/inc/api/favorite.php:178
+msgid "Action Completed"
+msgstr ""
+
+#: lib/gutenberg-templates/inc/api/favorite.php:178
+msgid "Action failed"
+msgstr ""
+
 #: lib/gutenberg-templates/inc/api/settings.php:182
 msgid "Sorry, settings are not saved."
+msgstr ""
+
+#: lib/gutenberg-templates/inc/classes/ast-block-templates-notices.php:49
+msgid "File Permissions Needed - Importing patterns, pages, and templates from Design Library requires proper file permissions. For guidance on resolving this issue and ensuring smooth importing processes, please refer to the accompanying documentation."
+msgstr ""
+
+#: lib/gutenberg-templates/inc/classes/ast-block-templates-notices.php:53
+msgid "Doc: "
+msgstr ""
+
+#: lib/gutenberg-templates/inc/classes/ast-block-templates-notices.php:53
+msgid "Resolve file permission issue"
 msgstr ""
 
 #: lib/gutenberg-templates/inc/importer/plugin.php:244
@@ -8846,7 +8861,7 @@ msgstr ""
 #: lib/gutenberg-templates/inc/importer/sync-library.php:804
 #: lib/gutenberg-templates/inc/importer/sync-library.php:839
 #: lib/gutenberg-templates/inc/importer/template-kit-importer.php:43
-#: lib/gutenberg-templates/inc/importer/template-kit-importer.php:104
+#: lib/gutenberg-templates/inc/importer/template-kit-importer.php:109
 #: lib/gutenberg-templates/inc/traits/upgrade.php:33
 msgid "You are not allowed to perform this action"
 msgstr ""
@@ -8867,7 +8882,7 @@ msgid "Something wrong"
 msgstr ""
 
 #. Translators: %s is API URL.
-#: lib/gutenberg-templates/inc/importer/template-kit-importer.php:54
+#: lib/gutenberg-templates/inc/importer/template-kit-importer.php:56
 msgid "Invalid Request URL - %s"
 msgstr ""
 
@@ -9241,7 +9256,7 @@ msgid "Add Google Font"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:5
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Font Family"
 msgstr ""
 
@@ -9870,7 +9885,7 @@ msgstr ""
 
 #. translators: abbreviation for units
 #: dist/blocks.js:3
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Your Attractive Heading"
 msgstr ""
 
@@ -10054,6 +10069,7 @@ msgid "Counter placeholder img"
 msgstr ""
 
 #: dist/blocks.js:3
+#: dist/blocks.js:19
 msgid "Divider"
 msgstr ""
 
@@ -10100,7 +10116,6 @@ msgid "%s units"
 msgstr ""
 
 #: dist/blocks.js:7
-#: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
@@ -10108,7 +10123,7 @@ msgid "Margin"
 msgstr ""
 
 #: dist/blocks.js:7
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Start"
 msgstr ""
 
@@ -10121,12 +10136,12 @@ msgid "Center"
 msgstr ""
 
 #: dist/blocks.js:7
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "End"
 msgstr ""
 
 #: dist/blocks.js:7
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Stretch"
 msgstr ""
 
@@ -10167,7 +10182,7 @@ msgid "Row End"
 msgstr ""
 
 #: dist/blocks.js:7
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Align Items"
 msgstr ""
 
@@ -10176,7 +10191,7 @@ msgid "Define the vertical alignment for grid items content."
 msgstr ""
 
 #: dist/blocks.js:7
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Justify Items"
 msgstr ""
 
@@ -10227,6 +10242,7 @@ msgid "%"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Top"
@@ -10240,6 +10256,7 @@ msgid "Right"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Bottom"
@@ -10358,11 +10375,13 @@ msgid "Color"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 msgid "Gradient"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 msgid "Classic"
 msgstr ""
@@ -10519,6 +10538,7 @@ msgid "Width"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 msgid "PX"
 msgstr ""
@@ -10533,6 +10553,7 @@ msgid "X Position"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "VW"
 msgstr ""
 
@@ -10541,6 +10562,7 @@ msgid "Y Position"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 msgid "VH"
 msgstr ""
@@ -10572,6 +10594,7 @@ msgid "Radius"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Border"
@@ -10726,6 +10749,7 @@ msgid "Popup Padding"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Padding"
@@ -10800,10 +10824,12 @@ msgid "Content Vertical Alignment"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Flex Start"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Flex End"
 msgstr ""
 
@@ -10890,6 +10916,7 @@ msgid "Separate Hover Shadow"
 msgstr ""
 
 #: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Spacing"
@@ -10993,674 +11020,677 @@ msgstr ""
 msgid "Equal"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Fr"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Px"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Space Between"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Space Around"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Min"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Max"
 msgstr ""
 
-#: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Height"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "The column-width will be automatic."
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "The row-height will be automatic."
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Grid Property"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Min/Max"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Columns"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Column "
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Rows"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Row "
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
+#: dist/blocks.js:19
+#: dist/blocks.js:23
+msgid "Order"
+msgstr ""
+
+#: dist/blocks.js:15
+msgid "Define the order for grid items inside the container."
+msgstr ""
+
+#: dist/blocks.js:15
+msgid "Custom Order"
+msgstr ""
+
+#: dist/blocks.js:15
 msgid "Define the vertical alignment for grid items inside the container."
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Define the horizontal alignment for grid items within the container."
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Align Content"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Define the vertical alignment of the entire grid within its container."
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Justify Content"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Define the horizontal alignment of the entire grid within its container."
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Define the vertical alignment inside this container."
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Define the horizontal alignment inside this container."
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Define the vertical alignment of every line of blocks inside this flex container."
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Define the horizontal alignment of every line of blocks inside this flex container."
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Link Color"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "The left-right margins will be inherited from theme for boxed containers."
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "The left-right margins will not be applied for full-width containers."
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 msgid "Row"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Row Reverse"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Column Reverse"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Space Evenly"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Wrap"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "No Wrap"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Wrap Reverse"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 msgid "Full Width"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Boxed"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Visible"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Container Type"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:23
 msgid "Container Width"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Content Width"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Content Box Width"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 msgid "Custom Width"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 msgid "Minimum Height"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 msgid "Equal Height"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Enabling this will change the Align Items value to Stretch."
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "HTML Tag"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "div"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "header"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "footer"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "main"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "article"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "section"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "aside"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "figure"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "figcaption"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "summary"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "nav"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "link"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 msgid "Open in new window"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Search here…"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Add nofollow"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "New:"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Overflow"
 msgstr ""
 
-#: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Layout"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Flex"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 msgid "Grid"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Direction"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Define the direction in which blocks inside this container will be placed one after the other."
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Define whether the items are forced in a single line (No Wrap) or can be flowed into multiple lines (Wrap)."
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Text Color"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:23
 msgid "Tilt"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:23
 msgid "Mountains"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:23
 msgid "Wave Brush"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:23
 msgid "Waves"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:23
 msgid "Waves Pattern"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:23
 msgid "Triangle"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:23
 msgid "Drops"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:23
 msgid "Clouds"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:23
 msgid "ZigZag"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:23
 msgid "Pyramids"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:23
 msgid "Triangle Asymmetrical"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:23
 msgid "Tilt Opacity"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:23
 msgid "Fan Opacity"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:23
 msgid "Curve"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:23
 msgid "Curve Asymmetrical"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:23
 msgid "Curve Reverse"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:23
 msgid "Curve Asymmetrical Reverse"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:23
 msgid "Arrow"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:23
 msgid "Arrow Split"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Flip"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Invert"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:23
 msgid "Bring To Front"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:23
 msgid "Shape Dividers"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Row Gap"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Column Gap"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Select a container layout to start with."
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "container"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "uag"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 msgid "flex"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:23
 msgid "Font Size"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Weight"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Oblique"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Line Height"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Letter Spacing"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Transform"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Capitalize"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Uppercase"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Lowercase"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Decoration"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Overline"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Line Through"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Text Shadow"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Above Heading"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Below Heading"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Above Sub-heading"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Below Sub-heading"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Content"
 msgstr ""
 
-#: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:19
 msgid "Heading Tag"
 msgstr ""
 
-#: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "H1"
 msgstr ""
 
-#: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "H2"
 msgstr ""
 
-#: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "H3"
 msgstr ""
 
-#: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "H4"
 msgstr ""
 
-#: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "H5"
 msgstr ""
 
-#: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "H6"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 msgid "Div"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Heading Wrapper"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Header"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Sub Heading"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Enable Sub Heading"
 msgstr ""
 
-#: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Typography"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Bottom Spacing"
 msgstr ""
 
-#: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:19
 msgid "Thickness"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Below settings will apply to the heading text to which a link is applied."
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Highlight"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Highlight heading text from toolbar to see the below controls working."
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Background Color"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 msgid "Write a Heading"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 #: dist/blocks.js:19
 msgid "Write a Description"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "Highlight Text"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "creative heading"
 msgstr ""
 
-#: dist/blocks.js:11
+#: dist/blocks.js:15
 msgid "heading"
 msgstr ""
 
@@ -11676,6 +11706,10 @@ msgstr ""
 #: dist/blocks.js:15
 #: dist/blocks.js:19
 msgid "Disable Lazy Loading"
+msgstr ""
+
+#: dist/blocks.js:15
+msgid "Note: We use WP core alignment. Left or Right alignments on desktop won`t support responsive alignment."
 msgstr ""
 
 #: dist/blocks.js:15
@@ -14604,11 +14638,6 @@ msgstr ""
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Menu Order"
-msgstr ""
-
-#: dist/blocks.js:19
-#: dist/blocks.js:23
-msgid "Order"
 msgstr ""
 
 #: dist/blocks.js:19

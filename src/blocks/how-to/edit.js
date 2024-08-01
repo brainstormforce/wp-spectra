@@ -156,9 +156,10 @@ const HowToComponent = ( props ) => {
 	useEffect( () => {
 		// Replacement for componentDidUpdate.
 		if ( JSON.stringify( schemaJsonData ) !== JSON.stringify( prevState ) ) {
-			setAttributes( {
+			setAttributes( ( prevAttributes ) => ( {
+				...prevAttributes,
 				schema: JSON.stringify( schemaJsonData ),
-			} );
+			} ) );
 
 			setPrevState( schemaJsonData );
 		}

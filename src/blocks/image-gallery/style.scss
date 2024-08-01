@@ -711,9 +711,13 @@
 				outline: 0;
 				line-height: 0;
 				z-index: 999;
+				transition: transform 500ms;
 
-				&:hover {
+				&:hover,
+				&:focus,
+				&:focus-visible {
 					background-color: transparent;
+					transform: scale(1.25);
 				}
 			}
 		}

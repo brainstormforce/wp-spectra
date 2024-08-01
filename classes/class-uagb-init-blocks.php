@@ -744,7 +744,9 @@ class UAGB_Init_Blocks {
 			),
 		);
 
-		$inherit_from_theme = 'deleted' !== UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme_fallback', 'deleted' ) ? 'disabled' : UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' );
+		$inherit_from_theme               = 'deleted' !== UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme_fallback', 'deleted' ) ? 'disabled' : UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' );
+		$astra_theme_settings_available   = defined( 'ASTRA_THEME_SETTINGS' );
+		$astra_theme_body_text_decoration = $astra_theme_settings_available && function_exists( 'astra_get_font_extras' ) && function_exists( 'astra_get_option' ) ? astra_get_font_extras( astra_get_option( 'body-font-extras' ), 'text-decoration' ) : '';
 
 		$localized_params = array(
 			'cf7_is_active'                           => class_exists( 'WPCF7_ContactForm' ),
@@ -814,7 +816,9 @@ class UAGB_Init_Blocks {
 			'uag_enable_gbs_extension'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_gbs_extension', 'enabled' ),
 			'current_theme'                           => wp_get_theme()->get( 'Name' ),
 			'is_gutenberg_activated'                  => is_plugin_active( 'gutenberg/gutenberg.php' ), // TODO: Once Gutenberg merged the rename functionality code in WP then we need to remove localization part for is_gutenberg_activated.
-			'is_astra_based_theme'                    => defined( 'ASTRA_THEME_SETTINGS' ),
+			'header_titlebar_status'                  => UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_header_titlebar', 'enabled' ),
+			'is_astra_based_theme'                    => $astra_theme_settings_available,
+			'astra_body_text_decoration'              => $astra_theme_body_text_decoration,
 		);
 
 		wp_localize_script(

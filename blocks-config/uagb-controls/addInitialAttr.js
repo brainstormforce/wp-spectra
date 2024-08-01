@@ -121,23 +121,10 @@ const addInitialAttr = ( ChildComponent ) => {
 				attributeObject.headingDescToggle = headingDescToggleDefault;
 			}
 
-			/**
-			 * Resolve issue of reusable block.
-			 * As of now we are not providing for all block
-			 * After tested few blocks we will implement this is all blocks.
-			 */
-			const REUSABLE_BLOCK_ISSUE_RESOLVED_BLOCKS = [
-				'uagb/image-gallery',
-			];
-
-			if( ! REUSABLE_BLOCK_ISSUE_RESOLVED_BLOCKS.includes( name ) ){
-				const getStore = select( 'core/block-editor' );
-				const getAllBlocks = getStore?.getBlocks ? getStore.getBlocks() : null;
-				const { blockIds, clientIds } = getAllBlocks ? getUniqId( getAllBlocks ) : { blockIds: [], clientIds: [] };
-				if ( 'not_set' === block_id || '0' === block_id || ! block_id || checkDuplicate( blockIds, block_id, clientIds.indexOf( clientId ) ) ) {
-					setAttributes( attributeObject );
-				}
-			}else{
+			const getStore = select( 'core/block-editor' );
+			const getAllBlocks = getStore?.getBlocks ? getStore.getBlocks() : null;
+			const { blockIds, clientIds } = getAllBlocks ? getUniqId( getAllBlocks ) : { blockIds: [], clientIds: [] };
+			if ( 'not_set' === block_id || '0' === block_id || ! block_id || checkDuplicate( blockIds, block_id, clientIds.indexOf( clientId ) ) ) {
 				setAttributes( attributeObject );
 			}
 

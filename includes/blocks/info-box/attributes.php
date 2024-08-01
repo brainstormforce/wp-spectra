@@ -7,12 +7,12 @@
  * @package uagb
  */
 
-$cta_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute(
+$cta_border_attribute     = UAGB_Block_Helper::uag_generate_border_attribute(
 	'btn'
 );
-$inherit_from_theme   = 'enabled' === UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' );
-
-$image_width_default = ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 120 : '';
+$inherit_from_theme       = 'enabled' === UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' );
+$infobox_border_attribute = UAGB_Block_Helper::uag_generate_border_attribute( 'infobox' );
+$image_width_default      = ( 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) ? 120 : '';
 
 return array_merge(
 	array(
@@ -297,5 +297,6 @@ return array_merge(
 		'globalBlockStyleId'         => '',
 		'enableMultilineParagraph'   => false,
 	),
-	$cta_border_attribute
+	$cta_border_attribute,
+	$infobox_border_attribute
 );

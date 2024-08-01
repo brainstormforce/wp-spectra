@@ -132,8 +132,11 @@ const ColumnsComponent = ( props ) => {
 		if ( 'image' === backgroundType ) {
 			if ( 101 !== backgroundOpacity ) {
 				const color = hexToRGBA( maybeGetColorForVariable( backgroundImageColor ), backgroundOpacity );
-				setAttributes( { backgroundImageColor: color } );
-				setAttributes( { backgroundOpacity: 101 } );
+				setAttributes( ( prevAttributes ) => ( {
+					...prevAttributes,
+					backgroundImageColor: color,
+					backgroundOpacity: 101
+				} ) );
 			}
 		}
 

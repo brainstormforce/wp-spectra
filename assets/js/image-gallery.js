@@ -1,4 +1,5 @@
 let spectraImageGalleryLoadStatus = true;
+let clickedImageId = null;
 
 const UAGBImageGalleryMasonry = {
 	initByOffset( $selector, instance ){
@@ -141,6 +142,12 @@ const UAGBImageGalleryMasonry = {
 			if ( imageURL ) {
 				image.style.cursor = 'pointer';
 				image.addEventListener( 'click', () => UAGBImageGalleryMasonry.openCustomURL( imageURL ) );
+				image.addEventListener( 'keydown', ( event ) => {
+					if ( 13 === event.keyCode || 32 === event.keyCode ) {
+						event.preventDefault();
+						UAGBImageGalleryMasonry.openCustomURL( imageURL );
+					}
+				} );
 			}
 		} );
 	},
@@ -306,7 +313,13 @@ const UAGBImageGalleryPagedGrid = {
 			const imageURL = UAGBImageGalleryPagedGrid.getCustomURL( image, $attr );
 			if ( imageURL ) {
 				image.style.cursor = 'pointer';
+				image.setAttribute( 'tabindex', '0' );
 				image.addEventListener( 'click', () => UAGBImageGalleryPagedGrid.openCustomURL( imageURL ) );
+				image.addEventListener( 'keydown', ( event ) => {
+					if ( 13 === event.keyCode || 32 === event.keyCode ) {
+						UAGBImageGalleryPagedGrid.openCustomURL( imageURL );
+					}
+				} );
 			}
 		} );
 	},
@@ -377,6 +390,30 @@ const UAGBImageGalleryPagedGrid = {
 	},
 };
 
+const cycleInLightbox = ( selector, e ) => {
+	// Check if Tab key was pressed
+	if ( e.key === 'Tab' ) {
+		const focusableElements = selector.querySelectorAll( 'button, div[data-role="button"], [href], [tabindex]:not([tabindex="-1"])' );
+		const firstFocusableElement = focusableElements[0];
+		const lastFocusableElement = focusableElements[focusableElements.length - 1];
+		
+		// Get the active element using ownerDocument
+		const activeElement = e.target.ownerDocument.activeElement;
+
+		// Check if Shift + Tab was pressed and if the current active element is the first one
+		if ( e.shiftKey && activeElement === firstFocusableElement ) {
+			e.preventDefault();
+			lastFocusableElement.focus();
+		}
+		// Check if Tab was pressed and if the current active element is the last one
+		else if ( !e.shiftKey && activeElement === lastFocusableElement ) {
+			e.preventDefault();
+			firstFocusableElement.focus();
+		}
+	}
+}
+
+
 const loadLightBoxImages = ( blockScope, lightboxSwiper, pageNum, attr, thumbnailSwiper ) => {
 	if ( ! blockScope ) {
 		return;
@@ -407,13 +444,39 @@ const loadLightBoxImages = ( blockScope, lightboxSwiper, pageNum, attr, thumbnai
 
 	}
 	const lightbox = blockScope?.nextElementSibling;
+	let lightboxHandlers = {};
 	if ( lightbox && lightbox?.classList.contains( 'spectra-image-gallery__control-lightbox' ) ) {
+		// create a lightbox cycle listeners.
+        const createListeners = () => {
+			const cycleInLightboxWithID = cycleInLightbox.bind( null, lightbox );
+
+			// Function to add the event listener
+			function addEventListener() {
+			  lightbox.addEventListener( 'keydown', cycleInLightboxWithID );
+			}
+
+			// Function to remove the event listener
+			function removeEventListener() {
+			  lightbox.removeEventListener( 'keydown', cycleInLightboxWithID );
+			}
+
+			return { addEventListener, removeEventListener };
+		};
+
+		lightboxHandlers = createListeners();
+
 		lightbox.addEventListener( 'keydown', ( event ) => {
 			if ( 27 === event.keyCode ) {
 				theBody.style.overflow = '';
 				lightbox.style.opacity = 0;
 				setTimeout( () => {
 					lightbox.style.display = 'none';
+					lightboxHandlers.removeEventListener();
+					if ( clickedImageId ) {
+						const clickedImage = document.querySelector( `[data-spectra-gallery-image-id="${clickedImageId}"]` );
+						clickedImage?.focus();  
+						clickedImageId = null;
+					}
 				}, 250 );
 			}
 		} );
@@ -426,6 +489,12 @@ const loadLightBoxImages = ( blockScope, lightboxSwiper, pageNum, attr, thumbnai
 					lightbox.style.opacity = 0;
 					setTimeout( () => {
 						lightbox.style.display = 'none';
+						if ( clickedImageId ) {
+							const clickedImage = document.querySelector( `[data-spectra-gallery-image-id="${clickedImageId}"]` );
+							clickedImage?.focus();  
+							clickedImageId = null;
+						}
+						lightboxHandlers.removeEventListener();
 					}, 250 );
 				} );
 			}
@@ -435,13 +504,11 @@ const loadLightBoxImages = ( blockScope, lightboxSwiper, pageNum, attr, thumbnai
 			lightboxTotal.innerHTML = attr.mediaGallery.length;
 		}
 	}
-	const enableLightbox = ( goTo ) => {
-		if ( ! lightboxSwiper ) {
+	const enableLightbox = ( goTo, clickedImage ) => {
+		if ( ! lightboxSwiper || !lightbox ) {
 			return;
 		}
-		if ( ! lightbox ) {
-			return;
-		}
+		clickedImageId = clickedImage.getAttribute( 'data-spectra-gallery-image-id' );
 		lightbox.style.display = '';
 		lightbox.focus();
 		setTimeout( () => {
@@ -452,7 +519,9 @@ const loadLightBoxImages = ( blockScope, lightboxSwiper, pageNum, attr, thumbnai
 			if ( lightbox?.classList.contains( 'spectra-image-gallery__control-lightbox' ) ) {
 				theBody.style.overflow = 'hidden';
 			}
-			
+
+			lightboxHandlers.addEventListener();
+
 		}, 250 );
 	}
 
@@ -465,7 +534,8 @@ const loadLightBoxImages = ( blockScope, lightboxSwiper, pageNum, attr, thumbnai
 	}
 };
 
-// Common function for adding click event listeners to images
+const generateUniqueId = ( index ) => `image-${index}-${Date.now()}`;
+
 const addClickListeners = ( $scope, pageNum, enableLightbox, pageLimit, attr )  => {
 	const images = $scope.querySelectorAll( '.spectra-image-gallery__media-wrapper' );
 	const imageUrls = {};
@@ -478,15 +548,30 @@ const addClickListeners = ( $scope, pageNum, enableLightbox, pageLimit, attr )  
 
 	images.forEach( ( image, index ) => {
 		image.style.cursor = 'pointer';
-		if ( 'image' === attr.imageClickEvent ) { // Run when Open image click event option is selected. 
+		const uniqueId = generateUniqueId( index );
+		if( 'lightbox' === attr.imageClickEvent ) {
+            image.setAttribute( 'data-spectra-gallery-image-id', uniqueId );
+		};
+        if ( 'image' === attr.imageClickEvent ) { 
 			const imgId = image.getAttribute( 'data-spectra-gallery-image-id' );
 			const imgURL = imageUrls[ imgId ];
 			image.addEventListener( 'click', () => {
 				openImageInWindow( imgURL ); // To avoid opening multiple tab at same when Popup and redirect is enabled.
 			} );
+			image.addEventListener( 'keydown', ( event ) => {
+				if ( 13 === event.keyCode || 32 === event.keyCode ) {
+					openImageInWindow( imgURL );
+				}
+			} );
 		} else {
 			const nextImg = pageNum !== null ? index + ( pageNum - 1 ) * pageLimit : index;
-			image.addEventListener( 'click', () => enableLightbox( nextImg ) );
+		    image.addEventListener( 'click', () => enableLightbox( nextImg, image ) );
+		    image.addEventListener( 'keydown', ( event ) => {
+			if ( 13 === event.keyCode || 32 === event.keyCode ) {
+				event.preventDefault();
+				enableLightbox( nextImg, image );
+			}
+		} );
 		}
 	} );
 }

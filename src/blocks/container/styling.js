@@ -218,6 +218,12 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		gridJustifyItemsTablet,
 		gridAlignItemsMobile,
 		gridJustifyItemsMobile,
+		orderDesktop,
+		orderTablet,
+		orderMobile,
+		customOrderDesktop,
+		customOrderTablet,
+		customOrderMobile,
 	} = attributes;
 
 	// Background Image CSS is now added here as well so that we can generate CSS for the psuedo-element.
@@ -266,6 +272,12 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 
 	rightMarginTablet = 'undefined' !== typeof rightMarginTablet ? rightMarginTablet : rightMarginDesktop;
 	rightMarginMobile = 'undefined' !== typeof rightMarginMobile ? rightMarginMobile : rightMarginTablet;
+
+	orderTablet = 'initial' !== orderTablet ? orderTablet : orderDesktop;
+	orderMobile = 'initial' !== orderMobile ? orderMobile : orderTablet;
+
+	customOrderTablet = 'undefined' !== typeof customOrderTablet ? customOrderTablet : customOrderDesktop;
+	customOrderMobile = 'undefined' !== typeof customOrderMobile ? customOrderMobile : customOrderTablet;
 
 	const innerLeftMarginDesktop = leftMarginDesktop;
 	const innerRightMarginDesktop = rightMarginDesktop;
@@ -490,6 +502,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		...borderCSS,
 		...containerBackgroundCSSDesktop,
 		'overflow': overflow,
+		'order': 'custom' === orderDesktop ? customOrderDesktop : orderDesktop,
 	};
 
 	boxShadowBlurHover = isNaN( boxShadowBlurHover ) ? '' : boxShadowBlurHover;
@@ -771,6 +784,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			'min-height': generateCSSUnit( minHeightTablet, minHeightTypeTablet, true ),
 			...borderCSSTablet,
 			...containerBackgroundCSSTablet,
+			'order': 'custom' === orderTablet ? customOrderTablet : orderTablet,
 		};
 		tablet_selectors[ '.wp-block-uagb-container:not(.uagb-is-root-container)'] = {
 			'margin-left': generateCSSUnit( innerLeftMarginTablet, marginTypeTablet ) + ' !important',
@@ -787,7 +801,8 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			'margin-right': generateCSSUnit( rightMarginMobile, marginTypeMobile, true ),
 			'min-height': generateCSSUnit( minHeightMobile, minHeightTypeMobile ),
 			...borderCSSMobile,
-			...containerBackgroundCSSMobile
+			...containerBackgroundCSSMobile,
+			'order': 'custom' === orderMobile ? customOrderMobile : orderMobile,
 		};
 		mobile_selectors[ '.wp-block-uagb-container:not(.uagb-is-root-container)'] = {
 			'margin-left': generateCSSUnit( innerLeftMarginMobile, marginTypeMobile ) + ' !important',
@@ -990,6 +1005,8 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			}
 		}
 
+
+
 		// For desktop.
 		if( gridAlignItems ){
 			gridChildrenCSS['align-self'] = gridAlignItems;
@@ -1023,6 +1040,8 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 
 		widthSelectorsMobile[ '.block-editor-block-list__layout > #block-' + clientId ] = gridChildrenCSSMobile;
 	}
+
+
 
 	const base_selector = gbsSelector ? '.editor-styles-wrapper ' + gbsSelector : `.editor-styles-wrapper #block-${ clientId }`;
 

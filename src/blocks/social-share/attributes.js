@@ -98,12 +98,14 @@ const attributes = {
 	},
 	sizeMobile: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'icon-size-mobile',
 		},
 	},
 	sizeTablet: {
 		type: 'number',
+		default: '',
 		UAGCopyPaste: {
 			styleType: 'icon-size-tablet',
 		},

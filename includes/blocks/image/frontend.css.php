@@ -93,6 +93,8 @@ $box_shadow_hover_properties = array(
 $box_shadow_css       = UAGB_Block_Helper::generate_shadow_css( $box_shadow_properties );
 $box_shadow_hover_css = UAGB_Block_Helper::generate_shadow_css( $box_shadow_hover_properties );
 
+$attr['captionDecoration'] = '' === $attr['captionDecoration'] && defined( 'ASTRA_THEME_SETTINGS' ) && function_exists( 'astra_get_font_extras' ) && function_exists( 'astra_get_option' ) ? astra_get_font_extras( astra_get_option( 'body-font-extras' ), 'text-decoration' ) : $attr['captionDecoration'];
+
 $selectors = array(
 	'.wp-block-uagb-image'                            => array(
 		'margin-top'      => UAGB_Helper::get_css_value( $attr['imageTopMargin'], $attr['imageMarginUnit'] ),
@@ -255,7 +257,7 @@ $t_selectors['.wp-block-uagb-image']                                  = array(
 	'margin-left'     => UAGB_Helper::get_css_value( $attr['imageLeftMarginTablet'], $attr['imageMarginUnitTablet'] ),
 	'text-align'      => $attr['alignTablet'],
 	'justify-content' => $alignTablet,
-	'align-self'      => $alignTablet,   
+	'align-self'      => $alignTablet,
 );
 $t_selectors[' .wp-block-uagb-image__figure']                         = array(
 	'align-items' => $alignTablet,
@@ -303,7 +305,7 @@ $m_selectors['.wp-block-uagb-image']                                  = array(
 	'margin-left'     => UAGB_Helper::get_css_value( $attr['imageLeftMarginMobile'], $attr['imageMarginUnitMobile'] ),
 	'text-align'      => $attr['alignMobile'],
 	'justify-content' => $alignMobile,
-	'align-self'      => $alignMobile,   
+	'align-self'      => $alignMobile,
 );
 $m_selectors[' .wp-block-uagb-image__figure']                         = array(
 	'align-items' => $alignMobile,
