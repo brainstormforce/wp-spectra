@@ -2415,6 +2415,21 @@ const Settings = ( props ) => {
 		);
 	};
 
+	const borderSettings = () => {
+		return (
+			<UAGAdvancedPanelBody title={ __( 'Border', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+				<ResponsiveBorder
+					setAttributes={ setAttributes }
+					prefix={ 'infobox' }
+					attributes={ attributes }
+					deviceType={ deviceType }
+					disableBottomSeparator={ true }
+					disabledBorderTitle={ true }
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
+
 	const presetSettings = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Presets', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
@@ -2436,6 +2451,7 @@ const Settings = ( props ) => {
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style } parentProps={ props }>
 						{ styleSettings() }
+						{ borderSettings() }
 						{ spacingStylePanel() }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.advance } parentProps={ props }>

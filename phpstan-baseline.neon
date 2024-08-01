@@ -6733,11 +6733,6 @@ parameters:
 			path: includes/blocks/image-gallery/frontend.css.php
 
 		-
-			message: "#^Variable \\$attr might not be defined\\.$#"
-			count: 353
-			path: includes/blocks/image-gallery/frontend.css.php
-
-		-
 			message: "#^Variable \\$id might not be defined\\.$#"
 			count: 1
 			path: includes/blocks/image-gallery/frontend.css.php

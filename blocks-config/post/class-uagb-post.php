@@ -1268,7 +1268,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since 0.0.1
 		 */
 		public function post_grid_callback( $attributes ) {
-			
+
 			// Render query.
 			$query = UAGB_Helper::get_query( $attributes, 'grid' );
 
@@ -1285,7 +1285,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * Renders the post grid block on pagination clicks.
 		 *
 		 * @since 2.6.0
-		 * 
+		 *
 		 * @return void
 		 */
 		public function post_grid_pagination_ajax_callback() {
@@ -1297,7 +1297,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				$attr['paged'] = isset( $_POST['page_number'] ) ? sanitize_text_field( $_POST['page_number'] ) : '';
 				$html          = $this->post_grid_callback( $attr );
 				wp_send_json_success( $html );
-				
+
 			}
 
 			wp_send_json_error( ' Something went wrong, failed to load pagination data! ' );
@@ -1665,7 +1665,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		public function masonry_pagination() {
 
 			check_ajax_referer( 'uagb_masonry_ajax_nonce', 'nonce' );
-			
+
 			$post_attribute_array = array();
 			// $_POST['attr'] is sanitized in later stage.
 			$attr = isset( $_POST['attr'] ) ? json_decode( stripslashes( $_POST['attr'] ), true ) : array(); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
@@ -1771,7 +1771,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		public function render_innerblocks_with_wrapper( $attributes ) {
 			$length   = count( $attributes['layoutConfig'] );
 			$img_atts = array();
-		
+
 			// Iterate through the blocks and find the uagb/post-image block.
 			for ( $i = 0; $i < $length; $i++ ) {
 				if ( 'uagb/post-image' === $attributes['layoutConfig'][ $i ][0] ) {
@@ -1783,12 +1783,12 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					$length--;
 				}
 			}
-		
+
 			// Render the uagb/post-image block(s) outside the wrapper, if it exists.
 			foreach ( $img_atts as $img_att ) {
 				echo esc_html( $this->render_layout( $img_att[0], $attributes ) );
 			}
-		
+
 			// Render all blocks except for the uagb/post-image block inside the wrapper.
 			echo '<div class="uag-post-grid-wrapper">';
 			for ( $i = 0; $i < $length; $i++ ) {
@@ -1969,7 +1969,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					if ( empty( $value ) || ! is_array( $value ) ) {
 						return; // Exit early if this is not the attributes array.
 					}
-					if ( ! empty( $value['paginationType'] ) && 'ajax' !== $value['paginationType'] ) { 
+					if ( ! empty( $value['paginationType'] ) && 'ajax' !== $value['paginationType'] ) {
 						return; // Early return when pagination type exists and is not ajax.
 					}
 					?>
@@ -2013,6 +2013,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
 			do_action( "uagb_single_post_before_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );
+
 			?>
 			<div class='uagb-post__image'>
 				<?php

@@ -19,6 +19,7 @@ use Gutenberg_Templates\Inc\Traits\Upgrade;
 use Gutenberg_Templates\Inc\Importer\Template_Kit_Importer;
 use Gutenberg_Templates\Inc\Block\Spectra_AI_Block;
 use Gutenberg_Templates\Inc\Classes\Ast_Block_Templates_Zipwp_Api;
+use Gutenberg_Templates\Inc\Classes\Ast_Block_Templates_Notices;
 
 /**
  * Ast_Block_Plugin_Loader
@@ -99,6 +100,13 @@ class Ast_Block_Plugin_Loader {
 	 * @since  2.0.0
 	 */
 	public function load_classes() {
+
+		require_once AST_BLOCK_TEMPLATES_DIR . 'inc/classes/ast-block-templates-notices.php';
+
+		if ( ! Ast_Block_Templates_Notices::instance()->has_file_read_write() ) {
+			return;
+		}
+
 		Ast_Block_Templates_Zipwp_Api::instance();
 		Api_Init::instance();
 		Template_Kit_Importer::instance();
@@ -112,6 +120,7 @@ class Ast_Block_Plugin_Loader {
 		//phpcs:disable Squiz
 		// Spectra_AI_Block::get_instance();
 		//phpcs:enable Squiz
+
 	}
 
 	/**

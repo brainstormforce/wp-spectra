@@ -9,6 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+
 if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 	/**
@@ -269,7 +270,9 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
                             <img src="%1$s" class="custom-logo" alt="Spectra" itemprop="logo"></div>
                             <div class="notice-content">
                                 <div class="notice-heading">
-                                    %2$s
+									<strong>
+	                                    %2$s
+									</strong>
                                 </div>
                                 %3$s<br />
                                 <div class="astra-review-notice-container">
@@ -287,8 +290,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
                                 </div>
                             </div>',
 						$image_path,
-						__( 'Wow! Spectra has already powered over 5 pages on your website!', 'ultimate-addons-for-gutenberg' ),
-						__( 'Would you please mind sharing your views and give it a 5 star rating on the WordPress repository?', 'ultimate-addons-for-gutenberg' ),
+						__( 'Wow! Spectra has helped you build over 5 pages!!', 'ultimate-addons-for-gutenberg' ),
+						__( 'We\'re a small independent team passionate about creating plugins like this one. It would mean the world to us if you could spend just a minute to leave a 5-star review on WordPress\' official website. Your support really helps us a lot!', 'ultimate-addons-for-gutenberg' ),
 						'https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg/reviews/?filter=5#new-post',
 						__( 'Ok, you deserve it', 'ultimate-addons-for-gutenberg' ),
 						MONTH_IN_SECONDS,
@@ -480,6 +483,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			</script>
 			<?php
 		}
+
 
 		/**
 		 * Rank Math SEO filter to add kb-elementor to the TOC list.

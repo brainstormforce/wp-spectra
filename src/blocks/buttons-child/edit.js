@@ -77,10 +77,13 @@ const ButtonsChildComponent = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		if( labelHasDynamicContent && ! attributes?.context ){
-			setAttributes( { context } );
+		if ( labelHasDynamicContent && ! attributes?.context?.postId ){
+			setAttributes( ( prevAttributes ) => ( {
+				...prevAttributes,
+				context,
+			} ) );
 		}
-	}, [ context ] )
+	}, [ labelHasDynamicContent, context?.postId ] )
 
 	useEffect( () => {
 		scrollBlockToView();

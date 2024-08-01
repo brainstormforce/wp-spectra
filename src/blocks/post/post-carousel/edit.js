@@ -438,7 +438,7 @@ const UAGBPostCarousel = ( props ) => {
 	}, [ attributes, deviceType ] );
     const currentTheme = uagb_blocks_info.current_theme;
 	const isAstraBasedTheme = uagb_blocks_info.is_astra_based_theme;
-	
+
 	let blockStyling = useMemo( () => styling( attributes, clientId, deviceType ), [ attributes, deviceType ] );
 
 	blockStyling +=

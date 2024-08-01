@@ -42,10 +42,13 @@ const UAGBAdvancedHeading = ( props ) => {
 
 	useEffect( () => {
 		// Check if block has dynamic content and context is not set.
-		if ( ( headingHasDynamicContent || descriptionHasDynamicContent ) && ! attributes?.context ) {
-			setAttributes( { context } );
+		if ( ( headingHasDynamicContent || descriptionHasDynamicContent ) && ! attributes?.context?.postId ) {
+			setAttributes( ( prevAttributes ) => ( {
+				...prevAttributes,
+				context,
+			} ) );
 		}
-	}, [ context ] )
+	}, [ headingHasDynamicContent, descriptionHasDynamicContent, context?.postId ] );
 
 	useEffect( () => {
 		scrollBlockToView();

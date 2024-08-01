@@ -184,10 +184,13 @@ const UAGBContainer = ( props ) => {
 	}, [] );
 
 	useEffect( () => {
-		if ( hasDynamicContent && ! attributes?.context ) {
-			setAttributes( { context } );
+		if ( hasDynamicContent && ! attributes?.context?.postId ) {
+			setAttributes( ( prevAttributes ) => ( {
+				...prevAttributes,
+				context,
+			} ) );
 		}
-	}, [ context ] )
+	}, [ hasDynamicContent, context?.postId ] )
 
 	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
 

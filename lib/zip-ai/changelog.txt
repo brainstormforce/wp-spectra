@@ -1,3 +1,6 @@
+1.2.0 - 26th July 2024
+- Improvement: Switched from the GPT 3.5 Turbo modal to the 4o Mini modal.
+
 1.1.10 - 15th July 2024
 - Fix: Resolved an issue with the AI Assistant admin-bar trigger loading order in WordPress 6.6.
 

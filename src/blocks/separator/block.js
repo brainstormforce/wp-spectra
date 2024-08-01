@@ -12,6 +12,7 @@ import PreviewImage from '@Controls/previewImage';
 import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
 import transforms from './transforms';
+import deprecated from './deprecated';
 const separatorCommonData = applyFilters( 'uagb/separator', addCommonDataToSpectraBlocks( {} ) );
 
 registerBlockType( 'uagb/separator', {
@@ -29,4 +30,5 @@ registerBlockType( 'uagb/separator', {
 	edit: ( props ) => ( props.attributes.isPreview ? <PreviewImage image="separator" /> : <Edit { ...props } /> ),
 	save,
 	transforms,
+	deprecated,
 } );
