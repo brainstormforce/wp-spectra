@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+* This update addressed a security bug. Props to Patchstack for privately reporting it to our team. Please make sure you are using the latest version on your website.
+
 = 2.15.0 - Thursday, 1st August 2024 =
 * Improvement: Container - Added an order option for grid layout to set the order in which the inner container should be.
 * Improvement: Info Box - Added an overall border option.

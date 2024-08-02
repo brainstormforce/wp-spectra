@@ -114,11 +114,15 @@ const FaqComponent = ( props ) => {
 
 	}, [] );
 
+	// A list of all the valid heading tags.
+	const validHeadingTags = [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'p' ];
+
 	useEffect( () => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
+		// Set all the FAQ child heading types based on the current heading type if it's valid, else set to span.
 		getChildBlocks.forEach( ( faqChild ) => {
-			faqChild.attributes.headingTag = attributes.headingTag;
+			faqChild.attributes.headingTag = validHeadingTags.includes( attributes.headingTag ) ? attributes.headingTag : 'span';
 		} );
 
 		// Use Effect Case to Update the Defaults for Backward Compatible Attributes that don't have a Default.

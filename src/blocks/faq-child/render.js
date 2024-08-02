@@ -16,6 +16,11 @@ const Render = ( props ) => {
 	const { attributes, setAttributes, state, isSelected } = props;
 	const { question, answer, icon, iconActive, layout, headingTag, block_id } = attributes;
 
+
+	// Reset the heading tag to it's default if it somehow has a value other than the valid tag types.
+	const validHeadingTags = [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'p' ];
+	const childHeadingTag = validHeadingTags.includes( headingTag ) ? headingTag : 'span';
+
 	const faqRenderIcon = () => {
 		return (
 			<>
@@ -31,7 +36,7 @@ const Render = ( props ) => {
 				<div className="uagb-faq-questions-button uagb-faq-questions">
 					{ 'accordion' === layout && faqRenderIcon() }
 					<RichText
-						tagName={ 'span' !== headingTag ? headingTag : 'div' }
+						tagName={ 'span' !== childHeadingTag ? childHeadingTag : 'div' }
 						placeholder={ __( 'Question', 'ultimate-addons-for-gutenberg' ) }
 						value={ question }
 						onChange={ ( value ) => setAttributes( { question: value } ) }
