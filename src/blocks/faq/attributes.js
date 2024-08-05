@@ -30,6 +30,10 @@ const attributes = {
 			styleType: 'overall-alignment',
 		},
 	},
+	anchor: {
+		type: 'string',
+		default: '',
+	},
 	// padding
 	blockTopPadding: {
 		type: 'number',

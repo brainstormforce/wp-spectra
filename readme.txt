@@ -219,6 +219,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Container - Added a children-width option for flex columns.
 * Fix: Quick Action Bar - Resolved an issue wherein the Quick Access Bar would become non-functional after editing a pattern.
 * Fix: FAQ - Resolved an issue wherein the question icon color would not appear correctly in the editor as compared to the frontend.
+* Fix: FAQ - Resolved an issue wherein HTML anchor would not work as intended.
 * Fix: Global - Resolved a DOMException issue for iFrames in the block editor with the Stripe plugin.
 
 = 2.15.0 - Thursday, 1st August 2024 =
