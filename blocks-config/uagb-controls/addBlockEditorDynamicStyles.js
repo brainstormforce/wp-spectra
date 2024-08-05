@@ -27,7 +27,12 @@ const addBlockEditorDynamicStyles = () => {
 		const editorCustomStyle = cloneStyleTag( 'uagb-blocks-editor-custom-css' );
 
 		for ( const iterateIFrames of getAllIFrames ) {
-			const iframeDocument = iterateIFrames?.contentWindow.document || iterateIFrames?.contentDocument;
+			// Skip the iframe with the specific name.
+			if ( uagb_blocks_info.exclude_crops_iframes.includes( iterateIFrames.name ) ) {
+				continue;
+			}
+			try {
+			const iframeDocument = iterateIFrames?.contentWindow?.document || iterateIFrames?.contentDocument;
 			if( ! iframeDocument?.head ){
 				continue;
 			}
@@ -62,6 +67,9 @@ const addBlockEditorDynamicStyles = () => {
 			copyStyleTag( editorProStyle, 'spectra-pro-editor-styles' );
 			copyStyleTag( spacingStyle, 'uagb-blocks-editor-spacing-style' );
 			copyStyleTag( editorCustomStyle, 'uagb-blocks-editor-custom-css' );
+			} catch ( e ) {
+				// Ignore cross-origin access errors.
+			}
 		} // Loop end.
 	} );
 };

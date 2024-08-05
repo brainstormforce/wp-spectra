@@ -44,7 +44,17 @@ const Sidebar = ( props ) => {
 		if ( '/wp-admin/site-editor.php' === currentUrl.pathname ) {
 			const getAllIframes = document.querySelectorAll( 'iframe' );
 			getAllIframes.forEach( function ( iframe ) {
-				iframe.contentWindow.addEventListener( 'click', handleOutsideClick );
+				// Skip the iframe with the specific name.
+				if ( uagb_blocks_info.exclude_crops_iframes.includes( iframe.name ) ) {
+					return;
+				}
+
+				// Safely add event listener
+				try {
+					iframe.contentWindow.addEventListener( 'click', handleOutsideClick );
+				} catch ( e ) {
+					// Ignore cross-origin access errors.
+				}
 			} );
 		} else {
 			document.body.addEventListener( 'click', handleOutsideClick );
@@ -55,7 +65,18 @@ const Sidebar = ( props ) => {
 			if ( '/wp-admin/site-editor.php' === currentUrl.pathname ) {
 				const getAllIframes = document.querySelectorAll( 'iframe' );
 				getAllIframes.forEach( function ( iframe ) {
-					iframe.contentWindow.addEventListener( 'click', handleOutsideClick );
+					const iframeDocument = iframe.contentWindow;
+					// Skip the iframe with the specific name.
+					if ( uagb_blocks_info.exclude_crops_iframes.includes( iframeDocument.name ) ) {
+						return;
+					}
+
+					// Safely add event listener
+					try {
+						iframeDocument.removeEventListener( 'click', handleOutsideClick );
+					} catch ( e ) {
+						// Ignore cross-origin access errors.
+					}
 				} );
 			} else {
 				document.body.removeEventListener( 'click', handleOutsideClick );

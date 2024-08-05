@@ -819,6 +819,9 @@ class UAGB_Init_Blocks {
 			'header_titlebar_status'                  => UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_header_titlebar', 'enabled' ),
 			'is_astra_based_theme'                    => $astra_theme_settings_available,
 			'astra_body_text_decoration'              => $astra_theme_body_text_decoration,
+			// creating an array of iframe names to ignore and checking against that array.
+			// Add more iframe names to ignore, this is done by using the 'spectra_exclude_crops_iframes' filter.
+			'exclude_crops_iframes'                   => apply_filters( 'spectra_exclude_crops_iframes', array( '__privateStripeMetricsController8690' ) ),
 		);
 
 		wp_localize_script(
