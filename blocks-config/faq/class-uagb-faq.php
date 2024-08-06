@@ -1306,13 +1306,14 @@ if ( ! class_exists( 'UAGB_Faq' ) ) {
 		 */
 		public function render_faq_child_block( $attributes, $content, $block ) {
 			// Extract attributes.
-			$block_id    = isset( $attributes['block_id'] ) ? $attributes['block_id'] : '';
-			$question    = $attributes['question'];
-			$answer      = $attributes['answer'];
-			$icon        = isset( $attributes['icon'] ) ? $attributes['icon'] : 'plus';
-			$icon_active = isset( $attributes['iconActive'] ) ? $attributes['iconActive'] : 'minus';
-			$layout      = $attributes['layout'];
-			$heading_tag = $attributes['headingTag'];
+			$block_id              = isset( $attributes['block_id'] ) ? $attributes['block_id'] : '';
+			$question              = $attributes['question'];
+			$answer                = $attributes['answer'];
+			$icon                  = isset( $attributes['icon'] ) ? $attributes['icon'] : 'plus';
+			$icon_active           = isset( $attributes['iconActive'] ) ? $attributes['iconActive'] : 'minus';
+			$layout                = $attributes['layout'];
+			$array_of_allowed_HTML = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'p' );
+			$heading_tag           = UAGB_Helper::title_tag_allowed_html( $attributes['headingTag'], $array_of_allowed_HTML, 'span' );
 
 			// Render icon and active icon.
 			$icon_output        = $this->faq_render_icon( $icon, 'uagb-icon' );
