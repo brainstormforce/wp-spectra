@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.6  
-**Stable tag:** 2.15.0  
+**Stable tag:** 2.15.1  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -221,6 +221,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: FAQ - Resolved an issue wherein the question icon color would not appear correctly in the editor as compared to the frontend.
 * Fix: FAQ - Resolved an issue wherein HTML anchor would not work as intended.
 * Fix: Global - Resolved a DOMException issue for iFrames in the block editor with the Stripe plugin.
+
+### 2.15.1 - Tuesday, 6th August 2024 ###
+* This update addressed a security bug. Props to Patchstack for privately reporting it to our team. Please make sure you are using the latest version on your website.
 
 ### 2.15.0 - Thursday, 1st August 2024 ###
 * Improvement: Container - Added an order option for grid layout to set the order in which the inner container should be.
