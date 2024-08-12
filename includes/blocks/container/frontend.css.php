@@ -600,12 +600,12 @@ if ( ! $is_layout_grid ) {
 		'--z-index-mobile'  => $z_index_mobile,
 	);
 
-	$auto_width = array( 'width' => 'auto' );
+	$auto_width = array( 'width' => 'auto !important' );
 	$set_width  = array( 'width' => '100%' );
 
-	$base_width_selector = $base_selector . '.wp-block-uagb-container > *:not( .wp-block-uagb-column ):not( .wp-block-uagb-section ):not( .uagb-container__shape ):not( .uagb-container__video-wrap ):not( .wp-block-uagb-image ):not( .wp-block-spectra-pro-register ):not( .wp-block-spectra-pro-login ):not( .uagb-slider-container ):not( .spectra-container-link-overlay ):not(.spectra-image-gallery__control-lightbox):not(.wp-block-uagb-lottie):not(.uagb-container-inner-blocks-wrap)';
+	$base_width_selector = $base_selector . '.wp-block-uagb-container > *:not( .wp-block-uagb-column ):not( .wp-block-uagb-section ):not( .uagb-container__shape ):not( .uagb-container__video-wrap ):not( .uagb-slider-container ):not( .spectra-container-link-overlay ):not(.spectra-image-gallery__control-lightbox):not(.wp-block-uagb-lottie):not(.uagb-container-inner-blocks-wrap)';
 
-	$base_width_selector_2 = $base_selector . '.wp-block-uagb-container > .uagb-container-inner-blocks-wrap > *:not( .wp-block-uagb-column ):not( .wp-block-uagb-section ):not( .uagb-container__shape ):not( .uagb-container__video-wrap ):not( .wp-block-spectra-pro-register ):not( .wp-block-spectra-pro-login ):not( .uagb-slider-container ):not(.spectra-image-gallery__control-lightbox)';
+	$base_width_selector_2 = $base_selector . '.wp-block-uagb-container > .uagb-container-inner-blocks-wrap > *:not( .wp-block-uagb-column ):not( .wp-block-uagb-section ):not( .uagb-container__shape ):not( .uagb-container__video-wrap ):not( .uagb-slider-container ):not(.spectra-image-gallery__control-lightbox)';
 
 	// Add auto width to the inner blocks in desktop.
 	if ( ! empty( $attr['directionDesktop'] ) ) {
