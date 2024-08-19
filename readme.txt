@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+* Fix: Container - Resolved an issue wherein the sticky container would not work as intended for image gallery of type Carousel in page.
+
 = 2.15.2 - Monday, 19th August 2024 =
 * Improvement: Container - Added a children-width option for flex columns.
 * Fix: Container - Resolved an issue wherein the "Children Width" option would not work as intended.
