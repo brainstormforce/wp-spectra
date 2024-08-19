@@ -9,11 +9,6 @@ const globalDataReducer = ( state = {}, action ) => {
                 ...state,
                 initialStateSetFlag: action.payload,
             };
-        case 'UPDATE_BLOCKS_ACTIVE_FILTER_TAB':
-            return {
-                ...state,
-                activeBlocksFilterTab: action.payload
-            };
         case 'UPDATE_BLOCK_STATUSES':
             return {
                 ...state,

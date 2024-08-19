@@ -13,7 +13,6 @@ const Blocks = () => {
 
     return (
         <>
-            <div className="mx-auto pl-6 mt-10 mb-8 font-semibold text-2xl lg:max-w-[80rem]">Blocks &#47; Extensions</div>
             <FilterTabs/>
             <BlockCardsGroup/>
         </>

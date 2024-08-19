@@ -1,69 +1,69 @@
 {
-  "name": "brainstormforce/ultimate-addons-for-gutenberg",
-  "description": "The Ultimate Addons for Gutenberg extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster.",
-  "require-dev": {
-    "squizlabs/php_codesniffer": "^3.5",
-    "wp-coding-standards/wpcs": "^2.2",
-    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
-    "phpcompatibility/php-compatibility": "^9.3",
-    "wp-cli/wp-cli-bundle": "^2.5",
-    "phpunit/phpunit": "^8",
-    "yoast/phpunit-polyfills": "^1",
-    "automattic/vipwpcs": "^2.3",
-    "phpstan/phpstan": "^1.10",
-    "szepeviktor/phpstan-wordpress": "^1.3",
-    "php-stubs/generator": "^0.8.3",
-    "php-stubs/wordpress-stubs": "^6.2",
-    "php-stubs/woocommerce-stubs": "^8.0"
-  },
-  "scripts": {
-    "format": "phpcbf",
-    "lint": "phpcs",
-    "test": "vendor/bin/phpunit",
-    "phpstan": "vendor/bin/phpstan --memory-limit=2048M analyse",
-    "gen-stubs": "vendor/bin/generate-stubs artifact/phpstan/ultimate-addons-for-gutenberg/ --out=tests/php/stubs/uagb-stubs.php && rm -rf artifact/phpstan",
-    "update-stubs": "rm -f tests/php/stubs/uagb-stubs.php && bash bin/build-spectra-phpstan.sh && composer gen-stubs",
-    "commit:hook:pre": [
-      "cp .scripts/git-hooks/pre-commit .git/hooks/",
-      "chmod +x .git/hooks/pre-commit",
-      "echo 'pre-commit hook copied'"
-    ],
-    "push:hook:pre": [
-      "cp .scripts/git-hooks/pre-push .git/hooks/",
-      "chmod +x .git/hooks/pre-push",
-      "echo 'pre-push hook copied'"
-    ]
-  },
-  "require": {
-    "brainstormforce/astra-notices": "~1",
-    "brainstormforce/gutenberg-templates": "~2",
-    "brainstormforce/zip-ai": "~1"
-  },
+	"name": "brainstormforce/ultimate-addons-for-gutenberg",
+	"description": "The Ultimate Addons for Gutenberg extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster.",
+	"require-dev": {
+		"squizlabs/php_codesniffer": "^3.5",
+		"wp-coding-standards/wpcs": "^2.2",
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+		"phpcompatibility/php-compatibility": "^9.3",
+		"wp-cli/wp-cli-bundle": "^2.5",
+		"phpunit/phpunit": "^8",
+		"yoast/phpunit-polyfills": "^1",
+		"automattic/vipwpcs": "^2.3",
+		"phpstan/phpstan": "^1.10",
+		"szepeviktor/phpstan-wordpress": "^1.3",
+		"php-stubs/generator": "^0.8.3",
+		"php-stubs/wordpress-stubs": "^6.2",
+		"php-stubs/woocommerce-stubs": "^8.0"
+	},
+	"scripts": {
+		"format": "phpcbf",
+		"lint": "phpcs",
+		"test": "vendor/bin/phpunit",
+		"phpstan": "vendor/bin/phpstan --memory-limit=2048M analyse",
+		"gen-stubs": "vendor/bin/generate-stubs artifact/phpstan/ultimate-addons-for-gutenberg/ --out=tests/php/stubs/uagb-stubs.php && rm -rf artifact/phpstan",
+		"update-stubs": "rm -f tests/php/stubs/uagb-stubs.php && bash bin/build-spectra-phpstan.sh && composer gen-stubs",
+		"commit:hook:pre": [
+			"cp .scripts/git-hooks/pre-commit .git/hooks/",
+			"chmod +x .git/hooks/pre-commit",
+			"echo 'pre-commit hook copied'"
+		],
+		"push:hook:pre": [
+			"cp .scripts/git-hooks/pre-push .git/hooks/",
+			"chmod +x .git/hooks/pre-push",
+			"echo 'pre-push hook copied'"
+		]
+	},
+	"require": {
+		"brainstormforce/astra-notices": "~1",
+		"brainstormforce/gutenberg-templates": "~2",
+		"brainstormforce/zip-ai": "~1"
+	},
 	"repositories": [
 		{
-      "name": "brainstormforce/gutenberg-templates",
-		  "type": "vcs",
-		  "url": "git@github.com:brainstormforce/gutenberg-templates.git"
+			"name": "brainstormforce/gutenberg-templates",
+			"type": "vcs",
+			"url": "git@github.com:brainstormforce/gutenberg-templates.git"
 		},
-    {
-      "name": "brainstormforce/zip-ai",
-		  "type": "vcs",
-		  "url": "git@github.com:brainstormforce/zip-ai.git"
+		{
+			"name": "brainstormforce/zip-ai",
+			"type": "vcs",
+			"url": "git@github.com:brainstormforce/zip-ai.git"
 		}
 	],
-  "extra": {
-    "installer-paths": {
-        "lib/{$name}/": [
-            "brainstormforce/astra-notices",
-            "brainstormforce/gutenberg-templates",
-            "brainstormforce/zip-ai"
-        ]
-    }
-  },
-  "config": {
-    "allow-plugins": {
-        "dealerdirect/phpcodesniffer-composer-installer": true,
-        "composer/installers": true
-    }
-  }
+	"extra": {
+		"installer-paths": {
+			"lib/{$name}/": [
+				"brainstormforce/astra-notices",
+				"brainstormforce/gutenberg-templates",
+				"brainstormforce/zip-ai"
+			]
+		}
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"composer/installers": true
+		}
+	}
 }

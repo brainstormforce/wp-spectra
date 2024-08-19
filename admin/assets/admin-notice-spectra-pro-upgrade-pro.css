@@ -1,0 +1,32 @@
+#uagb-spectra-pro-popup-note .astra-notice-container {
+	align-items: flex-start;
+}
+
+#uagb-spectra-pro-popup-note.notice {
+	display: block;
+	border: 1px solid #6105ff;
+	border-left-width: 4px;
+}
+
+#uagb-spectra-pro-popup-note a.uagb-review-notice.button-primary {
+	background: #6105ff;
+	border-color: #6105ff;
+}
+
+#uagb-spectra-pro-popup-note a.uagb-review-notice.button-primary:hover {
+	background: #5300e0;
+}
+
+.notice-dismiss {
+	color: #fff;
+}
+
+a.spectra-plugins-go-pro {
+	color: #6104ff;
+	text-shadow: 1px 1px 1px #eee;
+	font-weight: bold;
+}
+
+a.spectra-plugins-go-pro:hover {
+	color: #5300e0;
+}
