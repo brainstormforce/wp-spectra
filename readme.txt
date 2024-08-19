@@ -217,7 +217,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = x.x.x =
 * Improvement: Global - Added a placeholder for inherited values in all spacing controls.
-* Fix: Container - Resolved an issue wherein the sticky container would not work as intended for image gallery of type Carousel in page.
+* Fix: Container - Resolved an issue wherein the sticky container would not work as intended for the image gallery of the carousel type.
+* Fix: Buttons - Resolved an issue wherein the button sizes would not work as expected in the editor responsive views.
 
 = 2.15.2 - Monday, 19th August 2024 =
 * Improvement: Container - Added a children-width option for flex columns.
