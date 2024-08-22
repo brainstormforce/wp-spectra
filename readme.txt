@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= 2.15.2 - Monday, 19th August 2024 =
+= 2.15.2 - Tuesday, 27th August 2024 =
 * Improvement: Container - Added a children-width option for flex columns.
 * Fix: Container - Resolved an issue wherein the "Children Width" option would not work as intended.
 * Fix: FAQ - Resolved an issue wherein the question icon color would not appear correctly in the editor as compared to the frontend.
