@@ -48,16 +48,18 @@ const AddEventCommandForQAB = () => {
 
 domReady( () => {
 
-	// Append a div to the body to render the React App.
-	const blankDiv = document.createElement( 'div' );
-	document.body.appendChild( blankDiv );
-	createRoot( blankDiv ).render( <AddEventCommandForQAB /> );
+	// If not FSE editor, attach the sidebar to the DOM.
+	const currentUrl = new URL( window.location.href );
+	if ( '/wp-admin/site-editor.php' !== currentUrl.pathname ) {
+		// Append a div to the body to render the React App.
+		const blankDiv = document.createElement( 'div' );
+		document.body.appendChild( blankDiv );
+		createRoot( blankDiv ).render( <AddEventCommandForQAB /> );
+	}
 
 	if ( 'disabled' === uagb_blocks_info.enableQuickActionSidebar ) {
 		return;
 	}
-	// If not FSE editor, attach the sidebar to the DOM.
-	const currentUrl = new URL( window.location.href );
 	if( '/wp-admin/site-editor.php' === currentUrl.pathname ) {
 		toggleSidebar( window.location.href );
 
