@@ -493,6 +493,37 @@ if ( ! $is_layout_grid ) {
 		$selectors[ $base_selector ]['max-width']    = UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthType'] ) . ' !important';
 		$selectors[ $base_selector ]['margin-left']  = ( '' !== $attr['leftMarginDesktop'] ? UAGB_Helper::get_css_value( $attr['leftMarginDesktop'], $attr['marginType'] ) . ' !important' : '' );
 		$selectors[ $base_selector ]['margin-right'] = ( '' !== $attr['rightMarginDesktop'] ? UAGB_Helper::get_css_value( $attr['rightMarginDesktop'], $attr['marginType'] ) . ' !important' : '' );
+		// FSE container width compatibility.
+		$common_fullwidth_restrictions = ( 'auto' !== $attr['childrenWidthDesktop'] && ! $is_layout_grid );
+
+		$is_fse_container = ( $common_fullwidth_restrictions && wp_is_block_theme() && ! get_queried_object() );
+
+		// WooCommerce template pages.
+		$is_checkout              = function_exists( 'is_checkout' ) && is_checkout();
+		$is_cart                  = function_exists( 'is_cart' ) && is_cart();
+		$is_order_confirmation    = function_exists( 'is_order_received_page' ) && is_order_received_page();
+		$is_product_catalog       = function_exists( 'is_shop' ) && is_shop();
+		$is_product_search        = function_exists( 'is_product_search' ) && is_product_search();
+		$is_products_by_attribute = function_exists( 'is_product_taxonomy' ) && is_product_taxonomy();
+		$is_products_by_category  = function_exists( 'is_product_category' ) && is_product_category();
+		$is_products_by_tag       = function_exists( 'is_product_tag' ) && is_product_tag();
+		$is_single_product        = function_exists( 'is_product' ) && is_product();
+
+		$requires_fullwidth = $common_fullwidth_restrictions && (
+			$is_fse_container ||
+			$is_checkout ||
+			$is_cart ||
+			$is_order_confirmation ||
+			$is_product_catalog ||
+			$is_product_search ||
+			$is_products_by_attribute ||
+			$is_products_by_category ||
+			$is_products_by_tag ||
+			$is_single_product
+		);
+
+		// Add the FSE compatibility width when required.
+		$selectors[ $base_selector ]['width'] = $requires_fullwidth ? '100%' : '';
 
 		$t_selectors[ $base_selector ]['max-width']    = UAGB_Helper::get_css_value( $attr['widthTablet'], $attr['widthTypeTablet'] ) . ' !important';
 		$t_selectors[ $base_selector ]['margin-left']  = ( '' !== $attr['leftMarginTablet'] ? UAGB_Helper::get_css_value( $left_margin_tablet, $attr['marginTypeTablet'] ) . ' !important' : '' );
@@ -600,17 +631,16 @@ if ( ! $is_layout_grid ) {
 		'--z-index-mobile'  => $z_index_mobile,
 	);
 
-	$flex_directions = array( 'row-reverse', 'row' );
-	$auto_width      = array( 'width' => 'auto' );
-	$set_width       = array( 'width' => '100%' );
+	$auto_width = array( 'width' => 'auto !important' );
+	$set_width  = array( 'width' => '100%' );
 
-	$base_width_selector = $base_selector . '.wp-block-uagb-container > *:not( .wp-block-uagb-container ):not( .wp-block-uagb-column ):not( .wp-block-uagb-container ):not( .wp-block-uagb-section ):not( .uagb-container__shape ):not( .uagb-container__video-wrap ):not( .wp-block-uagb-image ):not( .wp-block-spectra-pro-register ):not( .wp-block-spectra-pro-login ):not( .uagb-slider-container ):not( .spectra-container-link-overlay ):not(.spectra-image-gallery__control-lightbox):not(.wp-block-uagb-lottie):not(.uagb-container-inner-blocks-wrap)';
+	$base_width_selector = $base_selector . '.wp-block-uagb-container > *:not( .wp-block-uagb-column ):not( .wp-block-uagb-section ):not( .uagb-container__shape ):not( .uagb-container__video-wrap ):not( .uagb-slider-container ):not( .spectra-container-link-overlay ):not(.spectra-image-gallery__control-lightbox):not(.wp-block-uagb-lottie):not(.uagb-container-inner-blocks-wrap)';
 
-	$base_width_selector_2 = $base_selector . '.wp-block-uagb-container > .uagb-container-inner-blocks-wrap > *:not( .wp-block-uagb-container ):not( .wp-block-uagb-column ):not( .wp-block-uagb-container ):not( .wp-block-uagb-section ):not( .uagb-container__shape ):not( .uagb-container__video-wrap ):not( .wp-block-spectra-pro-register ):not( .wp-block-spectra-pro-login ):not( .uagb-slider-container ):not(.spectra-image-gallery__control-lightbox)';
+	$base_width_selector_2 = $base_selector . '.wp-block-uagb-container > .uagb-container-inner-blocks-wrap > *:not( .wp-block-uagb-column ):not( .wp-block-uagb-section ):not( .uagb-container__shape ):not( .uagb-container__video-wrap ):not( .uagb-slider-container ):not(.spectra-image-gallery__control-lightbox)';
 
 	// Add auto width to the inner blocks in desktop.
 	if ( ! empty( $attr['directionDesktop'] ) ) {
-		if ( in_array( $attr['directionDesktop'], $flex_directions, true ) && 'auto' === $attr['childrenWidthDesktop'] ) {
+		if ( 'auto' === $attr['childrenWidthDesktop'] ) {
 			$selectors[ $base_width_selector ]   = $auto_width;
 			$selectors[ $base_width_selector_2 ] = $auto_width;
 		}
@@ -618,7 +648,7 @@ if ( ! $is_layout_grid ) {
 
 	// Add auto width to the inner blocks in tablet.
 	if ( ! empty( $attr['directionTablet'] ) ) {
-		if ( in_array( $attr['directionTablet'], $flex_directions, true ) && 'auto' === $attr['childrenWidthTablet'] ) {
+		if ( 'auto' === $attr['childrenWidthTablet'] ) {
 			$t_selectors[ $base_width_selector ]   = $auto_width;
 			$t_selectors[ $base_width_selector_2 ] = $auto_width;
 		} else {
@@ -629,7 +659,7 @@ if ( ! $is_layout_grid ) {
 
 	// Add auto width to the inner blocks in mobile.
 	if ( ! empty( $attr['directionMobile'] ) ) {
-		if ( in_array( $attr['directionMobile'], $flex_directions, true ) && 'auto' === $attr['childrenWidthMobile'] ) {
+		if ( 'auto' === $attr['childrenWidthMobile'] ) {
 			$m_selectors[ $base_width_selector ]   = $auto_width;
 			$m_selectors[ $base_width_selector_2 ] = $auto_width;
 		} else {

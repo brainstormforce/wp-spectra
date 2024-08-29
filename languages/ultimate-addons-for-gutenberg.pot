@@ -2,20 +2,19 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.15.1\n"
+"Project-Id-Version: Spectra 2.15.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-08-02T13:54:07+00:00\n"
+"POT-Creation-Date: 2024-08-22T12:54:52+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.10.0\n"
+"X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
 
 #. Plugin Name of the plugin
-#: ultimate-addons-for-gutenberg.php
 #: admin-core/inc/admin-menu.php:135
 #: admin-core/inc/admin-menu.php:136
 #: admin-core/inc/admin-menu.php:147
@@ -29,17 +28,14 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
-#: ultimate-addons-for-gutenberg.php
 msgid "https://www.brainstormforce.com"
 msgstr ""
 
 #. Description of the plugin
-#: ultimate-addons-for-gutenberg.php
 msgid "The Spectra extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster."
 msgstr ""
 
 #. Author of the plugin
-#: ultimate-addons-for-gutenberg.php
 msgid "Brainstorm Force"
 msgstr ""
 
@@ -56,13 +52,13 @@ msgid "Sorry, something went wrong."
 msgstr ""
 
 #: admin-core/ajax/common-settings.php:164
-#: admin-core/ajax/common-settings.php:720
+#: admin-core/ajax/common-settings.php:754
 #: classes/class-uagb-init-blocks.php:539
 msgid "Successfully saved data!"
 msgstr ""
 
 #: admin-core/ajax/common-settings.php:180
-#: classes/class-uagb-init-blocks.php:1057
+#: classes/class-uagb-init-blocks.php:1060
 msgid "No post data found!"
 msgstr ""
 
@@ -70,43 +66,43 @@ msgstr ""
 msgid "Plugin Successfully Activated"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:813
+#: admin-core/ajax/common-settings.php:847
 msgid "Successfully refreshed tokens!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:815
+#: admin-core/ajax/common-settings.php:849
 msgid "Failed to refresh tokens"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:952
+#: admin-core/ajax/common-settings.php:986
 msgid "Module not found!"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:970
+#: admin-core/ajax/common-settings.php:1004
 msgid "%s disabled!"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:980
+#: admin-core/ajax/common-settings.php:1014
 msgid "Unable to disable %s"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:992
+#: admin-core/ajax/common-settings.php:1026
 msgid "%s enabled!"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:1002
+#: admin-core/ajax/common-settings.php:1036
 msgid "Unable to enable %s"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:1010
+#: admin-core/ajax/common-settings.php:1044
 msgid "Unable to save setting."
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:1029
+#: admin-core/ajax/common-settings.php:1063
 msgid "Unable to verify authenticity."
 msgstr ""
 
@@ -139,15 +135,15 @@ msgstr ""
 msgid "Enjoyed %1$sSpectra%2$s? Please leave us a %3$s rating. We really appreciate your support!"
 msgstr ""
 
-#: blocks-config/faq/class-uagb-faq.php:1118
-#: blocks-config/faq/class-uagb-faq.php:1145
+#: blocks-config/faq/class-uagb-faq.php:1122
+#: blocks-config/faq/class-uagb-faq.php:1153
 #: dist/blocks.js:3
 #: dist/blocks.js:19
 msgid "What is FAQ?"
 msgstr ""
 
-#: blocks-config/faq/class-uagb-faq.php:1122
-#: blocks-config/faq/class-uagb-faq.php:1149
+#: blocks-config/faq/class-uagb-faq.php:1126
+#: blocks-config/faq/class-uagb-faq.php:1157
 #: dist/blocks.js:3
 #: dist/blocks.js:19
 msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
@@ -7857,6 +7853,7 @@ msgid "Successfully deleted font."
 msgstr ""
 
 #: classes/class-uagb-helper.php:443
+#: dist/blocks.js:11
 #: dist/blocks.js:19
 msgid "Full"
 msgstr ""
@@ -7934,7 +7931,7 @@ msgid ""
 "\t\t.my-class {text-align: center;} // my-class is a custom selector"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:857
+#: classes/class-uagb-init-blocks.php:860
 #: classes/class-uagb-rest-api.php:318
 #: classes/class-uagb-rest-api.php:333
 #: dist/blocks.js:1
@@ -7945,21 +7942,21 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:886
-#: classes/class-uagb-init-blocks.php:919
+#: classes/class-uagb-init-blocks.php:889
+#: classes/class-uagb-init-blocks.php:922
 #: dist/blocks.js:23
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:900
+#: classes/class-uagb-init-blocks.php:903
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:933
+#: classes/class-uagb-init-blocks.php:936
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:949
+#: classes/class-uagb-init-blocks.php:952
 msgid "Invalid request"
 msgstr ""
 
@@ -8796,7 +8793,7 @@ msgid "Every %d Minutes"
 msgstr ""
 
 #: lib/class-uagb-ast-block-templates.php:65
-#: lib/gutenberg-templates/inc/importer/plugin.php:985
+#: lib/gutenberg-templates/inc/importer/plugin.php:988
 msgid "Design Library"
 msgstr ""
 
@@ -8858,12 +8855,12 @@ msgstr ""
 #: lib/gutenberg-templates/inc/importer/plugin.php:360
 #: lib/gutenberg-templates/inc/importer/plugin.php:450
 #: lib/gutenberg-templates/inc/importer/plugin.php:792
-#: lib/gutenberg-templates/inc/importer/sync-library.php:318
-#: lib/gutenberg-templates/inc/importer/sync-library.php:445
-#: lib/gutenberg-templates/inc/importer/sync-library.php:470
-#: lib/gutenberg-templates/inc/importer/sync-library.php:513
-#: lib/gutenberg-templates/inc/importer/sync-library.php:804
-#: lib/gutenberg-templates/inc/importer/sync-library.php:839
+#: lib/gutenberg-templates/inc/importer/sync-library.php:319
+#: lib/gutenberg-templates/inc/importer/sync-library.php:446
+#: lib/gutenberg-templates/inc/importer/sync-library.php:471
+#: lib/gutenberg-templates/inc/importer/sync-library.php:514
+#: lib/gutenberg-templates/inc/importer/sync-library.php:805
+#: lib/gutenberg-templates/inc/importer/sync-library.php:840
 #: lib/gutenberg-templates/inc/importer/template-kit-importer.php:43
 #: lib/gutenberg-templates/inc/importer/template-kit-importer.php:109
 #: lib/gutenberg-templates/inc/traits/upgrade.php:33
@@ -11017,11 +11014,11 @@ msgid "Unlink Style"
 msgstr ""
 
 #: dist/blocks.js:11
-msgid "Children Width "
+msgid "Equal"
 msgstr ""
 
 #: dist/blocks.js:11
-msgid "Equal"
+msgid "Children Width "
 msgstr ""
 
 #: dist/blocks.js:15

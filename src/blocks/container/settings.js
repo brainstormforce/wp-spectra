@@ -844,7 +844,8 @@ const Settings = ( props ) => {
 										) }
 									/>
 
-									<ChildrenWidthDropdown { ...{ attributes, setAttributes, deviceType } } />
+                                    <ChildrenWidthDropdown attributes={ attributes } setAttributes={ setAttributes } deviceType={ deviceType } isColumn={ false } />
+                                    <ChildrenWidthDropdown attributes={ attributes } setAttributes={ setAttributes } deviceType={ deviceType } isColumn={ true } />
 
 									<MultiButtonsControl
 										setAttributes={ setAttributes }

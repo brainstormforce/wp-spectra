@@ -42,6 +42,7 @@ const BlockCard = ( props ) => {
         const data = {
             security: uag_react.blocks_activation_and_deactivation_nonce,
             value: JSON.stringify( optionsClone ),
+			status: '',
         };
 
         // Call the getApiData function with the specified parameters

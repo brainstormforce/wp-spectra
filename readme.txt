@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.6
-Stable tag: 2.15.1
+Stable tag: 2.15.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,6 +215,14 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= 2.15.2 - Thursday, 29th August 2024 =
+* Improvement: Container - Added a children-width option for flex columns.
+* Fix: Container - Resolved an issue wherein the "Children Width" option would not work as intended.
+* Fix: FAQ - Resolved an issue wherein the question icon color would not appear correctly in the editor as compared to the frontend.
+* Fix: FAQ - Resolved an issue wherein HTML anchor would not work as intended.
+* Fix: Quick Action Bar - Resolved an issue wherein the Quick Access Bar would become non-functional after editing a pattern.
+* Fix: Global - Resolved a DOMException issue for iFrames in the block editor with the Stripe plugin.
+
 = 2.15.1 - Tuesday, 6th August 2024 =
 * This update addressed a security bug. Props to Patchstack for privately reporting it to our team. Please make sure you are using the latest version on your website.
 
@@ -233,13 +241,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: What's New - Improved the ability to see the new updates for Spectra in the form of a feed under the Dashboard.
 * Fix: Global - Resolved an issue wherein the last modified dates would be altered after running the `Ultimate Addons for Gutenberg` database update.
 * Deprecated: Header Titlebar - Safely removed the Header Titlebar functionality to allow support for the WordPress 6.6 command palette.
-
-= 2.14.0 - Monday, 8th July 2024 =
-* Fix: Global - Optimized the `Ultimate Addons for Gutenberg` database updation and resolved the editor refresh and RichText issues. Read more about migration [here](https://wpspectra.com/docs/spectra-database-update-instructions/).
-
-= 2.13.9 - Thursday, 4th July 2024 =
-* Improvement: Global - Added an update notice for users that used to use `Ultimate Addons for Gutenberg` to update their database to ensure compatibility with the Heading and Info-box block defaults. Read more [here](https://wpspectra.com/docs/spectra-database-update-instructions/).
-* Fix: Container - Resolved an issue wherein WordPress core blocks inside the container were aligning to the center in tablet/mobile view in the editor.
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 

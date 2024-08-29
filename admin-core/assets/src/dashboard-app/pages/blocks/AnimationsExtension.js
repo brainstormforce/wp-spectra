@@ -6,8 +6,8 @@ import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch } from '@headlessui/react'
 import UAGB_Block_Icons from '@Common/block-icons';
-import { useEffect } from '@wordpress/element';
-import { uagbClassNames } from '@Utils/Helpers';
+import { useCallback } from '@wordpress/element';
+import { uagbClassNames, debounce } from '@Helpers/Helpers';
 import getApiData from '@Controls/getApiData';
 
 const AnimationsExtension = () => {
@@ -17,12 +17,12 @@ const AnimationsExtension = () => {
 
     const animationExtensionStatus = 'disabled' === enableAnimationsExtension ? false : true;
 
-    useEffect( () => {
-
-        const sendApiCall = setTimeout( () => {
+	// Debounce function to limit the rate of execution of a function.
+	const debouncedApiCall = useCallback(
+		debounce( ( status ) => {
             const data = {
                 security: uag_react.enable_animations_extension_nonce,
-                value: enableAnimationsExtension,
+				value: status,
             };
             
             const getApiDataFetch = getApiData( {
@@ -32,13 +32,9 @@ const AnimationsExtension = () => {
             } );
 
             getApiDataFetch.then( () => {} );
-        }, 300 )
-
-        return ()=>{
-            clearTimeout( sendApiCall );
-        }
-
-    }, [enableAnimationsExtension] );
+		}, 300 ), // Adjust the delay as needed.
+		[ enableAnimationsExtension ]
+	);
 
     const updateAnimationsExtensionStatus = () => {
 
@@ -46,7 +42,8 @@ const AnimationsExtension = () => {
 
         dispatch( {type: 'UPDATE_ENABLE_ANIMATIONS_EXTENSION', payload: assetStatus } );
         dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
-    };
+		debouncedApiCall( assetStatus ); // Call the debounced function.
+	};
 
     return (
         <div

@@ -2,7 +2,8 @@ import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch } from '@headlessui/react'
 import UAGB_Block_Icons from '@Common/block-icons';
-import { useEffect } from 'react';
+import { debounce } from '@Helpers/Helpers';
+import { useCallback } from '@wordpress/element';
 
 import getApiData from '@Controls/getApiData';
 
@@ -17,12 +18,14 @@ const ResponsiveConditionsExtention = () => {
 
     const displayResponsiveStatus = 'disabled' === enableResponsiveConditions ? false : true;
 
-    useEffect( () => {
+	// Debounce function to limit the rate of execution of a function.
+	const debouncedApiCall = useCallback(
+		debounce( ( status ) => {
 
         // Create an object with the security and value properties
         const data = {
             security: uag_react.enable_block_responsive_nonce,
-            value: enableResponsiveConditions,
+			value: status,
         };
         // Call the getApiData function with the specified parameters
         const getApiFetchData = getApiData( {
@@ -33,7 +36,9 @@ const ResponsiveConditionsExtention = () => {
         // Wait for the API call to complete, but perform no actions after it finishes
         getApiFetchData.then( () => {} );
 
-    }, [enableResponsiveConditions] );
+		}, 300 ), // Adjust the delay as needed.
+		[ enableResponsiveConditions ]
+	);
 
     const updateResponsiveConditionsStatus = () => {
 
@@ -46,7 +51,8 @@ const ResponsiveConditionsExtention = () => {
 
         dispatch( {type: 'UPDATE_ENABLE_RESPONSIVE_CONDITIONS', payload: assetStatus } );
         dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
-    };
+		debouncedApiCall( assetStatus ); // Call the debounced function.
+	};
 
     return (
         <div

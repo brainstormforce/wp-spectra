@@ -28,6 +28,13 @@
 		margin-right: auto !important;
 	}
 
+	// Handeling Edge case for blockquote
+	.wp-block-uagb-blockquote,
+	.wp-block-spectra-pro-login,
+	.wp-block-spectra-pro-register {
+		margin: unset;
+	}
+
 	// Background Video CSS Start.
 	.uagb-container__video-wrap {
 		height: 100%;

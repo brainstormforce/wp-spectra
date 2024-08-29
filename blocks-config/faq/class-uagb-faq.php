@@ -64,6 +64,10 @@ if ( ! class_exists( 'UAGB_Faq' ) ) {
 						'block_id'                     => array(
 							'type' => 'string',
 						),
+						'anchor'                       => array(
+							'type'    => 'string',
+							'default' => '',
+						),
 						'layout'                       => array(
 							'type'    => 'string',
 							'default' => 'accordion',
@@ -1140,6 +1144,10 @@ if ( ! class_exists( 'UAGB_Faq' ) ) {
 						'block_id'   => array(
 							'type' => 'string',
 						),
+						'anchor'     => array(
+							'type'    => 'string',
+							'default' => '',
+						),
 						'question'   => array(
 							'type'    => 'string',
 							'default' => __( 'What is FAQ?', 'ultimate-addons-for-gutenberg' ),
@@ -1193,6 +1201,8 @@ if ( ! class_exists( 'UAGB_Faq' ) ) {
 			$expand_first_item   = ( true === $attributes['expandFirstItem'] ) ? 'uagb-faq-expand-first-true' : 'uagb-faq-expand-first-false';
 			$inactive_other_item = ( true === $attributes['inactiveOtherItems'] ) ? 'uagb-faq-inactive-other-true' : 'uagb-faq-inactive-other-false';
 			$enable_toggle       = isset( $attributes['enableToggle'] ) ? 'true' : 'false';
+			$anchor              = ( isset( $attributes['anchor'] ) ) ? $attributes['anchor'] : '';
+			$anchor              = empty( $anchor ) ? '' : 'id="' . esc_attr( $anchor ) . '"';
 			// Get the current page URL.
 			$page_url = get_permalink( $post );
 			// Initialize the schema JSON structure.
@@ -1267,7 +1277,7 @@ if ( ! class_exists( 'UAGB_Faq' ) ) {
 			$zindex     = $zindex_extension_enabled ? 'uag-blocks-common-selector' : '';
 			$class_name = ( isset( $attributes['className'] ) ) ? $attributes['className'] : '';
 			// Build the block's HTML.
-			$output  = '<div class="' . esc_attr( "wp-block-uagb-faq uagb-faq__outer-wrap uagb-block-{$block_id} uagb-faq-icon-{$icon_align} uagb-faq-layout-{$layout} {$expand_first_item} {$inactive_other_item} uagb-faq__wrap uagb-buttons-layout-wrap {$equal_height_class} {$desktop_class} {$tab_class} {$mob_class} {$zindex} {$class_name}" ) . '" data-faqtoggle="' . esc_attr( $enable_toggle ) . '" role="tablist">';
+			$output  = '<div class="' . esc_attr( "wp-block-uagb-faq uagb-faq__outer-wrap uagb-block-{$block_id} uagb-faq-icon-{$icon_align} uagb-faq-layout-{$layout} {$expand_first_item} {$inactive_other_item} uagb-faq__wrap uagb-buttons-layout-wrap {$equal_height_class} {$desktop_class} {$tab_class} {$mob_class} {$zindex} {$class_name}" ) . '" ' . $anchor . 'data-faqtoggle="' . esc_attr( $enable_toggle ) . '" role="tablist">';
 			$output .= $schema_output;
 			$output .= $inner_blocks_html;
 			$output .= '</div>';
@@ -1319,9 +1329,11 @@ if ( ! class_exists( 'UAGB_Faq' ) ) {
 			$icon_output        = $this->faq_render_icon( $icon, 'uagb-icon' );
 			$icon_active_output = $this->faq_render_icon( $icon_active, 'uagb-icon-active' );
 			$class_name         = ( isset( $attributes['className'] ) ) ? $attributes['className'] : '';
+			$anchor             = ( isset( $attributes['anchor'] ) ) ? $attributes['anchor'] : '';
+			$anchor             = empty( $anchor ) ? '' : 'id="' . esc_attr( $anchor ) . '"';
 
 			// Build the block's HTML.
-			$output  = '<div class="' . esc_attr( "wp-block-uagb-faq-child uagb-faq-child__outer-wrap uagb-faq-item uagb-block-{$block_id} {$class_name}" ) . '" role="tab" tabindex="0">';
+			$output  = '<div class="' . esc_attr( "wp-block-uagb-faq-child uagb-faq-child__outer-wrap uagb-faq-item uagb-block-{$block_id} {$class_name}" ) . '" ' . $anchor . 'role="tab" tabindex="0">';
 			$output .= '<div class="uagb-faq-questions-button uagb-faq-questions">';
 			if ( 'accordion' === $layout ) {
 				$output .= $icon_output;

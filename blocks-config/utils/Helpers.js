@@ -193,3 +193,19 @@ export const isCustomizerPage = () => {
 
     return true;
 }
+
+/**
+ * 
+ * @param {Function} func function to be debounced.
+ * @param {number} delay time in milliseconds.
+ * @return {Function} - that will be debounced.
+ */
+export const debounce = ( func, delay ) => {
+	let timeout;
+	return ( ...args ) => {
+		clearTimeout( timeout );
+		timeout = setTimeout( () => {
+			func( ...args );
+		}, delay );
+	};
+};
