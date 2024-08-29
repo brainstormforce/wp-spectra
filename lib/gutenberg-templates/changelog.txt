@@ -1,3 +1,16 @@
+v.2.4.0 - 08-August-2024
+New: Enhanced AI onboarding UI.
+
+v.2.3.6 - 06-August-2024
+Fix: Pattern CSS file was not loading correctly.
+
+v.2.3.5 - 06-August-2024
+Improvement: Hidden Update Image option until the user personalizes the library.
+Improvement: Blocked block pages preview if import is in process.
+
+v.2.3.4 - 02-August-2024
+Improvement: Converted spectra common stylesheet to json file instead of option variable.
+
 v.2.3.3 - 30-July-2024
 Fix: Resolved issue where the Favorites functionality was not working in certain cases.
 Fix: Addressed problem where related block pages were not displaying in some scenarios.

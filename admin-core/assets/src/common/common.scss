@@ -465,4 +465,6 @@
 
 .whats-new-rss-flyout-contents {
 	font-family: Inter, sans-serif;
+	top: 32px !important;
+	height: calc(100% - 32px) !important;
 }

@@ -25,12 +25,20 @@ const AddGBSStylesDom = ( globalBlockStyleId, styleText ) => {
 		}
 
 		for ( const iterateIFrames of getAllIFrames ) {
-			const iframeDocument = iterateIFrames?.contentWindow.document || iterateIFrames?.contentDocument;
-			if( ! iframeDocument?.head ){
+			// Skip the iframe with the specific name.
+			if ( uagb_blocks_info.exclude_crops_iframes.includes( iterateIFrames.name ) ) {
 				continue;
 			}
+			try {
+				const iframeDocument = iterateIFrames?.contentWindow.document || iterateIFrames?.contentDocument;
+				if( ! iframeDocument?.head ){
+					continue;
+				}
 
-            putStyleInHead( iframeDocument, styleText, globalBlockStyleId );
+				putStyleInHead( iframeDocument, styleText, globalBlockStyleId );
+			} catch ( e ) {
+					// Ignore cross-origin access errors.
+			}
 		} // Loop end.
 	} );
 };

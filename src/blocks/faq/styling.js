@@ -169,10 +169,10 @@ function styling( attributes, clientId, name, deviceType ) {
 	let iconColorTemp = iconColor;
 	let iconActiveColorTemp = iconActiveColor;
 
-	if ( 'undefined' === typeof iconColor ) {
+	if ( 'undefined' === typeof iconColor || '' === iconColor ) {
 		iconColorTemp = questionTextColor;
 	}
-	if ( 'undefined' === typeof iconActiveColor ) {
+	if ( 'undefined' === typeof iconActiveColor || '' === iconActiveColor ) {
 		iconActiveColorTemp = questionTextActiveColor;
 	}
 

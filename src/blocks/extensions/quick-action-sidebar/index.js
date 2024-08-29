@@ -4,13 +4,62 @@
 import domReady from '@wordpress/dom-ready';
 import { createRoot } from 'react-dom';
 import Sidebar from './components/sidebar';
+import { useSelect } from '@wordpress/data';
+import { useEffect } from '@wordpress/element';
+
+/**
+ * The AddEventCommandForQAB component is responsible for creating a custom
+ * event and dispatching it to the document. This event is used to toggle the
+ * status of the Quick Action Sidebar.
+ */
+const AddEventCommandForQAB = () => {
+	// Use the useSelect hook to get the current post ID from the WordPress
+	// store. The post ID is used to determine when to create the custom event.
+	const postId = useSelect( ( select ) => {
+		// Select the current post ID from the store.
+		const getPostIdFromStore = select( 'core/editor' ).getCurrentPostId();
+
+		// Return the post ID.
+		return getPostIdFromStore;
+	}, [] );
+
+	// Create a custom event and dispatch it to the document.
+	const createCustomEvent = () => {
+		// Create a new CustomEvent object with the name 'UAGBQABEditor'.
+		const loadQABEditor = new CustomEvent( 'UAGBQABEditor', {
+			// Set the event detail to include the toggleStatus property with a value of 'enabled'.
+			// eslint-disable-line no-undef
+			detail: { toggleStatus: 'enabled' },
+		} );
+
+		// Dispatch the event to the document.
+		document?.dispatchEvent( loadQABEditor );
+	};
+
+	// Use the useEffect hook to create the custom event when the post ID changes.
+	useEffect( () => {
+		// Create the custom event.
+		createCustomEvent();
+	},[postId] )
+	
+	// Return null to indicate that this component does not render anything.
+	return null;
+};
 
 domReady( () => {
+
+	// If not FSE editor, attach the sidebar to the DOM.
+	const currentUrl = new URL( window.location.href );
+	if ( '/wp-admin/site-editor.php' !== currentUrl.pathname ) {
+		// Append a div to the body to render the React App.
+		const blankDiv = document.createElement( 'div' );
+		document.body.appendChild( blankDiv );
+		createRoot( blankDiv ).render( <AddEventCommandForQAB /> );
+	}
+
 	if ( 'disabled' === uagb_blocks_info.enableQuickActionSidebar ) {
 		return;
 	}
-	// If not FSE editor, attach the sidebar to the DOM.
-	const currentUrl = new URL( window.location.href );
 	if( '/wp-admin/site-editor.php' === currentUrl.pathname ) {
 		toggleSidebar( window.location.href );
 
@@ -65,7 +114,7 @@ const attachSidebar = () => {
 			container.classList.add( 'spectra-ee-quick-access-container' );
 		}
 		const root = createRoot( container );
-		root.render( <Sidebar/> );
+		root.render( <Sidebar /> );
 	}
 	, 100 );
 }

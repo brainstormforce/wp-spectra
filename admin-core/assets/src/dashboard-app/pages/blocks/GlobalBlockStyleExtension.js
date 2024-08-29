@@ -2,7 +2,8 @@ import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch } from '@headlessui/react'
 import UAGB_Block_Icons from '@Common/block-icons';
-import { useEffect } from 'react';
+import { useCallback } from '@wordpress/element';
+import { debounce } from '@Helpers/Helpers';
 
 import getApiData from '@Controls/getApiData';
 
@@ -14,12 +15,14 @@ const GBSExtension = () => {
 
     const GBSStatus = ! ( 'disabled' === enableGBSExtension );
 
-    useEffect( () => {
+	// Debounce function to limit the rate of execution of a function.
+	const debouncedApiCall = useCallback(
+		debounce( ( status ) => {
 
         // Create an object with the security and enableGBSExtension properties
         const data = {
             security: uag_react.enable_gbs_extension_nonce,
-            value: enableGBSExtension,
+			value: status,
         };
 
         // Call the getApiData function with the specified parameters
@@ -28,14 +31,16 @@ const GBSExtension = () => {
             action: 'uag_enable_gbs_extension',
             data,
         } );
-    }, [enableGBSExtension] );
+		}, 300 ), // Adjust the delay as needed.
+		[]
+	);
 
     const updateGBSStatus = () => {
         const assetStatus = ( 'disabled' === enableGBSExtension ) ? 'enabled' : 'disabled';
 
         dispatch( { type: 'UPDATE_GBS_EXTENSION', payload: assetStatus } );
 		dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
-
+		debouncedApiCall( assetStatus ); // Call the debounced function.
     };
 
     return (
