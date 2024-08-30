@@ -82,7 +82,8 @@ class Sync_Library {
 
 		Helper::instance()->ast_block_templates_log( 'BLOCK: Getting Spectra Common CSS' );
 
-		$common_css_content = get_option( 'ast-block-templates-spectra-common-styles', '' );
+		$common_css_content = trim( Helper::instance()->get_json_file_content( 'ast-block-templates-spectra-common-styles.json', false ), '"' );
+		$common_css_content = str_replace( '\n', '', $common_css_content );
 
 		if ( ! empty( $common_css_content ) ) {
 			return $common_css_content;
@@ -103,7 +104,7 @@ class Sync_Library {
 			$res_data = json_decode( wp_remote_retrieve_body( $response ), true );
 
 			if ( isset( $res_data['data']['spectra-common-styles'] ) ) {
-				update_option( 'ast-block-templates-spectra-common-styles', $res_data['data']['spectra-common-styles'] );
+				Helper::instance()->update_json_file( 'ast-block-templates-spectra-common-styles', $res_data['data']['spectra-common-styles'] );
 				return $res_data['data']['spectra-common-styles'];
 			}
 		}

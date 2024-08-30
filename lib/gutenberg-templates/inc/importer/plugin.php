@@ -888,6 +888,9 @@ class Plugin {
 			true
 		);
 
+		// Google fonts.
+		wp_enqueue_style( 'ast-block-templates-google-fonts', $this->google_fonts_url(), array( 'ast-block-templates' ), 'all' );
+
 		$license_status = false;
 		if ( is_callable( 'BSF_License_Manager::bsf_is_active_license' ) ) {
 			$license_status = \BSF_License_Manager::bsf_is_active_license( 'astra-pro-sites' );
@@ -1053,9 +1056,34 @@ class Plugin {
 					'bypassAuth' => apply_filters( 'ast_block_templates_bypass_auth', false ),
 					'zipwp_ai_auth_nonce' => wp_create_nonce( 'zip_ai_auth_nonce' ),
 					'gutenberg_plugin_status' => is_plugin_active( 'gutenberg/gutenberg.php' ),
+					'is_personalized' => get_option( 'ast-templates-ai-content', false ),
 				)
 			)
 		);
+	}
+
+		/**
+		 * Generate and return the Google fonts url.
+		 *
+		 * @since 1.0.1
+		 * @return string
+		 */
+	public function google_fonts_url() {
+
+		$fonts_url     = '';
+		$font_families = array(
+			'Inter:400,500,600',
+			'Figtree:400,500,600,700',
+		);
+
+		$query_args = array(
+			'family' => rawurlencode( implode( '|', $font_families ) ),
+			'subset' => rawurlencode( 'latin,latin-ext' ),
+		);
+
+		$fonts_url = add_query_arg( $query_args, '//fonts.googleapis.com/css' );
+
+		return $fonts_url;
 	}
 
 	/**
