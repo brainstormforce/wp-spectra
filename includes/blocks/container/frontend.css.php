@@ -493,6 +493,37 @@ if ( ! $is_layout_grid ) {
 		$selectors[ $base_selector ]['max-width']    = UAGB_Helper::get_css_value( $attr['widthDesktop'], $attr['widthType'] ) . ' !important';
 		$selectors[ $base_selector ]['margin-left']  = ( '' !== $attr['leftMarginDesktop'] ? UAGB_Helper::get_css_value( $attr['leftMarginDesktop'], $attr['marginType'] ) . ' !important' : '' );
 		$selectors[ $base_selector ]['margin-right'] = ( '' !== $attr['rightMarginDesktop'] ? UAGB_Helper::get_css_value( $attr['rightMarginDesktop'], $attr['marginType'] ) . ' !important' : '' );
+		// FSE container width compatibility.
+		$common_fullwidth_restrictions = ( 'auto' !== $attr['childrenWidthDesktop'] && ! $is_layout_grid );
+
+		$is_fse_container = ( $common_fullwidth_restrictions && wp_is_block_theme() && ! get_queried_object() );
+
+		// WooCommerce template pages.
+		$is_checkout              = function_exists( 'is_checkout' ) && is_checkout();
+		$is_cart                  = function_exists( 'is_cart' ) && is_cart();
+		$is_order_confirmation    = function_exists( 'is_order_received_page' ) && is_order_received_page();
+		$is_product_catalog       = function_exists( 'is_shop' ) && is_shop();
+		$is_product_search        = function_exists( 'is_product_search' ) && is_product_search();
+		$is_products_by_attribute = function_exists( 'is_product_taxonomy' ) && is_product_taxonomy();
+		$is_products_by_category  = function_exists( 'is_product_category' ) && is_product_category();
+		$is_products_by_tag       = function_exists( 'is_product_tag' ) && is_product_tag();
+		$is_single_product        = function_exists( 'is_product' ) && is_product();
+
+		$requires_fullwidth = $common_fullwidth_restrictions && (
+			$is_fse_container ||
+			$is_checkout ||
+			$is_cart ||
+			$is_order_confirmation ||
+			$is_product_catalog ||
+			$is_product_search ||
+			$is_products_by_attribute ||
+			$is_products_by_category ||
+			$is_products_by_tag ||
+			$is_single_product
+		);
+
+		// Add the FSE compatibility width when required.
+		$selectors[ $base_selector ]['width'] = $requires_fullwidth ? '100%' : '';
 
 		$t_selectors[ $base_selector ]['max-width']    = UAGB_Helper::get_css_value( $attr['widthTablet'], $attr['widthTypeTablet'] ) . ' !important';
 		$t_selectors[ $base_selector ]['margin-left']  = ( '' !== $attr['leftMarginTablet'] ? UAGB_Helper::get_css_value( $left_margin_tablet, $attr['marginTypeTablet'] ) . ' !important' : '' );
