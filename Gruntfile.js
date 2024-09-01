@@ -266,6 +266,14 @@ module.exports = function ( grunt ) {
 				files: ICONS_PHP_FILE_CHUNKS,
 			},
 		},
+
+		rename: {
+			main: {
+				files: [
+					{src: ['dist/blocks.js'], dest: 'dist/blocks.min.js'}
+				]
+			}
+		}
 	} );
 
 	/* Load Tasks */
@@ -274,6 +282,7 @@ module.exports = function ( grunt ) {
 	grunt.loadNpmTasks( 'grunt-contrib-clean' );
 	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
+	grunt.loadNpmTasks( 'grunt-contrib-rename' );
 
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 
@@ -561,7 +570,7 @@ module.exports = function ( grunt ) {
 	// rtlcss, you will still need to install ruby and sass on your system manually to run this
 	grunt.registerTask( 'rtl', ['rtlcss'] );
 
-	grunt.registerTask( 'minify', [ 'rtlcss', 'cssmin', 'uglify' ] );
+	grunt.registerTask( 'minify', [ 'rtlcss', 'cssmin', 'uglify', 'rename' ] );
 
 	grunt.registerTask( 'font-awesome-php-array-update', [ 'json2php', 'clean-icon-svg-json-file' ] );
 };
