@@ -370,6 +370,8 @@ class UAGB_Post_Assets {
 			} elseif ( is_tag() ) { // For tag archive or more specific tag template.
 				$tag_slug = 'tag-' . $archive_object->slug;
 				return in_array( $tag_slug, $template_type_slug ) ? $tag_slug : ( in_array( 'tag', $template_type_slug ) ? 'tag' : 'archive' );
+			} elseif ( is_tax() ) {
+				return in_array( 'taxonomy-' . $archive_object->taxonomy, $template_type_slug ) ? 'taxonomy-' . $archive_object->taxonomy : 'archive';
 			}
 		} elseif ( is_date() && in_array( 'date', $template_type_slug ) ) { // For date archive template.
 			return 'date';
