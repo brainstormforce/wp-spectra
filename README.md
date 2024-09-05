@@ -220,7 +220,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Global - Added a placeholder for inherited values in all spacing controls.
 * Fix: Container - Resolved an issue wherein the sticky container would not work as intended for the image gallery of the carousel type.
 * Fix: Buttons - Resolved an issue wherein the button sizes would not work as expected in the editor responsive views.
-* Fix: Global - Resolved an issue wherein assets would not load for custom taxonomy templates when using FSE themes.
+* Fix: Global - Resolved an issue wherein assets would not load for custom taxonomy templates when using Full Site Editing.
+* Fix: Global - Resolved an issue wherein the CSS would not load for Spectra blocks in custom templates for specific products using Full Site Editing.
 
 ### 2.15.2 - Thursday, 29th August 2024 ###
 * Improvement: Container - Added a children-width option for flex columns.
