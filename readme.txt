@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Improvement: Tabs - Enhanced accessibility in the tabs and improved the content accessibility.
 * Improvement: Global - Added a placeholder for inherited values in all spacing controls.
 * Fix: Container - Resolved an issue wherein the sticky container would not work as intended for the image gallery of the carousel type.
 * Fix: Buttons - Resolved an issue wherein the button sizes would not work as expected in the editor responsive views.
