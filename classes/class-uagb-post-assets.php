@@ -281,7 +281,14 @@ class UAGB_Post_Assets {
 
 				// Check if the current page is a product page.
 				case is_product():
-					return 'single-product';
+					// Retrieve the queried object.
+					$object = get_queried_object();
+					// Get all block templates.
+					$template_types = get_block_templates();
+					// Extract the 'slug' column from the block templates array.
+					$template_type_slug = array_column( $template_types, 'slug' );
+					// Check specific single product template exist or not. If not then use default single product template. 
+					return ( $object instanceof WP_Post && in_array( 'single-product-' . $object->post_name, $template_type_slug ) ) ? 'single-product-' . $object->post_name : 'single-product';
 
 				// Check if the current page is an archive page.
 				case is_archive():

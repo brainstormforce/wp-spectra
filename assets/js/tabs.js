@@ -26,6 +26,11 @@ UAGBTabs = {
 		// Select tabs body (.uagb-tabs__body-wrap) from tabsWrapChildren and children will be tab body container (.uagb-tabs__body-container).
 		const tabBody = tabsWrapChildren[1].children;
 
+		for ( let i = 0; i < tabBody.length; i++ ) {
+			tabBody[ i ].setAttribute( 'tabindex', '0' );
+			tabBody[ i ].setAttribute( 'role', 'tabpanel' );
+		};
+
 		// Set initial active class to Tabs body.
 		tabBody[ tabActive ].classList.add( 'uagb-tabs-body__active' );
 
@@ -40,10 +45,14 @@ UAGBTabs = {
 
 			// Set initial aria attributes true for anchor tags.
 			tabsAnchor.setAttribute( 'aria-selected', true );
+			// Selected tab gets tabindex="0".
+			tabsAnchor.setAttribute( 'tabindex', '0' );
 
 			if ( ! tabLi[ i ].classList.contains( 'uagb-tabs__active' ) ) {
 				// Set aria attributes for anchor tags as false where needed.
 				tabsAnchor.setAttribute( 'aria-selected', false );
+				// Other non selected tabs get tabindex="-1".
+				tabsAnchor.setAttribute( 'tabindex', '-1' ); 
 			}
 
 			// Set initial data attribute for anchor tags.
@@ -55,6 +64,34 @@ UAGBTabs = {
 				UAGBTabs.tabClickEvent( e, this, this.parentElement );
 			} );
 		}
+
+		// Enable arrow navigation between tabs in the tab list
+		const tabsRole = tabsWrapChildren[0].querySelectorAll( '.uagb-tab a[role="tab"]' );
+		
+		tabsRole.forEach( tab => {
+			tab.addEventListener( 'keydown', function ( e ) {
+				let newIndex;
+				const currentIndex = Array.prototype.indexOf.call( tabsRole, e.target );
+
+				if ( e.key === 'ArrowRight' ) {
+					// Move to the next tab, loop back to the first if at the last
+					newIndex = ( currentIndex + 1 ) % tabsRole.length;
+					tabsRole[newIndex].focus();
+					tabsRole[currentIndex].setAttribute( 'aria-selected', 'false' );
+					tabsRole[newIndex].setAttribute( 'aria-selected', 'true' );
+					UAGBTabs.tabClickEvent( e, tabsRole[newIndex], tabsRole[newIndex].parentElement );
+					e.preventDefault();
+				} else if ( e.key === 'ArrowLeft' ) {
+					// Move to the previous tab, loop to the last if at the first
+					newIndex = ( currentIndex - 1 + tabsRole.length ) % tabsRole.length;
+					tabsRole[newIndex].focus();
+					tabsRole[currentIndex].setAttribute( 'aria-selected', 'false' );
+					tabsRole[newIndex].setAttribute( 'aria-selected', 'true' );
+					UAGBTabs.tabClickEvent( e, tabsRole[newIndex], tabsRole[newIndex].parentElement );
+					e.preventDefault();
+				}
+			} );
+		} );
 	},
 	tabClickEvent( e, tabName, selectedLi ) {
 		e.preventDefault();
@@ -80,6 +117,8 @@ UAGBTabs = {
 		// Set aria-selected attribute as false for old active tab.
 		for ( let i = 0; i < allLi.length; i++ ) {
 			allLi[ i ].setAttribute( 'aria-selected', false );
+			// Other non selected tabs get tabindex="-1".
+			allLi[i].setAttribute( 'tabindex', '-1' ); 
 		}
 
 		// Set selected li active class.
@@ -87,6 +126,9 @@ UAGBTabs = {
 
 		// Set aria-selected attribute as true for new active tab.
 		tabName.setAttribute( 'aria-selected', true );
+
+		// Selected tab gets tabindex="0".
+		tabName.setAttribute( 'tabindex', '0' );
 
 		// Set selected tab body active class.
 		tabSelectedBody?.classList.add( 'uagb-tabs-body__active' );
@@ -138,8 +180,9 @@ UAGBTabs = {
 				.querySelector( mainWrapClass + ' > .uagb-tabs__body-wrap > .uagb-tabs-body__active' )
 				.classList.remove( 'uagb-tabs-body__active' );
 
-			// Set aria-selected attribute as flase for old active tab.
+			// Set aria-selected attribute as false for old active tab.
 			for ( let i = 0; i < allLi.length; i++ ) {
+				allLi[ i ].setAttribute( 'tabindex', '-1' );  // Old active tab gets tabindex="-1".
 				allLi[ i ].setAttribute( 'aria-selected', false );
 			}
 
@@ -148,6 +191,8 @@ UAGBTabs = {
 
 			// Set aria-selected attribute as true for new active tab.
 			selectedAnchor.setAttribute( 'aria-selected', true );
+
+			selectedAnchor.setAttribute( 'tabindex', '0' );  // New active tab gets tabindex="0".
 
 			// Set selected tab body active class.
 			tabSelectedBody.classList.add( 'uagb-tabs-body__active' );
