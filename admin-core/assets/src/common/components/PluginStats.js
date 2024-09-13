@@ -69,7 +69,7 @@ const PluginStats = () => {
 					</Link>
 				) : (
                     <Link
-						className='mr-8 ml-2 text-sm text-red-500 active:text-red-500 hover:text-red-500 focus:text-red-500 cursor-pointer'
+						className='mr-2 ml-2 text-sm text-red-500 active:text-red-500 hover:text-red-500 focus:text-red-500 cursor-pointer'
 						to={ {
 							pathname: 'admin.php',
 							search: '?page=spectra&path=settings&settings=license',
@@ -83,7 +83,7 @@ const PluginStats = () => {
 				)
 			) : (
 				<div
-					className='mr-8 ml-2 text-sm text-slate-500 cursor-pointer'
+					className='mr-2 ml-2 text-sm text-slate-500 cursor-pointer'
 					role='button'
 					tabIndex={ 0 }
 					onClick={ activatePro }
@@ -94,35 +94,49 @@ const PluginStats = () => {
 			)
 		) : (
 			<a
-				className='mr-8 ml-2 text-sm text-spectra active:text-spectra hover:text-spectra focus:text-spectra cursor-pointer'
-				href={ uag_react.spectra_pro_url }
+					className='mr-2 ml-2 text-sm flex items-center text-spectra active:text-spectra hover:text-spectra focus:text-spectra cursor-pointer font-medium'
+					href={ 'https://wpspectra.com/pricing/?utm_source=dashboard&utm_medium=free-plugin&utm_campaign=top-bar' }
 				rel='noreferrer noopener'
 				target='_blank'
 			>
-				{ __( 'Upgrade to Pro', 'ultimate-addons-for-gutenberg' ) }
+				{ 
+					<svg className='flex-shrink-0 mr-2 stroke-inherit' width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M3.3335 11.3332H12.6668M1.3335 0.666504L3.3335 8.6665H12.6668L14.6668 0.666504L10.6668 5.33317L8.00016 0.666504L5.3335 5.33317L1.3335 0.666504Z" stroke="#5A03EF" strokeLinecap="round" strokeLinejoin="round" />
+					</svg>
+				}
+				{ __( 'Upgrade To Pro', 'ultimate-addons-for-gutenberg' ) }
 			</a>
 		)
 	);
 
 	return (
 		<>
-			<a
-				href='https://wpspectra.com/docs/'
-				target='_blank'
-				rel="noreferrer"
-				className='mx-2 text-sm font-medium text-slate-600'
-			>
-				{ __( 'Knowledge Base', 'ultimate-addons-for-gutenberg' ) }
-			</a>
-			{renderDivider()}
+			{'not-installed' === uag_react.pro_plugin_status && (
+				<>
+					<a
+						className='mr-2 ml-2 text-sm flex items-center text-spectra active:text-spectra hover:text-spectra focus:text-spectra cursor-pointer font-medium'
+						href={'https://wpspectra.com/pricing/?utm_source=dashboard&utm_medium=free-plugin&utm_campaign=top-bar'}
+						rel='noreferrer noopener'
+						target='_blank'
+					>
+						{
+							<svg className='flex-shrink-0 mr-2 stroke-inherit' width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M3.3335 11.3332H12.6668M1.3335 0.666504L3.3335 8.6665H12.6668L14.6668 0.666504L10.6668 5.33317L8.00016 0.666504L5.3335 5.33317L1.3335 0.666504Z" stroke="#5A03EF" strokeLinecap="round" strokeLinejoin="round" />
+							</svg>
+						}
+						{__( 'Upgrade To Pro', 'ultimate-addons-for-gutenberg' )}
+					</a>
+					{renderDivider()}
+				</>
+			)}
 			<div className='mx-2 text-sm text-slate-400'>
 				{ uag_react.plugin_ver }
 			</div>
-			{ ( uag_react.spectra_pro_installed && uag_react.spectra_pro_ver ) && (
-				<>
 					<div className='mr-2 px-1.5 py-[3px] text-[10px] leading-[10px] text-slate-500 border border-slate-400 rounded'>
 						{ __( 'Core', 'ultimate-addons-for-gutenberg' ) }
 					</div>
+				{( uag_react.spectra_pro_installed && uag_react.spectra_pro_ver ) && (
+				<>
 					{ renderDivider() }
 					<div className='mx-2 text-sm text-slate-500'>
 						{ uag_react.spectra_pro_ver }
@@ -131,14 +145,26 @@ const PluginStats = () => {
 						{ __( 'Pro', 'ultimate-addons-for-gutenberg' ) }
 					</div>
 				</>
-			) }
-			{ ( ! uag_react.spectra_pro_installed || ( uag_react.spectra_pro_installed && uag_react.spectra_pro_licensing ) ) && (
+				) }
+			{'not-installed' !== uag_react.pro_plugin_status && (
 				<>
-					{ renderDivider() }
-					{ renderLicenseStatus() }
+					{renderDivider()}
+					{renderLicenseStatus()}
 				</>
 			)}
-
+			{renderDivider()}
+			<a
+				href='https://wpspectra.com/docs/'
+				target='_blank'
+				rel="noreferrer"
+				className='mx-2 text-sm font-medium text-slate-600 w-8 sm:w-10 h-8 sm:h-10 flex items-center whitespace-nowrap justify-center cursor-pointer rounded-full border border-slate-200'
+			>
+				{
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
+						<path d="M9 3.03473C7.67311 1.84713 5.92089 1.125 4 1.125C3.12341 1.125 2.28195 1.27539 1.5 1.55176V13.4268C2.28195 13.1504 3.12341 13 4 13C5.92089 13 7.67311 13.7221 9 14.9097M9 3.03473C10.3269 1.84713 12.0791 1.125 14 1.125C14.8766 1.125 15.7181 1.27539 16.5 1.55176V13.4268C15.7181 13.1504 14.8766 13 14 13C12.0791 13 10.3269 13.7221 9 14.9097M9 3.03473V14.9097" stroke="#64748B" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+					</svg>
+				}
+			</a>
 		</>
 	);
 

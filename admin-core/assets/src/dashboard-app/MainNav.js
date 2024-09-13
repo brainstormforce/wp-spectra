@@ -5,12 +5,7 @@ const Navigation = () => {
 
 	const menus = [
 		{
-			name: __( 'Welcome', 'ultimate-addons-for-gutenberg' ),
-			slug: uag_react.home_slug,
-			path: '',
-		},
-		{
-			name: __( 'Blocks / Extensions', 'ultimate-addons-for-gutenberg' ),
+			name: __( 'Blocks', 'ultimate-addons-for-gutenberg' ),
 			slug: uag_react.home_slug,
 			path: 'blocks',
 		},
@@ -20,6 +15,15 @@ const Navigation = () => {
 			path: 'settings',
 		},
 	];
+
+	// Conditionally add the Free vs Pro menu item
+	if ( 'not-installed' === uag_react.pro_plugin_status || 'inactive' === uag_react.pro_plugin_status ) {
+		menus.push( {
+			name: __( 'Free vs Pro', 'ultimate-addons-for-gutenberg' ),
+			slug: uag_react.home_slug,
+			path: 'free-vs-pro',
+		} );
+	}
 
 	// Only add the AI Features tab before settings if Zip AI data was successfully localized.
 	if ( uag_react?.zip_ai_admin_nonce ) {

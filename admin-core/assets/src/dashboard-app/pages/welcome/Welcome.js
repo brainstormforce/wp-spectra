@@ -17,6 +17,28 @@ const Welcome = () => {
 		window.open( 'https://wpspectra.com/', '_blank' );
 	};
 
+	const onUpgradeNowClick = () => {
+		window.open( 'https://wpspectra.com/pricing/?utm_source=dashboard&utm_medium=free-plugin&utm_campaign=dashboard-widget', '_blank' );
+	};
+
+	
+	const onFreeVsProClick = () => {
+		window.open( 'admin.php?page=spectra&path=free-vs-pro', '_blank' );
+	};
+
+	const renderchecks = () => (
+		<svg className="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+			<g clipPath="url(#clip0_6404_1763)">
+				<path d="M12.9955 5.64817L7.93251 12.4574L4.99665 10.2744" stroke="#5A03EF" strokeWidth="1.5" />
+			</g>
+			<defs>
+				<clipPath id="clip0_6404_1763">
+					<rect width="18" height="18" rx="9" fill="white" />
+				</clipPath>
+			</defs>
+		</svg>
+	);
+
 	return (
 		<main className="py-[2.43rem]">
 			<div className="max-w-3xl mx-auto px-6 lg:max-w-7xl">
@@ -29,8 +51,8 @@ const Welcome = () => {
 							<h2 className="sr-only" id="section-1-title">
 								Section title
 							</h2>
-							<div className="rounded-md bg-white overflow-hidden shadow-sm flex flex-col justify-center h-full">
-								<div className="p-12 pt-[2.2rem]">
+							<div className="rounded-md overflow-hidden flex flex-col justify-top h-full">
+								<div className="p-12 pt-[2.2rem] bg-white shadow-sm">
 									<h2 className="text-slate-800 text-[1.8rem] leading-[2.4rem] pb-3 font-medium text-left">
 										{ __( 'Welcome to Spectra!', 'ultimate-addons-for-gutenberg' ) }
 									</h2>
@@ -64,10 +86,10 @@ const Welcome = () => {
 										</button>
 										<button
 											type="button"
-											className="inline-flex items-center px-4 py-2 border border-slate-300 shadow-sm text-sm font-medium rounded-md text-slate-500 bg-white focus-visible:bg-slate-50 hover:bg-slate-50 focus:outline-none"
+											className="inline-flex items-center px-4 py-2 border border-slate-300 shadow-sm text-sm font-medium border-spectra text-spectra rounded-md text-slate-500 bg-white focus-visible:bg-slate-50 hover:bg-slate-50 focus:outline-none"
 											onClick={ onReadFullGuideClick }
 										>
-											{ __( 'Visit Our Website', 'ultimate-addons-for-gutenberg' ) }
+											{ __( 'Read Full Guide', 'ultimate-addons-for-gutenberg' ) }
 										</button>
 									</span>
 								</div>
@@ -76,7 +98,32 @@ const Welcome = () => {
 					</div>
 
 					{ /* Right column */ }
-					<div className="space-y-4 flex h-full flex-col justify-between">
+					<div className="space-y-4 flex h-full w-fit flex-col">
+						{ 'not-installed' === uag_react.pro_plugin_status && (
+						<section aria-labelledby="section-2-title">
+							<h2 className="sr-only" id="section-2-title">
+								Section title
+							</h2>
+							<div className="box-border border border-slate-400 border-spectra rounded-md bg-white shadow-sm overflow-hidden transition hover:shadow-hover">
+							<div className="px-8 py-8">
+										<h3 className="text-slate-800 text-xl font-medium pb-2 font-semibold">{__( 'Limitless Design with Spectra Pro!', 'ultimate-addons-for-gutenberg' )}</h3>
+										<p className="text-slate-500 text-sm pb-2 pr-2 leading-5">{__( 'Experience design freedom with Spectra Pro. Utilize advanced blocks, extensions, and premium features to create a websites that stands out!', 'ultimate-addons-for-gutenberg' )}</p>
+								<ul className="list-disc mt-4 text-gray-700 mb-6">
+											<li className="flex items-center mb-3">{renderchecks()}<span className="ml-2 leading-[18px]">{__( 'Dynamic Content', 'ultimate-addons-for-gutenberg' )}</span></li>
+											<li className="flex items-center mb-3">{renderchecks()}<span className="ml-2 leading-[18px]">{__( 'Advanced Popup Builder', 'ultimate-addons-for-gutenberg' )}</span></li>
+											<li className="flex items-center mb-3">{renderchecks()}<span className="ml-2 leading-[18px]">{__( 'Loop Builder', 'ultimate-addons-for-gutenberg' )}</span></li>
+											<li className="flex items-center mb-3">{renderchecks()}<span className="ml-2 leading-[18px]">{__( 'Instagram Feed Block', 'ultimate-addons-for-gutenberg' )}</span></li>
+											<li className="flex items-center mb-3">{renderchecks()}<span className="ml-2 leading-[18px]">{__( 'Global Block Styles', 'ultimate-addons-for-gutenberg' )}</span></li>
+											<li className="flex items-center mb-3">{renderchecks()}<span className="ml-2 leading-[18px]">{__( 'Advanced Animations', 'ultimate-addons-for-gutenberg' )}</span></li>
+								</ul>
+								<div className="flex justify-center">
+											<button type='button' onClick={onUpgradeNowClick} className="w-full px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-spectra focus-visible:bg-spectra-hover hover:bg-spectra-hover focus:outline-none mr-4">{__( 'Upgrade Now', 'ultimate-addons-for-gutenberg' )}</button>
+											<button type='button' onClick={onFreeVsProClick} className="w-full px-4 py-2 border border-slate-400 shadow-sm text-sm font-medium rounded-md border-spectra text-spectra bg-white focus-visible:bg-slate-50 hover:bg-slate-50 focus:outline-none">{__( 'Free vs Pro', 'ultimate-addons-for-gutenberg' )}</button>
+								</div>
+							</div>
+							</div>
+						</section>
+						)}
 						<section aria-labelledby="section-2-title">
 							<h2 className="sr-only" id="section-2-title">
 								Section title
@@ -145,6 +192,7 @@ const Welcome = () => {
 								</div>
 							</div>
 						</section>
+						{/* { 'not-installed' !== uag_react.pro_plugin_status && (
 						<section>
 							<div className="box-border rounded-md bg-white shadow-sm overflow-hidden transition hover:shadow-hover">
 								<div className="p-8 pr-10">
@@ -231,6 +279,7 @@ const Welcome = () => {
 								</div>
 							</div>
 						</section>
+						)} */}
 					</div>
 				</div>
 			</div>

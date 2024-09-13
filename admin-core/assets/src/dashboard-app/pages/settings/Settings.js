@@ -26,6 +26,7 @@ import ContainerGlobalPadding from '@DashboardApp/pages/settings/ContainerGlobal
 import ContainerGlobalElementsGap from '@DashboardApp/pages/settings/ContainerGlobalElementsGap';
 import MyAccount from '@DashboardApp/pages/settings/MyAccount';
 import InheritFromTheme from '@DashboardApp/pages/settings/InheritFromTheme';
+import UpgradeNotices from '@DashboardApp/pages/settings/UpgradeToPro';
 
 // Import Block Settings ( Integrations ).
 import InstagramUsers from '@DashboardApp/pages/settings/block-settings/InstagramUsers';
@@ -51,6 +52,7 @@ const Settings = () => {
     const spectraIsBlockTheme = useSelector( ( state ) => state.spectraIsBlockTheme );
 
 	const navigation = [
+		{ name: __( 'My Account', 'ultimate-addons-for-gutenberg' ), slug: 'license', icon: SettingsIcons.account },
 		{ name: __( 'Editor Options', 'ultimate-addons-for-gutenberg' ), slug: 'global-settings', icon: SettingsIcons['global-settings'] },
         { name: __( 'Asset Generation', 'ultimate-addons-for-gutenberg' ), slug: 'asset-generation', icon: SettingsIcons['asset-generation'] },
         { name: __( 'Editor Enhancements', 'ultimate-addons-for-gutenberg' ), slug: 'editor-enhancements', icon: SettingsIcons.templates },
@@ -63,9 +65,6 @@ const Settings = () => {
     if ( spectraIsBlockTheme ) {
         navigation.push( { name: __( 'Theme Fonts', 'ultimate-addons-for-gutenberg' ), slug: 'fse-support', icon: SettingsIcons.font } );
     }
-	if( uag_react.spectra_pro_status && uag_react.spectra_pro_licensing ){
-		navigation.push( { name: __( 'License', 'ultimate-addons-for-gutenberg' ), slug: 'license', icon: SettingsIcons.account } );
-	}
 
 	useEffect( () => {
 		// Activate Setting Active Tab from "settingsTab" Hash in the URl is present.
@@ -171,13 +170,14 @@ const Settings = () => {
                         }
                         { 'block-settings' === activeSettingsNavigationTab &&
 							<>
-								{
-									uag_react.spectra_pro_status && (
+							{ 'active' !== uag_react.pro_plugin_status && (
+								<UpgradeNotices title={ __( 'Showcase your Instagram feed with Spectra Pro', 'ultimate-addons-for-gutenberg' ) } description={ __( 'Seamlessly integrate your Instagram feed into your site with Spectra Pro. Enhance engagement and showcase your social presence effortlessly!','ultimate-addons-for-gutenberg' ) } />
+								) }
+								{ uag_react.spectra_pro_status && (
 										<>
 											<InstagramUsers/>
 										</>
-									)
-								}
+								) }
 								<BlockSettings/>
 							</>
                         }
@@ -187,11 +187,21 @@ const Settings = () => {
                                 <Visibility/>
                             </>
                         }
-                        {
-                        	uag_react.spectra_pro_status &&  uag_react.spectra_pro_licensing && 'license' === activeSettingsNavigationTab &&
-                            <>
+						{'license' === activeSettingsNavigationTab &&
+						<>
+							{ 'active' !== uag_react.pro_plugin_status && (
+								<UpgradeNotices
+									title={__( 'Build Better Websites with Spectra Pro', 'ultimate-addons-for-gutenberg' )}
+									description={__(
+										'Unlock a seamless WordPress design experience with Spectra Pro. Enjoy advanced blocks, top-notch support, and endless creative possibilities!',
+										'ultimate-addons-for-gutenberg'
+									)}
+								/>
+							) }
+                        	{ uag_react.spectra_pro_status &&  uag_react.spectra_pro_licensing && (
                                 <MyAccount />
-                            </>
+							) }
+						</>
                         }
                     </div>
                 </div>

@@ -92,12 +92,25 @@ class Admin_Menu {
 	public function add_action_links( $links ) {
 
 		$default_url = admin_url( 'admin.php?page=' . $this->menu_slug );
+		$rollback    = admin_url( 'admin.php?page=spectra&path=settings&settings=version-control' );
+		$spectra_pro = 'https://wpspectra.com/pricing/?utm_source=plugin-list&utm_medium=free-plugin&utm_campaign=plugin-list';
 
-		$mylinks = array(
+		$free_links = array(
 			'<a href="' . $default_url . '">' . __( 'Settings', 'ultimate-addons-for-gutenberg' ) . '</a>',
+			'<a href="' . $rollback . '">' . __( 'Rollback', 'ultimate-addons-for-gutenberg' ) . '</a>',
 		);
 
-		return array_merge( $mylinks, $links );
+		// Check if Spectra Pro plugin is not active.
+		if ( ! is_plugin_active( 'spectra-pro/spectra-pro.php' ) && ! file_exists( UAGB_DIR . '../spectra-pro/spectra-pro.php' ) ) {
+			$free_links[] = '<a href="' . $spectra_pro . '" target="_blank" rel="noreferrer" class="spectra-plugins-go-pro">' . __( 'Get Spectra Pro', 'ultimate-addons-for-gutenberg' ) . '</a>';
+		}
+
+		// Merge with $links array if it exists (assuming $links is defined elsewhere).
+		if ( isset( $links ) && is_array( $links ) ) {
+			return array_merge( $free_links, $links );
+		}
+
+		return $free_links;
 	}
 
 	/**
@@ -106,8 +119,7 @@ class Admin_Menu {
 	public function settings_admin_scripts() {
 
 		// Enqueue admin scripts.
-		if ( ! empty( $_GET['page'] ) && ( $this->menu_slug === $_GET['page'] || false !== strpos( sanitize_text_field( $_GET['page'] ), $this->menu_slug . '_' ) ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
-
+		if ( ! empty( $_GET['page'] ) && ( $this->menu_slug === $_GET['page'] || false !== strpos( sanitize_text_field( $_GET['page'] ), $this->menu_slug . '_' ) ) || ( array_key_exists( 'post_type', $_GET ) && 'spectra-popup' === $_GET['post_type'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			add_action( 'admin_enqueue_scripts', array( $this, 'styles_scripts' ) );
 
 			add_filter( 'admin_footer_text', array( $this, 'add_footer_link' ), 99 );
@@ -233,6 +245,7 @@ class Admin_Menu {
 		$blocks_info = $this->get_blocks_info_for_activation_deactivation();
 		wp_enqueue_style( $admin_slug . '-font', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap', array(), UAGB_VER );
 		// Styles.
+		wp_enqueue_style( $admin_slug . '-menu-style', UAGB_URL . 'admin/assets/spectra-submenu.css', array(), UAGB_VER );
 
 		wp_enqueue_style( 'wp-components' );
 
@@ -269,6 +282,14 @@ class Admin_Menu {
 				'theme_fonts'              => $theme_font_families,
 				'is_block_theme'           => \UAGB_Admin_Helper::is_block_theme(),
 				'spectra_pro_url'          => \UAGB_Admin_Helper::get_spectra_pro_url(),
+				'plugin_installing_text'   => esc_html__( 'Installing', 'ultimate-addons-for-gutenberg' ),
+				'plugin_installed_text'    => esc_html__( 'Installed', 'ultimate-addons-for-gutenberg' ),
+				'plugin_activating_text'   => esc_html__( 'Activating', 'ultimate-addons-for-gutenberg' ),
+				'plugin_activated_text'    => esc_html__( 'Activated', 'ultimate-addons-for-gutenberg' ),
+				'plugin_activate_text'     => esc_html__( 'Activate', 'ultimate-addons-for-gutenberg' ),
+				'plugin_manager_nonce'     => wp_create_nonce( 'spectra_plugin_manager_nonce' ),
+				'pro_installed_status'     => 'inactive' === self::get_plugin_status( 'spectra-pro/spectra-pro.php' ) ? true : false,
+				'pro_plugin_status'        => self::get_plugin_status( 'spectra-pro/spectra-pro.php' ),
 			)
 		);
 
@@ -486,7 +507,9 @@ class Admin_Menu {
 
 		wp_set_script_translations( $handle, 'ultimate-addons-for-gutenberg' );
 		wp_enqueue_style( 'uag-admin-google-fonts' );
-		wp_enqueue_style( $handle );
+		if ( ! empty( $_GET['page'] ) && ( array_key_exists( 'page', $_GET ) && 'spectra' === $_GET['page'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			wp_enqueue_style( $handle );
+		}
 		wp_style_add_data( $handle, 'rtl', 'replace' );
 		wp_localize_script( $handle, 'uag_admin_react', $localize );
 		wp_localize_script( $handle, 'uag_react', $localize );
