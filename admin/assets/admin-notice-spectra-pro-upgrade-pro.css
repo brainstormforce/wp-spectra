@@ -5,7 +5,11 @@
 #uagb-spectra-pro-popup-note.notice {
 	display: block;
 	border: 1px solid #6105ff;
+	border-top-color: #fff;
+	border-bottom-color: #fff;
+	border-right-color: #fff;
 	border-left-width: 4px;
+	box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.32);
 }
 
 #uagb-spectra-pro-popup-note a.uagb-review-notice.button-primary {

@@ -5,11 +5,6 @@ const Navigation = () => {
 
 	const menus = [
 		{
-			name: __( 'Welcome', 'ultimate-addons-for-gutenberg' ),
-			slug: uag_react.home_slug,
-			path: '',
-		},
-		{
 			name: __( 'Blocks', 'ultimate-addons-for-gutenberg' ),
 			slug: uag_react.home_slug,
 			path: 'blocks',

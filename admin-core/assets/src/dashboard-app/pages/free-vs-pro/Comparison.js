@@ -1,12 +1,18 @@
 import { __ } from '@wordpress/i18n';
 import {
 	DynamicContentFeatures,
-	AnimatedHeadingFeatures,
-	HotspotFeatures,
+	LoopBuilderFeatures,
+	PopupBuilderProFeatures,
+	GlobalBlockStylesFeatures,
 	LoginFormFeatures,
 	RegistrationFormFeatures,
-	InstagramIntegrationFeatures
-  } from './featuresData';
+	InstagramFeedFeatures,
+	ModalProFeatures,
+	SliderProFeatures,
+	CountdownTimerProFeatures,
+	ImageGalleryProFeatures,
+	AdvancedAnimationsFeatures
+} from './featuresData';
 import { useDispatch } from 'react-redux';
 import getApiData from '@Controls/getApiData';
 
@@ -56,7 +62,7 @@ const Comparison = () => {
 	);
 
 	// Generates row of feature with item with check or cross mark icon.
-	const FeatureRowWithIcons = ( { featureName } ) => {
+	const FeatureRowWithIcons = ( { featureName, isFreeFeature } ) => {
 		return (
 			<>
 				<div className="flex items-center justify-start px-8 py-5 border-b bg-white">
@@ -65,7 +71,12 @@ const Comparison = () => {
 					</div>
 				</div>
 				<div className="flex items-center bg-white justify-center px-6 py-5 border-b bg-white">
+				{ isFreeFeature ? (
+					<CheckmarkIcon className="w-6 h-6" />
+					
+				) : (
 					<CloseIcon className="w-6 h-6" />
+				) }
 				</div>
 				<div className="flex items-center bg-white justify-center px-6 py-5 border-b bg-white">
 					<CheckmarkIcon className="w-6 h-6" />
@@ -140,7 +151,7 @@ const Comparison = () => {
 	// Upgrade to Pro Card with Upgrade Button.
 	const SpectraProCard = () => {
 		return (
-			<div className="flex flex-col w-full items-center mt-6 gap-7 p-10  rounded-md overflow-hidden border border-solid border-themesecondary-hover shadow-sm bg-spectra-verylight">
+			<div className="flex flex-col w-full items-center mt-6 gap-7 p-10 outline outline-1 outline-slate-200 rounded-md overflow-hidden shadow-sm bg-spectra-verylight 2xl:w-[1248px] md:w-auto sm:w-auto ">
 				<div className="flex flex-col items-center gap-3 lg:pl-60 lg:pr-60 md:pl-20 md:pr-20 w-full">
 					<div className="text-2xl font-semibold text-slate-800 text-center">
 						{ __( 'Do More with Spectra Pro', 'ultimate-addons-for-gutenberg' ) }
@@ -211,7 +222,7 @@ const Comparison = () => {
 
 	return (
 		<>
-			<div className="flex flex-col items-center px-6 mx-auto lg:max-w-[78rem] ">
+			<div className="flex flex-col items-center px-6 mx-auto lg:max-w-[78rem] gap-6 2xl:w-[1248px] md:w-auto sm:w-auto">
 				{ /* Outer Frame  */ }
 				<div className="flex w-full flex-col items-start mt-12 mb-6 md:flex-row md:items-center gap-4">
 					<section className="flex-1 font-semibold text-2xl font-inter text-slate-800">{ __( 'Spectra Free vs Pro', 'ultimate-addons-for-gutenberg' ) }</section>
@@ -225,41 +236,102 @@ const Comparison = () => {
 				</div>
 
 				{ /* Table  */ }
-				<div className="grid grid-cols-[1fr_auto_auto] rounded-lg outline outline-1 outline-slate-200">
+
+				<div className="grid grid-cols-[1fr_auto_auto] rounded-lg outline outline-1 outline-slate-200 2xl:w-[1248px] md:w-auto sm:w-auto">
+					
+					<FreeProComparisonHeader title="BLOCKS" />
+
+					
+					<FeatureRow title="Loop Builder" />
+					{ LoopBuilderFeatures.map( ( feature, index ) => (
+						<FeatureRowWithIcons 
+							key={ index } featureName={ feature.feature } isFreeFeature={ feature.isFreeFeature } 
+						/>
+					) ) }
+
+					<FeatureRow title="Instagram Feed" />
+					{ InstagramFeedFeatures.map( ( feature, index ) => (
+						<FeatureRowWithIcons 
+							key={ index } featureName={ feature.feature } isFreeFeature={ feature.isFreeFeature } 
+						/>
+					) ) }
+
+					<FeatureRow title="Login Form" />
+					{ LoginFormFeatures.map( ( feature, index ) => (
+						<FeatureRowWithIcons 
+							key={ index } featureName={ feature.feature } isFreeFeature={ feature.isFreeFeature } 
+						/>
+					) ) }
+
+					<FeatureRow title="Registeration Form" />
+					{ RegistrationFormFeatures.map( ( feature, index ) => (
+						<FeatureRowWithIcons 
+							key={ index } featureName={ feature.feature } isFreeFeature={ feature.isFreeFeature } 
+						/>
+					) ) }
+
+					<FeatureRow title="Modal Pro" />
+					{ ModalProFeatures.map( ( feature, index ) => (
+						<FeatureRowWithIcons 
+							key={ index } featureName={ feature.feature } isFreeFeature={ feature.isFreeFeature } 
+						/>
+					) ) }
+
+					<FeatureRow title="Slider Pro" />
+					{ SliderProFeatures.map( ( feature, index ) => (
+						<FeatureRowWithIcons 
+							key={ index } featureName={ feature.feature } isFreeFeature={ feature.isFreeFeature } 
+						/>
+					) ) }
+
+					<FeatureRow title="Countdown Timer Pro" />
+					{ CountdownTimerProFeatures.map( ( feature, index ) => (
+						<FeatureRowWithIcons 
+							key={ index } featureName={ feature.feature } isFreeFeature={ feature.isFreeFeature } 
+						/>
+					) ) }
+
+					<FeatureRow title="Image Gallery Pro" />
+					{ ImageGalleryProFeatures.map( ( feature, index ) => (
+						<FeatureRowWithIcons 
+							key={ index } featureName={ feature.feature } isFreeFeature={ feature.isFreeFeature } 
+						/>
+					) ) }
+				</div>
+
+				<div className="grid grid-cols-[1fr_auto_auto] rounded-lg outline outline-1 outline-slate-200 2xl:w-[1248px] md:w-auto sm:w-auto">
+					
 					<FreeProComparisonHeader />
 
 					<FeatureRow title="Dynamic Content" />
 					{ DynamicContentFeatures.map( ( feature, index ) => (
-						<FeatureRowWithIcons key={ index } featureName={ feature } />
+						<FeatureRowWithIcons 
+							key={ index } featureName={ feature.feature } isFreeFeature={ feature.isFreeFeature } 
+						/>
 					) ) }
 
-					<FeatureRow title="Animated Heading" badge="true" />
-					{ AnimatedHeadingFeatures.map( ( feature, index ) => (
-						<FeatureRowWithIcons key={ index } featureName={ feature } />
+					
+					<FeatureRow title="Global Block Styles" badge="true" />
+					{ GlobalBlockStylesFeatures.map( ( feature, index ) => (
+						<FeatureRowWithIcons 
+							key={ index } featureName={ feature.feature } isFreeFeature={ feature.isFreeFeature } 
+						/>
 					) ) }
 
-					<FeatureRow title="Hotspot Feature" badge="true" />
-					{ HotspotFeatures.map( ( feature, index ) => (
-						<FeatureRowWithIcons key={ index } featureName={ feature } />
-					) ) }
-					<div className="col-span-3 px-[32px] bg-slate-50 h-[24px]"></div>
-
-					<FreeProComparisonHeader title="BLOCKS" />
-
-					<FeatureRow title="Login Block" />
-					{ LoginFormFeatures.map( ( feature, index ) => (
-						<FeatureRowWithIcons key={ index } featureName={ feature } />
+					<FeatureRow title="Advanced Animations" badge="true" />
+					{ AdvancedAnimationsFeatures.map( ( feature, index ) => (
+						<FeatureRowWithIcons 
+							key={ index } featureName={ feature.feature } isFreeFeature={ feature.isFreeFeature } 
+						/>
 					) ) }
 
-					<FeatureRow title="Register Block" />
-					{ RegistrationFormFeatures.map( ( feature, index ) => (
-						<FeatureRowWithIcons key={ index } featureName={ feature } />
+					<FeatureRow title="Advanced Popup Builder" />
+					{ PopupBuilderProFeatures.map( ( feature, index ) => (
+						<FeatureRowWithIcons 
+							key={ index } featureName={ feature.feature } isFreeFeature={ feature.isFreeFeature } 
+						/>
 					) ) }
 
-					<FeatureRow title="Instagram Block" />
-					{ InstagramIntegrationFeatures.map( ( feature, index ) => (
-						<FeatureRowWithIcons key={ index } featureName={ feature } />
-					) ) }
 					<FeatureLink title="See all Spectra Pro features" />
 				</div>
 

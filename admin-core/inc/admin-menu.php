@@ -197,17 +197,6 @@ class Admin_Menu {
 			$menu_slug . '&path=settings',
 			array( $this, 'render' )
 		);
-
-		if ( ( 'not-installed' === self::get_plugin_status( 'spectra-pro/spectra-pro.php' ) && ( ! empty( $_GET['page'] ) && 'spectra' === $_GET['page'] ) ) || ( 'not-installed' === self::get_plugin_status( 'spectra-pro/spectra-pro.php' ) && array_key_exists( 'post_type', $_GET ) && 'spectra-popup' === $_GET['post_type'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			add_submenu_page(
-				$menu_slug,
-				__( 'Spectra', 'ultimate-addons-for-gutenberg' ),
-				__( 'Get Spectra Pro', 'ultimate-addons-for-gutenberg' ),
-				$capability,
-				$menu_slug . '&path=upgrade-now',
-				array( $this, 'render' )
-			);
-		}
 	}
 
 	/**

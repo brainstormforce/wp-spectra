@@ -106,7 +106,7 @@ const Welcome = () => {
 							</h2>
 							<div className="box-border border border-slate-400 border-spectra rounded-md bg-white shadow-sm overflow-hidden transition hover:shadow-hover">
 							<div className="px-8 py-8">
-										<h3 className="text-slate-800 text-xl font-medium pb-2 whitespace-nowrap font-semibold">{__( 'Design Without Limits with Spectra Pro!', 'ultimate-addons-for-gutenberg' )}</h3>
+										<h3 className="text-slate-800 text-xl font-medium pb-2 font-semibold">{__( 'Limitless Design with Spectra Pro!', 'ultimate-addons-for-gutenberg' )}</h3>
 										<p className="text-slate-500 text-sm pb-2 pr-2 leading-5">{__( 'Experience design freedom with Spectra Pro. Utilize advanced blocks, extensions, and premium features to create a websites that stands out!', 'ultimate-addons-for-gutenberg' )}</p>
 								<ul className="list-disc mt-4 text-gray-700 mb-6">
 											<li className="flex items-center mb-3">{renderchecks()}<span className="ml-2 leading-[18px]">{__( 'Dynamic Content', 'ultimate-addons-for-gutenberg' )}</span></li>
