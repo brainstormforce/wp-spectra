@@ -413,6 +413,36 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		}
 
 		/**
+		 * Checks if assets should be excluded for a given Custom Post Type (CPT).
+		 *
+		 * This static method determines if assets should be excluded based on the given CPT and
+		 * any additional exclusions provided via a filter.
+		 *
+		 * @since x.x.x
+		 * @param mixed $post_type The post type to check. Can be a string representing the CPT or a boolean.
+		 * @return bool True if assets should be excluded for the given CPT, false otherwise.
+		 */
+		public static function should_exclude_assets_for_cpt( $post_type ) {
+			// Define the default CPTs to always exclude.
+			$default_excluded_cpts = array( 'sureforms_form' );
+
+			// Get the filtered CPT(s) that should not load assets.
+			$filtered_excluded_cpts = apply_filters( 'exclude_uagb_assets_for_cpts', array() );
+
+			// If the filtered value is not an array, set it to an empty array.
+			if ( ! is_array( $filtered_excluded_cpts ) ) {
+				$filtered_excluded_cpts = array();
+			}
+
+			// Merge default and filtered excluded CPTs.
+			$excluded_cpts = array_merge( $default_excluded_cpts, $filtered_excluded_cpts );
+
+			// Return true if the post type matches any in the excluded CPTs list.
+			return in_array( $post_type, $excluded_cpts );
+		}
+
+
+		/**
 		 * Get Global Content Width
 		 *
 		 * @since 2.0.0

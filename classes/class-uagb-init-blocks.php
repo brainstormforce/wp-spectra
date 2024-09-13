@@ -605,6 +605,15 @@ class UAGB_Init_Blocks {
 	 */
 	public function editor_assets() {
 
+		// Get the current post type.
+		$screen    = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+		$post_type = isset( $screen->post_type ) ? $screen->post_type : '';
+		
+		// Check if assets should be excluded for the current post type.
+		if ( UAGB_Admin_Helper::should_exclude_assets_for_cpt( $post_type ) ) {
+			return; // Early return to prevent loading assets.
+		}
+
 		$uagb_ajax_nonce = wp_create_nonce( 'uagb_ajax_nonce' );
 
 		$script_dep_path = UAGB_DIR . 'dist/blocks.min.asset.php';
