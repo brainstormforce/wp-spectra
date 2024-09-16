@@ -405,11 +405,17 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 * Activation Reset
 		 */
 		public function activation_reset() {
+			$has_activated_before = get_option( '__uagb_activated_before', false );
 
-			uagb_install()->create_files();
-
-			update_option( '__uagb_do_redirect', true );
-			update_option( '__uagb_asset_version', time() );
+			if ( ! $has_activated_before ) {
+				uagb_install()->create_files();
+		
+				update_option( '__uagb_do_redirect', true );
+				update_option( '__uagb_activated_before', true );
+				update_option( '__uagb_asset_version', time() );
+			} else {
+				update_option( '__uagb_do_redirect', false );
+			}
 		}
 
 		/**
