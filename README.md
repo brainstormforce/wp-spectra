@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Fix: Global - Resolved an issue causing the editor to freeze when the Info box and Separator blocks were used in the sync pattern.
+
 ### 2.15.2 - Thursday, 29th August 2024 ###
 * Improvement: Container - Added a children-width option for flex columns.
 * Fix: Container - Resolved an issue wherein the "Children Width" option would not work as intended.
