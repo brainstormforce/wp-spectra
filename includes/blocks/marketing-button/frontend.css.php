@@ -155,17 +155,27 @@ if ( ! $attr['inheritFromTheme'] ) {
 		$selectors[' .uagb-marketing-btn__link']['background-color'] = 'transparent';
 		$selectors['.wp-block-uagb-marketing-button.wp-block-button:not(.is-style-outline) a.wp-block-button__link:not(.has-background)']['background-color'] = 'transparent';
 	
-	
+		$linear_gradient        = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . UAGB_Helper::hex2rgba( $attr['gradientColor1'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation1'] . '%, ' . UAGB_Helper::hex2rgba( $attr['gradientColor2'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation2'] . '%)';
+		$linear_gradient_tablet = 'linear-gradient(' . $attr['gradientAngleTablet'] . 'deg, ' . UAGB_Helper::hex2rgba( $attr['gradientColor1'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocationTablet1'] . '%, ' . UAGB_Helper::hex2rgba( $attr['gradientColor2'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocationTablet2'] . '%)';
+		$linear_gradient_mobile = 'linear-gradient(' . $attr['gradientAngleMobile'] . 'deg, ' . UAGB_Helper::hex2rgba( $attr['gradientColor1'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocationMobile1'] . '%, ' . UAGB_Helper::hex2rgba( $attr['gradientColor2'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocationMobile2'] . '%)';
+		$radial_gradient        = 'radial-gradient( at center center, ' . UAGB_Helper::hex2rgba( $attr['gradientColor1'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation1'] . '%, ' . UAGB_Helper::hex2rgba( $attr['gradientColor2'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation2'] . '%)';
+		$radial_gradient_tablet = 'radial-gradient( at center center, ' . UAGB_Helper::hex2rgba( $attr['gradientColor1'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocationTablet1'] . '%, ' . UAGB_Helper::hex2rgba( $attr['gradientColor2'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocationTablet2'] . '%)';
+		$radial_gradient_mobile = 'radial-gradient( at center center, ' . UAGB_Helper::hex2rgba( $attr['gradientColor1'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocationMobile1'] . '%, ' . UAGB_Helper::hex2rgba( $attr['gradientColor2'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocationMobile2'] . '%)';
+
 		if ( 'linear' === $attr['gradientType'] ) {
-	
-			$selectors[' .uagb-marketing-btn__link']['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . UAGB_Helper::hex2rgba( $attr['gradientColor1'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation1'] . '%, ' . UAGB_Helper::hex2rgba( $attr['gradientColor2'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation2'] . '%)';
-			$selectors['.wp-block-uagb-marketing-button.wp-block-button:not(.is-style-outline) a.wp-block-button__link:not(.has-background)']['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . UAGB_Helper::hex2rgba( $attr['gradientColor1'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation1'] . '%, ' . UAGB_Helper::hex2rgba( $attr['gradientColor2'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation2'] . '%)';
-	
+			$selectors[' .uagb-marketing-btn__link']['background-image'] = $linear_gradient;
+			$selectors['.wp-block-uagb-marketing-button.wp-block-button:not(.is-style-outline) a.wp-block-button__link:not(.has-background)']['background-image'] = $linear_gradient;
+			$t_selectors[' .uagb-marketing-btn__link']['background-image'] = $linear_gradient_tablet;
+			$t_selectors['.wp-block-uagb-marketing-button.wp-block-button:not(.is-style-outline) a.wp-block-button__link:not(.has-background)']['background-image'] = $linear_gradient_tablet;
+			$m_selectors[' .uagb-marketing-btn__link']['background-image'] = $linear_gradient_mobile;
+			$m_selectors['.wp-block-uagb-marketing-button.wp-block-button:not(.is-style-outline) a.wp-block-button__link:not(.has-background)']['background-image'] = $linear_gradient_mobile;
 		} else {
-	
-			$selectors[' .uagb-marketing-btn__link']['background-image'] = 'radial-gradient( at center center, ' . UAGB_Helper::hex2rgba( $attr['gradientColor1'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation1'] . '%, ' . UAGB_Helper::hex2rgba( $attr['gradientColor2'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation2'] . '%)';
-			$selectors['.wp-block-uagb-marketing-button.wp-block-button:not(.is-style-outline) a.wp-block-button__link:not(.has-background)']['background-image'] = 'radial-gradient( at center center, ' . UAGB_Helper::hex2rgba( $attr['gradientColor1'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation1'] . '%, ' . UAGB_Helper::hex2rgba( $attr['gradientColor2'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation2'] . '%)';
-	
+			$selectors[' .uagb-marketing-btn__link']['background-image'] = $radial_gradient;
+			$selectors['.wp-block-uagb-marketing-button.wp-block-button:not(.is-style-outline) a.wp-block-button__link:not(.has-background)']['background-image'] = $radial_gradient;
+			$t_selectors[' .uagb-marketing-btn__link']['background-image'] = $radial_gradient_tablet;
+			$t_selectors['.wp-block-uagb-marketing-button.wp-block-button:not(.is-style-outline) a.wp-block-button__link:not(.has-background)']['background-image'] = $radial_gradient_tablet;
+			$m_selectors[' .uagb-marketing-btn__link']['background-image'] = $radial_gradient_mobile;
+			$m_selectors['.wp-block-uagb-marketing-button.wp-block-button:not(.is-style-outline) a.wp-block-button__link:not(.has-background)']['background-image'] = $radial_gradient_mobile;
 		}
 	}
 	$selectors   = array_merge(

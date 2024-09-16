@@ -7,7 +7,6 @@ import AdvancedPopColorControl from '@Components/color-control/advanced-pop-colo
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 import SpacingControl from '@Components/spacing-control';
-import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import ResponsiveBorder from '@Components/responsive-border';
 import MultiButtonsControl from '@Components/multi-buttons-control';
@@ -59,9 +58,15 @@ const Settings = ( props ) => {
 		gradientColor1,
 		gradientColor2,
 		gradientLocation1,
+		gradientLocationTablet1,
+		gradientLocationMobile1,
 		gradientLocation2,
+		gradientLocationTablet2,
+		gradientLocationMobile2,
 		gradientType,
 		gradientAngle,
+		gradientAngleTablet,
+		gradientAngleMobile,
 		//Typography
 		titleFontFamily,
 		titleFontWeight,
@@ -868,41 +873,68 @@ const Settings = ( props ) => {
 								},
 							] }
 						/>
-						<Range
-							label={ __( 'Location 1', 'ultimate-addons-for-gutenberg' ) }
-							setAttributes={ setAttributes }
-							value={ gradientLocation1 }
-							data={ {
-								value: gradientLocation1,
-								label: 'gradientLocation1',
-							} }
+						<ResponsiveSlider
+					        label={ __( 'Location 1', 'ultimate-addons-for-gutenberg' ) }
+					        data={ {
+						        desktop: {
+							        value: gradientLocation1,
+							        label: 'gradientLocation1',
+						        },
+								tablet: {
+									value: gradientLocationTablet1,
+									label: 'gradientLocationTablet1',
+								},
+								mobile: {
+									value: gradientLocationMobile1,
+									label: 'gradientLocationMobile1',
+								},
+					        } }
 							min={ -100 }
 							max={ 100 }
+							setAttributes={ setAttributes }
 							displayUnit={ false }
-						/>
-						<Range
+				        />
+						<ResponsiveSlider
 							label={ __( 'Location 2', 'ultimate-addons-for-gutenberg' ) }
-							setAttributes={ setAttributes }
-							value={ gradientLocation2 }
 							data={ {
-								value: gradientLocation2,
-								label: 'gradientLocation2',
+								desktop: {
+									value: gradientLocation2,
+									label: 'gradientLocation2',
+								},
+								tablet: {
+									value: gradientLocationTablet2,
+									label: 'gradientLocationTablet2',
+								},
+								mobile: {
+									value: gradientLocationMobile2,
+									label: 'gradientLocationMobile2',
+								},
 							} }
 							min={ -100 }
 							max={ 100 }
+							setAttributes={ setAttributes }
 							displayUnit={ false }
 						/>
 						{ 'linear' === gradientType && (
-							<Range
+							<ResponsiveSlider
 								label={ __( 'Angle', 'ultimate-addons-for-gutenberg' ) }
-								setAttributes={ setAttributes }
-								value={ gradientAngle }
 								data={ {
-									value: gradientAngle,
-									label: 'gradientAngle',
+									desktop: {
+										value: gradientAngle,
+										label: 'gradientAngle',
+									},
+									tablet: {
+										value: gradientAngleTablet,
+										label: 'gradientAngleTablet',
+									},
+									mobile: {
+										value: gradientAngleMobile,
+										label: 'gradientAngleMobile',
+									},
 								} }
 								min={ 0 }
 								max={ 360 }
+								setAttributes={ setAttributes }
 								displayUnit={ false }
 							/>
 						) }

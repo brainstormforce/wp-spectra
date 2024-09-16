@@ -98,8 +98,36 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						'selectGradient'    => $attr['selectGradient'],
 					);
 
-					$btn_bg_css                           = self::uag_get_background_obj( $bg_obj );
-					$selectors[' .wp-block-button__link'] = $btn_bg_css;
+					$bg_obj_tablet = array(
+						'backgroundType'    => 'gradient',
+						'gradientValue'     => $attr['gradientValue'],
+						'gradientColor1'    => $attr['gradientColor1'],
+						'gradientColor2'    => $attr['gradientColor2'],
+						'gradientType'      => $attr['gradientType'],
+						'gradientLocation1' => $attr['gradientLocationTablet1'] ? $attr['gradientLocationTablet1'] : $bg_obj['gradientLocation1'],
+						'gradientLocation2' => $attr['gradientLocationTablet2'] ? $attr['gradientLocationTablet2'] : $bg_obj['gradientLocation2'],
+						'gradientAngle'     => $attr['gradientAngleTablet'] ? $attr['gradientAngleTablet'] : $bg_obj['gradientAngle'],
+						'selectGradient'    => $attr['selectGradient'],
+					);
+
+					$bg_obj_mobile = array(
+						'backgroundType'    => 'gradient',
+						'gradientValue'     => $attr['gradientValue'],
+						'gradientColor1'    => $attr['gradientColor1'],
+						'gradientColor2'    => $attr['gradientColor2'],
+						'gradientType'      => $attr['gradientType'],
+						'gradientLocation1' => $attr['gradientLocationMobile1'] ? $attr['gradientLocationMobile1'] : $bg_obj_tablet['gradientLocation1'],
+						'gradientLocation2' => $attr['gradientLocationMobile2'] ? $attr['gradientLocationMobile2'] : $bg_obj_tablet['gradientLocation2'],
+						'gradientAngle'     => $attr['gradientAngleMobile'] ? $attr['gradientAngleMobile'] : $bg_obj_tablet['gradientAngle'],
+						'selectGradient'    => $attr['selectGradient'],
+					);
+
+					$btn_bg_css                             = self::uag_get_background_obj( $bg_obj );
+					$btn_bg_tablet_css                      = self::uag_get_background_obj( $bg_obj_tablet );
+					$btn_bg_mobile_css                      = self::uag_get_background_obj( $bg_obj_mobile );
+					$selectors[' .wp-block-button__link']   = $btn_bg_css;
+					$t_selectors[' .wp-block-button__link'] = $btn_bg_tablet_css;
+					$m_selectors[' .wp-block-button__link'] = $btn_bg_mobile_css;
 				}
 
 				// Hover background color types.
@@ -134,9 +162,39 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						'selectGradient'    => $attr['hoverselectGradient'],
 					);
 
-					$btn_hover_bg_css                           = self::uag_get_background_obj( $bg_hover_obj );
-					$selectors[' .wp-block-button__link:hover'] = $btn_hover_bg_css;
-					$selectors[' .wp-block-button__link:focus'] = $btn_hover_bg_css;
+					$bg_hover_obj_tablet = array(
+						'backgroundType'    => 'gradient',
+						'gradientValue'     => $attr['hovergradientValue'],
+						'gradientColor1'    => $attr['hovergradientColor1'],
+						'gradientColor2'    => $attr['hovergradientColor2'],
+						'gradientType'      => $attr['hovergradientType'],
+						'gradientLocation1' => $attr['hovergradientLocationTablet1'] ? $attr['hovergradientLocationTablet1'] : $bg_hover_obj['gradientLocation1'],
+						'gradientLocation2' => $attr['hovergradientLocationTablet2'] ? $attr['hovergradientLocationTablet2'] : $bg_hover_obj['gradientLocation2'],
+						'gradientAngle'     => $attr['hovergradientAngleTablet'] ? $attr['hovergradientAngleTablet'] : $bg_hover_obj['gradientAngle'],
+						'selectGradient'    => $attr['hoverselectGradient'],
+					);
+
+					$bg_hover_obj_mobile = array(
+						'backgroundType'    => 'gradient',
+						'gradientValue'     => $attr['hovergradientValue'],
+						'gradientColor1'    => $attr['hovergradientColor1'],
+						'gradientColor2'    => $attr['hovergradientColor2'],
+						'gradientType'      => $attr['hovergradientType'],
+						'gradientLocation1' => $attr['hovergradientLocationMobile1'] ? $attr['hovergradientLocationMobile1'] : $bg_hover_obj_tablet['gradientLocation1'],
+						'gradientLocation2' => $attr['hovergradientLocationMobile2'] ? $attr['hovergradientLocationMobile2'] : $bg_hover_obj_tablet['gradientLocation2'],
+						'gradientAngle'     => $attr['hovergradientAngleMobile'] ? $attr['hovergradientAngleMobile'] : $bg_hover_obj_tablet['gradientAngle'],
+						'selectGradient'    => $attr['hoverselectGradient'],
+					);
+
+					$btn_hover_bg_css                             = self::uag_get_background_obj( $bg_hover_obj );
+					$btn_hover_bg_css_tablet                      = self::uag_get_background_obj( $bg_hover_obj_tablet );
+					$btn_hover_bg_css_mobile                      = self::uag_get_background_obj( $bg_hover_obj_mobile );
+					$selectors[' .wp-block-button__link:hover']   = $btn_hover_bg_css;
+					$selectors[' .wp-block-button__link:focus']   = $btn_hover_bg_css;
+					$t_selectors[' .wp-block-button__link:hover'] = $btn_hover_bg_css_tablet;
+					$t_selectors[' .wp-block-button__link:focus'] = $btn_hover_bg_css_tablet;
+					$m_selectors[' .wp-block-button__link:hover'] = $btn_hover_bg_css_mobile;
+					$m_selectors[' .wp-block-button__link:focus'] = $btn_hover_bg_css_mobile;
 				}
 
 				$selectors[' .uagb-button__wrapper .uagb-buttons-repeater']                   = array(
@@ -1467,6 +1525,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$device_type = 'Desktop';
 			}
 
+			$gradient_attr = 'Desktop' === $device_type ? '' : $device_type;
+
 			$bg_obj = array(
 				'backgroundType'                  => $attr['backgroundType'],
 				'backgroundImage'                 => $attr[ 'backgroundImage' . $device_type ],
@@ -1475,9 +1535,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'gradientColor1'                  => $attr['gradientColor1'],
 				'gradientColor2'                  => $attr['gradientColor2'],
 				'gradientType'                    => $attr['gradientType'],
-				'gradientLocation1'               => $attr['gradientLocation1'],
-				'gradientLocation2'               => $attr['gradientLocation2'],
-				'gradientAngle'                   => $attr['gradientAngle'],
+				'gradientLocation1'               => $attr[ 'gradientLocation' . $gradient_attr . '1' ],
+				'gradientLocation2'               => $attr[ 'gradientLocation' . $gradient_attr . '2' ],
+				'gradientAngle'                   => $attr[ 'gradientAngle' . $gradient_attr ],
 				'selectGradient'                  => $attr['selectGradient'],
 				'backgroundRepeat'                => $attr[ 'backgroundRepeat' . $device_type ],
 				'backgroundPosition'              => $attr[ 'backgroundPosition' . $device_type ],

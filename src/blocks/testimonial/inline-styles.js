@@ -141,8 +141,14 @@ function testimonialStyle( attributes, clientId, name, deviceType ) {
 		gradientColor1,
 		gradientColor2,
 		gradientLocation1,
+		gradientLocationTablet1,
+		gradientLocationMobile1,
 		gradientLocation2,
+		gradientLocationTablet2,
+		gradientLocationMobile2,
 		gradientAngle,
+		gradientAngleTablet,
+		gradientAngleMobile,
 		selectGradient,
 		gradientType,
 	} = attributes;
@@ -162,6 +168,13 @@ function testimonialStyle( attributes, clientId, name, deviceType ) {
 	const overallBorderCSS = generateBorderCSS( attributes, 'overall' );
 	const overallBorderCSSTablet = generateBorderCSS( attributes, 'overall', 'tablet' );
 	const overallBorderCSSMobile = generateBorderCSS( attributes, 'overall', 'mobile' );
+
+	const gradientLocationTablet1Fallback = gradientLocationTablet1 ? gradientLocationTablet1 : gradientLocation1;
+	const gradientLocationMobile1Fallback = gradientLocationMobile1 ? gradientLocationMobile1 : gradientLocationTablet1Fallback;
+	const gradientLocationTablet2Fallback = gradientLocationTablet2 ? gradientLocationTablet2 : gradientLocation2;
+	const gradientLocationMobile2Fallback = gradientLocationMobile2 ?  gradientLocationMobile2 : gradientLocationTablet2Fallback;
+	const gradientAngleTabletFallback = gradientAngleTablet ? gradientAngleTablet : gradientAngle;
+	const gradientAngleMobileFallback = gradientAngleMobile ? gradientAngleMobile : gradientAngleTabletFallback;
 
 	let imgAlign = 'center';
 
@@ -372,10 +385,22 @@ function testimonialStyle( attributes, clientId, name, deviceType ) {
 			case 'advanced':
 				switch ( gradientType ) {
 					case 'linear':
-						gradient = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
+						if ( deviceType === 'Desktop' ) {
+							gradient = `linear-gradient(${gradientAngle}deg, ${gradientColor1} ${gradientLocation1}%, ${gradientColor2} ${gradientLocation2}%)`;
+						} else if ( deviceType === 'Tablet' ) {
+							gradient = `linear-gradient(${gradientAngleTabletFallback}deg, ${gradientColor1} ${gradientLocationTablet1Fallback}%, ${gradientColor2} ${gradientLocationTablet2Fallback}%)`;
+						} else if ( deviceType === 'Mobile' ) {
+							gradient = `linear-gradient(${gradientAngleMobileFallback}deg, ${gradientColor1} ${gradientLocationMobile1Fallback}%, ${gradientColor2} ${gradientLocationMobile2Fallback}%)`;
+						}
 						break;
 					case 'radial':
-						gradient = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`;
+						if ( deviceType === 'Desktop' ) {
+							gradient = `radial-gradient( at center center, ${gradientColor1} ${gradientLocation1}%, ${gradientColor2} ${gradientLocation2}%)`;
+						} else if ( deviceType === 'Tablet' ) {
+							gradient = `radial-gradient( at center center,  ${gradientColor1} ${gradientLocationTablet1Fallback}%, ${gradientColor2} ${gradientLocationTablet2Fallback}%)`;
+						} else if ( deviceType === 'Mobile' ) {
+							gradient = `radial-gradient( at center center,  ${gradientColor1} ${gradientLocationMobile1Fallback}%, ${gradientColor2} ${gradientLocationMobile2Fallback}%)`;
+						}
 						break;
 					default:
 						gradient = '';

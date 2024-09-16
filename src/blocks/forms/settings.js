@@ -198,15 +198,27 @@ const Settings = ( props ) => {
 		selectHGradient,
 		gradientHColor2,
 		gradientHLocation1,
+		gradientHLocationTablet1,
+		gradientHLocationMobile1,
 		gradientHLocation2,
+		gradientHLocationTablet2,
+		gradientHLocationMobile2,
 		gradientHType,
 		gradientHAngle,
+		gradientHAngleTablet,
+		gradientHAngleMobile,
 		gradientColor1,
 		gradientColor2,
 		gradientLocation1,
+		gradientLocationTablet1,
+		gradientLocationMobile1,
 		gradientLocation2,
+		gradientLocationTablet2,
+		gradientLocationMobile2,
 		gradientType,
 		gradientAngle,
+		gradientAngleTablet,
+		gradientAngleMobile,
 		selectGradient,
 	} = attributes;
 
@@ -1373,9 +1385,25 @@ const Settings = ( props ) => {
 									value: gradientLocation1,
 									label: 'gradientLocation1',
 								} }
+								backgroundGradientLocationTablet1={ {
+									value: gradientLocationTablet1,
+									label: 'gradientLocationTablet1',
+								} }
+								backgroundGradientLocationMobile1={ {
+									value: gradientLocationMobile1,
+									label: 'gradientLocationMobile1',
+								} }
 								backgroundGradientLocation2={ {
 									value: gradientLocation2,
 									label: 'gradientLocation2',
+								} }
+								backgroundGradientLocationTablet2={ {
+									value: gradientLocationTablet2,
+									label: 'gradientLocationTablet2',
+								} }
+								backgroundGradientLocationMobile2={ {
+									value: gradientLocationMobile2,
+									label: 'gradientLocationMobile2',
 								} }
 								backgroundGradientType={ {
 									value: gradientType,
@@ -1384,6 +1412,14 @@ const Settings = ( props ) => {
 								backgroundGradientAngle={ {
 									value: gradientAngle,
 									label: 'gradientAngle',
+								} }
+								backgroundGradientAngleTablet={ {
+									value: gradientAngleTablet,
+									label: 'gradientAngleTablet',
+								} }
+								backgroundGradientAngleMobile={ {
+									value: gradientAngleMobile,
+									label: 'gradientAngleMobile',
 								} }
 								setAttributes={ setAttributes }
 							/>
@@ -1457,9 +1493,25 @@ const Settings = ( props ) => {
 									value: gradientHLocation1,
 									label: 'gradientHLocation1',
 								} }
+								backgroundGradientLocationTablet1={ {
+									value: gradientHLocationTablet1,
+									label: 'gradientHLocationTablet1',
+								} }
+								backgroundGradientLocationMobile1={ {
+									value: gradientHLocationMobile1,
+									label: 'gradientHLocationMobile1',
+								} }
 								backgroundGradientLocation2={ {
 									value: gradientHLocation2,
 									label: 'gradientHLocation2',
+								} }
+								backgroundGradientLocationTablet2={ {
+									value: gradientHLocationTablet2,
+									label: 'gradientHLocationTablet2',
+								} }
+								backgroundGradientLocationMobile2={ {
+									value: gradientHLocationMobile2,
+									label: 'gradientHLocationMobile2',
 								} }
 								backgroundGradientType={ {
 									value: gradientHType,
@@ -1468,6 +1520,14 @@ const Settings = ( props ) => {
 								backgroundGradientAngle={ {
 									value: gradientHAngle,
 									label: 'gradientHAngle',
+								} }
+								backgroundGradientAngleTablet={ {
+									value: gradientHAngleTablet,
+									label: 'gradientHAngleTablet',
+								} }
+								backgroundGradientAngleMobile={ {
+									value: gradientHAngleMobile,
+									label: 'gradientHAngleMobile',
 								} }
 								setAttributes={ setAttributes }
 							/>

@@ -62,17 +62,29 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		gradientColor1,
 		gradientColor2,
 		gradientLocation1,
+		gradientLocationTablet1,
+		gradientLocationMobile1,
 		gradientLocation2,
+		gradientLocationTablet2,
+		gradientLocationMobile2,
 		gradientType,
 		gradientAngle,
+		gradientAngleTablet,
+		gradientAngleMobile,
 		selectGradient,
 		hovergradientValue,
 		hovergradientColor1,
 		hovergradientColor2,
 		hovergradientLocation1,
+		hovergradientLocationTablet1,
+		hovergradientLocationMobile1,
 		hovergradientLocation2,
+		hovergradientLocationTablet2,
+		hovergradientLocationMobile2,
 		hovergradientType,
 		hovergradientAngle,
+		hovergradientAngleTablet,
+		hovergradientAngleMobile,
 		hoverselectGradient,
 		topMargin,
 		rightMargin,
@@ -252,8 +264,34 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 				'gradientAngle': gradientAngle,
 				'selectGradient': selectGradient,
 			};
+			const backgroundAttributesTablet = {
+				'backgroundType': 'gradient',
+				'gradientValue': gradientValue,
+				'gradientColor1': gradientColor1,
+				'gradientColor2': gradientColor2,
+				'gradientLocation1': gradientLocationTablet1 ? gradientLocationTablet1 : backgroundAttributes.gradientLocation1,
+				'gradientLocation2': gradientLocationTablet2 ? gradientLocationTablet2 : backgroundAttributes.gradientLocation2,
+				'gradientType': gradientType,
+				'gradientAngle': gradientAngleTablet ? gradientAngleTablet : backgroundAttributes.gradientAngle,
+				'selectGradient': selectGradient,
+			};
+			const backgroundAttributesMobile = {
+				'backgroundType': 'gradient',
+				'gradientValue': gradientValue,
+				'gradientColor1': gradientColor1,
+				'gradientColor2': gradientColor2,
+				'gradientLocation1': gradientLocationMobile1 ? gradientLocationMobile1 : backgroundAttributesTablet.gradientLocation1,
+				'gradientLocation2': gradientLocationMobile2 ? gradientLocationMobile2 : backgroundAttributesTablet.gradientLocation2,
+				'gradientType': gradientType,
+				'gradientAngle': gradientAngleMobile ? gradientAngleMobile : backgroundAttributesTablet.gradientAngle,
+				'selectGradient': selectGradient,
+			};
 			const btnBackground = generateBackgroundCSS( backgroundAttributes );
+			const btnBackgroundTablet = generateBackgroundCSS( backgroundAttributesTablet );
+			const btnBackgroundMobile = generateBackgroundCSS( backgroundAttributesMobile );
 			selectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = btnBackground;
+			tabletSelectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = btnBackgroundTablet;
+		    mobileSelectors[ '.uagb-buttons__outer-wrap .wp-block-button__link.uagb-buttons-repeater' ] = btnBackgroundMobile;
 		} else if ( 'color' === backgroundType ) {
 			selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater' ] = {
 				'background': background,
@@ -278,10 +316,42 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 				'selectGradient': hoverselectGradient,
 			};
 
+			const hoverbackgroundAttributesTablet = {
+				'backgroundType': 'gradient',
+				'gradientValue': hovergradientValue,
+				'gradientColor1': hovergradientColor1,
+				'gradientColor2': hovergradientColor2,
+				'gradientLocation1': hovergradientLocationTablet1 ? hovergradientLocationTablet1 : hoverbackgroundAttributes.gradientLocation1,
+				'gradientLocation2': hovergradientLocationTablet2 ? hovergradientLocationTablet2 : hoverbackgroundAttributes.gradientLocation2,
+				'gradientType': hovergradientType,
+				'gradientAngle': hovergradientAngleTablet ? hovergradientAngleTablet : hoverbackgroundAttributes.gradientAngle,
+				'selectGradient': hoverselectGradient,
+			};
+
+			const hoverbackgroundAttributesMobile = {
+				'backgroundType': 'gradient',
+				'gradientValue': hovergradientValue,
+				'gradientColor1': hovergradientColor1,
+				'gradientColor2': hovergradientColor2,
+				'gradientLocation1': hovergradientLocationMobile1 ? hovergradientLocationMobile1 : hoverbackgroundAttributesTablet.gradientLocation1,
+				'gradientLocation2': hovergradientLocationMobile2 ? hovergradientLocationMobile2 : hoverbackgroundAttributesTablet.gradientLocation2,
+				'gradientType': hovergradientType,
+				'gradientAngle': hovergradientAngleMobile ? hovergradientAngleMobile : hoverbackgroundAttributesTablet.gradientAngle,
+				'selectGradient': hoverselectGradient,
+			};
+
 			const btnhBackground = generateBackgroundCSS( hoverbackgroundAttributes );
+			const btnhBackgroundTablet = generateBackgroundCSS( hoverbackgroundAttributesTablet );
+			const btnhBackgroundMobile = generateBackgroundCSS( hoverbackgroundAttributesMobile );
 			selectors[
 				'.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater:hover'
 			] = btnhBackground;
+			tabletSelectors[
+				'.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater:hover'
+			] = btnhBackgroundTablet;
+			mobileSelectors[
+				'.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater:hover'
+			] = btnhBackgroundMobile;
 		} else if ( 'color' === hoverbackgroundType ) {
 			selectors[ '.uagb-buttons__outer-wrap.wp-block-button .wp-block-button__link.uagb-buttons-repeater:hover' ] = {
 				'background': hBackground,

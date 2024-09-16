@@ -216,6 +216,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Improvement: Global - Added responsive support for gradient background settings.
+
+= x.x.x =
 * Improvement: Tabs - Enhanced accessibility in the tabs and improved the content accessibility.
 * Improvement: Global - Added a placeholder for inherited values in all spacing controls.
 * Fix: Container - Resolved an issue wherein the sticky container would not work as intended for the image gallery of the carousel type.
