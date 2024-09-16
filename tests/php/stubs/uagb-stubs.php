@@ -10513,24 +10513,6 @@ namespace {
      *
      * @return string Returns the CSS.
      */
-    function uagb_get_webfont_styles($url, $format = 'woff2')
-    {
-    }
-    /**
-     * Get styles for a webfont.
-     *
-     * This will get the CSS from the remote API,
-     * download any fonts it contains,
-     * replace references to remote URLs with locally-downloaded assets,
-     * and finally return the resulting CSS.
-     *
-     * @since 1.0.0
-     *
-     * @param string $url    The URL of the remote webfont.
-     * @param string $format The font-format. If you need to support IE, change this to "woff".
-     *
-     * @return string Returns the CSS.
-     */
     function uagb_get_webfont_remote_styles($url, $format = 'woff2')
     {
     }
