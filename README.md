@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### 2.15.3 - Thursday, 19th September 2014 ###
+### 2.15.3 - Wednesday, 18th September 2024 ###
 * Fix: Global - Resolved an issue causing the editor to freeze when the Info box and Separator blocks were used in the sync pattern.
 * Fix: Global - Resolved an issue wherein the Design Library would alter the appearance List and Heading blocks in the editor.
 
