@@ -64,7 +64,14 @@ class Category extends Api_Base {
 	 */
 	public function get_item_permissions_check( $request ) {
 		
-		// To do: Check api token or JWT token for permission.
+		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
+			return new \WP_Error(
+				'gt_rest_cannot_access',
+				__( 'Sorry, you are not allowed to do that.', 'ultimate-addons-for-gutenberg' ),
+				array( 'status' => rest_authorization_required_code() )
+			);
+		}
+
 		return true;
 	}
 
@@ -76,11 +83,27 @@ class Category extends Api_Base {
 	 */
 	public function get( $request ) {
 
+		$nonce = (string) $request->get_header( 'X-WP-Nonce' );
+		
+		// Verify the nonce.
+		if ( ! wp_verify_nonce( sanitize_text_field( $nonce ), 'wp_rest' ) ) {
+			return new \WP_REST_Response(
+				array(
+					'success' => false,
+					'data'    => __( 'Nonce verification failed.', 'ultimate-addons-for-gutenberg' ),
+				),
+				403
+			);
+		}
+
 		$categories = Helper::instance()->get_block_template_category();
+		$total_requests = (int) Helper::instance()->get_block_templates_requests();
+		
 		$response = new \WP_REST_Response(
 			array(
 				'success' => true,
 				'categories' => $categories,
+				'total_requests' => $total_requests,
 			)
 		);
 		$response->set_status( 200 );

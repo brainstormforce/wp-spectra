@@ -14,7 +14,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use Gutenberg_Templates\Inc\Traits\Instance;
-use Gutenberg_Templates\Inc\Traits\Helper;
 use Gutenberg_Templates\Inc\Api\Api_Base;
 use Gutenberg_Templates\Inc\Importer\Plugin;
 /**
@@ -85,30 +84,32 @@ class Blocks extends Api_Base {
 	public function get_blocks( $request ) {
 
 		$nonce = (string) $request->get_header( 'X-WP-Nonce' );
+		
 		// Verify the nonce.
 		if ( ! wp_verify_nonce( sanitize_text_field( $nonce ), 'wp_rest' ) ) {
-			wp_send_json_error(
+			return new \WP_REST_Response(
 				array(
-					'data' => __( 'Nonce verification failed.', 'ultimate-addons-for-gutenberg' ),
-					'status'  => false,
-
-				)
+					'success' => false,
+					'data'    => __( 'Nonce verification failed.', 'ultimate-addons-for-gutenberg' ),
+				),
+				403
 			);
 		}
-
-		$blocks = Plugin::instance()->get_all_blocks();
-		$all_sites = Plugin::instance()->get_all_sites();
-
+	
+		$start = isset( $request['start'] ) ? intval( $request['start'] ) : 1;
+		$end = isset( $request['end'] ) ? intval( $request['end'] ) : 1;
+	
+		$blocks = Plugin::instance()->get_all_blocks( $start, $end );
+	
 		$response = new \WP_REST_Response(
 			array(
 				'success' => true,
-				'allBlocks'               => $blocks['blocks'],
-				'allBlocksPages'          => $blocks['blocks_pages'],
-				'allSites'                => $all_sites,
-				'allCategories'           => Helper::instance()->get_block_template_category(),
+				'allBlocks'      => $blocks['blocks'],
+				'allBlocksPages' => $blocks['blocks_pages'],
 			)
 		);
 		$response->set_status( 200 );
+	
 		return $response;
 	}
 }

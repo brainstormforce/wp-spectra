@@ -27,6 +27,10 @@ if ( ! class_exists( 'Ast_Block_Templates_Notices' ) ) :
 		 */
 		public function has_file_read_write() {
 
+			if ( defined( 'WP_CLI' ) && WP_CLI ) {
+				return true;
+			}
+
 			$upload_dir = self::log_dir();
 
 			$file_created = self::get_filesystem()->put_contents( $upload_dir['path'] . 'index.html', '' );
