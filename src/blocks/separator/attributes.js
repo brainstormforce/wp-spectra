@@ -130,21 +130,18 @@ const attributes = {
 	},
 	separatorHeight: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'separator-gap',
 		},
 	},
 	separatorHeightMobile: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'separator-gap-mobile',
 		},
 	},
 	separatorHeightTablet: {
 		type: 'number',
-		default: 10,
 		UAGCopyPaste: {
 			styleType: 'separator-gap-tablet',
 		},

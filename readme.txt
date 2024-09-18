@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.6
-Stable tag: 2.15.2
+Stable tag: 2.15.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -214,6 +214,10 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT. Additionally, we incorporate [dnd kit](https://github.com/clauderic/dnd-kit) licensed under the MIT License.
 
 == Changelog ==
+
+= 2.15.3 - Wednesday, 18th September 2024 =
+* Fix: Global - Resolved an issue causing the editor to freeze when the Info box and Separator blocks were used in the sync pattern.
+* Fix: Global - Resolved an issue wherein the Design Library would alter the appearance List and Heading blocks in the editor.
 
 = 2.15.2 - Thursday, 29th August 2024 =
 * Improvement: Container - Added a children-width option for flex columns.
