@@ -1,3 +1,12 @@
+v.2.4.2 - 11-September-2024
+New: Introduced filter `ast_block_templates_exclude_post_types` to exclude asset loading for specified post types.
+Fix: Resolved CSS conflicts with the WordPress core list block.
+
+v.2.4.1 - 29-August-2024
+Improvement: Enhanced API performance by optimizing execution times and reducing delays.
+Fix: Corrected styling issues for patterns/pages preview to ensure consistent display.
+Fix: Addressed CSS conflicts with SureCart blocks to prevent styling discrepancies.
+
 v.2.4.0 - 08-August-2024
 New: Enhanced AI onboarding UI.
 

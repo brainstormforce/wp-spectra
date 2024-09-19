@@ -14,14 +14,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use Gutenberg_Templates\Inc\Traits\Instance;
-use Gutenberg_Templates\Inc\Api\Api_Base;
 use Gutenberg_Templates\Inc\Importer\Plugin;
+use Gutenberg_Templates\Inc\Api\Api_Base;
 /**
  * Progress
  *
  * @since 0.0.1
  */
-class Blocks extends Api_Base {
+class Sites extends Api_Base {
 
 	use Instance;
 
@@ -30,7 +30,7 @@ class Blocks extends Api_Base {
 	 *
 	 * @var string
 	 */
-	protected $rest_base = '/blocks/';
+	protected $rest_base = '/sites/';
 
 	/**
 	 * Init Hooks.
@@ -48,7 +48,7 @@ class Blocks extends Api_Base {
 			array(
 				array(
 					'methods'             => \WP_REST_Server::READABLE,
-					'callback'            => array( $this, 'get_blocks' ),
+					'callback'            => array( $this, 'get_sites' ),
 					'permission_callback' => array( $this, 'get_item_permissions_check' ),
 				),
 			)
@@ -63,7 +63,7 @@ class Blocks extends Api_Base {
 	 * @return object|boolean
 	 */
 	public function get_item_permissions_check( $request ) {
-		// To do: Check api token or JWT token for permission.
+		
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 			return new \WP_Error(
 				'gt_rest_cannot_access',
@@ -81,7 +81,7 @@ class Blocks extends Api_Base {
 	 * @param \WP_REST_Request $request Full details about the request.
 	 * @return \WP_REST_Response
 	 */
-	public function get_blocks( $request ) {
+	public function get_sites( $request ) {
 
 		$nonce = (string) $request->get_header( 'X-WP-Nonce' );
 		
@@ -95,21 +95,15 @@ class Blocks extends Api_Base {
 				403
 			);
 		}
-	
-		$start = isset( $request['start'] ) ? intval( $request['start'] ) : 1;
-		$end = isset( $request['end'] ) ? intval( $request['end'] ) : 1;
-	
-		$blocks = Plugin::instance()->get_all_blocks( $start, $end );
-	
+
+		$all_sites = Plugin::instance()->get_all_sites();
 		$response = new \WP_REST_Response(
 			array(
 				'success' => true,
-				'allBlocks'      => $blocks['blocks'],
-				'allBlocksPages' => $blocks['blocks_pages'],
+				'sites' => $all_sites,
 			)
 		);
 		$response->set_status( 200 );
-	
 		return $response;
 	}
 }

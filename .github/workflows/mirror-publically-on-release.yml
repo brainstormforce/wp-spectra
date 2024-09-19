@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Checkout the private code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           repository: brainstormforce/ultimate-addons-for-gutenberg
           token: ${{ secrets.GITHUB_TOKEN }}
