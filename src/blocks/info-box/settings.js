@@ -206,6 +206,7 @@ const Settings = ( props ) => {
 		headLetterSpacingTablet,
 		headLetterSpacingMobile,
 		headLetterSpacingType,
+		tempHeadingDesc,
 
 		prefixTopMargin,
 		prefixRightMargin,
@@ -677,7 +678,12 @@ const Settings = ( props ) => {
 					<>
 						<ToggleControl
 						checked={ enableMultilineParagraph }
-						onChange={ () => setAttributes( { enableMultilineParagraph : ! enableMultilineParagraph } ) }
+						onChange={ () => {
+							setAttributes( { enableMultilineParagraph : ! enableMultilineParagraph } )
+							if( enableMultilineParagraph ) {
+								setAttributes( { headingDesc: tempHeadingDesc } )
+							}
+						} }
 						label={ __( 'Enable Semantic Markup', 'ultimate-addons-for-gutenberg' ) }
 						help={ ! enableMultilineParagraph ? __(
 							'Use Core/Paragraph: Improve accessibility and SEO with semantic HTML markup. Note: Existing Rich Text content will not be preserved.',
