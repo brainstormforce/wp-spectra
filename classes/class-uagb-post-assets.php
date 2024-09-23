@@ -1323,8 +1323,12 @@ class UAGB_Post_Assets {
 
 		if ( 'yes' === $enable_on_page_css_button ) {
 			$custom_css = get_post_meta( $this->post_id, '_uag_custom_page_level_css', true );
-			$custom_css = ! empty( $custom_css ) && is_string( $custom_css ) ? wp_kses_post( $custom_css ) : '';
+		
+			$custom_css = ! empty( $custom_css ) && is_string( $custom_css ) ? wp_slash( $custom_css ) : '';
 
+			// Decode any HTML entities (like &gt;) before appending.
+			$custom_css = html_entity_decode( $custom_css );
+		
 			if ( ! empty( $custom_css ) && ! self::$custom_css_appended ) {
 				$this->stylesheet         .= $custom_css;
 				self::$custom_css_appended = true;
