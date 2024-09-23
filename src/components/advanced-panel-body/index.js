@@ -5,7 +5,7 @@ import { select } from '@wordpress/data';
 import { applyFilters } from '@wordpress/hooks';
 
 const UAGAdvancedPanelBody = ( props ) => {
-	const { children, className = '' } = props;
+	const { children, className = '', panelId = null } = props;
 
 	const panelRef = useRef( null );
 	// Below code is to set the setting state of Tab for each block.
@@ -30,6 +30,11 @@ const UAGAdvancedPanelBody = ( props ) => {
 		setPanelNameForHook( getInspectorTabName() );
 	}, [ panelRef ] );
 
+	useEffect( () => {
+		if ( panelRef ) {
+			panelRef?.current.setAttribute( 'data-panel-id', panelId );
+		}
+	}, [] );
 	const onPanelToggle = () => {
 		if ( 'enabled' === uagb_blocks_info.collapse_panels ) {
 			const siblings = getSiblings( panelRef.current );
@@ -82,12 +87,16 @@ const UAGAdvancedPanelBody = ( props ) => {
 		return siblings;
 	};
 
-	const panelTitle = props?.title
-		? props?.title
-				.toLowerCase()
-				.replace( /[^a-zA-Z ]/g, '' )
-				.replace( /\s+/g, '-' )
-		: '';
+	let panelTitle = '';
+
+	if ( panelId !== null ) {
+		panelTitle = panelId;
+	} else if ( props?.title ) {
+		panelTitle = props.title
+			.toLowerCase()
+			.replace( /[^a-zA-Z ]/g, '' )
+			.replace( /\s+/g, '-' );
+	}
 
 	const blockNameForHook = blockName.split( '/' ).pop();
 	const tabBodyBefore = applyFilters(

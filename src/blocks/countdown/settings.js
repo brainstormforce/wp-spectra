@@ -283,7 +283,7 @@ function Settings( props ) {
 
 	// <------------------ GENERAL TAB ------------------>
 	const generalPanel = (
-		<UAGAdvancedPanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+		<UAGAdvancedPanelBody panelId={'general'} title={ __( 'General', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 			{ displayDatePanel() && (
 				<div className="uagb-countdown__datetime-picker">
 					<div>

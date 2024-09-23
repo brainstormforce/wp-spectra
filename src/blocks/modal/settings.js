@@ -319,12 +319,11 @@ export default function Settings( props ) {
 		{ label: __( 'Custom Class (Spectra Pro)', 'ultimate-addons-for-gutenberg' ), value: 'custom-class', disabled: ! isProActivated },
 		{ label: __( 'Custom ID (Spectra Pro)', 'ultimate-addons-for-gutenberg' ), value: 'custom-id', disabled: ! isProActivated },
 		{ label: __( 'Automatic (Spectra Pro)', 'ultimate-addons-for-gutenberg' ), value: 'automatic', disabled: ! isProActivated }
-	  ];
-	  
+	];
 
 	// This setting panel will only be open by default if Pro is not active.
 	const modalTriggerPanel = (
-		<UAGAdvancedPanelBody title={ __( 'Trigger', 'ultimate-addons-for-gutenberg' ) } initialOpen={ ! isPro }>
+		<UAGAdvancedPanelBody panelId={'trigger'} title={ __( 'Trigger', 'ultimate-addons-for-gutenberg' ) } initialOpen={ ! isPro }>
 			<UAGSelectControl
 				setAttributes={ setAttributes }
 				label={ __( 'Modal Trigger', 'ultimate-addons-for-gutenberg' ) }
@@ -333,6 +332,7 @@ export default function Settings( props ) {
 					label: 'modalTrigger',
 				} }
 				options={ freeAndProOptions }
+				panelId={'modal-trigger'}
 			/>
 			{ modalTrigger === 'icon' && (
 				<>
@@ -626,7 +626,7 @@ export default function Settings( props ) {
 	);
 
 	const modalClosePanel = (
-		<UAGAdvancedPanelBody title={ __( 'Close Button', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+		<UAGAdvancedPanelBody panelId={'close-button'} title={ __( 'Close Button', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			<UAGIconPicker
 				label={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 				value={ closeIcon }
@@ -640,6 +640,8 @@ export default function Settings( props ) {
 						label: 'closeIconPosition',
 					} }
 					setAttributes={ setAttributes }
+					
+					panelId={'icon-position'}
 				>
 					<option value='popup-top-left'>
 						{ __( 'Top Left', 'ultimate-addons-for-gutenberg' ) }
@@ -663,7 +665,7 @@ export default function Settings( props ) {
 	);
 
 	const triggerStylePanel = (
-		<UAGAdvancedPanelBody title={ __( 'Trigger', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+		<UAGAdvancedPanelBody panelId={'trigger'} title={ __( 'Trigger', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 			{ 'icon' === modalTrigger && icon !== '' && (
 				<>
 					<Range
@@ -1303,7 +1305,7 @@ export default function Settings( props ) {
 	);
 
 	const closeStylePanel = (
-		<UAGAdvancedPanelBody title={ __( 'Close Button', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+		<UAGAdvancedPanelBody panelId={'close-button'} title={ __( 'Close Button', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			<Range
 				label={ __( 'Icon Size', 'ultimate-addons-for-gutenberg' ) }
 				setAttributes={ setAttributes }

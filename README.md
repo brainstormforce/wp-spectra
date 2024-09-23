@@ -218,6 +218,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ### x.x.x ###
 * Improvement: Global - Added responsive support for gradient background settings.
 * Fix: Global - Resolved an issue wherein the custom CSS would get special characters converted to unicode.
+* Fix: Global - Resolved an issue wherein the translated setting panels in some Spectra blocks would cause some Spectra Pro features in those blocks to not work as expected.
 
 ### x.x.x ###
 * Improvement: Tabs - Enhanced accessibility in the tabs and improved the content accessibility.

@@ -27,6 +27,9 @@ export function getIdFromString( label ) {
 
 export function getPanelIdFromRef( ref ) {
 	if ( ref.current ) {
+		if ( ref.current?.parentElement?.dataset?.panelId ){
+			return ref.current.parentElement.dataset.panelId;
+		} 
 		const parentElement = ref.current.parentElement.closest( '.components-panel__body' );
 		if ( parentElement && parentElement.querySelector( '.components-panel__body-title' ) ) {
 			return getIdFromString( parentElement.querySelector( '.components-panel__body-title' ).textContent );
