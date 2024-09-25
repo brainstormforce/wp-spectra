@@ -19,13 +19,13 @@ const UAGBBlockPositioning = {
 		const createStickyFiller = ( elementNode, elementDimensions, elementParent ) => {
 			const fillerElement = document.createElement( 'div' );
 			fillerElement.style.height = `${ elementDimensions.height }px`;
+			const elementStyles = window.getComputedStyle( elementNode );
 			// If the sticky element is not restricted to the parent container, then set the width and margin.
 			if ( ! elementParent ) {
 				fillerElement.style.width = `${ elementDimensions.width }px`;
-				fillerElement.style.marginTop = '0';
+				fillerElement.style.margin = elementStyles.getPropertyValue( 'margin' ) || 0;
 			// If the sticky element is restricted to the parent container, then set the maxWidth as was intended for the stuck element.
 			} else {
-				const elementStyles = window.getComputedStyle( elementNode );
 				fillerElement.style.width = '100%';
 				fillerElement.style.maxWidth = elementStyles.getPropertyValue( 'max-width' ) || `${ elementDimensions.width }px`;
 				fillerElement.style.padding = elementStyles.getPropertyValue( 'padding' ) || 0;

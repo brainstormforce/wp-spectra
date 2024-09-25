@@ -218,7 +218,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ### x.x.x ###
 * Improvement: Tabs - Enhanced accessibility in the tabs and improved the content accessibility.
 * Improvement: Global - Added a placeholder for inherited values in all spacing controls.
-* Fix: Container - Resolved an issue wherein the sticky container would not work as intended for the image gallery of the carousel type.
+* Fix: Container - Resolved an issue wherein the sticky container would not work as expected with the image gallery of the carousel type.
+* Fix: Container - Resolved an issue wherein sticky containers would not work as intended when margins were set for them.
 * Fix: Buttons - Resolved an issue wherein the button sizes would not work as expected in the editor responsive views.
 * Fix: Global - Resolved an issue wherein assets would not load for custom taxonomy templates when using Full Site Editing.
 * Fix: Global - Resolved an issue wherein the CSS would not load for Spectra blocks in custom templates for specific products using Full Site Editing.
