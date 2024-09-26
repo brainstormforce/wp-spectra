@@ -470,7 +470,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 						),
 						'dismissible'                => true,
 						'priority'                   => 20,
-						'display-with-other-notices' => true,
+						'display-with-other-notices' => false,
 					)
 				);
 			}

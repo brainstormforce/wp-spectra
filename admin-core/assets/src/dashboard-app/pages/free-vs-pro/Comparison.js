@@ -151,7 +151,7 @@ const Comparison = () => {
 	// Upgrade to Pro Card with Upgrade Button.
 	const SpectraProCard = () => {
 		return (
-			<div className="flex flex-col w-full items-center mt-6 gap-7 p-10 outline outline-1 outline-slate-200 rounded-md overflow-hidden shadow-sm bg-spectra-verylight 2xl:w-[1248px] md:w-auto sm:w-auto ">
+			<div className="flex flex-col w-full items-center mt-6 gap-7 p-10 outline outline-1 outline-slate-200 rounded-md overflow-hidden shadow-sm bg-spectra-verylight w-full ">
 				<div className="flex flex-col items-center gap-3 lg:pl-60 lg:pr-60 md:pl-20 md:pr-20 w-full">
 					<div className="text-2xl font-semibold text-slate-800 text-center">
 						{ __( 'Do More with Spectra Pro', 'ultimate-addons-for-gutenberg' ) }
@@ -222,7 +222,7 @@ const Comparison = () => {
 
 	return (
 		<>
-			<div className="flex flex-col items-center px-6 mx-auto lg:max-w-[78rem] gap-6 2xl:w-[1248px] md:w-auto sm:w-auto">
+			<div className="flex flex-col items-center px-6 mx-auto lg:max-w-[78rem] gap-6 w-full">
 				{ /* Outer Frame  */ }
 				<div className="flex w-full flex-col items-start mt-12 mb-6 md:flex-row md:items-center gap-4">
 					<section className="flex-1 font-semibold text-2xl font-inter text-slate-800">{ __( 'Spectra Free vs Pro', 'ultimate-addons-for-gutenberg' ) }</section>
@@ -237,7 +237,7 @@ const Comparison = () => {
 
 				{ /* Table  */ }
 
-				<div className="grid grid-cols-[1fr_auto_auto] rounded-lg outline outline-1 outline-slate-200 2xl:w-[1248px] md:w-auto sm:w-auto">
+				<div className="grid grid-cols-[1fr_auto_auto] rounded-lg outline outline-1 outline-slate-200 w-full">
 					
 					<FreeProComparisonHeader title="BLOCKS" />
 
@@ -270,28 +270,28 @@ const Comparison = () => {
 						/>
 					) ) }
 
-					<FeatureRow title="Modal Pro" />
+					<FeatureRow title="Modal" />
 					{ ModalProFeatures.map( ( feature, index ) => (
 						<FeatureRowWithIcons 
 							key={ index } featureName={ feature.feature } isFreeFeature={ feature.isFreeFeature } 
 						/>
 					) ) }
 
-					<FeatureRow title="Slider Pro" />
+					<FeatureRow title="Slider" />
 					{ SliderProFeatures.map( ( feature, index ) => (
 						<FeatureRowWithIcons 
 							key={ index } featureName={ feature.feature } isFreeFeature={ feature.isFreeFeature } 
 						/>
 					) ) }
 
-					<FeatureRow title="Countdown Timer Pro" />
+					<FeatureRow title="Countdown Timer" />
 					{ CountdownTimerProFeatures.map( ( feature, index ) => (
 						<FeatureRowWithIcons 
 							key={ index } featureName={ feature.feature } isFreeFeature={ feature.isFreeFeature } 
 						/>
 					) ) }
 
-					<FeatureRow title="Image Gallery Pro" />
+					<FeatureRow title="Image Gallery" />
 					{ ImageGalleryProFeatures.map( ( feature, index ) => (
 						<FeatureRowWithIcons 
 							key={ index } featureName={ feature.feature } isFreeFeature={ feature.isFreeFeature } 
@@ -299,7 +299,7 @@ const Comparison = () => {
 					) ) }
 				</div>
 
-				<div className="grid grid-cols-[1fr_auto_auto] rounded-lg outline outline-1 outline-slate-200 2xl:w-[1248px] md:w-auto sm:w-auto">
+				<div className="grid grid-cols-[1fr_auto_auto] rounded-lg outline outline-1 outline-slate-200 w-full">
 					
 					<FreeProComparisonHeader />
 
@@ -337,16 +337,6 @@ const Comparison = () => {
 
 				<SpectraProCard />
 
-			</div>
-			<div className="flex flex-col items-center justify-center mt-6 mb-[-80px] md:mb-0">
-				<footer className="flex items-center justify-between pt-10 pb-0 px-6 w-full">
-					<div className="w-fit font-normal text-[10px] text-slate-400 leading-5">
-						{ __( 'Thank you for using Spectra', 'ultimate-addons-for-gutenberg' ) }
-					</div>
-					<div className="w-fit font-normal text-[10px] text-right text-slate-400 leading-5">
-						Version { uag_react?.plugin_ver }
-					</div>
-				</footer>
 			</div>
 		</>
 	);
