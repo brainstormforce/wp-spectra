@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.6  
-**Stable tag:** 2.15.3  
+**Stable tag:** 2.16.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### x.x.x ###
+### 2.16.0 - Thursday, 3rd October 2024 ###
 * Improvement: Tabs - Enhanced accessibility in the tabs and improved the content accessibility.
 * Improvement: Global - Added a placeholder for inherited values in all spacing controls.
 * Fix: Container - Resolved an issue wherein the sticky container would not work as expected with the image gallery of the carousel type.

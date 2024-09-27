@@ -418,7 +418,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		 * This static method determines if assets should be excluded based on the given CPT and
 		 * any additional exclusions provided via a filter.
 		 *
-		 * @since x.x.x
+		 * @since 2.16.0
 		 * @param mixed $post_type The post type to check. Can be a string representing the CPT or a boolean.
 		 * @return bool True if assets should be excluded for the given CPT, false otherwise.
 		 */

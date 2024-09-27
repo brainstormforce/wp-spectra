@@ -496,7 +496,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Enqueue the needed CSS/JS for the plugin / popup page.
 		 *
-		 * @since x.x.x
+		 * @since 2.16.0
 		 * @return void
 		 */
 		public function notice_styles_scripts_upgrade_pro() {

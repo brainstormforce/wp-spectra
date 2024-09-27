@@ -224,7 +224,6 @@ class Sidebar_Configurations {
 			'top_p'             => 1,
 			'frequency_penalty' => 0.8,
 			'presence_penalty'  => 1,
-			'model'             => 'gpt-4o-mini',
 			'messages'          => $messages,
 		);
 
