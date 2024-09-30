@@ -24,6 +24,7 @@ export default function save( props ) {
 		fromParentIcon,
 		imageSizeChild,
 		imgTagHeight,
+		relString,
 	} = attributes;
 
 	const defaultedAlt = image && image?.alt ? image?.alt : '';
@@ -56,7 +57,7 @@ export default function save( props ) {
 				<a
 					target={ targetVal }
 					aria-label={ label.replace( /(<([^>]+)>)/gi, '' ) }
-					rel="noopener noreferrer"
+					rel={ relString }
 					href={ linkUrl }
 				>
 					{ ' ' }

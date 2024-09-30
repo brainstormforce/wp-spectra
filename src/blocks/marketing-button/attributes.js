@@ -710,6 +710,14 @@ const attributes = {
 			styleType: 'desc-letter-spacing-type',
 		},
 	},
+	relAttribute:{
+		type: 'array',
+		default: [ ],
+	},
+	relString: {
+		type: 'string',
+		default: '',
+	},
 };
 
 export default attributes;

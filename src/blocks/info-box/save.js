@@ -42,6 +42,7 @@ export default function save( props ) {
 		blockRightMarginMobile,
 		blockTopMarginMobile,
 		htmlTag,
+		relString,
 		enableMultilineParagraph,
 	} = attributes;
 
@@ -202,7 +203,7 @@ export default function save( props ) {
 					className={ 'uagb-infobox-link-wrap uagb-infbox__link-to-all' }
 					target={ target }
 					aria-label={ 'Infobox Link' }
-					rel="noopener noreferrer"
+					rel={ relString }
 					onClick={ linkClick }
 				></a>
 			) }

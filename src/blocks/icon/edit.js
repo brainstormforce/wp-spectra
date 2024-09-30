@@ -17,11 +17,12 @@ import addInitialAttr from '@Controls/addInitialAttr';
 const UAGBIcon = ( props ) => {
 	const {
 		attributes,
-		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob },
+		attributes: { UAGHideDesktop, UAGHideTab, UAGHideMob, relAttribute },
 		isSelected,
 		name,
 		deviceType,
 		clientId,
+		setAttributes,
 	} = props;
 
 	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
@@ -33,6 +34,10 @@ const UAGBIcon = ( props ) => {
 	useEffect( () => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
+
+	useEffect( () => {
+		setAttributes( { relString: relAttribute.join( ' ' ) } );
+	}, [relAttribute] )
 
 	return (
 		<>

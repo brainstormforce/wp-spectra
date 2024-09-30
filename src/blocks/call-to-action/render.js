@@ -23,6 +23,7 @@ const Render = ( props ) => {
 		ctaType,
 		enabledSecondCtaButton,
 		htmlTag,
+		relString,
 	} = attributes;
 
 	const CustomTag = htmlTag || 'div';
@@ -71,7 +72,7 @@ const Render = ( props ) => {
 					<a
 						href="/"
 						className="uagb-cta__link-to-all"
-						rel="noopener noreferrer"
+						rel={ relString }
 						onClick={ ( e ) => e.preventDefault() }
 					>
 						{ ' ' }

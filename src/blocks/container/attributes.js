@@ -35,6 +35,13 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	relAttribute: {
+		type: 'array',
+	},
+	relString: {
+		type: 'string',
+		default: 'noopener',
+	},
 	contentWidth: {
 		type: 'string',
 		default: 'alignfull',

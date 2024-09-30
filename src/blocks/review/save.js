@@ -36,6 +36,7 @@ export default function save( props ) {
 		ctaLink,
 		imgTagHeight,
 		imgTagWidth,
+		relString,
 	} = attributes;
 
 	const newAverage = parts.map( ( i ) => i.value ).reduce( ( total, v ) => total + v ) / parts.length;
@@ -78,7 +79,6 @@ export default function save( props ) {
 		);
 	}
 
-	const rel = 'noopener noreferrer';
 	let target = '';
 	if ( ctaTarget ) {
 		target = '_blank';
@@ -94,7 +94,7 @@ export default function save( props ) {
 					href={ ctaLink }
 					className={ classnames( 'uagb-rating-link-wrapper' ) }
 					target={ target }
-					rel={ rel }
+					rel={ relString }
 				>
 					<RichText.Content value={ rTitle } className="uagb-rating-title" tagName={ headingTag } />
 				</a>

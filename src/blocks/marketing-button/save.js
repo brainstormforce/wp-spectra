@@ -22,6 +22,7 @@ export default function save( props ) {
 		linkTarget,
 		titleTag,
 		showDescription,
+		relString,
 		inheritFromTheme,
 		buttonType
 	} = attributes;
@@ -62,7 +63,7 @@ export default function save( props ) {
 				href={ link }
 				className={ marketingBtnClass }
 				target={ target }
-				rel="noopener noreferrer"
+				rel={ relString }
 				style={ borderStyle }
 			>
 				{ 'before' === iconPosition && (

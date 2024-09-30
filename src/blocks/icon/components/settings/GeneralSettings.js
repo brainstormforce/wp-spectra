@@ -10,6 +10,7 @@ import UAGTextControl from '@Components/text-control';
 import { Icon, ToggleControl } from '@wordpress/components';
 import ResponsiveSlider from '@Components/responsive-slider';
 import MultiButtonsControl from '@Components/multi-buttons-control';
+import UAGMultiSelectControl from '@Components/multi-select-control';
 import { iconPresets } from '../../presets';
 import renderSVG from '@Controls/renderIcon';
 import Range from '@Components/range/Range.js';
@@ -34,6 +35,7 @@ const GeneralSettings = ( props ) => {
 		disableLink,
 		iconAccessabilityMode,
 		iconAccessabilityDesc,
+		relAttribute,
 	} = attributes;
 	return (
 		<>
@@ -186,6 +188,64 @@ const GeneralSettings = ( props ) => {
 							label={ __( 'Open in New Tab', 'ultimate-addons-for-gutenberg' ) }
 							checked={ target }
 							onChange={ () => setAttributes( { target: ! target } ) }
+						/>
+						<UAGMultiSelectControl
+							label={ __( 'Rel Attribute', 'ultimate-addons-for-gutenberg' ) }
+							options={ [
+								{
+									value: 'nofollow',
+									label: __( 'nofollow', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'noopener',
+									label: __( 'noopener', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'noreferrer',
+									label: __( 'noreferrer', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'external',
+									label: __( 'external', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'alternate',
+									label: __( 'alternate', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'author',
+									label: __( 'author', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'bookmark',
+									label: __( 'bookmark', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'license',
+									label: __( 'license', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'next',
+									label: __( 'next', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'prev',
+									label: __( 'prev', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'tag',
+									label: __( 'tag', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'stylesheet',
+									label: __( 'stylesheet', 'ultimate-addons-for-gutenberg' ),
+								},
+							] }
+							data={ {
+								value: relAttribute,
+								label: 'relAttribute',
+							} }
+							setAttributes={ setAttributes }
 						/>
 					</>
 				) }

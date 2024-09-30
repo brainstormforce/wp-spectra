@@ -21,7 +21,7 @@ const ButtonsChildComponent = ( props ) => {
 		isSelected,
 		clientId,
 		attributes,
-		attributes: { borderStyle, borderWidth, borderRadius, borderHColor, borderColor, label, globalBlockStyleId },
+		attributes: { borderStyle, borderWidth, borderRadius, borderHColor, borderColor, label, globalBlockStyleId, relAttribute, noFollow },
 		setAttributes,
 		name,
 		deviceType,
@@ -39,6 +39,14 @@ const ButtonsChildComponent = ( props ) => {
 	
 	// Including condition in props for child component.
 	props = { ...props, labelHasDynamicContent };
+
+	useEffect( () => {
+		if ( noFollow && !relAttribute ) {
+            setAttributes( { relString: 'nofollow noopener' } );
+		} else if ( relAttribute && Array.isArray( relAttribute ) ) {
+		    setAttributes( { relString: relAttribute.join( ' ' ) } );
+		}
+	}, [ relAttribute, noFollow ] );
 
 	useEffect( () => {
 

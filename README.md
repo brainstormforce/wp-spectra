@@ -217,6 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ### x.x.x ###
 * Improvement: Global - Added responsive support for gradient background settings.
+* Improvement: Global - Added rel attribute support for anchor tag elements.
 * Fix: Global - Resolved an issue wherein the custom CSS would get special characters converted to unicode.
 * Fix: Global - Resolved an issue wherein the translated setting panels in some Spectra blocks would cause some Spectra Pro features in those blocks to not work as expected.
 * Fix: Container - Resolved an issue wherein the Core Image block's alignment would not work as expected when inside a Container.

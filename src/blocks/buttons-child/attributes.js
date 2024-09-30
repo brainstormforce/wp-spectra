@@ -522,6 +522,13 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	relAttribute: {
+		type: 'array',
+	},
+	relString: {
+		type: 'string',
+		default: 'follow noopener',
+	},
 	icon: {
 		type: 'string',
 		default: 'arrow-right',

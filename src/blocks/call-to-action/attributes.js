@@ -456,6 +456,22 @@ const attributes = {
 		type: 'string',
 		default: '#',
 	},
+	relAttribute:{
+		type: 'array',
+		default: [ 'noopener', 'noreferrer' ],
+	},
+	relString: {
+		type: 'string',
+		default: 'noopener noreferrer',
+	},
+	secRelAttribute:{
+		type: 'array',
+		default: [ 'noopener', 'noreferrer' ],
+	},
+	secRelString: {
+		type: 'string',
+		default: 'noopener noreferrer',
+	},
 	ctaFontSize: {
 		type: 'number',
 		isGBSStyle: true,

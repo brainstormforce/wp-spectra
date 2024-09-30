@@ -22,6 +22,7 @@ export default function save( props ) {
 		imgPosition,
 		imgTagHeight,
 		imgTagWidth,
+		relString,
 	} = attributes;
 
 	let urlCheck = '';
@@ -64,7 +65,7 @@ export default function save( props ) {
 			{ 'text' === urlType && (
 				<>
 					{ '' !== url ? (
-						<a href={ url } target={ target } className="uagb-step-link" rel="noopener noreferrer">
+						<a href={ url } target={ target } className="uagb-step-link" rel={ relString }>
 							<span className="uagb-step-link-text">{ urlText }</span>
 						</a>
 					) : (
@@ -83,7 +84,7 @@ export default function save( props ) {
 							href={ url }
 							target={ target }
 							className="uagb-step-link-all"
-							rel="noopener noreferrer"
+							rel={ relString }
 						></a>
 					) }
 					<div className={ `uagb-step-image-content-wrap uag-image-position-${ imgPosition }` }>
