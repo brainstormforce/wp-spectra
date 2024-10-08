@@ -378,7 +378,13 @@ class UAGB_Post_Assets {
 				$tag_slug = 'tag-' . $archive_object->slug;
 				return in_array( $tag_slug, $template_type_slug ) ? $tag_slug : ( in_array( 'tag', $template_type_slug ) ? 'tag' : 'archive' );
 			} elseif ( is_tax() ) {
-				return in_array( 'taxonomy-' . $archive_object->taxonomy, $template_type_slug ) ? 'taxonomy-' . $archive_object->taxonomy : 'archive';
+				$tax_slug          = 'taxonomy-' . $archive_object->taxonomy;
+				$specific_tax_slug = 'taxonomy-' . $archive_object->taxonomy . '-' . $archive_object->slug;
+				if ( in_array( $specific_tax_slug, $template_type_slug ) ) { // For more specific custom taxonomy template.
+					$this->prepare_assets_for_templates_based_post_type( $specific_tax_slug );
+				}
+				// For all custom taxonomy archive or more archive taxonomy template.
+				return in_array( $tax_slug, $template_type_slug ) ? $tax_slug : 'archive';
 			}
 		} elseif ( is_date() && in_array( 'date', $template_type_slug ) ) { // For date archive template.
 			return 'date';

@@ -470,7 +470,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 						),
 						'dismissible'                => true,
 						'priority'                   => 20,
-						'display-with-other-notices' => false,
+						'display-with-other-notices' => true,
+						'class'                      => 'spectra-upsell',
 					)
 				);
 			}
