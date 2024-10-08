@@ -46,20 +46,31 @@ const Comparison = () => {
 	);
 
 	// This function creates a FeatureRow component with a title and an optional badge
-	const FeatureRow = ( { title, badge = false } ) => (
+	const FeatureRow = ( { title, badge = false, tooltip = '' } ) => (
 		<div className="col-span-3 flex items-start w-full bg-spectra-verylight">
 			<div className="items-start px-8 py-[13px] border-b flex w-full">
 				<div className="w-full flex items-center gap-3">
 					<div className="relative flex items-center gap-1">
-						<div className="font-medium text-slate-800 text-base tracking-normal leading-8  ">
+						<div className="font-medium text-slate-800 text-base tracking-normal leading-8">
 							{ title }
 						</div>
-						{ badge && <Badge /> }
+						{ badge && (
+							<div className="relative group">
+								<Badge />
+								{ tooltip && (
+									<div className="absolute opacity-0 group-hover:opacity-100 bg-gray-700 text-white text-xs rounded py-1 px-2 z-10 whitespace-nowrap transform -translate-x-[40%] -top-12 left-1/2 transition-all pointer-events-none">
+										{ tooltip }
+									</div>
+								) }
+							</div>
+						) }
 					</div>
 				</div>
 			</div>
 		</div>
 	);
+		
+	
 
 	// Generates row of feature with item with check or cross mark icon.
 	const FeatureRowWithIcons = ( { featureName, isFreeFeature } ) => {
@@ -176,9 +187,9 @@ const Comparison = () => {
 	};
 
 	// This function creates a badge component with a default text of 'New'.
-	const Badge = ( { text = 'New' } ) => {
+	const Badge = ( { text = 'Beta' } ) => {
 		return (
-			<div className="absolute top-0 right-[-45px] inline-flex items-start gap-2 pt-[2px] pl-[5px] pb-[3px] pr-[6px] bg-spectra-light rounded">
+			<div className="absolute -top-5 right-[-45px] inline-flex items-start gap-2 pt-[2px] pl-[5px] pb-[3px] pr-[6px] bg-spectra-light rounded cursor-default">
 				<div className="w-fit font-medium text-spectra text-xs tracking-normal leading-3 ">
 					{ text }
 				</div>
@@ -311,14 +322,14 @@ const Comparison = () => {
 					) ) }
 
 					
-					<FeatureRow title="Global Block Styles" badge="true" />
+					<FeatureRow title="Global Block Styles" badge="true" tooltip="Available only for the 8 Spectra core blocks" />
 					{ GlobalBlockStylesFeatures.map( ( feature, index ) => (
 						<FeatureRowWithIcons 
 							key={ index } featureName={ feature.feature } isFreeFeature={ feature.isFreeFeature } 
 						/>
 					) ) }
 
-					<FeatureRow title="Advanced Animations" badge="true" />
+					<FeatureRow title="Advanced Animations" />
 					{ AdvancedAnimationsFeatures.map( ( feature, index ) => (
 						<FeatureRowWithIcons 
 							key={ index } featureName={ feature.feature } isFreeFeature={ feature.isFreeFeature } 

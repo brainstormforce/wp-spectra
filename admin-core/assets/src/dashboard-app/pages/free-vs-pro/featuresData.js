@@ -73,7 +73,7 @@ export const DynamicContentFeatures = [
 ];
 
 export const GlobalBlockStylesFeatures = [
-  { feature: 'Uniform styling across your entire site with Spectra blocks', isFreeFeature: false },
+  { feature: 'Uniform styling across your entire site with Spectra core blocks', isFreeFeature: false },
   { feature: 'Create and manage multiple styles for different block contexts', isFreeFeature: false },
   { feature: 'Apply global styles effortlessly, ensuring consistency', isFreeFeature: false },
   { feature: 'Unlink specific blocks for unique customizations', isFreeFeature: false }

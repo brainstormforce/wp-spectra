@@ -113,7 +113,7 @@ const Welcome = () => {
 											<li className="flex items-center mb-3">{renderchecks()}<span className="ml-2 leading-[18px]">{__( 'Advanced Popup Builder', 'ultimate-addons-for-gutenberg' )}</span></li>
 											<li className="flex items-center mb-3">{renderchecks()}<span className="ml-2 leading-[18px]">{__( 'Loop Builder', 'ultimate-addons-for-gutenberg' )}</span></li>
 											<li className="flex items-center mb-3">{renderchecks()}<span className="ml-2 leading-[18px]">{__( 'Instagram Feed Block', 'ultimate-addons-for-gutenberg' )}</span></li>
-											<li className="flex items-center mb-3">{renderchecks()}<span className="ml-2 leading-[18px]">{__( 'Global Block Styles', 'ultimate-addons-for-gutenberg' )}</span></li>
+
 											<li className="flex items-center mb-3">{renderchecks()}<span className="ml-2 leading-[18px]">{__( 'Advanced Animations', 'ultimate-addons-for-gutenberg' )}</span></li>
 								</ul>
 								<div className="flex justify-center">
