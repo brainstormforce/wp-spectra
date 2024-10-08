@@ -9,12 +9,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-09-27T11:36:47+00:00\n"
+"POT-Creation-Date: 2024-10-08T06:29:45+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.9.0\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
 
 #. Plugin Name of the plugin
+#: ultimate-addons-for-gutenberg.php
 #: admin-core/inc/admin-menu.php:147
 #: admin-core/inc/admin-menu.php:148
 #: admin-core/inc/admin-menu.php:159
@@ -28,14 +29,17 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
+#: ultimate-addons-for-gutenberg.php
 msgid "https://www.brainstormforce.com"
 msgstr ""
 
 #. Description of the plugin
+#: ultimate-addons-for-gutenberg.php
 msgid "The Spectra extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster."
 msgstr ""
 
 #. Author of the plugin
+#: ultimate-addons-for-gutenberg.php
 msgid "Brainstorm Force"
 msgstr ""
 
@@ -266,7 +270,7 @@ msgstr ""
 msgid "Taxonomy Not Available."
 msgstr ""
 
-#: blocks-config/taxonomy-list/class-uagb-taxonomy-list.php:708
+#: blocks-config/taxonomy-list/class-uagb-taxonomy-list.php:709
 #: includes/blocks/forms-select/block.php:15
 msgid "Select"
 msgstr ""
@@ -8700,7 +8704,7 @@ msgid "The Zip AI Middleware encountered an error."
 msgstr ""
 
 #. translators: %1$s: HTML link start tag, %2$s: HTML link end tag.
-#: lib/zip-ai/classes/admin-configurations.php:507
+#: lib/zip-ai/classes/admin-configurations.php:513
 msgid "Thank you for using %1$sZip AI.%2$s"
 msgstr ""
 
