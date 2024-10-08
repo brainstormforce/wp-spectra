@@ -19,6 +19,7 @@ const UAGBBlockPositioning = {
 		const createStickyFiller = ( elementNode, elementDimensions, elementParent ) => {
 			const fillerElement = document.createElement( 'div' );
 			fillerElement.style.height = `${ elementDimensions.height }px`;
+			fillerElement.style.boxSizing = 'border-box';
 			const elementStyles = window.getComputedStyle( elementNode );
 			// If the sticky element is not restricted to the parent container, then set the width and margin.
 			if ( ! elementParent ) {
