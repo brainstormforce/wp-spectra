@@ -94,13 +94,8 @@ class UAGB_Visibility {
 	 * @since 2.8.0
 	 */
 	public function enqueue_asset_files() {
-
-		// Get the current post type.
-		$screen    = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
-		$post_type = isset( $screen->post_type ) ? $screen->post_type : '';
-		
 		// Check if assets should be excluded for the current post type.
-		if ( UAGB_Admin_Helper::should_exclude_assets_for_cpt( $post_type ) ) {
+		if ( UAGB_Admin_Helper::should_exclude_assets_for_cpt() ) {
 			return; // Early return to prevent loading assets.
 		}
 
