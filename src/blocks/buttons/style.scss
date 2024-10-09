@@ -11,54 +11,90 @@
 	}
 
 	&.uagb-btn__small-btn .uagb-buttons-repeater {
-		padding: 5px 10px;
+		&.wp-block-button__link:not(.is-style-outline),
+		&.ast-outline-button {
+			padding: 5px 10px;
+		}
 	}
 
 	&.uagb-btn__medium-btn .uagb-buttons-repeater {
-		padding: 12px 24px;
+		&.wp-block-button__link:not(.is-style-outline),
+		&.ast-outline-button {
+			padding: 12px 24px;
+		}
 	}
 
 	&.uagb-btn__large-btn .uagb-buttons-repeater {
-		padding: 20px 30px;
+		&.wp-block-button__link:not(.is-style-outline),
+		&.ast-outline-button {
+			padding: 20px 30px;
+		}
 	}
 
 	&.uagb-btn__extralarge-btn .uagb-buttons-repeater {
-		padding: 30px 65px;
+		&.wp-block-button__link:not(.is-style-outline),
+		&.ast-outline-button {
+			padding: 30px 65px;
+		}
 	}
 
 	@media ( max-width: 976px ) {
 		&.uagb-btn-tablet__small-btn .uagb-buttons-repeater {
-			padding: 5px 10px;
+			&.wp-block-button__link:not(.is-style-outline),
+			&.ast-outline-button {
+				padding: 5px 10px;
+			}
 		}
 
 		&.uagb-btn-tablet__medium-btn .uagb-buttons-repeater {
-			padding: 12px 24px;
+			&.wp-block-button__link:not(.is-style-outline),
+			&.ast-outline-button {
+				padding: 12px 24px;
+			}
 		}
 
 		&.uagb-btn-tablet__large-btn .uagb-buttons-repeater {
-			padding: 20px 30px;
+			&.wp-block-button__link:not(.is-style-outline),
+			&.ast-outline-button {
+				padding: 20px 30px;
+			}
 		}
 
 		&.uagb-btn-tablet__extralarge-btn .uagb-buttons-repeater {
-			padding: 30px 65px;
+			&.wp-block-button__link:not(.is-style-outline),
+			&.ast-outline-button {
+				padding: 30px 65px;
+			}
 		}
 	}
 
 	@media ( max-width: 767px ) {
 		&.uagb-btn-mobile__small-btn .uagb-buttons-repeater {
-			padding: 5px 10px;
+			&.wp-block-button__link:not(.is-style-outline),
+			&.ast-outline-button {
+				padding: 5px 10px;
+			}
 		}
 
 		&.uagb-btn-mobile__medium-btn .uagb-buttons-repeater {
-			padding: 12px 24px;
+			&.wp-block-button__link:not(.is-style-outline),
+			&.ast-outline-button {
+				padding: 12px 24px;
+			}
 		}
 
 		&.uagb-btn-mobile__large-btn .uagb-buttons-repeater {
-			padding: 20px 30px;
+			&.wp-block-button__link:not(.is-style-outline),
+			&.ast-outline-button {
+				padding: 20px 30px;
+			}
 		}
 
 		&.uagb-btn-mobile__extralarge-btn .uagb-buttons-repeater {
-			padding: 30px 65px;
+			&.wp-block-button__link:not(.is-style-outline),
+			&.ast-outline-button {
+				padding: 30px 65px;
+			}
 		}
 	}
 }
