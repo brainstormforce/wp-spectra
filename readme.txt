@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= 2.16.0 - Tuesday, 8th October 2024 =
+= 2.16.0 - Wednesday, 9th October 2024 =
 * Improvement: Tabs - Enhanced accessibility in the tabs and improved the content accessibility.
 * Improvement: Global - Added a placeholder for inherited values in all spacing controls.
 * Fix: Container - Resolved an issue wherein the sticky container would not work as expected with the image gallery of the carousel type.
