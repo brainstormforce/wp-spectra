@@ -29,6 +29,10 @@
 		padding-left: 4px;
 	}
 
+	input[type="number"].uagb-spacing-control__number::placeholder {
+		color: #aaa;
+	}
+
 	input[type="number"].uagb-spacing-control__number:focus {
 		z-index: 1;
 		outline-offset: -1px;

@@ -272,7 +272,7 @@
 .uag-menu-page-wrapper {
 	font-family: Inter, sans-serif;
 
-	p {
+	p:not(.no-line-height) {
 		font-size: 14px;
 		line-height: 22.4px;
 	}
@@ -410,7 +410,7 @@
 
 	&__settings {
 
-		& > section:last-child {
+		& > section:last-child:not(.not-last-child) {
 			border-bottom: none;
 		}
 	}

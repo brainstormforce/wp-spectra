@@ -36,7 +36,7 @@ if ( ! class_exists( 'UAGB_Block_Module' ) ) {
 		/**
 		 * Block Assets
 		 *
-		 * @var block_assets
+		 * @var array<mixed> block_assets
 		 */
 		public static $block_assets = null;
 

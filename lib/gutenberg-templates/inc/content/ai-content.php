@@ -111,6 +111,7 @@ class Ai_Content {
 			'block_type' => isset( $_POST['block_type'] ) ? sanitize_text_field( $_POST['block_type'] ) : 'block',
 			'is_last_category' => isset( $_POST['is_last_category'] ) ? filter_var( $_POST['is_last_category'], FILTER_VALIDATE_BOOLEAN ) : false,
 			'language_slug' => $language,
+			'language_name' => isset( $details['language']['name'] ) ? sanitize_text_field( $details['language']['name'] ) : '',
 		);
 
 		$category_content = get_option( 'ast-templates-ai-content', array() );

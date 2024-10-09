@@ -6,8 +6,7 @@ const setInitialState = ( store ) => {
     } ).then( ( data ) => {
         const initialState = {
             initialStateSetFlag : true,
-            activeBlocksFilterTab : 'all',
-            activeSettingsNavigationTab : 'global-settings',
+			activeSettingsNavigationTab: 'license',
 			settingsSavedNotification: '',
             blocksStatuses : data.blocks_activation_and_deactivation,
             enableFileGeneration : data.enable_file_generation,

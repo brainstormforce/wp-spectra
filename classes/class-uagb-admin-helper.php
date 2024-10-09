@@ -413,6 +413,57 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		}
 
 		/**
+		 * Checks if assets should be excluded for a given Custom Post Type (CPT).
+		 *
+		 * This static method determines if assets should be excluded based on the given CPT and
+		 * any additional exclusions provided via a filter.
+		 *
+		 * @since 2.16.0
+		 * @return bool True if assets should be excluded for the given CPT, false otherwise.
+		 */
+		public static function should_exclude_assets_for_cpt() {
+			// Define the default CPTs to always exclude.
+			$default_excluded_cpts = array( 'sureforms_form' );
+
+			// Get the filtered CPT(s) that should not load assets.
+			$filtered_excluded_cpts = apply_filters( 'exclude_uagb_assets_for_cpts', array() );
+
+			// If the filtered value is not an array, set it to an empty array.
+			if ( ! is_array( $filtered_excluded_cpts ) ) {
+				$filtered_excluded_cpts = array();
+			}
+
+			// Merge default and filtered excluded CPTs.
+			$excluded_cpts = array_merge( $default_excluded_cpts, $filtered_excluded_cpts );
+
+			// Pass the excluded CPTs to the 'ast_block_templates_exclude_post_types' filter.
+			add_filter(
+				'ast_block_templates_exclude_post_types',
+				function() use ( $excluded_cpts ) {
+					return $excluded_cpts;
+				}
+			);
+
+			// Initialize post type variable.
+			$post_type = '';
+
+			// Check if we're in the admin/editor context.
+			if ( is_admin() ) {
+				// Get the current screen and retrieve the post type.
+				$screen    = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+				$post_type = ( $screen instanceof WP_Screen ) ? $screen->post_type : ''; // Admin: use WP_Screen.
+			} else {
+				// On frontend: get the post type from the queried object.
+				$queried_object = get_queried_object();
+				$post_type      = ( $queried_object instanceof WP_Post ) ? get_post_type( $queried_object ) : ''; // Frontend: use WP_Post.
+			}
+
+			// Return true if the post type matches any in the excluded CPTs list.
+			return in_array( $post_type, $excluded_cpts );
+		}
+
+
+		/**
 		 * Get Global Content Width
 		 *
 		 * @since 2.0.0

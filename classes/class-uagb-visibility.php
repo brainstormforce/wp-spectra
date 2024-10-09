@@ -94,6 +94,10 @@ class UAGB_Visibility {
 	 * @since 2.8.0
 	 */
 	public function enqueue_asset_files() {
+		// Check if assets should be excluded for the current post type.
+		if ( UAGB_Admin_Helper::should_exclude_assets_for_cpt() ) {
+			return; // Early return to prevent loading assets.
+		}
 
 		$current_page_id    = get_the_ID();
 		$visibility_page_id = intval( UAGB_Admin_Helper::get_admin_settings_option( 'uag_visibility_page', false ) );

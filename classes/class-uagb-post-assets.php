@@ -281,7 +281,14 @@ class UAGB_Post_Assets {
 
 				// Check if the current page is a product page.
 				case is_product():
-					return 'single-product';
+					// Retrieve the queried object.
+					$object = get_queried_object();
+					// Get all block templates.
+					$template_types = get_block_templates();
+					// Extract the 'slug' column from the block templates array.
+					$template_type_slug = array_column( $template_types, 'slug' );
+					// Check specific single product template exist or not. If not then use default single product template. 
+					return ( $object instanceof WP_Post && in_array( 'single-product-' . $object->post_name, $template_type_slug ) ) ? 'single-product-' . $object->post_name : 'single-product';
 
 				// Check if the current page is an archive page.
 				case is_archive():
@@ -370,6 +377,14 @@ class UAGB_Post_Assets {
 			} elseif ( is_tag() ) { // For tag archive or more specific tag template.
 				$tag_slug = 'tag-' . $archive_object->slug;
 				return in_array( $tag_slug, $template_type_slug ) ? $tag_slug : ( in_array( 'tag', $template_type_slug ) ? 'tag' : 'archive' );
+			} elseif ( is_tax() ) {
+				$tax_slug          = 'taxonomy-' . $archive_object->taxonomy;
+				$specific_tax_slug = 'taxonomy-' . $archive_object->taxonomy . '-' . $archive_object->slug;
+				if ( in_array( $specific_tax_slug, $template_type_slug ) ) { // For more specific custom taxonomy template.
+					$this->prepare_assets_for_templates_based_post_type( $specific_tax_slug );
+				}
+				// For all custom taxonomy archive or more archive taxonomy template.
+				return in_array( $tax_slug, $template_type_slug ) ? $tax_slug : 'archive';
 			}
 		} elseif ( is_date() && in_array( 'date', $template_type_slug ) ) { // For date archive template.
 			return 'date';
@@ -702,6 +717,10 @@ class UAGB_Post_Assets {
 	 * @since 1.23.0
 	 */
 	public function enqueue_scripts() {
+		if ( UAGB_Admin_Helper::should_exclude_assets_for_cpt() ) {
+			return; // Early return to prevent loading assets.
+		}
+		
 		$blocks = array();
 		if ( UAGB_Admin_Helper::is_block_theme() ) {
 			global $_wp_current_template_content;

@@ -1,3 +1,10 @@
+1.2.2 - 8th October 2024
+- Excluded assets from loading via Spectra for SureForms CPTs.
+
+1.2.1 - 27th September 2024
+- Improvement: Hid the chat textbox interface when the user is not authorized.
+- Improvement: Removed the GPT model parameter for real-time model updates from the middleware.
+
 1.2.0 - 26th July 2024
 - Improvement: Switched from the GPT 3.5 Turbo modal to the 4o Mini modal.
 
