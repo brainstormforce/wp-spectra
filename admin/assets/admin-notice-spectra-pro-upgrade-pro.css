@@ -1,0 +1,41 @@
+#uagb-spectra-pro-popup-note .astra-notice-container {
+	align-items: flex-start;
+}
+
+#uagb-spectra-pro-popup-note.notice {
+	display: block;
+	border: 1px solid #6105ff;
+	border-top-color: #fff;
+	border-bottom-color: #fff;
+	border-right-color: #fff;
+	border-left-width: 4px;
+	box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.32);
+}
+
+#uagb-spectra-pro-popup-note a.uagb-review-notice.button-primary {
+	background: #6105ff;
+	border-color: #6105ff;
+}
+
+#uagb-spectra-pro-popup-note a.uagb-review-notice.button-primary:hover {
+	background: #5300e0;
+}
+
+.notice-dismiss {
+	color: #fff;
+}
+
+a.spectra-plugins-go-pro {
+	color: #6104ff;
+	text-shadow: 1px 1px 1px #eee;
+	font-weight: bold;
+}
+
+a.spectra-plugins-go-pro:hover {
+	color: #5300e0;
+}
+
+.astra-notice-wrapper:not( .spectra-upsell ),
+.notice:not( .spectra-upsell ) { /* Hide all other notices apart from upsell. */
+	display: none;
+}

@@ -10,8 +10,10 @@ module.exports = {
 		extend: {
 			colors: {
 				spectra: {
-					DEFAULT: '#6104FF',
-					hover: '#5300E0',
+					DEFAULT: '#6104ff',
+					hover: '#5300e0',
+					light: '#ece1fe',
+					verylight: '#f5f0ff'
 				},
 			},
 			fontFamily: {

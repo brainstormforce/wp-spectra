@@ -224,7 +224,6 @@ class Sidebar_Configurations {
 			'top_p'             => 1,
 			'frequency_penalty' => 0.8,
 			'presence_penalty'  => 1,
-			'model'             => 'gpt-4o-mini',
 			'messages'          => $messages,
 		);
 
@@ -291,6 +290,12 @@ class Sidebar_Configurations {
 	 * @since 1.0.0
 	 */
 	public function load_sidebar_assets() {
+
+		if ( class_exists( '\UAGB_Admin_Helper' ) && method_exists( '\UAGB_Admin_Helper', 'should_exclude_assets_for_cpt' ) ) {
+			if ( \UAGB_Admin_Helper::should_exclude_assets_for_cpt() ) {
+				return; // Early return to prevent loading assets.
+			}
+		}
 		// If the admin bar is not visible, we don't want to load the sidebar assets.
 		if ( ! is_admin_bar_showing() ) {
 			return;
@@ -393,6 +398,12 @@ class Sidebar_Configurations {
 	 * @return void
 	 */
 	public function add_admin_trigger( $admin_bar ) {
+		if ( class_exists( '\UAGB_Admin_Helper' ) && method_exists( '\UAGB_Admin_Helper', 'should_exclude_assets_for_cpt' ) ) {
+			if ( \UAGB_Admin_Helper::should_exclude_assets_for_cpt() ) {
+				return; // Early return to prevent loading assets.
+			}
+		}
+
 		$args = array(
 			'id'     => 'zip-ai-assistant',
 			'title'  => '<span class="ab-icon" aria-hidden="true" style="margin: 0">
@@ -411,6 +422,13 @@ class Sidebar_Configurations {
 	 * @return void
 	 */
 	public static function render_sidebar_markup() {
+
+		if ( class_exists( '\UAGB_Admin_Helper' ) && method_exists( '\UAGB_Admin_Helper', 'should_exclude_assets_for_cpt' ) ) {
+			if ( \UAGB_Admin_Helper::should_exclude_assets_for_cpt() ) {
+				return; // Early return to prevent loading assets.
+			}
+		}
+
 		// If the adminbar is visible on this screen, render the admin trigger.
 		if ( is_admin_bar_showing() ) {
 			?>

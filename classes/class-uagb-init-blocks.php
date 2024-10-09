@@ -604,6 +604,10 @@ class UAGB_Init_Blocks {
 	 * @since 1.0.0
 	 */
 	public function editor_assets() {
+		// Check if assets should be excluded for the current post type.
+		if ( UAGB_Admin_Helper::should_exclude_assets_for_cpt() ) {
+			return; // Early return to prevent loading assets.
+		}
 
 		$uagb_ajax_nonce = wp_create_nonce( 'uagb_ajax_nonce' );
 

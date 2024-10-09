@@ -8,9 +8,11 @@ body .wp-block-uagb-container.uagb-position__sticky {
 /* The Sticky Position Stuck Class. */
 body .wp-block-uagb-container.uagb-position__sticky--stuck {
 	position: fixed;
+	margin: 0 !important; /* Margins should not exist on the sticky element. They are applied to the filler element. */
 }
 
 /* The Sticky Position Restricted Class. */
 body .wp-block-uagb-container.uagb-position__sticky--restricted {
 	position: absolute;
+	margin: 0 !important; /* Margins should not exist on the sticky element. They are applied to the filler element. */
 }

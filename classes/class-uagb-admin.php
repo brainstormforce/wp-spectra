@@ -48,6 +48,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			add_action( 'admin_notices', array( $this, 'register_notices' ) );
 			add_filter( 'wp_kses_allowed_html', array( $this, 'add_data_attributes' ), 10, 2 );
 			add_action( 'admin_enqueue_scripts', array( $this, 'notice_styles_scripts' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'notice_styles_scripts_upgrade_pro' ) );
 			add_filter( 'rank_math/researches/toc_plugins', array( $this, 'toc_plugin' ) );
 			add_action( 'admin_init', array( $this, 'activation_redirect' ) );
 			add_action( 'admin_init', array( $this, 'update_old_user_option_by_url_params' ) );
@@ -254,7 +255,10 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 * @since 1.8.0
 		 */
 		public function register_notices() {
-
+			// Check if assets should be excluded for the current post type.
+			if ( UAGB_Admin_Helper::should_exclude_assets_for_cpt() ) {
+				return; // Early return to prevent loading assets.
+			}
 			if ( ! current_user_can( 'manage_options' ) ) {
 				return;
 			}
@@ -421,6 +425,51 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 					);
 				}
 			}
+			$image_path = UAGB_URL . 'admin-core/assets/images/uag-logo.svg';
+
+			$installed_plugins = get_plugins();
+
+			$status = isset( $installed_plugins['spectra-pro/spectra-pro.php'] ) 
+					? ( is_plugin_active( 'spectra-pro/spectra-pro.php' ) 
+						? 'active' 
+						: 'inactive' ) 
+					: 'not-installed';
+
+			if ( 'not-installed' === $status && ! empty( $_GET ) && array_key_exists( 'post_type', $_GET ) && 'spectra-popup' === $_GET['post_type'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				Astra_Notices::add_notice(
+					array(
+						'id'                         => 'uagb-spectra-pro-popup-note',
+						'type'                       => '',
+						'message'                    => sprintf(
+							'<div class="notice-image">
+								<img src="%1$s" class="custom-logo" style="max-width: 40px;" alt="Spectra" itemprop="logo"></div>
+								<div class="notice-content">
+									<div class="notice-heading">
+										<strong>
+											%2$s
+										</strong>
+									</div>
+									%3$s<br />
+									<div class="astra-review-notice-container">
+										<a href="%4$s" class="not-astra-notice-close uagb-review-notice button-primary" target="_blank">
+										%5$s
+										</a>
+									
+									</div>
+								</div>',
+							$image_path,
+							__( 'Want to do more with Popup Builder?', 'ultimate-addons-for-gutenberg' ),
+							__( 'Maximize your popup potential with Spectra Pro. Unlock enhanced features, intuitive design options, and increased conversions!', 'ultimate-addons-for-gutenberg' ),
+							esc_url( 'https://wpspectra.com/pricing/?utm_source=popup-builder&utm_medium=free-plugin&utm_campaign=popup-builder-banner' ),
+							__( 'Upgrade Now', 'ultimate-addons-for-gutenberg' )
+						),
+						'dismissible'                => true,
+						'priority'                   => 20,
+						'display-with-other-notices' => true,
+						'class'                      => 'spectra-upsell',
+					)
+				);
+			}
 		}
 
 		/**
@@ -437,6 +486,38 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				// Add inline CSS to hide elements with the 'notice' class.
 				$custom_css = '.notice { display: none !important; }';
 				wp_add_inline_style( 'uag-admin-css', $custom_css );
+			}
+		}
+
+		/**
+		 * Enqueue the needed CSS/JS for the plugin / popup page.
+		 *
+		 * @since 2.16.0
+		 * @return void
+		 */
+		public function notice_styles_scripts_upgrade_pro() {
+			$screen = get_current_screen();
+
+			if ( $screen && ( 'plugins' === $screen->base || 'spectra-popup' === $screen->post_type ) ) {
+				wp_enqueue_style( 'uag-admin-spectra-pro-upgrade-pro-css', UAGB_URL . 'admin/assets/admin-notice-spectra-pro-upgrade-pro.css', array(), UAGB_VER );
+			}
+			// Redirect to Pro pricing page when click on Get Spectra Pro button.
+			if ( $screen && 'toplevel_page_spectra' === $screen->base ) {
+				?>
+					<script type="text/javascript">
+						document.addEventListener('DOMContentLoaded', function() {
+							let upgradeLink = document.querySelector('a[href$="&path=upgrade-now"]');
+							if (upgradeLink) {
+								upgradeLink.setAttribute('target', '_blank');
+								upgradeLink.setAttribute('rel', 'noreferrer');
+								upgradeLink.addEventListener('click', function(e) {
+									e.preventDefault();
+									window.open('https://wpspectra.com/pricing/?utm_source=dashboard&utm_medium=free-plugin&utm_campaign=setting', '_blank', 'noopener,noreferrer');
+								});
+							}
+						});
+					</script>
+				<?php
 			}
 		}
 
