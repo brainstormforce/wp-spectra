@@ -219,8 +219,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Global - Added responsive support for gradient background settings.
 * Improvement: Global - Added rel attribute support for anchor tag elements.
 * Fix: Container - Resolved an issue wherein the Core Image block's alignment would not work as expected when inside a Container.
-* Fix: Global - Resolved an issue wherein the custom CSS would get special characters converted to unicode.
+* Fix: Custom CSS - Resolved an issue wherein the custom CSS would get special characters converted to unicode.
 * Fix: Global - Resolved an issue wherein the translated setting panels in some Spectra blocks would cause some Spectra Pro features in those blocks to not work as expected.
+* Fix: Global - Resolved an issue causing a php error for str_replace() for font loading.
 * Fix: Global - Resolved an issue wherein the self-hosted Google Fonts would not work as intended on the multisite's first sub-site setup.
 
 = 2.16.0 - Wednesday, 9th October 2024 =
