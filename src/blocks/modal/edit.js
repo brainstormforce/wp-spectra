@@ -18,6 +18,7 @@ const UAGBModalEdit = ( props ) => {
 					  UAGHideTab, 
 					  UAGHideMob, 
 					  block_id, 
+					  relAttribute,
 					},
 		clientId,
 		setAttributes,
@@ -33,6 +34,10 @@ const UAGBModalEdit = ( props ) => {
 			setAttributes( { modalTrigger: 'button' } )
 		}
 	}, [ ] );
+
+	useEffect( () => {
+		setAttributes( { relString: relAttribute.join( ' ' ) } );
+	}, [relAttribute] )
 
 	useEffect( () => {
 		// Replacement for componentDidUpdate.

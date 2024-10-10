@@ -13,6 +13,7 @@ import ResponsiveBorder from '@Components/responsive-border';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
+import UAGMultiSelectControl from '@Components/multi-select-control';
 import UAGTextControl from '@Components/text-control';
 import { Icon, ToggleControl } from '@wordpress/components';
 import renderCustomIcon from '@Controls/renderCustomIcon';
@@ -188,9 +189,15 @@ const Settings = ( props ) => {
 		gradientOverlayColor1,
 		gradientOverlayColor2,
 		gradientOverlayLocation1,
+		gradientOverlayLocationTablet1,
+		gradientOverlayLocationMobile1,
 		gradientOverlayLocation2,
+		gradientOverlayLocationTablet2,
+		gradientOverlayLocationMobile2,
 		gradientOverlayType,
 		gradientOverlayAngle,
+		gradientOverlayAngleTablet,
+		gradientOverlayAngleMobile,
 		selectOverlayGradient,
 		backgroundOverlayColor,
 		backgroundSizeOverlayDesktop,
@@ -252,13 +259,20 @@ const Settings = ( props ) => {
 		gradientColor1,
 		gradientColor2,
 		gradientLocation1,
+		gradientLocationTablet1,
+		gradientLocationMobile1,
 		gradientLocation2,
+		gradientLocationTablet2,
+		gradientLocationMobile2,
 		gradientType,
 		gradientAngle,
+		gradientAngleTablet,
+		gradientAngleMobile,
 		selectGradient,
 		backgroundVideoFallbackImage,
 		layout,
 		linkTarget,
+		relAttribute,
 	} = attributes;
 
 	const isPro = uagb_blocks_info.spectra_pro_status;
@@ -778,6 +792,64 @@ const Settings = ( props ) => {
 							/>
 						) )
 					)}
+					<UAGMultiSelectControl
+							label={ __( 'Rel Attribute', 'ultimate-addons-for-gutenberg' ) }
+							options={ [
+								{
+									value: 'nofollow',
+									label: __( 'nofollow', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'noopener',
+									label: __( 'noopener', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'noreferrer',
+									label: __( 'noreferrer', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'external',
+									label: __( 'external', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'alternate',
+									label: __( 'alternate', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'author',
+									label: __( 'author', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'bookmark',
+									label: __( 'bookmark', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'license',
+									label: __( 'license', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'next',
+									label: __( 'next', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'prev',
+									label: __( 'prev', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'tag',
+									label: __( 'tag', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'stylesheet',
+									label: __( 'stylesheet', 'ultimate-addons-for-gutenberg' ),
+								},
+							] }
+							data={ {
+								value: relAttribute,
+								label: 'relAttribute',
+							} }
+							setAttributes={ setAttributes }
+						/>
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
 						label={ __( 'Overflow', 'ultimate-addons-for-gutenberg' ) }
@@ -983,17 +1055,49 @@ const Settings = ( props ) => {
 						value: gradientLocation1,
 						label: 'gradientLocation1',
 					} }
+					backgroundGradientLocationTablet1={ {
+						value: gradientLocationTablet1,
+						label: 'gradientLocationTablet1',
+					} }
+					backgroundGradientLocationMobile1={ {
+						value: gradientLocationMobile1,
+						label: 'gradientLocationMobile1',
+					} }
 					backgroundOverlayGradientLocation1 = { {
 						value: gradientOverlayLocation1,
 						label: 'gradientOverlayLocation1',
+					} }
+					backgroundOverlayGradientLocationTablet1 = { {
+						value: gradientOverlayLocationTablet1,
+						label: 'gradientOverlayLocationTablet1',
+					} }
+					backgroundOverlayGradientLocationMobile1 = { {
+						value: gradientOverlayLocationMobile1,
+						label: 'gradientOverlayLocationMobile1',
 					} }
 					backgroundGradientLocation2={ {
 						value: gradientLocation2,
 						label: 'gradientLocation2',
 					} }
+					backgroundGradientLocationTablet2={ {
+						value: gradientLocationTablet2,
+						label: 'gradientLocationTablet2',
+					} }
+					backgroundGradientLocationMobile2={ {
+						value: gradientLocationMobile2,
+						label: 'gradientLocationMobile2',
+					} }
 					backgroundOverlayGradientLocation2 = { {
 						value: gradientOverlayLocation2,
 						label: 'gradientOverlayLocation2',
+					} }
+					backgroundOverlayGradientLocationTablet2 = { {
+						value: gradientOverlayLocationTablet2,
+						label: 'gradientOverlayLocationTablet2',
+					} }
+					backgroundOverlayGradientLocationMobile2 = { {
+						value: gradientOverlayLocationMobile2,
+						label: 'gradientOverlayLocationMobile2',
 					} }
 					backgroundGradientType={ {
 						value: gradientType,
@@ -1007,9 +1111,25 @@ const Settings = ( props ) => {
 						value: gradientAngle,
 						label: 'gradientAngle',
 					} }
+					backgroundGradientAngleTablet={ {
+						value: gradientAngleTablet,
+						label: 'gradientAngleTablet',
+					} }
+					backgroundGradientAngleMobile={ {
+						value: gradientAngleMobile,
+						label: 'gradientAngleMobile',
+					} }
 					backgroundOverlayGradientAngle = { {
 						value: gradientOverlayAngle,
 						label: 'gradientOverlayAngle',
+					} }
+					backgroundOverlayGradientAngleTablet = { {
+						value: gradientOverlayAngleTablet,
+						label: 'gradientOverlayAngleTablet',
+					} }
+					backgroundOverlayGradientAngleMobile = { {
+						value: gradientOverlayAngleMobile,
+						label: 'gradientOverlayAngleMobile',
 					} }
 					backgroundImageColor={ {
 						value: backgroundImageColor,

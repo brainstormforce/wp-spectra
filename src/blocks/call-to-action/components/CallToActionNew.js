@@ -6,7 +6,6 @@ const CTA = ( props ) => {
 	const { attributes, setAttributes } = props;
 
 	let target = '_self';
-	const rel = 'noopener noreferrer';
 	if ( attributes.ctaTarget ) {
 		target = '_blank';
 	}
@@ -48,7 +47,7 @@ const CTA = ( props ) => {
 							'button' === attributes.ctaType ? buttonTypeClass : ''
 						) }
 						target={ target }
-						rel={ rel }
+						rel={ attributes.relString }
 						style={ borderStyle }
 						onClick={ preventDefaultFunc }
 					>
@@ -77,7 +76,7 @@ const CTA = ( props ) => {
 						'button' === attributes.ctaType ? buttonTypeClass : ''
 					) }
 					target={ target }
-					rel={ rel }
+					rel={ attributes.relString }
 					style={ borderStyle }
 					onClick={ preventDefaultFunc }
 				>

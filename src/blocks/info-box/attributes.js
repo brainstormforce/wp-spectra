@@ -760,6 +760,14 @@ const attributes = {
 		type: 'string',
 		default: '',
 	},
+	relAttribute: {
+		type: 'array',
+		default: [ 'noopener', 'noreferrer' ],
+	},
+	relString: {
+		type: 'string',
+		default: 'noopener noreferrer',
+	},
 	ctaLinkColor: {
 		type: 'string',
 		isGBSStyle: true,

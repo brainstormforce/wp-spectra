@@ -8,6 +8,7 @@ import UAGMediaPicker from '@Components/image';
 import SpacingControl from '@Components/spacing-control';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import UAGSelectControl from '@Components/select-control';
+import UAGMultiSelectControl from '@Components/multi-select-control';
 import { getImageSize } from '@Utils/Helpers';
 import renderSVG from '@Controls/renderIcon';
 import { ToggleControl, DateTimePicker, Icon } from '@wordpress/components';
@@ -47,6 +48,7 @@ const Settings = ( props ) => {
 		offerExpiry,
 		datepublish,
 		ctaLink,
+		relAttribute,
 		ctaTarget,
 		brand,
 		headingTag,
@@ -979,6 +981,60 @@ const Settings = ( props ) => {
 					checked={ ctaTarget }
 					onChange={ toggleTarget }
 				/>
+				<UAGMultiSelectControl
+							label={ __( 'Rel', 'ultimate-addons-for-gutenberg' ) }
+							options={ [
+								{
+									value: 'nofollow',
+									label: __( 'nofollow', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'noreferrer',
+									label: __( 'noreferrer', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'external',
+									label: __( 'external', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'alternate',
+									label: __( 'alternate', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'author',
+									label: __( 'author', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'bookmark',
+									label: __( 'bookmark', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'license',
+									label: __( 'license', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'next',
+									label: __( 'next', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'prev',
+									label: __( 'prev', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'tag',
+									label: __( 'tag', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'stylesheet',
+									label: __( 'stylesheet', 'ultimate-addons-for-gutenberg' ),
+								},
+							] }
+							data={ {
+								value: relAttribute,
+								label: 'relAttribute',
+							} }
+							setAttributes={ setAttributes }
+						/>
 			</UAGAdvancedPanelBody>
 		);
 	};

@@ -961,6 +961,18 @@ const attributes = {
 			styleType: 'column-gradient-location-1',
 		},
 	},
+	gradientLocationTablet1: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'column-gradient-location-tablet-1',
+		},
+	},
+	gradientLocationMobile1: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'column-gradient-location-mobile-1',
+		},
+	},
 	gradientLocation2: {
 		type: 'number',
 		UAGCopyPaste: {
@@ -968,12 +980,36 @@ const attributes = {
 		},
 		default: 100,
 	},
+	gradientLocationTablet2: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'column-gradient-location-tablet-2',
+		},
+	},
+	gradientLocationMobile2: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'column-gradient-location-mobile-2',
+		},
+	},
 	gradientAngle: {
 		type: 'number',
 		UAGCopyPaste: {
 			styleType: 'column-gradient-angle',
 		},
 		default: 0,
+	},
+	gradientAngleTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'column-gradient-angle-tablet',
+		},
+	},
+	gradientAngleMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'column-gradient-angle-mobile',
+		},
 	},
 	gradientPosition: {
 		type: 'string',

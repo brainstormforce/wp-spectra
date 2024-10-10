@@ -7,102 +7,117 @@ import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 function styling( attributes, clientId, name, deviceType ) {
-	const blockName = name.replace( 'uagb/', '' );
-	const previewType = deviceType.toLowerCase();
-	const {
-		titleSpace,
-		titleSpaceTablet,
-		titleSpaceMobile,
-		titleSpaceUnit,
-		//Icon
-		iconPosition,
-		iconSpace,
-		iconSpaceTablet,
-		iconSpaceMobile,
-		iconFontSize,
-		iconFontSizeType,
-		iconFontSizeMobile,
-		iconFontSizeTablet,
-		//Colors
-		titleColor,
-		titleHoverColor,
-		prefixColor,
-		prefixHoverColor,
-		iconColor,
-		iconHoverColor,
-		//Border
-		btnBorderHColor,
-		//Background
-		backgroundType,
-		backgroundColor,
-		backgroundHoverColor,
-		gradientColor1,
-		gradientColor2,
-		gradientLocation1,
-		gradientLocation2,
-		gradientType,
-		gradientAngle,
-		//Typography
-		titleFontFamily,
-		titleFontWeight,
-		titleFontSize,
-		titleFontSizeType,
-		titleFontSizeTablet,
-		titleFontSizeMobile,
-		titleLineHeightType,
-		titleLineHeight,
-		titleLineHeightTablet,
-		titleLineHeightMobile,
-		prefixFontFamily,
-		prefixFontWeight,
-		prefixFontSize,
-		prefixFontSizeType,
-		prefixFontSizeTablet,
-		prefixFontSizeMobile,
-		prefixLineHeightType,
-		prefixLineHeight,
-		prefixLineHeightTablet,
-		prefixLineHeightMobile,
-		paddingBtnUnit,
-		mobilePaddingBtnUnit,
-		tabletPaddingBtnUnit,
-		paddingBtnTop,
-		paddingBtnBottom,
-		paddingBtnLeft,
-		paddingBtnRight,
-		paddingBtnTopTablet,
-		paddingBtnRightTablet,
-		paddingBtnBottomTablet,
-		paddingBtnLeftTablet,
-		paddingBtnTopMobile,
-		paddingBtnRightMobile,
-		paddingBtnBottomMobile,
-		paddingBtnLeftMobile,
-		titleTransform,
-		titleDecoration,
-		prefixTransform,
-		prefixDecoration,
-		titleFontStyle,
-		prefixFontStyle,
-		// letter spacing
-		titleLetterSpacing,
-		titleLetterSpacingTablet,
-		titleLetterSpacingMobile,
-		titleLetterSpacingType,
-		prefixLetterSpacing,
-		prefixLetterSpacingTablet,
-		prefixLetterSpacingMobile,
-		prefixLetterSpacingType,
-		block_id,
-		inheritFromTheme,
-	} = attributes;
+    const blockName = name.replace( 'uagb/', '' );
+    const previewType = deviceType.toLowerCase();
+    const {
+        titleSpace,
+        titleSpaceTablet,
+        titleSpaceMobile,
+        titleSpaceUnit,
+        //Icon
+        iconPosition,
+        iconSpace,
+        iconSpaceTablet,
+        iconSpaceMobile,
+        iconFontSize,
+        iconFontSizeType,
+        iconFontSizeMobile,
+        iconFontSizeTablet,
+        //Colors
+        titleColor,
+        titleHoverColor,
+        prefixColor,
+        prefixHoverColor,
+        iconColor,
+        iconHoverColor,
+        //Border
+        btnBorderHColor,
+        //Background
+        backgroundType,
+        backgroundColor,
+        backgroundHoverColor,
+        gradientColor1,
+        gradientColor2,
+        gradientLocation1,
+        gradientLocationTablet1,
+        gradientLocationMobile1,
+        gradientLocation2,
+        gradientLocationTablet2,
+        gradientLocationMobile2,
+        gradientType,
+        gradientAngle,
+        gradientAngleTablet,
+        gradientAngleMobile,
+        //Typography
+        titleFontFamily,
+        titleFontWeight,
+        titleFontSize,
+        titleFontSizeType,
+        titleFontSizeTablet,
+        titleFontSizeMobile,
+        titleLineHeightType,
+        titleLineHeight,
+        titleLineHeightTablet,
+        titleLineHeightMobile,
+        prefixFontFamily,
+        prefixFontWeight,
+        prefixFontSize,
+        prefixFontSizeType,
+        prefixFontSizeTablet,
+        prefixFontSizeMobile,
+        prefixLineHeightType,
+        prefixLineHeight,
+        prefixLineHeightTablet,
+        prefixLineHeightMobile,
+        paddingBtnUnit,
+        mobilePaddingBtnUnit,
+        tabletPaddingBtnUnit,
+        paddingBtnTop,
+        paddingBtnBottom,
+        paddingBtnLeft,
+        paddingBtnRight,
+        paddingBtnTopTablet,
+        paddingBtnRightTablet,
+        paddingBtnBottomTablet,
+        paddingBtnLeftTablet,
+        paddingBtnTopMobile,
+        paddingBtnRightMobile,
+        paddingBtnBottomMobile,
+        paddingBtnLeftMobile,
+        titleTransform,
+        titleDecoration,
+        prefixTransform,
+        prefixDecoration,
+        titleFontStyle,
+        prefixFontStyle,
+        // letter spacing
+        titleLetterSpacing,
+        titleLetterSpacingTablet,
+        titleLetterSpacingMobile,
+        titleLetterSpacingType,
+        prefixLetterSpacing,
+        prefixLetterSpacingTablet,
+        prefixLetterSpacingMobile,
+        prefixLetterSpacingType,
+        block_id,
+        inheritFromTheme,
+    } = attributes;
 
-	const gradientLocation1Fallback = getFallbackNumber( gradientLocation1, 'gradientLocation1', blockName );
-	const gradientLocation2Fallback = getFallbackNumber( gradientLocation2, 'gradientLocation2', blockName );
-	const gradientAngleFallback = getFallbackNumber( gradientAngle, 'gradientAngle', blockName );
-	const iconSpaceFallback = getFallbackNumber( iconSpace, 'iconSpace', blockName );
-	const iconFontSizeFallback = getFallbackNumber( iconFontSize, 'iconFontSize', blockName );
-	const titleSpaceFallback = getFallbackNumber( titleSpace, 'titleSpace', blockName );
+    const gradientLocation1Fallback = getFallbackNumber( gradientLocation1, 'gradientLocation1', blockName );
+    const gradientLocation2Fallback = getFallbackNumber( gradientLocation2, 'gradientLocation2', blockName );
+    const gradientAngleFallback = getFallbackNumber( gradientAngle, 'gradientAngle', blockName );
+    const iconSpaceFallback = getFallbackNumber( iconSpace, 'iconSpace', blockName );
+    const iconFontSizeFallback = getFallbackNumber( iconFontSize, 'iconFontSize', blockName );
+    const titleSpaceFallback = getFallbackNumber( titleSpace, 'titleSpace', blockName );
+
+    const gradientLocationTablet1Fallback = gradientLocationTablet1 ? gradientLocationTablet1 : gradientLocation1Fallback;
+    const gradientLocationTablet2Fallback = gradientLocationTablet2 ? gradientLocationTablet2 : gradientLocation2Fallback;
+
+    const gradientLocationMobile1Fallback = gradientLocationMobile1 ? gradientLocationMobile1 : gradientLocationTablet1Fallback;
+    const gradientLocationMobile2Fallback = gradientLocationMobile2 ? gradientLocationMobile2 : gradientLocationTablet2Fallback;
+
+    const gradientAngleTabletFallback = gradientAngleTablet ? gradientAngleTablet : gradientAngleFallback;
+    const gradientAngleMobileFallback = gradientAngleMobile ? gradientAngleMobile : gradientAngleTabletFallback;
 
 	let selectors = {};
 	let tabletSelectors = {};
@@ -166,6 +181,23 @@ function styling( attributes, clientId, name, deviceType ) {
 
 	mobileSelectors[ ' svg' ][ marginType ] = generateCSSUnit( iconSpaceMobile, 'px' );
 
+	let linearGradient = '';
+		if ( deviceType === 'Desktop' ) {
+			linearGradient = `linear-gradient(${ gradientAngleFallback }deg, ${ gradientColor1 } ${ gradientLocation1Fallback }%, ${ gradientColor2 } ${ gradientLocation2Fallback }%)`;
+		} else if ( deviceType === 'Tablet' ) {
+			linearGradient = `linear-gradient(${ gradientAngleTabletFallback }deg, ${ gradientColor1 } ${ gradientLocationTablet1Fallback }%, ${ gradientColor2 } ${ gradientLocationTablet2Fallback }%)`;
+		} else if ( deviceType === 'Mobile' ) {
+			linearGradient = `linear-gradient(${ gradientAngleMobileFallback }deg, ${ gradientColor1 } ${ gradientLocationMobile1Fallback }%, ${ gradientColor2 } ${ gradientLocationMobile2Fallback }%)`;
+		}
+   let radialGradient = ''
+		if ( deviceType === 'Desktop' ) {
+			radialGradient = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocation1Fallback }%, ${ gradientColor2 } ${ gradientLocation2Fallback }%)`;
+		} else if ( deviceType === 'Tablet' ) {
+			radialGradient = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocationTablet1Fallback }%, ${ gradientColor2 } ${ gradientLocationTablet2Fallback }%)`;
+		} else if ( deviceType === 'Mobile' ) {
+			radialGradient = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocationMobile1Fallback }%, ${ gradientColor2 } ${ gradientLocationMobile2Fallback }%)`;
+		}
+
 	if( !inheritFromTheme ) {
 		if ( 'transparent' === backgroundType ) {
 			selectors[ ':not(.is-style-outline) .uagb-marketing-btn__link:not(.has-background)' ] = {
@@ -184,15 +216,14 @@ function styling( attributes, clientId, name, deviceType ) {
 			selectors[ ':not(.is-style-outline) .uagb-marketing-btn__link:not(.has-background)' ] = {
 				'background-color': 'transparent',
 			};
-	
 			if ( 'linear' === gradientType ) {
 				selectors[ ':not(.is-style-outline) .uagb-marketing-btn__link:not(.has-background)' ][
 					'background-image'
-				] = `linear-gradient(${ gradientAngleFallback }deg, ${ gradientColor1 } ${ gradientLocation1Fallback }%, ${ gradientColor2 } ${ gradientLocation2Fallback }%)`;
+				] = linearGradient;
 			} else {
 				selectors[ ':not(.is-style-outline) .uagb-marketing-btn__link:not(.has-background)' ][
 					'background-image'
-				] = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocation1Fallback }%, ${ gradientColor2 } ${ gradientLocation2Fallback }%)`;
+				] = radialGradient;
 			}
 		}
 		selectors = {

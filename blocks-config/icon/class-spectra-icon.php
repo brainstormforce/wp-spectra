@@ -380,6 +380,10 @@ if ( ! class_exists( 'Spectra_Icon' ) ) {
 								'type'    => 'string',
 								'default' => 'outset',
 							),
+							'relString'                  => array(
+								'type'    => 'string',
+								'default' => 'noopener noreferrer',
+							),
 						),
 						// Responsive Borders.
 						$icon_border_attributes
@@ -467,6 +471,7 @@ if ( ! class_exists( 'Spectra_Icon' ) ) {
 			$disableLink = isset( $attributes['disableLink'] ) ? $attributes['disableLink'] : false;
 			$linkUrl     = $disableLink ? $link : '#';
 			$targetVal   = $target ? '_blank' : '_self';
+			$rel         = $attributes['relString'] ? $attributes['relString'] : 'noopener';
 
 			ob_start();
 			$iconHtml = UAGB_Helper::render_svg_html( $iconSvg );
@@ -497,7 +502,7 @@ if ( ! class_exists( 'Spectra_Icon' ) ) {
 				// Wrap the SVG content with an anchor tag.
 				$iconHtml = preg_replace(
 					'/<svg(.*?)>(.*?)<\/svg>/s',
-					'<a rel="noopener noreferrer" href="' . esc_url( $linkUrl ) . '" target="' . esc_attr( $targetVal ) . '"><svg$1>$2</svg></a>',
+					'<a rel="' . $rel . '" href="' . esc_url( $linkUrl ) . '" target="' . esc_attr( $targetVal ) . '"><svg$1>$2</svg></a>',
 					$iconHtml
 				);
 				

@@ -1125,6 +1125,18 @@ const attributes = {
 			styleType: 'gradient-location-1',
 		},
 	},
+	gradientLocationTablet1: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'gradient-location-tablet-1',
+		},
+	},
+	gradientLocationMobile1: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'gradient-location-mobile-1',
+		},
+	},
 	gradientLocation2: {
 		type: 'number',
 		default: 100,
@@ -1132,11 +1144,35 @@ const attributes = {
 			styleType: 'gradient-location-2',
 		},
 	},
+	gradientLocationTablet2: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'gradient-location-tablet-2',
+		},
+	},
+	gradientLocationMobile2: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'gradient-location-mobile-2',
+		},
+	},
 	gradientAngle: {
 		type: 'number',
 		default: 0,
 		UAGCopyPaste: {
 			styleType: 'gradient-angle',
+		},
+	},
+	gradientAngleTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'gradient-angle-tablet',
+		},
+	},
+	gradientAngleMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'gradient-angle-mobile',
 		},
 	},
 	modalTriggerBgType: {
@@ -1152,6 +1188,14 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'btn-hbackground-type',
 		},
+	},
+	relAttribute:{
+		type: 'array',
+		default: [ 'noopener', 'noreferrer' ],
+	},
+	relString: {
+		type: 'string',
+		default: 'noopener noreferrer',
 	},
 };
 

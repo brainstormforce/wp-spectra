@@ -38,6 +38,8 @@ const UAGBContainer = ( props ) => {
 			backgroundType,
 			backgroundVideoOpacity,
 			isGridCssInParent,
+			relAttribute,
+			htmlTagLink,
 		},
 		clientId,
 		setAttributes,
@@ -46,6 +48,15 @@ const UAGBContainer = ( props ) => {
 		context,
 		hasDynamicContent
 	} = props;
+
+	useEffect( () => {
+		if ( htmlTagLink?.noFollow && !relAttribute ) {
+		  setAttributes( { relString: 'nofollow noopener' } );
+		} else if ( relAttribute && Array.isArray( relAttribute ) ) {
+		  setAttributes( { relString: relAttribute.join( ' ' ) } );
+		}
+	}, [ relAttribute, htmlTagLink?.noFollow ] );
+
 	const {
 		isParentOfSelectedBlock,
 		variations,

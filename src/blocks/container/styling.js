@@ -142,9 +142,15 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		gradientColor1,
 		gradientColor2,
 		gradientLocation1,
+		gradientLocationTablet1,
+		gradientLocationMobile1,
 		gradientLocation2,
+		gradientLocationTablet2,
+		gradientLocationMobile2,
 		gradientType,
 		gradientAngle,
+		gradientAngleTablet,
+		gradientAngleMobile,
 		selectGradient,
 
 		customPosition,
@@ -278,6 +284,15 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 
 	customOrderTablet = 'undefined' !== typeof customOrderTablet ? customOrderTablet : customOrderDesktop;
 	customOrderMobile = 'undefined' !== typeof customOrderMobile ? customOrderMobile : customOrderTablet;
+
+	// gradientLocationTablet1 = 'undefined' !== typeof gradientLocationTablet1 ? gradientLocationTablet1 : gradientLocation1;
+	// gradientLocationMobile1 = 'undefined' !== typeof gradientLocationMobile1 ? gradientLocationMobile1 : gradientLocationTablet1;
+
+	// gradientLocationTablet2 = 'undefined' !== typeof gradientLocationTablet2 ? gradientLocationTablet2 : gradientLocation2;
+	// gradientLocationMobile2 = 'undefined' !== typeof gradientLocationMobile2 ? gradientLocationMobile2 : gradientLocationTablet2;
+
+    // gradientAngleTablet = 'undefined' !== typeof gradientAngleTablet ? gradientAngleTablet : gradientAngle;
+	// gradientAngleMobile = 'undefined' !== typeof gradientAngleMobile ? gradientAngleMobile : gradientAngleTablet;
 
 	const innerLeftMarginDesktop = leftMarginDesktop;
 	const innerRightMarginDesktop = rightMarginDesktop;
@@ -418,10 +433,10 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			'gradientValue': gradientValue,
 			'gradientColor1': gradientColor1,
 			'gradientColor2': gradientColor2,
-			'gradientLocation1': gradientLocation1,
-			'gradientLocation2': gradientLocation2,
+			'gradientLocation1': gradientLocationTablet1,
+			'gradientLocation2': gradientLocationTablet2,
 			'gradientType': gradientType,
-			'gradientAngle': gradientAngle,
+			'gradientAngle': gradientAngleTablet,
 			'selectGradient': selectGradient,
 			'backgroundRepeat': backgroundRepeatTablet,
 			'backgroundPosition': backgroundPositionTablet,
@@ -450,10 +465,10 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			'gradientValue': gradientValue,
 			'gradientColor1': gradientColor1,
 			'gradientColor2': gradientColor2,
-			'gradientLocation1': gradientLocation1,
-			'gradientLocation2': gradientLocation2,
+			'gradientLocation1': gradientLocationMobile1,
+			'gradientLocation2': gradientLocationMobile2,
 			'gradientType': gradientType,
-			'gradientAngle': gradientAngle,
+			'gradientAngle': gradientAngleMobile,
 			'selectGradient': selectGradient,
 			'backgroundRepeat': backgroundRepeatMobile,
 			'backgroundPosition': backgroundPositionMobile,

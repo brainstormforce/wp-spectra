@@ -29,11 +29,18 @@ const UAGBMarketingButtonEdit = ( props ) => {
 			UAGHideDesktop,
 			UAGHideTab,
 			UAGHideMob,
+			relAttribute,
 		},
 		clientId,
 		name,
 		deviceType
 	} = props;
+
+	useEffect( () => {
+		if ( relAttribute && Array.isArray( relAttribute )  ) {
+			setAttributes( { relString: relAttribute.join( ' ' ) } );
+		}
+	}, [relAttribute] );
 
 	useEffect( () => {
 

@@ -12,6 +12,7 @@ import UAGIconPicker from '@Components/icon-picker';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import { getImageSize } from '@Utils/Helpers';
 import UAGSelectControl from '@Components/select-control';
+import UAGMultiSelectControl from '@Components/multi-select-control';
 import ResponsiveSlider from '@Components/responsive-slider';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
@@ -191,9 +192,15 @@ export default function Settings( props ) {
 		gradientColor1,
 		gradientColor2,
 		gradientLocation1,
+		gradientLocationTablet1,
+		gradientLocationMobile1,
 		gradientLocation2,
+		gradientLocationTablet2,
+		gradientLocationMobile2,
 		gradientType,
 		gradientAngle,
+		gradientAngleTablet,
+		gradientAngleMobile,
 		selectGradient,
 		backgroundCustomSizeDesktop,
 		backgroundCustomSizeTablet,
@@ -216,6 +223,7 @@ export default function Settings( props ) {
 		modalTriggerBgType,
 		modalTriggerBgHoverType,
 		openModalAs,
+		relAttribute,
 	} = attributes;
 
 	const currentTheme = uagb_blocks_info.current_theme;
@@ -313,12 +321,11 @@ export default function Settings( props ) {
 		{ label: __( 'Custom Class (Spectra Pro)', 'ultimate-addons-for-gutenberg' ), value: 'custom-class', disabled: ! isProActivated },
 		{ label: __( 'Custom ID (Spectra Pro)', 'ultimate-addons-for-gutenberg' ), value: 'custom-id', disabled: ! isProActivated },
 		{ label: __( 'Automatic (Spectra Pro)', 'ultimate-addons-for-gutenberg' ), value: 'automatic', disabled: ! isProActivated }
-	  ];
-	  
+	];
 
 	// This setting panel will only be open by default if Pro is not active.
 	const modalTriggerPanel = (
-		<UAGAdvancedPanelBody title={ __( 'Trigger', 'ultimate-addons-for-gutenberg' ) } initialOpen={ ! isPro }>
+		<UAGAdvancedPanelBody panelId={'trigger'} title={ __( 'Trigger', 'ultimate-addons-for-gutenberg' ) } initialOpen={ ! isPro }>
 			<UAGSelectControl
 				setAttributes={ setAttributes }
 				label={ __( 'Modal Trigger', 'ultimate-addons-for-gutenberg' ) }
@@ -327,6 +334,7 @@ export default function Settings( props ) {
 					label: 'modalTrigger',
 				} }
 				options={ freeAndProOptions }
+				panelId={'modal-trigger'}
 			/>
 			{ modalTrigger === 'icon' && (
 				<>
@@ -433,6 +441,7 @@ export default function Settings( props ) {
 				</>
 			) }
 			{ [ 'button', 'icon', 'text', 'image' ].includes( modalTrigger ) && (
+				<>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
@@ -454,6 +463,61 @@ export default function Settings( props ) {
 					showIcons={ true }
 					responsive={ true }
 				/>
+				<UAGMultiSelectControl
+							label={ __( 'Rel Attribute', 'ultimate-addons-for-gutenberg' ) }
+							options={ [
+								{
+									value: 'nofollow',
+									label: __( 'nofollow', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'noreferrer',
+									label: __( 'noreferrer', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'external',
+									label: __( 'external', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'alternate',
+									label: __( 'alternate', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'author',
+									label: __( 'author', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'bookmark',
+									label: __( 'bookmark', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'license',
+									label: __( 'license', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'next',
+									label: __( 'next', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'prev',
+									label: __( 'prev', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'tag',
+									label: __( 'tag', 'ultimate-addons-for-gutenberg' ),
+								},
+								{
+									value: 'stylesheet',
+									label: __( 'stylesheet', 'ultimate-addons-for-gutenberg' ),
+								},
+							] }
+							data={ {
+								value: relAttribute,
+								label: 'relAttribute',
+							} }
+							setAttributes={ setAttributes }
+						/>
+					</>
 			) }
 		</UAGAdvancedPanelBody>
 	);
@@ -620,7 +684,7 @@ export default function Settings( props ) {
 	);
 
 	const modalClosePanel = (
-		<UAGAdvancedPanelBody title={ __( 'Close Button', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+		<UAGAdvancedPanelBody panelId={'close-button'} title={ __( 'Close Button', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			<UAGIconPicker
 				label={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
 				value={ closeIcon }
@@ -634,6 +698,8 @@ export default function Settings( props ) {
 						label: 'closeIconPosition',
 					} }
 					setAttributes={ setAttributes }
+					
+					panelId={'icon-position'}
 				>
 					<option value='popup-top-left'>
 						{ __( 'Top Left', 'ultimate-addons-for-gutenberg' ) }
@@ -657,7 +723,7 @@ export default function Settings( props ) {
 	);
 
 	const triggerStylePanel = (
-		<UAGAdvancedPanelBody title={ __( 'Trigger', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
+		<UAGAdvancedPanelBody panelId={'trigger'} title={ __( 'Trigger', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 			{ 'icon' === modalTrigger && icon !== '' && (
 				<>
 					<Range
@@ -1297,7 +1363,7 @@ export default function Settings( props ) {
 	);
 
 	const closeStylePanel = (
-		<UAGAdvancedPanelBody title={ __( 'Close Button', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+		<UAGAdvancedPanelBody panelId={'close-button'} title={ __( 'Close Button', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			<Range
 				label={ __( 'Icon Size', 'ultimate-addons-for-gutenberg' ) }
 				setAttributes={ setAttributes }
@@ -1346,9 +1412,25 @@ export default function Settings( props ) {
 					value: gradientLocation1,
 					label: 'gradientLocation1',
 				} }
+				backgroundGradientLocationTablet1={ {
+					value: gradientLocationTablet1,
+					label: 'gradientLocationTablet1',
+				} }
+				backgroundGradientLocationMobile1={ {
+					value: gradientLocationMobile1,
+					label: 'gradientLocationMobile1',
+				} }
 				backgroundGradientLocation2={ {
 					value: gradientLocation2,
 					label: 'gradientLocation2',
+				} }
+				backgroundGradientLocationTablet2={ {
+					value: gradientLocationTablet2,
+					label: 'gradientLocationTablet2',
+				} }
+				backgroundGradientLocationMobile2={ {
+					value: gradientLocationMobile2,
+					label: 'gradientLocationMobile2',
 				} }
 				backgroundGradientType={ {
 					value: gradientType,
@@ -1357,6 +1439,14 @@ export default function Settings( props ) {
 				backgroundGradientAngle={ {
 					value: gradientAngle,
 					label: 'gradientAngle',
+				} }
+				backgroundGradientAngleTablet={ {
+					value: gradientAngleTablet,
+					label: 'gradientAngleTablet',
+				} }
+				backgroundGradientAngleMobile={ {
+					value: gradientAngleMobile,
+					label: 'gradientAngleMobile',
 				} }
 				backgroundImageColor={ {
 					value: backgroundImageColor,

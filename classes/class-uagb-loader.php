@@ -405,11 +405,17 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 * Activation Reset
 		 */
 		public function activation_reset() {
+			$has_activated_before = get_option( '__uagb_activated_before', false );
 
-			uagb_install()->create_files();
-
-			update_option( '__uagb_do_redirect', true );
-			update_option( '__uagb_asset_version', time() );
+			if ( ! $has_activated_before ) {
+				uagb_install()->create_files();
+		
+				update_option( '__uagb_do_redirect', true );
+				update_option( '__uagb_activated_before', true );
+				update_option( '__uagb_asset_version', time() );
+			} else {
+				update_option( '__uagb_do_redirect', false );
+			}
 		}
 
 		/**
@@ -440,21 +446,21 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 				require_once UAGB_DIR . 'compatibility/class-uagb-astra-compatibility.php';
 			}
 
-				register_meta(
-					'post',
-					'_uag_custom_page_level_css',
-					array(
-						'show_in_rest'      => true,
-						'type'              => 'string',
-						'single'            => true,
-						'auth_callback'     => function() {
-							return current_user_can( 'edit_posts' );
-						},
-						'sanitize_callback' => function( $meta_value ) {
-							return wp_kses_post( $meta_value );
-						},
-					)
-				);
+			register_meta(
+				'post',
+				'_uag_custom_page_level_css',
+				array(
+					'show_in_rest'      => true,
+					'type'              => 'string',
+					'single'            => true,
+					'auth_callback'     => function() {
+						return current_user_can( 'edit_posts' );
+					},
+					'sanitize_callback' => function( $meta_value ) {
+						return wp_slash( $meta_value );
+					},
+				)
+			);
 
 			// This class is loaded from blocks config.
 			UAGB_Popup_Builder::generate_scripts();

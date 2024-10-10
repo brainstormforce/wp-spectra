@@ -235,9 +235,37 @@ const attributes = {
 			styleType: 'btn-gradient-location-1',
 		},
 	},
+	gradientLocationTablet1: {
+		type: 'number',
+		isGBSStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-location-tablet-1',
+		},
+	},
+	gradientLocationMobile1: {
+		type: 'number',
+		isGBSStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-location-mobile-1',
+		},
+	},
 	gradientLocation2: {
 		type: 'number',
 		default: 100,
+		isGBSStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-location-2',
+		},
+	},
+	gradientLocationTablet2: {
+		type: 'number',
+		isGBSStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-location-2',
+		},
+	},
+	gradientLocationMobile2: {
+		type: 'number',
 		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-gradient-location-2',
@@ -249,6 +277,20 @@ const attributes = {
 		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-gradient-angle',
+		},
+	},
+	gradientAngleTablet: {
+		type: 'number',
+		isGBSStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-angle-tablet',
+		},
+	},
+	gradientAngleMobile: {
+		type: 'number',
+		isGBSStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-angle-mobile',
 		},
 	},
 	hovergradientValue: {
@@ -291,6 +333,22 @@ const attributes = {
 			styleType: 'btn-h-gradient-location-1',
 		},
 	},
+	hovergradientLocationTablet1: {
+		type: 'number',
+		default: 0,
+		isGBSStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-location-tablet-1',
+		},
+	},
+	hovergradientLocationMobile1: {
+		type: 'number',
+		default: 0,
+		isGBSStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-location-mobile-1',
+		},
+	},
 	hovergradientLocation2: {
 		type: 'number',
 		default: 100,
@@ -299,12 +357,44 @@ const attributes = {
 			styleType: 'btn-h-gradient-location-2',
 		},
 	},
+	hovergradientLocationTablet2: {
+		type: 'number',
+		default: 100,
+		isGBSStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-location-tablet-2',
+		},
+	},
+	hovergradientLocationMobile2: {
+		type: 'number',
+		default: 100,
+		isGBSStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-location-mobile-2',
+		},
+	},
 	hovergradientAngle: {
 		type: 'number',
 		default: 0,
 		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'btn-h-gradient-angle',
+		},
+	},
+	hovergradientAngleTablet: {
+		type: 'number',
+		default: 0,
+		isGBSStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-angle-tablet',
+		},
+	},
+	hovergradientAngleMobile: {
+		type: 'number',
+		default: 0,
+		isGBSStyle: true,
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-angle-mobile',
 		},
 	},
 	mobilePaddingUnit: {
@@ -431,6 +521,13 @@ const attributes = {
 	noFollow: {
 		type: 'boolean',
 		default: false,
+	},
+	relAttribute: {
+		type: 'array',
+	},
+	relString: {
+		type: 'string',
+		default: 'follow noopener',
 	},
 	icon: {
 		type: 'string',

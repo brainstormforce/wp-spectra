@@ -49,6 +49,7 @@ const Render = ( props ) => {
 		blockRightMarginMobile,
 		blockTopMarginMobile,
 		htmlTag,
+		relString,
 	} = attributes;
 	// Get icon/Image components.
 	let isImage = '';
@@ -191,7 +192,7 @@ const Render = ( props ) => {
 				<a // eslint-disable-line jsx-a11y/anchor-has-content
 					className={ 'uagb-infobox-link-wrap uagb-infbox__link-to-all' }
 					aria-label={ 'Infobox Link' }
-					rel="noopener noreferrer"
+					rel={ relString }
 					href="/"
 				></a>
 			) }

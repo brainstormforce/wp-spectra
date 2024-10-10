@@ -16,7 +16,7 @@ const InfoBoxCta = ( props ) => {
 	const CustomTag = inheritAstraSecondary ? 'div' : 'a';
 
 	let target = '_self';
-	const rel = 'noopener noreferrer';
+	const rel = attributes.relString;
 	if ( attributes.ctaTarget ) {
 		target = '_blank';
 	}

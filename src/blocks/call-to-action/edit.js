@@ -36,6 +36,8 @@ const UAGBCallToAction = ( props ) => {
 			ctaBorderhoverColor,
 			ctaBorderRadius,
 			globalBlockStyleId,
+			relAttribute,
+			secRelAttribute,
 			enableMultilineParagraph,
 			tempDesc,
 		},
@@ -43,6 +45,14 @@ const UAGBCallToAction = ( props ) => {
 		name,
 		deviceType
 	} = props;
+
+	useEffect( () => {
+		setAttributes( { relString: relAttribute.join( ' ' ) } );
+	}, [relAttribute] )
+
+	useEffect( () => {
+		setAttributes( { secRelString: secRelAttribute.join( ' ' ) } );
+	}, [secRelAttribute] )
 
 	useEffect( () => {
 		if ( stack === 'none' && ctaPosition === 'right' ) {

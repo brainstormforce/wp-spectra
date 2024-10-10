@@ -416,7 +416,23 @@ const Settings = ( props ) => {
 						value: gradientLocation1,
 						label: 'gradientLocation1',
 					} }
+					backgroundGradientLocationTablet1={ {
+						value: gradientLocation1,
+						label: 'gradientLocation1',
+					} }
+					backgroundGradientLocationMobile1={ {
+						value: gradientLocation1,
+						label: 'gradientLocation1',
+					} }
 					backgroundGradientLocation2={ {
+						value: gradientLocation2,
+						label: 'gradientLocation2',
+					} }
+					backgroundGradientLocationTablet2={ {
+						value: gradientLocation2,
+						label: 'gradientLocation2',
+					} }
+					backgroundGradientLocationMobile2={ {
 						value: gradientLocation2,
 						label: 'gradientLocation2',
 					} }
@@ -425,6 +441,14 @@ const Settings = ( props ) => {
 						label: 'gradientType',
 					} }
 					backgroundGradientAngle={ {
+						value: gradientAngle,
+						label: 'gradientAngle',
+					} }
+					backgroundGradientAngleTablet={ {
+						value: gradientAngle,
+						label: 'gradientAngle',
+					} }
+					backgroundGradientAngleMobile={ {
 						value: gradientAngle,
 						label: 'gradientAngle',
 					} }

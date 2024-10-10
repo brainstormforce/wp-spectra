@@ -19,11 +19,11 @@ const Render = ( props ) => {
 		icon,
 		iconPosition,
 		removeText,
-		noFollow,
 		showIcon,
 		block_id,
 		buttonType,
 		inheritFromTheme,
+		relString,
 	} = attributes;
 
 	let { label } = attributes;
@@ -68,7 +68,7 @@ const Render = ( props ) => {
 						setAttributes( { label: value } );
 					} }
 					className="uagb-button__link"
-					rel={ noFollow ? 'nofollow noopener' : 'follow noopener' }
+					rel={ relString }
 					keepPlaceholderOnFocus
 					allowedFormats={ btnAllowedFormats } // Removed the WP default link/bold/italic from the toolbar for button.
 				/>

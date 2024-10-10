@@ -821,7 +821,7 @@ const Settings = ( props ) => {
 	);
 
 	const lightboxSettings = () => (
-		<UAGAdvancedPanelBody title={ __( 'Lightbox', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+		<UAGAdvancedPanelBody panelId={'lightbox'} title={ __( 'Lightbox', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			<ToggleControl
 				label={ __( 'Preview Lightbox (Desktop)', 'ultimate-addons-for-gutenberg' ) }
 				checked={ 'Desktop' === deviceType ? lightboxPreview : false }
@@ -1375,7 +1375,7 @@ const Settings = ( props ) => {
 	);
 
 	const lightboxStyling = () => (
-		<UAGAdvancedPanelBody title={ __( 'Lightbox', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+		<UAGAdvancedPanelBody panelId={'lightbox'} title={ __( 'Lightbox', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 			{ ( lightboxDisplayCaptions || lightboxDisplayCount ) && (
 				<TypographyControl
 					label={ __( 'Typography', 'ultimate-addons-for-gutenberg' ) }

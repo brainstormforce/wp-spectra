@@ -563,7 +563,15 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'icon-box-shadow-position-hover'
 		},
-	}
+	},
+	relAttribute:{
+		type: 'array',
+		default: [ 'noopener', 'noreferrer' ],
+	},
+	relString: {
+		type: 'string',
+		default: 'noopener noreferrer'
+	},
 };
 
 export default attributes;

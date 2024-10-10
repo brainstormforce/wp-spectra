@@ -921,8 +921,14 @@ const Background = ( props ) => {
 										backgroundGradientColor1={ props.backgroundGradientColor1 }
 										backgroundGradientType={ props.backgroundGradientType }
 										backgroundGradientLocation1={ props.backgroundGradientLocation1 }
+										backgroundGradientLocationTablet1={ props.backgroundGradientLocationTablet1 }
+										backgroundGradientLocationMobile1={ props.backgroundGradientLocationMobile1 }
 										backgroundGradientLocation2={ props.backgroundGradientLocation2 }
+										backgroundGradientLocationTablet2={ props.backgroundGradientLocationTablet2 }
+										backgroundGradientLocationMobile2={ props.backgroundGradientLocationMobile2 }
 										backgroundGradientAngle={ props.backgroundGradientAngle }
+										backgroundGradientAngleTablet={ props.backgroundGradientAngleTablet }
+										backgroundGradientAngleMobile={ props.backgroundGradientAngleMobile }
 									/>
 								</div>
 								{ renderOverlayControls() }
@@ -963,17 +969,23 @@ const Background = ( props ) => {
 								{ gradientOverlay.value && 'gradient' === overlayType.value && (
 									<>
 										<div className="uag-background-image-overlay-gradient">
-											<GradientSettings
-												backgroundGradient={ props.backgroundGradient }
-												setAttributes={ setAttributes }
-												gradientType={ props.gradientType }
-												backgroundGradientColor2={ props.backgroundGradientColor2 }
-												backgroundGradientColor1={ props.backgroundGradientColor1 }
-												backgroundGradientType={ props.backgroundGradientType }
-												backgroundGradientLocation1={ props.backgroundGradientLocation1 }
-												backgroundGradientLocation2={ props.backgroundGradientLocation2 }
-												backgroundGradientAngle={ props.backgroundGradientAngle }
-											/>
+										<GradientSettings
+										backgroundGradient={ props.backgroundGradient }
+										setAttributes={ setAttributes }
+										gradientType={ props.gradientType }
+										backgroundGradientColor2={ props.backgroundGradientColor2 }
+										backgroundGradientColor1={ props.backgroundGradientColor1 }
+										backgroundGradientType={ props.backgroundGradientType }
+										backgroundGradientLocation1={ props.backgroundGradientLocation1 }
+										backgroundGradientLocationTablet1={ props.backgroundGradientLocationTablet1 }
+										backgroundGradientLocationMobile1={ props.backgroundGradientLocationMobile1 }
+										backgroundGradientLocation2={ props.backgroundGradientLocation2 }
+										backgroundGradientLocationTablet2={ props.backgroundGradientLocationTablet2 }
+										backgroundGradientLocationMobile2={ props.backgroundGradientLocationMobile2 }
+										backgroundGradientAngle={ props.backgroundGradientAngle }
+										backgroundGradientAngleTablet={ props.backgroundGradientAngleTablet }
+										backgroundGradientAngleMobile={ props.backgroundGradientAngleMobile }
+									/>
 										</div>
 										{ renderOverlayControls() }
 									</>
@@ -1469,17 +1481,23 @@ const Background = ( props ) => {
 								{ 'gradient' === overlayType.value && (
 									<>
 										<div className="uag-background-image-overlay-gradient">
-											<GradientSettings
-												backgroundGradient={ props.backgroundGradient }
-												setAttributes={ setAttributes }
-												gradientType={ props.gradientType }
-												backgroundGradientColor2={ props.backgroundGradientColor2 }
-												backgroundGradientColor1={ props.backgroundGradientColor1 }
-												backgroundGradientType={ props.backgroundGradientType }
-												backgroundGradientLocation1={ props.backgroundGradientLocation1 }
-												backgroundGradientLocation2={ props.backgroundGradientLocation2 }
-												backgroundGradientAngle={ props.backgroundGradientAngle }
-											/>
+										<GradientSettings
+										backgroundGradient={ props.backgroundGradient }
+										setAttributes={ setAttributes }
+										gradientType={ props.gradientType }
+										backgroundGradientColor2={ props.backgroundGradientColor2 }
+										backgroundGradientColor1={ props.backgroundGradientColor1 }
+										backgroundGradientType={ props.backgroundGradientType }
+										backgroundGradientLocation1={ props.backgroundGradientLocation1 }
+										backgroundGradientLocationTablet1={ props.backgroundGradientLocationTablet1 }
+										backgroundGradientLocationMobile1={ props.backgroundGradientLocationMobile1 }
+										backgroundGradientLocation2={ props.backgroundGradientLocation2 }
+										backgroundGradientLocationTablet2={ props.backgroundGradientLocationTablet2 }
+										backgroundGradientLocationMobile2={ props.backgroundGradientLocationMobile2 }
+										backgroundGradientAngle={ props.backgroundGradientAngle }
+										backgroundGradientAngleTablet={ props.backgroundGradientAngleTablet }
+										backgroundGradientAngleMobile={ props.backgroundGradientAngleMobile }
+									/>
 										</div>
 										{ renderOverlayControls() }
 									</>
@@ -1498,8 +1516,14 @@ const Background = ( props ) => {
 						backgroundGradientColor1={ props.backgroundGradientColor1 }
 						backgroundGradientType={ props.backgroundGradientType }
 						backgroundGradientLocation1={ props.backgroundGradientLocation1 }
+						backgroundGradientLocationTablet1={ props.backgroundGradientLocationTablet1 }
+						backgroundGradientLocationMobile1={ props.backgroundGradientLocationMobile1 }
 						backgroundGradientLocation2={ props.backgroundGradientLocation2 }
+						backgroundGradientLocationTablet2={ props.backgroundGradientLocationTablet2 }
+						backgroundGradientLocationMobile2={ props.backgroundGradientLocationMobile2 }
 						backgroundGradientAngle={ props.backgroundGradientAngle }
+						backgroundGradientAngleTablet={ props.backgroundGradientAngleTablet }
+						backgroundGradientAngleMobile={ props.backgroundGradientAngleMobile }
 					/>
 				</div>
 			) }
