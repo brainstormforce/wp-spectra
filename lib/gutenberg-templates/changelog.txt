@@ -1,3 +1,6 @@
+v.2.4.3 - 26-September-2024
+Fix: Content was not getting generated in the selected language.
+
 v.2.4.2 - 11-September-2024
 New: Introduced filter `ast_block_templates_exclude_post_types` to exclude asset loading for specified post types.
 Fix: Resolved CSS conflicts with the WordPress core list block.

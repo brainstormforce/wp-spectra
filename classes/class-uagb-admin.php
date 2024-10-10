@@ -255,13 +255,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 * @since 1.8.0
 		 */
 		public function register_notices() {
-
-
-			// Get the current post type.
-			$screen    = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
-			$post_type = isset( $screen->post_type ) ? $screen->post_type : '';
 			// Check if assets should be excluded for the current post type.
-			if ( UAGB_Admin_Helper::should_exclude_assets_for_cpt( $post_type ) ) {
+			if ( UAGB_Admin_Helper::should_exclude_assets_for_cpt() ) {
 				return; // Early return to prevent loading assets.
 			}
 			if ( ! current_user_can( 'manage_options' ) ) {
@@ -471,6 +466,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 						'dismissible'                => true,
 						'priority'                   => 20,
 						'display-with-other-notices' => true,
+						'class'                      => 'spectra-upsell',
 					)
 				);
 			}
@@ -496,7 +492,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Enqueue the needed CSS/JS for the plugin / popup page.
 		 *
-		 * @since x.x.x
+		 * @since 2.16.0
 		 * @return void
 		 */
 		public function notice_styles_scripts_upgrade_pro() {

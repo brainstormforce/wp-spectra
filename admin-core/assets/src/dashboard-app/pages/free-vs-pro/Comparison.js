@@ -46,20 +46,31 @@ const Comparison = () => {
 	);
 
 	// This function creates a FeatureRow component with a title and an optional badge
-	const FeatureRow = ( { title, badge = false } ) => (
+	const FeatureRow = ( { title, badge = false, tooltip = '' } ) => (
 		<div className="col-span-3 flex items-start w-full bg-spectra-verylight">
 			<div className="items-start px-8 py-[13px] border-b flex w-full">
 				<div className="w-full flex items-center gap-3">
 					<div className="relative flex items-center gap-1">
-						<div className="font-medium text-slate-800 text-base tracking-normal leading-8  ">
+						<div className="font-medium text-slate-800 text-base tracking-normal leading-8">
 							{ title }
 						</div>
-						{ badge && <Badge /> }
+						{ badge && (
+							<div className="relative group">
+								<Badge />
+								{ tooltip && (
+									<div className="absolute opacity-0 group-hover:opacity-100 bg-gray-700 text-white text-xs rounded py-1 px-2 z-10 whitespace-nowrap transform -translate-x-[40%] -top-12 left-1/2 transition-all pointer-events-none">
+										{ tooltip }
+									</div>
+								) }
+							</div>
+						) }
 					</div>
 				</div>
 			</div>
 		</div>
 	);
+		
+	
 
 	// Generates row of feature with item with check or cross mark icon.
 	const FeatureRowWithIcons = ( { featureName, isFreeFeature } ) => {
@@ -151,7 +162,7 @@ const Comparison = () => {
 	// Upgrade to Pro Card with Upgrade Button.
 	const SpectraProCard = () => {
 		return (
-			<div className="flex flex-col w-full items-center mt-6 gap-7 p-10 outline outline-1 outline-slate-200 rounded-md overflow-hidden shadow-sm bg-spectra-verylight 2xl:w-[1248px] md:w-auto sm:w-auto ">
+			<div className="flex flex-col w-full items-center mt-6 gap-7 p-10 outline outline-1 outline-slate-200 rounded-md overflow-hidden shadow-sm bg-spectra-verylight w-full ">
 				<div className="flex flex-col items-center gap-3 lg:pl-60 lg:pr-60 md:pl-20 md:pr-20 w-full">
 					<div className="text-2xl font-semibold text-slate-800 text-center">
 						{ __( 'Do More with Spectra Pro', 'ultimate-addons-for-gutenberg' ) }
@@ -176,9 +187,9 @@ const Comparison = () => {
 	};
 
 	// This function creates a badge component with a default text of 'New'.
-	const Badge = ( { text = 'New' } ) => {
+	const Badge = ( { text = 'Beta' } ) => {
 		return (
-			<div className="absolute top-0 right-[-45px] inline-flex items-start gap-2 pt-[2px] pl-[5px] pb-[3px] pr-[6px] bg-spectra-light rounded">
+			<div className="absolute -top-5 right-[-45px] inline-flex items-start gap-2 pt-[2px] pl-[5px] pb-[3px] pr-[6px] bg-spectra-light rounded cursor-default">
 				<div className="w-fit font-medium text-spectra text-xs tracking-normal leading-3 ">
 					{ text }
 				</div>
@@ -222,7 +233,7 @@ const Comparison = () => {
 
 	return (
 		<>
-			<div className="flex flex-col items-center px-6 mx-auto lg:max-w-[78rem] gap-6 2xl:w-[1248px] md:w-auto sm:w-auto">
+			<div className="flex flex-col items-center px-6 mx-auto lg:max-w-[78rem] gap-6 w-full">
 				{ /* Outer Frame  */ }
 				<div className="flex w-full flex-col items-start mt-12 mb-6 md:flex-row md:items-center gap-4">
 					<section className="flex-1 font-semibold text-2xl font-inter text-slate-800">{ __( 'Spectra Free vs Pro', 'ultimate-addons-for-gutenberg' ) }</section>
@@ -237,7 +248,7 @@ const Comparison = () => {
 
 				{ /* Table  */ }
 
-				<div className="grid grid-cols-[1fr_auto_auto] rounded-lg outline outline-1 outline-slate-200 2xl:w-[1248px] md:w-auto sm:w-auto">
+				<div className="grid grid-cols-[1fr_auto_auto] rounded-lg outline outline-1 outline-slate-200 w-full">
 					
 					<FreeProComparisonHeader title="BLOCKS" />
 
@@ -270,28 +281,28 @@ const Comparison = () => {
 						/>
 					) ) }
 
-					<FeatureRow title="Modal Pro" />
+					<FeatureRow title="Modal" />
 					{ ModalProFeatures.map( ( feature, index ) => (
 						<FeatureRowWithIcons 
 							key={ index } featureName={ feature.feature } isFreeFeature={ feature.isFreeFeature } 
 						/>
 					) ) }
 
-					<FeatureRow title="Slider Pro" />
+					<FeatureRow title="Slider" />
 					{ SliderProFeatures.map( ( feature, index ) => (
 						<FeatureRowWithIcons 
 							key={ index } featureName={ feature.feature } isFreeFeature={ feature.isFreeFeature } 
 						/>
 					) ) }
 
-					<FeatureRow title="Countdown Timer Pro" />
+					<FeatureRow title="Countdown Timer" />
 					{ CountdownTimerProFeatures.map( ( feature, index ) => (
 						<FeatureRowWithIcons 
 							key={ index } featureName={ feature.feature } isFreeFeature={ feature.isFreeFeature } 
 						/>
 					) ) }
 
-					<FeatureRow title="Image Gallery Pro" />
+					<FeatureRow title="Image Gallery" />
 					{ ImageGalleryProFeatures.map( ( feature, index ) => (
 						<FeatureRowWithIcons 
 							key={ index } featureName={ feature.feature } isFreeFeature={ feature.isFreeFeature } 
@@ -299,7 +310,7 @@ const Comparison = () => {
 					) ) }
 				</div>
 
-				<div className="grid grid-cols-[1fr_auto_auto] rounded-lg outline outline-1 outline-slate-200 2xl:w-[1248px] md:w-auto sm:w-auto">
+				<div className="grid grid-cols-[1fr_auto_auto] rounded-lg outline outline-1 outline-slate-200 w-full">
 					
 					<FreeProComparisonHeader />
 
@@ -311,14 +322,14 @@ const Comparison = () => {
 					) ) }
 
 					
-					<FeatureRow title="Global Block Styles" badge="true" />
+					<FeatureRow title="Global Block Styles" badge="true" tooltip="Available only for the 8 Spectra core blocks" />
 					{ GlobalBlockStylesFeatures.map( ( feature, index ) => (
 						<FeatureRowWithIcons 
 							key={ index } featureName={ feature.feature } isFreeFeature={ feature.isFreeFeature } 
 						/>
 					) ) }
 
-					<FeatureRow title="Advanced Animations" badge="true" />
+					<FeatureRow title="Advanced Animations" />
 					{ AdvancedAnimationsFeatures.map( ( feature, index ) => (
 						<FeatureRowWithIcons 
 							key={ index } featureName={ feature.feature } isFreeFeature={ feature.isFreeFeature } 
@@ -337,16 +348,6 @@ const Comparison = () => {
 
 				<SpectraProCard />
 
-			</div>
-			<div className="flex flex-col items-center justify-center mt-6 mb-[-80px] md:mb-0">
-				<footer className="flex items-center justify-between pt-10 pb-0 px-6 w-full">
-					<div className="w-fit font-normal text-[10px] text-slate-400 leading-5">
-						{ __( 'Thank you for using Spectra', 'ultimate-addons-for-gutenberg' ) }
-					</div>
-					<div className="w-fit font-normal text-[10px] text-right text-slate-400 leading-5">
-						Version { uag_react?.plugin_ver }
-					</div>
-				</footer>
 			</div>
 		</>
 	);

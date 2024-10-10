@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.6  
-**Stable tag:** 2.15.3  
+**Stable tag:** 2.16.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -218,18 +218,19 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ### x.x.x ###
 * Improvement: Global - Added responsive support for gradient background settings.
 * Improvement: Global - Added rel attribute support for anchor tag elements.
+* Fix: Container - Resolved an issue wherein the Core Image block's alignment would not work as expected when inside a Container.
 * Fix: Global - Resolved an issue wherein the custom CSS would get special characters converted to unicode.
 * Fix: Global - Resolved an issue wherein the translated setting panels in some Spectra blocks would cause some Spectra Pro features in those blocks to not work as expected.
-* Fix: Container - Resolved an issue wherein the Core Image block's alignment would not work as expected when inside a Container.
+* Fix: Global - Resolved an issue wherein the self-hosted Google Fonts would not work as intended on the multisite's first sub-site setup.
 
-### x.x.x ###
+### 2.16.0 - Wednesday, 9th October 2024 ###
 * Improvement: Tabs - Enhanced accessibility in the tabs and improved the content accessibility.
 * Improvement: Global - Added a placeholder for inherited values in all spacing controls.
-* Fix: Container - Resolved an issue wherein the sticky container would not work as intended for the image gallery of the carousel type.
+* Fix: Container - Resolved an issue wherein the sticky container would not work as expected with the image gallery of the carousel type.
+* Fix: Container - Resolved an issue wherein sticky containers would not work as intended when margins were set for them.
 * Fix: Buttons - Resolved an issue wherein the button sizes would not work as expected in the editor responsive views.
 * Fix: Global - Resolved an issue wherein assets would not load for custom taxonomy templates when using Full Site Editing.
 * Fix: Global - Resolved an issue wherein the CSS would not load for Spectra blocks in custom templates for specific products using Full Site Editing.
-* Fix: Global - Resolved an issue wherein the self-hosted Google Fonts would not work as intended on the multisite's first sub-site setup.
 
 ### 2.15.3 - Wednesday, 18th September 2024 ###
 * Fix: Global - Resolved an issue causing the editor to freeze when the Info box and Separator blocks were used in the sync pattern.

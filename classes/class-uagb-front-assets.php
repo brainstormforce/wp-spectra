@@ -108,6 +108,10 @@ class UAGB_Front_Assets {
 	 * @since 1.23.0
 	 */
 	public function enqueue_asset_files() {
+		// Check if assets should be excluded for the current post type.
+		if ( UAGB_Admin_Helper::should_exclude_assets_for_cpt() ) {
+			return; // Early return to prevent loading assets.
+		}
 
 		if ( $this->post_assets ) {
 			$this->post_assets->enqueue_scripts();

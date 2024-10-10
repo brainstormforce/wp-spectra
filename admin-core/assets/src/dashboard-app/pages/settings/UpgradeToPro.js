@@ -54,7 +54,7 @@ const UpgradeNotices = ( { title, description } ) => {
 	return (
 		<section className='not-last-child block border-b border-solid border-slate-200 px-12 py-8 justify-between'>
 			<div className='mr-16 w-full flex flex-col sm:flex-row sm:items-center'>
-				<h3 className="p-0 flex-1 justify-right inline-flex text-xl leading-8 font-semibold text-slate-800">
+				<h3 className="p-0 flex-1 justify-right inline-flex text-xl leading-8 font-medium text-slate-800">
 					{title}
 				</h3>
 				<button
