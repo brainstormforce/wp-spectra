@@ -217,7 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = 2.16.1 - Friday, 11th October 2024 =
 * Fix: Admin - Resolved an issue wherein notices would be hidden on admin screens other than the popup builder screen.
-* Fix: Design Library - Added a cleanup for any temporary `ast-block-template` autoload options that remained in the database.
+* Fix: Design Library - Added a cleanup for any temporary `ast-block-template_data` autoload options that remained in the database.
 
 = 2.16.0 - Wednesday, 9th October 2024 =
 * Improvement: Tabs - Enhanced accessibility in the tabs and improved the content accessibility.
