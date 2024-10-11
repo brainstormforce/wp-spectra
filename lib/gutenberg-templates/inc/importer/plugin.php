@@ -461,6 +461,8 @@ class Plugin {
 		$content = isset( $_REQUEST['content'] ) ? stripslashes( $_REQUEST['content'] ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		$category = isset( $_REQUEST['category'] ) ? intval( $_REQUEST['category'] ) : '';
 
+		$block_id = isset( $_REQUEST['id'] ) ? absint( $_REQUEST['id'] ) : '';
+
 		// Empty mapping? Then return.
 		if ( ! empty( $ids_mapping ) ) {
 			// Replace ID's.
@@ -519,8 +521,12 @@ class Plugin {
 			$content = $this->maybe_import_images( $content );
 		}
 
+		// Flush the object when import is successful.
+		delete_option( 'ast-block-templates_data-' . $block_id );
+
 		// Update content.
 		wp_send_json_success( $content );
+
 	}
 
 	/**
@@ -902,8 +908,9 @@ class Plugin {
 
 		if ( ! file_exists( $common_style_url ) ) {
 			$this->regenerate_spectra_css();
-			$common_css_content = file_exists( $common_style_url ) ? file_get_contents( $common_style_url ) : '';
 		}
+
+		$common_css_content = file_exists( $common_style_url ) ? file_get_contents( $common_style_url ) : '';
 
 		if ( empty( $common_css_content ) ) {
 			$common_css_content = Sync_Library::instance()->get_server_spectra_common_css();

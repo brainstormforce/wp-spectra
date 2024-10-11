@@ -1,3 +1,12 @@
+v.2.4.5 - 08-October-2024
+Improvement: Removed outdated options data that were previously left undeleted.
+Improvement: Optimized server API call execution for better performance.
+
+v.2.4.4 - 30-September-2024
+Improvement: Added loading skeleton when uploading the images on AI onboarding.
+Improvement: Added images validation on AI onboarding.
+Fix: Fixed PHP warning when generating content.
+
 v.2.4.3 - 26-September-2024
 Fix: Content was not getting generated in the selected language.
 
