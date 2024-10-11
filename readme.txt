@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.6
-Stable tag: 2.16.0
+Stable tag: 2.16.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,6 +215,10 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= 2.16.1 - Friday, 11th October 2024 =
+* Fix: Admin - Resolved an issue wherein notices would be hidden on admin screens other than the popup builder screen.
+* Fix: Design Library - Added a cleanup for any temporary `ast-block-template_data` autoload options that remained in the database.
+
 = 2.16.0 - Wednesday, 9th October 2024 =
 * Improvement: Tabs - Enhanced accessibility in the tabs and improved the content accessibility.
 * Improvement: Global - Added a placeholder for inherited values in all spacing controls.
@@ -235,25 +239,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: FAQ - Resolved an issue wherein HTML anchor would not work as intended.
 * Fix: Quick Action Bar - Resolved an issue wherein the Quick Access Bar would become non-functional after editing a pattern.
 * Fix: Global - Resolved a DOMException issue for iFrames in the block editor with the Stripe plugin.
-
-= 2.15.1 - Tuesday, 6th August 2024 =
-* This update addressed a security bug. Props to Patchstack for privately reporting it to our team. Please make sure you are using the latest version on your website.
-
-= 2.15.0 - Thursday, 1st August 2024 =
-* Improvement: Container - Added an order option for grid layout to set the order in which the inner container should be.
-* Improvement: Info Box - Added an overall border option.
-* Improvement: Separator - Added overall block margin and padding settings.
-* Improvement: Image Gallery - Added keyboard accessibility for click events.
-* Improvement: Icon - Added keyboard accessibility for link click.
-* Fix: Image & Image Gallery - Resolved an issue wherein the caption's text-decoration would not sync with the Astra theme's body font settings when "Default" is set.
-* Fix: Image Gallery & Social Share - Resolved an issue wherein synced patterns for these blocks would cause the page to freeze.
-* Fix: Global - Resolved an issue causing the editor to freeze when dynamic content was used in the sync pattern.
-
-= 2.14.1 - Tuesday, 16th July 2024 =
-* Improvement: Added compatibility with WordPress v6.6.
-* Improvement: What's New - Improved the ability to see the new updates for Spectra in the form of a feed under the Dashboard.
-* Fix: Global - Resolved an issue wherein the last modified dates would be altered after running the `Ultimate Addons for Gutenberg` database update.
-* Deprecated: Header Titlebar - Safely removed the Header Titlebar functionality to allow support for the WordPress 6.6 command palette.
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 
