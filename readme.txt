@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+Fix: Admin - Resolved an issue wherein notices would get hidden on admin screens other than the popup builder screen.
+
 = 2.16.0 - Wednesday, 9th October 2024 =
 * Improvement: Tabs - Enhanced accessibility in the tabs and improved the content accessibility.
 * Improvement: Global - Added a placeholder for inherited values in all spacing controls.

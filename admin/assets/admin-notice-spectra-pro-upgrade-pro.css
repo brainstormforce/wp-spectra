@@ -21,7 +21,7 @@
 	background: #5300e0;
 }
 
-.notice-dismiss {
+.post-type-spectra-popup .notice-dismiss {
 	color: #fff;
 }
 
@@ -35,7 +35,7 @@ a.spectra-plugins-go-pro:hover {
 	color: #5300e0;
 }
 
-.astra-notice-wrapper:not( .spectra-upsell ),
-.notice:not( .spectra-upsell ) { /* Hide all other notices apart from upsell. */
+.post-type-spectra-popup .astra-notice-wrapper:not( .spectra-upsell ),
+.post-type-spectra-popup .notice:not( .spectra-upsell ) { /* Hide all other notices apart from upsell. */
 	display: none;
 }
