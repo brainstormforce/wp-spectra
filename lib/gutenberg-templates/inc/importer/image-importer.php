@@ -152,7 +152,7 @@ class Image_Importer {
 		// Extract the file name and extension from the URL.
 		$filename = basename( $attachment['url'] );
 
-		if ( 'unsplash' === $attachment['engine'] ) {
+		if ( isset( $attachment['engine'] ) && 'unsplash' === $attachment['engine'] ) {
 			$filename = 'unsplash-photo-' . $attachment['id'] . '.jpg';
 		}
 
