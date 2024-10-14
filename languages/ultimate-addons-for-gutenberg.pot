@@ -2,20 +2,19 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.16.0\n"
+"Project-Id-Version: Spectra 2.16.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-10-08T06:29:45+02:00\n"
+"POT-Creation-Date: 2024-10-11T10:48:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
 
 #. Plugin Name of the plugin
-#: ultimate-addons-for-gutenberg.php
 #: admin-core/inc/admin-menu.php:147
 #: admin-core/inc/admin-menu.php:148
 #: admin-core/inc/admin-menu.php:159
@@ -29,17 +28,14 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
-#: ultimate-addons-for-gutenberg.php
 msgid "https://www.brainstormforce.com"
 msgstr ""
 
 #. Description of the plugin
-#: ultimate-addons-for-gutenberg.php
 msgid "The Spectra extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster."
 msgstr ""
 
 #. Author of the plugin
-#: ultimate-addons-for-gutenberg.php
 msgid "Brainstorm Force"
 msgstr ""
 
@@ -62,7 +58,7 @@ msgid "Successfully saved data!"
 msgstr ""
 
 #: admin-core/ajax/common-settings.php:180
-#: classes/class-uagb-init-blocks.php:1070
+#: classes/class-uagb-init-blocks.php:1065
 msgid "No post data found!"
 msgstr ""
 
@@ -270,7 +266,7 @@ msgstr ""
 msgid "Taxonomy Not Available."
 msgstr ""
 
-#: blocks-config/taxonomy-list/class-uagb-taxonomy-list.php:709
+#: blocks-config/taxonomy-list/class-uagb-taxonomy-list.php:708
 #: includes/blocks/forms-select/block.php:15
 msgid "Select"
 msgstr ""
@@ -7658,15 +7654,15 @@ msgstr ""
 msgid "Travel"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:464
+#: classes/class-uagb-admin-helper.php:485
 msgid "Full Site Editor's Global Styles"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:467
+#: classes/class-uagb-admin-helper.php:488
 msgid "Filter added through any 3rd Party Theme/Plugin."
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:471
+#: classes/class-uagb-admin-helper.php:492
 msgid "Theme"
 msgstr ""
 
@@ -7694,86 +7690,86 @@ msgstr ""
 msgid "Error occurred, The version selected is invalid. Try selecting different version."
 msgstr ""
 
-#: classes/class-uagb-admin.php:302
+#: classes/class-uagb-admin.php:297
 msgid "Wow! Spectra has helped you build over 5 pages!!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:303
+#: classes/class-uagb-admin.php:298
 msgid "We're a small independent team passionate about creating plugins like this one. It would mean the world to us if you could spend just a minute to leave a 5-star review on WordPress' official website. Your support really helps us a lot!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:305
+#: classes/class-uagb-admin.php:300
 msgid "Ok, you deserve it"
 msgstr ""
 
-#: classes/class-uagb-admin.php:307
+#: classes/class-uagb-admin.php:302
 msgid "Nope, maybe later"
 msgstr ""
 
-#: classes/class-uagb-admin.php:308
+#: classes/class-uagb-admin.php:303
 msgid "I already did"
 msgstr ""
 
-#: classes/class-uagb-admin.php:345
+#: classes/class-uagb-admin.php:340
 msgid "Spectra database update required"
 msgstr ""
 
-#: classes/class-uagb-admin.php:346
+#: classes/class-uagb-admin.php:341
 msgid "We've detected that some of your pages were created with an older version of Spectra. To ensure your designs remain unaffected, we recommend updating the Spectra database now. Updating the Spectra database will not impact any other parts of your website."
 msgstr ""
 
-#: classes/class-uagb-admin.php:347
+#: classes/class-uagb-admin.php:342
 msgid "To be on the safer side, please be sure to back up your site before updating."
 msgstr ""
 
-#: classes/class-uagb-admin.php:348
+#: classes/class-uagb-admin.php:343
 msgid "Update Spectra Database"
 msgstr ""
 
-#: classes/class-uagb-admin.php:350
+#: classes/class-uagb-admin.php:345
 msgid "Learn More About This"
 msgstr ""
 
-#: classes/class-uagb-admin.php:375
+#: classes/class-uagb-admin.php:370
 msgid "Spectra database update in progress"
 msgstr ""
 
-#: classes/class-uagb-admin.php:376
+#: classes/class-uagb-admin.php:371
 msgid "Great! This should only take a few minutes. Thanks for hanging in there."
 msgstr ""
 
-#: classes/class-uagb-admin.php:401
+#: classes/class-uagb-admin.php:396
 msgid "Update Successful!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:402
+#: classes/class-uagb-admin.php:397
 msgid "Your Spectra database is now up-to-date. Your website will continue to function as before."
 msgstr ""
 
-#: classes/class-uagb-admin.php:402
+#: classes/class-uagb-admin.php:397
 msgid "View Log"
 msgstr ""
 
 #. translators: %s: html tags
-#: classes/class-uagb-admin.php:421
+#: classes/class-uagb-admin.php:416
 msgid "Spectra requires&nbsp;%3$sBlock Editor%4$s. You can change your editor settings to Block Editor from&nbsp;%1$shere%2$s. Plugin is currently NOT RUNNING."
 msgstr ""
 
-#: classes/class-uagb-admin.php:466
+#: classes/class-uagb-admin.php:461
 msgid "Want to do more with Popup Builder?"
 msgstr ""
 
-#: classes/class-uagb-admin.php:467
+#: classes/class-uagb-admin.php:462
 msgid "Maximize your popup potential with Spectra Pro. Unlock enhanced features, intuitive design options, and increased conversions!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:469
+#: classes/class-uagb-admin.php:464
 #: admin-core/assets/build/dashboard-app.js:1
 msgid "Upgrade Now"
 msgstr ""
 
 #: classes/class-uagb-fse-fonts-compatibility.php:165
-#: classes/class-uagb-init-blocks.php:726
+#: classes/class-uagb-init-blocks.php:721
 msgid "Default"
 msgstr ""
 
@@ -7866,32 +7862,32 @@ msgstr ""
 msgid "Please select a valid Contact Form 7."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:811
+#: classes/class-uagb-init-blocks.php:806
 msgid ""
 "Use custom class added in block's advanced settings to target your desired block. Examples:\n"
 "\t\t.my-class {text-align: center;} // my-class is a custom selector"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:870
+#: classes/class-uagb-init-blocks.php:865
 #: classes/class-uagb-rest-api.php:318
 #: classes/class-uagb-rest-api.php:333
 msgid "None"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:899
-#: classes/class-uagb-init-blocks.php:932
+#: classes/class-uagb-init-blocks.php:894
+#: classes/class-uagb-init-blocks.php:927
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:913
+#: classes/class-uagb-init-blocks.php:908
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:946
+#: classes/class-uagb-init-blocks.php:941
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:962
+#: classes/class-uagb-init-blocks.php:957
 msgid "Invalid request"
 msgstr ""
 
@@ -8585,7 +8581,7 @@ msgid "Every %d Minutes"
 msgstr ""
 
 #: lib/class-uagb-ast-block-templates.php:65
-#: lib/gutenberg-templates/inc/importer/plugin.php:983
+#: lib/gutenberg-templates/inc/importer/plugin.php:990
 msgid "Design Library"
 msgstr ""
 
@@ -8650,7 +8646,7 @@ msgstr ""
 #: lib/gutenberg-templates/inc/importer/plugin.php:336
 #: lib/gutenberg-templates/inc/importer/plugin.php:360
 #: lib/gutenberg-templates/inc/importer/plugin.php:450
-#: lib/gutenberg-templates/inc/importer/plugin.php:792
+#: lib/gutenberg-templates/inc/importer/plugin.php:798
 #: lib/gutenberg-templates/inc/importer/sync-library.php:319
 #: lib/gutenberg-templates/inc/importer/sync-library.php:446
 #: lib/gutenberg-templates/inc/importer/sync-library.php:471
@@ -8670,11 +8666,11 @@ msgstr ""
 msgid "Something went wrong"
 msgstr ""
 
-#: lib/gutenberg-templates/inc/importer/plugin.php:761
+#: lib/gutenberg-templates/inc/importer/plugin.php:767
 msgid "You are not allowed to perform this action."
 msgstr ""
 
-#: lib/gutenberg-templates/inc/importer/plugin.php:804
+#: lib/gutenberg-templates/inc/importer/plugin.php:810
 msgid "Something wrong"
 msgstr ""
 
@@ -8826,10 +8822,6 @@ msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:1
 msgid "Instagram Feed Block"
-msgstr ""
-
-#: admin-core/assets/build/dashboard-app.js:1
-msgid "Global Block Styles"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:1
