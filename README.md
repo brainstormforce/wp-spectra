@@ -216,6 +216,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
+* Fix: Container - Resolved an issue wherein sticky containers would not work as intended when resizing the window.
+
+### x.x.x ###
 * Improvement: Global - Added responsive support for gradient background settings.
 * Improvement: Global - Added rel attribute support for anchor tag elements.
 * Fix: Container - Resolved an issue wherein the Core Image block's alignment would not work as expected when inside a Container.
