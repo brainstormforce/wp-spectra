@@ -542,8 +542,16 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 				$array_of_allowed_HTML = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div' );
 				$title_tag             = UAGB_Helper::title_tag_allowed_html( $titleTag, $array_of_allowed_HTML, 'h4' );
 
-				$pt            = get_post_type_object( $postType );
-				$singular_name = $pt->labels->singular_name;
+				$pt = get_post_type_object( $postType );
+				
+				if ( $pt ) {
+					$singular_name = $pt->labels->singular_name;
+					$plural_name   = $pt->labels->name;
+				} else {
+					// Fallback if $pt or $pt->labels is null.
+					$singular_name = 'Item';
+					$plural_name   = 'Items';
+				}
 
 				$args                = array(
 					'hide_empty' => ! $attributes['showEmptyTaxonomy'],
@@ -563,7 +571,7 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 								</<?php echo esc_html( $title_tag ); ?>>
 								<?php if ( $showCount ) { ?>
 										<?php echo esc_attr( $value->count ); ?>
-										<?php $countName = ( $value->count > 1 ) ? esc_attr( $singular_name ) . 's' : esc_attr( $singular_name ); ?>
+										<?php $countName = ( 1 != $value->count ) ? esc_attr( $plural_name ) : esc_attr( $singular_name ); ?>
 										<?php echo esc_attr( apply_filters( 'uagb_taxonomy_count_text', $countName, $value->count ) ); ?>
 								<?php } ?>
 							</a>
