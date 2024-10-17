@@ -219,6 +219,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Table Of Contents - Added a setting to enable collapsible list items.
 * Fix: Info Box - Resolved an issue wherein the overall alignment is not supported in RTL mode.
 * Fix: Image Gallery - Resolved an issue wherein the "Tiled" layout would not allow 2 or 3 columns.
+* Fix: Taxonomy List - Resolved an issue wherein plural forms would be incorrectly translated.
 * Fix: FSE - Corrected the query parameter in `get_block_templates()` function to properly handle template parts using the `slug__in` argument.
 * Fix: Global - Resolved an issue wherein the custom CSS would get special characters converted to unicode.
 * Fix: Global - Resolved an issue that would sometimes show a PHP warning for the font loader.
