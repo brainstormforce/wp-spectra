@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.6
-Stable tag: 2.16.1
+Stable tag: 2.16.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= 2.16.2 - Wednesday, 23rd October 2024 =
+* Updated the AI Assistant and Design Kit Libraries.
+
 = 2.16.1 - Friday, 11th October 2024 =
 * Fix: Admin - Resolved an issue wherein notices would be hidden on admin screens other than the popup builder screen.
 * Fix: Design Library - Added a cleanup for any temporary `ast-block-template_data` autoload options that remained in the database.
@@ -231,14 +234,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 = 2.15.3 - Wednesday, 18th September 2024 =
 * Fix: Global - Resolved an issue causing the editor to freeze when the Info box and Separator blocks were used in the sync pattern.
 * Fix: Global - Resolved an issue wherein the Design Library would alter the appearance List and Heading blocks in the editor.
-
-= 2.15.2 - Thursday, 29th August 2024 =
-* Improvement: Container - Added a children-width option for flex columns.
-* Fix: Container - Resolved an issue wherein the "Children Width" option would not work as intended.
-* Fix: FAQ - Resolved an issue wherein the question icon color would not appear correctly in the editor as compared to the frontend.
-* Fix: FAQ - Resolved an issue wherein HTML anchor would not work as intended.
-* Fix: Quick Action Bar - Resolved an issue wherein the Quick Access Bar would become non-functional after editing a pattern.
-* Fix: Global - Resolved a DOMException issue for iFrames in the block editor with the Stripe plugin.
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 

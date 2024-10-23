@@ -1,3 +1,6 @@
+1.2.3 - 23rd October 2024
+- Improvement: Added support for the 'source' parameter in the middleware URL.
+
 1.2.2 - 8th October 2024
 - Excluded assets from loading via Spectra for SureForms CPTs.
 
