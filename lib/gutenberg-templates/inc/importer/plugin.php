@@ -941,11 +941,13 @@ class Plugin {
 			'ast_block_templates_authorization_url_param', array(
 				'type' => 'token',
 				'scs-authorize' => true,
+				'source' => 'spectra',
 			)
 		);
 
 		$credit_request_params = array(
 			'success_url' => isset( $_SERVER['REQUEST_URI'] ) ? urlencode( $this->remove_query_params( network_home_url() . $_SERVER['REQUEST_URI'], $remove_parameters ) . '&ast_action=credits' ) : '', // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			'source' => 'spectra',
 		);
 
 		$spec_ai_auth_url = add_query_arg( $request_params, ZIPWP_APP );

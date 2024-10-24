@@ -394,7 +394,7 @@ class UAGB_Init_Blocks {
 			$taxonomies = get_object_taxonomies( $post_type, 'objects' );
 			$data       = array();
 
-			$get_singular_name = get_post_type_object( $post_type );
+			$get_taxonomy_names = get_post_type_object( $post_type ); // Renaming this variable to follow proper naming convention.
 			foreach ( $taxonomies as $tax_slug => $tax ) {
 				if ( ! $tax->public || ! $tax->show_ui || ! $tax->show_in_rest ) {
 					continue;
@@ -413,7 +413,8 @@ class UAGB_Init_Blocks {
 							'name'          => $t_obj->name,
 							'count'         => $t_obj->count,
 							'link'          => get_term_link( $t_obj->term_id ),
-							'singular_name' => $get_singular_name->labels->singular_name,
+							'singular_name' => $get_taxonomy_names ? $get_taxonomy_names->labels->singular_name : 'Post',
+							'plural_name'   => $get_taxonomy_names ? $get_taxonomy_names->labels->name : 'Posts', // Adding this field to use it on the editor.
 						);
 					}
 
@@ -443,7 +444,8 @@ class UAGB_Init_Blocks {
 							'name'          => $t_obj->name,
 							'count'         => $t_obj->count,
 							'link'          => get_term_link( $t_obj->term_id ),
-							'singular_name' => $get_singular_name->labels->singular_name,
+							'singular_name' => $get_taxonomy_names ? $get_taxonomy_names->labels->singular_name : 'Post',
+							'plural_name'   => $get_taxonomy_names ? $get_taxonomy_names->labels->name : 'Posts', // Adding this field to use it on the editor.
 							'children'      => $child_cat_arr,
 						);
 
@@ -476,7 +478,8 @@ class UAGB_Init_Blocks {
 							'name'          => $t_obj->name,
 							'count'         => $t_obj->count,
 							'link'          => get_term_link( $t_obj->term_id ),
-							'singular_name' => $get_singular_name->labels->singular_name,
+							'singular_name' => $get_taxonomy_names ? $get_taxonomy_names->labels->singular_name : 'Post',
+							'plural_name'   => $get_taxonomy_names ? $get_taxonomy_names->labels->name : 'Posts', // Adding this field to use it on the editor.
 							'children'      => $child_cat_empty_tax_arr,
 						);
 					}

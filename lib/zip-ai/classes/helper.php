@@ -420,6 +420,15 @@ class Helper {
 			);
 		}
 
+		// Add the source param if passed.
+		if ( ! empty( $params['source'] ) && is_string( $params['source'] ) ) {
+			$auth_url = add_query_arg(
+				'source',
+				sanitize_text_field( $params['source'] ),
+				$auth_url
+			);
+		}
+
 		// Add the affiliate param if passed.
 		$affiliate = get_option( 'zipwp_partner_url_param', '' );
 		$affiliate = is_string( $affiliate ) ? sanitize_text_field( $affiliate ) : '';

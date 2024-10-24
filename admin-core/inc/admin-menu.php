@@ -298,14 +298,20 @@ class Admin_Menu {
 			&& class_exists( '\ZipAI\Classes\Helper' )
 			&& class_exists( '\ZipAI\Classes\Module' )
 			&& defined( 'ZIP_AI_CREDIT_TOPUP_URL' )
+			&& is_string( ZIP_AI_CREDIT_TOPUP_URL )
 		) {
 
 			$localize = array_merge(
 				$localize,
 				array(
-					'zip_ai_auth_middleware'  => Zip_Ai_Helper::get_auth_middleware_url( array( 'plugin' => 'spectra' ) ),
+					'zip_ai_auth_middleware'  => Zip_Ai_Helper::get_auth_middleware_url(
+						array(
+							'plugin' => 'spectra',
+							'source' => 'spectra',
+						) 
+					),
 					'zip_ai_auth_revoke_url'  => Zip_Ai_Helper::get_auth_revoke_url(),
-					'zip_ai_credit_topup_url' => ZIP_AI_CREDIT_TOPUP_URL,
+					'zip_ai_credit_topup_url' => esc_url( add_query_arg( 'source', 'spectra', ZIP_AI_CREDIT_TOPUP_URL ) ),
 					'zip_ai_is_authorized'    => Zip_Ai_Helper::is_authorized(),
 					'zip_ai_is_chat_enabled'  => Zip_Ai_Module::is_enabled( 'ai_assistant' ),
 					'zip_ai_admin_nonce'      => wp_create_nonce( 'zip_ai_admin_nonce' ),
