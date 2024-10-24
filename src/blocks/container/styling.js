@@ -913,10 +913,10 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		};
 	}
 
-	const autoWidth = { 'width': 'auto' };
+	const autoWidth = { 'width': 'auto', 'max-width':'100%' };
 	const setWidth = { 'width': '100%' };
-	const containerSelector = '.wp-block-uagb-container > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block';
-	const containerSelector2 = '.wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block';
+	const containerSelector = '.wp-block-uagb-container > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block:not([data-type="uagb/image-gallery"]):not([data-type="uagb/post-masonry"])';
+	const containerSelector2 = '.wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block:not([data-type="uagb/image-gallery"]):not([data-type="uagb/post-masonry"])';
 
 	// Add auto width to the inner blocks in desktop.
 	if( directionDesktop ){
