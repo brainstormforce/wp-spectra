@@ -274,7 +274,7 @@ const Settings = ( props ) => {
 						{ secInheritFromTheme && 'Astra' === currentTheme && (
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
-						label={ __( `Button Type`, 'ultimate-addons-for-gutenberg' ) }
+						label={ __( 'Button Type', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							value: secCtaButtonType,
 							label: 'secCtaButtonType',
@@ -795,7 +795,7 @@ const Settings = ( props ) => {
 						{ inheritFromTheme && 'Astra' === currentTheme && (
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
-						label={ __( `Button Type`, 'ultimate-addons-for-gutenberg' ) }
+						label={ __( 'Button Type', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							value: ctaButtonType,
 							label: 'ctaButtonType',

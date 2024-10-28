@@ -1,5 +1,5 @@
 import React from 'react';
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 
 import getApiData from '@Controls/getApiData';
@@ -53,8 +53,8 @@ const ContentWidth = () => {
 			{ 'Spectra' !== uag_react.uag_content_width_set_by &&
 				<p className="mt-2 w-9/12 text-sm text-slate-500 italic">
 					{
-						// eslint-disable-next-line @wordpress/i18n-no-variables
-						__( `The current Content width is applied from ${ uag_react.uag_content_width_set_by }.`, 'ultimate-addons-for-gutenberg' )
+						/* translators: %s: content width set by */
+						sprintf( __( 'The current Content width is applied from %s.', 'ultimate-addons-for-gutenberg' ), uag_react.uag_content_width_set_by )
 					}
 				</p>
 			}

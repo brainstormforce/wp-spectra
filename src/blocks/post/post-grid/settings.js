@@ -1098,7 +1098,7 @@ const Settings = ( props ) => {
 				        { inheritFromThemeBtn && ( 'Astra' === currentTheme || isAstraBasedTheme ) && (
 					        <MultiButtonsControl
 						        setAttributes={ setAttributes }
-						        label={ __( `Button Type`, 'ultimate-addons-for-gutenberg' ) }
+						        label={ __( 'Button Type', 'ultimate-addons-for-gutenberg' ) }
 						        data={ {
 							        value: buttonType,
 							        label: 'buttonType',
