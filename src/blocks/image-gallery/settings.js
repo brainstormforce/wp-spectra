@@ -453,7 +453,7 @@ const Settings = ( props ) => {
 		<>
 			{ captionBackgroundEnableBlur && (
 				<Range
-					label={ __( `Blur Amount`, 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Blur Amount', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ isHover ? captionBackgroundBlurAmountHover : captionBackgroundBlurAmount }
 					data={ {
@@ -468,7 +468,7 @@ const Settings = ( props ) => {
 			{ /* The entire section below can be created into a component if required in the future */ }
 			<MultiButtonsControl
 				setAttributes={ setAttributes }
-				label={ __( `Effect`, 'ultimate-addons-for-gutenberg' ) }
+				label={ __( 'Effect', 'ultimate-addons-for-gutenberg' ) }
 				data={ {
 					value: isHover ? captionBackgroundEffectHover : captionBackgroundEffect,
 					label: isHover ? 'captionBackgroundEffectHover' : 'captionBackgroundEffect',
@@ -910,7 +910,7 @@ const Settings = ( props ) => {
 			{ feedLayout === 'carousel' && (
 				<>
 					<Range
-						label={ __( `Starting Image`, 'ultimate-addons-for-gutenberg' ) }
+						label={ __( 'Starting Image', 'ultimate-addons-for-gutenberg' ) }
 						setAttributes={ setAttributes }
 						value={ carouselStartAt + 1 }
 						data={ {
@@ -923,7 +923,7 @@ const Settings = ( props ) => {
 						displayUnit={ false }
 					/>
 					<Range
-						label={ __( `Transition Speed (ms)`, 'ultimate-addons-for-gutenberg' ) }
+						label={ __( 'Transition Speed (ms)', 'ultimate-addons-for-gutenberg' ) }
 						setAttributes={ setAttributes }
 						value={ carouselTransitionSpeed }
 						data={ {
@@ -935,34 +935,34 @@ const Settings = ( props ) => {
 						displayUnit={ false }
 					/>
 					<ToggleControl
-						label={ __( `Crop Images to Squares`, 'ultimate-addons-for-gutenberg' ) }
+						label={ __( 'Crop Images to Squares', 'ultimate-addons-for-gutenberg' ) }
 						checked={ carouselSquares }
 						onChange={ () => setAttributes( { carouselSquares: ! carouselSquares } ) }
 					/>
 					<ToggleControl
-						label={ __( `Infinite Carousel`, 'ultimate-addons-for-gutenberg' ) }
+						label={ __( 'Infinite Carousel', 'ultimate-addons-for-gutenberg' ) }
 						checked={ carouselLoop }
 						onChange={ () => setAttributes( { carouselLoop: ! carouselLoop } ) }
 					/>
 					<ToggleControl
-						label={ __( `Display Dots`, 'ultimate-addons-for-gutenberg' ) }
+						label={ __( 'Display Dots', 'ultimate-addons-for-gutenberg' ) }
 						checked={ paginateUseDots }
 						onChange={ () => setAttributes( { paginateUseDots: ! paginateUseDots } ) }
 					/>
 					<ToggleControl
-						label={ __( `Display Arrows`, 'ultimate-addons-for-gutenberg' ) }
+						label={ __( 'Display Arrows', 'ultimate-addons-for-gutenberg' ) }
 						checked={ paginateUseArrows }
 						onChange={ () => setAttributes( { paginateUseArrows: ! paginateUseArrows } ) }
 					/>
 					<ToggleControl
-						label={ __( `Autoplay`, 'ultimate-addons-for-gutenberg' ) }
+						label={ __( 'Autoplay', 'ultimate-addons-for-gutenberg' ) }
 						checked={ carouselAutoplay }
 						onChange={ () => setAttributes( { carouselAutoplay: ! carouselAutoplay } ) }
 					/>
 					{ carouselAutoplay && (
 						<>
 							<Range
-								label={ __( `Autoplay Speed (ms)`, 'ultimate-addons-for-gutenberg' ) }
+								label={ __( 'Autoplay Speed (ms)', 'ultimate-addons-for-gutenberg' ) }
 								setAttributes={ setAttributes }
 								value={ carouselAutoplaySpeed }
 								data={ {
@@ -974,7 +974,7 @@ const Settings = ( props ) => {
 								displayUnit={ false }
 							/>
 							<ToggleControl
-								label={ __( `Pause on Hover`, 'ultimate-addons-for-gutenberg' ) }
+								label={ __( 'Pause on Hover', 'ultimate-addons-for-gutenberg' ) }
 								checked={ carouselPauseOnHover }
 								onChange={ () => setAttributes( { carouselPauseOnHover: ! carouselPauseOnHover } ) }
 							/>
@@ -985,7 +985,7 @@ const Settings = ( props ) => {
 			{ ( feedLayout === 'grid' || feedLayout === 'masonry' ) && (
 				<>
 					<ToggleControl
-						label={ __( `Pagination`, 'ultimate-addons-for-gutenberg' ) }
+						label={ __( 'Pagination', 'ultimate-addons-for-gutenberg' ) }
 						checked={ feedPagination }
 						onChange={ () => {
 							switch ( feedLayout ) {
@@ -1021,7 +1021,7 @@ const Settings = ( props ) => {
 								<>
 									<MultiButtonsControl
 										setAttributes={ setAttributes }
-										label={ __( `Pagination Type`, 'ultimate-addons-for-gutenberg' ) }
+										label={ __( 'Pagination Type', 'ultimate-addons-for-gutenberg' ) }
 										data={ {
 											value: paginateUseLoader,
 											label: 'paginateUseLoader',
@@ -1080,14 +1080,14 @@ const Settings = ( props ) => {
 	const imageStyling = () => (
 		<UAGAdvancedPanelBody title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
 			<ToggleControl
-				label={ __( `Enable Hover Zoom`, 'ultimate-addons-for-gutenberg' ) }
+				label={ __( 'Enable Hover Zoom', 'ultimate-addons-for-gutenberg' ) }
 				checked={ imageEnableZoom }
 				onChange={ () => setAttributes( { imageEnableZoom: ! imageEnableZoom } ) }
 			/>
 			{ imageEnableZoom && (
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
-					label={ __( `Zoom Type`, 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Zoom Type', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
 						value: imageZoomType,
 						label: 'imageZoomType',
@@ -1105,7 +1105,7 @@ const Settings = ( props ) => {
 				/>
 			) }
 			<ToggleControl
-				label={ __( `Enable Blur Overlay`, 'ultimate-addons-for-gutenberg' ) }
+				label={ __( 'Enable Blur Overlay', 'ultimate-addons-for-gutenberg' ) }
 				checked={ captionBackgroundEnableBlur }
 				onChange={ () => setAttributes( { captionBackgroundEnableBlur: ! captionBackgroundEnableBlur } ) }
 			/>
@@ -1440,7 +1440,7 @@ const Settings = ( props ) => {
 				/>
 			) }
 			<ToggleControl
-				label={ __( `Blur Background`, 'ultimate-addons-for-gutenberg' ) }
+				label={ __( 'Blur Background', 'ultimate-addons-for-gutenberg' ) }
 				checked={ lightboxBackgroundEnableBlur }
 				onChange={ () => setAttributes( { lightboxBackgroundEnableBlur: ! lightboxBackgroundEnableBlur } ) }
 			/>
@@ -1490,7 +1490,7 @@ const Settings = ( props ) => {
 			) }
 			{ lightboxBackgroundEnableBlur && (
 				<Range
-					label={ __( `Blur Amount`, 'ultimate-addons-for-gutenberg' ) }
+					label={ __( 'Blur Amount', 'ultimate-addons-for-gutenberg' ) }
 					setAttributes={ setAttributes }
 					value={ lightboxBackgroundBlurAmount }
 					data={ {
@@ -1909,7 +1909,7 @@ const Settings = ( props ) => {
 					{ paginateUseLoader ? (
 						<>
 							<Range
-								label={ __( `Loader Size`, 'ultimate-addons-for-gutenberg' ) }
+								label={ __( 'Loader Size', 'ultimate-addons-for-gutenberg' ) }
 								setAttributes={ setAttributes }
 								value={ paginateLoaderSize }
 								data={ {

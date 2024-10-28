@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 import RollBackConfirmPopup from './RollBackConfirmPopup';
 
 const RollBack = () => {
@@ -53,8 +53,8 @@ const RollBack = () => {
                 </div>
                 <p className="mt-2 w-9/12 text-sm text-slate-500">
                     {
-                        // eslint-disable-next-line @wordpress/i18n-no-variables
-                        __( `Experiencing an issue with Spectra version ${ uag_react.plugin_ver }? Roll back to a previous version to help troubleshoot the issue.`, 'ultimate-addons-for-gutenberg' )
+                        /* translators: %s: plugin version */
+                        sprintf( __( 'Experiencing an issue with Spectra version %s? Roll back to a previous version to help troubleshoot the issue.', 'ultimate-addons-for-gutenberg' ), uag_react.plugin_ver )
                     }
                 </p>
             </section>
