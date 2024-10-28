@@ -38,6 +38,7 @@ import Render from './render';
 import { Placeholder, Spinner, ToggleControl, Icon } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 import { useSelect, useDispatch } from '@wordpress/data';
+import ResponsiveSelectControl from '@Components/responsive-select';
 
 const UAGBPostCarousel = ( props ) => {
 	const {
@@ -274,6 +275,16 @@ const UAGBPostCarousel = ( props ) => {
 			block_id,
 			inheritFromThemeBtn,
 			buttonType,
+			imageRatio,
+			imageRatioTablet,
+			imageRatioMobile,
+			imageRatioWidthDesktop,
+			imageRatioWidthTablet,
+			imageRatioWidthMobile,
+			imageRatioHeightDesktop,
+			imageRatioHeightTablet,
+			imageRatioHeightMobile,
+			objectFit
 		},
 		setAttributes,
 		deviceType,
@@ -428,6 +439,41 @@ const UAGBPostCarousel = ( props ) => {
 			setAttributes( { dotsMarginTopMobile: columnGapMobile } );
 		}
 	}, [] );
+
+	// Take in the required attribute, and split it into two halfs.
+	const commonRatioSplit = ( imageRatioData ) => {
+		if ( !imageRatioData.type || ['inherit', 'custom'].includes( imageRatioData.type ) ) {
+			return;
+		}
+		// Split the value into width and height
+		const tempValueDesktop = imageRatioData?.type.split( '-' );
+		// Update both width and height in a single setAttributes call
+		setAttributes( {
+			[imageRatioData.width]: parseInt( tempValueDesktop[1] ), // width
+			[imageRatioData.height]: parseInt( tempValueDesktop[0] ), // height
+		} );
+	};
+
+	const updateResponsiveImageRatio = ( value, dataSet, devType, splitAttributes ) => {
+		if ( ['inherit', 'custom'].includes( value ) ) {
+			setAttributes( {
+				[dataSet[devType]?.label]: value,
+				[splitAttributes[devType]?.widthAttribute]: '',
+				[splitAttributes[devType]?.heightAttribute]: '',
+			} );
+			return;
+		}
+		// Call commonRatioSplit to set width and height
+		commonRatioSplit( {
+			type: value,
+			width: splitAttributes[devType]?.widthAttribute,
+			height: splitAttributes[devType]?.heightAttribute,
+		} );
+		// Set the device-specific image ratio value (desktop, tablet, mobile)
+		setAttributes( {
+			[dataSet[devType]?.label]: value,
+		} );
+	};
 
 	useEffect( () => {
 		if ( equalHeight ) {
@@ -889,6 +935,94 @@ const UAGBPostCarousel = ( props ) => {
 		);
 	};
 
+	const imageRatioOptions = [
+		{
+			label: __( 'None', 'ultimate-addons-for-gutenberg' ),
+			value: '0-0',
+		},
+		{
+			label: __( '1:1', 'ultimate-addons-for-gutenberg' ),
+			value: '1-1',
+		},
+		{
+			label: __( '2:1', 'ultimate-addons-for-gutenberg' ),
+			value: '1-2',
+		},
+		{
+			label: __( '3:2', 'ultimate-addons-for-gutenberg' ),
+			value: '2-3',
+		},
+		{
+			label: __( '16:9', 'ultimate-addons-for-gutenberg' ),
+			value: '9-16',
+		},
+		{
+			label: __( 'Custom', 'ultimate-addons-for-gutenberg' ),
+			value: 'custom',
+		}
+	];
+	const imageRatioOptionsTablet = [
+		{
+			label: __( 'Inherit', 'ultimate-addons-for-gutenberg' ),
+			value: 'inherit',
+		},
+		{
+			label: __( 'None', 'ultimate-addons-for-gutenberg' ),
+			value: '0-0',
+		},
+		{
+			label: __( '1:1', 'ultimate-addons-for-gutenberg' ),
+			value: '1-1',
+		},
+		{
+			label: __( '2:1', 'ultimate-addons-for-gutenberg' ),
+			value: '1-2',
+		},
+		{
+			label: __( '3:2', 'ultimate-addons-for-gutenberg' ),
+			value: '2-3',
+		},
+		{
+			label: __( '16:9', 'ultimate-addons-for-gutenberg' ),
+			value: '9-16',
+		},
+		{
+			label: __( 'Custom', 'ultimate-addons-for-gutenberg' ),
+			value: 'custom',
+		}
+	];
+
+	const imageRatioOptionsMobile = [
+		{
+			label: __( 'Inherit', 'ultimate-addons-for-gutenberg' ),
+			value: 'inherit',
+		},
+		{
+			label: __( 'None', 'ultimate-addons-for-gutenberg' ),
+			value: '0-0',
+		},
+		{
+			label: __( '1:1', 'ultimate-addons-for-gutenberg' ),
+			value: '1-1',
+		},
+		{
+			label: __( '2:1', 'ultimate-addons-for-gutenberg' ),
+			value: '1-2',
+		},
+		{
+			label: __( '3:2', 'ultimate-addons-for-gutenberg' ),
+			value: '2-3',
+		},
+		{
+			label: __( '16:9', 'ultimate-addons-for-gutenberg' ),
+			value: '9-16',
+		},
+		{
+			label: __( 'Custom', 'ultimate-addons-for-gutenberg' ),
+			value: 'custom',
+		}
+	];
+
 	const getImagePanelBody = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
@@ -901,6 +1035,203 @@ const UAGBPostCarousel = ( props ) => {
 						} )
 					}
 				/>
+				{displayPostImage === true && imgPosition !== 'background' && (
+				<>
+				<ResponsiveSelectControl
+					label={__( 'Image Ratio', 'ultimate-addons-for-gutenberg' )}
+					data={{
+						desktop: {
+							value: imageRatio,
+							label: 'imageRatio',
+						},
+						tablet: {
+							value: imageRatioTablet,
+							label: 'imageRatioTablet',
+						},
+						mobile: {
+							value: imageRatioMobile,
+							label: 'imageRatioMobile',
+						},
+					}}
+					options={{
+						desktop: imageRatioOptions,
+						tablet: imageRatioOptionsTablet,
+						mobile: imageRatioOptionsMobile,
+					}}
+					setAttributes={setAttributes}
+					onChange={( tempValue, tempData, tempDevice ) => updateResponsiveImageRatio( tempValue, tempData, tempDevice, {
+						desktop: {
+							widthAttribute: 'imageRatioWidthDesktop',
+							heightAttribute: 'imageRatioHeightDesktop',
+						},
+						tablet: {
+							widthAttribute: 'imageRatioWidthTablet',
+							heightAttribute: 'imageRatioHeightTablet',
+						},
+						mobile: {
+							widthAttribute: 'imageRatioWidthMobile',
+							heightAttribute: 'imageRatioHeightMobile',
+						},
+					} )}
+				/>
+				<UAGSelectControl
+					label={__( 'Object Fit', 'ultimate-addons-for-gutenberg' )}
+					data={{
+						value: objectFit,
+						label: 'objectFit',
+					}}
+					setAttributes={setAttributes}
+					options={[
+						{
+							value: 'fill',
+							label: __( 'Fill', 'ultimate-addons-for-gutenberg' ),
+						},
+						{
+							value: 'cover',
+							label: __( 'Cover', 'ultimate-addons-for-gutenberg' ),
+						},
+					]}
+				/>
+				{( 'custom' === imageRatio && 'Desktop' === deviceType ) && (
+					<>
+						<ResponsiveSlider
+							label={__( 'Custom Width', 'ultimate-addons-for-gutenberg' )}
+							data={{
+								desktop: {
+									value: imageRatioWidthDesktop,
+									label: 'imageRatioWidthDesktop',
+								},
+								tablet: {
+									value: imageRatioWidthTablet,
+									label: 'imageRatioWidthTablet',
+								},
+								mobile: {
+									value: imageRatioWidthMobile,
+									label: 'imageRatioWidthMobile',
+								},
+							}}
+							min={0}
+							max={100}
+							displayUnit={false}
+							setAttributes={setAttributes}
+						/>
+						<ResponsiveSlider
+							label={__( 'Custom Height', 'ultimate-addons-for-gutenberg' )}
+							data={{
+								desktop: {
+									value: imageRatioHeightDesktop,
+									label: 'imageRatioHeightDesktop',
+								},
+								tablet: {
+									value: imageRatioHeightTablet,
+									label: 'imageRatioHeightTablet',
+								},
+								mobile: {
+									value: imageRatioHeightMobile,
+									label: 'imageRatioHeightMobile',
+								},
+							}}
+							min={0}
+							max={100}
+							displayUnit={false}
+							setAttributes={setAttributes}
+						/>
+					</>
+				)}
+				{( 'custom' === imageRatioTablet && 'Tablet' === deviceType ) && (
+					<>
+						<ResponsiveSlider
+							label={__( 'Custom Width', 'ultimate-addons-for-gutenberg' )}
+							data={{
+								desktop: {
+									value: imageRatioWidthDesktop,
+									label: 'imageRatioWidthDesktop',
+								},
+								tablet: {
+									value: imageRatioWidthTablet,
+									label: 'imageRatioWidthTablet',
+								},
+								mobile: {
+									value: imageRatioWidthMobile,
+									label: 'imageRatioWidthMobile',
+								},
+							}}
+							min={0}
+							max={100}
+							displayUnit={false}
+							setAttributes={setAttributes}
+						/>
+						<ResponsiveSlider
+							label={__( 'Custom Height', 'ultimate-addons-for-gutenberg' )}
+							data={{
+								desktop: {
+									value: imageRatioHeightDesktop,
+									label: 'imageRatioHeightDesktop',
+								},
+								tablet: {
+									value: imageRatioHeightTablet,
+									label: 'imageRatioHeightTablet',
+								},
+								mobile: {
+									value: imageRatioHeightMobile,
+									label: 'imageRatioHeightMobile',
+								},
+							}}
+							min={0}
+							max={100}
+							displayUnit={false}
+							setAttributes={setAttributes}
+						/>
+					</>
+				)}
+				{( 'custom' === imageRatioMobile && 'Mobile' === deviceType ) && (
+					<>
+						<ResponsiveSlider
+							label={__( 'Custom Width', 'ultimate-addons-for-gutenberg' )}
+							data={{
+								desktop: {
+									value: imageRatioWidthDesktop,
+									label: 'imageRatioWidthDesktop',
+								},
+								tablet: {
+									value: imageRatioWidthTablet,
+									label: 'imageRatioWidthTablet',
+								},
+								mobile: {
+									value: imageRatioWidthMobile,
+									label: 'imageRatioWidthMobile',
+								},
+							}}
+							min={0}
+							max={100}
+							displayUnit={false}
+							setAttributes={setAttributes}
+						/>
+						<ResponsiveSlider
+							label={__( 'Custom Height', 'ultimate-addons-for-gutenberg' )}
+							data={{
+								desktop: {
+									value: imageRatioHeightDesktop,
+									label: 'imageRatioHeightDesktop',
+								},
+								tablet: {
+									value: imageRatioHeightTablet,
+									label: 'imageRatioHeightTablet',
+								},
+								mobile: {
+									value: imageRatioHeightMobile,
+									label: 'imageRatioHeightMobile',
+								},
+							}}
+							min={0}
+							max={100}
+							displayUnit={false}
+							setAttributes={setAttributes}
+						/>
+					</>
+				)}
+				</>
+				)}
 				{ displayPostImage === true && (
 					<UAGSelectControl
 						label={ __( 'Sizes', 'ultimate-addons-for-gutenberg' ) }

@@ -11,6 +11,13 @@
 // Adds Fonts.
 UAGB_Block_JS::blocks_post_gfont( $attr );
 
+$imageRatioWidthDesktop  = isset( $attr['imageRatioWidthDesktop'] ) ? $attr['imageRatioWidthDesktop'] : 1;
+$imageRatioWidthTablet   = isset( $attr['imageRatioWidthTablet'] ) ? $attr['imageRatioWidthTablet'] : 1;
+$imageRatioWidthMobile   = isset( $attr['imageRatioWidthMobile'] ) ? $attr['imageRatioWidthMobile'] : 1;
+$imageRatioHeightDesktop = isset( $attr['imageRatioHeightDesktop'] ) ? $attr['imageRatioHeightDesktop'] : 1;
+$imageRatioHeightTablet  = isset( $attr['imageRatioHeightTablet'] ) ? $attr['imageRatioHeightTablet'] : 1;
+$imageRatioHeightMobile  = isset( $attr['imageRatioHeightMobile'] ) ? $attr['imageRatioHeightMobile'] : 1;
+
 $selectors = UAGB_Block_Helper::get_post_selectors( $attr );
 
 $m_selectors = UAGB_Block_Helper::get_post_mobile_selectors( $attr );
@@ -69,6 +76,11 @@ $selectors['.uagb-post__arrow-outside.uagb-post-grid .slick-next'] = array(
 	'right' => UAGB_Helper::get_css_value( $attr['arrowDistance'], 'px' ),
 );
 
+$selectors['.uagb-has-item-ratio .uagb-post__thumbnail img'] = array(
+	'aspect-ratio' => $imageRatioWidthDesktop . '/' . $imageRatioHeightDesktop,
+	'object-fit'   => $attr['objectFit'],
+);
+
 $t_selectors['.uagb-post__arrow-outside.uagb-post-grid .slick-prev'] = array(
 	'left' => UAGB_Helper::get_css_value( $attr['arrowDistanceTablet'], 'px' ),
 );
@@ -77,12 +89,22 @@ $t_selectors['.uagb-post__arrow-outside.uagb-post-grid .slick-next'] = array(
 	'right' => UAGB_Helper::get_css_value( $attr['arrowDistanceTablet'], 'px' ),
 );
 
+$t_selectors['.uagb-has-item-ratio .uagb-post__thumbnail img'] = array(
+	'aspect-ratio' => $imageRatioWidthTablet . '/' . $imageRatioHeightTablet,
+	'object-fit'   => $attr['objectFit'],
+);
+
 $m_selectors['.uagb-post__arrow-outside.uagb-post-grid .slick-prev'] = array(
 	'left' => UAGB_Helper::get_css_value( $attr['arrowDistanceMobile'], 'px' ),
 );
 
 $m_selectors['.uagb-post__arrow-outside.uagb-post-grid .slick-next'] = array(
 	'right' => UAGB_Helper::get_css_value( $attr['arrowDistanceMobile'], 'px' ),
+);
+
+$m_selectors['.uagb-has-item-ratio .uagb-post__thumbnail img'] = array(
+	'aspect-ratio' => $imageRatioWidthMobile . '/' . $imageRatioHeightMobile,
+	'object-fit'   => $attr['objectFit'],
 );
 
 $selectors['.uagb-post-grid ul.slick-dots li.slick-active button:before'] = array(
