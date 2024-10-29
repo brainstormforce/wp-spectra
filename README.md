@@ -215,6 +215,10 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Feature: Added a free image search to the image media pickers.
+* Fix: Resolved an issue wherein the editor strings would not be translatable.
+
 ### 2.16.5 - Friday, 15th November 2024 ###
 * This update addressed a security bug. Props to zer0gh0st (D.Sim) for privately reporting it to our team. Please make sure you are using the latest version on your website. 
 
