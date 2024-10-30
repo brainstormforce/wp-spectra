@@ -25,6 +25,7 @@ import { memo } from '@wordpress/element';
 
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import UpgradeComponent from '@Components/upgrade-to-pro-cta';
 
 const Settings = ( props ) => {
 
@@ -148,6 +149,24 @@ const Settings = ( props ) => {
 	}
 
 	const minsValue = timeInMins ? timeInMins : time;
+
+	const proUpgradePanel = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={__( 'Dynamic Content', 'ultimate-addons-for-gutenberg' )}
+			>
+				<UpgradeComponent
+					control={
+						{
+							title: __( 'Experience dynamic content with Spectra Pro. No more static displays. Personalize your user experience.', 'ultimate-addons-for-gutenberg' ),
+							renderAs: 'list',
+							campaign: 'dynamic-content',
+						}
+					}
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
 
 	const titleSettings = () => {
 		return (
@@ -803,6 +822,7 @@ const Settings = ( props ) => {
 						{ costSettings() }
 						{ toolsSettings() }
 						{ materialsSettings() }
+						{'not-installed' === uagb_blocks_info.spectra_pro_status && ( proUpgradePanel() )}
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ headingColorSettings() }

@@ -21,6 +21,7 @@ import { boxShadowPresets, boxShadowHoverPresets } from './presets';
 import UAGPresets from '@Components/presets';
 import { createBlock } from '@wordpress/blocks';
 import { applyFilters } from '@wordpress/hooks';
+import UpgradeComponent from '@Components/upgrade-to-pro-cta';
 
 const Settings = ( props ) => {
 
@@ -1067,7 +1068,40 @@ const Settings = ( props ) => {
 			{ getBlockControls() }
 			<InspectorControls>
 				<InspectorTabs>
-					<InspectorTab { ...UAGTabs.general }>{ generalSettings() }</InspectorTab>
+					<InspectorTab { ...UAGTabs.general }>
+						{ generalSettings() }
+						{'not-installed' === uagb_blocks_info.spectra_pro_status && (
+							<UAGAdvancedPanelBody className="block-editor-block-inspector__upgrade_pro uagb-upgrade_pro-tab">
+								<UpgradeComponent
+									control={
+										{
+											title: __( 'Take Slider Block to the next level with powerful features', 'ultimate-addons-for-gutenberg' ),
+											choices: [
+												{
+													title: __( 'Slides per view', 'ultimate-addons-for-gutenberg' ),
+													description: '',
+												},
+												{
+													title: __( 'Gap between slides', 'ultimate-addons-for-gutenberg' ),
+													description: '',
+												},
+												{
+													title: __( 'Custom class-based navigation', 'ultimate-addons-for-gutenberg' ),
+													description: '',
+												},
+												{
+													title: __( 'URL hash-based navigation', 'ultimate-addons-for-gutenberg' ),
+													description: '',
+												},
+											],
+											renderAs: 'list',
+											campaign: 'slider',
+										}
+									}
+								/>
+							</UAGAdvancedPanelBody>
+						)}
+					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ contentSettings() }
 						{ backgroundSettings() }

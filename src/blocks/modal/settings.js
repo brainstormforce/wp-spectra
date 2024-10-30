@@ -24,6 +24,7 @@ import ResponsiveBorder from '@Components/responsive-border';
 import Background from '@Components/background';
 import { buttonsPresets } from './presets';
 import UAGPresets from '@Components/presets';
+import UpgradeComponent from '@Components/upgrade-to-pro-cta';
 
 let imageSizeOptions = [
 	{
@@ -1534,6 +1535,37 @@ export default function Settings( props ) {
 						{ modalTriggerPanel }
 						{ modalContentPanel }
 						{ modalClosePanel }
+						{'not-installed' === uagb_blocks_info.spectra_pro_status && (
+							<UAGAdvancedPanelBody className="block-editor-block-inspector__upgrade_pro uagb-upgrade_pro-tab">
+								<UpgradeComponent
+									control={
+										{
+											title: __( 'Take Modal Block to the next level with powerful features', 'ultimate-addons-for-gutenberg' ),
+											choices: [
+												{
+													title: __( 'Automatic trigger, with custom classes or IDs', 'ultimate-addons-for-gutenberg' ),
+													description: '',
+												},
+												{
+													title: __( 'Modal position setting', 'ultimate-addons-for-gutenberg' ),
+													description: '',
+												},
+												{
+													title: __( 'Off-canvas modal', 'ultimate-addons-for-gutenberg' ),
+													description: '',
+												},
+												{
+													title: __( 'More option for close button', 'ultimate-addons-for-gutenberg' ),
+													description: '',
+												},
+											],
+											renderAs: 'list',
+											campaign: 'modal',
+										}
+									}
+								/>
+							</UAGAdvancedPanelBody>
+						)}
 					</InspectorTab>
 
 					<InspectorTab { ...UAGTabs.style }>

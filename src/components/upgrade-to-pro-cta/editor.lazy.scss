@@ -1,0 +1,153 @@
+.uagb-upgrade-pro-wrap {
+	padding: 0 12px;
+
+	.uagb-button-link {
+		display: block;
+		padding: 10px 12px;
+		border-radius: 4px;
+		border: 1px solid #5a03ef;
+		background-color: #fff;
+		color: #5a03ef;
+		font-size: 13px;
+		font-weight: 400;
+		line-height: 16px;
+		text-align: center;
+		cursor: pointer;
+
+		&:hover,
+		&:focus {
+			background-color: #fff;
+			color: #5a03ef;
+			border: 1px solid #5a03ef;
+			box-shadow: unset;
+		}
+	}
+
+	.uagb-upgrade-trigger,
+	.uagb-upgrade-pro-innerwrap {
+		width: 100%;
+		-js-display: inline-flex;
+		display: inline-flex;
+		align-items: center;
+		flex-wrap: wrap;
+		align-content: center;
+		position: relative;
+		overflow: hidden;
+		justify-content: center;
+
+		> svg {
+			width: 100%;
+			height: 100%;
+			filter: blur(4px);
+		}
+	}
+
+	.uagb-upgrade-cta {
+		position: absolute;
+		top: auto;
+		left: auto;
+		width: auto;
+		height: 28px;
+		border-radius: 4px;
+		padding: 0 8px 0 5px;
+		font-size: 1em;
+		line-height: 1em;
+		display: inline-flex;
+		color: #0284c7;
+		background: #fff;
+		border: 1px solid #0284c7;
+		align-items: center;
+		align-content: center;
+		white-space: nowrap;
+
+		svg {
+			width: 1.2em;
+			height: 1.2em;
+		}
+	}
+
+	.uagb-upgrade-section-title {
+		margin-left: 8px;
+	}
+}
+
+a.uagb-upgrade-trigger:focus,
+a.uagb-upgrade-trigger:active {
+	box-shadow: none;
+	border: none;
+	outline: none;
+}
+
+.uagb-upgrade-list-wrapper {
+	text-align: center;
+
+	.uagb-brand-logo {
+		margin: 0;
+	}
+
+	svg {
+		width: 32px;
+		height: 32px;
+		fill: #5a03ef;
+
+		path,
+		&:hover path {
+			fill: #5a03ef;
+		}
+
+		&:hover,
+		.spectra-page-settings-button:hover path {
+			fill: #5a03ef;
+		}
+	}
+
+	.uagb-upgrade-list-section-title {
+		margin: 0.5em auto 1.2em;
+		max-width: 240px;
+		font-size: 13px;
+		line-height: 16px;
+	}
+}
+
+.interface-complementary-area p.uagb-upgrade-list-section-title {
+	margin-top: 1em;
+}
+
+.uagb-upgrade-list-items {
+	margin-bottom: 1.8em;
+}
+
+.uagb-pro-upgrade-item {
+	display: flex;
+	align-items: center;
+	margin-bottom: 12px;
+
+	svg {
+		vertical-align: middle;
+		flex-shrink: 0;
+	}
+
+	span {
+		display: inline;
+	}
+
+	p {
+		margin: 1.25em 0;
+		line-height: 1;
+	}
+}
+
+.uagb-upgrade-list-description {
+	margin: 5px 0 0 20px;
+}
+
+.uagb-upgrade-list-title {
+	font-weight: 400;
+	font-size: 13px;
+	line-height: 18px;
+	margin-left: 0.5em;
+}
+
+.uag-advance-panel-body-animations .uagb-upgrade-pro-wrap {
+	margin-top: 16px;
+}

@@ -217,6 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ### x.x.x ###
 * Feature: Added a free image search to the image media pickers.
+* Fix: Resolved an issue wherein re-activating Spectra would always redirect to the Spectra dashboard.
 * Fix: Resolved an issue wherein the editor strings would not be translatable.
 
 ### 2.16.5 - Friday, 15th November 2024 ###

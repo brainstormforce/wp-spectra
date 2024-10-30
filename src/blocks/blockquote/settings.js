@@ -16,6 +16,7 @@ import { ToggleControl, Icon } from '@wordpress/components';
 import { BlockControls, InspectorControls } from '@wordpress/block-editor';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import UAGTextControl from '@Components/text-control';
+import UpgradeComponent from '@Components/upgrade-to-pro-cta';
 
 const Settings = ( props ) => {
 
@@ -1452,6 +1453,23 @@ const Settings = ( props ) => {
 			</UAGAdvancedPanelBody>
 		);
 	};
+	const proUpgradePanel = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={__( 'Dynamic Content', 'ultimate-addons-for-gutenberg' )}
+			>
+				<UpgradeComponent
+					control={
+						{
+							title: __( 'Experience dynamic content with Spectra Pro. No more static displays. Personalize your user experience.', 'ultimate-addons-for-gutenberg' ),
+							renderAs: 'list',
+							campaign: 'dynamic-content',
+						}
+					}
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
 	return (
 		<>
 			<BlockControls key="controls"></BlockControls>
@@ -1460,6 +1478,7 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.general }>
 						{ skinSettings }
 						{ twitterSettings }
+						{'not-installed' === uagb_blocks_info.spectra_pro_status && ( proUpgradePanel() )}
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ generalStyle() }
