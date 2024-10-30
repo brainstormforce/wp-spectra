@@ -40,7 +40,7 @@ import { boxShadowPresets, boxShadowHoverPresets } from './presets';
 import variantIcons from './variant-icons';
 import { uagbClassNames } from '@Utils/Helpers';
 import { applyFilters } from '@wordpress/hooks';
-
+import UpgradeComponent from '@Components/upgrade-to-pro-cta';
 import RepetitionSettings from './meta-settings/repetition';
 
 const Settings = ( props ) => {
@@ -1408,6 +1408,29 @@ const Settings = ( props ) => {
 								{ generalSettings() }
 								{ closeSettings() }
 								{ popupGeneralMetaSettings }
+								{'not-installed' === uagb_blocks_info.spectra_pro_status && (
+									<UAGAdvancedPanelBody className="block-editor-block-inspector__upgrade_pro uagb-upgrade_pro-tab">
+										<UpgradeComponent
+											control={
+												{
+													title: __( 'Take Popup builder to the next level with powerful features', 'ultimate-addons-for-gutenberg' ),
+													choices: [
+														{
+															title: __( 'On load, exit intent, and class-based triggers', 'ultimate-addons-for-gutenberg' ),
+															description: '',
+														},
+														{
+															title: __( 'Display conditions', 'ultimate-addons-for-gutenberg' ),
+															description: '',
+														},
+													],
+													renderAs: 'list',
+													campaign: 'popup-builder',
+												}
+											}
+										/>
+									</UAGAdvancedPanelBody>
+								)}
 							</>
 						) }
 					</InspectorTab>

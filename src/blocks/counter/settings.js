@@ -25,6 +25,7 @@ import { getImageSize } from '@Utils/Helpers';
 import UAGPresets from '@Components/presets';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import defaultAttributes from './attributes';
+import UpgradeComponent from '@Components/upgrade-to-pro-cta';
 
 let imageSizeOptions = [
 	{
@@ -1674,6 +1675,24 @@ export default function Settings( props ) {
 		</UAGAdvancedPanelBody>
 	);
 
+	const proUpgradePanel = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={__( 'Dynamic Content', 'ultimate-addons-for-gutenberg' )}
+			>
+				<UpgradeComponent
+					control={
+						{
+							title: __( 'Experience dynamic content with Spectra Pro. No more static displays. Personalize your user experience.', 'ultimate-addons-for-gutenberg' ),
+							renderAs: 'list',
+							campaign: 'dynamic-content',
+						}
+					}
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
+
 	return (
 		<>
 			<BlockControls key="controls">
@@ -1685,6 +1704,7 @@ export default function Settings( props ) {
 						{ generalPanel }
 						{ /* No icons necessary for bar layout */ }
 						{ layout !== 'bars' && iconImagePanel }
+						{'not-installed' === uagb_blocks_info.spectra_pro_status && ( proUpgradePanel() )}
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ numberStylePanel }

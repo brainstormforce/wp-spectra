@@ -22,6 +22,7 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import renderGBSSettings from '@Controls/renderGBSSettings';
 import UAGSelectControl from '@Components/select-control';
 import styling from './inline-styles';
+import UpgradeComponent from '@Components/upgrade-to-pro-cta';
 
 const Settings = ( props ) => {
 
@@ -1991,6 +1992,24 @@ const Settings = ( props ) => {
 		);
 	};
 
+	const proUpgradePanel = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={__( 'Dynamic Content', 'ultimate-addons-for-gutenberg' )}
+			>
+				<UpgradeComponent
+					control={
+						{
+							title: __( 'Experience dynamic content with Spectra Pro. No more static displays. Personalize your user experience.', 'ultimate-addons-for-gutenberg' ),
+							renderAs: 'list',
+							campaign: 'dynamic-content',
+						}
+					}
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
+
 	return (
 		<>
 			<InspectorControls>
@@ -1999,6 +2018,7 @@ const Settings = ( props ) => {
 						{ layouts() }
 						{ ctaSettings() }
 						{ 'button' === ctaType && secBtnSettings() }
+						{'not-installed' === uagb_blocks_info.spectra_pro_status && ( proUpgradePanel() ) }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style } parentProps={ props }>
 						{ headingSettings() }

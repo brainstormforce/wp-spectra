@@ -20,6 +20,7 @@ let imageSizeOptions = [
 import { memo } from '@wordpress/element';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import UAGTextControl from '@Components/text-control';
+import UpgradeComponent from '@Components/upgrade-to-pro-cta';
 
 const Settings = ( props ) => {
 
@@ -126,6 +127,24 @@ const Settings = ( props ) => {
 		item.label = item.label.replace( /\w/, ( firstLetter ) => firstLetter.toUpperCase() );
 		return item;
 	} );
+
+	const proUpgradePanel = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={__( 'Dynamic Content', 'ultimate-addons-for-gutenberg' )}
+			>
+				<UpgradeComponent
+					control={
+						{
+							title: __( 'Experience dynamic content with Spectra Pro. No more static displays. Personalize your user experience.', 'ultimate-addons-for-gutenberg' ),
+							renderAs: 'list',
+							campaign: 'dynamic-content',
+						}
+					}
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
 
 	const imageControls = () => {
 		return (
@@ -556,6 +575,7 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.general }>
 						{ imageControls() }
 						{ urlControls() }
+						{'not-installed' === uagb_blocks_info.spectra_pro_status && ( proUpgradePanel() )}
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ titleStyle() }

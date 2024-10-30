@@ -75,7 +75,7 @@
 			}
 
 			/* Add a border top and bottom of responsive condition */
-			&:last-child {
+			&:last-child:not(.block-editor-block-inspector__upgrade_pro) {
 				border-bottom: 1px solid #e0e0e0;
 			}
 		}

@@ -27,6 +27,7 @@ import { store as blockEditorStore, InspectorControls } from '@wordpress/block-e
 import { ToggleControl, Icon } from '@wordpress/components';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import { boxShadowPresets, boxShadowHoverPresets } from './presets';
+import UpgradeComponent from '@Components/upgrade-to-pro-cta';
 
 const MAX_IMAGE_COLUMNS = 8;
 
@@ -2111,6 +2112,25 @@ const Settings = ( props ) => {
 						{ readyToRender && 'tiled' !== feedLayout && layoutSpecificSettings() }
 						{ readyToRender && 'lightbox' === imageClickEvent && lightboxSettings() }
 						{ readyToRender && captionSettings() }
+						{'not-installed' === uagb_blocks_info.spectra_pro_status && (
+							<UAGAdvancedPanelBody className="block-editor-block-inspector__upgrade_pro uagb-upgrade_pro-tab">
+								<UpgradeComponent
+									control={
+										{
+											title: __( 'Take Image Gallery Block to the next level with powerful features', 'ultimate-addons-for-gutenberg' ),
+											choices: [
+												{
+													title: __( 'Custom URLs for click events', 'ultimate-addons-for-gutenberg' ),
+													description: '',
+												},
+											],
+											renderAs: 'list',
+											campaign: 'image-gallery',
+										}
+									}
+								/>
+							</UAGAdvancedPanelBody>
+						)}
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ ! readyToRender && initialSettings() }

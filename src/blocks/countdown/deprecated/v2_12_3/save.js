@@ -13,7 +13,7 @@ export default function Save( props ) {
 		className: `uagb-block-${ block_id } wp-block-uagb-countdown`,
 	} );
 
-	const innerblocks_structure = !! uagb_blocks_info.spectra_pro_status && timerEndAction === 'content' && (
+	const innerblocks_structure = 'not-installed' === uagb_blocks_info.spectra_pro_status && timerEndAction === 'content' && (
 		<div className={ `uagb-block-countdown-innerblocks-${ block_id } wp-block-uagb-countdown-innerblocks` }>
 			{ applyFilters( 'spectra.countdown.save-innerblocks', '', name ) }
 		</div>

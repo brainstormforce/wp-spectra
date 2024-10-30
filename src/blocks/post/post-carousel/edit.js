@@ -38,6 +38,7 @@ import Render from './render';
 import { Placeholder, Spinner, ToggleControl, Icon } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 import { useSelect, useDispatch } from '@wordpress/data';
+import UpgradeComponent from '@Components/upgrade-to-pro-cta';
 
 const UAGBPostCarousel = ( props ) => {
 	const {
@@ -2149,6 +2150,41 @@ const UAGBPostCarousel = ( props ) => {
 					{ getContentPanelBody() }
 					{ getReadMoreLinkPanelBody() }
 					{ presetSettings() }
+					{ 'not-installed' === uagb_blocks_info.spectra_pro_status && (
+						<UAGAdvancedPanelBody className="block-editor-block-inspector__upgrade_pro uagb-upgrade_pro-tab">
+							<UpgradeComponent
+								control={
+									{
+										title: __( 'Take Post Blocks to the next level with the Loop Builder', 'ultimate-addons-for-gutenberg' ),
+										choices: [
+											{
+												title: __( 'More customizability', 'ultimate-addons-for-gutenberg' ),
+												description: '',
+											},
+											{
+												title: __( 'Blocks inside the Post Items', 'ultimate-addons-for-gutenberg' ),
+												description: '',
+											},
+											{
+												title: __( 'Include and Exclude option for Taxonomy/Posts/Authors', 'ultimate-addons-for-gutenberg' ),
+												description: '',
+											},
+											{
+												title: __( 'Show sticky posts', 'ultimate-addons-for-gutenberg' ),
+												description: '',
+											},
+											{
+												title: __( 'Multiple Layouts', 'ultimate-addons-for-gutenberg' ),
+												description: '',
+											},
+										],
+										renderAs: 'list',
+										campaign: 'post-carousel',
+									}
+								}
+							/>
+						</UAGAdvancedPanelBody>
+					) }
 				</InspectorTab>
 				<InspectorTab { ...UAGTabs.style }>
 					{ spacingSettings() }

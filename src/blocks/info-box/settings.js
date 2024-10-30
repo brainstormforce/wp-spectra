@@ -23,6 +23,7 @@ import UAGTextControl from '@Components/text-control';
 import renderSVG from '@Controls/renderIcon';
 import renderGBSSettings from '@Controls/renderGBSSettings';
 import styling from './styling';
+import UpgradeComponent from '@Components/upgrade-to-pro-cta';
 
 let imageSizeOptions = [
 	{
@@ -2509,6 +2510,24 @@ const Settings = ( props ) => {
 		);
 	};
 
+	const proUpgradePanel = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={__( 'Dynamic Content', 'ultimate-addons-for-gutenberg' )}
+			>
+				<UpgradeComponent
+					control={
+						{
+							title: __( 'Experience dynamic content with Spectra Pro. No more static displays. Personalize your user experience.', 'ultimate-addons-for-gutenberg' ),
+							renderAs: 'list',
+							campaign: 'dynamic-content',
+						}
+					}
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
+
 	return (
 		<>
 			<InspectorControls>
@@ -2519,6 +2538,7 @@ const Settings = ( props ) => {
 						{ seperatorSettings() }
 						{ ctaSettings() }
 						{ presetSettings() }
+						{'not-installed' === uagb_blocks_info.spectra_pro_status && ( proUpgradePanel() ) }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style } parentProps={ props }>
 						{ styleSettings() }
