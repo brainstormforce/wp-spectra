@@ -72,6 +72,11 @@
 			/* Gutenberg Toggle Help CSS*/
 			.components-base-control__help {
 				margin-top: 10px;
+
+				/* Spacing issue in toggle control help text with 6.7 compatibiity */
+				.components-toggle-control__help {
+					margin: 0;
+				}
 			}
 
 			/* Add a border top and bottom of responsive condition */
