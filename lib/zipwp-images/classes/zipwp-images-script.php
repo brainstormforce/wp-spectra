@@ -97,10 +97,10 @@ class Zipwp_Images_Script {
 				'is_bb_editor'         => ( class_exists( '\FLBuilderModel' ) ) ? ( \FLBuilderModel::is_builder_active() ) : false,
 				'is_brizy_editor'      => ( class_exists( 'Brizy_Editor_Post' ) ) ? ( isset( $_GET['brizy-edit'] ) || isset( $_GET['brizy-edit-iframe'] ) ) : false, // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Fetching GET parameter, no nonce associated with this action.
 				'saved_images'         => get_option( 'zipwp-images-saved-images', array() ),
-				'title'                => apply_filters( 'zipwp_images_tab_title', __( 'Search Images', 'zipwp-images' ) ),
-				'search_placeholder'   => __( 'Search - Ex: flowers', 'zipwp-images' ),
-				'downloading'          => __( 'Downloading...', 'zipwp-images' ),
-				'validating'           => __( 'Validating...', 'zipwp-images' ),
+				'title'                => apply_filters( 'zipwp_images_tab_title', __( 'Search Images', 'ultimate-addons-for-gutenberg' ) ),
+				'search_placeholder'   => __( 'Search - Ex: flowers', 'ultimate-addons-for-gutenberg' ),
+				'downloading'          => __( 'Downloading...', 'ultimate-addons-for-gutenberg' ),
+				'validating'           => __( 'Validating...', 'ultimate-addons-for-gutenberg' ),
 				'_ajax_nonce'          => wp_create_nonce( 'zipwp-images' ),
 				'rest_api_nonce'       => ( current_user_can( 'manage_options' ) ) ? wp_create_nonce( 'wp_rest' ) : '',
 			)
