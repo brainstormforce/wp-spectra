@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* This update addressed a security bug. Props to zer0gh0st (D.Sim) for privately reporting it to our team. Please make sure you are using the latest version on your website.
+
 ### 2.16.2 - Wednesday, 23rd October 2024 ###
 * Updated the AI Assistant and Design Kit Libraries.
 
