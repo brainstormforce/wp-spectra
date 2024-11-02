@@ -31,10 +31,6 @@ const Render = ( props ) => {
 		fbIcon,
 		linkedinIcon,
 		pinIcon,
-		twitterLink,
-		fbLink,
-		linkedinLink,
-		pinLink,
 		socialTarget,
 		socialEnable,
 		stack,
@@ -92,12 +88,18 @@ const Render = ( props ) => {
 		</>
 	);
 
-	const socialHtml = ( icon, link, target ) => {
+	const socialHtml = ( icon, target ) => {
 		const target_value = target ? '_blank' : '_self';
 
 		return (
 			<li className="uagb-team__social-icon">
-				<a href={ link } aria-label={ icon } target={ target_value } title="" rel="noopener noreferrer">
+				<a // eslint-disable-line jsx-a11y/anchor-is-valid
+					href={ '#' } 
+					aria-label={ icon } 
+					target={ target_value } 
+					title="" 
+					rel="noopener noreferrer"
+				> 
 					{ renderSVG( icon, setAttributes ) }
 				</a>
 			</li>
@@ -106,10 +108,10 @@ const Render = ( props ) => {
 
 	const socialLinks = (
 		<ul className="uagb-team__social-list">
-			{ '' !== twitterIcon && socialHtml( twitterIcon, twitterLink, socialTarget ) }
-			{ '' !== fbIcon && socialHtml( fbIcon, fbLink, socialTarget ) }
-			{ '' !== linkedinIcon && socialHtml( linkedinIcon, linkedinLink, socialTarget ) }
-			{ '' !== pinIcon && socialHtml( pinIcon, pinLink, socialTarget ) }
+			{ '' !== twitterIcon && socialHtml( twitterIcon, socialTarget ) }
+			{ '' !== fbIcon && socialHtml( fbIcon, socialTarget ) }
+			{ '' !== linkedinIcon && socialHtml( linkedinIcon, socialTarget ) }
+			{ '' !== pinIcon && socialHtml( pinIcon, socialTarget ) }
 		</ul>
 	);
 
