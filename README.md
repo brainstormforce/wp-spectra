@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.6  
-**Stable tag:** 2.16.2  
+**Stable tag:** 2.16.3  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### x.x.x ###
+### 2.16.3 - Saturday, 2nd November 2024 ###
 * This update addressed a security bug. Props to zer0gh0st (D.Sim) for privately reporting it to our team. Please make sure you are using the latest version on your website.
 
 ### 2.16.2 - Wednesday, 23rd October 2024 ###
