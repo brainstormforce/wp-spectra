@@ -219,6 +219,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvements: Post Grid / Carousel Block - Added a responsive Image Ratio setting with a custom ratio option.
 * Fix: Container - Resolved an issue wherein sticky containers would not work as intended when resizing the window.
 * Fix: Container - Resolved an issue wherein the container children width would not work as intended for slider and carousel content.
+* Fix: Global - Resolved an issue wherein assets would not load for single page templates when using FSE themes.
 
 ### x.x.x ###
 * Improvement: Global - Added responsive support for gradient background settings.
