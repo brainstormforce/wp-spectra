@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-10-29T12:12:26+00:00\n"
+"POT-Creation-Date: 2024-10-31T01:07:23+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: admin-core/inc/admin-menu.php:169
 #: admin-core/inc/admin-menu.php:183
 #: admin-core/inc/admin-menu.php:194
-#: admin-core/inc/admin-menu.php:274
+#: admin-core/inc/admin-menu.php:273
 #: classes/class-uagb-init-blocks.php:579
 msgid "Spectra"
 msgstr ""
@@ -58,7 +58,7 @@ msgid "Successfully saved data!"
 msgstr ""
 
 #: admin-core/ajax/common-settings.php:180
-#: classes/class-uagb-init-blocks.php:1068
+#: classes/class-uagb-init-blocks.php:1074
 msgid "No post data found!"
 msgstr ""
 
@@ -140,29 +140,29 @@ msgstr ""
 msgid "AI Features"
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:285
+#: admin-core/inc/admin-menu.php:284
 msgid "Installing"
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:286
+#: admin-core/inc/admin-menu.php:285
 msgid "Installed"
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:287
+#: admin-core/inc/admin-menu.php:286
 msgid "Activating"
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:288
+#: admin-core/inc/admin-menu.php:287
 msgid "Activated"
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:289
+#: admin-core/inc/admin-menu.php:288
 #: admin-core/assets/build/dashboard-app.js:5
 msgid "Activate"
 msgstr ""
 
 #. translators: %1$s: Opening Strong Tag, %2$s: Closing Strong Tag, %3$s Anchor Tag with Star Symbol Codes.
-#: admin-core/inc/admin-menu.php:531
+#: admin-core/inc/admin-menu.php:530
 msgid "Enjoyed %1$sSpectra%2$s? Please leave us a %3$s rating. We really appreciate your support!"
 msgstr ""
 
@@ -290,6 +290,14 @@ msgstr ""
 #: blocks-config/taxonomy-list/class-uagb-taxonomy-list.php:121
 #: includes/blocks/taxonomy-list/attributes.php:92
 msgid "Taxonomy Not Available."
+msgstr ""
+
+#: blocks-config/taxonomy-list/class-uagb-taxonomy-list.php:552
+msgid "Item"
+msgstr ""
+
+#: blocks-config/taxonomy-list/class-uagb-taxonomy-list.php:553
+msgid "Items"
 msgstr ""
 
 #: blocks-config/taxonomy-list/class-uagb-taxonomy-list.php:716
@@ -7969,13 +7977,13 @@ msgstr ""
 msgid "Please select a valid Contact Form 7."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:809
+#: classes/class-uagb-init-blocks.php:815
 msgid ""
 "Use custom class added in block's advanced settings to target your desired block. Examples:\n"
 "\t\t.my-class {text-align: center;} // my-class is a custom selector"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:868
+#: classes/class-uagb-init-blocks.php:874
 #: classes/class-uagb-rest-api.php:318
 #: classes/class-uagb-rest-api.php:333
 #: dist/blocks.js:1
@@ -7986,21 +7994,21 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:897
-#: classes/class-uagb-init-blocks.php:930
+#: classes/class-uagb-init-blocks.php:903
+#: classes/class-uagb-init-blocks.php:936
 #: dist/blocks.js:23
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:911
+#: classes/class-uagb-init-blocks.php:917
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:944
+#: classes/class-uagb-init-blocks.php:950
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:960
+#: classes/class-uagb-init-blocks.php:966
 msgid "Invalid request"
 msgstr ""
 
@@ -9105,6 +9113,8 @@ msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:1
 #: admin-core/assets/build/dashboard-app.js:5
+#: dist/blocks.js:15
+#: dist/blocks.js:19
 msgid "Dynamic Content"
 msgstr ""
 
@@ -9595,6 +9605,7 @@ msgid "Enable the \"Inherit From Theme\" option to make all buttons in Spectra b
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:7
+#: dist/blocks.js:11
 msgid "Upgrade to Pro"
 msgstr ""
 
@@ -11049,6 +11060,18 @@ msgid "Copy and paste the class above into the Additional Classes field of any b
 msgstr ""
 
 #: dist/blocks.js:11
+msgid "Take Popup builder to the next level with powerful features"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "On load, exit intent, and class-based triggers"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Display conditions"
+msgstr ""
+
+#: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:19
 #: dist/blocks.js:23
@@ -11583,6 +11606,11 @@ msgstr ""
 
 #: dist/blocks.js:15
 msgid "Define whether the items are forced in a single line (No Wrap) or can be flowed into multiple lines (Wrap)."
+msgstr ""
+
+#: dist/blocks.js:15
+#: dist/blocks.js:19
+msgid "Experience dynamic content with Spectra Pro. No more static displays. Personalize your user experience."
 msgstr ""
 
 #: dist/blocks.js:15
@@ -12681,6 +12709,18 @@ msgstr ""
 
 #: dist/blocks.js:19
 msgid "Separator Top Spacing"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Take Countdown Block to the next level with powerful features"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Evergreen mode"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Expiry options"
 msgstr ""
 
 #: dist/blocks.js:19
@@ -14461,6 +14501,14 @@ msgid "Gap"
 msgstr ""
 
 #: dist/blocks.js:19
+msgid "Take Image Gallery Block to the next level with powerful features"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Custom URLs for click events"
+msgstr ""
+
+#: dist/blocks.js:19
 msgid "Enable Hover Zoom"
 msgstr ""
 
@@ -14775,6 +14823,26 @@ msgid "For the styling options please select the Image."
 msgstr ""
 
 #: dist/blocks.js:19
+msgid "Take Modal Block to the next level with powerful features"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Automatic trigger, with custom classes or IDs"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Modal position setting"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Off-canvas modal"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "More option for close button"
+msgstr ""
+
+#: dist/blocks.js:19
 msgid "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis pulvinar dapibus."
 msgstr ""
 
@@ -15025,6 +15093,36 @@ msgstr ""
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Open Links in New Tab"
+msgstr ""
+
+#: dist/blocks.js:19
+#: dist/blocks.js:23
+msgid "Take Post Blocks to the next level with the Loop Builder"
+msgstr ""
+
+#: dist/blocks.js:19
+#: dist/blocks.js:23
+msgid "More customizability"
+msgstr ""
+
+#: dist/blocks.js:19
+#: dist/blocks.js:23
+msgid "Blocks inside the Post Items"
+msgstr ""
+
+#: dist/blocks.js:19
+#: dist/blocks.js:23
+msgid "Include and Exclude option for Taxonomy/Posts/Authors"
+msgstr ""
+
+#: dist/blocks.js:19
+#: dist/blocks.js:23
+msgid "Show sticky posts"
+msgstr ""
+
+#: dist/blocks.js:19
+#: dist/blocks.js:23
+msgid "Multiple Layouts"
 msgstr ""
 
 #: dist/blocks.js:19
@@ -15813,6 +15911,26 @@ msgid "Navigation"
 msgstr ""
 
 #: dist/blocks.js:19
+msgid "Take Slider Block to the next level with powerful features"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Slides per view"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Gap between slides"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Custom class-based navigation"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "URL hash-based navigation"
+msgstr ""
+
+#: dist/blocks.js:19
 msgid "Arrows and Dots"
 msgstr ""
 
@@ -16422,6 +16540,26 @@ msgstr ""
 
 #: dist/blocks.js:19
 msgid "Preview"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Take Animations to the next level with powerful design features"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Set delays and durations"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Change animation pacing"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Repeat on scroll"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Animate all nested blocks inside containers with delays"
 msgstr ""
 
 #: dist/blocks.js:19

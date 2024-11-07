@@ -502,7 +502,7 @@ if ( ! class_exists( 'Spectra_Icon' ) ) {
 				// Wrap the SVG content with an anchor tag.
 				$iconHtml = preg_replace(
 					'/<svg(.*?)>(.*?)<\/svg>/s',
-					'<a rel="' . $rel . '" href="' . esc_url( $linkUrl ) . '" target="' . esc_attr( $targetVal ) . '"><svg$1>$2</svg></a>',
+					'<a rel="' . esc_attr( $rel ) . '" href="' . esc_url( $linkUrl ) . '" target="' . esc_attr( $targetVal ) . '"><svg$1>$2</svg></a>',
 					$iconHtml
 				);
 				
