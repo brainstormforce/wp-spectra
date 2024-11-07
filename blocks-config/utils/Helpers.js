@@ -77,6 +77,21 @@ export function getUnitDimension( input ) {
     return 'px';
 }
 
+export function compareVersions( version1, version2, sign = '=' ) {
+    const normalizeVersion = ( version ) =>
+        version.split( '-' )[0].split( '.' ).map( part => parseInt( part, 10 ) || 0 ).concat( 0, 0, 0 ).slice( 0, 3 );
+
+    const [v1, v2] = [normalizeVersion( version1 ), normalizeVersion( version2 )];
+
+    const comparison = v1.reduce( ( acc, part, i ) => acc || ( part - ( v2[i] || 0 ) ), 0 );
+
+    if ( sign === '<' ) return comparison < 0;
+    if ( sign === '<=' ) return comparison <= 0;
+    if ( sign === '>' ) return comparison > 0;
+    if ( sign === '>=' ) return comparison >= 0;
+    return comparison === 0;
+}
+
 export function convertToPixel( lengthString ) {
     const regex = /\bspacing\s*\|\s*(\d+)\b/;
     const noUnitSlider = lengthString.match( regex );
