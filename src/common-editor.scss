@@ -655,6 +655,10 @@ button.components-button.uagb-review-select-btn.is-secondary {
 			color: #1e1e1e;
 			background-color: $spectra-color-plain-background;
 		}
+
+		&.is-pressed {
+			background-color: $spectra-color-plain-background;
+		}
 	}
 }
 
