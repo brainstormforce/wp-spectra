@@ -268,9 +268,14 @@ module.exports = function ( grunt ) {
 		},
 
 		rename: {
-			main: {
+			minify: {
 				files: [
 					{src: ['dist/blocks.js'], dest: 'dist/blocks.min.js'}
+				]
+			},
+			unminify: {
+				files: [
+					{src: ['dist/blocks.min.js'], dest: 'dist/blocks.js'}
 				]
 			}
 		}
@@ -570,7 +575,11 @@ module.exports = function ( grunt ) {
 	// rtlcss, you will still need to install ruby and sass on your system manually to run this
 	grunt.registerTask( 'rtl', ['rtlcss'] );
 
-	grunt.registerTask( 'minify', [ 'rtlcss', 'cssmin', 'uglify', 'rename' ] );
+	grunt.registerTask( 'rename-minify', [ 'rename:minify' ] );
+
+	grunt.registerTask( 'rename-unminify', [ 'rename:unminify' ] );
+
+	grunt.registerTask( 'minify', [ 'rtlcss', 'cssmin', 'uglify', 'rename:minify' ] );
 
 	grunt.registerTask( 'font-awesome-php-array-update', [ 'json2php', 'clean-icon-svg-json-file' ] );
 };

@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.6  
-**Stable tag:** 2.16.2  
+**Stable tag:** 2.17.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -221,7 +221,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Container - Resolved an issue wherein the container children width would not work as intended for slider and carousel content.
 * Fix: Global - Resolved an issue wherein assets would not load for single page templates when using FSE themes.
 
-### x.x.x ###
+### 2.17.0 - Thursday, 31st October 2024 ###
+* Feature: Added a free image search to the image media pickers.
 * Improvement: Global - Added responsive support for gradient background settings.
 * Improvement: Global - Added rel attribute support for anchor tag elements.
 * Fix: Container - Resolved an issue wherein the Core Image block's alignment would not work as expected when inside a Container.
@@ -230,6 +231,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Global - Resolved an issue wherein the translated setting panels in some Spectra blocks would cause some Spectra Pro features in those blocks to not work as expected.
 * Fix: Global - Resolved an issue causing a php error for str_replace() for font loading.
 * Fix: Global - Resolved an issue wherein the self-hosted Google Fonts would not work as intended on the multisite's first sub-site setup.
+* Fix: Global - Resolved an issue in which some static and dynamic javascript strings were not translatable.
 
 ### 2.16.2 - Wednesday, 23rd October 2024 ###
 * Updated the AI Assistant and Design Kit Libraries.

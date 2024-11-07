@@ -31,6 +31,7 @@ import boxShadowPresets, { boxShadowHoverPresets, buttonsPresets } from './prese
 import UAGPresets from '@Components/presets';
 import renderGBSSettings from '@Controls/renderGBSSettings';
 import styling from './styling';
+import UpgradeComponent from '@Components/upgrade-to-pro-cta';
 
 const Settings = ( props ) => {
 	const { attributes, setAttributes, deviceType, clientId } = props;
@@ -180,6 +181,24 @@ const Settings = ( props ) => {
 		);
 	};
 
+	const proUpgradePanel = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={__( 'Dynamic Content', 'ultimate-addons-for-gutenberg' )}
+			>
+				<UpgradeComponent
+					control={
+						{
+							title: __( 'Experience dynamic content with Spectra Pro. No more static displays. Personalize your user experience.', 'ultimate-addons-for-gutenberg' ),
+							renderAs: 'list',
+							campaign: 'dynamic-content',
+						}
+					}
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
+
 	const alignmentControls = [
 		{
 			align: 'left',
@@ -227,7 +246,7 @@ const Settings = ( props ) => {
 				{ inheritFromTheme && ( 'Astra' === currentTheme || isAstraBasedTheme ) && (
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
-						label={ __( `Button Type`, 'ultimate-addons-for-gutenberg' ) }
+						label={ __( 'Button Type', 'ultimate-addons-for-gutenberg' ) }
 						data={ {
 							value: buttonType,
 							label: 'buttonType',
@@ -1135,6 +1154,7 @@ const Settings = ( props ) => {
 					<InspectorTab { ...UAGTabs.general } parentProps={ props }>
 						{ ! inheritFromTheme && presetSettings() }
 						{ buttonSettings() }
+						{'not-installed' === uagb_blocks_info.spectra_pro_status && ( proUpgradePanel() ) }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style } parentProps={ props }>
 						{ ! removeText && ! inheritFromTheme && textSettings() }

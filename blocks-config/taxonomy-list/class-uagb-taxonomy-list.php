@@ -549,8 +549,8 @@ if ( ! class_exists( 'UAGB_Taxonomy_List' ) ) {
 					$plural_name   = $pt->labels->name;
 				} else {
 					// Fallback if $pt or $pt->labels is null.
-					$singular_name = 'Item';
-					$plural_name   = 'Items';
+					$singular_name = __( 'Item', 'ultimate-addons-for-gutenberg' );
+					$plural_name   = __( 'Items', 'ultimate-addons-for-gutenberg' );
 				}
 
 				$args                = array(
