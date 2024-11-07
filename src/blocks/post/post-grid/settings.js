@@ -21,8 +21,8 @@ import { decodeEntities } from '@wordpress/html-entities';
 import UAGNumberControl from '@Components/number-control';
 import UAGTextControl from '@Components/text-control';
 import { useEffect, memo } from '@wordpress/element';
-import ResponsiveSelectControl from '@Components/responsive-select';
 import UpgradeComponent from '@Components/upgrade-to-pro-cta';
+import ResponsiveSelectControl from '@Components/responsive-select';
 
 const MAX_POSTS_COLUMNS = 8;
 
