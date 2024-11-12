@@ -227,6 +227,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Global - Resolved an issue wherein the self-hosted Google Fonts would not work as intended on the multisite's first sub-site setup.
 * Fix: Global - Resolved an issue in which some static and dynamic javascript strings were not translatable.
 
+= 2.16.3 - Saturday, 2nd November 2024 =
+* This update addressed a security bug. Props to zer0gh0st (D.Sim) for privately reporting it to our team. Please make sure you are using the latest version on your website.
+
 = 2.16.2 - Wednesday, 23rd October 2024 =
 * Updated the AI Assistant and Design Kit Libraries.
 
