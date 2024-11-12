@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.16.2\n"
+"Project-Id-Version: Spectra 2.16.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-10-23T06:40:00+00:00\n"
+"POT-Creation-Date: 2024-11-02T09:40:15+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -162,7 +162,7 @@ msgid "Activate"
 msgstr ""
 
 #. translators: %1$s: Opening Strong Tag, %2$s: Closing Strong Tag, %3$s Anchor Tag with Star Symbol Codes.
-#: admin-core/inc/admin-menu.php:525
+#: admin-core/inc/admin-menu.php:531
 msgid "Enjoyed %1$sSpectra%2$s? Please leave us a %3$s rating. We really appreciate your support!"
 msgstr ""
 
