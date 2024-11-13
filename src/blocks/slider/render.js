@@ -32,7 +32,7 @@ const Render = ( props ) => {
 	doAction( `spectra.slider.before_render`, sliderOption );
 
 	const { isListViewOpen, hasChildren } = useSelect( ( select ) => {
-		const getStore = select( 'core/edit-post' ) || select( 'core/edit-widgets' ) || select( 'core/edit-site' );
+		const getStore = select( 'core/editor' ) || select( 'core/edit-widgets' );
 
 		return {
 			isListViewOpen: getStore?.isListViewOpened ? getStore.isListViewOpened() : false,

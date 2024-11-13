@@ -1,6 +1,6 @@
 import { createBlock } from '@wordpress/blocks';
 import colourNameToHex from '@Controls/changeColorNameToHex';
-import { getUnitDimension, getUnit, convertToPixel, getNumber } from '@Utils/Helpers';
+import { getUnitDimension, getUnit, convertToPixel, getNumber, compareVersions } from '@Utils/Helpers';
 
 const transforms = {
     from: [
@@ -56,6 +56,27 @@ const transforms = {
                     } );
                     buttonsArray.push( buttonBlock );
                 } );
+
+                // Check if the current WordPress version is 6.7 or higher.
+                const isAfterWP6Point7 = compareVersions( uagb_blocks_info.wp_version , '6.7', '>=' );
+                // Define mapping for alignment options (left/center/right/stretch) to justify content mappings.
+                const justifyMap = {
+                    left: 'top',
+                    center: 'center',
+                    right: 'bottom',
+                    stretch: 'top'
+                };
+                // Determine the layout orientation from attributes (could be 'horizontal' or 'vertical').
+                const layoutType = _attributes?.layout?.orientation;
+                // Determine the block gap (spacing) based on WP version and layout orientation.
+                const gapBeforeWP6Point7 = convertToPixel( isAfterWP6Point7 ? '10px' : _attributes?.style?.spacing?.blockGap || '10px' );
+                const gapAfterWP6Point7 = ( 'vertical' === layoutType ) ? convertToPixel( _attributes.style?.spacing?.blockGap?.top || '10px' ) : convertToPixel(  _attributes.style?.spacing?.blockGap?.left  || '10px' );
+                // Determine the overall alignment setting.
+                // If `hasWidthFull` is true, set to 'full'; otherwise, determine alignment based on `justifyContent`. 
+                const overallAlign = hasWidthFull ? 'full' : ( justifyContent === 'space-between' && 'center' ) || justifyContent;
+                // Map `justifyContent` to a vertical alignment option based on `justifyMap`.
+                const verticalAlign   =  justifyMap[justifyContent];
+                // Create and return a 'uagb/buttons' block with the configured properties.
                 return createBlock( 'uagb/buttons', {
                         fontWeight: _attributes?.style?.typography?.fontWeight || '',
                         fontSize: getNumber( _attributes?.style?.typography?.fontSize || '#' ),
@@ -64,9 +85,16 @@ const transforms = {
 						fontTransform: _attributes?.style?.typography?.textTransform || '',
 						lineHeight: getNumber( _attributes?.style?.typography?.lineHeight || '#' ),
                         lineHeightType : 'em',
-                        align: hasWidthFull ? 'full' : ( justifyContent === 'space-between' && 'center' ) || justifyContent,
-                        gap: convertToPixel( _attributes?.style?.spacing?.blockGap  || '10px' ), 
-
+                        // Apply overall alignment to all devices (desktop, tablet, mobile).
+                        align: overallAlign,
+                        alignTablet: overallAlign,
+                        alignMobile: overallAlign,
+                        // Set the gap between elements based on WP version.
+                        gap: isAfterWP6Point7 ? gapAfterWP6Point7 : gapBeforeWP6Point7,
+                        // Set stacking orientation for desktop if layout is vertical; otherwise, 'none'.
+                        stack: ( 'vertical' === layoutType ) ? 'desktop' : 'none',
+                        // Set vertical alignment only if layout is vertical.
+                        verticalAlignment: ( 'vertical' === layoutType ) ? verticalAlign : ''
                 }, buttonsArray );
             },
         },
