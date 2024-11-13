@@ -28,7 +28,7 @@ const UAGBSlide = ( props ) => {
 };
 
 const applyWithSelect = withSelect( ( select, props ) => {
-	const deviceType = select( 'core/editor' ).getDeviceType() ? select( 'core/editor' ).getDeviceType() : null;
+	const deviceType = select( 'core/editor' )?.getDeviceType ? select( 'core/editor' ).getDeviceType() : null;
 	const { getBlocks, getBlockIndex } = select( 'core/block-editor' );
 	const { getBlockType } = select( 'core/blocks' );
 	const { insertBlock } = useDispatch( 'core/block-editor' );
