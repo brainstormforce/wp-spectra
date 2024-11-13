@@ -1,33 +1,42 @@
 # Copyright (C) 2024 Brainstorm Force
-# This file is distributed under the same license as the Spectra package.
+# This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
 "Project-Id-Version: Spectra 2.16.4\n"
-"Report-Msgid-Bugs-To: "
-"https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
-"POT-Creation-Date: 2024-11-13 12:10:25+00:00\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: en\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Country: United States\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: "
-"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
-"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
-"X-Poedit-Basepath: ../\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Bookmarks: \n"
-"X-Textdomain-Support: yes\n"
-"X-Generator: grunt-wp-i18n 1.0.3\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-11-13T22:19:16+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.9.0\n"
+"X-Domain: ultimate-addons-for-gutenberg\n"
 
-#: classes/class-uagb-fse-fonts-compatibility.php:169
-#: classes/class-uagb-fse-fonts-compatibility.php:181
-msgid "400"
+#. Plugin Name of the plugin
+#: admin-core/inc/admin-menu.php:147
+#: admin-core/inc/admin-menu.php:148
+#: admin-core/inc/admin-menu.php:159
+#: admin-core/inc/admin-menu.php:169
+#: admin-core/inc/admin-menu.php:183
+#: admin-core/inc/admin-menu.php:194
+#: admin-core/inc/admin-menu.php:274
+#: classes/class-uagb-init-blocks.php:576
+msgid "Spectra"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://www.brainstormforce.com"
+msgstr ""
+
+#. Description of the plugin
+msgid "The Spectra extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster."
+msgstr ""
+
+#. Author of the plugin
+msgid "Brainstorm Force"
 msgstr ""
 
 #: admin-core/ajax/ajax-errors.php:59
@@ -69,23 +78,23 @@ msgstr ""
 msgid "Module not found!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:1004
 #. Translators: %s is the module name.
+#: admin-core/ajax/common-settings.php:1004
 msgid "%s disabled!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:1014
 #. Translators: %s is the module name.
+#: admin-core/ajax/common-settings.php:1014
 msgid "Unable to disable %s"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:1026
 #. Translators: %s is the module name.
+#: admin-core/ajax/common-settings.php:1026
 msgid "%s enabled!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:1036
 #. Translators: %s is the module name.
+#: admin-core/ajax/common-settings.php:1036
 msgid "Unable to enable %s"
 msgstr ""
 
@@ -97,15 +106,19 @@ msgstr ""
 msgid "Unable to verify authenticity."
 msgstr ""
 
-#: admin-core/api/common-settings.php:98 classes/class-uagb-rest-api.php:435
+#: admin-core/api/common-settings.php:98
+#: classes/class-uagb-rest-api.php:435
 msgid "Sorry, you cannot list resources."
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:99 admin-core/inc/admin-menu.php:195
+#: admin-core/inc/admin-menu.php:99
+#: admin-core/inc/admin-menu.php:195
+#: admin-core/assets/build/dashboard-app.js:1
 msgid "Settings"
 msgstr ""
 
 #: admin-core/inc/admin-menu.php:100
+#: admin-core/assets/build/dashboard-app.js:3
 msgid "Rollback"
 msgstr ""
 
@@ -113,19 +126,17 @@ msgstr ""
 msgid "Get Spectra Pro"
 msgstr ""
 
-#. Plugin Name of the plugin/theme
-msgid "Spectra"
-msgstr ""
-
 #: admin-core/inc/admin-menu.php:160
 msgid "Dashboard"
 msgstr ""
 
 #: admin-core/inc/admin-menu.php:170
+#: admin-core/assets/build/dashboard-app.js:1
 msgid "Blocks"
 msgstr ""
 
 #: admin-core/inc/admin-menu.php:184
+#: admin-core/assets/build/dashboard-app.js:1
 msgid "AI Features"
 msgstr ""
 
@@ -146,15 +157,13 @@ msgid "Activated"
 msgstr ""
 
 #: admin-core/inc/admin-menu.php:289
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Activate"
 msgstr ""
 
+#. translators: %1$s: Opening Strong Tag, %2$s: Closing Strong Tag, %3$s Anchor Tag with Star Symbol Codes.
 #: admin-core/inc/admin-menu.php:531
-#. translators: %1$s: Opening Strong Tag, %2$s: Closing Strong Tag, %3$s Anchor
-#. Tag with Star Symbol Codes.
-msgid ""
-"Enjoyed %1$sSpectra%2$s? Please leave us a %3$s rating. We really "
-"appreciate your support!"
+msgid "Enjoyed %1$sSpectra%2$s? Please leave us a %3$s rating. We really appreciate your support!"
 msgstr ""
 
 #: blocks-config/faq/class-uagb-faq.php:1122
@@ -164,11 +173,7 @@ msgstr ""
 
 #: blocks-config/faq/class-uagb-faq.php:1126
 #: blocks-config/faq/class-uagb-faq.php:1157
-msgid ""
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod "
-"tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim "
-"veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea "
-"commodo consequat."
+msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 msgstr ""
 
 #: blocks-config/forms/class-uagb-forms.php:320
@@ -202,6 +207,7 @@ msgstr ""
 #: blocks-config/popup-builder/class-uagb-popup-builder.php:91
 #: blocks-config/popup-builder/class-uagb-popup-builder.php:92
 #: includes/blocks/popup-builder/block.php:16
+#: dist/blocks-placeholder.js:29
 msgid "Popup Builder"
 msgstr ""
 
@@ -222,6 +228,7 @@ msgid "Info Bar"
 msgstr ""
 
 #: blocks-config/popup-builder/class-uagb-popup-builder.php:264
+#: admin-core/assets/build/dashboard-app.js:5
 msgid "Popup"
 msgstr ""
 
@@ -229,9 +236,9 @@ msgstr ""
 msgid "Unset"
 msgstr ""
 
+#: blocks-config/post-timeline/class-uagb-post-timeline.php:545
 #: blocks-config/post/class-uagb-post.php:624
 #: blocks-config/post/class-uagb-post.php:2282
-#: blocks-config/post-timeline/class-uagb-post-timeline.php:545
 #: includes/blocks/post-carousel/attributes.php:118
 #: includes/blocks/post-grid/attributes.php:109
 #: includes/blocks/post-masonry/attributes.php:111
@@ -245,6 +252,7 @@ msgstr ""
 #: blocks-config/table-of-content/class-uagb-table-of-content.php:646
 #: blocks-config/table-of-content/class-uagb-table-of-content.php:650
 #: includes/blocks/table-of-contents/attributes.php:18
+#: dist/blocks-placeholder.js:38
 msgid "Table Of Contents"
 msgstr ""
 
@@ -1973,6 +1981,7 @@ msgid "Cookie Bite"
 msgstr ""
 
 #: blocks-config/uagb-controls/spectra-icons-v6-0.php:5045
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Copy"
 msgstr ""
 
@@ -3590,6 +3599,7 @@ msgstr ""
 
 #: blocks-config/uagb-controls/spectra-icons-v6-1.php:4567
 #: includes/blocks/advanced-heading/block.php:16
+#: dist/blocks-placeholder.js:9
 msgid "Heading"
 msgstr ""
 
@@ -3907,6 +3917,7 @@ msgstr ""
 
 #: blocks-config/uagb-controls/spectra-icons-v6-1.php:5466
 #: includes/blocks/image/block.php:16
+#: dist/blocks-placeholder.js:23
 msgid "Image"
 msgstr ""
 
@@ -7655,131 +7666,116 @@ msgstr ""
 msgid "Theme"
 msgstr ""
 
-#: classes/class-uagb-admin.php:88
+#: classes/class-uagb-admin.php:96
 msgid "Migration started successfully."
 msgstr ""
 
-#: classes/class-uagb-admin.php:104 classes/class-uagb-admin.php:174
+#: classes/class-uagb-admin.php:112
+#: classes/class-uagb-admin.php:182
 msgid "You do not have permission to access this page."
 msgstr ""
 
-#: classes/class-uagb-admin.php:121
+#: classes/class-uagb-admin.php:129
 msgid "Log file not found."
 msgstr ""
 
-#: classes/class-uagb-admin.php:175 classes/class-uagb-admin.php:206
+#: classes/class-uagb-admin.php:183
+#: classes/class-uagb-admin.php:214
+#: admin-core/assets/build/dashboard-app.js:1
+#: admin-core/assets/build/dashboard-app.js:3
 msgid "Rollback to Previous Version"
 msgstr ""
 
-#: classes/class-uagb-admin.php:188
-msgid ""
-"Error occurred, The version selected is invalid. Try selecting different "
-"version."
+#: classes/class-uagb-admin.php:196
+msgid "Error occurred, The version selected is invalid. Try selecting different version."
 msgstr ""
 
-#: classes/class-uagb-admin.php:297
+#: classes/class-uagb-admin.php:305
 msgid "Wow! Spectra has helped you build over 5 pages!!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:298
-msgid ""
-"We're a small independent team passionate about creating plugins like this "
-"one. It would mean the world to us if you could spend just a minute to "
-"leave a 5-star review on WordPress' official website. Your support really "
-"helps us a lot!"
+#: classes/class-uagb-admin.php:306
+msgid "We're a small independent team passionate about creating plugins like this one. It would mean the world to us if you could spend just a minute to leave a 5-star review on WordPress' official website. Your support really helps us a lot!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:300
+#: classes/class-uagb-admin.php:308
 msgid "Ok, you deserve it"
 msgstr ""
 
-#: classes/class-uagb-admin.php:302
+#: classes/class-uagb-admin.php:310
 msgid "Nope, maybe later"
 msgstr ""
 
-#: classes/class-uagb-admin.php:303
+#: classes/class-uagb-admin.php:311
 msgid "I already did"
 msgstr ""
 
-#: classes/class-uagb-admin.php:340
-#. Translators: %1$s: Spectra logo, %2$s: migration note , %3$s: The closing
-#. tag, %4$s: migration description, %5$s: migration button placeholder, %6$s:
-#. Learn more button, %7$s: learn more placeholder.
+#: classes/class-uagb-admin.php:348
 msgid "Spectra database update required"
 msgstr ""
 
-#: classes/class-uagb-admin.php:341
-msgid ""
-"We've detected that some of your pages were created with an older version "
-"of Spectra. To ensure your designs remain unaffected, we recommend updating "
-"the Spectra database now. Updating the Spectra database will not impact any "
-"other parts of your website."
+#: classes/class-uagb-admin.php:349
+msgid "We've detected that some of your pages were created with an older version of Spectra. To ensure your designs remain unaffected, we recommend updating the Spectra database now. Updating the Spectra database will not impact any other parts of your website."
 msgstr ""
 
-#: classes/class-uagb-admin.php:342
-msgid ""
-"To be on the safer side, please be sure to back up your site before "
-"updating."
+#: classes/class-uagb-admin.php:350
+msgid "To be on the safer side, please be sure to back up your site before updating."
 msgstr ""
 
-#: classes/class-uagb-admin.php:343
+#: classes/class-uagb-admin.php:351
 msgid "Update Spectra Database"
 msgstr ""
 
-#: classes/class-uagb-admin.php:345
+#: classes/class-uagb-admin.php:353
 msgid "Learn More About This"
 msgstr ""
 
-#: classes/class-uagb-admin.php:370
-#. Translators: %1$s: Spectra logo, %2$s: in-progress note.
+#: classes/class-uagb-admin.php:378
 msgid "Spectra database update in progress"
 msgstr ""
 
-#: classes/class-uagb-admin.php:371
+#: classes/class-uagb-admin.php:379
 msgid "Great! This should only take a few minutes. Thanks for hanging in there."
 msgstr ""
 
-#: classes/class-uagb-admin.php:396
-#. Translators: %1$s: Spectra logo, %2$s: success message, %3$s: additional
-#. note.
+#: classes/class-uagb-admin.php:404
 msgid "Update Successful!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:397
-msgid ""
-"Your Spectra database is now up-to-date. Your website will continue to "
-"function as before."
+#: classes/class-uagb-admin.php:405
+msgid "Your Spectra database is now up-to-date. Your website will continue to function as before."
 msgstr ""
 
-#: classes/class-uagb-admin.php:397
+#: classes/class-uagb-admin.php:405
 msgid "View Log"
 msgstr ""
 
-#: classes/class-uagb-admin.php:416
 #. translators: %s: html tags
-msgid ""
-"Spectra requires&nbsp;%3$sBlock Editor%4$s. You can change your editor "
-"settings to Block Editor from&nbsp;%1$shere%2$s. Plugin is currently NOT "
-"RUNNING."
+#: classes/class-uagb-admin.php:424
+msgid "Spectra requires&nbsp;%3$sBlock Editor%4$s. You can change your editor settings to Block Editor from&nbsp;%1$shere%2$s. Plugin is currently NOT RUNNING."
 msgstr ""
 
-#: classes/class-uagb-admin.php:461
+#: classes/class-uagb-admin.php:469
 msgid "Want to do more with Popup Builder?"
 msgstr ""
 
-#: classes/class-uagb-admin.php:462
-msgid ""
-"Maximize your popup potential with Spectra Pro. Unlock enhanced features, "
-"intuitive design options, and increased conversions!"
+#: classes/class-uagb-admin.php:470
+msgid "Maximize your popup potential with Spectra Pro. Unlock enhanced features, intuitive design options, and increased conversions!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:464
+#: classes/class-uagb-admin.php:472
+#: admin-core/assets/build/dashboard-app.js:1
 msgid "Upgrade Now"
 msgstr ""
 
 #: classes/class-uagb-fse-fonts-compatibility.php:165
 #: classes/class-uagb-init-blocks.php:721
 msgid "Default"
+msgstr ""
+
+#: classes/class-uagb-fse-fonts-compatibility.php:169
+#: classes/class-uagb-fse-fonts-compatibility.php:181
+msgid "400"
 msgstr ""
 
 #: classes/class-uagb-fse-fonts-compatibility.php:175
@@ -7797,6 +7793,16 @@ msgstr ""
 
 #: classes/class-uagb-helper.php:443
 msgid "Full"
+msgstr ""
+
+#: classes/class-uagb-init-blocks.php:107
+msgctxt "plural"
+msgid "Popup Builder"
+msgstr ""
+
+#: classes/class-uagb-init-blocks.php:108
+msgctxt "singular"
+msgid "Spectra Popup"
 msgstr ""
 
 #: classes/class-uagb-init-blocks.php:109
@@ -7858,12 +7864,12 @@ msgstr ""
 
 #: classes/class-uagb-init-blocks.php:806
 msgid ""
-"Use custom class added in block's advanced settings to target your desired "
-"block. Examples:\n"
+"Use custom class added in block's advanced settings to target your desired block. Examples:\n"
 "\t\t.my-class {text-align: center;} // my-class is a custom selector"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:865 classes/class-uagb-rest-api.php:318
+#: classes/class-uagb-init-blocks.php:865
+#: classes/class-uagb-rest-api.php:318
 #: classes/class-uagb-rest-api.php:333
 msgid "None"
 msgstr ""
@@ -7885,11 +7891,9 @@ msgstr ""
 msgid "Invalid request"
 msgstr ""
 
-#: classes/class-uagb-loader.php:394
 #. translators: %s: html tags
-msgid ""
-"The %1$sSpectra%2$s plugin requires %1$sGutenberg%2$s plugin installed & "
-"activated."
+#: classes/class-uagb-loader.php:394
+msgid "The %1$sSpectra%2$s plugin requires %1$sGutenberg%2$s plugin installed & activated."
 msgstr ""
 
 #: classes/class-uagb-loader.php:397
@@ -7917,19 +7921,12 @@ msgid "Add animations to Spectra blocks."
 msgstr ""
 
 #: includes/blocks/blockquote/block.php:16
+#: dist/blocks-placeholder.js:10
 msgid "Blockquote"
 msgstr ""
 
 #: includes/blocks/blockquote/block.php:17
 msgid "Display qoutes/quoted texts using blockquote."
-msgstr ""
-
-#: includes/blocks/buttons/block.php:16
-msgid "Buttons"
-msgstr ""
-
-#: includes/blocks/buttons/block.php:17
-msgid "Add multiple buttons to redirect user to different webpages."
 msgstr ""
 
 #: includes/blocks/buttons-child/block.php:14
@@ -7940,7 +7937,17 @@ msgstr ""
 msgid "Customize this button as per your need."
 msgstr ""
 
+#: includes/blocks/buttons/block.php:16
+#: dist/blocks-placeholder.js:11
+msgid "Buttons"
+msgstr ""
+
+#: includes/blocks/buttons/block.php:17
+msgid "Add multiple buttons to redirect user to different webpages."
+msgstr ""
+
 #: includes/blocks/call-to-action/block.php:16
+#: dist/blocks-placeholder.js:12
 msgid "Call To Action"
 msgstr ""
 
@@ -7973,19 +7980,12 @@ msgid "Insert a number of columns within a single row."
 msgstr ""
 
 #: includes/blocks/container/block.php:16
+#: dist/blocks-placeholder.js:13
 msgid "Container"
 msgstr ""
 
 #: includes/blocks/container/block.php:17
 msgid "Create beautiful layouts with flexbox powered container block."
-msgstr ""
-
-#: includes/blocks/content-timeline/block.php:16
-msgid "Content Timeline"
-msgstr ""
-
-#: includes/blocks/content-timeline/block.php:17
-msgid "Create a timeline displaying contents of your site."
 msgstr ""
 
 #: includes/blocks/content-timeline-child/block.php:14
@@ -7994,6 +7994,15 @@ msgstr ""
 
 #: includes/blocks/content-timeline-child/block.php:15
 msgid "Add and customize displaying content of this timeline."
+msgstr ""
+
+#: includes/blocks/content-timeline/block.php:16
+#: dist/blocks-placeholder.js:43
+msgid "Content Timeline"
+msgstr ""
+
+#: includes/blocks/content-timeline/block.php:17
+msgid "Create a timeline displaying contents of your site."
 msgstr ""
 
 #: includes/blocks/countdown/attributes.php:34
@@ -8013,6 +8022,7 @@ msgid "SECONDS"
 msgstr ""
 
 #: includes/blocks/countdown/block.php:16
+#: dist/blocks-placeholder.js:14
 msgid "Countdown"
 msgstr ""
 
@@ -8025,19 +8035,12 @@ msgid "Add Your Title Here…"
 msgstr ""
 
 #: includes/blocks/counter/block.php:16
+#: dist/blocks-placeholder.js:15
 msgid "Counter"
 msgstr ""
 
 #: includes/blocks/counter/block.php:17
 msgid "This block allows you to add number counter."
-msgstr ""
-
-#: includes/blocks/faq/block.php:16
-msgid "FAQ"
-msgstr ""
-
-#: includes/blocks/faq/block.php:17
-msgid "Add accordions/FAQ schema to your page."
 msgstr ""
 
 #: includes/blocks/faq-child/block.php:14
@@ -8048,34 +8051,13 @@ msgstr ""
 msgid "Add a frequently asked question/accordian to display information."
 msgstr ""
 
-#: includes/blocks/forms/attributes.php:35
-msgid "Submit"
+#: includes/blocks/faq/block.php:16
+#: dist/blocks-placeholder.js:16
+msgid "FAQ"
 msgstr ""
 
-#: includes/blocks/forms/attributes.php:36
-msgid "Spectra Form"
-msgstr ""
-
-#: includes/blocks/forms/attributes.php:41
-msgid "The form has been submitted Successfully!"
-msgstr ""
-
-#: includes/blocks/forms/attributes.php:127
-msgid ""
-"There has been some error while submitting the form. Please verify all form "
-"fields again."
-msgstr ""
-
-#: includes/blocks/forms/attributes.php:174
-msgid "Please fill up the above captcha."
-msgstr ""
-
-#: includes/blocks/forms/block.php:16
-msgid "Form"
-msgstr ""
-
-#: includes/blocks/forms/block.php:17
-msgid "Add easily customizable forms to gather information."
+#: includes/blocks/faq/block.php:17
+msgid "Add accordions/FAQ schema to your page."
 msgstr ""
 
 #: includes/blocks/forms-accept/block.php:14
@@ -8166,6 +8148,35 @@ msgstr ""
 msgid "Add a URL input field in your form."
 msgstr ""
 
+#: includes/blocks/forms/attributes.php:35
+msgid "Submit"
+msgstr ""
+
+#: includes/blocks/forms/attributes.php:36
+msgid "Spectra Form"
+msgstr ""
+
+#: includes/blocks/forms/attributes.php:41
+msgid "The form has been submitted Successfully!"
+msgstr ""
+
+#: includes/blocks/forms/attributes.php:127
+msgid "There has been some error while submitting the form. Please verify all form fields again."
+msgstr ""
+
+#: includes/blocks/forms/attributes.php:174
+msgid "Please fill up the above captcha."
+msgstr ""
+
+#: includes/blocks/forms/block.php:16
+#: dist/blocks-placeholder.js:17
+msgid "Form"
+msgstr ""
+
+#: includes/blocks/forms/block.php:17
+msgid "Add easily customizable forms to gather information."
+msgstr ""
+
 #: includes/blocks/gf-styler/block.php:16
 msgid "Gravity Form Designer"
 msgstr ""
@@ -8175,19 +8186,12 @@ msgid "Highly customize and style your forms created by Gravity Forms."
 msgstr ""
 
 #: includes/blocks/google-map/block.php:16
+#: dist/blocks-placeholder.js:18
 msgid "Google Maps"
 msgstr ""
 
 #: includes/blocks/google-map/block.php:17
 msgid "Show a Google Map location on your website."
-msgstr ""
-
-#: includes/blocks/how-to/block.php:16
-msgid "How To"
-msgstr ""
-
-#: includes/blocks/how-to/block.php:17
-msgid "Add instructions/steps on processes using how to block."
 msgstr ""
 
 #: includes/blocks/how-to-step/block.php:13
@@ -8198,13 +8202,23 @@ msgstr ""
 msgid "Add relevant content for this step."
 msgstr ""
 
-#: includes/blocks/icon/block.php:16
+#: includes/blocks/how-to/block.php:16
+#: dist/blocks-placeholder.js:19
+msgid "How To"
+msgstr ""
+
+#: includes/blocks/how-to/block.php:17
+msgid "Add instructions/steps on processes using how to block."
+msgstr ""
+
 #: includes/blocks/icon-list-child/block.php:14
+#: includes/blocks/icon/block.php:16
+#: dist/blocks-placeholder.js:21
 msgid "Icon"
 msgstr ""
 
-#: includes/blocks/icon/block.php:17
-msgid "Add stunning customizable icons to your website."
+#: includes/blocks/icon-list-child/block.php:15
+msgid "Add and customize content for this list component."
 msgstr ""
 
 #: includes/blocks/icon-list/attributes.php:19
@@ -8212,6 +8226,7 @@ msgid "Label #1"
 msgstr ""
 
 #: includes/blocks/icon-list/block.php:16
+#: dist/blocks-placeholder.js:20
 msgid "Icon List"
 msgstr ""
 
@@ -8219,15 +8234,12 @@ msgstr ""
 msgid "Create a list highlighted with icons/images."
 msgstr ""
 
-#: includes/blocks/icon-list-child/block.php:15
-msgid "Add and customize content for this list component."
-msgstr ""
-
-#: includes/blocks/image/block.php:17
-msgid "Add images on your webpage with multiple customization options."
+#: includes/blocks/icon/block.php:17
+msgid "Add stunning customizable icons to your website."
 msgstr ""
 
 #: includes/blocks/image-gallery/block.php:16
+#: dist/blocks-placeholder.js:22
 msgid "Image Gallery"
 msgstr ""
 
@@ -8235,7 +8247,12 @@ msgstr ""
 msgid "Create a highly customizable image gallery"
 msgstr ""
 
+#: includes/blocks/image/block.php:17
+msgid "Add images on your webpage with multiple customization options."
+msgstr ""
+
 #: includes/blocks/info-box/block.php:16
+#: dist/blocks-placeholder.js:24
 msgid "Info Box"
 msgstr ""
 
@@ -8244,6 +8261,7 @@ msgid "Add image/icon, seperator and text description using a single block."
 msgstr ""
 
 #: includes/blocks/inline-notice/block.php:16
+#: dist/blocks-placeholder.js:25
 msgid "Inline Notice"
 msgstr ""
 
@@ -8252,6 +8270,7 @@ msgid "Highlight important information using inline notice block."
 msgstr ""
 
 #: includes/blocks/instagram-feed/block.php:16
+#: admin-core/assets/build/dashboard-app.js:1
 msgid "Instagram Feed"
 msgstr ""
 
@@ -8260,6 +8279,7 @@ msgid "This block allows you to add Instagram Feeds."
 msgstr ""
 
 #: includes/blocks/login/block.php:16
+#: admin-core/assets/build/dashboard-app.js:1
 msgid "Login Form"
 msgstr ""
 
@@ -8268,6 +8288,7 @@ msgid "This block lets you add a user login form."
 msgstr ""
 
 #: includes/blocks/loop-builder/block.php:16
+#: admin-core/assets/build/dashboard-app.js:1
 msgid "Loop Builder"
 msgstr ""
 
@@ -8276,6 +8297,7 @@ msgid "This block allows you to generate custom loop from different posts."
 msgstr ""
 
 #: includes/blocks/lottie/block.php:16
+#: dist/blocks-placeholder.js:26
 msgid "Lottie Animation"
 msgstr ""
 
@@ -8284,6 +8306,7 @@ msgid "Add customizable lottie animation on your page."
 msgstr ""
 
 #: includes/blocks/marketing-button/block.php:16
+#: dist/blocks-placeholder.js:27
 msgid "Marketing Button"
 msgstr ""
 
@@ -8292,6 +8315,7 @@ msgid "Add a marketing call to action button with a short description."
 msgstr ""
 
 #: includes/blocks/masonry-gallery/block.php:13
+#: admin-core/assets/build/dashboard-app.js:1
 msgid "Masonry Gallery"
 msgstr ""
 
@@ -8300,6 +8324,7 @@ msgid "Display your core gallery in a masonary layout."
 msgstr ""
 
 #: includes/blocks/modal/block.php:16
+#: dist/blocks-placeholder.js:28
 msgid "Modal"
 msgstr ""
 
@@ -8320,6 +8345,7 @@ msgid "Customize this post button."
 msgstr ""
 
 #: includes/blocks/post-carousel/block.php:16
+#: dist/blocks-placeholder.js:30
 msgid "Post Carousel"
 msgstr ""
 
@@ -8336,6 +8362,7 @@ msgid "Show your post's excerpt "
 msgstr ""
 
 #: includes/blocks/post-grid/block.php:16
+#: dist/blocks-placeholder.js:31
 msgid "Post Grid"
 msgstr ""
 
@@ -8376,6 +8403,7 @@ msgid "Show your post's under categories."
 msgstr ""
 
 #: includes/blocks/post-timeline/block.php:16
+#: dist/blocks-placeholder.js:44
 msgid "Post Timeline"
 msgstr ""
 
@@ -8392,19 +8420,12 @@ msgid "Customize your post title."
 msgstr ""
 
 #: includes/blocks/register/block.php:16
+#: admin-core/assets/build/dashboard-app.js:1
 msgid "Registration Form"
 msgstr ""
 
 #: includes/blocks/register/block.php:17
 msgid "This block lets you add a user register form."
-msgstr ""
-
-#: includes/blocks/restaurant-menu/block.php:16
-msgid "Price List"
-msgstr ""
-
-#: includes/blocks/restaurant-menu/block.php:17
-msgid "Create an attractive price list for your products."
 msgstr ""
 
 #: includes/blocks/restaurant-menu-child/block.php:14
@@ -8415,7 +8436,17 @@ msgstr ""
 msgid "Add information for this product."
 msgstr ""
 
+#: includes/blocks/restaurant-menu/block.php:16
+#: dist/blocks-placeholder.js:32
+msgid "Price List"
+msgstr ""
+
+#: includes/blocks/restaurant-menu/block.php:17
+msgid "Create an attractive price list for your products."
+msgstr ""
+
 #: includes/blocks/review/block.php:16
+#: dist/blocks-placeholder.js:33
 msgid "Review"
 msgstr ""
 
@@ -8432,6 +8463,7 @@ msgid "Outer wrap section that allows you to add other blocks within it."
 msgstr ""
 
 #: includes/blocks/separator/block.php:16
+#: dist/blocks-placeholder.js:34
 msgid "Separator"
 msgstr ""
 
@@ -8439,25 +8471,18 @@ msgstr ""
 msgid "Add a modern separator to divide your page content with icon/text."
 msgstr ""
 
-#: includes/blocks/slider/block.php:16
 #: includes/blocks/slider-child/block.php:14
+#: includes/blocks/slider/block.php:16
+#: dist/blocks-placeholder.js:35
 msgid "Slider"
-msgstr ""
-
-#: includes/blocks/slider/block.php:17
-msgid "Create a Slider."
 msgstr ""
 
 #: includes/blocks/slider-child/block.php:15
 msgid "Customize this slider as per your need."
 msgstr ""
 
-#: includes/blocks/social-share/block.php:16
-msgid "Social Share"
-msgstr ""
-
-#: includes/blocks/social-share/block.php:17
-msgid "Share your content on different social media platforms."
+#: includes/blocks/slider/block.php:17
+msgid "Create a Slider."
 msgstr ""
 
 #: includes/blocks/social-share-child/block.php:14
@@ -8468,7 +8493,17 @@ msgstr ""
 msgid "Share your content on this social media platform."
 msgstr ""
 
+#: includes/blocks/social-share/block.php:16
+#: dist/blocks-placeholder.js:36
+msgid "Social Share"
+msgstr ""
+
+#: includes/blocks/social-share/block.php:17
+msgid "Share your content on different social media platforms."
+msgstr ""
+
 #: includes/blocks/star-rating/block.php:16
+#: dist/blocks-placeholder.js:37
 msgid "Star Ratings"
 msgstr ""
 
@@ -8484,14 +8519,6 @@ msgstr ""
 msgid "Add a table of contents to allow page navigation."
 msgstr ""
 
-#: includes/blocks/tabs/block.php:16
-msgid "Tabs"
-msgstr ""
-
-#: includes/blocks/tabs/block.php:17
-msgid "Display your content under different tabs."
-msgstr ""
-
 #: includes/blocks/tabs-child/block.php:14
 msgid "Tabs child"
 msgstr ""
@@ -8500,7 +8527,17 @@ msgstr ""
 msgid "Display your content in a tab."
 msgstr ""
 
+#: includes/blocks/tabs/block.php:16
+#: dist/blocks-placeholder.js:39
+msgid "Tabs"
+msgstr ""
+
+#: includes/blocks/tabs/block.php:17
+msgid "Display your content under different tabs."
+msgstr ""
+
 #: includes/blocks/taxonomy-list/block.php:16
+#: dist/blocks-placeholder.js:40
 msgid "Taxonomy List"
 msgstr ""
 
@@ -8509,6 +8546,7 @@ msgid "Display your content categorized as per post type."
 msgstr ""
 
 #: includes/blocks/team/block.php:16
+#: dist/blocks-placeholder.js:41
 msgid "Team"
 msgstr ""
 
@@ -8517,6 +8555,7 @@ msgid "Showcase your team by displaying info and social media profiles."
 msgstr ""
 
 #: includes/blocks/testimonial/block.php:16
+#: dist/blocks-placeholder.js:42
 msgid "Testimonials"
 msgstr ""
 
@@ -8536,8 +8575,8 @@ msgstr ""
 msgid "WordPress Nonce not validated."
 msgstr ""
 
-#: lib/batch-processing/class-wp-background-process.php:425
 #. translators: %d: Minutes interval
+#: lib/batch-processing/class-wp-background-process.php:425
 msgid "Every %d Minutes"
 msgstr ""
 
@@ -8591,11 +8630,7 @@ msgid "Sorry, settings are not saved."
 msgstr ""
 
 #: lib/gutenberg-templates/inc/classes/ast-block-templates-notices.php:53
-msgid ""
-"File Permissions Needed - Importing patterns, pages, and templates from "
-"Design Library requires proper file permissions. For guidance on resolving "
-"this issue and ensuring smooth importing processes, please refer to the "
-"accompanying documentation."
+msgid "File Permissions Needed - Importing patterns, pages, and templates from Design Library requires proper file permissions. For guidance on resolving this issue and ensuring smooth importing processes, please refer to the accompanying documentation."
 msgstr ""
 
 #: lib/gutenberg-templates/inc/classes/ast-block-templates-notices.php:57
@@ -8639,8 +8674,8 @@ msgstr ""
 msgid "Something wrong"
 msgstr ""
 
-#: lib/gutenberg-templates/inc/importer/template-kit-importer.php:56
 #. Translators: %s is API URL.
+#: lib/gutenberg-templates/inc/importer/template-kit-importer.php:56
 msgid "Invalid Request URL - %s"
 msgstr ""
 
@@ -8664,8 +8699,8 @@ msgstr ""
 msgid "The Zip AI Middleware encountered an error."
 msgstr ""
 
-#: lib/zip-ai/classes/admin-configurations.php:513
 #. translators: %1$s: HTML link start tag, %2$s: HTML link end tag.
+#: lib/zip-ai/classes/admin-configurations.php:513
 msgid "Thank you for using %1$sZip AI.%2$s"
 msgstr ""
 
@@ -8697,87 +8732,1505 @@ msgstr ""
 msgid "You have no credits left."
 msgstr ""
 
-#: ultimate-addons-for-gutenberg.php:40
 #. translators: %s: PHP version
+#: ultimate-addons-for-gutenberg.php:40
 msgid "Spectra requires PHP version %s+, plugin is currently NOT RUNNING."
 msgstr ""
 
-#: ultimate-addons-for-gutenberg.php:57
 #. translators: %s: WordPress version
-msgid ""
-"Spectra requires WordPress version %s+. Because you are using an earlier "
-"version, the plugin is currently NOT RUNNING."
+#: ultimate-addons-for-gutenberg.php:57
+msgid "Spectra requires WordPress version %s+. Because you are using an earlier version, the plugin is currently NOT RUNNING."
 msgstr ""
 
-#: vendor/wp-cli/core-command/src/Core_Command.php:737
-msgid "Wildcard DNS may not be configured correctly."
+#: admin-core/assets/build/dashboard-app.js:1
+#: blocks-config/uagb-controls/getApiData.js:22
+msgid "data object is empty"
 msgstr ""
 
-#: vendor/wp-cli/entity-command/src/Site_Command.php:153
-msgid "Uncategorized"
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Upgrade To Pro"
 msgstr ""
 
-#: vendor/wp-cli/export-command/src/WP_Export_XML_Over_HTTP.php:20
-#: vendor/wp-cli/export-command/src/WP_Export_XML_Over_HTTP.php:25
-msgid "Export Error"
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Core"
 msgstr ""
 
-#: vendor/wp-cli/extension-command/src/WP_CLI/CommandWithUpgrade.php:711
-msgid " Try again"
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Pro"
 msgstr ""
 
-#: vendor/wp-cli/extension-command/src/WP_CLI/CommandWithUpgrade.php:717
-msgid "API error. Try Again."
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Licensed"
 msgstr ""
 
-#: vendor/wp-cli/media-command/src/Media_Command.php:145
-msgid "image"
-msgid_plural "images"
-msgstr[0] ""
-msgstr[1] ""
-
-#: vendor/wp-cli/wp-cli/php/utils-wp.php:238
-msgid "Inactive Widgets"
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Unlicensed"
 msgstr ""
 
-#: vendor/wp-cli/wp-cli/php/utils-wp.php:241
-msgid "Drag widgets here to remove them from the sidebar but keep their settings."
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Activate Spectra Pro"
 msgstr ""
 
-#. Author URI of the plugin/theme
-msgid "https://www.brainstormforce.com"
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "What's New?"
 msgstr ""
 
-#. Description of the plugin/theme
-msgid ""
-"The Spectra extends the Gutenberg functionality with several unique and "
-"feature-rich blocks that help build websites faster."
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Unlock Spectra's Full Potential!"
 msgstr ""
 
-#. Author of the plugin/theme
-msgid "Brainstorm Force"
+#: admin-core/assets/build/dashboard-app.js:1
+msgid " for exclusive features and unbeatable performance."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:107
-msgctxt "plural"
-msgid "Popup Builder"
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Free vs Pro"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:108
-msgctxt "singular"
-msgid "Spectra Popup"
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Welcome to Spectra!"
 msgstr ""
 
-#: vendor/wp-cli/core-command/src/Core_Command.php:477
-#: vendor/wp-cli/core-command/src/Core_Command.php:551
-#. translators: placeholder is blog name
-#. translators: placeholder is user supplied title
-msgctxt "Default network name"
-msgid "%s Sites"
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "We designed Spectra to be intuitive but we do recommend learning how it works by checking our comprehensive documentation and watching the video below. Enjoy your time with Spectra!"
 msgstr ""
 
-#: vendor/wp-cli/entity-command/src/Site_Command.php:156
-#. translators: Default category slug
-msgctxt "Default category slug"
-msgid "Uncategorized"
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Create New Page"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Read Full Guide"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Limitless Design with Spectra Pro!"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Experience design freedom with Spectra Pro. Utilize advanced blocks, extensions, and premium features to create a websites that stands out!"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Dynamic Content"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Advanced Popup Builder"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Instagram Feed Block"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Advanced Animations"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Get 5-star Support"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Need some help? Our awesome support team is here to help you with any question you have."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Get Support"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Join the Community"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Got a question about the plugin, want to share your awesome project or just say hi? Join our wonderful community!"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Join Now"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Blocks / Extensions"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Activate all"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Deactivate all"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Legacy"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Live Demo"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "This is a Core Spectra block & cannot be disabled."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Display Conditions"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Extension"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Documentation"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Responsive Conditions"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Animations"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Documentations"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Beta"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Global Block Style"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Dynamic content"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Popup Builder Pro"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Modal Pro"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Countdown Pro"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Slider Pro"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Image Gallery Pro"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Upgrade to Spectra Pro to use this block."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Activate the Pro plugin to enable this block."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:13
+msgid "Activate Now"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "File Generation"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Spectra loads the CSS and JS inline on the page by default. If you want to generate separate CSS and JS files for Spectra blocks, enable this option. Please read "
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "this article"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid " to learn the difference between generating CSS and JS inline and in a separate file."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Asset Regeneration"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Regenerate Assets"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Facing issues with style, layout, color or another page element? Use this option to regenerate CSS and Javascript assets. It can help with all kinds of asset issues."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Please note that after regeneration, it is recommended to purge all your cache to ensure that old assets are not served, preventing potential frontend breaking issues."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Regenerate"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Close"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Custom CSS"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:1
+msgid "Enable the \"Custom CSS\" option if you want to add your own CSS code on post/page to customize the page as per your expectations."
+msgstr ""
+
+#. translators: %1$s: selected version of Spectra.
+#: admin-core/assets/build/dashboard-app.js:3
+msgid "Are you sure you want to rollback to Spectra v%1$s?"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:13
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:3
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Cancel"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:3
+msgid "Enable Beta"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:3
+msgid "Enable this option to turn on beta updates and be notified when a new beta version of Spectra is available. The beta version will not install automatically, you will have to install it when you get a notification. It is recommended to try beta on a test environment only."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:3
+msgid "Enable Legacy Blocks"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:3
+msgid "Enable this option to enable the support of our Legacy Blocks on the site."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:3
+msgid "Allow Only Selected Fonts"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:3
+msgid "Spectra offers 1500+ Google font options. If this is overwhelming for your clients, you can use this option to show only limited number of fonts in the block settings."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Select the font families you want"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:3
+msgid "Remove Font Family"
+msgstr ""
+
+#. translators: %1$s: Strong Tag,  %2$s: selected font family of Spectra, %3$s Strong Closing Tag.
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Are you sure you want to remove %1$s%2$s%3$s font family?"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Remove"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Font Families"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+#: admin-core/assets/build/dashboard-app.js:7
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Successfully saved!"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Spectra offers 1500+ Google font options. You can select which you want to use in your FSE Typography"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Select one or more font weights"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Select one or more font styles"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Add Google Font"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Font Family"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Variant"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Style"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Currently, no Font Families added."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Load Google Fonts Locally"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Enable this option to download Google fonts and save them on your server. This can be great for improving speed of your website and to comply with GDPR laws."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Preload Local Fonts"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "This option will load the font files right away on page load. Preloading Local Fonts can speeds up your website even further."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Copy Paste Styles"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Enable the \"Copy Paste Styles\" option to have the ability to copy & paste Spectra & Core Gutenberg Blocks Styles."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Choose how you want to display dynamic content settings"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Sidebar"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Default Content Width"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "px"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "This setting will apply to Container Block's default Content Width."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Blocks Editor Spacing"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "This setting will apply spacing in between all blocks inside block editor."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Select the page you want"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Enable Coming Soon Mode"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Is your website still in the making and not yet ready for other people to see? When the site is ready to be indexed, the 'Coming Soon' page returns an HTTP 200 status code."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Enable Maintenance Mode"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Maintenance Mode returns an HTTP 503 status code, signaling to search engines to revisit the website shortly. However, it's advisable not to utilize this mode for extended periods, ideally limiting its use to a few days."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Google reCAPTCHA"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "To enable reCAPTCHA for your form, please follow the steps mentioned "
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "here. "
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "reCAPTCHA v2"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Site Key v2"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Secret Key v2"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "reCAPTCHA v3"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Site Key v3"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Secret Key v3"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Load Font Awesome 5 Support"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Enable this to make sure all previously used Font Awesome 5 icons are displayed correctly while using the Font Awesome 6 library."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Automatic Block Recovery"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Enable this to automatically recover any erroneous blocks that may occur on your web pages. This will save you time spent on clicking all those \"Attempt Block Recovery\" Buttons."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Container Padding"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "This setting will apply default padding in the Container Block."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Container Elements Gap"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "This setting will apply default Row & Column Gaps in the Container Block."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Deactivate"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Your license is active."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Paste your license key here"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+#: admin-core/assets/build/dashboard-app.js:7
+msgid "License successfully validated!"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "Please enter your valid license key below to activate Spectra Pro!"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:5
+msgid "License Key"
+msgstr ""
+
+#. translators: %1$s: first anchor tag start, %2$s: first anchor tag end, %3$s second anchor tag start, %4$s second anchor tag end.
+#: admin-core/assets/build/dashboard-app.js:7
+msgid "Activate %1$sSpectra Pro%2$s to get professional support and automatic updates from your WordPress dashboard. If you don't have a license, you can %3$sget it here »%4$s"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:7
+msgid "Please enter a valid license key!"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:7
+msgid "License successfully deactivated!"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:7
+msgid "Button - Inherit From Theme"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:7
+msgid "Enable the \"Inherit From Theme\" option to make all buttons in Spectra blocks across your website inherit their styles from the theme."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:7
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:7
+msgid "Unlink User"
+msgstr ""
+
+#. translators: %1$s: span tag start, %2$s: Instagram account name, %3$s: span tag end.
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Are you sure you wish to unlink %1$s@%2$s%3$s?"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Unlink"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Link User"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Linking"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Inavalid Token"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Account Exists!"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Account Linked!"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Failed to Add Account"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Instagram Accounts"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Link your Instagram account(s), or enable Developer Mode to link someone else's account(s)."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "It looks like one or more accounts have been disabled due to security reasons. Here are some of them:"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "1. The Instagram Account password was changed."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "2. The Instagram Account was made private."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "3. The Instagram Account was unused on Spectra for 60 days."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Please unlink and relink the account(s) marked in red."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "No need to share passwords. Share our"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Access Token Generator"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "with your client and ask them to share their token with you."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Invalid Token"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Link a Personal Account"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Developer Mode"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "No linked accounts."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Please link an Instagram Account to start using it with Spectra!"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Personal Account"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Business Account"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Instagram Account"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Disabled"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Linked Users"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Enable Templates Button"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Spectra comes with a stunning library of page templates and block patterns. This library is accessible with the Templates button while editing the page or post. Manage the visibility of that button with this option."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Enable Quick Action Bar"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "The Spectra Quick Action Bar lets you have all your frequently used Spectra blocks right at your fingertips!"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Collapse Panels"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Enable the \"Collapse Panels\" option if you want to Collapse all other Panels in your Blocks Settings except for the one which is clicked. This way you have only one Panel of Settings in front of you to Focus on."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "My Account"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Editor Options"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Asset Generation"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Editor Enhancements"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Version Control"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Performance"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Integrations"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Site Visibility"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Theme Fonts"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Showcase your Instagram feed with Spectra Pro"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Seamlessly integrate your Instagram feed into your site with Spectra Pro. Enhance engagement and showcase your social presence effortlessly!"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Build Better Websites with Spectra Pro"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Unlock a seamless WordPress design experience with Spectra Pro. Enjoy advanced blocks, top-notch support, and endless creative possibilities!"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Failed to save setting"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:12
+msgid "Manage AI Features"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Here you can enable/disable AI features from your website."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+#: lib/zip-ai/sidebar/build/sidebar-app.js:12
+msgid "AI Assistant"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Coming Soon"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Updating"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Disable"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Enable"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "AI Design Copilot"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Go Back"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: lib/zip-ai/sidebar/build/sidebar-app.js:7
+msgid "Reconnect and Continue Using AI Features"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: lib/zip-ai/sidebar/build/sidebar-app.js:7
+msgid "Get Started with 1000 Free Monthly Credits"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Reconnecting to Use AI Features"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Getting Started with 1000 Free Monthly Credits"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Build 10x faster with Spectra AI"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "Spectra offers AI features powered by ZipWP to help you build your website 10x faster. Design beautiful pages, create persuasive content, and generate custom code in seconds. The possibilities are endless!"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:10
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:1
+msgid "Craft Compelling Content"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:10
+msgid "With our AI, you can effortlessly create persuasive and engaging copy that resonates with your audience."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:10
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:1
+msgid "AI-Powered Block Patterns"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:10
+msgid "Our AI can personalize and customize the block patterns and section templates to tailor them to your website's unique needs."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:10
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:1
+msgid "WordPress Wizardry"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:10
+msgid "Got questions? Our AI has the answers. Whether it's troubleshooting or customizing your site, we got your back."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:10
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:1
+msgid "Personalized Templates"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:10
+msgid "Say goodbye to generic designs and say hello to our AI-personalized page templates, tailored just for you."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:10
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:1
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Generate Custom Code"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:10
+msgid "No more struggling with complex coding issues. Our AI can generate custom code, functions, and CSS tailored to your needs."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/dashboard-app.js:10
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:1
+msgid "Custom Pages with AI"
+msgstr ""
+
+#. translators: %s: Percentage Ascii Code
+#: admin-core/assets/build/dashboard-app.js:10
+#: admin-core/assets/build/dashboard-app.js:11
+msgid "With our AI by your side, you can create beautiful, 100%s custom web pages without the need for any design or coding skills."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:10
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:2
+msgid "From the Team Behind Some Iconic WordPress Products"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:10
+msgid "Build 10x Faster with Spectra AI"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+msgid "Credit Usage"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:2
+msgid "Get more Credits"
+msgstr ""
+
+#. translators: %s: number of words
+#: admin-core/assets/build/dashboard-app.js:12
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:3
+msgid "of %s"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:12
+msgid "This setting allows you to enable or disable the AI features on your website. "
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:12
+msgid "AI is Connected"
+msgstr ""
+
+#. translators: %1$s: The opening span tag, %2$s: The team name, %3$s: The closing span tag
+#: admin-core/assets/build/dashboard-app.js:13
+msgid "Organization: %1$s%2$s%3$s"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:13
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:3
+msgid "Your website is connected to AI. You can disconnect at any time."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:13
+msgid "Disconnect AI"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:13
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:3
+msgid "Are you sure you want to disconnect?"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:13
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:3
+msgid "You will need to reconnect to use AI features again."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:13
+msgid "Disconnect"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:13
+msgid "FREE"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:13
+msgid "PRO"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:13
+msgid "Get Spectra Pro Now"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:13
+msgid "Spectra Free vs Pro"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:13
+msgid "Do More with Spectra Pro"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:13
+msgid "Get access to powerful features for painless WordPress designing, without the high costs. With all the time you will save, it’s a product that pays for itself!"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:13
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:3
+msgid "Default route fallback"
+msgstr ""
+
+#: blocks-config/uagb-controls/previewImage.js:3
+msgid "Please add preview image."
+msgstr ""
+
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:1
+msgid "Get Started Now"
+msgstr ""
+
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:1
+msgid "Go back to the dashboard"
+msgstr ""
+
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:1
+msgid "Welcome to the Zip AI Setup Wizard!"
+msgstr ""
+
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:1
+msgid "Zip AI is your WordPress assistant, accessible right within your backend. Create persuasive content, generate custom code, and get answers to your WordPress queries in seconds. The possibilities are endless!"
+msgstr ""
+
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:1
+msgid "With Zip, you can effortlessly create persuasive, engaging copy that resonates with your audience."
+msgstr ""
+
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:1
+msgid "Zip can personalize and customize the block patterns and section templates tailored to your website's unique needs."
+msgstr ""
+
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:1
+msgid "Got questions? Zip has the answers. Whether it's troubleshooting, or customizing your site, Zip has your back."
+msgstr ""
+
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:1
+msgid "Say goodbye to generic designs and say hello to Zip's personalized page templates, tailored just for you."
+msgstr ""
+
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:1
+msgid "No more struggling with complex coding issues. Zip can whip up custom code, functions, and CSS tailored to your needs."
+msgstr ""
+
+#. translators: %s: Percentage Ascii Code
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:2
+msgid "With Zip AI by your side, you can create beautiful, 100%s custom web pages without the need for any design or coding skills."
+msgstr ""
+
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:2
+msgid "Visit Website"
+msgstr ""
+
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:2
+msgid "Words Written"
+msgstr ""
+
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:3
+msgid "Enable Zip AI"
+msgstr ""
+
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:3
+msgid "You can easily enable or disable Zip AI from this section. Simply toggle the switch on or off with a single click."
+msgstr ""
+
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:3
+msgid "Zip is Authorized"
+msgstr ""
+
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:3
+msgid "Revoke Access"
+msgstr ""
+
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:3
+msgid "Revoke"
+msgstr ""
+
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:3
+msgid "Zip - Your AI Assistant"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Content:"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "You:"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Edit"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "AI Assistant:"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Use This"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Copy & Close"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Update"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Note: All subsequent messages will be deleted after you update."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Click Here"
+msgstr ""
+
+#. translators: %1$d is the current page, %2$d is the total number of pages.
+#: lib/zip-ai/sidebar/build/sidebar-app.js:3
+msgid "%1$d / %2$d"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:3
+msgid "Generating…"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:3
+msgid "How can I help you?"
+msgstr ""
+
+#. Translators: %1$s is the opening link tag, %2$s is the closing link tag.
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "AI Assistant can make mistakes. Want to %1$sdisable it?%2$s"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "AI Assistant can make mistakes."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Write for me"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Clear Chat"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Arabic"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Azerbaijani"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Bengali"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Belarusian"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Bulgarian"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Chinese (Simplified)"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Croatian"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Czech"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Danish"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Dutch"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "English"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Estonian"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Finnish"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Filipino"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "French"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Georgian"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "German"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Greek"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Hebrew"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Hindi"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Hungarian"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Indonesian"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Italian"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Japanese"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Kazakh"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Korean"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Latvian"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Lithuanian"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Macedonian"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Malay"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Norwegian"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Polish"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Portuguese"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Romanian"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Russian"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Serbian"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Slovak"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Slovenian"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Spanish"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Swahili"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Swedish"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Thai"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Turkish"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Ukrainian"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Urdu"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Vietnamese"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Friendly"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Formal"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Casual"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Professional"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Informative"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Playful"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Serious"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Humorous"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Polite"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Emotional"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Fix any grammatical mistakes."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Make it longer."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Make it shorter."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:6
+msgid "Change tone to %s."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:6
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Rephrase"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:6
+msgid "Draft with AI"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:6
+msgid "Write an attractive heading about…"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:6
+msgid "Write an attractive heading about "
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:6
+msgid "Write a sub-heading for…"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:6
+msgid "Write a sub-heading for "
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:6
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Fix Grammar"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:6
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Make Longer"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:6
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Make Shorter"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:6
+msgid "Tone"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:6
+msgid "Translate"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:7
+msgid "Translate to %s."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:7
+msgid "Paste from clipboard"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:7
+msgid "Reconnecting…"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:7
+msgid "Getting Started…"
+msgstr ""
+
+#. Translators: %1$s is the opening link tag, %2$s is the closing link tag.
+#: lib/zip-ai/sidebar/build/sidebar-app.js:9
+msgid "Get started from %1$shere%2$s."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:9
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "The possibilities are endless!"
+msgstr ""
+
+#. translators: %s: Plugin Name
+#: lib/zip-ai/sidebar/build/sidebar-app.js:10
+msgid "Build 10x Faster with %s AI"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:10
+msgid "Build 10x Faster with ZipWP"
+msgstr ""
+
+#. translators: %s: Plugin Name
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "%s offers AI features powered by ZipWP to help you build your website 10 times faster."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "ZipWP offers AI features to help you build your website 10 times faster."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Translate Your Pages"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Write Content for Pages"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Customize Templates"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Craft Product Descriptions"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Engage with Comments"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Something went wrong, please try again."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Get Ready!"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Learn more"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Dismiss"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Hi there! I'm here to assist you."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Choose a prompt bellow or write on your own. Ask me about what you need."
+msgstr ""
+
+#. translators: %s: lastUsedTone label
+#: lib/zip-ai/sidebar/build/sidebar-app.js:12
+msgid "Change Tone to %s"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:12
+msgid "Something Else"
+msgstr ""
+
+#: lib/gutenberg-templates/inc/block/dist/block.json
+msgctxt "block title"
+msgid "Spectra AI"
 msgstr ""
