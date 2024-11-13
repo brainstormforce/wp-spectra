@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.6
-Stable tag: 2.16.3
+Stable tag: 2.16.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -214,6 +214,11 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT. Additionally, we incorporate [FontAwesome v6](https://fontawesome.com/license/free) under the CC BY 4.0 License, and [dnd kit](https://github.com/clauderic/dnd-kit) licensed under the MIT License.
 
 == Changelog ==
+
+= 2.16.4 - Wednesday, 13th November 2024 =
+* Fix: Customizer - Resolved an issue wherein the Astra customizer panels would get an additional spacing when Spectra is active.
+* Fix: Buttons - Resolved an issue wherein the core buttons block could not be transformed to a Spectra buttons block.
+* Fix: Editor - Resolved an issue wherein tooltips would be spaced incorrectly in the block settings panels.
 
 = 2.16.3 - Saturday, 2nd November 2024 =
 * This update addressed a security bug. Props to zer0gh0st (D.Sim) for privately reporting it to our team. Please make sure you are using the latest version on your website.
