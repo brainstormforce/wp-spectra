@@ -17,7 +17,7 @@ const AddEventCommandForQAB = () => {
 	// store. The post ID is used to determine when to create the custom event.
 	const postId = useSelect( ( select ) => {
 		// Select the current post ID from the store.
-		const getPostIdFromStore = select( 'core/editor' ).getCurrentPostId();
+		const getPostIdFromStore = select( 'core/editor' )?.getCurrentPostId();
 
 		// Return the post ID.
 		return getPostIdFromStore;
