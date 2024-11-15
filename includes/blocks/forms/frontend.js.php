@@ -11,7 +11,28 @@ $selector        = '.uagb-block-' . $id;
 $current_post_id = get_the_ID();
 $curr_user       = wp_get_current_user();
 $default_email   = $curr_user->user_email;
-$js_attr         = array(
+// Define the attributes with expected types and default values.
+/**
+ * $js_attr Configuration Array
+ *
+ * - block_id (string): Unique block ID.
+ * - reCaptchaEnable (bool): Whether reCAPTCHA is enabled. Default: false.
+ * - reCaptchaType (string): Type of reCAPTCHA ('v2' or 'v3'). Default: 'v2'.
+ * - reCaptchaSiteKeyV2 (string): Site key for reCAPTCHA v2. Default: ''.
+ * - reCaptchaSecretKeyV2 (string): Secret key for reCAPTCHA v2. Default: ''.
+ * - reCaptchaSiteKeyV3 (string): Site key for reCAPTCHA v3. Default: ''.
+ * - reCaptchaSecretKeyV3 (string): Secret key for reCAPTCHA v3. Default: ''.
+ * - afterSubmitToEmail (string): Email address for submissions. Default: $default_email (sanitized).
+ * - afterSubmitCcEmail (string): CC email address for submissions. Default: ''.
+ * - afterSubmitBccEmail (string): BCC email address for submissions. Default: ''.
+ * - afterSubmitEmailSubject (string): Email subject after submission. Default: 'Form Submission'.
+ * - sendAfterSubmitEmail (bool): Whether to send an email after submission. Default: true.
+ * - confirmationType (string): Confirmation type ('message' or 'url'). Default: 'message'.
+ * - hidereCaptchaBatch (bool): Whether to hide reCAPTCHA for batch submissions. Default: false.
+ * - captchaMessage (string): Custom message for CAPTCHA validation. Default: 'Please fill up the above captcha.'.
+ * - confirmationUrl (string): Redirect URL for confirmation. Default: ''.
+ */
+$js_attr = array(
 	'block_id'                => $attr['block_id'],
 	'reCaptchaEnable'         => isset( $attr['reCaptchaEnable'] ) ? filter_var( $attr['reCaptchaEnable'], FILTER_VALIDATE_BOOLEAN ) : false,
 	'reCaptchaType'           => isset( $attr['reCaptchaType'] ) && is_string( $attr['reCaptchaType'] ) ? sanitize_text_field( $attr['reCaptchaType'] ) : 'v2',
