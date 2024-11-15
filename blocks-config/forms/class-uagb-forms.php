@@ -484,7 +484,7 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		 *
 		 * @param string $url The URL to be validated.
 		 * 
-		 * @since x.x.x
+		 * @since 2.16.5
 		 * @return string Escaped URL if valid and uses HTTPS; otherwise, an empty string.
 		 */
 		public static function validate_confirmation_url( $url ) {
