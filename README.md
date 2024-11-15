@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* This update addressed a security bug. Props to zer0gh0st (D.Sim) for privately reporting it to our team. Please make sure you are using the latest version on your website. 
+
 ### 2.16.4 - Wednesday, 13th November 2024 ###
 * Fix: Customizer - Resolved an issue wherein the Astra customizer panels would get an additional spacing when Spectra is active.
 * Fix: Buttons - Resolved an issue wherein the core buttons block could not be transformed to a Spectra buttons block.

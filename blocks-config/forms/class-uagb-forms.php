@@ -475,6 +475,32 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		}
 
 
+		/**
+		 * Validates that a given URL uses the HTTPS scheme and is well-formed.
+		 *
+		 * This function checks that the provided URL is properly structured and
+		 * uses the secure HTTPS protocol. If the URL passes validation, it returns
+		 * an escaped version of the URL. Otherwise, it returns an empty string.
+		 *
+		 * @param string $url The URL to be validated.
+		 * 
+		 * @since x.x.x
+		 * @return string Escaped URL if valid and uses HTTPS; otherwise, an empty string.
+		 */
+		public static function validate_confirmation_url( $url ) {
+			$parsed_url = wp_parse_url( $url );
+
+			// Check if the URL is well-formed and uses HTTPS.
+			if ( is_array( $parsed_url ) && 
+			isset( $parsed_url['host'] ) && 
+			'https' === $parsed_url['scheme']
+			) {
+				return esc_url( $url );
+			}
+
+			// Return an empty string if validation fails.
+			return '';
+		}
 	}
 
 	/**
