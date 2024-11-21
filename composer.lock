@@ -4,7 +4,7 @@
 		"Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
 		"This file is @generated automatically"
 	],
-	"content-hash": "5b3a65871cec00336aa280cbfedd010b",
+	"content-hash": "29038438c51245a1984fd3b77ed6eba5",
 	"packages": [
 		{
 			"name": "automattic/vipwpcs",
@@ -238,71 +238,71 @@
 			},
 			"time": "2024-10-23T06:17:06+00:00"
 		},
-        {
-            "name": "brainstormforce/zipwp-images",
-            "version": "1.0.11",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:brainstormforce/zipwp-images.git",
-                "reference": "67049ff2b41b81a62b8daf87fdb75a3206517f77"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/brainstormforce/zipwp-images/zipball/67049ff2b41b81a62b8daf87fdb75a3206517f77",
-                "reference": "67049ff2b41b81a62b8daf87fdb75a3206517f77",
-                "shasum": ""
-            },
-            "require": {
-                "composer/installers": "^2"
-            },
-            "require-dev": {
-                "automattic/vipwpcs": "^2.3",
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
-                "php-stubs/generator": "^0.8.2",
-                "php-stubs/wordpress-stubs": "^6.1",
-                "phpcompatibility/php-compatibility": "^9.3",
-                "phpstan/phpstan": "^1.9",
-                "squizlabs/php_codesniffer": "^3.5",
-                "szepeviktor/phpstan-wordpress": "^1.1",
-                "wp-coding-standards/wpcs": "^2.2"
-            },
-            "type": "wordpress-plugin",
-            "scripts": {
-                "format": [
-                    "vendor/bin/phpcbf"
-                ],
-                "lint": [
-                    "vendor/bin/phpcs"
-                ],
-                "test": [
-                    "vendor/bin/phpunit"
-                ],
-                "phpstan": [
-                    "vendor/bin/phpstan --memory-limit=2048M analyse"
-                ],
-                "gen-stubs": [
-                    "vendor/bin/generate-stubs artifact/phpstan/zipwp-images/ --out=tests/php/stubs/zipwp-images-stubs.php && rm -rf artifact/phpstan"
-                ],
-                "update-stubs": [
-                    "rm -f tests/php/stubs/zipwp-images-stubs.php && bash bin/build-folder-phpstan.sh && composer gen-stubs"
-                ]
-            },
-            "license": [
-                "GPL-3.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Brainstorm Force",
-                    "email": "hello@bsf.io"
-                }
-            ],
-            "description": "Free images library from ZipWP",
-            "support": {
-                "source": "https://github.com/brainstormforce/zipwp-images/tree/1.0.11",
-                "issues": "https://github.com/brainstormforce/zipwp-images/issues"
-            },
-            "time": "2024-10-01T12:44:35+00:00"
-        },
+		{
+			"name": "brainstormforce/zipwp-images",
+			"version": "1.0.13",
+			"source": {
+				"type": "git",
+				"url": "git@github.com:brainstormforce/zipwp-images.git",
+				"reference": "d7e259bc7b02ef274e74a30b2ece939977286ab7"
+			},
+			"dist": {
+				"type": "zip",
+				"url": "https://api.github.com/repos/brainstormforce/zipwp-images/zipball/d7e259bc7b02ef274e74a30b2ece939977286ab7",
+				"reference": "d7e259bc7b02ef274e74a30b2ece939977286ab7",
+				"shasum": ""
+			},
+			"require": {
+				"composer/installers": "^2"
+			},
+			"require-dev": {
+				"automattic/vipwpcs": "^2.3",
+				"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+				"php-stubs/generator": "^0.8.2",
+				"php-stubs/wordpress-stubs": "^6.1",
+				"phpcompatibility/php-compatibility": "^9.3",
+				"phpstan/phpstan": "^1.9",
+				"squizlabs/php_codesniffer": "^3.5",
+				"szepeviktor/phpstan-wordpress": "^1.1",
+				"wp-coding-standards/wpcs": "^2.2"
+			},
+			"type": "wordpress-plugin",
+			"scripts": {
+				"format": [
+					"vendor/bin/phpcbf"
+				],
+				"lint": [
+					"vendor/bin/phpcs"
+				],
+				"test": [
+					"vendor/bin/phpunit"
+				],
+				"phpstan": [
+					"vendor/bin/phpstan --memory-limit=2048M analyse"
+				],
+				"gen-stubs": [
+					"vendor/bin/generate-stubs artifact/phpstan/zipwp-images/ --out=tests/php/stubs/zipwp-images-stubs.php && rm -rf artifact/phpstan"
+				],
+				"update-stubs": [
+					"rm -f tests/php/stubs/zipwp-images-stubs.php && bash bin/build-folder-phpstan.sh && composer gen-stubs"
+				]
+			},
+			"license": [
+				"GPL-3.0-or-later"
+			],
+			"authors": [
+				{
+					"name": "Brainstorm Force",
+					"email": "hello@bsf.io"
+				}
+			],
+			"description": "Free images library from ZipWP",
+			"support": {
+				"source": "https://github.com/brainstormforce/zipwp-images/tree/1.0.13",
+				"issues": "https://github.com/brainstormforce/zipwp-images/issues"
+			},
+			"time": "2024-11-14T04:06:28+00:00"
+		},
 		{
 			"name": "composer/installers",
 			"version": "v2.2.0",

@@ -2,7 +2,7 @@
 /**
  * Init
  *
- * @since x.x.x
+ * @since 2.17.0
  * @package ZipWP Images
  */
 
@@ -15,14 +15,14 @@ if ( ! class_exists( 'UAGB_Zipwp_Images' ) ) :
 	/**
 	 * Admin
 	 * 
-	 * @since x.x.x
+	 * @since 2.17.0
 	 */
 	class UAGB_Zipwp_Images {
 
 		/**
 		 * Instance
 		 *
-		 * @since x.x.x
+		 * @since 2.17.0
 		 * @var (Object) Spectra_Zipwp_Images
 		 */
 		private static $instance = null;
@@ -30,7 +30,7 @@ if ( ! class_exists( 'UAGB_Zipwp_Images' ) ) :
 		/**
 		 * Get Instance
 		 *
-		 * @since x.x.x
+		 * @since 2.17.0
 		 *
 		 * @return object
 		 */
@@ -45,7 +45,7 @@ if ( ! class_exists( 'UAGB_Zipwp_Images' ) ) :
 		/**
 		 * Constructor.
 		 *
-		 * @since x.x.x
+		 * @since 2.17.0
 		 */
 		private function __construct() {
 			$this->version_check();
@@ -55,7 +55,7 @@ if ( ! class_exists( 'UAGB_Zipwp_Images' ) ) :
 		/**
 		 * Version Check
 		 *
-		 * @since x.x.x
+		 * @since 2.17.0
 		 * 
 		 * @return void
 		 */
@@ -88,7 +88,7 @@ if ( ! class_exists( 'UAGB_Zipwp_Images' ) ) :
 		/**
 		 * Load latest plugin
 		 *
-		 * @since x.x.x
+		 * @since 2.17.0
 		 * 
 		 * @return void
 		 */

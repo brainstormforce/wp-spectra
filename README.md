@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.6  
-**Stable tag:** 2.16.5  
+**Stable tag:** 2.17.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### x.x.x ###
+### 2.17.0 - Monday, 25th November 2024 ###
 * Feature: Added a free image search to the image media pickers.
 * Improvement: Instagram - Switched the Spectra Pro Instagram account linking to use business accounts.
 * Fix: Global - Resolved an issue wherein re-activating Spectra would always redirect to the Spectra dashboard.
