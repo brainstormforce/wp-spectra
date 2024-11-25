@@ -78,7 +78,6 @@ if ( ! class_exists( 'UAGB_Zipwp_Images' ) ) :
                 
 				// Compare versions.
 				if ( version_compare( $version, $zipwp_images_version, '>=' ) ) {
-                    do_action( 'qm/debug', 'In version compare...' );
 					$zipwp_images_version = $version;
 					$zipwp_images_init    = $path;
 				}
