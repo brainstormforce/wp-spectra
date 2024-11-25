@@ -14,6 +14,7 @@ import { ToggleControl, DateTimePicker, Icon } from '@wordpress/components';
 import UAGTextControl from '@Components/text-control';
 import { memo } from '@wordpress/element';
 import UAGNumberControl from '@Components/number-control';
+import UpgradeComponent from '@Components/upgrade-to-pro-cta';
 
 let imageSizeOptions = [
 	{
@@ -854,6 +855,24 @@ const Settings = ( props ) => {
 		);
 	};
 
+	const proUpgradePanel = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={__( 'Dynamic Content', 'ultimate-addons-for-gutenberg' )}
+			>
+				<UpgradeComponent
+					control={
+						{
+							title: __( 'Experience dynamic content with Spectra Pro. No more static displays. Personalize your user experience.', 'ultimate-addons-for-gutenberg' ),
+							renderAs: 'list',
+							campaign: 'dynamic-content',
+						}
+					}
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
+
 	const generalSettings = () => {
 		if ( mainimage && mainimage.sizes ) {
 			imageSizeOptions = getImageSize( mainimage.sizes );
@@ -1297,6 +1316,7 @@ const Settings = ( props ) => {
 						{ generalSettings() }
 						{ enableImage === true && imageSettings() }
 						{ schemaSettings() }
+						{'not-installed' === uagb_blocks_info.spectra_pro_status && ( proUpgradePanel() )}
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ titleSettings() }

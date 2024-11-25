@@ -13,6 +13,7 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import SpacingControl from '@Components/spacing-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import { memo } from '@wordpress/element';
+import UpgradeComponent from '@Components/upgrade-to-pro-cta';
 
 const Settings = ( props ) => {
 
@@ -154,6 +155,24 @@ const Settings = ( props ) => {
 			} );
 		}
 	}
+
+	const proUpgradePanel = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={__( 'Dynamic Content', 'ultimate-addons-for-gutenberg' )}
+			>
+				<UpgradeComponent
+					control={
+						{
+							title: __( 'Experience dynamic content with Spectra Pro. No more static displays. Personalize your user experience.', 'ultimate-addons-for-gutenberg' ),
+							renderAs: 'list',
+							campaign: 'dynamic-content',
+						}
+					}
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
 
 	const generalSettings = (
 		<UAGAdvancedPanelBody>
@@ -586,7 +605,10 @@ const Settings = ( props ) => {
 		<>
 			<InspectorControls>
 				<InspectorTabs tabs={ [ 'general', 'style', 'advance' ] }>
-					<InspectorTab { ...UAGTabs.general }>{ generalSettings }</InspectorTab>
+					<InspectorTab { ...UAGTabs.general }>
+						{ generalSettings }
+						{'not-installed' === uagb_blocks_info.spectra_pro_status && ( proUpgradePanel() )}
+					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style }>
 						{ starStyling }
 						{ displayTitle && '' !== title && titleStyling }

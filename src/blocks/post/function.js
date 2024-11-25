@@ -49,7 +49,7 @@ export const renderPostLayout = ( blockName, post, layoutConfig, attributes, cat
 			return ;
 		}
 
-		if ( !! props.children && props.children.length > 0 ) {
+		if ( 'not-installed' === props.children && props.children.length > 0 ) {
 			children = renderPostLayout( blockName, post, props.children, attributes, categoriesList, setAttributes, article, isLeftToRightLayout );
 		}
 

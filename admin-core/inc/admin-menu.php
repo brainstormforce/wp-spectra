@@ -246,7 +246,6 @@ class Admin_Menu {
 		wp_enqueue_style( $admin_slug . '-font', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap', array(), UAGB_VER );
 		// Styles.
 		wp_enqueue_style( $admin_slug . '-menu-style', UAGB_URL . 'admin/assets/spectra-submenu.css', array(), UAGB_VER );
-
 		wp_enqueue_style( 'wp-components' );
 
 		$theme = wp_get_theme();

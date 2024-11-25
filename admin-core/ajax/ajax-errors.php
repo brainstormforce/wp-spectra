@@ -55,6 +55,29 @@ class Ajax_Errors {
 	 */
 	public function __construct() {
 
+		/**
+		 * Hooks the method to initialize error messages.
+		 *
+		 * @uses add_action()
+		 * @uses self::initialize_errors()
+		 * @since 2.17.0
+		 */
+		add_action(
+			'init',
+			array( $this, 'initialize_errors' ),
+			10, // priority - run after WordPress has finished loading but before any output is sent.
+			0   // number of arguments - default is 1.
+		);
+	}
+
+	/**
+	 * Initializes error messages.
+	 *
+	 * @since 2.17.0
+	 * @access public
+	 * @return void
+	 */
+	public function initialize_errors() {
 		self::$errors = array(
 			'permission' => __( 'Sorry, you are not allowed to do this operation.', 'ultimate-addons-for-gutenberg' ),
 			'nonce'      => __( 'Nonce validation failed', 'ultimate-addons-for-gutenberg' ),

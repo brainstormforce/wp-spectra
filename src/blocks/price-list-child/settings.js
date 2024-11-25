@@ -6,6 +6,7 @@ import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 import { memo } from '@wordpress/element';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
+import UpgradeComponent from '@Components/upgrade-to-pro-cta';
 
 const Settings = ( props ) => {
 
@@ -67,6 +68,21 @@ const Settings = ( props ) => {
 								</>
 							) }
 						</UAGAdvancedPanelBody>
+						{'not-installed' === uagb_blocks_info.spectra_pro_status && (
+							<UAGAdvancedPanelBody
+								title={__( 'Dynamic Content', 'ultimate-addons-for-gutenberg' )}
+							>
+								<UpgradeComponent
+									control={
+										{
+											title: __( 'Experience dynamic content with Spectra Pro. No more static displays. Personalize your user experience.', 'ultimate-addons-for-gutenberg' ),
+											renderAs: 'list',
+											campaign: 'dynamic-content',
+										}
+									}
+								/>
+							</UAGAdvancedPanelBody>
+						)}
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.advance } parentProps={ props }></InspectorTab>
 				</InspectorTabs>

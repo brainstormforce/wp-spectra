@@ -23,6 +23,7 @@ import { memo } from '@wordpress/element';
 import renderGBSSettings from '@Controls/renderGBSSettings';
 import styling from './styling';
 import { applyFilters } from '@wordpress/hooks';
+import UpgradeComponent from '@Components/upgrade-to-pro-cta';
 
 function Settings( props ) {
 
@@ -1397,6 +1398,29 @@ function Settings( props ) {
 						{/* Expiry settings from Pro */}
 						{ applyFilters( 'spectra.countdown.expiry-settings' ) }
 						{ presetsPanel }
+						{ 'not-installed' === uagb_blocks_info.spectra_pro_status && (
+							<UAGAdvancedPanelBody className="block-editor-block-inspector__upgrade_pro uagb-upgrade_pro-tab">
+								<UpgradeComponent
+									control={
+										{
+											title: __( 'Take Countdown Block to the next level with powerful features', 'ultimate-addons-for-gutenberg' ),
+											choices: [
+												{
+													title: __( 'Evergreen mode', 'ultimate-addons-for-gutenberg' ),
+													description: '',
+												},
+												{
+													title: __( 'Expiry options', 'ultimate-addons-for-gutenberg' ),
+													description: '',
+												},
+											],
+											renderAs: 'list',
+											campaign: 'countdown',
+										}
+									}
+								/>
+							</UAGAdvancedPanelBody>
+						) }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style } parentProps={ props }>
 						{ boxStylePanel }
