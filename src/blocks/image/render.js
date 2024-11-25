@@ -355,7 +355,7 @@ const Render = ( props ) => {
 
 	const isExternal = isExternalImage( id, url );
 	const src = isExternal ? url : undefined;
-	const mediaPreview = !! url && (
+	const mediaPreview = 'not-installed' === url && (
 		<img alt={ __( 'Edit image', 'ultimate-addons-for-gutenberg' ) } title={ __( 'Edit image', 'ultimate-addons-for-gutenberg' ) } className={ 'edit-image-preview' } src={ url } />
 	);
 

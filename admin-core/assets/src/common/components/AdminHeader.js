@@ -42,7 +42,7 @@ const AdminHeader = ( props ) => {
 			{ 'not-installed' === uag_react.pro_plugin_status && (
 				<div className="py-3 px-12 sm:px-6 md:px-8 lg:px-12 bg-spectra text-white text-center h-auto flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
 					<p className="no-line-height lg:text-base md:text-sm sm:text-sm text-white flex flex-col md:flex-row items-center justify-center lg:gap-2 md:gap-2 sm:gap-0 leading-[16px] font-normal text-center md:text-left">
-						{__( `Unlock Spectra's Full Potential!`, 'ultimate-addons-for-gutenberg' )}
+						{__( 'Unlock Spectra\'s Full Potential!', 'ultimate-addons-for-gutenberg' )}
 						<span>
 							<a className='leading-[20px] lg:text-base md:text-sm sm:text-sm underline text-white leading-[16px] md:leading-[20px]' style={{ color: 'rgb(255, 254, 255)', textDecoration: 'underline' }} onMouseOver={() => { this.style.textDecoration = 'underline'; }} onFocus={() => { this.style.textDecoration = 'underline'; }} href="https://wpspectra.com/pricing/?utm_source=dashboard&utm_medium=free-plugin&utm_campaign=banner" target='_blank' rel="noreferrer">{__( 'Upgrade Now', 'ultimate-addons-for-gutenberg' )}</a>
 							{__( ' for exclusive features and unbeatable performance.', 'ultimate-addons-for-gutenberg' )}

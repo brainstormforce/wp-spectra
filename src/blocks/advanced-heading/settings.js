@@ -21,6 +21,7 @@ import UAGSelectControl from '@Components/select-control';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import renderGBSSettings from '@Controls/renderGBSSettings';
 import styling from './styling';
+import UpgradeComponent from '@Components/upgrade-to-pro-cta';
 
 const Settings = ( props ) => {
 	const { attributes, deviceType, setAttributes } = props;
@@ -259,6 +260,23 @@ const Settings = ( props ) => {
 			},
 		];
 	}
+	const proUpgradePanel = () => {
+		return (
+		<UAGAdvancedPanelBody
+			title={__( 'Dynamic Content', 'ultimate-addons-for-gutenberg' )}
+		>
+			<UpgradeComponent
+				control={
+					{
+						title: __( 'Experience dynamic content with Spectra Pro. No more static displays. Personalize your user experience.', 'ultimate-addons-for-gutenberg' ),
+						renderAs: 'list',
+						campaign: 'dynamic-content',
+					}
+				}
+			/>
+		</UAGAdvancedPanelBody>
+		);
+	};
 	const generalPanel = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
@@ -1273,6 +1291,7 @@ const Settings = ( props ) => {
 						{ generalPanel() }
 						{ subHeadingPanel() }
 						{ separatorPanel() }
+						{'not-installed' === uagb_blocks_info.spectra_pro_status && ( proUpgradePanel() )}
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style } parentProps={ props }>
 						{ headingTitleToggle && headingStylePanel() }

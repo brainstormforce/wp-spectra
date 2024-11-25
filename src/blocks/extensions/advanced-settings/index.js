@@ -11,6 +11,7 @@ import { select } from '@wordpress/data'
 import Select from 'react-select';
 import { updateUAGDay } from '@Utils/Helpers';
 import RenderAdvancedPositionPanel from '@Blocks/extensions/advanced-positioning';
+import UpgradeComponent from '@Components/upgrade-to-pro-cta';
 
 const { enableConditions, enableResponsiveConditions, enableAnimationsExtension } = uagb_blocks_info;
 
@@ -535,6 +536,35 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 						className="block-editor-block-inspector__advanced uagb-extention-tab"
 					>
 						{ animationOptions( props ) }
+						{'not-installed' === uagb_blocks_info.spectra_pro_status && (
+							<UpgradeComponent
+								control={
+									{
+										title: __( 'Take Animations to the next level with powerful design features', 'ultimate-addons-for-gutenberg' ),
+										choices: [
+											{
+												title: __( 'Set delays and durations', 'ultimate-addons-for-gutenberg' ),
+												description: '',
+											},
+											{
+												title: __( 'Change animation pacing', 'ultimate-addons-for-gutenberg' ),
+												description: '',
+											},
+											{
+												title: __( 'Repeat on scroll', 'ultimate-addons-for-gutenberg' ),
+												description: '',
+											},
+											{
+												title: __( 'Animate all nested blocks inside containers with delays', 'ultimate-addons-for-gutenberg' ),
+												description: '',
+											},
+										],
+										renderAs: 'list',
+										campaign: 'advanced-animations',
+									}
+								}
+							/>
+						)}
 					</UAGAdvancedPanelBody>
 				) }
 			{ isSelected && ! excludeBlocks.includes( name ) && (

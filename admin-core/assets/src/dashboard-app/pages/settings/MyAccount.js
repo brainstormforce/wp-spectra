@@ -12,7 +12,7 @@ export default function MyAccount() {
 	const licenseStatus = uag_react.license_status;
 	const licenseTitle = licenseStatus ? __( 'Deactivate', 'ultimate-addons-for-gutenberg' ) : __( 'Activate', 'ultimate-addons-for-gutenberg' );
 	const licensePlaceholder = licenseStatus ? __( 'Your license is active.', 'ultimate-addons-for-gutenberg' ) : __( 'Paste your license key here', 'ultimate-addons-for-gutenberg' );
-	const licenseMessage = licenseStatus ? __( 'License successfully validated!', 'ultimate-addons-for-gutenberg' ) : __( `Please enter your valid license key below to activate Spectra Pro!`, 'ultimate-addons-for-gutenberg' );
+	const licenseMessage = licenseStatus ? __( 'License successfully validated!', 'ultimate-addons-for-gutenberg' ) : __( 'Please enter your valid license key below to activate Spectra Pro!', 'ultimate-addons-for-gutenberg' );
 
 	const activateHandler = () => {
 

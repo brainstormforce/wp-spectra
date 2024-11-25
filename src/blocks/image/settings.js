@@ -29,6 +29,7 @@ import UAGPresets from '@Components/presets';
 import { pickRelevantMediaFiles, getDevicesAttributes } from './utils';
 import renderGBSSettings from '@Controls/renderGBSSettings';
 import styling from './styling';
+import UpgradeComponent from '@Components/upgrade-to-pro-cta';
 
 export default function Settings( props ) {
 
@@ -1872,6 +1873,24 @@ export default function Settings( props ) {
 		</UAGAdvancedPanelBody>
 	);
 
+	const proUpgradePanel = () => {
+		return (
+			<UAGAdvancedPanelBody
+				title={__( 'Dynamic Content', 'ultimate-addons-for-gutenberg' )}
+			>
+				<UpgradeComponent
+					control={
+						{
+							title: __( 'Experience dynamic content with Spectra Pro. No more static displays. Personalize your user experience.', 'ultimate-addons-for-gutenberg' ),
+							renderAs: 'list',
+							campaign: 'dynamic-content',
+						}
+					}
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
+
 	return (
 		<>
 			<InspectorControls>
@@ -1886,6 +1905,7 @@ export default function Settings( props ) {
 								{ seperatorGeneralPanel }
 							</>
 						) }
+						{'not-installed' === uagb_blocks_info.spectra_pro_status && ( proUpgradePanel() ) }
 					</InspectorTab>
 					<InspectorTab { ...UAGTabs.style } parentProps={ props }>
 						{ ImageStylePanel }
