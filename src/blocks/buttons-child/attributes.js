@@ -875,6 +875,10 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	anchor: {
+		type: 'string',
+		default: '',
+	},
 };
 
 export default attributes;

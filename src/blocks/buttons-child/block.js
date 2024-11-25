@@ -6,7 +6,6 @@ import UAGB_Block_Icons from '@Controls/block-icons';
 import attributes from './attributes';
 import deprecated from './deprecated';
 import Edit from './edit';
-import save from './save';
 import './style.scss';
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
@@ -25,7 +24,7 @@ registerBlockType( 'uagb/buttons-child', {
 	category: uagb_blocks_info.category,
 	edit: ( props ) =>
 		props.attributes.isPreview ? <PreviewImage image="buttons-child" isChildren={ true } /> : <Edit { ...props } />,
-	save,
+	save: () => null,
 	deprecated,
 	usesContext: [ 'queryId', 'query', 'queryContext', 'postId', 'postType' ],
 	supports: {

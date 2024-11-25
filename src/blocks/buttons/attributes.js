@@ -488,6 +488,10 @@ const attributes = {
 			styleType: 'btn-vertical-align',
 		},
 	},
+	anchor: {
+		type: 'string',
+		default: '',
+	},
 };
 
 export default attributes;
