@@ -400,7 +400,7 @@ const InstagramUsers = () => {
 								sprintf(
 									/* translators: %1$s: The opening anchor tag with instructions to generate a token. %2$s: The closing anchor tag. */
 									__( 'To get started please add your Instagram Access Token. Follow the %1$ssteps%2$s to generate a token, then paste it below and save.', 'ultimate-addons-for-gutenberg' ),
-									'<a class="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" href="#" target="_blank" rel="noreferrer">',
+									'<a class="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" href="https://wpspectra.com/docs/meta-app-for-instagram/" target="_blank" rel="noreferrer">',
 									'</a>'
 								)
 							) }
