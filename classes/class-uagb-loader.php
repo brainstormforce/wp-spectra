@@ -60,12 +60,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			// deActivation hook.
 			register_deactivation_hook( UAGB_FILE, array( $this, 'deactivation_reset' ) );
 
-			if ( ! $this->is_gutenberg_active() ) {
-				/* TO DO */
-				add_action( 'admin_notices', array( $this, 'uagb_fails_to_load' ) );
-				return;
-			}
-
 			$this->define_constants();
 
 			$this->loader();
@@ -151,8 +145,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 */
 		public function load_plugin() {
 
-			$this->load_textdomain();
-
 			require_once UAGB_DIR . 'classes/class-uagb-scripts-utils.php';
 			require_once UAGB_DIR . 'classes/class-uagb-block-module.php';
 			require_once UAGB_DIR . 'classes/class-uagb-admin-helper.php';
@@ -181,9 +173,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			}
 
 			require_once UAGB_DIR . 'admin-core/admin-loader.php';
-
-			// Register all UAG Lite Blocks.
-			uagb_block()->register_blocks();
 
 			add_filter( 'rest_pre_dispatch', array( $this, 'rest_pre_dispatch' ), 10, 3 );
 
@@ -434,6 +423,21 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 * @return void
 		 */
 		public function init_actions() {
+
+			// Check if Gutenberg is active, if not, don't load anything.
+			// TO DO: Add an admin notice to inform the user that Gutenberg is not active.
+			if ( ! $this->is_gutenberg_active() ) {
+				add_action( 'admin_notices', array( $this, 'uagb_fails_to_load' ) );
+				return;
+			}
+
+			// Load the text domain for translation.
+			$this->load_textdomain();
+
+			// Register all UAG Lite Blocks. This is done by calling the register_blocks method
+			// on the uagb_block() instance. This method is responsible for registering all the
+			// blocks in the plugin.
+			uagb_block()->register_blocks();
 
 			$theme_folder = get_template();
 
