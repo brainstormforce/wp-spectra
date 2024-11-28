@@ -4,7 +4,7 @@ import { isCustomizerPage } from '@Utils/Helpers';
 
 export const useDeviceType = () => {
 	const deviceType = useSelect( ( select ) => {
-		const getDeviceFromStore = select( 'core/edit-site' )?.__experimentalGetPreviewDeviceType() ||
+		const getDeviceFromStore = select( 'core/editor' )?.getDeviceType() ||
 			select( 'core/edit-post' )?.__experimentalGetPreviewDeviceType() || select( spectraStore )?.getDeviceType();
 
 		return getDeviceFromStore || 'Desktop'
@@ -20,7 +20,9 @@ export const useDeviceType = () => {
  * @param {boolean} updateInCustomizer - Whether to update the device type in the customizer preview.
  */
 export const setDeviceType = ( device, updateInCustomizer = true ) => {
-    const setPreviewDeviceType = dispatch( 'core/edit-site' )?.__experimentalSetPreviewDeviceType || dispatch( 'core/edit-post' )?.__experimentalSetPreviewDeviceType || dispatch( spectraStore )?.setDeviceType;
+	const setPreviewDeviceType = dispatch( 'core/editor' )?.setDeviceType ||
+		dispatch( 'core/edit-post' )?.__experimentalSetPreviewDeviceType ||
+		dispatch( spectraStore )?.setDeviceType;
 
     // Verify setPreviewDeviceType is available and setPreviewDeviceType should be function.
     if( ! setPreviewDeviceType || typeof setPreviewDeviceType !== 'function' ){

@@ -215,8 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= 2.17.0 - Thursday, 31st October 2024 =
-* Feature: Added a free image search to the image media pickers.
+= x.x.x =
 * Improvement: Global - Added responsive support for gradient background settings.
 * Improvement: Global - Added rel attribute support for anchor tag elements.
 * Fix: Container - Resolved an issue wherein the Core Image block's alignment would not work as expected when inside a Container.
@@ -227,28 +226,23 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Global - Resolved an issue wherein the self-hosted Google Fonts would not work as intended on the multisite's first sub-site setup.
 * Fix: Global - Resolved an issue in which some static and dynamic javascript strings were not translatable.
 
+= 2.17.0 - Monday, 25th November 2024 =
+* Feature: Added a free image search to the image media pickers.
+* Improvement: Instagram - Switched the Spectra Pro Instagram account linking to use business accounts.
+* Fix: Global - Resolved an issue wherein re-activating Spectra would always redirect to the Spectra dashboard.
+* Fix: Global - Resolved an issue wherein the editor strings would not be translatable.
+* Fix: Global - Corrected the translation loading timing to ensure translations load at the proper point in time.
+
+= 2.16.5 - Friday, 15th November 2024 =
+* This update addressed a security bug. Props to zer0gh0st (D.Sim) for privately reporting it to our team. Please make sure you are using the latest version on your website. 
+
+= 2.16.4 - Wednesday, 13th November 2024 =
+* Fix: Customizer - Resolved an issue wherein the Astra customizer panels would get an additional spacing when Spectra is active.
+* Fix: Buttons - Resolved an issue wherein the core buttons block could not be transformed to a Spectra buttons block.
+* Fix: Editor - Resolved an issue wherein tooltips would be spaced incorrectly in the block settings panels.
+
 = 2.16.3 - Saturday, 2nd November 2024 =
 * This update addressed a security bug. Props to zer0gh0st (D.Sim) for privately reporting it to our team. Please make sure you are using the latest version on your website.
-
-= 2.16.2 - Wednesday, 23rd October 2024 =
-* Updated the AI Assistant and Design Kit Libraries.
-
-= 2.16.1 - Friday, 11th October 2024 =
-* Fix: Admin - Resolved an issue wherein notices would be hidden on admin screens other than the popup builder screen.
-* Fix: Design Library - Added a cleanup for any temporary `ast-block-template_data` autoload options that remained in the database.
-
-= 2.16.0 - Wednesday, 9th October 2024 =
-* Improvement: Tabs - Enhanced accessibility in the tabs and improved the content accessibility.
-* Improvement: Global - Added a placeholder for inherited values in all spacing controls.
-* Fix: Container - Resolved an issue wherein the sticky container would not work as expected with the image gallery of the carousel type.
-* Fix: Container - Resolved an issue wherein sticky containers would not work as intended when margins were set for them.
-* Fix: Buttons - Resolved an issue wherein the button sizes would not work as expected in the editor responsive views.
-* Fix: Global - Resolved an issue wherein assets would not load for custom taxonomy templates when using Full Site Editing.
-* Fix: Global - Resolved an issue wherein the CSS would not load for Spectra blocks in custom templates for specific products using Full Site Editing.
-
-= 2.15.3 - Wednesday, 18th September 2024 =
-* Fix: Global - Resolved an issue causing the editor to freeze when the Info box and Separator blocks were used in the sync pattern.
-* Fix: Global - Resolved an issue wherein the Design Library would alter the appearance List and Heading blocks in the editor.
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 

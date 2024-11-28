@@ -475,6 +475,70 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		}
 
 
+		/**
+		 * Validates that a given URL uses the HTTPS scheme and is well-formed.
+		 *
+		 * This function checks that the provided URL is properly structured and
+		 * uses the secure HTTPS protocol. If the URL passes validation, it returns
+		 * an escaped version of the URL. Otherwise, it returns an empty string.
+		 *
+		 * @param string $url The URL to be validated.
+		 * 
+		 * @since 2.16.5
+		 * @return string Escaped URL if valid and uses HTTPS; otherwise, an empty string.
+		 */
+		public static function validate_confirmation_url( $url ) {
+			// First, we check that the URL starts with 'https://' to
+			// ensure that the URL is using the secure HTTPS protocol.
+			// 
+			// Additionally, use the filter_var() function to validate that the URL
+			// conforms to the proper URL structure. This function takes two
+			// arguments: the URL to be validated and a filter constant. The
+			// FILTER_VALIDATE_URL constant is used to validate that the URL is
+			// well-formed.
+			// 
+			// If the URL is not valid, then return an empty string. This will
+			// prevent the function from attempting to parse the URL and extract
+			// its components.
+			if ( strpos( $url, 'https://' ) !== 0 || ! filter_var( $url, FILTER_VALIDATE_URL ) ) {
+				// Return an empty string if the URL is invalid.
+				return '';
+			}
+			$parsed_url = wp_parse_url( $url );
+
+			// Check if the URL is well-formed and uses HTTPS.
+			// 
+			// wp_parse_url() is a WordPress function that takes a URL and
+			// breaks it down into its component parts. It returns an array
+			// containing the following keys:
+			// - host: The hostname of the URL (e.g. example.com)
+			// - scheme: The protocol used in the URL (e.g. http or https)
+			// - port: The port number used in the URL (if applicable)
+			// - user: The username used in the URL (if applicable)
+			// - pass: The password used in the URL (if applicable)
+			// - path: The path used in the URL (e.g. /about)
+			// - query: The query string used in the URL (e.g. ?name=John)
+			// - fragment: The fragment used in the URL (e.g. #top)
+			//
+			// We need to check that $parsed_url is an array, and that it
+			// contains the 'host' and 'scheme' keys. If any of these checks
+			// fail, we return an empty string.
+			//
+			// If the URL is well-formed and uses HTTPS, we escape the URL
+			// using WordPress's esc_url() function, and return the result.
+			if ( is_array( $parsed_url ) 
+			&& isset( $parsed_url['host'] ) 
+			&& isset( $parsed_url['scheme'] ) &&
+			'https' === $parsed_url['scheme']
+			) {
+				// If the URL is well-formed and uses HTTPS, return an escaped
+				// version of the URL.
+				return esc_url( $url );
+			}
+
+			// Return an empty string if validation fails.
+			return '';
+		}
 	}
 
 	/**
