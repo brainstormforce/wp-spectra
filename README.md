@@ -215,6 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Fix: Info Box - Resolved an issue wherein the overall alignment is not supported in RTL mode.
+
 ### 2.17.0 - Monday, 25th November 2024 ###
 * Feature: Added a free image search to the image media pickers.
 * Improvement: Instagram - Switched the Spectra Pro Instagram account linking to use business accounts.
