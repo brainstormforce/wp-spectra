@@ -1386,7 +1386,7 @@ class UAGB_Post_Assets {
 		}
 
 		$slug            = $block['attrs']['slug'];
-		$templates_parts = get_block_templates( array( 'slugs__in' => $slug ), 'wp_template_part' );
+		$templates_parts = get_block_templates( array( 'slug__in' => array( $slug ) ), 'wp_template_part' );
 		foreach ( $templates_parts as $templates_part ) {
 			if ( $slug === $templates_part->slug ) {
 				$id = $templates_part->wp_id;
