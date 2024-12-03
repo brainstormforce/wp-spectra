@@ -222,6 +222,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Info Box - Resolved an issue wherein the overall alignment is not supported in RTL mode.
 * Fix: Taxonomy List - Resolved an issue wherein plural forms would be incorrectly translated.
 * Fix: Custom CSS - Resolved an issue wherein the custom CSS would get special characters converted to unicode.
+* Fix: FSE - Corrected the query parameter in `get_block_templates()` function to properly handle template parts using the `slug__in` argument.
 * Fix: Global - Resolved an issue wherein the translated setting panels in some Spectra blocks would cause some Spectra Pro features in those blocks to not work as expected.
 * Fix: Global - Resolved an issue causing a php error for str_replace() for font loading.
 * Fix: Global - Resolved an issue wherein the self-hosted Google Fonts would not work as intended on the multisite's first sub-site setup.
