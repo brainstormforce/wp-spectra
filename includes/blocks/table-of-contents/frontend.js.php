@@ -13,9 +13,14 @@ $base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '
 $selector      = $base_selector . $id;
 
 $attrs_needed_in_js = array(
-	'mappingHeaders'  => $attr['mappingHeaders'],
-	'scrollToTop'     => $attr['scrollToTop'],
-	'makeCollapsible' => $attr['makeCollapsible'],
+	'mappingHeaders'        => $attr['mappingHeaders'],
+	'scrollToTop'           => $attr['scrollToTop'],
+	'makeCollapsible'       => $attr['makeCollapsible'],
+	'enableCollapsableList' => $attr['enableCollapsableList'],
+	'initialCollapse'       => $attr['initialCollapse'],
+	'markerView'            => $attr['markerView'],
+	'isFrontend'            => true,
+	'initiallyCollapseList' => $attr['initiallyCollapseList'],
 );
 
 ob_start();
