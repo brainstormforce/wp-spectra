@@ -216,6 +216,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
+* Improvement: Table Of Contents - Added a setting to enable collapsible list items.
 * Fix: Info Box - Resolved an issue wherein the overall alignment is not supported in RTL mode.
 * Fix: Image Gallery - Resolved an issue wherein the "Tiled" layout would not allow 2 or 3 columns.
 * Fix: FSE - Corrected the query parameter in `get_block_templates()` function to properly handle template parts using the `slug__in` argument.
