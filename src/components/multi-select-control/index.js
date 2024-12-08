@@ -48,9 +48,12 @@ const customSelectStyles = {
 	} ),
 	input: ( provided ) => ( {
 		...provided,
-		height: '30px',
-		padding: 0,
-		margin: 0,
+		'height': '30px',
+		'padding': 0,
+		'margin': 0,
+		'input[type="text"]:focus': {
+			boxShadow: 'none',
+		},
 	} ),
 	placeholder: ( provided ) => ( {
 		...provided,
