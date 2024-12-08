@@ -128,7 +128,6 @@ function FontFamilyControl( props ) {
 			...provided,
 			color: '#50575E',
 			top: '50%',
-			transform: 'translateY(-50%);',
 		} ),
 		indicatorSeparator: ( provided ) => ( {
 			...provided,
@@ -142,6 +141,15 @@ function FontFamilyControl( props ) {
 			...provided,
 			height: '30px',
 			padding: '0px 8px',
+		} ),
+		input: ( provided ) => ( {
+			...provided,
+			'height': '30px',
+			'padding': 0,
+			'margin': 0,
+			'input[type="text"]:focus': {
+				boxShadow: 'none',
+			},
 		} ),
 	};
 
