@@ -1,0 +1,3 @@
+Version 1.0.0 - 23-09-2024
+- New: Initial release.  
+ 

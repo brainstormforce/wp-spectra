@@ -152,6 +152,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'blocks-config/blocks-config.php';
 			require_once UAGB_DIR . 'lib/astra-notices/class-astra-notices.php';
 			require_once UAGB_DIR . 'lib/class-uagb-zipwp-images.php';
+			require_once UAGB_DIR . 'lib/class-uagb-nps-survey.php';
 
 			if ( is_admin() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-admin.php';
@@ -163,6 +164,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'classes/class-uagb-rest-api.php';
 			require_once UAGB_DIR . 'classes/class-uagb-visibility.php';
 			require_once UAGB_DIR . 'classes/class-uagb-caching.php';
+			require_once UAGB_DIR . 'classes/class-uagb-nps-notice.php';
 
 			if ( 'twentyseventeen' === get_template() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-twenty-seventeen-compatibility.php';
