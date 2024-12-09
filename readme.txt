@@ -161,9 +161,9 @@ We understand the need for a quality product backed by dedicated support that ca
 <strong>CONNECT WITH OUR TEAM AND COMMUNITY 🌐</strong>
 
 <ul>
-	<li><a href="https://www.facebook.com/groups/wpspectra" target="_blank" rel="">https://www.facebook.com/groups/wpspectra</a></li>
-	<li><a href="https://www.facebook.com/wpspectra" target="_blank" rel="">https://www.facebook.com/wpspectra</a></li>
-	<li><a href="https://twitter.com/wpspectra" target="_blank" rel="">https://twitter.com/wpspectra</a></li>
+	<li>Facebook Group: <a href="https://www.facebook.com/groups/wpastra" target="_blank" rel="">WordPress Web Creators by Astra</a></li>
+	<li>Facebook: <a href="https://www.facebook.com/wpspectra" target="_blank" rel="">Spectra</a></li>
+	<li>Twitter / X: <a href="https://twitter.com/wpspectra" target="_blank" rel="">Spectra</a></li>
 </ul>
 
 <strong>WANT TO CONTRIBUTE TO THE PLUGIN? 🙋</strong>
