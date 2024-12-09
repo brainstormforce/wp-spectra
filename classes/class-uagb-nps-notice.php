@@ -2,7 +2,7 @@
 /**
  * UAGB NPS Notice.
  *
- * @since x.x.x
+ * @since 2.18.0
  *
  * @package ultimate-addons-for-gutenberg
  */
@@ -21,7 +21,7 @@ if ( ! class_exists( 'UAGB_NPS_Notice' ) ) :
 		/**
 		 * Instance
 		 *
-		 * @since x.x.x
+		 * @since 2.18.0
 		 * @var (Object) UAGB_NPS_Notice
 		 */
 		private static $instance = null;
@@ -29,7 +29,7 @@ if ( ! class_exists( 'UAGB_NPS_Notice' ) ) :
 		/**
 		 * Get Instance
 		 *
-		 * @since x.x.x
+		 * @since 2.18.0
 		 *
 		 * @return object Class object.
 		 */
@@ -44,7 +44,7 @@ if ( ! class_exists( 'UAGB_NPS_Notice' ) ) :
 		/**
 		 * Constructor.
 		 *
-		 * @since x.x.x
+		 * @since 2.18.0
 		 */
 		private function __construct() {
 			add_action( 'admin_footer', array( $this, 'show_nps_notice' ), 999 );
@@ -105,7 +105,7 @@ if ( ! class_exists( 'UAGB_NPS_Notice' ) ) :
 		 *
 		 * @param array $blocks Parsed block array.
 		 * 
-		 * @since x.x.x
+		 * @since 2.18.0
 		 * @return int Count of Spectra blocks in the given array.
 		 */
 		public function count_blocks_recursively( $blocks ) {
@@ -129,7 +129,7 @@ if ( ! class_exists( 'UAGB_NPS_Notice' ) ) :
 		/**
 		 * Render NPS Survey
 		 *
-		 * @since x.x.x
+		 * @since 2.18.0
 		 * @return void
 		 */
 		public function show_nps_notice() {

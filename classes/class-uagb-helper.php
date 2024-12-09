@@ -972,7 +972,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param array $normal_css The normal CSS array with 'desktop', 'tablet', and 'mobile' keys.
 		 * @param array $rtl_css    The RTL CSS array with 'desktop', 'tablet', and 'mobile' keys.
 		 *
-		 * @since x.x.x
+		 * @since 2.18.0
 		 * @return array $merged_css The merged CSS array.
 		 */
 		public static function merge_css_arrays( $normal_css, $rtl_css ) {

@@ -13,7 +13,7 @@ if ( ! class_exists( 'UAGB_Nps_Survey' ) ) :
 		/**
 		 * Instance
 		 *
-		 * @since x.x.x
+		 * @since 2.18.0
 		 * @var (Object) UAGB_Nps_Survey
 		 */
 		private static $instance = null;
@@ -21,7 +21,7 @@ if ( ! class_exists( 'UAGB_Nps_Survey' ) ) :
 		/**
 		 * Get Instance
 		 *
-		 * @since x.x.x
+		 * @since 2.18.0
 		 *
 		 * @return object Class object.
 		 */
@@ -36,7 +36,7 @@ if ( ! class_exists( 'UAGB_Nps_Survey' ) ) :
 		/**
 		 * Constructor.
 		 *
-		 * @since x.x.x
+		 * @since 2.18.0
 		 */
 		private function __construct() {
 			$this->version_check();

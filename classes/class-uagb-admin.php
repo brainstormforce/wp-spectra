@@ -71,7 +71,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Enqueue NPS Survey popup visibility script.
 		 * 
-		 * @since x.x.x
+		 * @since 2.18.0
 		 * @return void
 		 */
 		public function nps_visibility_script() {

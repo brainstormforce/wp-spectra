@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.17.0\n"
+"Project-Id-Version: Spectra 2.18.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-21T03:27:53+00:00\n"
+"POT-Creation-Date: 2024-12-09T06:30:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -22,7 +22,8 @@ msgstr ""
 #: admin-core/inc/admin-menu.php:183
 #: admin-core/inc/admin-menu.php:194
 #: admin-core/inc/admin-menu.php:273
-#: classes/class-uagb-init-blocks.php:576
+#: classes/class-uagb-init-blocks.php:579
+#: classes/class-uagb-nps-notice.php:176
 msgid "Spectra"
 msgstr ""
 
@@ -39,26 +40,26 @@ msgstr ""
 msgid "Brainstorm Force"
 msgstr ""
 
-#: admin-core/ajax/ajax-errors.php:59
+#: admin-core/ajax/ajax-errors.php:82
 msgid "Sorry, you are not allowed to do this operation."
 msgstr ""
 
-#: admin-core/ajax/ajax-errors.php:60
+#: admin-core/ajax/ajax-errors.php:83
 msgid "Nonce validation failed"
 msgstr ""
 
-#: admin-core/ajax/ajax-errors.php:61
+#: admin-core/ajax/ajax-errors.php:84
 msgid "Sorry, something went wrong."
 msgstr ""
 
 #: admin-core/ajax/common-settings.php:164
 #: admin-core/ajax/common-settings.php:754
-#: classes/class-uagb-init-blocks.php:539
+#: classes/class-uagb-init-blocks.php:542
 msgid "Successfully saved data!"
 msgstr ""
 
 #: admin-core/ajax/common-settings.php:180
-#: classes/class-uagb-init-blocks.php:1071
+#: classes/class-uagb-init-blocks.php:1074
 msgid "No post data found!"
 msgstr ""
 
@@ -272,8 +273,8 @@ msgstr ""
 msgid "No posts found"
 msgstr ""
 
-#: blocks-config/table-of-content/class-uagb-table-of-content.php:646
-#: blocks-config/table-of-content/class-uagb-table-of-content.php:650
+#: blocks-config/table-of-content/class-uagb-table-of-content.php:703
+#: blocks-config/table-of-content/class-uagb-table-of-content.php:707
 #: includes/blocks/table-of-contents/attributes.php:18
 #: dist/blocks-placeholder.js:38
 #: dist/blocks.js:3
@@ -281,7 +282,7 @@ msgstr ""
 msgid "Table Of Contents"
 msgstr ""
 
-#: blocks-config/table-of-content/class-uagb-table-of-content.php:934
+#: blocks-config/table-of-content/class-uagb-table-of-content.php:991
 #: includes/blocks/table-of-contents/attributes.php:19
 #: dist/blocks.js:3
 #: dist/blocks.js:19
@@ -293,7 +294,7 @@ msgstr ""
 msgid "Taxonomy Not Available."
 msgstr ""
 
-#: blocks-config/taxonomy-list/class-uagb-taxonomy-list.php:708
+#: blocks-config/taxonomy-list/class-uagb-taxonomy-list.php:716
 #: includes/blocks/forms-select/block.php:15
 #: dist/blocks.js:19
 msgid "Select"
@@ -7768,110 +7769,90 @@ msgstr ""
 msgid "Theme"
 msgstr ""
 
-#: classes/class-uagb-admin.php:96
+#: classes/class-uagb-admin.php:108
 msgid "Migration started successfully."
 msgstr ""
 
-#: classes/class-uagb-admin.php:112
-#: classes/class-uagb-admin.php:182
+#: classes/class-uagb-admin.php:124
+#: classes/class-uagb-admin.php:194
 msgid "You do not have permission to access this page."
 msgstr ""
 
-#: classes/class-uagb-admin.php:129
+#: classes/class-uagb-admin.php:141
 msgid "Log file not found."
 msgstr ""
 
-#: classes/class-uagb-admin.php:183
-#: classes/class-uagb-admin.php:214
+#: classes/class-uagb-admin.php:195
+#: classes/class-uagb-admin.php:226
 #: admin-core/assets/build/dashboard-app.js:1
 #: admin-core/assets/build/dashboard-app.js:3
 msgid "Rollback to Previous Version"
 msgstr ""
 
-#: classes/class-uagb-admin.php:196
+#: classes/class-uagb-admin.php:208
 msgid "Error occurred, The version selected is invalid. Try selecting different version."
 msgstr ""
 
-#: classes/class-uagb-admin.php:305
-msgid "Wow! Spectra has helped you build over 5 pages!!"
-msgstr ""
-
-#: classes/class-uagb-admin.php:306
-msgid "We're a small independent team passionate about creating plugins like this one. It would mean the world to us if you could spend just a minute to leave a 5-star review on WordPress' official website. Your support really helps us a lot!"
-msgstr ""
-
-#: classes/class-uagb-admin.php:308
-msgid "Ok, you deserve it"
-msgstr ""
-
-#: classes/class-uagb-admin.php:310
-msgid "Nope, maybe later"
-msgstr ""
-
-#: classes/class-uagb-admin.php:311
-msgid "I already did"
-msgstr ""
-
-#: classes/class-uagb-admin.php:348
+#: classes/class-uagb-admin.php:315
 msgid "Spectra database update required"
 msgstr ""
 
-#: classes/class-uagb-admin.php:349
+#: classes/class-uagb-admin.php:316
 msgid "We've detected that some of your pages were created with an older version of Spectra. To ensure your designs remain unaffected, we recommend updating the Spectra database now. Updating the Spectra database will not impact any other parts of your website."
 msgstr ""
 
-#: classes/class-uagb-admin.php:350
+#: classes/class-uagb-admin.php:317
 msgid "To be on the safer side, please be sure to back up your site before updating."
 msgstr ""
 
-#: classes/class-uagb-admin.php:351
+#: classes/class-uagb-admin.php:318
 msgid "Update Spectra Database"
 msgstr ""
 
-#: classes/class-uagb-admin.php:353
+#: classes/class-uagb-admin.php:320
 msgid "Learn More About This"
 msgstr ""
 
-#: classes/class-uagb-admin.php:378
+#: classes/class-uagb-admin.php:345
 msgid "Spectra database update in progress"
 msgstr ""
 
-#: classes/class-uagb-admin.php:379
+#: classes/class-uagb-admin.php:346
 msgid "Great! This should only take a few minutes. Thanks for hanging in there."
 msgstr ""
 
-#: classes/class-uagb-admin.php:404
+#: classes/class-uagb-admin.php:371
 msgid "Update Successful!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:405
+#: classes/class-uagb-admin.php:372
 msgid "Your Spectra database is now up-to-date. Your website will continue to function as before."
 msgstr ""
 
-#: classes/class-uagb-admin.php:405
+#: classes/class-uagb-admin.php:372
 msgid "View Log"
 msgstr ""
 
 #. translators: %s: html tags
-#: classes/class-uagb-admin.php:424
+#: classes/class-uagb-admin.php:391
 msgid "Spectra requires&nbsp;%3$sBlock Editor%4$s. You can change your editor settings to Block Editor from&nbsp;%1$shere%2$s. Plugin is currently NOT RUNNING."
 msgstr ""
 
-#: classes/class-uagb-admin.php:469
+#: classes/class-uagb-admin.php:436
 msgid "Want to do more with Popup Builder?"
 msgstr ""
 
-#: classes/class-uagb-admin.php:470
+#: classes/class-uagb-admin.php:437
 msgid "Maximize your popup potential with Spectra Pro. Unlock enhanced features, intuitive design options, and increased conversions!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:472
+#: classes/class-uagb-admin.php:439
 #: admin-core/assets/build/dashboard-app.js:1
 msgid "Upgrade Now"
 msgstr ""
 
 #: classes/class-uagb-fse-fonts-compatibility.php:165
-#: classes/class-uagb-init-blocks.php:721
+#: classes/class-uagb-init-blocks.php:724
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:19
@@ -7897,7 +7878,7 @@ msgstr ""
 msgid "Successfully deleted font."
 msgstr ""
 
-#: classes/class-uagb-helper.php:443
+#: classes/class-uagb-helper.php:458
 #: dist/blocks.js:11
 #: dist/blocks.js:19
 msgid "Full"
@@ -7958,25 +7939,25 @@ msgid "Popup Updated"
 msgstr ""
 
 #: classes/class-uagb-init-blocks.php:378
-#: classes/class-uagb-init-blocks.php:522
+#: classes/class-uagb-init-blocks.php:525
 msgid "User is not authenticated!"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:509
+#: classes/class-uagb-init-blocks.php:512
 msgid "Please select a valid Gravity Form."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:559
+#: classes/class-uagb-init-blocks.php:562
 msgid "Please select a valid Contact Form 7."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:812
+#: classes/class-uagb-init-blocks.php:815
 msgid ""
 "Use custom class added in block's advanced settings to target your desired block. Examples:\n"
 "\t\t.my-class {text-align: center;} // my-class is a custom selector"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:871
+#: classes/class-uagb-init-blocks.php:874
 #: classes/class-uagb-rest-api.php:318
 #: classes/class-uagb-rest-api.php:333
 #: dist/blocks.js:1
@@ -7987,31 +7968,51 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:900
-#: classes/class-uagb-init-blocks.php:933
+#: classes/class-uagb-init-blocks.php:903
+#: classes/class-uagb-init-blocks.php:936
 #: dist/blocks.js:23
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:914
+#: classes/class-uagb-init-blocks.php:917
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:947
+#: classes/class-uagb-init-blocks.php:950
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:963
+#: classes/class-uagb-init-blocks.php:966
 msgid "Invalid request"
 msgstr ""
 
 #. translators: %s: html tags
-#: classes/class-uagb-loader.php:395
+#: classes/class-uagb-loader.php:386
 msgid "The %1$sSpectra%2$s plugin requires %1$sGutenberg%2$s plugin installed & activated."
 msgstr ""
 
-#: classes/class-uagb-loader.php:398
+#: classes/class-uagb-loader.php:389
 msgid "Install Gutenberg"
+msgstr ""
+
+#: classes/class-uagb-nps-notice.php:177
+msgid "How likely are you to recommend Spectra to your friends or colleagues?"
+msgstr ""
+
+#: classes/class-uagb-nps-notice.php:178
+msgid "Thanks a lot for your feedback! 😍"
+msgstr ""
+
+#: classes/class-uagb-nps-notice.php:179
+msgid "Could you please do us a favor and give us a 5-star rating on WordPress? It would help others choose Spectra with confidence. Thank you!"
+msgstr ""
+
+#: classes/class-uagb-nps-notice.php:181
+msgid "Thank you for your feedback"
+msgstr ""
+
+#: classes/class-uagb-nps-notice.php:182
+msgid "We value your input. How can we improve your experience?"
 msgstr ""
 
 #: classes/class-uagb-rollback.php:165
@@ -8861,6 +8862,7 @@ msgstr ""
 #: lib/gutenberg-templates/inc/api/settings.php:92
 #: lib/gutenberg-templates/inc/api/sites.php:70
 #: lib/gutenberg-templates/inc/classes/ast-block-templates-zipwp-api.php:77
+#: lib/nps-survey/classes/nps-survey-script.php:225
 #: lib/zipwp-images/classes/zipwp-images-api.php:92
 msgid "Sorry, you are not allowed to do that."
 msgstr ""
@@ -8877,6 +8879,8 @@ msgstr ""
 #: lib/gutenberg-templates/inc/api/sites.php:93
 #: lib/gutenberg-templates/inc/classes/ast-block-templates-zipwp-api.php:138
 #: lib/gutenberg-templates/inc/classes/ast-block-templates-zipwp-api.php:197
+#: lib/nps-survey/classes/nps-survey-script.php:246
+#: lib/nps-survey/classes/nps-survey-script.php:327
 #: lib/zipwp-images/classes/zipwp-images-api.php:169
 msgid "Nonce verification failed."
 msgstr ""
@@ -16044,6 +16048,26 @@ msgstr ""
 
 #: dist/blocks.js:19
 msgid "Please set the separator thickness to 3px or more to perceive the Double border."
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Make List Collapsible"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "The collapsable functionality will only work in Front End."
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Collapsible Level"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "For example, if the depth is set to 1, only first-level headings that have nestable content will display a collapsible icon. As the depth increases, additional nested levels will become collapsible."
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Initially Collapsed"
 msgstr ""
 
 #: dist/blocks.js:19

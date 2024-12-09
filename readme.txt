@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.6
-Stable tag: 2.17.0
+Stable tag: 2.18.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,7 +215,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= x.x.x =
+= 2.18.0 - Monday, 9th December 2024 =
 * Improvement: Table Of Contents - Added a setting to enable collapsible list items.
 * Fix: Info Box - Resolved an issue wherein the overall alignment is not supported in RTL mode.
 * Fix: Image Gallery - Resolved an issue wherein the "Tiled" layout would not allow 2 or 3 columns.
@@ -238,9 +238,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Customizer - Resolved an issue wherein the Astra customizer panels would get an additional spacing when Spectra is active.
 * Fix: Buttons - Resolved an issue wherein the core buttons block could not be transformed to a Spectra buttons block.
 * Fix: Editor - Resolved an issue wherein tooltips would be spaced incorrectly in the block settings panels.
-
-= 2.16.3 - Saturday, 2nd November 2024 =
-* This update addressed a security bug. Props to zer0gh0st (D.Sim) for privately reporting it to our team. Please make sure you are using the latest version on your website.
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 
