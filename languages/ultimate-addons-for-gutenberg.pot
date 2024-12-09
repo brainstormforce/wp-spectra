@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-09T06:30:03+00:00\n"
+"POT-Creation-Date: 2024-12-09T07:35:11+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -2021,7 +2021,7 @@ msgid "Cookie Bite"
 msgstr ""
 
 #: blocks-config/uagb-controls/spectra-icons-v6-0.php:5045
-#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+#: lib/zip-ai/sidebar/build/sidebar-app.js:3
 msgid "Copy"
 msgstr ""
 
@@ -8862,7 +8862,7 @@ msgstr ""
 #: lib/gutenberg-templates/inc/api/settings.php:92
 #: lib/gutenberg-templates/inc/api/sites.php:70
 #: lib/gutenberg-templates/inc/classes/ast-block-templates-zipwp-api.php:77
-#: lib/nps-survey/classes/nps-survey-script.php:225
+#: lib/nps-survey/classes/nps-survey-script.php:217
 #: lib/zipwp-images/classes/zipwp-images-api.php:92
 msgid "Sorry, you are not allowed to do that."
 msgstr ""
@@ -8879,8 +8879,8 @@ msgstr ""
 #: lib/gutenberg-templates/inc/api/sites.php:93
 #: lib/gutenberg-templates/inc/classes/ast-block-templates-zipwp-api.php:138
 #: lib/gutenberg-templates/inc/classes/ast-block-templates-zipwp-api.php:197
-#: lib/nps-survey/classes/nps-survey-script.php:246
-#: lib/nps-survey/classes/nps-survey-script.php:327
+#: lib/nps-survey/classes/nps-survey-script.php:238
+#: lib/nps-survey/classes/nps-survey-script.php:319
 #: lib/zipwp-images/classes/zipwp-images-api.php:169
 msgid "Nonce verification failed."
 msgstr ""
@@ -8931,7 +8931,7 @@ msgstr ""
 #: lib/gutenberg-templates/inc/importer/plugin.php:269
 #: lib/gutenberg-templates/inc/importer/plugin.php:273
 #: lib/gutenberg-templates/inc/importer/plugin.php:436
-#: lib/zip-ai/classes/sidebar-configurations.php:250
+#: lib/zip-ai/classes/sidebar-configurations.php:255
 msgid "Something went wrong"
 msgstr ""
 
@@ -8989,15 +8989,15 @@ msgstr ""
 msgid "The ZipWP API server encountered an error."
 msgstr ""
 
-#: lib/zip-ai/classes/sidebar-configurations.php:185
+#: lib/zip-ai/classes/sidebar-configurations.php:187
 msgid "The message array was not supplied"
 msgstr ""
 
-#: lib/zip-ai/classes/sidebar-configurations.php:264
+#: lib/zip-ai/classes/sidebar-configurations.php:269
 msgid "Invalid auth token."
 msgstr ""
 
-#: lib/zip-ai/classes/sidebar-configurations.php:265
+#: lib/zip-ai/classes/sidebar-configurations.php:270
 msgid "You have no credits left."
 msgstr ""
 
@@ -9282,12 +9282,13 @@ msgid "Please note that after regeneration, it is recommended to purge all your 
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:1
-#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+#: lib/zip-ai/sidebar/build/sidebar-app.js:3
 msgid "Regenerate"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:1
 #: dist/blocks.js:11
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
 msgid "Close"
 msgstr ""
 
@@ -9313,7 +9314,7 @@ msgstr ""
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 #: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:3
-#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+#: lib/zip-ai/sidebar/build/sidebar-app.js:3
 msgid "Cancel"
 msgstr ""
 
@@ -9812,7 +9813,8 @@ msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:12
 #: lib/zip-ai/sidebar/build/sidebar-app.js:11
-#: lib/zip-ai/sidebar/build/sidebar-app.js:12
+#: lib/zip-ai/sidebar/build/sidebar-app.js:15
+#: lib/zip-ai/sidebar/build/sidebar-app.js:16
 msgid "AI Assistant"
 msgstr ""
 
@@ -9944,6 +9946,7 @@ msgid "Build 10x Faster with Spectra AI"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:14
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
 msgid "Credit Usage"
 msgstr ""
 
@@ -9953,8 +9956,10 @@ msgid "Get more Credits"
 msgstr ""
 
 #. translators: %s: number of words
+#. translators: %s the total amount of credits to this account, with comma separators.
 #: admin-core/assets/build/dashboard-app.js:15
 #: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:3
+#: lib/zip-ai/sidebar/build/sidebar-app.js:13
 msgid "of %s"
 msgstr ""
 
@@ -10067,7 +10072,8 @@ msgstr ""
 
 #: dist/blocks.js:3
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+#: lib/zip-ai/sidebar/build/sidebar-app.js:3
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
 msgid "Click Here"
 msgstr ""
 
@@ -12550,7 +12556,7 @@ msgid "Off"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Polite"
 msgstr ""
 
@@ -13675,7 +13681,7 @@ msgid "Amharic"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Arabic"
 msgstr ""
 
@@ -13684,7 +13690,7 @@ msgid "Armenian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Azerbaijani"
 msgstr ""
 
@@ -13693,12 +13699,12 @@ msgid "Basque"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Belarusian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Bengali"
 msgstr ""
 
@@ -13707,7 +13713,7 @@ msgid "Bosnian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Bulgarian"
 msgstr ""
 
@@ -13724,32 +13730,32 @@ msgid "Chinese"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Croatian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Czech"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Danish"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Dutch"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "English"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Estonian"
 msgstr ""
 
@@ -13758,12 +13764,12 @@ msgid "Farsi"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Finnish"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "French"
 msgstr ""
 
@@ -13772,17 +13778,17 @@ msgid "Galician"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Georgian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "German"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Greek"
 msgstr ""
 
@@ -13791,17 +13797,17 @@ msgid "Gujarati"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Hebrew"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Hindi"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Hungarian"
 msgstr ""
 
@@ -13810,17 +13816,17 @@ msgid "Icelandic"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Indonesian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Italian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Japanese"
 msgstr ""
 
@@ -13829,7 +13835,7 @@ msgid "Kannada"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Kazakh"
 msgstr ""
 
@@ -13838,7 +13844,7 @@ msgid "Khmer"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Korean"
 msgstr ""
 
@@ -13851,22 +13857,22 @@ msgid "Lao"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Latvian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Lithuanian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Macedonian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Malay"
 msgstr ""
 
@@ -13887,17 +13893,17 @@ msgid "Nepali"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Norwegian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Polish"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Portuguese"
 msgstr ""
 
@@ -13906,17 +13912,17 @@ msgid "Punjabi"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Romanian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Russian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Serbian"
 msgstr ""
 
@@ -13925,27 +13931,27 @@ msgid "Sinhalese"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Slovak"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Slovenian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Spanish"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Swahili"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Swedish"
 msgstr ""
 
@@ -13958,22 +13964,22 @@ msgid "Telugu"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Thai"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Turkish"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Ukrainian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Urdu"
 msgstr ""
 
@@ -13982,7 +13988,7 @@ msgid "Uzbek"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Vietnamese"
 msgstr ""
 
@@ -14792,7 +14798,6 @@ msgstr ""
 
 #: dist/blocks.js:19
 #: dist/blocks.js:23
-#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Edit"
 msgstr ""
 
@@ -17138,177 +17143,225 @@ msgid "Zip - Your AI Assistant"
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:1
-msgid "Content:"
+msgid "Chinese (Simplified)"
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:1
-msgid "You:"
+msgid "Filipino"
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:1
-msgid "AI Assistant:"
+msgid "Friendly"
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:1
-msgid "Use This"
+msgid "Formal"
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Casual"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Professional"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Informative"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Playful"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Serious"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Humorous"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Emotional"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Fix any grammatical mistakes."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Make it longer."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Make it shorter."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Change tone to %s."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+#: lib/zip-ai/sidebar/build/sidebar-app.js:15
+msgid "Rephrase"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Create with AI"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Write a short description"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "for this product"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Write a short description."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Write a long description"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Write a long description."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Draft with AI"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Give me an idea"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "for an attractive heading about"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Give me an idea for "
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Show me a code snippet"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "of blur-on-hover CSS"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Show me a code snippet of "
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Write me a description"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "about a product for"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Write me a description about "
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Paste from clipboard"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "and chat from there"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+#: lib/zip-ai/sidebar/build/sidebar-app.js:15
+msgid "Fix Grammar"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+#: lib/zip-ai/sidebar/build/sidebar-app.js:15
+msgid "Make Longer"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+#: lib/zip-ai/sidebar/build/sidebar-app.js:15
+msgid "Make Shorter"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Change Tone"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Translate"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:3
+msgid "Translate to %s."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:3
+msgid "Edit Message"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:3
+msgid "Replace Richtext"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:3
 msgid "Copy & Close"
 msgstr ""
 
-#: lib/zip-ai/sidebar/build/sidebar-app.js:1
-msgid "Update"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+#: lib/zip-ai/sidebar/build/sidebar-app.js:3
 msgid "Note: All subsequent messages will be deleted after you update."
 msgstr ""
 
-#. translators: %1$d is the current page, %2$d is the total number of pages.
 #: lib/zip-ai/sidebar/build/sidebar-app.js:3
-msgid "%1$d / %2$d"
+msgid "Update"
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:3
+msgid "It looks like I've encountered an error…"
+msgstr ""
+
+#. translators: %1$d is the current page, %2$d is the total number of pages.
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "%1$d/%2$d"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Something went wrong while I was generating a response."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
 msgid "Generating…"
 msgstr ""
 
-#: lib/zip-ai/sidebar/build/sidebar-app.js:3
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
 msgid "How can I help you?"
 msgstr ""
 
-#. Translators: %1$s is the opening link tag, %2$s is the closing link tag.
 #: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "AI Assistant can make mistakes. Want to %1$sdisable it?%2$s"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "AI Assistant can make mistakes."
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Write for me"
+msgid "Ask AI"
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:5
 msgid "Clear Chat"
 msgstr ""
 
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Chinese (Simplified)"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Filipino"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Friendly"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Formal"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Casual"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Professional"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Informative"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Playful"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Serious"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Humorous"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Emotional"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Fix any grammatical mistakes."
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Make it longer."
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Make it shorter."
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:6
-msgid "Change tone to %s."
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:6
-#: lib/zip-ai/sidebar/build/sidebar-app.js:11
-msgid "Rephrase"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:6
-msgid "Draft with AI"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:6
-msgid "Write an attractive heading about…"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:6
-msgid "Write an attractive heading about "
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:6
-msgid "Write a sub-heading for…"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:6
-msgid "Write a sub-heading for "
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:6
-#: lib/zip-ai/sidebar/build/sidebar-app.js:11
-msgid "Fix Grammar"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:6
-#: lib/zip-ai/sidebar/build/sidebar-app.js:11
-msgid "Make Longer"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:6
-#: lib/zip-ai/sidebar/build/sidebar-app.js:11
-msgid "Make Shorter"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:6
-msgid "Tone"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:6
-msgid "Translate"
+#. Translators: %1$s is the opening link tag, %2$s is the closing link tag.
+#: lib/zip-ai/sidebar/build/sidebar-app.js:7
+msgid "AI Assistant can make mistakes. Want to %1$sdisable it?%2$s"
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:7
-msgid "Translate to %s."
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:7
-msgid "Paste from clipboard"
+msgid "AI Assistant can make mistakes."
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:7
@@ -17368,11 +17421,11 @@ msgid "Engage with Comments"
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:11
-msgid "Something went wrong, please try again."
+msgid "Get Ready!"
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:11
-msgid "Get Ready!"
+msgid "Something went wrong, please try again."
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:11
@@ -17388,15 +17441,57 @@ msgid "Hi there! I'm here to assist you."
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:11
-msgid "Choose a prompt bellow or write on your own. Ask me about what you need."
+msgid "Choose a prompt bellow or write on your own."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Ask me about what you need."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+#: lib/zip-ai/sidebar/build/sidebar-app.js:13
+msgid "Login"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Login to use the AI Assistant!"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Get Started"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Get More Credits"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:13
+msgid "Logging in"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:13
+msgid "Logged in"
+msgstr ""
+
+#. Translators: %1$s is the opening link tag, %2$s is the closing link tag.
+#: lib/zip-ai/sidebar/build/sidebar-app.js:15
+msgid "Continue logging in from %1$shere%2$s."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:15
+msgid "Logged in!"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:15
+msgid "Something went wrong, please login again."
 msgstr ""
 
 #. translators: %s: lastUsedTone label
-#: lib/zip-ai/sidebar/build/sidebar-app.js:12
+#: lib/zip-ai/sidebar/build/sidebar-app.js:16
 msgid "Change Tone to %s"
 msgstr ""
 
-#: lib/zip-ai/sidebar/build/sidebar-app.js:12
+#: lib/zip-ai/sidebar/build/sidebar-app.js:16
 msgid "Something Else"
 msgstr ""
 

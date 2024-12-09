@@ -1,3 +1,10 @@
+2.0.0 - 9th December 2024
+- New: The AI Assistant is now Location Aware.
+- Improvement: Revamped the entire UI of the Assistant Sidebar.
+
+1.2.4 - 1st November 2024
+- Fix: Added a function check for 'get_current_screen'.
+
 1.2.3 - 23rd October 2024
 - Improvement: Added support for the 'source' parameter in the middleware URL.
 
