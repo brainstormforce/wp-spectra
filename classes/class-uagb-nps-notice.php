@@ -172,14 +172,15 @@ if ( ! class_exists( 'UAGB_NPS_Notice' ) ) :
 					'plugin_slug'      => 'spectra',
 					'message'          => array(
 
-						'logo'                  => esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/logos/spectra.svg' ),
-						'plugin_name'           => __( 'Spectra', 'ultimate-addons-for-gutenberg' ),
-						'nps_rating_message'    => __( 'How likely are you to recommend Spectra to your friends or colleagues?', 'ultimate-addons-for-gutenberg' ),
-						'feedback_title'        => __( 'Thanks a lot for your feedback! 😍', 'ultimate-addons-for-gutenberg' ),
-						'feedback_content'      => __( 'Could you please do us a favor and give us a 5-star rating on WordPress? It would help others choose Spectra with confidence. Thank you!', 'ultimate-addons-for-gutenberg' ),
-						'plugin_rating_link'    => esc_url( 'https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg/reviews/#new-post' ),
-						'plugin_rating_title'   => __( 'Thank you for your feedback', 'ultimate-addons-for-gutenberg' ),
-						'plugin_rating_content' => __( 'We value your input. How can we improve your experience?', 'ultimate-addons-for-gutenberg' ),
+						'logo'                        => esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/logos/spectra.svg' ),
+						'plugin_name'                 => __( 'Spectra', 'ultimate-addons-for-gutenberg' ),
+						'nps_rating_message'          => __( 'How likely are you to recommend Spectra to your friends or colleagues?', 'ultimate-addons-for-gutenberg' ),
+						'feedback_title'              => __( 'Thanks a lot for your feedback! 😍', 'ultimate-addons-for-gutenberg' ),
+						'feedback_content'            => __( 'Could you please do us a favor and give us a 5-star rating on WordPress? It would help others choose Spectra with confidence. Thank you!', 'ultimate-addons-for-gutenberg' ),
+						'plugin_rating_link'          => esc_url( 'https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg/reviews/#new-post' ),
+						'plugin_rating_title'         => __( 'Thank you for your feedback', 'ultimate-addons-for-gutenberg' ),
+						'plugin_rating_content'       => __( 'We value your input. How can we improve your experience?', 'ultimate-addons-for-gutenberg' ),
+						'plugin_rating_button_string' => __( 'Rate Spectra', 'ultimate-addons-for-gutenberg' ),
 
 					),
 

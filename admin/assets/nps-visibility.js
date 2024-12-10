@@ -56,51 +56,5 @@ document.addEventListener(
 				spectraNPS.style.display = 'block';
 			}
 		}
-
-		// Observe changes to dynamically update the button text.
-		if ( spectraNPS ) {
-			const Observer = window.MutationObserver || class {
-				observe() {
-					// Fallback logic to mimic MutationObserver behavior.
-					const buttons = spectraNPS.querySelectorAll( 'button' );
-					let target;
-	
-					for ( let i = 0; i < buttons.length; i++ ) {
-						if ( buttons[i].innerHTML === 'Rate the Theme' ) {
-							target = buttons[i];
-						}
-					}
-
-					let lastHTML = target.innerHTML;
-					setInterval( () => {
-						if ( target.innerHTML !== lastHTML ) {
-							lastHTML = target.innerHTML;
-							// Manually trigger the mutation logic.
-							for ( let i = 0; i < buttons.length; i++ ) {
-								if ( buttons[i].innerHTML === 'Rate the Theme' ) {
-									buttons[i].innerHTML = 'Rate the Plugin';
-								}
-							}
-						}
-					}, 1000 ); // Check every second for changes
-				}
-			};
-
-			const observer = new Observer( () => {
-				const buttons = spectraNPS.querySelectorAll( 'button' );
-	
-				for ( let i = 0; i < buttons.length; i++ ) {
-					if ( buttons[i].innerHTML === 'Rate the Theme' ) {
-						buttons[i].innerHTML = 'Rate the Plugin';
-					}
-				}
-			} );
-	
-			// Start observing the NPS wrapper for changes.
-			observer.observe( spectraNPS, {
-				childList: true,
-				subtree: true,
-			} );
-		}
 	}
 );

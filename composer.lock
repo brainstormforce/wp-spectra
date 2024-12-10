@@ -175,16 +175,16 @@
 		},
 		{
 			"name": "brainstormforce/nps-survey",
-			"version": "1.0.2",
+			"version": "1.0.3",
 			"source": {
 				"type": "git",
 				"url": "git@github.com:brainstormforce/nps-survey.git",
-				"reference": "1d3c312209db4cdb51a04b6af6a003c5d9ab2b2d"
+				"reference": "7e92c4da38368b9cf7fbe20d49f38a42939d093d"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/brainstormforce/nps-survey/zipball/1d3c312209db4cdb51a04b6af6a003c5d9ab2b2d",
-				"reference": "1d3c312209db4cdb51a04b6af6a003c5d9ab2b2d",
+				"url": "https://api.github.com/repos/brainstormforce/nps-survey/zipball/7e92c4da38368b9cf7fbe20d49f38a42939d093d",
+				"reference": "7e92c4da38368b9cf7fbe20d49f38a42939d093d",
 				"shasum": ""
 			},
 			"require-dev": {
@@ -221,10 +221,10 @@
 			},
 			"description": "NPS Survey Plugin",
 			"support": {
-				"source": "https://github.com/brainstormforce/nps-survey/tree/1.0.2",
+				"source": "https://github.com/brainstormforce/nps-survey/tree/1.0.3",
 				"issues": "https://github.com/brainstormforce/nps-survey/issues"
 			},
-			"time": "2024-09-30T09:50:05+00:00"
+			"time": "2024-12-10T05:01:30+00:00"
 		},
 		{
 			"name": "brainstormforce/zip-ai",
@@ -6984,10 +6984,10 @@
 	],
 	"aliases": [],
 	"minimum-stability": "stable",
-	"stability-flags": {},
+	"stability-flags": [],
 	"prefer-stable": false,
 	"prefer-lowest": false,
-	"platform": {},
-	"platform-dev": {},
+	"platform": [],
+	"platform-dev": [],
 	"plugin-api-version": "2.6.0"
 }

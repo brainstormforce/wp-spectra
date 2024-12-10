@@ -69,6 +69,29 @@ class Nps_Survey {
 	}
 
 	/**
+	 * Generate and return the Google fonts url.
+	 *
+	 * @since 1.0.2
+	 * @return string
+	 */
+	public static function google_fonts_url() {
+
+		$fonts_url     = '';
+		$font_families = array(
+			'Figtree:400,500,600,700',
+		);
+
+		$query_args = array(
+			'family' => rawurlencode( implode( '|', $font_families ) ),
+			'subset' => rawurlencode( 'latin,latin-ext' ),
+		);
+
+		$fonts_url = add_query_arg( $query_args, '//fonts.googleapis.com/css' );
+
+		return $fonts_url;
+	}
+
+	/**
 	 * Load script.
 	 *
 	 * @since 1.0.0
@@ -139,6 +162,7 @@ class Nps_Survey {
 
 		wp_enqueue_style( 'nps-survey-style', $build_url . '/style-main.css', array(), NPS_SURVEY_VER );
 		wp_style_add_data( 'nps-survey-style', 'rtl', 'replace' );
+		wp_enqueue_style( 'nps-survey-google-fonts', self::google_fonts_url(), array(), 'all' );
 
 	}
 
@@ -344,7 +368,7 @@ class Nps_Survey {
 		$nps_form_status['dismiss_step']  = $request['current_step'];
 
 		// Dismiss Permanantly.
-		if ( $nps_form_status['dismiss_count'] >= 3 ) {
+		if ( $nps_form_status['dismiss_count'] >= 2 ) {
 			$nps_form_status['dismiss_permanently'] = true;
 		}
 
@@ -458,3 +482,4 @@ class Nps_Survey {
  * Kicking this off by calling 'get_instance()' method
  */
 Nps_Survey::get_instance();
+

@@ -9,12 +9,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-09T07:35:11+00:00\n"
+"POT-Creation-Date: 2024-12-10T07:20:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.8.1\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
 
 #. Plugin Name of the plugin
+#: ultimate-addons-for-gutenberg.php
 #: admin-core/inc/admin-menu.php:147
 #: admin-core/inc/admin-menu.php:148
 #: admin-core/inc/admin-menu.php:159
@@ -29,14 +30,17 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
+#: ultimate-addons-for-gutenberg.php
 msgid "https://www.brainstormforce.com"
 msgstr ""
 
 #. Description of the plugin
+#: ultimate-addons-for-gutenberg.php
 msgid "The Spectra extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster."
 msgstr ""
 
 #. Author of the plugin
+#: ultimate-addons-for-gutenberg.php
 msgid "Brainstorm Force"
 msgstr ""
 
@@ -8015,6 +8019,10 @@ msgstr ""
 msgid "We value your input. How can we improve your experience?"
 msgstr ""
 
+#: classes/class-uagb-nps-notice.php:183
+msgid "Rate Spectra"
+msgstr ""
+
 #: classes/class-uagb-rollback.php:165
 msgid "Spectra <p>Rollback to Previous Version</p>"
 msgstr ""
@@ -8862,7 +8870,7 @@ msgstr ""
 #: lib/gutenberg-templates/inc/api/settings.php:92
 #: lib/gutenberg-templates/inc/api/sites.php:70
 #: lib/gutenberg-templates/inc/classes/ast-block-templates-zipwp-api.php:77
-#: lib/nps-survey/classes/nps-survey-script.php:217
+#: lib/nps-survey/classes/nps-survey-script.php:249
 #: lib/zipwp-images/classes/zipwp-images-api.php:92
 msgid "Sorry, you are not allowed to do that."
 msgstr ""
@@ -8879,8 +8887,8 @@ msgstr ""
 #: lib/gutenberg-templates/inc/api/sites.php:93
 #: lib/gutenberg-templates/inc/classes/ast-block-templates-zipwp-api.php:138
 #: lib/gutenberg-templates/inc/classes/ast-block-templates-zipwp-api.php:197
-#: lib/nps-survey/classes/nps-survey-script.php:238
-#: lib/nps-survey/classes/nps-survey-script.php:319
+#: lib/nps-survey/classes/nps-survey-script.php:270
+#: lib/nps-survey/classes/nps-survey-script.php:351
 #: lib/zipwp-images/classes/zipwp-images-api.php:169
 msgid "Nonce verification failed."
 msgstr ""
