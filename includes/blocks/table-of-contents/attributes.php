@@ -138,6 +138,9 @@ return array_merge(
 		'borderWidth'                => 1,
 		'borderRadius'               => '',
 		'borderColor'                => '#333',
+		'enableCollapsableList'      => false,
+		'collapsibleListDepth'       => 5,
+		'initiallyCollapseList'      => false,
 	),
 	$borderAttributes
 );

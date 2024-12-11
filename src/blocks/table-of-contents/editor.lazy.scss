@@ -58,3 +58,43 @@
 ol.uagb-toc__list {
 	margin-top: 0;
 }
+// For collapsible list items, there should be no marker. Instead we add the before pseudo elemet with the arrow.
+// Note that this should be the topmost CSS applied to the list, despite other customizability.
+.block-editor-block-list__block .wp-block-uagb-table-of-contents ol.uagb-toc__list li.uagb-toc__list.uagb-toc__list--expandable, // API v2 compatible CSS.
+.block-editor-block-list__block.wp-block-uagb-table-of-contents ol.uagb-toc__list li.uagb-toc__list.uagb-toc__list--expandable { // API v3 compatible CSS.
+	list-style-type: none !important;
+}
+
+.list-open::before,
+.list-collapsed::before {
+	content: "\25BC";
+	transform: scale(0.7) translateX(-50%);
+	display: inline-block;
+}
+
+.list-collapsed::before {
+	transform: scale(0.7) rotate(-90deg) translate(-84%, 6%);
+}
+
+span.list-open,
+span.list-collapsed {
+	cursor: pointer;
+}
+/* Transition class for max-height */
+.uagb-toc__list.transition {
+	transition: max-height 300ms ease-out;
+}
+
+// RTL based static CSS.
+[dir="rtl"] {
+
+	// In RTL, the opened arrows should be pushed right-wards instead of left-wards.
+	.list-open::before {
+		transform: scale(0.7) translateX(50%);
+	}
+
+	// In RTL, the direction should be reversed for the closed arrows.
+	.list-collapsed::before {
+		transform: scale(0.7) rotate(90deg) translate(84%, 6%);
+	}
+}

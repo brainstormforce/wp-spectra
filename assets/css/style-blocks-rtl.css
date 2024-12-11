@@ -115,7 +115,7 @@
 .uagb-infobox-icon-right.uagb-infobox__content-wrap,
 .rtl .uagb-infobox-icon-left-title .uagb-ifb-left-title-image,
 .rtl .uagb-infobox-icon-right-title .uagb-ifb-right-title-image {
-	flex-direction: row-reverse;
+	flex-direction: row;
 }
 
 .rtl .wp-block-uagb-restaurant-menu .uagb-rest_menu__wrap .uagb-rm__content,

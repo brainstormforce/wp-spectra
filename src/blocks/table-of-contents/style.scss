@@ -68,6 +68,16 @@
 	&.uagb-toc__collapse .uagb-toc__list-wrap {
 		display: none;
 	}
+
+	// Styling for the collapsible list.
+	&.uagb-toc__collapse--list {
+
+		// For the lists inside, add a 2px padding to avoid arrow cropping.
+		ul.uagb-toc__list,
+		ol.uagb-toc__list {
+			padding-left: 2px;
+		}
+	}
 }
 
 ol.uagb-toc__list li.uagb-toc__list ul,
@@ -114,4 +124,98 @@ body[class*="astra"] {
 // Needed for a layout fix in TwentyTwentyTwo theme.
 .uagb-toc__list {
 	margin-top: 0;
+}
+
+// For collapsible list items, there should be no marker. Instead we add the before pseudo elemet with the arrow.
+// Note that this should be the topmost CSS applied to the list, despite other customizability.
+.wp-block-uagb-table-of-contents ol.uagb-toc__list li.uagb-toc__list.uagb-toc__list--expandable {
+	list-style-type: none !important;
+}
+
+// Remove the padding for the unordered list that is inside a closed expandable list.
+// Important is used here to ensure no padding from the setting is applied - and no other padding is applied either.
+ul.uagb-toc__list--child-of-closed-list {
+	padding-top: 0 !important;
+}
+
+// Class to remove a node from the element tree - so that screen readers do not read hidden content.
+// Important is used here to ensure no other display settings can be added when the list is collapsed.
+ul.uagb-toc__list--hidden-child {
+	display: none !important;
+}
+
+.list-open::before,
+.list-collapsed::before {
+	content: "\25BC" / ""; // The empty alternative is so that Screen Readers do not read out "Down Pointing Black Pointer".
+	transition: transform 0.3s ease;
+	transform: scale(0.7) translateX(-50%);
+	display: inline-block;
+}
+
+.list-collapsed::before {
+	transform: scale(0.7) rotate(-90deg) translate(-84%, 6%);
+}
+
+span.list-open,
+span.list-collapsed {
+	cursor: pointer;
+	outline: none !important; // We do not want outlines at all for these elements. No matter what theme.
+}
+/* Transition class for max-height */
+.uagb-toc__list.transition {
+	transition: max-height 300ms ease-in-out, padding-top 300ms ease-in-out;
+}
+
+.uagb-toc__loader {
+	border: 2px solid #f3f3f3;
+	border-top: 2px solid #0073aa;
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+	animation: spin 1.1s linear infinite;
+	display: block;
+	position: absolute;
+	margin-top: 5px;
+}
+
+.uagb-toc__list-hidden {
+	opacity: 0;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+// RTL based static CSS.
+[dir="rtl"] {
+
+	// In RTL, the opened arrows should be pushed right-wards instead of left-wards.
+	.list-open::before {
+		transform: scale(0.7) translateX(50%);
+	}
+
+	// In RTL, the direction should be reversed for the closed arrows.
+	.list-collapsed::before {
+		transform: scale(0.7) rotate(90deg) translate(84%, 6%);
+	}
+
+
+	// Styling for the collapsible list.
+	.wp-block-uagb-table-of-contents.uagb-toc__collapse--list {
+
+		ul.uagb-toc__list,
+		ol.uagb-toc__list {
+			// In RTL, the 2px padding should appear to the right instead of left.
+			padding-left: 0;
+			padding-right: 2px;
+			// In RTL, the margin left should actually be applied to the right.
+			margin-left: 0;
+			margin-right: 2.2em;
+		}
+	}
 }

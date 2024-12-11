@@ -173,6 +173,10 @@ function styling( attributes, clientId, name, deviceType ) {
 		' .uagb-toc__list-wrap ol li': {
 			'font-size': generateCSSUnit( fontSize, fontSizeType ),
 		},
+		// This selector is to set the font for the collapsible lists in the editor - as they appear outside the list items here.
+		'.uagb-toc__collapse--list .uagb-toc__list-wrap ol ul': {
+			'font-size': generateCSSUnit( fontSize, fontSizeType ),
+		},
 		' .uagb-toc__list-wrap li a': {
 			'font-size': generateCSSUnit( fontSize, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeight, lineHeightType ),
@@ -286,6 +290,10 @@ function styling( attributes, clientId, name, deviceType ) {
 		' .uagb-toc__list-wrap ol li': {
 			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
 		},
+		// This selector is to set the font for the collapsible lists in the editor - as they appear outside the list items here.
+		'.uagb-toc__collapse--list .uagb-toc__list-wrap ol ul': {
+			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
+		},
 		' .uagb-toc__list-wrap ol li a': {
 			'font-size': generateCSSUnit( fontSizeTablet, fontSizeType ),
 			'line-height': generateCSSUnit( lineHeightTablet, lineHeightType ),
@@ -338,6 +346,10 @@ function styling( attributes, clientId, name, deviceType ) {
 			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
 		},
 		' .uagb-toc__list-wrap ol li': {
+			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
+		},
+		// This selector is to set the font for the collapsible lists in the editor - as they appear outside the list items here.
+		'.uagb-toc__collapse--list .uagb-toc__list-wrap ol ul': {
 			'font-size': generateCSSUnit( fontSizeMobile, fontSizeType ),
 		},
 		' .uagb-toc__list-wrap ol li a': {

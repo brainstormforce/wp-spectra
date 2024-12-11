@@ -357,14 +357,14 @@ const Settings = ( props ) => {
 			setAttributes( { captionDisplayType: 'bar-inside' } );
 		}
 		if ( 'tiled' === feedLayout ) {
-			if ( columnsDesk < 4 ) {
-				setAttributes( { columnsDesk: 4 } );
+			if ( columnsDesk < 2 ) {
+				setAttributes( { columnsDesk: 2 } );
 			}
-			if ( columnsTab < 4 ) {
-				setAttributes( { columnsTab: 4 } );
+			if ( columnsTab < 2 ) {
+				setAttributes( { columnsTab: 2 } );
 			}
-			if ( columnsMob < 4 ) {
-				setAttributes( { columnsMob: 4 } );
+			if ( columnsMob < 2 ) {
+				setAttributes( { columnsMob: 2 } );
 			}
 		}
 	}, [ feedLayout ] );
@@ -800,10 +800,10 @@ const Settings = ( props ) => {
 						label: 'columnsMob',
 					},
 				} }
-				min={ 'tiled' === feedLayout ? 4 : 1 }
+				min={ 'tiled' === feedLayout ? 2 : 1 }
 				max={
-					'tiled' === feedLayout && Math.min( MAX_IMAGE_COLUMNS, mediaGallery.length ) < 4
-						? 4
+					'tiled' === feedLayout
+						? MAX_IMAGE_COLUMNS
 						: Math.min( MAX_IMAGE_COLUMNS, mediaGallery.length )
 				}
 				displayUnit={ false }

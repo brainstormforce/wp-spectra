@@ -7,11 +7,22 @@
  * @package uagb
  */
 
+/**
+ * Adding this comment to avoid PHPStan errors of undefined variable as these variables are defined else where.
+ *
+ * @var mixed[] $attr
+ * @var int $id
+ */
+
 // Adds Fonts.
 UAGB_Block_JS::blocks_info_box_gfont( $attr );
 
 $m_selectors = array();
 $t_selectors = array();
+
+$rtl_selectors   = array();
+$rtl_t_selectors = array();
+$rtl_m_selectors = array();
 
 $attr['iconSizeTablet'] = is_numeric( $attr['iconSizeTablet'] ) ? $attr['iconSizeTablet'] : $attr['iconSize'];
 $attr['iconSizeMobile'] = is_numeric( $attr['iconSizeMobile'] ) ? $attr['iconSizeMobile'] : $attr['iconSizeTablet'];
@@ -556,6 +567,54 @@ if ( 'above-title' === $attr['iconimgPosition'] ) {
 	);
 }
 
+// Default text-align values from attributes.
+$heading_align        = $attr['headingAlign'];
+$heading_align_tablet = $attr['headingAlignTablet'];
+$heading_align_mobile = $attr['headingAlignMobile'];
+
+// Adjust alignment dynamically for RTL.
+$heading_align        = ( 'left' === $heading_align ) ? 'right' : ( 'right' === $heading_align ? 'left' : $heading_align );
+$heading_align_tablet = ( 'left' === $heading_align_tablet ) ? 'right' : ( 'right' === $heading_align_tablet ? 'left' : $heading_align_tablet );
+$heading_align_mobile = ( 'left' === $heading_align_mobile ) ? 'right' : ( 'right' === $heading_align_mobile ? 'left' : $heading_align_mobile );
+
+// Alignment CSS for RTL.
+if ( 'above-title' === $attr['iconimgPosition'] || 'below-title' === $attr['iconimgPosition'] ) { // For backward users.
+	$rtl_selectors['.uagb-infobox__content-wrap'] = array(
+		'text-align' => $heading_align,
+	);
+}
+// Alignment CSS for RTL.
+if ( 'above-title' !== $attr['iconimgPosition'] && 'below-title' !== $attr['iconimgPosition'] ) { // For backward users.
+	$rtl_selectors['.uagb-infobox-left']  = array(
+		'text-align' => 'right',
+	);
+	$rtl_selectors['.uagb-infobox-right'] = array(
+		'text-align' => 'left',
+	);
+}
+
+if ( 'above-title' === $attr['iconimgPosition'] ) {
+	$rtl_selectors['.uagb-infobox-icon-above-title']   = array(
+		'text-align' => $heading_align,
+	);
+	$rtl_t_selectors['.uagb-infobox-icon-above-title'] = array(
+		'text-align' => $heading_align_tablet,
+	);
+	$rtl_m_selectors['.uagb-infobox-icon-above-title'] = array(
+		'text-align' => $heading_align_mobile,
+	);
+} elseif ( 'below-title' === $attr['iconimgPosition'] ) {
+	$rtl_selectors['.uagb-infobox-icon-below-title']   = array(
+		'text-align' => $heading_align,
+	);
+	$rtl_t_selectors['.uagb-infobox-icon-below-title'] = array(
+		'text-align' => $heading_align_tablet,
+	);
+	$rtl_m_selectors['.uagb-infobox-icon-below-title'] = array(
+		'text-align' => $heading_align_mobile,
+	);
+}
+
 if ( 'left' === $attr['iconimgPosition'] || 'right' === $attr['iconimgPosition'] ) {
 	if ( 'none' === $attr['stack'] ) {
 		$t_selectors[' .uagb-infobox-margin-wrapper'] = array(
@@ -670,33 +729,49 @@ $cta_icon_spacing        = UAGB_Helper::get_css_value( $attr['ctaIconSpace'], $a
 $cta_icon_spacing_tablet = UAGB_Helper::get_css_value( $attr['ctaIconSpaceTablet'], $attr['ctaIconSpaceType'] );
 $cta_icon_spacing_mobile = UAGB_Helper::get_css_value( $attr['ctaIconSpaceMobile'], $attr['ctaIconSpaceType'] );
 
-$right_side_margin = 'margin-right';
-$left_side_margin  = 'margin-left';
-
-if ( ! is_rtl() ) {
-	$right_side_margin = 'margin-left';
-	$left_side_margin  = 'margin-right';
-}
-
 if ( 'after' === $attr['ctaIconPosition'] ) {
-	$selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg ']   = array(
-		$right_side_margin => $cta_icon_spacing,
+	$selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg ']      = array(
+		'margin-left' => $cta_icon_spacing,
 	);
-	$t_selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg '] = array(
-		$right_side_margin => $cta_icon_spacing_tablet,
+	$t_selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg ']    = array(
+		'margin-left' => $cta_icon_spacing_tablet,
 	);
-	$m_selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg '] = array(
-		$right_side_margin => $cta_icon_spacing_mobile,
+	$m_selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg ']    = array(
+		'margin-left' => $cta_icon_spacing_mobile,
+	);
+	$rtl_selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg']   = array(
+		'margin-right' => $cta_icon_spacing,
+		'margin-left'  => '0px',
+	);
+	$rtl_t_selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = array(
+		'margin-right' => $cta_icon_spacing_tablet,
+		'margin-left'  => '0px',
+	);
+	$rtl_m_selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = array(
+		'margin-right' => $cta_icon_spacing_mobile,
+		'margin-left'  => '0px',
 	);
 } else {
-	$selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg']   = array(
-		$left_side_margin => $cta_icon_spacing,
+	$selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg']       = array(
+		'margin-right' => $cta_icon_spacing,
 	);
-	$t_selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = array(
-		$left_side_margin => $cta_icon_spacing_tablet,
+	$t_selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg']     = array(
+		'margin-right' => $cta_icon_spacing_tablet,
 	);
-	$m_selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = array(
-		$left_side_margin => $cta_icon_spacing_mobile,
+	$m_selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg']     = array(
+		'margin-right' => $cta_icon_spacing_mobile,
+	);
+	$rtl_selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg']   = array(
+		'margin-left'  => $cta_icon_spacing,
+		'margin-right' => '0px',
+	);
+	$rtl_t_selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = array(
+		'margin-left'  => $cta_icon_spacing_tablet,
+		'margin-right' => '0px',
+	);
+	$rtl_m_selectors['.uagb-infobox__content-wrap .uagb-infobox-cta-link > svg'] = array(
+		'margin-left'  => $cta_icon_spacing_mobile,
+		'margin-right' => '0px',
 	);
 }
 
@@ -798,6 +873,12 @@ $combined_selectors = array(
 	'mobile'  => $m_selectors,
 );
 
+$combined_rtl_selectors = array(
+	'desktop' => $rtl_selectors,
+	'tablet'  => $rtl_t_selectors,
+	'mobile'  => $rtl_m_selectors,
+);
+
 $combined_selectors = UAGB_Helper::get_typography_css( $attr, 'head', ' .uagb-ifb-title', $combined_selectors );
 if ( $attr['enableMultilineParagraph'] ) {
 	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-ifb-desc p', $combined_selectors );
@@ -810,10 +891,32 @@ if ( ! $attr['inheritFromTheme'] ) {
 	$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'cta', ' .uagb-infobox-cta-link', $combined_selectors );
 }
 
+// Determine the base selector for normal CSS.
+// If 'classMigrate' is true, use the '.uagb-block-' class; otherwise, use the '#uagb-infobox-' ID.
 $base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-infobox-';
 
-return UAGB_Helper::generate_all_css(
-	$combined_selectors,
-	$base_selector . $id,
-	isset( $gbs_class ) ? $gbs_class : ''
+// Determine the base selector for RTL CSS.
+// If 'classMigrate' is true, use '[dir=rtl] .uagb-block-' class; otherwise, use '[dir=rtl] #uagb-infobox-' ID.
+$base_selector_rtl = ( $attr['classMigrate'] ) ? '[dir=rtl] .uagb-block-' : '[dir=rtl] #uagb-infobox-';
+
+// Generate the normal CSS for desktop, tablet, and mobile devices.
+$normal_css = UAGB_Helper::generate_all_css(
+	$combined_selectors,    // Combined selectors for normal CSS.
+	$base_selector . $id,   // Selector with appended ID.
+	isset( $gbs_class ) ? $gbs_class : '' // Optional GBS class if provided.
 );
+
+// Generate the RTL CSS for desktop, tablet, and mobile devices.
+$rtl_css = UAGB_Helper::generate_all_css(
+	$combined_rtl_selectors, // Combined selectors specifically for RTL CSS.
+	$base_selector_rtl . $id, // RTL selector with appended ID.
+	isset( $gbs_class ) ? $gbs_class : '' // Optional GBS class if provided.
+);
+
+// Combine both normal and RTL CSS arrays by concatenating their values for each device type.
+// The 'merge_css_arrays' function handles concatenation for 'desktop', 'tablet', and 'mobile'.
+$merged_css = UAGB_Helper::merge_css_arrays( $normal_css, $rtl_css );
+
+// Return the merged CSS array.
+return $merged_css;
+
