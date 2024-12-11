@@ -215,9 +215,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### 2.18.0 - Monday, 9th December 2024 ###
+### 2.18.0 - Wednesday, 11th December 2024 ###
 * Improvement: Table Of Contents - Added a setting to enable collapsible list items.
-* Improvement: Updated the AI Assistant to be aware of the saved page content.
+* Improvement: AI Assistant - Updated the AI Assistant to be aware of the saved page content.
 * Fix: Info Box - Resolved an issue wherein the overall alignment is not supported in RTL mode.
 * Fix: Image Gallery - Resolved an issue wherein the "Tiled" layout would not allow 2 or 3 columns.
 * Fix: Taxonomy List - Resolved an issue wherein plural forms would be incorrectly translated.
