@@ -57,6 +57,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			add_filter( 'wp_kses_allowed_html', array( $this, 'add_data_attributes' ), 10, 2 );
 			add_action( 'admin_enqueue_scripts', array( $this, 'notice_styles_scripts' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'notice_styles_scripts_upgrade_pro' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'nps_visibility_script' ) );
 			add_filter( 'rank_math/researches/toc_plugins', array( $this, 'toc_plugin' ) );
 			add_action( 'admin_init', array( $this, 'activation_redirect' ) );
 			add_action( 'admin_init', array( $this, 'update_old_user_option_by_url_params' ) );
@@ -65,6 +66,17 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			add_filter( 'ast_block_templates_pro_url', array( $this, 'update_gutenberg_templates_pro_url' ) );
 			add_action( 'admin_post_uag_download_log', array( $this, 'handle_log_download' ) );
 
+		}
+
+		/**
+		 * Enqueue NPS Survey popup visibility script.
+		 * 
+		 * @since 2.18.0
+		 * @return void
+		 */
+		public function nps_visibility_script() {
+			wp_enqueue_style( 'uag-nps-visibility-style', UAGB_URL . 'admin/assets/css/nps-visibility.css', array(), UAGB_VER );
+			wp_enqueue_script( 'uagb-nps-visibility', UAGB_URL . 'admin/assets/nps-visibility.js', array(), UAGB_VER, true );
 		}
 
 		/**
@@ -272,51 +284,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			}
 
 			$image_path = UAGB_URL . 'admin-core/assets/images/uag-logo.svg';
-
-			Astra_Notices::add_notice(
-				array(
-					'id'                         => 'uagb-admin-rating',
-					'type'                       => '',
-					'message'                    => sprintf(
-						'<div class="notice-image">
-                            <img src="%1$s" class="custom-logo" alt="Spectra" itemprop="logo"></div>
-                            <div class="notice-content">
-                                <div class="notice-heading">
-									<strong>
-	                                    %2$s
-									</strong>
-                                </div>
-                                %3$s<br />
-                                <div class="astra-review-notice-container">
-                                    <a href="%4$s" class="astra-notice-close uagb-review-notice button-primary" target="_blank">
-                                    %5$s
-                                    </a>
-                                <span class="dashicons dashicons-calendar"></span>
-                                    <a href="#" data-repeat-notice-after="%6$s" class="astra-notice-close uagb-review-notice">
-                                    %7$s
-                                    </a>
-                                <span class="dashicons dashicons-smiley"></span>
-                                    <a href="#" class="astra-notice-close uagb-review-notice">
-                                    %8$s
-                                    </a>
-                                </div>
-                            </div>',
-						$image_path,
-						__( 'Wow! Spectra has helped you build over 5 pages!!', 'ultimate-addons-for-gutenberg' ),
-						__( 'We\'re a small independent team passionate about creating plugins like this one. It would mean the world to us if you could spend just a minute to leave a 5-star review on WordPress\' official website. Your support really helps us a lot!', 'ultimate-addons-for-gutenberg' ),
-						'https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg/reviews/?filter=5#new-post',
-						__( 'Ok, you deserve it', 'ultimate-addons-for-gutenberg' ),
-						MONTH_IN_SECONDS,
-						__( 'Nope, maybe later', 'ultimate-addons-for-gutenberg' ),
-						__( 'I already did', 'ultimate-addons-for-gutenberg' )
-					),
-					'repeat-notice-after'        => MONTH_IN_SECONDS,
-					'display-notice-after'       => ( 2 * WEEK_IN_SECONDS ), // Display notice after 2 weeks.
-					'priority'                   => 20,
-					'display-with-other-notices' => false,
-					'show_if'                    => true,
-				)
-			);
 
 			if ( ! get_option( 'uag_migration_status', false ) && 'yes' === get_option( 'uagb-old-user-less-than-2' ) && 'in-progress' !== get_option( 'uag_migration_progress_status', '' ) ) {
 

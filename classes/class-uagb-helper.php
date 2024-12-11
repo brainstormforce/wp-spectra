@@ -965,6 +965,28 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				'mobile'  => self::generate_css( $combined_selectors['mobile'], $id ),
 			);
 		}
+
+		/**
+		 * Merge and combine CSS arrays for devices.
+		 *
+		 * @param array $normal_css The normal CSS array with 'desktop', 'tablet', and 'mobile' keys.
+		 * @param array $rtl_css    The RTL CSS array with 'desktop', 'tablet', and 'mobile' keys.
+		 *
+		 * @since 2.18.0
+		 * @return array $merged_css The merged CSS array.
+		 */
+		public static function merge_css_arrays( $normal_css, $rtl_css ) {
+			$merged_css = array();
+
+			// Iterate through devices and combine the values.
+			foreach ( array( 'desktop', 'tablet', 'mobile' ) as $device ) {
+				$merged_css[ $device ] = ( isset( $normal_css[ $device ] ) ? $normal_css[ $device ] : '' )
+					. ( isset( $rtl_css[ $device ] ) ? $rtl_css[ $device ] : '' );
+			}
+
+			return $merged_css;
+		}
+		
 		/**
 		 * Get Post Assets Instance.
 		 */

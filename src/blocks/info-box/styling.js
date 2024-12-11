@@ -296,6 +296,27 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 	const mainContainerBorderCSSTablet = generateBorderCSS( attributes, 'infobox', 'tablet' );
 	const mainContainerBorderCSSMobile = generateBorderCSS( attributes, 'infobox', 'mobile' );
 
+	const getFlippedAlignment = ( alignment ) => {
+		// If we're not in RTL, just return the alignment before moving any further.
+		if ( '1' !== uagb_blocks_info.is_rtl ) {
+			return alignment;
+		}
+		// Switch to flip the given value based on RTL.
+		switch ( alignment ) {
+			case 'left':
+				return 'right'; // If this was left, make it right.
+			case 'right':
+				return 'left'; // If this was right, make it left.
+			default:
+				return alignment; // If this was none of the flip-able values, just return it as is.
+		}
+	};
+	
+	// Adjust alignment values dynamically for RTL.
+	const flippedHeadingAlign = getFlippedAlignment( headingAlign );
+	const flippedHeadingAlignTablet = getFlippedAlignment( headingAlignTablet );
+	const flippedHeadingAlignMobile = getFlippedAlignment( headingAlignMobile );
+
 	const selectors = {
 		// Icon css
 		' .uagb-ifb-content .uagb-ifb-icon-wrap svg': {
@@ -772,29 +793,27 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		}
 	}
 
-	
-
+	// Apply selectors.
 	if ( iconimgPosition === 'above-title' ) {
 		selectors[ '.uagb-infobox-icon-above-title' ] = {
-			'text-align': headingAlign,
+			'text-align': flippedHeadingAlign,
 		};
 		tabletSelectors[ '.uagb-infobox-icon-above-title' ] = {
-			'text-align': headingAlignTablet,
+			'text-align': flippedHeadingAlignTablet,
 		};
 		mobileSelectors[ '.uagb-infobox-icon-above-title' ] = {
-			'text-align': headingAlignMobile,
+			'text-align': flippedHeadingAlignMobile,
 		};
 	}
-
 	if ( iconimgPosition === 'below-title' ) {
 		selectors[ '.uagb-infobox-icon-below-title' ] = {
-			'text-align': headingAlign,
+			'text-align': flippedHeadingAlign,
 		};
 		tabletSelectors[ '.uagb-infobox-icon-below-title' ] = {
-			'text-align': headingAlignTablet,
+			'text-align': flippedHeadingAlignTablet,
 		};
 		mobileSelectors[ '.uagb-infobox-icon-below-title' ] = {
-			'text-align': headingAlignMobile,
+			'text-align': flippedHeadingAlignMobile,
 		};
 	}
 

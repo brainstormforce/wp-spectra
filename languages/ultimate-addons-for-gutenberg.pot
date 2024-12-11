@@ -2,19 +2,20 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.17.0\n"
+"Project-Id-Version: Spectra 2.18.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-21T03:27:53+00:00\n"
+"POT-Creation-Date: 2024-12-11T13:44:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.8.1\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
 
 #. Plugin Name of the plugin
+#: ultimate-addons-for-gutenberg.php
 #: admin-core/inc/admin-menu.php:147
 #: admin-core/inc/admin-menu.php:148
 #: admin-core/inc/admin-menu.php:159
@@ -22,43 +23,47 @@ msgstr ""
 #: admin-core/inc/admin-menu.php:183
 #: admin-core/inc/admin-menu.php:194
 #: admin-core/inc/admin-menu.php:273
-#: classes/class-uagb-init-blocks.php:576
+#: classes/class-uagb-init-blocks.php:579
+#: classes/class-uagb-nps-notice.php:176
 msgid "Spectra"
 msgstr ""
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
+#: ultimate-addons-for-gutenberg.php
 msgid "https://www.brainstormforce.com"
 msgstr ""
 
 #. Description of the plugin
+#: ultimate-addons-for-gutenberg.php
 msgid "The Spectra extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster."
 msgstr ""
 
 #. Author of the plugin
+#: ultimate-addons-for-gutenberg.php
 msgid "Brainstorm Force"
 msgstr ""
 
-#: admin-core/ajax/ajax-errors.php:59
+#: admin-core/ajax/ajax-errors.php:82
 msgid "Sorry, you are not allowed to do this operation."
 msgstr ""
 
-#: admin-core/ajax/ajax-errors.php:60
+#: admin-core/ajax/ajax-errors.php:83
 msgid "Nonce validation failed"
 msgstr ""
 
-#: admin-core/ajax/ajax-errors.php:61
+#: admin-core/ajax/ajax-errors.php:84
 msgid "Sorry, something went wrong."
 msgstr ""
 
 #: admin-core/ajax/common-settings.php:164
 #: admin-core/ajax/common-settings.php:754
-#: classes/class-uagb-init-blocks.php:539
+#: classes/class-uagb-init-blocks.php:542
 msgid "Successfully saved data!"
 msgstr ""
 
 #: admin-core/ajax/common-settings.php:180
-#: classes/class-uagb-init-blocks.php:1071
+#: classes/class-uagb-init-blocks.php:1074
 msgid "No post data found!"
 msgstr ""
 
@@ -272,8 +277,8 @@ msgstr ""
 msgid "No posts found"
 msgstr ""
 
-#: blocks-config/table-of-content/class-uagb-table-of-content.php:646
-#: blocks-config/table-of-content/class-uagb-table-of-content.php:650
+#: blocks-config/table-of-content/class-uagb-table-of-content.php:703
+#: blocks-config/table-of-content/class-uagb-table-of-content.php:707
 #: includes/blocks/table-of-contents/attributes.php:18
 #: dist/blocks-placeholder.js:38
 #: dist/blocks.js:3
@@ -281,7 +286,7 @@ msgstr ""
 msgid "Table Of Contents"
 msgstr ""
 
-#: blocks-config/table-of-content/class-uagb-table-of-content.php:934
+#: blocks-config/table-of-content/class-uagb-table-of-content.php:991
 #: includes/blocks/table-of-contents/attributes.php:19
 #: dist/blocks.js:3
 #: dist/blocks.js:19
@@ -293,7 +298,7 @@ msgstr ""
 msgid "Taxonomy Not Available."
 msgstr ""
 
-#: blocks-config/taxonomy-list/class-uagb-taxonomy-list.php:708
+#: blocks-config/taxonomy-list/class-uagb-taxonomy-list.php:716
 #: includes/blocks/forms-select/block.php:15
 #: dist/blocks.js:19
 msgid "Select"
@@ -2020,7 +2025,7 @@ msgid "Cookie Bite"
 msgstr ""
 
 #: blocks-config/uagb-controls/spectra-icons-v6-0.php:5045
-#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+#: lib/zip-ai/sidebar/build/sidebar-app.js:3
 msgid "Copy"
 msgstr ""
 
@@ -7768,110 +7773,90 @@ msgstr ""
 msgid "Theme"
 msgstr ""
 
-#: classes/class-uagb-admin.php:96
+#: classes/class-uagb-admin.php:108
 msgid "Migration started successfully."
 msgstr ""
 
-#: classes/class-uagb-admin.php:112
-#: classes/class-uagb-admin.php:182
+#: classes/class-uagb-admin.php:124
+#: classes/class-uagb-admin.php:194
 msgid "You do not have permission to access this page."
 msgstr ""
 
-#: classes/class-uagb-admin.php:129
+#: classes/class-uagb-admin.php:141
 msgid "Log file not found."
 msgstr ""
 
-#: classes/class-uagb-admin.php:183
-#: classes/class-uagb-admin.php:214
+#: classes/class-uagb-admin.php:195
+#: classes/class-uagb-admin.php:226
 #: admin-core/assets/build/dashboard-app.js:1
 #: admin-core/assets/build/dashboard-app.js:3
 msgid "Rollback to Previous Version"
 msgstr ""
 
-#: classes/class-uagb-admin.php:196
+#: classes/class-uagb-admin.php:208
 msgid "Error occurred, The version selected is invalid. Try selecting different version."
 msgstr ""
 
-#: classes/class-uagb-admin.php:305
-msgid "Wow! Spectra has helped you build over 5 pages!!"
-msgstr ""
-
-#: classes/class-uagb-admin.php:306
-msgid "We're a small independent team passionate about creating plugins like this one. It would mean the world to us if you could spend just a minute to leave a 5-star review on WordPress' official website. Your support really helps us a lot!"
-msgstr ""
-
-#: classes/class-uagb-admin.php:308
-msgid "Ok, you deserve it"
-msgstr ""
-
-#: classes/class-uagb-admin.php:310
-msgid "Nope, maybe later"
-msgstr ""
-
-#: classes/class-uagb-admin.php:311
-msgid "I already did"
-msgstr ""
-
-#: classes/class-uagb-admin.php:348
+#: classes/class-uagb-admin.php:315
 msgid "Spectra database update required"
 msgstr ""
 
-#: classes/class-uagb-admin.php:349
+#: classes/class-uagb-admin.php:316
 msgid "We've detected that some of your pages were created with an older version of Spectra. To ensure your designs remain unaffected, we recommend updating the Spectra database now. Updating the Spectra database will not impact any other parts of your website."
 msgstr ""
 
-#: classes/class-uagb-admin.php:350
+#: classes/class-uagb-admin.php:317
 msgid "To be on the safer side, please be sure to back up your site before updating."
 msgstr ""
 
-#: classes/class-uagb-admin.php:351
+#: classes/class-uagb-admin.php:318
 msgid "Update Spectra Database"
 msgstr ""
 
-#: classes/class-uagb-admin.php:353
+#: classes/class-uagb-admin.php:320
 msgid "Learn More About This"
 msgstr ""
 
-#: classes/class-uagb-admin.php:378
+#: classes/class-uagb-admin.php:345
 msgid "Spectra database update in progress"
 msgstr ""
 
-#: classes/class-uagb-admin.php:379
+#: classes/class-uagb-admin.php:346
 msgid "Great! This should only take a few minutes. Thanks for hanging in there."
 msgstr ""
 
-#: classes/class-uagb-admin.php:404
+#: classes/class-uagb-admin.php:371
 msgid "Update Successful!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:405
+#: classes/class-uagb-admin.php:372
 msgid "Your Spectra database is now up-to-date. Your website will continue to function as before."
 msgstr ""
 
-#: classes/class-uagb-admin.php:405
+#: classes/class-uagb-admin.php:372
 msgid "View Log"
 msgstr ""
 
 #. translators: %s: html tags
-#: classes/class-uagb-admin.php:424
+#: classes/class-uagb-admin.php:391
 msgid "Spectra requires&nbsp;%3$sBlock Editor%4$s. You can change your editor settings to Block Editor from&nbsp;%1$shere%2$s. Plugin is currently NOT RUNNING."
 msgstr ""
 
-#: classes/class-uagb-admin.php:469
+#: classes/class-uagb-admin.php:436
 msgid "Want to do more with Popup Builder?"
 msgstr ""
 
-#: classes/class-uagb-admin.php:470
+#: classes/class-uagb-admin.php:437
 msgid "Maximize your popup potential with Spectra Pro. Unlock enhanced features, intuitive design options, and increased conversions!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:472
+#: classes/class-uagb-admin.php:439
 #: admin-core/assets/build/dashboard-app.js:1
 msgid "Upgrade Now"
 msgstr ""
 
 #: classes/class-uagb-fse-fonts-compatibility.php:165
-#: classes/class-uagb-init-blocks.php:721
+#: classes/class-uagb-init-blocks.php:724
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:19
@@ -7897,7 +7882,7 @@ msgstr ""
 msgid "Successfully deleted font."
 msgstr ""
 
-#: classes/class-uagb-helper.php:443
+#: classes/class-uagb-helper.php:458
 #: dist/blocks.js:11
 #: dist/blocks.js:19
 msgid "Full"
@@ -7958,25 +7943,25 @@ msgid "Popup Updated"
 msgstr ""
 
 #: classes/class-uagb-init-blocks.php:378
-#: classes/class-uagb-init-blocks.php:522
+#: classes/class-uagb-init-blocks.php:525
 msgid "User is not authenticated!"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:509
+#: classes/class-uagb-init-blocks.php:512
 msgid "Please select a valid Gravity Form."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:559
+#: classes/class-uagb-init-blocks.php:562
 msgid "Please select a valid Contact Form 7."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:812
+#: classes/class-uagb-init-blocks.php:815
 msgid ""
 "Use custom class added in block's advanced settings to target your desired block. Examples:\n"
 "\t\t.my-class {text-align: center;} // my-class is a custom selector"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:871
+#: classes/class-uagb-init-blocks.php:874
 #: classes/class-uagb-rest-api.php:318
 #: classes/class-uagb-rest-api.php:333
 #: dist/blocks.js:1
@@ -7987,31 +7972,55 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:900
-#: classes/class-uagb-init-blocks.php:933
+#: classes/class-uagb-init-blocks.php:903
+#: classes/class-uagb-init-blocks.php:936
 #: dist/blocks.js:23
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:914
+#: classes/class-uagb-init-blocks.php:917
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:947
+#: classes/class-uagb-init-blocks.php:950
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:963
+#: classes/class-uagb-init-blocks.php:966
 msgid "Invalid request"
 msgstr ""
 
 #. translators: %s: html tags
-#: classes/class-uagb-loader.php:395
+#: classes/class-uagb-loader.php:386
 msgid "The %1$sSpectra%2$s plugin requires %1$sGutenberg%2$s plugin installed & activated."
 msgstr ""
 
-#: classes/class-uagb-loader.php:398
+#: classes/class-uagb-loader.php:389
 msgid "Install Gutenberg"
+msgstr ""
+
+#: classes/class-uagb-nps-notice.php:177
+msgid "How likely are you to recommend Spectra to your friends or colleagues?"
+msgstr ""
+
+#: classes/class-uagb-nps-notice.php:178
+msgid "Thanks a lot for your feedback! 😍"
+msgstr ""
+
+#: classes/class-uagb-nps-notice.php:179
+msgid "Could you please do us a favor and give us a 5-star rating on WordPress? It would help others choose Spectra with confidence. Thank you!"
+msgstr ""
+
+#: classes/class-uagb-nps-notice.php:181
+msgid "Thank you for your feedback"
+msgstr ""
+
+#: classes/class-uagb-nps-notice.php:182
+msgid "We value your input. How can we improve your experience?"
+msgstr ""
+
+#: classes/class-uagb-nps-notice.php:183
+msgid "Rate Spectra"
 msgstr ""
 
 #: classes/class-uagb-rollback.php:165
@@ -8861,6 +8870,7 @@ msgstr ""
 #: lib/gutenberg-templates/inc/api/settings.php:92
 #: lib/gutenberg-templates/inc/api/sites.php:70
 #: lib/gutenberg-templates/inc/classes/ast-block-templates-zipwp-api.php:77
+#: lib/nps-survey/classes/nps-survey-script.php:249
 #: lib/zipwp-images/classes/zipwp-images-api.php:92
 msgid "Sorry, you are not allowed to do that."
 msgstr ""
@@ -8877,6 +8887,8 @@ msgstr ""
 #: lib/gutenberg-templates/inc/api/sites.php:93
 #: lib/gutenberg-templates/inc/classes/ast-block-templates-zipwp-api.php:138
 #: lib/gutenberg-templates/inc/classes/ast-block-templates-zipwp-api.php:197
+#: lib/nps-survey/classes/nps-survey-script.php:270
+#: lib/nps-survey/classes/nps-survey-script.php:351
 #: lib/zipwp-images/classes/zipwp-images-api.php:169
 msgid "Nonce verification failed."
 msgstr ""
@@ -8927,7 +8939,7 @@ msgstr ""
 #: lib/gutenberg-templates/inc/importer/plugin.php:269
 #: lib/gutenberg-templates/inc/importer/plugin.php:273
 #: lib/gutenberg-templates/inc/importer/plugin.php:436
-#: lib/zip-ai/classes/sidebar-configurations.php:250
+#: lib/zip-ai/classes/sidebar-configurations.php:255
 msgid "Something went wrong"
 msgstr ""
 
@@ -8985,15 +8997,15 @@ msgstr ""
 msgid "The ZipWP API server encountered an error."
 msgstr ""
 
-#: lib/zip-ai/classes/sidebar-configurations.php:185
+#: lib/zip-ai/classes/sidebar-configurations.php:187
 msgid "The message array was not supplied"
 msgstr ""
 
-#: lib/zip-ai/classes/sidebar-configurations.php:264
+#: lib/zip-ai/classes/sidebar-configurations.php:269
 msgid "Invalid auth token."
 msgstr ""
 
-#: lib/zip-ai/classes/sidebar-configurations.php:265
+#: lib/zip-ai/classes/sidebar-configurations.php:270
 msgid "You have no credits left."
 msgstr ""
 
@@ -9278,12 +9290,13 @@ msgid "Please note that after regeneration, it is recommended to purge all your 
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:1
-#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+#: lib/zip-ai/sidebar/build/sidebar-app.js:3
 msgid "Regenerate"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:1
 #: dist/blocks.js:11
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
 msgid "Close"
 msgstr ""
 
@@ -9309,7 +9322,7 @@ msgstr ""
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 #: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:3
-#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+#: lib/zip-ai/sidebar/build/sidebar-app.js:3
 msgid "Cancel"
 msgstr ""
 
@@ -9808,7 +9821,8 @@ msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:12
 #: lib/zip-ai/sidebar/build/sidebar-app.js:11
-#: lib/zip-ai/sidebar/build/sidebar-app.js:12
+#: lib/zip-ai/sidebar/build/sidebar-app.js:15
+#: lib/zip-ai/sidebar/build/sidebar-app.js:16
 msgid "AI Assistant"
 msgstr ""
 
@@ -9940,6 +9954,7 @@ msgid "Build 10x Faster with Spectra AI"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:14
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
 msgid "Credit Usage"
 msgstr ""
 
@@ -9949,8 +9964,10 @@ msgid "Get more Credits"
 msgstr ""
 
 #. translators: %s: number of words
+#. translators: %s the total amount of credits to this account, with comma separators.
 #: admin-core/assets/build/dashboard-app.js:15
 #: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:3
+#: lib/zip-ai/sidebar/build/sidebar-app.js:13
 msgid "of %s"
 msgstr ""
 
@@ -10063,7 +10080,8 @@ msgstr ""
 
 #: dist/blocks.js:3
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+#: lib/zip-ai/sidebar/build/sidebar-app.js:3
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
 msgid "Click Here"
 msgstr ""
 
@@ -12546,7 +12564,7 @@ msgid "Off"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Polite"
 msgstr ""
 
@@ -13671,7 +13689,7 @@ msgid "Amharic"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Arabic"
 msgstr ""
 
@@ -13680,7 +13698,7 @@ msgid "Armenian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Azerbaijani"
 msgstr ""
 
@@ -13689,12 +13707,12 @@ msgid "Basque"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Belarusian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Bengali"
 msgstr ""
 
@@ -13703,7 +13721,7 @@ msgid "Bosnian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Bulgarian"
 msgstr ""
 
@@ -13720,32 +13738,32 @@ msgid "Chinese"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Croatian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Czech"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Danish"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Dutch"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "English"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Estonian"
 msgstr ""
 
@@ -13754,12 +13772,12 @@ msgid "Farsi"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Finnish"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "French"
 msgstr ""
 
@@ -13768,17 +13786,17 @@ msgid "Galician"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Georgian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "German"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Greek"
 msgstr ""
 
@@ -13787,17 +13805,17 @@ msgid "Gujarati"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Hebrew"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Hindi"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Hungarian"
 msgstr ""
 
@@ -13806,17 +13824,17 @@ msgid "Icelandic"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Indonesian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Italian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Japanese"
 msgstr ""
 
@@ -13825,7 +13843,7 @@ msgid "Kannada"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Kazakh"
 msgstr ""
 
@@ -13834,7 +13852,7 @@ msgid "Khmer"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Korean"
 msgstr ""
 
@@ -13847,22 +13865,22 @@ msgid "Lao"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Latvian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Lithuanian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Macedonian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Malay"
 msgstr ""
 
@@ -13883,17 +13901,17 @@ msgid "Nepali"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Norwegian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Polish"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Portuguese"
 msgstr ""
 
@@ -13902,17 +13920,17 @@ msgid "Punjabi"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Romanian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Russian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Serbian"
 msgstr ""
 
@@ -13921,27 +13939,27 @@ msgid "Sinhalese"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Slovak"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Slovenian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Spanish"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Swahili"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Swedish"
 msgstr ""
 
@@ -13954,22 +13972,22 @@ msgid "Telugu"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Thai"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Turkish"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Ukrainian"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Urdu"
 msgstr ""
 
@@ -13978,7 +13996,7 @@ msgid "Uzbek"
 msgstr ""
 
 #: dist/blocks.js:19
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Vietnamese"
 msgstr ""
 
@@ -14788,7 +14806,6 @@ msgstr ""
 
 #: dist/blocks.js:19
 #: dist/blocks.js:23
-#: lib/zip-ai/sidebar/build/sidebar-app.js:1
 msgid "Edit"
 msgstr ""
 
@@ -16047,6 +16064,26 @@ msgid "Please set the separator thickness to 3px or more to perceive the Double 
 msgstr ""
 
 #: dist/blocks.js:19
+msgid "Make List Collapsible"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "The collapsable functionality will only work in Front End."
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Collapsible Level"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "For example, if the depth is set to 1, only first-level headings that have nestable content will display a collapsible icon. As the depth increases, additional nested levels will become collapsible."
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Initially Collapsed"
+msgstr ""
+
+#: dist/blocks.js:19
 msgid "Smooth Scroll"
 msgstr ""
 
@@ -17114,177 +17151,225 @@ msgid "Zip - Your AI Assistant"
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:1
-msgid "Content:"
+msgid "Chinese (Simplified)"
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:1
-msgid "You:"
+msgid "Filipino"
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:1
-msgid "AI Assistant:"
+msgid "Friendly"
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:1
-msgid "Use This"
+msgid "Formal"
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Casual"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Professional"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Informative"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Playful"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Serious"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Humorous"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Emotional"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Fix any grammatical mistakes."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Make it longer."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+msgid "Make it shorter."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Change tone to %s."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+#: lib/zip-ai/sidebar/build/sidebar-app.js:15
+msgid "Rephrase"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Create with AI"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Write a short description"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "for this product"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Write a short description."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Write a long description"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Write a long description."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Draft with AI"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Give me an idea"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "for an attractive heading about"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Give me an idea for "
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Show me a code snippet"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "of blur-on-hover CSS"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Show me a code snippet of "
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Write me a description"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "about a product for"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Write me a description about "
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Paste from clipboard"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "and chat from there"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+#: lib/zip-ai/sidebar/build/sidebar-app.js:15
+msgid "Fix Grammar"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+#: lib/zip-ai/sidebar/build/sidebar-app.js:15
+msgid "Make Longer"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+#: lib/zip-ai/sidebar/build/sidebar-app.js:15
+msgid "Make Shorter"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Change Tone"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:2
+msgid "Translate"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:3
+msgid "Translate to %s."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:3
+msgid "Edit Message"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:3
+msgid "Replace Richtext"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:3
 msgid "Copy & Close"
 msgstr ""
 
-#: lib/zip-ai/sidebar/build/sidebar-app.js:1
-msgid "Update"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:1
+#: lib/zip-ai/sidebar/build/sidebar-app.js:3
 msgid "Note: All subsequent messages will be deleted after you update."
 msgstr ""
 
-#. translators: %1$d is the current page, %2$d is the total number of pages.
 #: lib/zip-ai/sidebar/build/sidebar-app.js:3
-msgid "%1$d / %2$d"
+msgid "Update"
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:3
+msgid "It looks like I've encountered an error…"
+msgstr ""
+
+#. translators: %1$d is the current page, %2$d is the total number of pages.
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "%1$d/%2$d"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
+msgid "Something went wrong while I was generating a response."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
 msgid "Generating…"
 msgstr ""
 
-#: lib/zip-ai/sidebar/build/sidebar-app.js:3
+#: lib/zip-ai/sidebar/build/sidebar-app.js:5
 msgid "How can I help you?"
 msgstr ""
 
-#. Translators: %1$s is the opening link tag, %2$s is the closing link tag.
 #: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "AI Assistant can make mistakes. Want to %1$sdisable it?%2$s"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "AI Assistant can make mistakes."
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Write for me"
+msgid "Ask AI"
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:5
 msgid "Clear Chat"
 msgstr ""
 
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Chinese (Simplified)"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Filipino"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Friendly"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Formal"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Casual"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Professional"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Informative"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Playful"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Serious"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Humorous"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Emotional"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Fix any grammatical mistakes."
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Make it longer."
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:5
-msgid "Make it shorter."
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:6
-msgid "Change tone to %s."
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:6
-#: lib/zip-ai/sidebar/build/sidebar-app.js:11
-msgid "Rephrase"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:6
-msgid "Draft with AI"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:6
-msgid "Write an attractive heading about…"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:6
-msgid "Write an attractive heading about "
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:6
-msgid "Write a sub-heading for…"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:6
-msgid "Write a sub-heading for "
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:6
-#: lib/zip-ai/sidebar/build/sidebar-app.js:11
-msgid "Fix Grammar"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:6
-#: lib/zip-ai/sidebar/build/sidebar-app.js:11
-msgid "Make Longer"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:6
-#: lib/zip-ai/sidebar/build/sidebar-app.js:11
-msgid "Make Shorter"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:6
-msgid "Tone"
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:6
-msgid "Translate"
+#. Translators: %1$s is the opening link tag, %2$s is the closing link tag.
+#: lib/zip-ai/sidebar/build/sidebar-app.js:7
+msgid "AI Assistant can make mistakes. Want to %1$sdisable it?%2$s"
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:7
-msgid "Translate to %s."
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:7
-msgid "Paste from clipboard"
+msgid "AI Assistant can make mistakes."
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:7
@@ -17344,11 +17429,11 @@ msgid "Engage with Comments"
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:11
-msgid "Something went wrong, please try again."
+msgid "Get Ready!"
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:11
-msgid "Get Ready!"
+msgid "Something went wrong, please try again."
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:11
@@ -17364,15 +17449,57 @@ msgid "Hi there! I'm here to assist you."
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:11
-msgid "Choose a prompt bellow or write on your own. Ask me about what you need."
+msgid "Choose a prompt bellow or write on your own."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Ask me about what you need."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+#: lib/zip-ai/sidebar/build/sidebar-app.js:13
+msgid "Login"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Login to use the AI Assistant!"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Get Started"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Get More Credits"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:13
+msgid "Logging in"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:13
+msgid "Logged in"
+msgstr ""
+
+#. Translators: %1$s is the opening link tag, %2$s is the closing link tag.
+#: lib/zip-ai/sidebar/build/sidebar-app.js:15
+msgid "Continue logging in from %1$shere%2$s."
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:15
+msgid "Logged in!"
+msgstr ""
+
+#: lib/zip-ai/sidebar/build/sidebar-app.js:15
+msgid "Something went wrong, please login again."
 msgstr ""
 
 #. translators: %s: lastUsedTone label
-#: lib/zip-ai/sidebar/build/sidebar-app.js:12
+#: lib/zip-ai/sidebar/build/sidebar-app.js:16
 msgid "Change Tone to %s"
 msgstr ""
 
-#: lib/zip-ai/sidebar/build/sidebar-app.js:12
+#: lib/zip-ai/sidebar/build/sidebar-app.js:16
 msgid "Something Else"
 msgstr ""
 

@@ -1333,8 +1333,12 @@ class UAGB_Post_Assets {
 
 		if ( 'yes' === $enable_on_page_css_button ) {
 			$custom_css = get_post_meta( $this->post_id, '_uag_custom_page_level_css', true );
-			$custom_css = ! empty( $custom_css ) && is_string( $custom_css ) ? wp_kses_post( $custom_css ) : '';
+		
+			$custom_css = ! empty( $custom_css ) && is_string( $custom_css ) ? wp_slash( $custom_css ) : '';
 
+			// Decode any HTML entities (like &gt;) before appending.
+			$custom_css = html_entity_decode( $custom_css );
+		
 			if ( ! empty( $custom_css ) && ! self::$custom_css_appended ) {
 				$this->stylesheet         .= $custom_css;
 				self::$custom_css_appended = true;
@@ -1386,7 +1390,7 @@ class UAGB_Post_Assets {
 		}
 
 		$slug            = $block['attrs']['slug'];
-		$templates_parts = get_block_templates( array( 'slugs__in' => $slug ), 'wp_template_part' );
+		$templates_parts = get_block_templates( array( 'slug__in' => array( $slug ) ), 'wp_template_part' );
 		foreach ( $templates_parts as $templates_part ) {
 			if ( $slug === $templates_part->slug ) {
 				$id = $templates_part->wp_id;

@@ -4,7 +4,7 @@
 		"Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
 		"This file is @generated automatically"
 	],
-	"content-hash": "29038438c51245a1984fd3b77ed6eba5",
+	"content-hash": "d64b98f721bb595a01b5b77530516d5a",
 	"packages": [
 		{
 			"name": "automattic/vipwpcs",
@@ -174,17 +174,70 @@
 			"time": "2024-10-31T06:02:30+00:00"
 		},
 		{
-			"name": "brainstormforce/zip-ai",
-			"version": "1.2.3",
+			"name": "brainstormforce/nps-survey",
+			"version": "1.0.3",
 			"source": {
 				"type": "git",
-				"url": "git@github.com:brainstormforce/zip-ai.git",
-				"reference": "10c27f0a3fdfd6652f861a5f6df14f67f720d239"
+				"url": "git@github.com:brainstormforce/nps-survey.git",
+				"reference": "7e92c4da38368b9cf7fbe20d49f38a42939d093d"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/brainstormforce/zip-ai/zipball/10c27f0a3fdfd6652f861a5f6df14f67f720d239",
-				"reference": "10c27f0a3fdfd6652f861a5f6df14f67f720d239",
+				"url": "https://api.github.com/repos/brainstormforce/nps-survey/zipball/7e92c4da38368b9cf7fbe20d49f38a42939d093d",
+				"reference": "7e92c4da38368b9cf7fbe20d49f38a42939d093d",
+				"shasum": ""
+			},
+			"require-dev": {
+				"automattic/vipwpcs": "^2.3",
+				"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+				"php-stubs/generator": "^0.8.2",
+				"php-stubs/wordpress-stubs": "^6.1",
+				"phpcompatibility/php-compatibility": "^9.3",
+				"phpstan/phpstan": "^1.9",
+				"squizlabs/php_codesniffer": "^3.5",
+				"szepeviktor/phpstan-wordpress": "^1.1",
+				"wp-coding-standards/wpcs": "^2.2"
+			},
+			"type": "wordpress-plugin",
+			"scripts": {
+				"format": [
+					"vendor/bin/phpcbf"
+				],
+				"lint": [
+					"vendor/bin/phpcs"
+				],
+				"test": [
+					"vendor/bin/phpunit"
+				],
+				"phpstan": [
+					"vendor/bin/phpstan --memory-limit=2048M analyse"
+				],
+				"gen-stubs": [
+					"vendor/bin/generate-stubs artifact/phpstan/nps-survey/ --out=tests/php/stubs/nps-survey-stubs.php && rm -rf artifact/phpstan"
+				],
+				"update-stubs": [
+					"rm -f tests/php/stubs/nps-survey-stubs.php && bash bin/build-folder-phpstan.sh && composer gen-stubs"
+				]
+			},
+			"description": "NPS Survey Plugin",
+			"support": {
+				"source": "https://github.com/brainstormforce/nps-survey/tree/1.0.3",
+				"issues": "https://github.com/brainstormforce/nps-survey/issues"
+			},
+			"time": "2024-12-10T05:01:30+00:00"
+		},
+		{
+			"name": "brainstormforce/zip-ai",
+			"version": "2.0.0",
+			"source": {
+				"type": "git",
+				"url": "git@github.com:brainstormforce/zip-ai.git",
+				"reference": "6cd0581ea6a2c5c4e63a1e5a3ccbc0fefe8672bd"
+			},
+			"dist": {
+				"type": "zip",
+				"url": "https://api.github.com/repos/brainstormforce/zip-ai/zipball/6cd0581ea6a2c5c4e63a1e5a3ccbc0fefe8672bd",
+				"reference": "6cd0581ea6a2c5c4e63a1e5a3ccbc0fefe8672bd",
 				"shasum": ""
 			},
 			"require": {
@@ -233,10 +286,10 @@
 			],
 			"description": "Library which interacts with SCS and provide multiple useful modules",
 			"support": {
-				"source": "https://github.com/brainstormforce/zip-ai/tree/1.2.3",
+				"source": "https://github.com/brainstormforce/zip-ai/tree/2.0.0",
 				"issues": "https://github.com/brainstormforce/zip-ai/issues"
 			},
-			"time": "2024-10-23T06:17:06+00:00"
+			"time": "2024-12-09T04:47:12+00:00"
 		},
 		{
 			"name": "brainstormforce/zipwp-images",
@@ -6931,10 +6984,10 @@
 	],
 	"aliases": [],
 	"minimum-stability": "stable",
-	"stability-flags": {},
+	"stability-flags": [],
 	"prefer-stable": false,
 	"prefer-lowest": false,
-	"platform": {},
-	"platform-dev": {},
+	"platform": [],
+	"platform-dev": [],
 	"plugin-api-version": "2.6.0"
 }

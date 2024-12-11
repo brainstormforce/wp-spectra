@@ -126,7 +126,7 @@ const Render = ( props ) => {
 							></Tag>
 							{ showCount && (
 								<>
-									{ p.count } { p.count > '1' ? `${ p.singular_name }s` : p.singular_name }
+									{ p.count } { p.count !== 1 ? p.plural_name : p.singular_name }
 								</>
 							) }
 						</a>

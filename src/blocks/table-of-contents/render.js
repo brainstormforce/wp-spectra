@@ -1,5 +1,6 @@
-import classnames from 'classnames';
+import { uagbClassNames } from '@Utils/Helpers';
 import TableOfContents from './toc';
+import TableOfContentCollapsable from './tocCollapsable';
 import { useEffect, useRef, useLayoutEffect, memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
@@ -29,6 +30,12 @@ const Render = ( props ) => {
 		headingTitle,
 		separatorStyle,
 		block_id,
+		collapsibleListDepth,
+		enableCollapsableList,
+		fontSize,
+		fontSizeTablet,
+		fontSizeMobile,
+		markerView,
 	} = attributes;
 
 	useEffect( () => {
@@ -49,6 +56,21 @@ const Render = ( props ) => {
 	}, [ makeCollapsible ] );
 	// Editor Useable Collaps Ends Here.
 
+	useEffect( () => {
+		const selector = '.uagb-block-' + block_id;
+		const block_element = UAGBTableOfContents._getDocumentElement().querySelector( selector );
+		// Set computed margin for collapsable marker in editor.			
+		if ( UAGBTableOfContents?._setCollapseIconMargin && enableCollapsableList ) {
+			// Set initial styles on the block_element itself.
+			block_element.style.transition = 'opacity 200ms';
+			block_element.style.opacity = '0.25';
+			// Set computed margin for collapsable marker in editor.
+			UAGBTableOfContents._setCollapseIconMargin( selector, attributes );
+		}
+		block_element.style.opacity = '';
+		
+	}, [ fontSize, fontSizeTablet, fontSizeMobile, markerView, headers.length, enableCollapsableList, deviceType ] );
+
 	let iconHtml = '';
 
 	if ( makeCollapsible && icon ) {
@@ -57,14 +79,15 @@ const Render = ( props ) => {
 
 	return (
 		<div
-			className={ classnames(
+			className={ uagbClassNames( [
 				className,
 				`uagb-toc__align-${ align }`,
 				`uagb-toc__columns-${ getFallbackNumber( tColumnsDesktop, 'tColumnsDesktop', blockName ) }`,
 				makeCollapsible && initialCollapse ? 'uagb-toc__collapse' : '',
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ block_id }`
-			) }
+				`uagb-block-${ block_id }`,
+				enableCollapsableList && 'uagb-toc__collapse--list',
+			] ) }
 			ref={ tocRoot }
 		>
 			<div className="uagb-toc__wrap">
@@ -79,7 +102,11 @@ const Render = ( props ) => {
 					{ iconHtml }
 				</div>
 				{ separatorStyle !== 'none' && <div className="uagb-toc__separator"></div> }
-				<TableOfContents mappingHeaders={ mappingHeaders } headers={ headers } />
+				{ enableCollapsableList ? (
+				<TableOfContentCollapsable mappingHeaders={ mappingHeaders } headers={ headers } collapsibleListDepth={ collapsibleListDepth }  />
+				) : (
+					<TableOfContents mappingHeaders={ mappingHeaders } headers={ headers } />
+				) }
 			</div>
 		</div>
 	);

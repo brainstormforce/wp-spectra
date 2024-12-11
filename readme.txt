@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.6
-Stable tag: 2.17.0
+Stable tag: 2.18.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -215,6 +215,16 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= 2.18.0 - Wednesday, 11th December 2024 =
+* Improvement: Table Of Contents - Added a setting to enable collapsible list items.
+* Improvement: AI Assistant - Updated the AI Assistant to be aware of the saved page content.
+* Fix: Info Box - Resolved an issue wherein the overall alignment is not supported in RTL mode.
+* Fix: Image Gallery - Resolved an issue wherein the "Tiled" layout would not allow 2 or 3 columns.
+* Fix: Taxonomy List - Resolved an issue wherein plural forms would be incorrectly translated.
+* Fix: FSE - Corrected the query parameter in `get_block_templates()` function to properly handle template parts using the `slug__in` argument.
+* Fix: Global - Resolved an issue wherein the custom CSS would get special characters converted to unicode.
+* Fix: Global - Resolved an issue that would sometimes show a PHP warning for the font loader.
+
 = 2.17.0 - Monday, 25th November 2024 =
 * Feature: Added a free image search to the image media pickers.
 * Improvement: Instagram - Switched the Spectra Pro Instagram account linking to use business accounts.
@@ -229,9 +239,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Customizer - Resolved an issue wherein the Astra customizer panels would get an additional spacing when Spectra is active.
 * Fix: Buttons - Resolved an issue wherein the core buttons block could not be transformed to a Spectra buttons block.
 * Fix: Editor - Resolved an issue wherein tooltips would be spaced incorrectly in the block settings panels.
-
-= 2.16.3 - Saturday, 2nd November 2024 =
-* This update addressed a security bug. Props to zer0gh0st (D.Sim) for privately reporting it to our team. Please make sure you are using the latest version on your website.
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 
