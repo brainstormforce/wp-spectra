@@ -34,7 +34,6 @@ const UAGBInfoBox = ( props ) => {
 			UAGHideTab,
 			UAGHideMob,
 			globalBlockStyleId,
-			relAttribute,
 		},
 		name,
 		clientId,
@@ -45,10 +44,6 @@ const UAGBInfoBox = ( props ) => {
 		hasPrefixTitleDC,
 		hasTitleDC,
 	} = props;
-
-	useEffect( () => {
-		setAttributes( { relString: relAttribute.join( ' ' ) } );
-	}, [relAttribute] )
 
 	useEffect( () => {
 		// Don't set attributes if global style is applied.

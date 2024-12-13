@@ -40,7 +40,6 @@ const Render = ( props ) => {
 		openModalAs,
 		modalPosition,
 		defaultTemplate,
-		relString,
 		inheritFromTheme,
 		buttonType,
 	} = attributes;
@@ -120,7 +119,7 @@ const Render = ( props ) => {
 			<div // eslint-disable-line jsx-a11y/anchor-is-valid
 				className={ buttonClasses }
 				target="_self"
-				rel={ relString }
+				rel="noopener noreferrer"
 				style={ borderStyle }
 			>
 				<span className="uagb-modal-content-wrapper">

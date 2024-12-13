@@ -95,8 +95,6 @@ return array_merge(
 		// For Global Block Styles.
 		'globalBlockStyleName'             => '',
 		'globalBlockStyleId'               => '',
-		'relAttribute'                     => array( 'noopener', 'norefferer' ),
-		'relString'                        => 'noopener norefferer',
 		'iconAccessabilityMode'            => '',
 		'iconAccessabilityDesc'            => '',
 	)

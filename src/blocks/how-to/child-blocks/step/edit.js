@@ -15,17 +15,13 @@ import addInitialAttr from '@Controls/addInitialAttr';
 
 const UAGBHowToStepEdit = ( props ) => {
 
-	const { isSelected, attributes, clientId, deviceType, setAttributes, attributes:{ relAttribute } } = props;
+	const { isSelected, attributes, clientId, deviceType } = props;
 
 	const blockStyling = useMemo( () => styling( attributes, clientId, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
 	}, [ deviceType ] );
-
-	useEffect( () => {
-		setAttributes( { relString: relAttribute.join( ' ' ) } );
-	}, [relAttribute] )
 
 	return (
 		<>

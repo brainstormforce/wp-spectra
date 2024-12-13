@@ -25,7 +25,6 @@ export default function save( props ) {
 		topInvert,
 		bottomInvert,
 		linkTarget,
-		relString,
 	} = props.attributes;
 
 	const topDividerHtml = 'none' !== topType && (
@@ -66,7 +65,7 @@ export default function save( props ) {
 	const CustomTag = 'a' === htmlTag ? 'div' : `${ htmlTag }`;
 	const customTagLinkAttributes = {};
 	if ( htmlTag === 'a' ) {
-		customTagLinkAttributes.rel = relString;
+		customTagLinkAttributes.rel = 'noopener';
 		if ( isPro ) {
 			if ( linkTarget ) {
 				customTagLinkAttributes.target = '_blank';
@@ -82,6 +81,9 @@ export default function save( props ) {
 			}
 			if ( htmlTagLink?.opensInNewTab ) {
 				customTagLinkAttributes.target = '_blank';
+			}
+			if ( htmlTagLink?.noFollow ) {
+				customTagLinkAttributes.rel = 'nofollow noopener';
 			}
 		}
 	}

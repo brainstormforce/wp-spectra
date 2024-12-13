@@ -7,8 +7,6 @@ import classnames from 'classnames';
 import renderSVG from '@Controls/deprecatedRenderIcon';
 import { RichText } from '@wordpress/block-editor';
 import { getBorderAttributes } from '@Controls/generateAttributes';
-import newAttributesV2_15_3 from './deprecated/v2_15_3/attributes';
-import saveV2_15_3 from './deprecated/v2_15_3/save';
 
 const btnBorderAttributes = getBorderAttributes( 'btn' );
 const attributes = {
@@ -477,10 +475,6 @@ const deprecated = [
 				</div>
 			);
 		},
-	},
-	{
-		attributes: newAttributesV2_15_3,
-		save: saveV2_15_3,
 	},
 ];
 

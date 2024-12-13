@@ -17,17 +17,13 @@ let hideLabel;
 
 const UAGBIconListChild = ( props ) => {
 
-	const { isSelected, clientId, attributes, deviceType, setAttributes, attributes: { relAttribute } } = props;
+	const { isSelected, clientId, attributes, deviceType } = props;
 
 	const blockStyling = useMemo( () => styling( attributes, clientId, deviceType ), [ attributes, deviceType ] );
 
 	useEffect( () => {
 		scrollBlockToView();
 	}, [ deviceType ] );
-
-	useEffect( () => {
-		setAttributes( { relString: relAttribute.join( ' ' ) } );
-	}, [relAttribute] )
 
 	return (
 		<>

@@ -17,11 +17,11 @@ export default function save(props) {
 		icon,
 		iconPosition,
 		removeText,
+		noFollow,
 		showIcon,
 		dynamicContent,
 		buttonType,
 		inheritFromTheme,
-		relString,
 	} = attributes;
 
 	const inheritAstraSecondary = inheritFromTheme && 'secondary' === buttonType;
@@ -77,7 +77,7 @@ export default function save(props) {
 					aria-label={removeText ? label : ''}
 					style={borderStyle}
 					href={('' === link || dynamicContent?.link?.enable) ? '#' : link}
-					rel={relString}
+					rel={ noFollow ? 'nofollow noopener' : 'follow noopener' }
 					target={openNewWindow}
 					role="button"
 				>

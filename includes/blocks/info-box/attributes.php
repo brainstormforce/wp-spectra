@@ -291,7 +291,6 @@ return array_merge(
 		'ctaBorderWidth'             => 1,
 		'ctaBorderRadius'            => 0,
 		'ctaBorderhoverColor'        => '',
-		'infoRelAttribute'           => array( 'noopener', 'norefferer' ),
 
 		// For Global Block Styles.
 		'globalBlockStyleName'       => '',

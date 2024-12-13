@@ -4,9 +4,9 @@ import renderSVG from '@Controls/renderIcon';
 
 const SecondCTAButton = ( props ) => {
 	const { attributes, setAttributes } = props;
-	const { secRelString } = props.attributes;
 
 	let target = '_self';
+	const rel = 'noopener noreferrer';
 	if ( attributes.secondCtaTarget ) {
 		target = '_blank';
 	}
@@ -45,7 +45,7 @@ const SecondCTAButton = ( props ) => {
 					href={ link }
 					className={ classnames( 'uagb-cta-second__button', buttonTypeClass ) }
 					target={ target }
-					rel={ secRelString }
+					rel={ rel }
 					style={ borderStyle }
 					onClick={ preventDefaultFunc }
 				>
@@ -69,7 +69,7 @@ const SecondCTAButton = ( props ) => {
 				href={ link }
 				className={ classnames( 'uagb-cta-second__button', buttonTypeClass ) }
 				target={ target }
-				rel={ secRelString }
+				rel={ rel }
 				style={ borderStyle }
 				onClick={ preventDefaultFunc }
 			>

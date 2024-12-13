@@ -25,7 +25,7 @@ const Render = ( props ) => {
 		deviceType
 	} = props;
 
-	const { block_id, align, textAlign, heading, prefix, icon, iconPosition, titleTag, showDescription, inheritFromTheme, buttonType, relString } = attributes;
+	const { block_id, align, textAlign, heading, prefix, icon, iconPosition, titleTag, showDescription, inheritFromTheme, buttonType } = attributes;
 
 	const inheritAstraSecondary = inheritFromTheme && 'secondary' === buttonType;
 	const buttonTypeClass = inheritAstraSecondary ? 'ast-outline-button' : 'wp-block-button__link';
@@ -83,7 +83,6 @@ const Render = ( props ) => {
 			<CustomTag // eslint-disable-line jsx-a11y/anchor-is-valid
 				className={ marketingBtnClass }
 				style={ borderStyle }
-				rel={ relString }
 			>
 				{ 'before' === iconPosition && (
 					<>

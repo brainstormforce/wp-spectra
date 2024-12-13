@@ -11,7 +11,7 @@ const InfoBoxCta = ( props ) => {
 	}
 
 	let target = '_self';
-	const rel = attributes.relString;
+	const rel = 'noopener noreferrer';
 	if ( attributes.ctaTarget ) {
 		target = '_blank';
 	}

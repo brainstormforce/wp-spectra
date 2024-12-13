@@ -220,7 +220,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = x.x.x =
 * Improvement: Global - Added responsive support for gradient background settings.
-* Improvement: Global - Added rel attribute support for anchor tag elements.
 * Fix: Container - Resolved an issue wherein the Core Image block's alignment would not work as expected when inside a Container.
 * Fix: Image Gallery - Resolved an issue wherein the "Tiled" layout would not allow 2 or 3 columns.
 * Fix: Info Box - Resolved an issue wherein the overall alignment is not supported in RTL mode.

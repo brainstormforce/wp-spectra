@@ -12,7 +12,6 @@ import UAGIconPicker from '@Components/icon-picker';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import { getImageSize } from '@Utils/Helpers';
 import UAGSelectControl from '@Components/select-control';
-import UAGMultiSelectControl from '@Components/multi-select-control';
 import ResponsiveSlider from '@Components/responsive-slider';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
@@ -224,7 +223,6 @@ export default function Settings( props ) {
 		modalTriggerBgType,
 		modalTriggerBgHoverType,
 		openModalAs,
-		relAttribute,
 	} = attributes;
 
 	const currentTheme = uagb_blocks_info.current_theme;
@@ -442,7 +440,6 @@ export default function Settings( props ) {
 				</>
 			) }
 			{ [ 'button', 'icon', 'text', 'image' ].includes( modalTrigger ) && (
-				<>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
 					label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
@@ -464,61 +461,6 @@ export default function Settings( props ) {
 					showIcons={ true }
 					responsive={ true }
 				/>
-				<UAGMultiSelectControl
-							label={ __( 'Rel Attribute', 'ultimate-addons-for-gutenberg' ) }
-							options={ [
-								{
-									value: 'nofollow',
-									label: __( 'nofollow', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									value: 'noreferrer',
-									label: __( 'noreferrer', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									value: 'external',
-									label: __( 'external', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									value: 'alternate',
-									label: __( 'alternate', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									value: 'author',
-									label: __( 'author', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									value: 'bookmark',
-									label: __( 'bookmark', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									value: 'license',
-									label: __( 'license', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									value: 'next',
-									label: __( 'next', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									value: 'prev',
-									label: __( 'prev', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									value: 'tag',
-									label: __( 'tag', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									value: 'stylesheet',
-									label: __( 'stylesheet', 'ultimate-addons-for-gutenberg' ),
-								},
-							] }
-							data={ {
-								value: relAttribute,
-								label: 'relAttribute',
-							} }
-							setAttributes={ setAttributes }
-						/>
-					</>
 			) }
 		</UAGAdvancedPanelBody>
 	);

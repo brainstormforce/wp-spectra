@@ -896,13 +896,6 @@ class UAGB_Buttons {
 						'type'    => 'boolean',
 						'default' => false,
 					),
-					'relAttribute'            => array(
-						'type' => 'string',
-					),
-					'relString'               => array(
-						'type'    => 'string',
-						'default' => 'follow noopener',
-					),
 					'icon'                    => array(
 						'type'    => 'string',
 						'default' => 'arrow-right',
