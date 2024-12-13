@@ -802,8 +802,8 @@ const Settings = ( props ) => {
 				} }
 				min={ 'tiled' === feedLayout ? 2 : 1 }
 				max={
-					'tiled' === feedLayout && Math.min( MAX_IMAGE_COLUMNS, mediaGallery.length ) < 4
-						? 4
+					'tiled' === feedLayout
+						? MAX_IMAGE_COLUMNS
 						: Math.min( MAX_IMAGE_COLUMNS, mediaGallery.length )
 				}
 				displayUnit={ false }

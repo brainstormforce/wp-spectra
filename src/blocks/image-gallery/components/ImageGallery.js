@@ -204,7 +204,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				/* eslint-disable no-undef */
 				imagesLoaded( gallery ).on( 'progress', createSpecialTile );
 				imagesLoaded( gallery ).off( 'progress', createSpecialTile );
-				imagesLoaded( gallery ).on( 'always', () => setTileResizeTrigger( true ) );
+				imagesLoaded( gallery ).on( 'always', () => { setTileResizeTrigger( true ) } );
 				/* eslint-enable no-undef */
 			}, 250 );
 		}
@@ -218,7 +218,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				tileSizer.current.style.display = 'none';
 			}, 1000 );
 		}
-	}, [ tileSize ] );
+	}, [ tileResizeTrigger, tileSize, columnsDesk, columnsTab, columnsMob ] );
 
 	// Update the Focused Images based on the Focus List.
 	useEffect( () => {
