@@ -35,25 +35,6 @@
 		margin: unset;
 	}
 
-	// Container align compaitability with core/image.
-	.wp-block-image {
-		display: flex;
-		justify-content: center;
-
-		&.alignright {
-			justify-content: flex-end;
-		}
-
-		&.alignleft {
-			justify-content: flex-start;
-		}
-
-		&.aligncenter {
-			justify-content: center;
-		}
-	}
-
-
 	// Background Video CSS Start.
 	.uagb-container__video-wrap {
 		height: 100%;
