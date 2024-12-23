@@ -221,6 +221,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Global - Resolved an issue causing a php error for str_replace() for font loading.
 * Fix: Global - Resolved an issue wherein the self-hosted Google Fonts would not work as intended on the multisite's first sub-site setup.
 * Fix: Global - Resolved an issue in which some static and dynamic javascript strings were not translatable.
+* Fix: Tabs - Resolved an issue wherein the tabs in vertical layouts were only clickable on the title.
 
 ### 2.18.0 - Wednesday, 11th December 2024 ###
 * Improvement: Table Of Contents - Added a setting to enable collapsible list items.
