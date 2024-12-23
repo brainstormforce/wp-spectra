@@ -218,6 +218,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 = x.x.x =
 * Improvement: Global - Added responsive support for gradient background settings.
 * Fix: Image - Resolved an issue wherein the image would overflow in the responsive editor.
+* Fix: Image Gallery - Removed the automatic maximum limit for galleries with less than 8 images.
 * Fix: Tabs - Resolved an issue wherein the tabs in vertical layouts were only clickable on the title.
 * Fix: Global - Resolved an issue wherein the translated setting panels in some Spectra blocks would cause some Spectra Pro features in those blocks to not work as expected.
 * Fix: Global - Resolved an issue causing a php error for str_replace() for font loading.
