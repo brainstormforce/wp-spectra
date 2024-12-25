@@ -48,7 +48,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			 * If the customizer is not set, it means we are not in the customizer.
 			 * In that case load the script that will reload the page after migration is complete.
 			 */
-			if ( isset( $wp_customize ) && ! $wp_customize ) {
+			if ( empty( $wp_customize ) ) {
 				add_action( 'admin_enqueue_scripts', array( $this, 'reload_on_migration_complete' ) );
 			}
 			add_action( 'wp_ajax_uag_migrate', array( $this, 'handle_migration_action_ajax' ) );
