@@ -241,7 +241,7 @@ class Nps_Survey {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return new \WP_Error(
 				'gt_rest_cannot_access',
-				__( 'Sorry, you are not allowed to do that.', 'nps-survey' ),
+				__( 'Sorry, you are not allowed to do that.', 'ultimate-addons-for-gutenberg' ),
 				array( 'status' => rest_authorization_required_code() )
 			);
 		}
@@ -262,7 +262,7 @@ class Nps_Survey {
 		if ( ! wp_verify_nonce( sanitize_text_field( (string) $nonce ), 'wp_rest' ) ) {
 			wp_send_json_error(
 				array(
-					'data'   => __( 'Nonce verification failed.', 'nps-survey' ),
+					'data'   => __( 'Nonce verification failed.', 'ultimate-addons-for-gutenberg' ),
 					'status' => false,
 
 				)
@@ -343,7 +343,7 @@ class Nps_Survey {
 		if ( ! wp_verify_nonce( sanitize_text_field( (string) $nonce ), 'wp_rest' ) ) {
 			wp_send_json_error(
 				array(
-					'data'   => __( 'Nonce verification failed.', 'nps-survey' ),
+					'data'   => __( 'Nonce verification failed.', 'ultimate-addons-for-gutenberg' ),
 					'status' => false,
 
 				)

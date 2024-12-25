@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.7  
-**Stable tag:** 2.18.0  
+**Stable tag:** 2.19.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -16,6 +16,8 @@ Power-up Gutenberg with advanced blocks for faster website creation. Build your 
 <strong>SPECTRA WEBSITE BUILDER - BEST PLUGIN TO EXTEND THE WORDPRESS BLOCK EDITOR WITH PAGE EDITING FEATURES, 30+ FREE CUSTOMIZABLE BLOCKS, COMING SOON MODE, POPUP BUILDER</strong>
 
 ★★★★★
+
+[youtube https://www.youtube.com/watch?v=-Ksf984Tcgw&list=PL1kzJGWGPrW_tpwr6g4i_wiGegpq7qibx]
 
 Most helpful links
 <ul>
@@ -215,7 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### x.x.x ###
+### 2.19.0 - Monday, 30th December 2024 ###
 * Improvement: Global - Added responsive support for gradient background settings.
 * Improvements: Post Grid / Carousel Block - Added a responsive Image Ratio setting with a custom ratio option.
 * Fix: Container - Resolved an issue wherein sticky containers would not work as intended when resizing the window.
@@ -247,11 +249,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ### 2.16.5 - Friday, 15th November 2024 ###
 * This update addressed a security bug. Props to zer0gh0st (D.Sim) for privately reporting it to our team. Please make sure you are using the latest version on your website. 
-
-### 2.16.4 - Wednesday, 13th November 2024 ###
-* Fix: Customizer - Resolved an issue wherein the Astra customizer panels would get an additional spacing when Spectra is active.
-* Fix: Buttons - Resolved an issue wherein the core buttons block could not be transformed to a Spectra buttons block.
-* Fix: Editor - Resolved an issue wherein tooltips would be spaced incorrectly in the block settings panels.
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 
