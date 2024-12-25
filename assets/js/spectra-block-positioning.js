@@ -4,11 +4,48 @@ const UAGBBlockPositioning = {
 		const element = document.querySelector( selector );
 		if ( element?.classList.contains( 'uagb-position__sticky' ) ) {
 			UAGBBlockPositioning.handleSticky( element, attr );
+			// resize Event Listner to reset sticky functionality. 
+			window.addEventListener( 'resize', () => {
+                UAGBBlockPositioning.resetSticky( element );
+				if ( element && ! element.classList.contains( 'no-transition' ) ) {
+					element.classList.add( 'no-transition' );
+				}
+                UAGBBlockPositioning.handleSticky( element, attr, true );
+            } );
 		}
 	},
 
+	resetSticky( element ) {
+		// 1. Remove any classes that were added
+		element.classList.remove( 'uagb-position__sticky--stuck', 'uagb-position__sticky--restricted' );
+	
+		// 2. Remove filler element, if it exists with the class.
+		const fillerElement = element.previousElementSibling;
+		if ( fillerElement && fillerElement.classList.contains( 'uagb-position__filler-element' ) ) {
+			fillerElement.remove();
+		}
+	
+		// 3. Remove all inline styles added to the element.
+		element.style.top = '';
+		element.style.left = '';
+		element.style.bottom = '';
+		element.style.width = '';
+		element.style.zIndex = '';
+	
+		// 4. Remove any animation data attributes.
+		delete element.dataset.aos;
+		delete element.dataset.aosDuration;
+		delete element.dataset.aosDelay;
+		delete element.dataset.aosEasing;
+	
+		// 5. Remove the scroll event listener.
+		if ( element.scrollHandler ) {
+            window.removeEventListener( 'scroll', element.scrollHandler );
+        }
+	},
+
 	// Function to handle the sticky positioned element.
-	handleSticky( element, attr ) {
+	handleSticky( element, attr, onResise = false ) {
 		// Add the Adminbar height if needed.
 		const getAdminbarHeight = () => {
 			const adminBar = document.querySelector( '#wpadminbar' );
@@ -18,6 +55,7 @@ const UAGBBlockPositioning = {
 		// Create a filler element for sticky.
 		const createStickyFiller = ( elementNode, elementDimensions, elementParent ) => {
 			const fillerElement = document.createElement( 'div' );
+			fillerElement.classList.add( 'uagb-position__filler-element' );
 			fillerElement.style.height = `${ elementDimensions.height }px`;
 			fillerElement.style.boxSizing = 'border-box';
 			const elementStyles = window.getComputedStyle( elementNode );
@@ -96,16 +134,21 @@ const UAGBBlockPositioning = {
 				element.style.left = `${ stickyDimensions.left }px`;
 				element.style.width = `${ stickyDimensions.width }px`;
 				element.style.zIndex = '999';
-				setTimeout( () => {
+				// Handle the case for slideup animation on initial load and not on resize. 
+				if( onResise ) {
 					element.style.bottom = haltAtPosition;
-				} , 50 );
+				}
+				else {
+					setTimeout( () => {
+						element.style.bottom = haltAtPosition;
+					} , 50 );
+				}
 			}
 
 			// Check if this sticky container was animated.
 			applyAnimationData();
 
-			// Check when this needsto be stuck on the bottom, and when it doesn't.
-			window.addEventListener( 'scroll', () => {
+			const scrollHandlerBottom = () => {
 				scrollPosition = ( window.pageYOffset !== undefined ) ? window.pageYOffset : document.body.scrollTop;
 				if ( scrollPosition <= haltAt ) {
 					if ( ! element.classList.contains( 'uagb-position__sticky--stuck' ) ) {
@@ -124,7 +167,11 @@ const UAGBBlockPositioning = {
 					element.style.width = '';
 					element.style.zIndex = '';
 				}
-			} );
+			};
+
+			// Check when this needsto be stuck on the bottom, and when it doesn't.
+			window.addEventListener( 'scroll', scrollHandlerBottom );
+            element.scrollHandler = scrollHandlerBottom; // Store reference for removal.
 		} else {
 			// Stop whn the scroll is at the top of the element.
 			haltAt = stickyDimensions.top + ( window.pageYOffset || 0 ) - getAdminbarHeight() - ( attr?.UAGStickyOffset || 0 );
@@ -156,9 +203,7 @@ const UAGBBlockPositioning = {
 			// Check if this sticky container was animated.
 			applyAnimationData();
 
-
-			// Check when this needsto be stuck on the top, and when it doesn't.
-			window.addEventListener( 'scroll', () => {
+			const scrollHandlerTop = () => {
 				scrollPosition = ( window.pageYOffset !== undefined ) ? window.pageYOffset : document.body.scrollTop;
 				// If the scroll position is greater than the current sticky height.
 				if ( scrollPosition >= haltAt ) {
@@ -195,7 +240,10 @@ const UAGBBlockPositioning = {
 					element.style.width = '';
 					element.style.zIndex = '';
 				}
-			} );
+			};
+			// Check when this needsto be stuck on the top, and when it doesn't.
+			window.addEventListener( 'scroll', scrollHandlerTop );
+			element.scrollHandler = scrollHandlerTop; // Store reference for removal.
 		}
 	},
 };

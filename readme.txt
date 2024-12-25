@@ -217,6 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = x.x.x =
 * Improvement: Global - Added responsive support for gradient background settings.
+* Fix: Container - Resolved an issue wherein sticky containers would not work as intended when resizing the window.
 * Fix: Image - Resolved an issue wherein the image would overflow in the responsive editor.
 * Fix: Image Gallery - Removed the automatic maximum limit for galleries with less than 8 images.
 * Fix: Tabs - Resolved an issue wherein the tabs in vertical layouts were only clickable on the title.
