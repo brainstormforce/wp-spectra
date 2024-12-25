@@ -48,14 +48,6 @@ if ( ! class_exists( 'UAGB_NPS_Notice' ) ) :
 		 */
 		private function __construct() {
 			add_action( 'admin_footer', array( $this, 'show_nps_notice' ), 999 );
-
-			add_filter( 
-				'nps_survey_allowed_screens', 
-				function ( $screens ) {
-					$screens[] = 'toplevel_page_spectra';
-					return $screens;
-				} 
-			);
 		}
 
 		/**
@@ -170,6 +162,7 @@ if ( ! class_exists( 'UAGB_NPS_Notice' ) ) :
 					'dismiss_timespan' => 2 * WEEK_IN_SECONDS,
 					'display_after'    => 0,
 					'plugin_slug'      => 'spectra',
+					'show_on_screens'  => array( 'toplevel_page_spectra', 'edit-spectra-popup' ),
 					'message'          => array(
 
 						'logo'                        => esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/logos/spectra.svg' ),

@@ -57,7 +57,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			add_filter( 'wp_kses_allowed_html', array( $this, 'add_data_attributes' ), 10, 2 );
 			add_action( 'admin_enqueue_scripts', array( $this, 'notice_styles_scripts' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'notice_styles_scripts_upgrade_pro' ) );
-			add_action( 'admin_enqueue_scripts', array( $this, 'nps_visibility_script' ) );
 			add_filter( 'rank_math/researches/toc_plugins', array( $this, 'toc_plugin' ) );
 			add_action( 'admin_init', array( $this, 'activation_redirect' ) );
 			add_action( 'admin_init', array( $this, 'update_old_user_option_by_url_params' ) );
@@ -66,17 +65,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			add_filter( 'ast_block_templates_pro_url', array( $this, 'update_gutenberg_templates_pro_url' ) );
 			add_action( 'admin_post_uag_download_log', array( $this, 'handle_log_download' ) );
 
-		}
-
-		/**
-		 * Enqueue NPS Survey popup visibility script.
-		 * 
-		 * @since 2.18.0
-		 * @return void
-		 */
-		public function nps_visibility_script() {
-			wp_enqueue_style( 'uag-nps-visibility-style', UAGB_URL . 'admin/assets/css/nps-visibility.css', array(), UAGB_VER );
-			wp_enqueue_script( 'uagb-nps-visibility', UAGB_URL . 'admin/assets/nps-visibility.js', array(), UAGB_VER, true );
 		}
 
 		/**

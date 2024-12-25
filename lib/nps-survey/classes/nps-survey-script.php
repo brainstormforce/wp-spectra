@@ -39,7 +39,6 @@ class Nps_Survey {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
-		add_action( 'admin_enqueue_scripts', array( $this, 'editor_load_scripts' ) );
 		add_action( 'rest_api_init', array( $this, 'register_route' ) );
 	}
 
@@ -63,6 +62,11 @@ class Nps_Survey {
 		if ( ! self::is_show_nps_survey_form( $plugin_slug, $display_after ) ) {
 			return;
 		}
+
+		$show_on_screen = ! empty( $vars['show_on_screens'] ) && is_array( $vars['show_on_screens'] ) ? $vars['show_on_screens'] : [ 'dashboard' ];
+
+		// Loading script here to confirm if the screen is allowed or not.
+		self::editor_load_scripts( $show_on_screen );
 
 		?><div data-id="<?php echo esc_attr( $id ); ?>" class="nps-survey-root" data-vars="<?php echo esc_attr( strval( wp_json_encode( $vars ) ) ); ?>"></div>
 		<?php
@@ -94,10 +98,11 @@ class Nps_Survey {
 	/**
 	 * Load script.
 	 *
+	 * @param array<string> $show_on_screens An array of screen IDs where the scripts should be loaded.
 	 * @since 1.0.0
 	 * @return void
 	 */
-	public static function editor_load_scripts() {
+	public static function editor_load_scripts( $show_on_screens ) {
 
 		if ( ! is_admin() ) {
 			return;
@@ -105,18 +110,8 @@ class Nps_Survey {
 
 		$screen    = get_current_screen();
 		$screen_id = $screen ? $screen->id : '';
-		// Added a filter to allow adding additional screens from outside.
-		$allowed_screens = apply_filters(
-			'nps_survey_allowed_screens',
-			[
-				'dashboard',
-				'themes',
-				'options-general',
-				'plugins',
-			]
-		);
 
-		if ( ! in_array( $screen_id, $allowed_screens, true ) ) {
+		if ( ! in_array( $screen_id, $show_on_screens, true ) ) {
 			return;
 		}
 
@@ -246,7 +241,7 @@ class Nps_Survey {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return new \WP_Error(
 				'gt_rest_cannot_access',
-				__( 'Sorry, you are not allowed to do that.', 'ultimate-addons-for-gutenberg' ),
+				__( 'Sorry, you are not allowed to do that.', 'nps-survey' ),
 				array( 'status' => rest_authorization_required_code() )
 			);
 		}
@@ -267,7 +262,7 @@ class Nps_Survey {
 		if ( ! wp_verify_nonce( sanitize_text_field( (string) $nonce ), 'wp_rest' ) ) {
 			wp_send_json_error(
 				array(
-					'data'   => __( 'Nonce verification failed.', 'ultimate-addons-for-gutenberg' ),
+					'data'   => __( 'Nonce verification failed.', 'nps-survey' ),
 					'status' => false,
 
 				)
@@ -348,7 +343,7 @@ class Nps_Survey {
 		if ( ! wp_verify_nonce( sanitize_text_field( (string) $nonce ), 'wp_rest' ) ) {
 			wp_send_json_error(
 				array(
-					'data'   => __( 'Nonce verification failed.', 'ultimate-addons-for-gutenberg' ),
+					'data'   => __( 'Nonce verification failed.', 'nps-survey' ),
 					'status' => false,
 
 				)
