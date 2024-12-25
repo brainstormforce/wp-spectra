@@ -169,12 +169,12 @@ function testimonialStyle( attributes, clientId, name, deviceType ) {
 	const overallBorderCSSTablet = generateBorderCSS( attributes, 'overall', 'tablet' );
 	const overallBorderCSSMobile = generateBorderCSS( attributes, 'overall', 'mobile' );
 
-	const gradientLocationTablet1Fallback = gradientLocationTablet1 ? gradientLocationTablet1 : gradientLocation1;
-	const gradientLocationMobile1Fallback = gradientLocationMobile1 ? gradientLocationMobile1 : gradientLocationTablet1Fallback;
-	const gradientLocationTablet2Fallback = gradientLocationTablet2 ? gradientLocationTablet2 : gradientLocation2;
-	const gradientLocationMobile2Fallback = gradientLocationMobile2 ?  gradientLocationMobile2 : gradientLocationTablet2Fallback;
-	const gradientAngleTabletFallback = gradientAngleTablet ? gradientAngleTablet : gradientAngle;
-	const gradientAngleMobileFallback = gradientAngleMobile ? gradientAngleMobile : gradientAngleTabletFallback;
+	const gradientLocationTablet1Fallback = 'number' === typeof gradientLocationTablet1 ? gradientLocationTablet1 : gradientLocation1;
+	const gradientLocationMobile1Fallback = 'number' === typeof gradientLocationMobile1 ? gradientLocationMobile1 : gradientLocationTablet1Fallback;
+	const gradientLocationTablet2Fallback = 'number' === typeof gradientLocationTablet2 ? gradientLocationTablet2 : gradientLocation2;
+	const gradientLocationMobile2Fallback = 'number' === typeof gradientLocationMobile2 ?  gradientLocationMobile2 : gradientLocationTablet2Fallback;
+	const gradientAngleTabletFallback = 'number' === typeof gradientAngleTablet ? gradientAngleTablet : gradientAngle;
+	const gradientAngleMobileFallback = 'number' === typeof gradientAngleMobile ? gradientAngleMobile : gradientAngleTabletFallback;
 
 	let imgAlign = 'center';
 

@@ -110,14 +110,14 @@ function styling( attributes, clientId, name, deviceType ) {
     const iconFontSizeFallback = getFallbackNumber( iconFontSize, 'iconFontSize', blockName );
     const titleSpaceFallback = getFallbackNumber( titleSpace, 'titleSpace', blockName );
 
-    const gradientLocationTablet1Fallback = gradientLocationTablet1 ? gradientLocationTablet1 : gradientLocation1Fallback;
-    const gradientLocationTablet2Fallback = gradientLocationTablet2 ? gradientLocationTablet2 : gradientLocation2Fallback;
+    const gradientLocationTablet1Fallback = 'number' === typeof gradientLocationTablet1 ? gradientLocationTablet1 : gradientLocation1Fallback;
+    const gradientLocationTablet2Fallback = 'number' === typeof gradientLocationTablet2 ? gradientLocationTablet2 : gradientLocation2Fallback;
 
-    const gradientLocationMobile1Fallback = gradientLocationMobile1 ? gradientLocationMobile1 : gradientLocationTablet1Fallback;
-    const gradientLocationMobile2Fallback = gradientLocationMobile2 ? gradientLocationMobile2 : gradientLocationTablet2Fallback;
+    const gradientLocationMobile1Fallback = 'number' === typeof gradientLocationMobile1 ? gradientLocationMobile1 : gradientLocationTablet1Fallback;
+    const gradientLocationMobile2Fallback = 'number' === typeof gradientLocationMobile2 ? gradientLocationMobile2 : gradientLocationTablet2Fallback;
 
-    const gradientAngleTabletFallback = gradientAngleTablet ? gradientAngleTablet : gradientAngleFallback;
-    const gradientAngleMobileFallback = gradientAngleMobile ? gradientAngleMobile : gradientAngleTabletFallback;
+    const gradientAngleTabletFallback = 'number' === typeof gradientAngleTablet ? gradientAngleTablet : gradientAngleFallback;
+    const gradientAngleMobileFallback = 'number' === typeof gradientAngleMobile ? gradientAngleMobile : gradientAngleTabletFallback;
 
 	let selectors = {};
 	let tabletSelectors = {};

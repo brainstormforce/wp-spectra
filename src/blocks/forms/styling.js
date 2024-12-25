@@ -917,10 +917,10 @@ function styling( attributes, clientId, name, deviceType ) {
 				'gradientValue': gradientValue,
 				'gradientColor1': gradientColor1,
 				'gradientColor2': gradientColor2,
-				'gradientLocation1': gradientLocationTablet1 ? gradientLocationTablet1 : backgroundAttributes.gradientLocation1,
-				'gradientLocation2': gradientLocationTablet2 ? gradientLocationTablet2 : backgroundAttributes.gradientLocation2,
+				'gradientLocation1': 'number' === typeof gradientLocationTablet1 ? gradientLocationTablet1 : backgroundAttributes.gradientLocation1,
+				'gradientLocation2': 'number' === typeof gradientLocationTablet2 ? gradientLocationTablet2 : backgroundAttributes.gradientLocation2,
 				'gradientType': gradientType,
-				'gradientAngle': gradientAngleTablet ? gradientAngleTablet : backgroundAttributes.gradientAngle,
+				'gradientAngle': 'number' === typeof gradientAngleTablet ? gradientAngleTablet : backgroundAttributes.gradientAngle,
 				'selectGradient': selectGradient,
 			};
 
@@ -929,10 +929,10 @@ function styling( attributes, clientId, name, deviceType ) {
 				'gradientValue': gradientValue,
 				'gradientColor1': gradientColor1,
 				'gradientColor2': gradientColor2,
-				'gradientLocation1': gradientLocationMobile1 ? gradientLocationMobile1 : backgroundAttributesTablet.gradientLocation1,
-				'gradientLocation2': gradientLocationMobile2 ? gradientLocationMobile2 : backgroundAttributesTablet.gradientLocation2,
+				'gradientLocation1': 'number' === typeof gradientLocationMobile1 ? gradientLocationMobile1 : backgroundAttributesTablet.gradientLocation1,
+				'gradientLocation2': 'number' === typeof gradientLocationMobile2 ? gradientLocationMobile2 : backgroundAttributesTablet.gradientLocation2,
 				'gradientType': gradientType,
-				'gradientAngle': gradientAngleMobile ? gradientAngleMobile : backgroundAttributesTablet.gradientAngle,
+				'gradientAngle': 'number' === typeof gradientAngleMobile ? gradientAngleMobile : backgroundAttributesTablet.gradientAngle,
 				'selectGradient': selectGradient,
 			};
 
@@ -981,10 +981,10 @@ function styling( attributes, clientId, name, deviceType ) {
 				'gradientValue': gradientHValue,
 				'gradientColor1': gradientHColor1,
 				'gradientColor2': gradientHColor2,
-				'gradientLocation1': gradientHLocationTablet1 ? gradientHLocationTablet1 : hoverbackgroundAttributes.gradientLocation1,
-				'gradientLocation2': gradientHLocationTablet2 ? gradientHLocationTablet2 : hoverbackgroundAttributes.gradientLocation2,
+				'gradientLocation1': 'number' === typeof gradientHLocationTablet1 ? gradientHLocationTablet1 : hoverbackgroundAttributes.gradientLocation1,
+				'gradientLocation2': 'number' === typeof gradientHLocationTablet2 ? gradientHLocationTablet2 : hoverbackgroundAttributes.gradientLocation2,
 				'gradientType': gradientHType,
-				'gradientAngle': gradientHAngleTablet ? gradientHAngleTablet : hoverbackgroundAttributes.gradientAngle,
+				'gradientAngle': 'number' === typeof gradientHAngleTablet ? gradientHAngleTablet : hoverbackgroundAttributes.gradientAngle,
 				'selectGradient': selectHGradient,
 			};
 
@@ -993,10 +993,10 @@ function styling( attributes, clientId, name, deviceType ) {
 				'gradientValue': gradientHValue,
 				'gradientColor1': gradientHColor1,
 				'gradientColor2': gradientHColor2,
-				'gradientLocation1': gradientHLocationMobile1 ? gradientHLocationMobile1 : hoverbackgroundAttributesTablet.gradientLocation1,
-				'gradientLocation2': gradientHLocationMobile2 ? gradientHLocationMobile2 : hoverbackgroundAttributesTablet.gradientLocation2,
+				'gradientLocation1': 'number' === typeof gradientHLocationMobile1 ? gradientHLocationMobile1 : hoverbackgroundAttributesTablet.gradientLocation1,
+				'gradientLocation2': 'number' === typeof gradientHLocationMobile2 ? gradientHLocationMobile2 : hoverbackgroundAttributesTablet.gradientLocation2,
 				'gradientType': gradientHType,
-				'gradientAngle': gradientHAngleMobile ? gradientHAngleMobile : hoverbackgroundAttributesTablet.gradientAngle,
+				'gradientAngle': 'number' === typeof gradientHAngleMobile ? gradientHAngleMobile : hoverbackgroundAttributesTablet.gradientAngle,
 				'selectGradient': selectHGradient,
 			};
 

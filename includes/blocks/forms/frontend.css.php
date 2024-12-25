@@ -693,9 +693,9 @@ if ( ! $attr['inheritFromTheme'] ) {
 			'gradientColor1'    => $attr['gradientColor1'],
 			'gradientColor2'    => $attr['gradientColor2'],
 			'gradientType'      => $attr['gradientType'],
-			'gradientLocation1' => $attr['gradientLocationTablet1'],
-			'gradientLocation2' => $attr['gradientLocationTablet2'],
-			'gradientAngle'     => $attr['gradientAngleTablet'], 
+			'gradientLocation1' => is_numeric( $attr['gradientLocationTablet1'] ) ? $attr['gradientLocationTablet1'] : $bg_obj['gradientLocation1'],
+			'gradientLocation2' => is_numeric( $attr['gradientLocationTablet2'] ) ? $attr['gradientLocationTablet2'] : $bg_obj['gradientLocation2'],
+			'gradientAngle'     => is_numeric( $attr['gradientAngleTablet'] ) ? $attr['gradientAngleTablet'] : $bg_obj['gradientAngle'], 
 			'selectGradient'    => $attr['selectGradient'],
 		);
 		$bg_obj_mobile = array(
@@ -704,9 +704,9 @@ if ( ! $attr['inheritFromTheme'] ) {
 			'gradientColor1'    => $attr['gradientColor1'],
 			'gradientColor2'    => $attr['gradientColor2'],
 			'gradientType'      => $attr['gradientType'],
-			'gradientLocation1' => $attr['gradientLocationMobile1'],
-			'gradientLocation2' => $attr['gradientLocationMobile2'],
-			'gradientAngle'     => $attr['gradientAngleMobile'],
+			'gradientLocation1' => is_numeric( $attr['gradientLocationMobile1'] ) ? $attr['gradientLocationMobile1'] : $bg_obj_tablet['gradientLocation1'],
+			'gradientLocation2' => is_numeric( $attr['gradientLocationMobile2'] ) ? $attr['gradientLocationMobile2'] : $bg_obj_tablet['gradientLocation2'],
+			'gradientAngle'     => is_numeric( $attr['gradientAngleMobile'] ) ? $attr['gradientAngleMobile'] : $bg_obj_tablet['gradientAngle'],
 			'selectGradient'    => $attr['selectGradient'],
 		);
 	
