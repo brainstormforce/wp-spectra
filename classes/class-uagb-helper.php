@@ -320,10 +320,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @since 1.8.1
 		 * @param  string $icon Decoded fontawesome json file data.
-		 * @param  string $aria_hidden attributes.
-		 * @param  string $focussable attributes.
 		 */
-		public static function render_svg_html( $icon, $aria_hidden = '', $focussable = '' ) {
+		public static function render_svg_html( $icon ) {
 			$icon = sanitize_text_field( esc_attr( $icon ) );
 
 			$json = self::backend_load_font_awesome_icons();
@@ -352,18 +350,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			if ( $path && $view ) {
 				?>
-				<svg 
-					xmlns="https://www.w3.org/2000/svg" 
-					viewBox= "<?php echo esc_attr( $view ); ?>"
-					<?php if ( ! empty( $aria_hidden ) ) : ?>
-						aria-hidden="<?php echo esc_attr( $aria_hidden ); ?>"
-					<?php endif; ?>
-					<?php if ( ! empty( $focussable ) ) : ?>
-						focusable="<?php echo esc_attr( $focussable ); ?>"
-					<?php endif; ?>
-				>
-					<path d="<?php echo esc_attr( $path ); ?>"></path>
-				</svg>
+				<svg xmlns="https://www.w3.org/2000/svg" viewBox= "<?php echo esc_attr( $view ); ?>"><path d="<?php echo esc_attr( $path ); ?>"></path></svg>
 				<?php
 			}
 		}
