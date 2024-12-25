@@ -17,6 +17,23 @@ $paddingLeftTablet  = isset( $attr['paddingLeftTablet'] ) ? $attr['paddingLeftTa
 $paddingRightTablet = isset( $attr['paddingRightTablet'] ) ? $attr['paddingRightTablet'] : $attr['contentPadding'];
 $paddingLeft        = isset( $attr['paddingLeft'] ) ? $attr['paddingLeft'] : $attr['contentPadding'];
 $paddingRight       = isset( $attr['paddingRight'] ) ? $attr['paddingRight'] : $attr['contentPadding'];
+$imageRatio         = isset( $attr['imageRatio'] ) ? $attr['imageRatio'] : '0-0';
+$height_ratio       = 0;
+$width_ratio        = 0;
+if ( 'custom' !== $imageRatio ) {
+	// Separate the value using the hyphen (-) as the delimiter.
+	$ratio_parts = explode( '-', $imageRatio );
+	// $ratio_parts will now be an array with two elements.
+	$height_ratio = $ratio_parts[0];
+	$width_ratio  = $ratio_parts[1];
+}
+$imageRatioWidthDesktop  = isset( $attr['imageRatioWidthDesktop'] ) ? $attr['imageRatioWidthDesktop'] : $width_ratio;
+$imageRatioWidthTablet   = isset( $attr['imageRatioWidthTablet'] ) ? $attr['imageRatioWidthTablet'] : 1;
+$imageRatioWidthMobile   = isset( $attr['imageRatioWidthMobile'] ) ? $attr['imageRatioWidthMobile'] : 1;
+$imageRatioHeightDesktop = isset( $attr['imageRatioHeightDesktop'] ) ? $attr['imageRatioHeightDesktop'] : $height_ratio;
+$imageRatioHeightTablet  = isset( $attr['imageRatioHeightTablet'] ) ? $attr['imageRatioHeightTablet'] : 1;
+$imageRatioHeightMobile  = isset( $attr['imageRatioHeightMobile'] ) ? $attr['imageRatioHeightMobile'] : 1;
+
 
 $selectors = UAGB_Block_Helper::get_post_selectors( $attr );
 // Pagination CSS.
@@ -124,11 +141,21 @@ $selectors['.wp-block-uagb-post-grid .uag-post-grid-wrapper'] = array(
 	'justify-content' => $attr['wrapperAlignPosition'],
 );
 
+$selectors['.uagb-has-item-ratio .uagb-post__thumbnail img'] = array(
+	'aspect-ratio' => $imageRatioWidthDesktop . '/' . $imageRatioHeightDesktop,
+	'object-fit'   => $attr['objectFit'],
+);
+
 $t_selectors['.wp-block-uagb-post-grid .uag-post-grid-wrapper'] = array(
 	'padding-top'    => UAGB_Helper::get_css_value( $attr['wrapperTopPaddingTablet'], $attr['wrapperPaddingUnitTablet'] ),
 	'padding-right'  => UAGB_Helper::get_css_value( $attr['wrapperRightPaddingTablet'], $attr['wrapperPaddingUnitTablet'] ),
 	'padding-bottom' => UAGB_Helper::get_css_value( $attr['wrapperBottomPaddingTablet'], $attr['wrapperPaddingUnitTablet'] ),
 	'padding-left'   => UAGB_Helper::get_css_value( $attr['wrapperLeftPaddingTablet'], $attr['wrapperPaddingUnitTablet'] ),
+);
+
+$t_selectors['.uagb-has-item-ratio .uagb-post__thumbnail img'] = array(
+	'aspect-ratio' => $imageRatioWidthTablet . '/' . $imageRatioHeightTablet,
+	'object-fit'   => $attr['objectFit'],
 );
 
 $m_selectors['.wp-block-uagb-post-grid .uag-post-grid-wrapper'] = array(
@@ -137,6 +164,11 @@ $m_selectors['.wp-block-uagb-post-grid .uag-post-grid-wrapper'] = array(
 	'padding-bottom' => UAGB_Helper::get_css_value( $attr['wrapperBottomPaddingMobile'], $attr['wrapperPaddingUnitMobile'] ),
 	'padding-left'   => UAGB_Helper::get_css_value( $attr['wrapperLeftPaddingMobile'], $attr['wrapperPaddingUnitMobile'] ),
 	'width'          => 'unset',
+);
+
+$m_selectors['.uagb-has-item-ratio .uagb-post__thumbnail img'] = array(
+	'aspect-ratio' => $imageRatioWidthMobile . '/' . $imageRatioHeightMobile,
+	'object-fit'   => $attr['objectFit'],
 );
 
 if ( $attr['isLeftToRightLayout'] ) {

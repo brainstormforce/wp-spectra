@@ -257,6 +257,13 @@ function styling( attributes, clientId, deviceType ) {
 		dotsMarginTopTablet,
 		dotsMarginTopMobile,
 		dotsMarginTopUnit,
+		imageRatioWidthDesktop,
+		imageRatioWidthTablet,
+		imageRatioWidthMobile,
+		imageRatioHeightDesktop,
+		imageRatioHeightTablet,
+		imageRatioHeightMobile,
+		objectFit
 	} = attributes;
 	const previewType = deviceType.toLowerCase();
 	const overlayOpacityFallback = getFallbackNumber( overlayOpacity, 'overlayOpacity', blockName );
@@ -426,6 +433,10 @@ function styling( attributes, clientId, deviceType ) {
 			'flex-direction': 'column',
 			'justify-content': wrapperAlignPosition,
 		},
+		'.uagb-has-item-ratio .uagb-post__thumbnail img': {
+			'aspect-ratio': imageRatioWidthDesktop + '/' + imageRatioHeightDesktop,
+			'object-fit': objectFit,
+		}
 	};
 
 	if ( 'left' === paginationAlignment ) {
@@ -763,6 +774,10 @@ function styling( attributes, clientId, deviceType ) {
 			'padding-left': generateCSSUnit( wrapperLeftPaddingMobile, wrapperPaddingUnitMobile ),
 			'width': 'unset',
 		},
+		'.uagb-has-item-ratio .uagb-post__thumbnail img': {
+			'aspect-ratio': imageRatioWidthMobile + '/' + imageRatioHeightMobile,
+			'object-fit': objectFit,
+		}
 	};
 
 	if( useSeparateBoxShadows ){
@@ -891,6 +906,10 @@ function styling( attributes, clientId, deviceType ) {
 			'padding-bottom': generateCSSUnit( wrapperBottomPaddingTablet, wrapperPaddingUnitTablet ),
 			'padding-left': generateCSSUnit( wrapperLeftPaddingTablet, wrapperPaddingUnitTablet ),
 		},
+		'.uagb-has-item-ratio .uagb-post__thumbnail img': {
+			'aspect-ratio': imageRatioWidthTablet + '/' + imageRatioHeightTablet,
+			'object-fit': objectFit,
+		}
 	};
 
 	if ( 'infinite' === paginationType ) {

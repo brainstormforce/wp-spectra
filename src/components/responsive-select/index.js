@@ -30,7 +30,8 @@ const ResponsiveSelectControl = ( props ) => {
 		setPanelNameForHook( getPanelIdFromRef( panelRef ) );
 	}, [ blockNameForHook ] );
 
-	const { label, data, setAttributes, options, help = false } = props;
+	const { label, data, setAttributes, options, help = false, onChange = null } = props;
+	// OnChange function will accept 3 values: The new dropdown value, the data object, and the device type.
 
 	const responsive = true;
 
@@ -40,21 +41,21 @@ const ResponsiveSelectControl = ( props ) => {
 	output.Desktop = (
 		<SelectControl
 			value={ data.desktop.value }
-			onChange={ ( value ) => setAttributes( { [ data.desktop.label ]: value } ) }
+			onChange={ ( value ) => onChange ? onChange( value, data, 'desktop' ) : setAttributes( { [ data.desktop.label ]: value } ) }
 			options={ options.desktop }
 		/>
 	);
 	output.Tablet = (
 		<SelectControl
 			value={ data.tablet.value }
-			onChange={ ( value ) => setAttributes( { [ data.tablet.label ]: value } ) }
+			onChange={ ( value ) => onChange ? onChange( value, data, 'tablet' ) : setAttributes( { [ data.tablet.label ]: value } ) }
 			options={ options.tablet || options.desktop }
 		/>
 	);
 	output.Mobile = (
 		<SelectControl
 			value={ data.mobile.value }
-			onChange={ ( value ) => setAttributes( { [ data.mobile.label ]: value } ) }
+			onChange={ ( value ) => onChange ? onChange( value, data, 'mobile' ) : setAttributes( { [ data.mobile.label ]: value } ) }
 			options={ options.mobile || options.desktop }
 		/>
 	);
