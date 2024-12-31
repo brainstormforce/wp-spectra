@@ -221,6 +221,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Container - Resolved an issue wherein the container children width would not work as intended for slider and carousel content.
 * Fix: Global - Resolved an issue wherein assets would not load for single page templates when using FSE themes.
 * Fix: Lottie - Resolved an issue where Lottie animations could not be replaced.
+* Fix: Info Box - Resolved an issue wherein the button would take full width with gutenberg activated.
 * Fix: Icon - Resolved an issue wherein the responsive condition and z-index would not work as intended.
 
 ### 2.19.0 - Monday, 30th December 2024 ###
