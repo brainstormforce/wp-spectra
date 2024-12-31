@@ -30,7 +30,6 @@ const Render = ( props ) => {
 		imgPosition,
 		imgTagHeight,
 		imgTagWidth,
-		relString
 	} = attributes;
 
 	let urlCheck = '';
@@ -104,7 +103,7 @@ const Render = ( props ) => {
 			{ 'text' === urlType && (
 				<>
 					{ '' !== url ? (
-						<a href={ url } target={ target } className="uagb-step-link" rel={ relString }>
+						<a href={ url } target={ target } className="uagb-step-link" rel="noopener noreferrer">
 							<span className="uagb-step-link-text">{ urlText }</span>
 						</a>
 					) : (

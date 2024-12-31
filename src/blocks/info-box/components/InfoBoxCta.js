@@ -6,7 +6,7 @@ const InfoBoxCta = ( props ) => {
 	const ctaBtnClass = 'uagb-infobox-cta-link uagb-ifb-cta-button';
 
 	let target = '_self';
-	const rel = attributes.relString;
+	const rel = 'noopener noreferrer';
 	if ( attributes.ctaTarget ) {
 		target = '_blank';
 	}

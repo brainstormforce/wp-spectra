@@ -37,14 +37,6 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
-	relAttribute:{
-		type: 'array',
-		default: [ 'noopener', 'noreferrer' ],
-	},
-	relString: {
-		type: 'string',
-		default: 'noopener noreferrer',
-	},
 	image: {
 		type: 'object',
 		default: {

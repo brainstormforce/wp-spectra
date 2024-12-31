@@ -31,7 +31,6 @@ const Render = ( props ) => {
 		fromParentIcon,
 		imageSizeChild,
 		imgTagHeight,
-		relString,
 	} = attributes;
 
 	const defaultedAlt = image && image?.alt ? image?.alt : '';
@@ -80,7 +79,7 @@ const Render = ( props ) => {
 			{ disableLink && (
 				<a
 					target={ targetVal }
-					rel={ relString }
+					rel="noopener noreferrer"
 					aria-label={ label.replace( /(<([^>]+)>)/gi, '' ) }
 					href={ linkUrl }
 				>

@@ -143,6 +143,9 @@ const Settings = ( props ) => {
 		separatorSpaceTablet,
 		separatorSpaceMobile,
 		separatorSpaceType,
+		enableCollapsableList,
+		collapsibleListDepth,
+		initiallyCollapseList,
 	} = attributes;
 
 	const getGeneralPanelBody = () => {
@@ -448,7 +451,10 @@ const Settings = ( props ) => {
 			</UAGAdvancedPanelBody>
 		);
 	};
-
+	const setColumns = () => {
+		setAttributes( { enableCollapsableList: ! enableCollapsableList } )
+		setAttributes( { tColumnsDesktop: 1, tColumnsTablet: 1, tColumnsMobile: 1 } );
+	};
 	const getContent = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
@@ -535,27 +541,29 @@ const Settings = ( props ) => {
 					] }
 					showIcons={ true }
 				/>
-				<ResponsiveSlider
-					label={ __( 'Columns', 'ultimate-addons-for-gutenberg' ) }
-					data={ {
-						desktop: {
-							value: tColumnsDesktop,
-							label: 'tColumnsDesktop',
-						},
-						tablet: {
-							value: tColumnsTablet,
-							label: 'tColumnsTablet',
-						},
-						mobile: {
-							value: tColumnsMobile,
-							label: 'tColumnsMobile',
-						},
-					} }
-					min={ 1 }
-					max={ 10 }
-					displayUnit={ false }
-					setAttributes={ setAttributes }
-				/>
+				{ ! enableCollapsableList && (
+					<ResponsiveSlider
+						label={ __( 'Columns', 'ultimate-addons-for-gutenberg' ) }
+						data={ {
+							desktop: {
+								value: tColumnsDesktop,
+								label: 'tColumnsDesktop',
+							},
+							tablet: {
+								value: tColumnsTablet,
+								label: 'tColumnsTablet',
+							},
+							mobile: {
+								value: tColumnsMobile,
+								label: 'tColumnsMobile',
+							},
+						} }
+						min={ 1 }
+						max={ 10 }
+						displayUnit={ false }
+						setAttributes={ setAttributes }
+					/>
+				) }
 				<ResponsiveSlider
 					label={ __( 'Gap Between Lists', 'ultimate-addons-for-gutenberg' ) }
 					data={ {
@@ -663,6 +671,7 @@ const Settings = ( props ) => {
 					onChange={ () =>
 						setAttributes( {
 							disableBullets: ! disableBullets,
+							enableCollapsableList: false,
 						} )
 					}
 				/>
@@ -764,6 +773,40 @@ const Settings = ( props ) => {
 						},
 					] }
 				/>
+				
+				{ ! disableBullets && ( 
+					<ToggleControl
+						label={ __( 'Make List Collapsible', 'ultimate-addons-for-gutenberg' ) }
+						checked={ enableCollapsableList }
+						onChange={ setColumns }
+						help={ __( 'The collapsable functionality will only work in Front End.', 'ultimate-addons-for-gutenberg' ) }
+					/>
+				) }
+				{ enableCollapsableList && (
+					<>
+						<Range
+							label={ __( 'Collapsible Level', 'ultimate-addons-for-gutenberg' ) }
+							setAttributes={ setAttributes }
+							value={ collapsibleListDepth }
+							data={ {
+								value: collapsibleListDepth,
+								label: 'collapsibleListDepth',
+							} }
+							min={ 1 }
+							max={ 5 }
+							displayUnit={ false }
+							help={ __( 'For example, if the depth is set to 1, only first-level headings that have nestable content will display a collapsible icon. As the depth increases, additional nested levels will become collapsible.', 'ultimate-addons-for-gutenberg' ) }
+						/>
+
+						<ToggleControl
+							label={ __( 'Initially Collapsed', 'ultimate-addons-for-gutenberg' ) }
+							checked={ initiallyCollapseList }
+							onChange={ () => setAttributes( { initiallyCollapseList: ! initiallyCollapseList } ) }
+							help={ __( 'The collapsable functionality will only work in Front End.', 'ultimate-addons-for-gutenberg' ) }
+						/>
+					</>
+				) }
+				
 			</UAGAdvancedPanelBody>
 		);
 	};

@@ -72,6 +72,11 @@
 			/* Gutenberg Toggle Help CSS*/
 			.components-base-control__help {
 				margin-top: 10px;
+
+				/* Spacing issue in toggle control help text with 6.7 compatibiity */
+				.components-toggle-control__help {
+					margin: 0;
+				}
 			}
 
 			/* Add a border top and bottom of responsive condition */
@@ -650,6 +655,10 @@ button.components-button.uagb-review-select-btn.is-secondary {
 			color: #1e1e1e;
 			background-color: $spectra-color-plain-background;
 		}
+
+		&.is-pressed {
+			background-color: $spectra-color-plain-background;
+		}
 	}
 }
 
@@ -871,10 +880,6 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	.spectra-multi-select__menu .spectra-multi-select__option {
 		font-size: 13px !important;
 	}
-}
-
-.spectra-multi-select__value-container--is-multi {
-	position: static !important;
 }
 
 .editor-styles-wrapper .block-editor-block-list__block.wp-block[data-type*="uagb"] {

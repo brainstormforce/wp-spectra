@@ -24,7 +24,6 @@ export default function Save( props ) {
 		showBtnIcon,
 		openModalAs,
 		modalPosition,
-		relString,
 		inheritFromTheme,
 		buttonType,
 	} = props.attributes;
@@ -80,7 +79,7 @@ export default function Save( props ) {
 				href={ '#' }
 				onClick={ 'return false;' }
 				target="_self"
-				rel={ relString }
+				rel="noopener noreferrer"
 				style={ borderStyle }
 			>
 				<span className="uagb-modal-content-wrapper">

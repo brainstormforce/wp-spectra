@@ -1,3 +1,9 @@
+v1.0.14 - 28-November-2024
+- Fix: Removed garbage CSS conflicting with other plugins.
+
+v1.0.13 - 11-November-2024
+- Fix: Resolved an issue where the media library button text was incorrectly displayed in certain cases.
+
 v1.0.12 - 24-October-2024
 - Improvement: Removed the "Free Images" option from the WordPress media library where videos are expected.
 

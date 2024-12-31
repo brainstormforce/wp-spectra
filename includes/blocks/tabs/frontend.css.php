@@ -40,6 +40,11 @@ $selectors = array(
 		),
 		$overall_border_css
 	),
+	' .uagb-tabs__panel .uagb-tab .uagb-tabs-list'         => array_merge(
+		array(
+			'justify-content' => $attr['titleAlign'],
+		)
+	),
 	'.uagb-tabs__wrap ul.uagb-tabs__panel li.uagb-tab a '  => array(
 		'padding-top'    => UAGB_Helper::get_css_value( $tab_title_top_padding, $attr['tabTitlePaddingUnit'] ),
 		'padding-bottom' => UAGB_Helper::get_css_value( $tab_title_bottom_padding, $attr['tabTitlePaddingUnit'] ),

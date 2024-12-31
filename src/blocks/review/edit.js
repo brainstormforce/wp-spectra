@@ -64,7 +64,6 @@ const ReviewComponent = ( props ) => {
 			enableDescription,
 			enableImage,
 			bookAuthorName,
-			relAttribute,
 			courseMode,
 			repeatCount,
 			repeatFrequency,
@@ -222,10 +221,6 @@ const ReviewComponent = ( props ) => {
 
 		setAttributes( { schema: JSON.stringify( jsonData ) } );
 	};
-
-	useEffect( () => {
-		setAttributes( { relString: relAttribute.join( ' ' ) } );
-	}, [relAttribute] )
 
 	useEffect( () => {
 

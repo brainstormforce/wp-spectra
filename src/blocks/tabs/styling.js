@@ -239,6 +239,9 @@ function styling( attributes, clientId, name, deviceType ) {
 			'margin-right': generateCSSUnit( tabTitleRightMargin, tabTitleMarginUnit ),
 			'margin-bottom': generateCSSUnit( tabTitleBottomMargin, tabTitleMarginUnit ),
 		},
+		' > .uagb-tabs__panel .uagb-tab .uagb-tabs-list': {
+			'justify-content': titleAlign,
+		},
 		' > .uagb-tabs__panel .uagb-tab a': {
 			'padding-top': generateCSSUnit( tabTitleTopPadding, tabTitlePaddingUnit ),
 			'padding-bottom': generateCSSUnit( tabTitleBottomPadding, tabTitlePaddingUnit ),

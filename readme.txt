@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
-Tested up to: 6.6
-Stable tag: 2.17.0
+Tested up to: 6.7
+Stable tag: 2.19.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,6 +16,8 @@ Power-up Gutenberg with advanced blocks for faster website creation. Build your 
 <strong>SPECTRA WEBSITE BUILDER - BEST PLUGIN TO EXTEND THE WORDPRESS BLOCK EDITOR WITH PAGE EDITING FEATURES, 30+ FREE CUSTOMIZABLE BLOCKS, COMING SOON MODE, POPUP BUILDER</strong>
 
 ★★★★★
+
+[youtube https://www.youtube.com/watch?v=-Ksf984Tcgw&list=PL1kzJGWGPrW_tpwr6g4i_wiGegpq7qibx]
 
 Most helpful links
 <ul>
@@ -161,9 +163,9 @@ We understand the need for a quality product backed by dedicated support that ca
 <strong>CONNECT WITH OUR TEAM AND COMMUNITY 🌐</strong>
 
 <ul>
-	<li><a href="https://www.facebook.com/groups/wpspectra" target="_blank" rel="">https://www.facebook.com/groups/wpspectra</a></li>
-	<li><a href="https://www.facebook.com/wpspectra" target="_blank" rel="">https://www.facebook.com/wpspectra</a></li>
-	<li><a href="https://twitter.com/wpspectra" target="_blank" rel="">https://twitter.com/wpspectra</a></li>
+	<li>Facebook Group: <a href="https://www.facebook.com/groups/wpastra" target="_blank" rel="">WordPress Web Creators by Astra</a></li>
+	<li>Facebook: <a href="https://www.facebook.com/wpspectra" target="_blank" rel="">Spectra</a></li>
+	<li>Twitter / X: <a href="https://twitter.com/wpspectra" target="_blank" rel="">Spectra</a></li>
 </ul>
 
 <strong>WANT TO CONTRIBUTE TO THE PLUGIN? 🙋</strong>
@@ -216,43 +218,42 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
-* Improvements: Post Grid / Carousel Block - Added a responsive Image Ratio setting with a custom ratio option.
-* Fix: Container - Resolved an issue wherein sticky containers would not work as intended when resizing the window.
 * Fix: Container - Resolved an issue wherein the container children width would not work as intended for slider and carousel content.
 * Fix: Global - Resolved an issue wherein assets would not load for single page templates when using FSE themes.
 * Fix: Lottie - Resolved an issue where Lottie animations could not be replaced.
 
-= 2.17.0 - Thursday, 31st October 2024 =
-* Feature: Added a free image search to the image media pickers.
+= 2.19.0 - Monday, 30th December 2024 =
 * Improvement: Global - Added responsive support for gradient background settings.
-* Improvement: Global - Added rel attribute support for anchor tag elements.
-* Fix: Container - Resolved an issue wherein the Core Image block's alignment would not work as expected when inside a Container.
-* Fix: Taxonomy List - Resolved an issue wherein plural forms would be incorrectly translated.
-* Fix: Custom CSS - Resolved an issue wherein the custom CSS would get special characters converted to unicode.
+* Improvements: Post Grid / Carousel Block - Added a responsive Image Ratio setting with a custom ratio option.
+* Fix: Container - Resolved an issue wherein sticky containers would not work as intended when resizing the window.
+* Fix: Image - Resolved an issue wherein the image would overflow in the responsive editor.
+* Fix: Image Gallery - Removed the automatic maximum limit for galleries with less than 8 images.
+* Fix: Tabs - Resolved an issue wherein the tabs in vertical layouts were only clickable on the title.
 * Fix: Global - Resolved an issue wherein the translated setting panels in some Spectra blocks would cause some Spectra Pro features in those blocks to not work as expected.
 * Fix: Global - Resolved an issue causing a php error for str_replace() for font loading.
 * Fix: Global - Resolved an issue wherein the self-hosted Google Fonts would not work as intended on the multisite's first sub-site setup.
 * Fix: Global - Resolved an issue in which some static and dynamic javascript strings were not translatable.
+* Fix: Global - Resolved an issue where migration buttons were not clickable, preventing the migration process from running as expected.
 
-= 2.16.2 - Wednesday, 23rd October 2024 =
-* Updated the AI Assistant and Design Kit Libraries.
+= 2.18.0 - Wednesday, 11th December 2024 =
+* Improvement: Table Of Contents - Added a setting to enable collapsible list items.
+* Improvement: AI Assistant - Updated the AI Assistant to be aware of the saved page content.
+* Fix: Info Box - Resolved an issue wherein the overall alignment is not supported in RTL mode.
+* Fix: Image Gallery - Resolved an issue wherein the "Tiled" layout would not allow 2 or 3 columns.
+* Fix: Taxonomy List - Resolved an issue wherein plural forms would be incorrectly translated.
+* Fix: FSE - Corrected the query parameter in `get_block_templates()` function to properly handle template parts using the `slug__in` argument.
+* Fix: Global - Resolved an issue wherein the custom CSS would get special characters converted to unicode.
+* Fix: Global - Resolved an issue that would sometimes show a PHP warning for the font loader.
 
-= 2.16.1 - Friday, 11th October 2024 =
-* Fix: Admin - Resolved an issue wherein notices would be hidden on admin screens other than the popup builder screen.
-* Fix: Design Library - Added a cleanup for any temporary `ast-block-template_data` autoload options that remained in the database.
+= 2.17.0 - Monday, 25th November 2024 =
+* Feature: Added a free image search to the image media pickers.
+* Improvement: Instagram - Switched the Spectra Pro Instagram account linking to use business accounts.
+* Fix: Global - Resolved an issue wherein re-activating Spectra would always redirect to the Spectra dashboard.
+* Fix: Global - Resolved an issue wherein the editor strings would not be translatable.
+* Fix: Global - Corrected the translation loading timing to ensure translations load at the proper point in time.
 
-= 2.16.0 - Wednesday, 9th October 2024 =
-* Improvement: Tabs - Enhanced accessibility in the tabs and improved the content accessibility.
-* Improvement: Global - Added a placeholder for inherited values in all spacing controls.
-* Fix: Container - Resolved an issue wherein the sticky container would not work as expected with the image gallery of the carousel type.
-* Fix: Container - Resolved an issue wherein sticky containers would not work as intended when margins were set for them.
-* Fix: Buttons - Resolved an issue wherein the button sizes would not work as expected in the editor responsive views.
-* Fix: Global - Resolved an issue wherein assets would not load for custom taxonomy templates when using Full Site Editing.
-* Fix: Global - Resolved an issue wherein the CSS would not load for Spectra blocks in custom templates for specific products using Full Site Editing.
-
-= 2.15.3 - Wednesday, 18th September 2024 =
-* Fix: Global - Resolved an issue causing the editor to freeze when the Info box and Separator blocks were used in the sync pattern.
-* Fix: Global - Resolved an issue wherein the Design Library would alter the appearance List and Heading blocks in the editor.
+= 2.16.5 - Friday, 15th November 2024 =
+* This update addressed a security bug. Props to zer0gh0st (D.Sim) for privately reporting it to our team. Please make sure you are using the latest version on your website. 
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 

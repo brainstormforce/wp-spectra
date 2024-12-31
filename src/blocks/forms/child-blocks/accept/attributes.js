@@ -35,13 +35,5 @@ const attributes = {
 		type: 'boolean',
 		default: true,
 	},
-	relAttribute:{
-		type: 'array',
-		default: [ 'noopener', 'noreferrer' ],
-	},
-	relString: {
-		type: 'string',
-		default: 'noopener noreferrer',
-	},
 };
 export default attributes;

@@ -356,17 +356,6 @@ const Settings = ( props ) => {
 		if ( 'bar-outside' === captionDisplayType && ( 'tiled' === feedLayout || 'grid' === feedLayout ) ) {
 			setAttributes( { captionDisplayType: 'bar-inside' } );
 		}
-		if ( 'tiled' === feedLayout ) {
-			if ( columnsDesk < 4 ) {
-				setAttributes( { columnsDesk: 4 } );
-			}
-			if ( columnsTab < 4 ) {
-				setAttributes( { columnsTab: 4 } );
-			}
-			if ( columnsMob < 4 ) {
-				setAttributes( { columnsMob: 4 } );
-			}
-		}
 	}, [ feedLayout ] );
 
 	// Update Caption Visibility and Position when Bar is Outside.
@@ -800,12 +789,8 @@ const Settings = ( props ) => {
 						label: 'columnsMob',
 					},
 				} }
-				min={ 'tiled' === feedLayout ? 4 : 1 }
-				max={
-					'tiled' === feedLayout && Math.min( MAX_IMAGE_COLUMNS, mediaGallery.length ) < 4
-						? 4
-						: Math.min( MAX_IMAGE_COLUMNS, mediaGallery.length )
-				}
+				min={ 1 }
+				max={ 'carousel' === feedLayout ? Math.min( MAX_IMAGE_COLUMNS, mediaGallery.length ) : MAX_IMAGE_COLUMNS }
 				displayUnit={ false }
 				setAttributes={ setAttributes }
 			/>

@@ -691,3 +691,26 @@
 .uagb-container-has-children.wp-block-uagb-container > .uagb-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
 	width: 100%;
 }
+
+//Vertical Styles
+.uagb-tabs__wrap.uagb-tabs__vstyle6-desktop,
+.uagb-tabs__wrap.uagb-tabs__vstyle7-desktop,
+.uagb-tabs__wrap.uagb-tabs__vstyle8-desktop,
+.uagb-tabs__wrap.uagb-tabs__vstyle9-desktop,
+.uagb-tabs__wrap.uagb-tabs__vstyle10-desktop,
+.uagb-tabs__wrap.uagb-tabs__vstyle6-tablet,
+.uagb-tabs__wrap.uagb-tabs__vstyle7-tablet,
+.uagb-tabs__wrap.uagb-tabs__vstyle8-tablet,
+.uagb-tabs__wrap.uagb-tabs__vstyle9-tablet,
+.uagb-tabs__wrap.uagb-tabs__vstyle10-tablet,
+.uagb-tabs__wrap.uagb-tabs__vstyle6-mobile,
+.uagb-tabs__wrap.uagb-tabs__vstyle7-mobile,
+.uagb-tabs__wrap.uagb-tabs__vstyle8-mobile,
+.uagb-tabs__wrap.uagb-tabs__vstyle9-mobile,
+.uagb-tabs__wrap.uagb-tabs__vstyle10-mobile {
+
+	.uagb-tabs-list {
+		width: -webkit-fill-available;
+		justify-content: center;
+	}
+}

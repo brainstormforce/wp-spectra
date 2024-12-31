@@ -19,7 +19,6 @@ import UAGTextControl from '@Components/text-control';
 import TypographyControl from '@Components/typography';
 import UAGTabsControl from '@Components/tabs';
 import MultiButtonsControl from '@Components/multi-buttons-control';
-import UAGMultiSelectControl from '@Components/multi-select-control';
 import BoxShadowControl from '@Components/box-shadow';
 import ResponsiveSlider from '@Components/responsive-slider';
 import GradientSettings from '@Components/gradient-settings';
@@ -158,7 +157,6 @@ const Settings = ( props ) => {
 		showIcon,
 		inheritFromTheme,
 		buttonType,
-		relAttribute,
 	} = attributes;
 
 	const currentTheme = uagb_blocks_info.current_theme;
@@ -312,67 +310,11 @@ const Settings = ( props ) => {
 						label: 'link',
 					} }
 				/>
-
 				<ToggleControl
 					label={ __( 'Open in new window', 'ultimate-addons-for-gutenberg' ) }
 					checked={ opensInNewTab }
 					onChange={ () => setAttributes( { opensInNewTab: ! opensInNewTab } ) }
 				/>
-				<UAGMultiSelectControl
-							label={ __( 'Rel Attribute', 'ultimate-addons-for-gutenberg' ) }
-							options={ [
-								{
-									value: 'nofollow',
-									label: __( 'nofollow', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									value: 'noreferrer',
-									label: __( 'noreferrer', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									value: 'external',
-									label: __( 'external', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									value: 'alternate',
-									label: __( 'alternate', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									value: 'author',
-									label: __( 'author', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									value: 'bookmark',
-									label: __( 'bookmark', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									value: 'license',
-									label: __( 'license', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									value: 'next',
-									label: __( 'next', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									value: 'prev',
-									label: __( 'prev', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									value: 'tag',
-									label: __( 'tag', 'ultimate-addons-for-gutenberg' ),
-								},
-								{
-									value: 'stylesheet',
-									label: __( 'stylesheet', 'ultimate-addons-for-gutenberg' ),
-								},
-							] }
-							value={ relAttribute }
-							data={ {
-								value: relAttribute,
-								label: 'relAttribute',
-							} }
-							setAttributes={ setAttributes }
-						/>
 				{ '' !== icon && (
 					<ToggleControl
 						label={ __( 'Remove Text', 'ultimate-addons-for-gutenberg' ) }

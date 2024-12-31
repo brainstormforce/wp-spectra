@@ -24,91 +24,6 @@ const defaultProps = {
 	setAttributes: () => {},
 };
 
-// Styles for the React Select Component.
-const customSelectStyles = {
-	container: ( provided ) => ( {
-		...provided,
-		width: '100%',
-		boxSizing: 'content-box',
-		padding: '0 1px',
-		marginTop: '10px',
-	} ),
-	control: ( provided ) => ( {
-		...provided,
-		border: '1px solid #e6e7e9',
-		boxShadow: 'none',
-		minHeight: '30px',
-		borderRadius: '3px',
-		alignItems: 'flex-start', 
-	} ),
-	valueContainer: ( provided ) => ( {
-		...provided,
-		padding: '0px 8px',
-		paddingTop: '1px',
-	} ),
-	input: ( provided ) => ( {
-		...provided,
-		height: '30px',
-		padding: 0,
-		margin: 0,
-	} ),
-	placeholder: ( provided ) => ( {
-		...provided,
-		color: '#50575e',
-		fontSize: '14px',
-		margin: 0,
-	} ),
-	singleValue: ( provided ) => ( {
-		...provided,
-		color: '#50575e',
-		top: '50%',
-		transform: 'translateY(-50%);',
-	} ),
-	multiValue: ( provided ) => ( {
-		...provided,
-		position: 'relative',
-		left: '-6px',
-	} ),
-	multiValueLabel: ( provided ) => ( {
-		...provided,
-		backgroundColor: '#e6e7e9',
-		color: '#50575e',
-	} ),
-	multiValueRemove: ( provided ) => ( {
-		...provided,
-		'cursor': 'pointer',
-		'&:hover': {
-			backgroundColor: '#e6e7e9',
-			svg: {
-				fill: '#dc2626',
-			},
-		},
-	} ),
-	indicatorsContainer: ( provided ) => ( {
-		...provided,
-		height: '30px',
-	} ),
-	indicatorSeparator: ( provided ) => ( {
-		...provided,
-		display: 'none',
-	} ),
-	dropdownIndicator: ( provided ) => ( {
-		...provided,
-		color: '#50575e',
-		padding: '0 6px',
-	} ),
-	menu: ( provided ) => ( {
-		...provided,
-		color: '#50575e',
-		zIndex: 9999999,
-	} ),
-	menuPortal: ( provided ) => ( {
-		...provided,
-		zIndex: 9999999,
-	} ),
-
-}
-
 export default function UAGMultiSelectControl( props ) {
 	const {
 		label,
@@ -149,11 +64,9 @@ export default function UAGMultiSelectControl( props ) {
 	return (
 		<div ref={ panelRef } className="components-base-control">
 			{ controlBeforeDomElement }
-			{ label && <span className="uag-control-label">{ label }</span> }
 			<Select
-			    styles={ customSelectStyles }
 				options={ allOptions }
-				defaultValue={ allOptionsFlat.filter( ( item ) => data?.value?.includes( item.value ) ) }
+				defaultValue={ allOptionsFlat.filter( ( item ) => data.value.includes( item.value ) ) }
 				onChange={ ( option ) =>
 					setAttributes( {
 						[ data.label ]: option.reduce( ( acc, current ) => {

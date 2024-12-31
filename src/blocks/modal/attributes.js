@@ -1189,14 +1189,6 @@ const attributes = {
 			styleType: 'btn-hbackground-type',
 		},
 	},
-	relAttribute:{
-		type: 'array',
-		default: [ 'noopener', 'noreferrer' ],
-	},
-	relString: {
-		type: 'string',
-		default: 'noopener noreferrer',
-	},
 };
 
 export default attributes;

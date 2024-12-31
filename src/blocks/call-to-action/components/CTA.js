@@ -6,6 +6,7 @@ const CTA = ( props ) => {
 	const { attributes, setAttributes } = props;
 
 	let target = '_self';
+	const rel = 'noopener noreferrer';
 	if ( attributes.ctaTarget ) {
 		target = '_blank';
 	}
@@ -49,7 +50,7 @@ const CTA = ( props ) => {
 								: null
 						) }
 						target={ target }
-						rel={ attributes.relString }
+						rel={ rel }
 					>
 						{ attributes.ctaIconPosition === 'before' && ctaIconOutput }
 						<span className="uagb-cta__link-content-inner">

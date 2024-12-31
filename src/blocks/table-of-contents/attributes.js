@@ -992,6 +992,18 @@ const attributes = {
 		type: 'string',
 		default: 'left',
 	},
+	enableCollapsableList: {
+		type: 'boolean',
+		default: false,
+	},
+	collapsibleListDepth: {
+		type: 'number',
+		default: 5,
+	},
+	initiallyCollapseList: {
+		type: 'boolean',
+		default: false,
+	},
 };
 
 export default attributes;

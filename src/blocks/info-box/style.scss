@@ -322,6 +322,40 @@ a.uagb-infobox-link-wrap {
 	line-height: 0;
 }
 
+html[dir="rtl"] {
+	/* Left/Right of Title */
+	.uagb-infobox-icon-left-title .uagb-ifb-icon-wrap,
+	.uagb-infobox-icon-left .uagb-ifb-icon-wrap {
+		margin-left: 10px;
+		line-height: 0;
+	}
+
+	.uagb-infobox-icon-right-title .uagb-ifb-icon-wrap,
+	.uagb-infobox-icon-right .uagb-ifb-icon-wrap {
+		margin-right: 10px;
+		line-height: 0;
+	}
+
+	.uagb-infobox-left {
+		justify-content: flex-end;
+		text-align: right;
+		-webkit-box-pack: end;
+		-ms-flex-pack: end;
+		-webkit-justify-content: flex-end;
+		-moz-box-pack: end;
+	}
+
+	.uagb-infobox-right {
+		justify-content: flex-start;
+		text-align: left;
+		-webkit-box-pack: start;
+		-ms-flex-pack: start;
+		-webkit-justify-content: flex-start;
+		-moz-box-pack: start;
+	}
+
+}
+
 /* Left/Right */
 .uagb-infobox-icon-left .uagb-ifb-left-right-wrap,
 .uagb-infobox-icon-right .uagb-ifb-left-right-wrap,

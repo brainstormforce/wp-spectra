@@ -101,65 +101,93 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 	const tiledImages = useRef( [] );
 	const tileSizer = useRef( null );
 	const deviceType = useDeviceType();
+	const [ previousDeviceType, setPreviousDeviceType ] = useState( deviceType );
 
 	// Update the required properties when the Gallery is updated.
 	useEffect( () => {
-		// First check if media items selected are less than the column count currently used.
-		if ( mediaGallery.length < columnsDeskFallback ) {
-			setAttributes( { columnsDesk: mediaGallery.length } );
-		}
-		if ( mediaGallery.length < columnsTabFallback ) {
-			setAttributes( { columnsTab: mediaGallery.length } );
-		}
-		if ( mediaGallery.length < columnsMobFallback ) {
-			setAttributes( { columnsMob: mediaGallery.length } );
-		}
-		// Next Check if this is a carousel that needs dots, and set the height of the dots wrapper.
-		if ( mediaGallery && paginateUseDots && feedLayout === 'carousel' ) {
-			if ( 'Desktop' === deviceType ) {
-				setSlickDotHeight(
-					mediaGallery.length > columnsDeskFallback
-						? slickCarousel.current.children[ 0 ].querySelector( '.slick-dots' ).clientHeight
-						: 0
-				);
-			} else if ( 'Tablet' === deviceType ) {
-				setSlickDotHeight(
-					mediaGallery.length > columnsTabFallback
-						? slickCarousel.current.children[ 0 ].querySelector( '.slick-dots' ).clientHeight
-						: 0
-				);
-			} else {
-				setSlickDotHeight(
-					mediaGallery.length > columnsMobFallback
-						? slickCarousel.current.children[ 0 ].querySelector( '.slick-dots' ).clientHeight
-						: 0
-				);
-			}
-		}
-		// Else check if this is tiled and load all images previously focused by the user.
-		else if ( feedLayout === 'tiled' ) {
-			mediaGallery.forEach( ( image ) => {
-				if ( tiledImages.current[ image.id ] !== undefined && tiledImages.current[ image.id ] !== null ) {
-					if (
-						focusListObject[ image.id ] &&
-						! tiledImages.current[ image.id ].classList.contains(
-							'spectra-image-gallery__media-wrapper--focus'
-						)
-					) {
-						tiledImages.current[ image.id ].classList.add( 'spectra-image-gallery__media-wrapper--focus' );
+		// Check if this is a carousel that needs dots, and set the height of the dots wrapper.
+		switch ( feedLayout ) {
+			case 'carousel':
+				// Check if media items selected are less than the column count currently used.
+				if ( mediaGallery?.length < columnsDeskFallback ) {
+					setAttributes( { columnsDesk: mediaGallery.length } );
+				}
+				if ( mediaGallery?.length < columnsTabFallback ) {
+					setAttributes( { columnsTab: mediaGallery.length } );
+				}
+				if ( mediaGallery?.length < columnsMobFallback ) {
+					setAttributes( { columnsMob: mediaGallery.length } );
+				}
+				if ( mediaGallery && paginateUseDots ) {
+					if ( 'Desktop' === deviceType ) {
+						setSlickDotHeight(
+							mediaGallery.length > columnsDeskFallback
+								? slickCarousel.current.children[ 0 ].querySelector( '.slick-dots' ).clientHeight
+								: 0
+						);
+					} else if ( 'Tablet' === deviceType ) {
+						setSlickDotHeight(
+							mediaGallery.length > columnsTabFallback
+								? slickCarousel.current.children[ 0 ].querySelector( '.slick-dots' ).clientHeight
+								: 0
+						);
+					} else {
+						setSlickDotHeight(
+							mediaGallery.length > columnsMobFallback
+								? slickCarousel.current.children[ 0 ].querySelector( '.slick-dots' ).clientHeight
+								: 0
+						);
 					}
 				}
-			} );
+				break;
+			case 'tiled':
+				// Else check if this is tiled and load all images previously focused by the user.
+				mediaGallery.forEach( ( image ) => {
+					if ( tiledImages.current[ image.id ] !== undefined && tiledImages.current[ image.id ] !== null ) {
+						if (
+							focusListObject[ image.id ] &&
+							! tiledImages.current[ image.id ].classList.contains(
+								'spectra-image-gallery__media-wrapper--focus'
+							)
+						) {
+							tiledImages.current[ image.id ].classList.add( 'spectra-image-gallery__media-wrapper--focus' );
+						}
+					}
+				} );
+				break;
 		}
 	}, [ feedLayout, JSON.stringify( mediaGallery ), deviceType ] );
 
 	// Update Tile Sizer Tile when needed.
 	useEffect( () => {
-		if ( 'tiled' === feedLayout ) {
-			tileSizer.current.style.display = 'initial';
-			setAttributes( { tileSize: Math.round( tileSizer?.current.getBoundingClientRect().width ) } );
-			setTileResizeTrigger( false );
+		// If this is not the tiled layout, then abandon ship.
+		if ( 'tiled' !== feedLayout ) {
+			return;
 		}
+		// Set the tile sizer to be in it's initial state for calculations.
+		tileSizer.current.style.display = 'initial';
+		// In API v2, switching from tablet to mobile and vice versa is the only instances where there's a transition.
+		const devicesWithTransition = [ 'Tablet', 'Mobile' ];
+
+		// If the device types are different, and we're coming from one of the above mentioned types to the other, then set the delay.
+		if (
+			previousDeviceType !== deviceType
+			&& devicesWithTransition.includes( previousDeviceType )
+			&& devicesWithTransition.includes( deviceType )
+		) {
+			const calculationTimeout = setTimeout( () => {
+				setAttributes( { tileSize: Math.round( tileSizer?.current.getBoundingClientRect().width ) } );
+				setTileResizeTrigger( false );
+				setPreviousDeviceType( deviceType ); // After this is done, update the previous device type.
+			}, 350 );
+			// Cleanup for the timeout.
+			return () => {
+				clearTimeout( calculationTimeout );
+			};
+		}
+		// Else just run the script as is.
+		setAttributes( { tileSize: Math.round( tileSizer?.current.getBoundingClientRect().width ) } );
+		setTileResizeTrigger( false );
 	}, [
 		tileResizeTrigger,
 		deviceType,
@@ -204,7 +232,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				/* eslint-disable no-undef */
 				imagesLoaded( gallery ).on( 'progress', createSpecialTile );
 				imagesLoaded( gallery ).off( 'progress', createSpecialTile );
-				imagesLoaded( gallery ).on( 'always', () => setTileResizeTrigger( true ) );
+				imagesLoaded( gallery ).on( 'always', () => { setTileResizeTrigger( true ) } );
 				/* eslint-enable no-undef */
 			}, 250 );
 		}
@@ -218,7 +246,7 @@ const ImageGallery = ( { attributes, setAttributes, name } ) => {
 				tileSizer.current.style.display = 'none';
 			}, 1000 );
 		}
-	}, [ tileSize ] );
+	}, [ tileResizeTrigger, tileSize, columnsDesk, columnsTab, columnsMob, deviceType ] );
 
 	// Update the Focused Images based on the Focus List.
 	useEffect( () => {

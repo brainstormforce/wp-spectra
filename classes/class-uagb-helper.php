@@ -155,13 +155,28 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			require UAGB_DIR . 'classes/class-uagb-block-helper.php';
 			require UAGB_DIR . 'classes/class-uagb-block-js.php';
 
-			self::$block_list      = UAGB_Block_Module::get_blocks_info();
+			/**
+			 * Add action hook to initialize block list during WordPress initialization.
+			 * This hook is needed to ensure that the block list is populated before any other actions are taken.
+			 * The block list is used to generate the CSS and JS files for the blocks, and is also used to generate the block categories.
+			 */
+			add_action( 'init', array( $this, 'initialize_block_list' ) );
 			self::$file_generation = self::allow_file_generation();
 			// Condition is only needed when we are using block based theme and Reading setting is updated.
 			if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() && isset( $_POST['option_page'] ) && 'reading' === $_POST['option_page'] && isset( $_POST['action'] ) && 'update' === $_POST['action'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Missing
 				/* Update the asset version */
 				UAGB_Admin_Helper::update_admin_settings_option( '__uagb_asset_version', time() ); // Update the asset version when reading settings is updated.
 			}
+		}
+
+		/**
+		 * Initialize block list.
+		 *
+		 * @since 2.17.0
+		 * @return void
+		 */
+		public function initialize_block_list() {
+			self::$block_list = UAGB_Block_Module::get_blocks_info();
 		}
 
 		/**
@@ -950,6 +965,28 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				'mobile'  => self::generate_css( $combined_selectors['mobile'], $id ),
 			);
 		}
+
+		/**
+		 * Merge and combine CSS arrays for devices.
+		 *
+		 * @param array $normal_css The normal CSS array with 'desktop', 'tablet', and 'mobile' keys.
+		 * @param array $rtl_css    The RTL CSS array with 'desktop', 'tablet', and 'mobile' keys.
+		 *
+		 * @since 2.18.0
+		 * @return array $merged_css The merged CSS array.
+		 */
+		public static function merge_css_arrays( $normal_css, $rtl_css ) {
+			$merged_css = array();
+
+			// Iterate through devices and combine the values.
+			foreach ( array( 'desktop', 'tablet', 'mobile' ) as $device ) {
+				$merged_css[ $device ] = ( isset( $normal_css[ $device ] ) ? $normal_css[ $device ] : '' )
+					. ( isset( $rtl_css[ $device ] ) ? $rtl_css[ $device ] : '' );
+			}
+
+			return $merged_css;
+		}
+		
 		/**
 		 * Get Post Assets Instance.
 		 */

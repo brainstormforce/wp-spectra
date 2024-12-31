@@ -1,0 +1,9 @@
+[data-id="nps-survey-ultimate-addons-for-gutenberg"] > .nps-survey-wrapper > div {
+	right: 8px !important;
+	bottom: 8px !important;
+}
+
+[data-id="nps-survey-ultimate-addons-for-gutenberg"] > .nps-survey-wrapper > div button[type="submit"],
+[data-id="nps-survey-ultimate-addons-for-gutenberg"] > .nps-survey-wrapper > div .bg-nps-button-background {
+	background-color: #2271b1;
+}

@@ -13,7 +13,7 @@ const Render = ( props ) => {
 
 	const { attributes } = props;
 
-	const { block_id, acceptRequired, acceptText, showLink, linkLabel, link, linkInNewTab, relString } = attributes;
+	const { block_id, acceptRequired, acceptText, showLink, linkLabel, link, linkInNewTab } = attributes;
 
 	const isRequired = acceptRequired ? 'required' : '';
 	const target = linkInNewTab ? '_blank' : '_self';
@@ -25,7 +25,7 @@ const Render = ( props ) => {
 			>
 				{ showLink && (
 					<div className="uagb-forms-accept-privacy-link">
-						<a href={ link } target={ target } rel={ relString }>
+						<a href={ link } target={ target } rel="noopener noreferrer">
 							{ linkLabel }
 						</a>
 					</div>

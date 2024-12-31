@@ -63,8 +63,13 @@ class Description extends Api_Base {
 						),
 						'category' => array(
 							'type'     => 'string',
-							'sanitize_callback' => 'sanitize_text_field',
 							'required' => false,
+							'sanitize_callback' => 'sanitize_text_field',
+						),
+						'language_name' => array(
+							'type' => 'string',
+							'required' => false,
+							'sanitize_callback' => 'sanitize_text_field',
 						),
 					),
 				),
@@ -80,7 +85,7 @@ class Description extends Api_Base {
 	 * @return object|boolean
 	 */
 	public function get_item_permissions_check( $request ) {
-
+		
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 			return new \WP_Error(
 				'gt_rest_cannot_access',
@@ -116,10 +121,18 @@ class Description extends Api_Base {
 		$token = Importer_Helper::get_business_details( 'token' );
 
 		$post_data = array(
-			'business_name' => isset( $request['business_name'] ) ? sanitize_text_field( $request['business_name'] ) : '',
-			'business_description' => isset( $request['business_description'] ) ? sanitize_text_field( $request['business_description'] ) : '',
-			'category' => isset( $request['category'] ) ? sanitize_text_field( $request['category'] ) : '',
-			'token' => isset( $token ) ? $token : '',
+			'business_name' =>
+				isset( $request['business_name'] ) ?
+				sanitize_text_field( $request['business_name'] ) :
+				'',
+			'business_description' =>
+				isset( $request['business_description'] ) ? sanitize_text_field( $request['business_description'] ) : '',
+			'category' =>
+				isset( $request['category'] ) ? sanitize_text_field( $request['category'] ) : '',
+			'language_name' =>
+				isset( $request['language_name'] ) ? sanitize_text_field( $request['language_name'] ) : '',
+			'token' =>
+				isset( $token ) ? $token : '',
 		);
 
 		$request_args = array(

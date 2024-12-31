@@ -42,7 +42,15 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				return;
 			}
 
-			add_action( 'admin_enqueue_scripts', array( $this, 'reload_on_migration_complete' ) );
+			global $wp_customize;
+			/**
+			 * Conditionally load the scripts in the customizer.
+			 * If the customizer is not set, it means we are not in the customizer.
+			 * In that case load the script that will reload the page after migration is complete.
+			 */
+			if ( empty( $wp_customize ) ) {
+				add_action( 'admin_enqueue_scripts', array( $this, 'reload_on_migration_complete' ) );
+			}
 			add_action( 'wp_ajax_uag_migrate', array( $this, 'handle_migration_action_ajax' ) );
 
 			add_action( 'admin_notices', array( $this, 'register_notices' ) );
@@ -264,51 +272,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			}
 
 			$image_path = UAGB_URL . 'admin-core/assets/images/uag-logo.svg';
-
-			Astra_Notices::add_notice(
-				array(
-					'id'                         => 'uagb-admin-rating',
-					'type'                       => '',
-					'message'                    => sprintf(
-						'<div class="notice-image">
-                            <img src="%1$s" class="custom-logo" alt="Spectra" itemprop="logo"></div>
-                            <div class="notice-content">
-                                <div class="notice-heading">
-									<strong>
-	                                    %2$s
-									</strong>
-                                </div>
-                                %3$s<br />
-                                <div class="astra-review-notice-container">
-                                    <a href="%4$s" class="astra-notice-close uagb-review-notice button-primary" target="_blank">
-                                    %5$s
-                                    </a>
-                                <span class="dashicons dashicons-calendar"></span>
-                                    <a href="#" data-repeat-notice-after="%6$s" class="astra-notice-close uagb-review-notice">
-                                    %7$s
-                                    </a>
-                                <span class="dashicons dashicons-smiley"></span>
-                                    <a href="#" class="astra-notice-close uagb-review-notice">
-                                    %8$s
-                                    </a>
-                                </div>
-                            </div>',
-						$image_path,
-						__( 'Wow! Spectra has helped you build over 5 pages!!', 'ultimate-addons-for-gutenberg' ),
-						__( 'We\'re a small independent team passionate about creating plugins like this one. It would mean the world to us if you could spend just a minute to leave a 5-star review on WordPress\' official website. Your support really helps us a lot!', 'ultimate-addons-for-gutenberg' ),
-						'https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg/reviews/?filter=5#new-post',
-						__( 'Ok, you deserve it', 'ultimate-addons-for-gutenberg' ),
-						MONTH_IN_SECONDS,
-						__( 'Nope, maybe later', 'ultimate-addons-for-gutenberg' ),
-						__( 'I already did', 'ultimate-addons-for-gutenberg' )
-					),
-					'repeat-notice-after'        => MONTH_IN_SECONDS,
-					'display-notice-after'       => ( 2 * WEEK_IN_SECONDS ), // Display notice after 2 weeks.
-					'priority'                   => 20,
-					'display-with-other-notices' => false,
-					'show_if'                    => true,
-				)
-			);
 
 			if ( ! get_option( 'uag_migration_status', false ) && 'yes' === get_option( 'uagb-old-user-less-than-2' ) && 'in-progress' !== get_option( 'uag_migration_progress_status', '' ) ) {
 

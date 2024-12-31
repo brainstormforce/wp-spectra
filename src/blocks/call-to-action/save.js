@@ -22,7 +22,6 @@ export default function save( props ) {
 		ctaTitle,
 		description,
 		enabledSecondCtaButton,
-		relString,
 		enableMultilineParagraph,
 	} = props.attributes;
 
@@ -72,7 +71,7 @@ export default function save( props ) {
 						href={ ctaLink }
 						className="uagb-cta__link-to-all"
 						target={ target }
-						rel={ relString }
+						rel="noopener noreferrer"
 					></a>
 					{ output }
 				</>

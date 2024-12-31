@@ -269,10 +269,10 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 				'gradientValue': gradientValue,
 				'gradientColor1': gradientColor1,
 				'gradientColor2': gradientColor2,
-				'gradientLocation1': gradientLocationTablet1 ? gradientLocationTablet1 : backgroundAttributes.gradientLocation1,
-				'gradientLocation2': gradientLocationTablet2 ? gradientLocationTablet2 : backgroundAttributes.gradientLocation2,
+				'gradientLocation1': 'number' === typeof gradientLocationTablet1 ? gradientLocationTablet1 : backgroundAttributes.gradientLocation1,
+				'gradientLocation2': 'number' === typeof gradientLocationTablet2 ? gradientLocationTablet2 : backgroundAttributes.gradientLocation2,
 				'gradientType': gradientType,
-				'gradientAngle': gradientAngleTablet ? gradientAngleTablet : backgroundAttributes.gradientAngle,
+				'gradientAngle': 'number' === typeof gradientAngleTablet ? gradientAngleTablet : backgroundAttributes.gradientAngle,
 				'selectGradient': selectGradient,
 			};
 			const backgroundAttributesMobile = {
@@ -280,10 +280,10 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 				'gradientValue': gradientValue,
 				'gradientColor1': gradientColor1,
 				'gradientColor2': gradientColor2,
-				'gradientLocation1': gradientLocationMobile1 ? gradientLocationMobile1 : backgroundAttributesTablet.gradientLocation1,
-				'gradientLocation2': gradientLocationMobile2 ? gradientLocationMobile2 : backgroundAttributesTablet.gradientLocation2,
+				'gradientLocation1': 'number' === typeof gradientLocationMobile1 ? gradientLocationMobile1 : backgroundAttributesTablet.gradientLocation1,
+				'gradientLocation2': 'number' === typeof gradientLocationMobile2 ? gradientLocationMobile2 : backgroundAttributesTablet.gradientLocation2,
 				'gradientType': gradientType,
-				'gradientAngle': gradientAngleMobile ? gradientAngleMobile : backgroundAttributesTablet.gradientAngle,
+				'gradientAngle': 'number' === typeof gradientAngleMobile ? gradientAngleMobile : backgroundAttributesTablet.gradientAngle,
 				'selectGradient': selectGradient,
 			};
 			const btnBackground = generateBackgroundCSS( backgroundAttributes );
@@ -321,10 +321,10 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 				'gradientValue': hovergradientValue,
 				'gradientColor1': hovergradientColor1,
 				'gradientColor2': hovergradientColor2,
-				'gradientLocation1': hovergradientLocationTablet1 ? hovergradientLocationTablet1 : hoverbackgroundAttributes.gradientLocation1,
-				'gradientLocation2': hovergradientLocationTablet2 ? hovergradientLocationTablet2 : hoverbackgroundAttributes.gradientLocation2,
+				'gradientLocation1': 'number' === typeof hovergradientLocationTablet1 ? hovergradientLocationTablet1 : hoverbackgroundAttributes.gradientLocation1,
+				'gradientLocation2': 'number' === typeof hovergradientLocationTablet2 ? hovergradientLocationTablet2 : hoverbackgroundAttributes.gradientLocation2,
 				'gradientType': hovergradientType,
-				'gradientAngle': hovergradientAngleTablet ? hovergradientAngleTablet : hoverbackgroundAttributes.gradientAngle,
+				'gradientAngle': 'number' === typeof hovergradientAngleTablet ? hovergradientAngleTablet : hoverbackgroundAttributes.gradientAngle,
 				'selectGradient': hoverselectGradient,
 			};
 
@@ -333,10 +333,10 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 				'gradientValue': hovergradientValue,
 				'gradientColor1': hovergradientColor1,
 				'gradientColor2': hovergradientColor2,
-				'gradientLocation1': hovergradientLocationMobile1 ? hovergradientLocationMobile1 : hoverbackgroundAttributesTablet.gradientLocation1,
-				'gradientLocation2': hovergradientLocationMobile2 ? hovergradientLocationMobile2 : hoverbackgroundAttributesTablet.gradientLocation2,
+				'gradientLocation1': 'number' === typeof hovergradientLocationMobile1 ? hovergradientLocationMobile1 : hoverbackgroundAttributesTablet.gradientLocation1,
+				'gradientLocation2': 'number' === typeof hovergradientLocationMobile2 ? hovergradientLocationMobile2 : hoverbackgroundAttributesTablet.gradientLocation2,
 				'gradientType': hovergradientType,
-				'gradientAngle': hovergradientAngleMobile ? hovergradientAngleMobile : hoverbackgroundAttributesTablet.gradientAngle,
+				'gradientAngle': 'number' === typeof hovergradientAngleMobile ? hovergradientAngleMobile : hoverbackgroundAttributesTablet.gradientAngle,
 				'selectGradient': hoverselectGradient,
 			};
 

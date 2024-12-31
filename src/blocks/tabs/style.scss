@@ -169,6 +169,11 @@
 	.uagb-tabs__body-wrap {
 		flex-grow: 3;
 	}
+
+	.uagb-tabs-list {
+		width: -webkit-fill-available;
+		justify-content: center;
+	}
 }
 
 .uagb-tabs__wrap.uagb-tabs__vstyle6-desktop,
@@ -319,6 +324,11 @@
 
 		.uagb-tabs__body-wrap {
 			max-width: 75%;
+
+			.uagb-tabs-list {
+				width: -webkit-fill-available;
+				justify-content: center;
+			}
 		}
 	}
 
@@ -430,6 +440,11 @@
 		.uagb-tab {
 			p {
 				margin: 0;
+			}
+
+			.uagb-tabs-list {
+				width: -webkit-fill-available;
+				justify-content: center;
 			}
 		}
 

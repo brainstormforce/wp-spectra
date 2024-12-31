@@ -117,12 +117,12 @@ $gradientType            = isset( $attr['gradientType'] ) ? $attr['gradientType'
 $gradientLocation1       = isset( $attr['gradientLocation1'] ) ? $attr['gradientLocation1'] : '';
 $gradientLocation2       = isset( $attr['gradientLocation2'] ) ? $attr['gradientLocation2'] : '';
 $gradientAngle           = isset( $attr['gradientAngle'] ) ? $attr['gradientAngle'] : '';
-$gradientLocationTablet1 = isset( $attr['gradientLocationTablet1'] ) ? $attr['gradientLocationTablet1'] : '';
-$gradientLocationTablet2 = isset( $attr['gradientLocationTablet2'] ) ? $attr['gradientLocationTablet2'] : '';
-$gradientAngleTablet     = isset( $attr['gradientAngleTablet'] ) ? $attr['gradientAngleTablet'] : '';
-$gradientLocationMobile1 = isset( $attr['gradientLocationMobile1'] ) ? $attr['gradientLocationMobile1'] : '';
-$gradientLocationMobile2 = isset( $attr['gradientLocationMobile2'] ) ? $attr['gradientLocationMobile2'] : '';
-$gradientAngleMobile     = isset( $attr['gradientAngleMobile'] ) ? $attr['gradientAngleMobile'] : '';
+$gradientLocationTablet1 = is_numeric( $attr['gradientLocationTablet1'] ) ? $attr['gradientLocationTablet1'] : $gradientLocation1;
+$gradientLocationTablet2 = is_numeric( $attr['gradientLocationTablet2'] ) ? $attr['gradientLocationTablet2'] : $gradientLocation2;
+$gradientAngleTablet     = is_numeric( $attr['gradientAngleTablet'] ) ? $attr['gradientAngleTablet'] : $gradientAngle;
+$gradientLocationMobile1 = is_numeric( $attr['gradientLocationMobile1'] ) ? $attr['gradientLocationMobile1'] : $gradientLocationTablet1;
+$gradientLocationMobile2 = is_numeric( $attr['gradientLocationMobile2'] ) ? $attr['gradientLocationMobile2'] : $gradientLocationTablet2;
+$gradientAngleMobile     = is_numeric( $attr['gradientAngleMobile'] ) ? $attr['gradientAngleMobile'] : $gradientAngleTablet;
 
 if ( 'basic' === $attr['selectGradient'] && $attr['gradientValue'] ) {
 	$gradient = $attr['gradientValue'];
