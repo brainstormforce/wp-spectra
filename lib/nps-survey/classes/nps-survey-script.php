@@ -65,6 +65,14 @@ class Nps_Survey {
 
 		$show_on_screen = ! empty( $vars['show_on_screens'] ) && is_array( $vars['show_on_screens'] ) ? $vars['show_on_screens'] : [ 'dashboard' ];
 
+		if ( ! function_exists( 'get_current_screen' ) ) {
+			require_once ABSPATH . '/wp-admin/includes/screen.php';
+		}
+		$current_screen = get_current_screen();
+
+		if ( $current_screen instanceof WP_Screen && ! in_array( $current_screen->id, $show_on_screen, true ) ) {
+			return;
+		}
 		// Loading script here to confirm if the screen is allowed or not.
 		self::editor_load_scripts( $show_on_screen );
 
@@ -477,4 +485,3 @@ class Nps_Survey {
  * Kicking this off by calling 'get_instance()' method
  */
 Nps_Survey::get_instance();
-
