@@ -58,6 +58,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			add_action( 'wp_ajax_nopriv_uagb_get_posts', array( $this, 'masonry_pagination' ) );
 			add_action( 'wp_footer', array( $this, 'add_post_dynamic_script' ), 1000 );
 			add_filter( 'redirect_canonical', array( $this, 'override_canonical' ), 1, 2 );
+			// Below code added to resolve image with size auto get stretch when aspect-ratio none is applied.
+			add_filter( 'wp_img_tag_add_auto_sizes', '__return_false' );
 		}
 
 		/**
