@@ -224,6 +224,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Info Box - Resolved an issue wherein the button would take full width with gutenberg activated.
 * Fix: Info Box - Resolved an issue wherein the image padding is not supported in RTL mode.
 * Fix: Icon - Resolved an issue wherein the responsive condition and z-index would not work as intended.
+* Fix: FSE - Resolved an issue wherein styles would not be reflected when converting any block to a Template Part in Full Site Editing theme templates.
 
 = 2.19.0 - Monday, 30th December 2024 =
 * Improvement: Global - Added responsive support for gradient background settings.

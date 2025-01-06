@@ -1244,6 +1244,14 @@ class UAGB_Post_Assets {
 							$this->script     .= $assets['js'];
 						}
 					}
+				} elseif ( 'core/template-part' === $inner_block['blockName'] ) {
+					$id = $this->get_fse_template_part( $inner_block );
+
+					if ( $id ) {
+						$assets            = $this->get_assets_using_post_content( $id );
+						$this->stylesheet .= $assets['css'];
+						$this->script     .= $assets['js'];
+					}
 				} else {
 					// Get CSS for the Block.
 					$inner_assets    = $this->get_block_css_and_js( $inner_block );
