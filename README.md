@@ -217,7 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### 2.18.1 - Tuesday, 31st December 2024 ###
+### 2.18.1 - Wednesday, 8th January 2025 ###
 * Improvement: Global - Added responsive support for gradient background settings.
 * Improvement: Post Grid / Carousel Block - Added a responsive Image Ratio setting with a custom ratio option.
 * Fix: Image Gallery - Removed the automatic maximum limit for galleries with less than 8 images.
