@@ -8,6 +8,7 @@ import { useLayoutEffect, useEffect, useState, useRef } from '@wordpress/element
 import { getPanelIdFromRef } from '@Utils/Helpers';
 import { select } from '@wordpress/data';
 import { applyFilters } from '@wordpress/hooks';
+import ResponsiveSlider from '@Components/responsive-slider';
 
 const GradientSettings = ( props ) => {
 	const [ panelNameForHook, setPanelNameForHook ] = useState( null );
@@ -29,11 +30,19 @@ const GradientSettings = ( props ) => {
 		backgroundGradientColor1,
 		backgroundGradientType,
 		backgroundGradientLocation1,
+		backgroundGradientLocationTablet1,
+		backgroundGradientLocationMobile1,
 		backgroundGradientLocation2,
+		backgroundGradientLocationTablet2,
+		backgroundGradientLocationMobile2,
 		backgroundGradientAngle,
+		backgroundGradientAngleTablet,
+		backgroundGradientAngleMobile,
 	} = props;
 
 	const blockNameForHook = getSelectedBlock()?.name.split( '/' ).pop(); // eslint-disable-line @wordpress/no-unused-vars-before-return
+
+	const currentBlock = select( 'core/block-editor' ).getSelectedBlock();
 
 	useEffect( () => {
 		setPanelNameForHook( getPanelIdFromRef( panelRef ) );
@@ -132,44 +141,116 @@ const GradientSettings = ( props ) => {
 							},
 						] }
 					/>
-					<Range
-						label={ __( 'Location 1', 'ultimate-addons-for-gutenberg' ) }
-						setAttributes={ setAttributes }
-						value={ backgroundGradientLocation1.value }
-						data={ {
-							value: backgroundGradientLocation1.value,
-							label: backgroundGradientLocation1.label,
-						} }
-						min={ -100 }
-						max={ 100 }
-						displayUnit={ false }
-					/>
-					<Range
-						label={ __( 'Location 2', 'ultimate-addons-for-gutenberg' ) }
-						setAttributes={ setAttributes }
-						value={ backgroundGradientLocation2.value }
-						data={ {
-							value: backgroundGradientLocation2.value,
-							label: backgroundGradientLocation2.label,
-						} }
-						min={ -100 }
-						max={ 100 }
-						displayUnit={ false }
-					/>
-					{ 'linear' === backgroundGradientType.value && (
-						<Range
-							label={ __( 'Angle', 'ultimate-addons-for-gutenberg' ) }
-							setAttributes={ setAttributes }
-							value={ backgroundGradientAngle.value }
-							data={ {
-								value: backgroundGradientAngle.value,
-								label: backgroundGradientAngle.label,
-							} }
-							min={ 0 }
-							max={ 360 }
-							displayUnit={ false }
-						/>
-					) }
+					{ ( 'uagb/columns' === currentBlock?.name || 'uagb/column' === currentBlock?.name || 'uagb/section' === currentBlock?.name ) ? (
+						<>
+							<Range
+								label={ __( 'Location 1', 'ultimate-addons-for-gutenberg' ) }
+								setAttributes={ setAttributes }
+								value={ backgroundGradientLocation1.value }
+								data={ {
+									value: backgroundGradientLocation1.value,
+									label: backgroundGradientLocation1.label,
+								} }
+								min={ -100 }
+								max={ 100 }
+								displayUnit={ false }
+						    />
+							<Range
+								label={ __( 'Location 2', 'ultimate-addons-for-gutenberg' ) }
+								setAttributes={ setAttributes }
+								value={ backgroundGradientLocation2.value }
+								data={ {
+									value: backgroundGradientLocation2.value,
+									label: backgroundGradientLocation2.label,
+								} }
+								min={ -100 }
+								max={ 100 }
+								displayUnit={ false }
+							/>
+							{ 'linear' === backgroundGradientType.value && (
+								<Range
+									label={ __( 'Angle', 'ultimate-addons-for-gutenberg' ) }
+									setAttributes={ setAttributes }
+									value={ backgroundGradientAngle.value }
+									data={ {
+										value: backgroundGradientAngle.value,
+										label: backgroundGradientAngle.label,
+									} }
+									min={ 0 }
+									max={ 360 }
+									displayUnit={ false }
+								/>
+							) }
+						</>
+					) : (
+						<>
+							<ResponsiveSlider
+								label={ __( 'Location 1', 'ultimate-addons-for-gutenberg' ) }
+								data={ {
+									desktop: {
+										value: backgroundGradientLocation1.value,
+										label: backgroundGradientLocation1.label,
+									},
+									tablet: {
+										value: backgroundGradientLocationTablet1.value,
+										label: backgroundGradientLocationTablet1.label,
+									},
+									mobile: {
+										value: backgroundGradientLocationMobile1.value,
+										label: backgroundGradientLocationMobile1.label,
+									},
+								} }
+								min={ -100 }
+								max={ 100 }
+								setAttributes={ setAttributes }
+								displayUnit={ false }
+							/>
+							<ResponsiveSlider
+								label={ __( 'Location 2', 'ultimate-addons-for-gutenberg' ) }
+								data={ {
+									desktop: {
+										value: backgroundGradientLocation2.value,
+										label: backgroundGradientLocation2.label,
+									},
+									tablet: {
+										value: backgroundGradientLocationTablet2.value,
+										label: backgroundGradientLocationTablet2.label,
+									},
+									mobile: {
+										value: backgroundGradientLocationMobile2.value,
+										label: backgroundGradientLocationMobile2.label,
+									},
+								} }
+								min={ -100 }
+								max={ 100 }
+								setAttributes={ setAttributes }
+								displayUnit={ false }
+							/>
+							{ 'linear' === backgroundGradientType.value && (
+								<ResponsiveSlider
+									label={ __( 'Angle', 'ultimate-addons-for-gutenberg' ) }
+									data={ {
+										desktop: {
+											value: backgroundGradientAngle.value,
+											label: backgroundGradientAngle.label,
+										},
+										tablet: {
+											value: backgroundGradientAngleTablet.value,
+											label: backgroundGradientAngleTablet.label,
+										},
+										mobile: {
+											value: backgroundGradientAngleMobile.value,
+											label: backgroundGradientAngleMobile.label,
+										},
+									} }
+									min={ 0 }
+									max={ 360 }
+									setAttributes={ setAttributes }
+									displayUnit={ false }
+								/>
+							) }
+						</>
+					)}
 				</>
 			) }
 		</>

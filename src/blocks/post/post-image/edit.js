@@ -23,13 +23,13 @@ export const PostImage = ( props ) => {
 						href={ post.link }
 						target={ target }
 						rel="noopener noreferrer"
-						className={ classnames(
-							attributes.blockName === 'post-grid' ? `uagb-image-ratio-${ attributes.imageRatio }` : ''
-						) }
+						className={classnames(
+							attributes.blockName === 'post-grid' ? `uagb-image-ratio-${attributes.imageRatio}` : ''
+						)}
 					>
 						<img
-							src={ src[ 0 ] }
-							alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'ultimate-addons-for-gutenberg' ) }
+							src={src[0]}
+							alt={decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'ultimate-addons-for-gutenberg' )}
 						/>
 					</a>
 				) }

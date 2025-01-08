@@ -169,16 +169,28 @@ function styling( attributes, clientId, name, deviceType ) {
 		gradientHColor1,
 		gradientHColor2,
 		gradientHLocation1,
+		gradientHLocationTablet1,
+		gradientHLocationMobile1,
 		gradientHLocation2,
+		gradientHLocationTablet2,
+		gradientHLocationMobile2,
 		gradientHType,
 		gradientHAngle,
+		gradientHAngleTablet,
+		gradientHAngleMobile,
 		selectHGradient,
 		gradientColor1,
 		gradientColor2,
 		gradientLocation1,
+		gradientLocationTablet1,
+		gradientLocationMobile1,
 		gradientLocation2,
+		gradientLocationTablet2,
+		gradientLocationMobile2,
 		gradientType,
 		gradientAngle,
+		gradientAngleTablet,
+		gradientAngleMobile,
 		selectGradient,
 		inheritFromTheme,
 	} = attributes;
@@ -900,11 +912,43 @@ function styling( attributes, clientId, name, deviceType ) {
 				'selectGradient': selectGradient,
 			};
 
+			const backgroundAttributesTablet = {
+				'backgroundType': 'gradient',
+				'gradientValue': gradientValue,
+				'gradientColor1': gradientColor1,
+				'gradientColor2': gradientColor2,
+				'gradientLocation1': 'number' === typeof gradientLocationTablet1 ? gradientLocationTablet1 : backgroundAttributes.gradientLocation1,
+				'gradientLocation2': 'number' === typeof gradientLocationTablet2 ? gradientLocationTablet2 : backgroundAttributes.gradientLocation2,
+				'gradientType': gradientType,
+				'gradientAngle': 'number' === typeof gradientAngleTablet ? gradientAngleTablet : backgroundAttributes.gradientAngle,
+				'selectGradient': selectGradient,
+			};
+
+			const backgroundAttributesMobile = {
+				'backgroundType': 'gradient',
+				'gradientValue': gradientValue,
+				'gradientColor1': gradientColor1,
+				'gradientColor2': gradientColor2,
+				'gradientLocation1': 'number' === typeof gradientLocationMobile1 ? gradientLocationMobile1 : backgroundAttributesTablet.gradientLocation1,
+				'gradientLocation2': 'number' === typeof gradientLocationMobile2 ? gradientLocationMobile2 : backgroundAttributesTablet.gradientLocation2,
+				'gradientType': gradientType,
+				'gradientAngle': 'number' === typeof gradientAngleMobile ? gradientAngleMobile : backgroundAttributesTablet.gradientAngle,
+				'selectGradient': selectGradient,
+			};
+
 			const btnBackground = generateBackgroundCSS( backgroundAttributes );
+			const btnBackgroundTablet = generateBackgroundCSS( backgroundAttributesTablet );
+			const btnBackgroundMobile = generateBackgroundCSS( backgroundAttributesMobile );
 
 			selectors[
 				' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button.wp-block-button__link'
 			] = btnBackground;
+			tabletSelectors[
+				' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button.wp-block-button__link'
+			] = btnBackgroundTablet;
+			mobileSelectors[
+				' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button.wp-block-button__link'
+			] = btnBackgroundMobile;
 		} else if ( 'transparent' === submitBgType ) {
 			selectors[
 				' .uagb-forms-main-form  .uagb-forms-main-submit-button-wrap .uagb-forms-main-submit-button.wp-block-button__link'
@@ -932,11 +976,43 @@ function styling( attributes, clientId, name, deviceType ) {
 				'selectGradient': selectHGradient,
 			};
 
+			const hoverbackgroundAttributesTablet = {
+				'backgroundType': 'gradient',
+				'gradientValue': gradientHValue,
+				'gradientColor1': gradientHColor1,
+				'gradientColor2': gradientHColor2,
+				'gradientLocation1': 'number' === typeof gradientHLocationTablet1 ? gradientHLocationTablet1 : hoverbackgroundAttributes.gradientLocation1,
+				'gradientLocation2': 'number' === typeof gradientHLocationTablet2 ? gradientHLocationTablet2 : hoverbackgroundAttributes.gradientLocation2,
+				'gradientType': gradientHType,
+				'gradientAngle': 'number' === typeof gradientHAngleTablet ? gradientHAngleTablet : hoverbackgroundAttributes.gradientAngle,
+				'selectGradient': selectHGradient,
+			};
+
+			const hoverbackgroundAttributesMobile = {
+				'backgroundType': 'gradient',
+				'gradientValue': gradientHValue,
+				'gradientColor1': gradientHColor1,
+				'gradientColor2': gradientHColor2,
+				'gradientLocation1': 'number' === typeof gradientHLocationMobile1 ? gradientHLocationMobile1 : hoverbackgroundAttributesTablet.gradientLocation1,
+				'gradientLocation2': 'number' === typeof gradientHLocationMobile2 ? gradientHLocationMobile2 : hoverbackgroundAttributesTablet.gradientLocation2,
+				'gradientType': gradientHType,
+				'gradientAngle': 'number' === typeof gradientHAngleMobile ? gradientHAngleMobile : hoverbackgroundAttributesTablet.gradientAngle,
+				'selectGradient': selectHGradient,
+			};
+
 			const btnhBackground = generateBackgroundCSS( hoverbackgroundAttributes );
+			const btnhBackgroundTablet = generateBackgroundCSS( hoverbackgroundAttributesTablet );
+			const btnhBackgroundMobile = generateBackgroundCSS( hoverbackgroundAttributesMobile );
 
 			selectors[
 				' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap:hover .uagb-forms-main-submit-button.wp-block-button__link'
 			] = btnhBackground;
+			tabletSelectors[
+				' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap:hover .uagb-forms-main-submit-button.wp-block-button__link'
+			] = btnhBackgroundTablet;
+			mobileSelectors[
+				' .uagb-forms-main-form .uagb-forms-main-submit-button-wrap:hover .uagb-forms-main-submit-button.wp-block-button__link'
+			] = btnhBackgroundMobile;
 		} else if ( 'transparent' === submitBgHoverType ) {
 			selectors[
 				' .uagb-forms-main-form  .uagb-forms-main-submit-button-wrap:hover .uagb-forms-main-submit-button.wp-block-button__link'

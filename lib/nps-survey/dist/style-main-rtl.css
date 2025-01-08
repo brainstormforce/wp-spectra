@@ -8,7 +8,7 @@
 }.nps-survey-root .right-3 {left: 0.75rem
 }.nps-survey-root .top-3 {top: 0.75rem
 }.nps-survey-root .isolate {isolation: isolate
-}.nps-survey-root .z-10 {z-index: 10
+}.nps-survey-root .z-\[9999999\] {z-index: 9999999
 }.nps-survey-root .mx-0 {margin-right: 0px;margin-left: 0px
 }.nps-survey-root .my-0 {margin-top: 0px;margin-bottom: 0px
 }.nps-survey-root .mb-0 {margin-bottom: 0px
@@ -26,6 +26,7 @@
 }.nps-survey-root .h-\[2\.625rem\] {height: 2.625rem
 }.nps-survey-root .w-4 {width: 1rem
 }.nps-survey-root .w-5 {width: 1.25rem
+}.nps-survey-root .w-\[calc\(100\%-8px\)\] {width: calc(100% - 8px)
 }.nps-survey-root .w-full {width: 100%
 }.nps-survey-root .max-w-\[30rem\] {max-width: 30rem
 }.nps-survey-root .flex-1 {flex: 1 1 0%
@@ -35,12 +36,14 @@
 }.nps-survey-root .cursor-not-allowed {cursor: not-allowed
 }.nps-survey-root .cursor-pointer {cursor: pointer
 }.nps-survey-root .cursor-progress {cursor: progress
+}.nps-survey-root .resize {resize: both
 }.nps-survey-root .items-center {align-items: center
 }.nps-survey-root .justify-start {justify-content: flex-start
 }.nps-survey-root .justify-center {justify-content: center
 }.nps-survey-root .justify-between {justify-content: space-between
 }.nps-survey-root .gap-2 {gap: 0.5rem
 }.nps-survey-root .rounded {border-radius: 0.25rem
+}.nps-survey-root .rounded-lg {border-radius: 0.5rem
 }.nps-survey-root .rounded-md {border-radius: 0.375rem
 }.nps-survey-root .border {border-width: 1px
 }.nps-survey-root .border-0 {border-width: 0px
@@ -111,8 +114,9 @@
 }.nps-survey-root .focus-visible\:outline:focus-visible {outline-style: solid
 }.nps-survey-root .focus-visible\:outline-2:focus-visible {outline-width: 2px
 }.nps-survey-root .focus-visible\:outline-offset-2:focus-visible {outline-offset: 2px
-}@media (min-width: 640px) {.nps-survey-root .sm\:rounded-lg {border-radius: 0.5rem
-    }.nps-survey-root .sm\:p-5 {padding: 1.25rem
+}@media (min-width: 512px) {.nps-survey-root .xs\:w-full {width: 100%
+    }
+}@media (min-width: 640px) {.nps-survey-root .sm\:p-5 {padding: 1.25rem
     }.nps-survey-root .sm\:text-sm {font-size: 0.875rem;line-height: 1.25rem
     }.nps-survey-root .sm\:leading-6 {line-height: 1.5rem
     }

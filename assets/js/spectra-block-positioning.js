@@ -25,7 +25,7 @@ const UAGBBlockPositioning = {
 			if ( ! elementParent ) {
 				fillerElement.style.width = `${ elementDimensions.width }px`;
 				fillerElement.style.margin = elementStyles.getPropertyValue( 'margin' ) || 0;
-			// If the sticky element is restricted to the parent container, then set the maxWidth as was intended for the stuck element.
+				// If the sticky element is restricted to the parent container, then set the maxWidth as was intended for the stuck element.
 			} else {
 				fillerElement.style.width = '100%';
 				fillerElement.style.maxWidth = elementStyles.getPropertyValue( 'max-width' ) || `${ elementDimensions.width }px`;
@@ -98,7 +98,7 @@ const UAGBBlockPositioning = {
 				element.style.zIndex = '999';
 				setTimeout( () => {
 					element.style.bottom = haltAtPosition;
-				} , 50 );
+				}, 50 );
 			}
 
 			// Check if this sticky container was animated.
@@ -143,12 +143,12 @@ const UAGBBlockPositioning = {
 					element.style.top = '';
 					element.style.bottom = `${ parentInnerPositions.bottom }px`;
 					element.style.left = `${ fillerElement?.offsetLeft || 0 }px`;
-				// Else, just stick it to the top and transition it to the halt position.
+					// Else, just stick it to the top and transition it to the halt position.
 				} else {
 					element.style.top = `calc(${ haltAtPosition } - ${ window.innerHeight }px)`
 					element.style.left = `${ stickyDimensions.left }px`;
-					element.style.top = haltAtPosition;		
-				}					
+					element.style.top = haltAtPosition;
+				}
 				element.style.width = `${ stickyDimensions.width }px`;
 				element.style.zIndex = '999';
 			}
@@ -163,21 +163,21 @@ const UAGBBlockPositioning = {
 				// If the scroll position is greater than the current sticky height.
 				if ( scrollPosition >= haltAt ) {
 					// If the sticky class doesn't yet exist, add the filler and the sticky class.
-					if ( ! element.classList.contains( 'uagb-position__sticky--stuck' ) &&  ! element.classList.contains( 'uagb-position__sticky--restricted' ) ) {
+					if ( ! element.classList.contains( 'uagb-position__sticky--stuck' ) && ! element.classList.contains( 'uagb-position__sticky--restricted' ) ) {
 						element.parentNode.insertBefore( fillerElement, element );
 						element.classList.add( 'uagb-position__sticky--stuck' );
 						element.style.top = haltAtPosition;
 						element.style.left = `${ stickyDimensions.left }px`;
 						element.style.width = `${ stickyDimensions.width }px`;
 						element.style.zIndex = '999';
-					// Else if the container is struck and the scroll is at the parent bottom, restrict it there.
+						// Else if the container is struck and the scroll is at the parent bottom, restrict it there.
 					} else if ( attr?.UAGStickyRestricted && ! element.classList.contains( 'uagb-position__sticky--restricted' ) && scrollPosition >= parentHaltAt.bottom ) {
 						element.classList.remove( 'uagb-position__sticky--stuck' );
 						element.classList.add( 'uagb-position__sticky--restricted' );
 						element.style.top = '';
 						element.style.bottom = `${ parentInnerPositions.bottom }px`;
 						element.style.left = `${ fillerElement?.offsetLeft || 0 }px`;
-					// Else if the container is already restricted and the scroll has returned above the parent bottom, stick it again.
+						// Else if the container is already restricted and the scroll has returned above the parent bottom, stick it again.
 					} else if ( element.classList.contains( 'uagb-position__sticky--restricted' ) && scrollPosition < parentHaltAt.bottom ) {
 						element.classList.remove( 'uagb-position__sticky--restricted' );
 						element.classList.add( 'uagb-position__sticky--stuck' );

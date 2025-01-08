@@ -11,7 +11,7 @@ namespace NPS_Survey;
 /**
  * Plugin_Loader
  *
- * @since 2.18.0
+ * @since 2.18.1
  */
 class NPS_Survey_Plugin_Loader {
 
@@ -20,14 +20,14 @@ class NPS_Survey_Plugin_Loader {
 	 *
 	 * @access private
 	 * @var object Class Instance.
-	 * @since 2.18.0
+	 * @since 2.18.1
 	 */
 	private static $instance;
 
 	/**
 	 * Initiator
 	 *
-	 * @since 2.18.0
+	 * @since 2.18.1
 	 * @return object initialized object of class.
 	 */
 	public static function get_instance() {
@@ -40,7 +40,7 @@ class NPS_Survey_Plugin_Loader {
 	/**
 	 * Constructor
 	 *
-	 * @since 2.18.0
+	 * @since 2.18.1
 	 */
 	public function __construct() {
 

@@ -60,9 +60,15 @@ const Settings = ( props ) => {
 		gradientColor1,
 		gradientColor2,
 		gradientLocation1,
+		gradientLocationTablet1,
+		gradientLocationMobile1,
 		gradientLocation2,
+		gradientLocationTablet2,
+		gradientLocationMobile2,
 		gradientType,
 		gradientAngle,
+		gradientAngleTablet,
+		gradientAngleMobile,
 		selectGradient,
 		boxShadowColor,
 		boxShadowHOffset,
@@ -416,9 +422,25 @@ const Settings = ( props ) => {
 						value: gradientLocation1,
 						label: 'gradientLocation1',
 					} }
+					backgroundGradientLocationTablet1={ {
+						value: gradientLocationTablet1,
+						label: 'gradientLocationTablet1',
+					} }
+					backgroundGradientLocationMobile1={ {
+						value: gradientLocationMobile1,
+						label: 'gradientLocationMobile1',
+					} }
 					backgroundGradientLocation2={ {
 						value: gradientLocation2,
 						label: 'gradientLocation2',
+					} }
+					backgroundGradientLocationTablet2={ {
+						value: gradientLocationTablet2,
+						label: 'gradientLocationTablet2',
+					} }
+					backgroundGradientLocationMobile2={ {
+						value: gradientLocationMobile2,
+						label: 'gradientLocationMobile2',
 					} }
 					backgroundGradientType={ {
 						value: gradientType,
@@ -427,6 +449,14 @@ const Settings = ( props ) => {
 					backgroundGradientAngle={ {
 						value: gradientAngle,
 						label: 'gradientAngle',
+					} }
+					backgroundGradientAngleTablet={ {
+						value: gradientAngleTablet,
+						label: 'gradientAngleTablet',
+					} }
+					backgroundGradientAngleMobile={ {
+						value: gradientAngleMobile,
+						label: 'gradientAngleMobile',
 					} }
 					backgroundImageColor={ {
 						value: backgroundImageColor,

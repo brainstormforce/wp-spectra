@@ -175,16 +175,16 @@
 		},
 		{
 			"name": "brainstormforce/nps-survey",
-			"version": "1.0.3",
+			"version": "1.0.6",
 			"source": {
 				"type": "git",
 				"url": "git@github.com:brainstormforce/nps-survey.git",
-				"reference": "7e92c4da38368b9cf7fbe20d49f38a42939d093d"
+				"reference": "ce03eeb5ef7bbb0d16b329929e44f5564a2a0d3e"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/brainstormforce/nps-survey/zipball/7e92c4da38368b9cf7fbe20d49f38a42939d093d",
-				"reference": "7e92c4da38368b9cf7fbe20d49f38a42939d093d",
+				"url": "https://api.github.com/repos/brainstormforce/nps-survey/zipball/ce03eeb5ef7bbb0d16b329929e44f5564a2a0d3e",
+				"reference": "ce03eeb5ef7bbb0d16b329929e44f5564a2a0d3e",
 				"shasum": ""
 			},
 			"require-dev": {
@@ -221,10 +221,10 @@
 			},
 			"description": "NPS Survey Plugin",
 			"support": {
-				"source": "https://github.com/brainstormforce/nps-survey/tree/1.0.3",
+				"source": "https://github.com/brainstormforce/nps-survey/tree/1.0.6",
 				"issues": "https://github.com/brainstormforce/nps-survey/issues"
 			},
-			"time": "2024-12-10T05:01:30+00:00"
+			"time": "2024-12-19T08:06:20+00:00"
 		},
 		{
 			"name": "brainstormforce/zip-ai",
@@ -293,16 +293,16 @@
 		},
 		{
 			"name": "brainstormforce/zipwp-images",
-			"version": "1.0.13",
+			"version": "1.0.14",
 			"source": {
 				"type": "git",
 				"url": "git@github.com:brainstormforce/zipwp-images.git",
-				"reference": "d7e259bc7b02ef274e74a30b2ece939977286ab7"
+				"reference": "f4ac4ffee77b2798e22d14317442d10be579d3da"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/brainstormforce/zipwp-images/zipball/d7e259bc7b02ef274e74a30b2ece939977286ab7",
-				"reference": "d7e259bc7b02ef274e74a30b2ece939977286ab7",
+				"url": "https://api.github.com/repos/brainstormforce/zipwp-images/zipball/f4ac4ffee77b2798e22d14317442d10be579d3da",
+				"reference": "f4ac4ffee77b2798e22d14317442d10be579d3da",
 				"shasum": ""
 			},
 			"require": {
@@ -351,10 +351,10 @@
 			],
 			"description": "Free images library from ZipWP",
 			"support": {
-				"source": "https://github.com/brainstormforce/zipwp-images/tree/1.0.13",
+				"source": "https://github.com/brainstormforce/zipwp-images/tree/1.0.14",
 				"issues": "https://github.com/brainstormforce/zipwp-images/issues"
 			},
-			"time": "2024-11-14T04:06:28+00:00"
+			"time": "2024-11-28T09:50:17+00:00"
 		},
 		{
 			"name": "composer/installers",

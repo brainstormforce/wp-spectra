@@ -1325,6 +1325,18 @@ const attributes = {
 			styleType: 'btn-gradient-location-1',
 		},
 	},
+	gradientLocationTablet1: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-location-tablet-1',
+		},
+	},
+	gradientLocationMobile1: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-location-mobile-1',
+		},
+	},
 	gradientLocation2: {
 		type: 'number',
 		default: 100,
@@ -1332,11 +1344,35 @@ const attributes = {
 			styleType: 'btn-gradient-location-2',
 		},
 	},
+	gradientLocationTablet2: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-location-tablet2',
+		},
+	},
+	gradientLocationMobile2: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-location-mobile-2',
+		},
+	},
 	gradientAngle: {
 		type: 'number',
 		default: 0,
 		UAGCopyPaste: {
 			styleType: 'btn-gradient-angle',
+		},
+	},
+	gradientAngleTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-angle-tablet',
+		},
+	},
+	gradientAngleMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-gradient-angle-mobile',
 		},
 	},
 	gradientHValue: {
@@ -1381,6 +1417,18 @@ const attributes = {
 			styleType: 'btn-h-gradient-location-1',
 		},
 	},
+	gradientHLocationTablet1: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-location-tablet-1',
+		},
+	},
+	gradientHLocationMobile1: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-location-mobile-1',
+		},
+	},
 	gradientHLocation2: {
 		type: 'number',
 		default: 100,
@@ -1388,11 +1436,35 @@ const attributes = {
 			styleType: 'btn-h-gradient-location-2',
 		},
 	},
+	gradientHLocationTablet2: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-location-tablet-2',
+		},
+	},
+	gradientHLocationMobile2: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-location-mobile-2',
+		},
+	},
 	gradientHAngle: {
 		type: 'number',
 		default: 0,
 		UAGCopyPaste: {
 			styleType: 'btn-h-gradient-angle',
+		},
+	},
+	gradientHAngleTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-angle-tablet',
+		},
+	},
+	gradientHAngleMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'btn-h-gradient-angle-mobile',
 		},
 	},
 	variationSelected: {

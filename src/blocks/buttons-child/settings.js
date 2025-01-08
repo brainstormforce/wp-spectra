@@ -91,15 +91,27 @@ const Settings = ( props ) => {
 		hoverselectGradient,
 		hovergradientColor2,
 		hovergradientLocation1,
+		hovergradientLocationTablet1,
+		hovergradientLocationMobile1,
 		hovergradientLocation2,
+		hovergradientLocationTablet2,
+		hovergradientLocationMobile2,
 		hovergradientType,
 		hovergradientAngle,
+		hovergradientAngleTablet,
+		hovergradientAngleMobile,
 		gradientColor1,
 		gradientColor2,
 		gradientLocation1,
+		gradientLocationTablet1,
+		gradientLocationMobile1,
 		gradientLocation2,
+		gradientLocationTablet2,
+		gradientLocationMobile2,
 		gradientType,
 		gradientAngle,
+		gradientAngleTablet,
+		gradientAngleMobile,
 		selectGradient,
 		topMargin,
 		rightMargin,
@@ -135,7 +147,6 @@ const Settings = ( props ) => {
 		iconSizeTablet,
 		iconSizeMobile,
 		removeText,
-		noFollow,
 
 		// letter spacing
 		letterSpacing,
@@ -299,16 +310,10 @@ const Settings = ( props ) => {
 						label: 'link',
 					} }
 				/>
-
 				<ToggleControl
 					label={ __( 'Open in new window', 'ultimate-addons-for-gutenberg' ) }
 					checked={ opensInNewTab }
 					onChange={ () => setAttributes( { opensInNewTab: ! opensInNewTab } ) }
-				/>
-				<ToggleControl
-					label={ __( 'Add "nofollow" to link', 'ultimate-addons-for-gutenberg' ) }
-					checked={ noFollow }
-					onChange={ () => setAttributes( { noFollow: ! noFollow } ) }
 				/>
 				{ '' !== icon && (
 					<ToggleControl
@@ -525,9 +530,25 @@ const Settings = ( props ) => {
 										value: gradientLocation1,
 										label: 'gradientLocation1',
 									} }
+									backgroundGradientLocationTablet1={ {
+										value: gradientLocationTablet1,
+										label: 'gradientLocationTablet1',
+									} }
+									backgroundGradientLocationMobile1={ {
+										value: gradientLocationMobile1,
+										label: 'gradientLocationMobile1',
+									} }
 									backgroundGradientLocation2={ {
 										value: gradientLocation2,
 										label: 'gradientLocation2',
+									} }
+									backgroundGradientLocationTablet2={ {
+										value: gradientLocationTablet2,
+										label: 'gradientLocationTablet2',
+									} }
+									backgroundGradientLocationMobile2={ {
+										value: gradientLocationMobile2,
+										label: 'gradientLocationMobile2',
 									} }
 									backgroundGradientType={ {
 										value: gradientType,
@@ -536,6 +557,14 @@ const Settings = ( props ) => {
 									backgroundGradientAngle={ {
 										value: gradientAngle,
 										label: 'gradientAngle',
+									} }
+									backgroundGradientAngleTablet={ {
+										value: gradientAngleTablet,
+										label: 'gradientAngleTablet',
+									} }
+									backgroundGradientAngleMobile={ {
+										value: gradientAngleMobile,
+										label: 'gradientAngleMobile',
 									} }
 									setAttributes={ setAttributes }
 								/>
@@ -602,9 +631,25 @@ const Settings = ( props ) => {
 										value: hovergradientLocation1,
 										label: 'hovergradientLocation1',
 									} }
+									backgroundGradientLocationTablet1={ {
+										value: hovergradientLocationTablet1,
+										label: 'hovergradientLocationTablet1',
+									} }
+									backgroundGradientLocationMobile1={ {
+										value: hovergradientLocationMobile1,
+										label: 'hovergradientLocationMobile1',
+									} }
 									backgroundGradientLocation2={ {
 										value: hovergradientLocation2,
 										label: 'hovergradientLocation2',
+									} }
+									backgroundGradientLocationTablet2={ {
+										value: hovergradientLocationTablet2,
+										label: 'hovergradientLocationTablet2',
+									} }
+									backgroundGradientLocationMobile2={ {
+										value: hovergradientLocationMobile2,
+										label: 'hovergradientLocationMobile2',
 									} }
 									backgroundGradientType={ {
 										value: hovergradientType,
@@ -613,6 +658,14 @@ const Settings = ( props ) => {
 									backgroundGradientAngle={ {
 										value: hovergradientAngle,
 										label: 'hovergradientAngle',
+									} }
+									backgroundGradientAngleTablet={ {
+										value: hovergradientAngleTablet,
+										label: 'hovergradientAngleTablet',
+									} }
+									backgroundGradientAngleMobile={ {
+										value: hovergradientAngleMobile,
+										label: 'hovergradientAngleMoble',
 									} }
 									setAttributes={ setAttributes }
 								/>

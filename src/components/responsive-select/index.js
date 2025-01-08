@@ -40,21 +40,21 @@ const ResponsiveSelectControl = ( props ) => {
 	output.Desktop = (
 		<SelectControl
 			value={ data.desktop.value }
-			onChange={ ( value ) => setAttributes( { [ data.desktop.label ]: value } ) }
+			onChange={( value ) => setAttributes( { [data.desktop.label]: value } )}
 			options={ options.desktop }
 		/>
 	);
 	output.Tablet = (
 		<SelectControl
 			value={ data.tablet.value }
-			onChange={ ( value ) => setAttributes( { [ data.tablet.label ]: value } ) }
+			onChange={( value ) => setAttributes( { [data.tablet.label]: value } )}
 			options={ options.tablet || options.desktop }
 		/>
 	);
 	output.Mobile = (
 		<SelectControl
 			value={ data.mobile.value }
-			onChange={ ( value ) => setAttributes( { [ data.mobile.label ]: value } ) }
+			onChange={( value ) => setAttributes( { [data.mobile.label]: value } )}
 			options={ options.mobile || options.desktop }
 		/>
 	);

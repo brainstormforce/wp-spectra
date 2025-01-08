@@ -46,6 +46,7 @@ const UAGBContainer = ( props ) => {
 		context,
 		hasDynamicContent
 	} = props;
+
 	const {
 		isParentOfSelectedBlock,
 		variations,

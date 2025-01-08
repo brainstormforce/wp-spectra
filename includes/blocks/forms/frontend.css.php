@@ -676,7 +676,7 @@ if ( ! $attr['inheritFromTheme'] ) {
 		$selectors[' .uagb-forms-main-form .wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link']['background'] = $attr['submitBgColor'];
 	
 	} elseif ( 'gradient' === $attr['submitBgType'] ) {
-		$bg_obj = array(
+		$bg_obj        = array(
 			'backgroundType'    => 'gradient',
 			'gradientValue'     => $attr['gradientValue'],
 			'gradientColor1'    => $attr['gradientColor1'],
@@ -687,9 +687,35 @@ if ( ! $attr['inheritFromTheme'] ) {
 			'gradientAngle'     => $attr['gradientAngle'],
 			'selectGradient'    => $attr['selectGradient'],
 		);
+		$bg_obj_tablet = array(
+			'backgroundType'    => 'gradient',
+			'gradientValue'     => $attr['gradientValue'],
+			'gradientColor1'    => $attr['gradientColor1'],
+			'gradientColor2'    => $attr['gradientColor2'],
+			'gradientType'      => $attr['gradientType'],
+			'gradientLocation1' => is_numeric( $attr['gradientLocationTablet1'] ) ? $attr['gradientLocationTablet1'] : $bg_obj['gradientLocation1'],
+			'gradientLocation2' => is_numeric( $attr['gradientLocationTablet2'] ) ? $attr['gradientLocationTablet2'] : $bg_obj['gradientLocation2'],
+			'gradientAngle'     => is_numeric( $attr['gradientAngleTablet'] ) ? $attr['gradientAngleTablet'] : $bg_obj['gradientAngle'], 
+			'selectGradient'    => $attr['selectGradient'],
+		);
+		$bg_obj_mobile = array(
+			'backgroundType'    => 'gradient',
+			'gradientValue'     => $attr['gradientValue'],
+			'gradientColor1'    => $attr['gradientColor1'],
+			'gradientColor2'    => $attr['gradientColor2'],
+			'gradientType'      => $attr['gradientType'],
+			'gradientLocation1' => is_numeric( $attr['gradientLocationMobile1'] ) ? $attr['gradientLocationMobile1'] : $bg_obj_tablet['gradientLocation1'],
+			'gradientLocation2' => is_numeric( $attr['gradientLocationMobile2'] ) ? $attr['gradientLocationMobile2'] : $bg_obj_tablet['gradientLocation2'],
+			'gradientAngle'     => is_numeric( $attr['gradientAngleMobile'] ) ? $attr['gradientAngleMobile'] : $bg_obj_tablet['gradientAngle'],
+			'selectGradient'    => $attr['selectGradient'],
+		);
 	
-		$btn_bg_css = UAGB_Block_Helper::uag_get_background_obj( $bg_obj );
-		$selectors['  .uagb-forms-main-form .wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link'] = $btn_bg_css;
+		$btn_bg_css        = UAGB_Block_Helper::uag_get_background_obj( $bg_obj );
+		$btn_bg_css_tablet = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_tablet );
+		$btn_bg_css_mobile = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_mobile );
+		$selectors['  .uagb-forms-main-form .wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link']   = $btn_bg_css;
+		$t_selectors['  .uagb-forms-main-form .wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link'] = $btn_bg_css_tablet;
+		$m_selectors['  .uagb-forms-main-form .wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link'] = $btn_bg_css_mobile;
 	}
 	
 	// Hover.
@@ -717,9 +743,37 @@ if ( ! $attr['inheritFromTheme'] ) {
 			'gradientAngle'     => $attr['gradientAngle'],
 			'selectGradient'    => $attr['selectHGradient'],
 		);
+
+		$bg_hover_obj_tablet = array(
+			'backgroundType'    => 'gradient',
+			'gradientValue'     => $attr['gradientHValue'],
+			'gradientColor1'    => $attr['gradientColor1'],
+			'gradientColor2'    => $attr['gradientColor2'],
+			'gradientType'      => $attr['gradientType'],
+			'gradientLocation1' => $attr['gradientLocationTablet1'],
+			'gradientLocation2' => $attr['gradientLocationTablet2'],
+			'gradientAngle'     => $attr['gradientAngleTablet'],
+			'selectGradient'    => $attr['selectHGradient'],
+		);
+
+		$bg_hover_obj_mobile = array(
+			'backgroundType'    => 'gradient',
+			'gradientValue'     => $attr['gradientHValue'],
+			'gradientColor1'    => $attr['gradientColor1'],
+			'gradientColor2'    => $attr['gradientColor2'],
+			'gradientType'      => $attr['gradientType'],
+			'gradientLocation1' => $attr['gradientLocationMobile1'],
+			'gradientLocation2' => $attr['gradientLocationMobile2'],
+			'gradientAngle'     => $attr['gradientAngleMobile'],
+			'selectGradient'    => $attr['selectHGradient'],
+		);
 	
-		$btn_hover_bg_css = UAGB_Block_Helper::uag_get_background_obj( $bg_hover_obj );
-		$selectors['  .uagb-forms-main-form .wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:hover'] = $btn_hover_bg_css;
+		$btn_hover_bg_css        = UAGB_Block_Helper::uag_get_background_obj( $bg_hover_obj );
+		$btn_hover_bg_css_tablet = UAGB_Block_Helper::uag_get_background_obj( $bg_hover_obj_tablet );
+		$btn_hover_bg_css_mobile = UAGB_Block_Helper::uag_get_background_obj( $bg_hover_obj_mobile );
+		$selectors['  .uagb-forms-main-form .wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:hover']   = $btn_hover_bg_css;
+		$t_selectors['  .uagb-forms-main-form .wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:hover'] = $btn_hover_bg_css_tablet;
+		$m_selectors['  .uagb-forms-main-form .wp-block-button:not(.is-style-outline) .uagb-forms-main-submit-button.wp-block-button__link:hover'] = $btn_hover_bg_css_mobile;
 	}
 
 	$t_selectors[' .uagb-forms-main-form .uagb-forms-main-submit-button'] = array_merge(

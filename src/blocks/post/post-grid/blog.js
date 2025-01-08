@@ -52,7 +52,7 @@ const Blog = ( props ) => {
 				`uagb-post__image-position-${ imgPosition }`,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ block_id }`,
-				`${ equalHeightInlineReadMoreButtonsClass }`
+				`${ equalHeightInlineReadMoreButtonsClass }`,
 			) }
 		>
 			<InnerBlockLayoutContextProvider parentName="uagb/post-grid" parentClassName="uagb-block-grid">

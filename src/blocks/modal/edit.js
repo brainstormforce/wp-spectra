@@ -17,7 +17,7 @@ const UAGBModalEdit = ( props ) => {
 		attributes: { UAGHideDesktop, 
 					  UAGHideTab, 
 					  UAGHideMob, 
-					  block_id, 
+					  block_id,
 					},
 		clientId,
 		setAttributes,

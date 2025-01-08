@@ -563,7 +563,7 @@ const attributes = {
 		UAGCopyPaste: {
 			styleType: 'icon-box-shadow-position-hover'
 		},
-	}
+	},
 };
 
 export default attributes;

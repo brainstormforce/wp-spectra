@@ -255,6 +255,15 @@ if ( ! class_exists( 'UAGB_WebFont_Loader' ) ) {
 				);
 			}
 
+			// Convert base content paths to site content URLs.
+			foreach ( $files as $remote => $local ) {
+				$files[ $remote ] = str_replace(
+					$this->get_filesystem()->wp_content_dir(),
+					content_url() . '/',
+					$local
+				);
+			}
+
 			$this->css = str_replace(
 				array_keys( $files ),
 				array_values( $files ),

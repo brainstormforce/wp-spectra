@@ -14,7 +14,16 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	const { attributes, setAttributes, className, mergeBlocks, insertBlocksAfter, createBlock, onReplace, deviceType } = props;
+	const { 
+		attributes,
+		setAttributes,
+		className,
+		mergeBlocks,
+		insertBlocksAfter,
+		createBlock,
+		onReplace,
+		deviceType
+	} = props;
 
 	const { block_id, align, textAlign, heading, prefix, icon, iconPosition, titleTag, showDescription, inheritFromTheme, buttonType } = attributes;
 

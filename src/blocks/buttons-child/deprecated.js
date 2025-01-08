@@ -293,7 +293,7 @@ const deprecated = [
 	{
 		attributes: attributesV2_13_0,
 		save: saveV2_13_0,
-	}
+	},
 ];
 
 export default deprecated;

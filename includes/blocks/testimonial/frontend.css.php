@@ -107,21 +107,33 @@ $selectors = array(
 	),
 );
 
-$gradient = '';
+$gradient        = '';
+$gradient_tablet = '';
+$gradient_mobile = '';
 
-$gradientColor1    = isset( $attr['gradientColor1'] ) ? $attr['gradientColor1'] : '';
-$gradientColor2    = isset( $attr['gradientColor2'] ) ? $attr['gradientColor2'] : '';
-$gradientType      = isset( $attr['gradientType'] ) ? $attr['gradientType'] : '';
-$gradientLocation1 = isset( $attr['gradientLocation1'] ) ? $attr['gradientLocation1'] : '';
-$gradientLocation2 = isset( $attr['gradientLocation2'] ) ? $attr['gradientLocation2'] : '';
-$gradientAngle     = isset( $attr['gradientAngle'] ) ? $attr['gradientAngle'] : '';
+$gradientColor1          = isset( $attr['gradientColor1'] ) ? $attr['gradientColor1'] : '';
+$gradientColor2          = isset( $attr['gradientColor2'] ) ? $attr['gradientColor2'] : '';
+$gradientType            = isset( $attr['gradientType'] ) ? $attr['gradientType'] : '';
+$gradientLocation1       = isset( $attr['gradientLocation1'] ) ? $attr['gradientLocation1'] : '';
+$gradientLocation2       = isset( $attr['gradientLocation2'] ) ? $attr['gradientLocation2'] : '';
+$gradientAngle           = isset( $attr['gradientAngle'] ) ? $attr['gradientAngle'] : '';
+$gradientLocationTablet1 = is_numeric( $attr['gradientLocationTablet1'] ) ? $attr['gradientLocationTablet1'] : $gradientLocation1;
+$gradientLocationTablet2 = is_numeric( $attr['gradientLocationTablet2'] ) ? $attr['gradientLocationTablet2'] : $gradientLocation2;
+$gradientAngleTablet     = is_numeric( $attr['gradientAngleTablet'] ) ? $attr['gradientAngleTablet'] : $gradientAngle;
+$gradientLocationMobile1 = is_numeric( $attr['gradientLocationMobile1'] ) ? $attr['gradientLocationMobile1'] : $gradientLocationTablet1;
+$gradientLocationMobile2 = is_numeric( $attr['gradientLocationMobile2'] ) ? $attr['gradientLocationMobile2'] : $gradientLocationTablet2;
+$gradientAngleMobile     = is_numeric( $attr['gradientAngleMobile'] ) ? $attr['gradientAngleMobile'] : $gradientAngleTablet;
 
 if ( 'basic' === $attr['selectGradient'] && $attr['gradientValue'] ) {
 	$gradient = $attr['gradientValue'];
 } elseif ( 'linear' === $gradientType && 'advanced' === $attr['selectGradient'] ) {
-	$gradient = 'linear-gradient(' . $gradientAngle . 'deg, ' . $gradientColor1 . ' ' . $gradientLocation1 . '%, ' . $gradientColor2 . ' ' . $gradientLocation2 . '%)';
+	$gradient        = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . $gradientColor1 . ' ' . $gradientLocation1 . '%, ' . $gradientColor2 . ' ' . $gradientLocation2 . '%)';
+	$gradient_tablet = 'linear-gradient(' . $gradientAngleTablet . 'deg, ' . $gradientColor1 . ' ' . $gradientLocationTablet1 . '%, ' . $gradientColor2 . ' ' . $gradientLocationTablet2 . '%)';
+	$gradient_mobile = 'linear-gradient(' . $gradientAngleMobile . 'deg, ' . $gradientColor1 . ' ' . $gradientLocationMobile1 . '%, ' . $gradientColor2 . ' ' . $gradientLocationMobile2 . '%)';
 } elseif ( 'radial' === $gradientType && 'advanced' === $attr['selectGradient'] ) {
-	$gradient = 'radial-gradient( at center center, ' . $gradientColor1 . ' ' . $gradientLocation1 . '%, ' . $gradientColor2 . ' ' . $gradientLocation2 . '%)';
+	$gradient        = 'radial-gradient( at center center, ' . $gradientColor1 . ' ' . $gradientLocation1 . '%, ' . $gradientColor2 . ' ' . $gradientLocation2 . '%)';
+	$gradient_tablet = 'radial-gradient( at center center, ' . $gradientColor1 . ' ' . $gradientLocationTablet1 . '%, ' . $gradientColor2 . ' ' . $gradientLocationTablet2 . '%)';
+	$gradient_mobile = 'radial-gradient( at center center, ' . $gradientColor1 . ' ' . $gradientLocationMobile1 . '%, ' . $gradientColor2 . ' ' . $gradientLocationMobile2 . '%)';
 }
 
 if ( 'gradient' === $attr['backgroundType'] ) {
@@ -137,7 +149,9 @@ if ( 'image' === $attr['backgroundType'] ) {
 			'opacity'          => ( isset( $attr['backgroundOpacity'] ) && '' !== $attr['backgroundOpacity'] && 101 !== $attr['backgroundOpacity'] ) ? ( ( 100 - $attr['backgroundOpacity'] ) / 100 ) : '',
 		);
 	} elseif ( 'gradient' === $attr['overlayType'] ) {
-			$selectors[' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay']['background-image'] = $gradient;
+			$selectors[' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay']['background-image']   = $gradient;
+			$t_selectors[' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay']['background-image'] = $gradient_tablet;
+			$m_selectors[' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay']['background-image'] = $gradient_mobile;
 	}
 } else {
 	$selectors['  .uagb-testimonial__wrap.uagb-tm__bg-type-color .uagb-tm__content'] = array(
@@ -205,6 +219,14 @@ $m_selectors = array(
 		'padding-right'  => UAGB_Helper::get_css_value( $attr['imgpaddingRightMobile'], $attr['imgmobilePaddingUnit'] ),
 	),
 );
+
+if ( 'gradient' === $attr['backgroundType'] ) {
+	$m_selectors[' .uagb-tm__content'] = array(
+		'background-color' => 'transparent',
+		'background-image' => $gradient_mobile,
+	);
+}
+
 $t_selectors = array(
 	' .uagb-testimonial__wrap'                          => array(
 		'padding-left'  => UAGB_Helper::get_css_value( ( ( $column_gap_tablet_fallback ) / 2 ), $attr['columnGapType'] ),
@@ -239,6 +261,13 @@ $t_selectors = array(
 		'padding-left'   => UAGB_Helper::get_css_value( $attr['imgpaddingLeftTablet'], $attr['imgtabletPaddingUnit'] ),
 	),
 );
+
+if ( 'gradient' === $attr['backgroundType'] ) {
+	$t_selectors[' .uagb-tm__content'] = array(
+		'background-color' => 'transparent',
+		'background-image' => $gradient_tablet,
+	);
+}
 
 $combined_selectors = array(
 	'desktop' => $selectors,
