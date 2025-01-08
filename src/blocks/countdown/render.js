@@ -24,7 +24,7 @@ const Render = ( props ) => {
 		ref: countdownRef,
 	} );
 
-	const innerblocks_structure = 'not-installed' === uagb_blocks_info.spectra_pro_status && timerEndAction === 'content' && (
+	const innerblocks_structure = 'active' === uagb_blocks_info.spectra_pro_status && timerEndAction === 'content' && (
 		<div className={ `uagb-block-countdown-innerblocks-${ block_id } wp-block-uagb-countdown-innerblocks` }>
 			{ applyFilters( 'spectra.countdown.render-innerblocks', '', name ) }
 		</div>

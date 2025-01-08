@@ -1355,62 +1355,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since 0.0.1
 		 */
 		public function get_post_html( $attributes, $query, $layout ) {
-			// Common Post Attributes.
-			$attributes['post_type']          = $layout;
-			$attributes['postsToShow']        = UAGB_Block_Helper::get_fallback_number( $attributes['postsToShow'], 'postsToShow', $attributes['blockName'] );
-			$attributes['postsOffset']        = UAGB_Block_Helper::get_fallback_number( $attributes['postsOffset'], 'postsOffset', $attributes['blockName'] );
-			$attributes['columns']            = UAGB_Block_Helper::get_fallback_number( $attributes['columns'], 'columns', $attributes['blockName'] );
-			$attributes['tcolumns']           = UAGB_Block_Helper::get_fallback_number( $attributes['tcolumns'], 'columns', $attributes['blockName'] );
-			$attributes['mcolumns']           = UAGB_Block_Helper::get_fallback_number( $attributes['mcolumns'], 'mcolumns', $attributes['blockName'] );
-			$attributes['excerptLength']      = UAGB_Block_Helper::get_fallback_number( $attributes['excerptLength'], 'excerptLength', $attributes['blockName'] );
-			$attributes['overlayOpacity']     = UAGB_Block_Helper::get_fallback_number( $attributes['overlayOpacity'], 'overlayOpacity', $attributes['blockName'] );
-			$attributes['columnGap']          = UAGB_Block_Helper::get_fallback_number( $attributes['columnGap'], 'columnGap', $attributes['blockName'] );
-			$attributes['rowGap']             = UAGB_Block_Helper::get_fallback_number( $attributes['rowGap'], 'rowGap', $attributes['blockName'] );
-			$attributes['imageBottomSpace']   = UAGB_Block_Helper::get_fallback_number( $attributes['imageBottomSpace'], 'imageBottomSpace', $attributes['blockName'] );
-			$attributes['titleBottomSpace']   = UAGB_Block_Helper::get_fallback_number( $attributes['titleBottomSpace'], 'titleBottomSpace', $attributes['blockName'] );
-			$attributes['metaBottomSpace']    = UAGB_Block_Helper::get_fallback_number( $attributes['metaBottomSpace'], 'metaBottomSpace', $attributes['blockName'] );
-			$attributes['excerptBottomSpace'] = UAGB_Block_Helper::get_fallback_number( $attributes['excerptBottomSpace'], 'excerptBottomSpace', $attributes['blockName'] );
-			$attributes['ctaBottomSpace']     = UAGB_Block_Helper::get_fallback_number( $attributes['ctaBottomSpace'], 'ctaBottomSpace', $attributes['blockName'] );
-			// Unique Responsive Attributes.
-			$attributes['rowGapTablet'] = is_numeric( $attributes['rowGapTablet'] ) ? $attributes['rowGapTablet'] : $attributes['rowGap'];
-			$attributes['rowGapMobile'] = is_numeric( $attributes['rowGapMobile'] ) ? $attributes['rowGapMobile'] : $attributes['rowGapTablet'];
-			// Grid / Carousel / Masonry Specific Attributes.
-			if ( isset( $attributes['autoplaySpeed'] ) ) {
-				$attributes['autoplaySpeed'] = UAGB_Block_Helper::get_fallback_number( $attributes['autoplaySpeed'], 'autoplaySpeed', $attributes['blockName'] );
-			}
-			if ( isset( $attributes['transitionSpeed'] ) ) {
-				$attributes['transitionSpeed'] = UAGB_Block_Helper::get_fallback_number( $attributes['transitionSpeed'], 'transitionSpeed', $attributes['blockName'] );
-			}
-			if ( isset( $attributes['arrowSize'] ) ) {
-				$attributes['arrowSize'] = UAGB_Block_Helper::get_fallback_number( $attributes['arrowSize'], 'arrowSize', $attributes['blockName'] );
-			}
-			if ( isset( $attributes['arrowDistance'] ) ) {
-				$attributes['arrowDistance'] = UAGB_Block_Helper::get_fallback_number( $attributes['arrowDistance'], 'arrowDistance', $attributes['blockName'] );
-			}
-			if ( isset( $attributes['arrowDistanceTablet'] ) ) {
-				$attributes['arrowDistanceTablet'] = UAGB_Block_Helper::get_fallback_number( $attributes['arrowDistanceTablet'], 'arrowDistanceTablet', $attributes['blockName'] );
-			}
-			if ( isset( $attributes['arrowDistanceMobile'] ) ) {
-				$attributes['arrowDistanceMobile'] = UAGB_Block_Helper::get_fallback_number( $attributes['arrowDistanceMobile'], 'arrowDistanceMobile', $attributes['blockName'] );
-			}
-			if ( isset( $attributes['arrowBorderSize'] ) ) {
-				$attributes['arrowBorderSize'] = UAGB_Block_Helper::get_fallback_number( $attributes['arrowBorderSize'], 'arrowBorderSize', $attributes['blockName'] );
-			}
-			if ( isset( $attributes['paginationSpacing'] ) ) {
-				$attributes['paginationSpacing'] = UAGB_Block_Helper::get_fallback_number( $attributes['paginationSpacing'], 'paginationSpacing', $attributes['blockName'] );
-			}
-			if ( isset( $attributes['paginationBorderRadius'] ) ) {
-				$attributes['paginationBorderRadius'] = UAGB_Block_Helper::get_fallback_number( $attributes['paginationBorderRadius'], 'paginationBorderRadius', $attributes['blockName'] );
-			}
-			if ( isset( $attributes['paginationBorderSize'] ) ) {
-				$attributes['paginationBorderSize'] = UAGB_Block_Helper::get_fallback_number( $attributes['paginationBorderSize'], 'paginationBorderSize', $attributes['blockName'] );
-			}
-			if ( isset( $attributes['paginationFontSize'] ) ) {
-				$attributes['paginationFontSize'] = UAGB_Block_Helper::get_fallback_number( $attributes['paginationFontSize'], 'paginationFontSize', $attributes['blockName'] );
-			}
-			if ( isset( $attributes['loaderSize'] ) ) {
-				$attributes['loaderSize'] = UAGB_Block_Helper::get_fallback_number( $attributes['loaderSize'], 'loaderSize', $attributes['blockName'] );
-			}
 
 			$wrap = array(
 				'uagb-post__items uagb-post__columns-' . $attributes['columns'],
@@ -1579,9 +1523,9 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$base                = UAGB_Helper::build_base_url( $permalink_structure, $base );
 			$format              = UAGB_Helper::paged_format( $permalink_structure, $base );
 			$paged               = UAGB_Helper::get_paged( $query );
-			$p_limit             = UAGB_Block_Helper::get_fallback_number( $attributes['pageLimit'], 'pageLimit', $attributes['blockName'] );
+			$p_limit             = isset( $attributes['pageLimit'] ) ? sanitize_text_field( $attributes['pageLimit'] ) : 10;
 			$page_limit          = min( $p_limit, $query->max_num_pages );
-			$page_limit          = isset( $page_limit ) ? $page_limit : UAGB_Block_Helper::get_fallback_number( $attributes['postsToShow'], 'postsToShow', $attributes['blockName'] );
+			$page_limit          = isset( $page_limit ) ? $page_limit : sanitize_text_field( $attributes['postsToShow'] );
 
 			$links = paginate_links(
 				array(
@@ -1642,8 +1586,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 */
 		public function required_attribute_for_query( $attributes ) {
 			return array(
-				'postsOffset'        => UAGB_Block_Helper::get_fallback_number( sanitize_text_field( $attributes['postsOffset'] ), 'postsOffset', sanitize_text_field( $attributes['blockName'] ) ),
-				'postsToShow'        => UAGB_Block_Helper::get_fallback_number( sanitize_text_field( $attributes['postsToShow'] ), 'postsToShow', sanitize_text_field( $attributes['blockName'] ) ),
+				'postsOffset'        => ( isset( $attributes['postsOffset'] ) ) ? sanitize_text_field( $attributes['postsOffset'] ) : 0,
+				'postsToShow'        => ( isset( $attributes['postsToShow'] ) ) ? sanitize_text_field( $attributes['postsToShow'] ) : 6,
 				'postType'           => ( isset( $attributes['postType'] ) ) ? sanitize_text_field( $attributes['postType'] ) : 'post',
 				'order'              => ( isset( $attributes['order'] ) ) ? sanitize_text_field( $attributes['order'] ) : 'desc',
 				'orderBy'            => ( isset( $attributes['orderBy'] ) ) ? sanitize_text_field( $attributes['orderBy'] ) : 'date',

@@ -873,6 +873,15 @@ const Settings = ( props ) => {
 						/>
 					</>
 				) }
+				{ showIcon && ctaType !== 'all' && ctaType !== 'none' && (
+					<>
+						<UAGIconPicker
+							label={ __( 'Icon', 'ultimate-addons-for-gutenberg' ) }
+							value={ ctaIcon }
+							onChange={ ( value ) => setAttributes( { ctaIcon: value } ) }
+						/>
+					</>
+				) }
 				{ showCtaIcon && ctaIcon !== '' && ctaType !== 'all' && ctaType !== 'none' && (
 					<>
 						<MultiButtonsControl

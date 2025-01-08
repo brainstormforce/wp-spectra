@@ -688,6 +688,7 @@ const Settings = ( props ) => {
 	// CTA settings.
 	const ctaSettings = () => {
 		return (
+			<>
 			<UAGAdvancedPanelBody title={ __( 'Button', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }
@@ -874,6 +875,7 @@ const Settings = ( props ) => {
 					</>
 				) }
 			</UAGAdvancedPanelBody>
+		</>
 		);
 	};
 

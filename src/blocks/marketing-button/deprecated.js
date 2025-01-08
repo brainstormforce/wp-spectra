@@ -344,7 +344,6 @@ const deprecated = [
 							href={ link }
 							className="uagb-marketing-btn__link"
 							target={ target }
-							rel="noopener noreferrer"
 						>
 							<div className="uagb-marketing-btn__title-wrap">
 								{ '' != icon && (
@@ -401,7 +400,6 @@ const deprecated = [
 							href={ link }
 							className="uagb-marketing-btn__link"
 							target={ target }
-							rel="noopener noreferrer"
 						>
 							<div className="uagb-marketing-btn__title-wrap">
 								{ '' != icon && (
@@ -458,7 +456,6 @@ const deprecated = [
 							href={ link }
 							className="uagb-marketing-btn__link"
 							target={ target }
-							rel="noopener noreferrer"
 						>
 							<div className="uagb-marketing-btn__title-wrap">
 								{ '' != icon && (

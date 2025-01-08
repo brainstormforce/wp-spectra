@@ -24,7 +24,7 @@ const defaultProps = {
 	onChange: null,
 };
 
-export default function UAGSelectControl( { layout, label, options, data, setAttributes, onChange, help, children } ) {
+export default function UAGSelectControl( { layout, label, options, data, setAttributes, onChange, help, children, panelId } ) {
 	const [ panelNameForHook, setPanelNameForHook ] = useState( null );
 	const panelRef = useRef( null );
 
@@ -41,7 +41,7 @@ export default function UAGSelectControl( { layout, label, options, data, setAtt
 		setPanelNameForHook( getPanelIdFromRef( panelRef ) );
 	}, [ blockNameForHook ] );
 
-	const controlName = getIdFromString( label );
+	const controlName = panelId || getIdFromString( label );
 
 	// Filter for the control that should appear before this control.
 	const controlBeforeDomElement = applyFilters(

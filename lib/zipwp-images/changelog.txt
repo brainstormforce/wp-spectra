@@ -1,3 +1,6 @@
+v1.0.14 - 28-November-2024
+- Fix: Removed garbage CSS conflicting with other plugins.
+
 v1.0.13 - 11-November-2024
 - Fix: Resolved an issue where the media library button text was incorrectly displayed in certain cases.
 

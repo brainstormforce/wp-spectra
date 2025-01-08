@@ -277,7 +277,6 @@ const Settings = ( props ) => {
 		wrapperAlign,
 		wrapperAlignPosition,
 		isLeftToRightLayout,
-
 	} = attributes;
 
 	const currentTheme = uagb_blocks_info.current_theme;
@@ -725,6 +724,7 @@ const Settings = ( props ) => {
 			</UAGAdvancedPanelBody>
 		);
 	};
+
 	const imageSettings = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
@@ -746,8 +746,8 @@ const Settings = ( props ) => {
 						/>
 						{ ! imgEqualHeight && (
 							<UAGSelectControl
-								label={ __( 'Image Ratio', 'ultimate-addons-for-gutenberg' ) }
-								options={ [
+								label={__( 'Image Ratio', 'ultimate-addons-for-gutenberg' )}
+								options={[
 									{
 										label: __( 'Inherit', 'ultimate-addons-for-gutenberg' ),
 										value: 'inherit',
@@ -768,16 +768,16 @@ const Settings = ( props ) => {
 										label: __( '2:1', 'ultimate-addons-for-gutenberg' ),
 										value: '1-2',
 									},
-								] }
-								data={ {
+								]}
+								data={{
 									value: imageRatio,
 									label: 'imageRatio',
-								} }
-								setAttributes={ setAttributes }
+								}}
+								setAttributes={setAttributes}
 							/>
-						) }
+						)}
 					</>
-				) }
+				)}
 				{ displayPostImage === true && (
 					<UAGSelectControl
 						label={ __( 'Sizes', 'ultimate-addons-for-gutenberg' ) }

@@ -1,3 +1,21 @@
+Version 1.0.6 - 31-12-2024
+- Improvement:
+  - Optimized performance by preventing unnecessary markup loading on screens where specific screen IDs are provided.
+- Fix:
+  - Resolved console errors that occurred during popup dismissal, ensuring smoother user interaction.
+
+Version 1.0.5 - 19-12-2024
+- New:
+  - Introduced a configuration option to display pop-up on the dashboards of specific plugins.
+- Improvement:
+  - Enhanced mobile responsiveness of the popup.
+- Fix:
+  - Corrected popup positioning in RTL (Right-to-Left) layouts.
+  - Resolved overlap issues between the popup and other elements in Spectra.
+
+Version 1.0.4 - 13-12-2024  
+- Improvement: Optimized file loading to prevent duplicate loads, enhancing performance.
+
 Version 1.0.3 - 10-12-2024
 - Fix: Fixed library update issue.
 

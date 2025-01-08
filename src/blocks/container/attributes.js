@@ -1253,12 +1253,40 @@ const attributes = {
 			styleType: 'gradient-location-1',
 		},
 	},
+	gradientLocationTablet1: {
+		type: 'number',
+		isGBSStyle: true,
+		UAGCopyPaste: {
+			styleType: 'gradient-location-tablet-1',
+		},
+	},
+	gradientLocationMobile1: {
+		type: 'number',
+		isGBSStyle: true,
+		UAGCopyPaste: {
+			styleType: 'gradient-location-mobile-1',
+		},
+	},
 	gradientLocation2: {
 		type: 'number',
 		default: 100,
 		isGBSStyle: true,
 		UAGCopyPaste: {
 			styleType: 'gradient-location-2',
+		},
+	},
+	gradientLocationTablet2: {
+		type: 'number',
+		isGBSStyle: true,
+		UAGCopyPaste: {
+			styleType: 'gradient-location-tablet-2',
+		},
+	},
+	gradientLocationMobile2: {
+		type: 'number',
+		isGBSStyle: true,
+		UAGCopyPaste: {
+			styleType: 'gradient-location-mobile-2',
 		},
 	},
 	gradientAngle: {
@@ -1269,11 +1297,37 @@ const attributes = {
 			styleType: 'gradient-angle',
 		},
 	},
+	gradientAngleTablet: {
+		type: 'number',
+		isGBSStyle: true,
+		UAGCopyPaste: {
+			styleType: 'gradient-angle-tablet',
+		},
+	},
+	gradientAngleMobile: {
+		type: 'number',
+		isGBSStyle: true,
+		UAGCopyPaste: {
+			styleType: 'gradient-angle-mobile',
+		},
+	},
 	gradientOverlayAngle: {
 		type: 'number',
 		default: 0,
 		UAGCopyPaste: {
 			styleType: 'gradient-overlay-angle',
+		},
+	},
+	gradientOverlayAngleTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'gradient-overlay-angle-tablet',
+		},
+	},
+	gradientOverlayAngleMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'gradient-overlay-angle-mobile',
 		},
 	},
 	backgroundOverlayType: {
@@ -1531,11 +1585,35 @@ const attributes = {
 			styleType: 'gradient-overlay-location-1',
 		},
 	},
+	gradientOverlayLocationTablet1: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'gradient-overlay-location-tablet-1',
+		},
+	},
+	gradientOverlayLocationMobile1: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'gradient-overlay-location-mobile-1',
+		},
+	},
 	gradientOverlayLocation2: {
 		type: 'number',
 		default: 100,
 		UAGCopyPaste: {
 			styleType: 'gradient-overlay-location-2',
+		},
+	},
+	gradientOverlayLocationTablet2: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'gradient-overlay-location-tablet-2',
+		},
+	},
+	gradientOverlayLocationMobile2: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'gradient-overlay-location-mobile-2',
 		},
 	},
 	...inputBorderAttributes,

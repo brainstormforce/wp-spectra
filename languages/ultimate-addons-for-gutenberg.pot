@@ -1,21 +1,20 @@
-# Copyright (C) 2024 Brainstorm Force
+# Copyright (C) 2025 Brainstorm Force
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.18.0\n"
+"Project-Id-Version: Spectra 2.18.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-11T13:44:07+00:00\n"
+"POT-Creation-Date: 2025-01-07T11:58:13+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
 
 #. Plugin Name of the plugin
-#: ultimate-addons-for-gutenberg.php
 #: admin-core/inc/admin-menu.php:147
 #: admin-core/inc/admin-menu.php:148
 #: admin-core/inc/admin-menu.php:159
@@ -24,23 +23,20 @@ msgstr ""
 #: admin-core/inc/admin-menu.php:194
 #: admin-core/inc/admin-menu.php:273
 #: classes/class-uagb-init-blocks.php:579
-#: classes/class-uagb-nps-notice.php:176
+#: classes/class-uagb-nps-notice.php:171
 msgid "Spectra"
 msgstr ""
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
-#: ultimate-addons-for-gutenberg.php
 msgid "https://www.brainstormforce.com"
 msgstr ""
 
 #. Description of the plugin
-#: ultimate-addons-for-gutenberg.php
 msgid "The Spectra extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster."
 msgstr ""
 
 #. Author of the plugin
-#: ultimate-addons-for-gutenberg.php
 msgid "Brainstorm Force"
 msgstr ""
 
@@ -263,8 +259,8 @@ msgid "Unset"
 msgstr ""
 
 #: blocks-config/post-timeline/class-uagb-post-timeline.php:545
-#: blocks-config/post/class-uagb-post.php:624
-#: blocks-config/post/class-uagb-post.php:2282
+#: blocks-config/post/class-uagb-post.php:688
+#: blocks-config/post/class-uagb-post.php:2289
 #: includes/blocks/post-carousel/attributes.php:118
 #: includes/blocks/post-grid/attributes.php:109
 #: includes/blocks/post-masonry/attributes.php:111
@@ -296,6 +292,14 @@ msgstr ""
 #: blocks-config/taxonomy-list/class-uagb-taxonomy-list.php:121
 #: includes/blocks/taxonomy-list/attributes.php:92
 msgid "Taxonomy Not Available."
+msgstr ""
+
+#: blocks-config/taxonomy-list/class-uagb-taxonomy-list.php:552
+msgid "Item"
+msgstr ""
+
+#: blocks-config/taxonomy-list/class-uagb-taxonomy-list.php:553
+msgid "Items"
 msgstr ""
 
 #: blocks-config/taxonomy-list/class-uagb-taxonomy-list.php:716
@@ -2961,6 +2965,7 @@ msgstr ""
 
 #: blocks-config/uagb-controls/spectra-icons-v6-1.php:2565
 #: dist/blocks.js:15
+#: dist/blocks.js:19
 msgid "Fill"
 msgstr ""
 
@@ -7773,84 +7778,84 @@ msgstr ""
 msgid "Theme"
 msgstr ""
 
-#: classes/class-uagb-admin.php:108
+#: classes/class-uagb-admin.php:96
 msgid "Migration started successfully."
 msgstr ""
 
-#: classes/class-uagb-admin.php:124
-#: classes/class-uagb-admin.php:194
+#: classes/class-uagb-admin.php:112
+#: classes/class-uagb-admin.php:182
 msgid "You do not have permission to access this page."
 msgstr ""
 
-#: classes/class-uagb-admin.php:141
+#: classes/class-uagb-admin.php:129
 msgid "Log file not found."
 msgstr ""
 
-#: classes/class-uagb-admin.php:195
-#: classes/class-uagb-admin.php:226
+#: classes/class-uagb-admin.php:183
+#: classes/class-uagb-admin.php:214
 #: admin-core/assets/build/dashboard-app.js:1
 #: admin-core/assets/build/dashboard-app.js:3
 msgid "Rollback to Previous Version"
 msgstr ""
 
-#: classes/class-uagb-admin.php:208
+#: classes/class-uagb-admin.php:196
 msgid "Error occurred, The version selected is invalid. Try selecting different version."
 msgstr ""
 
-#: classes/class-uagb-admin.php:315
+#: classes/class-uagb-admin.php:303
 msgid "Spectra database update required"
 msgstr ""
 
-#: classes/class-uagb-admin.php:316
+#: classes/class-uagb-admin.php:304
 msgid "We've detected that some of your pages were created with an older version of Spectra. To ensure your designs remain unaffected, we recommend updating the Spectra database now. Updating the Spectra database will not impact any other parts of your website."
 msgstr ""
 
-#: classes/class-uagb-admin.php:317
+#: classes/class-uagb-admin.php:305
 msgid "To be on the safer side, please be sure to back up your site before updating."
 msgstr ""
 
-#: classes/class-uagb-admin.php:318
+#: classes/class-uagb-admin.php:306
 msgid "Update Spectra Database"
 msgstr ""
 
-#: classes/class-uagb-admin.php:320
+#: classes/class-uagb-admin.php:308
 msgid "Learn More About This"
 msgstr ""
 
-#: classes/class-uagb-admin.php:345
+#: classes/class-uagb-admin.php:333
 msgid "Spectra database update in progress"
 msgstr ""
 
-#: classes/class-uagb-admin.php:346
+#: classes/class-uagb-admin.php:334
 msgid "Great! This should only take a few minutes. Thanks for hanging in there."
 msgstr ""
 
-#: classes/class-uagb-admin.php:371
+#: classes/class-uagb-admin.php:359
 msgid "Update Successful!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:372
+#: classes/class-uagb-admin.php:360
 msgid "Your Spectra database is now up-to-date. Your website will continue to function as before."
 msgstr ""
 
-#: classes/class-uagb-admin.php:372
+#: classes/class-uagb-admin.php:360
 msgid "View Log"
 msgstr ""
 
 #. translators: %s: html tags
-#: classes/class-uagb-admin.php:391
+#: classes/class-uagb-admin.php:379
 msgid "Spectra requires&nbsp;%3$sBlock Editor%4$s. You can change your editor settings to Block Editor from&nbsp;%1$shere%2$s. Plugin is currently NOT RUNNING."
 msgstr ""
 
-#: classes/class-uagb-admin.php:436
+#: classes/class-uagb-admin.php:424
 msgid "Want to do more with Popup Builder?"
 msgstr ""
 
-#: classes/class-uagb-admin.php:437
+#: classes/class-uagb-admin.php:425
 msgid "Maximize your popup potential with Spectra Pro. Unlock enhanced features, intuitive design options, and increased conversions!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:439
+#: classes/class-uagb-admin.php:427
 #: admin-core/assets/build/dashboard-app.js:1
 msgid "Upgrade Now"
 msgstr ""
@@ -7999,27 +8004,27 @@ msgstr ""
 msgid "Install Gutenberg"
 msgstr ""
 
-#: classes/class-uagb-nps-notice.php:177
+#: classes/class-uagb-nps-notice.php:172
 msgid "How likely are you to recommend Spectra to your friends or colleagues?"
 msgstr ""
 
-#: classes/class-uagb-nps-notice.php:178
+#: classes/class-uagb-nps-notice.php:173
 msgid "Thanks a lot for your feedback! 😍"
 msgstr ""
 
-#: classes/class-uagb-nps-notice.php:179
+#: classes/class-uagb-nps-notice.php:174
 msgid "Could you please do us a favor and give us a 5-star rating on WordPress? It would help others choose Spectra with confidence. Thank you!"
 msgstr ""
 
-#: classes/class-uagb-nps-notice.php:181
+#: classes/class-uagb-nps-notice.php:176
 msgid "Thank you for your feedback"
 msgstr ""
 
-#: classes/class-uagb-nps-notice.php:182
+#: classes/class-uagb-nps-notice.php:177
 msgid "We value your input. How can we improve your experience?"
 msgstr ""
 
-#: classes/class-uagb-nps-notice.php:183
+#: classes/class-uagb-nps-notice.php:178
 msgid "Rate Spectra"
 msgstr ""
 
@@ -8870,7 +8875,7 @@ msgstr ""
 #: lib/gutenberg-templates/inc/api/settings.php:92
 #: lib/gutenberg-templates/inc/api/sites.php:70
 #: lib/gutenberg-templates/inc/classes/ast-block-templates-zipwp-api.php:77
-#: lib/nps-survey/classes/nps-survey-script.php:249
+#: lib/nps-survey/classes/nps-survey-script.php:252
 #: lib/zipwp-images/classes/zipwp-images-api.php:92
 msgid "Sorry, you are not allowed to do that."
 msgstr ""
@@ -8887,8 +8892,8 @@ msgstr ""
 #: lib/gutenberg-templates/inc/api/sites.php:93
 #: lib/gutenberg-templates/inc/classes/ast-block-templates-zipwp-api.php:138
 #: lib/gutenberg-templates/inc/classes/ast-block-templates-zipwp-api.php:197
-#: lib/nps-survey/classes/nps-survey-script.php:270
-#: lib/nps-survey/classes/nps-survey-script.php:351
+#: lib/nps-survey/classes/nps-survey-script.php:273
+#: lib/nps-survey/classes/nps-survey-script.php:354
 #: lib/zipwp-images/classes/zipwp-images-api.php:169
 msgid "Nonce verification failed."
 msgstr ""
@@ -10584,6 +10589,7 @@ msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
+#: dist/blocks.js:19
 msgid "Cover"
 msgstr ""
 
@@ -11947,6 +11953,7 @@ msgid "Title"
 msgstr ""
 
 #: dist/blocks.js:15
+#: dist/blocks.js:19
 msgid "Object Fit"
 msgstr ""
 
@@ -12238,10 +12245,6 @@ msgstr ""
 
 #: dist/blocks.js:19
 msgid "Enable Icon"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "Add \"nofollow\" to link"
 msgstr ""
 
 #: dist/blocks.js:19
@@ -14837,6 +14840,26 @@ msgid "Showing All Post Grid Layout."
 msgstr ""
 
 #: dist/blocks.js:19
+msgid "1:1"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "2:1"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "3:2"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "16:9"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Inherit"
+msgstr ""
+
+#: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Post Type"
 msgstr ""
@@ -14933,6 +14956,14 @@ msgstr ""
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Show Featured Image"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Image Ratio"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Custom Height"
 msgstr ""
 
 #: dist/blocks.js:19
@@ -15152,30 +15183,6 @@ msgstr ""
 
 #: dist/blocks.js:19
 msgid "Next Text"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "Image Ratio"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "Inherit"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "1:1"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "3:2"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "16:9"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "2:1"
 msgstr ""
 
 #: dist/blocks.js:19
