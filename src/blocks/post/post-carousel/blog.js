@@ -193,7 +193,6 @@ function Blog( props ) {
 					isImageEnabled,
 					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 					`uagb-block-${ block_id }`,
-					attributes.displayPostImage === true ? 'uagb-has-item-ratio' : ''
 				) }
 				data-blog-id={ block_id }
 			>
@@ -219,7 +218,6 @@ function Blog( props ) {
 				isImageEnabled,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 				`uagb-block-${ block_id }`,
-				attributes.displayPostImage === true ? 'uagb-has-item-ratio' : ''
 			) }
 			data-blog-id={ block_id }
 			style={ 'dots' === arrowDots ? { padding: '0 0 35px 0' } : {} }

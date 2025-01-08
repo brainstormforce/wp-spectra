@@ -1288,7 +1288,7 @@ const attributes = {
 	},
 	imageRatio: {
 		type: 'string',
-		default: '0-0',
+		default: 'inherit',
 	},
 	paginationType: {
 		type: 'string',
@@ -1422,36 +1422,6 @@ const attributes = {
 	},
 	...btnBorderAttributes,
 	...overallBorderAttributes,
-	imageRatioTablet: {
-		type: 'string',
-		default: 'inherit',
-	},
-	imageRatioMobile: {
-		type: 'string',
-		default: 'inherit',
-	},
-	imageRatioWidthDesktop: {
-		type: 'number',
-	},
-	imageRatioWidthTablet: {
-		type: 'number',
-	},
-	imageRatioWidthMobile: {
-		type: 'number',
-	},
-	imageRatioHeightDesktop: {
-		type: 'number',
-	},
-	imageRatioHeightTablet: {
-		type: 'number',
-	},
-	imageRatioHeightMobile: {
-		type: 'number',
-	},
-	objectFit: {
-		type: 'string',
-		default: 'fill',
-	},
 };
 
 export default attributes;

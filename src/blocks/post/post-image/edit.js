@@ -1,5 +1,6 @@
 import { decodeEntities } from '@wordpress/html-entities';
 import { __ } from '@wordpress/i18n';
+import classnames from 'classnames';
 
 export const PostImage = ( props ) => {
 	const { post, attributes } = props;
@@ -22,13 +23,14 @@ export const PostImage = ( props ) => {
 						href={ post.link }
 						target={ target }
 						rel="noopener noreferrer"
+						className={classnames(
+							attributes.blockName === 'post-grid' ? `uagb-image-ratio-${attributes.imageRatio}` : ''
+						)}
 					>
-						<div className="uagb-post__thumbnail">
-							<img
-								src={src[0]}
-								alt={decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'ultimate-addons-for-gutenberg' )}
-							/>
-						</div>
+						<img
+							src={src[0]}
+							alt={decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)', 'ultimate-addons-for-gutenberg' )}
+						/>
 					</a>
 				) }
 			</div>

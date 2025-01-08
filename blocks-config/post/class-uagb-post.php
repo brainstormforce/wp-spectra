@@ -178,14 +178,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							),
 							'imageRatio'                  => array(
 								'type'    => 'string',
-								'default' => '0-0',
-							),
-							'imageRatioTablet'            => array(
-								'type'    => 'string',
-								'default' => 'inherit',
-							),
-							'imageRatioMobile'            => array(
-								'type'    => 'string',
 								'default' => 'inherit',
 							),
 							'imgEqualHeight'              => array(
@@ -272,28 +264,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'string',
 								'default' => 'center',
 							),
-							'imageRatioWidthDesktop'      => array(
-								'type' => 'number',
-							),
-							'imageRatioWidthTablet'       => array(
-								'type' => 'number',
-							),
-							'imageRatioWidthMobile'       => array(
-								'type' => 'number',
-							),
-							'imageRatioHeightDesktop'     => array(
-								'type' => 'number',
-							),
-							'imageRatioHeightTablet'      => array(
-								'type' => 'number',
-							),
-							'imageRatioHeightMobile'      => array(
-								'type' => 'number',
-							),
-							'objectFit'                   => array(
-								'type'    => 'string',
-								'default' => 'fill',
-							),
 						)
 					),
 					'render_callback' => array( $this, 'post_grid_callback' ),
@@ -306,64 +276,64 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'attributes'      => array_merge(
 						$common_attributes,
 						array(
-							'blockName'               => array(
+							'blockName'           => array(
 								'type'    => 'string',
 								'default' => 'post-carousel',
 							),
-							'pauseOnHover'            => array(
+							'pauseOnHover'        => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'infiniteLoop'            => array(
+							'infiniteLoop'        => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'transitionSpeed'         => array(
+							'transitionSpeed'     => array(
 								'type'    => 'number',
 								'default' => 500,
 							),
-							'arrowDots'               => array(
+							'arrowDots'           => array(
 								'type'    => 'string',
 								'default' => 'arrows_dots',
 							),
-							'autoplay'                => array(
+							'autoplay'            => array(
 								'type'    => 'boolean',
 								'default' => true,
 							),
-							'autoplaySpeed'           => array(
+							'autoplaySpeed'       => array(
 								'type'    => 'number',
 								'default' => 2000,
 							),
-							'arrowSize'               => array(
+							'arrowSize'           => array(
 								'type'    => 'number',
 								'default' => 24,
 							),
-							'arrowBorderSize'         => array(
+							'arrowBorderSize'     => array(
 								'type'    => 'number',
 								'default' => 0,
 							),
-							'arrowBorderRadius'       => array(
+							'arrowBorderRadius'   => array(
 								'type'    => 'number',
 								'default' => 0,
 							),
-							'arrowColor'              => array(
+							'arrowColor'          => array(
 								'type'    => 'string',
 								'default' => '#000',
 							),
-							'arrowDistance'           => array(
+							'arrowDistance'       => array(
 								'type' => 'number',
 							),
-							'arrowDistanceTablet'     => array(
+							'arrowDistanceTablet' => array(
 								'type' => 'number',
 							),
-							'arrowDistanceMobile'     => array(
+							'arrowDistanceMobile' => array(
 								'type' => 'number',
 							),
-							'equalHeight'             => array(
+							'equalHeight'         => array(
 								'type'    => 'boolean',
 								'default' => false,
 							),
-							'layoutConfig'            => array(
+							'layoutConfig'        => array(
 								'type'    => 'array',
 								'default' => array(
 									array( 'uagb/post-image' ),
@@ -374,59 +344,25 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									array( 'uagb/post-button' ),
 								),
 							),
-							'post_type'               => array(
+							'post_type'           => array(
 								'type'    => 'string',
 								'default' => 'carousel',
 							),
-							'dotsMarginTop'           => array(
+							'dotsMarginTop'       => array(
 								'type'    => 'number',
 								'default' => '20',
 							),
-							'dotsMarginTopTablet'     => array(
+							'dotsMarginTopTablet' => array(
 								'type'    => 'number',
 								'default' => '20',
 							),
-							'dotsMarginTopMobile'     => array(
+							'dotsMarginTopMobile' => array(
 								'type'    => 'number',
 								'default' => '20',
 							),
-							'dotsMarginTopUnit'       => array(
+							'dotsMarginTopUnit'   => array(
 								'type'    => 'string',
 								'default' => 'px',
-							),
-							'imageRatio'              => array(
-								'type'    => 'string',
-								'default' => '0-0',
-							),
-							'imageRatioTablet'        => array(
-								'type'    => 'string',
-								'default' => 'inherit',
-							),
-							'imageRatioMobile'        => array(
-								'type'    => 'string',
-								'default' => 'inherit',
-							),
-							'imageRatioWidthDesktop'  => array(
-								'type' => 'number',
-							),
-							'imageRatioWidthTablet'   => array(
-								'type' => 'number',
-							),
-							'imageRatioWidthMobile'   => array(
-								'type' => 'number',
-							),
-							'imageRatioHeightDesktop' => array(
-								'type' => 'number',
-							),
-							'imageRatioHeightTablet'  => array(
-								'type' => 'number',
-							),
-							'imageRatioHeightMobile'  => array(
-								'type' => 'number',
-							),
-							'objectFit'               => array(
-								'type'    => 'string',
-								'default' => 'fill',
 							),
 						)
 					),
@@ -1425,7 +1361,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				'is-' . $layout,
 				'uagb-post__columns-tablet-' . $attributes['tcolumns'],
 				'uagb-post__columns-mobile-' . $attributes['mcolumns'],
-				( true === $attributes['displayPostImage'] ) ? 'uagb-has-item-ratio' : '',
 			);
 
 			$block_id = 'uagb-block-' . $attributes['block_id'];
@@ -2027,13 +1962,15 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			<div class='uagb-post__image'>
 				<?php
 				if ( get_the_post_thumbnail_url() ) {
-					?>
-					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_attr( $target ); ?>" rel="bookmark noopener noreferrer">
-						<div class="uagb-post__thumbnail">
-							<?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'], false, array( 'loading' => 'eager' ) ); ?>
-						</div>
+					if ( 'post-grid' === $attributes['blockName'] && 'background' !== $attributes['imgPosition'] ) {
+						?>
+					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_attr( $target ); ?>" rel="bookmark noopener noreferrer" class='uagb-image-ratio-<?php echo esc_attr( $attributes['imageRatio'] ); ?>'><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
 					</a>
-					<?php
+				<?php } else { ?>
+					<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_attr( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
+					</a>
+						<?php
+				}
 				}
 				?>
 			</div>

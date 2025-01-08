@@ -231,13 +231,6 @@ return array_merge(
 		// Wrapper Alignment.
 		'wrapperAlign'                => 'row',
 		'wrapperAlignPosition'        => 'center',
-		'objectFit'                   => 'fill',
-		'imageRatioTablet'            => '',
-		'imageRatioMobile'            => '',
-		'imageRatioWidthTablet'       => '',
-		'imageRatioWidthMobile'       => '',
-		'imageRatioHeightTablet'      => '',
-		'imageRatioHeightMobile'      => '',
 	),
 	$btn_border_attribute,
 	$overall_border_attribute
