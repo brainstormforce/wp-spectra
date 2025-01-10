@@ -153,6 +153,8 @@ if ( ! class_exists( 'UAGB_NPS_Notice' ) ) :
 
 			1 == $five_blocks_trigger || 5 <= $spectra_blocks_count || $two_weeks_passed ? $show_survey = true : $show_survey = false;
 
+			$allowed_screens = array( 'toplevel_page_spectra', 'edit-spectra-popup' );
+
 			// Display the NPS survey.
 			Nps_Survey::show_nps_notice(
 				'nps-survey-ultimate-addons-for-gutenberg',
@@ -162,7 +164,7 @@ if ( ! class_exists( 'UAGB_NPS_Notice' ) ) :
 					'dismiss_timespan' => 2 * WEEK_IN_SECONDS,
 					'display_after'    => 0,
 					'plugin_slug'      => 'spectra',
-					'show_on_screens'  => array( 'toplevel_page_spectra', 'edit-spectra-popup' ),
+					'show_on_screens'  => $allowed_screens,
 					'message'          => array(
 
 						'logo'                        => esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/logos/spectra.svg' ),

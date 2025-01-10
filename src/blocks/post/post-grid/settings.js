@@ -20,9 +20,8 @@ import BoxShadowControl from '@Components/box-shadow';
 import { decodeEntities } from '@wordpress/html-entities';
 import UAGNumberControl from '@Components/number-control';
 import UAGTextControl from '@Components/text-control';
-import { useEffect, memo } from '@wordpress/element';
+import { memo } from '@wordpress/element';
 import UpgradeComponent from '@Components/upgrade-to-pro-cta';
-import ResponsiveSelectControl from '@Components/responsive-select';
 
 const MAX_POSTS_COLUMNS = 8;
 
@@ -278,127 +277,20 @@ const Settings = ( props ) => {
 		wrapperAlign,
 		wrapperAlignPosition,
 		isLeftToRightLayout,
-		imageRatioTablet,
-		imageRatioMobile,
-		imageRatioWidthDesktop,
-		imageRatioWidthTablet,
-		imageRatioWidthMobile,
-		imageRatioHeightDesktop,
-		imageRatioHeightTablet,
-		imageRatioHeightMobile,
-		objectFit
 	} = attributes;
 
 	const currentTheme = uagb_blocks_info.current_theme;
 	const isAstraBasedTheme = uagb_blocks_info.is_astra_based_theme;
 
-	const setImgEqualHeight = ( value ) => {
+	const setImgEqualheight = ( value ) => {
 		setAttributes( { imgEqualHeight: value } );
-
-		const newValue = value ? '2-3' : '0-0';
-
-		// Update for all devices
-		updateResponsiveImageRatio( newValue, {
-			desktop: { label: 'imageRatioDesktop' },  // Adjust label if different
-			tablet: { label: 'imageRatioTablet' },
-			mobile: { label: 'imageRatioMobile' },
-		}, 'desktop', {
-			desktop: {
-				widthAttribute: 'imageRatioWidthDesktop',
-				heightAttribute: 'imageRatioHeightDesktop',
-			},
-			tablet: {
-				widthAttribute: 'imageRatioWidthTablet',
-				heightAttribute: 'imageRatioHeightTablet',
-			},
-			mobile: {
-				widthAttribute: 'imageRatioWidthMobile',
-				heightAttribute: 'imageRatioHeightMobile',
-			},
-		} );
-
-		// Manually set for desktop, tablet, and mobile if needed.
-		updateResponsiveImageRatio( newValue, {
-			desktop: { label: 'imageRatio' }, // Label corresponds to desktop attribute
-		}, 'desktop', {
-			desktop: {
-				widthAttribute: 'imageRatioWidthDesktop',
-				heightAttribute: 'imageRatioHeightDesktop',
-			}
-		} );
-
-		updateResponsiveImageRatio( newValue, {
-			tablet: { label: 'imageRatioTablet' },
-		}, 'tablet', {
-			tablet: {
-				widthAttribute: 'imageRatioWidthTablet',
-				heightAttribute: 'imageRatioHeightTablet',
-			}
-		} );
-
-		updateResponsiveImageRatio( newValue, {
-			mobile: { label: 'imageRatioMobile' },
-		}, 'mobile', {
-			mobile: {
-				widthAttribute: 'imageRatioWidthMobile',
-				heightAttribute: 'imageRatioHeightMobile',
-			}
-		} );
-	};
-
-	// Take in the required attribute, and split it into two halfs.
-	const commonRatioSplit = ( imageRatioData ) => {
-		if ( !imageRatioData.type || ['inherit', 'custom'].includes( imageRatioData.type ) ) {
-			return;
+		if ( value ) {
+			setAttributes( { imageRatio: '2-3' } );
+		} else {
+			setAttributes( { imageRatio: 'inherit' } );
 		}
-		// Split the value into width and height
-		const tempValueDesktop = imageRatioData?.type.split( '-' );
-		// Update both width and height in a single setAttributes call
-		setAttributes( {
-			[imageRatioData.width]: parseInt( tempValueDesktop[1] ), // width
-			[imageRatioData.height]: parseInt( tempValueDesktop[0] ), // height
-		} );
 	};
 
-	const updateResponsiveImageRatio = ( value, dataSet, devType, splitAttributes ) => {
-		if ( ['inherit', 'custom'].includes( value ) ) {
-			setAttributes( {
-				[dataSet[devType]?.label]: value,
-				[splitAttributes[devType]?.widthAttribute]: '',
-				[splitAttributes[devType]?.heightAttribute]: '',
-			} );
-			return;
-		}
-		// Call commonRatioSplit to set width and height
-		commonRatioSplit( {
-			type: value,
-			width: splitAttributes[devType]?.widthAttribute,
-			height: splitAttributes[devType]?.heightAttribute,
-		} );
-		// Set the device-specific image ratio value (desktop, tablet, mobile)
-		setAttributes( {
-			[dataSet[devType]?.label]: value,
-		} );
-	};
-
-	useEffect( () => {
-		// Call commonRatioSplit to set width and height
-		commonRatioSplit( {
-			type: imageRatio,
-			width: 'imageRatioWidthDesktop',
-			height: 'imageRatioHeightDesktop',
-		} );
-		commonRatioSplit( {
-			type: imageRatioTablet,
-			width: 'imageRatioWidthTablet',
-			height: 'imageRatioHeightTablet',
-		} );
-		commonRatioSplit( {
-			type: imageRatioMobile,
-			width: 'imageRatioWidthMobile',
-			height: 'imageRatioHeightMobile',
-		} );
-	}, [] );
 	const onSelectPostType = ( value ) => {
 		setAttributes( { postType: value } );
 		setAttributes( { categories: '' } );
@@ -832,92 +724,7 @@ const Settings = ( props ) => {
 			</UAGAdvancedPanelBody>
 		);
 	};
-	const imageRatioOptions = [
-		{
-			label: __( 'None', 'ultimate-addons-for-gutenberg' ),
-			value: '0-0',
-		},
-		{
-			label: __( '1:1', 'ultimate-addons-for-gutenberg' ),
-			value: '1-1',
-		},
-		{
-			label: __( '2:1', 'ultimate-addons-for-gutenberg' ),
-			value: '1-2',
-		},
-		{
-			label: __( '3:2', 'ultimate-addons-for-gutenberg' ),
-			value: '2-3',
-		},
-		{
-			label: __( '16:9', 'ultimate-addons-for-gutenberg' ),
-			value: '9-16',
-		},
-		{
-			label: __( 'Custom', 'ultimate-addons-for-gutenberg' ),
-			value: 'custom',
-		}
-	];
-	const imageRatioOptionsTablet = [
-		{
-			label: __( 'Inherit', 'ultimate-addons-for-gutenberg' ),
-			value: 'inherit',
-		},
-		{
-			label: __( 'None', 'ultimate-addons-for-gutenberg' ),
-			value: '0-0',
-		},
-		{
-			label: __( '1:1', 'ultimate-addons-for-gutenberg' ),
-			value: '1-1',
-		},
-		{
-			label: __( '2:1', 'ultimate-addons-for-gutenberg' ),
-			value: '1-2',
-		},
-		{
-			label: __( '3:2', 'ultimate-addons-for-gutenberg' ),
-			value: '2-3',
-		},
-		{
-			label: __( '16:9', 'ultimate-addons-for-gutenberg' ),
-			value: '9-16',
-		},
-		{
-			label: __( 'Custom', 'ultimate-addons-for-gutenberg' ),
-			value: 'custom',
-		}
-	];
-	const imageRatioOptionsMobile = [
-		{
-			label: __( 'Inherit', 'ultimate-addons-for-gutenberg' ),
-			value: 'inherit',
-		},
-		{
-			label: __( 'None', 'ultimate-addons-for-gutenberg' ),
-			value: '0-0',
-		},
-		{
-			label: __( '1:1', 'ultimate-addons-for-gutenberg' ),
-			value: '1-1',
-		},
-		{
-			label: __( '2:1', 'ultimate-addons-for-gutenberg' ),
-			value: '1-2',
-		},
-		{
-			label: __( '3:2', 'ultimate-addons-for-gutenberg' ),
-			value: '2-3',
-		},
-		{
-			label: __( '16:9', 'ultimate-addons-for-gutenberg' ),
-			value: '9-16',
-		},
-		{
-			label: __( 'Custom', 'ultimate-addons-for-gutenberg' ),
-			value: 'custom',
-		}
-	];
+
 	const imageSettings = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Image', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
@@ -935,204 +742,39 @@ const Settings = ( props ) => {
 						<ToggleControl
 							label={ __( 'Equal Height', 'ultimate-addons-for-gutenberg' ) }
 							checked={ imgEqualHeight }
-							onChange={ setImgEqualHeight }
+							onChange={ setImgEqualheight }
 						/>
 						{ ! imgEqualHeight && (
-							<>
-							<ResponsiveSelectControl
-								label={__( 'Image Ratio', 'ultimate-addons-for-gutenberg' )}
-								data={{
-									desktop: {
-										value: imageRatio,
-										label: 'imageRatio',
-									},
-									tablet: {
-										value: imageRatioTablet,
-										label: 'imageRatioTablet',
-									},
-									mobile: {
-										value: imageRatioMobile,
-										label: 'imageRatioMobile',
-									},
-								}}
-								options={{
-									desktop: imageRatioOptions,
-									tablet: imageRatioOptionsTablet,
-									mobile: imageRatioOptionsMobile,
-								}}
-								setAttributes={setAttributes}
-								onChange = { ( tempValue, tempData, tempDevice ) => updateResponsiveImageRatio( tempValue, tempData, tempDevice, {
-									desktop: {
-										widthAttribute: 'imageRatioWidthDesktop',
-										heightAttribute: 'imageRatioHeightDesktop',
-									},
-									tablet: {
-										widthAttribute: 'imageRatioWidthTablet',
-										heightAttribute: 'imageRatioHeightTablet',
-									},
-									mobile: {
-										widthAttribute: 'imageRatioWidthMobile',
-										heightAttribute: 'imageRatioHeightMobile',
-									},
-								} ) }
-							/>
 							<UAGSelectControl
-								label={__( 'Object Fit', 'ultimate-addons-for-gutenberg' ) }
-								data={ {
-									value: objectFit,
-									label: 'objectFit',
-								} }
-								setAttributes={ setAttributes }
+								label={__( 'Image Ratio', 'ultimate-addons-for-gutenberg' )}
 								options={[
 									{
-										value: 'fill',
-										label: __( 'Fill', 'ultimate-addons-for-gutenberg' ),
+										label: __( 'Inherit', 'ultimate-addons-for-gutenberg' ),
+										value: 'inherit',
 									},
 									{
-										value: 'cover',
-										label: __( 'Cover', 'ultimate-addons-for-gutenberg' ),
+										label: __( '1:1', 'ultimate-addons-for-gutenberg' ),
+										value: '1-1',
+									},
+									{
+										label: __( '3:2', 'ultimate-addons-for-gutenberg' ),
+										value: '2-3',
+									},
+									{
+										label: __( '16:9', 'ultimate-addons-for-gutenberg' ),
+										value: '9-16',
+									},
+									{
+										label: __( '2:1', 'ultimate-addons-for-gutenberg' ),
+										value: '1-2',
 									},
 								]}
+								data={{
+									value: imageRatio,
+									label: 'imageRatio',
+								}}
+								setAttributes={setAttributes}
 							/>
-							</>
-						) }
-						{ ( 'custom' === imageRatio && 'Desktop' === deviceType ) && (
-						<>
-						<ResponsiveSlider
-							label={__( 'Custom Width', 'ultimate-addons-for-gutenberg' )}
-							data={{
-								desktop: {
-									value: imageRatioWidthDesktop,
-									label: 'imageRatioWidthDesktop',
-								},
-								tablet: {
-									value: imageRatioWidthTablet,
-									label: 'imageRatioWidthTablet',
-								},
-								mobile: {
-									value: imageRatioWidthMobile,
-									label: 'imageRatioWidthMobile',
-								},
-							}}
-							min={0}
-							max={100}
-							displayUnit={false}
-							setAttributes={setAttributes}
-						/>
-						<ResponsiveSlider
-							label={__( 'Custom Height', 'ultimate-addons-for-gutenberg' )}
-							data={{
-								desktop: {
-									value: imageRatioHeightDesktop,
-									label: 'imageRatioHeightDesktop',
-								},
-								tablet: {
-									value: imageRatioHeightTablet,
-									label: 'imageRatioHeightTablet',
-								},
-								mobile: {
-									value: imageRatioHeightMobile,
-									label: 'imageRatioHeightMobile',
-								},
-							}}
-							min={0}
-							max={100}
-							displayUnit={false}
-							setAttributes={setAttributes}
-						/>
-						</>
-						)}
-						{ ( 'custom' === imageRatioTablet && 'Tablet' === deviceType ) && (
-							<>
-								<ResponsiveSlider
-									label={__( 'Custom Width', 'ultimate-addons-for-gutenberg' )}
-									data={{
-										desktop: {
-											value: imageRatioWidthDesktop,
-											label: 'imageRatioWidthDesktop',
-										},
-										tablet: {
-											value: imageRatioWidthTablet,
-											label: 'imageRatioWidthTablet',
-										},
-										mobile: {
-											value: imageRatioWidthMobile,
-											label: 'imageRatioWidthMobile',
-										},
-									}}
-									min={0}
-									max={100}
-									displayUnit={false}
-									setAttributes={setAttributes}
-								/>
-								<ResponsiveSlider
-									label={__( 'Custom Height', 'ultimate-addons-for-gutenberg' )}
-									data={{
-										desktop: {
-											value: imageRatioHeightDesktop,
-											label: 'imageRatioHeightDesktop',
-										},
-										tablet: {
-											value: imageRatioHeightTablet,
-											label: 'imageRatioHeightTablet',
-										},
-										mobile: {
-											value: imageRatioHeightMobile,
-											label: 'imageRatioHeightMobile',
-										},
-									}}
-									min={0}
-									max={100}
-									displayUnit={false}
-									setAttributes={setAttributes}
-								/>
-							</>
-						)}
-						{ ( 'custom' === imageRatioMobile && 'Mobile' === deviceType ) && (
-							<>
-								<ResponsiveSlider
-									label={__( 'Custom Width', 'ultimate-addons-for-gutenberg' )}
-									data={{
-										desktop: {
-											value: imageRatioWidthDesktop,
-											label: 'imageRatioWidthDesktop',
-										},
-										tablet: {
-											value: imageRatioWidthTablet,
-											label: 'imageRatioWidthTablet',
-										},
-										mobile: {
-											value: imageRatioWidthMobile,
-											label: 'imageRatioWidthMobile',
-										},
-									}}
-									min={0}
-									max={100}
-									displayUnit={false}
-									setAttributes={setAttributes}
-								/>
-								<ResponsiveSlider
-									label={__( 'Custom Height', 'ultimate-addons-for-gutenberg' )}
-									data={{
-										desktop: {
-											value: imageRatioHeightDesktop,
-											label: 'imageRatioHeightDesktop',
-										},
-										tablet: {
-											value: imageRatioHeightTablet,
-											label: 'imageRatioHeightTablet',
-										},
-										mobile: {
-											value: imageRatioHeightMobile,
-											label: 'imageRatioHeightMobile',
-										},
-									}}
-									min={0}
-									max={100}
-									displayUnit={false}
-									setAttributes={setAttributes}
-								/>
-							</>
 						)}
 					</>
 				)}

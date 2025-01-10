@@ -5,11 +5,6 @@ body .wp-block-uagb-container.uagb-position__sticky {
 	transition-timing-function: ease;
 }
 
-/* Disable transition when the class is applied */
-body .wp-block-uagb-container.uagb-position__sticky.no-transition {
-	transition: none !important;
-}
-
 /* The Sticky Position Stuck Class. */
 body .wp-block-uagb-container.uagb-position__sticky--stuck {
 	position: fixed;

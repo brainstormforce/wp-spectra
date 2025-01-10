@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.7  
-**Stable tag:** 2.19.0  
+**Stable tag:** 2.18.1  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -226,11 +226,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Icon - Resolved an issue wherein the responsive condition and z-index would not work as intended.
 * Fix: FSE - Resolved an issue wherein styles would not be reflected when converting any block to a Template Part in Full Site Editing theme templates.
 
-### 2.19.0 - Monday, 30th December 2024 ###
+### 2.18.1 - Wednesday, 8th January 2025 ###
 * Improvement: Global - Added responsive support for gradient background settings.
-* Improvements: Post Grid / Carousel Block - Added a responsive Image Ratio setting with a custom ratio option.
-* Fix: Container - Resolved an issue wherein sticky containers would not work as intended when resizing the window.
-* Fix: Image - Resolved an issue wherein the image would overflow in the responsive editor.
 * Fix: Image Gallery - Removed the automatic maximum limit for galleries with less than 8 images.
 * Fix: Tabs - Resolved an issue wherein the tabs in vertical layouts were only clickable on the title.
 * Fix: Global - Resolved an issue wherein the translated setting panels in some Spectra blocks would cause some Spectra Pro features in those blocks to not work as expected.
