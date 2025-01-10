@@ -436,7 +436,7 @@ class UAGB_Post_Assets {
 		$is_static_front_page   = 'page' === get_option( 'show_on_front' ) && get_option( 'page_on_front' ) && is_front_page() && ! is_home() && ! $is_front_page_template;
 
 		if ( $is_regular_page || $is_static_front_page ) { // Run only for page and any page selected as home page from settings > reading > static page.
-			return 'page';
+			return ( $object instanceof WP_Post && in_array( 'page-' . $object->post_name, $template_type_slug ) ) ? 'page-' . $object->post_name : 'page';
 		} elseif ( $is_front_page_template ) { // Run only when is_home and is_front_page() and get_front_page_template() is true. i.e front-page template.
 			return 'front-page';
 		} elseif ( is_archive() ) { // Applies to archive pages.
@@ -1243,6 +1243,14 @@ class UAGB_Post_Assets {
 							$this->stylesheet .= $assets['css'];
 							$this->script     .= $assets['js'];
 						}
+					}
+				} elseif ( 'core/template-part' === $inner_block['blockName'] ) {
+					$id = $this->get_fse_template_part( $inner_block );
+
+					if ( $id ) {
+						$assets            = $this->get_assets_using_post_content( $id );
+						$this->stylesheet .= $assets['css'];
+						$this->script     .= $assets['js'];
 					}
 				} else {
 					// Get CSS for the Block.
