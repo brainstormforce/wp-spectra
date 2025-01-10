@@ -27,7 +27,7 @@ registerBlockType( 'uagb/buttons-child', {
 		props.attributes.isPreview ? <PreviewImage image="buttons-child" isChildren={ true } /> : <Edit { ...props } />,
 	save,
 	deprecated,
-	usesContext: [ 'queryId', 'query', 'queryContext', 'postId', 'postType' ],
+	usesContext: [ 'queryId', 'query', 'queryContext', 'attrs', 'postId', 'postType' ],
 	supports: {
 		anchor: true,
 		html: false,

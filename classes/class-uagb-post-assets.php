@@ -402,7 +402,7 @@ class UAGB_Post_Assets {
 	 * @since 2.9.1
 	 * @return string The determined post type.
 	 */
-	private function determine_template_post_type( $post_id ) {
+	public function determine_template_post_type( $post_id ) {
 		$get_woocommerce_template = $this->get_woocommerce_template(); // Get WooCommerce template.
 		if ( is_string( $get_woocommerce_template ) ) { // Check if WooCommerce template is found.
 			return $get_woocommerce_template; // WooCommerce templates to post type.
