@@ -872,6 +872,24 @@ const attributes = {
 			styleType: 'image-bottom-margin',
 		},
 	},
+	taxonomyBottomSpace: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-taxonomy-bottom-margin',
+		},
+	},
+	taxonomyBottomSpaceTablet: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-taxonomy-bottom-margin',
+		},
+	},
+	taxonomyBottomSpaceMobile: {
+		type: 'number',
+		UAGCopyPaste: {
+			styleType: 'main-taxonomy-bottom-margin',
+		},
+	},
 	titleBottomSpace: {
 		type: 'number',
 		default: 15,
@@ -1022,6 +1040,13 @@ const attributes = {
 		default: 'px',
 		UAGCopyPaste: {
 			styleType: 'image-bottom-margin-unit',
+		},
+	},
+	taxonomyBottomSpaceUnit: {
+		type: 'string',
+		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'main-taxonomy-bottom-margin-unit',
 		},
 	},
 	titleBottomSpaceUnit: {

@@ -219,6 +219,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = x.x.x =
 * Improvement: Global - Added disable lazy loading option in dashboard settings.
+* Improvement: Post Grid & Post Carousel - Added control for taxonomy bottom spacing.
 * Fix: Heading - Resolved an issue where the Heading block, when assigned a paragraph tag, was not translatable.
 
 = 2.18.2 - Wednesday, 15th January 2025 =
