@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.7
-Stable tag: 2.18.1
+Stable tag: 2.18.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -217,7 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= x.x.x =
+= 2.18.2 - Wednesday, 15th January 2025 =
 * Fix: Global - Resolved an issue wherein assets would not load for single page templates when using FSE themes.
 * Fix: Lottie - Resolved an issue where Lottie animations could not be replaced.
 * Fix: Info Box - Resolved an issue wherein the button would take full width with gutenberg activated.
