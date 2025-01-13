@@ -217,6 +217,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Fix: Heading - Resolved an issue where the Heading block, when assigned a paragraph tag, was not translatable.
+
 ### 2.18.2 - Wednesday, 15th January 2025 ###
 * Fix: Global - Resolved an issue wherein assets would not load for single page templates when using FSE themes.
 * Fix: Lottie - Resolved an issue where Lottie animations could not be replaced.
