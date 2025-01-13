@@ -94,6 +94,10 @@ if ( ! class_exists( 'UAGB_Google_Map' ) ) {
 							'type'    => 'boolean',
 							'default' => false,
 						),
+						'disableLazyLoad'     => array(
+							'type'    => 'boolean',
+							'default' => UAGB_Admin_Helper::get_admin_settings_option( 'uag_img_lazy_load', 'disabled' ),
+						),
 					),
 					'render_callback' => array( $this, 'google_map_callback' ),
 				)
@@ -131,7 +135,9 @@ if ( ! class_exists( 'UAGB_Google_Map' ) ) {
 			$zindex_mobile            = '';
 			$zindex_wrap              = array();
 			$zindex_extention_enabled = ( isset( $attributes['zIndex'] ) || isset( $attributes['zIndexTablet'] ) || isset( $attributes['zIndexMobile'] ) );
-			
+
+			$img_lazy_load = 'deleted' !== UAGB_Admin_Helper::get_admin_settings_option( 'uag_img_lazy_load_fallback', 'deleted' ) ? 'disabled' : UAGB_Admin_Helper::get_admin_settings_option( 'uag_img_lazy_load', 'disabled' );
+
 			if ( $zindex_extention_enabled ) {
 				$zindex_desktop = ( isset( $attributes['zIndex'] ) ) ? '--z-index-desktop:' . $attributes['zIndex'] . ';' : false;
 				$zindex_tablet  = ( isset( $attributes['zIndexTablet'] ) ) ? '--z-index-tablet:' . $attributes['zIndexTablet'] . ';' : false;
@@ -189,14 +195,14 @@ if ( ! class_exists( 'UAGB_Google_Map' ) ) {
 			<div 
 			class="<?php echo esc_attr( implode( ' ', $main_classes ) ); ?>"
 			style="<?php echo esc_attr( implode( '', $zindex_wrap ) ); ?>" >
-				<embed
-					class="uagb-google-map__iframe"
-					title="<?php _e( 'Google Map for ', 'ultimate-addons-for-gutenberg' ) . $address; ?>"
-					src="<?php echo esc_url_raw( $updated_url ); ?>"
-					width="640"
-					height="<?php echo floatval( $height ); ?>"
-					loading="lazy"
-				></embed>
+			<embed
+				class="uagb-google-map__iframe"
+				title="<?php echo esc_attr__( 'Google Map for ', 'ultimate-addons-for-gutenberg' ) . esc_attr( $address ); ?>"
+				src="<?php echo esc_url_raw( $updated_url ); ?>"
+				width="640"
+				height="<?php echo esc_attr( strval( floatval( $height ) ) ); ?>"
+				<?php echo ( 'disabled' !== $img_lazy_load ) ? '' : 'loading="lazy"'; ?>
+			></embed>
 			</div>
 			<?php
 			return ob_get_clean();

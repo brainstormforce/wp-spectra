@@ -98,6 +98,7 @@ class Common_Settings extends Ajax_Base {
 			'insta_all_users_media',
 			'insta_refresh_all_tokens',
 			'btn_inherit_from_theme',
+			'img_lazy_load',
 			'zip_ai_module_status',
 			'zip_ai_verify_authenticity',
 		);
@@ -121,6 +122,34 @@ class Common_Settings extends Ajax_Base {
 		$value = $this->check_post_value();
 		$this->delete_all_assets(); // We need to regenerate assets when user changes this setting to regenerate the dynamic CSS according to it.
 		$this->save_admin_settings( 'uag_btn_inherit_from_theme', sanitize_text_field( $value ) );
+	}
+
+	/**
+	 * Save global option of button to inherit from theme.
+	 *
+	 * @since x.x.x
+	 * @return void
+	 */
+	public function img_lazy_load() {
+
+		$this->check_permission_nonce( 'uag_img_lazy_load' );
+		if ( false !== get_option( 'uag_img_lazy_load_fallback' ) ) {
+			\UAGB_Admin_Helper::delete_admin_settings_option( 'uag_img_lazy_load_fallback' );
+		};
+		
+		$value = $this->check_post_value();
+
+		// Handle $value to ensure it is safely converted to a string.
+		if ( is_scalar( $value ) ) {
+			// Scalars (string, int, float, bool) can be safely cast to a string.
+			$value = (string) $value;
+		} else {
+			// For non-scalar values (arrays, objects, etc.), assign a default value or handle as needed.
+			$value = '';
+		}
+		
+		$this->delete_all_assets(); // We need to regenerate assets when user changes this setting to regenerate the dynamic CSS according to it.
+		$this->save_admin_settings( 'uag_img_lazy_load', sanitize_text_field( $value ) );
 	}
 
 	/**

@@ -43,7 +43,7 @@ const Render = ( props ) => {
 				src={ url }
 				width="640"
 				height={ height }
-				loading="lazy"
+				{...( uagb_blocks_info.img_lazy_load !== 'enabled' && { loading: 'lazy' } )}
 			></embed>
 		</div>
 	);

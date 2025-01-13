@@ -42,7 +42,7 @@ const RestMenuImage = ( props ) => {
 					alt={ image.alt }
 					width={ imageWidth }
 					height={ imgTagHeight }
-					loading="lazy"
+					{...( uagb_blocks_info.img_lazy_load !== 'enabled' && { loading: 'lazy' } )}
 				/>
 			);
 		}

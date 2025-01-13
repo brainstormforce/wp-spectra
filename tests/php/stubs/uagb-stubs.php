@@ -5426,6 +5426,15 @@ namespace UagAdmin\Ajax {
         {
         }
         /**
+         * Save global option of image to disable lazy load.
+         *
+         * @since x.x.x
+         * @return void
+         */
+        public function img_lazy_load()
+        {
+        }
+        /**
          * Required Spectra Pro Plugin Activate
          *
          * @return void
