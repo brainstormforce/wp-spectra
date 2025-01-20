@@ -146,6 +146,7 @@ const Settings = ( props ) => {
 		iconSize,
 		iconSizeTablet,
 		iconSizeMobile,
+		noFollow,
 		removeText,
 
 		// letter spacing
@@ -157,6 +158,7 @@ const Settings = ( props ) => {
 		showIcon,
 		inheritFromTheme,
 		buttonType,
+		showLinkOpensInNewTabNoFollow,
 	} = attributes;
 
 	const currentTheme = uagb_blocks_info.current_theme;
@@ -299,6 +301,8 @@ const Settings = ( props ) => {
 						) }
 					</>
 				) }
+				{showLinkOpensInNewTabNoFollow && (
+				<>
 				<UAGTextControl
 					label={ __( 'Link', 'ultimate-addons-for-gutenberg' ) }
 					enableDynamicContent={ true }
@@ -315,6 +319,11 @@ const Settings = ( props ) => {
 					checked={ opensInNewTab }
 					onChange={ () => setAttributes( { opensInNewTab: ! opensInNewTab } ) }
 				/>
+				<ToggleControl
+					label={ __( 'Add "nofollow" to link', 'ultimate-addons-for-gutenberg' ) }
+					checked={ noFollow }
+					onChange={ () => setAttributes( { noFollow: ! noFollow } ) }
+				/>
 				{ '' !== icon && (
 					<ToggleControl
 						label={ __( 'Remove Text', 'ultimate-addons-for-gutenberg' ) }
@@ -322,6 +331,8 @@ const Settings = ( props ) => {
 						onChange={ () => setAttributes( { removeText: ! removeText } ) }
 					/>
 				) }
+				</>
+				)}
 			</UAGAdvancedPanelBody>
 		);
 	};

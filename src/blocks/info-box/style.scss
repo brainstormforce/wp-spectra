@@ -224,6 +224,10 @@ a.uagb-infobox-link-wrap,
 	}
 	.uagb-infobox-cta-link {
 		cursor: pointer;
+
+		&.wp-block-button__link {
+			width: auto;
+		}
 	}
 
 	.wp-block-button__link svg,

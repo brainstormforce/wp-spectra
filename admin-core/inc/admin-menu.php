@@ -410,6 +410,11 @@ class Admin_Menu {
 					'slider-pro',
 					'image-gallery-pro',
 					'loop-wrapper',
+					'loop-search',
+					'loop-sort',
+					'loop-reset',
+					'loop-pagination',
+					'loop-category',
 				);
 
 				if ( ( 'cf7-styler' === $addon && 'active' !== $cf7_status ) || ( 'gf-styler' === $addon && 'active' !== $gf_status ) ) {

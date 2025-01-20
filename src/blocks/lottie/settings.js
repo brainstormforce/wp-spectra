@@ -41,10 +41,19 @@ const Settings = ( props ) => {
 		playOn,
 		backgroundHColor,
 		},
-		onSelectLottieJSON,
-		onSelectLottieURL,
 	} = props;
 
+	/*
+	* Event to set Lottie as while adding.
+	*/
+	const onSelectLottie = ( media ) => {
+		if ( ! media || ! media?.url ) {
+			setAttributes( { jsonLottie: null } );
+			return;
+		}
+		setAttributes( { jsonLottie: media, lottieURl: media?.url, lottieSource: 'library' } );
+	};
+	
 	const controlsSettings = (
 		<>
 			<UAGAdvancedPanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
@@ -87,7 +96,7 @@ const Settings = ( props ) => {
 				{ lottieSource === 'upload' && (
 					<UAGMediaPicker
 						backgroundImage={ jsonLottie }
-						onSelectImage={ onSelectLottieJSON }
+						onSelectImage={ onSelectLottie }
 						slug={ 'lottie' }
 						label={ __( 'Lottie Animation', 'ultimate-addons-for-gutenberg' ) }
 						allow={ [ 'application/json' ] }
@@ -97,7 +106,7 @@ const Settings = ( props ) => {
 				{ lottieSource === 'library' && (
 					<UAGMediaPicker
 						backgroundImage={ jsonLottie }
-						onSelectImage={ onSelectLottieJSON }
+						onSelectImage={ onSelectLottie }
 						slug={ 'lottie' }
 						label={ __( 'Lottie Animation', 'ultimate-addons-for-gutenberg' ) }
 						allow={ [ 'application/json' ] }
@@ -320,6 +329,10 @@ const Settings = ( props ) => {
 		);
 	}
 
+	const onSelectLottieURL = ( mediaURL ) => {
+		setAttributes( { lottieURl: mediaURL, lottieSource: 'url' } );
+	};
+
 	const getBlockControls = () => {
 		return (
 			<BlockControls>
@@ -328,8 +341,8 @@ const Settings = ( props ) => {
 						mediaURL={ lottieURl }
 						allowedTypes={ [ 'application/json' ] }
 						accept={ [ 'application/json' ] }
-						onSelectURL={ ( value ) => onSelectLottieURL( value ) }
-						onSelect={ onSelectLottieJSON }
+						onSelectURL={( value ) => onSelectLottieURL( value ) }
+						onSelect={ onSelectLottie }
 					/>
 				</ToolbarGroup>
 			</BlockControls>

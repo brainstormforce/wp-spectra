@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.7
-Stable tag: 2.18.1
+Stable tag: 2.18.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -217,6 +217,14 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= 2.18.2 - Monday, 20th January 2025 =
+* Fix: Info Box - Resolved an issue wherein the button would take full width with gutenberg activated.
+* Fix: Info Box - Resolved an issue wherein the image padding is not supported in RTL mode.
+* Fix: Icon - Resolved an issue wherein the responsive condition and z-index would not work as intended.
+* Fix: Lottie - Resolved an issue where Lottie animations could not be replaced.
+* Fix: Global - Resolved an issue wherein assets would not load for single page templates when using FSE themes.
+* Fix: Global - Resolved an issue wherein styles would not be reflected when converting any block to a Template Part in Full Site Editing theme templates.
+
 = 2.18.1 - Wednesday, 8th January 2025 =
 * Improvement: Global - Added responsive support for gradient background settings.
 * Fix: Image Gallery - Removed the automatic maximum limit for galleries with less than 8 images.
@@ -250,6 +258,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 
 == Upgrade Notice ==
+
+= 2.18.2 =
+The Google Fonts library in Spectra has been updated in this version. Please check your font selections to replace any deprecated fonts and explore the new additions.
 
 = 2.14.1 =
 With WordPress 6.6 introducing the command palette and taking a place at the top of the editor, we had to retire the 'Move Title to Top' functionality in Spectra. However, there's no need for concern. After updating Spectra, the title in your editor will gracefully return to its default position.

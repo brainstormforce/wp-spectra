@@ -868,6 +868,10 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+	showLinkOpensInNewTabNoFollow: {
+		type: 'boolean',
+		default: true,
+	},
 };
 
 export default attributes;
