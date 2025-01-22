@@ -94,7 +94,6 @@ $selectors = array(
 		'padding-right'   => UAGB_Helper::get_css_value( $icon_padding_right, $attr['iconMarginUnit'] ),
 		'padding-top'     => UAGB_Helper::get_css_value( $icon_padding_top, $attr['iconMarginUnit'] ),
 		'padding-bottom'  => UAGB_Helper::get_css_value( $icon_padding_bottom, $attr['iconMarginUnit'] ),
-
 	),
 	'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg' => array(
 		'padding-left'   => UAGB_Helper::get_css_value( $icon_padding_left, $attr['iconMarginUnit'] ),
@@ -438,9 +437,13 @@ $m_selectors = array(
 		'line-height' => $icon_size_mobile,
 	),
 	' .uagb-iconbox-icon-wrap'                             => array(
-		'width'       => $icon_size_mobile,
-		'height'      => $icon_size_mobile,
-		'line-height' => $icon_size_mobile,
+		'width'          => $icon_size_mobile,
+		'height'         => $icon_size_mobile,
+		'line-height'    => $icon_size_mobile,
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['iconMarginLeftMobile'], $attr['iconMobileMarginUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['iconMarginRightMobile'], $attr['iconMobileMarginUnit'] ),
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['iconMarginTopMobile'], $attr['iconMobileMarginUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['iconMarginBottomMobile'], $attr['iconMobileMarginUnit'] ),
 
 	),
 	'.uagb-infobox__content-wrap'                          => $infobox_border_css_mobile, 
@@ -592,9 +595,13 @@ $t_selectors = array(
 		'line-height' => $icon_size_tablet,
 	),
 	' .uagb-iconbox-icon-wrap'                             => array(
-		'width'       => $icon_size_tablet,
-		'height'      => $icon_size_tablet,
-		'line-height' => $icon_size_tablet,
+		'width'          => $icon_size_tablet,
+		'height'         => $icon_size_tablet,
+		'line-height'    => $icon_size_tablet,
+		'padding-left'   => UAGB_Helper::get_css_value( $attr['iconMarginLeftTablet'], $attr['iconTabletMarginUnit'] ),
+		'padding-right'  => UAGB_Helper::get_css_value( $attr['iconMarginRightTablet'], $attr['iconTabletMarginUnit'] ),
+		'padding-top'    => UAGB_Helper::get_css_value( $attr['iconMarginTopTablet'], $attr['iconTabletMarginUnit'] ),
+		'padding-bottom' => UAGB_Helper::get_css_value( $attr['iconMarginBottomTablet'], $attr['iconTabletMarginUnit'] ),
 
 	),
 	' .uagb-ifb-content .uagb-ifb-left-title-image > svg'  => array(

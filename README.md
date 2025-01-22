@@ -217,6 +217,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Fix: Info Box - Resolved an issue wherein the icon responsive padding is not working as intended in framed view.
+
 ### 2.18.2 - Monday, 20th January 2025 ###
 * Fix: Info Box - Resolved an issue wherein the button would take full width with gutenberg activated.
 * Fix: Info Box - Resolved an issue wherein the image padding is not supported in RTL mode.
