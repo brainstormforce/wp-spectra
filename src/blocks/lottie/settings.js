@@ -47,11 +47,11 @@ const Settings = ( props ) => {
 	* Event to set Lottie as while adding.
 	*/
 	const onSelectLottie = ( media ) => {
-		if ( ! media || ! media.url ) {
+		if ( ! media || ! media?.url ) {
 			setAttributes( { jsonLottie: null } );
 			return;
 		}
-		setAttributes( { jsonLottie: media, lottieURl: media.url, lottieSource: 'library' } );
+		setAttributes( { jsonLottie: media, lottieURl: media?.url, lottieSource: 'library' } );
 	};
 	
 	const controlsSettings = (
