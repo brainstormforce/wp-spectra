@@ -221,6 +221,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Improvement: Global - Added disable lazy loading option in dashboard settings.
 * Improvement: Post Grid & Post Carousel - Added control for taxonomy bottom spacing.
 * Fix: Heading - Resolved an issue where the Heading block, when assigned a paragraph tag, was not translatable.
+* Fix: Info Box - Resolved an issue wherein the icon responsive padding is not working as intended in framed view.
 
 = 2.18.2 - Monday, 20th January 2025 =
 * Fix: Info Box - Resolved an issue wherein the button would take full width with gutenberg activated.
