@@ -1,8 +1,10 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
-
 import getApiData from '@Controls/getApiData';
+
+import SettingsItem from './SettingsItem';
+import { Input } from '@bsf/force-ui';
 
 const BlocksEditorSpacing = () => {
 
@@ -10,9 +12,7 @@ const BlocksEditorSpacing = () => {
 
     const blocksEditorSpacing = useSelector( ( state ) => state.blocksEditorSpacing );
 
-	const updateBlocksEditorSpacing = ( e ) => {
-		const value = e.target.value;
-
+	const updateBlocksEditorSpacing = ( value ) => {
 		dispatch( { type: 'UPDATE_BLOCKS_EDITOR_SPACING', payload: value } );
 
 		// Create an object with the security and value properties
@@ -28,27 +28,34 @@ const BlocksEditorSpacing = () => {
         } );
         // Wait for the API call to complete, then update the state to show a notification that the settings have been saved
         getApiFetchData.then( () => {
-            dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
+            dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'Successfully saved!', 'ultimate-addons-for-gutenberg' ) } );
         } );
 	};
 
     return (
-        <section className='block border-b border-solid border-slate-200 px-12 py-8 justify-between'>
-            <div className='mr-16 w-full flex items-center'>
-                <h3 className="p-0 flex-1 justify-right inline-flex text-lg leading-8 font-medium text-gray-900">
-                    {__( 'Blocks Editor Spacing', 'ultimate-addons-for-gutenberg' ) }
-                </h3>
-                <div className='flex spectra-content-width-input-wrap'>
-                    <input className="appearance-none block w-20 h-8 leading-tight transition spectra-admin__input-field" id="grid-zip" value={blocksEditorSpacing} onChange={updateBlocksEditorSpacing} type="number" placeholder="0" min={0} max={100} />
-                    <span className="inline-flex h-8 items-center sm:text-sm transition spectra-admin__input-field--end-display">
-                        { __( 'px', 'ultimate-addons-for-gutenberg' ) }
-                    </span>
-                </div>
-            </div>
-            <p className="mt-2 w-9/12 text-sm text-slate-500">
-                { __( 'This setting will apply spacing in between all blocks inside block editor.', 'ultimate-addons-for-gutenberg' ) }
-            </p>
-        </section>
+        <>
+			<SettingsItem
+				title={ __( 'Blocks Editor Spacing', 'ultimate-addons-for-gutenberg' ) }
+				settingText={ __( 'This setting will apply spacing in between all blocks inside block editor.', 'ultimate-addons-for-gutenberg' ) }
+			>
+				<Input
+					defaultValue={ 1140 }
+					id="default-width"
+					className="settings-input"
+					suffix={
+						<span className="text-badge-color-gray p-0.5 text-center text-xs font-medium">
+							PX
+						</span>
+					}
+					type="number"
+					value={ blocksEditorSpacing }
+					onChange={ updateBlocksEditorSpacing }
+					min={ 0 }
+					max={ 100 }
+				/>
+			</SettingsItem>
+			<hr className="w-full border-b-0 border-x-0 border-t border-solid border-t-border-subtle" />
+		</>
     );
 };
 

@@ -1,11 +1,15 @@
-import { __ } from '@wordpress/i18n';
+import { __, sprintf } from '@wordpress/i18n';
 import { useDispatch } from 'react-redux';
 import getApiData from '@Controls/getApiData';
+import { Container, Button } from '@bsf/force-ui';
+import { ArrowUpRight } from 'lucide-react';
+import React, { useState } from 'react';
+import ProModal from '../../../common/components/ProModal';
 
-const UpgradeNotices = ( { title, description } ) => {
-
+const UpgradeNotices = ( { title, description, upgradeText, upgradeBold, modalData, dynamicContent = false } ) => {
 	const dispatch = useDispatch();
-	
+	const [ isModalOpen, setIsModalOpen ] = useState( false );
+
 	if ( uag_react.spectra_pro_ver ) {
 		return '';
 	}
@@ -16,18 +20,17 @@ const UpgradeNotices = ( { title, description } ) => {
 			'_blank'
 		);
 	};
-	
+
 	const activatePro = ( e ) => {
 		const isThisNull = uag_react.pro_plugin_status;
-		
-		if ( 'not-installed' !== isThisNull ) {
 
+		if ( 'Install' !== isThisNull ) {
 			// Create an object with the required data to activate the 'spectra' Pro feature
 			const data = {
 				security: uag_react.pro_activate_nonce,
 				value: 'spectra',
 			};
-			e.target.innerText = uag_react.plugin_activating_text;
+			e.target.innerText = uag_react.plugin_activating_text + '…';
 			// Call the getApiData function with the specified parameters
 			const getApiFetchData = getApiData( {
 				url: uag_react.ajax_url,
@@ -48,27 +51,92 @@ const UpgradeNotices = ( { title, description } ) => {
 	};
 
 	const getSpectraProTitle = () => {
-		return 'not-installed' !== uag_react.pro_plugin_status ? __( 'Activate Now', 'ultimate-addons-for-gutenberg' ) : __( 'Upgrade to Pro', 'ultimate-addons-for-gutenberg' );
-	}
+		return 'Installed' === uag_react.pro_plugin_status
+			? __( 'Activate Now', 'ultimate-addons-for-gutenberg' )
+			: __( 'Upgrade Now', 'ultimate-addons-for-gutenberg' );
+	};
+
+	const translatedSpectraProTitle = sprintf(
+		/* translators: abbreviation for units */
+		__( ' %s', 'ultimate-addons-for-gutenberg' ),
+		getSpectraProTitle()
+	);
+
+	const translatedDesc = sprintf(
+		/* translators: abbreviation for units */
+		__( 'You are using %1$s version, %2$s', 'ultimate-addons-for-gutenberg' ),
+		'<span class="text-text-primary font-medium">Spectra Free</span>',
+		description
+	);
 
 	return (
-		<section className='not-last-child block border-b border-solid border-slate-200 px-12 py-8 justify-between'>
-			<div className='mr-16 w-full flex flex-col sm:flex-row sm:items-center'>
-				<h3 className="p-0 flex-1 justify-right inline-flex text-xl leading-8 font-medium text-slate-800">
-					{title}
-				</h3>
-				<button
-					type="button"
-					className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-spectra transition focus:bg-spectra-hover hover:bg-spectra-hover focus:outline-none h-9"
-					onClick={activatePro}
-				>
-					{getSpectraProTitle()}
-				</button>
+		<Container
+			align="stretch"
+			className="bg-background-primary rounded-lg"
+			containerType="flex"
+			direction="column"
+			gap="sm"
+			justify="start"
+		>
+			<div className="flex justify-between items-center">
+				<Container.Item className="flex flex-col space-y-2 shrink" style={ { flexShrink: '1' } }>
+					<p className="font-semibold m-0" style={ { fontSize: '1rem' } }>{ title }</p>
+					{ ! dynamicContent && <p
+						className="text-sm font-normal m-0 text-text-tertiary"
+						dangerouslySetInnerHTML={ { __html: translatedDesc } }
+					></p> }
+					{ dynamicContent && <p
+						className="text-sm font-normal m-0 text-text-tertiary"
+					>{ description }</p> }
+				</Container.Item>
+
+				{ dynamicContent && (
+					<div
+						className="text-text-tertiary flex justify-center items-center rounded-sm overflow-hidden cursor-not-allowed"
+						style={ { border: '1px solid #e5e7eb', borderRadius: '0.25rem' } }
+					>
+						<div
+							className="text-text-tertiary p-2"
+							style={ { border: 'none', borderRight: '1px solid #e5e7eb' } }
+						>
+							{ __( 'Popup', 'ultimate-addons-for-gutenberg' ) }
+						</div>
+						<div className="text-text-tertiary p-2" style={ { border: 'none' } }>
+							{ __( 'Sidebar', 'ultimate-addons-for-gutenberg' ) }
+						</div>
+					</div>
+				) }
 			</div>
-			<p className="mt-2 w-full md:w-9/12 text-sm text-slate-500 tablet:w-full">
-				{description}
-			</p>
-		</section>
+
+			<div className="flex flex-col sm:flex-row sm:items-center items-start justify-between gap-2 rounded-xl bg-[#F3F0FF] p-3">
+				<span className="text-sm sm:flex sm:items-center sm:gap-1">
+					<strong className="font-semibold">{ upgradeBold }</strong> { upgradeText }
+				</span>
+
+				<Button
+					className="uagb-remove-ring items-start"
+					icon={ React.cloneElement( <ArrowUpRight />, { className: 'w-3.5 h-3.5' } ) }
+					iconPosition="right"
+					size="xs"
+					tag="button"
+					type="button"
+					variant="link"
+					onClick={ ( e ) => {
+						if ( 'Installed' === uag_react.pro_plugin_status ) {
+							activatePro( e );
+						} else {
+							setIsModalOpen( true );
+						}
+					} }
+				>
+					{ translatedSpectraProTitle }
+				</Button>
+			</div>
+
+			{ isModalOpen && (
+				<ProModal setIsModalOpen={ setIsModalOpen } activatePro={ activatePro } modalData={ modalData } />
+			) }
+		</Container>
 	);
 };
 

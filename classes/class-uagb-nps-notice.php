@@ -73,6 +73,8 @@ if ( ! class_exists( 'UAGB_NPS_Notice' ) ) :
 
 			$allowed_screens = array( 'toplevel_page_spectra', 'edit-spectra-popup' );
 
+			$allowed_screens = array( 'toplevel_page_spectra', 'edit-spectra-popup' );
+
 			// Display the NPS survey.
 			Nps_Survey::show_nps_notice(
 				'nps-survey-ultimate-addons-for-gutenberg',

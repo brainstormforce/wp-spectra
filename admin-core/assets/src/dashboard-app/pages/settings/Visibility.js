@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import Select from 'react-select';
-import { Switch } from '@headlessui/react';
-import { uagbClassNames } from '@Helpers/Helpers';
+
+import SettingsItem from './SettingsItem';
+import { Switch } from '@bsf/force-ui';
 
 import getApiData from '@Controls/getApiData';
 
@@ -147,66 +148,45 @@ const Visibility = () => {
 
 	return (
 		<>
-			<section className="block border-b border-solid border-slate-200 px-12 py-8 justify-between">
-				<div className="mr-16 w-full flex items-center">
-					<h3 className="p-0 flex-1 justify-right inline-flex text-lg leading-8 font-medium text-gray-900">
-						{ __( 'Enable Coming Soon Mode', 'ultimate-addons-for-gutenberg' ) }
-					</h3>
-					<Switch
-						checked={ visibilityMode === 'comingsoon' }
-						onChange={ () => updateVisibilityMode( 'comingsoon' ) }
-						className={ uagbClassNames( [
-							enableComingSoonModeStatus ? 'bg-spectra' : 'bg-slate-200',
-							'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none',
-						] ) }
-					>
-						<span
-							aria-hidden="true"
-							className={ uagbClassNames( [
-								enableComingSoonModeStatus ? 'translate-x-5' : 'translate-x-0',
-								'pointer-events-none inline-block h-3.5 w-3.5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200',
-							] ) }
-						/>
-					</Switch>
-				</div>
-				<p className="mt-2 w-9/12 text-sm text-slate-500">
-					{ __(
-						"Is your website still in the making and not yet ready for other people to see? When the site is ready to be indexed, the 'Coming Soon' page returns an HTTP 200 status code.",
-						'ultimate-addons-for-gutenberg'
-					) }
-				</p>
-				{ enableComingSoonModeStatus && renderSelectComponent() }
-			</section>
-			<section className="block border-b border-solid border-slate-200 px-12 py-8 justify-between">
-				<div className="mr-16 w-full flex items-center">
-					<h3 className="p-0 flex-1 justify-right inline-flex text-lg leading-8 font-medium text-gray-900">
-						{ __( 'Enable Maintenance Mode', 'ultimate-addons-for-gutenberg' ) }
-					</h3>
-					<Switch
-						checked={ visibilityMode === 'maintenance' }
-						onChange={ () => updateVisibilityMode( 'maintenance' ) }
-						className={ uagbClassNames( [
-							enableMaintenanceModeStatus ? 'bg-spectra' : 'bg-slate-200',
-							'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none',
-						] ) }
-					>
-						<span
-							aria-hidden="true"
-							className={ uagbClassNames( [
-								enableMaintenanceModeStatus ? 'translate-x-5' : 'translate-x-0',
-								'pointer-events-none inline-block h-3.5 w-3.5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200',
-							] ) }
-						/>
-					</Switch>
-				</div>
-				<p className="mt-2 w-9/12 text-sm text-slate-500">
-					{ __(
-						"Maintenance Mode returns an HTTP 503 status code, signaling to search engines to revisit the website shortly. However, it's advisable not to utilize this mode for extended periods, ideally limiting its use to a few days.",
-						'ultimate-addons-for-gutenberg'
-					) }
-				</p>
-				{ enableMaintenanceModeStatus && renderSelectComponent() }
-			</section>
+			<SettingsItem
+				title={ __( 'Enable Coming Soon Mode', 'ultimate-addons-for-gutenberg' ) }
+				settingText={ __(
+					"Is your website still in the making and not yet ready for other people to see? When the site is ready to be indexed, the 'Coming Soon' page returns an HTTP 200 status code.",
+					'ultimate-addons-for-gutenberg'
+	)}
+			>
+				<Switch
+					aria-label="Switch Element"
+					id="switch-element"
+					value={ visibilityMode === 'comingsoon' }
+					onChange={ () => updateVisibilityMode( 'comingsoon' ) }
+					size="md"
+					className="uagb-remove-ring border-none"
+				/>
+			</SettingsItem>
+
+			{ enableComingSoonModeStatus && renderSelectComponent() }
+
+			<hr className="w-full border-b-0 border-x-0 border-t border-solid border-t-border-subtle" />
+
+			<SettingsItem
+				title={ __( 'Enable Maintenance Mode', 'ultimate-addons-for-gutenberg' ) }
+				settingText={ __(
+					"Maintenance Mode returns an HTTP 503 status code, signaling to search engines to revisit the website shortly. However, it's advisable not to utilize this mode for extended periods, ideally limiting its use to a few days.",
+					'ultimate-addons-for-gutenberg'
+				) }
+			>
+				<Switch
+					aria-label="Switch Element"
+					id="switch-element"
+					value={ visibilityMode === 'maintenance' }
+					onChange={ () => updateVisibilityMode( 'maintenance' ) }
+					size="md"
+					className="uagb-remove-ring border-none"
+				/>
+			</SettingsItem>
+
+			{ enableMaintenanceModeStatus && renderSelectComponent() }
 		</>
 	);
 };

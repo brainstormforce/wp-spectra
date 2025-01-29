@@ -2965,6 +2965,7 @@ msgstr ""
 
 #: blocks-config/uagb-controls/spectra-icons-v6-1.php:2565
 #: dist/blocks.js:15
+#: dist/blocks.js:19
 msgid "Fill"
 msgstr ""
 
@@ -10588,6 +10589,7 @@ msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
+#: dist/blocks.js:19
 msgid "Cover"
 msgstr ""
 
@@ -11951,6 +11953,7 @@ msgid "Title"
 msgstr ""
 
 #: dist/blocks.js:15
+#: dist/blocks.js:19
 msgid "Object Fit"
 msgstr ""
 
@@ -12242,10 +12245,6 @@ msgstr ""
 
 #: dist/blocks.js:19
 msgid "Enable Icon"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "Add \"nofollow\" to link"
 msgstr ""
 
 #: dist/blocks.js:19
@@ -14841,6 +14840,26 @@ msgid "Showing All Post Grid Layout."
 msgstr ""
 
 #: dist/blocks.js:19
+msgid "1:1"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "2:1"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "3:2"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "16:9"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Inherit"
+msgstr ""
+
+#: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Post Type"
 msgstr ""
@@ -14937,6 +14956,14 @@ msgstr ""
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Show Featured Image"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Image Ratio"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Custom Height"
 msgstr ""
 
 #: dist/blocks.js:19
@@ -15156,30 +15183,6 @@ msgstr ""
 
 #: dist/blocks.js:19
 msgid "Next Text"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "Image Ratio"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "Inherit"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "1:1"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "3:2"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "16:9"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "2:1"
 msgstr ""
 
 #: dist/blocks.js:19

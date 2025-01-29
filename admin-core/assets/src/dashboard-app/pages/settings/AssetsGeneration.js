@@ -1,80 +1,111 @@
 import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
-import { Switch } from '@headlessui/react'
-
 import getApiData from '@Controls/getApiData';
 
-function classNames( ...classes ) {
-    return classes.filter( Boolean ).join( ' ' )
-}
+import { Container, Label, Switch } from '@bsf/force-ui';
 
 const AssetsGeneration = () => {
+	const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
+	const enableFileGeneration = useSelector( ( state ) => state.enableFileGeneration );
+	const fileGenerationStatus = 'disabled' === enableFileGeneration ? false : true;
 
-    const enableFileGeneration = useSelector( ( state ) => state.enableFileGeneration );
-    const fileGenerationStatus = 'disabled' === enableFileGeneration ? false : true;
-
-    const updateFileGenerationStatus = () => {
-
-        let assetStatus;
+	const updateFileGenerationStatus = () => {
+		let assetStatus;
 		if ( enableFileGeneration === 'disabled' ) {
-            assetStatus = 'enabled';
+			assetStatus = 'enabled';
 		} else {
-            assetStatus = 'disabled';
+			assetStatus = 'disabled';
 		}
 
-        dispatch( { type: 'UPDATE_FILE_GENERATION', payload: assetStatus } );
+		dispatch( { type: 'UPDATE_FILE_GENERATION', payload: assetStatus } );
 
 		const action = 'uag_enable_file_generation',
 			nonce = uag_react.enable_file_generation_nonce;
-        // Create an object with the security and value properties
-        const data = {
-            security: nonce,
-            value: assetStatus,
-        };
-        // Call the getApiData function with the specified parameters
-        const getApiFetchData = getApiData( {
-            url: uag_react.ajax_url,
-            action,
-            data,
-        } );
-        // Wait for the API call to complete, then update the state to show a notification that the settings have been saved
-        getApiFetchData.then( () => {
-            dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
-        } );
-    };
+		// Create an object with the security and value properties
+		const data = {
+			security: nonce,
+			value: assetStatus,
+		};
+		// Call the getApiData function with the specified parameters
+		const getApiFetchData = getApiData( {
+			url: uag_react.ajax_url,
+			action,
+			data,
+		} );
+		// Wait for the API call to complete, then update the state to show a notification that the settings have been saved
+		getApiFetchData.then( () => {
+			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
+		} );
+	};
 
-    return (
-        <section className='block border-b border-solid border-slate-200 px-12 py-8 justify-between'>  
-            <div className='mr-16 w-full flex items-center'>
-                <h3 className="p-0 flex-1 justify-right inline-flex text-lg leading-8 font-medium text-gray-900">
-                    { __( 'File Generation', 'ultimate-addons-for-gutenberg' ) }
-                </h3>
-                <Switch
-                    checked={ fileGenerationStatus }
-                    onChange={updateFileGenerationStatus }
-                    className={ classNames(
-                        fileGenerationStatus ? 'bg-spectra' : 'bg-slate-200',
-                        'relative inline-flex flex-shrink-0 h-5 w-[2.4rem] items-center border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
-                    ) }
-                >
-                    <span
-                        aria-hidden="true"
-                        className={ classNames(
-                            fileGenerationStatus ? 'translate-x-5' : 'translate-x-0',
-                            'pointer-events-none inline-block h-3.5 w-3.5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200'
-                        ) }
-                    />
-                </Switch>
-            </div>
-            <p className="mt-2 w-9/12 text-sm text-slate-500">
-                { __( 'Spectra loads the CSS and JS inline on the page by default. If you want to generate separate CSS and JS files for Spectra blocks, enable this option. Please read ', 'ultimate-addons-for-gutenberg' ) }
-                <a className='text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover' href="https://wpspectra.com/docs/file-generation/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard" target='_blank' rel="noreferrer"> { __( 'this article', 'ultimate-addons-for-gutenberg' ) } </a>
-                { __( ' to learn the difference between generating CSS and JS inline and in a separate file.', 'ultimate-addons-for-gutenberg' ) }
-            </p>
-        </section>
-    );
+	const renderText = () => (
+		<p className='m-0'>
+			{ __( 'Please read ', 'ultimate-addons-for-gutenberg' ) }
+
+			<a
+				href="https://wpspectra.com/docs/file-generation/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard"
+				target="_blank"
+				rel="noreferrer"
+				className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover"
+			>
+				this article
+			</a>
+
+			{ __(
+				' to learn the difference between generating CSS and JS inline and in a separate file.',
+				'ultimate-addons-for-gutenberg'
+			) }
+		</p>
+	);
+
+	return (
+		<>
+			<SettingsItem
+				title={ __( 'File Generation', 'ultimate-addons-for-gutenberg' ) }
+				settingText={ __(
+					'Spectra loads the CSS and JS inline on the page by default. If you want to generate separate CSS and JS files for Spectra blocks, enable this option. ',
+					'ultimate-addons-for-gutenberg'
+				) }
+				currentSetting={ renderText }
+			>
+				<Switch
+					aria-label="Switch Element"
+					id="switch-element"
+					value={ fileGenerationStatus }
+					onChange={ updateFileGenerationStatus }
+					size="md"
+					className="uagb-remove-ring border-none"
+				/>
+			</SettingsItem>
+			<hr className="w-full border-b-0 border-x-0 border-t border-solid border-t-border-subtle" />
+		</>
+	);
+};
+
+const SettingsItem = ( { title, settingText, currentSetting, children } ) => {
+	return (
+		<Container
+			align="center"
+			className="mb-0.5 w-full flex justify-between lg:flex-row flex-col lg:items-center items-start"
+		>
+			<Container.Item className="space-y-1 lg:max-w-[480px]">
+				<Label className="font-semibold" htmlFor="default-width" size="md">
+					{ title }
+				</Label>
+				<Label className="m-0" size="sm" tag="p" variant="help">
+					{ settingText }
+				</Label>
+				{ currentSetting && (
+					<Label className="m-0 italic" size="sm" tag="p" variant="help">
+						{ currentSetting() }
+					</Label>
+				) }
+			</Container.Item>
+
+			{ children }
+		</Container>
+	);
 };
 
 export default AssetsGeneration;
