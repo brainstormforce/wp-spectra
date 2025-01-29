@@ -34,8 +34,8 @@
 			height: $spectra-variation-button-icon;
 			fill: none !important;
 
-			path,
-			rect,
+			path:not(.spectra-loop-variation),
+			rect:not(.spectra-loop-variation),
 			circle {
 				stroke: $spectra-color-heading;
 				-webkit-transition-property: stroke;
@@ -52,8 +52,8 @@
 
 			svg {
 
-				path,
-				rect,
+				path:not(.spectra-loop-variation),
+				rect:not(.spectra-loop-variation),
 				circle {
 					stroke: $spectra-color-primary;
 				}
@@ -84,8 +84,8 @@
 			svg {
 				margin-right: 12px;
 
-				path,
-				rect,
+				path:not(.spectra-loop-variation),
+				rect:not(.spectra-loop-variation),
 				circle {
 					stroke: $spectra-color-primary;
 				}
@@ -160,8 +160,8 @@
 
 			svg {
 
-				path,
-				rect,
+				path:not(.spectra-loop-variation),
+				rect:not(.spectra-loop-variation),
 				circle {
 					stroke-width: 0;
 					fill: $spectra-color-heading;
@@ -174,8 +174,8 @@
 
 			&:hover svg {
 
-				path,
-				rect,
+				path:not(.spectra-loop-variation),
+				rect:not(.spectra-loop-variation),
 				circle {
 					fill: $spectra-color-primary;
 				}

@@ -244,6 +244,38 @@ $selectors = array(
 		'border-color' => $attr['infoboxBorderHColor'],
 	), 
 );
+
+$rtl_selectors = array(
+	' .uagb-iconbox-icon-wrap'                            => array(
+		'padding-right' => UAGB_Helper::get_css_value( $icon_padding_left, $attr['iconMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $icon_padding_right, $attr['iconMarginUnit'] ),
+	),
+	'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg' => array(
+		'padding-right' => UAGB_Helper::get_css_value( $icon_padding_left, $attr['iconMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $icon_padding_right, $attr['iconMarginUnit'] ),
+	),
+	'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-icon-wrap > svg' => array(
+		'padding-right' => UAGB_Helper::get_css_value( $icon_padding_left, $attr['iconMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $icon_padding_right, $attr['iconMarginUnit'] ),
+	),
+	'.uagb-infobox__content-wrap img'                     => array(
+		'padding-right' => UAGB_Helper::get_css_value( $icon_padding_left, $attr['iconMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $icon_padding_right, $attr['iconMarginUnit'] ),
+	),
+	'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image > img' => array(
+		'padding-right' => UAGB_Helper::get_css_value( $icon_padding_left, $attr['iconMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $icon_padding_right, $attr['iconMarginUnit'] ),
+	),
+	'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image > img' => array(
+		'padding-right' => UAGB_Helper::get_css_value( $icon_padding_left, $attr['iconMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $icon_padding_right, $attr['iconMarginUnit'] ),
+	),
+	'.uagb-infobox__content-wrap .uagb-ifb-content > img' => array(
+		'padding-right' => UAGB_Helper::get_css_value( $icon_padding_left, $attr['iconMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $icon_padding_right, $attr['iconMarginUnit'] ),
+	),
+);
+
 if ( 'Stacked' === $attr['iconView'] ) {
 	$selectors[' .uagb-iconbox-icon-wrap.uagb-infobox-shape-circle'] = array(
 		'background-color' => $attr['iconBackgroundColor'],
@@ -414,6 +446,45 @@ $m_selectors = array(
 	'.uagb-infobox__content-wrap'                          => $infobox_border_css_mobile, 
 );
 
+$rtl_m_selectors = array(
+	'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg' => array(
+		'padding-right' => UAGB_Helper::get_css_value( $attr['iconMarginLeftMobile'], $attr['iconMobileMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $attr['iconMarginRightMobile'], $attr['iconMobileMarginUnit'] ),
+	),
+	'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-icon-wrap > svg' => array(
+		'padding-right' => UAGB_Helper::get_css_value( $attr['iconMarginLeftMobile'], $attr['iconMobileMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $attr['iconMarginRightMobile'], $attr['iconMobileMarginUnit'] ),
+	),
+	'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image img' => array(
+		'padding-right' => UAGB_Helper::get_css_value( $attr['iconMarginLeftMobile'], $attr['iconMobileMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $attr['iconMarginRightMobile'], $attr['iconMobileMarginUnit'] ),
+	),
+	'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image img' => array(
+		'padding-right' => UAGB_Helper::get_css_value( $attr['iconMarginLeftMobile'], $attr['iconMobileMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $attr['iconMarginRightMobile'], $attr['iconMobileMarginUnit'] ),
+	),
+	'.uagb-infobox__content-wrap > svg'                    => array(
+		'padding-right' => UAGB_Helper::get_css_value( $attr['iconMarginLeftMobile'], $attr['iconMobileMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $attr['iconMarginRightMobile'], $attr['iconMobileMarginUnit'] ),
+	),
+	' .uagb-ifb-content > svg'                             => array(
+		'padding-right' => UAGB_Helper::get_css_value( $attr['iconMarginLeftMobile'], $attr['iconMobileMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $attr['iconMarginRightMobile'], $attr['iconMobileMarginUnit'] ),
+	),
+	' .uagb-ifb-content .uagb-ifb-left-title-image > svg'  => array(
+		'padding-right' => UAGB_Helper::get_css_value( $attr['iconMarginLeftMobile'], $attr['iconMobileMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $attr['iconMarginRightMobile'], $attr['iconMobileMarginUnit'] ),
+	),
+	' .uagb-ifb-content .uagb-ifb-right-title-image > svg' => array(
+		'padding-right' => UAGB_Helper::get_css_value( $attr['iconMarginLeftMobile'], $attr['iconMobileMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $attr['iconMarginRightMobile'], $attr['iconMobileMarginUnit'] ),
+	),
+	'.uagb-infobox__content-wrap img'                      => array(
+		'padding-right' => UAGB_Helper::get_css_value( $attr['iconMarginLeftMobile'], $attr['iconMobileMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $attr['iconMarginRightMobile'], $attr['iconMobileMarginUnit'] ),
+	),
+);
+
 $t_selectors = array(
 	' .uagb-ifb-title-wrap .uagb-ifb-title-prefix'         => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['prefixTabletSpace'], $attr['prefixTabletMarginUnit'] ),
@@ -537,6 +608,45 @@ $t_selectors = array(
 		'font-size'   => $icon_size_tablet,
 	),
 	'.uagb-infobox__content-wrap'                          => $infobox_border_css_tablet, 
+);
+
+$rtl_t_selectors = array(
+	'.uagb-infobox__content-wrap .uagb-ifb-icon-wrap > svg' => array(
+		'padding-right' => UAGB_Helper::get_css_value( $attr['iconMarginLeftTablet'], $attr['iconTabletMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $attr['iconMarginRightTablet'], $attr['iconTabletMarginUnit'] ),
+	),
+	'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-icon-wrap > svg' => array(
+		'padding-right' => UAGB_Helper::get_css_value( $attr['iconMarginLeftTablet'], $attr['iconTabletMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $attr['iconMarginRightTablet'], $attr['iconTabletMarginUnit'] ),
+	),
+	'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-right-title-image img' => array(
+		'padding-right' => UAGB_Helper::get_css_value( $attr['iconMarginLeftTablet'], $attr['iconTabletMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $attr['iconMarginRightTablet'], $attr['iconTabletMarginUnit'] ),
+	),
+	'.uagb-infobox__content-wrap .uagb-ifb-content .uagb-ifb-left-title-image img' => array(
+		'padding-right' => UAGB_Helper::get_css_value( $attr['iconMarginLeftTablet'], $attr['iconTabletMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $attr['iconMarginRightTablet'], $attr['iconTabletMarginUnit'] ),
+	),
+	'.uagb-infobox__content-wrap > svg'     => array(
+		'padding-right' => UAGB_Helper::get_css_value( $attr['iconMarginLeftTablet'], $attr['iconTabletMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $attr['iconMarginRightTablet'], $attr['iconTabletMarginUnit'] ),
+	),
+	' .uagb-ifb-content > svg'              => array(
+		'padding-right' => UAGB_Helper::get_css_value( $attr['iconMarginLeftTablet'], $attr['iconTabletMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $attr['iconMarginRightTablet'], $attr['iconTabletMarginUnit'] ),
+	),
+	' .uagb-infobox-icon-right:hover > svg' => array(
+		'padding-right' => UAGB_Helper::get_css_value( $attr['iconMarginLeftTablet'], $attr['iconTabletMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $attr['iconMarginRightTablet'], $attr['iconTabletMarginUnit'] ),
+	),
+	' .uagb-infobox-icon-left:hover > svg'  => array(
+		'padding-right' => UAGB_Helper::get_css_value( $attr['iconMarginLeftTablet'], $attr['iconTabletMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $attr['iconMarginRightTablet'], $attr['iconTabletMarginUnit'] ),
+	),
+	'.uagb-infobox__content-wrap img'       => array(
+		'padding-right' => UAGB_Helper::get_css_value( $attr['iconMarginLeftTablet'], $attr['iconTabletMarginUnit'] ),
+		'padding-left'  => UAGB_Helper::get_css_value( $attr['iconMarginRightTablet'], $attr['iconTabletMarginUnit'] ),
+	),
 );
 
 if ( 'above-title' === $attr['iconimgPosition'] || 'below-title' === $attr['iconimgPosition'] ) { // For backward user.

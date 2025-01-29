@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.18.1\n"
+"Project-Id-Version: Spectra 2.18.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-01-07T11:58:13+00:00\n"
+"POT-Creation-Date: 2025-01-16T04:11:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -163,7 +163,7 @@ msgid "Activate"
 msgstr ""
 
 #. translators: %1$s: Opening Strong Tag, %2$s: Closing Strong Tag, %3$s Anchor Tag with Star Symbol Codes.
-#: admin-core/inc/admin-menu.php:530
+#: admin-core/inc/admin-menu.php:535
 msgid "Enjoyed %1$sSpectra%2$s? Please leave us a %3$s rating. We really appreciate your support!"
 msgstr ""
 
@@ -259,8 +259,8 @@ msgid "Unset"
 msgstr ""
 
 #: blocks-config/post-timeline/class-uagb-post-timeline.php:545
-#: blocks-config/post/class-uagb-post.php:688
-#: blocks-config/post/class-uagb-post.php:2289
+#: blocks-config/post/class-uagb-post.php:624
+#: blocks-config/post/class-uagb-post.php:2226
 #: includes/blocks/post-carousel/attributes.php:118
 #: includes/blocks/post-grid/attributes.php:109
 #: includes/blocks/post-masonry/attributes.php:111
@@ -2965,7 +2965,6 @@ msgstr ""
 
 #: blocks-config/uagb-controls/spectra-icons-v6-1.php:2565
 #: dist/blocks.js:15
-#: dist/blocks.js:19
 msgid "Fill"
 msgstr ""
 
@@ -8875,7 +8874,7 @@ msgstr ""
 #: lib/gutenberg-templates/inc/api/settings.php:92
 #: lib/gutenberg-templates/inc/api/sites.php:70
 #: lib/gutenberg-templates/inc/classes/ast-block-templates-zipwp-api.php:77
-#: lib/nps-survey/classes/nps-survey-script.php:252
+#: lib/nps-survey/classes/nps-survey-script.php:248
 #: lib/zipwp-images/classes/zipwp-images-api.php:92
 msgid "Sorry, you are not allowed to do that."
 msgstr ""
@@ -8892,8 +8891,8 @@ msgstr ""
 #: lib/gutenberg-templates/inc/api/sites.php:93
 #: lib/gutenberg-templates/inc/classes/ast-block-templates-zipwp-api.php:138
 #: lib/gutenberg-templates/inc/classes/ast-block-templates-zipwp-api.php:197
-#: lib/nps-survey/classes/nps-survey-script.php:273
-#: lib/nps-survey/classes/nps-survey-script.php:354
+#: lib/nps-survey/classes/nps-survey-script.php:270
+#: lib/nps-survey/classes/nps-survey-script.php:376
 #: lib/zipwp-images/classes/zipwp-images-api.php:169
 msgid "Nonce verification failed."
 msgstr ""
@@ -10589,7 +10588,6 @@ msgstr ""
 
 #: dist/blocks.js:11
 #: dist/blocks.js:15
-#: dist/blocks.js:19
 msgid "Cover"
 msgstr ""
 
@@ -11953,7 +11951,6 @@ msgid "Title"
 msgstr ""
 
 #: dist/blocks.js:15
-#: dist/blocks.js:19
 msgid "Object Fit"
 msgstr ""
 
@@ -12245,6 +12242,10 @@ msgstr ""
 
 #: dist/blocks.js:19
 msgid "Enable Icon"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Add \"nofollow\" to link"
 msgstr ""
 
 #: dist/blocks.js:19
@@ -14840,26 +14841,6 @@ msgid "Showing All Post Grid Layout."
 msgstr ""
 
 #: dist/blocks.js:19
-msgid "1:1"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "2:1"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "3:2"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "16:9"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "Inherit"
-msgstr ""
-
-#: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Post Type"
 msgstr ""
@@ -14956,14 +14937,6 @@ msgstr ""
 #: dist/blocks.js:19
 #: dist/blocks.js:23
 msgid "Show Featured Image"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "Image Ratio"
-msgstr ""
-
-#: dist/blocks.js:19
-msgid "Custom Height"
 msgstr ""
 
 #: dist/blocks.js:19
@@ -15183,6 +15156,30 @@ msgstr ""
 
 #: dist/blocks.js:19
 msgid "Next Text"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Image Ratio"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Inherit"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "1:1"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "3:2"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "16:9"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "2:1"
 msgstr ""
 
 #: dist/blocks.js:19

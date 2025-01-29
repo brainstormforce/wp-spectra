@@ -64,6 +64,7 @@ class UAGB_Buttons_Child {
 					'queryId',
 					'query',
 					'queryContext',
+					'attrs',
 				),
 			)
 		);

@@ -4,6 +4,7 @@ import { select } from '@wordpress/data';
 import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import PropTypes from 'prop-types';
 import { applyFilters } from '@wordpress/hooks';
+import UAGHelpText from '@Components/help-text';
 
 const propTypes = {
 	label: PropTypes.string,
@@ -11,6 +12,7 @@ const propTypes = {
 	data: PropTypes.object,
 	isSearchable: PropTypes.bool,
 	setAttributes: PropTypes.func,
+	help: PropTypes.string,
 };
 
 const defaultProps = {
@@ -22,6 +24,7 @@ const defaultProps = {
 	},
 	isSearchable: false,
 	setAttributes: () => {},
+	help: '',
 };
 
 // Styles for the React Select Component.	
@@ -118,7 +121,8 @@ export default function UAGMultiSelectControl( props ) {
 		options,
 		data,
 		isSearchable,
-		setAttributes
+		setAttributes,
+		help,
 	} = props;
 	const [ panelNameForHook, setPanelNameForHook ] = useState( null );
 	const panelRef = useRef( null );
@@ -150,7 +154,7 @@ export default function UAGMultiSelectControl( props ) {
 	}, [] );
 
 	return (
-		<div ref={ panelRef } className="components-base-control">
+		<div ref={ panelRef } className="spectra-multi-select-control components-base-control">
 			{ controlBeforeDomElement }
 			<Select
 				styles={customSelectStyles}
@@ -170,6 +174,7 @@ export default function UAGMultiSelectControl( props ) {
 				isMulti
 			/>
 			{ controlAfterDomElement }
+			{ help && <UAGHelpText text={ help } />}
 		</div>
 	);
 }

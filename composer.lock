@@ -175,21 +175,22 @@
 		},
 		{
 			"name": "brainstormforce/nps-survey",
-			"version": "1.0.6",
+			"version": "1.0.7",
 			"source": {
 				"type": "git",
 				"url": "git@github.com:brainstormforce/nps-survey.git",
-				"reference": "ce03eeb5ef7bbb0d16b329929e44f5564a2a0d3e"
+				"reference": "544b2b5afdd11bd2f4bfb6cdfa8a692c23502664"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/brainstormforce/nps-survey/zipball/ce03eeb5ef7bbb0d16b329929e44f5564a2a0d3e",
-				"reference": "ce03eeb5ef7bbb0d16b329929e44f5564a2a0d3e",
+				"url": "https://api.github.com/repos/brainstormforce/nps-survey/zipball/544b2b5afdd11bd2f4bfb6cdfa8a692c23502664",
+				"reference": "544b2b5afdd11bd2f4bfb6cdfa8a692c23502664",
 				"shasum": ""
 			},
 			"require-dev": {
 				"automattic/vipwpcs": "^2.3",
 				"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+				"nunomaduro/phpinsights": "^2.10",
 				"php-stubs/generator": "^0.8.2",
 				"php-stubs/wordpress-stubs": "^6.1",
 				"phpcompatibility/php-compatibility": "^9.3",
@@ -212,6 +213,12 @@
 				"phpstan": [
 					"vendor/bin/phpstan --memory-limit=2048M analyse"
 				],
+				"insights": [
+					"./vendor/bin/phpinsights analyse -v --no-interaction"
+				],
+				"insights:fix": [
+					"./vendor/bin/phpinsights analyse --fix --no-interaction"
+				],
 				"gen-stubs": [
 					"vendor/bin/generate-stubs artifact/phpstan/nps-survey/ --out=tests/php/stubs/nps-survey-stubs.php && rm -rf artifact/phpstan"
 				],
@@ -221,10 +228,10 @@
 			},
 			"description": "NPS Survey Plugin",
 			"support": {
-				"source": "https://github.com/brainstormforce/nps-survey/tree/1.0.6",
+				"source": "https://github.com/brainstormforce/nps-survey/tree/1.0.7",
 				"issues": "https://github.com/brainstormforce/nps-survey/issues"
 			},
-			"time": "2024-12-19T08:06:20+00:00"
+			"time": "2025-01-14T06:03:52+00:00"
 		},
 		{
 			"name": "brainstormforce/zip-ai",
