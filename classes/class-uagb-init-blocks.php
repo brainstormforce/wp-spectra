@@ -753,6 +753,7 @@ class UAGB_Init_Blocks {
 		);
 
 		$inherit_from_theme               = 'deleted' !== UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme_fallback', 'deleted' ) ? 'disabled' : UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' );
+		$img_lazy_load                    = 'deleted' !== UAGB_Admin_Helper::get_admin_settings_option( 'uag_img_lazy_load_fallback', 'deleted' ) ? 'disabled' : UAGB_Admin_Helper::get_admin_settings_option( 'uag_img_lazy_load', 'disabled' );
 		$astra_theme_settings_available   = defined( 'ASTRA_THEME_SETTINGS' );
 		$astra_theme_body_text_decoration = $astra_theme_settings_available && function_exists( 'astra_get_font_extras' ) && function_exists( 'astra_get_option' ) ? astra_get_font_extras( astra_get_option( 'body-font-extras' ), 'text-decoration' ) : '';
 		$installed_plugins                = get_plugins();
@@ -824,6 +825,8 @@ class UAGB_Init_Blocks {
 			'current_post_id'                         => get_the_ID(),
 			'btn_inherit_from_theme'                  => UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' ),
 			'btn_inherit_from_theme_fallback'         => $inherit_from_theme,
+			'img_lazy_load'                           => UAGB_Admin_Helper::get_admin_settings_option( 'uag_img_lazy_load', 'disabled' ),
+			'img_lazy_load_fallback'                  => $img_lazy_load,
 			'wp_version'                              => get_bloginfo( 'version' ),
 			'is_block_theme'                          => UAGB_Admin_Helper::is_block_theme(),
 			'is_customize_preview'                    => is_customize_preview(),

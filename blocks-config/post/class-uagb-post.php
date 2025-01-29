@@ -999,6 +999,15 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'imageBottomSpaceMobiile'       => array(
 						'type' => 'number',
 					),
+					'taxonomyBottomSpace'           => array(
+						'type' => 'number',
+					),
+					'taxonomyBottomSpaceTablet'     => array(
+						'type' => 'number',
+					),
+					'taxonomyBottomSpaceMobile'     => array(
+						'type' => 'number',
+					),
 					'titleBottomSpace'              => array(
 						'type'    => 'number',
 						'default' => 15,
@@ -1079,6 +1088,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 						'default' => 'px',
 					),
 					'imageBottomSpaceUnit'          => array(
+						'type'    => 'string',
+						'default' => 'px',
+					),
+					'taxonomyBottomSpaceUnit'       => array(
 						'type'    => 'string',
 						'default' => 'px',
 					),
@@ -1355,7 +1368,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since 0.0.1
 		 */
 		public function get_post_html( $attributes, $query, $layout ) {
-
+			
 			$wrap = array(
 				'uagb-post__items uagb-post__columns-' . $attributes['columns'],
 				'is-' . $layout,

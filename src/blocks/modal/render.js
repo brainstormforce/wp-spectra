@@ -102,7 +102,7 @@ const Render = ( props ) => {
 				className="uagb-modal-trigger"
 				width={ imgTagWidth }
 				height={ imgTagHeight }
-				loading="lazy"
+				{...( uagb_blocks_info.img_lazy_load !== 'enabled' && { loading: 'lazy' } )}
 			/>
 		);
 	}

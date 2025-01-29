@@ -27,6 +27,11 @@ function styling( attributes, clientId, deviceType ) {
 		titleLineHeight,
 		titleLineHeightTablet,
 		titleLineHeightMobile,
+		taxonomyBottomSpace,
+		taxonomyBottomSpaceTablet,
+		taxonomyBottomSpaceMobile,
+		taxonomyBottomSpaceUnit,
+		displayPostTaxonomyAboveTitle,
 		titleBottomSpace,
 		titleBottomSpaceTablet,
 		titleBottomSpaceMobile,
@@ -263,6 +268,7 @@ function styling( attributes, clientId, deviceType ) {
 	const columnGapFallback = getFallbackNumber( columnGap, 'columnGap', blockName );
 	const rowGapFallback = getFallbackNumber( rowGap, 'rowGap', blockName );
 	const imageBottomSpaceFallback = getFallbackNumber( imageBottomSpace, 'imageBottomSpace', blockName );
+	const taxonomyBottomSpaceFallback = getFallbackNumber( taxonomyBottomSpace, 'taxonomyBottomSpace', blockName );
 	const titleBottomSpaceFallback = getFallbackNumber( titleBottomSpace, 'titleBottomSpace', blockName );
 	const metaBottomSpaceFallback = getFallbackNumber( metaBottomSpace, 'metaBottomSpace', blockName );
 	const excerptBottomSpaceFallback = getFallbackNumber( excerptBottomSpace, 'excerptBottomSpace', blockName );
@@ -497,6 +503,7 @@ function styling( attributes, clientId, deviceType ) {
 		'text-decoration': metaDecoration,
 		'font-style': metaFontStyle,
 		'letter-spacing': generateCSSUnit( metaLetterSpacing, metaLetterSpacingType ),
+		'padding-bottom': 'aboveTitle' === displayPostTaxonomyAboveTitle && generateCSSUnit( taxonomyBottomSpaceFallback, taxonomyBottomSpaceUnit ),
 	};
 	selectors[ ' span.uagb-post__taxonomy.highlighted' ] = {
 		'color': highlightedTextColor,
@@ -509,6 +516,7 @@ function styling( attributes, clientId, deviceType ) {
 		'text-decoration': metaDecoration,
 		'font-style': metaFontStyle,
 		'letter-spacing': generateCSSUnit( metaLetterSpacing, metaLetterSpacingType ),
+		'margin-bottom': 'aboveTitle' === displayPostTaxonomyAboveTitle && generateCSSUnit( taxonomyBottomSpaceFallback, taxonomyBottomSpaceUnit ),
 	};
 	selectors[ ' .uagb-post-grid-byline .uagb-post__author' ] = {
 		'color': metaColor,
@@ -688,6 +696,12 @@ function styling( attributes, clientId, deviceType ) {
 			'line-height': metaLineHeightMobile + metaLineHeightType,
 			'letter-spacing': generateCSSUnit( metaLetterSpacingMobile, metaLetterSpacingType ),
 		},
+		' span.uagb-post__taxonomy': {
+			'padding-bottom': 'aboveTitle' === displayPostTaxonomyAboveTitle && generateCSSUnit( taxonomyBottomSpaceMobile, taxonomyBottomSpaceUnit ),
+		},
+		' span.uagb-post__taxonomy.highlighted': {
+			'margin-bottom': 'aboveTitle' === displayPostTaxonomyAboveTitle && generateCSSUnit( taxonomyBottomSpaceMobile, taxonomyBottomSpaceUnit ),
+		},
 		' .uagb-post-grid-byline .uagb-post__author': {
 			'font-size': generateCSSUnit( metaFontSizeMobile, metaFontSizeType ),
 			'line-height': metaLineHeightMobile + metaLineHeightType,
@@ -819,6 +833,12 @@ function styling( attributes, clientId, deviceType ) {
 			'font-size': generateCSSUnit( metaFontSizeTablet, metaFontSizeType ),
 			'line-height': metaLineHeightTablet + metaLineHeightType,
 			'letter-spacing': generateCSSUnit( metaLetterSpacingTablet, metaLetterSpacingType ),
+		},
+		' span.uagb-post__taxonomy': {
+			'padding-bottom': 'aboveTitle' === displayPostTaxonomyAboveTitle && generateCSSUnit( taxonomyBottomSpaceTablet, taxonomyBottomSpaceUnit ),
+		},
+		' span.uagb-post__taxonomy.highlighted': {
+			'margin-bottom': 'aboveTitle' === displayPostTaxonomyAboveTitle && generateCSSUnit( taxonomyBottomSpaceTablet, taxonomyBottomSpaceUnit ),
 		},
 		' .uagb-post-grid-byline .uagb-post__author': {
 			'font-size': generateCSSUnit( metaFontSizeTablet, metaFontSizeType ),

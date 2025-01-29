@@ -55,7 +55,7 @@ const Render = ( props ) => {
 				src={ image.url }
 				width={ imageSizeChild }
 				height={ imgTagHeight }
-				loading="lazy"
+				{...( uagb_blocks_info.img_lazy_load !== 'enabled' && { loading: 'lazy' } )}
 			/>
 		);
 	}

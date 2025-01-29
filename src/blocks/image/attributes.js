@@ -20,7 +20,7 @@ const attributes = {
 	},
 	disableLazyLoad: {
 		type: 'boolean',
-		default: false,
+		default: 'enabled' === uagb_blocks_info.img_lazy_load,
 	},
 	url: {
 		type: 'string',

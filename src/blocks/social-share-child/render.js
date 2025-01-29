@@ -44,7 +44,7 @@ const Render = ( props ) => {
 				alt={ defaultedAlt }
 				width={ parentSize }
 				height={ imgTagHeight }
-				loading="lazy"
+				{...( uagb_blocks_info.img_lazy_load !== 'enabled' && { loading: 'lazy' } )}
 			/>
 		);
 	}

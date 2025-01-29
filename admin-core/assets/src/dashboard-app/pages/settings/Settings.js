@@ -26,6 +26,7 @@ import ContainerGlobalPadding from '@DashboardApp/pages/settings/ContainerGlobal
 import ContainerGlobalElementsGap from '@DashboardApp/pages/settings/ContainerGlobalElementsGap';
 import MyAccount from '@DashboardApp/pages/settings/MyAccount';
 import InheritFromTheme from '@DashboardApp/pages/settings/InheritFromTheme';
+import LazyLoad from '@DashboardApp/pages/settings/LazyLoad';
 import UpgradeNotices from '@DashboardApp/pages/settings/UpgradeToPro';
 
 // Import Block Settings ( Integrations ).
@@ -135,6 +136,7 @@ const Settings = () => {
                                 <CopyPasteStyles/>
                                 <AutoBlockRecovery/>
                                 <LoadFontAwesome5/>
+                                <LazyLoad/>
                             </>
                         }
                         { 'asset-generation' === activeSettingsNavigationTab &&

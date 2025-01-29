@@ -27,7 +27,7 @@ const InfoBoxIconImage = ( props ) => {
 							alt={ attributes.imageAlt }
 							width={ imageWidthType ? imageWidth : imgTagWidth }
 							height={ imgTagHeight }
-							loading="lazy"
+							{...( uagb_blocks_info.img_lazy_load !== 'enabled' && { loading: 'lazy' } )}
 							style={ { display: url ? undefined : 'none' } }
 						/>
 					</div>
