@@ -216,12 +216,12 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT. Additionally, we incorporate [FontAwesome v6](https://fontawesome.com/license/free) under the CC BY 4.0 License, and [dnd kit](https://github.com/clauderic/dnd-kit) licensed under the MIT License.
 
 ## Changelog ##
-
 ### x.x.x ###
 * Improvement: Global - Added disable lazy loading option in dashboard settings.
 * Improvement: Post Grid & Post Carousel - Added control for taxonomy bottom spacing.
 * Fix: Heading - Resolved an issue where the Heading block, when assigned a paragraph tag, was not translatable.
 * Fix: Info Box - Resolved an issue wherein the icon responsive padding is not working as intended in framed view.
+* Fix: Container – Resolved an issue where the unit for the X position of the background image was not copied when using the "Copy-Paste Style" feature.
 
 ### 2.18.2 - Monday, 20th January 2025 ###
 * Fix: Info Box - Resolved an issue wherein the button would take full width with gutenberg activated.
