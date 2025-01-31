@@ -30,6 +30,9 @@ registerBlockType( 'uagb/popup-builder', { title: __( 'Popup Builder', 'ultimate
 registerBlockType( 'uagb/post-carousel', { title: __( 'Post Carousel', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/post-grid', { title: __( 'Post Grid', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/restaurant-menu', { title: __( 'Price List', 'ultimate-addons-for-gutenberg' ) } );
+registerBlockType( 'uagb/sure-cart-checkout', { title: __( 'SureCart - Checkout', 'ultimate-addons-for-gutenberg' ) } );
+registerBlockType( 'uagb/sure-cart-product', { title: __( 'SureCart - Product List', 'ultimate-addons-for-gutenberg' ) } );
+registerBlockType( 'uagb/sure-forms', { title: __( 'SureForms - Create Forms', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/review', { title: __( 'Review', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/separator', { title: __( 'Separator', 'ultimate-addons-for-gutenberg' ) } );
 registerBlockType( 'uagb/slider', { title: __( 'Slider', 'ultimate-addons-for-gutenberg' ) } );

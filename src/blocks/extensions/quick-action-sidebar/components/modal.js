@@ -91,7 +91,7 @@ const PopoverModal = ( { closePopover, updateDefaultAllowedQuickSidebarBlocks, g
 	const addToSidebar = () => {
 		return (
 			unusedArray.map( ( item, index ) => (
-				noParentNoAncestor( item ) &&
+				!['uagb/sure-forms', 'uagb/sure-cart-product', 'uagb/sure-cart-checkout'].includes( item.name ) && noParentNoAncestor( item ) &&
 				<div
 					key={index}
 					className="spectra-block-wrap"
@@ -143,7 +143,7 @@ const PopoverModal = ( { closePopover, updateDefaultAllowedQuickSidebarBlocks, g
 				onChange={handleSearchChange}
 				label="Search Blocks"
 				className="spectra-quick-action-block-popover-search"
-			/>
+			/> 
 			<div className="spectra-block-container">
 				{unusedArray.some( item => !item.parent && item.title.toLowerCase().includes( searchTerm.toLowerCase() ) ) && (
 				<div className="block-editor-inserter__panel-header spectra-quick-action-block-popover-header__add-to-quick-action-bar">

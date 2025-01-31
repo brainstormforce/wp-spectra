@@ -1264,6 +1264,81 @@ const UAGB_Block_Icons = {
 		} )
 	),
 
+	// --------------------------------.
+	// All Spectra Cross-Product Icons .
+	// --------------------------------.
+
+	sure_forms: el(
+		'svg',
+		{ width: 24, height: 24, viewBox: '0 0 32 32', fill: noColor, stroke: noColor, className: 'uagb-editor-icons sureforms-logo' },
+		el(
+			'g',
+			{ clipPath: 'url(#clip_spectra_sureforms_block_icon)' },
+			el(
+				'rect',
+				{ width: '32', height: '32', fill: 'transparent', strokeWidth: '1.4', stroke: '#0063a1', },
+			),
+			el(
+				'path',
+				{
+					d: 'M9.14307 6.85645H22.8574V11.4279H11.4288L9.14307 13.7136V11.4279V6.85645Z',
+					fill: '#0063a1',
+				},
+			),
+			el(
+				'path',
+				{
+					d: 'M9.14307 6.85645H22.8574V11.4279H11.4288L9.14307 13.7136V11.4279V6.85645Z',
+					fill: '#0063a1',
+				},
+			),
+			el(
+				'path',
+				{
+					d: 'M9.14307 13.7139H20.5716V18.2853H11.4288L9.14307 20.571V18.2853V13.7139Z',
+					fill: '#0063a1',
+				},
+			),
+			el(
+				'path',
+				{
+					d: 'M9.14307 13.7139H20.5716V18.2853H11.4288L9.14307 20.571V18.2853V13.7139Z',
+					fill: '#0063a1',
+				},
+			),
+			el(
+				'path',
+				{
+					d: 'M9.14307 20.5713H16.0002V25.1427H9.14307V20.5713Z',
+					fill: '#0063a1',
+				},
+			),
+			el(
+				'path',
+				{
+					d: 'M9.14307 20.5713H16.0002V25.1427H9.14307V20.5713Z',
+					fill: '#0063a1',
+				},
+			),
+		),	
+		el(
+			'defs',
+			null,
+			el(
+				'clipPath',
+				{ id: 'clip_spectra_sureforms_block_icon' },
+				el(
+					'rect',
+					{
+						width: '192',
+						height: '32',
+						fill: 'white',
+					},
+				),
+			),
+		),	
+	),
+
 	// ------------------------.
 	// All Miscellaneous Icons .
 	// ------------------------.
