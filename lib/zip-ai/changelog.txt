@@ -1,3 +1,10 @@
+2.0.2 - 31st January 2025
+- Reverted: Caching mechanism for credit response to optimize API calls due to unforeseen issues.
+
+2.0.1 - 31st January 2025
+- Improvement: Added a caching mechanism for credit response to optimize API calls.
+- Fix: Resolved an issue wherein the AI Assistant side bar would not be clickable for some teams.
+
 2.0.0 - 9th December 2024
 - New: The AI Assistant is now Location Aware.
 - Improvement: Revamped the entire UI of the Assistant Sidebar.
