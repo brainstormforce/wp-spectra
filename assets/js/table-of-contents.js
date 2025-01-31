@@ -15,7 +15,69 @@ UAGBTableOfContents = {
 				document_element = iframeDocument;
 			}
 		}
+		
 		return document_element;
+	},
+
+	/**
+	 * Updates the ::before pseudo-element of a given class with an SVG.
+	 *
+	 * @param {string} targetClass - The class name of the target element (without the dot).
+	 * @param {string} viewBox - The viewBox attribute for the SVG.
+	 * @param {string} pathData - The path data for the SVG.
+	 * @param {string} id - Identifier.
+	 * @param {string} color - Bullet color for SVG.
+	 */
+	updatePseudoElementWithSVG( targetClass, viewBox, pathData, id, color ) {
+		const document_collapsable = UAGBTableOfContents._getDocumentElement();
+		const block_element = document_collapsable.querySelector( id );
+		if ( ! block_element ) return; // Exit early if the block element is not found.
+		
+		// Get the first list item to compute the ::marker styles.
+		const firstListItem = block_element.querySelector( 'li.uagb-toc__list:not(.uagb-toc__list--expandable)' );
+		if ( firstListItem ) {
+			const listFontSize = window?.getComputedStyle( firstListItem ).fontSize;
+			const widthValue = listFontSize < '15px' ? '15px' : `calc(0.8 * ${ listFontSize })`;
+
+			// Get the actual color value if it's a CSS variable
+			let actualColor = color;
+			if ( color.includes( 'var(' ) ) {
+				const varName = color.match( /var\((.*?)\)/ )[1];
+				const root = document.documentElement;
+				const computedColor = window?.getComputedStyle( root ).getPropertyValue( varName );
+				actualColor = computedColor || color; // Fallback to original if not found
+			}
+
+			// Define the SVG content with the resolved color
+			const svgContent = `<svg width="${widthValue}" height="${widthValue}" xmlns="http://www.w3.org/2000/svg" viewBox="${ viewBox }" stroke="${ actualColor }" fill="${ actualColor }">
+					<path d="${ pathData }" stroke-width="2" />
+				</svg>
+			`;
+
+			// Encode the SVG as a Data URI
+			const svgDataUri = ( viewBox && pathData ) ? `url('data:image/svg+xml;utf8,${ encodeURIComponent( svgContent ) }')` : `25BC`;
+			
+			// Check if a previous style element exists and remove it.
+			// Escape periods in the id for use in querySelector or CSS.
+			const escapedId = id?.replace( /\./g, '' );
+
+			// Ensure no existing stylesheets target the ID
+			const existingStyleSheet = document_collapsable.querySelector( `#${ escapedId }-toc-style` );
+
+			// Check if the rule already exists
+			const ruleContent = `
+				${ id } .${ targetClass }::before {
+					content: ${ svgDataUri };
+					display: inline-block;
+					${ ( viewBox && pathData ) ? `transition: transform 0.3s ease` : '' };
+					${ ( viewBox && pathData ) ? `transform: scale(0.7) translateX(-50%)` : '' };
+				}
+			`;
+
+			if ( !existingStyleSheet.textContent.includes( ruleContent ) ) {
+				existingStyleSheet.textContent += ruleContent;
+			}
+		}
 	},
 
 	_setCollapseIconMargin ( id, attr ) {
@@ -145,12 +207,18 @@ UAGBTableOfContents = {
 	
 			ulElements.forEach( ( ul ) => {
 				const spanElement = ul.parentElement.querySelector( '.list-open' );
-	
 				// Apply initial transition and max height settings
 				ul.classList.add( 'transition' );
 				ul.dataset.originalMaxHeight = ul.scrollHeight + 'px';
-	
 				if ( spanElement ) {
+					// Update the pseudo-element for elements with the "list-open" class
+					UAGBTableOfContents.updatePseudoElementWithSVG(
+						'list-open',
+						attr.iconActive.view,
+						attr.iconActive.path,
+						id,
+						attr.bulletColor
+					);
 					const isExpanded = spanElement.getAttribute( 'aria-expanded' ) === 'true';
 					ul.style.maxHeight = isExpanded ? ul.dataset.originalMaxHeight : '0px';
 					ul.style.overflow = isExpanded ? 'visible' : 'hidden';
@@ -168,7 +236,6 @@ UAGBTableOfContents = {
 	
 			// Initialize event listeners for each span with class .list-open.
 			const spanList = Array.from( block_element.getElementsByClassName( 'list-open' ) );
-	
 			spanList.forEach( ( ele ) => {
 				const handleToggle = () => {
 					const ulElement = ele.parentElement.querySelector( 'ul' );
@@ -195,7 +262,15 @@ UAGBTableOfContents = {
 		
 						ele.classList.toggle( 'list-open', ! isExpanded );
 						ele.classList.toggle( 'list-collapsed', isExpanded );
-	
+						// Update the pseudo-element for elements with the "list-collapsed" class
+						UAGBTableOfContents.updatePseudoElementWithSVG(
+							'list-collapsed',
+							attr.iconInactive.view,
+							attr.iconInactive.path,
+							id,
+							attr.bulletColor
+						);
+						
 						// If this was expanded, add a class to remove the padding inside the UL of the collapsible list after it has collapsed. Else just remove that class.
 						ulElement.classList.toggle( 'uagb-toc__list--child-of-closed-list' );
 					}, 0 );
@@ -219,13 +294,12 @@ UAGBTableOfContents = {
 	
 				ele.setAttribute( 'aria-expanded', ele.classList.contains( 'list-open' ) );
 			} );
-	
+
 			// Initial collapse state handling
 			if ( attr?.initiallyCollapseList ) {
 				ulElements.forEach( ( ul ) => {
 					 // Check if there's a span sibling at the same level
-					 const hasSiblingSpan = ul.parentElement.querySelector( 'span' );
-
+					const hasSiblingSpan = ul.parentElement.querySelector( 'span' );	
 					 if ( hasSiblingSpan ) {
 						ul.style.maxHeight = '0px';
 						ul.style.overflow = 'hidden';
@@ -242,6 +316,14 @@ UAGBTableOfContents = {
 							spanElement.setAttribute( 'aria-expanded', 'false' );
 							spanElement.classList.remove( 'list-open' );
 							spanElement.classList.add( 'list-collapsed' );
+							// Update the pseudo-element for elements with the "list-collapsed" class
+							UAGBTableOfContents.updatePseudoElementWithSVG(
+								'list-collapsed',
+								attr.iconInactive.view,
+								attr.iconInactive.path,
+								id,
+								attr.bulletColor
+							);
 						}
 					}
 				} );

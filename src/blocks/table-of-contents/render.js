@@ -36,7 +36,13 @@ const Render = ( props ) => {
 		fontSizeTablet,
 		fontSizeMobile,
 		markerView,
+		iconActive,
+		bulletColor
 	} = attributes;
+
+	const iconActiveSVG = renderSVG( iconActive );
+	const viewBox = iconActiveSVG?.props?.viewBox;
+	const path = iconActiveSVG?.props?.children?.props.d;
 
 	useEffect( () => {
 		if ( UAGBTableOfContents ) {
@@ -58,6 +64,18 @@ const Render = ( props ) => {
 
 	useEffect( () => {
 		const selector = '.uagb-block-' + block_id;
+		setTimeout( () => {
+			if ( UAGBTableOfContents.updatePseudoElementWithSVG && enableCollapsableList ) {
+				// Update the pseudo-element for elements with the "list-open" class
+				UAGBTableOfContents.updatePseudoElementWithSVG(
+					'list-open',
+					viewBox,
+					path,
+					selector,
+					bulletColor
+				);
+			}
+		}, 200 );
 		const block_element = UAGBTableOfContents._getDocumentElement().querySelector( selector );
 		// Set computed margin for collapsable marker in editor.			
 		if ( UAGBTableOfContents?._setCollapseIconMargin && enableCollapsableList ) {
@@ -69,7 +87,7 @@ const Render = ( props ) => {
 		}
 		block_element.style.opacity = '';
 		
-	}, [ fontSize, fontSizeTablet, fontSizeMobile, markerView, headers.length, enableCollapsableList, deviceType ] );
+	}, [ iconActive, bulletColor, fontSize, fontSizeTablet, fontSizeMobile, markerView, headers.length, enableCollapsableList, deviceType ] );
 
 	let iconHtml = '';
 
@@ -103,7 +121,7 @@ const Render = ( props ) => {
 				</div>
 				{ separatorStyle !== 'none' && <div className="uagb-toc__separator"></div> }
 				{ enableCollapsableList ? (
-				<TableOfContentCollapsable mappingHeaders={ mappingHeaders } headers={ headers } collapsibleListDepth={ collapsibleListDepth }  />
+					<TableOfContentCollapsable mappingHeaders={ mappingHeaders } headers={ headers } collapsibleListDepth={ collapsibleListDepth } />
 				) : (
 					<TableOfContents mappingHeaders={ mappingHeaders } headers={ headers } />
 				) }

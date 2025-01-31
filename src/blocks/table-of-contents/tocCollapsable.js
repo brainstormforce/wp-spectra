@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
 
 function TableOfContents( props ) {
-    const { mappingHeaders, headers, collapsibleListDepth } = props;
+	const { mappingHeaders, headers, collapsibleListDepth } = props;
 
 	const filterArray = () => {
 		const arrays = [];
@@ -113,7 +113,7 @@ function TableOfContents( props ) {
                 : '';
 
             const collapsibleSpan = ( hasChildren[index] && depthMapping[index] <= collapsibleListDepth )
-                ? '<span class="list-open" role="button" tabindex="0" aria-expanded="true"></span>'
+				? '<span class="list-open" role="button" tabindex="0" aria-expanded="true"></span>'
                 : '';
 
             // Replace # with JavaScript:void(0) to avoid page refresh in FSE on click.

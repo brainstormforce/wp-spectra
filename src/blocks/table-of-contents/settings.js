@@ -146,6 +146,8 @@ const Settings = ( props ) => {
 		enableCollapsableList,
 		collapsibleListDepth,
 		initiallyCollapseList,
+		iconInactive,
+		iconActive,
 	} = attributes;
 
 	const getGeneralPanelBody = () => {
@@ -784,6 +786,16 @@ const Settings = ( props ) => {
 				) }
 				{ enableCollapsableList && (
 					<>
+						<UAGIconPicker
+							label={__( 'Inactive Icon', 'ultimate-addons-for-gutenberg' )}
+							value={iconInactive}
+							onChange={( value ) => setAttributes( { iconInactive: value } )}
+						/>
+						<UAGIconPicker
+							label={__( 'Active Icon', 'ultimate-addons-for-gutenberg' )}
+							value={iconActive}
+							onChange={( value ) => setAttributes( { iconActive: value } )}
+						/>
 						<Range
 							label={ __( 'Collapsible Level', 'ultimate-addons-for-gutenberg' ) }
 							setAttributes={ setAttributes }

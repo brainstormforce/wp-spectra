@@ -218,6 +218,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Improvement: Table Of Contents - Added support for SVG icons in collapsible list items.
 * Improvement: Global - Added disable lazy loading option in dashboard settings.
 * Improvement: Post Grid & Post Carousel - Added control for taxonomy bottom spacing.
 * Fix: Heading - Resolved an issue where the Heading block, when assigned a paragraph tag, was not translatable.
