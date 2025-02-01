@@ -8,7 +8,7 @@
 		"start": "wp-scripts start"
 	},
 	"dependencies": {
-		"@headlessui/react": "^1.4.3",
+		"@headlessui/react": "^1.7.19",
 		"@heroicons/react": "^1.0.5",
 		"@tailwindcss/forms": "^0.4.0",
 		"@tailwindcss/typography": "^0.5.1",
