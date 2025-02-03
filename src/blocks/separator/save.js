@@ -2,7 +2,7 @@
  * BLOCK: Separator - Save Block
  */
 import { uagbClassNames } from '@Utils/Helpers';
-import { useBlockProps } from '@wordpress/block-editor';
+import { RichText,useBlockProps } from '@wordpress/block-editor';
 import renderSVG from '@Controls/renderIcon';
 import renderCustomSVG from './separator-svg';
 
@@ -67,7 +67,11 @@ export default function save( props ) {
 					{ elementType === 'icon' ? (
 						renderSVG( separatorIcon )
 					) : (
-						<CustomTag className="uagb-html-tag">{separatorText}</CustomTag>
+					<RichText.Content
+					    tagName={ CustomTag }
+					    value={ separatorText }
+					    className="uagb-html-tag"
+					/>
 					)}
 				</div>
 			) }
