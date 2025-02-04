@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.7
-Stable tag: 2.18.2
+Stable tag: 2.18.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -225,6 +225,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Heading - Resolved an issue where the Heading block, when assigned a paragraph tag, was not translatable.
 * Fix: Info Box - Resolved an issue wherein the icon responsive padding is not working as intended in framed view.
 * Fix: Container – Resolved an issue where the unit for the X position of the background image was not copied when using the "Copy-Paste Style" feature.
+
+= 2.18.3 - Friday, 31st January 2025 =
+* Updated the AI Assistant Library.
 
 = 2.18.2 - Monday, 20th January 2025 =
 * Fix: Info Box - Resolved an issue wherein the button would take full width with gutenberg activated.

@@ -352,7 +352,6 @@ class Helper {
 		return $credit_details;
 	}
 
-
 	/**
 	 * This helper function returns the current plan details.
 	 *
