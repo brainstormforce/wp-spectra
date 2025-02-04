@@ -22,13 +22,13 @@ const UAGBSeparator = ( props ) => {
 		attributes: { 
 			UAGHideDesktop, 
 			UAGHideTab, 
-			UAGHideMob,
+			UAGHideMob, 
 		},
 		name,
 		clientId,
 		deviceType,
 	} = props;
-	
+
 	useEffect( () => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );

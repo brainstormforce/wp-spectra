@@ -8,6 +8,7 @@ import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor';
 import renderSVG from '@Controls/renderIcon';
 import { Icon } from '@wordpress/components';
+import UAGTextControl from '@Components/text-control';
 import ResponsiveSlider from '@Components/responsive-slider';
 import UAGSelectControl from '@Components/select-control';
 import UAGIconPicker from '@Components/icon-picker';
@@ -36,6 +37,7 @@ const Settings = ( props ) => {
 		separatorSizeTablet,
 		separatorSizeType,
 		elementType,
+		separatorText,
 		separatorTextTag,
 		separatorIcon,
 		elementPosition,
@@ -194,6 +196,15 @@ const Settings = ( props ) => {
 					/>
 					{ elementType === 'text' && (
 						<>
+							<UAGTextControl
+								label={ __( 'Text', 'ultimate-addons-for-gutenberg' ) }
+								data={ {
+									value: separatorText,
+									label: 'separatorText',
+								} }
+								setAttributes={ setAttributes }
+								value={ separatorText }
+							/>
 							<MultiButtonsControl
 								setAttributes={ setAttributes }
 								label={ __( 'Heading Tag', 'ultimate-addons-for-gutenberg' ) }
