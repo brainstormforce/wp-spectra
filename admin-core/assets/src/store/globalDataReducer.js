@@ -253,11 +253,6 @@ const globalDataReducer = ( state = {}, action ) => {
                 ...state,
                 btnInheritFromTheme: action.payload,
                 };
-        case 'UPDATE_IMG_LAZY_LOAD':
-            return {
-                ...state,
-                imgLazyLoad: action.payload,
-                };
         case 'UPDATE_GBS_EXTENSION':
             return {
                 ...state,

@@ -146,12 +146,6 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 				UAGB_Admin_Helper::update_admin_settings_option( 'uag_btn_inherit_from_theme_fallback', 'disabled' );
 			}
 
-			$img_lazy_load = UAGB_Admin_Helper::get_admin_settings_option( 'uag_img_lazy_load' );
-			// If user is older than 2.18.0 and Lazy load is enabled update the fallback.
-			if ( version_compare( $saved_version, '2.18.0', '<' ) && 'enabled' === $img_lazy_load ) {
-				UAGB_Admin_Helper::update_admin_settings_option( 'uag_img_lazy_load_fallback', 'disabled' );
-			}
-
 			// If the core block array is not empty, update the enabled blocks option.
 			if ( ! empty( $core_blocks ) ) {
 

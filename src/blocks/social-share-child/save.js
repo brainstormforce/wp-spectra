@@ -30,7 +30,7 @@ export default function save( props ) {
 				alt={ defaultedAlt }
 				width={ parentSize }
 				height={ imgTagHeight }
-				{...( uagb_blocks_info.img_lazy_load !== 'enabled' && { loading: 'lazy' } )}
+				loading="lazy"
 			/>
 		);
 	}

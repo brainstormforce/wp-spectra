@@ -32,7 +32,7 @@ const TestimonialImage = ( props ) => {
 							alt={ image.alt }
 							width={ imageWidth }
 							height={ imgTagHeight }
-							{...( uagb_blocks_info.img_lazy_load !== 'enabled' && { loading: 'lazy' } )}
+							loading="lazy"
 						/>
 					</div>
 				</div>

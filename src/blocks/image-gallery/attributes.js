@@ -24,7 +24,7 @@ const attributes = {
 	// Editor Requirements
 	disableLazyLoad: {
 		type: 'boolean',
-		default: 'enabled' === uagb_blocks_info.img_lazy_load,
+		default: false,
 	},
 	readyToRender: {
 		type: 'boolean',

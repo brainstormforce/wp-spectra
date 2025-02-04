@@ -47,7 +47,6 @@ const setInitialState = ( store ) => {
             spectraIsBlockTheme: data.wp_is_block_theme,
             themeFonts: data.theme_fonts,
             btnInheritFromTheme: data.uag_btn_inherit_from_theme,
-            imgLazyLoad: data.uag_img_lazy_load,
 	        enableGBSExtension: data.uag_enable_gbs_extension,
             zipAiModules: data.zip_ai_modules,
         };

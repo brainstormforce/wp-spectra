@@ -65,7 +65,7 @@ export default function save( props ) {
 				alt={ image.alt ? image.alt : '' }
 				height={ imgWidth }
 				width={ imgWidth }
-				{...( uagb_blocks_info.img_lazy_load !== 'enabled' && { loading: 'lazy' } )}
+				loading="lazy"
 			/>
 		);
 	}

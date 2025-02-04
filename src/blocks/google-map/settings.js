@@ -15,7 +15,7 @@ const Settings = ( props ) => {
 
 	const {
 		setAttributes,
-		attributes: { height, heightTablet, heightMobile, zoom, address, language, enableSatelliteView, disableLazyLoad },
+		attributes: { height, heightTablet, heightMobile, zoom, address, language, enableSatelliteView },
 	} = props;
 
 
@@ -378,13 +378,6 @@ const Settings = ( props ) => {
 								},
 							] }
 						/>
-						<ToggleControl
-						    label={ __( 'Disable Lazy Loading', 'ultimate-addons-for-gutenberg' ) }
-						    checked={ disableLazyLoad }
-						    onChange={ () => {
-							    setAttributes( { disableLazyLoad: ! disableLazyLoad } );
-						    } }
-			            />
 					</UAGAdvancedPanelBody>
 					{'not-installed' === uagb_blocks_info.spectra_pro_status && ( 
 						<UAGAdvancedPanelBody

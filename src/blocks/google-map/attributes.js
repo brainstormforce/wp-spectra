@@ -2,10 +2,6 @@ const attributes = {
 	block_id: {
 		type: 'string',
 	},
-	disableLazyLoad: {
-		type: 'boolean',
-		default: 'enabled' === uagb_blocks_info.img_lazy_load,
-	},
 	address: {
 		type: 'string',
 		default: 'Brainstorm Force',

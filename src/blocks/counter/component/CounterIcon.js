@@ -41,7 +41,7 @@ const CounterIcon = ( props ) => {
 								: attributes.imgTagWidth
 						}
 						height={ attributes.imgTagHeight }
-						{...( uagb_blocks_info.img_lazy_load !== 'enabled' && { loading: 'lazy' } )}
+						loading="lazy"
 					/>
 				</span>
 			);

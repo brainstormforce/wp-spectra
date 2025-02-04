@@ -27,7 +27,7 @@ const AuthorImage = ( { attributes } ) => {
 				alt={ attributes.authorImage.alt }
 				width={ authorImageWidth }
 				height={ authorImageWidth }
-				{ ...( uagb_blocks_info.img_lazy_load !== 'enabled' && { loading: 'lazy' } ) }
+				loading="lazy"
 			/>
 		);
 	}

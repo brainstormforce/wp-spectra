@@ -55,7 +55,7 @@ export default function Save( props ) {
 				className="uagb-modal-trigger"
 				width={ imgTagWidth }
 				height={ imgTagHeight }
-				{...( uagb_blocks_info.img_lazy_load !== 'enabled' && { loading: 'lazy' } )}
+				loading="lazy"
 			/>
 		);
 	}
