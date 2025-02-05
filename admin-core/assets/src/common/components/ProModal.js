@@ -5,11 +5,12 @@ import { Button, DropdownMenu, Skeleton } from '@bsf/force-ui';
 import { Zap, X, Check, ChevronDown } from 'lucide-react';
 
 const ProModal = ( { modalData, setIsModalOpen } ) => {
-	const { title, Image, header, description, features } = modalData;
-
 	const [ productsList, setProductsList ] = useState( [] );
 	const [ selectedProduct, setSelectedProduct ] = useState( '' );
 	const [ loading, setLoading ] = useState( true );
+	const [ selectedTitle, setSelectedTitle ] = useState( 'Spectra Pro' );
+
+	const { title, Image, header, description, features } = modalData[ selectedTitle ];
 
 	useEffect( () => {
 		// Fetch pricing data from the API
@@ -27,9 +28,9 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 				// Filter products based on required names
 				const filteredData = Object.entries( data.data ).reduce( ( acc, [ key, value ] ) => {
 					if (
-						value.product.includes( 'Spectra Pro' ) ||
-						value.product.includes( 'Essential Toolkit for Spectra' ) ||
-						value.product.includes( 'Business Toolkit' )
+						value.product.includes( 'Spectra Pro - Annual Subscription' ) && value.variant.includes( '1 Site' ) ||
+						value.product.includes( 'Essential Toolkit for Spectra - Annual Subscription' ) && value.variant.includes( '1 Site' ) ||
+						value.product.includes( 'Business Toolkit - Annual Subscription' ) && value.variant.includes( '1 Site' )
 					) {
 						acc[ key ] = value;
 					}
@@ -52,6 +53,17 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 		fetchPricingData();
 	}, [] );
 
+	useEffect( () => {
+		const productName = productsList[ selectedProduct ]?.product || '';
+		const titleMapping = {
+			'Spectra Pro': 'Spectra Pro',
+			'Essential Toolkit': 'Essential Toolkit',
+		};
+		
+		const newTitle = Object.keys( titleMapping ).find( ( key ) => productName.includes( key ) ) || 'Business Toolkit';
+		setSelectedTitle( newTitle )
+	}, [ selectedProduct ] )
+
 	const closeModal = ( e ) => {
 		e.stopPropagation();
 	};
@@ -61,7 +73,12 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 			onClick={ () => setIsModalOpen( false ) }
 			className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-999999"
 		>
-			<div className="bg-white rounded-lg p-5 sm:w-[400px] w-[300px]" onClick={ closeModal }>
+			<div
+			className={`bg-white rounded-lg p-5
+				${selectedTitle === 'Essential Toolkit' ? 'sm:w-[500px] w-[400px]' : 'sm:w-[400px] w-[300px]'}`
+			}
+			onClick={closeModal}
+			>
 				<div className="flex w-full justify-between items-center">
 					<div className="text-brand-primary-600 flex space-x-1">
 						<Zap size={ 14 } className="flex items-center justify-center" />
@@ -120,11 +137,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 												style={ { border: '1px solid #E5E7EB', width: '100%' } }
 											>
 												<div className="text-sm text-text-primary flex items-center justify-between w-full">
-													{ productsList[ selectedProduct ]?.product &&
-													productsList[ selectedProduct ]?.product.length > 10
-														? productsList[ selectedProduct ]?.product.substring( 0, 11 ) +
-														  '...'
-														: productsList[ selectedProduct ]?.product }
+													{ productsList[ selectedProduct ]?.product.split( ' - ' )[ 0 ]?.replace( ' for Spectra', '' ) }
 													<span>
 														<ChevronDown size={ 14 } />
 													</span>
@@ -142,7 +155,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 														style={ { zIndex: '99999999' } }
 														key={ value.product + value.variant }
 													>
-														{ value.product + '-' + value.variant }
+														{ value.product.split( ' - ' )[ 0 ].replace( ' for Spectra', '' ) }
 													</DropdownMenu.Item>
 												) ) }
 											</DropdownMenu.List>
@@ -165,7 +178,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 										href={ productsList[ selectedProduct ]?.checkout_url }
 										target="_blank"
 										rel="noreferrer"
-										className="no-underline text-text-on-color"
+										className="no-underline text-text-on-color relative"
 									>
 										<Button
 											className=""
@@ -181,6 +194,10 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 								</div>
 							</div>
 						) }
+
+						<a href='https://wpspectra.com/pricing/' target='_blank' rel='noreferrer' className='text-xxs text-brand-primary-600 w-full flex justify-end md:pr-[10px] pr-2'>
+							{ __( 'View plans', 'ultimate-addons-for-gutenberg' ) }
+						</a>
 					</>
 				) }
 			</div>

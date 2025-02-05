@@ -582,11 +582,6 @@
 	width: 100% !important;
 }
 
-.dropdown-list + ul {
-	height: 400px !important;
-	overflow-y: scroll;
-}
-
 [data-floating-ui-focusable] {
 	z-index: 9999999 !important;
 }

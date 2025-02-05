@@ -69,6 +69,26 @@ const UpgradeNotices = ( { title, description, upgradeText, upgradeBold, modalDa
 		description
 	);
 
+	const allPlansData = {
+		'Spectra Pro': modalData,
+		'Essential Toolkit': { ...modalData, features: [
+			__( 'Spectra Pro', 'ultimate-addons-for-gutenberg' ),
+			__( 'Astra Pro', 'ultimate-addons-for-gutenberg' ),
+			__( 'Premium Starter Templates', 'ultimate-addons-for-gutenberg' ),
+			__( 'Ultimate Addons for Elementor', 'ultimate-addons-for-gutenberg' ),
+			__( 'Elementor Premium Templates', 'ultimate-addons-for-gutenberg' ),
+			__( 'Seamless Page Building', 'ultimate-addons-for-gutenberg' ),
+		] },
+		'Business Toolkit': { ...modalData, features: [
+			__( 'Essential Toolkit', 'ultimate-addons-for-gutenberg' ),
+			__( 'SureFeedback', 'ultimate-addons-for-gutenberg' ),
+			__( 'SureWriter Pro', 'ultimate-addons-for-gutenberg' ),
+			__( 'SureTriggers Pro', 'ultimate-addons-for-gutenberg' ),
+			__( 'CartFlows Starter', 'ultimate-addons-for-gutenberg' ),
+			__( 'ZipWP Pro', 'ultimate-addons-for-gutenberg' ),
+		] },
+	}
+
 	return (
 		<Container
 			align="stretch"
@@ -134,7 +154,7 @@ const UpgradeNotices = ( { title, description, upgradeText, upgradeBold, modalDa
 			</div>
 
 			{ isModalOpen && (
-				<ProModal setIsModalOpen={ setIsModalOpen } activatePro={ activatePro } modalData={ modalData } />
+				<ProModal setIsModalOpen={ setIsModalOpen } activatePro={ activatePro } modalData={ allPlansData } />
 			) }
 		</Container>
 	);
