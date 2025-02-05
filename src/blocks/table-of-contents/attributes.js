@@ -1004,14 +1004,6 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
-	iconInactive: {
-		type: 'string',
-		default: '',
-	},
-	iconActive: {
-		type: 'string',
-		default: '',
-	},
 };
 
 export default attributes;

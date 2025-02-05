@@ -1044,14 +1044,6 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 										'type'    => 'boolean',
 										'default' => false,
 									),
-									'iconActive'           => array(
-										'type'    => 'string',
-										'default' => '',
-									),
-									'iconInactive'         => array(
-										'type'    => 'string',
-										'default' => '',
-									),
 								)
 							),
 							'render_callback' => array( $this, 'render_table_of_contents' ),

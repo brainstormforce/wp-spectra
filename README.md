@@ -218,7 +218,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
-* Improvement: Table Of Contents - Added support for SVG icons in collapsible list items.
 * Improvement: Post Grid & Post Carousel - Added control for taxonomy bottom spacing.
 * Fix: Heading - Resolved an issue where the Heading block, when assigned a paragraph tag, was not translatable.
 * Fix: Info Box - Resolved an issue wherein the icon responsive padding is not working as intended in framed view.

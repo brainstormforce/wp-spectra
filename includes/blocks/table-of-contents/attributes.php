@@ -141,8 +141,6 @@ return array_merge(
 		'enableCollapsableList'      => false,
 		'collapsibleListDepth'       => 5,
 		'initiallyCollapseList'      => false,
-		'iconActive'                 => '',
-		'iconInactive'               => '',
 	),
 	$borderAttributes
 );

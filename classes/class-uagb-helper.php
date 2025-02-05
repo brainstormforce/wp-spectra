@@ -1567,57 +1567,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				wp_delete_file( $file_name );
 			}
 		}
-
-		/**
-		 * Load and process icon data from specified files.
-		 *
-		 * @param string $icon The icon key to retrieve specific SVG data.
-		 * @param int    $chunks The number of chunks/files to process.
-		 * @param string $directory The base directory where icon files are stored.
-		 * @since x.x.x
-		 * @return array An array containing the 'path' and 'view' of the requested icon.
-		 */
-		public static function load_icon_data( $icon, $chunks = 4, $directory = UAGB_DIR . 'blocks-config/uagb-controls/' ) {
-			$icon_array_merged = array();
-			$json              = array();
-
-			// Load icon chunks.
-			for ( $i = 0; $i < $chunks; $i++ ) {
-				$json_file = $directory . "spectra-icons-v6-{$i}.php";
-				if ( file_exists( $json_file ) ) {
-					$json[] = include $json_file;
-				}
-			}
-
-			// Validate JSON structure.
-			if ( ! is_array( $json ) || empty( $json ) ) {
-				$json = array();
-			}
-
-			// Merge icon arrays if necessary.
-			if ( ! empty( $json ) ) {
-				foreach ( $json as $value ) {
-					$icon_array_merged = array_merge( $icon_array_merged, $value );
-				}
-				$json = $icon_array_merged;
-			}
-
-			// Extract icon SVG data.
-			$icon_brand_or_solid = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands'] : 
-									( isset( $json[ $icon ]['svg']['solid'] ) ? $json[ $icon ]['svg']['solid'] : array() );
-
-			// Determine path and viewBox.
-			$path = isset( $icon_brand_or_solid['path'] ) ? $icon_brand_or_solid['path'] : '';
-			$view = isset( $icon_brand_or_solid['width'] ) && isset( $icon_brand_or_solid['height'] ) 
-					? '0 0 ' . $icon_brand_or_solid['width'] . ' ' . $icon_brand_or_solid['height'] 
-					: null;
-
-			return array(
-				'path' => $path,
-				'view' => $view,
-			);
-		}
-
 	}
 
 	/**
