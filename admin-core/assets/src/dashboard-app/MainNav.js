@@ -59,7 +59,7 @@ const Navigation = () => {
 				>
 					{ menu.name }
 					{ activePage === menu.slug && activePath === menu.path && (
-						<span className="absolute -bottom-6 left-0 w-full h-px bg-brand-primary-600 lg:block hidden"></span>
+						<span className="absolute md:bottom-0 -bottom-6 left-0 w-full h-px bg-brand-primary-600 lg:block hidden"></span>
 					) }
 				</Link>
 			) ) }

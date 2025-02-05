@@ -174,7 +174,7 @@ const BlockItem = ( { block, is_extension } ) => {
 					<p className="text-sm font-medium text-text-primary m-0">{ block.title }</p>
 					<div className="flex items-center justify-between w-full">
 						<a
-							href={ `https://wpspectra.com/blocks/${ block.link }` }
+							href={ `https://wpspectra.com/blocks-and-extensions/${ block.link }` }
 							target="_blank"
 							rel="noreferrer"
 							className="mt-1 text-text-tertiary no-underline"
@@ -229,7 +229,7 @@ const BlockItem = ( { block, is_extension } ) => {
 				<p className="text-sm font-medium text-text-primary m-0">{ block.title }</p>
 				<div className="flex items-center justify-between w-full">
 					<a
-						href={ `https://wpspectra.com/blocks/${ block.link }` }
+						href={ `https://wpspectra.com/blocks-and-extensions/${ block.link }` }
 						target="_blank"
 						rel="noreferrer"
 						className="mt-1 text-text-tertiary no-underline"

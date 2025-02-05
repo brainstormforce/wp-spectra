@@ -21,6 +21,7 @@ const Blocks = () => {
 			icon: UAGB_Block_Icons.login,
 			is_pro: true,
 			is_active: false,
+			link: 'login'
 		},
 		{
 			title: __( 'Registration Form', 'ultimate-addons-for-gutenberg' ),
@@ -28,6 +29,7 @@ const Blocks = () => {
 			icon: UAGB_Block_Icons.register,
 			is_pro: true,
 			is_active: false,
+			link: 'registration-form'
 		},
 		{
 			title: __( 'Instagram Feed', 'ultimate-addons-for-gutenberg' ),
@@ -35,6 +37,7 @@ const Blocks = () => {
 			icon: UAGB_Block_Icons[ 'instagram-feed' ],
 			is_pro: true,
 			is_active: false,
+			link: 'instagram-feed'
 		},
 		{
 			title: __( 'Loop Builder', 'ultimate-addons-for-gutenberg' ),
@@ -42,6 +45,7 @@ const Blocks = () => {
 			icon: UAGB_Block_Icons[ 'loop-builder' ],
 			is_pro: true,
 			is_active: false,
+			link: 'loop-builder'
 		},
 		{
 			title: __( 'Dynamic Content', 'ultimate-addons-for-gutenberg' ),
@@ -49,6 +53,7 @@ const Blocks = () => {
 			icon: UAGB_Block_Icons[ 'dynamic-content' ],
 			is_pro: true,
 			is_active: false,
+			link: 'dynamic-content'
 		},
 		{
 			title: __( 'FAQ', 'ultimate-addons-for-gutenberg' ),
@@ -56,6 +61,7 @@ const Blocks = () => {
 			icon: UAGB_Block_Icons.faq,
 			is_pro: false,
 			is_active: true,
+			link: 'faq'
 		},
 		{
 			title: __( 'Counter', 'ultimate-addons-for-gutenberg' ),
@@ -63,6 +69,7 @@ const Blocks = () => {
 			icon: UAGB_Block_Icons.counter,
 			is_pro: false,
 			is_active: true,
+			link: 'counter'
 		},
 		{
 			title: __( 'Slider', 'ultimate-addons-for-gutenberg' ),
@@ -70,6 +77,7 @@ const Blocks = () => {
 			icon: UAGB_Block_Icons.slider,
 			is_pro: false,
 			is_active: true,
+			link: 'slider'
 		},
 		{
 			title: __( 'Modal', 'ultimate-addons-for-gutenberg' ),
@@ -77,6 +85,7 @@ const Blocks = () => {
 			icon: UAGB_Block_Icons.modal,
 			is_pro: false,
 			is_active: true,
+			link: 'modal'
 		},
 		{
 			title: __( 'Tabs', 'ultimate-addons-for-gutenberg' ),
@@ -84,6 +93,7 @@ const Blocks = () => {
 			icon: UAGB_Block_Icons.tabs,
 			is_pro: false,
 			is_active: true,
+			link: 'tabs'
 		},
 		{
 			title: __( 'Image Gallery', 'ultimate-addons-for-gutenberg' ),
@@ -91,6 +101,7 @@ const Blocks = () => {
 			icon: UAGB_Block_Icons[ 'image-gallery' ],
 			is_pro: false,
 			is_active: true,
+			link: 'image-gallery'
 		},
 		{
 			title: __( 'Animations', 'ultimate-addons-for-gutenberg' ),
@@ -98,6 +109,7 @@ const Blocks = () => {
 			icon: UAGB_Block_Icons[ 'animations-extension' ],
 			is_pro: false,
 			is_active: true,
+			link: 'animations'
 		},
 	];
 
@@ -122,6 +134,7 @@ const Blocks = () => {
 					icon,
 					is_pro: block.is_pro,
 					is_active: block.is_active !== undefined ? block.is_active : true, // Check if is_activate is set
+					link: block.link
 				} );
 			}
 		}
@@ -157,7 +170,7 @@ const Blocks = () => {
 			<div className="flex flex-col rounded-lg p-4">
 				<Container
 					align="stretch"
-					className="p-2 gap-1.5 grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 bg-field-primary-background rounded-lg"
+					className="p-1 gap-1 grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 bg-field-primary-background rounded-lg"
 					containerType="grid"
 					gap=""
 					justify="start"
@@ -166,7 +179,7 @@ const Blocks = () => {
 						<Container.Item
 							key={ block.id }
 							alignSelf="auto"
-							className="text-wrap rounded-md bg-background-primary p-2"
+							className="text-wrap rounded-md bg-background-primary p-2 block-item"
 						>
 							<BlockItem block={ block } key={ block.id } updateCounter={ 0 } />
 						</Container.Item>

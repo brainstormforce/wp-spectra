@@ -219,7 +219,7 @@ const FSEFontFamilies = () => {
 					maxMenuHeight={ 140 }
 					minMenuHeight={ 70 }
 					isSearchable={ true }
-					className={ `mt-4 w-9/12 h-10 transition` }
+					className={ `w-9/12 h-10 transition` }
 					theme={ ( theme ) => ( {
 						...theme,
 						colors: {

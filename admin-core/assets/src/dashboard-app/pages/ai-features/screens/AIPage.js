@@ -291,7 +291,7 @@ const AIPage = () => {
 			} ) }
 			{ renderInfoCard( {
 				icon: <PageIcon />,
-				title: __( 'Custom Pages with AI', 'ultimate-addons-for-gutenberg' ),
+				title: __( 'Custom Pages With AI', 'ultimate-addons-for-gutenberg' ),
 				description: sprintf(
 					/* translators: %s: Percentage Ascii Code */
 					__(
@@ -555,7 +555,7 @@ const AIPage = () => {
 
 						<Container
 							align="stretch"
-							className="p-2 gap-1.5 grid sm:grid-cols-2 grid-cols-1 bg-field-primary-background rounded-lg"
+							className="p-1 gap-1 grid sm:grid-cols-2 grid-cols-1 bg-field-primary-background rounded-lg"
 							containerType="grid"
 							gap=""
 							justify="start"
@@ -572,8 +572,8 @@ const AIPage = () => {
 									className="text-wrap rounded-md bg-background-primary p-2"
 								>
 									<div className="p-3 flex flex-col gap-2 items-center w-full">
-										<div className="w-full flex items-center justify-between text-brand-primary-600">
-											<Sparkles />
+										<div className="w-full flex items-center justify-between text-brand-primary-600 mb-1">
+											<Sparkles strokeWidth={ 1.75 } />
 
 											<Switch
 												size="md"
@@ -612,8 +612,8 @@ const AIPage = () => {
 									className="text-wrap rounded-md bg-background-primary p-2"
 								>
 									<div className="p-3 flex flex-col gap-2 items-center w-full">
-										<div className="w-full flex items-center justify-between text-brand-primary-600">
-											<WandSparkles />
+										<div className="w-full flex items-center justify-between text-brand-primary-600 mb-1">
+											<WandSparkles strokeWidth={ 1.75 } />
 
 											<Switch
 												size="md"

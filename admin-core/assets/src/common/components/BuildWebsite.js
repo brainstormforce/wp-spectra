@@ -11,7 +11,7 @@ const BuildWebsite = () => {
 
 			<Container.Item>
 				<div className="text-base font-semibold text-text-primary my-1">
-					{ __( 'Build website 10x faster with AI', 'ultimate-addons-for-gutenberg' ) }
+					{ __( 'Build Website 10x Faster With AI', 'ultimate-addons-for-gutenberg' ) }
 				</div>
 				<p className="text-sm text-text-secondary my-1">
 					{ __(
@@ -31,7 +31,7 @@ const BuildWebsite = () => {
 				<Button variant="secondary" className="uagb-remove-ring">{ __( 'Explore', 'ultimate-addons-for-gutenberg' ) }</Button>
 			</Link>
 				<p className="text-xs text-text-tertiary">
-					{ __( 'Get 1000 free monthly credits', 'ultimate-addons-for-gutenberg' ) }
+					{ __( 'Get 1000 Free Monthly Credits', 'ultimate-addons-for-gutenberg' ) }
 				</p>
 			</Container.Item>
 		</Container>

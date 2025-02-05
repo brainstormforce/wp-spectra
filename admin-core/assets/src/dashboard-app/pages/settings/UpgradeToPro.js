@@ -108,7 +108,7 @@ const UpgradeNotices = ( { title, description, upgradeText, upgradeBold, modalDa
 				) }
 			</div>
 
-			<div className="flex flex-col sm:flex-row sm:items-center items-start justify-between gap-2 rounded-xl bg-[#F3F0FF] p-3">
+			<div className="flex flex-col sm:flex-row sm:items-center items-start justify-between gap-2 rounded-xl bg-[#F3F0FF] p-3" style={ { border: '1px solid #D6CDFF' } }>
 				<span className="text-sm sm:flex sm:items-center sm:gap-1">
 					<strong className="font-semibold">{ upgradeBold }</strong> { upgradeText }
 				</span>

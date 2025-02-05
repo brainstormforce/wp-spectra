@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { __, sprintf } from '@wordpress/i18n';
 import useWhatsNewRSS from '@Utils/whats-new-library/useWhatsNewRSS';
 import { Container, Topbar, Badge, DropdownMenu } from '@bsf/force-ui';
-import { X, CircleHelp, SquareArrowOutUpRight } from 'lucide-react';
+import { X, CircleHelp, SquareArrowOutUpRight, User } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 const AdminHeader = ( props ) => {
@@ -170,7 +170,7 @@ const AdminHeader = ( props ) => {
 	return (
 		<Disclosure as="nav" className="bg-white shadow border border-solid border-border-subtle">
 			{ 'Install' === uag_react.pro_plugin_status && showHeader && (
-				<Container align="center" justify="center" className="py-2 relative bg-brand-background-hover-100">
+				<Container align="center" justify="center" className="py-2 relative bg-[#E9E4FF]">
 					<div className="space-x-1 text-text-primary text-xs">
 						<span className="font-semibold">
 							{ __( "Unlock Spectra's Full Potential!", 'ultimate-addons-for-gutenberg' ) }
@@ -200,13 +200,13 @@ const AdminHeader = ( props ) => {
 						onClick={ () => setShowHeader( false ) }
 						className="inline-flex items-center justify-center absolute right-2 p-0 bg-transparent shadow-none border-0 outline-none focus:outline-none cursor-pointer"
 					>
-						<X className="size-4" />
+						<X size={ 16 } />
 					</button>
 				</Container>
 			) }
 			{ /* Navigation Topbar */ }
 			<Topbar gap={ 0 } className="p-0 shadow-sm w-full">
-				<Topbar.Left className="py-4 lg:px-4 md:px-2 sm:px-1 px-0">
+				<Topbar.Left className="py-4 lg:px-4 lg:pl-8 md:px-2 sm:px-1 px-0">
 					<Topbar.Item>
 						<Link
 							to={ {
@@ -251,7 +251,7 @@ const AdminHeader = ( props ) => {
 						</Link>
 					</Topbar.Item>
 				</Topbar.Left>
-				<Topbar.Middle align="left" className="h-full">
+				<Topbar.Middle align="left" className="sm:h-[64px]">
 					<Topbar.Item>
 						{ children && (
 							<div className="flex items-center [&>svg]:block h-full lg:gap-4 md:gap-2 gap-1 flex-wrap">
@@ -260,7 +260,7 @@ const AdminHeader = ( props ) => {
 						) }
 					</Topbar.Item>
 				</Topbar.Middle>
-				<Topbar.Right gap="md" className="lg:px-4 md:px-2 px-1">
+				<Topbar.Right gap="md" className="lg:px-4 lg:pr-8 md:px-2 px-1">
 					<Topbar.Item>
 						<DropdownMenu placement="bottom-end" isOpen={ isDropOpen1 } onOpenChange={ setIsDropOpen1 }>
 							<DropdownMenu.Trigger>
@@ -324,12 +324,12 @@ const AdminHeader = ( props ) => {
 							rel="noreferrer"
 							className="text-slate-600 m-0 p-0 flex items-center justify-center"
 						>
-							<CircleHelp strokeWidth="1.5" className="size-4 m-1" />
+							<CircleHelp strokeWidth="1.5" size={ 16 } />
 						</a>
 					</Topbar.Item>
 
-					<Topbar.Item className="relative after:content-[''] after:inline-block after:size-1.5 after:bg-background-important after:rounded-full after:absolute after:-top-0.5 after:left-5">
-						<div id="spectra-whats-new" className="size-4 m-1"></div>
+					<Topbar.Item>
+						<div id="spectra-whats-new" size={ 16 }></div>
 					</Topbar.Item>
 
 					<Topbar.Item className="relative after:content-[''] after:inline-block after:size-1.5 after:bg-background-important after:rounded-full after:absolute after:-top-0.5 after:left-5">
@@ -343,32 +343,9 @@ const AdminHeader = ( props ) => {
 										{ uagb_user_data.firstName[ 0 ] + uagb_user_data.lastName[ 0 ] }
 									</div>
 								) : (
-									<svg
-										width="24"
-										height="24"
-										viewBox="0 0 24 24"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg"
-									>
-										<path
-											d="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z"
-											fill="#F3F0FF"
-										/>
-										<path
-											d="M16.6667 18V16.6667C16.6667 15.9594 16.3858 15.2811 15.8857 14.781C15.3856 14.281 14.7073 14 14 14H10C9.2928 14 8.61452 14.281 8.11442 14.781C7.61433 15.2811 7.33337 15.9594 7.33337 16.6667V18"
-											stroke="#111827"
-											strokeWidth="1.25"
-											strokeLinecap="round"
-											strokeLinejoin="round"
-										/>
-										<path
-											d="M12 11.3333C13.4728 11.3333 14.6667 10.1394 14.6667 8.66667C14.6667 7.19391 13.4728 6 12 6C10.5273 6 9.33337 7.19391 9.33337 8.66667C9.33337 10.1394 10.5273 11.3333 12 11.3333Z"
-											stroke="#111827"
-											strokeWidth="1.25"
-											strokeLinecap="round"
-											strokeLinejoin="round"
-										/>
-									</svg>
+									<div className="bg-[#f3f0ff] w-6 h-6 rounded-full flex justify-center items-center">
+										<User size={ 16 } />
+									</div>
 								) }
 								{ /* </Avatar> */ }
 								<span className="sr-only">{ __( 'Open Menu', 'ultimate-addons-for-gutenberg' ) }</span>

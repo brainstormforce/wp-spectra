@@ -340,40 +340,34 @@ const BlocksSection = () => {
 							value={ searchInput }
 							onChange={ ( value ) => setSearchInput( value ) }
 							id="input-element"
-							prefix={ <Search /> }
+							prefix={ <Search className='text-icon-secondary' /> }
 							size="sm"
 							type="text"
 							placeholder="Search…"
 						/>
 
-						<div className="flex items-center gap-1">
-							<Button
-								className={ `outline-none focus:outline-none focus:z-50 uagb-input-border ${
-									! filteredBlocks || ! filteredBlocks.length > 0 ? 'cursor-not-allowed' : ''
-								}` }
-								size="sm"
-								tag="button"
-								type="button"
-								variant="outline"
+						<div
+							className={ `flex justify-center items-center rounded-sm overflow-hidden ${
+								! filteredBlocks || ! filteredBlocks.length > 0
+									? 'cursor-not-allowed text-text-tertiary'
+									: 'cursor-pointer text-text-primary'
+							}` }
+							style={ { border: '1.5px solid #e5e7eb', borderRadius: '0.25rem' } }
+						>
+							<div
+								className="font-medium p-2 hover:bg-button-tertiary-hover hover:outline-border-subtle transition-all duration-300"
+								style={ { border: 'none', borderRight: '1.5px solid #e5e7eb' } }
 								onClick={ () => toggleAllBlocks( true ) }
-								disabled={ ! filteredBlocks || ! filteredBlocks.length > 0 }
 							>
-								Activate All
-							</Button>
-
-							<Button
-								className={ `outline-none focus:outline-none focus:z-50 uagb-input-border ${
-									! filteredBlocks || ! filteredBlocks.length > 0 ? 'cursor-not-allowed' : ''
-								}` }
-								size="sm"
-								tag="button"
-								type="button"
-								variant="outline"
+								{ __( 'Activate All', 'ultimate-addons-for-gutenberg' ) }
+							</div>
+							<div
+								className="font-medium p-2 hover:bg-button-tertiary-hover hover:outline-border-subtle transition-all duration-300"
+								style={ { border: 'none' } }
 								onClick={ () => toggleAllBlocks( false ) }
-								disabled={ ! filteredBlocks || ! filteredBlocks.length > 0 }
 							>
-								Deactivate All
-							</Button>
+								{ __( 'Deactivate All', 'ultimate-addons-for-gutenberg' ) }
+							</div>
 						</div>
 
 						<DropdownMenu placement="bottom-end" isOpen={ isDropOpen } onOpenChange={ setIsDropOpen }>
@@ -390,7 +384,7 @@ const BlocksSection = () => {
 											{ filterCount }
 										</div>
 									) }
-									<ListFilter size={ 18 } />
+									<ListFilter size={ 16 } />
 								</Button>
 								<span className="sr-only">{ __( 'Open Menu', 'ultimate-addons-for-gutenberg' ) }</span>
 							</DropdownMenu.Trigger>
@@ -523,7 +517,7 @@ const BlocksSection = () => {
 				<div className="flex flex-col rounded-lg p-4 pt-0">
 					<Container
 						align="stretch"
-						className="p-2 gap-1.5 grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 bg-field-primary-background rounded-lg"
+						className="p-1 gap-1 grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 bg-field-primary-background rounded-lg"
 						containerType="grid"
 						gap=""
 						justify="start"
@@ -535,7 +529,7 @@ const BlocksSection = () => {
 									<Container.Item
 										key={ block.id }
 										alignSelf="auto"
-										className="text-wrap rounded-md bg-background-primary p-2 shadow hover:shadow-hover"
+										className="text-wrap rounded-md bg-background-primary p-2 block-item"
 									>
 										<BlockItem block={ block } is_extension={ block.is_extension } />
 									</Container.Item>

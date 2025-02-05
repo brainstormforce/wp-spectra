@@ -123,7 +123,7 @@ const BlockSettings = () => {
 				<div className="font-medium text-sm text-slate-800 m-0 mt-4">
 					{ __( 'reCAPTCHA v2', 'ultimate-addons-for-gutenberg' ) }
 				</div>
-				<div className="w-full mt-1 grid grid-cols-2 gap-5 mb-1">
+				<div className="w-full mt-1 grid grid-cols-2 gap-10 mb-1">
 					<input
 						className="h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field"
 						placeholder={ __( 'Site Key v2', 'ultimate-addons-for-gutenberg' ) }
@@ -147,7 +147,7 @@ const BlockSettings = () => {
 				<div className="mt-4 font-medium text-sm text-slate-800 mb-1">
 					{ __( 'reCAPTCHA v3', 'ultimate-addons-for-gutenberg' ) }
 				</div>
-				<div className="w-full mt-3 grid grid-cols-2 gap-5">
+				<div className="w-full mt-3 grid grid-cols-2 gap-10">
 					<input
 						className="h-10 text-sm placeholder-slate-400 transition spectra-admin__input-field"
 						placeholder={ __( 'Site Key v3', 'ultimate-addons-for-gutenberg' ) }

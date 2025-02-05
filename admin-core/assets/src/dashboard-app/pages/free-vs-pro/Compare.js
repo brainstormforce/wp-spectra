@@ -104,7 +104,7 @@ const Compare = () => {
 
 	return (
 		<div
-			className="rounded-xl bg-white w-full border-border-subtle mb-8 shadow"
+			className="rounded-lg bg-white w-full border-border-subtle mb-8 shadow-sm"
 			style={ { border: '1px solid rgb(229, 231, 235)' } }
 		>
 			<div
@@ -113,7 +113,7 @@ const Compare = () => {
 			>
 				<div className="flex flex-col">
 					<div className="m-0 text-xl font-semibold sm:pt-4 custom:pt-0 pt-0 text-text-primary">
-						{ __( 'Free Vs Pro', 'ultimate-addons-for-gutenberg' ) }
+						{ __( 'Free VS Pro', 'ultimate-addons-for-gutenberg' ) }
 					</div>
 					<p className="m-0 text-sm font-normal pt-1 text-text-secondary">
 						{ __(

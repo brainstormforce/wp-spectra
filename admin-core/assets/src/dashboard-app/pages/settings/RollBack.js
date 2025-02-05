@@ -115,14 +115,14 @@ const SettingsItem = ( { title, settingText, currentSetting, children } ) => {
 			className="mb-0.5 w-full flex justify-between flex-col lg:flex-row lg:items-center items-start"
 		>
 			<Container.Item className="space-y-1 max-w-[360px]">
-				<Label className="font-semibold" htmlFor="default-width" size="md">
+				<Label className="font-semibold mb-1" htmlFor="default-width" size="md">
 					{ title }
 				</Label>
-				<Label className="m-0" size="sm" tag="p" variant="help">
+				<Label className="m-0 font-normal" size="sm" tag="p" variant="help">
 					{ settingText }
 				</Label>
 				{ currentSetting && (
-					<Label className="m-0 italic" size="sm" tag="p" variant="help">
+					<Label className="m-0 italic font-normal" size="sm" tag="p" variant="help">
 						{ currentSetting }
 					</Label>
 				) }

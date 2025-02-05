@@ -236,7 +236,7 @@ const SettingsItem = ( { title, children } ) => {
 	return (
 		<Container align="start" className="mb-0.5 w-full flex flex-col">
 			<Container.Item className="space-y-1 lg:max-w-[480px]">
-				<Label className="font-semibold" htmlFor="default-width" size="md">
+				<Label className="font-semibold mb-1" htmlFor="default-width" size="md">
 					{ title }
 				</Label>
 			</Container.Item>

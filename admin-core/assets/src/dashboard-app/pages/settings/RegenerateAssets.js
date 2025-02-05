@@ -39,13 +39,7 @@ const RegenerateAssets = () => {
 	};
 
 	const ConfirmationPopup = ( props ) => {
-		const {
-			openPopup,
-			setopenPopup,
-			popupContent,
-			popupAccept,
-			popupCancel,
-		} = props;
+		const { openPopup, setopenPopup, popupContent, popupAccept, popupCancel } = props;
 
 		const [ open, setOpen ] = useState( openPopup );
 
@@ -168,39 +162,36 @@ const RegenerateAssets = () => {
 	return (
 		<>
 			<SettingsItem
-				title={ __( 'Enable Quick Action Bar', 'ultimate-addons-for-gutenberg' ) }
+				title={ __( 'Asset Regeneration', 'ultimate-addons-for-gutenberg' ) }
 				settingText={ __(
-					'The Spectra Quick Action Bar lets you have all your frequently used Spectra blocks right at your fingertips!',
+					'Facing issues with style, layout, color or another page element? Use this option to regenerate CSS and Javascript assets. It can help with all kinds of asset issues.',
 					'ultimate-addons-for-gutenberg'
 				) }
 			>
-				<Button
-					onClick={ openModal }
-					className="uagb-remove-ring"
-				>
+				<Button onClick={ openModal } className="uagb-remove-ring" style={ { fontWeight: '500' } }>
 					{ __( 'Regenerate Assets', 'ultimate-addons-for-gutenberg' ) }
 				</Button>
 			</SettingsItem>
 
 			<ConfirmationPopup
-					{ ...{
-						openPopup: isModalOpen,
-						setopenPopup: setIsModalOpen,
-						popupContent: {
-							title: __( 'Regenerate Assets', 'ultimate-addons-for-gutenberg' ),
-							description: __(
-								'Please note that after regeneration, it is recommended to purge all your cache to ensure that old assets are not served, preventing potential frontend breaking issues.',
-								'ultimate-addons-for-gutenberg'
-							),
-						},
-						popupAccept: {
-							label: __( 'Regenerate', 'ultimate-addons-for-gutenberg' ),
-						},
-						popupCancel: {
-							label: __( 'Cancel', 'ultimate-addons-for-gutenberg' ),
-						},
-					} }
-				/>
+				{ ...{
+					openPopup: isModalOpen,
+					setopenPopup: setIsModalOpen,
+					popupContent: {
+						title: __( 'Regenerate Assets', 'ultimate-addons-for-gutenberg' ),
+						description: __(
+							'Please note that after regeneration, it is recommended to purge all your cache to ensure that old assets are not served, preventing potential frontend breaking issues.',
+							'ultimate-addons-for-gutenberg'
+						),
+					},
+					popupAccept: {
+						label: __( 'Regenerate', 'ultimate-addons-for-gutenberg' ),
+					},
+					popupCancel: {
+						label: __( 'Cancel', 'ultimate-addons-for-gutenberg' ),
+					},
+				} }
+			/>
 		</>
 	);
 };
@@ -212,14 +203,14 @@ const SettingsItem = ( { title, settingText, currentSetting, children } ) => {
 			className="mb-0.5 w-full flex lg:items-center items-start justify-between lg:flex-row flex-col"
 		>
 			<Container.Item className="space-y-1 lg:max-w-[360px]">
-				<Label className="font-semibold" htmlFor="default-width" size="md">
+				<Label className="font-semibold mb-1" htmlFor="default-width" size="md">
 					{ title }
 				</Label>
-				<Label className="m-0" size="sm" tag="p" variant="help">
+				<Label className="m-0 font-normal" size="sm" tag="p" variant="help">
 					{ settingText }
 				</Label>
 				{ currentSetting && (
-					<Label className="m-0 italic" size="sm" tag="p" variant="help">
+					<Label className="m-0 italic font-normal" size="sm" tag="p" variant="help">
 						{ currentSetting }
 					</Label>
 				) }

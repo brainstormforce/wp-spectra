@@ -72,9 +72,9 @@ const VideoTutorials = () => {
 				</div>
 			</div>
 
-			<div className="relative overflow-hidden rounded-lg">
+			<div className="relative overflow-hidden rounded-lg px-3 pb-2">
 				<div
-					className="flex transition-transform duration-500 px-1"
+					className="flex transition-transform duration-500"
 					style={ {
 						transform: `translateX(-${ ( currentIndex * 100 ) / 3 }%)`,
 					} }
@@ -92,7 +92,7 @@ const VideoTutorials = () => {
 									className="w-full h-full object-cover rounded-lg aspect-video"
 								/>
 
-								<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 bg-black bg-opacity-50 rounded-full">
+								<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-black bg-opacity-50 rounded-full">
 									<PlayFilledIcon className="w-6 h-6 text-white" />
 								</div>
 							</div>

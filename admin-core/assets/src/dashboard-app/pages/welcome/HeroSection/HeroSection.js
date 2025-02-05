@@ -39,7 +39,7 @@ const HeroSection = () => {
 
 	return (
 		<Container
-			className="bg-white p-6 shadow-sm rounded-xl border border-solid border-border-subtle"
+			className="bg-white p-6 shadow-sm rounded-lg border border-solid border-border-subtle items-center"
 			cols={ 8 }
 			containerType="grid"
 			gap="2xl"
@@ -47,13 +47,13 @@ const HeroSection = () => {
 			<Container.Item className="flex flex-col gap-6" colSpan={ { lg: 5, md: 8, sm: 8 } }>
 				<div>
 					<Title
-						className="text-text-primary mb-1"
+						className="text-text-primary mb-[0.7rem]"
 						size="lg"
 						tag="h3"
 						title={
 							'Activated' === uag_react.pro_plugin_status
 								? translatedString
-								: __( 'Welcome to Spectra', 'ultimate-addons-for-gutenberg' )
+								: __( 'Welcome To Spectra', 'ultimate-addons-for-gutenberg' )
 						}
 					/>
 					<p className="text-sm text-text-secondary m-0">
@@ -77,7 +77,7 @@ const HeroSection = () => {
 						onClick={ onCreateNewPageClick }
 						className="uagb-remove-ring"
 					>
-						{ __( 'Create new page', 'ultimate-addons-for-gutenberg' ) }
+						{ __( 'Create New Page', 'ultimate-addons-for-gutenberg' ) }
 					</Button>
 					<Button
 						icon={ <ExternalLink /> }
@@ -86,7 +86,7 @@ const HeroSection = () => {
 						onClick={ onReadFullGuideClick }
 						className="uagb-remove-ring"
 					>
-						{ __( 'Read full guide', 'ultimate-addons-for-gutenberg' ) }
+						{ __( 'Read Full Guide', 'ultimate-addons-for-gutenberg' ) }
 					</Button>
 				</div>
 			</Container.Item>
@@ -94,17 +94,17 @@ const HeroSection = () => {
 			<Container.Item
 				colSpan={ { lg: 3, md: 8, sm: 8 } }
 				className="relative"
-				onClick={ () => setPopupVideo(
-					'Activated' === uag_react.pro_plugin_status ? proVideoUrl : freeVideoUrl
-				) }
+				onClick={ () =>
+					setPopupVideo( 'Activated' === uag_react.pro_plugin_status ? proVideoUrl : freeVideoUrl )
+				}
 			>
 				<img
 					src={ 'Activated' === uag_react.pro_plugin_status ? proVideoThumbnailUrl : freeVideoThumbnailUrl }
 					className="w-full h-full object-cover rounded-lg aspect-video cursor-pointer"
-					alt='Video Thumbnail'
+					alt="Video Thumbnail"
 				/>
 
-				<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 bg-black bg-opacity-50 rounded-full">
+				<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-black bg-opacity-50 rounded-full">
 					<PlayFilledIcon className="w-6 h-6 text-white" />
 				</div>
 			</Container.Item>

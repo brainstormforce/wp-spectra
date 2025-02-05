@@ -50,20 +50,29 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 		fetchPricingData();
 	}, [] );
 
+	if ( loading && freeVPro && smallCol )
+		return (
+			<>
+				<Skeleton className="w-48 h-10 rounded-md mb-6" />
+				<Skeleton className="w-60 h-10 rounded-md mb-6" />
+				<Skeleton className="w-48 h-10 rounded-md mb-6" />
+			</>
+		);
+
 	if ( smallCol )
 		return (
-			<Container className="bg-white p-4 shadow-sm rounded-xl border border-solid border-border-subtle flex items-center gap-8 flex-col-reverse">
+			<Container className="bg-white p-4 shadow-sm rounded-lg border border-solid border-border-subtle flex items-center gap-8 flex-col-reverse">
 				<Container.Item className="flex flex-1 flex-col gap-2">
 					{ /* Purple Brand Color */ }
 					<div className=" text-brand-primary-600 flex space-x-1">
-						<Zap className="size-4" />
+						<Zap size={ 14 } />
 						<div className="font-semibold text-xs">
 							{ __( 'Unlock Pro Features', 'ultimate-addons-for-gutenberg' ) }
 						</div>
 					</div>
 
 					<div>
-						<Title className="text-text-primary" tag="h1" title="Limitless Design with Spectra Pro!" />
+						<Title className="text-text-primary" tag="h1" title="Limitless Design With Spectra Pro!" />
 						<p className="text-sm text-text-secondary m-0">
 							{ __(
 								'Utilize advanced blocks, extensions, and premium features to create a websites that stands out!',
@@ -99,7 +108,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 							</li>
 							<li className="flex items-center space-x-2 text-field-label text-sm">
 								<Check className="text-brand-primary-600" size={ 14 } />
-								<span>{ __( 'And more…', 'ultimate-addons-for-gutenberg' ) }</span>
+								<span>{ __( 'And More…', 'ultimate-addons-for-gutenberg' ) }</span>
 							</li>
 						</ul>
 					</div>
@@ -164,7 +173,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 							</div>
 						</div>
 					) : (
-						<div className="flex gap-3 my-2">
+						<div className="flex gap-3 mt-2">
 							<a
 								className="no-underline"
 								href="https://wpspectra.com/pricing/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard"
@@ -172,7 +181,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 								rel="noreferrer"
 							>
 								<Button variant="secondary" className="uagb-remove-ring">
-									{ __( 'Upgrade now', 'ultimate-addons-for-gutenberg' ) }
+									{ __( 'Upgrade Now', 'ultimate-addons-for-gutenberg' ) }
 								</Button>
 							</a>
 
@@ -184,7 +193,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 								} }
 							>
 								<Button variant="ghost" className="uagb-remove-ring">
-									{ __( 'Free vs Pro', 'ultimate-addons-for-gutenberg' ) }
+									{ __( 'Free VS Pro', 'ultimate-addons-for-gutenberg' ) }
 								</Button>
 							</Link>
 						</div>
@@ -207,18 +216,18 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 		);
 
 	return (
-		<Container className="bg-white p-6 shadow-sm rounded-xl border border-solid border-border-subtle flex items-center gap-8 md:flex-row flex-col-reverse">
+		<Container className="bg-white p-6 shadow-sm rounded-lg border border-solid border-border-subtle flex items-center gap-8 md:flex-row flex-col-reverse">
 			<Container.Item className="flex flex-1 flex-col gap-2">
 				{ /* Purple Brand Color */ }
 				<div className=" text-brand-primary-600 flex space-x-1">
-					<Zap className="size-4" />
+					<Zap size={ 14 } />
 					<div className="font-semibold text-xs">
 						{ __( 'Unlock Pro Features', 'ultimate-addons-for-gutenberg' ) }
 					</div>
 				</div>
 
 				<div>
-					<Title className="text-text-primary" tag="h1" title="Limitless Design with Spectra Pro!" />
+					<Title className="text-text-primary mb-1" tag="h1" title="Limitless Design With Spectra Pro!" />
 					<p className="text-sm text-text-secondary m-0">
 						{ __(
 							'Utilize advanced blocks, extensions, and premium features to create a websites that stands out!',
@@ -230,31 +239,31 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 				<div className="grid grid-cols-2 gap-3">
 					<ul className="list-none pl-0 space-y-2">
 						<li className="flex items-center space-x-2 text-field-label text-sm">
-							<Check className="size-3.5 text-brand-primary-600" />
+							<Check size={ 14 } className="text-brand-primary-600" />
 							<span>{ __( 'Instagram Feed Block', 'ultimate-addons-for-gutenberg' ) }</span>
 						</li>
 						<li className="flex items-center space-x-2 text-field-label text-sm">
-							<Check className="size-3.5 text-brand-primary-600" />
+							<Check size={ 14 } className="text-brand-primary-600" />
 							<span>{ __( 'Dynamic Content', 'ultimate-addons-for-gutenberg' ) }</span>
 						</li>
 						<li className="flex items-center space-x-2 text-field-label text-sm">
-							<Check className="size-3.5 text-brand-primary-600" />
+							<Check size={ 14 } className="text-brand-primary-600" />
 							<span>{ __( 'Popup Builder', 'ultimate-addons-for-gutenberg' ) }</span>
 						</li>
 					</ul>
 
 					<ul className="list-none pl-0 space-y-2">
 						<li className="flex items-center space-x-2 text-field-label text-sm">
-							<Check className="size-3.5 text-brand-primary-600" />
+							<Check size={ 14 } className="text-brand-primary-600" />
 							<span>{ __( 'Global Block Styles', 'ultimate-addons-for-gutenberg' ) }</span>
 						</li>
 						<li className="flex items-center space-x-2 text-field-label text-sm">
-							<Check className="size-3.5 text-brand-primary-600" />
+							<Check size={ 14 } className="text-brand-primary-600" />
 							<span>{ __( 'Loop Builder', 'ultimate-addons-for-gutenberg' ) }</span>
 						</li>
 						<li className="flex items-center space-x-2 text-field-label text-sm">
-							<Check className="size-3.5 text-brand-primary-600" />
-							<span>{ __( 'And more…', 'ultimate-addons-for-gutenberg' ) }</span>
+							<Check size={ 14 } className="text-brand-primary-600" />
+							<span>{ __( 'And More…', 'ultimate-addons-for-gutenberg' ) }</span>
 						</li>
 					</ul>
 				</div>
@@ -326,7 +335,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 							rel="noreferrer"
 						>
 							<Button variant="secondary" className="uagb-remove-ring">
-								{ __( 'Upgrade now', 'ultimate-addons-for-gutenberg' ) }
+								{ __( 'Upgrade Now', 'ultimate-addons-for-gutenberg' ) }
 							</Button>
 						</a>
 
@@ -338,7 +347,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 							} }
 						>
 							<Button variant="ghost" className="uagb-remove-ring">
-								{ __( 'Free vs Pro', 'ultimate-addons-for-gutenberg' ) }
+								{ __( 'Free VS Pro', 'ultimate-addons-for-gutenberg' ) }
 							</Button>
 						</Link>
 					</div>
