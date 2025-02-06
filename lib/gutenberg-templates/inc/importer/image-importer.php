@@ -32,7 +32,7 @@ class Image_Importer {
 	/**
 	 * Images IDs
 	 *
-	 * @var array   The Array of already image IDs.
+	 * @var array<int, int>   The Array of already image IDs.
 	 * @since 1.0.0
 	 */
 	private $already_imported_ids = array();
@@ -55,8 +55,8 @@ class Image_Importer {
 	 * Process Image Download
 	 *
 	 * @since 1.0.0
-	 * @param  array $attachments Attachment array.
-	 * @return array              Attachment array.
+	 * @param  array<int, mixed> $attachments Attachment array.
+	 * @return array<int, mixed> Attachment array.
 	 */
 	public function process( $attachments ) {
 
@@ -81,11 +81,22 @@ class Image_Importer {
 	}
 
 	/**
+	 * Get Already Imported IDs
+	 *
+	 * @return array<int>
+	 * This function to is to suppress phpstan warnings
+	 * since this parameter is not being used
+	 */
+	public function get_already_imported_ids() {
+		return $this->already_imported_ids;
+	}
+
+	/**
 	 * Get Saved Image.
 	 *
 	 * @since 1.0.0
-	 * @param  string $attachment   Attachment Data.
-	 * @return string                 Hash string.
+	 * @param  array<string, mixed> $attachment   Attachment Data.
+	 * @return array<string, mixed> Hash string.
 	 */
 	private function get_saved_image( $attachment ) {
 
@@ -136,8 +147,8 @@ class Image_Importer {
 	 * Import Image
 	 *
 	 * @since 1.0.0
-	 * @param  array $attachment Attachment array.
-	 * @return array              Attachment array.
+	 * @param  array<string, mixed> $attachment Attachment array.
+	 * @return array<string, mixed> Attachment array.,
 	 */
 	public function import( $attachment ) {
 
@@ -160,7 +171,7 @@ class Image_Importer {
 			wp_safe_remote_get(
 				$attachment['url'],
 				array(
-					'timeout'   => '60',
+					'timeout'   => 60,
 				)
 			)
 		);
@@ -174,21 +185,27 @@ class Image_Importer {
 
 		$upload = wp_upload_bits( $filename, null, $file_content );
 
-		Helper::instance()->ast_block_templates_log( $filename );
-		Helper::instance()->ast_block_templates_log( wp_json_encode( $upload ) );
+		$upload_json = wp_json_encode( $upload );
+		if ( is_string( $upload_json ) ) {
+			Helper::instance()->ast_block_templates_log( $upload_json );
+		} else {
+			Helper::instance()->ast_block_templates_log( "Failed to log: {$filename}" );
+		}
 
 		$post = array(
 			'post_title' => $filename,
 			'guid'       => $upload['url'],
 		);
-		Helper::instance()->ast_block_templates_log( wp_json_encode( $post ) );
+		$post_json = wp_json_encode( $post );
+		if ( is_string( $post_json ) ) {
+			Helper::instance()->ast_block_templates_log( $post_json );
+		} else {
+			Helper::instance()->ast_block_templates_log( "Failed to log post data: {$filename}" );
+		}
 
 		$info = wp_check_filetype( $upload['file'] );
-		if ( $info ) {
+		if ( is_array( $info ) ) {
 			$post['post_mime_type'] = $info['type'];
-		} else {
-			// For now just return the origin attachment.
-			return $attachment;
 		}
 
 		if ( ! function_exists( 'wp_generate_attachment_metadata' ) ) {

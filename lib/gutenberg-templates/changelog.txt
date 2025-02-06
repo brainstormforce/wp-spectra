@@ -1,4 +1,9 @@
-v.2.4.7- 31-October-2024
+v.2.4.8 - 29-November-2024
+Improvement: Improved business description screen for better user experience.
+Improvement: UI enhancements for better usability.
+Improvement: Improved code quality for enhanced performance and maintainability.
+
+v.2.4.7 - 31-October-2024
 Improvement: Generating business description based on the selected language.
 Improvement: Optimized styles for better readability and usability on smaller screens.
 

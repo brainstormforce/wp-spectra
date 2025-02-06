@@ -127,7 +127,7 @@ class Favorite extends Api_Base {
 	 */
 	public function save( $request ) {
 
-		$nonce = $request->get_header( 'X-WP-Nonce' );
+		$nonce = (string) $request->get_header( 'X-WP-Nonce' );
 		// Verify the nonce.
 		if ( ! wp_verify_nonce( sanitize_text_field( $nonce ), 'wp_rest' ) ) {
 			wp_send_json_error(
@@ -145,6 +145,9 @@ class Favorite extends Api_Base {
 		$status = $request->get_param( 'status' );
 
 		// Empty favorite then add favorite in respective array tye and early return.
+		if ( ! isset( $favorites[ $block_type ] ) || ! is_array( $favorites[ $block_type ] ) ) {
+			$favorites[ $block_type ] = array();
+		}
 		if ( empty( $favorites ) && $status ) {
 			$favorites[ $block_type ][] = $id;
 		}

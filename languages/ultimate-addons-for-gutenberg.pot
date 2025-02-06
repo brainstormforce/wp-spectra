@@ -9,13 +9,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-06T04:25:25+00:00\n"
+"POT-Creation-Date: 2025-02-06T10:30:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
 
 #. Plugin Name of the plugin
-#: ultimate-addons-for-gutenberg.php
 #: admin-core/inc/admin-menu.php:338
 #: admin-core/inc/admin-menu.php:339
 #: admin-core/inc/admin-menu.php:350
@@ -30,17 +29,14 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
-#: ultimate-addons-for-gutenberg.php
 msgid "https://www.brainstormforce.com"
 msgstr ""
 
 #. Description of the plugin
-#: ultimate-addons-for-gutenberg.php
 msgid "The Spectra extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster."
 msgstr ""
 
 #. Author of the plugin
-#: ultimate-addons-for-gutenberg.php
 msgid "Brainstorm Force"
 msgstr ""
 
@@ -8967,7 +8963,7 @@ msgid "Every %d Minutes"
 msgstr ""
 
 #: lib/class-uagb-ast-block-templates.php:65
-#: lib/gutenberg-templates/inc/importer/plugin.php:992
+#: lib/gutenberg-templates/inc/importer/plugin.php:1004
 msgid "Design Library"
 msgstr ""
 
@@ -9008,11 +9004,11 @@ msgstr ""
 msgid "Nonce verification failed."
 msgstr ""
 
-#: lib/gutenberg-templates/inc/api/favorite.php:178
+#: lib/gutenberg-templates/inc/api/favorite.php:181
 msgid "Action Completed"
 msgstr ""
 
-#: lib/gutenberg-templates/inc/api/favorite.php:178
+#: lib/gutenberg-templates/inc/api/favorite.php:181
 msgid "Action failed"
 msgstr ""
 
@@ -9032,37 +9028,37 @@ msgstr ""
 msgid "Resolve file permission issue"
 msgstr ""
 
-#: lib/gutenberg-templates/inc/importer/plugin.php:244
-#: lib/gutenberg-templates/inc/importer/plugin.php:292
-#: lib/gutenberg-templates/inc/importer/plugin.php:336
-#: lib/gutenberg-templates/inc/importer/plugin.php:360
-#: lib/gutenberg-templates/inc/importer/plugin.php:450
-#: lib/gutenberg-templates/inc/importer/plugin.php:798
-#: lib/gutenberg-templates/inc/importer/sync-library.php:319
-#: lib/gutenberg-templates/inc/importer/sync-library.php:446
-#: lib/gutenberg-templates/inc/importer/sync-library.php:471
-#: lib/gutenberg-templates/inc/importer/sync-library.php:514
-#: lib/gutenberg-templates/inc/importer/sync-library.php:805
-#: lib/gutenberg-templates/inc/importer/sync-library.php:840
+#: lib/gutenberg-templates/inc/importer/plugin.php:245
+#: lib/gutenberg-templates/inc/importer/plugin.php:293
+#: lib/gutenberg-templates/inc/importer/plugin.php:337
+#: lib/gutenberg-templates/inc/importer/plugin.php:361
+#: lib/gutenberg-templates/inc/importer/plugin.php:461
+#: lib/gutenberg-templates/inc/importer/plugin.php:811
+#: lib/gutenberg-templates/inc/importer/sync-library.php:320
+#: lib/gutenberg-templates/inc/importer/sync-library.php:447
+#: lib/gutenberg-templates/inc/importer/sync-library.php:472
+#: lib/gutenberg-templates/inc/importer/sync-library.php:515
+#: lib/gutenberg-templates/inc/importer/sync-library.php:809
+#: lib/gutenberg-templates/inc/importer/sync-library.php:844
 #: lib/gutenberg-templates/inc/importer/template-kit-importer.php:43
 #: lib/gutenberg-templates/inc/importer/template-kit-importer.php:109
-#: lib/gutenberg-templates/inc/traits/upgrade.php:33
+#: lib/gutenberg-templates/inc/traits/upgrade.php:35
 #: lib/zipwp-images/classes/zipwp-images-api.php:263
 msgid "You are not allowed to perform this action"
 msgstr ""
 
-#: lib/gutenberg-templates/inc/importer/plugin.php:269
-#: lib/gutenberg-templates/inc/importer/plugin.php:273
-#: lib/gutenberg-templates/inc/importer/plugin.php:436
+#: lib/gutenberg-templates/inc/importer/plugin.php:270
+#: lib/gutenberg-templates/inc/importer/plugin.php:274
+#: lib/gutenberg-templates/inc/importer/plugin.php:445
 #: lib/zip-ai/classes/sidebar-configurations.php:255
 msgid "Something went wrong"
 msgstr ""
 
-#: lib/gutenberg-templates/inc/importer/plugin.php:767
+#: lib/gutenberg-templates/inc/importer/plugin.php:780
 msgid "You are not allowed to perform this action."
 msgstr ""
 
-#: lib/gutenberg-templates/inc/importer/plugin.php:810
+#: lib/gutenberg-templates/inc/importer/plugin.php:823
 msgid "Something wrong"
 msgstr ""
 
@@ -9071,22 +9067,22 @@ msgstr ""
 msgid "Invalid Request URL - %s"
 msgstr ""
 
-#: lib/gutenberg-templates/inc/traits/helper.php:222
+#: lib/gutenberg-templates/inc/traits/helper.php:225
 #: lib/zip-ai/classes/helper.php:151
 msgid "The Zip AI Endpoint was not declared"
 msgstr ""
 
-#: lib/gutenberg-templates/inc/traits/helper.php:232
+#: lib/gutenberg-templates/inc/traits/helper.php:235
 #: lib/zip-ai/classes/helper.php:161
 msgid "The Zip AI Auth Token is not set."
 msgstr ""
 
-#: lib/gutenberg-templates/inc/traits/helper.php:254
+#: lib/gutenberg-templates/inc/traits/helper.php:257
 #: lib/zip-ai/classes/helper.php:196
 msgid "The Zip AI Middleware is not responding."
 msgstr ""
 
-#: lib/gutenberg-templates/inc/traits/helper.php:264
+#: lib/gutenberg-templates/inc/traits/helper.php:267
 #: lib/zip-ai/classes/helper.php:206
 msgid "The Zip AI Middleware encountered an error."
 msgstr ""

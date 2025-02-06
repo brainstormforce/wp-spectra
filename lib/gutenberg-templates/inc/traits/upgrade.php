@@ -26,6 +26,8 @@ class Upgrade {
 
 	/**
 	 * Activate Plugin
+	 *
+	 * @return void
 	 */
 	public function skip_spectra_pro_onboarding() {
 
