@@ -554,7 +554,7 @@ class UAGB_Init_Blocks {
 	/**
 	 * Renders the Sure Form.
 	 *
-	 * @since x.x.x
+	 * @since 2.19.0
 	 * @return void
 	 */
 	public function sureforms_plugin_activator() {
@@ -664,7 +664,7 @@ class UAGB_Init_Blocks {
 	/**
 	 * Renders the Sure Form.
 	 *
-	 * @since x.x.x
+	 * @since 2.19.0
 	 * @return void
 	 */
 	public function surecart_plugin_activator() {

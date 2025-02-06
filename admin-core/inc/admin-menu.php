@@ -96,7 +96,7 @@ class Admin_Menu {
 	/**
 	 * List of plugins that we propose to install.
 	 *
-	 * @since x.x.x
+	 * @since 2.19.0
 	 *
 	 * @return array
 	 */
@@ -164,7 +164,7 @@ class Admin_Menu {
 	/**
 	 * Activate addon.
 	 *
-	 * @since x.x.x
+	 * @since 2.19.0
 	 * @return void
 	 */
 	public function uagb_activate_addon() {
@@ -232,7 +232,7 @@ class Admin_Menu {
 	/**
 	 * Get the status of a plugin.
 	 *
-	 * @since x.x.x
+	 * @since 2.19.0
 	 *
 	 * @param  string $plugin_init_file Plugin init file.
 	 * @return string
@@ -256,7 +256,7 @@ class Admin_Menu {
 	 * @param string $theme_slug The slug of the theme.
 	 * @return string The theme status: 'Activated', 'Installed', or 'Install'.
 	 *
-	 * @since x.x.x
+	 * @since 2.19.0
 	 */
 	public static function get_theme_status( $theme_slug ) {
 		$installed_themes = wp_get_themes();
@@ -424,7 +424,7 @@ class Admin_Menu {
 	/**
 	 * Render the Free vs Pro page.
 	 *
-	 * @since x.x.x
+	 * @since 2.19.0
 	 * @return void
 	 */
 	public function render_free_vs_pro() {
