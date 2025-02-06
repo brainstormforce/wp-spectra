@@ -139,4 +139,14 @@ export const proBlocks = [
 		is_core: false,
 		is_extension: true,
 	},
+	{
+		icon: React.cloneElement( UAGB_Block_Icons[ 'motion-effects-extension' ], { className: 'w-5 h-5' } ),
+		is_active: true,
+		is_core: false,
+		is_extension: true,
+		is_pro: true,
+		link: 'motion-effects',
+		slug: 'motion-effects',
+		title: __( 'Motion Effects', 'ultimate-addons-for-gutenberg' ),
+	},
 ];

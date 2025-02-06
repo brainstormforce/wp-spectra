@@ -207,12 +207,22 @@ const BlockItem = ( { block, is_extension } ) => {
 						<Badge label="PRO" size="xs" type="pill" variant="inverse" />
 					) : (
 						<div className="flex items-center gap-2">
-							<Badge
-								label={ __( 'Extension', 'ultimate-addons-for-gutenberg' ) }
-								size="xs"
-								type="pill"
-								variant="yellow"
-							/>
+							{ block.slug === 'motion-effects' ? (
+							    <Badge
+									label={ __( 'beta', 'ultimate-addons-for-gutenberg' ) }
+									size="xs"
+									type="pill"
+									variant="blue"
+							    />
+							) : (
+									<Badge
+										label={ __( 'Extension', 'ultimate-addons-for-gutenberg' ) }
+										size="xs"
+										type="pill"
+										variant="yellow"
+									/>
+						        )
+					        }
 
 							<Switch
 								size="sm"

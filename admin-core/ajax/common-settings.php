@@ -61,6 +61,7 @@ class Common_Settings extends Ajax_Base {
 			'enable_templates_button',
 			'enable_on_page_css_button',
 			'enable_block_condition',
+			'enable_motion_effects_extension',
 			'enable_masonry_gallery',
 			'enable_quick_action_sidebar',
 			'enable_block_responsive',
@@ -586,6 +587,21 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
+	 * Required Plugin Activate
+	 *
+	 * @return void
+	 * 
+	 * @since x.x.x
+	 */
+	public function enable_motion_effects_extension() {
+		$this->check_permission_nonce( 'uag_enable_motion_effects_extension' );
+		$value = $this->check_post_value();
+		if ( is_string( $value ) ) {
+			$this->save_admin_settings( 'uag_enable_motion_effects_extension', sanitize_text_field( $value ) );
+		}
+	}
+
+	/**
 	 * Save setting - Enables animation extension.
 	 *
 	 * @return void
@@ -648,6 +664,7 @@ class Common_Settings extends Ajax_Base {
 				'uag_enable_masonry_gallery',
 				'uag_enable_gbs_extension',
 				'_uagb_blocks',
+				'uag_enable_motion_effects_extension',
 			);
 			// Create an array with the new status for each extension.
 			$change_extension = array();

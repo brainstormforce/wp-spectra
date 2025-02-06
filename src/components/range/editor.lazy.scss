@@ -4,6 +4,11 @@
 		width: 100%;
 		align-items: center;
 
+		// The marked variant of the range control.
+		&--marked {
+			margin-bottom: 30px;
+		}
+
 		.components-base-control.components-range-control {
 			-webkit-tap-highlight-color: transparent;
 			box-sizing: border-box;
@@ -43,45 +48,7 @@
 	}
 }
 
-/*.components-panel__body {
-	.components-font-size-picker__controls {
-		align-items: center;
-		display: flex;
-		justify-content: space-between;
-		margin-bottom: 0;
-		max-width: 248px;
-	}
-	.components-font-size-picker__select {
-		margin-bottom: 0 !important;
-		width: 115px;
-	}
-	.components-font-size-picker__select .components-base-control__field {
-		margin-bottom: 0;
-	}
-	.components-font-size-picker__select .components-base-control__field {
-		margin-bottom: 0;
-	}
-	.components-font-size-picker__select .components-base-control__label {
-		display: none;
-		margin-bottom: 5px;
-		visibility: hidden;
-	}
-	input[type="number"].uagb-range-control__number {
-		border-left: 1px solid #d5dadf;
-		-webkit-border-radius: 3px 0 0 3px;
-		border-right: 1px solid #d5dadf;
-		border-color: #d5dadf;
-	}
-}*/
-
-/*.components-panel__body {
-	.uagb-range-control__mobile-controls-item {
-		box-shadow: unset !important;
-		border-radius: unset;
-		&.uagb-range-control__mobile-controls-item--padding.components-button.is-secondary:active:not(:disabled),
-		.uagb-range-control__mobile-controls-item.uagb-range-control__mobile-controls-item--padding.components-button.is-tertiary:active:not(:disabled) {
-			background: #fff;
-			color: black;
-		}
-	}
-}*/
+// Conditional styling for the wrapper of the range control.
+.components-base-control.uag-range-control__wrapper--marked {
+	margin-bottom: 40px !important;
+}
