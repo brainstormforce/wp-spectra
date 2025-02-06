@@ -247,26 +247,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Global - Resolved an issue in which some static and dynamic javascript strings were not translatable.
 * Fix: Global - Resolved an issue where migration buttons were not clickable, preventing the migration process from running as expected.
 
-= 2.18.0 - Wednesday, 11th December 2024 =
-* Improvement: Table Of Contents - Added a setting to enable collapsible list items.
-* Improvement: AI Assistant - Updated the AI Assistant to be aware of the saved page content.
-* Fix: Info Box - Resolved an issue wherein the overall alignment is not supported in RTL mode.
-* Fix: Image Gallery - Resolved an issue wherein the "Tiled" layout would not allow 2 or 3 columns.
-* Fix: Taxonomy List - Resolved an issue wherein plural forms would be incorrectly translated.
-* Fix: FSE - Corrected the query parameter in `get_block_templates()` function to properly handle template parts using the `slug__in` argument.
-* Fix: Global - Resolved an issue wherein the custom CSS would get special characters converted to unicode.
-* Fix: Global - Resolved an issue that would sometimes show a PHP warning for the font loader.
-
-= 2.17.0 - Monday, 25th November 2024 =
-* Feature: Added a free image search to the image media pickers.
-* Improvement: Instagram - Switched the Spectra Pro Instagram account linking to use business accounts.
-* Fix: Global - Resolved an issue wherein re-activating Spectra would always redirect to the Spectra dashboard.
-* Fix: Global - Resolved an issue wherein the editor strings would not be translatable.
-* Fix: Global - Corrected the translation loading timing to ensure translations load at the proper point in time.
-
-= 2.16.5 - Friday, 15th November 2024 =
-* This update addressed a security bug. Props to zer0gh0st (D.Sim) for privately reporting it to our team. Please make sure you are using the latest version on your website. 
-
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 
 == Upgrade Notice ==

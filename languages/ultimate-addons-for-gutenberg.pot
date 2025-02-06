@@ -9,12 +9,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-05T04:37:36+00:00\n"
+"POT-Creation-Date: 2025-02-06T04:25:25+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.8.1\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
 
 #. Plugin Name of the plugin
+#: ultimate-addons-for-gutenberg.php
 #: admin-core/inc/admin-menu.php:338
 #: admin-core/inc/admin-menu.php:339
 #: admin-core/inc/admin-menu.php:350
@@ -29,14 +30,17 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
+#: ultimate-addons-for-gutenberg.php
 msgid "https://www.brainstormforce.com"
 msgstr ""
 
 #. Description of the plugin
+#: ultimate-addons-for-gutenberg.php
 msgid "The Spectra extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster."
 msgstr ""
 
 #. Author of the plugin
+#: ultimate-addons-for-gutenberg.php
 msgid "Brainstorm Force"
 msgstr ""
 
@@ -7941,6 +7945,7 @@ msgid "Maximize your popup potential with Spectra Pro. Unlock enhanced features,
 msgstr ""
 
 #: classes/class-uagb-admin.php:427
+#: admin-core/assets/build/dashboard-app.js:3
 #: admin-core/assets/build/dashboard-app.js:10
 msgid "Upgrade Now"
 msgstr ""
@@ -9170,7 +9175,6 @@ msgid "Get exclusive features and unbeatable performance."
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:1
-#: admin-core/assets/build/dashboard-app.js:3
 msgid "Upgrade now"
 msgstr ""
 
@@ -9256,8 +9260,7 @@ msgid "Global Block Styles"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:3
-#: admin-core/assets/build/dashboard-app.js:17
-msgid "And more…"
+msgid "And More…"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:3
@@ -9268,6 +9271,11 @@ msgstr ""
 #: admin-core/assets/build/dashboard-app.js:3
 #: admin-core/assets/build/dashboard-app.js:9
 msgid "Buy Now"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:18
+msgid "Free VS Pro"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:3
@@ -9301,7 +9309,7 @@ msgid "Extend Your Website"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:3
-msgid "Build website 10x faster with AI"
+msgid "Build Website 10x Faster With AI"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:3
@@ -9313,11 +9321,27 @@ msgid "Explore"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:3
-msgid "Get 1000 free monthly credits"
+msgid "Get 1000 Free Monthly Credits"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:3
 msgid "Quick Access"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:3
+msgid "VIP Support"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:3
+msgid "Help Center"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:3
+msgid "Join The Community"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:3
+msgid "Rate Us"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:3
@@ -9334,7 +9358,7 @@ msgid "Hi %s. 👋"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:3
-msgid "Welcome to Spectra"
+msgid "Welcome To Spectra"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:3
@@ -9346,11 +9370,11 @@ msgid "We designed Spectra to be intuitive but we do recommend learning how it w
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:3
-msgid "Create new page"
+msgid "Create New Page"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:3
-msgid "Read full guide"
+msgid "Read Full Guide"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:3
@@ -9473,6 +9497,14 @@ msgid "Responsive Conditions"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:4
+msgid "Activate All"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:4
+msgid "Deactivate All"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:4
 msgid "File Generation"
 msgstr ""
 
@@ -9489,13 +9521,11 @@ msgid " to learn the difference between generating CSS and JS inline and in a se
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:4
-#: admin-core/assets/build/dashboard-app.js:17
-msgid "Enable Quick Action Bar"
+msgid "Asset Regeneration"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:4
-#: admin-core/assets/build/dashboard-app.js:17
-msgid "The Spectra Quick Action Bar lets you have all your frequently used Spectra blocks right at your fingertips!"
+msgid "Facing issues with style, layout, color or another page element? Use this option to regenerate CSS and Javascript assets. It can help with all kinds of asset issues."
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:4
@@ -9648,6 +9678,10 @@ msgstr ""
 msgid "Enable the \"Copy Paste Styles\" option to have the ability to copy & paste Spectra & Core Gutenberg Blocks Styles."
 msgstr ""
 
+#: admin-core/assets/build/dashboard-app.js:9
+msgid "View plans"
+msgstr ""
+
 #: admin-core/assets/build/dashboard-app.js:10
 #: admin-core/assets/build/dashboard-app.js:18
 msgid "Activate Now"
@@ -9656,6 +9690,54 @@ msgstr ""
 #. translators: abbreviation for units
 #: admin-core/assets/build/dashboard-app.js:11
 msgid "You are using %1$s version, %2$s"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+msgid "Spectra Pro"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+msgid "Astra Pro"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+msgid "Premium Starter Templates"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+msgid "Ultimate Addons for Elementor"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+msgid "Elementor Premium Templates"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+msgid "Seamless Page Building"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+msgid "Essential Toolkit"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+msgid "SureFeedback"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+msgid "SureWriter Pro"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+msgid "SureTriggers Pro"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+msgid "CartFlows Starter"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+msgid "ZipWP Pro"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:11
@@ -9979,6 +10061,14 @@ msgid "Spectra comes with a stunning library of page templates and block pattern
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:17
+msgid "Enable Quick Action Bar"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:17
+msgid "The Spectra Quick Action Bar lets you have all your frequently used Spectra blocks right at your fingertips!"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:17
 msgid "Collapse Panels"
 msgstr ""
 
@@ -10028,6 +10118,10 @@ msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:17
 msgid "Experience design freedom with Spectra Pro. Utilize advanced blocks, extensions, and premium features to create a websites that stands out!"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:17
+msgid "And more…"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:17
@@ -10211,8 +10305,7 @@ msgid "No more struggling with complex coding issues. Generate custom code, func
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:17
-#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:1
-msgid "Custom Pages with AI"
+msgid "Custom Pages With AI"
 msgstr ""
 
 #. translators: %s: Percentage Ascii Code
@@ -10479,10 +10572,6 @@ msgstr ""
 #: admin-core/assets/build/dashboard-app.js:18
 #: dist/blocks.js:11
 msgid "Basic"
-msgstr ""
-
-#: admin-core/assets/build/dashboard-app.js:18
-msgid "Free Vs Pro"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:18
@@ -17626,6 +17715,10 @@ msgstr ""
 
 #: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:1
 msgid "No more struggling with complex coding issues. Zip can whip up custom code, functions, and CSS tailored to your needs."
+msgstr ""
+
+#: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:1
+msgid "Custom Pages with AI"
 msgstr ""
 
 #. translators: %s: Percentage Ascii Code
