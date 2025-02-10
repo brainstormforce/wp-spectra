@@ -217,6 +217,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+* Fix: Forms - Resolved an issue wherein the submit button hover background color is not working as intended on frontend.
+
 = 2.19.0 - 11th February 2025 =
 * New: Rebuilt the Spectra Dashboard with the new Force UI, enhancing user experience with a modern and intuitive interface.
 * New: Added placeholder blocks to prompt required plugin installations.
