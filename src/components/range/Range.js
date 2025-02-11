@@ -12,7 +12,7 @@ import { useLayoutEffect, useEffect, useState, useRef } from '@wordpress/element
 import { applyFilters } from '@wordpress/hooks';
 import { select } from '@wordpress/data';
 import { limitMax, limitMin } from '@Controls/unitWiseMinMaxOption';
-import { getIdFromString, getPanelIdFromRef, uagbClassNames } from '@Utils/Helpers';
+import { getIdFromString, getPanelIdFromRef } from '@Utils/Helpers';
 import UAGReset from '../reset';
 import UAGHelpText from '@Components/help-text';
 
@@ -148,13 +148,7 @@ const Range = ( props ) => {
 	);
 
 	return (
-		<div
-			ref={ panelRef }
-			className={ uagbClassNames( [
-				'components-base-control',
-				props?.marks && 'uag-range-control__wrapper--marked'
-			] ) }
-		>
+		<div ref={ panelRef } className="components-base-control">
 			{ controlBeforeDomElement }
 			<div className="uag-range-control uagb-size-type-field-tabs">
 				<div className="uagb-control__header">
@@ -179,10 +173,7 @@ const Range = ( props ) => {
 						) }
 					</div>
 				</div>
-				<div className={ uagbClassNames( [
-					'uagb-range-control__mobile-controls',
-					props?.marks && 'uagb-range-control__mobile-controls--marked'
-				] ) }>
+				<div className="uagb-range-control__mobile-controls">
 					<RangeControl
 						value={ inputValue }
 						onChange={ handleOnChange }

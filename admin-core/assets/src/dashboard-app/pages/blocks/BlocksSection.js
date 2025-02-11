@@ -35,7 +35,6 @@ const BlocksSection = () => {
 		'global-block-styles': null,
 		'masonry-gallery': null,
 		'responsive-conditions': null,
-		'motion-effects': null,
 	} );
 	const [ extensionStatuses, setExtensionStatuses ] = useState( {
 		'animations': blocksStatuses.animations,
@@ -44,9 +43,7 @@ const BlocksSection = () => {
 		'global-block-styles': blocksStatuses[ 'global-block-styles' ],
 		'masonry-gallery': blocksStatuses[ 'masonry-gallery' ],
 		'responsive-conditions': blocksStatuses[ 'responsive-conditions' ],
-		'motion-effects': blocksStatuses[ 'motion-effects' ],
 	} );
-
 
 	function convertToWidgetsArray( data ) {
 		const blocksArray = [];
@@ -216,29 +213,6 @@ const BlocksSection = () => {
 				setTrigger: setExtensionStatuses,
 			},
 		];
-
-		if ( filterState.type !== 'free' || filterState.type !== null ) {
-			extesions.push(
-				{
-					icon: React.cloneElement( UAGB_Block_Icons[ 'motion-effects-extension' ], { className: 'w-5 h-5' } ),
-					id: '45',
-					is_active: true,
-					is_core: false,
-					is_extension: true,
-					is_pro: true,
-					link: 'motion-effects',
-					slug: 'motion-effects',
-					title: __( 'Motion Effects', 'ultimate-addons-for-gutenberg' ),
-					extensionKey: 'enableMotionEffectsExtension',
-					nonce: uag_react.enable_motion_effects_extension_nonce,
-					action: 'uag_enable_motion_effects_extension',
-					actionType: 'UPDATE_ENABLE_MOTION_EFFECTS_EXTENSION',
-					onChange: setActiveExtensions,
-					trigger: extensionStatuses[ 'motion-effects' ],
-					setTrigger: setExtensionStatuses,
-				},
-			)
-		}
 
 		filtered = [ ...filtered, ...extesions ];
 
