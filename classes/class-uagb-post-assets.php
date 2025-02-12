@@ -917,7 +917,6 @@ class UAGB_Post_Assets {
 		);
 
 		do_action( 'spectra_localize_pro_block_ajax' );
-		do_action( 'spectra_localize_block_js' );
 
 	}
 
@@ -1150,11 +1149,10 @@ class UAGB_Post_Assets {
 
 		$block = (array) $block;
 
-		$name      = $block['blockName'];
-		$css       = array();
-		$js        = '';
-		$block_id  = '';
-		$blockattr = array();
+		$name     = $block['blockName'];
+		$css      = array();
+		$js       = '';
+		$block_id = '';
 
 		if ( ! isset( $name ) ) {
 			return array(
@@ -1171,29 +1169,12 @@ class UAGB_Post_Assets {
 			 * @param string $name             The block name.
 			 */
 			$blockattr = apply_filters( 'uagb_block_attributes_for_css_and_js', $block['attrs'], $name );
-			if ( is_array( $blockattr ) && ! empty( $blockattr['block_id'] ) && is_string( $blockattr['block_id'] ) ) {
+			if ( isset( $blockattr['block_id'] ) ) {
 				$block_id = $blockattr['block_id'];
 			}
 		}
 
 		$this->current_block_list[] = $name;
-
-		// If motion effects are enabled, explicitly load the extension (and it's assets) on frontend.
-		// Also check if the current block in the loop is a Spectra block & any motion effect for it is enabled, if not - don't enqueue motion effects for it.
-		if (
-			'enabled' === \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_motion_effects_extension', 'enabled' ) &&
-			( strpos( $name, 'uagb' ) === 0 ) &&
-			( ! empty( $block['attrs']['UAGMFXMouse'] ) || ! empty( $block['attrs']['UAGMFXScroll'] ) )
-		) {
-			$this->current_block_list[] = 'uagb/motion-effects-extension';
-
-			// Check if dynamic assets for motion effects are enqueued, if not enqueue them.
-			$_block_js = UAGB_Block_Module::get_frontend_js( 'motion-effects-extension', $blockattr, $block_id, 'js' );
-
-			if ( ! empty( $_block_js ) ) {
-				$js .= $_block_js;
-			}
-		}
 
 		if ( 'core/gallery' === $name && isset( $block['attrs']['masonry'] ) && true === $block['attrs']['masonry'] ) {
 			$this->current_block_list[] = 'uagb/masonry-gallery';
@@ -1232,7 +1213,7 @@ class UAGB_Post_Assets {
 			$blockattr = isset( $blockattr ) && is_array( $blockattr ) ? $blockattr : array();
 
 			$_block_css = UAGB_Block_Module::get_frontend_css( $_block_slug, $blockattr, $block_id );
-			$_block_js  = UAGB_Block_Module::get_frontend_js( $_block_slug, $blockattr, $block_id );
+			$_block_js  = UAGB_Block_Module::get_frontend_js( $_block_slug, $blockattr, $block_id, 'js' );
 			$css        = $this->merge_array_string_values( $css, $_block_css );
 			if ( ! empty( $_block_js ) ) {
 				$js .= $_block_js;

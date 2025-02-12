@@ -163,11 +163,6 @@ const globalDataReducer = ( state = {}, action ) => {
 					facebookAppSecret: action.payload
 				}
 			}
-        case 'UPDATE_ENABLE_MOTION_EFFECTS_EXTENSION':
-            return {
-                ...state,
-                enableMotionEffectsExtension: action.payload,
-            };
         case 'UPDATE_ENABLE_DYNAMIC_CONTENT_EXTENSION':
             return {
                 ...state,
@@ -277,8 +272,7 @@ const globalDataReducer = ( state = {}, action ) => {
 				enableMasonryExtension: enableAll,
 				enableDisplayConditions: enableAll,
 				enableDynamicContentExtension: enableAll,
-				enableResponsiveConditions: enableAll,
-                enableMotionEffectsExtension: enableAll,
+				enableResponsiveConditions: enableAll
 			}; 
         default:
             return state;

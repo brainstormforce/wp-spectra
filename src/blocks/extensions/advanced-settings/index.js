@@ -13,7 +13,7 @@ import { updateUAGDay } from '@Utils/Helpers';
 import RenderAdvancedPositionPanel from '@Blocks/extensions/advanced-positioning';
 import UpgradeComponent from '@Components/upgrade-to-pro-cta';
 
-const { enableConditions, enableResponsiveConditions, enableAnimationsExtension, enableMotionEffectsExtension } = uagb_blocks_info;
+const { enableConditions, enableResponsiveConditions, enableAnimationsExtension } = uagb_blocks_info;
 
 const UserConditionOptions = ( props ) => {
 	const { attributes, setAttributes } = props;
@@ -466,7 +466,6 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 
 	const { isSelected, name } = props;
 
-	// InnerBlocks and other blocks to be excluded from most extensions.
 	const excludeBlocks = [
 		'uagb/buttons-child',
 		'uagb/faq-child',
@@ -479,28 +478,21 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 		'uagb/sure-cart-checkout'
 	];
 
-	// Legacy blocks to be excluded from some extensions.
-	const excludeLegacyBlocks = [
+	const excludeDisplayConditionBlocks = [
+		'uagb/popup-builder',
+	];
+
+	const excludeDeprecatedBlocks = [
 		// Legacy Blocks.
 		'uagb/cf7-styler',
 		'uagb/wp-search',
 		'uagb/gf-styler',
 		'uagb/columns',
 		'uagb/section',
-	];
-
-	// Blocks to be excluded from the display conditions.
-	const excludeDisplayConditionBlocks = [
+		// Other Blocks without Z-index settings.
 		'uagb/popup-builder',
 	];
 
-	// Blocks to be excluded from the Z-index conditions.
-	const excludeZIndexBlocks = [
-		'uagb/popup-builder',
-		...excludeLegacyBlocks,
-	];
-
-	// Blocks to be excluded from animations.
 	const excludeBlocksAnimations = [
 		'uagb/content-timeline-child',
 		'uagb/slider-child',
@@ -508,8 +500,7 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 		'uagb/popup-builder',
 		'uagb/sure-forms',
 		'uagb/sure-cart-product',
-		'uagb/sure-cart-checkout',
-		...excludeLegacyBlocks,
+		'uagb/sure-cart-checkout'
 	];
 
 	// To disable animations WITHIN some blocks.
@@ -519,12 +510,6 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 		'uagb/countdown',
 		'uagb/modal',
 		'uagb/popup-builder',
-	];
-
-	// Blocks to be excluded from motion effects.
-	const excludeMotionFXBlocks = [
-		'uagb/content-timeline-child',
-		...excludeLegacyBlocks,
 	];
 
 	const getParentBlocks = select( 'core/block-editor' ).getBlockParents( props.clientId );
@@ -545,11 +530,10 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 
 	return (
 		<>
-			{/* Show the advanced position settings */}
 			{ ( isSelected && 'uagb/container' === name ) && <RenderAdvancedPositionPanel { ...props } /> }
-			{/* Show the animation settings */}
 			{ isSelected &&
 				'enabled' === enableAnimationsExtension &&
+				! excludeDeprecatedBlocks.includes( name ) &&
 				! excludeBlocksAnimations.includes( name ) &&
 				notHasDisallowedParentForAnimations && (
 					<UAGAdvancedPanelBody
@@ -588,12 +572,9 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 							/>
 						)}
 					</UAGAdvancedPanelBody>
-				)
-			}
-			{/* Show the following extension for all non-excluded blocks. */}
+				) }
 			{ isSelected && ! excludeBlocks.includes( name ) && (
 				<>
-					{/* Show the display conditions settings */}
 					{ ( 'enabled' === enableConditions && ! excludeDisplayConditionBlocks.includes( name ) ) && (
 						<UAGAdvancedPanelBody
 							title={ __( 'Display Conditions', 'ultimate-addons-for-gutenberg' ) }
@@ -609,7 +590,6 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 							</p>
 						</UAGAdvancedPanelBody>
 					) }
-					{/* Show the responsive conditions settings */}
 					{ 'enabled' === enableResponsiveConditions && (
 						<UAGAdvancedPanelBody
 							title={ __( 'Responsive Conditions', 'ultimate-addons-for-gutenberg' ) }
@@ -625,8 +605,7 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 							</p>
 						</UAGAdvancedPanelBody>
 					) }
-					{/* Show the Z-index settings */}
-					{ ! excludeZIndexBlocks.includes( name ) && (
+					{ ! excludeDeprecatedBlocks.includes( name ) && (
 						<UAGAdvancedPanelBody
 							title={ __( 'Z-Index', 'ultimate-addons-for-gutenberg' ) }
 							initialOpen={ false }
@@ -635,10 +614,6 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 							{ zIndexOptions( props ) }
 						</UAGAdvancedPanelBody>
 					) }
-					{/* Show the Motion Effects Settings */}
-					{ 'enabled' === enableMotionEffectsExtension && ! excludeMotionFXBlocks.includes( name ) &&
-						applyFilters( 'spectra.motion-effects-extension.panel', '', name )
-					}
 				</>
 			) }
 		</>

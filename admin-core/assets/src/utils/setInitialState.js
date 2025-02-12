@@ -20,7 +20,6 @@ const setInitialState = ( store ) => {
             enablePreloadLocalFonts : data.preload_local_fonts,
             enableCollapsePanels : data.collapse_panels,
             enableCopyPasteStyles : data.copy_paste,
-            enableMotionEffectsExtension: data.uag_enable_motion_effects_extension,
             enableDisplayConditions: data.enable_block_condition,
             enableMasonryExtension: data.enable_masonry_gallery,
 			enableQuickActionSidebarExtension: data.enable_quick_action_sidebar,

@@ -64,7 +64,6 @@ class Admin_Helper {
 			'enable_templates_button'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_templates_button', 'yes' ),
 			'enable_on_page_css_button'          => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_on_page_css_button', 'yes' ),
 			'enable_block_condition'             => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_condition', 'disabled' ),
-			'enable_motion_effects_extension'    => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_motion_effects_extension', 'enabled' ),
 			'enable_masonry_gallery'             => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_masonry_gallery', 'enabled' ),
 			'enable_quick_action_sidebar'        => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_quick_action_sidebar', 'enabled' ),
 			'enable_block_responsive'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_enable_block_responsive', 'enabled' ),
