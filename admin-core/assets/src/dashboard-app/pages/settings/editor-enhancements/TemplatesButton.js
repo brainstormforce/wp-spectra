@@ -51,8 +51,6 @@ const TemplatesButton = () => {
 				) }
 			>
 				<Switch
-					aria-label="Switch Element"
-					id="switch-element"
 					value={ enableTemplatesStatus }
 					onChange={ updateEnableTemplatesStatus }
 					size="md"

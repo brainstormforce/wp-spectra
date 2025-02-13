@@ -49,8 +49,6 @@ const LegacyBlocks = () => {
 				) }
 			>
 				<Switch
-					aria-label="Switch Element"
-					id="switch-element"
 					value={ enableLegacyBlocksStatus }
 					onChange={ updateEnableLegacyBlocks }
 					size="md"

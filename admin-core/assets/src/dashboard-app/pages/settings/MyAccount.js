@@ -166,7 +166,7 @@ export default function MyAccount() {
 						{ ! licenseStatus && (
 							<button
 								type="button"
-								className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-spectra transition focus:bg-spectra-hover hover:bg-spectra-hover focus:outline-none"
+								className="inline-flex cursor-pointer items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-spectra transition focus:bg-spectra-hover hover:bg-spectra-hover focus:outline-none"
 								onClick={ activateHandler }
 							>
 								{ licenseTitle }
@@ -197,7 +197,7 @@ export default function MyAccount() {
 						{ licenseStatus && (
 							<button
 								type="button"
-								className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-spectra transition focus:bg-spectra-hover hover:bg-spectra-hover focus:outline-none"
+								className="inline-flex cursor-pointer items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-spectra transition focus:bg-spectra-hover hover:bg-spectra-hover focus:outline-none"
 								onClick={ deactivateHandler }
 							>
 								{ licenseTitle }

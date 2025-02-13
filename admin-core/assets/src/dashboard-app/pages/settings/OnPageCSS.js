@@ -51,8 +51,6 @@ const OnPageCSS = () => {
 				) }
 			>
 				<Switch
-					aria-label="Switch Element"
-					id="switch-element"
 					value={ enableOnPageCSSStatus }
 					onChange={ updateEnableOnPageCSSStatus }
 					size="md"

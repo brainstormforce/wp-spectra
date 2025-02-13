@@ -200,8 +200,6 @@ const FSEFontFamilies = () => {
 				) }
 			>
 				<Switch
-					aria-label="Switch Element"
-					id="switch-element"
 					value={ enableFSEFontFamiliesStatus }
 					onChange={ updateEnableSelectedFontFamilies }
 					size="md"
@@ -219,6 +217,7 @@ const FSEFontFamilies = () => {
 					maxMenuHeight={ 140 }
 					minMenuHeight={ 70 }
 					isSearchable={ true }
+					isDisabled={ ! enableFSEFontFamiliesStatus }
 					className={ `w-9/12 h-10 transition` }
 					theme={ ( theme ) => ( {
 						...theme,
@@ -269,7 +268,7 @@ const FSEFontFamilies = () => {
 						maxMenuHeight={ 140 }
 						minMenuHeight={ 70 }
 						isSearchable={ true }
-						className={ `mt-4 w-9/12 h-10 transition` }
+						className={ `mt-4 w-9/12 h-10 transition lg:mb-0 mb-2` }
 						theme={ ( theme ) => ( {
 							...theme,
 							colors: {
@@ -317,25 +316,25 @@ const FSEFontFamilies = () => {
 			</div>
 
 			{ enableFSEFontFamiliesStatus && (
-				<div className="relative overflow-x-auto py-8 px-12 max-h-[23rem]">
+				<div className="relative overflow-x-auto py-8 lg:px-12 max-h-[23rem]">
 					<table className="w-full text-sm text-left text-gray-500">
 						<thead className="text-xs text-gray-700 uppercase bg-gray-50">
 							<tr>
-								<th scope="col" className="px-6 py-3">
+								<th scope="col" className="lg:px-6 py-3">
 									{ __( 'Font Family', 'ultimate-addons-for-gutenberg' ) }
 								</th>
-								<th scope="col" className="px-6 py-3">
+								<th scope="col" className="lg:px-6 py-3">
 									{ __( 'Variant', 'ultimate-addons-for-gutenberg' ) }
 								</th>
-								<th scope="col" className="px-6 py-3">
+								<th scope="col" className="lg:px-6 py-3">
 									{ __( 'Style', 'ultimate-addons-for-gutenberg' ) }
 								</th>
-								<th scope="col" className="px-6 py-3"></th>
+								<th scope="col" className="lg:px-6 py-3"></th>
 							</tr>
 						</thead>
 						<tbody>
 							{ 0 === spectraFSEFonts?.length && (
-								<div className="px-6 py-3">
+								<div className="lg:px-6 py-3">
 									{ __( 'Currently, no Font Families added.', 'ultimate-addons-for-gutenberg' ) }
 								</div>
 							) }

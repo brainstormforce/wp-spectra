@@ -48,8 +48,6 @@ const AutoBlockRecovery = () => {
 				) }
 			>
 				<Switch
-					aria-label="Switch Element"
-					id="switch-element"
 					value={ enableAutoBlockRecoveryStatus }
 					onChange={ updateEnableAutoBlockRecoveryStatus }
 					size="md"

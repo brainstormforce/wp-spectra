@@ -51,8 +51,6 @@ const PreloadLocalFonts = () => {
 					) }
 				>
 					<Switch
-						aria-label="Switch Element"
-						id="switch-element"
 						value={ enablePreloadLocalFontsStatus }
 						onChange={ updatePreloadLocalFontsStatus }
 						size="md"
@@ -68,8 +66,6 @@ const PreloadLocalFonts = () => {
 					) }
 				>
 					<Switch
-						aria-label="Switch Element"
-						id="switch-element"
 						value={ enablePreloadLocalFontsStatus }
 						onChange={ updatePreloadLocalFontsStatus }
 						size="md"

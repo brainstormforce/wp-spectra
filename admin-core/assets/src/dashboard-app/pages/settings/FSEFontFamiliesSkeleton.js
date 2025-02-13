@@ -1,23 +1,20 @@
-import { TextSkeleton } from '@Skeleton';
+import { Skeleton } from '@bsf/force-ui';
 
 const FSEFontFamiliesSkeleton = () => {
 
     return (
 		<>
-			<main className="max-w-[77rem] mx-auto my-[2.43rem] bg-white rounded-md overflow-hidden h-[36rem]">
-				<div className="lg:grid lg:grid-cols-12 h-full">
-					<div className='lg:col-span-9 p-8'>
-						<TextSkeleton fontSize="35px" width="225px" />
-						<TextSkeleton width="80%" />
-						<div className='h-8' />
-						<TextSkeleton fontSize="35px" width="300px" />
-						<TextSkeleton width="60%" />
-						<div className='h-8' />
-						<TextSkeleton fontSize="35px" width="210px" />
-						<TextSkeleton width="65%" />
-					</div>
+			<div className="lg:w-full max-w-[696px] mx-auto h-full pt-8 pr-4">
+				<div className="flex justify-between items-center">
+					<Skeleton variant="rectangular" className="w-[200px] h-[32px]" />
 				</div>
-			</main>
+
+				<div className="lg:w-full rounded-xl space-y-6 mt-6">
+					<Skeleton variant="rectangular" className="w-full h-[120px] rounded-xl shadow" />
+					<Skeleton variant="rectangular" className="w-full h-[120px] rounded-xl shadow" />
+					<Skeleton variant="rectangular" className="w-full h-[120px] rounded-xl shadow" />
+				</div>
+			</div>
 		</>
     );
 };

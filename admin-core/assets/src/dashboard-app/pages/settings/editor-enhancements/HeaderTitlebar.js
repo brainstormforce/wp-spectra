@@ -49,8 +49,6 @@ const HeaderTitlebar = () => {
 				) }
 			>
 				<Switch
-					aria-label="Switch Element"
-					id="switch-element"
 					value={ headerTitlebarStatus }
 					onChange={ updateHeaderTitlebarStatus }
 					size="md"

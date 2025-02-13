@@ -79,7 +79,7 @@ const ExtendWebsiteItem = ( { plugin } ) => {
 				break;
 
 			case 'site_redirect':
-				window.open( siteUrl, '_blank' ); // Open siteUrl in a new tab.
+				// Do nothing.
 				break;
 
 			default:

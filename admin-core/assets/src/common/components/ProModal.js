@@ -28,9 +28,12 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 				// Filter products based on required names
 				const filteredData = Object.entries( data.data ).reduce( ( acc, [ key, value ] ) => {
 					if (
-						value.product.includes( 'Spectra Pro - Annual Subscription' ) && value.variant.includes( '1 Site' ) ||
-						value.product.includes( 'Essential Toolkit for Spectra - Annual Subscription' ) && value.variant.includes( '1 Site' ) ||
-						value.product.includes( 'Business Toolkit - Annual Subscription' ) && value.variant.includes( '1 Site' )
+						( value.product.includes( 'Spectra Pro - Annual Subscription' ) &&
+							value.variant.includes( '1 Site' ) ) ||
+						( value.product.includes( 'Essential Toolkit for Spectra - Annual Subscription' ) &&
+							value.variant.includes( '1 Site' ) ) ||
+						( value.product.includes( 'Business Toolkit - Annual Subscription' ) &&
+							value.variant.includes( '1 Site' ) )
 					) {
 						acc[ key ] = value;
 					}
@@ -54,15 +57,72 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 	}, [] );
 
 	useEffect( () => {
+		const checkDropdown = () => {
+			const modalContainers = document.querySelectorAll( '.uagb-upsell-modal, [data-floating-ui-focusable]' );
+
+			if ( modalContainers.length === 0 ) {
+				return;
+			}
+
+			const preventScroll = ( e ) => {
+				e.preventDefault();
+			};
+
+			modalContainers.forEach( ( modalContainer ) => {
+				if ( modalContainer ) {
+					modalContainer.style.zIndex = '9999';
+					modalContainer.style.overflow = 'hidden';
+
+					modalContainer.addEventListener( 'wheel', preventScroll, { passive: false } );
+					modalContainer.addEventListener( 'touchmove', preventScroll, { passive: false } );
+
+					const childElements = modalContainer.querySelectorAll( '*' );
+					childElements.forEach( ( child ) => {
+						child.style.overflow = 'hidden';
+						child.addEventListener( 'wheel', preventScroll, { passive: false } );
+						child.addEventListener( 'touchmove', preventScroll, { passive: false } );
+					} );
+				}
+			} );
+
+			return () => {
+				modalContainers.forEach( ( modalContainer ) => {
+					if ( modalContainer ) {
+						modalContainer.style.overflow = '';
+						modalContainer.removeEventListener( 'wheel', preventScroll );
+						modalContainer.removeEventListener( 'touchmove', preventScroll );
+
+						const childElements = modalContainer.querySelectorAll( '*' );
+						childElements.forEach( ( child ) => {
+							child.style.overflow = '';
+							child.removeEventListener( 'wheel', preventScroll );
+							child.removeEventListener( 'touchmove', preventScroll );
+						} );
+					}
+				} );
+			};
+		};
+
+		/* global MutationObserver */
+		if ( typeof MutationObserver !== 'undefined' ) {
+			const observer = new MutationObserver( checkDropdown );
+			observer.observe( document.body, { childList: true, subtree: true } );
+
+			return () => observer.disconnect();
+		}
+	}, [] );
+
+	useEffect( () => {
 		const productName = productsList[ selectedProduct ]?.product || '';
 		const titleMapping = {
 			'Spectra Pro': 'Spectra Pro',
 			'Essential Toolkit': 'Essential Toolkit',
 		};
-		
-		const newTitle = Object.keys( titleMapping ).find( ( key ) => productName.includes( key ) ) || 'Business Toolkit';
-		setSelectedTitle( newTitle )
-	}, [ selectedProduct ] )
+
+		const newTitle =
+			Object.keys( titleMapping ).find( ( key ) => productName.includes( key ) ) || 'Business Toolkit';
+		setSelectedTitle( newTitle );
+	}, [ selectedProduct ] );
 
 	const closeModal = ( e ) => {
 		e.stopPropagation();
@@ -71,13 +131,12 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 	return (
 		<div
 			onClick={ () => setIsModalOpen( false ) }
-			className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-999999"
+			className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-999999 uagb-upsell-modal"
 		>
 			<div
-			className={`bg-white rounded-lg p-5
-				${selectedTitle === 'Essential Toolkit' ? 'sm:w-[500px] w-[400px]' : 'sm:w-[400px] w-[300px]'}`
-			}
-			onClick={closeModal}
+				className={ `bg-white rounded-lg p-5
+				${ selectedTitle === 'Essential Toolkit' ? 'sm:w-[500px] w-[400px]' : 'sm:w-[400px] w-[300px]' }` }
+				onClick={ closeModal }
 			>
 				<div className="flex w-full justify-between items-center">
 					<div className="text-brand-primary-600 flex space-x-1">
@@ -86,7 +145,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 					</div>
 
 					<div onClick={ () => setIsModalOpen( false ) } className="p-1">
-						<X size={ 14 } />
+						<X size={ 14 } className="cursor-pointer" />
 					</div>
 				</div>
 
@@ -137,25 +196,28 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 												style={ { border: '1px solid #E5E7EB', width: '100%' } }
 											>
 												<div className="text-sm text-text-primary flex items-center justify-between w-full">
-													{ productsList[ selectedProduct ]?.product.split( ' - ' )[ 0 ]?.replace( ' for Spectra', '' ) }
+													{ productsList[ selectedProduct ]?.product
+														.split( ' - ' )[ 0 ]
+														?.replace( ' for Spectra', '' ) }
 													<span>
 														<ChevronDown size={ 14 } />
 													</span>
 												</div>
 											</div>
 										</DropdownMenu.Trigger>
-										<DropdownMenu.Content className="w-60" style={ { zIndex: '99999999' } }>
+										<DropdownMenu.Content className="w-60 dropdown-list">
 											<DropdownMenu.List
-												style={ { zIndex: '99999999' } }
-												className="dropdown-list"
+											// style={ { zIndex: '99999999' } }
 											>
 												{ Object.entries( productsList ).map( ( [ key, value ] ) => (
 													<DropdownMenu.Item
 														onClick={ () => setSelectedProduct( key ) }
-														style={ { zIndex: '99999999' } }
+														// style={ { zIndex: '99999999' } }
 														key={ value.product + value.variant }
 													>
-														{ value.product.split( ' - ' )[ 0 ].replace( ' for Spectra', '' ) }
+														{ value.product
+															.split( ' - ' )[ 0 ]
+															.replace( ' for Spectra', '' ) }
 													</DropdownMenu.Item>
 												) ) }
 											</DropdownMenu.List>
@@ -164,7 +226,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 								</div>
 
 								<div className="flex items-center justify-between sm:gap-0 gap-[88px]">
-									<Button variant="ghost" size="md">
+									<Button variant="ghost" size="md" className="uagb-remove-ring">
 										{ '$' + productsList[ selectedProduct ]?.price.USD.discounted }
 										{ productsList[ selectedProduct ]?.variant?.includes( 'Annual Subscription' ) ||
 										productsList[ selectedProduct ]?.product?.includes( 'Annual Subscription' ) ? (
@@ -195,9 +257,16 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 							</div>
 						) }
 
-						<a href='https://wpspectra.com/pricing/' target='_blank' rel='noreferrer' className='text-xxs text-brand-primary-600 w-full flex justify-end md:pr-[10px] pr-2'>
-							{ __( 'View plans', 'ultimate-addons-for-gutenberg' ) }
-						</a>
+						<div className="w-full flex justify-end md:pr-[10px] pr-2">
+							<a
+								href="https://wpspectra.com/pricing/"
+								target="_blank"
+								rel="noreferrer"
+								className="text-xxs text-brand-primary-600"
+							>
+								{ __( 'View plans', 'ultimate-addons-for-gutenberg' ) }
+							</a>
+						</div>
 					</>
 				) }
 			</div>

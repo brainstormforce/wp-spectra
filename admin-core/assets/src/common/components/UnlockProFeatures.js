@@ -25,9 +25,12 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 				// Filter products based on required names
 				const filteredData = Object.entries( data.data ).reduce( ( acc, [ key, value ] ) => {
 					if (
-						value.product.includes( 'Spectra Pro' ) ||
-						value.product.includes( 'Essential Toolkit for Spectra' ) ||
-						value.product.includes( 'Business Toolkit' )
+						( value.product.includes( 'Spectra Pro - Annual Subscription' ) &&
+							value.variant.includes( '1 Site' ) ) ||
+						( value.product.includes( 'Essential Toolkit for Spectra - Annual Subscription' ) &&
+							value.variant.includes( '1 Site' ) ) ||
+						( value.product.includes( 'Business Toolkit - Annual Subscription' ) &&
+							value.variant.includes( '1 Site' ) )
 					) {
 						acc[ key ] = value;
 					}
@@ -61,7 +64,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 
 	if ( smallCol )
 		return (
-			<Container className="bg-white p-4 shadow-sm rounded-lg border border-solid border-border-subtle flex items-center gap-8 flex-col-reverse">
+			<Container className="bg-white p-4 shadow-sm rounded-lg border border-solid border-border-subtle flex items-center gap-8 flex-col-reverse unlock-pro-features">
 				<Container.Item className="flex flex-1 flex-col gap-2">
 					{ /* Purple Brand Color */ }
 					<div className=" text-brand-primary-600 flex space-x-1">
@@ -124,10 +127,9 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 										>
 											<div className="text-sm text-text-primary flex items-center justify-between w-full">
 												{ productsList[ selectedProduct ]?.product &&
-												productsList[ selectedProduct ]?.product.length > 10
-													? productsList[ selectedProduct ]?.product.substring( 0, 11 ) +
-													  '...'
-													: productsList[ selectedProduct ]?.product }
+													productsList[ selectedProduct ]?.product
+														?.split( ' - ' )[ 0 ]
+														?.replace( ' for Spectra', '' ) }
 												<span>
 													<ChevronDown size={ 14 } />
 												</span>
@@ -141,7 +143,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 													key={ value.product + value.variant }
 													onClick={ () => setSelectedProduct( key ) }
 												>
-													{ value.product + ' - ' + value.variant }
+													{ value.product.split( ' - ' )[ 0 ].replace( ' for Spectra', '' ) }
 												</DropdownMenu.Item>
 											) ) }
 										</DropdownMenu.List>
@@ -198,6 +200,17 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 							</Link>
 						</div>
 					) }
+
+					{ freeVPro && (
+						<a
+							href="https://wpspectra.com/pricing/"
+							target="_blank"
+							rel="noreferrer"
+							className="text-xxs text-brand-primary-600 w-full flex justify-end md:pr-[10px] pr-2 -mt-2"
+						>
+							{ __( 'View plans', 'ultimate-addons-for-gutenberg' ) }
+						</a>
+					) }
 				</Container.Item>
 
 				<Container.Item className="flex-1">
@@ -216,7 +229,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 		);
 
 	return (
-		<Container className="bg-white p-6 shadow-sm rounded-lg border border-solid border-border-subtle flex items-center gap-8 md:flex-row flex-col-reverse">
+		<Container className="bg-white p-6 shadow-sm rounded-lg border border-solid border-border-subtle flex items-center gap-8 md:flex-row flex-col-reverse unlock-pro-features">
 			<Container.Item className="flex flex-1 flex-col gap-2">
 				{ /* Purple Brand Color */ }
 				<div className=" text-brand-primary-600 flex space-x-1">
@@ -279,9 +292,9 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 									>
 										<div className="text-sm text-text-primary flex items-center justify-between w-full">
 											{ productsList[ selectedProduct ]?.product &&
-											productsList[ selectedProduct ]?.product.length > 10
-												? productsList[ selectedProduct ]?.product.substring( 0, 11 ) + '...'
-												: productsList[ selectedProduct ]?.product }
+												productsList[ selectedProduct ]?.product
+													?.split( ' - ' )[ 0 ]
+													?.replace( ' for Spectra', '' ) }
 											<span>
 												<ChevronDown size={ 14 } />
 											</span>
@@ -295,7 +308,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 												key={ value.product + value.variant }
 												onClick={ () => setSelectedProduct( key ) }
 											>
-												{ value.product + ' - ' + value.variant }
+												{ value.product?.split( ' - ' )[ 0 ]?.replace( ' for Spectra', '' ) }
 											</DropdownMenu.Item>
 										) ) }
 									</DropdownMenu.List>
@@ -351,6 +364,17 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 							</Button>
 						</Link>
 					</div>
+				) }
+
+				{ freeVPro && (
+					<a
+						href="https://wpspectra.com/pricing/"
+						target="_blank"
+						rel="noreferrer"
+						className="text-xxs text-brand-primary-600 w-full flex justify-end md:pr-[10px] pr-2 -mt-2"
+					>
+						{ __( 'View plans', 'ultimate-addons-for-gutenberg' ) }
+					</a>
 				) }
 			</Container.Item>
 

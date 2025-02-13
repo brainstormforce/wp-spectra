@@ -55,8 +55,6 @@ const QuickActionBar = () => {
 				) }
 			>
 				<Switch
-					aria-label="Switch Element"
-					id="switch-element"
 					value={ QuickActionSidebarStatus }
 					onChange={ updateQuickActionSidebarStatus }
 					size="md"
