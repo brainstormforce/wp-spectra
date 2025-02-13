@@ -5,15 +5,31 @@ import { __ } from '@wordpress/i18n';
 import { compose } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 import addInitialAttr from '@Controls/addInitialAttr';
-import { useState, useLayoutEffect } from '@wordpress/element';
+import { useState, useLayoutEffect, useEffect } from '@wordpress/element';
 import styles from '../editor.lazy.scss';
 import { InspectorControls } from '@wordpress/block-editor';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import { handlePluginActivation } from '../block';
+import { select, dispatch } from '@wordpress/data';
 const Edit = ( props ) => {
-	const { isSelected } = props;
+	const { clientId, isSelected, deviceType } = props;
+	useEffect( () => {
+		if ( isSelected ) {
+			let editorStore = null;
+
+			if ( select( 'core/edit-site' ) ) {
+				editorStore = 'core/edit-site';
+			} else if ( select( 'core/edit-post' ) ) {
+				editorStore = 'core/edit-post';
+			}
+
+			if ( editorStore ) {
+				dispatch( editorStore ).openGeneralSidebar( 'edit-post/block' );
+			}
+		}
+	}, [ clientId, isSelected ] );
 	const sureCartNotInstalled = uagb_blocks_info.status_of_surecart === 'not-installed';
 
 	// Activation function for SureCart
@@ -69,7 +85,7 @@ const Edit = ( props ) => {
 	} );
 
 	let imgUrl = uagb_blocks_info.uagb_url;
-	imgUrl += '/assets/images/block-previews/preview-product-list.png';
+	imgUrl += '/assets/images/block-previews/frame-product-list.png';
 
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -80,8 +96,7 @@ const Edit = ( props ) => {
 	}, [] );
 	return (
 		<>
-			<div className="uagb-sure-cart-product-container">
-				<img width="100%" src={imgUrl} alt="" />
+			<div className="uagb-sure-cart-product-container" style={{ backgroundImage: `url(${imgUrl})`, backgroundSize: ( 'Mobile' === deviceType ) ? 'contain' : 'auto' }}>
 			</div>
 			{isSelected &&
 				<InspectorControls>

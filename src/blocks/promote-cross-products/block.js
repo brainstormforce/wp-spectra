@@ -46,7 +46,6 @@ export const handlePluginActivation = async ( button, action, messages, setSureC
 	updateButtonText( messages.blockTextStart );
 
 	const result = await fetchApiData( action );
-	
 	if ( result.success ) {
 		const currentPostId = wp.data.select( 'core/editor' )?.getCurrentPostId();
 		if ( currentPostId ) {
@@ -55,6 +54,24 @@ export const handlePluginActivation = async ( button, action, messages, setSureC
 				message = sprintf( /* translators: abbreviation for units */ __( '%s The page will be saved and refreshed.', 'ultimate-addons-for-gutenberg' ), messages.blockTextSuccess )
 				displayNotice( 'success', message );
 				await wp.data.dispatch( 'core/editor' ).savePost( currentPostId );
+				updateButtonText( messages.blockTextSuccess );
+				window.location.reload();
+			} catch ( error ) {
+				message = sprintf(
+					/* translators: %s: error message */
+					__( `Error saving the page: %s`, 'ultimate-addons-for-gutenberg' ),
+					error
+				);
+				displayNotice( 'error', message );
+			}
+		}
+		const widgetArea = wp.data.select( 'core/edit-widgets' );
+		if ( widgetArea ) {
+			let message;
+			try {
+				message = sprintf( /* translators: abbreviation for units */ __( '%s The page will be saved and refreshed.', 'ultimate-addons-for-gutenberg' ), messages.blockTextSuccess )
+				displayNotice( 'success', message );
+				await wp.data.dispatch( 'core/edit-widgets' ).saveEditedWidgetAreas();
 				updateButtonText( messages.blockTextSuccess );
 				window.location.reload();
 			} catch ( error ) {
