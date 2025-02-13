@@ -30,7 +30,7 @@ Most helpful links
 
 <strong>DESIGN BEAUTIFUL FAST LOADING WEBSITES DIRECTLY ON THE WORDPRESS BLOCK EDITOR (GUTENBERG EDITOR) WITHOUT CODING</strong>
 
-<a href="https://bsf.io/spectra-demo" target="_blank" rel="">Try it out on a free dummy site</a>
+<a href="https://bsf.io/spectra-demo" target="_blank" rel="">Try the live demo of Spectra</a>
 
 Our mission is to empower web designers like you with an end-to-end solution for building stunning websites.
 
@@ -217,7 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= 2.19.0 - 11th February 2025 =
+= 2.19.0 - Thursday, 13th February 2025 =
 * New: Rebuilt the Spectra Dashboard with the new Force UI, enhancing user experience with a modern and intuitive interface.
 * New: Added placeholder blocks to prompt required plugin installations.
 * Improvement: Improved NPS notice behavior by ensuring it appears every two weeks, removing previous conditions based on block count.
