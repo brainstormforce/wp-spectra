@@ -473,6 +473,9 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 		'uagb/social-share-child',
 		'uagb/restaurant-menu-child',
 		'uagb/slider-child',
+		'uagb/sure-forms', 
+		'uagb/sure-cart-product', 
+		'uagb/sure-cart-checkout'
 	];
 
 	const excludeDisplayConditionBlocks = [
@@ -495,6 +498,9 @@ addFilter( 'uag_advance_tab_content', 'uagb/advanced-display-condition', functio
 		'uagb/slider-child',
 		'uagb/content-timeline-child',
 		'uagb/popup-builder',
+		'uagb/sure-forms',
+		'uagb/sure-cart-product',
+		'uagb/sure-cart-checkout'
 	];
 
 	// To disable animations WITHIN some blocks.

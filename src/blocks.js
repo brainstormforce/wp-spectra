@@ -126,6 +126,8 @@ import './blocks/cf7-designer/block.js';
 import './blocks/gf-designer/block.js';
 import './blocks/post/deprecated-block.js'; // Masonry.
 import './blocks/wp-search/block.js';
+// Promote Cross Product Blocks.
+import './blocks/promote-cross-products/block.js';
 
 // Responsive Device Icons on Editor
 import '@Components/responsive-icons/index.js';

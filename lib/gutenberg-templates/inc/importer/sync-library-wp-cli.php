@@ -30,8 +30,8 @@ class Sync_Library_WP_CLI {
 	 *  Example: wp ast-block-templates sync
 	 *
 	 * @since 1.0.0
-	 * @param  array $args       Arguments.
-	 * @param  array $assoc_args Associated Arguments.
+	 * @param  array<string, string|int> $args       Arguments with specific value types.
+	 * @param  array<string, mixed>      $assoc_args Associated Arguments.
 	 * @return void
 	 */
 	public function sync( $args = array(), $assoc_args = array() ) {

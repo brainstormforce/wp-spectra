@@ -75,14 +75,207 @@ class Admin_Menu {
 		/* Setup the Admin Menu */
 		add_action( 'admin_menu', array( $this, 'setup_menu' ) );
 		add_action( 'admin_init', array( $this, 'settings_admin_scripts' ) );
+		add_filter(
+			'admin_footer_text', 
+			function () {
+				return ''; // Return an empty string to remove the text.
+			}
+		);
 
 		/* Add the Action Links */
 		add_filter( 'plugin_action_links_' . UAGB_BASE, array( $this, 'add_action_links' ) );
 
 		/* Render admin content view */
 		add_action( 'uag_render_admin_page_content', array( $this, 'render_content' ), 10, 2 );
+
+		add_action( 'wp_ajax_uagb_recommended_plugin_activate', array( $this, 'uagb_activate_addon' ) );
+		add_action( 'wp_ajax_uagb_recommended_plugin_install', 'wp_ajax_install_plugin' );
+		add_action( 'wp_ajax_uagb_recommended_theme_install', 'wp_ajax_install_theme' );
 	}
 
+	/**
+	 * List of plugins that we propose to install.
+	 *
+	 * @since 2.19.0
+	 *
+	 * @return array
+	 */
+	public static function get_bsf_plugins() {
+
+		$plugins = array(
+
+			'astra'                           => array(
+				'type'         => 'theme',
+				'name'         => esc_html__( 'Astra', 'ultimate-addons-for-gutenberg' ),
+				'desc'         => esc_html__( 'Fast and customizable theme for your website.', 'ultimate-addons-for-gutenberg' ),
+				'wporg'        => 'https://wordpress.org/themes/astra/',
+				'url'          => 'https://downloads.wordpress.org/theme/astra.zip',
+				'siteurl'      => 'https://wpastra.com/',
+				'slug'         => 'astra',
+				'isFree'       => true,
+				'status'       => self::get_theme_status( 'astra' ),
+				'settings_url' => admin_url( 'admin.php?page=astra' ),
+			),
+
+			'astra-sites/astra-sites.php'     => array(
+				'type'         => 'plugin',
+				'name'         => esc_html__( 'Starter Templates', 'ultimate-addons-for-gutenberg' ),
+				'desc'         => esc_html__( 'Launch websites with AI or ready-made templates.', 'ultimate-addons-for-gutenberg' ),
+				'wporg'        => 'https://wordpress.org/plugins/astra-sites/',
+				'url'          => 'https://downloads.wordpress.org/plugin/astra-sites.zip',
+				'siteurl'      => 'https://startertemplates.com/',
+				'slug'         => 'astra-sites',
+				'isFree'       => true,
+				'status'       => self::get_plugin_status( 'astra-sites/astra-sites.php' ),
+				'settings_url' => admin_url( 'admin.php?page=starter-templates' ),
+			),
+
+			'surecart/surecart.php'           => array(
+				'type'         => 'plugin',
+				'name'         => esc_html__( 'SureCart', 'ultimate-addons-for-gutenberg' ),
+				'desc'         => esc_html__( 'Sell your products easily on WordPress.', 'ultimate-addons-for-gutenberg' ),
+				'wporg'        => 'https://wordpress.org/plugins/surecart/',
+				'url'          => 'https://downloads.wordpress.org/plugin/surecart.zip',
+				'siteurl'      => 'https://surecart.com/',
+				'isFree'       => true,
+				'slug'         => 'surecart',
+				'status'       => self::get_plugin_status( 'surecart/surecart.php' ),
+				'settings_url' => admin_url( 'admin.php?page=sc-getting-started' ),
+			),
+
+			'presto-player/presto-player.php' => array(
+				'type'         => 'plugin',
+				'name'         => esc_html__( 'Presto Player', 'ultimate-addons-for-gutenberg' ),
+				'desc'         => html_entity_decode( esc_html__( 'Display seamless & interactive videos.', 'ultimate-addons-for-gutenberg' ) ),
+				'wporg'        => 'https://wordpress.org/plugins/presto-player/',
+				'url'          => 'https://downloads.wordpress.org/plugin/presto-player.zip',
+				'siteurl'      => 'https://prestoplayer.com/',
+				'slug'         => 'presto-player',
+				'isFree'       => true,
+				'status'       => self::get_plugin_status( 'presto-player/presto-player.php' ),
+				'settings_url' => admin_url( 'edit.php?post_type=pp_video_block' ),
+			),
+
+		);
+
+		return $plugins;
+	}
+
+	/**
+	 * Activate addon.
+	 *
+	 * @since 2.19.0
+	 * @return void
+	 */
+	public function uagb_activate_addon() {
+
+		// Run a security check.
+		check_ajax_referer( 'updates', 'nonce' );
+
+		if ( isset( $_POST['plugin'] ) ) {
+
+			$type = '';
+			if ( ! empty( $_POST['type'] ) ) {
+				$type = sanitize_key( wp_unslash( $_POST['type'] ) );
+			}
+
+			$plugin = sanitize_text_field( wp_unslash( $_POST['plugin'] ) );
+
+			if ( 'plugin' === $type ) {
+
+				// Check for permissions.
+				if ( ! current_user_can( 'activate_plugins' ) ) {
+					wp_send_json_error( esc_html__( 'Plugin activation is disabled for you on this site.', 'ultimate-addons-for-gutenberg' ) );
+				}
+
+				$activate = activate_plugins( $plugin );
+
+				if ( ! is_wp_error( $activate ) ) {
+
+					do_action( 'uagb_plugin_activated', $plugin );
+
+					wp_send_json_success( esc_html__( 'Plugin Activated.', 'ultimate-addons-for-gutenberg' ) );
+				}
+			}
+
+			if ( 'theme' === $type ) {
+
+				if ( isset( $_POST['slug'] ) ) {
+					$slug = sanitize_key( wp_unslash( $_POST['slug'] ) );
+
+					// Check for permissions.
+					if ( ! ( current_user_can( 'switch_themes' ) ) ) {
+						wp_send_json_error( esc_html__( 'Theme activation is disabled for you on this site.', 'ultimate-addons-for-gutenberg' ) );
+					}
+
+					$activate = switch_theme( $slug );
+
+					if ( ! is_wp_error( $activate ) ) {
+
+						do_action( 'uagb_theme_activated', $plugin );
+
+						wp_send_json_success( esc_html__( 'Theme Activated.', 'ultimate-addons-for-gutenberg' ) );
+					}
+				}
+			}
+		}
+
+		if ( isset( $type ) ) { 
+			if ( 'plugin' === $type ) {
+				wp_send_json_error( esc_html__( 'Could not activate plugin. Please activate from the Plugins page.', 'ultimate-addons-for-gutenberg' ) );
+			} elseif ( 'theme' === $type ) {
+				wp_send_json_error( esc_html__( 'Could not activate theme. Please activate from the Themes page.', 'ultimate-addons-for-gutenberg' ) );
+			}
+		}
+	}
+
+	/**
+	 * Get the status of a plugin.
+	 *
+	 * @since 2.19.0
+	 *
+	 * @param  string $plugin_init_file Plugin init file.
+	 * @return string
+	 */
+	public static function get_plugin_status( $plugin_init_file ) {
+
+		$installed_plugins = get_plugins();
+
+		if ( ! isset( $installed_plugins[ $plugin_init_file ] ) ) {
+			return __( 'Install', 'ultimate-addons-for-gutenberg' );
+		} elseif ( is_plugin_active( $plugin_init_file ) ) {
+			return __( 'Activated', 'ultimate-addons-for-gutenberg' );
+		} else {
+			return __( 'Installed', 'ultimate-addons-for-gutenberg' );
+		}
+	}
+
+	/**
+	 * Get the status of a theme.
+	 *
+	 * @param string $theme_slug The slug of the theme.
+	 * @return string The theme status: 'Activated', 'Installed', or 'Install'.
+	 *
+	 * @since 2.19.0
+	 */
+	public static function get_theme_status( $theme_slug ) {
+		$installed_themes = wp_get_themes();
+	
+		// Check if the theme is installed.
+		if ( isset( $installed_themes[ $theme_slug ] ) ) {
+			$current_theme = wp_get_theme();
+		
+			// Check if the current theme slug matches the provided theme slug.
+			if ( $current_theme->get_stylesheet() === $theme_slug ) {
+				return __( 'Activated', 'ultimate-addons-for-gutenberg' ); // Theme is active.
+			} else {
+				return __( 'Installed', 'ultimate-addons-for-gutenberg' ); // Theme is installed but not active.
+			}
+		} else {
+			return __( 'Install', 'ultimate-addons-for-gutenberg' ); // Theme is not installed at all.
+		}
+	}
+	
 	/**
 	 * Show action on plugin page.
 	 *
@@ -121,8 +314,6 @@ class Admin_Menu {
 		// Enqueue admin scripts.
 		if ( ! empty( $_GET['page'] ) && ( $this->menu_slug === $_GET['page'] || false !== strpos( sanitize_text_field( $_GET['page'] ), $this->menu_slug . '_' ) ) || ( array_key_exists( 'post_type', $_GET ) && 'spectra-popup' === $_GET['post_type'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			add_action( 'admin_enqueue_scripts', array( $this, 'styles_scripts' ) );
-
-			add_filter( 'admin_footer_text', array( $this, 'add_footer_link' ), 99 );
 		}
 
 	}
@@ -197,6 +388,18 @@ class Admin_Menu {
 			$menu_slug . '&path=settings',
 			array( $this, 'render' )
 		);
+
+		// Add the Free vs Pro Submenu.
+		if ( ! file_exists( UAGB_DIR . '../spectra-pro/spectra-pro.php' ) ) {
+			add_submenu_page(
+				$menu_slug,
+				__( 'Free vs Pro', 'ultimate-addons-for-gutenberg' ),
+				__( 'Get Spectra Pro', 'ultimate-addons-for-gutenberg' ),
+				$capability,
+				$menu_slug . '&path=free-vs-pro',
+				array( $this, 'render' )
+			);
+		}
 	}
 
 	/**
@@ -216,6 +419,20 @@ class Admin_Menu {
 		}
 
 		include_once UAG_ADMIN_DIR . 'views/admin-base.php';
+	}
+
+	/**
+	 * Render the Free vs Pro page.
+	 *
+	 * @since 2.19.0
+	 * @return void
+	 */
+	public function render_free_vs_pro() {
+		echo '<div style="background-color: green; color: white; padding: 20px;">';
+		echo '<h1>' . esc_html__( 'Free vs Pro Features', 'ultimate-addons-for-gutenberg' ) . '</h1>';
+		echo '<p>' . esc_html__( 'Here you can compare the features of Free and Pro versions.', 'ultimate-addons-for-gutenberg' ) . '</p>';
+		// Add more content as needed.
+		echo '</div>';
 	}
 
 	/**
@@ -287,6 +504,7 @@ class Admin_Menu {
 				'plugin_activated_text'    => esc_html__( 'Activated', 'ultimate-addons-for-gutenberg' ),
 				'plugin_activate_text'     => esc_html__( 'Activate', 'ultimate-addons-for-gutenberg' ),
 				'plugin_manager_nonce'     => wp_create_nonce( 'spectra_plugin_manager_nonce' ),
+				'installer_nonce'          => wp_create_nonce( 'updates' ),
 				'pro_installed_status'     => 'inactive' === self::get_plugin_status( 'spectra-pro/spectra-pro.php' ) ? true : false,
 				'pro_plugin_status'        => self::get_plugin_status( 'spectra-pro/spectra-pro.php' ),
 			)
@@ -452,27 +670,6 @@ class Admin_Menu {
 	}
 
 	/**
-	 * Get plugin status
-	 *
-	 * @since 2.0.0
-	 *
-	 * @param  string $plugin_init_file Plguin init file.
-	 * @return mixed
-	 */
-	public function get_plugin_status( $plugin_init_file ) {
-
-		$installed_plugins = get_plugins();
-
-		if ( ! isset( $installed_plugins[ $plugin_init_file ] ) ) {
-			return 'not-installed';
-		} elseif ( is_plugin_active( $plugin_init_file ) ) {
-			return 'active';
-		} else {
-			return 'inactive';
-		}
-	}
-
-	/**
 	 * Settings app scripts
 	 *
 	 * @param array $localize Variable names.
@@ -524,23 +721,23 @@ class Admin_Menu {
 		wp_localize_script( $handle, 'uag_admin_react', $localize );
 		wp_localize_script( $handle, 'uag_react', $localize );
 
-	}
+		$current_user = wp_get_current_user();
 
-	/**
-	 *  Add footer link.
-	 */
-	public function add_footer_link() {
-		return '<span id="spectra-footer-thankyou" style="font-family: Inter, sans-serif;">' . sprintf(
-			// translators: %1$s: Opening Strong Tag, %2$s: Closing Strong Tag, %3$s Anchor Tag with Star Symbol Codes.
-			__(
-				'Enjoyed %1$sSpectra%2$s? Please leave us a %3$s rating. We really appreciate your support!',
-				'ultimate-addons-for-gutenberg'
-			),
-			'<strong>',
-			'</strong>',
-			'<a href="https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg/reviews/?rate=5#new-post" target="_blank" style="color: #6104ff; text-decoration: none;" onmouseover="this.style.textDecoration=\'underline\'" onmouseout="this.style.textDecoration=\'none\'">&#9733;&#9733;&#9733;&#9733;&#9733;</a>'
-		) . '</span>';
+		$user_data = array(
+			'isLoggedIn'  => is_user_logged_in(),
+			'username'    => $current_user->user_login,
+			'firstName'   => $current_user->first_name,
+			'lastName'    => $current_user->last_name,
+			'email'       => $current_user->user_email,
+			'displayName' => $current_user->display_name,
+		);
 
+		wp_localize_script( $handle, 'uagb_user_data', $user_data );
+
+		$plugins_data      = self::get_bsf_plugins();
+		$json_plugins_data = wp_json_encode( $plugins_data );
+
+		wp_localize_script( $handle, 'uagb_plugins_data', $plugins_data );
 	}
 
 }

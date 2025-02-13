@@ -35,6 +35,8 @@ module.exports = {
 		jQuery: true,
 		uagb_deactivate_blocks: true,
 		uag_react: true,
+		uagb_user_data: true,
+		uagb_plugins_data: true,
 		uagb_data: true,
 		bodymovin: true,
 		uagb_forms_data: true,

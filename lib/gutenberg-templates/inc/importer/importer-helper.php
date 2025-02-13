@@ -67,7 +67,7 @@ class Importer_Helper {
 	 *
 	 * @since {{since}}
 	 * @param string $key options name.
-	 * @return array<string,string,string,string,string,string,string,int> | string Array for business details or single detail in a string.
+	 * @return array<string, mixed> Array for business details or single detail in a string.
 	 */
 	public static function get_business_details( $key = '' ) {
 		$details = get_option(
@@ -131,14 +131,21 @@ class Importer_Helper {
 	 * @return string Image orientation.
 	 * @since {{since}}
 	 */
-	public static function get_image_orientation( $url ) {
-		list( $width, $height ) = getimagesize( $url );
-		if ( isset( $width ) && isset( $height ) ) {
+	public static function get_image_orientation( $url ): string {
+		// Use `@` to suppress warnings from `getimagesize` if the file is not valid or accessible.
+		$size = getimagesize( $url );
+
+		if ( $size && is_array( $size ) ) {
+			list( $width, $height ) = $size;
+			
+			// Determine orientation based on width and height.
 			if ( $width > $height ) {
 				return 'landscape';
+			} else {
+				return 'portrait';
 			}
-			return 'portrait';
+		} else {
+			return 'landscape';
 		}
-		return 'landscape';
 	}
 }

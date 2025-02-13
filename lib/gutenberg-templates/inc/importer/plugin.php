@@ -32,7 +32,7 @@ class Plugin {
 	 *
 	 * @since 2.0.0
 	 * @access public
-	 * @var string Last checksums.
+	 * @var array<string> Last checksums.
 	 */
 	public static $color_palette = array();
 
@@ -131,7 +131,7 @@ class Plugin {
 	 * Get Color Palette.
 	 *
 	 * @since 2.0.0
-	 * @return array
+	 * @return array<string>
 	 */
 	public function get_default_color_palette() {
 
@@ -155,7 +155,8 @@ class Plugin {
 	/**
 	 * Add .json files as supported format in the uploader.
 	 *
-	 * @param array $mimes Already supported mime types.
+	 * @param array<string, string> $mimes Already supported mime types.
+	 * @return array<string, string>
 	 */
 	public function custom_upload_mimes( $mimes ) {
 
@@ -389,7 +390,15 @@ class Plugin {
 					$ext = strtolower( pathinfo( $file_path['data']['file'], PATHINFO_EXTENSION ) );
 
 					if ( 'json' === $ext ) {
-						$forms = json_decode( Helper::instance()->ast_block_templates_get_filesystem()->get_contents( $file_path['data']['file'] ), true );
+						/** 
+						 * 
+						 * Retrieves the contents of a file using the specified file system.
+						 *
+						 * @var \WP_Filesystem_Base $filesystem 
+						 * */
+						$filesystem = Helper::instance()->ast_block_templates_get_filesystem();
+						$file_content = $filesystem->get_contents( $file_path['data']['file'] );
+						$forms = json_decode( $file_content ? $file_content : '', true );
 
 						if ( ! empty( $forms ) ) {
 
@@ -409,7 +418,7 @@ class Plugin {
 										)
 									);
 
-									ast_block_templates_log( 'Imported Form ' . $title );
+									Helper::instance()->ast_block_templates_log( 'Imported Form ' . $title );
 								}
 
 								if ( $new_id ) {
@@ -443,6 +452,8 @@ class Plugin {
 
 	/**
 	 * Import Block
+	 *
+	 * @return void
 	 */
 	public function import_block() {
 		
@@ -602,8 +613,8 @@ class Plugin {
 	/**
 	 * Replace content
 	 *
-	 * @param  string $content         Content.
-	 * @param  array  $dynamic_content Dynamic content.
+	 * @param  string               $content         Content.
+	 * @param  array<string, mixed> $dynamic_content Dynamic content.
 	 * @return string                  Content.
 	 */
 	public function replace( $content, $dynamic_content ) {
@@ -676,7 +687,7 @@ class Plugin {
 
 						if ( empty( $ai_content ) ) {
 							// Generating random content.
-							$ai_content = isset( $key ) ? $key : '';
+							$ai_content = $key;
 							if ( '' === $ai_content ) {
 								$words          = str_word_count( FALLBACK_TEXT, 1 ); // Split the statement into an array of words.
 								$selected_words = array_slice( $words, 0, absint( 10 ) ); // Added atstic 10 words. Here fallback logic will be added.
@@ -732,11 +743,11 @@ class Plugin {
 	/**
 	 * Allowed tags for the batch update process.
 	 *
-	 * @param  array        $allowedposttags   Array of default allowable HTML tags.
-	 * @param  string|array $context    The context for which to retrieve tags. Allowed values are 'post',
-	 *                                  'strip', 'data', 'entities', or the name of a field filter such as
-	 *                                  'pre_user_description'.
-	 * @return array Array of allowed HTML tags and their allowed attributes.
+	 * @param  array<string, mixed> $allowedposttags   Array of default allowable HTML tags.
+	 * @param  string               $context    The context for which to retrieve tags. Allowed values are 'post',
+	 *                                                'strip', 'data', 'entities', or the name of a field filter such as
+	 *                                                'pre_user_description'.
+	 * @return array<string, mixed> Array of allowed HTML tags and their allowed attributes.
 	 */
 	public function allowed_tags_and_attributes( $allowedposttags, $context ) {
 
@@ -760,6 +771,8 @@ class Plugin {
 
 	/**
 	 * Activate Plugin
+	 *
+	 * @return void
 	 */
 	public function activate_plugin() {
 
@@ -829,13 +842,12 @@ class Plugin {
 		// API Call.
 		$response = wp_safe_remote_get( $demo_api_uri, $api_args );
 
-		if ( is_wp_error( $response ) || ( isset( $response->status ) && 0 === $response->status ) ) {
-			if ( isset( $response->status ) ) {
-				wp_send_json_error( json_decode( $response, true ) );
-			} else {
-				wp_send_json_error( $response->get_error_message() );
-			}
+		if ( is_wp_error( $response ) ) {
+			wp_send_json_error( $response->get_error_message() );
+		} elseif ( 'error' !== $response['response']['message'] ) {
+			wp_send_json_error( wp_json_encode( $response['response'] ) );
 		}
+
 
 		if ( wp_remote_retrieve_response_code( $response ) !== 200 ) {
 			wp_send_json_error( wp_remote_retrieve_body( $response ) );
@@ -853,6 +865,7 @@ class Plugin {
 	 * Template Assets
 	 *
 	 * @since 1.0.0
+	 * @return void
 	 */
 	public function template_assets() {
 
@@ -866,7 +879,7 @@ class Plugin {
 		$current_screen = get_current_screen();
 
 		if ( ! is_object( $current_screen ) && is_null( $current_screen ) ) {
-			return false;
+			return;
 		}
 
 		if ( 'site-editor' !== $current_screen->base && ! array_key_exists( $current_screen->post_type, $post_types ) ) {
@@ -899,7 +912,7 @@ class Plugin {
 		wp_enqueue_style( 'ast-block-templates-google-fonts', $this->google_fonts_url(), array( 'ast-block-templates' ), 'all' );
 
 		$license_status = false;
-		if ( is_callable( 'BSF_License_Manager::bsf_is_active_license' ) ) {
+		if ( class_exists( 'BSF_License_Manager' ) && is_callable( 'BSF_License_Manager::bsf_is_active_license' ) ) {
 			$license_status = \BSF_License_Manager::bsf_is_active_license( 'astra-pro-sites' );
 		}
 
@@ -986,7 +999,6 @@ class Plugin {
 					'spectra_status'          => $this->get_plugin_status( 'ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php' ),
 					'spectra_pro_status'      => $this->get_plugin_status( 'spectra-pro/spectra-pro.php' ),
 					'astra_sites_pro_status'  => $this->get_plugin_status( 'astra-pro-sites/astra-pro-sites.php' ),
-					'wpforms_status'          => $this->get_plugin_status( 'spectra-pro/spectra-pro.php' ),
 					'astra_sites_status'          => $this->get_plugin_status( 'astra-sites/astra-sites.php' ),
 					'_ajax_nonce'             => wp_create_nonce( 'ast-block-templates-ajax-nonce' ),
 					'button_text'             => esc_html__( 'Design Library', 'ultimate-addons-for-gutenberg' ),
@@ -1168,18 +1180,26 @@ class Plugin {
 		if ( ! defined( 'UAGB_FILE' ) && ! class_exists( 'UAGB_Helper' ) ) {
 			return;
 		}
-
-		$file_generation = \UAGB_Helper::allow_file_generation();
-
-		if ( 'enabled' === $file_generation ) {
-
-			\UAGB_Helper::delete_uag_asset_dir();
+	
+		if ( class_exists( 'UAGB_Helper' ) && is_callable( array( 'UAGB_Helper', 'allow_file_generation' ) ) ) {
+			$file_generation = \UAGB_Helper::allow_file_generation();
+	
+			if ( 'enabled' === $file_generation ) {
+	
+				if ( is_callable( array( 'UAGB_Helper', 'delete_uag_asset_dir' ) ) ) {
+					\UAGB_Helper::delete_uag_asset_dir();
+				}
+			}
 		}
-
-		\UAGB_Admin_Helper::create_specific_stylesheet();
-
+	
+		if ( class_exists( 'UAGB_Admin_Helper' ) && is_callable( array( 'UAGB_Admin_Helper', 'create_specific_stylesheet' ) ) ) {
+			\UAGB_Admin_Helper::create_specific_stylesheet();
+		}
+	
 		/* Update the asset version */
-		\UAGB_Admin_Helper::update_admin_settings_option( '__uagb_asset_version', time() );
+		if ( class_exists( 'UAGB_Admin_Helper' ) && is_callable( array( 'UAGB_Admin_Helper', 'update_admin_settings_option' ) ) ) {
+			\UAGB_Admin_Helper::update_admin_settings_option( '__uagb_asset_version', time() );
+		}
 	}
 
 	/**
@@ -1200,7 +1220,7 @@ class Plugin {
 			$adaptive_mode = isset( $settings['adaptive_mode'] ) ? $settings['adaptive_mode'] : true;
 		}
 
-		if ( class_exists( 'Astra_Global_Palette' ) && $adaptive_mode ) {
+		if ( class_exists( 'Astra_Global_Palette' ) && $adaptive_mode && function_exists( 'astra_get_palette_colors' ) ) {
 			$astra_palette_colors = astra_get_palette_colors();
 			$default_palette_color = $astra_palette_colors['palettes'][ $astra_palette_colors['currentPalette'] ];
 		}
@@ -1257,7 +1277,7 @@ class Plugin {
 			$adaptive_mode = isset( $settings['adaptive_mode'] ) ? $settings['adaptive_mode'] : true;
 		}
 
-		if ( class_exists( 'Astra_Global_Palette' ) && $adaptive_mode ) {
+		if ( class_exists( 'Astra_Global_Palette' ) && $adaptive_mode && function_exists( 'astra_get_palette_colors' ) ) {
 			$astra_palette_colors = astra_get_palette_colors();
 			$default_palette_color = $astra_palette_colors['palettes'][ $astra_palette_colors['currentPalette'] ];
 		}
@@ -1364,7 +1384,7 @@ class Plugin {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return array page builder sites.
+	 * @return array<int, mixed> page builder sites.
 	 */
 	public function get_all_sites() {
 		$total_requests = (int) Helper::instance()->get_site_request();
@@ -1436,7 +1456,7 @@ class Plugin {
 	 * @since 1.0.0
 	 * @param  int $start Start Page.
 	 * @param  int $end End Page.
-	 * @return array All Elementor Blocks.
+	 * @return array<string, mixed> All Elementor Blocks.
 	 */
 	public function get_all_blocks( $start = 0, $end = 0 ) {
 		$blocks = array();
@@ -1478,10 +1498,10 @@ class Plugin {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param  string $file Download File URL.
-	 * @param  array  $overrides Upload file arguments.
-	 * @param  int    $timeout_seconds Timeout in downloading the XML file in seconds.
-	 * @return array        Downloaded file data.
+	 * @param  string               $file Download File URL.
+	 * @param  array<string, mixed> $overrides Upload file arguments.
+	 * @param  int                  $timeout_seconds Timeout in downloading the XML file in seconds.
+	 * @return array<string, mixed>        Downloaded file data.
 	 */
 	public function download_file( $file = '', $overrides = array(), $timeout_seconds = 300 ) {
 

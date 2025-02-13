@@ -1,0 +1,35 @@
+.uagb-form-notice {
+	padding: 8px 10px;
+	background-color: #fff8e5;
+	border-left: 5px solid #ffb901;
+	color: #32373c;
+	font-size: 13px;
+	line-height: 20px;
+}
+
+[data-toolbar-item="true"] .block-editor-block-icon.has-colors {
+
+	svg.uagb-editor-icons.sureforms-logo {
+
+		path,
+		rect {
+			stroke: #0063a1;
+		}
+	}
+}
+
+.uagb-sure-forms-checkout-container {
+	height: 200px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: auto;
+	background-color: #fff;
+}
+
+.uagb-sure-cart-product-container,
+.uagb-sure-cart-checkout-container {
+	height: 200px;
+	background-position: center left;
+	background-repeat: no-repeat;
+	background-color: #fff;
+}

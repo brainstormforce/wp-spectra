@@ -1049,14 +1049,23 @@ const attributes = {
 	xPositionType: {
 		type: 'string',
 		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'background-image-x-position-type',
+		},
 	},
 	xPositionTypeTablet: {
 		type: 'string',
 		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'background-image-x-position-type-tablet',
+		},
 	},
 	xPositionTypeMobile: {
 		type: 'string',
 		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'background-image-x-position-type-mobile',
+		},
 	},
 
 	yPositionDesktop: {
@@ -1084,14 +1093,23 @@ const attributes = {
 	yPositionType: {
 		type: 'string',
 		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'background-image-y-position-type',
+		},
 	},
 	yPositionTypeTablet: {
 		type: 'string',
 		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'background-image-y-position-type-tablet',
+		},
 	},
 	yPositionTypeMobile: {
 		type: 'string',
 		default: 'px',
+		UAGCopyPaste: {
+			styleType: 'background-image-y-position-type-mobile',
+		},
 	},
 
 	// Background image position.

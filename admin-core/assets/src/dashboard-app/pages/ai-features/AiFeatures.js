@@ -2,10 +2,9 @@
  * The Dashboard App for Zip AI Admin.
  */
 
-import Authorization from '@DashboardApp/pages/ai-features/screens/Authorization';
-import Settings from '@DashboardApp/pages/ai-features/screens/Settings';
+import AIPage from '@DashboardApp/pages/ai-features/screens/AIPage';
 
 // Render either the AI Authorization screen, or the Settings Page.
-const AiFeatures = () => ( uag_react?.zip_ai_is_authorized ) ? <Settings /> : <Authorization />;
+const AiFeatures = () => <AIPage />;
 
 export default AiFeatures;

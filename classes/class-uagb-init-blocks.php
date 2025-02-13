@@ -86,7 +86,13 @@ class UAGB_Init_Blocks {
 		}
 
 		add_action( 'init', array( $this, 'register_popup_builder' ) );
+		add_filter( 'srfm_enable_redirect_activation', '__return_false' );
+
+		add_action( 'wp_ajax_uagb_sureforms', array( $this, 'sureforms_plugin_activator' ) );
+		add_action( 'wp_ajax_uagb_surecart', array( $this, 'surecart_plugin_activator' ) );
+
 	}
+
 
 	/**
 	 * Register the Popup Builder CPT.
@@ -546,6 +552,223 @@ class UAGB_Init_Blocks {
 	}
 
 	/**
+	 * Renders the Sure Form.
+	 *
+	 * @since 2.19.0
+	 * @return void
+	 */
+	public function sureforms_plugin_activator() {
+		// Check user capability.
+		if ( ! ( current_user_can( 'activate_plugins' ) && current_user_can( 'install_plugins' ) ) ) {
+			wp_send_json_error(
+				array(
+					'success' => false,
+					'message' => 'User is not authenticated!',
+				) 
+			);
+		}
+
+		// Verify nonce.
+		if ( ! check_ajax_referer( 'uagb_ajax_nonce', 'security', false ) ) {
+			wp_send_json_error(
+				array(
+					'success' => false,
+					'message' => 'Invalid nonce.',
+				) 
+			);
+		}
+
+		$installed_plugins   = get_plugins();
+		$status_of_sureforms = isset( $installed_plugins['sureforms/sureforms.php'] ) 
+			? ( is_plugin_active( 'sureforms/sureforms.php' ) ? 'active' : 'inactive' ) 
+			: 'not-installed';
+
+		// If plugin is not installed, install it first.
+		if ( 'not-installed' === $status_of_sureforms ) {
+			include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+			include_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+
+			$plugin_slug = 'sureforms';
+			$plugin_data = plugins_api( 'plugin_information', array( 'slug' => $plugin_slug ) );
+
+			// Check if $plugin_data is valid and contains the download_link property.
+			if ( is_wp_error( $plugin_data ) || ! is_object( $plugin_data ) || empty( $plugin_data->download_link ) ) {
+				wp_send_json_error(
+					array(
+						'success' => false,
+						'message' => 'Error fetching plugin data.',
+					) 
+				);
+			}
+
+			if ( is_object( $plugin_data ) || is_array( $plugin_data ) ) {
+				$download_link = ( is_object( $plugin_data ) && isset( $plugin_data->download_link ) ) ? $plugin_data->download_link : '';
+				$skin          = new WP_Ajax_Upgrader_Skin();
+				$upgrader      = new Plugin_Upgrader( $skin );
+				$installed     = $upgrader->install( $download_link );
+
+				if ( is_wp_error( $installed ) ) {
+					wp_send_json_error(
+						array(
+							'success' => false,
+							'message' => 'Failed to install the plugin.',
+						) 
+					);
+				}
+			}
+
+			$installed_plugins   = get_plugins();
+			$status_of_sureforms = isset( $installed_plugins['sureforms/sureforms.php'] ) ? 'inactive' : 'not-installed';
+		}
+
+		// If the plugin is installed but inactive, activate it.
+		if ( 'inactive' === $status_of_sureforms ) {
+			$activate = activate_plugin( 'sureforms/sureforms.php', '', false, false );
+
+			if ( is_wp_error( $activate ) ) {
+				wp_send_json_error(
+					array(
+						'success' => false,
+						'message' => $activate->get_error_message(),
+					) 
+				);
+			}
+
+			wp_send_json_success(
+				array(
+					'success' => true,
+					'message' => 'Plugin successfully activated.',
+				) 
+			);
+		}
+
+		// If already active, send a success message.
+		if ( 'active' === $status_of_sureforms ) {
+			wp_send_json_success(
+				array(
+					'success' => true,
+					'message' => 'Plugin is already active.',
+				) 
+			);
+		}
+
+		// If no condition matches, send an error response.
+		wp_send_json_error(
+			array(
+				'success' => false,
+				'message' => 'Unexpected error occurred.',
+			) 
+		);
+	}
+
+	/**
+	 * Renders the Sure Form.
+	 *
+	 * @since 2.19.0
+	 * @return void
+	 */
+	public function surecart_plugin_activator() {
+		// Check user capability.
+		if ( ! ( current_user_can( 'activate_plugins' ) && current_user_can( 'install_plugins' ) ) ) {
+			wp_send_json_error(
+				array(
+					'success' => false,
+					'message' => 'User is not authenticated!',
+				) 
+			);
+		}
+
+		// Verify nonce.
+		if ( ! check_ajax_referer( 'uagb_ajax_nonce', 'security', false ) ) {
+			wp_send_json_error(
+				array(
+					'success' => false,
+					'message' => 'Invalid nonce.',
+				) 
+			);
+		}
+
+		$installed_plugins  = get_plugins();
+		$status_of_surecart = isset( $installed_plugins['surecart/surecart.php'] ) 
+			? ( is_plugin_active( 'surecart/surecart.php' ) ? 'active' : 'inactive' ) 
+			: 'not-installed';
+		// If plugin is not installed, install it first.
+		if ( 'not-installed' === $status_of_surecart ) {
+			include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+			include_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+
+			$plugin_slug = 'surecart';
+			$plugin_data = plugins_api( 'plugin_information', array( 'slug' => $plugin_slug ) );
+
+			if ( is_wp_error( $plugin_data ) || ! is_object( $plugin_data ) || empty( $plugin_data->download_link ) ) {
+				wp_send_json_error(
+					array(
+						'success' => false,
+						'message' => 'Error fetching plugin data.',
+					) 
+				);
+			}
+
+			if ( is_object( $plugin_data ) || is_array( $plugin_data ) ) {
+				$download_link = ( is_object( $plugin_data ) && isset( $plugin_data->download_link ) ) ? $plugin_data->download_link : '';
+				$skin          = new WP_Ajax_Upgrader_Skin();
+				$upgrader      = new Plugin_Upgrader( $skin );
+				$installed     = $upgrader->install( $download_link );
+
+				if ( is_wp_error( $installed ) ) {
+					wp_send_json_error(
+						array(
+							'success' => false,
+							'message' => 'Failed to install the plugin.',
+						) 
+					);
+				}
+			}
+
+			$installed_plugins  = get_plugins();
+			$status_of_surecart = isset( $installed_plugins['surecart/surecart.php'] ) ? 'inactive' : 'not-installed';
+		}
+
+		// If the plugin is installed but inactive, activate it.
+		if ( 'inactive' === $status_of_surecart ) {
+			$activate = activate_plugin( 'surecart/surecart.php' );
+			if ( is_wp_error( $activate ) ) {
+				wp_send_json_error(
+					array(
+						'success' => false,
+						'message' => $activate->get_error_message(),
+					) 
+				);
+			}
+
+			wp_send_json_success(
+				array(
+					'success' => true,
+					'message' => 'Plugin successfully activated.',
+				) 
+			);
+		}
+
+		// If already active, send a success message.
+		if ( 'active' === $status_of_surecart ) {
+			wp_send_json_success(
+				array(
+					'success' => true,
+					'message' => 'Plugin is already active.',
+				) 
+			);
+		}
+
+		// If no condition matches, send an error response.
+		wp_send_json_error(
+			array(
+				'success' => false,
+				'message' => 'Unexpected error occurred.',
+			) 
+		);
+	}
+
+	/**
 	 * Renders the Contect Form 7 shortcode.
 	 *
 	 * @since 1.10.0
@@ -572,7 +795,7 @@ class UAGB_Init_Blocks {
 	 * @since 1.0.0
 	 */
 	public function register_block_category( $categories, $post ) {
-		return array_merge(
+		$categories = array_merge(
 			array(
 				array(
 					'slug'  => 'uagb',
@@ -581,6 +804,44 @@ class UAGB_Init_Blocks {
 			),
 			$categories
 		);
+		// Define the new category to be added.
+		$new_category = array(
+			'slug'  => 'extension',
+			'title' => __( 'Extensions', 'ultimate-addons-for-gutenberg' ),
+			'icon'  => '',
+		);
+
+		// Find the index where the new category should be inserted.
+		$insert_after_slug = 'spectra-pro'; // Default insertion point.
+		$insert_index      = false;
+
+		// Look for the 'spectra-pro' category.
+		foreach ( $categories as $index => $category ) {
+			if ( $insert_after_slug === $category['slug'] ) {
+				$insert_index = $index + 1;
+				break;
+			}
+		}
+
+		// If 'spectra-pro' is not found, look for 'uagb'.
+		if ( false === $insert_index ) {
+			$insert_after_slug = 'uagb';
+			foreach ( $categories as $index => $category ) {
+				if ( $insert_after_slug === $category['slug'] ) {
+					$insert_index = $index + 1;
+					break;
+				}
+			}
+		}
+
+		// If neither is found, append the new category at the end.
+		if ( false === $insert_index ) {
+			$categories[] = $new_category;
+		} else {
+			array_splice( $categories, $insert_index, 0, array( $new_category ) );
+		}
+
+		return $categories;
 	}
 
 	/**
@@ -761,11 +1022,22 @@ class UAGB_Init_Blocks {
 						? 'active' 
 						: 'inactive' ) 
 					: 'not-installed';
+		$status_of_surecart               = isset( $installed_plugins['surecart/surecart.php'] ) 
+					? ( is_plugin_active( 'surecart/surecart.php' ) 
+						? 'active' 
+						: 'inactive' ) 
+					: 'not-installed';
+		$status_of_sureforms              = isset( $installed_plugins['sureforms/sureforms.php'] ) 
+					? ( is_plugin_active( 'sureforms/sureforms.php' ) 
+						? 'active' 
+						: 'inactive' ) 
+					: 'not-installed';
 
 		$localized_params = array(
 			'cf7_is_active'                           => class_exists( 'WPCF7_ContactForm' ),
 			'gf_is_active'                            => class_exists( 'GFForms' ),
 			'category'                                => 'uagb',
+			'premium_category'                        => 'extension',
 			'ajax_url'                                => admin_url( 'admin-ajax.php' ),
 			'spectra_admin_urls'                      => $spectra_admin_urls,
 			'cf7_forms'                               => $this->get_cf7_forms(),
@@ -836,6 +1108,8 @@ class UAGB_Init_Blocks {
 			// creating an array of iframe names to ignore and checking against that array.
 			// Add more iframe names to ignore, this is done by using the 'spectra_exclude_crops_iframes' filter.
 			'exclude_crops_iframes'                   => apply_filters( 'spectra_exclude_crops_iframes', array( '__privateStripeMetricsController8690' ) ),
+			'status_of_sureforms'                     => $status_of_sureforms,
+			'status_of_surecart'                      => $status_of_surecart,
 		);
 
 		wp_localize_script(

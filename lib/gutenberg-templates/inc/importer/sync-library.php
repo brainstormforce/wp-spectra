@@ -133,6 +133,7 @@ class Sync_Library {
 	 * Set default assets
 	 *
 	 * @since 1.0.2
+	 * @return  void
 	 */
 	public function set_default_assets() {
 
@@ -174,7 +175,7 @@ class Sync_Library {
 			return;
 		}
 
-		update_option( 'ast_blocks_sync_in_progress', 'yes', 'no' );
+		update_option( 'ast_blocks_sync_in_progress', 'yes', false );
 		$this->sync_blocks();
 	}
 
@@ -192,7 +193,7 @@ class Sync_Library {
 		if ( empty( $result_data ) ) {
 			Helper::instance()->ast_block_templates_log( 'Blocks are up to date.' );
 			update_option( 'ast-block-templates-last-export-checksums-time', time() );
-			update_option( 'ast_blocks_sync_in_progress', 'no', 'no' );
+			update_option( 'ast_blocks_sync_in_progress', 'no', false );
 			return;
 		}
 		$this->process_data_sync( $result_data );
@@ -204,7 +205,7 @@ class Sync_Library {
 	 * Handle Sync API Response
 	 *
 	 * @since 2.0.0
-	 * @return array
+	 * @return array<string, mixed>
 	 */
 	public function check_checksum_and_get_blocks_data() {
 
@@ -244,7 +245,7 @@ class Sync_Library {
 	 * Process Data Sync
 	 *
 	 * @since 2.0.0
-	 * @param  array $data Data to process.
+	 * @param  array<string, mixed> $data Data to process.
 	 * @return void
 	 */
 	public function process_data_sync( $data ) {
@@ -279,7 +280,7 @@ class Sync_Library {
 	 * Json Files Names.
 	 *
 	 * @since 1.0.1
-	 * @return array
+	 * @return array<string>
 	 */
 	public function get_default_assets() {
 		return array(
@@ -408,7 +409,7 @@ class Sync_Library {
 
 			// Set last export checksums.
 			if ( ! empty( $result['last_export_checksums'] ) ) {
-				update_option( 'ast-block-templates-last-export-checksums-latest', $result['last_export_checksums'], 'no' );
+				update_option( 'ast-block-templates-last-export-checksums-latest', $result['last_export_checksums'], false );
 
 				$this->last_export_checksums = $result['last_export_checksums'];
 			}
@@ -429,8 +430,8 @@ class Sync_Library {
 	 */
 	public function update_latest_checksums( $new_checksum ) {
 		Helper::instance()->update_json_file( 'ast-block-templates-last-export-checksums', $new_checksum );
-		update_option( 'ast-block-templates-last-export-checksums-time', time(), 'no' );
-		update_option( 'ast_blocks_sync_in_progress', 'no', 'no' );
+		update_option( 'ast-block-templates-last-export-checksums-time', time(), false );
+		update_option( 'ast_blocks_sync_in_progress', 'no', false );
 		do_action( 'ast_block_templates_sync_export_checksum', $new_checksum );
 	}
 
@@ -448,12 +449,12 @@ class Sync_Library {
 		// Verify Nonce.
 		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
 
-		$categories = $this->import_categories();
+		// Import categories doesn't return any values.
+		$this->import_categories();
 		wp_send_json_success(
 			array(
 				'message' => 'Success imported categories',
 				'status'  => true,
-				'data'    => $categories,
 			)
 		);
 
@@ -475,7 +476,7 @@ class Sync_Library {
 
 		$page_no = isset( $_POST['page_no'] ) ? absint( $_POST['page_no'] ) : '';
 		if ( $page_no ) {
-			$sites_and_pages = $this->import_blocks( $page_no );
+			$this->import_blocks( $page_no );
 
 			$data = array(
 				'message' => 'Success imported sites for page ' . $page_no,
@@ -576,6 +577,9 @@ class Sync_Library {
 				return $total_requests['pages'];
 			}
 		}
+		
+		// returning 0 pages as no return statement exist.
+		return 0;
 
 	}
 

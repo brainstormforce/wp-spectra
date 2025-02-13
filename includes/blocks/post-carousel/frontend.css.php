@@ -111,6 +111,43 @@ $m_selectors[' .slick-dots'] = array(
 	'margin-top' => UAGB_Helper::get_css_value( $attr['dotsMarginTopMobile'], $attr['dotsMarginTopUnit'] ) . ' !important',
 );
 
+if ( 'aboveTitle' === $attr['displayPostTaxonomyAboveTitle'] ) {
+
+	$selectors   = array_merge(
+		$selectors,
+		array(
+			' span.uagb-post__taxonomy' => array(
+				'padding-bottom' => UAGB_Helper::get_css_value( $attr['taxonomyBottomSpace'], $attr['taxonomyBottomSpaceUnit'] ),
+			),
+			' .uagb-post__inner-wrap span.uagb-post__taxonomy.highlighted' => array(
+				'margin-bottom' => UAGB_Helper::get_css_value( $attr['taxonomyBottomSpace'], $attr['taxonomyBottomSpaceUnit'] ),
+			),
+		)
+	);
+	$m_selectors = array_merge(
+		$m_selectors,
+		array(
+			' span.uagb-post__taxonomy' => array(
+				'padding-bottom' => UAGB_Helper::get_css_value( $attr['taxonomyBottomSpaceMobile'], $attr['taxonomyBottomSpaceUnit'] ),
+			),
+			' .uagb-post__inner-wrap span.uagb-post__taxonomy.highlighted' => array(
+				'margin-bottom' => UAGB_Helper::get_css_value( $attr['taxonomyBottomSpaceMobile'], $attr['taxonomyBottomSpaceUnit'] ),
+			),
+		)
+	);
+	$t_selectors = array_merge(
+		$t_selectors,
+		array(
+			' span.uagb-post__taxonomy' => array(
+				'padding-bottom' => UAGB_Helper::get_css_value( $attr['taxonomyBottomSpaceTablet'], $attr['taxonomyBottomSpaceUnit'] ),
+			),
+			' .uagb-post__inner-wrap span.uagb-post__taxonomy.highlighted' => array(
+				'margin-bottom' => UAGB_Helper::get_css_value( $attr['taxonomyBottomSpaceTablet'], $attr['taxonomyBottomSpaceUnit'] ),
+			),
+		)
+	);
+}
+
 $combined_selectors = array(
 	'desktop' => $selectors,
 	'tablet'  => $t_selectors,

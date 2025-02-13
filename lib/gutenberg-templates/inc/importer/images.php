@@ -25,7 +25,7 @@ class Images {
 	 * Images
 	 *
 	 * @since {{since}}
-	 * @var (array) images
+	 * @var array<string, array<mixed>> $images
 	 */
 	public static $images = array(
 		'landscape' => array(),
@@ -44,7 +44,7 @@ class Images {
 	/**
 	 * Get Images
 	 *
-	 * @return array Array of images.
+	 * @return array<string|int, mixed> Array of images.
 	 * @since {{since}}
 	 */
 	public function get_images() {
@@ -56,7 +56,7 @@ class Images {
 	 * Get Image for the specified index and orientation
 	 *
 	 * @param int $index Index of the image.
-	 * @return array|boolean Array of images or false.
+	 * @return array<int, mixed>|boolean Array of images or false.
 	 * @since {{since}}
 	 */
 	public function get_image( $index = 0 ) {
@@ -68,12 +68,12 @@ class Images {
 	/**
 	 * Download image from URL.
 	 *
-	 * @param array $image Image data.
+	 * @param array<int|string, mixed> $image Image data.
 	 * @return int|\WP_Error Image ID or WP_Error.
 	 * @since {{since}}
 	 */
 	public function download_image( $image ) {
-		$id = $image['id'];
+		$id = isset( $image['id'] ) ? $image['id'] : 0;
 		$downloaded_ids = get_option( 'ast_block_downloaded_images', array() );
 
 		$downloaded_ids = ( is_array( $downloaded_ids ) ) ? $downloaded_ids : array();
@@ -106,6 +106,7 @@ class Images {
 	 * @param String $name Name to the image.
 	 * @param String $photo_id Photo ID to the image.
 	 * @param String $description Description to the image.
+	 * @return mixed
 	 * @see http://codex.wordpress.org/Function_Reference/wp_insert_attachment#Example
 	 */
 	public function create_image_from_url( $url, $name, $photo_id, $description ) {

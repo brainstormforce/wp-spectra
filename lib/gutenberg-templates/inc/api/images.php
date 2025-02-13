@@ -105,7 +105,7 @@ class Images extends Api_Base {
 	 */
 	public function get( $request ) {
 
-		$nonce = $request->get_header( 'X-WP-Nonce' );
+		$nonce = (string) $request->get_header( 'X-WP-Nonce' );
 		// Verify the nonce.
 		if ( ! wp_verify_nonce( sanitize_text_field( $nonce ), 'wp_rest' ) ) {
 			wp_send_json_error(
@@ -127,8 +127,9 @@ class Images extends Api_Base {
 			'engine' => isset( $request['engine'] ) ? sanitize_text_field( $request['engine'] ) : '',
 		);
 
+		$body = wp_json_encode( $post_data );
 		$request_args = array(
-			'body' => wp_json_encode( $post_data ),
+			'body' => is_string( $body ) ? $body : '',
 			'headers' => array(
 				'Content-Type' => 'application/json',
 			),

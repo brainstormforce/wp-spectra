@@ -21,6 +21,7 @@ class Helper {
 	 * Log
 	 *
 	 * @param string $message   Log message.
+	 * @return void
 	 */
 	public function ast_block_templates_log( $message = '' ) {
 		
@@ -35,6 +36,8 @@ class Helper {
 
 	/**
 	 * Doing WP CLI
+	 *
+	 * @return bool
 	 */
 	public function ast_block_templates_doing_wp_cli() {
 		if ( defined( 'WP_CLI' ) && WP_CLI ) {
@@ -65,10 +68,10 @@ class Helper {
 	 * @param string $link  The Image link.
 	 *
 	 * @since 1.0.0
-	 * @return boolean
+	 * @return bool
 	 */
 	public function ast_block_templates_is_valid_image( $link = '' ) {
-		return preg_match( '/^((https?:\/\/)|(www\.))([a-z0-9-].?)+(:[0-9]+)?\/[\w\-]+\.(jpg|png|gif|jpeg)\/?$/i', $link );
+		return boolVal( preg_match( '/^((https?:\/\/)|(www\.))([a-z0-9-].?)+(:[0-9]+)?\/[\w\-]+\.(jpg|png|gif|jpeg)\/?$/i', $link ) );
 	}
 
 	/**
@@ -293,7 +296,7 @@ class Helper {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @return array
+	 * @return array<string, string>
 	 */
 	public function get_default_ai_categories() {
 		return array(

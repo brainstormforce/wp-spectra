@@ -104,7 +104,7 @@ class Description extends Api_Base {
 	 */
 	public function get( $request ) {
 
-		$nonce = $request->get_header( 'X-WP-Nonce' );
+		$nonce = (string) $request->get_header( 'X-WP-Nonce' );
 		// Verify the nonce.
 		if ( ! wp_verify_nonce( sanitize_text_field( $nonce ), 'wp_rest' ) ) {
 			wp_send_json_error(
@@ -132,11 +132,12 @@ class Description extends Api_Base {
 			'language_name' =>
 				isset( $request['language_name'] ) ? sanitize_text_field( $request['language_name'] ) : '',
 			'token' =>
-				isset( $token ) ? $token : '',
+				$token,
 		);
 
+		$body = wp_json_encode( $post_data );
 		$request_args = array(
-			'body' => wp_json_encode( $post_data ),
+			'body' => is_string( $body ) ? $body : '',
 			'headers' => array(
 				'Content-Type' => 'application/json',
 			),

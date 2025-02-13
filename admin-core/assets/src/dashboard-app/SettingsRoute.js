@@ -5,7 +5,7 @@ import Welcome from '@DashboardApp/pages/welcome/Welcome';
 import Blocks from '@DashboardApp/pages/blocks/Blocks';
 import Settings from '@DashboardApp/pages/settings/Settings';
 import AiFeatures from '@DashboardApp/pages/ai-features/AiFeatures';
-import Comparison from '@DashboardApp/pages/free-vs-pro/Comparison';
+import FreeVPro from './pages/free-vs-pro/Comparison';
 
 function SettingsRoute() {
 	const query = new URLSearchParams( useLocation().search );
@@ -43,10 +43,10 @@ function SettingsRoute() {
 					break;
 				case 'ai-features':
 					// Only render the AI Features page if Zip AI data was successfully localized.
-					routePage = uag_react?.zip_ai_admin_nonce ? <AiFeatures/> : <Welcome/>;
+					routePage = uag_react?.zip_ai_admin_nonce ? <AiFeatures /> : <Welcome/>;
 					break;
 				case 'free-vs-pro':
-					routePage = ( 'not-installed' === uag_react.pro_plugin_status || 'inactive' === uag_react.pro_plugin_status ) ? <Comparison /> : null
+					routePage = <FreeVPro />;
 					break;
 				default:
 					routePage = <Welcome/>;
