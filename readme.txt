@@ -219,7 +219,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = 2.19.0 - Thursday, 13th February 2025 =
 * New: Rebuilt the Spectra Dashboard with the new Force UI, enhancing user experience with a modern and intuitive interface.
-* New: Added placeholder blocks to prompt required plugin installations.
+* Improvement: Insert blocks to streamline workflow.
 * Improvement: Post Grid & Post Carousel - Added control for taxonomy bottom spacing.
 * Fix: Container – Resolved an issue where the unit for the X position of the background image was not copied when using the "Copy-Paste Style" feature.
 * Fix: Heading - Resolved an issue where the Heading block, when assigned a paragraph tag, was not translatable.
