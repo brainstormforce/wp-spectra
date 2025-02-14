@@ -54,7 +54,7 @@ class BlockEditor {
 		}
 
 		$image = Images::instance()->get_image( Images::$image_index );
-		if ( empty( $image ) || ! is_array( $image ) || is_bool( $image ) ) {
+		if ( empty( $image ) || ! is_array( $image ) ) {
 			return $block;
 		}
 
@@ -97,7 +97,7 @@ class BlockEditor {
 		}
 
 		$image = Images::instance()->get_image( Images::$image_index );
-		if ( empty( $image ) || ! is_array( $image ) || is_bool( $image ) ) {
+		if ( empty( $image ) || ! is_array( $image ) ) {
 			return $block;
 		}
 
@@ -170,7 +170,7 @@ class BlockEditor {
 		self::$old_images[] = $block['attrs']['id'];
 		Helper::instance()->ast_block_templates_log( 'Replacing Image from ' . $block['attrs']['url'] . ' to "' . $attachment['url'] . '" for ' . $block['blockName'] . '" with index "' . Images::$image_index . '"' );
 		$block['innerHTML'] = str_replace( $block['attrs']['url'], $attachment['url'], $block['innerHTML'] );
-		$block['innerHTML'] = str_replace( $block['attrs']['id'], $attachment['id'], $block['innerHTML'] );
+		$block['innerHTML'] = str_replace( $block['attrs']['id'], (string) $attachment['id'], $block['innerHTML'] );
 
 		$tablet_size_slug = ! empty( $block['attrs']['sizeSlugTablet'] ) ? $block['attrs']['sizeSlugTablet'] : '';
 		$mobile_size_slug = ! empty( $block['attrs']['sizeSlugMobile'] ) ? $block['attrs']['sizeSlugMobile'] : '';
@@ -189,7 +189,7 @@ class BlockEditor {
 				continue;
 			}
 			$block['innerContent'][ $key ] = str_replace( $block['attrs']['url'], $attachment['url'], $block['innerContent'][ $key ] );
-			$block['innerContent'][ $key ] = str_replace( $block['attrs']['id'], $attachment['id'], $block['innerContent'][ $key ] );
+			$block['innerContent'][ $key ] = str_replace( $block['attrs']['id'], (string) $attachment['id'], $block['innerContent'][ $key ] );
 
 			if ( $is_attachemnts ) {
 				if ( ! empty( $block['attrs']['urlTablet'] ) ) {
@@ -239,7 +239,7 @@ class BlockEditor {
 			}
 			
 			$new_image = Images::instance()->get_image( Images::$image_index );
-			if ( empty( $new_image ) || ! is_array( $new_image ) || is_bool( $new_image ) ) {
+			if ( empty( $new_image ) || ! is_array( $new_image ) ) {
 				continue;
 			}
 
@@ -290,7 +290,7 @@ class BlockEditor {
 			return $block;
 		}
 
-		Helper::instance()->ast_block_templates_log( 'Replacing Google Map from ' . $block['attrs']['address'] . ' to "' . $address );
+		Helper::instance()->ast_block_templates_log( 'Replacing Google Map from ' . $block['attrs']['address'] . ' to "' . wp_json_encode( $address ) );
 		$block['attrs']['address'] = $address;
 
 		return $block;
@@ -318,7 +318,7 @@ class BlockEditor {
 		}
 
 		$image = Images::instance()->get_image( Images::$image_index );
-		if ( empty( $image ) || ! is_array( $image ) || is_bool( $image ) ) {
+		if ( empty( $image ) || ! is_array( $image ) ) {
 			return;
 		}
 

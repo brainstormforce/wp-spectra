@@ -212,6 +212,9 @@ const AdvancedControlsBlock = createHigherOrderComponent( ( BlockEdit ) => {
 			'core/navigation',
 			'core/search',
 			'core/file',
+			'uagb/sure-forms',
+			'uagb/sure-cart-product',
+			'uagb/sure-cart-checkout'
 		];
 
 		return (

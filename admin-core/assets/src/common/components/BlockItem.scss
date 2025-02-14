@@ -1,0 +1,11 @@
+.uagb-remove-ring input[type="checkbox"],
+.uagb-remove-ring a,
+.uagb-remove-ring {
+	outline: none !important;
+	--tw-ring-inset: auto !important;
+	box-shadow: unset !important;
+}
+
+.border-none > input {
+	border: none !important;
+}

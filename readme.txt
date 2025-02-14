@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.7
-Stable tag: 2.18.3
+Stable tag: 2.19.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,7 +30,7 @@ Most helpful links
 
 <strong>DESIGN BEAUTIFUL FAST LOADING WEBSITES DIRECTLY ON THE WORDPRESS BLOCK EDITOR (GUTENBERG EDITOR) WITHOUT CODING</strong>
 
-<a href="https://bsf.io/spectra-demo" target="_blank" rel="">Try it out on a free dummy site</a>
+<a href="https://bsf.io/spectra-demo" target="_blank" rel="">Try the live demo of Spectra</a>
 
 Our mission is to empower web designers like you with an end-to-end solution for building stunning websites.
 
@@ -217,6 +217,14 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= 2.19.0 - Thursday, 13th February 2025 =
+* New: Rebuilt the Spectra Dashboard with the new Force UI, enhancing user experience with a modern and intuitive interface.
+* Improvement: Insert blocks to streamline workflow.
+* Improvement: Post Grid & Post Carousel - Added control for taxonomy bottom spacing.
+* Fix: Container – Resolved an issue where the unit for the X position of the background image was not copied when using the "Copy-Paste Style" feature.
+* Fix: Heading - Resolved an issue where the Heading block, when assigned a paragraph tag, was not translatable.
+* Fix: Info Box - Resolved an issue wherein the icon responsive padding is not working as intended in framed view.
+
 = 2.18.3 - Friday, 31st January 2025 =
 * Updated the AI Assistant Library.
 
@@ -237,26 +245,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Global - Resolved an issue wherein the self-hosted Google Fonts would not work as intended on the multisite's first sub-site setup.
 * Fix: Global - Resolved an issue in which some static and dynamic javascript strings were not translatable.
 * Fix: Global - Resolved an issue where migration buttons were not clickable, preventing the migration process from running as expected.
-
-= 2.18.0 - Wednesday, 11th December 2024 =
-* Improvement: Table Of Contents - Added a setting to enable collapsible list items.
-* Improvement: AI Assistant - Updated the AI Assistant to be aware of the saved page content.
-* Fix: Info Box - Resolved an issue wherein the overall alignment is not supported in RTL mode.
-* Fix: Image Gallery - Resolved an issue wherein the "Tiled" layout would not allow 2 or 3 columns.
-* Fix: Taxonomy List - Resolved an issue wherein plural forms would be incorrectly translated.
-* Fix: FSE - Corrected the query parameter in `get_block_templates()` function to properly handle template parts using the `slug__in` argument.
-* Fix: Global - Resolved an issue wherein the custom CSS would get special characters converted to unicode.
-* Fix: Global - Resolved an issue that would sometimes show a PHP warning for the font loader.
-
-= 2.17.0 - Monday, 25th November 2024 =
-* Feature: Added a free image search to the image media pickers.
-* Improvement: Instagram - Switched the Spectra Pro Instagram account linking to use business accounts.
-* Fix: Global - Resolved an issue wherein re-activating Spectra would always redirect to the Spectra dashboard.
-* Fix: Global - Resolved an issue wherein the editor strings would not be translatable.
-* Fix: Global - Corrected the translation loading timing to ensure translations load at the proper point in time.
-
-= 2.16.5 - Friday, 15th November 2024 =
-* This update addressed a security bug. Props to zer0gh0st (D.Sim) for privately reporting it to our team. Please make sure you are using the latest version on your website. 
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 

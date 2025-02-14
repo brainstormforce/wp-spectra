@@ -25,6 +25,19 @@
 	width: 100%;
 }
 
+.wp-submenu li:has( > a[href*="path=free-vs-pro"]) {
+	background-color: #00a32a !important;
+}
+
+.wp-submenu li a[href*="path=free-vs-pro"] {
+	color: #fff !important;
+	font-weight: 500;
+}
+
+.wp-submenu li:has( > a[href*="path=free-vs-pro"]):hover {
+	background-color: #008000 !important;
+}
+
 /* Add negative margins to the top separator if this is not the current submenu */
 #toplevel_page_spectra.wp-not-current-submenu .wp-submenu li.wp-first-item::after {
 	margin: 8px -3px;

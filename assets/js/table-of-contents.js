@@ -15,6 +15,7 @@ UAGBTableOfContents = {
 				document_element = iframeDocument;
 			}
 		}
+		
 		return document_element;
 	},
 
@@ -145,11 +146,9 @@ UAGBTableOfContents = {
 	
 			ulElements.forEach( ( ul ) => {
 				const spanElement = ul.parentElement.querySelector( '.list-open' );
-	
 				// Apply initial transition and max height settings
 				ul.classList.add( 'transition' );
 				ul.dataset.originalMaxHeight = ul.scrollHeight + 'px';
-	
 				if ( spanElement ) {
 					const isExpanded = spanElement.getAttribute( 'aria-expanded' ) === 'true';
 					ul.style.maxHeight = isExpanded ? ul.dataset.originalMaxHeight : '0px';
@@ -168,7 +167,6 @@ UAGBTableOfContents = {
 	
 			// Initialize event listeners for each span with class .list-open.
 			const spanList = Array.from( block_element.getElementsByClassName( 'list-open' ) );
-	
 			spanList.forEach( ( ele ) => {
 				const handleToggle = () => {
 					const ulElement = ele.parentElement.querySelector( 'ul' );
@@ -195,7 +193,7 @@ UAGBTableOfContents = {
 		
 						ele.classList.toggle( 'list-open', ! isExpanded );
 						ele.classList.toggle( 'list-collapsed', isExpanded );
-	
+						
 						// If this was expanded, add a class to remove the padding inside the UL of the collapsible list after it has collapsed. Else just remove that class.
 						ulElement.classList.toggle( 'uagb-toc__list--child-of-closed-list' );
 					}, 0 );
@@ -219,13 +217,12 @@ UAGBTableOfContents = {
 	
 				ele.setAttribute( 'aria-expanded', ele.classList.contains( 'list-open' ) );
 			} );
-	
+
 			// Initial collapse state handling
 			if ( attr?.initiallyCollapseList ) {
 				ulElements.forEach( ( ul ) => {
 					 // Check if there's a span sibling at the same level
-					 const hasSiblingSpan = ul.parentElement.querySelector( 'span' );
-
+					const hasSiblingSpan = ul.parentElement.querySelector( 'span' );	
 					 if ( hasSiblingSpan ) {
 						ul.style.maxHeight = '0px';
 						ul.style.overflow = 'hidden';

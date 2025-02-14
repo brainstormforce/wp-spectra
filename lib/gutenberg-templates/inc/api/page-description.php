@@ -109,7 +109,7 @@ class PageDescription extends Api_Base {
 	 */
 	public function get( $request ) {
 
-		$nonce = $request->get_header( 'X-WP-Nonce' );
+		$nonce = (string) $request->get_header( 'X-WP-Nonce' );
 		// Verify the nonce.
 		if ( ! wp_verify_nonce( sanitize_text_field( $nonce ), 'wp_rest' ) ) {
 			wp_send_json_error(
@@ -131,11 +131,12 @@ class PageDescription extends Api_Base {
 			'page_name' => isset( $request['page_name'] ) ? sanitize_text_field( $request['page_name'] ) : '',
 			'page_description' => isset( $request['page_description'] ) ? sanitize_text_field( $request['page_description'] ) : '',
 			'category' => isset( $request['category'] ) ? sanitize_text_field( $request['category'] ) : '',
-			'token' => isset( $token ) ? $token : '',
+			'token' => $token,
 		);
 		
+		$body = wp_json_encode( $post_data );
 		$request_args = array(
-			'body' => wp_json_encode( $post_data ),
+			'body' => is_string( $body ) ? $body : '',
 			'headers' => array(
 				'Content-Type' => 'application/json',
 			),

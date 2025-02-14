@@ -51,74 +51,6 @@ if ( ! class_exists( 'UAGB_NPS_Notice' ) ) :
 		}
 
 		/**
-		 * Count the total number of Spectra blocks in all posts, pages, and Spectra popups.
-		 *
-		 * @return int Total count of Spectra blocks across all specified post types.
-		 */
-		public function count_spectra_blocks() {
-			// Define query arguments to fetch all published posts, pages, and Spectra popups.
-			$args = array(
-				'post_type'      => array( 'post', 'page', 'spectra-popup' ),
-				'post_status'    => 'publish',
-				'posts_per_page' => 100, // Fetch 100 posts per page for batch processing.
-				'paged'          => 1, // Start with the first page of results.
-			);
-
-			$blocks_found = 0; // Counter for Spectra blocks found.
-			$page_count   = 1; // Page counter.
-
-			do {
-				$args['paged'] = $page_count;
-				$query         = new WP_Query( $args );
-
-				if ( $query->have_posts() ) {
-					foreach ( $query->posts as $post ) {
-						if ( $post instanceof WP_Post ) {
-							$blocks        = parse_blocks( $post->post_content );
-							$block_count   = $this->count_blocks_recursively( $blocks );
-							$blocks_found += $block_count;
-
-							if ( $blocks_found >= 5 ) {
-								break 2; // Exit both loops.
-							}
-						}
-					}
-				}
-
-				wp_reset_postdata(); // Reset global post data to avoid conflicts with other queries.
-				$page_count++;
-			} while ( $query->have_posts() );
-
-			return $blocks_found;
-		}
-
-		/**
-		 * Recursively count Spectra blocks in a parsed block array.
-		 *
-		 * @param array $blocks Parsed block array.
-		 * 
-		 * @since 2.18.0
-		 * @return int Count of Spectra blocks in the given array.
-		 */
-		public function count_blocks_recursively( $blocks ) {
-			$count = 0;
-
-			foreach ( $blocks as $block ) {
-				// Check if block is a Spectra block.
-				if ( isset( $block['blockName'] ) && strpos( $block['blockName'], 'uagb/' ) === 0 ) {
-					$count++;
-				}
-
-				// Check if the block contains nested blocks (innerBlocks).
-				if ( isset( $block['innerBlocks'] ) && ! empty( $block['innerBlocks'] ) ) {
-					$count += $this->count_blocks_recursively( $block['innerBlocks'] );
-				}
-			}
-
-			return $count;
-		}
-
-		/**
 		 * Render NPS Survey
 		 *
 		 * @since 2.18.0
@@ -139,19 +71,7 @@ if ( ! class_exists( 'UAGB_NPS_Notice' ) ) :
 				define( 'WEEK_IN_SECONDS', 604800 );
 			}
 
-			$five_blocks_trigger = get_option( 'uagb_five_blocks_nps_show', 0 );
-			$last_shown          = get_option( 'uagb_nps_last_shown', time() );
-			$two_weeks_passed    = ( time() - $last_shown ) >= ( 2 * WEEK_IN_SECONDS );
-
-			$show_survey = false;
-
-			$spectra_blocks_count = $this->count_spectra_blocks();
-			
-			if ( $spectra_blocks_count >= 5 ) {
-				update_option( 'uagb_five_blocks_nps_show', 1 );
-			}
-
-			1 == $five_blocks_trigger || 5 <= $spectra_blocks_count || $two_weeks_passed ? $show_survey = true : $show_survey = false;
+			$allowed_screens = array( 'toplevel_page_spectra', 'edit-spectra-popup' );
 
 			$allowed_screens = array( 'toplevel_page_spectra', 'edit-spectra-popup' );
 
@@ -160,9 +80,9 @@ if ( ! class_exists( 'UAGB_NPS_Notice' ) ) :
 				'nps-survey-ultimate-addons-for-gutenberg',
 				array(
 
-					'show_if'          => $show_survey,
+					'show_if'          => true,
 					'dismiss_timespan' => 2 * WEEK_IN_SECONDS,
-					'display_after'    => 0,
+					'display_after'    => 2 * WEEK_IN_SECONDS,
 					'plugin_slug'      => 'spectra',
 					'show_on_screens'  => $allowed_screens,
 					'message'          => array(

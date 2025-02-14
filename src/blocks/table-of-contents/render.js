@@ -103,7 +103,7 @@ const Render = ( props ) => {
 				</div>
 				{ separatorStyle !== 'none' && <div className="uagb-toc__separator"></div> }
 				{ enableCollapsableList ? (
-				<TableOfContentCollapsable mappingHeaders={ mappingHeaders } headers={ headers } collapsibleListDepth={ collapsibleListDepth }  />
+					<TableOfContentCollapsable mappingHeaders={ mappingHeaders } headers={ headers } collapsibleListDepth={ collapsibleListDepth } />
 				) : (
 					<TableOfContents mappingHeaders={ mappingHeaders } headers={ headers } />
 				) }
