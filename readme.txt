@@ -218,6 +218,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Fix: Popup Builder - Resolved an issue wherein the popup builder page in the admin dashboard throws a console error.
 * Fix: Forms - Resolved an issue wherein the submit button hover background color is not working as intended on frontend.
 
 = 2.19.0 - 11th February 2025 =

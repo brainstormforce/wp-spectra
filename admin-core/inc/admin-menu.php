@@ -675,6 +675,12 @@ class Admin_Menu {
 	 * @param array $localize Variable names.
 	 */
 	public function settings_app_scripts( $localize ) {
+		// Check if we're on the popup builder page.
+		$current_screen = get_current_screen();
+		if ( isset( $current_screen ) && 'spectra-popup' === $current_screen->post_type ) {
+			return; // Don't load dashboard scripts on popup builder page.
+		}
+
 		$handle            = 'uag-admin-settings';
 		$build_path        = UAG_ADMIN_DIR . 'assets/build/';
 		$build_url         = UAG_ADMIN_URL . 'assets/build/';
