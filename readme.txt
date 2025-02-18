@@ -217,6 +217,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+* This update addressed a security bug. Props to Peter Thaleikis for privately reporting it to our team. Please make sure you are using the latest version on your website.
+
 = 2.19.0 - Thursday, 13th February 2025 =
 * New: Rebuilt the Spectra Dashboard with the new Force UI, enhancing user experience with a modern and intuitive interface.
 * Improvement: Insert blocks to streamline workflow.
