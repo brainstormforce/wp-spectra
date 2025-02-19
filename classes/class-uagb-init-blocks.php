@@ -1273,7 +1273,8 @@ class UAGB_Init_Blocks {
 		$block_id = 'uagb-block-' . $block['attrs']['block_id'];
 
 		// Replace the block id with the block id and the style class name.
-		$html = str_replace( $block_id, $block_id . ' ' . $style_class_name, $block_content );
+		$replacement_string = esc_attr( $block_id ) . ' ' . esc_attr( $style_class_name );
+		$html               = str_replace( $block_id, $replacement_string, $block_content );
 
 		return $html;
 	}
