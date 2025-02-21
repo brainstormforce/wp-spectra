@@ -217,6 +217,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+* Fix: Post Masonry - Resolved an issue wherein the Post Masonry block was getting a block recovery issue.
+
 = 2.19.1 - Wednesday, 19th February 2025 =
 * This update addressed a security bug. Props to Peter Thaleikis for privately reporting it to our team. Please make sure you are using the latest version on your website.
 
