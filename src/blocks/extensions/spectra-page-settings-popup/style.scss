@@ -1,0 +1,24 @@
+.spectra-support-container {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding: 8px;
+	border: 0.5px solid #d6cdff;
+	border-radius: 5px;
+	background-color: #f3f0ff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	z-index: 1000000;
+
+	.spectra-support-icon {
+		height: 100%;
+	}
+	.spectra-support-text {
+		font-size: 13px;
+		font-weight: 400;
+		font-family: Figtree, sans-serif;
+		color: #111827;
+	}
+}

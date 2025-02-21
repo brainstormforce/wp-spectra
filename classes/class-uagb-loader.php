@@ -69,6 +69,49 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			add_action( 'plugins_loaded', array( $this, 'load_plugin' ) );
 
 			add_action( 'init', array( $this, 'init_actions' ) );
+
+			add_action( 'enqueue_block_editor_assets', array( $this, 'spectra_add_editor_banner' ) );
+		}
+
+		/**
+		 * Adds the banner in the editor.
+		 *
+		 * @since X.X.X
+		 *
+		 * @return void
+		 */
+		public function spectra_add_editor_banner() {
+			wp_enqueue_script(
+				'spectra-upsell-banner',
+				UAGB_URL . 'admin-core/assets/build/editor.js',
+				array( 'wp-edit-post', 'wp-i18n', 'wp-element', 'wp-components', 'wp-data' ),
+				UAGB_VER, 
+				true
+			);
+		
+			wp_enqueue_style(
+				'spectra-upsell-banner-tailwind-style',
+				UAGB_URL . 'admin-core/assets/build/editor.css',
+				array(),
+				UAGB_VER
+			);
+
+			wp_enqueue_style(
+				'spectra-upsell-banner-style',
+				UAGB_URL . 'admin-core/assets/build/style-editor.css',
+				array(),
+				UAGB_VER
+			);
+		
+			// Pass any necessary data to the script.
+			wp_localize_script(
+				'spectra-upsell-banner',
+				'spectraBannerData',
+				array(
+					'pro_url' => 'https://spectra.com/pro',
+					'message' => __( 'Upgrade to Spectra Pro to unlock amazing features!', 'ultimate-addons-for-gutenberg' ),
+				) 
+			);
 		}
 
 		/**
