@@ -48,8 +48,6 @@ const CollapsePanels = () => {
 				) }
 			>
 				<Switch
-					aria-label="Switch Element"
-					id="switch-element"
 					value={ enableCollapsePanelsStatus }
 					onChange={ updateEnableCollapsePanelsStatus }
 					size="md"

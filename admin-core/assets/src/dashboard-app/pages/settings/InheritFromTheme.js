@@ -44,8 +44,6 @@ const InheritFromThemeRender = () => {
 				) }
 			>
 				<Switch
-					aria-label="Switch Element"
-					id="switch-element"
 					value={ enableInheritTheme }
 					onChange={ updateEnableInheritFromTheme }
 					size="md"

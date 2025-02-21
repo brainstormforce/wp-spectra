@@ -231,7 +231,7 @@ const Settings = () => {
 			<UagbSidebar navigation={ navigation } />
 
 			{ 'block-settings' === currentTab ? (
-				<Container className="w-full max-w-[696px] mx-auto h-full pt-8" direction="column" gap="xl">
+				<Container className="w-full max-w-[696px] mx-auto h-full pt-8 pr-4" direction="column" gap="xl">
 					<Container align="center" justify="between">
 						<Title
 							className="[&_h2]:text-text-primary text-xl"
@@ -288,7 +288,7 @@ const Settings = () => {
 					</Container>
 				</Container>
 			) : (
-				<Container className="w-full max-w-[696px] mx-auto h-full pt-8" direction="column" gap="xl">
+				<Container className="w-full max-w-[696px] mx-auto h-full pt-8 pr-4" direction="column" gap="xl">
 					<Container align="center" justify="between">
 						<Title
 							className="[&_h2]:text-text-primary text-xl"

@@ -211,11 +211,9 @@ const InstagramUsers = () => {
 							payload: __( 'Account Linked!', 'ultimate-addons-for-gutenberg' ),
 						} );
 						highlightLinkedUser( userID );
-						setTimeout( () => {
-							handleInstaLinkUserLable();
-							setTempToken( '' );
-							theButton.disabled = false;
-						}, 1000 );
+						handleInstaLinkUserLable();
+						setTempToken( '' );
+						theButton.disabled = false;
 					} else {
 						setLinkingUser( false );
 						handleInstaLinkUserLable( 'failed' );
@@ -316,7 +314,7 @@ const InstagramUsers = () => {
 			const RenderUserDetails = () => (
 				<div
 					className={ uagbClassNames( [
-						'relative h-16 p-2 pr-4 m-2.5 rounded-md flex border transition-colors',
+						'relative h-16 p-2 pr-4 m-2.5 rounded-md flex border transition-colors custom-border',
 						user.isCurrentlyActive && ! isPersonalAccount
 							? 'border-border-subtle hover:border-border-strong'
 							: 'border-red-600',
@@ -330,13 +328,14 @@ const InstagramUsers = () => {
 				>
 					<button
 						className={ uagbClassNames( [
-							'absolute top-0 right-0 w-4 h-4 -mt-2 -mr-2 box-content flex items-center justify-center rounded-full border border-white  transition-colors',
+							'absolute top-0 right-0 w-4 h-4 -mt-2 -mr-2 box-content flex items-center justify-center rounded-full cursor-pointer custom-border border-white transition-colors',
 							user.isCurrentlyActive && ! isPersonalAccount
 								? 'bg-slate-500 hover:bg-red-600'
 								: 'bg-red-600',
 						] ) }
 						aria-label={ __( 'Unlink', 'ultimate-addons-for-gutenberg' ) }
 						onClick={ () => unlinkUser( user.userName ) }
+						style={ { padding: '0', border: 'none' } }
 					>
 						<svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path
@@ -458,7 +457,7 @@ const InstagramUsers = () => {
 					className={ uagbClassNames( [
 						! tempToken
 							? 'cursor-not-allowed bg-slate-200 text-slate-400'
-							: 'bg-spectra text-white hover:bg-spectra-hover focus:bg-spectra-hover',
+							: 'bg-spectra text-white hover:bg-spectra-hover focus:bg-spectra-hover cursor-pointer custom-border',
 						'flex items-center w-auto px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm focus:outline-none transition-all',
 					] ) }
 					disabled={ '' === tempToken ? true : false }

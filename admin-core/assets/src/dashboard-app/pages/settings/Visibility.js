@@ -156,8 +156,6 @@ const Visibility = () => {
 	)}
 			>
 				<Switch
-					aria-label="Switch Element"
-					id="switch-element"
 					value={ visibilityMode === 'comingsoon' }
 					onChange={ () => updateVisibilityMode( 'comingsoon' ) }
 					size="md"
@@ -177,8 +175,6 @@ const Visibility = () => {
 				) }
 			>
 				<Switch
-					aria-label="Switch Element"
-					id="switch-element"
 					value={ visibilityMode === 'maintenance' }
 					onChange={ () => updateVisibilityMode( 'maintenance' ) }
 					size="md"

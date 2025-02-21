@@ -48,8 +48,6 @@ const CopyPasteStyles = () => {
 				) }
 			>
 				<Switch
-					aria-label="Switch Element"
-					id="switch-element"
 					value={ enableCopyPasteStylesStatus }
 					onChange={ updateEnableCopyPasteStylesStatus }
 					size="md"

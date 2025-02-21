@@ -47,8 +47,6 @@ const LoadFontAwesome5 = () => {
 				settingText={ __( 'Enable this to make sure all previously used Font Awesome 5 icons are displayed correctly while using the Font Awesome 6 library.', 'ultimate-addons-for-gutenberg' ) }
 			>
 				<Switch
-					aria-label="Switch Element"
-					id="switch-element"
 					value={ enableFontAwesome5Status }
 					onChange={ updateEnableFontAwesome5Status }
 					size="md"

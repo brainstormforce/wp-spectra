@@ -49,8 +49,6 @@ const LoadFontsLocally = () => {
 				) }
 			>
 				<Switch
-					aria-label="Switch Element"
-					id="switch-element"
 					value={ enableLoadFontsLocallyStatus }
 					onChange={ updateLoadFontsLocallyStatus }
 					size="md"

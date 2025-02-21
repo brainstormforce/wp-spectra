@@ -1,5 +1,4 @@
 .uagb-upgrade-pro-wrap {
-	padding: 0 12px;
 
 	.uagb-button-link {
 		display: block;
@@ -150,4 +149,21 @@ a.uagb-upgrade-trigger:active {
 
 .uag-advance-panel-body-animations .uagb-upgrade-pro-wrap {
 	margin-top: 16px;
+}
+
+.spectra-support-container {
+	.spectra-support-text {
+		font-size: 13px;
+		font-weight: 400;
+		font-family: Figtree, sans-serif;
+		color: #111827;
+	}
+}
+
+.uagb-remove-ring input[type="checkbox"],
+.uagb-remove-ring a,
+.uagb-remove-ring {
+	outline: none;
+	--tw-ring-inset: auto;
+	box-shadow: unset;
 }

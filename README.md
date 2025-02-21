@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.7  
-**Stable tag:** 2.19.0  
+**Stable tag:** 2.19.1  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -30,7 +30,7 @@ Most helpful links
 
 <strong>DESIGN BEAUTIFUL FAST LOADING WEBSITES DIRECTLY ON THE WORDPRESS BLOCK EDITOR (GUTENBERG EDITOR) WITHOUT CODING</strong>
 
-<a href="https://bsf.io/spectra-demo" target="_blank" rel="">Try it out on a free dummy site</a>
+<a href="https://bsf.io/spectra-demo" target="_blank" rel="">Try the live demo of Spectra</a>
 
 Our mission is to empower web designers like you with an end-to-end solution for building stunning websites.
 
@@ -220,11 +220,14 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ### x.x.x ###
 * Fix: Popup Builder - Resolved an issue wherein the popup builder page in the admin dashboard throws a console error.
 * Fix: Forms - Resolved an issue wherein the submit button hover background color is not working as intended on frontend.
+* Fix: Post Masonry - Resolved an issue wherein the Post Masonry block was getting a block recovery issue.
 
-### 2.19.0 - 11th February 2025 ###
+### 2.19.1 - Wednesday, 19th February 2025 ###
+* This update addressed a security bug. Props to Peter Thaleikis for privately reporting it to our team. Please make sure you are using the latest version on your website.
+
+### 2.19.0 - Thursday, 13th February 2025 ###
 * New: Rebuilt the Spectra Dashboard with the new Force UI, enhancing user experience with a modern and intuitive interface.
-* New: Added placeholder blocks to prompt required plugin installations.
-* Improvement: Improved NPS notice behavior by ensuring it appears every two weeks, removing previous conditions based on block count.
+* Improvement: Insert blocks to streamline workflow.
 * Improvement: Post Grid & Post Carousel - Added control for taxonomy bottom spacing.
 * Fix: Container – Resolved an issue where the unit for the X position of the background image was not copied when using the "Copy-Paste Style" feature.
 * Fix: Heading - Resolved an issue where the Heading block, when assigned a paragraph tag, was not translatable.
@@ -240,16 +243,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Lottie - Resolved an issue where Lottie animations could not be replaced.
 * Fix: Global - Resolved an issue wherein assets would not load for single page templates when using FSE themes.
 * Fix: Global - Resolved an issue wherein styles would not be reflected when converting any block to a Template Part in Full Site Editing theme templates.
-
-### 2.18.1 - Wednesday, 8th January 2025 ###
-* Improvement: Global - Added responsive support for gradient background settings.
-* Fix: Image Gallery - Removed the automatic maximum limit for galleries with less than 8 images.
-* Fix: Tabs - Resolved an issue wherein the tabs in vertical layouts were only clickable on the title.
-* Fix: Global - Resolved an issue wherein the translated setting panels in some Spectra blocks would cause some Spectra Pro features in those blocks to not work as expected.
-* Fix: Global - Resolved an issue causing a php error for str_replace() for font loading.
-* Fix: Global - Resolved an issue wherein the self-hosted Google Fonts would not work as intended on the multisite's first sub-site setup.
-* Fix: Global - Resolved an issue in which some static and dynamic javascript strings were not translatable.
-* Fix: Global - Resolved an issue where migration buttons were not clickable, preventing the migration process from running as expected.
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 

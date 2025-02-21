@@ -70,8 +70,6 @@ const AssetsGeneration = () => {
 				currentSetting={ renderText }
 			>
 				<Switch
-					aria-label="Switch Element"
-					id="switch-element"
 					value={ fileGenerationStatus }
 					onChange={ updateFileGenerationStatus }
 					size="md"

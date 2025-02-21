@@ -49,8 +49,6 @@ const BetaUpdates = () => {
 				) }
 			>
 				<Switch
-					aria-label="Switch Element"
-					id="switch-element"
 					value={ enableBetaStatus }
 					onChange={ updateEnableBetaStatus }
 					size="md"

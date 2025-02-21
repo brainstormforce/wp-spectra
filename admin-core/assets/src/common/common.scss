@@ -582,10 +582,6 @@
 	width: 100% !important;
 }
 
-[data-floating-ui-focusable] {
-	z-index: 9999999 !important;
-}
-
 .unlock-pro-features-dropdown-container {
 	// Empty line before the @media rule.
 	@media (max-width: 1300px) and (min-width: 1024px) {
@@ -609,4 +605,17 @@
 
 .block-item:hover {
 	outline: 1px solid #ece5fd !important;
+}
+
+.custom-border {
+	border: 1px solid #e5e7eb;
+	transition: border-color 0.2s ease-in-out;
+}
+
+.custom-border:hover {
+	border-color: #6b7280;
+}
+
+[data-floating-ui-focusable] {
+	z-index: 9999 !important;
 }

@@ -863,6 +863,27 @@ class UAGB_Init_Blocks {
 	}
 
 	/**
+	 * Get the status of a plugin.
+	 *
+	 * @since x.x.x
+	 *
+	 * @param  string $plugin_init_file Plugin init file.
+	 * @return string
+	 */
+	public static function get_plugin_status( $plugin_init_file ) {
+
+		$installed_plugins = get_plugins();
+
+		if ( ! isset( $installed_plugins[ $plugin_init_file ] ) ) {
+			return __( 'Install', 'ultimate-addons-for-gutenberg' );
+		} elseif ( is_plugin_active( $plugin_init_file ) ) {
+			return __( 'Activated', 'ultimate-addons-for-gutenberg' );
+		} else {
+			return __( 'Installed', 'ultimate-addons-for-gutenberg' );
+		}
+	}
+
+	/**
 	 * Enqueue Gutenberg block assets for backend editor.
 	 *
 	 * @since 1.0.0
@@ -915,6 +936,8 @@ class UAGB_Init_Blocks {
 			array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
 			UAGB_VER
 		);
+
+		wp_localize_script( 'uagb-block-editor-js', 'uag_react', array( 'pro_plugin_status' => self::get_plugin_status( 'spectra-pro/spectra-pro.php' ) ) );
 
 		wp_enqueue_script( 'uagb-deactivate-block-js', UAGB_URL . 'admin/assets/blocks-deactivate.js', array( 'wp-blocks' ), UAGB_VER, true );
 
@@ -1273,7 +1296,8 @@ class UAGB_Init_Blocks {
 		$block_id = 'uagb-block-' . $block['attrs']['block_id'];
 
 		// Replace the block id with the block id and the style class name.
-		$html = str_replace( $block_id, $block_id . ' ' . $style_class_name, $block_content );
+		$replacement_string = esc_attr( $block_id ) . ' ' . esc_attr( $style_class_name );
+		$html               = str_replace( $block_id, $replacement_string, $block_content );
 
 		return $html;
 	}

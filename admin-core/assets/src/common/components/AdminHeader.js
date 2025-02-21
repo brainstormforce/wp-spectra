@@ -44,6 +44,17 @@ const AdminHeader = ( props ) => {
 	const creditDetails = uag_react.zip_ai_credit_details;
 
 	useEffect( () => {
+		const rssButton = document.querySelector( '.whats-new-rss-trigger-button' );
+		if ( rssButton ) {
+			rssButton.style.width = '100%';
+			rssButton.style.height = '100%';
+			rssButton.style.display = 'flex';
+			rssButton.style.justifyContent = 'center';
+			rssButton.style.alignItems = 'center';
+		}
+	}, [] );
+
+	useEffect( () => {
 		// Function to handle the Esc key press
 		const handleEscKeyPress = ( event ) => {
 			if ( event.key === 'Escape' && clicked ) {
@@ -328,9 +339,7 @@ const AdminHeader = ( props ) => {
 						</a>
 					</Topbar.Item>
 
-					<Topbar.Item>
-						<div id="spectra-whats-new" size={ 16 }></div>
-					</Topbar.Item>
+					<div id="spectra-whats-new" size={ 16 }></div>
 
 					<Topbar.Item className="relative after:content-[''] after:inline-block after:size-1.5 after:bg-background-important after:rounded-full after:absolute after:-top-0.5 after:left-5">
 						<DropdownMenu placement="bottom-end" isOpen={ isDropOpen2 } onOpenChange={ setIsDropOpen2 }>
