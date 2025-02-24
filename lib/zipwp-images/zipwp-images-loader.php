@@ -14,7 +14,6 @@ namespace ZipWP_Images;
  * @since 1.0.0
  */
 class Zipwp_Images_Loader {
-
 	/**
 	 * Instance
 	 *
@@ -23,6 +22,19 @@ class Zipwp_Images_Loader {
 	 * @since 1.0.0
 	 */
 	private static $instance = null;
+
+	/**
+	 * Constructor
+	 *
+	 * @since 1.0.0
+	 */
+	public function __construct() {
+
+		spl_autoload_register( [ $this, 'autoload' ] );
+
+		add_action( 'init', [ $this, 'load_textdomain' ] );
+		add_action( 'wp_loaded', [ $this, 'load_files' ] );
+	}
 
 	/**
 	 * Initiator
@@ -43,7 +55,7 @@ class Zipwp_Images_Loader {
 	 * @param string $class class name.
 	 * @return void
 	 */
-	public function autoload( $class ) {
+	public function autoload( $class ): void {
 		if ( 0 !== strpos( $class, __NAMESPACE__ ) ) {
 			return;
 		}
@@ -67,26 +79,13 @@ class Zipwp_Images_Loader {
 	}
 
 	/**
-	 * Constructor
-	 *
-	 * @since 1.0.0
-	 */
-	public function __construct() {
-
-		spl_autoload_register( [ $this, 'autoload' ] );
-
-		add_action( 'wp_loaded', [ $this, 'load_textdomain' ] );
-		add_action( 'wp_loaded', [ $this, 'load_files' ] );
-	}
-
-	/**
 	 * Load Files
 	 *
 	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
-	public function load_files() {
+	public function load_files(): void {
 		require_once ZIPWP_IMAGES_DIR . 'classes/zipwp-images-script.php';
 		require_once ZIPWP_IMAGES_DIR . 'classes/zipwp-images-api.php';
 	}
@@ -100,7 +99,7 @@ class Zipwp_Images_Loader {
 	 * @since 1.0.0
 	 * @return void
 	 */
-	public function load_textdomain() {
+	public function load_textdomain(): void {
 		// Default languages directory.
 		$lang_dir = ZIPWP_IMAGES_DIR . 'languages/';
 

@@ -4,7 +4,7 @@
  *
  * Loads latest UTM Analytics library in environment.
  *
- * @since x.x.x
+ * @since 2.19.2
  * @package UTM Analytics
  */
 
@@ -23,7 +23,7 @@ if ( ! class_exists( 'UAGB_Utm_Analytics' ) ) :
 		/**
 		 * Instance
 		 *
-		 * @since x.x.x
+		 * @since 2.19.2
 		 * @var (Object) UAGB_Utm_Analytics
 		 */
 		private static $instance = null;
@@ -31,7 +31,7 @@ if ( ! class_exists( 'UAGB_Utm_Analytics' ) ) :
 		/**
 		 * Get Instance
 		 *
-		 * @since x.x.x
+		 * @since 2.19.2
 		 *
 		 * @return object Class object.
 		 */
@@ -46,7 +46,7 @@ if ( ! class_exists( 'UAGB_Utm_Analytics' ) ) :
 		/**
 		 * Constructor.
 		 *
-		 * @since x.x.x
+		 * @since 2.19.2
 		 */
 		private function __construct() {
 			$this->version_check();

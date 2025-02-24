@@ -876,7 +876,7 @@ class UAGB_Init_Blocks {
 	/**
 	 * Get the status of a plugin.
 	 *
-	 * @since x.x.x
+	 * @since 2.19.2
 	 *
 	 * @param  string $plugin_init_file Plugin init file.
 	 * @return string

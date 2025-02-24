@@ -353,16 +353,16 @@
 		},
 		{
 			"name": "brainstormforce/zipwp-images",
-			"version": "1.0.14",
+			"version": "1.0.15",
 			"source": {
 				"type": "git",
 				"url": "git@github.com:brainstormforce/zipwp-images.git",
-				"reference": "f4ac4ffee77b2798e22d14317442d10be579d3da"
+				"reference": "a8f5bd482ecb4a84a50a9e62348f182224c54499"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/brainstormforce/zipwp-images/zipball/f4ac4ffee77b2798e22d14317442d10be579d3da",
-				"reference": "f4ac4ffee77b2798e22d14317442d10be579d3da",
+				"url": "https://api.github.com/repos/brainstormforce/zipwp-images/zipball/a8f5bd482ecb4a84a50a9e62348f182224c54499",
+				"reference": "a8f5bd482ecb4a84a50a9e62348f182224c54499",
 				"shasum": ""
 			},
 			"require": {
@@ -371,6 +371,7 @@
 			"require-dev": {
 				"automattic/vipwpcs": "^2.3",
 				"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+				"nunomaduro/phpinsights": "^2.12",
 				"php-stubs/generator": "^0.8.2",
 				"php-stubs/wordpress-stubs": "^6.1",
 				"phpcompatibility/php-compatibility": "^9.3",
@@ -393,6 +394,12 @@
 				"phpstan": [
 					"vendor/bin/phpstan --memory-limit=2048M analyse"
 				],
+				"insights": [
+					"./vendor/bin/phpinsights analyse -v --no-interaction"
+				],
+				"insights:fix": [
+					"./vendor/bin/phpinsights analyse --fix --no-interaction"
+				],
 				"gen-stubs": [
 					"vendor/bin/generate-stubs artifact/phpstan/zipwp-images/ --out=tests/php/stubs/zipwp-images-stubs.php && rm -rf artifact/phpstan"
 				],
@@ -411,10 +418,10 @@
 			],
 			"description": "Free images library from ZipWP",
 			"support": {
-				"source": "https://github.com/brainstormforce/zipwp-images/tree/1.0.14",
+				"source": "https://github.com/brainstormforce/zipwp-images/tree/1.0.15",
 				"issues": "https://github.com/brainstormforce/zipwp-images/issues"
 			},
-			"time": "2024-11-28T09:50:17+00:00"
+			"time": "2025-02-18T08:10:59+00:00"
 		},
 		{
 			"name": "composer/installers",
