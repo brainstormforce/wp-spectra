@@ -961,7 +961,7 @@ function styling( attributes, clientId, name, deviceType ) {
 			selectors[
 				' .uagb-forms-main-form  .uagb-forms-main-submit-button-wrap:hover .uagb-forms-main-submit-button.wp-block-button__link'
 			] = {
-				'background-color': submitBgColorHover,
+				'background': submitBgColorHover,
 			};
 		} else if ( 'gradient' === submitBgHoverType ) {
 			const hoverbackgroundAttributes = {
