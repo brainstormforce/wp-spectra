@@ -4,7 +4,7 @@
 		"Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
 		"This file is @generated automatically"
 	],
-	"content-hash": "d64b98f721bb595a01b5b77530516d5a",
+	"content-hash": "5b7312e662fe65164ae076158360d0f2",
 	"packages": [
 		{
 			"name": "automattic/vipwpcs",
@@ -232,6 +232,59 @@
 				"issues": "https://github.com/brainstormforce/nps-survey/issues"
 			},
 			"time": "2025-01-14T06:03:52+00:00"
+		},
+		{
+			"name": "brainstormforce/utm-analytics",
+			"version": "0.0.3",
+			"source": {
+				"type": "git",
+				"url": "git@github.com:brainstormforce/utm-analytics.git",
+				"reference": "b7594cabe3ef954d6dc2e715b4e7c883069397b7"
+			},
+			"dist": {
+				"type": "zip",
+				"url": "https://api.github.com/repos/brainstormforce/utm-analytics/zipball/b7594cabe3ef954d6dc2e715b4e7c883069397b7",
+				"reference": "b7594cabe3ef954d6dc2e715b4e7c883069397b7",
+				"shasum": ""
+			},
+			"require-dev": {
+				"automattic/vipwpcs": "^2.3",
+				"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+				"php-stubs/generator": "^0.8.2",
+				"php-stubs/wordpress-stubs": "^6.1",
+				"phpcompatibility/php-compatibility": "^9.3",
+				"phpstan/phpstan": "^1.9",
+				"squizlabs/php_codesniffer": "^3.5",
+				"szepeviktor/phpstan-wordpress": "^1.1",
+				"wp-coding-standards/wpcs": "^2.2"
+			},
+			"type": "wordpress-plugin",
+			"scripts": {
+				"format": [
+					"vendor/bin/phpcbf"
+				],
+				"lint": [
+					"vendor/bin/phpcs"
+				],
+				"test": [
+					"vendor/bin/phpunit"
+				],
+				"phpstan": [
+					"vendor/bin/phpstan --memory-limit=2048M analyse"
+				],
+				"gen-stubs": [
+					"vendor/bin/generate-stubs artifact/phpstan/bsf-utm-analytics/ --out=tests/php/stubs/bsf-utm-analytics-stubs.php && rm -rf artifact/phpstan"
+				],
+				"update-stubs": [
+					"rm -f tests/php/stubs/bsf-utm-analytics-stubs.php && bash bin/build-folder-phpstan.sh && composer gen-stubs"
+				]
+			},
+			"description": "This library helps in managing utm analytics for bsf products",
+			"support": {
+				"source": "https://github.com/brainstormforce/utm-analytics/tree/0.0.3",
+				"issues": "https://github.com/brainstormforce/utm-analytics/issues"
+			},
+			"time": "2025-01-10T13:37:37+00:00"
 		},
 		{
 			"name": "brainstormforce/zip-ai",

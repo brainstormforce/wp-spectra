@@ -19,7 +19,7 @@ const QuickAccess = () => {
 				<div className="p-2 gap-1 items-center flex bg-background-primary rounded-md shadow-soft-shadow-inner">
 					<a
 						className="no-underline hover:underline hover:text-field-label"
-						href="https://wpspectra.com/vip-priority-support/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard"
+						href={uag_admin_react.spectra_website?.vipPrioritySupportUrl}
 						target="_blank"
 						rel="noreferrer"
 					>
@@ -41,7 +41,7 @@ const QuickAccess = () => {
 				<div className="p-2 gap-1 flex items-center bg-background-primary rounded-md shadow-soft-shadow-inner">
 					<a
 						className="no-underline hover:underline hover:text-field-label"
-						href="https://wpspectra.com/docs/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard"
+						href={uag_admin_react.spectra_website?.docsUrl}
 						target="_blank"
 						rel="noreferrer"
 					>

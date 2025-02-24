@@ -1,7 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import { useSelector, useDispatch } from 'react-redux';
 import getApiData from '@Controls/getApiData';
-
 import { Container, Label, Switch } from '@bsf/force-ui';
 
 const AssetsGeneration = () => {
@@ -44,7 +43,7 @@ const AssetsGeneration = () => {
 			{ __( 'Please read ', 'ultimate-addons-for-gutenberg' ) }
 
 			<a
-				href="https://wpspectra.com/docs/file-generation/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard"
+				href={uag_admin_react.spectra_website?.docsCategoryDynamicUrl?.replace( '#category#', 'file-generation' )}
 				target="_blank"
 				rel="noreferrer"
 				className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover"

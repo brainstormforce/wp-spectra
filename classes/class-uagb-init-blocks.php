@@ -583,6 +583,11 @@ class UAGB_Init_Blocks {
 			? ( is_plugin_active( 'sureforms/sureforms.php' ) ? 'active' : 'inactive' ) 
 			: 'not-installed';
 
+		if ( class_exists( '\BSF_UTM_Analytics\Inc\Utils' ) && is_callable( '\BSF_UTM_Analytics\Inc\Utils::update_referer' ) ) {
+			// If the plugin is found and the update_referer function is callable, update the referer with the corresponding product slug.
+			\BSF_UTM_Analytics\Inc\Utils::update_referer( 'ultimate-addons-for-gutenberg', 'sureforms' );
+		}
+
 		// If plugin is not installed, install it first.
 		if ( 'not-installed' === $status_of_sureforms ) {
 			include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
@@ -692,6 +697,12 @@ class UAGB_Init_Blocks {
 		$status_of_surecart = isset( $installed_plugins['surecart/surecart.php'] ) 
 			? ( is_plugin_active( 'surecart/surecart.php' ) ? 'active' : 'inactive' ) 
 			: 'not-installed';
+
+		if ( class_exists( '\BSF_UTM_Analytics\Inc\Utils' ) && is_callable( '\BSF_UTM_Analytics\Inc\Utils::update_referer' ) ) {
+			// If the plugin is found and the update_referer function is callable, update the referer with the corresponding product slug.
+			\BSF_UTM_Analytics\Inc\Utils::update_referer( 'ultimate-addons-for-gutenberg', 'surecart' );
+		}
+
 		// If plugin is not installed, install it first.
 		if ( 'not-installed' === $status_of_surecart ) {
 			include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
@@ -1133,6 +1144,7 @@ class UAGB_Init_Blocks {
 			'exclude_crops_iframes'                   => apply_filters( 'spectra_exclude_crops_iframes', array( '__privateStripeMetricsController8690' ) ),
 			'status_of_sureforms'                     => $status_of_sureforms,
 			'status_of_surecart'                      => $status_of_surecart,
+			'docsUrl'                                 => \UAGB_Admin_Helper::get_spectra_pro_url( '/docs/', 'free-plugin', 'uagb-editor-page', 'uagb-plugin' ),
 		);
 
 		wp_localize_script(

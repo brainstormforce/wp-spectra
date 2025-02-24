@@ -94,8 +94,8 @@ const PluginStats = () => {
 			)
 		) : (
 			<a
-					className='mr-2 ml-2 text-sm flex items-center text-spectra active:text-spectra hover:text-spectra focus:text-spectra cursor-pointer font-medium'
-					href={ 'https://wpspectra.com/pricing/?utm_source=dashboard&utm_medium=free-plugin&utm_campaign=top-bar' }
+				className='mr-2 ml-2 text-sm flex items-center text-spectra active:text-spectra hover:text-spectra focus:text-spectra cursor-pointer font-medium'
+				href={uag_admin_react.spectra_website?.topBar}
 				rel='noreferrer noopener'
 				target='_blank'
 			>
@@ -115,7 +115,7 @@ const PluginStats = () => {
 				<>
 					<a
 						className='mr-2 ml-2 text-sm flex items-center text-spectra active:text-spectra hover:text-spectra focus:text-spectra cursor-pointer font-medium'
-						href={'https://wpspectra.com/pricing/?utm_source=dashboard&utm_medium=free-plugin&utm_campaign=top-bar'}
+						href={uag_admin_react.spectra_website?.topBar}
 						rel='noreferrer noopener'
 						target='_blank'
 					>

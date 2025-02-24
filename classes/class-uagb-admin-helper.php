@@ -514,19 +514,48 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		/**
 		 * Get Spectra Pro URL with required params
 		 *
+		 * @param string $path     Path for the Website URL.
+		 * @param string $source   UMM source.
+		 * @param string $medium   UTM medium.
+		 * @param string $campaign UTM campaign.
 		 * @since 2.7.11
 		 * @return string
 		 */
-		public static function get_spectra_pro_url() {
-			$url       = SPECTRA_PRO_PLUGIN_URL;
-			$affiliate = get_option( 'spectra_partner_url_param', '' );
-			$affiliate = is_string( $affiliate ) ? sanitize_text_field( $affiliate ) : '';
+		public static function get_spectra_pro_url( $path, $source = '', $medium = '', $campaign = '' ) {
+			if ( ! defined( 'UAGB_URI' ) ) {
+				define( 'UAGB_URI', trailingslashit( 'https://wpspectra.com/' ) );
+			}
+			$url             = esc_url( UAGB_URI . $path );
+			$spectra_pro_url = trailingslashit( $url );
 
-			if ( ! empty( $affiliate ) ) {
-				return add_query_arg( array( 'bsf' => $affiliate ), SPECTRA_PRO_PLUGIN_URL );
+			// Modify the utm_source parameter using the UTM ready link function to include tracking information.
+			if ( class_exists( '\BSF_UTM_Analytics\Inc\Utils' ) && is_callable( '\BSF_UTM_Analytics\Inc\Utils::get_utm_ready_link' ) ) {
+				$spectra_pro_url = \BSF_UTM_Analytics\Inc\Utils::get_utm_ready_link( $spectra_pro_url, 'ultimate-addons-for-gutenberg' );
+			} else {
+				if ( ! empty( $source ) ) {
+					$spectra_pro_url = add_query_arg( 'utm_source', sanitize_text_field( $source ), $spectra_pro_url );
+				}
 			}
 
-			return esc_url( $url );
+			// Set up our URL if we have a medium.
+			if ( ! empty( $medium ) ) {
+				$spectra_pro_url = add_query_arg( 'utm_medium', sanitize_text_field( $medium ), $spectra_pro_url );
+			}
+
+			// Set up our URL if we have a campaign.
+			if ( ! empty( $campaign ) ) {
+				$spectra_pro_url = add_query_arg( 'utm_campaign', sanitize_text_field( $campaign ), $spectra_pro_url );
+			}
+
+			$spectra_pro_url = apply_filters( 'spectra_get_pro_url', $spectra_pro_url, $url );
+			$spectra_pro_url = remove_query_arg( 'bsf', is_string( $spectra_pro_url ) ? $spectra_pro_url : '' );
+
+			$ref = get_option( 'spectra_partner_url_param', '' );
+			if ( ! empty( $ref ) && is_string( $ref ) ) {
+				$spectra_pro_url = add_query_arg( 'bsf', sanitize_text_field( $ref ), $spectra_pro_url );
+			}
+
+			return $spectra_pro_url;
 		}
 	}
 
