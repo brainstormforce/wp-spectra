@@ -218,7 +218,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = 2.19.2 - Wednesday, 26th February 2025 =
-* Fix: Container - Resolved an issue wherein the container children width would not work as intended for slider and carousel content.
 * Fix: Forms - Resolved an issue wherein the submit button hover background color is not working as intended on frontend.
 * Fix: Popup Builder - Resolved an issue wherein the popup builder page in the admin dashboard throws a console error.
 * Fix: Post Masonry - Resolved an issue wherein the Post Masonry block was getting a block recovery issue.
