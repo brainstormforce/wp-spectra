@@ -138,7 +138,17 @@ const SpectraProUpsell = () => {
 
 				<div
 					className="flex items-center justify-center ml-4 cursor-pointer md:relative absolute top-1 right-1 md:top-0 md:right-0"
-					onClick={ () => document.querySelector( '.spectra-pro-banner' ).remove() }
+					onClick={ () => {
+						const dismissCount = parseInt(
+							localStorage.getItem( 'spectra-banner-dismiss-count' ) || '0',
+							10
+						);
+
+						localStorage.setItem( 'spectra-banner-dismiss-count', dismissCount + 1 );
+						localStorage.setItem( 'spectra-banner-dismissed-time', Date.now() );
+
+						document.querySelector( '.spectra-pro-banner' )?.remove();
+					} }
 				>
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path
@@ -225,7 +235,6 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 
 		fetchPricingData();
 	}, [] );
-
 
 	useEffect( () => {
 		const productName = pricingData[ selectedProduct ]?.product || '';
@@ -358,7 +367,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 						</div>
 					</div>
 
-					<div className='flex justify-end md:pr-[10px] pr-2 w-full'>
+					<div className="flex justify-end md:pr-[10px] pr-2 w-full">
 						<a
 							href="https://wpspectra.com/pricing/"
 							target="_blank"
@@ -467,31 +476,84 @@ const CustomDropdown = ( { options, onSelect } ) => {
 
 // Mounting the custom component in the editor.
 document.addEventListener( 'DOMContentLoaded', () => {
-	// eslint-disable-next-line no-undef
-	const mutationObserver = new MutationObserver( ( mutationsList, observer ) => {
-		// Look for the target element being added to the DOM
+	let prevDistractionFreeState = wp.data.select( 'core/edit-post' )?.isFeatureActive( 'distractionFree' );
+	const now = Date.now();
+
+	const insertBanner = () => {
+		const url = new URL( window.location.href );
+		const isSiteEditor = url.pathname === '/wp-admin/site-editor.php';
+		const isTemplateEditMode = url.searchParams?.get( 'canvas' ) === 'edit';
+
+		if ( isSiteEditor && ! isTemplateEditMode ) {
+			removeBanner();
+			return;
+		}
+
+		const dismissCount = parseInt( localStorage.getItem( 'spectra-banner-dismiss-count' ) || '0', 10 );
+
+		if ( dismissCount >= 2 ) {
+			return; // Do not show banner after second dismissal
+		}
+
+		const lastDismissed = parseInt( localStorage.getItem( 'spectra-banner-dismissed-time' ) || '0', 10 );
+		const TWO_WEEKS = 10000 * 60 * 60 * 24 * 14;
+
+		// Ensure it does NOT reappear within two weeks of refresh
+		if ( now - lastDismissed < TWO_WEEKS ) {
+			return;
+		}
+
+		if ( document.getElementById( 'spectra-pro-banner' ) ) {
+			return;
+		}
+
+		const isDistractionFree = wp.data.select( 'core/edit-post' )?.isFeatureActive( 'distractionFree' );
+
+		if ( isDistractionFree ) {
+			return;
+		}
+
 		const container = document.querySelector( '.interface-interface-skeleton__content' );
 
 		if ( container ) {
-			// Once found, stop observing and proceed with appending the custom banner
-			observer.disconnect(); // Stop observing further mutations
-
 			const target = document.createElement( 'div' );
 			target.id = 'spectra-pro-banner';
-			target.classList.add( 'components-notice-list' );
-			target.classList.add( 'components-editor-notices__dismissible' );
-			container.prepend( target ); // Append the custom notice
+			target.classList.add( 'components-notice-list', 'components-editor-notices__dismissible' );
 
+			container.prepend( target );
 			if ( uag_react?.pro_plugin_status === 'Install' ) {
-				// Render the custom React component inside the new div
 				wp.element.render( <SpectraProUpsell />, target );
 			}
 		}
-	} );
+	};
 
-	// Configure the observer to watch for child additions to the body
-	mutationObserver.observe( document.body, {
-		childList: true, // Look for added/removed children
-		subtree: true, // Observe the entire DOM subtree
+	const removeBanner = () => {
+		document.getElementById( 'spectra-pro-banner' )?.remove();
+	};
+
+	insertBanner();
+
+	const checkDistractionFreeChange = () => {
+		const currentDistractionFreeState = wp.data.select( 'core/edit-post' )?.isFeatureActive( 'distractionFree' );
+
+		if ( currentDistractionFreeState !== prevDistractionFreeState ) {
+			prevDistractionFreeState = currentDistractionFreeState;
+			removeBanner();
+
+			if ( ! currentDistractionFreeState ) {
+				insertBanner();
+			}
+		}
+	};
+
+	wp.data.subscribe( checkDistractionFreeChange );
+
+	wp.data.subscribe( () => {
+		const isPostEditor = wp.data.select( 'core/edit-post' ) !== undefined;
+		const isSiteEditor = wp.data.select( 'core/edit-site' ) !== undefined;
+
+		if ( isPostEditor || isSiteEditor ) {
+			insertBanner();
+		}
 	} );
 } );
