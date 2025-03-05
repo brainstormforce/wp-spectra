@@ -124,6 +124,13 @@ const Settings = ( props ) => {
 						onChange={ ( value ) => setAttributes( { lottieURl: value } ) }
 					/>
 				) }
+				<p className="uagb-settings-notice">
+					{__(
+						'Add ALLOW_UNFILTERED_UPLOADS to upload Lottie JSON files. Disable it after upload for better security.',
+						'ultimate-addons-for-gutenberg'
+					)
+					}
+				</p>
 			</UAGAdvancedPanelBody>
 			<UAGAdvancedPanelBody title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<MultiButtonsControl
