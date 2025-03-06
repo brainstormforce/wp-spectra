@@ -254,11 +254,11 @@ class Admin_Menu {
 		$installed_plugins = get_plugins();
 
 		if ( ! isset( $installed_plugins[ $plugin_init_file ] ) ) {
-			return __( 'Install', 'ultimate-addons-for-gutenberg' );
+			return 'Install';
 		} elseif ( is_plugin_active( $plugin_init_file ) ) {
-			return __( 'Activated', 'ultimate-addons-for-gutenberg' );
+			return 'Activated';
 		} else {
-			return __( 'Installed', 'ultimate-addons-for-gutenberg' );
+			return 'Installed';
 		}
 	}
 
@@ -278,12 +278,12 @@ class Admin_Menu {
 			$current_theme = wp_get_theme();
 			// Check if the current theme slug matches the provided theme slug.
 			if ( $current_theme->get_stylesheet() === $theme_slug ) {
-				return __( 'Activated', 'ultimate-addons-for-gutenberg' ); // Theme is active.
+				return 'Activated'; // Theme is active.
 			} else {
-				return __( 'Installed', 'ultimate-addons-for-gutenberg' ); // Theme is installed but not active.
+				return 'Installed'; // Theme is installed but not active.
 			}
 		} else {
-			return __( 'Install', 'ultimate-addons-for-gutenberg' ); // Theme is not installed at all.
+			return 'Install'; // Theme is not installed at all.
 		}
 	}
 	

@@ -217,13 +217,12 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= x.x.x =
-* Improvement: Lottie - Added help text to inform users about the `ALLOW_UNFILTERED_UPLOADS` constant for JSON file uploads.
-
 = 2.19.2 - Wednesday, 26th February 2025 =
+* Improvement: Lottie - Added help text to inform users about the `ALLOW_UNFILTERED_UPLOADS` constant for JSON file uploads.
 * Fix: Forms - Resolved an issue wherein the submit button hover background color is not working as intended on frontend.
 * Fix: Popup Builder - Resolved an issue wherein the popup builder page in the admin dashboard throws a console error.
 * Fix: Post Masonry - Resolved an issue wherein the Post Masonry block was getting a block recovery issue.
+* Fix: Global - Resolved an issue where the Pro installation was not detected when WPML CMS was active.
 
 = 2.19.1 - Wednesday, 19th February 2025 =
 * This update addressed a security bug. Props to Peter Thaleikis for privately reporting it to our team. Please make sure you are using the latest version on your website.

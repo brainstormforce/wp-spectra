@@ -9,12 +9,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-24T11:32:56+00:00\n"
+"POT-Creation-Date: 2025-03-05T18:48:51+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.8.1\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
 
 #. Plugin Name of the plugin
+#: ultimate-addons-for-gutenberg.php
 #: admin-core/inc/admin-menu.php:349
 #: admin-core/inc/admin-menu.php:350
 #: admin-core/inc/admin-menu.php:361
@@ -29,14 +30,17 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
+#: ultimate-addons-for-gutenberg.php
 msgid "https://www.brainstormforce.com"
 msgstr ""
 
 #. Description of the plugin
+#: ultimate-addons-for-gutenberg.php
 msgid "The Spectra extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster."
 msgstr ""
 
 #. Author of the plugin
+#: ultimate-addons-for-gutenberg.php
 msgid "Brainstorm Force"
 msgstr ""
 
@@ -168,29 +172,6 @@ msgstr ""
 msgid "Could not activate theme. Please activate from the Themes page."
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:257
-#: admin-core/inc/admin-menu.php:286
-#: classes/class-uagb-init-blocks.php:889
-#: admin-core/assets/build/dashboard-app.js:3
-msgid "Install"
-msgstr ""
-
-#: admin-core/inc/admin-menu.php:259
-#: admin-core/inc/admin-menu.php:281
-#: admin-core/inc/admin-menu.php:530
-#: classes/class-uagb-init-blocks.php:891
-#: admin-core/assets/build/dashboard-app.js:3
-msgid "Activated"
-msgstr ""
-
-#: admin-core/inc/admin-menu.php:261
-#: admin-core/inc/admin-menu.php:283
-#: admin-core/inc/admin-menu.php:528
-#: classes/class-uagb-init-blocks.php:893
-#: admin-core/assets/build/dashboard-app.js:3
-msgid "Installed"
-msgstr ""
-
 #: admin-core/inc/admin-menu.php:303
 #: admin-core/inc/admin-menu.php:397
 #: admin-core/assets/build/dashboard-app.js:3
@@ -243,8 +224,20 @@ msgstr ""
 msgid "Installing"
 msgstr ""
 
+#: admin-core/inc/admin-menu.php:528
+#: classes/class-uagb-init-blocks.php:893
+#: admin-core/assets/build/dashboard-app.js:3
+msgid "Installed"
+msgstr ""
+
 #: admin-core/inc/admin-menu.php:529
 msgid "Activating"
+msgstr ""
+
+#: admin-core/inc/admin-menu.php:530
+#: classes/class-uagb-init-blocks.php:891
+#: admin-core/assets/build/dashboard-app.js:3
+msgid "Activated"
 msgstr ""
 
 #: admin-core/inc/admin-menu.php:531
@@ -8055,6 +8048,11 @@ msgstr ""
 msgid "Extensions"
 msgstr ""
 
+#: classes/class-uagb-init-blocks.php:889
+#: admin-core/assets/build/dashboard-app.js:3
+msgid "Install"
+msgstr ""
+
 #: classes/class-uagb-init-blocks.php:1121
 msgid ""
 "Use custom class added in block's advanced settings to target your desired block. Examples:\n"
@@ -9293,6 +9291,13 @@ msgid "Free VS Pro"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:3
+#: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
+msgid "View plans"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:3
 msgid "Activating.."
 msgstr ""
 
@@ -9701,6 +9706,78 @@ msgstr ""
 #. translators: abbreviation for units
 #: admin-core/assets/build/dashboard-app.js:11
 msgid "You are using %1$s version, %2$s"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
+msgid "Spectra Pro"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
+msgid "Astra Pro"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
+msgid "Premium Starter Templates"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
+msgid "Ultimate Addons for Elementor"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
+msgid "Elementor Premium Templates"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
+msgid "Seamless Page Building"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
+msgid "Essential Toolkit"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
+msgid "SureFeedback"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
+msgid "SureWriter Pro"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
+msgid "SureTriggers Pro"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
+msgid "CartFlows Starter"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
+msgid "ZipWP Pro"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:11
@@ -10552,66 +10629,6 @@ msgid "Default route fallback"
 msgstr ""
 
 #: admin-core/assets/build/editor.js:1
-#: dist/blocks.js:11
-msgid "Spectra Pro"
-msgstr ""
-
-#: admin-core/assets/build/editor.js:1
-#: dist/blocks.js:11
-msgid "Astra Pro"
-msgstr ""
-
-#: admin-core/assets/build/editor.js:1
-#: dist/blocks.js:11
-msgid "Premium Starter Templates"
-msgstr ""
-
-#: admin-core/assets/build/editor.js:1
-#: dist/blocks.js:11
-msgid "Ultimate Addons for Elementor"
-msgstr ""
-
-#: admin-core/assets/build/editor.js:1
-#: dist/blocks.js:11
-msgid "Elementor Premium Templates"
-msgstr ""
-
-#: admin-core/assets/build/editor.js:1
-#: dist/blocks.js:11
-msgid "Seamless Page Building"
-msgstr ""
-
-#: admin-core/assets/build/editor.js:1
-#: dist/blocks.js:11
-msgid "Essential Toolkit"
-msgstr ""
-
-#: admin-core/assets/build/editor.js:1
-#: dist/blocks.js:11
-msgid "SureFeedback"
-msgstr ""
-
-#: admin-core/assets/build/editor.js:1
-#: dist/blocks.js:11
-msgid "SureWriter Pro"
-msgstr ""
-
-#: admin-core/assets/build/editor.js:1
-#: dist/blocks.js:11
-msgid "SureTriggers Pro"
-msgstr ""
-
-#: admin-core/assets/build/editor.js:1
-#: dist/blocks.js:11
-msgid "CartFlows Starter"
-msgstr ""
-
-#: admin-core/assets/build/editor.js:1
-#: dist/blocks.js:11
-msgid "ZipWP Pro"
-msgstr ""
-
-#: admin-core/assets/build/editor.js:1
 msgid "Ready to take your website to the next level with Spectra Pro?"
 msgstr ""
 
@@ -10621,11 +10638,6 @@ msgstr ""
 
 #: admin-core/assets/build/editor.js:1
 msgid "Learn More"
-msgstr ""
-
-#: admin-core/assets/build/editor.js:1
-#: dist/blocks.js:11
-msgid "View plans"
 msgstr ""
 
 #: blocks-config/uagb-controls/previewImage.js:3
@@ -15417,6 +15429,10 @@ msgstr ""
 
 #: dist/blocks.js:19
 msgid "Lottie Animation URL"
+msgstr ""
+
+#: dist/blocks.js:19
+msgid "Add ALLOW_UNFILTERED_UPLOADS to upload Lottie JSON files. Disable it after upload for better security."
 msgstr ""
 
 #: dist/blocks.js:19
