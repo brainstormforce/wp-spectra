@@ -9,7 +9,6 @@ import PageCustomCSS, { applyScopedCSS } from '../custom-page-css';
 import { useState, useEffect } from 'react';
 import { PanelBody, Modal } from '@wordpress/components';
 import { applyFilters } from '@wordpress/hooks';
-import SupportModalImage from './SupportModalImage.js';
 import './style.scss';
 
 const SpectraPageSettingsPopup = ( props ) => {
@@ -64,10 +63,23 @@ const SpectraPageSettingsPopup = ( props ) => {
 	);
 };
 
+const Image = () => {
+	let imgUrl = uagb_blocks_info.uagb_url;
+	imgUrl += '/assets/images/upsell/supportBanner.svg';
+
+	return (
+		<img
+			src={ imgUrl }
+			alt="Upsell Cover"
+			className="max-w-full h-auto"
+		/>
+	);
+}
+
 const SpectraSupport = () => {
 	const supportModalData = {
 		title: __( 'VIP Priority Support', 'ultimate-addons-for-gutenberg' ),
-		Image: SupportModalImage,
+		Image,
 		header: __( 'Enjoy Uninterrupted Productivity and Complete Peace of Mind', 'ultimate-addons-for-gutenberg' ),
 		description: __(
 			'Get the red carpet treatment! Exclusive support service designed for faster assistance and benefits.',
@@ -192,7 +204,7 @@ const SpectraSupport = () => {
 };
 
 const ProModal = ( { modalData, setIsModalOpen } ) => {
-	const { title, Image, header, description, features } = modalData;
+	const { title, header, description, features } = modalData;
 
 	const [ isMobile, setIsMobile ] = useState( window.innerWidth <= 768 );
 	const [ loading, setLoading ] = useState( true );
@@ -302,7 +314,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 			) : (
 				<>
 					<div className="w-full flex justify-center items-center mt-4">
-						<Image />
+						<modalData.Image />
 					</div>
 
 					<div className="mt-4">

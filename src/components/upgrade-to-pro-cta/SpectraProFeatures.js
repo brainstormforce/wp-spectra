@@ -1,9 +1,21 @@
 import { __ } from '@wordpress/i18n';
-import UpsellImage from './Images';
+
+const UpsellImage = () => {
+	let imgUrl = uagb_blocks_info.uagb_url;
+	imgUrl += '/assets/images/upsell/globalBanner.svg';
+
+	return (
+		<img
+			src={ imgUrl }
+			alt="Upsell Cover"
+			className="max-w-full h-auto"
+		/>
+	);
+};
 
 export const spectraProFeatures = {
 	'advanced-animations': {
-		image: <UpsellImage image="animationImage.gif" />,
+		image: <UpsellImage />,
 		title: __( 'Unlock Advanced Animations', 'ultimate-addons-for-gutenberg' ),
 		header: __( 'Make your pages visually stunning with advanced animations that capture attention.', 'ultimate-addons-for-gutenberg' ),
 		description: __( 'Take your website’s visual appeal to the next level with smooth, highly customizable animations. Control pacing, delays, and effects effortlessly.', 'ultimate-addons-for-gutenberg' ),
@@ -16,7 +28,7 @@ export const spectraProFeatures = {
 		],
 	},
 	'modal': {
-		image: <UpsellImage image="modalPro.svg" />,
+		image: <UpsellImage />,
 		title: __( 'Get Modal Pro', 'ultimate-addons-for-gutenberg' ),
 		header: __( 'Boost engagement with highly customizable modals that demand attention. Create modals with triggers, transitions, and animations.', 'ultimate-addons-for-gutenberg' ),
 		description: __( 'Add professional, high-converting modals with advanced triggers, seamless animations, and flexible customization.', 'ultimate-addons-for-gutenberg' ),
@@ -29,7 +41,7 @@ export const spectraProFeatures = {
 		],
 	},
 	'countdown': {
-		image: <UpsellImage image="countdown.svg" />,
+		image: <UpsellImage />,
 		title: __( 'Get Countdown Pro', 'ultimate-addons-for-gutenberg' ),
 		header: __( 'Increase urgency and boost conversions with advanced countdown timers. Perfect for sales, events, and promotions.', 'ultimate-addons-for-gutenberg' ),
 		description: __( 'Create real-time urgency with highly customizable countdown timers, evergreen deadlines, and smart expiry options.', 'ultimate-addons-for-gutenberg' ),
@@ -41,7 +53,7 @@ export const spectraProFeatures = {
 		],
 	},
 	'image-gallery': {
-		image: <UpsellImage image="imageGallery.svg" />,
+		image: <UpsellImage />,
 		title: __( 'Get Image Gallery Pro', 'ultimate-addons-for-gutenberg' ),
 		header: __( 'Transform your image galleries into interactive experiences with custom click actions and animations.', 'ultimate-addons-for-gutenberg' ),
 		description: __( 'Engage your audience with interactive image galleries featuring custom redirections, lightboxes, and effects.', 'ultimate-addons-for-gutenberg' ),
@@ -53,7 +65,7 @@ export const spectraProFeatures = {
 		],
 	},
 	'post-grid': {
-		image: <UpsellImage image="loopBuilder.svg" />,
+		image: <UpsellImage />,
 		title: __( 'Unlock Loop Builder', 'ultimate-addons-for-gutenberg' ),
 		header: __( 'Customize post layouts like never before with powerful loop builder options.', 'ultimate-addons-for-gutenberg' ),
 		description: __( 'Design stunning post grids with dynamic content, flexible layouts, and seamless integrations.', 'ultimate-addons-for-gutenberg' ),
@@ -65,7 +77,7 @@ export const spectraProFeatures = {
 		],
 	},
 	'dynamic-content': {
-		image: <UpsellImage image="dynamicContent.svg" />,
+		image: <UpsellImage />,
 		title: __( 'Unlock Dynamic Content Pro', 'ultimate-addons-for-gutenberg' ),
 		header: __( 'Deliver personalized content dynamically based on user behavior. Make your pages more relevant and engaging.', 'ultimate-addons-for-gutenberg' ),
 		description: __( 'Tailor content dynamically for users based on preferences, interactions, and data sources. Create truly personalized experiences.', 'ultimate-addons-for-gutenberg' ),
@@ -77,7 +89,7 @@ export const spectraProFeatures = {
 		],
 	},
 	'slider': {
-		image: <UpsellImage image="slider.svg" />,
+		image: <UpsellImage />,
 		title: __( 'Get Slider Pro', 'ultimate-addons-for-gutenberg' ),
 		header: __( 'Create Stunning Sliders with Enhanced Customization', 'ultimate-addons-for-gutenberg' ),
 		description: __( 'Take full control over your slider designs with advanced settings.', 'ultimate-addons-for-gutenberg' ),

@@ -1,17 +1,46 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { useEffect, useState, useRef } from '@wordpress/element';
-import { Button, Skeleton } from '@bsf/force-ui';
-import { Img, AccountModalImage } from './Images';
+import Images from './Images';
 import { Zap, X, Check } from 'lucide-react';
 import { Modal } from '@wordpress/components';
 import './style.scss';
 import '@Common/all-config.scss';
 
+const ButtonGhost = ( { modalBtn, children, ...props } ) => (
+	<button
+		{ ...props }
+		className={ `${
+			! modalBtn
+				? 'outline outline-1 border-none cursor-pointer transition-colors duration-300 ease-in-out text-xs font-semibold disabled:text-text-disabled p-2 rounded [&>svg]:size-4 gap-0.5 text-text-primary bg-transparent outline-transparent hover:bg-button-tertiary-hover'
+				: 'outline outline-1 border-none cursor-pointer transition-colors duration-300 ease-in-out font-semibold focus:ring-2 focus:ring-toggle-on focus:ring-offset-2 disabled:text-text-disabled p-2.5 rounded-md text-sm [&>svg]:size-5 gap-1 text-text-primary bg-transparent outline-transparent hover:bg-button-tertiary-hover'
+		}` }
+	>
+		<span className="px-1">{ children }</span>
+	</button>
+);
+
+const ButtonPrimary = ( { children, ...props } ) => (
+	<button
+		{ ...props }
+		className="outline outline-1 border-none cursor-pointer transition-colors duration-300 ease-in-out text-xs font-semibold disabled:text-text-disabled p-2 rounded [&>svg]:size-4 gap-0.5 text-text-on-color bg-button-primary hover:bg-button-primary-hover outline-button-primary hover:outline-button-primary-hover disabled:bg-button-disabled disabled:outline-button-disabled"
+	>
+		<span className="px-1">{ children }</span>
+	</button>
+);
+
+const CustomSkeleton = ( { width, height, addMarginTop = false } ) => (
+	<div
+		className={ `rounded-md bg-gray-200 animate-pulse w-${ width } h-${ height } mb-6 ${
+			addMarginTop ? 'mt-6' : ''
+		}` }
+	></div>
+);
+
 const SpectraProUpsell = () => {
 	const accountModalData = {
 		title: __( 'Unlock Pro Features', 'ultimate-addons-for-gutenberg' ),
-		Image: AccountModalImage,
+		Image: <Images image="globalBanner.svg" />,
 		header: __( 'Limitless Design with Spectra Pro!', 'ultimate-addons-for-gutenberg' ),
 		description: __(
 			'Experience design freedom with Spectra Pro. Utilize advanced blocks, extensions, and premium features to create a websites that stands out!',
@@ -86,11 +115,16 @@ const SpectraProUpsell = () => {
 	}, [ modalOpen ] );
 
 	return (
-		<div className="spectra-pro-banner flex items-center justify-between bg-[#f7f3ff] font-[Figtree]">
+		<div
+			className="spectra-pro-banner flex items-center justify-between bg-[#f7f3ff] font-[Figtree] px-4 z-[99999]"
+			style={ { border: '1px solid #ddd' } }
+		>
 			<div className="banner-before"></div>
 
 			<div className="banner-content">
-				<div className="banner-icon">{ Img() }</div>
+				<div className="banner-icon">
+					<Images image="bannerLogo.svg" />
+				</div>
 				<div className="banner-text">
 					<h3 className="banner-heading">
 						{ __(
@@ -107,9 +141,8 @@ const SpectraProUpsell = () => {
 				</div>
 				<div className="banner-actions">
 					<a href="https://wpspectra.com/pricing/" target="_blank" rel="noopener noreferrer">
-						<Button
-							variant="ghost"
-							size="sm"
+						<ButtonGhost
+							modalBtn={ false }
 							style={ {
 								outline: 'none !important',
 								boxShadow: 'unset !important',
@@ -117,15 +150,9 @@ const SpectraProUpsell = () => {
 							} }
 						>
 							{ __( 'Learn More', 'ultimate-addons-for-gutenberg' ) }
-						</Button>
+						</ButtonGhost>
 					</a>
-					<Button
-						isPrimary
-						href="#"
-						target="_blank"
-						rel="noopener noreferrer"
-						variant="primary"
-						size="sm"
+					<ButtonPrimary
 						onClick={ () => openModal() }
 						style={ {
 							outline: 'none !important',
@@ -133,7 +160,7 @@ const SpectraProUpsell = () => {
 						} }
 					>
 						{ __( 'Upgrade Now', 'ultimate-addons-for-gutenberg' ) }
-					</Button>
+					</ButtonPrimary>
 				</div>
 
 				<div
@@ -281,15 +308,13 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 
 			{ loading ? (
 				<>
-					<Skeleton className="w-48 h-6 rounded-md mb-6 mt-6" />
-					<Skeleton className="w-60 h-6 rounded-md mb-6" />
-					<Skeleton className="w-48 h-6 rounded-md mb-6" />
+					<CustomSkeleton width={ 48 } height={ 6 } addMarginTop={ true } />
+					<CustomSkeleton width={ 60 } height={ 6 } />
+					<CustomSkeleton width={ 48 } height={ 6 } />
 				</>
 			) : (
 				<>
-					<div className="w-full flex justify-center items-center mt-4">
-						<Image />
-					</div>
+					<div className="w-full flex justify-center items-center mt-4">{ Image }</div>
 
 					<div className="mt-4">
 						<h5 className="text-lg font-medium m-0">{ header }</h5>
@@ -335,9 +360,8 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 						<div className="flex items-center justify-between gap-2">
 							{ pricingData && selectedProduct && (
 								<>
-									<Button
-										variant="ghost"
-										size="md"
+									<ButtonGhost
+										modalBtn={ true }
 										style={ {
 											outline: 'none !important',
 											boxShadow: 'unset !important',
@@ -349,8 +373,10 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 											<span className="text-text-tertiary font-normal">
 												{ __( '/year', 'ultimate-addons-for-gutenberg' ) }
 											</span>
-										) : null }
-									</Button>
+										) : (
+											'null'
+										) }
+									</ButtonGhost>
 
 									<a
 										href={ pricingData[ selectedProduct ].checkout_url }
@@ -358,9 +384,9 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 										rel="noreferrer"
 										className="no-underline text-text-on-color"
 									>
-										<Button className="" size="sm" tag="button" type="button" variant="primary">
+										<ButtonPrimary>
 											{ __( 'Buy Now', 'ultimate-addons-for-gutenberg' ) }
-										</Button>
+										</ButtonPrimary>
 									</a>
 								</>
 							) }
