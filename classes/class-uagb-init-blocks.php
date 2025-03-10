@@ -875,6 +875,7 @@ class UAGB_Init_Blocks {
 
 	/**
 	 * Get the status of a plugin.
+	 * This function is used internally in the editor upsell scripts to check if Spectra Pro is installed or not.
 	 *
 	 * @since 2.19.2
 	 *
@@ -886,11 +887,11 @@ class UAGB_Init_Blocks {
 		$installed_plugins = get_plugins();
 
 		if ( ! isset( $installed_plugins[ $plugin_init_file ] ) ) {
-			return __( 'Install', 'ultimate-addons-for-gutenberg' );
+			return 'Install';
 		} elseif ( is_plugin_active( $plugin_init_file ) ) {
-			return __( 'Activated', 'ultimate-addons-for-gutenberg' );
+			return 'Activated';
 		} else {
-			return __( 'Installed', 'ultimate-addons-for-gutenberg' );
+			return 'Installed';
 		}
 	}
 
