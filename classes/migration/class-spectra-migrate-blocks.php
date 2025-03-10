@@ -112,11 +112,15 @@ class Spectra_Migrate_Blocks {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
+		// Sanitize and check if the nonce is valid.
+		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( $_POST['nonce'] ) : '';
+		if ( ! wp_verify_nonce( $nonce, 'wp_spectra_blocks_migration' ) ) {
+			$migrate_to_new = isset( $_GET['migrate_to_new'] ) ? sanitize_text_field( $_GET['migrate_to_new'] ) : false;
 
-		$migrate_to_new = isset( $_GET['migrate_to_new'] ) ? sanitize_text_field( $_GET['migrate_to_new'] ) : false; //phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		if ( 'yes' === $migrate_to_new ) {
-			spectra_log( 'Migration triggered via query parameter by an authorized user.' );
-				$this->migrate_blocks();
+			if ( 'yes' === $migrate_to_new ) {
+				spectra_log( 'Migration triggered via query parameter by an authorized user.' );
+					$this->migrate_blocks();
+			}
 		}
 	}
 

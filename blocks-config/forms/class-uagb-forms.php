@@ -354,9 +354,9 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 			if ( ! empty( $google_recaptcha_secret_key ) && empty( $google_recaptcha_site_key ) ) {
 				wp_send_json_error( 400 );
 			}
-
-			$form_data = isset( $_POST['form_data'] ) ? json_decode( stripslashes( $_POST['form_data'] ), true ) : array(); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-
+			// sanitizing form_data elements in later stage.
+			$form_data = isset( $_POST['form_data'] ) ? json_decode( wp_unslash( $_POST['form_data'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			
 			$body  = '';
 			$body .= '<div style="border: 50px solid #f6f6f6;">';
 			$body .= '<div style="padding: 15px;">';

@@ -176,10 +176,10 @@ class Admin_Menu {
 
 			$type = '';
 			if ( ! empty( $_POST['type'] ) ) {
-				$type = sanitize_key( wp_unslash( $_POST['type'] ) );
+				$type = sanitize_key( wp_unslash( sanitize_text_field( $_POST['type'] ) ) );
 			}
 
-			$plugin = sanitize_text_field( wp_unslash( $_POST['plugin'] ) );
+			$plugin = sanitize_text_field( wp_unslash( sanitize_text_field( $_POST['plugin'] ) ) );
 
 			if ( 'plugin' === $type ) {
 
@@ -188,7 +188,7 @@ class Admin_Menu {
 					wp_send_json_error( esc_html__( 'Plugin activation is disabled for you on this site.', 'ultimate-addons-for-gutenberg' ) );
 				}
 				if ( isset( $_POST['slug'] ) ) {
-					$slug = sanitize_key( wp_unslash( $_POST['slug'] ) );
+					$slug = sanitize_key( wp_unslash( sanitize_text_field( $_POST['slug'] ) ) );
 					if ( class_exists( '\BSF_UTM_Analytics\Inc\Utils' ) && is_callable( '\BSF_UTM_Analytics\Inc\Utils::update_referer' ) ) {
 						// If the plugin is found and the update_referer function is callable, update the referer with the corresponding product slug.
 						\BSF_UTM_Analytics\Inc\Utils::update_referer( 'ultimate-addons-for-gutenberg', $slug );
@@ -208,7 +208,7 @@ class Admin_Menu {
 			if ( 'theme' === $type ) {
 
 				if ( isset( $_POST['slug'] ) ) {
-					$slug = sanitize_key( wp_unslash( $_POST['slug'] ) );
+					$slug = sanitize_key( wp_unslash( sanitize_text_field( $_POST['slug'] ) ) );
 
 					// Check for permissions.
 					if ( ! ( current_user_can( 'switch_themes' ) ) ) {
@@ -323,7 +323,7 @@ class Admin_Menu {
 	public function settings_admin_scripts() {
 
 		// Enqueue admin scripts.
-		if ( ! empty( $_GET['page'] ) && ( $this->menu_slug === $_GET['page'] || false !== strpos( sanitize_text_field( $_GET['page'] ), $this->menu_slug . '_' ) ) || ( array_key_exists( 'post_type', $_GET ) && 'spectra-popup' === $_GET['post_type'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( ! empty( $_GET['page'] ) && ( $this->menu_slug === $_GET['page'] || false !== strpos( sanitize_text_field( $_GET['page'] ), $this->menu_slug . '_' ) ) || ( array_key_exists( 'post_type', $_GET ) && 'spectra-popup' === $_GET['post_type'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended -- $_GET['page'] does not provide nonce.
 			add_action( 'admin_enqueue_scripts', array( $this, 'styles_scripts' ) );
 		}
 
@@ -421,11 +421,11 @@ class Admin_Menu {
 	 */
 	public function render() {
 
-		$menu_page_slug = ( ! empty( $_GET['page'] ) ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : $this->menu_slug; //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$menu_page_slug = ( ! empty( $_GET['page'] ) ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : $this->menu_slug; //phpcs:ignore WordPress.Security.NonceVerification.Recommended -- $_GET['page'] does not provide nonce.
 		$page_action    = '';
 
-		if ( isset( $_GET['action'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$page_action = sanitize_text_field( wp_unslash( $_GET['action'] ) ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_GET['action'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended -- $_GET['page'] does not provide nonce.
+			$page_action = sanitize_text_field( wp_unslash( $_GET['action'] ) ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended -- $_GET['page'] does not provide nonce.
 			$page_action = str_replace( '_', '-', $page_action );
 		}
 
@@ -745,7 +745,7 @@ class Admin_Menu {
 
 		wp_set_script_translations( $handle, 'ultimate-addons-for-gutenberg' );
 		wp_enqueue_style( 'uag-admin-google-fonts' );
-		if ( ! empty( $_GET['page'] ) && ( array_key_exists( 'page', $_GET ) && 'spectra' === $_GET['page'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( ! empty( $_GET['page'] ) && ( array_key_exists( 'page', $_GET ) && 'spectra' === $_GET['page'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended -- $_GET['page'] does not provide nonce.
 			wp_enqueue_style( $handle );
 		}
 		wp_style_add_data( $handle, 'rtl', 'replace' );

@@ -841,6 +841,7 @@ class Common_Settings extends Ajax_Base {
 	 * @since 2.4.1
 	 */
 	public function insta_refresh_all_tokens() {
+		// nonce verification is done in above function check_permission_nonce.
 		$this->check_permission_nonce( 'uag_insta_refresh_all_tokens' );
 		if ( ! empty( $_POST['value'] ) && class_exists( '\SpectraPro\BlocksConfig\InstagramFeed\Block' ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Missing
 			\SpectraPro\BlocksConfig\InstagramFeed\Block::refresh_all_instagram_users();

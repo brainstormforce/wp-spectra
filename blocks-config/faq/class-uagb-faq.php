@@ -1298,7 +1298,7 @@ if ( ! class_exists( 'UAGB_Faq' ) ) {
 			?>
 			<span class="<?php echo esc_attr( $class ); ?> uagb-faq-icon-wrap">
 				<?php	
-				echo UAGB_Helper::render_svg_html( $icon ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				echo UAGB_Helper::render_svg_html( $icon ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Already escaped & sanitize inside render_svg_html().
 				?>
 			</span>
 			<?php
