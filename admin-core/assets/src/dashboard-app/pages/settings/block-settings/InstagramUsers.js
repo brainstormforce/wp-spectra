@@ -319,6 +319,9 @@ const InstagramUsers = () => {
 							? 'border-border-subtle hover:border-border-strong'
 							: 'border-red-600',
 					] ) }
+					style={ {
+						border: user.isCurrentlyActive && ! isPersonalAccount ? '1px solid #E5E7EB' : '1px solid red',
+					} }
 					id={ `Spectra-IG-User-${ user.userID }` }
 					onMouseEnter={ () => setCurrentHoveredUser( isPersonalAccount ? user.userName : '' ) }
 					onMouseLeave={ () => setCurrentHoveredUser( '' ) }

@@ -4952,10 +4952,14 @@ namespace {
         /**
          * Get Spectra Pro URL with required params
          *
+		 * @param string $path     Path for the Website URL.
+		 * @param string $source   UMM source.
+		 * @param string $medium   UTM medium.
+		 * @param string $campaign UTM campaign.
          * @since 2.7.11
          * @return string
          */
-        public static function get_spectra_pro_url()
+        public static function get_spectra_pro_url( $path, $source = '', $medium = '', $campaign = '' )
         {
         }
     }

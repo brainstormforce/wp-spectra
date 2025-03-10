@@ -8,7 +8,6 @@ import ResponsiveSlider from '@Components/responsive-slider';
 import Range from '@Components/range/Range.js';
 import UAGMediaPicker from '@Components/image';
 import UAGTabsControl from '@Components/tabs';
-
 import { InspectorControls, BlockControls, MediaReplaceFlow } from '@wordpress/block-editor';
 
 import { ToggleControl, ToolbarGroup, Icon, ExternalLink } from '@wordpress/components';
@@ -125,6 +124,13 @@ const Settings = ( props ) => {
 						onChange={ ( value ) => setAttributes( { lottieURl: value } ) }
 					/>
 				) }
+				<p className="uagb-settings-notice">
+					{__(
+						'Add ALLOW_UNFILTERED_UPLOADS to upload Lottie JSON files. Disable it after upload for better security.',
+						'ultimate-addons-for-gutenberg'
+					)
+					}
+				</p>
 			</UAGAdvancedPanelBody>
 			<UAGAdvancedPanelBody title={ __( 'Content', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
 				<MultiButtonsControl
@@ -317,7 +323,7 @@ const Settings = ( props ) => {
 						'ultimate-addons-for-gutenberg'
 					) }
 					<a
-						href={ `${ uagb_blocks_info.uagb_site_url }/docs/lottie/?utm_source=uagb-dashboard&utm_medium=uagb-editor-page&utm_campaign=uagb-plugin` }
+						href={ uagb_blocks_info.docsUrl }
 						target="__blank"
 					>
 						{ ' ' }

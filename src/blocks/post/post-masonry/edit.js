@@ -166,6 +166,9 @@ const UAGBPostMasonry = ( props ) => {
 			imageBottomSpace,
 			imageBottomSpaceTablet,
 			imageBottomSpaceMobile,
+			taxonomyBottomSpace,
+			taxonomyBottomSpaceTablet,
+			taxonomyBottomSpaceMobile,
 			titleBottomSpace,
 			titleBottomSpaceTablet,
 			titleBottomSpaceMobile,
@@ -216,6 +219,7 @@ const UAGBPostMasonry = ( props ) => {
 			rowGapUnit,
 			columnGapUnit,
 			imageBottomSpaceUnit,
+			taxonomyBottomSpaceUnit,
 			titleBottomSpaceUnit,
 			metaBottomSpaceUnit,
 			ctaBottomSpaceUnit,
@@ -1632,6 +1636,58 @@ const UAGBPostMasonry = ( props ) => {
 			</UAGAdvancedPanelBody>
 		);
 	};
+	const taxonomyStyle = () => {
+		return (
+			<UAGAdvancedPanelBody title={ __( 'Taxonomy', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
+				{ 'aboveTitle' === displayPostTaxonomyAboveTitle && 'highlighted' === taxStyle && (
+					<>
+						<AdvancedPopColorControl
+							label={ __( 'Taxonomy Text Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ highlightedTextColor }
+							data={ {
+								value: highlightedTextColor,
+								label: 'highlightedTextColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+						<AdvancedPopColorControl
+							label={ __( 'Highlighted Color', 'ultimate-addons-for-gutenberg' ) }
+							colorValue={ highlightedTextBgColor }
+							data={ {
+								value: highlightedTextBgColor,
+								label: 'highlightedTextBgColor',
+							} }
+							setAttributes={ setAttributes }
+						/>
+					</>
+				) }
+				<ResponsiveSlider
+					label={ __( 'Bottom Spacing', 'ultimate-addons-for-gutenberg' ) }
+					data={ {
+						desktop: {
+							value: taxonomyBottomSpace,
+							label: 'taxonomyBottomSpace',
+						},
+						tablet: {
+							value: taxonomyBottomSpaceTablet,
+							label: 'taxonomyBottomSpaceTablet',
+						},
+						mobile: {
+							value: taxonomyBottomSpaceMobile,
+							label: 'taxonomyBottomSpaceMobile',
+						},
+					} }
+					min={ 0 }
+					max={ 50 }
+					unit={ {
+						value: taxonomyBottomSpaceUnit,
+						label: 'taxonomyBottomSpaceUnit',
+					} }
+					setAttributes={ setAttributes }
+				/>
+			</UAGAdvancedPanelBody>
+		);
+	};
 	const titleStyle = () => {
 		return (
 			<UAGAdvancedPanelBody title={ __( 'Title', 'ultimate-addons-for-gutenberg' ) } initialOpen={ false }>
@@ -2359,6 +2415,7 @@ const UAGBPostMasonry = ( props ) => {
 				</InspectorTab>
 				<InspectorTab { ...UAGTabs.style }>
 					{ spacingSettings() }
+					{ 'aboveTitle' === displayPostTaxonomyAboveTitle && taxonomyStyle() }
 					{ displayPostTitle && titleStyle() }
 					{ ( displayPostAuthor || displayPostDate || displayPostComment || displayPostTaxonomy ) &&
 						metaStyle() }

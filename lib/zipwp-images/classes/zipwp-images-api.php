@@ -12,7 +12,6 @@ namespace ZipWP_Images\Classes;
  * Ai_Builder
  */
 class Zipwp_Images_Api {
-
 	/**
 	 * Instance
 	 *
@@ -21,6 +20,16 @@ class Zipwp_Images_Api {
 	 * @since 1.0.0
 	 */
 	private static $instance = null;
+
+	/**
+	 * Constructor.
+	 *
+	 * @since  1.0.0
+	 */
+	public function __construct() {
+		add_action( 'rest_api_init', array( $this, 'register_route' ) );
+		add_action( 'wp_ajax_zipwp_images_insert_image', array( $this, 'zipwp_insert_image' ) );
+	}
 
 	/**
 	 * Initiator
@@ -33,16 +42,6 @@ class Zipwp_Images_Api {
 			self::$instance = new self();
 		}
 		return self::$instance;
-	}
-
-	/**
-	 * Constructor.
-	 *
-	 * @since  1.0.0
-	 */
-	public function __construct() {
-		add_action( 'rest_api_init', array( $this, 'register_route' ) );
-		add_action( 'wp_ajax_zipwp_images_insert_image', array( $this, 'zipwp_insert_image' ) );
 	}
 
 	/**
@@ -82,11 +81,11 @@ class Zipwp_Images_Api {
 	 * Check whether a given request has permission to read notes.
 	 *
 	 * @param  object $request WP_REST_Request Full details about the request.
-	 * @return object|boolean
+	 * @return object|bool
 	 */
 	public function get_item_permissions_check( $request ) {
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( 'edit_posts' ) ) {
 			return new \WP_Error(
 				'gt_rest_cannot_access',
 				__( 'Sorry, you are not allowed to do that.', 'ultimate-addons-for-gutenberg' ),
@@ -96,14 +95,13 @@ class Zipwp_Images_Api {
 		return true;
 	}
 
-
 	/**
 	 * Load all the required files in the importer.
 	 *
 	 * @since  1.0.0
 	 * @return void
 	 */
-	public function register_route() {
+	public function register_route(): void {
 
 		register_rest_route(
 			$this->get_api_namespace(),
@@ -255,7 +253,7 @@ class Zipwp_Images_Api {
 	 * @since  1.0.0
 	 * @return void
 	 */
-	public function zipwp_insert_image() {
+	public function zipwp_insert_image(): void {
 		// Verify Nonce.
 		check_ajax_referer( 'zipwp-images', '_ajax_nonce' );
 
@@ -345,7 +343,7 @@ class Zipwp_Images_Api {
 			return $id;
 		}
 
-		$alt = ( '' === $description ) ? $name : $description;
+		$alt = '' === $description ? $name : $description;
 
 		// Store the original attachment source in meta.
 		add_post_meta( $id, '_source_url', $url );
@@ -354,7 +352,6 @@ class Zipwp_Images_Api {
 		update_post_meta( $id, '_wp_attachment_image_alt', $alt );
 		return $id;
 	}
-
 
 	/**
 	 * Import Image.
@@ -483,4 +480,3 @@ class Zipwp_Images_Api {
  * Kicking this off by calling 'get_instance()' method
  */
 Zipwp_Images_Api::get_instance();
-

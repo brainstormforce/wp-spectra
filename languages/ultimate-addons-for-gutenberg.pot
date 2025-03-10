@@ -2,27 +2,27 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.19.1\n"
+"Project-Id-Version: Spectra 2.19.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-18T12:06:49+00:00\n"
+"POT-Creation-Date: 2025-03-07T07:38:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
 
 #. Plugin Name of the plugin
-#: admin-core/inc/admin-menu.php:338
-#: admin-core/inc/admin-menu.php:339
+#: admin-core/inc/admin-menu.php:349
 #: admin-core/inc/admin-menu.php:350
-#: admin-core/inc/admin-menu.php:360
-#: admin-core/inc/admin-menu.php:374
+#: admin-core/inc/admin-menu.php:361
+#: admin-core/inc/admin-menu.php:371
 #: admin-core/inc/admin-menu.php:385
-#: admin-core/inc/admin-menu.php:490
-#: classes/class-uagb-init-blocks.php:802
+#: admin-core/inc/admin-menu.php:396
+#: admin-core/inc/admin-menu.php:503
+#: classes/class-uagb-init-blocks.php:813
 #: classes/class-uagb-nps-notice.php:91
 msgid "Spectra"
 msgstr ""
@@ -59,7 +59,7 @@ msgid "Successfully saved data!"
 msgstr ""
 
 #: admin-core/ajax/common-settings.php:180
-#: classes/class-uagb-init-blocks.php:1349
+#: classes/class-uagb-init-blocks.php:1384
 msgid "No post data found!"
 msgstr ""
 
@@ -148,103 +148,95 @@ msgstr ""
 msgid "Plugin activation is disabled for you on this site."
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:197
+#: admin-core/inc/admin-menu.php:204
 msgid "Plugin Activated."
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:208
+#: admin-core/inc/admin-menu.php:215
 msgid "Theme activation is disabled for you on this site."
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:217
+#: admin-core/inc/admin-menu.php:229
 msgid "Theme Activated."
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:225
+#: admin-core/inc/admin-menu.php:237
 msgid "Could not activate plugin. Please activate from the Plugins page."
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:227
+#: admin-core/inc/admin-menu.php:239
 msgid "Could not activate theme. Please activate from the Themes page."
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:245
-#: admin-core/inc/admin-menu.php:275
-#: admin-core/assets/build/dashboard-app.js:3
-msgid "Install"
-msgstr ""
-
-#: admin-core/inc/admin-menu.php:247
-#: admin-core/inc/admin-menu.php:270
-#: admin-core/inc/admin-menu.php:504
-#: admin-core/assets/build/dashboard-app.js:3
-msgid "Activated"
-msgstr ""
-
-#: admin-core/inc/admin-menu.php:249
-#: admin-core/inc/admin-menu.php:272
-#: admin-core/inc/admin-menu.php:502
-#: admin-core/assets/build/dashboard-app.js:3
-msgid "Installed"
-msgstr ""
-
-#: admin-core/inc/admin-menu.php:292
-#: admin-core/inc/admin-menu.php:386
+#: admin-core/inc/admin-menu.php:303
+#: admin-core/inc/admin-menu.php:397
 #: admin-core/assets/build/dashboard-app.js:3
 #: admin-core/assets/build/dashboard-app.js:17
 msgid "Settings"
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:293
+#: admin-core/inc/admin-menu.php:304
 #: admin-core/assets/build/dashboard-app.js:5
 #: admin-core/assets/build/dashboard-app.js:7
 msgid "Rollback"
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:298
-#: admin-core/inc/admin-menu.php:397
+#: admin-core/inc/admin-menu.php:309
+#: admin-core/inc/admin-menu.php:408
 msgid "Get Spectra Pro"
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:351
+#: admin-core/inc/admin-menu.php:362
 #: admin-core/assets/build/dashboard-app.js:3
 msgid "Dashboard"
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:361
+#: admin-core/inc/admin-menu.php:372
 #: admin-core/assets/build/dashboard-app.js:3
 #: admin-core/assets/build/dashboard-app.js:4
 msgid "Blocks"
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:375
+#: admin-core/inc/admin-menu.php:386
 #: admin-core/assets/build/dashboard-app.js:3
 #: admin-core/assets/build/dashboard-app.js:17
 msgid "AI Features"
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:396
+#: admin-core/inc/admin-menu.php:407
 #: admin-core/assets/build/dashboard-app.js:3
 msgid "Free vs Pro"
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:432
+#: admin-core/inc/admin-menu.php:443
 msgid "Free vs Pro Features"
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:433
+#: admin-core/inc/admin-menu.php:444
 msgid "Here you can compare the features of Free and Pro versions."
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:501
+#: admin-core/inc/admin-menu.php:527
 msgid "Installing"
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:503
+#: admin-core/inc/admin-menu.php:528
+#: classes/class-uagb-init-blocks.php:893
+#: admin-core/assets/build/dashboard-app.js:3
+msgid "Installed"
+msgstr ""
+
+#: admin-core/inc/admin-menu.php:529
 msgid "Activating"
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:505
+#: admin-core/inc/admin-menu.php:530
+#: classes/class-uagb-init-blocks.php:891
+#: admin-core/assets/build/dashboard-app.js:3
+msgid "Activated"
+msgstr ""
+
+#: admin-core/inc/admin-menu.php:531
 #: admin-core/assets/build/dashboard-app.js:3
 #: admin-core/assets/build/dashboard-app.js:12
 msgid "Activate"
@@ -306,6 +298,7 @@ msgstr ""
 #: includes/blocks/popup-builder/block.php:16
 #: admin-core/assets/build/dashboard-app.js:3
 #: admin-core/assets/build/dashboard-app.js:17
+#: admin-core/assets/build/editor.js:1
 #: dist/blocks-placeholder.js:29
 #: dist/blocks.js:11
 msgid "Popup Builder"
@@ -348,7 +341,7 @@ msgstr ""
 #: blocks-config/post/class-uagb-post.php:2239
 #: includes/blocks/post-carousel/attributes.php:122
 #: includes/blocks/post-grid/attributes.php:113
-#: includes/blocks/post-masonry/attributes.php:111
+#: includes/blocks/post-masonry/attributes.php:115
 #: dist/blocks.js:3
 #: dist/blocks.js:19
 msgid "Read More"
@@ -7943,11 +7936,12 @@ msgstr ""
 #: classes/class-uagb-admin.php:427
 #: admin-core/assets/build/dashboard-app.js:3
 #: admin-core/assets/build/dashboard-app.js:10
+#: admin-core/assets/build/editor.js:1
 msgid "Upgrade Now"
 msgstr ""
 
 #: classes/class-uagb-fse-fonts-compatibility.php:165
-#: classes/class-uagb-init-blocks.php:985
+#: classes/class-uagb-init-blocks.php:1019
 #: dist/blocks.js:11
 #: dist/blocks.js:15
 #: dist/blocks.js:19
@@ -8042,21 +8036,26 @@ msgstr ""
 msgid "Please select a valid Gravity Form."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:785
+#: classes/class-uagb-init-blocks.php:796
 msgid "Please select a valid Contact Form 7."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:810
+#: classes/class-uagb-init-blocks.php:821
 msgid "Extensions"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:1087
+#: classes/class-uagb-init-blocks.php:889
+#: admin-core/assets/build/dashboard-app.js:3
+msgid "Install"
+msgstr ""
+
+#: classes/class-uagb-init-blocks.php:1121
 msgid ""
 "Use custom class added in block's advanced settings to target your desired block. Examples:\n"
 "\t\t.my-class {text-align: center;} // my-class is a custom selector"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:1148
+#: classes/class-uagb-init-blocks.php:1183
 #: classes/class-uagb-rest-api.php:318
 #: classes/class-uagb-rest-api.php:333
 #: dist/blocks.js:1
@@ -8067,30 +8066,34 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:1177
-#: classes/class-uagb-init-blocks.php:1210
+#: classes/class-uagb-init-blocks.php:1212
+#: classes/class-uagb-init-blocks.php:1245
 #: dist/blocks.js:23
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:1191
+#: classes/class-uagb-init-blocks.php:1226
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:1224
+#: classes/class-uagb-init-blocks.php:1259
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:1240
+#: classes/class-uagb-init-blocks.php:1275
 msgid "Invalid request"
 msgstr ""
 
+#: classes/class-uagb-loader.php:112
+msgid "Upgrade to Spectra Pro to unlock amazing features!"
+msgstr ""
+
 #. translators: %s: html tags
-#: classes/class-uagb-loader.php:386
+#: classes/class-uagb-loader.php:433
 msgid "The %1$sSpectra%2$s plugin requires %1$sGutenberg%2$s plugin installed & activated."
 msgstr ""
 
-#: classes/class-uagb-loader.php:389
+#: classes/class-uagb-loader.php:436
 msgid "Install Gutenberg"
 msgstr ""
 
@@ -8611,6 +8614,7 @@ msgstr ""
 #: admin-core/assets/build/dashboard-app.js:4
 #: admin-core/assets/build/dashboard-app.js:17
 #: admin-core/assets/build/dashboard-app.js:18
+#: admin-core/assets/build/editor.js:1
 msgid "Loop Builder"
 msgstr ""
 
@@ -8982,7 +8986,7 @@ msgstr ""
 #: lib/gutenberg-templates/inc/api/sites.php:70
 #: lib/gutenberg-templates/inc/classes/ast-block-templates-zipwp-api.php:77
 #: lib/nps-survey/classes/nps-survey-script.php:248
-#: lib/zipwp-images/classes/zipwp-images-api.php:92
+#: lib/zipwp-images/classes/zipwp-images-api.php:91
 msgid "Sorry, you are not allowed to do that."
 msgstr ""
 
@@ -9000,7 +9004,7 @@ msgstr ""
 #: lib/gutenberg-templates/inc/classes/ast-block-templates-zipwp-api.php:197
 #: lib/nps-survey/classes/nps-survey-script.php:270
 #: lib/nps-survey/classes/nps-survey-script.php:376
-#: lib/zipwp-images/classes/zipwp-images-api.php:169
+#: lib/zipwp-images/classes/zipwp-images-api.php:167
 msgid "Nonce verification failed."
 msgstr ""
 
@@ -9043,7 +9047,7 @@ msgstr ""
 #: lib/gutenberg-templates/inc/importer/template-kit-importer.php:43
 #: lib/gutenberg-templates/inc/importer/template-kit-importer.php:109
 #: lib/gutenberg-templates/inc/traits/upgrade.php:35
-#: lib/zipwp-images/classes/zipwp-images-api.php:263
+#: lib/zipwp-images/classes/zipwp-images-api.php:261
 msgid "You are not allowed to perform this action"
 msgstr ""
 
@@ -9120,31 +9124,31 @@ msgstr ""
 msgid "You have no credits left."
 msgstr ""
 
-#: lib/zipwp-images/classes/zipwp-images-api.php:272
+#: lib/zipwp-images/classes/zipwp-images-api.php:270
 msgid "Need to send photo ID"
 msgstr ""
 
-#: lib/zipwp-images/classes/zipwp-images-api.php:276
+#: lib/zipwp-images/classes/zipwp-images-api.php:274
 msgid "Need to send URL of the image to be downloaded"
 msgstr ""
 
-#: lib/zipwp-images/classes/zipwp-images-api.php:286
+#: lib/zipwp-images/classes/zipwp-images-api.php:284
 msgid "Could not download the image."
 msgstr ""
 
-#: lib/zipwp-images/classes/zipwp-images-script.php:100
+#: lib/zipwp-images/classes/zipwp-images-script.php:99
 msgid "Search Images"
 msgstr ""
 
-#: lib/zipwp-images/classes/zipwp-images-script.php:101
+#: lib/zipwp-images/classes/zipwp-images-script.php:100
 msgid "Search - Ex: flowers"
 msgstr ""
 
-#: lib/zipwp-images/classes/zipwp-images-script.php:102
+#: lib/zipwp-images/classes/zipwp-images-script.php:101
 msgid "Downloading..."
 msgstr ""
 
-#: lib/zipwp-images/classes/zipwp-images-script.php:103
+#: lib/zipwp-images/classes/zipwp-images-script.php:102
 msgid "Validating..."
 msgstr ""
 
@@ -9225,6 +9229,7 @@ msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:3
 #: admin-core/assets/build/dashboard-app.js:17
+#: admin-core/assets/build/editor.js:1
 msgid "Unlock Pro Features"
 msgstr ""
 
@@ -9234,6 +9239,7 @@ msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:3
 #: admin-core/assets/build/dashboard-app.js:17
+#: admin-core/assets/build/editor.js:1
 msgid "Instagram Feed Block"
 msgstr ""
 
@@ -9242,6 +9248,7 @@ msgstr ""
 #: admin-core/assets/build/dashboard-app.js:11
 #: admin-core/assets/build/dashboard-app.js:17
 #: admin-core/assets/build/dashboard-app.js:18
+#: admin-core/assets/build/editor.js:1
 #: dist/blocks.js:15
 #: dist/blocks.js:19
 msgid "Dynamic Content"
@@ -9261,11 +9268,16 @@ msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:3
 #: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
 msgid "/year"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:3
 #: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
+#: dist/blocks.js:23
 msgid "Buy Now"
 msgstr ""
 
@@ -9276,6 +9288,8 @@ msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:3
 #: admin-core/assets/build/dashboard-app.js:9
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
 msgid "View plans"
 msgstr ""
 
@@ -9470,6 +9484,7 @@ msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:4
 #: admin-core/assets/build/dashboard-app.js:18
+#: admin-core/assets/build/editor.js:1
 msgid "Advanced Animations"
 msgstr ""
 
@@ -9690,50 +9705,74 @@ msgid "You are using %1$s version, %2$s"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:11
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
 msgid "Spectra Pro"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:11
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
 msgid "Astra Pro"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:11
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
 msgid "Premium Starter Templates"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:11
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
 msgid "Ultimate Addons for Elementor"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:11
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
 msgid "Elementor Premium Templates"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:11
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
 msgid "Seamless Page Building"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:11
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
 msgid "Essential Toolkit"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:11
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
 msgid "SureFeedback"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:11
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
 msgid "SureWriter Pro"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:11
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
 msgid "SureTriggers Pro"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:11
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
 msgid "CartFlows Starter"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:11
+#: admin-core/assets/build/editor.js:1
+#: dist/blocks.js:11
 msgid "ZipWP Pro"
 msgstr ""
 
@@ -9783,11 +9822,15 @@ msgid "Personalized content"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:11
-msgid "This setting will apply to Container Block's default Content Width."
+msgid "Choose how you want to display dynamic content settings."
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:11
 msgid "Default Content Width"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:11
+msgid "This setting will apply to Container Block's default Content Width."
 msgstr ""
 
 #. translators: abbreviation for units
@@ -10110,14 +10153,17 @@ msgid "Theme Fonts"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:17
+#: admin-core/assets/build/editor.js:1
 msgid "Limitless Design with Spectra Pro!"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:17
+#: admin-core/assets/build/editor.js:1
 msgid "Experience design freedom with Spectra Pro. Utilize advanced blocks, extensions, and premium features to create a websites that stands out!"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:17
+#: admin-core/assets/build/editor.js:1
 msgid "And more…"
 msgstr ""
 
@@ -10441,6 +10487,7 @@ msgid "Add any blocks inside the slides"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:18
+#: dist/blocks.js:11
 msgid "Slide-per-view option"
 msgstr ""
 
@@ -10533,6 +10580,7 @@ msgid "Seamlessly create dynamic content loops"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:18
+#: dist/blocks.js:11
 msgid "Drag-and-drop design with Spectra blocks"
 msgstr ""
 
@@ -10578,6 +10626,18 @@ msgstr ""
 #: admin-core/assets/build/dashboard-app.js:18
 #: lib/zip-ai/admin/dashboard-app/build/dashboard-app.js:3
 msgid "Default route fallback"
+msgstr ""
+
+#: admin-core/assets/build/editor.js:1
+msgid "Ready to take your website to the next level with Spectra Pro?"
+msgstr ""
+
+#: admin-core/assets/build/editor.js:1
+msgid "Get access to advanced blocks, powerful features, unique designs, and fantastic support."
+msgstr ""
+
+#: admin-core/assets/build/editor.js:1
+msgid "Learn More"
 msgstr ""
 
 #: blocks-config/uagb-controls/previewImage.js:3
@@ -11469,7 +11529,204 @@ msgid "Preset 6"
 msgstr ""
 
 #: dist/blocks.js:11
-msgid "Upgrade to Pro"
+msgid "Unlock Advanced Animations"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Make your pages visually stunning with advanced animations that capture attention."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Take your website’s visual appeal to the next level with smooth, highly customizable animations. Control pacing, delays, and effects effortlessly."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Smooth animations with precise control."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Set delay and duration for animations"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Customize animation pacing and easing"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Repeat animations on scroll"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Animate nested blocks seamlessly"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Get Modal Pro"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Boost engagement with highly customizable modals that demand attention. Create modals with triggers, transitions, and animations."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Add professional, high-converting modals with advanced triggers, seamless animations, and flexible customization."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Customizable modals with dynamic triggers."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Advanced triggers like exit intent and delay"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Off-canvas and full-screen display options"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Smooth entrance and exit effects"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Cookie-based automatic triggering for conversions"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Get Countdown Pro"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Increase urgency and boost conversions with advanced countdown timers. Perfect for sales, events, and promotions."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Create real-time urgency with highly customizable countdown timers, evergreen deadlines, and smart expiry options."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Advanced countdown timers with smart options."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Evergreen countdown with auto-reset"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Fixed date and time countdowns"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Customizable expiry actions"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Get Image Gallery Pro"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Transform your image galleries into interactive experiences with custom click actions and animations."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Engage your audience with interactive image galleries featuring custom redirections, lightboxes, and effects."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Clickable images with custom actions."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Redirect users with custom click actions"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Built-in lightbox and modal options"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Multiple layout styles and hover effects"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Unlock Loop Builder"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Customize post layouts like never before with powerful loop builder options."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Design stunning post grids with dynamic content, flexible layouts, and seamless integrations."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Fully customizable post loops with Loop Builder."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "ACF, Custom Fields, and Taxonomy integration"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Advanced filtering and sorting"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Unlock Dynamic Content Pro"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Deliver personalized content dynamically based on user behavior. Make your pages more relevant and engaging."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Tailor content dynamically for users based on preferences, interactions, and data sources. Create truly personalized experiences."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Experience dynamic content with Spectra Pro. No more static displays."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Dynamic text and images from any source"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Global updates: Change once, reflect everywhere"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Smart fallback options for dynamic content"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Get Slider Pro"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Create Stunning Sliders with Enhanced Customization"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Take full control over your slider designs with advanced settings."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Fully customizable sliders."
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Custom navigation styles"
+msgstr ""
+
+#: dist/blocks.js:11
+msgid "Unique navigation slugs"
+msgstr ""
+
+#: dist/blocks.js:11
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Learn more"
 msgstr ""
 
 #: dist/blocks.js:11
@@ -15175,6 +15432,10 @@ msgid "Lottie Animation URL"
 msgstr ""
 
 #: dist/blocks.js:19
+msgid "Add ALLOW_UNFILTERED_UPLOADS to upload Lottie JSON files. Disable it after upload for better security."
+msgstr ""
+
+#: dist/blocks.js:19
 msgid "Play On"
 msgstr ""
 
@@ -17244,7 +17505,51 @@ msgid "Add your own CSS code here to customize the page as per your expectations
 msgstr ""
 
 #: dist/blocks.js:23
+msgid "VIP Priority Support"
+msgstr ""
+
+#: dist/blocks.js:23
+msgid "Enjoy Uninterrupted Productivity and Complete Peace of Mind"
+msgstr ""
+
+#: dist/blocks.js:23
+msgid "Get the red carpet treatment! Exclusive support service designed for faster assistance and benefits."
+msgstr ""
+
+#: dist/blocks.js:23
+msgid "Unmatched Speed"
+msgstr ""
+
+#: dist/blocks.js:23
+msgid "Priority Treatment"
+msgstr ""
+
+#: dist/blocks.js:23
+msgid "Expert Support"
+msgstr ""
+
+#: dist/blocks.js:23
+msgid "24/7 Peace of Mind"
+msgstr ""
+
+#: dist/blocks.js:23
+msgid "Experience peace of mind with premium support. "
+msgstr ""
+
+#: dist/blocks.js:23
+msgid " Learn more"
+msgstr ""
+
+#: dist/blocks.js:23
+msgid "/month (billed annually)"
+msgstr ""
+
+#: dist/blocks.js:23
 msgid "Spectra Page Settings"
+msgstr ""
+
+#: dist/blocks.js:23
+msgid "Spectra Block Settings"
 msgstr ""
 
 #: dist/blocks.js:23
@@ -18068,10 +18373,6 @@ msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:11
 msgid "Something went wrong, please try again."
-msgstr ""
-
-#: lib/zip-ai/sidebar/build/sidebar-app.js:11
-msgid "Learn more"
 msgstr ""
 
 #: lib/zip-ai/sidebar/build/sidebar-app.js:11

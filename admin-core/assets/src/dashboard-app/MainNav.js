@@ -66,7 +66,7 @@ const Navigation = () => {
 			{ uag_react.pro_plugin_status === 'Install' && (
 				<a
 					className="content-center no-underline h-full inline-flex items-center py-0 px-1 m-0 bg-transparent outline-none shadow-none border-0 focus:outline-none cursor-pointer text-sm font-semibold text-brand-primary-600"
-					href="https://wpspectra.com/pricing/?utm_source=dashboard&utm_medium=free-plugin&utm_campaign=top-bar"
+					href={uag_admin_react.spectra_website?.topBar}
 					target="_blank"
 					rel="noreferrer"
 				>

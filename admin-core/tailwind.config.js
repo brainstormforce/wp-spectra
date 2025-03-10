@@ -2,9 +2,11 @@ const withTW = require( '@bsf/force-ui/withTW' );
 
 module.exports = withTW( {
 	content: [
+		'./src/**/*.{js, jsx}',
 		'./assets/src/dashboard-app/**/*.{html,js}',
 		'./assets/src/common/components/**/*.{html,js}',
-		'./assets/src/**/*.{js, jsx}'
+		'./assets/src/**/*.{js, jsx}',
+		'./assets/src/editor/**/*.{js, jsx}',
 	],
 	theme: {
 		extend: {
@@ -241,5 +243,5 @@ module.exports = withTW( {
 	corePlugins: {
 		preflight: false,
 	},
-	important: ':is(.uag-dashboard-app,.toplevel_page_spectra)',
+	important: ':is(.uag-dashboard-app,.toplevel_page_spectra,#spectra-pro-banner,.components-modal__frame)',
 } );

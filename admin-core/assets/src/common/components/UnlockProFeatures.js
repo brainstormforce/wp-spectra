@@ -178,7 +178,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 						<div className="flex gap-3 mt-2">
 							<a
 								className="no-underline"
-								href="https://wpspectra.com/pricing/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard"
+									href={uag_admin_react.spectra_website?.uagDashboard}
 								target="_blank"
 								rel="noreferrer"
 							>
@@ -343,7 +343,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 					<div className="flex gap-3 my-2">
 						<a
 							className="no-underline"
-							href="https://wpspectra.com/pricing/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard"
+								href={uag_admin_react.spectra_website?.uagDashboard}
 							target="_blank"
 							rel="noreferrer"
 						>

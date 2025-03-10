@@ -16,7 +16,7 @@ const UpgradeNotices = ( { title, description, upgradeText, upgradeBold, modalDa
 
 	const onUpgradeLinkTrigger = () => {
 		window.open(
-			'https://wpspectra.com/pricing/?utm_source=dashboard&utm_medium=free-plugin&utm_campaign=setting',
+			uag_admin_react.spectra_website?.setting,
 			'_blank'
 		);
 	};

@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.7
-Stable tag: 2.19.1
+Stable tag: 2.19.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -216,6 +216,13 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT. Additionally, we incorporate [FontAwesome v6](https://fontawesome.com/license/free) under the CC BY 4.0 License, and [dnd kit](https://github.com/clauderic/dnd-kit) licensed under the MIT License.
 
 == Changelog ==
+
+= 2.19.2 - Monday, 10th March 2025 =
+* Improvement: Lottie - Added help text to inform users about the `ALLOW_UNFILTERED_UPLOADS` constant for JSON file uploads.
+* Fix: Forms - Resolved an issue wherein the submit button hover background color is not working as intended on frontend.
+* Fix: Popup Builder - Resolved an issue wherein the popup builder page in the admin dashboard throws a console error.
+* Fix: Post Masonry - Resolved an issue wherein the Post Masonry block was getting a block recovery issue.
+* Fix: Global - Resolved an issue where the Pro installation was not detected when WPML CMS was active.
 
 = 2.19.1 - Wednesday, 19th February 2025 =
 * This update addressed a security bug. Props to Peter Thaleikis for privately reporting it to our team. Please make sure you are using the latest version on your website.

@@ -583,6 +583,11 @@ class UAGB_Init_Blocks {
 			? ( is_plugin_active( 'sureforms/sureforms.php' ) ? 'active' : 'inactive' ) 
 			: 'not-installed';
 
+		if ( class_exists( '\BSF_UTM_Analytics\Inc\Utils' ) && is_callable( '\BSF_UTM_Analytics\Inc\Utils::update_referer' ) ) {
+			// If the plugin is found and the update_referer function is callable, update the referer with the corresponding product slug.
+			\BSF_UTM_Analytics\Inc\Utils::update_referer( 'ultimate-addons-for-gutenberg', 'sureforms' );
+		}
+
 		// If plugin is not installed, install it first.
 		if ( 'not-installed' === $status_of_sureforms ) {
 			include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
@@ -692,6 +697,12 @@ class UAGB_Init_Blocks {
 		$status_of_surecart = isset( $installed_plugins['surecart/surecart.php'] ) 
 			? ( is_plugin_active( 'surecart/surecart.php' ) ? 'active' : 'inactive' ) 
 			: 'not-installed';
+
+		if ( class_exists( '\BSF_UTM_Analytics\Inc\Utils' ) && is_callable( '\BSF_UTM_Analytics\Inc\Utils::update_referer' ) ) {
+			// If the plugin is found and the update_referer function is callable, update the referer with the corresponding product slug.
+			\BSF_UTM_Analytics\Inc\Utils::update_referer( 'ultimate-addons-for-gutenberg', 'surecart' );
+		}
+
 		// If plugin is not installed, install it first.
 		if ( 'not-installed' === $status_of_surecart ) {
 			include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
@@ -863,6 +874,28 @@ class UAGB_Init_Blocks {
 	}
 
 	/**
+	 * Get the status of a plugin.
+	 * This function is used internally in the editor upsell scripts to check if Spectra Pro is installed or not.
+	 *
+	 * @since 2.19.2
+	 *
+	 * @param  string $plugin_init_file Plugin init file.
+	 * @return string
+	 */
+	public static function get_plugin_status( $plugin_init_file ) {
+
+		$installed_plugins = get_plugins();
+
+		if ( ! isset( $installed_plugins[ $plugin_init_file ] ) ) {
+			return 'Install';
+		} elseif ( is_plugin_active( $plugin_init_file ) ) {
+			return 'Activated';
+		} else {
+			return 'Installed';
+		}
+	}
+
+	/**
 	 * Enqueue Gutenberg block assets for backend editor.
 	 *
 	 * @since 1.0.0
@@ -915,6 +948,8 @@ class UAGB_Init_Blocks {
 			array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
 			UAGB_VER
 		);
+
+		wp_localize_script( 'uagb-block-editor-js', 'uag_react', array( 'pro_plugin_status' => self::get_plugin_status( 'spectra-pro/spectra-pro.php' ) ) );
 
 		wp_enqueue_script( 'uagb-deactivate-block-js', UAGB_URL . 'admin/assets/blocks-deactivate.js', array( 'wp-blocks' ), UAGB_VER, true );
 
@@ -1110,6 +1145,7 @@ class UAGB_Init_Blocks {
 			'exclude_crops_iframes'                   => apply_filters( 'spectra_exclude_crops_iframes', array( '__privateStripeMetricsController8690' ) ),
 			'status_of_sureforms'                     => $status_of_sureforms,
 			'status_of_surecart'                      => $status_of_surecart,
+			'docsUrl'                                 => \UAGB_Admin_Helper::get_spectra_pro_url( '/docs/', 'free-plugin', 'uagb-editor-page', 'uagb-plugin' ),
 		);
 
 		wp_localize_script(
