@@ -218,7 +218,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### 2.19.3 - Tuesday, 11th March 2025 ###
-* Updated the Astra Notices library.
+* This update addressed a security bug. Please make sure you are using the latest version on your website.
 * Fix: Global - Ensured editor upsell assets load only in relevant editors, preventing unwanted loading in SureForms and other whitelisted editors.
 
 ### 2.19.2 - Monday, 10th March 2025 ###
