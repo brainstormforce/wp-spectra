@@ -1160,7 +1160,7 @@ class UAGB_Init_Blocks {
 		$editor_upsell_tailwind_style = 'editor.css';
 
 		$editor_upsell_script_dep_path = UAGB_DIR . 'admin-core/assets/build/editor.asset.php';
-		$editor_upsell_script_info     = file_exists( $script_dep_path )
+		$editor_upsell_script_info     = file_exists( $editor_upsell_script_dep_path )
 			? include $editor_upsell_script_dep_path
 			: array(
 				'dependencies' => array(),
