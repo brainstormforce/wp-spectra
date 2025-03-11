@@ -217,8 +217,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### x.x.x ###
-Fix: Global - Ensured editor upsell assets load only in relevant editors, preventing unwanted loading in SureForms and other whitelisted editors.
+### 2.19.3 - Tuesday, 11th March 2025 ###
+* Fix: Global - Ensured editor upsell assets load only in relevant editors, preventing unwanted loading in SureForms and other whitelisted editors.
 
 ### 2.19.2 - Monday, 10th March 2025 ###
 * Improvement: Lottie - Added help text to inform users about the `ALLOW_UNFILTERED_UPLOADS` constant for JSON file uploads.
