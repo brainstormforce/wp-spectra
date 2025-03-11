@@ -1173,7 +1173,7 @@ class UAGB_Init_Blocks {
 			'spectra-upsell-banner',
 			UAGB_URL . 'admin-core/assets/build/' . $editor_upsell_script,
 			$editor_upsell_script_dep,
-			UAGB_VER, 
+			$editor_upsell_script_info[ 'version' ], 
 			true
 		);
 	
