@@ -219,7 +219,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = 2.19.3 - Tuesday, 11th March 2025 =
 * This update addressed a security bug. Please make sure you are using the latest version on your website.
-* Fix: Global - Ensured editor upsell assets load only in relevant editors, preventing unwanted loading in SureForms and other whitelisted editors.
+* Fix: Resolved the asset loading conflict in the SureForms editor.
 
 = 2.19.2 - Monday, 10th March 2025 =
 * Improvement: Lottie - Added help text to inform users about the `ALLOW_UNFILTERED_UPLOADS` constant for JSON file uploads.
