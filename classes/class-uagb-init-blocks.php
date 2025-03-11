@@ -1155,9 +1155,9 @@ class UAGB_Init_Blocks {
 		);
 
 		// Enqueue the assets for editor upsells.
-		$editor_upsell_script = 'editor.js';
-		$editor_upsell_style  = 'style-editor.css';
-		$editor_upsell_tailwind_style  = 'editor.css';
+		$editor_upsell_script         = 'editor.js';
+		$editor_upsell_style          = 'style-editor.css';
+		$editor_upsell_tailwind_style = 'editor.css';
 
 		$editor_upsell_script_dep_path = UAGB_DIR . 'admin-core/assets/build/editor.asset.php';
 		$editor_upsell_script_info     = file_exists( $script_dep_path )
@@ -1173,7 +1173,7 @@ class UAGB_Init_Blocks {
 			'spectra-upsell-banner',
 			UAGB_URL . 'admin-core/assets/build/' . $editor_upsell_script,
 			$editor_upsell_script_dep,
-			$editor_upsell_script_info[ 'version' ], 
+			$editor_upsell_script_info['version'], 
 			true
 		);
 	
