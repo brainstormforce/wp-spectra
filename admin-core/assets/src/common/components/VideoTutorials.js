@@ -10,11 +10,11 @@ const PlayFilledIcon = ( props ) => (
 
 const VideoTutorials = () => {
 	const videos = [
-		'https://www.youtube-nocookie.com/embed/3zDGUBaDwiU',
-		'https://www.youtube-nocookie.com/embed/ee5EdZ1hrMI',
-		'https://www.youtube-nocookie.com/embed/-dv_AfhbUJk',
-		'https://www.youtube-nocookie.com/embed/HUF1md50Img',
-		'https://www.youtube-nocookie.com/embed/_mQiILHC8jI',
+		'https://www.youtube-nocookie.com/embed/-Ksf984Tcgw',
+		'https://www.youtube-nocookie.com/embed/3TYf_v-T7n8',
+		'https://www.youtube-nocookie.com/embed/DKgGid221_U',
+		'https://www.youtube-nocookie.com/embed/m2uVrKWPnbA',
+		'https://www.youtube-nocookie.com/embed/0PKYbB2XbFE',
 		'',
 	];
 
@@ -107,7 +107,7 @@ const VideoTutorials = () => {
 								}
 							>
 								<img
-									src={ getThumbnailUrl( 'https://www.youtube-nocookie.com/embed/-nGw_9o_Uvs' ) }
+									src={ getThumbnailUrl( 'https://www.youtube-nocookie.com/embed/ywLPlWqhM0Y' ) }
 									alt="See More Playlist"
 									className="w-full h-full object-cover rounded-lg aspect-video"
 								/>

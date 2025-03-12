@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react';
 const AdminHeader = ( props ) => {
 	// Initialize RSS library hook.
 	useWhatsNewRSS( {
-		rssFeedURL: 'https://wpspectra.com/whats-new/feed/',
+		rssFeedURL: uag_admin_react.spectra_website?.whatsNewFeedUrl,
 		selector: '#spectra-whats-new',
 		triggerButton: {
 			beforeBtn:
@@ -200,7 +200,7 @@ const AdminHeader = ( props ) => {
 							onFocus={ () => {
 								this.style.textDecoration = 'underline';
 							} }
-							href="https://wpspectra.com/pricing/?utm_source=dashboard&utm_medium=free-plugin&utm_campaign=banner"
+							href={uag_admin_react.spectra_website?.banner}
 							target="_self"
 							rel="noreferrer"
 						>
@@ -330,7 +330,7 @@ const AdminHeader = ( props ) => {
 
 					<Topbar.Item>
 						<a
-							href="https://wpspectra.com/docs/"
+							href={uag_admin_react.spectra_website?.docsUrl}
 							target="_blank"
 							rel="noreferrer"
 							className="text-slate-600 m-0 p-0 flex items-center justify-center"

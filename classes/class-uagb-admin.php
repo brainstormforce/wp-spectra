@@ -138,7 +138,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 * @return string The URL for Spectra Webpage.
 		 */
 		public function update_gutenberg_templates_pro_url() { 
-			return 'https://wpspectra.com/pricing/?utm_source=gutenberg-templates&utm_medium=dashboard&utm_campaign=Starter-Template-Backend';
+			return \UAGB_Admin_Helper::get_spectra_pro_url( '/pricing/', 'gutenberg-templates', 'dashboard', 'Starter-Template-Backend' );
 		}
  
 
@@ -423,7 +423,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 							$image_path,
 							__( 'Want to do more with Popup Builder?', 'ultimate-addons-for-gutenberg' ),
 							__( 'Maximize your popup potential with Spectra Pro. Unlock enhanced features, intuitive design options, and increased conversions!', 'ultimate-addons-for-gutenberg' ),
-							esc_url( 'https://wpspectra.com/pricing/?utm_source=popup-builder&utm_medium=free-plugin&utm_campaign=popup-builder-banner' ),
+							esc_url( \UAGB_Admin_Helper::get_spectra_pro_url( '/pricing/', 'free-plugin', 'popup-builder', 'popup-builder-banner' ) ),
 							__( 'Upgrade Now', 'ultimate-addons-for-gutenberg' )
 						),
 						'dismissible'                => true,
@@ -475,7 +475,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 								upgradeLink.setAttribute('rel', 'noreferrer');
 								upgradeLink.addEventListener('click', function(e) {
 									e.preventDefault();
-									window.open('https://wpspectra.com/pricing/?utm_source=dashboard&utm_medium=free-plugin&utm_campaign=setting', '_blank', 'noopener,noreferrer');
+									window.open( <?php echo esc_url( \UAGB_Admin_Helper::get_spectra_pro_url( '/pricing/', 'free-plugin', 'dashboard', 'setting' ) ); ?>, '_blank', 'noopener,noreferrer' );
 								});
 							}
 						});

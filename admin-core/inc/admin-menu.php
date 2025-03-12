@@ -187,6 +187,13 @@ class Admin_Menu {
 				if ( ! current_user_can( 'activate_plugins' ) ) {
 					wp_send_json_error( esc_html__( 'Plugin activation is disabled for you on this site.', 'ultimate-addons-for-gutenberg' ) );
 				}
+				if ( isset( $_POST['slug'] ) ) {
+					$slug = sanitize_key( wp_unslash( $_POST['slug'] ) );
+					if ( class_exists( '\BSF_UTM_Analytics\Inc\Utils' ) && is_callable( '\BSF_UTM_Analytics\Inc\Utils::update_referer' ) ) {
+						// If the plugin is found and the update_referer function is callable, update the referer with the corresponding product slug.
+						\BSF_UTM_Analytics\Inc\Utils::update_referer( 'ultimate-addons-for-gutenberg', $slug );
+					}
+				}
 
 				$activate = activate_plugins( $plugin );
 
@@ -206,6 +213,11 @@ class Admin_Menu {
 					// Check for permissions.
 					if ( ! ( current_user_can( 'switch_themes' ) ) ) {
 						wp_send_json_error( esc_html__( 'Theme activation is disabled for you on this site.', 'ultimate-addons-for-gutenberg' ) );
+					}
+
+					if ( class_exists( '\BSF_UTM_Analytics\Inc\Utils' ) && is_callable( '\BSF_UTM_Analytics\Inc\Utils::update_referer' ) ) {
+						// If the theme is found and the update_referer function is callable, update the referer with the corresponding product slug.
+						\BSF_UTM_Analytics\Inc\Utils::update_referer( 'ultimate-addons-for-gutenberg', $slug );
 					}
 
 					$activate = switch_theme( $slug );
@@ -242,11 +254,11 @@ class Admin_Menu {
 		$installed_plugins = get_plugins();
 
 		if ( ! isset( $installed_plugins[ $plugin_init_file ] ) ) {
-			return __( 'Install', 'ultimate-addons-for-gutenberg' );
+			return 'Install';
 		} elseif ( is_plugin_active( $plugin_init_file ) ) {
-			return __( 'Activated', 'ultimate-addons-for-gutenberg' );
+			return 'Activated';
 		} else {
-			return __( 'Installed', 'ultimate-addons-for-gutenberg' );
+			return 'Installed';
 		}
 	}
 
@@ -260,19 +272,18 @@ class Admin_Menu {
 	 */
 	public static function get_theme_status( $theme_slug ) {
 		$installed_themes = wp_get_themes();
-	
+
 		// Check if the theme is installed.
 		if ( isset( $installed_themes[ $theme_slug ] ) ) {
 			$current_theme = wp_get_theme();
-		
 			// Check if the current theme slug matches the provided theme slug.
 			if ( $current_theme->get_stylesheet() === $theme_slug ) {
-				return __( 'Activated', 'ultimate-addons-for-gutenberg' ); // Theme is active.
+				return 'Activated'; // Theme is active.
 			} else {
-				return __( 'Installed', 'ultimate-addons-for-gutenberg' ); // Theme is installed but not active.
+				return 'Installed'; // Theme is installed but not active.
 			}
 		} else {
-			return __( 'Install', 'ultimate-addons-for-gutenberg' ); // Theme is not installed at all.
+			return 'Install'; // Theme is not installed at all.
 		}
 	}
 	
@@ -286,7 +297,7 @@ class Admin_Menu {
 
 		$default_url = admin_url( 'admin.php?page=' . $this->menu_slug );
 		$rollback    = admin_url( 'admin.php?page=spectra&path=settings&settings=version-control' );
-		$spectra_pro = 'https://wpspectra.com/pricing/?utm_source=plugin-list&utm_medium=free-plugin&utm_campaign=plugin-list';
+		$spectra_pro = \UAGB_Admin_Helper::get_spectra_pro_url( '/pricing/', 'free-plugin', 'plugin-list', 'plugin-list' );
 
 		$free_links = array(
 			'<a href="' . $default_url . '">' . __( 'Settings', 'ultimate-addons-for-gutenberg' ) . '</a>',
@@ -470,7 +481,9 @@ class Admin_Menu {
 		$theme_data          = \WP_Theme_JSON_Resolver::get_theme_data();
 		$theme_settings      = $theme_data->get_settings();
 		$theme_font_families = isset( $theme_settings['typography']['fontFamilies']['theme'] ) && is_array( $theme_settings['typography']['fontFamilies']['theme'] ) ? $theme_settings['typography']['fontFamilies']['theme'] : array();
-
+		if ( ! defined( 'UAGB_URI' ) ) {
+			define( 'UAGB_URI', trailingslashit( 'https://wpspectra.com/' ) );
+		}
 		$localize = apply_filters(
 			'uag_react_admin_localize',
 			array(
@@ -497,7 +510,20 @@ class Admin_Menu {
 				'is_allow_registration'    => (bool) get_option( 'users_can_register' ),
 				'theme_fonts'              => $theme_font_families,
 				'is_block_theme'           => \UAGB_Admin_Helper::is_block_theme(),
-				'spectra_pro_url'          => \UAGB_Admin_Helper::get_spectra_pro_url(),
+				'uagb_site_url'            => UAGB_URI,
+				'spectra_website'          => array(
+					'baseUrl'                => UAGB_URI,
+					'docsUrl'                => \UAGB_Admin_Helper::get_spectra_pro_url( '/docs/', 'free-plugin', 'dashboard', 'documentation' ),
+					'docsCategoryDynamicUrl' => \UAGB_Admin_Helper::get_spectra_pro_url( '/docs-category/{{category}}', 'free-plugin', 'dashboard', 'documentation' ),
+					'vipPrioritySupportUrl'  => \UAGB_Admin_Helper::get_spectra_pro_url( '/vip-priority-support/', 'free-plugin', 'dashboard', 'vip-priority-support' ),
+					'templatesUrl'           => \UAGB_Admin_Helper::get_spectra_pro_url( '/pricing/', 'free-plugin', 'dashboard', 'starter-templates' ),
+					'banner'                 => \UAGB_Admin_Helper::get_spectra_pro_url( '/pricing/', 'free-plugin', 'dashboard', 'banner' ),
+					'topBar'                 => \UAGB_Admin_Helper::get_spectra_pro_url( '/pricing/', 'free-plugin', 'dashboard', 'top-bar' ),
+					'freeVsPro'              => \UAGB_Admin_Helper::get_spectra_pro_url( '/pricing/', 'free-plugin', 'dashboard', 'free-vs-pro' ),
+					'setting'                => \UAGB_Admin_Helper::get_spectra_pro_url( '/pricing/', 'free-plugin', 'dashboard', 'setting' ),
+					'uagDashboard'           => \UAGB_Admin_Helper::get_spectra_pro_url( '/pricing/', 'free-plugin', 'dashboard', 'uag-dashboard' ),
+					'whatsNewFeedUrl'        => esc_url( UAGB_URI . '/whats-new/feed/' ),
+				),
 				'plugin_installing_text'   => esc_html__( 'Installing', 'ultimate-addons-for-gutenberg' ),
 				'plugin_installed_text'    => esc_html__( 'Installed', 'ultimate-addons-for-gutenberg' ),
 				'plugin_activating_text'   => esc_html__( 'Activating', 'ultimate-addons-for-gutenberg' ),
@@ -576,7 +602,6 @@ class Admin_Menu {
 					if ( isset( $element['priority'] ) ) {
 						return $element['priority'];
 					}
-					return;
 				},
 				$blocks
 			),
@@ -675,6 +700,12 @@ class Admin_Menu {
 	 * @param array $localize Variable names.
 	 */
 	public function settings_app_scripts( $localize ) {
+		// Check if we're on the popup builder page.
+		$current_screen = get_current_screen();
+		if ( isset( $current_screen ) && 'spectra-popup' === $current_screen->post_type ) {
+			return; // Don't load dashboard scripts on popup builder page.
+		}
+
 		$handle            = 'uag-admin-settings';
 		$build_path        = UAG_ADMIN_DIR . 'assets/build/';
 		$build_url         = UAG_ADMIN_URL . 'assets/build/';

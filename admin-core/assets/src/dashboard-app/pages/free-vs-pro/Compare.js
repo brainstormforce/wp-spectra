@@ -24,7 +24,7 @@ const Compare = () => {
 	// Function to open the pricing page in a new tab when the "Upgrade Now" button is clicked.
 	const onUpgradeNowClick = () => {
 		window.open(
-			'https://wpspectra.com/pricing/?utm_source=dashboard&utm_medium=free-plugin&utm_campaign=free-vs-pro',
+			uag_admin_react.spectra_website?.freeVsPro,
 			'_blank'
 		);
 	};

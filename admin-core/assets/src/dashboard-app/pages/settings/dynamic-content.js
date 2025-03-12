@@ -83,7 +83,7 @@ export default function DynamicContent() {
 					<SettingsItem
 						title={ __( 'Dynamic Content', 'ultimate-addons-for-gutenberg' ) }
 						settingText={ __(
-							"This setting will apply to Container Block's default Content Width.",
+							'Choose how you want to display dynamic content settings.',
 							'ultimate-addons-for-gutenberg'
 						) }
 					>

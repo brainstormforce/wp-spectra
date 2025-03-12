@@ -80,7 +80,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '2.19.0' );
+			define( 'UAGB_VER', '2.19.3' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'spectra' );
@@ -153,6 +153,10 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'lib/astra-notices/class-astra-notices.php';
 			require_once UAGB_DIR . 'lib/class-uagb-zipwp-images.php';
 			require_once UAGB_DIR . 'lib/class-uagb-nps-survey.php';
+			/**
+			 * UTM Analytics lib file.
+			 */
+			require_once UAGB_DIR . 'lib/class-uagb-utm-analytics.php';
 
 			if ( is_admin() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-admin.php';
@@ -602,7 +606,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			// Ensure each module in the list is enabled.
 			foreach ( $modules_to_enable as $module_name ) {
-				// @phpstan-ignore-next-line
+				// @phpcs:ignore WordPress.NamingConventions.ValidVariableName
 				if ( class_exists( '\ZipAI\Classes\Module' ) && method_exists( '\ZipAI\Classes\Module', 'force_enabled' ) ) {
 					\ZipAI\Classes\Module::force_enabled( $modules, $module_name );
 				}

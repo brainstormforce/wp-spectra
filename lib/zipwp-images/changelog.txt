@@ -1,3 +1,7 @@
+v1.0.15 - 18-February-2025
+- New: Integrated PHP Insights to GitHub Actions for improved readability and error reduction.
+- Improvement: Added edit_pages capability check for API access.
+
 v1.0.14 - 28-November-2024
 - Fix: Removed garbage CSS conflicting with other plugins.
 

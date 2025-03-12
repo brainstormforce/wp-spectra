@@ -96,5 +96,4 @@ if ( ! class_exists( 'NPS_Survey_Plugin_Loader' ) ) {
 	 * Kicking this off by calling 'get_instance()' method
 	 */
 	NPS_Survey_Plugin_Loader::get_instance();
-
 }

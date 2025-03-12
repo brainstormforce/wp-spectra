@@ -73,6 +73,10 @@ const dashboardConfig = Object.assign( {}, commonConfig, {
 			__dirname,
 			'assets/src/DashboardApp.js'
 		),
+		'editor': path.resolve(
+			__dirname,
+			'assets/src/editor/index.js'
+		),
 	},
 	output: {
 		filename: '[name].js',

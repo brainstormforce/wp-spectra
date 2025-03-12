@@ -12,7 +12,6 @@ namespace ZipWP_Images\Classes;
  * Ai_Builder
  */
 class Zipwp_Images_Script {
-
 	/**
 	 * Instance
 	 *
@@ -21,6 +20,17 @@ class Zipwp_Images_Script {
 	 * @since 1.0.0
 	 */
 	private static $instance = null;
+
+	/**
+	 * Constructor.
+	 *
+	 * @since 1.0.0
+	 */
+	public function __construct() {
+		add_action( 'admin_enqueue_scripts', array( $this, 'editor_load_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'bb_editor_load_scripts' ) );
+		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'editor_load_scripts' ) );
+	}
 
 	/**
 	 * Initiator
@@ -36,23 +46,12 @@ class Zipwp_Images_Script {
 	}
 
 	/**
-	 * Constructor.
-	 *
-	 * @since 1.0.0
-	 */
-	public function __construct() {
-		add_action( 'admin_enqueue_scripts', array( $this, 'editor_load_scripts' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'bb_editor_load_scripts' ) );
-		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'editor_load_scripts' ) );
-	}
-
-	/**
 	 * Load script for block editor and elementor editor.
 	 *
 	 * @since 1.0.0
 	 * @return void
 	 */
-	public function editor_load_scripts() {
+	public function editor_load_scripts(): void {
 
 		if ( ! is_admin() ) {
 			return;
@@ -67,7 +66,7 @@ class Zipwp_Images_Script {
 	 * @since 1.0.0
 	 * @return void
 	 */
-	public function bb_editor_load_scripts() {
+	public function bb_editor_load_scripts(): void {
 
 		if ( class_exists( 'FLBuilderModel' ) && \FLBuilderModel::is_builder_active() || is_customize_preview() ) {
 			$this->load_script();
@@ -80,7 +79,7 @@ class Zipwp_Images_Script {
 	 * @since 1.0.0
 	 * @return void
 	 */
-	public function load_script() {
+	public function load_script(): void {
 		// Enqueue JS.
 		wp_enqueue_script( 'zipwp-images-script', ZIPWP_IMAGES_URL . 'dist/main.js', array( 'jquery', 'media-views', 'react', 'wp-element', 'wp-api-fetch' ), ZIPWP_IMAGES_VER, true );
 
@@ -90,19 +89,19 @@ class Zipwp_Images_Script {
 				'ajaxurl'              => esc_url( admin_url( 'admin-ajax.php' ) ),
 				'asyncurl'             => esc_url( admin_url( 'async-upload.php' ) ),
 				'is_customize_preview' => is_customize_preview(),
-				'is_bb_active'         => ( class_exists( 'FLBuilderModel' ) ),
-				'is_brizy_active'      => ( class_exists( 'Brizy_Editor_Post' ) ),
-				'is_elementor_active'  => ( did_action( 'elementor/loaded' ) ),
-				'is_elementor_editor'  => ( did_action( 'elementor/loaded' ) ) && class_exists( '\Elementor\Plugin' ) ? \Elementor\Plugin::instance()->editor->is_edit_mode() : false,
-				'is_bb_editor'         => ( class_exists( '\FLBuilderModel' ) ) ? ( \FLBuilderModel::is_builder_active() ) : false,
-				'is_brizy_editor'      => ( class_exists( 'Brizy_Editor_Post' ) ) ? ( isset( $_GET['brizy-edit'] ) || isset( $_GET['brizy-edit-iframe'] ) ) : false, // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Fetching GET parameter, no nonce associated with this action.
+				'is_bb_active'         => class_exists( 'FLBuilderModel' ),
+				'is_brizy_active'      => class_exists( 'Brizy_Editor_Post' ),
+				'is_elementor_active'  => did_action( 'elementor/loaded' ),
+				'is_elementor_editor'  => did_action( 'elementor/loaded' ) && class_exists( '\Elementor\Plugin' ) ? \Elementor\Plugin::instance()->editor->is_edit_mode() : false,
+				'is_bb_editor'         => class_exists( '\FLBuilderModel' ) ? \FLBuilderModel::is_builder_active() : false,
+				'is_brizy_editor'      => class_exists( 'Brizy_Editor_Post' ) ? ( isset( $_GET['brizy-edit'] ) || isset( $_GET['brizy-edit-iframe'] ) ) : false, // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Fetching GET parameter, no nonce associated with this action.
 				'saved_images'         => get_option( 'zipwp-images-saved-images', array() ),
 				'title'                => apply_filters( 'zipwp_images_tab_title', __( 'Search Images', 'ultimate-addons-for-gutenberg' ) ),
 				'search_placeholder'   => __( 'Search - Ex: flowers', 'ultimate-addons-for-gutenberg' ),
 				'downloading'          => __( 'Downloading...', 'ultimate-addons-for-gutenberg' ),
 				'validating'           => __( 'Validating...', 'ultimate-addons-for-gutenberg' ),
 				'_ajax_nonce'          => wp_create_nonce( 'zipwp-images' ),
-				'rest_api_nonce'       => ( current_user_can( 'manage_options' ) ) ? wp_create_nonce( 'wp_rest' ) : '',
+				'rest_api_nonce'       => current_user_can( 'edit_posts' ) ? wp_create_nonce( 'wp_rest' ) : '',
 			)
 		);
 
@@ -136,9 +135,7 @@ class Zipwp_Images_Script {
 			'subset' => rawurlencode( 'latin,latin-ext' ),
 		);
 
-		$fonts_url = add_query_arg( $query_args, '//fonts.googleapis.com/css' );
-
-		return $fonts_url;
+		return add_query_arg( $query_args, '//fonts.googleapis.com/css' );
 	}
 }
 
@@ -146,4 +143,3 @@ class Zipwp_Images_Script {
  * Kicking this off by calling 'get_instance()' method
  */
 Zipwp_Images_Script::get_instance();
-
