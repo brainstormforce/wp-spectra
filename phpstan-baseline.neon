@@ -5519,7 +5519,7 @@ parameters:
 
 		-
 			message: "#^Property UAGB_Post_Assets\\:\\:\\$script \\(script\\) does not accept string\\.$#"
-			count: 1
+			count: 2
 			path: classes/class-uagb-post-assets.php
 
 		-

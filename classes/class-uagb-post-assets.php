@@ -203,6 +203,15 @@ class UAGB_Post_Assets {
 	public $is_post_revision = false;
 
 	/**
+	 * Seen Refs Array
+	 * This array will store the block IDs which have already been processed.
+	 *
+	 * @since x.x.x
+	 * @var array
+	 */
+	private static $seen_refs = array();
+
+	/**
 	 * Constructor
 	 *
 	 * @param int $post_id Post ID.
@@ -1227,9 +1236,11 @@ class UAGB_Post_Assets {
 		if ( isset( $block['innerBlocks'] ) ) {
 			foreach ( $block['innerBlocks'] as $j => $inner_block ) {
 				if ( 'core/block' === $inner_block['blockName'] ) {
-					$id = ( isset( $inner_block['attrs']['ref'] ) ) ? $inner_block['attrs']['ref'] : 0;
-					if ( $id ) {
-						$assets = $this->get_assets_using_post_content( $id );
+					$id            = ( isset( $inner_block['attrs']['ref'] ) ) ? $inner_block['attrs']['ref'] : 0;
+					$is_block_seen = in_array( $id, self::$seen_refs, true );
+					if ( $id && ! $is_block_seen ) {
+						self::$seen_refs[] = $id;
+						$assets            = $this->get_assets_using_post_content( $id );
 						if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
 							$reuse_block_css             = array(
 								'desktop' => '',
@@ -1245,9 +1256,10 @@ class UAGB_Post_Assets {
 						}
 					}
 				} elseif ( 'core/template-part' === $inner_block['blockName'] ) {
-					$id = $this->get_fse_template_part( $inner_block );
-
-					if ( $id ) {
+					$id            = $this->get_fse_template_part( $inner_block );
+					$is_block_seen = in_array( $id, self::$seen_refs, true );
+					if ( $id && ! $is_block_seen ) {
+						self::$seen_refs[] = $id;
 						$assets            = $this->get_assets_using_post_content( $id );
 						$this->stylesheet .= $assets['css'];
 						$this->script     .= $assets['js'];
@@ -1359,6 +1371,7 @@ class UAGB_Post_Assets {
 
 		$assets = $this->get_blocks_assets( $blocks );
 
+
 		if ( 'enabled' === $this->file_generation && isset( $assets['css'] ) && ! self::$common_assets_added ) {
 
 			$common_static_css_all_blocks = $this->get_block_static_css( 'extensions' );
@@ -1368,6 +1381,18 @@ class UAGB_Post_Assets {
 
 		$this->stylesheet .= $assets['css'];
 		$this->script     .= $assets['js'];
+
+		// Check if self::$seen_refs is not empty before iterating.
+		if ( ! empty( self::$seen_refs ) ) {
+			foreach ( self::$seen_refs as $ref_id ) {
+				// Retrieve the CSS and JS assets for the given post content reference ID.
+				$assets = $this->get_assets_using_post_content( $ref_id );
+
+				// Append the retrieved CSS and JS to the existing stylesheet and script properties.
+				$this->stylesheet .= $assets['css'];
+				$this->script     .= $assets['js'];
+			}
+		}
 
 		// Update fonts.
 		$this->gfonts = array_merge( $this->gfonts, UAGB_Helper::$gfonts );
@@ -1465,20 +1490,23 @@ class UAGB_Post_Assets {
 				}
 
 				if ( 'core/block' === $block['blockName'] ) {
-					$id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
+					$id            = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
+					$is_block_seen = in_array( $id, self::$seen_refs, true );
 
-					if ( $id ) {
+					if ( $id && ! $is_block_seen ) {
+						self::$seen_refs[] = $id;
 						$assets            = $this->get_assets_using_post_content( $id );
 						$this->stylesheet .= $assets['css'];
 						$this->script     .= $assets['js'];
 					}
 				} elseif ( 'core/template-part' === $block['blockName'] ) {
-					$id = $this->get_fse_template_part( $block );
-
-					if ( $id ) {
-						$assets     = $this->get_assets_using_post_content( $id );
-						$block_css .= $assets['css'];
-						$js        .= $assets['js'];
+					$id            = $this->get_fse_template_part( $block );
+					$is_block_seen = in_array( $id, self::$seen_refs, true );
+					if ( $id && ! $is_block_seen ) {
+						self::$seen_refs[] = $id;
+						$assets            = $this->get_assets_using_post_content( $id );
+						$block_css        .= $assets['css'];
+						$js               .= $assets['js'];
 					}
 				} elseif ( 'core/pattern' === $block['blockName'] ) {
 					$get_assets = $this->get_core_pattern_assets( $block );
