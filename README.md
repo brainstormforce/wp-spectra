@@ -219,6 +219,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ### x.x.x ###
 * Fix: Global - Optimized block ID processing logic to prevent `Allowed memory size` errors when nesting patterns.
+* Fix: Image Gallery - Resolved an issue where Spectra's Lightbox functionality was broken when Imagify's "Display images in Next-Gen format" option was enabled.
 
 ### 2.19.3 - Tuesday, 11th March 2025 ###
 * This update addressed a security bug. Please make sure you are using the latest version on your website.

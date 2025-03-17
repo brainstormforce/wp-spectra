@@ -53,6 +53,9 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 			add_action( 'wp_ajax_nopriv_uag_load_image_gallery_masonry', array( $this, 'render_masonry_pagination' ) );
 			add_action( 'wp_ajax_uag_load_image_gallery_grid_pagination', array( $this, 'render_grid_pagination' ) );
 			add_action( 'wp_ajax_nopriv_uag_load_image_gallery_grid_pagination', array( $this, 'render_grid_pagination' ) );
+
+			// Prevent Imagify from converting images into <picture> tags, which breaks the Spectra Lightbox.
+			add_filter( 'imagify_allow_picture_tags_for_nextgen', '__return_false' );
 		}
 
 		/**
@@ -1082,6 +1085,8 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 						</div>
 					<?php endif; ?>
 				<?php
+				// Restore Imagify's default behavior after the Lightbox has been rendered.
+				remove_filter( 'imagify_allow_picture_tags_for_nextgen', '__return_false' );
 				return ob_get_clean();
 			}
 		}
