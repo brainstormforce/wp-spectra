@@ -219,6 +219,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ### x.x.x ###
 * Updated the Astra Notices Library.
+* Fix: Popup Builder - Resolved an issue wherein the Popup Builder pattern was giving block encountered error message.
 
 ### 2.19.3 - Tuesday, 11th March 2025 ###
 * This update addressed a security bug. Please make sure you are using the latest version on your website.
