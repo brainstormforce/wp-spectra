@@ -42,12 +42,12 @@ const SpectraSupport = ( { campaign } ) => {
 	const modalData = spectraProFeatures[ postCampaigns[ campaign ] || campaign ];
 
 	const supportModalData = {
-		title: modalData.title,
-		Image: modalData.image,
-		header: modalData.header,
-		description: modalData.description,
-		features: modalData.features,
-		shortDesc: modalData.shortDesc,
+		title: modalData?.title,
+		Image: modalData?.image,
+		header: modalData?.header,
+		description: modalData?.description,
+		features: modalData?.features,
+		shortDesc: modalData?.shortDesc,
 	};
 
 	const allPlansData = {
