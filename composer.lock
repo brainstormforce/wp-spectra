@@ -60,29 +60,29 @@
 		},
 		{
 			"name": "brainstormforce/astra-notices",
-			"version": "1.1.11",
+			"version": "1.1.14",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/brainstormforce/astra-notices.git",
-				"reference": "742c8879a3a9154a55fbf628324af96154d2697f"
+				"reference": "0b28968693e979a3a7920bc527d1d56e9b7953f5"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/brainstormforce/astra-notices/zipball/742c8879a3a9154a55fbf628324af96154d2697f",
-				"reference": "742c8879a3a9154a55fbf628324af96154d2697f",
+				"url": "https://api.github.com/repos/brainstormforce/astra-notices/zipball/0b28968693e979a3a7920bc527d1d56e9b7953f5",
+				"reference": "0b28968693e979a3a7920bc527d1d56e9b7953f5",
 				"shasum": ""
 			},
 			"require": {
 				"composer/installers": "^2.0"
 			},
 			"require-dev": {
-				"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
-				"phpcompatibility/phpcompatibility-wp": "^2.1",
-				"phpunit/phpunit": "^7",
-				"roots/wordpress": "^5.9",
+				"dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
+				"phpcompatibility/phpcompatibility-wp": "2.1.4",
+				"phpunit/phpunit": "^9.0",
+				"roots/wordpress": "^6.0",
 				"wp-cli/dist-archive-command": "^2.0",
-				"wp-coding-standards/wpcs": "^2.3",
-				"wp-phpunit/wp-phpunit": "^5",
+				"wp-coding-standards/wpcs": "^3.0",
+				"wp-phpunit/wp-phpunit": "^6.0",
 				"yoast/phpunit-polyfills": "^1.0"
 			},
 			"type": "wordpress-plugin",
@@ -99,9 +99,9 @@
 			"description": "Easily create admin notices",
 			"support": {
 				"issues": "https://github.com/brainstormforce/astra-notices/issues",
-				"source": "https://github.com/brainstormforce/astra-notices/tree/1.1.11"
+				"source": "https://github.com/brainstormforce/astra-notices/tree/1.1.14"
 			},
-			"time": "2022-02-09T09:14:49+00:00"
+			"time": "2025-03-17T06:09:37+00:00"
 		},
 		{
 			"name": "brainstormforce/gutenberg-templates",

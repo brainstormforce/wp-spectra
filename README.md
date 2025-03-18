@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.7  
-**Stable tag:** 2.19.3  
+**Stable tag:** 2.19.4  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -220,6 +220,10 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ### x.x.x ###
 * Fix: Global - Optimized block ID processing logic to prevent `Allowed memory size` errors when nesting patterns.
 * Fix: Image Gallery - Resolved an issue where Spectra's Lightbox functionality was broken when Imagify's "Display images in Next-Gen format" option was enabled.
+
+### 2.19.4 - Tuesday, 18th March 2025 ###
+* Updated the Astra Notices Library.
+* Fix: Popup Builder - Resolved an issue wherein the Popup Builder pattern was giving block encountered error message.
 
 ### 2.19.3 - Tuesday, 11th March 2025 ###
 * This update addressed a security bug. Please make sure you are using the latest version on your website.
