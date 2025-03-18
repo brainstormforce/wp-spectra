@@ -143,14 +143,14 @@ if ( ! class_exists( 'Astra_Notices' ) ) :
 			}
 
 			if ( false === wp_verify_nonce( $nonce, 'astra-notices' ) ) {
-				wp_send_json_error( esc_html_e( 'WordPress Nonce not validated.' ) );
+				wp_send_json_error( esc_html_e( 'WordPress Nonce not validated.', 'ultimate-addons-for-gutenberg' ) );
 			}
 
 			// Valid inputs?
 			if ( ! empty( $notice_id ) ) {
 
 				if ( in_array( $notice_id, $wp_default_meta_keys, true ) ) {
-					wp_send_json_error( esc_html_e( 'Invalid notice ID.' ) );
+					wp_send_json_error( esc_html_e( 'Invalid notice ID.', 'ultimate-addons-for-gutenberg' ) );
 				}
 
 				if ( ! empty( $repeat_notice_after ) ) {

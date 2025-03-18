@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.7  
-**Stable tag:** 2.19.3  
+**Stable tag:** 2.19.4  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -217,7 +217,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### x.x.x ###
+### 2.19.4 - Tuesday, 18th March 2025 ###
 * Updated the Astra Notices Library.
 * Fix: Popup Builder - Resolved an issue wherein the Popup Builder pattern was giving block encountered error message.
 
