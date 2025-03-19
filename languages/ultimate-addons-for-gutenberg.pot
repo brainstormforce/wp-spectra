@@ -23,6 +23,7 @@ msgstr ""
 #: admin-core/inc/admin-menu.php:396
 #: admin-core/inc/admin-menu.php:503
 #: classes/class-uagb-init-blocks.php:813
+#: classes/class-uagb-loader.php:89
 #: classes/class-uagb-nps-notice.php:91
 msgid "Spectra"
 msgstr ""
@@ -41,10 +42,12 @@ msgid "Brainstorm Force"
 msgstr ""
 
 #: admin-core/ajax/ajax-errors.php:82
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:224
 msgid "Sorry, you are not allowed to do this operation."
 msgstr ""
 
 #: admin-core/ajax/ajax-errors.php:83
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:237
 msgid "Nonce validation failed"
 msgstr ""
 
@@ -8508,6 +8511,7 @@ msgstr ""
 
 #: includes/blocks/icon-list-child/block.php:14
 #: includes/blocks/icon/block.php:16
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:109
 #: dist/blocks-placeholder.js:21
 #: dist/blocks.js:11
 #: dist/blocks.js:19
@@ -8961,6 +8965,108 @@ msgstr ""
 #. translators: %d: Minutes interval
 #: lib/batch-processing/class-wp-background-process.php:425
 msgid "Every %d Minutes"
+msgstr ""
+
+#. translators: %s product name
+#: lib/bsf-analytics/class-bsf-analytics.php:228
+msgid "Want to help make %1s even more awesome? Allow us to collect non-sensitive diagnostic data and usage information. "
+msgstr ""
+
+#: lib/bsf-analytics/class-bsf-analytics.php:231
+msgid "This will be applicable for all sites from the network."
+msgstr ""
+
+#. translators: %s usage doc link
+#: lib/bsf-analytics/class-bsf-analytics.php:255
+msgid " Know More."
+msgstr ""
+
+#: lib/bsf-analytics/class-bsf-analytics.php:265
+msgid "Yes! Allow it"
+msgstr ""
+
+#: lib/bsf-analytics/class-bsf-analytics.php:276
+msgid "No Thanks"
+msgstr ""
+
+#: lib/bsf-analytics/class-bsf-analytics.php:387
+msgid "Usage Tracking"
+msgstr ""
+
+#. translators: %s Product title
+#: lib/bsf-analytics/class-bsf-analytics.php:431
+msgid "Allow %s products to track non-sensitive usage tracking data."
+msgstr ""
+
+#: lib/bsf-analytics/class-bsf-analytics.php:434
+msgid " This will be applicable for all sites from the network."
+msgstr ""
+
+#: lib/bsf-analytics/class-bsf-analytics.php:439
+msgid "Learn More."
+msgstr ""
+
+#: lib/bsf-analytics/classes/class-bsf-analytics-helper.php:28
+msgid "Oops! Something went wrong. Please refresh the page and try again."
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:83
+msgid "If you have a moment, please share why you are deactivating the plugin."
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:134
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:309
+msgid "Please tell us more details."
+msgstr ""
+
+#. translators: %1$s: link html start, %2$s: link html end
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:143
+msgid "Need help from our experts? %1$sClick here to contact us.%2$s"
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:154
+msgid "Submit & Deactivate"
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:155
+msgid "Skip & Deactivate"
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:284
+msgid "This is a temporary deactivation for testing."
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:285
+msgid "How can we assist you?"
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:290
+msgid "The plugin isn't working properly."
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:291
+msgid "Please tell us more about what went wrong?"
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:296
+msgid "I found a better alternative plugin."
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:297
+msgid "Could you please specify which plugin?"
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:302
+msgid "It's missing a specific feature."
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:303
+msgid "Please tell us more about the feature."
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:308
+#: dist/blocks.js:11
+msgid "Other"
 msgstr ""
 
 #: lib/class-uagb-ast-block-templates.php:65
@@ -11461,10 +11567,6 @@ msgstr ""
 
 #: dist/blocks.js:11
 msgid "All Icons"
-msgstr ""
-
-#: dist/blocks.js:11
-msgid "Other"
 msgstr ""
 
 #: dist/blocks.js:11

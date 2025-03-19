@@ -39,6 +39,7 @@
 		"brainstormforce/gutenberg-templates": "~2",
 		"brainstormforce/zip-ai": "~2",
 		"brainstormforce/zipwp-images": "^1",
+		"brainstormforce/bsf-analytics": "^1",
 		"brainstormforce/utm-analytics": "^0.0.3",
 		"brainstormforce/nps-survey": "^1"
 	},
@@ -67,6 +68,11 @@
 			"name": "brainstormforce/nps-survey",
 			"type": "vcs",
 			"url": "git@github.com:brainstormforce/nps-survey.git"
+		},
+		{
+			"name": "brainstormforce/bsf-analytics",
+			"type": "vcs",
+			"url": "git@github.com:brainstormforce/bsf-analytics.git"
 		}
 	],
 	"extra": {
@@ -76,6 +82,7 @@
 				"brainstormforce/gutenberg-templates",
 				"brainstormforce/zip-ai",
 				"brainstormforce/zipwp-images",
+				"brainstormforce/bsf-analytics",
 				"brainstormforce/utm-analytics",
 				"brainstormforce/nps-survey"
 			]

@@ -658,6 +658,8 @@ class Admin_Menu {
 					'loop-reset',
 					'loop-pagination',
 					'loop-category',
+					'modal-pro',
+					'countdown-pro',
 				);
 
 				if ( ( 'cf7-styler' === $addon && 'active' !== $cf7_status ) || ( 'gf-styler' === $addon && 'active' !== $gf_status ) ) {
