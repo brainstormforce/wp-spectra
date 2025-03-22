@@ -220,6 +220,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 = x.x.x =
 * Fix: Global - Optimized block ID processing logic to prevent `Allowed memory size` errors when nesting patterns.
 * Fix: Image Gallery - Resolved an issue where Spectra's Lightbox functionality was broken when Imagify's "Display images in Next-Gen format" option was enabled.
+* Fix: Global - Resolved an issue wherein assets were not loading in SureCart's template parts.
 
 = 2.19.4 - Tuesday, 18th March 2025 =
 * Updated the Astra Notices Library.

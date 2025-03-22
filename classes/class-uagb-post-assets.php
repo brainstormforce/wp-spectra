@@ -1321,6 +1321,64 @@ class UAGB_Post_Assets {
 	}
 
 	/**
+	 * Get SureCart Template Part Content.
+	 * 
+	 * @param string $id Template part ID.
+	 * @param string $template_part_name Name of the template part.
+	 * @return string Return the template part content.
+	 * @since x.x.x
+	 */
+	public function get_surecart_template_part_content( $id, $template_part_name ) {
+		if ( 'cart' === $template_part_name ) {
+			$template_part_id = 'surecart/surecart//cart';
+			$template         = get_block_template( $template_part_id, 'wp_template_part' );
+			return ( isset( $template->content ) && is_string( $template->content ) ) ? $template->content : '';
+		}
+
+		if ( 'upsell' === $template_part_name ) {
+			$upsell_data = get_query_var( 'surecart_current_upsell' );
+			
+			if ( is_object( $upsell_data ) && isset( $upsell_data->metadata->wp_template_part_id ) ) {
+				$template_part_id = $upsell_data->metadata->wp_template_part_id;
+				$template         = get_block_template( $template_part_id, 'wp_template_part' );
+				return ( isset( $template->content ) && is_string( $template->content ) ) ? $template->content : '';
+			} else {
+				return '';
+			}
+		}
+
+		// Available SureCart functions to get the template part id.
+		$surecart_functions = array(
+			'single_product'     => 'sc_get_product',
+			'product_collection' => 'sc_get_collection',
+		);
+
+		if ( ! isset( $surecart_functions[ $template_part_name ] ) || ! function_exists( $surecart_functions[ $template_part_name ] ) ) {
+			return '';
+		}
+
+		$template_data = call_user_func( $surecart_functions[ $template_part_name ], $id );
+
+		if ( 'single_product' === $template_part_name ) {
+			if ( ! is_object( $template_data ) || empty( $template_data->template_part_id ) ) {
+				return '';
+			}
+			$template_part_id = $template_data->template_part_id;
+		} elseif ( 'product_collection' === $template_part_name ) {
+			if ( ! is_object( $template_data ) || empty( $template_data->template_part->id ) ) {
+				return '';
+			}
+			$template_part_id = $template_data->template_part->id;
+		} else {
+			return '';
+		}
+
+		$template = get_block_template( $template_part_id, 'wp_template_part' );
+		
+		return ( isset( $template->content ) && is_string( $template->content ) ) ? $template->content : '';
+	}
+
+	/**
 	 * Generates stylesheet in loop.
 	 *
 	 * @param object $this_post Current Post Object.
@@ -1332,7 +1390,21 @@ class UAGB_Post_Assets {
 			return;
 		}
 
-		if ( has_blocks( $this_post->ID ) && isset( $this_post->post_content ) ) {
+		$surecart_template_parts = array( 'single_product', 'product_collection', 'cart', 'upsell' );
+
+		foreach ( $surecart_template_parts as $template_part_name ) {
+			$template_part_content = $this->get_surecart_template_part_content( $this_post->ID, $template_part_name );
+	
+			if ( ! empty( $template_part_content ) && has_blocks( $template_part_content ) && isset( $this_post->post_content ) ) {
+				$template_contents[] = $template_part_content;
+			}
+		}
+
+		if ( ! empty( $template_contents ) && isset( $this_post->post_content ) ) {
+			$this_post->post_content .= implode( '', $template_contents );
+		}
+
+		if ( $this_post instanceof WP_Post && ( has_blocks( $this_post->ID ) || has_blocks( $this_post ) ) ) {
 			$this->common_function_for_assets_preparation( $this_post->post_content );
 		}
 	}
@@ -1340,7 +1412,7 @@ class UAGB_Post_Assets {
 	/**
 	 * Common function to generate stylesheet.
 	 *
-	 * @param array $post_content Current Post Object.
+	 * @param string $post_content Current Post Object.
 	 * @since 2.0.0
 	 */
 	public function common_function_for_assets_preparation( $post_content ) {
