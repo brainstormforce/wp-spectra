@@ -1428,10 +1428,14 @@ class UAGB_Post_Assets {
 		
 			$custom_css = ! empty( $custom_css ) && is_string( $custom_css ) ? wp_slash( $custom_css ) : '';
 
-			// Decode any HTML entities (like &gt;) before appending.
+			// 1. Decode any HTML entities (like &gt;) before appending.
 			$custom_css = html_entity_decode( $custom_css );
+			// 2. Remove unnecessary backslashes before quotes
+			$custom_css = preg_replace( '/\\\\+(?=["\'])/', '', $custom_css );
 		
 			if ( ! empty( $custom_css ) && ! self::$custom_css_appended ) {
+				// 3. Remove any excessive escaping
+				$custom_css                = stripslashes( $custom_css );
 				$this->stylesheet         .= $custom_css;
 				self::$custom_css_appended = true;
 			}
