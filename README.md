@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.7  
-**Stable tag:** 2.19.4  
+**Stable tag:** 2.19.5  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -217,9 +217,10 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### x.x.x ###
-* Fix: Global - Optimized block ID processing logic to prevent `Allowed memory size` errors when nesting patterns.
+### 2.19.5 - Monday, 31st March 2025 ###
+* Improved codebase for improved security.
 * Fix: Image Gallery - Resolved an issue where Spectra's Lightbox functionality was broken when Imagify's "Display images in Next-Gen format" option was enabled.
+* Fix: Global - Optimized block ID processing logic to prevent `Allowed memory size` errors when nesting patterns.
 * Fix: Global - Resolved an issue where custom CSS for background images was not applying correctly on the frontend.
 * Fix: Global - Resolved an issue wherein assets were not loading in SureCart's template parts.
 

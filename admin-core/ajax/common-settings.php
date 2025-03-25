@@ -1069,7 +1069,7 @@ class Common_Settings extends Ajax_Base {
 	/**
 	 * Save setting - Usage tracking.
 	 *
-	 * @since x.x.x
+	 * @since 2.19.5
 	 * @return void
 	 */
 	public function enable_bsf_analytics_option() {

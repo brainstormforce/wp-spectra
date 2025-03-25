@@ -206,7 +206,7 @@ class UAGB_Post_Assets {
 	 * Seen Refs Array
 	 * This array will store the block IDs which have already been processed.
 	 *
-	 * @since x.x.x
+	 * @since 2.19.5
 	 * @var array
 	 */
 	private static $seen_refs = array();
@@ -1326,7 +1326,7 @@ class UAGB_Post_Assets {
 	 * @param string $id Template part ID.
 	 * @param string $template_part_name Name of the template part.
 	 * @return string Return the template part content.
-	 * @since x.x.x
+	 * @since 2.19.5
 	 */
 	public function get_surecart_template_part_content( $id, $template_part_name ) {
 		if ( 'cart' === $template_part_name ) {

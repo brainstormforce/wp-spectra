@@ -171,7 +171,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * This is needed because the reading settings affect the block layout and the asset version is used to cache the block CSS and JS assets.
 		 *
-		 * @since x.x.x
+		 * @since 2.19.5
 		 * @return void
 		 */
 		public function reading_page() {
