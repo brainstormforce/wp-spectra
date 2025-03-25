@@ -149,7 +149,7 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$str of function sanitize_text_field expects string, mixed given\\.$#"
-			count: 30
+			count: 31
 			path: admin-core/ajax/common-settings.php
 
 		-

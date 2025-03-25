@@ -274,6 +274,11 @@ const globalDataReducer = ( state = {}, action ) => {
 				enableDynamicContentExtension: enableAll,
 				enableResponsiveConditions: enableAll
 			}; 
+		case 'UPDATE_ENABLE_BSF_ANALYTICS_OPTION':
+			return {
+				...state,
+				enableBSFAnalyticsOption: action.payload,
+			};
         default:
             return state;
     }

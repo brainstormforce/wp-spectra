@@ -49,6 +49,7 @@ const setInitialState = ( store ) => {
             btnInheritFromTheme: data.uag_btn_inherit_from_theme,
 	        enableGBSExtension: data.uag_enable_gbs_extension,
             zipAiModules: data.zip_ai_modules,
+			enableBSFAnalyticsOption: data.enable_bsf_analytics_option,
         };
 
         store.dispatch( {type: 'UPDATE_INITIAL_STATE', payload: initialState} );

@@ -100,6 +100,7 @@ class Common_Settings extends Ajax_Base {
 			'btn_inherit_from_theme',
 			'zip_ai_module_status',
 			'zip_ai_verify_authenticity',
+			'enable_bsf_analytics_option',
 		);
 
 		$this->init_ajax_events( $ajax_events );
@@ -1063,5 +1064,17 @@ class Common_Settings extends Ajax_Base {
 		} else {
 			wp_send_json_error( array( 'messsage' => __( 'Unable to verify authenticity.', 'ultimate-addons-for-gutenberg' ) ) );
 		}
+	}
+
+	/**
+	 * Save setting - Usage tracking.
+	 *
+	 * @since x.x.x
+	 * @return void
+	 */
+	public function enable_bsf_analytics_option() {
+		$this->check_permission_nonce( 'uag_enable_bsf_analytics_option' );
+		$value = $this->check_post_value();
+		$this->save_admin_settings( 'spectra_analytics_optin', sanitize_text_field( $value ) );
 	}
 }
