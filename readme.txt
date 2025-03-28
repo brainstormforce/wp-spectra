@@ -1,4 +1,4 @@
-=== Spectra - WordPress Gutenberg Blocks ===
+=== Spectra Gutenberg Blocks – Website Builder for the Block Editor ===
 Contributors: brainstormforce
 Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
@@ -13,7 +13,7 @@ Power-up Gutenberg with advanced blocks for faster website creation. Build your 
 
 == Description ==
 
-<strong>SPECTRA WEBSITE BUILDER - BEST PLUGIN TO EXTEND THE WORDPRESS BLOCK EDITOR WITH PAGE EDITING FEATURES, 30+ FREE CUSTOMIZABLE BLOCKS, COMING SOON MODE, POPUP BUILDER</strong>
+<strong>SPECTRA WEBSITE BUILDER – BEST GUTENBERG BLOCKS PLUGIN TO EXTEND THE WORDPRESS BLOCK EDITOR WITH PAGE EDITING FEATURES, 30+ FREE CUSTOMIZABLE BLOCKS, COMING SOON MODE, POPUP BUILDER</strong>
 
 ★★★★★
 
@@ -21,7 +21,7 @@ Power-up Gutenberg with advanced blocks for faster website creation. Build your 
 
 Most helpful links
 <ul>
- 	<li><a href="https://wpspectra.com/" target="_blank" rel="">Spectra – Free WordPress Page Builder | WordPress Builder Plugin</a></li>
+ 	<li><a href="https://wpspectra.com/" target="_blank" rel="">Spectra – Free Page Builder | WordPress Builder Plugin</a></li>
  	<li><a href="https://youtu.be/GLNzTxArR6Y" target="_blank" rel="">A Better Way to Build WordPress Websites with Gutenberg | Introducing Spectra</a></li>
  	<li><a href="https://youtu.be/8aniX8w4NLA" target="_blank" rel="">Spectra Flexbox Controls CRASH COURSE</a></li>
  	<li><a href="https://youtu.be/h07jB2Z9Qbk" target="_blank" rel="">Spectra Page Builder For WordPress Gets These 10 Things Right - Never Seen Before Feature Reveal!</a></li>
@@ -38,7 +38,7 @@ We aim to simplify the website creation process by providing a versatile toolkit
 
 With Spectra, we strive to make it extremely easy to use for beginners and feature-rich for experienced designers.
 
-Spectra equips designers with a wide range of pre-designed templates, allowing them to effortlessly create professional websites tailored to their unique requirements.
+Spectra equips designers with a wide range of pre-designed website templates, allowing them to effortlessly create professional websites tailored to their unique requirements.
 
 Beyond just aesthetics, we are committed to optimizing website performance. Spectra offers efficient code and performance-focused features, ensuring that the websites built with our plugin are not only visually appealing but also deliver exceptional speed and smooth functionality.
 
@@ -66,7 +66,7 @@ With Spectra, you can power up the block editor with advanced and powerful block
 
 Spectra provides a wide range of unique and creative blocks on top of the default WordPress page editor, enabling you to build and design pages or posts without writing a single line of code.
 
-It offers an easy-to-use interface, customization options, and a library of pre-built Starter Templates to help you build awesome websites in minutes.
+It offers an easy-to-use interface, customization options, and a library of pre-built website templates to help you build awesome websites in minutes.
 
 Whether you need to launch an online store or promote your services, Spectra empowers you to build pixel-perfect websites that captivate your audience.
 
@@ -76,7 +76,7 @@ Don't let coding complexities hold you back – unlock the potential of block ed
 
 <ol>
 	<li><strong>Layouts</strong> - Easily move, resize, and hide different sections, rows, columns, and blocks using convenient layout navigation to make your page designing process faster.</li>
-	<li><strong>Designs powered by Starter Templates</strong> - Get access to a wide range of predesigned websites, pages, and blocks that can be imported and customized to suit your needs. Spectra offers hundreds of designs to choose from.</li>
+	<li><strong>Designs powered by Starter Templates</strong> - Thinking about switching from Elementor templates to a more performance-friendly alternative? Spectra gives you the same level of design flexibility - without the bloat. Spectra offers hundreds of designs to choose from.</li>
 	<li><strong>Wireframes</strong> - Before diving into the design process, it's crucial to create a structure for your website. With Spectra's Wireframe Blocks, you can quickly create page or website mockups, improving work efficiency and saving time.</li>
 	<li><strong>Block patterns</strong> - Import and customize pre-designed block patterns for various sections on your website. Spectra provides a collection of these patterns that can be easily tailored to your preferences.</li>
 	<li><strong>Advanced block presets</strong> - Not sure how to design blocks optimally? No worries! Our team of expert designers has created highly converting and visually appealing presets for you to use.</li>
@@ -106,17 +106,19 @@ Don't let coding complexities hold you back – unlock the potential of block ed
 
 <ul>
 	<li><strong>Web designers</strong> - Want to enhance your website-building process without getting stuck in coding? Spectra's got your back! With its advanced blocks, you can create stunning layouts and customize elements like a pro, all without writing a single line of code.</li>
-	<li><strong>Small business owners</strong> - Building a professional website for your business just got easier with Spectra. Choose from the pre-built Starter Templates and customize them to match your branding and content. Say goodbye to costly web development and hello to a beautiful online presence.</li>
+	<li><strong>Small business owners</strong> - Building a professional website for your business just got easier with Spectra. Choose from the pre-built WordPress Templates and customize them to match your branding and content. Say goodbye to costly web development and hello to a beautiful online presence.</li>
 	<li><strong>Bloggers</strong> - Spice up your blog posts with Spectra's eye-catching elements. Add images, engaging call-to-actions, content timelines, and social sharing blocks to make your content pop. It's time to captivate your readers and take your blog to the next level.</li>
 	<li><strong>SEO Specialists</strong> - Spectra has schema markup blocks like FAQ, How-To, Review, and Table of Content to boost your website rankings and improve search engine representation. Plus, its lightweight and optimized code ensures your site performs at its best. Get ready to conquer the search results!</li>
 	<li><strong>eCommerce store owners</strong> - Spectra helps you create visually stunning product listings, showcase star ratings and reviews, and display pricing information that will make your customers click that "buy" button. Get ready to take your online store to new heights.</li>
 	<li><strong>Marketers</strong> - Spectra is your secret weapon for creating effective landing pages and promotional materials. Use attention-grabbing blocks like call-to-actions, marketing buttons, and testimonials to drive conversions and engage your target audience. Your campaigns just got a whole lot better.</li>
-	<li><strong>Freelancers</strong> - We've got something special for you! Streamline your workflow and save time with Spectra. Quickly build websites for your clients using the pre-built Starter Templates and customize them to meet their requirements. It's the ultimate toolkit for freelancers.</li>
+	<li><strong>Freelancers</strong> - We've got something special for you! Streamline your workflow and save time with Spectra. Quickly build websites for your clients using the pre-built website templates and customize them to meet their requirements. It's the ultimate toolkit for freelancers.</li>
 	<li><strong>Podcasters and YouTubers</strong> - With Spectra, you can enhance your website or blog with ease. Add a podcast player, embed videos, showcase a content timeline, and create engaging content using the various blocks offered. Let your creativity flow and captivate your audience.</li>
 	<li><strong>Non-profit organizations</strong> - Create visually appealing websites to showcase your cause, share inspiring success stories, and collect donations. Spectra's image blocks, forms, testimonials, and social sharing options will help you engage your audience and promote your mission effectively.</li>
 	<li><strong>Restaurant owners</strong> - Spectra's ready-to-use Starter Templates cater specifically to restaurants. Show off your menus, feature customer testimonials, and even integrate a reservation form using the forms block. It's the secret ingredient to a mouth-watering online presence.</li>
-	<li><strong>Beginner WordPress users</strong> - Spectra's user-friendly interface, pre-designed Starter Templates, and comprehensive tutorials make website creation a breeze. No coding skills are needed! You can create professional-looking websites and amaze everyone with your online presence.</li>
+	<li><strong>Beginner WordPress users</strong> - Spectra's user-friendly interface, pre-designed WordPress Templates, and comprehensive tutorials make website creation a breeze. No coding skills are needed! You can create professional-looking websites and amaze everyone with your online presence.</li>
 </ul>
+
+Anyone thinking of moving away from traditional page builders like Elementor and Divi Builder in favor of WordPress Block Editor (also known as Gutenberg) for a better page-building experience without the need for traditional page builders like Elementor and Divi.
 
 <strong>SOME OF THE WORDPRESS THEMES & PLUGINS SPECTRA SUPPORTS 🔗</strong>
 
@@ -154,6 +156,8 @@ Spectra is compatible with all plugins, including:
 	<li>And many more</li>
 </ul>
 
+Note: Spectra does not offer Elementor Templates.
+
 <strong>SUPPORT THAT CARES! ⛑️</strong>
 
 We understand the need for a quality product backed by dedicated support that cares. We are here to listen to all your queries and help you make the most out of our plugin.
@@ -163,7 +167,7 @@ We understand the need for a quality product backed by dedicated support that ca
 <strong>CONNECT WITH OUR TEAM AND COMMUNITY 🌐</strong>
 
 <ul>
-	<li>Facebook Group: <a href="https://www.facebook.com/groups/wpastra" target="_blank" rel="">WordPress Web Creators by Astra</a></li>
+	<li>Facebook Group: <a href="https://www.facebook.com/groups/wpastra" target="_blank" rel="">Web Creators by Astra</a></li>
 	<li>Facebook: <a href="https://www.facebook.com/wpspectra" target="_blank" rel="">Spectra</a></li>
 	<li>Twitter / X: <a href="https://twitter.com/wpspectra" target="_blank" rel="">Spectra</a></li>
 </ul>
