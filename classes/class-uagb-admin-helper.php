@@ -445,6 +445,14 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 				}
 			);
 
+			// Pass the excluded CPTs to the 'zipwp_images_excluded_post_types' filter.
+			add_filter(
+				'zipwp_images_excluded_post_types',
+				function() use ( $excluded_cpts ) {
+					return $excluded_cpts;
+				}
+			);
+
 			// Initialize post type variable.
 			$post_type = '';
 

@@ -4,7 +4,7 @@
 		"Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
 		"This file is @generated automatically"
 	],
-	"content-hash": "297649937e694d60f1e948c712cdbd60",
+	"content-hash": "794c85a7db06ebdf29e917f1de0a388d",
 	"packages": [
 		{
 			"name": "automattic/vipwpcs",
@@ -403,16 +403,16 @@
 		},
 		{
 			"name": "brainstormforce/zipwp-images",
-			"version": "1.0.15",
+			"version": "1.0.18",
 			"source": {
 				"type": "git",
 				"url": "git@github.com:brainstormforce/zipwp-images.git",
-				"reference": "a8f5bd482ecb4a84a50a9e62348f182224c54499"
+				"reference": "ef3cf96833ff1adcdd177735f339d485299b02ad"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/brainstormforce/zipwp-images/zipball/a8f5bd482ecb4a84a50a9e62348f182224c54499",
-				"reference": "a8f5bd482ecb4a84a50a9e62348f182224c54499",
+				"url": "https://api.github.com/repos/brainstormforce/zipwp-images/zipball/ef3cf96833ff1adcdd177735f339d485299b02ad",
+				"reference": "ef3cf96833ff1adcdd177735f339d485299b02ad",
 				"shasum": ""
 			},
 			"require": {
@@ -468,10 +468,10 @@
 			],
 			"description": "Free images library from ZipWP",
 			"support": {
-				"source": "https://github.com/brainstormforce/zipwp-images/tree/1.0.15",
+				"source": "https://github.com/brainstormforce/zipwp-images/tree/1.0.18",
 				"issues": "https://github.com/brainstormforce/zipwp-images/issues"
 			},
-			"time": "2025-02-18T08:10:59+00:00"
+			"time": "2025-03-27T13:24:53+00:00"
 		},
 		{
 			"name": "composer/installers",

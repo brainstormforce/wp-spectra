@@ -9,13 +9,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-25T10:02:34+00:00\n"
+"POT-Creation-Date: 2025-03-27T14:03:51+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
 
 #. Plugin Name of the plugin
-#: ultimate-addons-for-gutenberg.php
 #: admin-core/inc/admin-menu.php:349
 #: admin-core/inc/admin-menu.php:350
 #: admin-core/inc/admin-menu.php:361
@@ -31,17 +30,14 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
-#: ultimate-addons-for-gutenberg.php
 msgid "https://www.brainstormforce.com"
 msgstr ""
 
 #. Description of the plugin
-#: ultimate-addons-for-gutenberg.php
 msgid "The Spectra extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster."
 msgstr ""
 
 #. Author of the plugin
-#: ultimate-addons-for-gutenberg.php
 msgid "Brainstorm Force"
 msgstr ""
 
@@ -7849,15 +7845,15 @@ msgstr ""
 msgid "Travel"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:486
+#: classes/class-uagb-admin-helper.php:494
 msgid "Full Site Editor's Global Styles"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:489
+#: classes/class-uagb-admin-helper.php:497
 msgid "Filter added through any 3rd Party Theme/Plugin."
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:493
+#: classes/class-uagb-admin-helper.php:501
 msgid "Theme"
 msgstr ""
 
@@ -9253,19 +9249,19 @@ msgstr ""
 msgid "Could not download the image."
 msgstr ""
 
-#: lib/zipwp-images/classes/zipwp-images-script.php:99
+#: lib/zipwp-images/classes/zipwp-images-script.php:115
 msgid "Search Images"
 msgstr ""
 
-#: lib/zipwp-images/classes/zipwp-images-script.php:100
+#: lib/zipwp-images/classes/zipwp-images-script.php:116
 msgid "Search - Ex: flowers"
 msgstr ""
 
-#: lib/zipwp-images/classes/zipwp-images-script.php:101
+#: lib/zipwp-images/classes/zipwp-images-script.php:117
 msgid "Downloading..."
 msgstr ""
 
-#: lib/zipwp-images/classes/zipwp-images-script.php:102
+#: lib/zipwp-images/classes/zipwp-images-script.php:118
 msgid "Validating..."
 msgstr ""
 
