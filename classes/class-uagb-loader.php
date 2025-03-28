@@ -72,7 +72,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			add_action( 'plugins_loaded', array( $this, 'load_plugin' ) );
 
 			add_action( 'init', array( $this, 'init_actions' ) );
-			
+
 			/*
 			* BSF Analytics.
 			*/
@@ -86,7 +86,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 				$spectra_bsf_analytics->set_entity(
 					array(
 						'spectra' => array(
-							'product_name'        => __( 'Spectra', 'ultimate-addons-for-gutenberg' ),
+							'product_name'        => 'Spectra',
 							'path'                => UAGB_DIR . 'lib/bsf-analytics',
 							'author'              => 'Spectra by Brainstorm Force',
 							'time_to_display'     => '+24 hours',
@@ -97,9 +97,9 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 										'id'              => 'deactivation-survey-ultimate-addons-for-gutenberg',
 										'popup_logo'      => esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/logos/spectra.svg' ),
 										'plugin_slug'     => 'ultimate-addons-for-gutenberg',
-										'popup_title'     => __( 'Quick Feedback', 'ultimate-addons-for-gutenberg' ),
+										'popup_title'     => 'Quick Feedback',
 										'support_url'     => 'https://wpspectra.com/contact/',
-										'popup_description' => __( 'If you have a moment, please share why you are deactivating Spectra:', 'ultimate-addons-for-gutenberg' ),
+										'popup_description' => 'If you have a moment, please share why you are deactivating Spectra:',
 										'show_on_screens' => array( 'plugins' ),
 										'plugin_version'  => UAGB_VER,
 									),

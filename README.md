@@ -218,8 +218,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### 2.19.5 - Monday, 31st March 2025 ###
-* Improved codebase for improved security.
-* Fix: Image Gallery - Resolved an issue where Spectra's Lightbox functionality was broken when Imagify's "Display images in Next-Gen format" option was enabled.
+* Improvement: Improved code quality.
+* Fix: Image Gallery - Resolved an issue wherein lightbox functionality was broken when Imagify's Next-Gen format option enabled.
 * Fix: Global - Optimized block ID processing logic to prevent `Allowed memory size` errors when nesting patterns.
 * Fix: Global - Resolved an issue where custom CSS for background images was not applying correctly on the frontend.
 * Fix: Global - Resolved an issue wherein assets were not loading in SureCart's template parts.
@@ -238,28 +238,6 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 * Fix: Popup Builder - Resolved an issue wherein the popup builder page in the admin dashboard throws a console error.
 * Fix: Post Masonry - Resolved an issue wherein the Post Masonry block was getting a block recovery issue.
 * Fix: Global - Resolved an issue where the Pro installation was not detected when WPML CMS was active.
-
-### 2.19.1 - Wednesday, 19th February 2025 ###
-* This update addressed a security bug. Props to Peter Thaleikis for privately reporting it to our team. Please make sure you are using the latest version on your website.
-
-### 2.19.0 - Thursday, 13th February 2025 ###
-* New: Rebuilt the Spectra Dashboard with the new Force UI, enhancing user experience with a modern and intuitive interface.
-* Improvement: Insert blocks to streamline workflow.
-* Improvement: Post Grid & Post Carousel - Added control for taxonomy bottom spacing.
-* Fix: Container – Resolved an issue where the unit for the X position of the background image was not copied when using the "Copy-Paste Style" feature.
-* Fix: Heading - Resolved an issue where the Heading block, when assigned a paragraph tag, was not translatable.
-* Fix: Info Box - Resolved an issue wherein the icon responsive padding is not working as intended in framed view.
-
-### 2.18.3 - Friday, 31st January 2025 ###
-* Updated the AI Assistant Library.
-
-### 2.18.2 - Monday, 20th January 2025 ###
-* Fix: Info Box - Resolved an issue wherein the button would take full width with gutenberg activated.
-* Fix: Info Box - Resolved an issue wherein the image padding is not supported in RTL mode.
-* Fix: Icon - Resolved an issue wherein the responsive condition and z-index would not work as intended.
-* Fix: Lottie - Resolved an issue where Lottie animations could not be replaced.
-* Fix: Global - Resolved an issue wherein assets would not load for single page templates when using FSE themes.
-* Fix: Global - Resolved an issue wherein styles would not be reflected when converting any block to a Template Part in Full Site Editing theme templates.
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 
