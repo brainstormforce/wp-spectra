@@ -398,7 +398,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 						: 'inactive' ) 
 					: 'not-installed';
 
-			if ( 'not-installed' === $status && ! empty( $_GET ) && array_key_exists( 'post_type', $_GET ) && 'spectra-popup' === $_GET['post_type'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- $_GET['post_type'] does not provide nonce.
+			if ( 'not-installed' === $status && isset( $_GET['post_type'] ) && 'spectra-popup' === $_GET['post_type'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- $_GET['post_type'] does not provide nonce.
 				Astra_Notices::add_notice(
 					array(
 						'id'                         => 'uagb-spectra-pro-popup-note',

@@ -48,7 +48,7 @@ const BSFAnalyticsOption = () => {
 				rel="noreferrer"
 				className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover"
 			>
-				this article
+				{__( 'this article', 'ultimate-addons-for-gutenberg' )}
 			</a>
 
 			{__(

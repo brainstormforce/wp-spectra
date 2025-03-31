@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-27T14:03:51+00:00\n"
+"POT-Creation-Date: 2025-03-31T06:25:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -23,7 +23,6 @@ msgstr ""
 #: admin-core/inc/admin-menu.php:396
 #: admin-core/inc/admin-menu.php:503
 #: classes/class-uagb-init-blocks.php:813
-#: classes/class-uagb-loader.php:89
 #: classes/class-uagb-nps-notice.php:91
 msgid "Spectra"
 msgstr ""
@@ -8084,15 +8083,6 @@ msgstr ""
 msgid "Invalid request"
 msgstr ""
 
-#: classes/class-uagb-loader.php:100
-#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:80
-msgid "Quick Feedback"
-msgstr ""
-
-#: classes/class-uagb-loader.php:102
-msgid "If you have a moment, please share why you are deactivating Spectra:"
-msgstr ""
-
 #. translators: %s: html tags
 #: classes/class-uagb-loader.php:432
 msgid "The %1$sSpectra%2$s plugin requires %1$sGutenberg%2$s plugin installed & activated."
@@ -9018,6 +9008,10 @@ msgstr ""
 
 #: lib/bsf-analytics/classes/class-bsf-analytics-helper.php:28
 msgid "Oops! Something went wrong. Please refresh the page and try again."
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:80
+msgid "Quick Feedback"
 msgstr ""
 
 #: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:83
@@ -10101,6 +10095,10 @@ msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:14
 msgid "Allow Brainstorm Force products to track non-sensitive usage tracking data. Please read "
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:14
+msgid "this article"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:14

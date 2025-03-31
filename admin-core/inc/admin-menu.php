@@ -176,10 +176,10 @@ class Admin_Menu {
 
 			$type = '';
 			if ( ! empty( $_POST['type'] ) ) {
-				$type = sanitize_key( wp_unslash( sanitize_text_field( $_POST['type'] ) ) );
+				$type = sanitize_key( wp_unslash( $_POST['type'] ) );
 			}
 
-			$plugin = sanitize_text_field( wp_unslash( sanitize_text_field( $_POST['plugin'] ) ) );
+			$plugin = sanitize_text_field( wp_unslash( $_POST['plugin'] ) );
 
 			if ( 'plugin' === $type ) {
 
@@ -188,7 +188,7 @@ class Admin_Menu {
 					wp_send_json_error( esc_html__( 'Plugin activation is disabled for you on this site.', 'ultimate-addons-for-gutenberg' ) );
 				}
 				if ( isset( $_POST['slug'] ) ) {
-					$slug = sanitize_key( wp_unslash( sanitize_text_field( $_POST['slug'] ) ) );
+					$slug = sanitize_key( wp_unslash( $_POST['slug'] ) );
 					if ( class_exists( '\BSF_UTM_Analytics\Inc\Utils' ) && is_callable( '\BSF_UTM_Analytics\Inc\Utils::update_referer' ) ) {
 						// If the plugin is found and the update_referer function is callable, update the referer with the corresponding product slug.
 						\BSF_UTM_Analytics\Inc\Utils::update_referer( 'ultimate-addons-for-gutenberg', $slug );
@@ -208,7 +208,7 @@ class Admin_Menu {
 			if ( 'theme' === $type ) {
 
 				if ( isset( $_POST['slug'] ) ) {
-					$slug = sanitize_key( wp_unslash( sanitize_text_field( $_POST['slug'] ) ) );
+					$slug = sanitize_key( wp_unslash( $_POST['slug'] ) );
 
 					// Check for permissions.
 					if ( ! ( current_user_can( 'switch_themes' ) ) ) {
@@ -747,7 +747,7 @@ class Admin_Menu {
 
 		wp_set_script_translations( $handle, 'ultimate-addons-for-gutenberg' );
 		wp_enqueue_style( 'uag-admin-google-fonts' );
-		if ( ! empty( $_GET['page'] ) && ( array_key_exists( 'page', $_GET ) && 'spectra' === $_GET['page'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended -- $_GET['page'] does not provide nonce.
+		if ( isset( $_GET['page'] ) && 'spectra' === $_GET['page'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended -- $_GET['page'] does not provide nonce.
 			wp_enqueue_style( $handle );
 		}
 		wp_style_add_data( $handle, 'rtl', 'replace' );
