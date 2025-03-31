@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.19.4\n"
+"Project-Id-Version: Spectra 2.19.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-18T05:58:19+00:00\n"
+"POT-Creation-Date: 2025-03-31T06:25:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -41,10 +41,12 @@ msgid "Brainstorm Force"
 msgstr ""
 
 #: admin-core/ajax/ajax-errors.php:82
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:224
 msgid "Sorry, you are not allowed to do this operation."
 msgstr ""
 
 #: admin-core/ajax/ajax-errors.php:83
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:237
 msgid "Nonce validation failed"
 msgstr ""
 
@@ -52,58 +54,58 @@ msgstr ""
 msgid "Sorry, something went wrong."
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:164
-#: admin-core/ajax/common-settings.php:754
+#: admin-core/ajax/common-settings.php:165
+#: admin-core/ajax/common-settings.php:755
 #: classes/class-uagb-init-blocks.php:548
 msgid "Successfully saved data!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:180
+#: admin-core/ajax/common-settings.php:181
 #: classes/class-uagb-init-blocks.php:1432
 msgid "No post data found!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:216
+#: admin-core/ajax/common-settings.php:217
 msgid "Plugin Successfully Activated"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:847
+#: admin-core/ajax/common-settings.php:849
 msgid "Successfully refreshed tokens!"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:849
+#: admin-core/ajax/common-settings.php:851
 msgid "Failed to refresh tokens"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:986
+#: admin-core/ajax/common-settings.php:988
 msgid "Module not found!"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:1004
+#: admin-core/ajax/common-settings.php:1006
 msgid "%s disabled!"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:1014
+#: admin-core/ajax/common-settings.php:1016
 msgid "Unable to disable %s"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:1026
+#: admin-core/ajax/common-settings.php:1028
 msgid "%s enabled!"
 msgstr ""
 
 #. Translators: %s is the module name.
-#: admin-core/ajax/common-settings.php:1036
+#: admin-core/ajax/common-settings.php:1038
 msgid "Unable to enable %s"
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:1044
+#: admin-core/ajax/common-settings.php:1046
 msgid "Unable to save setting."
 msgstr ""
 
-#: admin-core/ajax/common-settings.php:1063
+#: admin-core/ajax/common-settings.php:1065
 msgid "Unable to verify authenticity."
 msgstr ""
 
@@ -272,21 +274,21 @@ msgstr ""
 msgid "Google Map for "
 msgstr ""
 
-#: blocks-config/image-gallery/class-spectra-image-gallery.php:243
+#: blocks-config/image-gallery/class-spectra-image-gallery.php:246
 #: includes/blocks/image-gallery/attributes.php:74
 #: dist/blocks.js:3
 #: dist/blocks.js:19
 msgid "No Caption"
 msgstr ""
 
-#: blocks-config/image-gallery/class-spectra-image-gallery.php:474
+#: blocks-config/image-gallery/class-spectra-image-gallery.php:477
 #: includes/blocks/image-gallery/attributes.php:136
 #: dist/blocks.js:3
 #: dist/blocks.js:19
 msgid "Load More Images"
 msgstr ""
 
-#: blocks-config/image-gallery/class-spectra-image-gallery.php:1424
+#: blocks-config/image-gallery/class-spectra-image-gallery.php:1429
 #: dist/blocks.js:19
 msgid "Unable to load image"
 msgstr ""
@@ -7842,15 +7844,15 @@ msgstr ""
 msgid "Travel"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:485
+#: classes/class-uagb-admin-helper.php:494
 msgid "Full Site Editor's Global Styles"
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:488
+#: classes/class-uagb-admin-helper.php:497
 msgid "Filter added through any 3rd Party Theme/Plugin."
 msgstr ""
 
-#: classes/class-uagb-admin-helper.php:492
+#: classes/class-uagb-admin-helper.php:501
 msgid "Theme"
 msgstr ""
 
@@ -7965,7 +7967,7 @@ msgstr ""
 msgid "Successfully deleted font."
 msgstr ""
 
-#: classes/class-uagb-helper.php:458
+#: classes/class-uagb-helper.php:478
 #: dist/blocks.js:11
 #: dist/blocks.js:19
 msgid "Full"
@@ -8082,11 +8084,11 @@ msgid "Invalid request"
 msgstr ""
 
 #. translators: %s: html tags
-#: classes/class-uagb-loader.php:390
+#: classes/class-uagb-loader.php:432
 msgid "The %1$sSpectra%2$s plugin requires %1$sGutenberg%2$s plugin installed & activated."
 msgstr ""
 
-#: classes/class-uagb-loader.php:393
+#: classes/class-uagb-loader.php:435
 msgid "Install Gutenberg"
 msgstr ""
 
@@ -8508,6 +8510,7 @@ msgstr ""
 
 #: includes/blocks/icon-list-child/block.php:14
 #: includes/blocks/icon/block.php:16
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:109
 #: dist/blocks-placeholder.js:21
 #: dist/blocks.js:11
 #: dist/blocks.js:19
@@ -8963,6 +8966,113 @@ msgstr ""
 msgid "Every %d Minutes"
 msgstr ""
 
+#. translators: %s product name
+#: lib/bsf-analytics/class-bsf-analytics.php:228
+msgid "Want to help make %1s even more awesome? Allow us to collect non-sensitive diagnostic data and usage information. "
+msgstr ""
+
+#: lib/bsf-analytics/class-bsf-analytics.php:231
+msgid "This will be applicable for all sites from the network."
+msgstr ""
+
+#. translators: %s usage doc link
+#: lib/bsf-analytics/class-bsf-analytics.php:255
+msgid " Know More."
+msgstr ""
+
+#: lib/bsf-analytics/class-bsf-analytics.php:265
+msgid "Yes! Allow it"
+msgstr ""
+
+#: lib/bsf-analytics/class-bsf-analytics.php:276
+msgid "No Thanks"
+msgstr ""
+
+#: lib/bsf-analytics/class-bsf-analytics.php:387
+#: admin-core/assets/build/dashboard-app.js:14
+msgid "Usage Tracking"
+msgstr ""
+
+#. translators: %s Product title
+#: lib/bsf-analytics/class-bsf-analytics.php:431
+msgid "Allow %s products to track non-sensitive usage tracking data."
+msgstr ""
+
+#: lib/bsf-analytics/class-bsf-analytics.php:434
+msgid " This will be applicable for all sites from the network."
+msgstr ""
+
+#: lib/bsf-analytics/class-bsf-analytics.php:439
+msgid "Learn More."
+msgstr ""
+
+#: lib/bsf-analytics/classes/class-bsf-analytics-helper.php:28
+msgid "Oops! Something went wrong. Please refresh the page and try again."
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:80
+msgid "Quick Feedback"
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:83
+msgid "If you have a moment, please share why you are deactivating the plugin."
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:134
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:309
+msgid "Please tell us more details."
+msgstr ""
+
+#. translators: %1$s: link html start, %2$s: link html end
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:143
+msgid "Need help from our experts? %1$sClick here to contact us.%2$s"
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:154
+msgid "Submit & Deactivate"
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:155
+msgid "Skip & Deactivate"
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:284
+msgid "This is a temporary deactivation for testing."
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:285
+msgid "How can we assist you?"
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:290
+msgid "The plugin isn't working properly."
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:291
+msgid "Please tell us more about what went wrong?"
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:296
+msgid "I found a better alternative plugin."
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:297
+msgid "Could you please specify which plugin?"
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:302
+msgid "It's missing a specific feature."
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:303
+msgid "Please tell us more about the feature."
+msgstr ""
+
+#: lib/bsf-analytics/modules/deactivation-survey/classes/class-deactivation-survey-feedback.php:308
+#: dist/blocks.js:11
+msgid "Other"
+msgstr ""
+
 #: lib/class-uagb-ast-block-templates.php:65
 #: lib/gutenberg-templates/inc/importer/plugin.php:1004
 msgid "Design Library"
@@ -9133,19 +9243,19 @@ msgstr ""
 msgid "Could not download the image."
 msgstr ""
 
-#: lib/zipwp-images/classes/zipwp-images-script.php:99
+#: lib/zipwp-images/classes/zipwp-images-script.php:115
 msgid "Search Images"
 msgstr ""
 
-#: lib/zipwp-images/classes/zipwp-images-script.php:100
+#: lib/zipwp-images/classes/zipwp-images-script.php:116
 msgid "Search - Ex: flowers"
 msgstr ""
 
-#: lib/zipwp-images/classes/zipwp-images-script.php:101
+#: lib/zipwp-images/classes/zipwp-images-script.php:117
 msgid "Downloading..."
 msgstr ""
 
-#: lib/zipwp-images/classes/zipwp-images-script.php:102
+#: lib/zipwp-images/classes/zipwp-images-script.php:118
 msgid "Validating..."
 msgstr ""
 
@@ -9981,6 +10091,18 @@ msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:14
 msgid "Enable the \"Inherit From Theme\" option to make all buttons in Spectra blocks across your website inherit their styles from the theme."
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:14
+msgid "Allow Brainstorm Force products to track non-sensitive usage tracking data. Please read "
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:14
+msgid "this article"
+msgstr ""
+
+#: admin-core/assets/build/dashboard-app.js:14
+msgid " to learn more."
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:14
@@ -11461,10 +11583,6 @@ msgstr ""
 
 #: dist/blocks.js:11
 msgid "All Icons"
-msgstr ""
-
-#: dist/blocks.js:11
-msgid "Other"
 msgstr ""
 
 #: dist/blocks.js:11

@@ -41,7 +41,7 @@ const LoadFontAwesome5 = () => {
     };
 
     return (
-        // <>
+        <>
 			<SettingsItem
 				title={ __( 'Load Font Awesome 5 Support', 'ultimate-addons-for-gutenberg' ) }
 				settingText={ __( 'Enable this to make sure all previously used Font Awesome 5 icons are displayed correctly while using the Font Awesome 6 library.', 'ultimate-addons-for-gutenberg' ) }
@@ -53,6 +53,8 @@ const LoadFontAwesome5 = () => {
                     className="uagb-remove-ring border-none"
 				/>
 			</SettingsItem>
+			<hr className="w-full border-b-0 border-x-0 border-t border-solid border-t-border-subtle" />
+		</>
     );
 };
 

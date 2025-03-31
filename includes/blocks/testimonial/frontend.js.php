@@ -47,14 +47,13 @@ $slick_options = apply_filters(
 );
 $equal_height  = isset( $attr['equalHeight'] ) ? $attr['equalHeight'] : '';
 
-$settings      = wp_json_encode( $slick_options );
 $base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-testimonial-';
 $selector      = $base_selector . $id;
 ob_start();
 ?>
 jQuery( document ).ready( function() {
 	if( jQuery( '<?php echo esc_html( $selector ); ?>' ).length > 0 ){
-	jQuery( '<?php echo esc_html( $selector ); ?>' ).find( ".is-carousel" ).slick( <?php echo $settings; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> );
+	jQuery( '<?php echo esc_html( $selector ); ?>' ).find( ".is-carousel" ).slick( <?php echo wp_json_encode( $slick_options ); ?> );
 	}
 	var $scope = jQuery('.uagb-block-<?php echo esc_html( $id ); ?>');
 	var enableEqualHeight = ( '<?php echo esc_html( $equal_height ); ?>' );

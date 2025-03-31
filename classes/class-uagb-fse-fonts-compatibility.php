@@ -90,7 +90,7 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 
 			$this->base_url = UAGB_UPLOAD_URL . 'assets/';
 
-			if ( empty( $_GET['page'] ) || 'spectra' !== $_GET['page'] || empty( $_GET['path'] ) || 'settings' !== $_GET['path'] || empty( $_GET['settings'] ) || 'fse-support' !== $_GET['settings'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			if ( empty( $_GET['page'] ) || 'spectra' !== $_GET['page'] || empty( $_GET['path'] ) || 'settings' !== $_GET['path'] || empty( $_GET['settings'] ) || 'fse-support' !== $_GET['settings'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended -- $_GET['settings'] does not provide nonce.
 				return;
 			}
 

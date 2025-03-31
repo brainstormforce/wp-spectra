@@ -81,6 +81,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 				'uag_blocks_editor_spacing'         => apply_filters( 'uagb_default_blocks_editor_spacing', self::get_admin_settings_option( 'uag_blocks_editor_spacing', 0 ) ),
 				'uag_load_font_awesome_5'           => self::get_admin_settings_option( 'uag_load_font_awesome_5' ),
 				'uag_auto_block_recovery'           => self::get_admin_settings_option( 'uag_auto_block_recovery' ),
+				'uag_enable_bsf_analytics_option'   => self::get_admin_settings_option( 'spectra_analytics_optin', 'no' ),
 				'uag_content_width'                 => $content_width,
 				'spectra_core_blocks'               => apply_filters(
 					'spectra_core_blocks',
@@ -439,6 +440,14 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			// Pass the excluded CPTs to the 'ast_block_templates_exclude_post_types' filter.
 			add_filter(
 				'ast_block_templates_exclude_post_types',
+				function() use ( $excluded_cpts ) {
+					return $excluded_cpts;
+				}
+			);
+
+			// Pass the excluded CPTs to the 'zipwp_images_excluded_post_types' filter.
+			add_filter(
+				'zipwp_images_excluded_post_types',
 				function() use ( $excluded_cpts ) {
 					return $excluded_cpts;
 				}

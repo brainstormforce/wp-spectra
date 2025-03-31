@@ -28,7 +28,7 @@ import ContainerGlobalElementsGap from '@DashboardApp/pages/settings/ContainerGl
 import MyAccount from '@DashboardApp/pages/settings/MyAccount';
 import InheritFromTheme from '@DashboardApp/pages/settings/InheritFromTheme';
 import UpgradeNotices from '@DashboardApp/pages/settings/UpgradeToPro';
-
+import BSFAnalyticsOption from '@DashboardApp/pages/settings/BSFAnalyticsOption';
 // Import Block Settings ( Integrations ).
 import InstagramUsers from '@DashboardApp/pages/settings/block-settings/InstagramUsers';
 
@@ -314,6 +314,7 @@ const Settings = () => {
 								<CopyPasteStyles />
 								<AutoBlockRecovery />
 								<LoadFontAwesome5 />
+								<BSFAnalyticsOption />
 							</>
 						) }
 						{ 'asset-generation' === currentTab && (

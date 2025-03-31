@@ -163,10 +163,30 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			add_action( 'init', array( $this, 'initialize_block_list' ) );
 			self::$file_generation = self::allow_file_generation();
 			// Condition is only needed when we are using block based theme and Reading setting is updated.
-			if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() && isset( $_POST['option_page'] ) && 'reading' === $_POST['option_page'] && isset( $_POST['action'] ) && 'update' === $_POST['action'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Missing
-				/* Update the asset version */
-				UAGB_Admin_Helper::update_admin_settings_option( '__uagb_asset_version', time() ); // Update the asset version when reading settings is updated.
+			$this->reading_page();
+		}
+
+		/**
+		 * Updates the asset version when the reading settings are updated in a block theme.
+		 *
+		 * This is needed because the reading settings affect the block layout and the asset version is used to cache the block CSS and JS assets.
+		 *
+		 * @since 2.19.5
+		 * @return void
+		 */
+		public function reading_page() {
+			// Check if it's a block theme and the appropriate POST data exists.
+			$is_block_theme         = function_exists( 'wp_is_block_theme' ) && wp_is_block_theme();
+			$is_reading_page_update = isset( $_POST['option_page'], $_POST['action'] ) && 'reading' === $_POST['option_page'] && 'update' === $_POST['action']; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verification is not needed here.
+
+			// Return early if the conditions are not met.
+			if ( ! $is_block_theme || ! $is_reading_page_update ) {
+				return;
 			}
+
+			// Update the asset version when the reading settings are updated.
+			UAGB_Admin_Helper::update_admin_settings_option( '__uagb_asset_version', time() );
+
 		}
 
 		/**
@@ -773,7 +793,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				// Remove query string from base URL since paginate_links() adds it automatically.
 				// This should also fix the WPML pagination issue that was added since 1.10.2.
-				if ( count( $_GET ) > 0 ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				if ( count( $_GET ) > 0 ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- $_GET does not provide nonce.
 					$base = strtok( $base, '?' );
 				}
 

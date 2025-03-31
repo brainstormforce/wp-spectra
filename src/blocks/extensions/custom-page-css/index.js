@@ -8,7 +8,8 @@ export const applyScopedCSS = ( customCSS ) => {
         return;
     }
 	// This makes sure CSS only gets applied to blocks and not the editor elements.
-    const scopedCSS = customCSS
+	const scopedCSS = customCSS
+		.replace( /\\/g, '' ) // Removes all backslashes.
         .split( '}' )
         .map( rule => rule.trim() ? `.block-editor-block-list__layout ${rule}}` : '' )
         .join( ' ' );

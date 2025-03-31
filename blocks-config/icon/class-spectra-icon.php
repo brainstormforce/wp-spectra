@@ -558,7 +558,7 @@ if ( ! class_exists( 'Spectra_Icon' ) ) {
 					} 
 					?>
 					tabindex="0">		
-						<?php echo $iconHtml; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+						<?php echo $iconHtml; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Already escaped & sanitize inside render_svg_html(). ?>
 					</span>
 				<?php if ( $has_margin ) : ?>
 				</div>

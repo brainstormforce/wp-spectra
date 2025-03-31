@@ -5,6 +5,9 @@
  * @package UAGB
  */
 
+use UAGB\Admin_Helper;
+use \ZipAI\Classes\Module as Zip_Ai_Module;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
@@ -69,6 +72,45 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			add_action( 'plugins_loaded', array( $this, 'load_plugin' ) );
 
 			add_action( 'init', array( $this, 'init_actions' ) );
+
+			/*
+			* BSF Analytics.
+			*/
+			if ( ! class_exists( 'BSF_Analytics_Loader' ) ) {
+				require_once UAGB_DIR . 'lib/bsf-analytics/class-bsf-analytics-loader.php';
+			}
+
+			if ( class_exists( 'BSF_Analytics_Loader' ) && is_callable( 'BSF_Analytics_Loader::get_instance' ) ) {
+				$spectra_bsf_analytics = BSF_Analytics_Loader::get_instance();
+
+				$spectra_bsf_analytics->set_entity(
+					array(
+						'spectra' => array(
+							'product_name'        => 'Spectra',
+							'path'                => UAGB_DIR . 'lib/bsf-analytics',
+							'author'              => 'Spectra by Brainstorm Force',
+							'time_to_display'     => '+24 hours',
+							'deactivation_survey' => apply_filters(
+								'spectra_deactivation_survey_data',
+								array(
+									array(
+										'id'              => 'deactivation-survey-ultimate-addons-for-gutenberg',
+										'popup_logo'      => esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/logos/spectra.svg' ),
+										'plugin_slug'     => 'ultimate-addons-for-gutenberg',
+										'popup_title'     => 'Quick Feedback',
+										'support_url'     => 'https://wpspectra.com/contact/',
+										'popup_description' => 'If you have a moment, please share why you are deactivating Spectra:',
+										'show_on_screens' => array( 'plugins' ),
+										'plugin_version'  => UAGB_VER,
+									),
+								)
+							),
+						),
+					)
+				);
+			}
+
+			add_filter( 'bsf_core_stats', array( $this, 'spectra_get_specific_stats' ) );
 		}
 
 		/**
@@ -80,7 +122,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '2.19.4' );
+			define( 'UAGB_VER', '2.19.5' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'spectra' );
@@ -625,6 +667,127 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 */
 		public function add_zip_ai_redirection_url( $auth_url ) {
 			return admin_url( 'admin.php?page=spectra&path=ai-features' );
+		}
+
+		/**
+		 * Create an array of block status.
+		 *
+		 * @return array $block_status_data An associative array of block slug => status.
+		 *                                  The status can be either 'enabled' or 'disabled'.
+		 */
+		public function create_block_status_array() {
+			$saved_blocks      = (array) \UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks' );
+			$block_manager     = uagb_block();
+			$blocks            = ( method_exists( $block_manager, 'get_blocks' ) )
+			? (array) $block_manager->get_blocks()
+			: array();
+			$block_status_data = array();
+			if ( is_array( $blocks ) ) {
+				foreach ( $blocks as $slug => $data ) {
+					$_slug = str_replace( 'uagb/', '', $slug );
+			
+					// Skip child blocks.
+					if ( isset( $blocks[ $slug ]['is_child'] ) ) {
+						continue;
+					}
+			
+					// Initialize status array.
+					$block_status_data[ $_slug ] = array();
+			
+					// Check saved status.
+					if ( isset( $saved_blocks[ $_slug ] ) ) {
+						$block_status_data[ $_slug ] = 
+							'disabled' === $saved_blocks[ $_slug ] ? 'disabled' : 'enabled';
+					} else {
+						$block_status_data[ $_slug ] = 'enabled';
+					}
+				}
+			}
+
+			return $block_status_data;
+		}
+
+		/**
+		 * Generates global setting data for analytics
+		 *
+		 * @since 1.4.0
+		 * @return array
+		 */
+		public function global_settings_data() {
+			$global_data = array();
+			// Prepare to get the Zip AI Co-pilot modules.
+			$zip_ai_modules                               = array();
+			$bsf_internal_referrer                        = get_option( 'bsf_product_referers', array() );
+			$bsf_internal_referrer                        = (array) $bsf_internal_referrer;
+			$global_data['internal_referer']              = isset( $bsf_internal_referrer['ultimate-addons-for-gutenberg'] ) 
+				? $bsf_internal_referrer['ultimate-addons-for-gutenberg'] 
+				: '';
+			$global_data['beta']                          = get_option( 'uagb_beta' );
+			$global_data['enable_legacy_blocks']          = get_option( 'uag_enable_legacy_blocks' );
+			$global_data['file_generation']               = get_option( '_uagb_allow_file_generation' );
+			$global_data['templates_button']              = get_option( 'uag_enable_templates_button' );
+			$global_data['on_page_css_button']            = get_option( 'uag_enable_on_page_css_button' );
+			$global_data['block_condition']               = get_option( 'uag_enable_block_condition' );
+			$global_data['quick_action_sidebar']          = get_option( 'uag_enable_quick_action_sidebar' );
+			$global_data['gbs_extension']                 = get_option( 'uag_enable_gbs_extension' );
+			$global_data['block_responsive']              = get_option( 'uag_enable_block_responsive' );
+			$global_data['load_select_font_globally']     = get_option( 'uag_load_select_font_globally' );
+			$global_data['load_gfonts_locally']           = get_option( 'uag_load_gfonts_locally' );
+			$global_data['collapse_panels']               = get_option( 'uag_collapse_panels' );
+			$global_data['copy_paste']                    = get_option( 'uag_copy_paste' );
+			$global_data['preload_local_fonts']           = get_option( 'uag_preload_local_fonts' );
+			$global_data['visibility_mode']               = get_option( 'uag_visibility_mode' );
+			$global_data['container_global_padding']      = get_option( 'uag_container_global_padding' );
+			$global_data['container_global_elements_gap'] = get_option( 'uag_container_global_elements_gap' );
+			$global_data['btn_inherit_from_theme']        = get_option( 'uag_btn_inherit_from_theme' );
+			$global_data['blocks_editor_spacing']         = get_option( 'uag_blocks_editor_spacing' );
+			$global_data['load_font_awesome_5']           = get_option( 'uag_load_font_awesome_5' );
+			$global_data['auto_block_recovery']           = get_option( 'uag_auto_block_recovery' );
+			$global_data['load_fse_font_globally']        = get_option( 'uag_load_fse_font_globally' );
+			// If the Zip AI Helper is available, get the required modules and their states.
+			if ( class_exists( '\ZipAI\Classes\Module' ) ) {
+				$zip_ai_modules = Zip_Ai_Module::get_all_modules();
+				// Restructure AI-related data.
+				if ( isset( $zip_ai_modules['ai_assistant'] ) ) {
+					$global_data['ai_assistant'] = $zip_ai_modules['ai_assistant']['status'];
+				}
+				
+				if ( isset( $zip_ai_modules['ai_design_copilot'] ) ) {
+					$global_data['ai_design_copilot'] = $zip_ai_modules['ai_design_copilot']['status'];
+				}
+				
+				// Merge the rest of the modules.
+				$global_data = array_merge_recursive(
+					$global_data,
+					array_filter(
+						$zip_ai_modules,
+						function( $key ) {
+							return ! in_array( $key, array( 'ai_assistant', 'ai_design_copilot' ) );
+						},
+						ARRAY_FILTER_USE_KEY
+					)
+				);
+			}
+			// Return the global data.
+			return $global_data;
+		}
+
+		/**
+		 * Pass spectra specific stats to BSF analytics.
+		 *
+		 * @since 2.19.5
+		 * @param array $default_stats Default stats array.
+		 * @return array $default_stats Default stats with spectra specific stats array.
+		 */
+		public function spectra_get_specific_stats( $default_stats ) {
+			$default_stats['plugin_data']['spectra'] = array(
+				'version'              => UAGB_VER,
+				'old_user_less_than_2' => get_option( 'uagb-old-user-less-than-2' ), // Retrieves current user is old user less than 2 or not.
+				'migration_status'     => get_option( 'uag_migration_status' ), // Retrieves migration status.
+			);
+			$default_stats['plugin_data']['spectra'] = array_merge_recursive( $default_stats['plugin_data']['spectra'], $this->global_settings_data() );
+			$default_stats['plugin_data']['spectra'] = array_merge_recursive( $default_stats['plugin_data']['spectra'], $this->create_block_status_array() );
+			return $default_stats;
 		}
 	}
 }
