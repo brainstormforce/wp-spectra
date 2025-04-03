@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <head>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0" charset="<?php bloginfo( 'charset' ); ?>">
 	<?php if ( ! current_theme_supports( 'title-tag' ) ) : ?>
-		<title><?php echo wp_get_document_title(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></title>
+		<title><?php echo wp_get_document_title(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaping not required. ?></title>
 		<?php endif; ?>
 		<?php wp_head(); ?>
 </head>

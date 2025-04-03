@@ -4,7 +4,7 @@
 		"Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
 		"This file is @generated automatically"
 	],
-	"content-hash": "5b7312e662fe65164ae076158360d0f2",
+	"content-hash": "794c85a7db06ebdf29e917f1de0a388d",
 	"packages": [
 		{
 			"name": "automattic/vipwpcs",
@@ -60,29 +60,29 @@
 		},
 		{
 			"name": "brainstormforce/astra-notices",
-			"version": "1.1.11",
+			"version": "1.1.14",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/brainstormforce/astra-notices.git",
-				"reference": "742c8879a3a9154a55fbf628324af96154d2697f"
+				"reference": "0b28968693e979a3a7920bc527d1d56e9b7953f5"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/brainstormforce/astra-notices/zipball/742c8879a3a9154a55fbf628324af96154d2697f",
-				"reference": "742c8879a3a9154a55fbf628324af96154d2697f",
+				"url": "https://api.github.com/repos/brainstormforce/astra-notices/zipball/0b28968693e979a3a7920bc527d1d56e9b7953f5",
+				"reference": "0b28968693e979a3a7920bc527d1d56e9b7953f5",
 				"shasum": ""
 			},
 			"require": {
 				"composer/installers": "^2.0"
 			},
 			"require-dev": {
-				"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
-				"phpcompatibility/phpcompatibility-wp": "^2.1",
-				"phpunit/phpunit": "^7",
-				"roots/wordpress": "^5.9",
+				"dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
+				"phpcompatibility/phpcompatibility-wp": "2.1.4",
+				"phpunit/phpunit": "^9.0",
+				"roots/wordpress": "^6.0",
 				"wp-cli/dist-archive-command": "^2.0",
-				"wp-coding-standards/wpcs": "^2.3",
-				"wp-phpunit/wp-phpunit": "^5",
+				"wp-coding-standards/wpcs": "^3.0",
+				"wp-phpunit/wp-phpunit": "^6.0",
 				"yoast/phpunit-polyfills": "^1.0"
 			},
 			"type": "wordpress-plugin",
@@ -99,9 +99,59 @@
 			"description": "Easily create admin notices",
 			"support": {
 				"issues": "https://github.com/brainstormforce/astra-notices/issues",
-				"source": "https://github.com/brainstormforce/astra-notices/tree/1.1.11"
+				"source": "https://github.com/brainstormforce/astra-notices/tree/1.1.14"
 			},
-			"time": "2022-02-09T09:14:49+00:00"
+			"time": "2025-03-17T06:09:37+00:00"
+		},
+		{
+			"name": "brainstormforce/bsf-analytics",
+			"version": "1.1.11",
+			"source": {
+				"type": "git",
+				"url": "git@github.com:brainstormforce/bsf-analytics.git",
+				"reference": "ce2817c988a1c3e3dce6caef6fc152bc5a6e2e31"
+			},
+			"dist": {
+				"type": "zip",
+				"url": "https://api.github.com/repos/brainstormforce/bsf-analytics/zipball/ce2817c988a1c3e3dce6caef6fc152bc5a6e2e31",
+				"reference": "ce2817c988a1c3e3dce6caef6fc152bc5a6e2e31",
+				"shasum": ""
+			},
+			"require-dev": {
+				"brainmaestro/composer-git-hooks": "^2.6",
+				"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+				"phpcompatibility/phpcompatibility-wp": "2.1.0",
+				"wp-coding-standards/wpcs": "2.2.1"
+			},
+			"type": "wordpress-plugin",
+			"extra": {
+				"hooks": {
+					"pre-commit": [
+						"echo committing as $(git config user.name)",
+						"sh bin/block-commits-with-merge-conflict.sh"
+					]
+				}
+			},
+			"scripts": {
+				"format": [
+					"phpcbf --standard=phpcs.xml.dist --report-summary --report-source"
+				],
+				"lint": [
+					"phpcs --standard=phpcs.xml.dist --report-summary --report-source"
+				],
+				"post-install-cmd": [
+					"vendor/bin/cghooks add --ignore-lock"
+				],
+				"post-update-cmd": [
+					"vendor/bin/cghooks update"
+				]
+			},
+			"description": "Library to gather non sensitive analytics data to enhance bsf products.",
+			"support": {
+				"source": "https://github.com/brainstormforce/bsf-analytics/tree/1.1.11",
+				"issues": "https://github.com/brainstormforce/bsf-analytics/issues"
+			},
+			"time": "2025-02-27T14:49:51+00:00"
 		},
 		{
 			"name": "brainstormforce/gutenberg-templates",
@@ -353,16 +403,16 @@
 		},
 		{
 			"name": "brainstormforce/zipwp-images",
-			"version": "1.0.15",
+			"version": "1.0.18",
 			"source": {
 				"type": "git",
 				"url": "git@github.com:brainstormforce/zipwp-images.git",
-				"reference": "a8f5bd482ecb4a84a50a9e62348f182224c54499"
+				"reference": "ef3cf96833ff1adcdd177735f339d485299b02ad"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/brainstormforce/zipwp-images/zipball/a8f5bd482ecb4a84a50a9e62348f182224c54499",
-				"reference": "a8f5bd482ecb4a84a50a9e62348f182224c54499",
+				"url": "https://api.github.com/repos/brainstormforce/zipwp-images/zipball/ef3cf96833ff1adcdd177735f339d485299b02ad",
+				"reference": "ef3cf96833ff1adcdd177735f339d485299b02ad",
 				"shasum": ""
 			},
 			"require": {
@@ -418,10 +468,10 @@
 			],
 			"description": "Free images library from ZipWP",
 			"support": {
-				"source": "https://github.com/brainstormforce/zipwp-images/tree/1.0.15",
+				"source": "https://github.com/brainstormforce/zipwp-images/tree/1.0.18",
 				"issues": "https://github.com/brainstormforce/zipwp-images/issues"
 			},
-			"time": "2025-02-18T08:10:59+00:00"
+			"time": "2025-03-27T13:24:53+00:00"
 		},
 		{
 			"name": "composer/installers",

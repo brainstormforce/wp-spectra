@@ -53,6 +53,9 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 			add_action( 'wp_ajax_nopriv_uag_load_image_gallery_masonry', array( $this, 'render_masonry_pagination' ) );
 			add_action( 'wp_ajax_uag_load_image_gallery_grid_pagination', array( $this, 'render_grid_pagination' ) );
 			add_action( 'wp_ajax_nopriv_uag_load_image_gallery_grid_pagination', array( $this, 'render_grid_pagination' ) );
+
+			// Prevent Imagify from converting images into <picture> tags, which breaks the Spectra Lightbox.
+			add_filter( 'imagify_allow_picture_tags_for_nextgen', '__return_false' );
 		}
 
 		/**
@@ -1082,6 +1085,8 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 						</div>
 					<?php endif; ?>
 				<?php
+				// Restore Imagify's default behavior after the Lightbox has been rendered.
+				remove_filter( 'imagify_allow_picture_tags_for_nextgen', '__return_false' );
 				return ob_get_clean();
 			}
 		}
@@ -1244,7 +1249,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 			check_ajax_referer( 'uagb_image_gallery_masonry_ajax_nonce', 'nonce' );
 			$media_atts = array();
 			// sanitizing $attr elements in later stage.
-			$attr                       = isset( $_POST['attr'] ) ? json_decode( stripslashes( $_POST['attr'] ), true ) : array(); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$attr                       = isset( $_POST['attr'] ) ? json_decode( wp_unslash( $_POST['attr'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			$attr['gridPageNumber']     = isset( $_POST['page_number'] ) ? sanitize_text_field( $_POST['page_number'] ) : '';
 			$media_atts                 = $this->required_atts( $attr );
 			$media_atts['mediaGallery'] = json_decode( $media_atts['mediaGallery'], true );
@@ -1268,7 +1273,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 			check_ajax_referer( 'uagb_image_gallery_grid_pagination_ajax_nonce', 'nonce' );
 			$media_atts = array();
 			// sanitizing $attr elements in later stage.
-			$attr                       = isset( $_POST['attr'] ) ? json_decode( stripslashes( $_POST['attr'] ), true ) : array(); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$attr                       = isset( $_POST['attr'] ) ? json_decode( wp_unslash( $_POST['attr'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			$attr['gridPageNumber']     = isset( $_POST['page_number'] ) ? sanitize_text_field( $_POST['page_number'] ) : '';
 			$media_atts                 = $this->required_atts( $attr );
 			$media_atts['mediaGallery'] = json_decode( $media_atts['mediaGallery'], true );
@@ -1662,7 +1667,7 @@ if ( ! class_exists( 'Spectra_Image_Gallery' ) ) {
 						<?php echo wp_json_encode( $lightbox_settings ); ?>
 					);
 					loadLightBoxImages( blockScope, lightboxSwiper, null, <?php echo wp_json_encode( $attr ); ?>, thumbnailSwiper );
-					<?php echo $pro_clicker; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					<?php echo $pro_clicker; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Already escaped inside pro filter. ?>
 				} );
 			<?php
 			return ob_get_clean();

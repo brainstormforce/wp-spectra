@@ -203,6 +203,15 @@ class UAGB_Post_Assets {
 	public $is_post_revision = false;
 
 	/**
+	 * Seen Refs Array
+	 * This array will store the block IDs which have already been processed.
+	 *
+	 * @since 2.19.5
+	 * @var array
+	 */
+	private static $seen_refs = array();
+
+	/**
 	 * Constructor
 	 *
 	 * @param int $post_id Post ID.
@@ -218,7 +227,7 @@ class UAGB_Post_Assets {
 			$this->is_post_revision = true;
 		}
 
-		$this->preview = isset( $_GET['preview'] ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$this->preview = isset( $_GET['preview'] ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verification not required.
 
 		$this->load_uag_fonts = apply_filters( 'uagb_enqueue_google_fonts', $this->load_uag_fonts );
 
@@ -956,7 +965,7 @@ class UAGB_Post_Assets {
 			return;
 		}
 
-		echo '<script type="text/javascript" id="uagb-script-frontend-' . esc_attr( $this->post_id ) . '">' . $this->script . '</script>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo '<script type="text/javascript" id="uagb-script-frontend-' . esc_attr( $this->post_id ) . '">' . $this->script . '</script>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaping not required.
 	}
 
 	/**
@@ -967,7 +976,7 @@ class UAGB_Post_Assets {
 		if ( empty( $this->stylesheet ) ) {
 			return;
 		}
-		echo '<style id="uagb-style-frontend-' . esc_attr( $this->post_id ) . '">' . $this->stylesheet . '</style>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo '<style id="uagb-style-frontend-' . esc_attr( $this->post_id ) . '">' . $this->stylesheet . '</style>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaping not required.
 	}
 
 	/**
@@ -984,7 +993,7 @@ class UAGB_Post_Assets {
 		if ( in_array( 'uagb/masonry-gallery', $this->current_block_list, true ) ) {
 			$conditional_block_css .= UAGB_Block_Helper::get_masonry_gallery_css();
 		}
-		echo '<style id="uagb-style-conditional-extension">' . $conditional_block_css . '</style>'; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
+		echo '<style id="uagb-style-conditional-extension">' . $conditional_block_css . '</style>'; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped - Escaping not required.
 
 		self::$conditional_blocks_printed = true;
 
@@ -1113,7 +1122,7 @@ class UAGB_Post_Assets {
 				if ( is_array( $this->gfonts_files ) && ! empty( $this->gfonts_files ) ) {
 
 					foreach ( $this->gfonts_files as $gfont_file_url ) {
-						echo '<link rel="preload" href="' . esc_url( $gfont_file_url ) . '" as="font" type="font/woff2">'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+						echo '<link rel="preload" href="' . esc_url( $gfont_file_url ) . '" as="font" type="font/woff2">'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped - Escaping not required.
 					}
 				}
 			}
@@ -1227,9 +1236,11 @@ class UAGB_Post_Assets {
 		if ( isset( $block['innerBlocks'] ) ) {
 			foreach ( $block['innerBlocks'] as $j => $inner_block ) {
 				if ( 'core/block' === $inner_block['blockName'] ) {
-					$id = ( isset( $inner_block['attrs']['ref'] ) ) ? $inner_block['attrs']['ref'] : 0;
-					if ( $id ) {
-						$assets = $this->get_assets_using_post_content( $id );
+					$id            = ( isset( $inner_block['attrs']['ref'] ) ) ? $inner_block['attrs']['ref'] : 0;
+					$is_block_seen = in_array( $id, self::$seen_refs, true );
+					if ( $id && ! $is_block_seen ) {
+						self::$seen_refs[] = $id;
+						$assets            = $this->get_assets_using_post_content( $id );
 						if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
 							$reuse_block_css             = array(
 								'desktop' => '',
@@ -1245,9 +1256,10 @@ class UAGB_Post_Assets {
 						}
 					}
 				} elseif ( 'core/template-part' === $inner_block['blockName'] ) {
-					$id = $this->get_fse_template_part( $inner_block );
-
-					if ( $id ) {
+					$id            = $this->get_fse_template_part( $inner_block );
+					$is_block_seen = in_array( $id, self::$seen_refs, true );
+					if ( $id && ! $is_block_seen ) {
+						self::$seen_refs[] = $id;
 						$assets            = $this->get_assets_using_post_content( $id );
 						$this->stylesheet .= $assets['css'];
 						$this->script     .= $assets['js'];
@@ -1309,6 +1321,64 @@ class UAGB_Post_Assets {
 	}
 
 	/**
+	 * Get SureCart Template Part Content.
+	 * 
+	 * @param string $id Template part ID.
+	 * @param string $template_part_name Name of the template part.
+	 * @return string Return the template part content.
+	 * @since 2.19.5
+	 */
+	public function get_surecart_template_part_content( $id, $template_part_name ) {
+		if ( 'cart' === $template_part_name ) {
+			$template_part_id = 'surecart/surecart//cart';
+			$template         = get_block_template( $template_part_id, 'wp_template_part' );
+			return ( isset( $template->content ) && is_string( $template->content ) ) ? $template->content : '';
+		}
+
+		if ( 'upsell' === $template_part_name ) {
+			$upsell_data = get_query_var( 'surecart_current_upsell' );
+			
+			if ( is_object( $upsell_data ) && isset( $upsell_data->metadata->wp_template_part_id ) ) {
+				$template_part_id = $upsell_data->metadata->wp_template_part_id;
+				$template         = get_block_template( $template_part_id, 'wp_template_part' );
+				return ( isset( $template->content ) && is_string( $template->content ) ) ? $template->content : '';
+			} else {
+				return '';
+			}
+		}
+
+		// Available SureCart functions to get the template part id.
+		$surecart_functions = array(
+			'single_product'     => 'sc_get_product',
+			'product_collection' => 'sc_get_collection',
+		);
+
+		if ( ! isset( $surecart_functions[ $template_part_name ] ) || ! function_exists( $surecart_functions[ $template_part_name ] ) ) {
+			return '';
+		}
+
+		$template_data = call_user_func( $surecart_functions[ $template_part_name ], $id );
+
+		if ( 'single_product' === $template_part_name ) {
+			if ( ! is_object( $template_data ) || empty( $template_data->template_part_id ) ) {
+				return '';
+			}
+			$template_part_id = $template_data->template_part_id;
+		} elseif ( 'product_collection' === $template_part_name ) {
+			if ( ! is_object( $template_data ) || empty( $template_data->template_part->id ) ) {
+				return '';
+			}
+			$template_part_id = $template_data->template_part->id;
+		} else {
+			return '';
+		}
+
+		$template = get_block_template( $template_part_id, 'wp_template_part' );
+		
+		return ( isset( $template->content ) && is_string( $template->content ) ) ? $template->content : '';
+	}
+
+	/**
 	 * Generates stylesheet in loop.
 	 *
 	 * @param object $this_post Current Post Object.
@@ -1320,7 +1390,21 @@ class UAGB_Post_Assets {
 			return;
 		}
 
-		if ( has_blocks( $this_post->ID ) && isset( $this_post->post_content ) ) {
+		$surecart_template_parts = array( 'single_product', 'product_collection', 'cart', 'upsell' );
+
+		foreach ( $surecart_template_parts as $template_part_name ) {
+			$template_part_content = $this->get_surecart_template_part_content( $this_post->ID, $template_part_name );
+	
+			if ( ! empty( $template_part_content ) && has_blocks( $template_part_content ) && isset( $this_post->post_content ) ) {
+				$template_contents[] = $template_part_content;
+			}
+		}
+
+		if ( ! empty( $template_contents ) && isset( $this_post->post_content ) ) {
+			$this_post->post_content .= implode( '', $template_contents );
+		}
+
+		if ( $this_post instanceof WP_Post && ( has_blocks( $this_post->ID ) || has_blocks( $this_post ) ) ) {
 			$this->common_function_for_assets_preparation( $this_post->post_content );
 		}
 	}
@@ -1328,7 +1412,7 @@ class UAGB_Post_Assets {
 	/**
 	 * Common function to generate stylesheet.
 	 *
-	 * @param array $post_content Current Post Object.
+	 * @param string $post_content Current Post Object.
 	 * @since 2.0.0
 	 */
 	public function common_function_for_assets_preparation( $post_content ) {
@@ -1344,10 +1428,14 @@ class UAGB_Post_Assets {
 		
 			$custom_css = ! empty( $custom_css ) && is_string( $custom_css ) ? wp_slash( $custom_css ) : '';
 
-			// Decode any HTML entities (like &gt;) before appending.
+			// 1. Decode any HTML entities (like &gt;) before appending.
 			$custom_css = html_entity_decode( $custom_css );
+			// 2. Remove unnecessary backslashes before quotes
+			$custom_css = preg_replace( '/\\\\+(?=["\'])/', '', $custom_css );
 		
 			if ( ! empty( $custom_css ) && ! self::$custom_css_appended ) {
+				// 3. Remove any excessive escaping
+				$custom_css                = stripslashes( $custom_css );
 				$this->stylesheet         .= $custom_css;
 				self::$custom_css_appended = true;
 			}
@@ -1359,6 +1447,7 @@ class UAGB_Post_Assets {
 
 		$assets = $this->get_blocks_assets( $blocks );
 
+
 		if ( 'enabled' === $this->file_generation && isset( $assets['css'] ) && ! self::$common_assets_added ) {
 
 			$common_static_css_all_blocks = $this->get_block_static_css( 'extensions' );
@@ -1368,6 +1457,18 @@ class UAGB_Post_Assets {
 
 		$this->stylesheet .= $assets['css'];
 		$this->script     .= $assets['js'];
+
+		// Check if self::$seen_refs is not empty before iterating.
+		if ( ! empty( self::$seen_refs ) ) {
+			foreach ( self::$seen_refs as $ref_id ) {
+				// Retrieve the CSS and JS assets for the given post content reference ID.
+				$assets = $this->get_assets_using_post_content( $ref_id );
+
+				// Append the retrieved CSS and JS to the existing stylesheet and script properties.
+				$this->stylesheet .= $assets['css'];
+				$this->script     .= $assets['js'];
+			}
+		}
 
 		// Update fonts.
 		$this->gfonts = array_merge( $this->gfonts, UAGB_Helper::$gfonts );
@@ -1465,20 +1566,23 @@ class UAGB_Post_Assets {
 				}
 
 				if ( 'core/block' === $block['blockName'] ) {
-					$id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
+					$id            = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
+					$is_block_seen = in_array( $id, self::$seen_refs, true );
 
-					if ( $id ) {
+					if ( $id && ! $is_block_seen ) {
+						self::$seen_refs[] = $id;
 						$assets            = $this->get_assets_using_post_content( $id );
 						$this->stylesheet .= $assets['css'];
 						$this->script     .= $assets['js'];
 					}
 				} elseif ( 'core/template-part' === $block['blockName'] ) {
-					$id = $this->get_fse_template_part( $block );
-
-					if ( $id ) {
-						$assets     = $this->get_assets_using_post_content( $id );
-						$block_css .= $assets['css'];
-						$js        .= $assets['js'];
+					$id            = $this->get_fse_template_part( $block );
+					$is_block_seen = in_array( $id, self::$seen_refs, true );
+					if ( $id && ! $is_block_seen ) {
+						self::$seen_refs[] = $id;
+						$assets            = $this->get_assets_using_post_content( $id );
+						$block_css        .= $assets['css'];
+						$js               .= $assets['js'];
 					}
 				} elseif ( 'core/pattern' === $block['blockName'] ) {
 					$get_assets = $this->get_core_pattern_assets( $block );

@@ -102,6 +102,7 @@ class Admin_Helper {
 			'spectra_global_fse_fonts'           => \UAGB_Admin_Helper::get_admin_settings_option( 'spectra_global_fse_fonts', array() ),
 			'theme_fonts'                        => $theme_font_families,
 			'zip_ai_modules'                     => $zip_ai_modules,
+			'enable_bsf_analytics_option'        => \UAGB_Admin_Helper::get_admin_settings_option( 'spectra_analytics_optin', 'no' ),
 		);
 
 		return $options;

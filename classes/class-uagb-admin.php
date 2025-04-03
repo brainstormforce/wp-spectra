@@ -156,7 +156,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				return;
 			}
 
-			$spectra_old_user = isset( $_GET['spectra_old_user'] ) ? sanitize_text_field( $_GET['spectra_old_user'] ) : false; //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$spectra_old_user = isset( $_GET['spectra_old_user'] ) ? sanitize_text_field( $_GET['spectra_old_user'] ) : false; //phpcs:ignore WordPress.Security.NonceVerification.Recommended -- $_GET['spectra_old_user'] does not provide nonce.
 
 			if ( 'yes' === $spectra_old_user ) {
 				update_option( 'uagb-old-user-less-than-2', 'yes' );
@@ -398,7 +398,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 						: 'inactive' ) 
 					: 'not-installed';
 
-			if ( 'not-installed' === $status && ! empty( $_GET ) && array_key_exists( 'post_type', $_GET ) && 'spectra-popup' === $_GET['post_type'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			if ( 'not-installed' === $status && isset( $_GET['post_type'] ) && 'spectra-popup' === $_GET['post_type'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- $_GET['post_type'] does not provide nonce.
 				Astra_Notices::add_notice(
 					array(
 						'id'                         => 'uagb-spectra-pro-popup-note',

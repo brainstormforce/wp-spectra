@@ -40,6 +40,18 @@ export const spectraProFeatures = {
 			__( 'Cookie-based automatic triggering for conversions', 'ultimate-addons-for-gutenberg' ),
 		],
 	},
+	'popup-builder': {
+		image: <UpsellImage />,
+		title: __( 'Unlock Popup Builder Pro', 'ultimate-addons-for-gutenberg' ),
+		header: __( 'Create high-converting popups with powerful targeting and trigger options.', 'ultimate-addons-for-gutenberg' ),
+		description: __( 'Design and display engaging popups with advanced triggers, precise targeting, and seamless controls to boost conversions and engagement.', 'ultimate-addons-for-gutenberg' ),
+		shortDesc: __( 'Advanced popup triggers and targeting options.', 'ultimate-addons-for-gutenberg' ),
+		features: [
+			__( 'Control triggers: page load, exit intent, or custom class', 'ultimate-addons-for-gutenberg' ),
+			__( 'Display popups site-wide or on specific pages', 'ultimate-addons-for-gutenberg' ),
+			__( 'Set custom delays and frequency controls', 'ultimate-addons-for-gutenberg' ),
+		],
+	},
 	'countdown': {
 		image: <UpsellImage />,
 		title: __( 'Get Countdown Pro', 'ultimate-addons-for-gutenberg' ),

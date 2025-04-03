@@ -536,8 +536,8 @@ class UAGB_Init_Blocks {
 		}
 
 		check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
-
-		$value = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array(); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		// security validation done in later stage.
+		$value = isset( $_POST['value'] ) ? json_decode( wp_unslash( $_POST['value'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_recaptcha_secret_key_v2', sanitize_text_field( $value['reCaptchaSecretKeyV2'] ) );
 		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_recaptcha_secret_key_v3', sanitize_text_field( $value['reCaptchaSecretKeyV3'] ) );
@@ -1401,7 +1401,7 @@ class UAGB_Init_Blocks {
 		}
 
 		if ( ! empty( $_POST['defaultAllowedQuickSidebarBlocks'] ) ) {
-			$spectra_default_allowed_quick_sidebar_blocks = json_decode( stripslashes( $_POST['defaultAllowedQuickSidebarBlocks'] ), true ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$spectra_default_allowed_quick_sidebar_blocks = json_decode( wp_unslash( sanitize_text_field( $_POST['defaultAllowedQuickSidebarBlocks'] ) ), true );
 			\UAGB_Admin_Helper::update_admin_settings_option( 'uagb_quick_sidebar_allowed_blocks', $spectra_default_allowed_quick_sidebar_blocks );
 			wp_send_json_success();
 		}
@@ -1435,7 +1435,7 @@ class UAGB_Init_Blocks {
 			wp_send_json_error( $response_data );
 		}
 
-		$global_block_styles = json_decode( stripslashes( $_POST['spectraGlobalStyles'] ), true ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$global_block_styles = json_decode( wp_unslash( sanitize_text_field( $_POST['spectraGlobalStyles'] ) ), true );
 
 		if ( ! empty( $_POST['bulkUpdateStyles'] ) && 'no' !== $_POST['bulkUpdateStyles'] ) {
 			update_option( 'spectra_global_block_styles', $global_block_styles );
@@ -1533,7 +1533,7 @@ class UAGB_Init_Blocks {
 		update_option( 'spectra_gbs_google_fonts', $spectra_gbs_google_fonts );
 
 		if ( ! empty( $_POST['globalBlockStylesFontFamilies'] ) ) {
-			$spectra_gbs_google_fonts_editor = json_decode( stripslashes( $_POST['globalBlockStylesFontFamilies'] ), true ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$spectra_gbs_google_fonts_editor = json_decode( wp_unslash( sanitize_text_field( $_POST['globalBlockStylesFontFamilies'] ) ), true );
 			update_option( 'spectra_gbs_google_fonts_editor', $spectra_gbs_google_fonts_editor );
 		}
 

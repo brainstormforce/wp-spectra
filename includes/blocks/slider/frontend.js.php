@@ -43,13 +43,11 @@ $slider_options = apply_filters(
 	$attr
 );
 
-$settings = wp_json_encode( $slider_options );
-
 ob_start();
 ?>
 window.addEventListener("DOMContentLoaded", function(){
 	var swiper = new Swiper( "<?php echo esc_attr( $selector ); ?>",
-		<?php echo $settings; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		<?php echo wp_json_encode( $slider_options ); ?>
 	);
 });
 
