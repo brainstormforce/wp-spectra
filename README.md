@@ -221,6 +221,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Fix: Tabs - Resolved an issue where the tabs block headers, was not translatable.
+
 ### 2.19.5 - Monday, 31st March 2025 ###
 * Improvement: Improved code quality.
 * Fix: Image Gallery - Resolved an issue wherein lightbox functionality was broken when Imagify's Next-Gen format option enabled.
