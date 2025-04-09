@@ -221,7 +221,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= 2.19.6 - Wednesday, 9th April 2025 =
+= 2.19.6 - Thursday, 10th April 2025 =
 * Updated the Zip AI Library.
 
 = 2.19.5 - Monday, 31st March 2025 =
