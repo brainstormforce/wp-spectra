@@ -266,10 +266,14 @@ class Sidebar_Configurations {
 	 */
 	private function custom_message( $code ) {
 		$message_array = array(
-			'no_auth'              => __( 'Invalid auth token.', 'ultimate-addons-for-gutenberg' ),
-			'insufficient_credits' => __( 'You have no credits left.', 'ultimate-addons-for-gutenberg' ),
+			'no_auth'              => __( 'Authentication failed. Invalid or missing bearer token.', 'ultimate-addons-for-gutenberg' ),
+			'insufficient_credits' => sprintf(
+				/* translators: %1$s and %2$s are the opening and closing anchor tags respectively */
+				__( 'You\'ve run out of credits. %1$sBuy more credits%2$s to continue using the assistant.', 'ultimate-addons-for-gutenberg' ),
+				'<a href="https://app.zipwp.com/credits-pricing?source=spectra" target="_blank" rel="noopener noreferrer">',
+				'</a>'
+			),
 		);
-
 		return isset( $message_array[ $code ] ) ? $message_array[ $code ] : '';
 	}
 
