@@ -190,25 +190,51 @@ class Helper {
 			$api_args
 		);
 
-		// If the response was an error, or not a 200 status code, then abandon ship.
-		if ( is_wp_error( $response ) || empty( $response['response'] ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
+		// If the response was an error.
+		if ( is_wp_error( $response ) || empty( $response ) ) {
+			$error_message = __( 'Empty response from API.', 'ultimate-addons-for-gutenberg' );
+			$error_code    = __( 'empty_response', 'ultimate-addons-for-gutenberg' );
+
+			if ( is_wp_error( $response ) ) {
+				$error_message = $response->get_error_message();
+				$error_code    = $response->get_error_code();
+			}
+
 			return array(
-				'error' => __( 'The Zip AI Middleware is not responding.', 'ultimate-addons-for-gutenberg' ),
+				'error' => $error_message,
+				'code'  => $error_code,
 			);
 		}
 
 		// Get the response body.
 		$response_body = wp_remote_retrieve_body( $response );
+		$response_body = json_decode( $response_body, true );
+		$status_code   = wp_remote_retrieve_response_code( $response );
+
+		// Check if the status code is 403 or 401 error.
+		if ( 401 === $status_code || 403 === $status_code ) {
+			$error_message = isset( $response_body['error'] ) ? $response_body['error'] : __( 'You do not have permission to perform this action.', 'ultimate-addons-for-gutenberg' );
+			$error_code    = isset( $response_body['code'] ) ? $response_body['code'] : 'forbidden';
+
+			return array(
+				'error' => $error_message,
+				'code'  => $error_code,
+			);
+		}
 
 		// If the response body is not a JSON, then abandon ship.
-		if ( empty( $response_body ) || ! json_decode( $response_body ) ) {
+		if ( 200 !== $status_code || empty( $response_body ) ) {
+			$error_message = __( 'Encountered an error while processing your request. Please try again.', 'ultimate-addons-for-gutenberg' );
+			$error_code    = 'unknown_error';
+
 			return array(
-				'error' => __( 'The Zip AI Middleware encountered an error.', 'ultimate-addons-for-gutenberg' ),
+				'error' => $error_message,
+				'code'  => $error_code,
 			);
 		}
 
 		// Return the response body.
-		return json_decode( $response_body, true );
+		return $response_body;
 	}
 
 	/**
