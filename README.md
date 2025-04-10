@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.7  
-**Stable tag:** 2.19.5  
+**Stable tag:** 2.19.6  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -223,6 +223,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ### x.x.x ###
 * Fix: Tabs - Resolved an issue where the tabs block headers, was not translatable.
+
+### 2.19.6 - Thursday, 10th April 2025 ###
+* Updated the Zip AI Library.
 
 ### 2.19.5 - Monday, 31st March 2025 ###
 * Improvement: Improved code quality.

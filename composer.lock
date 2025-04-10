@@ -338,16 +338,16 @@
 		},
 		{
 			"name": "brainstormforce/zip-ai",
-			"version": "2.0.2",
+			"version": "2.0.3",
 			"source": {
 				"type": "git",
 				"url": "git@github.com:brainstormforce/zip-ai.git",
-				"reference": "f673fcefe64111b9fde4d3ed1a303bde7e5b815d"
+				"reference": "66967e341f39f18e446f9f54f74aaf99e9c0ffd9"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/brainstormforce/zip-ai/zipball/f673fcefe64111b9fde4d3ed1a303bde7e5b815d",
-				"reference": "f673fcefe64111b9fde4d3ed1a303bde7e5b815d",
+				"url": "https://api.github.com/repos/brainstormforce/zip-ai/zipball/66967e341f39f18e446f9f54f74aaf99e9c0ffd9",
+				"reference": "66967e341f39f18e446f9f54f74aaf99e9c0ffd9",
 				"shasum": ""
 			},
 			"require": {
@@ -396,10 +396,10 @@
 			],
 			"description": "Library which interacts with SCS and provide multiple useful modules",
 			"support": {
-				"source": "https://github.com/brainstormforce/zip-ai/tree/2.0.2",
+				"source": "https://github.com/brainstormforce/zip-ai/tree/2.0.3",
 				"issues": "https://github.com/brainstormforce/zip-ai/issues"
 			},
-			"time": "2025-01-31T09:34:07+00:00"
+			"time": "2025-04-09T11:00:34+00:00"
 		},
 		{
 			"name": "brainstormforce/zipwp-images",
