@@ -224,6 +224,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ### 2.19.7 - Tuesday, 15th April 2025 ###
 * Improvement: Added compatibility with WordPress v6.8.
 * Fix: Tabs - Resolved an issue where the tabs block headers, was not translatable.
+* Global: Removed the Spectra banner from the editor based on user feedback to provide a cleaner editing experience.
 
 ### 2.19.6 - Thursday, 10th April 2025 ###
 * Updated the Zip AI Library.
