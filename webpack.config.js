@@ -54,7 +54,7 @@ module.exports = {
 			...wp_rules,
 			{
 				test: /\.(scss|css)$/,
-				exclude: [ /node_modules/, /style/ ],
+				exclude: [ /node_modules/, /style/, /common.scss/ ],
 				use: [
 					{
 						loader: 'style-loader',

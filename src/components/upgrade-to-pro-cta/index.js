@@ -5,6 +5,7 @@ import styles from './editor.lazy.scss';
 import { useLayoutEffect } from '@wordpress/element';
 import { Modal } from '@wordpress/components';
 import { spectraProFeatures } from './SpectraProFeatures';
+import './common.scss';
 
 const UpgradeComponent = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
