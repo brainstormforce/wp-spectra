@@ -221,7 +221,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### 2.19.7 - Tuesday, 15th April 2025 ###
+### 2.19.7 - Wednesdays, 16th April 2025 ###
 * Improvement: Added compatibility with WordPress v6.8.
 * Fix: Tabs - Resolved an issue where the tabs block headers, was not translatable.
 * Global: Removed the Spectra banner from the editor based on user feedback to provide a cleaner editing experience.
