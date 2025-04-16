@@ -167,3 +167,7 @@ a.uagb-upgrade-trigger:active {
 	--tw-ring-inset: auto;
 	box-shadow: unset;
 }
+
+.components-modal__frame {
+	overflow: visible !important;
+}
