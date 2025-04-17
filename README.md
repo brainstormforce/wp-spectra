@@ -221,6 +221,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Fix: File Generation documentation link now redirects correctly instead of showing a 404 error.
+
 ### 2.19.7 - Wednesdays, 16th April 2025 ###
 * Improvement: Added compatibility with WordPress v6.8.
 * Fix: Tabs - Resolved an issue where the tabs block headers, was not translatable.
