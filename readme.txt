@@ -57,7 +57,7 @@ Users of page builders like Elementor and Beaver Builder absolutely LOVE Spectra
 <ul>
  	<li>The code of Spectra is extremely optimized for performance and speed</li>
  	<li>Spectra designs and features make you look like an expert web designer</li>
- 	<li>There’s zero learning curve as Spectra works on top of the default WordPress block editor.</li>
+ 	<li>There's zero learning curve as Spectra works on top of the default WordPress block editor.</li>
 </ul>
 
 <strong>Introducing Spectra – the ultimate solution to revolutionize your web design experience.</strong>
@@ -222,6 +222,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = x.x.x =
+* Fix: Container - Resolved an issue where dynamic content fallback images were not being properly applied in the frontend.
 * Fix: File Generation documentation link now redirects correctly instead of showing a 404 error.
 
 = 2.19.7 - Wednesdays, 16th April 2025 =
