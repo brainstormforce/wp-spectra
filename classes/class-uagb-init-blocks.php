@@ -1146,6 +1146,7 @@ class UAGB_Init_Blocks {
 			'status_of_sureforms'                     => $status_of_sureforms,
 			'status_of_surecart'                      => $status_of_surecart,
 			'docsUrl'                                 => \UAGB_Admin_Helper::get_spectra_pro_url( '/docs/', 'free-plugin', 'uagb-editor-page', 'uagb-plugin' ),
+			'contry_code'                             => \UAGB_Admin_Helper::get_user_country_code(),
 		);
 
 		wp_localize_script(

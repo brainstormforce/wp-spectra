@@ -8,7 +8,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 	const [ productsList, setProductsList ] = useState( [] );
 	const [ selectedProduct, setSelectedProduct ] = useState( '' );
 	const [ loading, setLoading ] = useState( true );
-
+	const contryCode = uag_admin_react.contry_code;
 	useEffect( () => {
 		// Fetch pricing data from the API
 		const fetchPricingData = async () => {
@@ -153,7 +153,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 
 							<div className="flex items-center justify-between gap-3">
 								<Button variant="ghost" size="md">
-									{ '$' + productsList[ selectedProduct ]?.price.USD.discounted }
+									{'$' + productsList[selectedProduct]?.price?.[contryCode]?.discounted }
 									{ productsList[ selectedProduct ]?.variant?.includes( 'Annual Subscription' ) ||
 									productsList[ selectedProduct ]?.product?.includes( 'Annual Subscription' ) ? (
 										<span className="text-text-tertiary">
@@ -318,7 +318,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 
 						<div className="flex items-center justify-between gap-3">
 							<Button variant="ghost" size="md">
-								{ '$' + productsList[ selectedProduct ]?.price.USD.discounted }
+								{'$' + productsList[selectedProduct]?.price?.[contryCode]?.discounted }
 								{ productsList[ selectedProduct ]?.variant?.includes( 'Annual Subscription' ) ||
 								productsList[ selectedProduct ]?.product?.includes( 'Annual Subscription' ) ? (
 									<span className="text-text-tertiary">

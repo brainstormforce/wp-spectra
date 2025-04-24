@@ -4962,6 +4962,47 @@ namespace {
         public static function get_spectra_pro_url( $path, $source = '', $medium = '', $campaign = '' )
         {
         }
+		/**
+		 * Prepare user country code.
+		 *
+		 * Returns the user's country code.
+		 * Checks the cookie first, then the Cloudflare IP Country header if available,
+		 * and finally detects the IP address country if the header is not available.
+		 *
+		 * @since x.x.x
+		 * @return string The user's country code.
+		 */
+		public static function prepare_user_country_code()
+        {
+        }
+		/**
+		 * Retrieves the user's IP address.
+		 *
+		 * This function works by following the order of preference:
+		 * 1. Cloudflare's `HTTP_CF_CONNECTING_IP`.
+		 * 2. `HTTP_X_FORWARDED_FOR` (first IP in case of multiple proxies).
+		 * 3. `HTTP_CLIENT_IP`.
+		 * 4. `REMOTE_ADDR`.
+		 *
+		 * @since x.x.x
+		 * @return string The user's IP address.
+		 */
+		public static function get_user_ip() 
+		{
+		}
+		/**
+		 * Get the user's country code and return a pricing region
+		 *
+		 * Returns a pricing region based on the user's country code.
+		 * The pricing regions are based on the country codes.
+		 * The default pricing region is 'US'.
+		 *
+		 * @since x.x.x
+		 * @return string The pricing region.
+		 */
+		public static function get_user_country_code() 
+		{
+		}
     }
     /**
      * Class UAGB_Twenty_Seventeen_Compatibility.

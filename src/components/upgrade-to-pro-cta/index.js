@@ -183,7 +183,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 	const [ productsList, setProductsList ] = useState( '' );
 	const [ productKey, setProductKey ] = useState( '' );
 	const [ selectedTitle, setSelectedTitle ] = useState( 'Spectra Pro' );
-
+	const contryCode = uagb_blocks_info.contry_code;
 	const { title, Image, header, description, features } = modalData[ selectedTitle ];
 
 	useEffect( () => {
@@ -400,7 +400,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 										} }
 									>
 										<span style={ { color: 'black' } }>
-											${ productsList[ productKey ]?.price?.USD?.discounted }
+												${productsList[productKey]?.price?.[contryCode]?.discounted }
 										</span>
 										{ productsList[ productKey ]?.variant?.includes( 'Annual Subscription' ) ||
 										productsList[ productKey ]?.product?.includes( 'Annual Subscription' ) ? (

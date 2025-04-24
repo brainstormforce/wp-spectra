@@ -533,6 +533,7 @@ class Admin_Menu {
 				'installer_nonce'          => wp_create_nonce( 'updates' ),
 				'pro_installed_status'     => 'inactive' === self::get_plugin_status( 'spectra-pro/spectra-pro.php' ) ? true : false,
 				'pro_plugin_status'        => self::get_plugin_status( 'spectra-pro/spectra-pro.php' ),
+				'contry_code'              => \UAGB_Admin_Helper::get_user_country_code(),
 			)
 		);
 
