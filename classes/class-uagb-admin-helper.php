@@ -574,7 +574,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		 * Checks the cookie first, then the Cloudflare IP Country header if available,
 		 * and finally detects the IP address country if the header is not available.
 		 *
-		 * @since x.x.x
+		 * @since 2.19.8
 		 * @return string The user's country code.
 		 */
 		public static function prepare_user_country_code() {
@@ -644,7 +644,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		 * 3. `HTTP_CLIENT_IP`.
 		 * 4. `REMOTE_ADDR`.
 		 *
-		 * @since x.x.x
+		 * @since 2.19.8
 		 * @return string The user's IP address.
 		 */
 		public static function get_user_ip() {
@@ -667,7 +667,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		 * The pricing regions are based on the country codes.
 		 * The default pricing region is 'US'.
 		 *
-		 * @since x.x.x
+		 * @since 2.19.8
 		 * @return string The pricing region.
 		 */
 		public static function get_user_country_code() {

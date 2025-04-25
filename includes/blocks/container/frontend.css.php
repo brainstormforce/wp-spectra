@@ -18,7 +18,7 @@ if ( ! function_exists( 'generate_background_object' ) ) {
 	/**
 	 * Generate background object for a specific device
 	 *
-	 * @since x.x.x
+	 * @since 2.19.8
 	 *
 	 * @param array  $attr Block attributes.
 	 * @param string $fallbackImage Fallback image URL.

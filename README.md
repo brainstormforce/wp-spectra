@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.8  
-**Stable tag:** 2.19.7  
+**Stable tag:** 2.19.8  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -221,7 +221,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### x.x.x ###
+### 2.19.8 - Monday, 28th April 2025 ###
 * Fix: Container - Resolved an issue where dynamic content fallback images were not being properly applied in the frontend.
 * Fix: File Generation documentation link now redirects correctly instead of showing a 404 error.
 

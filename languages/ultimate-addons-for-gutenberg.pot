@@ -2,19 +2,20 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.19.7\n"
+"Project-Id-Version: Spectra 2.19.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-14T16:16:09+00:00\n"
+"POT-Creation-Date: 2025-04-25T10:05:54+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.8.1\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
 
 #. Plugin Name of the plugin
+#: ultimate-addons-for-gutenberg.php
 #: admin-core/inc/admin-menu.php:349
 #: admin-core/inc/admin-menu.php:350
 #: admin-core/inc/admin-menu.php:361
@@ -29,14 +30,17 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
+#: ultimate-addons-for-gutenberg.php
 msgid "https://www.brainstormforce.com"
 msgstr ""
 
 #. Description of the plugin
+#: ultimate-addons-for-gutenberg.php
 msgid "The Spectra extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster."
 msgstr ""
 
 #. Author of the plugin
+#: ultimate-addons-for-gutenberg.php
 msgid "Brainstorm Force"
 msgstr ""
 
@@ -61,7 +65,7 @@ msgid "Successfully saved data!"
 msgstr ""
 
 #: admin-core/ajax/common-settings.php:181
-#: classes/class-uagb-init-blocks.php:1393
+#: classes/class-uagb-init-blocks.php:1395
 msgid "No post data found!"
 msgstr ""
 
@@ -218,25 +222,25 @@ msgstr ""
 msgid "Here you can compare the features of Free and Pro versions."
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:527
+#: admin-core/inc/admin-menu.php:528
 msgid "Installing"
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:528
+#: admin-core/inc/admin-menu.php:529
 #: admin-core/assets/build/dashboard-app.js:3
 msgid "Installed"
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:529
+#: admin-core/inc/admin-menu.php:530
 msgid "Activating"
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:530
+#: admin-core/inc/admin-menu.php:531
 #: admin-core/assets/build/dashboard-app.js:3
 msgid "Activated"
 msgstr ""
 
-#: admin-core/inc/admin-menu.php:531
+#: admin-core/inc/admin-menu.php:532
 #: admin-core/assets/build/dashboard-app.js:3
 #: admin-core/assets/build/dashboard-app.js:12
 msgid "Activate"
@@ -8048,7 +8052,7 @@ msgid ""
 "\t\t.my-class {text-align: center;} // my-class is a custom selector"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:1192
+#: classes/class-uagb-init-blocks.php:1194
 #: classes/class-uagb-rest-api.php:318
 #: classes/class-uagb-rest-api.php:333
 #: dist/blocks.js:1
@@ -8059,21 +8063,21 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:1221
-#: classes/class-uagb-init-blocks.php:1254
+#: classes/class-uagb-init-blocks.php:1223
+#: classes/class-uagb-init-blocks.php:1256
 #: dist/blocks.js:23
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:1235
+#: classes/class-uagb-init-blocks.php:1237
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:1268
+#: classes/class-uagb-init-blocks.php:1270
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:1284
+#: classes/class-uagb-init-blocks.php:1286
 msgid "Invalid request"
 msgstr ""
 
