@@ -257,6 +257,9 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 		e.stopPropagation();
 	};
 
+	// Define UTM parameters
+	const utmParams = '&utm_medium=editor&utm_campaign=upsell-popup';
+
 	return (
 		<div
 			className={ `bg-white rounded-lg p-5 upsell-modal-component ${ isMobile ? '' : 'w-[500px]' }` }
@@ -375,7 +378,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 
 						<div className="flex items-center justify-between">
 							<a
-								href={ supportData[ supportKey ].checkout_url }
+								href={ supportData[ supportKey ].checkout_url + utmParams }
 								target="_blank"
 								rel="noreferrer"
 								className="no-underline text-text-on-color cursor-pointer"

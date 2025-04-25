@@ -128,6 +128,9 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 		e.stopPropagation();
 	};
 
+	// Define UTM parameters
+	const utmParams = '&utm_medium=dashboard&utm_campaign=upsell-popup';
+
 	return (
 		<div
 			onClick={ () => setIsModalOpen( false ) }
@@ -236,7 +239,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 									</Button>
 
 									<a
-										href={ productsList[ selectedProduct ]?.checkout_url }
+										href={ productsList[ selectedProduct ]?.checkout_url + utmParams }
 										target="_blank"
 										rel="noreferrer"
 										className="no-underline text-text-on-color relative"
@@ -258,7 +261,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 
 						<div className="w-full flex justify-end md:pr-[10px] pr-2">
 							<a
-								href="https://wpspectra.com/pricing/"
+								href={uag_admin_react.spectra_website?.upsellModalAdmin}
 								target="_blank"
 								rel="noreferrer"
 								className="text-xxs text-brand-primary-600"

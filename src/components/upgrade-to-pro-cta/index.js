@@ -274,6 +274,9 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 		return 'flex flex-col';
 	};
 
+	// Define UTM parameters
+	const utmParams = '&utm_medium=editor&utm_campaign=upsell-popup';
+
 	return (
 		<div
 			className={ `bg-white rounded-lg p-5 upsell-modal-component ${ isMobile ? '' : 'w-[500px]' }` }
@@ -411,7 +414,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 									</button>
 
 									<a
-										href={ productsList[ productKey ].checkout_url }
+										href={ productsList[ productKey ].checkout_url + utmParams }
 										target="_blank"
 										rel="noreferrer"
 										className="no-underline text-text-on-color"
@@ -444,7 +447,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 
 					<div className="flex justify-end md:pr-[10px] pr-2 w-full">
 						<a
-							href="https://wpspectra.com/pricing/"
+							href={uagb_blocks_info?.upsellModalEditor} 
 							target="_blank"
 							rel="noreferrer"
 							className="text-xxs text-brand-primary-600 uagb-remove-ring"

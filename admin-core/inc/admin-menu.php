@@ -523,6 +523,7 @@ class Admin_Menu {
 					'setting'                => \UAGB_Admin_Helper::get_spectra_pro_url( '/pricing/', 'free-plugin', 'dashboard', 'setting' ),
 					'uagDashboard'           => \UAGB_Admin_Helper::get_spectra_pro_url( '/pricing/', 'free-plugin', 'dashboard', 'uag-dashboard' ),
 					'whatsNewFeedUrl'        => esc_url( UAGB_URI . '/whats-new/feed/' ),
+					'upsellModalAdmin'       => \UAGB_Admin_Helper::get_spectra_pro_url( '/pricing/', 'free-plugin', 'dashboard', 'upsell-popup' ),
 				),
 				'plugin_installing_text'   => esc_html__( 'Installing', 'ultimate-addons-for-gutenberg' ),
 				'plugin_installed_text'    => esc_html__( 'Installed', 'ultimate-addons-for-gutenberg' ),
