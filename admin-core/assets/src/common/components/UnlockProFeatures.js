@@ -8,7 +8,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 	const [ productsList, setProductsList ] = useState( [] );
 	const [ selectedProduct, setSelectedProduct ] = useState( '' );
 	const [ loading, setLoading ] = useState( true );
-
+	const contryCode = uag_admin_react.contry_code;
 	useEffect( () => {
 		// Fetch pricing data from the API
 		const fetchPricingData = async () => {
@@ -52,6 +52,9 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 
 		fetchPricingData();
 	}, [] );
+
+	// Define UTM parameters
+	const utmParams = '&utm_medium=dashboard&utm_campaign=upsell-free-vs-pro';
 
 	if ( loading && freeVPro && smallCol )
 		return (
@@ -153,7 +156,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 
 							<div className="flex items-center justify-between gap-3">
 								<Button variant="ghost" size="md">
-									{ '$' + productsList[ selectedProduct ]?.price.USD.discounted }
+									{'$' + productsList[selectedProduct]?.price?.[contryCode]?.discounted }
 									{ productsList[ selectedProduct ]?.variant?.includes( 'Annual Subscription' ) ||
 									productsList[ selectedProduct ]?.product?.includes( 'Annual Subscription' ) ? (
 										<span className="text-text-tertiary">
@@ -163,7 +166,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 								</Button>
 
 								<a
-									href={ productsList[ selectedProduct ]?.checkout_url }
+									href={ productsList[ selectedProduct ]?.checkout_url + utmParams }
 									target="_blank"
 									rel="noreferrer"
 									className="no-underline text-text-on-color"
@@ -203,7 +206,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 
 					{ freeVPro && (
 						<a
-							href="https://wpspectra.com/pricing/"
+							href={uag_admin_react.spectra_website?.uagDashboard}
 							target="_blank"
 							rel="noreferrer"
 							className="text-xxs text-brand-primary-600 w-full flex justify-end md:pr-[10px] pr-2 -mt-2"
@@ -318,7 +321,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 
 						<div className="flex items-center justify-between gap-3">
 							<Button variant="ghost" size="md">
-								{ '$' + productsList[ selectedProduct ]?.price.USD.discounted }
+								{'$' + productsList[selectedProduct]?.price?.[contryCode]?.discounted }
 								{ productsList[ selectedProduct ]?.variant?.includes( 'Annual Subscription' ) ||
 								productsList[ selectedProduct ]?.product?.includes( 'Annual Subscription' ) ? (
 									<span className="text-text-tertiary">
@@ -328,7 +331,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 							</Button>
 
 							<a
-								href={ productsList[ selectedProduct ]?.checkout_url }
+								href={ productsList[ selectedProduct ]?.checkout_url + utmParams }
 								target="_blank"
 								rel="noreferrer"
 								className="no-underline text-text-on-color"
@@ -343,7 +346,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 					<div className="flex gap-3 my-2">
 						<a
 							className="no-underline"
-								href={uag_admin_react.spectra_website?.uagDashboard}
+							href={uag_admin_react.spectra_website?.uagDashboard}
 							target="_blank"
 							rel="noreferrer"
 						>
@@ -368,7 +371,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 
 				{ freeVPro && (
 					<a
-						href="https://wpspectra.com/pricing/"
+						href={uag_admin_react.spectra_website?.freeVsPro}
 						target="_blank"
 						rel="noreferrer"
 						className="text-xxs text-brand-primary-600 w-full flex justify-end md:pr-[10px] pr-2 -mt-2"

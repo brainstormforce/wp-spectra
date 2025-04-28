@@ -11,7 +11,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 	const [ selectedTitle, setSelectedTitle ] = useState( 'Spectra Pro' );
 
 	const { title, Image, header, description, features } = modalData[ selectedTitle ];
-
+	const contryCode = uag_admin_react.contry_code;
 	useEffect( () => {
 		// Fetch pricing data from the API
 		const fetchPricingData = async () => {
@@ -128,14 +128,16 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 		e.stopPropagation();
 	};
 
+	// Define UTM parameters
+	const utmParams = '&utm_medium=dashboard&utm_campaign=upsell-popup';
+
 	return (
 		<div
 			onClick={ () => setIsModalOpen( false ) }
 			className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-999999 uagb-upsell-modal"
 		>
 			<div
-				className={ `bg-white rounded-lg p-5
-				${ selectedTitle === 'Essential Toolkit' ? 'sm:w-[500px] w-[400px]' : 'sm:w-[400px] w-[300px]' }` }
+				className={ 'bg-white rounded-lg p-5 sm:w-[500px] w-[400px]' }
 				onClick={ closeModal }
 			>
 				<div className="flex w-full justify-between items-center">
@@ -227,7 +229,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 
 								<div className="flex items-center justify-between sm:gap-0 gap-[88px]">
 									<Button variant="ghost" size="md" className="uagb-remove-ring">
-										{ '$' + productsList[ selectedProduct ]?.price.USD.discounted }
+											{'$' + productsList[selectedProduct]?.price?.[contryCode]?.discounted }
 										{ productsList[ selectedProduct ]?.variant?.includes( 'Annual Subscription' ) ||
 										productsList[ selectedProduct ]?.product?.includes( 'Annual Subscription' ) ? (
 											<span className="text-text-tertiary">
@@ -237,7 +239,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 									</Button>
 
 									<a
-										href={ productsList[ selectedProduct ]?.checkout_url }
+										href={ productsList[ selectedProduct ]?.checkout_url + utmParams }
 										target="_blank"
 										rel="noreferrer"
 										className="no-underline text-text-on-color relative"
@@ -259,7 +261,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 
 						<div className="w-full flex justify-end md:pr-[10px] pr-2">
 							<a
-								href="https://wpspectra.com/pricing/"
+								href={uag_admin_react.spectra_website?.upsellModalAdmin}
 								target="_blank"
 								rel="noreferrer"
 								className="text-xxs text-brand-primary-600"

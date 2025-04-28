@@ -1,3 +1,11 @@
+2.0.4 - 14th April 2025
+- Improvement: Enhanced credit exceeded error in the chat interface.
+- Improvement: Now showing credits usage directly on chat window instead of open popup.
+
+2.0.3 - 9th April 2025
+- Improvement: Clearer error messages when AI credits are exhausted or user is invalid.
+- Fix: Resolved an toolbar icons size issue for Ask AI in WordPress 6.8.
+
 2.0.2 - 31st January 2025
 - Reverted: Caching mechanism for credit response to optimize API calls due to unforeseen issues.
 

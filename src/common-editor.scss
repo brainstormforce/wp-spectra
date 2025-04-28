@@ -757,11 +757,13 @@ button.components-button.uagb-review-select-btn.is-secondary {
 
 //  Toolbar Icon Height and Width WordPress 6.5 Fix
 .block-editor-block-toolbar {
-	.components-button {
-		height: 48px;
+	.block-editor-block-parent-selector {
+		.components-button {
+			height: 48px;
 
-		&.has-icon {
-			min-width: 48px;
+			&.has-icon {
+				min-width: 48px;
+			}
 		}
 	}
 }

@@ -37,13 +37,15 @@ const AssetsGeneration = () => {
 			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Successfully saved!' } );
 		} );
 	};
+	// Add the desired path after /docs/
+	const url = uag_admin_react.spectra_website?.docsUrl?.replace( /\/docs\/?/, '/docs/file-generation/' )?.toString();
 
 	const renderText = () => (
 		<p className='m-0'>
 			{ __( 'Please read ', 'ultimate-addons-for-gutenberg' ) }
 
 			<a
-				href={uag_admin_react.spectra_website?.docsCategoryDynamicUrl?.replace( '#category#', 'file-generation' )}
+				href={url}
 				target="_blank"
 				rel="noreferrer"
 				className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover"
