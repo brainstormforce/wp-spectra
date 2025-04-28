@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.8
-Stable tag: 2.19.7
+Stable tag: 2.19.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -57,7 +57,7 @@ Users of page builders like Elementor and Beaver Builder absolutely LOVE Spectra
 <ul>
  	<li>The code of Spectra is extremely optimized for performance and speed</li>
  	<li>Spectra designs and features make you look like an expert web designer</li>
- 	<li>There’s zero learning curve as Spectra works on top of the default WordPress block editor.</li>
+ 	<li>There's zero learning curve as Spectra works on top of the default WordPress block editor.</li>
 </ul>
 
 <strong>Introducing Spectra – the ultimate solution to revolutionize your web design experience.</strong>
@@ -220,6 +220,10 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT. Additionally, we incorporate [FontAwesome v6](https://fontawesome.com/license/free) under the CC BY 4.0 License, and [dnd kit](https://github.com/clauderic/dnd-kit) licensed under the MIT License.
 
 == Changelog ==
+
+= 2.19.8 - Monday, 28th April 2025 =
+* Fix: Container - Resolved an issue where dynamic content fallback images were not being properly applied in the frontend.
+* Fix: File Generation documentation link now redirects correctly instead of showing a 404 error.
 
 = 2.19.7 - Wednesdays, 16th April 2025 =
 * Improvement: Added compatibility with WordPress v6.8.

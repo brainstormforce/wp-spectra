@@ -183,7 +183,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 	const [ productsList, setProductsList ] = useState( '' );
 	const [ productKey, setProductKey ] = useState( '' );
 	const [ selectedTitle, setSelectedTitle ] = useState( 'Spectra Pro' );
-
+	const contryCode = uagb_blocks_info.contry_code;
 	const { title, Image, header, description, features } = modalData[ selectedTitle ];
 
 	useEffect( () => {
@@ -273,6 +273,9 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 	
 		return 'flex flex-col';
 	};
+
+	// Define UTM parameters
+	const utmParams = '&utm_medium=editor&utm_campaign=upsell-popup';
 
 	return (
 		<div
@@ -400,7 +403,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 										} }
 									>
 										<span style={ { color: 'black' } }>
-											${ productsList[ productKey ]?.price?.USD?.discounted }
+												${productsList[productKey]?.price?.[contryCode]?.discounted }
 										</span>
 										{ productsList[ productKey ]?.variant?.includes( 'Annual Subscription' ) ||
 										productsList[ productKey ]?.product?.includes( 'Annual Subscription' ) ? (
@@ -411,7 +414,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 									</button>
 
 									<a
-										href={ productsList[ productKey ].checkout_url }
+										href={ productsList[ productKey ].checkout_url + utmParams }
 										target="_blank"
 										rel="noreferrer"
 										className="no-underline text-text-on-color"
@@ -444,7 +447,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 
 					<div className="flex justify-end md:pr-[10px] pr-2 w-full">
 						<a
-							href="https://wpspectra.com/pricing/"
+							href={uagb_blocks_info?.upsellModalEditor} 
 							target="_blank"
 							rel="noreferrer"
 							className="text-xxs text-brand-primary-600 uagb-remove-ring"

@@ -523,6 +523,7 @@ class Admin_Menu {
 					'setting'                => \UAGB_Admin_Helper::get_spectra_pro_url( '/pricing/', 'free-plugin', 'dashboard', 'setting' ),
 					'uagDashboard'           => \UAGB_Admin_Helper::get_spectra_pro_url( '/pricing/', 'free-plugin', 'dashboard', 'uag-dashboard' ),
 					'whatsNewFeedUrl'        => esc_url( UAGB_URI . '/whats-new/feed/' ),
+					'upsellModalAdmin'       => \UAGB_Admin_Helper::get_spectra_pro_url( '/pricing/', 'free-plugin', 'dashboard', 'upsell-popup' ),
 				),
 				'plugin_installing_text'   => esc_html__( 'Installing', 'ultimate-addons-for-gutenberg' ),
 				'plugin_installed_text'    => esc_html__( 'Installed', 'ultimate-addons-for-gutenberg' ),
@@ -533,6 +534,7 @@ class Admin_Menu {
 				'installer_nonce'          => wp_create_nonce( 'updates' ),
 				'pro_installed_status'     => 'inactive' === self::get_plugin_status( 'spectra-pro/spectra-pro.php' ) ? true : false,
 				'pro_plugin_status'        => self::get_plugin_status( 'spectra-pro/spectra-pro.php' ),
+				'contry_code'              => \UAGB_Admin_Helper::get_user_country_code(),
 			)
 		);
 

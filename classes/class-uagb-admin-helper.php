@@ -566,6 +566,128 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 			return $spectra_pro_url;
 		}
+
+		/**
+		 * Prepare user country code.
+		 *
+		 * Returns the user's country code.
+		 * Checks the cookie first, then the Cloudflare IP Country header if available,
+		 * and finally detects the IP address country if the header is not available.
+		 *
+		 * @since 2.19.8
+		 * @return string The user's country code.
+		 */
+		public static function prepare_user_country_code() {
+			static $currency_code = 'null';
+
+			$default_currency_code = 'US'; // Default currency.
+			$user_id               = get_current_user_id();
+
+			// If user is logged in and currency is already stored.
+			if ( $user_id ) {
+				$stored_code = get_user_meta( $user_id, 'pse_country_code', true );
+				if ( is_string( $stored_code ) && ! empty( $stored_code ) ) {
+					$currency_code = sanitize_text_field( $stored_code );
+					return $currency_code;
+				}
+			}
+
+			// Prefer Cloudflare IP Country header if available.
+			if ( isset( $_SERVER['HTTP_CF_IPCOUNTRY'] ) ) {
+				$default_currency_code = sanitize_text_field( $_SERVER['HTTP_CF_IPCOUNTRY'] );
+
+				if ( $user_id && $default_currency_code ) {
+					update_user_meta( $user_id, 'pse_country_code', $default_currency_code );
+					$currency_code = $default_currency_code;
+					return $default_currency_code;
+				}
+			}
+
+			// Detect IP address country if Cloudflare header is not available.
+			$tokens = array(
+				'c1578516a7378c', // rohitp@bsf.io.
+				'abeeb8e41600b5', // lawaca8819@cashbn.com.
+				'0f5ba880c5ee80', // tern0@mailshan.com.
+			);
+
+			$user_ip = static::get_user_ip();
+			if ( ! empty( $user_ip ) ) {
+
+				$token = $tokens[ array_rand( $tokens ) ];
+				$url   = "https://ipinfo.io/{$user_ip}?token={$token}";
+
+				$request = wp_remote_get( $url );
+				if ( ! is_wp_error( $request ) && wp_remote_retrieve_response_code( $request ) === 200 ) {
+					$response = json_decode( wp_remote_retrieve_body( $request ), true );
+
+					if ( is_array( $response ) && ! empty( $response['country'] ) ) {
+						$default_currency_code = sanitize_text_field( $response['country'] );
+					}
+
+					if ( $user_id ) {
+						update_user_meta( $user_id, 'pse_country_code', $default_currency_code );
+					}
+					$currency_code = $default_currency_code;
+					return $default_currency_code;
+				}
+			}
+
+			return $default_currency_code;
+		}
+
+		/**
+		 * Retrieves the user's IP address.
+		 *
+		 * This function works by following the order of preference:
+		 * 1. Cloudflare's `HTTP_CF_CONNECTING_IP`.
+		 * 2. `HTTP_X_FORWARDED_FOR` (first IP in case of multiple proxies).
+		 * 3. `HTTP_CLIENT_IP`.
+		 * 4. `REMOTE_ADDR`.
+		 *
+		 * @since 2.19.8
+		 * @return string The user's IP address.
+		 */
+		public static function get_user_ip() {
+			if ( ! empty( $_SERVER['HTTP_CF_CONNECTING_IP'] ) ) {
+				return sanitize_text_field( $_SERVER['HTTP_CF_CONNECTING_IP'] ); // Cloudflare real IP.
+			} elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+				return explode( ',', sanitize_text_field( $_SERVER['HTTP_X_FORWARDED_FOR'] ) )[0]; // First IP in case of multiple proxies.
+			} elseif ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
+				return sanitize_text_field( $_SERVER['HTTP_CLIENT_IP'] );
+			} elseif ( ! empty( $_SERVER['REMOTE_ADDR'] ) ) {
+				return sanitize_text_field( $_SERVER['REMOTE_ADDR'] );
+			}
+			return '';
+		}
+
+		/**
+		 * Get the user's country code and return a pricing region
+		 *
+		 * Returns a pricing region based on the user's country code.
+		 * The pricing regions are based on the country codes.
+		 * The default pricing region is 'US'.
+		 *
+		 * @since 2.19.8
+		 * @return string The pricing region.
+		 */
+		public static function get_user_country_code() {
+			$country_code   = self::prepare_user_country_code();
+			$pricing_region = 'US'; // Default fallback.
+
+			switch ( $country_code ) {
+				case 'IN':
+					$pricing_region = 'IN';
+					break;
+
+				// Add more cases as needed.
+
+				default:
+					$pricing_region = 'US';
+					break;
+			}
+
+			return $pricing_region;
+		}
 	}
 
 	/**

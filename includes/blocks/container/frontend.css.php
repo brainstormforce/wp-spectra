@@ -14,6 +14,49 @@
  * @var int $id
  */
 
+if ( ! function_exists( 'generate_background_object' ) ) {
+	/**
+	 * Generate background object for a specific device
+	 *
+	 * @since 2.19.8
+	 *
+	 * @param array  $attr Block attributes.
+	 * @param string $fallbackImage Fallback image URL.
+	 * @param string $device Device type (desktop, tablet, mobile).
+	 * @return array Background object.
+	 */
+	function generate_background_object( $attr, $fallbackImage, $device = 'desktop' ) {
+		$suffix = ucfirst( $device );
+		$suffix = 'desktop' === $device ? '' : $suffix;
+
+		// Safely get values with defaults.
+		$backgroundRepeat         = isset( $attr[ 'backgroundRepeat' . $suffix ] ) ? $attr[ 'backgroundRepeat' . $suffix ] : 'no-repeat';
+		$backgroundPosition       = isset( $attr[ 'backgroundPosition' . $suffix ] ) ? $attr[ 'backgroundPosition' . $suffix ] : 'center';
+		$backgroundSize           = isset( $attr[ 'backgroundSize' . $suffix ] ) ? $attr[ 'backgroundSize' . $suffix ] : 'cover';
+		$backgroundAttachment     = isset( $attr[ 'backgroundAttachment' . $suffix ] ) ? $attr[ 'backgroundAttachment' . $suffix ] : 'scroll';
+		$backgroundCustomSize     = isset( $attr[ 'backgroundCustomSize' . $suffix ] ) ? $attr[ 'backgroundCustomSize' . $suffix ] : '';
+		$backgroundImageColor     = isset( $attr['backgroundImageColor'] ) ? $attr['backgroundImageColor'] : '';
+		$overlayType              = isset( $attr['overlayType'] ) ? $attr['overlayType'] : 'none';
+		$backgroundCustomSizeType = isset( $attr['backgroundCustomSizeType'] ) ? $attr['backgroundCustomSizeType'] : 'px';
+
+		return array(
+			'backgroundType'           => 'image',
+			'backgroundImage'          => array(
+				'type' => 'image',
+				'url'  => $fallbackImage,
+			),
+			'backgroundRepeat'         => $backgroundRepeat,
+			'backgroundPosition'       => $backgroundPosition,
+			'backgroundSize'           => $backgroundSize,
+			'backgroundAttachment'     => $backgroundAttachment,
+			'backgroundImageColor'     => $backgroundImageColor,
+			'overlayType'              => $overlayType,
+			'backgroundCustomSize'     => $backgroundCustomSize,
+			'backgroundCustomSizeType' => $backgroundCustomSizeType,
+		);
+	}
+}
+
 // For Global Block Styles.
 $base_selector = ! empty( $is_gbs ) && ! empty( $gbs_class ) ? $gbs_class : '.uagb-block-' . $id;
 
@@ -767,6 +810,60 @@ if ( ! $is_layout_grid ) {
 		$selectors[ $base_selector ]   = array_merge( $selectors[ $base_selector ], $gridChildrenCSS );
 		$t_selectors[ $base_selector ] = array_merge( $t_selectors[ $base_selector ], $gridChildrenCSSTab );
 		$m_selectors[ $base_selector ] = array_merge( $m_selectors[ $base_selector ], $gridChildrenCSSMobile );
+	}
+
+	// Add dynamic content fallback handling.
+	if ( ! empty( $attr['dynamicContent']['bgImage']['enable'] ) ) {
+		$dynamicContent = $attr['dynamicContent']['bgImage'];
+		
+		// Get the fallback image from the advanced field.
+		$fallbackImage = '';
+		if ( ! empty( $dynamicContent['advanced'] ) ) {
+			$advancedParts = explode( '|', $dynamicContent['advanced'] );
+			if ( count( $advancedParts ) > 1 ) {
+				$fallbackImage = $advancedParts[1];
+			}
+		}
+
+		if ( $fallbackImage ) {
+			// Generate background objects for each device.
+			$bg_obj_desktop           = generate_background_object( $attr, $fallbackImage, 'desktop' );
+			$container_bg_css_desktop = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_desktop, 'no' );
+
+			// Add the CSS to the selectors if it exists.
+			if ( ! empty( $container_bg_css_desktop ) ) {
+				$selectors[ $base_selector ] = array_merge(
+					isset( $selectors[ $base_selector ] ) ? $selectors[ $base_selector ] : array(),
+					$container_bg_css_desktop
+				);
+			}
+
+			// Add tablet version if needed.
+			if ( isset( $attr['backgroundRepeatTablet'] ) && ! empty( $attr['backgroundRepeatTablet'] ) ) {
+				$bg_obj_tablet           = generate_background_object( $attr, $fallbackImage, 'tablet' );
+				$container_bg_css_tablet = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_tablet, 'no' );
+				
+				if ( ! empty( $container_bg_css_tablet ) ) {
+					$t_selectors[ $base_selector ] = array_merge(
+						isset( $t_selectors[ $base_selector ] ) ? $t_selectors[ $base_selector ] : array(),
+						$container_bg_css_tablet
+					);
+				}
+			}
+
+			// Add mobile version if needed.
+			if ( isset( $attr['backgroundRepeatMobile'] ) && ! empty( $attr['backgroundRepeatMobile'] ) ) {
+				$bg_obj_mobile           = generate_background_object( $attr, $fallbackImage, 'mobile' );
+				$container_bg_css_mobile = UAGB_Block_Helper::uag_get_background_obj( $bg_obj_mobile, 'no' );
+				
+				if ( ! empty( $container_bg_css_mobile ) ) {
+					$m_selectors[ $base_selector ] = array_merge(
+						isset( $m_selectors[ $base_selector ] ) ? $m_selectors[ $base_selector ] : array(),
+						$container_bg_css_mobile
+					);
+				}
+			}
+		}
 	}
 
 	$combined_selectors = array(
