@@ -1146,7 +1146,7 @@ class UAGB_Init_Blocks {
 			'status_of_sureforms'                     => $status_of_sureforms,
 			'status_of_surecart'                      => $status_of_surecart,
 			'docsUrl'                                 => \UAGB_Admin_Helper::get_spectra_pro_url( '/docs/', 'free-plugin', 'uagb-editor-page', 'uagb-plugin' ),
-			'upsellModalEditor'                       => \UAGB_Admin_Helper::get_spectra_pro_url( '/pricing/', 'free-plugin', 'editor', 'upsell-popup' ),
+			'upsellModalEditor'                       => \UAGB_Admin_Helper::get_spectra_pro_url( '/pricing/', 'free-plugin', 'spectra-editor', 'upsell-popup-view-plan' ),
 			'contry_code'                             => \UAGB_Admin_Helper::get_user_country_code(),
 		);
 

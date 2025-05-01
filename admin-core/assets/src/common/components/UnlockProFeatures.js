@@ -206,7 +206,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 
 					{ freeVPro && (
 						<a
-							href={uag_admin_react.spectra_website?.uagDashboard}
+							href={uag_admin_react.spectra_website?.uagDashboard + '-view-plan'}
 							target="_blank"
 							rel="noreferrer"
 							className="text-xxs text-brand-primary-600 w-full flex justify-end md:pr-[10px] pr-2 -mt-2"
