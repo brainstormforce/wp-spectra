@@ -172,6 +172,14 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'classes/migration/class-spectra-migrate-blocks.php';
 			require_once UAGB_DIR . 'classes/migration/class-uagb-background-process.php';
 
+
+			/**
+			 * Register Commands.
+			 */
+			if ( defined( 'WP_CLI' ) && WP_CLI ) {
+				require_once UAGB_DIR . 'classes/commands/class-spectra-regenerate-assets-command.php';
+			}
+
 			if ( is_admin() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-beta-updates.php';
 				require_once UAGB_DIR . 'classes/class-uagb-rollback.php';
