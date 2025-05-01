@@ -70,6 +70,7 @@ class Sidebar_Configurations {
 		add_action( 'wp_ajax_verify_zip_ai_authenticity', array( $this, 'verify_authenticity' ) );
 		// Setup the Sidebar Credit Details Ajax.
 		add_action( 'wp_ajax_get_latest_credit_details', array( $this, 'get_latest_credit_details' ) );
+		add_action( 'wp_ajax_get_fresh_credit_details', array( $this, 'get_fresh_credit_details' ) );
 
 		// Render the Sidebar React App in the Footer in the Gutenberg Editor, Admin, and the Front-end.
 		add_action( 'admin_footer', array( $this, 'render_sidebar_markup' ) );
@@ -283,7 +284,7 @@ class Sidebar_Configurations {
 		$message_array = array(
 			'no_auth'              => __( 'Authentication failed. Invalid or missing bearer token.', 'ultimate-addons-for-gutenberg' ),
 			'insufficient_credits' => array(
-				'title'          => __( 'You’ve run out of credits.', 'ultimate-addons-for-gutenberg' ),
+				'title'          => __( 'You\'ve run out of credits.', 'ultimate-addons-for-gutenberg' ),
 				'type'           => 'assemble-error',
 				'content'        => __( 'To continue using the assistant and access its full features, please purchase more credits.', 'ultimate-addons-for-gutenberg' ),
 				'button_content' => array(
@@ -766,6 +767,28 @@ class Sidebar_Configurations {
 
 		// Set an array of data to be sent.
 		$latest_credit_details = Helper::get_credit_details();
+
+		// If an error was encountered, send the error details.
+		if ( isset( $latest_credit_details['status'] ) && 'error' === $latest_credit_details['status'] ) {
+			wp_send_json_error( $latest_credit_details );
+		}
+
+		// Send the latest credit details.
+		wp_send_json_success( $latest_credit_details );
+	}
+
+	/**
+	 * Ajax handeler to get fresh Zip AI credit details.
+	 *
+	 * @since 2.0.5
+	 * @return void
+	 */
+	public function get_fresh_credit_details() {
+		// Check the nonce.
+		check_ajax_referer( 'zip_ai_ajax_nonce', 'nonce' );
+
+		// Set an array of data to be sent.
+		$latest_credit_details = Helper::get_fresh_credit_details();
 
 		// If an error was encountered, send the error details.
 		if ( isset( $latest_credit_details['status'] ) && 'error' === $latest_credit_details['status'] ) {

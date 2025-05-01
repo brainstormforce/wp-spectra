@@ -21,7 +21,7 @@ if ( ! class_exists( 'Spectra_Regenerate_Assets_Command' ) ) {
 		 *
 		 * EXAMPLES: wp spectra regenerate-css
 		 *
-		 * @since x.x.x
+		 * @since 2.19.9
 		 *
 		 * @param array $args Positional arguments.
 		 * @param array $assoc_args Associative arguments.

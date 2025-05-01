@@ -221,6 +221,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### 2.19.9 - Thursday, 1st May 2025 ###
+- Improvement: Added a WP-CLI command for regenarate the assets.
+
 ### 2.19.8 - Monday, 28th April 2025 ###
 * Fix: Container - Resolved an issue where dynamic content fallback images were not being properly applied in the frontend.
 * Fix: File Generation documentation link now redirects correctly instead of showing a 404 error.

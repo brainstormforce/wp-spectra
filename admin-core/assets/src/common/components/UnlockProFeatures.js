@@ -54,7 +54,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 	}, [] );
 
 	// Define UTM parameters
-	const utmParams = '&utm_medium=dashboard&utm_campaign=upsell-free-vs-pro';
+	const utmParams = '&utm_medium=spectra-dashboard&utm_campaign=upsell-free-vs-pro-buy-now';
 
 	if ( loading && freeVPro && smallCol )
 		return (
