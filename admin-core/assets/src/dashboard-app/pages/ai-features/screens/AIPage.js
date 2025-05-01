@@ -15,7 +15,7 @@ import {
 
 import getApiData from '@Controls/getApiData';
 
-import { Container, Button, Badge, Switch, DropdownMenu, Skeleton } from '@bsf/force-ui';
+import { Container, Button, Badge, Switch, DropdownMenu, Skeleton, Tooltip } from '@bsf/force-ui';
 import ExtendYourWebsite from '@Common/components/ExtendYourWebsite';
 import QuickAccess from '@Common/components/QuickAccess';
 import VideoTutorials from '@Common/components/VideoTutorials';
@@ -305,7 +305,6 @@ const AIPage = () => {
 	);
 
 	// Set the credit details and the team name.
-	const creditDetails = uag_react.zip_ai_credit_details;
 	const teamName = uag_react?.zip_ai_current_plan?.team_name;
 
 	const connectionBadge = () => {
@@ -470,6 +469,8 @@ const AIPage = () => {
 
 	const RenderCredits = () => {
 		const [ isMobile, setIsMobile ] = useState( window.innerWidth < 768 );
+		const [ creditDetails, setCreditDetails ] = useState( uag_react.zip_ai_credit_details );
+		const [ isRefreshing, setIsRefreshing ] = useState( false );
 
 		useEffect( () => {
 			const handleResize = () => {
@@ -488,11 +489,73 @@ const AIPage = () => {
 				<Zap className="size-4" />
 
 				<div className="flex flex-col gap-0 items-start">
-					<div className="text-base text-text-primary font-semibold mb-1">
-						{ creditDetails?.used.toLocaleString( 'en-US' ) }{ ' ' }
-						<span className="text-text-tertiary font-normal">
-							/ { creditDetails?.total.toLocaleString( 'en-US' ) }
-						</span>
+					<div className="flex items-center gap-2">
+						<div className="text-base text-text-primary font-semibold mb-1">
+							{ creditDetails?.used.toLocaleString( 'en-US' ) }{ ' ' }
+							<span className="text-text-tertiary font-normal">
+								/ { creditDetails?.total.toLocaleString( 'en-US' ) }
+							</span>
+						</div>
+						<Tooltip
+							arrow
+							content={ __( 'Refresh credit details', 'ultimate-addons-for-gutenberg' ) }
+							placement="bottom"
+							triggers={ [ 'hover', 'focus' ] }
+							variant="dark"
+						>
+							<Button
+								variant="outline"
+								onClick={ async () => {
+									if ( isRefreshing ) return;
+									setIsRefreshing( true );
+									try {
+										const formData = new FormData();
+										formData.append( 'action', 'get_fresh_credit_details' );
+										formData.append( 'nonce', window.zip_ai_react.ajax_nonce );
+
+										const response = await fetch( window.zip_ai_react.ajax_url, {
+											method: 'POST',
+											credentials: 'same-origin',
+											body: formData,
+										} );
+
+										const data = await response.json();
+										
+										if ( data?.success ) {
+											setCreditDetails( data.data );
+											// Update global credit details
+											window.zip_ai_react.credit_details = data.data;
+										}
+									} catch ( error ) {
+										throw new Error( 'Error refreshing credits:', error );
+									} finally {
+										setIsRefreshing( false );
+									}
+								} }
+								className={ `flex items-center justify-center w-7 h-7 min-w-0 min-h-0 pb-1 rounded-full ${
+									isRefreshing ? 'opacity-70 cursor-not-allowed' : ''
+								}` }
+								aria-label={ __( 'Refresh Credits', 'ultimate-addons-for-gutenberg' ) }
+								disabled={ isRefreshing }
+								style={{ marginLeft: '4px', border: 'none', background: '#f0f0f0' }}
+							>
+								<svg
+									className={ `w-4 h-4 text-gray-600 transition-transform duration-200 text-primary ${
+										isRefreshing ? 'animate-spin' : ''
+									}` }
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									strokeWidth="2"
+								>
+									<path
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+									/>
+								</svg>
+							</Button>
+						</Tooltip>
 					</div>
 
 					<a
@@ -591,7 +654,7 @@ const AIPage = () => {
 											</div>
 											<div className="text-sm">
 												{ __(
-													'It’s like ChatGPT but for WordPress, designed to revolutionize your WordPress experience.',
+													"It's like ChatGPT but for WordPress, designed to revolutionize your WordPress experience.",
 													'ultimate-addons-for-gutenberg'
 												) }
 											</div>

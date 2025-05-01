@@ -122,7 +122,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '2.19.8' );
+			define( 'UAGB_VER', '2.19.9' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'spectra' );
@@ -171,6 +171,14 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'classes/class-uagb-block.php';
 			require_once UAGB_DIR . 'classes/migration/class-spectra-migrate-blocks.php';
 			require_once UAGB_DIR . 'classes/migration/class-uagb-background-process.php';
+
+
+			/**
+			 * Register Commands.
+			 */
+			if ( defined( 'WP_CLI' ) && WP_CLI ) {
+				require_once UAGB_DIR . 'classes/commands/class-spectra-regenerate-assets-command.php';
+			}
 
 			if ( is_admin() ) {
 				require_once UAGB_DIR . 'classes/class-uagb-beta-updates.php';

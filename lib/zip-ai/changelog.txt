@@ -1,3 +1,6 @@
+2.0.5 - 30th April 2025
+- Improvement: Added a caching mechanism for credit response to optimize API calls.
+
 2.0.4 - 14th April 2025
 - Improvement: Enhanced credit exceeded error in the chat interface.
 - Improvement: Now showing credits usage directly on chat window instead of open popup.

@@ -340,14 +340,44 @@ class Helper {
 		return self::get_decrypted_token( 'zip_token' );
 	}
 
+	/**
+	 * Get cached credit details.
+	 *
+	 * @since 2.0.5
+	 *
+	 * @return array|false
+	 */
+	public static function get_cached_credit_details() {
+		$cached = get_transient( 'zip_ai_credit_details' );
+		return $cached ? json_decode( $cached, true ) : false;
+	}
+
+	/**
+	 * Cache credit details.
+	 *
+	 * @since 2.0.5
+	 *
+	 * @param array $details   The credit details to cache.
+	 * @param int   $duration  The cache duration in seconds.
+	 * @return void
+	 */
+	public static function cache_credit_details( $details, $duration = 300 ) {
+		// 5 minutes default
+		set_transient( 'zip_ai_credit_details', wp_json_encode( $details ), $duration );
+	}
 
 	/**
 	 * This helper function returns credit details.
 	 *
-	 * @since 1.0.0
+	 * @since 2.0.5
 	 * @return array
 	 */
 	public static function get_credit_details() {
+		$cached = self::get_cached_credit_details();
+		if ( false !== $cached ) {
+			return $cached;
+		}
+
 		// Set the default credit details.
 		$credit_details = array(
 			'used'       => 0,
@@ -371,6 +401,48 @@ class Helper {
 			$credit_details['used']       = ! empty( $response['total_used_credits'] ) ? $response['total_used_credits'] : 0;
 			$credit_details['total']      = $response['total_credits'];
 			$credit_details['percentage'] = intval( ( $credit_details['used'] / $credit_details['total'] ) * 100 );
+
+			self::cache_credit_details( $credit_details );
+		} else {
+			$credit_details['status'] = 'error';
+		}
+
+		return $credit_details;
+	}
+
+	/**
+	 * Get fresh credit details without cache.
+	 *
+	 * @since 2.0.5
+	 * @return array
+	 */
+	public static function get_fresh_credit_details() {
+		// Set the default credit details.
+		$credit_details = array(
+			'used'       => 0,
+			'total'      => 0,
+			'threshold'  => array(
+				'medium' => ZIP_AI_CREDIT_THRESHOLD_MEDIUM,
+				'high'   => ZIP_AI_CREDIT_THRESHOLD_HIGH,
+			),
+			'percentage' => 0,
+			'status'     => 'success',
+		);
+
+		// Get the response from the endpoint.
+		$response = self::get_credit_server_response( 'usage' );
+
+		// If the response is not an error, then update the credit details.
+		if (
+			empty( $response['error'] )
+			&& ! empty( $response['total_credits'] )
+		) {
+			$credit_details['used']       = ! empty( $response['total_used_credits'] ) ? $response['total_used_credits'] : 0;
+			$credit_details['total']      = $response['total_credits'];
+			$credit_details['percentage'] = intval( ( $credit_details['used'] / $credit_details['total'] ) * 100 );
+
+			// Update cache with fresh data.
+			self::cache_credit_details( $credit_details );
 		} else {
 			$credit_details['status'] = 'error';
 		}
@@ -385,6 +457,25 @@ class Helper {
 	 * @return array
 	 */
 	public static function get_current_plan_details() {
+		// Get current auth token.
+		$current_auth_token = self::get_decrypted_auth_token();
+
+		// Get cached auth token.
+		$cached_auth_token = get_transient( 'zip_ai_auth_token' );
+		// If auth token has changed or doesn't exist, clear all caches.
+		if ( $current_auth_token !== $cached_auth_token ) {
+			delete_transient( 'zip_ai_current_plan_details' );
+			delete_transient( 'zip_ai_credit_details' );
+			// Cache the new auth token.
+			set_transient( 'zip_ai_auth_token', $current_auth_token, DAY_IN_SECONDS );
+		}
+
+		// Check for cached response first.
+		$cached_response = get_transient( 'zip_ai_current_plan_details' );
+		if ( false !== $cached_response ) {
+			return json_decode( $cached_response, true );
+		}
+
 		$current_plan_details = [];
 
 		// Get the response from the endpoint.
@@ -401,7 +492,25 @@ class Helper {
 			if ( ! empty( $response['error'] ) ) {
 				$current_plan_details['error'] = $response['error'];
 			}
+			return $current_plan_details; // Return error immediately without caching.
 		}
+
+		// Filter for developers to modify cache duration, default 24 hours.
+		$cache_duration = apply_filters( 'zip_ai_plan_details_cache_duration', DAY_IN_SECONDS );
+
+		// Validate cache duration.
+		if ( ! is_numeric( $cache_duration ) ) {
+			$cache_duration = DAY_IN_SECONDS;
+		}
+
+		// Ensure cache duration is between 1 minute and 1 week for optimal performance and freshness.
+		$cache_duration = absint( $cache_duration );
+		if ( $cache_duration < MINUTE_IN_SECONDS || $cache_duration > WEEK_IN_SECONDS ) {
+			$cache_duration = DAY_IN_SECONDS;
+		}
+
+		// Cache the response with JSON encoding for security.
+		set_transient( 'zip_ai_current_plan_details', wp_json_encode( $current_plan_details ), $cache_duration );
 
 		return $current_plan_details;
 	}
@@ -470,12 +579,33 @@ class Helper {
 	}
 
 	/**
-	 * Get the revoke url for the auth token.
+	 * Clear the credit details cache.
+	 *
+	 * @since 2.0.5
+	 * @return void
+	 */
+	public static function clear_credit_details_cache() {
+		delete_transient( 'zip_ai_credit_details' );
+	}
+
+	/**
+	 * Clear the current plan cache.
+	 *
+	 * @since 2.0.5
+	 * @return void
+	 */
+	public static function clear_current_plan_cache() {
+		delete_transient( 'zip_ai_current_plan_details' );
+	}
+
+	/**
+	 * Get the revoke url for the auth token and clear all caches.
 	 *
 	 * @since 1.0.0
 	 * @return string The authorization revoke url.
 	 */
 	public static function get_auth_revoke_url() {
+
 		$revoke_url = add_query_arg(
 			apply_filters(
 				'zip_ai_auth_revoke_args',

@@ -40,7 +40,7 @@ const BSFAnalyticsOption = () => {
 
 	const renderText = () => (
 		<p className='m-0'>
-			{__( 'Allow Brainstorm Force products to track non-sensitive usage tracking data. Please read ', 'ultimate-addons-for-gutenberg' )}
+			{__( 'Help us improve Spectra by allowing non-sensitive usage tracking. ', 'ultimate-addons-for-gutenberg' )}
 
 			<a
 				href={'https://store.brainstormforce.com/usage-tracking/?utm_source=uag_dashboard&utm_medium=general_settings&utm_campaign=usage_tracking'}
@@ -48,11 +48,11 @@ const BSFAnalyticsOption = () => {
 				rel="noreferrer"
 				className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover"
 			>
-				{__( 'this article', 'ultimate-addons-for-gutenberg' )}
+				{__( 'Learn more', 'ultimate-addons-for-gutenberg' )}
 			</a>
 
 			{__(
-				' to learn more.',
+				' about what we track.',
 				'ultimate-addons-for-gutenberg'
 			)}
 		</p>

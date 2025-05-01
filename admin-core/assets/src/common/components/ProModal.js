@@ -129,7 +129,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 	};
 
 	// Define UTM parameters
-	const utmParams = '&utm_medium=dashboard&utm_campaign=upsell-popup';
+	const utmParams = '&utm_medium=spectra-dashboard&utm_campaign=upsell-popup-buy-now';
 
 	return (
 		<div
