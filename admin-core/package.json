@@ -13,7 +13,7 @@
 		"@heroicons/react": "^1.0.5",
 		"@tailwindcss/forms": "^0.4.0",
 		"@tailwindcss/typography": "^0.5.1",
-		"@wordpress/plugins": "^7.14.0",
+		"@wordpress/plugins": "^7.15.0",
 		"browser-sync": "^2.26.14",
 		"browser-sync-webpack-plugin": "^2.2.2",
 		"classnames": "^2.2.6",
@@ -24,10 +24,10 @@
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
 		"react-html-parser": "^2.0.2",
-		"react-redux": "^7.2.6",
-		"react-router-dom": "^5.2.0",
-		"react-select": "^3.1.0",
-		"redux": "^4.1.2",
+		"react-redux": "^9.0.0",
+		"react-router-dom": "^6.4.0",
+		"react-select": "^4.0.0",
+		"redux": "^5.0.0",
 		"request": "^2.88.2"
 	},
 	"devDependencies": {
