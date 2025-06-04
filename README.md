@@ -227,6 +227,11 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Improvement: Info Box - Alignment options now hide smartly based on icon/image settings.
+* Global - Improved block condition checks for better control and safety.
+* Global - Resolved a conflict where editor upsell assets were interfering with the SureCart price selector block.
+
 ### 2.19.11 - Tuesday, 15th July 2025 ###
 * Fix: Buttons - Resolved an issue wherein the  gap between buttons would not work as intended for mobile.
 * Fix: Container - Resolved an issue wherein the advanced gradient locations 1 & 2 would not be applied on mobile & tablet.
