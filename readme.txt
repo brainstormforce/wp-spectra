@@ -221,6 +221,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+* Fix: Buttons - Resolved the issue where gap between buttons is not working for mobile.
+
 = 2.19.10 - Tuesday, 17th June 2025 =
 * Updated the Zip AI Library.
 
