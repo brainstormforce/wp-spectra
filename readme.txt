@@ -223,6 +223,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 = x.x.x =
 * Fix: Buttons - Resolved the issue where gap between buttons is not working for mobile.
+* Fix: Container - Resolved an issue wherein the advanced gradient locations 1 & 2 would not be applied on mobile & tablet.
 
 = 2.19.10 - Tuesday, 17th June 2025 =
 * Updated the Zip AI Library.

@@ -634,7 +634,8 @@ if ( ! $is_layout_grid ) {
 						'width'  => 'calc(100% + ' . UAGB_Helper::get_css_value( $tablet_border_width['left'], 'px' ) . ' + ' . UAGB_Helper::get_css_value( $tablet_border_width['right'], 'px' ) . ')',
 						'height' => 'calc(100% + ' . UAGB_Helper::get_css_value( $tablet_border_width['top'], 'px' ) . ' + ' . UAGB_Helper::get_css_value( $tablet_border_width['bottom'], 'px' ) . ')',
 					),
-					$border_tablet
+					$border_tablet,
+					$container_bg_overlay_css_tablet
 				),
 			)
 		);
@@ -648,7 +649,8 @@ if ( ! $is_layout_grid ) {
 						'width'  => 'calc(100% + ' . UAGB_Helper::get_css_value( $mobile_border_width['left'], 'px' ) . ' + ' . UAGB_Helper::get_css_value( $mobile_border_width['right'], 'px' ) . ')',
 						'height' => 'calc(100% + ' . UAGB_Helper::get_css_value( $mobile_border_width['top'], 'px' ) . ' + ' . UAGB_Helper::get_css_value( $mobile_border_width['bottom'], 'px' ) . ')',
 					),
-					$border_mobile
+					$border_mobile,
+					$container_bg_overlay_css_mobile
 				),
 			)
 		);
