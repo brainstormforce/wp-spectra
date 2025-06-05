@@ -227,6 +227,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= x.x.x =
+* Fix: Global - Resolved recursive pattern insertion issue that was causing a page getting slow error due to an infinite loop.
+
 = 2.19.15 - Friday, 3rd October 2025 =
 * This update addressed a security bug. Props to Wordfence for reporting it responsibly to our team.
 Please make sure you are using the latest version on your website.
