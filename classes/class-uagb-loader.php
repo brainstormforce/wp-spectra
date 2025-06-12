@@ -105,6 +105,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 									),
 								)
 							),
+							'hide_optin_checkbox' => true,
 						),
 					)
 				);

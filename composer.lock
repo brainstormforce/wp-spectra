@@ -105,16 +105,16 @@
 		},
 		{
 			"name": "brainstormforce/bsf-analytics",
-			"version": "1.1.11",
+			"version": "1.1.14",
 			"source": {
 				"type": "git",
 				"url": "git@github.com:brainstormforce/bsf-analytics.git",
-				"reference": "ce2817c988a1c3e3dce6caef6fc152bc5a6e2e31"
+				"reference": "01b374ecb8a76a20c3c5839f38de790319e8d1d7"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/brainstormforce/bsf-analytics/zipball/ce2817c988a1c3e3dce6caef6fc152bc5a6e2e31",
-				"reference": "ce2817c988a1c3e3dce6caef6fc152bc5a6e2e31",
+				"url": "https://api.github.com/repos/brainstormforce/bsf-analytics/zipball/01b374ecb8a76a20c3c5839f38de790319e8d1d7",
+				"reference": "01b374ecb8a76a20c3c5839f38de790319e8d1d7",
 				"shasum": ""
 			},
 			"require-dev": {
@@ -148,10 +148,10 @@
 			},
 			"description": "Library to gather non sensitive analytics data to enhance bsf products.",
 			"support": {
-				"source": "https://github.com/brainstormforce/bsf-analytics/tree/1.1.11",
+				"source": "https://github.com/brainstormforce/bsf-analytics/tree/1.1.14",
 				"issues": "https://github.com/brainstormforce/bsf-analytics/issues"
 			},
-			"time": "2025-02-27T14:49:51+00:00"
+			"time": "2025-05-06T09:44:13+00:00"
 		},
 		{
 			"name": "brainstormforce/gutenberg-templates",

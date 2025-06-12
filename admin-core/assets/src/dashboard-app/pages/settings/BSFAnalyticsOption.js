@@ -40,7 +40,7 @@ const BSFAnalyticsOption = () => {
 
 	const renderText = () => (
 		<p className='m-0'>
-			{__( 'Help us improve Spectra by allowing non-sensitive usage tracking. ', 'ultimate-addons-for-gutenberg' )}
+			{__( 'Allow Spectra to collect non-sensitive data to make the product better for everyone.Please read ', 'ultimate-addons-for-gutenberg' )}
 
 			<a
 				href={'https://store.brainstormforce.com/usage-tracking/?utm_source=uag_dashboard&utm_medium=general_settings&utm_campaign=usage_tracking'}
@@ -48,19 +48,14 @@ const BSFAnalyticsOption = () => {
 				rel="noreferrer"
 				className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover"
 			>
-				{__( 'Learn more', 'ultimate-addons-for-gutenberg' )}
+				{__( 'more about what we track.', 'ultimate-addons-for-gutenberg' )}
 			</a>
-
-			{__(
-				' about what we track.',
-				'ultimate-addons-for-gutenberg'
-			)}
 		</p>
 	);
 
 	return (
 		<SettingsItem
-			title={__( 'Usage Tracking', 'ultimate-addons-for-gutenberg' )}
+			title={__( 'Contribute to Spectra', 'ultimate-addons-for-gutenberg' )}
 			settingText={renderText}
 		>
 			<Switch
