@@ -40,7 +40,7 @@ const BSFAnalyticsOption = () => {
 
 	const renderText = () => (
 		<p className='m-0'>
-			{__( 'Allow Spectra to collect non-sensitive data to make the product better for everyone.Please read ', 'ultimate-addons-for-gutenberg' )}
+			{__( 'Collect non-sensitive information from your website, such as the PHP version and features used, to help us fix bugs faster, make smarter decisions, and build features that actually matter to you. Please read ', 'ultimate-addons-for-gutenberg' )}
 
 			<a
 				href={'https://store.brainstormforce.com/usage-tracking/?utm_source=uag_dashboard&utm_medium=general_settings&utm_campaign=usage_tracking'}
