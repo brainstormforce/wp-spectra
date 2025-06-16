@@ -1,3 +1,8 @@
+2.0.6 - 16th June 2025
+- Improvement: Offloaded custom fonts to Google Fonts to reduce bundle size and improve performance.
+- Improvement: Cleaned up unnecessary bloat code to optimize performance and maintainability.
+- Fix: Resolved an duplicate content rendering issue.
+
 2.0.5 - 30th April 2025
 - Improvement: Added a caching mechanism for credit response to optimize API calls.
 

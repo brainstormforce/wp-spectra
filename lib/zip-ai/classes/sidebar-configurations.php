@@ -188,20 +188,22 @@ class Sidebar_Configurations {
 			wp_send_json_error( array( 'message' => __( 'The message array was not supplied', 'ultimate-addons-for-gutenberg' ) ) );
 		}
 
-		// Set the token count to 0, and create messages array.
-		$token_count = 0;
-		$messages    = array();
+		// Set the character count to 0, and create messages array.
+		$character_count = 0;
+		$messages        = array();
 
-		// Start with the last message - going upwards until the token count hits 2000.
+		// Start with the last message - going upwards until the character count hits 2500.
 		foreach ( array_reverse( $params['message_array'] ) as $current_message ) {
 			// If the message content doesn't exist, skip it.
 			if ( empty( $current_message['content'] ) ) {
 				continue;
 			}
 
-			// Get the token count, and if it's greater than 2000, break out of the loop.
-			$token_count += Helper::get_token_count( $current_message['content'] );
-			if ( $token_count >= 1000 ) {
+			$message_length = strlen( $current_message['content'] );
+
+			// If adding this message exceeds 2500 characters, break the loop.
+			$character_count += $message_length;
+			if ( $character_count > 2500 ) {
 				break;
 			}
 
@@ -503,6 +505,13 @@ class Sidebar_Configurations {
 				'credit_details'           => Helper::get_credit_details(),
 				'credit_topup_url'         => $credit_topup_url,
 			)
+		);
+
+		wp_enqueue_style(
+			'zip-ai-sidebar-fonts',
+			'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Courier+Prime:wght@400&display=swap',
+			array(),
+			ZIP_AI_VERSION
 		);
 	}
 
