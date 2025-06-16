@@ -1,5 +1,5 @@
 # Spectra Gutenberg Blocks – Website Builder for the Block Editor #
-**Contributors:** [brainstormforce](https://profiles.wordpress.org/brainstormforce/)  
+**Contributors:** [brainstormforce](https://profiles.wordpress.org/brainstormforce)  
 **Donate link:** https://www.paypal.me/BrainstormForce  
 **Tags:** gutenberg, blocks, gutenberg blocks, editor, block  
 **Requires at least:** 5.6  
@@ -221,8 +221,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### 2.19.10 - Friday, 13th June 2024 ###
-* Updated the BSF Analytics Library.
+### 2.19.10 - Tuesday, 17th June 2024 ###
+* Updated the Zip AI Library.
 
 ### 2.19.9 - Thursday, 1st May 2025 ###
 * Improvement: Added a WP-CLI command for regenerate the assets.
