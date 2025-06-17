@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.8
-Stable tag: 2.19.9
+Stable tag: 2.19.10
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -220,6 +220,9 @@ When you use the Spectra along with the free Astra theme, you get a huge library
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT. Additionally, we incorporate [FontAwesome v6](https://fontawesome.com/license/free) under the CC BY 4.0 License, and [dnd kit](https://github.com/clauderic/dnd-kit) licensed under the MIT License.
 
 == Changelog ==
+
+= 2.19.10 - Tuesday, 17th June 2025 =
+* Updated the Zip AI Library.
 
 = 2.19.9 - Thursday, 1st May 2025 =
 * Improvement: Added a WP-CLI command for regenerate the assets.

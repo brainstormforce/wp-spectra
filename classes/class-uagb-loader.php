@@ -105,6 +105,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 									),
 								)
 							),
+							'hide_optin_checkbox' => true,
 						),
 					)
 				);
@@ -122,7 +123,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '2.19.9' );
+			define( 'UAGB_VER', '2.19.10' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'spectra' );

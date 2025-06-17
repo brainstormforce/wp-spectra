@@ -16,7 +16,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Classes to be used, in alphabetical order.
-use ZipAI\Classes\Token_Calculator;
 use ZipAI\Classes\Utils;
 
 /**
@@ -118,21 +117,6 @@ class Helper {
 		} else {
 			return isset( $existing_settings[ $key ] ) ? $existing_settings[ $key ] : $default;
 		}
-	}
-
-	/**
-	 * Get the Token Count for a given message.
-	 *
-	 * @param string $message The message to get the token count for.
-	 * @since 1.0.0
-	 * @return int The token count.
-	 */
-	public static function get_token_count( $message ) {
-		// Get the formatted token array.
-		$token_array = Token_Calculator::gpt_encode( $message );
-
-		// If the token array is empty, return 0, else return the count of the token array.
-		return ( empty( $token_array ) || ! is_array( $token_array ) ) ? 0 : count( $token_array );
 	}
 
 	/**
