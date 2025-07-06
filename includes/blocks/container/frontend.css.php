@@ -84,18 +84,30 @@ if ( empty( $border['border-color'] ) ) {
 	$border['border-color'] = 'inherit';
 }
 
-$container_bg_css_desktop = UAGB_Block_Helper::get_background_css_by_device( $attr );
-$container_bg_css_tablet  = UAGB_Block_Helper::get_background_css_by_device( $attr, 'Tablet' );
-$container_bg_css_mobile  = UAGB_Block_Helper::get_background_css_by_device( $attr, 'Mobile' );
-
 $container_bg_overlay_css        = array();
 $container_bg_overlay_css_mobile = array();
 $container_bg_overlay_css_tablet = array();
 
-if ( $attr['overlayType'] ) {
+// When overlay is present, we need to handle background differently.
+if ( $attr['overlayType'] && 'none' !== $attr['overlayType'] ) {
+	// For overlay, we need to get the background CSS without the overlay merged in.
+	// We'll handle the overlay separately for the ::before pseudo-element.
+	$temp_attr                = $attr;
+	$temp_attr['overlayType'] = 'none'; // Temporarily disable overlay to get just the background.
+	
+	$container_bg_css_desktop = UAGB_Block_Helper::get_background_css_by_device( $temp_attr );
+	$container_bg_css_tablet  = UAGB_Block_Helper::get_background_css_by_device( $temp_attr, 'Tablet' );
+	$container_bg_css_mobile  = UAGB_Block_Helper::get_background_css_by_device( $temp_attr, 'Mobile' );
+	
+	// Get the overlay CSS for the pseudo-element.
 	$container_bg_overlay_css        = UAGB_Block_Helper::get_background_css_by_device( $attr, 'Desktop', 'yes' );
 	$container_bg_overlay_css_tablet = UAGB_Block_Helper::get_background_css_by_device( $attr, 'Tablet', 'yes' );
 	$container_bg_overlay_css_mobile = UAGB_Block_Helper::get_background_css_by_device( $attr, 'Mobile', 'yes' );
+} else {
+	// No overlay, use the regular background CSS.
+	$container_bg_css_desktop = UAGB_Block_Helper::get_background_css_by_device( $attr );
+	$container_bg_css_tablet  = UAGB_Block_Helper::get_background_css_by_device( $attr, 'Tablet' );
+	$container_bg_css_mobile  = UAGB_Block_Helper::get_background_css_by_device( $attr, 'Mobile' );
 }
 
 $video_bg_css = UAGB_Block_Helper::get_background_css_by_device( $attr, 'Desktop', 'no' );
