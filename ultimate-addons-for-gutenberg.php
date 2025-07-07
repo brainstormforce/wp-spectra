@@ -42,6 +42,7 @@ function uagb_fail_php_version() {
 	echo wp_kses_post( $html_message );
 }
 
+
 /**
  * Ultimate Addons for Gutenberg admin notice for minimum WordPress version.
  *
