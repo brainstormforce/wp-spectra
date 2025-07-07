@@ -6,6 +6,7 @@ Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.8
 Stable tag: 2.19.10
+Beta tag: 2.19.11-beta.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -214,6 +215,12 @@ Absolutely no! The Spectra is built with ease and performance in mind. Its modul
 = What more do I get with the Spectra? =
 
 When you use the Spectra along with the free Astra theme, you get a huge library of ready-to-use starter sites that can be imported and used to build your own. Read an article about the <a href="https://wpspectra.com/ready-websites-for-gutenberg/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Starter Sites with Gutenberg</a> to know more.
+
+= How can I report a security bug? =
+
+We take plugin security extremely seriously. If you discover a security vulnerability, please report it in a safe and responsible manner.
+
+You can report the issue through our [Bug Bounty Program](https://brainstormforce.com/bug-bounty-program/). We collaborate with Patchstack to provide opportunities for researchers to report vulnerabilities. The Patchstack team will help validate, triage, and handle any reported security issues.
 
 == Credits ==
 
