@@ -223,7 +223,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = 2.19.11 - Beta 1 =
-* Fix: Buttons - Resolved the issue where gap between buttons is not working for mobile.
+* Fix: Buttons - Resolved an issue wherein the  gap between buttons would not work as intended for mobile.
 * Fix: Container - Resolved an issue wherein the advanced gradient locations 1 & 2 would not be applied on mobile & tablet.
 
 = 2.19.10 - Tuesday, 17th June 2025 =
