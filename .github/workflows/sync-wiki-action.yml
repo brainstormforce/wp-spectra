@@ -5,7 +5,8 @@ on:
     branches: ['**']              # Trigger on any branch
     paths:
       - 'spectra-v3/src/blocks/*/*.md'  # Only when block MD files change
-
+  workflow_dispatch:   
+  
 permissions:
   contents: write
 
