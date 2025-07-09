@@ -229,6 +229,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ### x.x.x ###
 * Improvement: Info Box - Alignment options now hide smartly based on icon/image settings.
+* Fix: Post - Corrected behavior where invalid pagination on single posts prevented expected redirects.
 * Global - Improved block condition checks for better control and safety.
 * Global - Resolved a conflict where editor upsell assets were interfering with the SureCart price selector block.
 
