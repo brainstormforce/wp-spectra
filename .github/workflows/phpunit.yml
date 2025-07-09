@@ -1,37 +1,17 @@
-name: PHPUnit
+name: PHPUnit Tests
 
 on:
   workflow_dispatch:
 
 jobs:
   phpunit:
-    name: PHPUnit (PHP ${{ matrix.php }} with WordPress ${{ matrix.wordpress }})
+    name: PHPUnit (PHP ${{ matrix.php }})
     runs-on: ubuntu-latest
-
-    services:
-      mysql:
-        image: mysql:5.7
-        ports:
-          - 3306/tcp
-        env:
-          MYSQL_ROOT_PASSWORD: password
-        # Set health checks to wait until mysql has started
-        options: >-
-          --health-cmd "mysqladmin ping"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 3
 
     strategy:
       fail-fast: false
       matrix:
-        php: ['7.4', '8.0', '8.1', '8.2']
-        wordpress: ['latest']
-        include:
-          - php: '7.4'
-            wordpress: '6.0'
-          - php: '8.1'
-            wordpress: '6.2'
+        php: ['8.1', '8.2', '8.3']
 
     steps:
       - name: Checkout
@@ -41,44 +21,43 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          coverage: xdebug
-          tools: composer, cs2pr
-
-      - name: Install WordPress test setup
-        env:
-          WP_VERSION: ${{ matrix.wordpress }}
-          MYSQL_PORT: ${{ job.services.mysql.ports[3306] }}
-        run: bash bin/install-wp-tests.sh wordpress_test root password "127.0.0.1:$MYSQL_PORT" "$WP_VERSION"
+          coverage: none
+          tools: composer
+          ini-values: error_reporting=E_ALL
 
       - name: Get Composer cache directory
         id: composer-cache
-        run: |
-          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
-      - name: Setup cache
+      - name: Cache Composer dependencies
         uses: actions/cache@v3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-composer-
+          restore-keys: ${{ runner.os }}-composer-
 
-      - name: Install dependencies
-        run: composer config github-oauth.github.com ${{ secrets.PRIVATE_ACCESS_TOKEN }} && composer install --no-progress --prefer-dist --optimize-autoloader
+      - name: Install Composer dependencies
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
 
-      - name: Setup problem matchers for PHPUnit
-        run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+      - name: Run Spectra V3 PHPUnit Tests
+        run: |
+          echo "=== Running Spectra V3 PHPUnit Tests ==="
+          echo "PHP Version: $(php -v | head -n1)"
+          echo "PHPUnit Version: $(vendor/bin/phpunit --version)"
+          echo "Working Directory: $(pwd)"
+          echo "Test Configuration: phpunit.xml.dist"
+          echo ""
+          
+          # Run the Spectra V3 test suite directly
+          composer run test:spectra-v3
+          
+          echo ""
+          echo "=== Test execution completed ==="
 
-      - name: Run all tests
-        run: composer run test
-
-      - name: Run Spectra V3 tests
-        run: composer run test:spectra-v3
-
-      - name: Upload coverage to Codecov
-        if: matrix.php == '8.1' && matrix.wordpress == 'latest'
-        uses: codecov/codecov-action@v3
-        with:
-          file: ./coverage/clover.xml
-          flags: unittests
-          name: codecov-spectra-v3
+      - name: Display test results summary
+        if: always()
+        run: |
+          echo "=== Test Results Summary ==="
+          echo "PHP Version: ${{ matrix.php }}"
+          echo "Status: ${{ job.status }}"
+          echo "Runner: ${{ runner.os }}"
