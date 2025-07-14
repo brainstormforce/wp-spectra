@@ -1,0 +1,46 @@
+name: E2E Tests
+
+on:
+  workflow_dispatch:
+
+jobs:
+  E2E_TESTS:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Set up WordPress environment
+        uses: wordpress/wordpress-development-action@v1
+        with:
+          wp-version: '6.4'
+          plugins: |
+            ./
+
+      - name: Start WordPress server
+        run: |
+          cd /tmp/wordpress
+          wp server --host=0.0.0.0 --port=8080 --docroot=/tmp/wordpress &
+          sleep 10
+
+      - name: Run E2E tests
+        run: npm run test:e2e
+
+      - name: Upload test results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-test-results
+          path: |
+            test-results/
+            screenshots/
+            videos/
