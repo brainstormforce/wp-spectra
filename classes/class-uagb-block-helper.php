@@ -1525,9 +1525,25 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$device_type = 'Desktop';
 			}
 
+			// Implement fallback logic: Desktop is the fallback for Tablet and Mobile.
+			$background_image_key = 'backgroundImageDesktop'; // Default for Desktop.
+			
+			if ( 'Tablet' === $device_type ) {
+				// Use tablet image if it exists, otherwise fallback to desktop.
+				$background_image_key = ! empty( $attr['backgroundImageTablet'] ) ? 'backgroundImageTablet' : 'backgroundImageDesktop';
+			} elseif ( 'Mobile' === $device_type ) {
+				// Mobile fallback chain: Mobile → Tablet → Desktop.
+				if ( ! empty( $attr['backgroundImageMobile'] ) ) {
+					$background_image_key = 'backgroundImageMobile';
+				} elseif ( ! empty( $attr['backgroundImageTablet'] ) ) {
+					$background_image_key = 'backgroundImageTablet';
+				}
+				// If both fail, the default 'backgroundImageDesktop' value is retained.
+			}
+			
 			$bg_obj = array(
 				'backgroundType'                  => $attr['backgroundType'],
-				'backgroundImage'                 => $attr[ 'backgroundImage' . $device_type ],
+				'backgroundImage'                 => $attr[ $background_image_key ],
 				'backgroundColor'                 => $attr['backgroundColor'],
 				'gradientValue'                   => $attr['gradientValue'],
 				'gradientColor1'                  => $attr['gradientColor1'],
@@ -1572,15 +1588,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$bg_obj_tablet = array(
 				'backgroundType'                  => $attr['backgroundType'],
-				'backgroundImage'                 => $attr[ 'backgroundImage' . $device_type ],
+				'backgroundImage'                 => $attr[ $background_image_key ],
 				'backgroundColor'                 => $attr['backgroundColor'],
 				'gradientValue'                   => $attr['gradientValue'],
 				'gradientColor1'                  => $attr['gradientColor1'],
 				'gradientColor2'                  => $attr['gradientColor2'],
 				'gradientType'                    => $attr['gradientType'],
-				'gradientLocation1'               => is_numeric( $attr['gradientLocationTablet1'] ) ? $attr['gradientLocationTablet1'] : $bg_obj['gradientLocation1'],
-				'gradientLocation2'               => is_numeric( $attr['gradientLocationTablet2'] ) ? $attr['gradientLocationTablet2'] : $bg_obj['gradientLocation2'],
-				'gradientAngle'                   => is_numeric( $attr['gradientAngleTablet'] ) ? $attr['gradientAngleTablet'] : $bg_obj['gradientAngle'],
+				'gradientLocation1'               => isset( $attr['gradientLocationTablet1'] ) && is_numeric( $attr['gradientLocationTablet1'] ) ? $attr['gradientLocationTablet1'] : $bg_obj['gradientLocation1'],
+				'gradientLocation2'               => isset( $attr['gradientLocationTablet2'] ) && is_numeric( $attr['gradientLocationTablet2'] ) ? $attr['gradientLocationTablet2'] : $bg_obj['gradientLocation2'],
+				'gradientAngle'                   => isset( $attr['gradientAngleTablet'] ) && is_numeric( $attr['gradientAngleTablet'] ) ? $attr['gradientAngleTablet'] : $bg_obj['gradientAngle'],
 				'selectGradient'                  => $attr['selectGradient'],
 				'backgroundRepeat'                => $attr[ 'backgroundRepeat' . $device_type ],
 				'backgroundPosition'              => $attr[ 'backgroundPosition' . $device_type ],
@@ -1614,18 +1630,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'blendMode'                       => $attr['overlayBlendMode'],
 				'backgroundVideoFallbackImage'    => $attr['backgroundVideoFallbackImage'],
 			);
-
+			
 			$bg_obj_mobile = array(
 				'backgroundType'                  => $attr['backgroundType'],
-				'backgroundImage'                 => $attr[ 'backgroundImage' . $device_type ],
+				'backgroundImage'                 => $attr[ $background_image_key ],
 				'backgroundColor'                 => $attr['backgroundColor'],
 				'gradientValue'                   => $attr['gradientValue'],
 				'gradientColor1'                  => $attr['gradientColor1'],
 				'gradientColor2'                  => $attr['gradientColor2'],
 				'gradientType'                    => $attr['gradientType'],
-				'gradientLocation1'               => is_numeric( $attr['gradientLocationMobile1'] ) ? $attr['gradientLocationMobile1'] : $bg_obj_tablet['gradientLocation1'],
-				'gradientLocation2'               => is_numeric( $attr['gradientLocationMobile2'] ) ? $attr['gradientLocationMobile2'] : $bg_obj_tablet['gradientLocation2'],
-				'gradientAngle'                   => is_numeric( $attr['gradientAngleMobile'] ) ? $attr['gradientAngleMobile'] : $bg_obj_tablet['gradientAngle'],
+				'gradientLocation1'               => isset( $attr['gradientLocationMobile1'] ) && is_numeric( $attr['gradientLocationMobile1'] ) ? $attr['gradientLocationMobile1'] : $bg_obj_tablet['gradientLocation1'],
+				'gradientLocation2'               => isset( $attr['gradientLocationMobile2'] ) && is_numeric( $attr['gradientLocationMobile2'] ) ? $attr['gradientLocationMobile2'] : $bg_obj_tablet['gradientLocation2'],
+				'gradientAngle'                   => isset( $attr['gradientAngleMobile'] ) && is_numeric( $attr['gradientAngleMobile'] ) ? $attr['gradientAngleMobile'] : $bg_obj_tablet['gradientAngle'],
 				'selectGradient'                  => $attr['selectGradient'],
 				'backgroundRepeat'                => $attr[ 'backgroundRepeat' . $device_type ],
 				'backgroundPosition'              => $attr[ 'backgroundPosition' . $device_type ],
@@ -1659,10 +1675,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'blendMode'                       => $attr['overlayBlendMode'],
 				'backgroundVideoFallbackImage'    => $attr['backgroundVideoFallbackImage'],
 			);
-
-			$container_bg_css        = self::uag_get_background_obj( $bg_obj, $overlay );
-			$container_bg_css_tablet = self::uag_get_background_obj( $bg_obj_tablet, $overlay );
-			$container_bg_css_mobile = self::uag_get_background_obj( $bg_obj_mobile, $overlay );
 
 			switch ( $device_type ) {
 				case 'Tablet':
@@ -1687,12 +1699,33 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array                  The formatted CSS properties for the background.
 		 */
 		public static function uag_get_background_obj( $bg_obj, $css_for_overlay = '' ) {
-
 			$gen_bg_css         = array();
 			$gen_bg_overlay_css = array();
 
-			$bg_type             = isset( $bg_obj['backgroundType'] ) ? $bg_obj['backgroundType'] : '';
-			$bg_img              = isset( $bg_obj['backgroundImage'] ) && isset( $bg_obj['backgroundImage']['url'] ) ? $bg_obj['backgroundImage']['url'] : '';
+			$bg_type = isset( $bg_obj['backgroundType'] ) ? $bg_obj['backgroundType'] : '';
+			
+			// Background Image Extraction Logic
+			// Handles multiple data formats that WordPress/Gutenberg can provide:
+			// 1. Array format: { url: "image.jpg" } or { src: "image.jpg" }.
+			// 2. String format: "http://example.com/image.jpg" (direct URL).
+			// 3. Null/empty values (no background image set).
+			$bg_img = '';
+			if ( isset( $bg_obj['backgroundImage'] ) && null !== $bg_obj['backgroundImage'] ) {
+				if ( is_array( $bg_obj['backgroundImage'] ) ) {
+					// Handle array format - check for 'url' property first.
+					if ( isset( $bg_obj['backgroundImage']['url'] ) ) {
+						$bg_img = $bg_obj['backgroundImage']['url'];
+					} elseif ( isset( $bg_obj['backgroundImage']['src'] ) ) {
+						// Fallback to 'src' property if 'url' doesn't exist.
+						$bg_img = $bg_obj['backgroundImage']['src'];
+					}
+					// If neither 'url' nor 'src' exist, $bg_img remains empty.
+				} elseif ( is_string( $bg_obj['backgroundImage'] ) && ! empty( $bg_obj['backgroundImage'] ) ) {
+					// Handle string format - direct URL assignment.
+					$bg_img = $bg_obj['backgroundImage'];
+				}
+				// Note: Other data types (boolean, object, etc.) are ignored.
+			}
 			$bg_color            = isset( $bg_obj['backgroundColor'] ) ? $bg_obj['backgroundColor'] : '';
 			$gradient_value      = isset( $bg_obj['gradientValue'] ) ? $bg_obj['gradientValue'] : '';
 			$gradientColor1      = isset( $bg_obj['gradientColor1'] ) ? $bg_obj['gradientColor1'] : '';
@@ -1779,26 +1812,34 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						if ( isset( $attachment ) ) {
 							$gen_bg_css['background-attachment'] = esc_attr( $attachment );
 						}
-						if ( 'color' === $overlay_type && '' !== $bg_img && '' !== $bg_image_color ) {
-							if ( ! empty( $css_for_overlay ) ) {
-								$gen_bg_css['background-image']   = 'url(' . $bg_img . ');';
-								$gen_bg_overlay_css['background'] = $bg_image_color;
-								$gen_bg_overlay_css['opacity']    = $overlay_opacity;
-							} else {
-								$gen_bg_css['background-image'] = 'linear-gradient(to right, ' . $bg_image_color . ', ' . $bg_image_color . '), url(' . $bg_img . ');';
-							}
-						}
-						if ( 'gradient' === $overlay_type && '' !== $bg_img && '' !== $gradient ) {
-							if ( ! empty( $css_for_overlay ) ) {
-								$gen_bg_css['background-image']         = 'url(' . $bg_img . ');';
+
+						// Handle overlays.
+						if ( 'gradient' === $overlay_type && '' !== $gradient ) {
+							if ( 'yes' === $css_for_overlay ) {
+								if ( '' !== $bg_img ) {
+									$gen_bg_css['background-image'] = 'url(' . $bg_img . ')';
+								}
 								$gen_bg_overlay_css['background-image'] = $gradient;
 								$gen_bg_overlay_css['opacity']          = $overlay_opacity;
 							} else {
-								$gen_bg_css['background-image'] = $gradient . ', url(' . $bg_img . ');';
+								$gen_bg_css['background-image'] = '' !== $bg_img ? $gradient . ', url(' . $bg_img . ')' : $gradient;
 							}
-						}
-						if ( '' !== $bg_img && in_array( $overlay_type, array( '', 'none', 'image' ) ) ) {
-							$gen_bg_css['background-image'] = 'url(' . $bg_img . ');';
+						} elseif ( 'color' === $overlay_type && '' !== $bg_image_color ) {
+							if ( 'yes' === $css_for_overlay ) {
+								if ( '' !== $bg_img ) {
+									$gen_bg_css['background-image'] = 'url(' . $bg_img . ')';
+								}
+								$gen_bg_overlay_css['background'] = $bg_image_color;
+								$gen_bg_overlay_css['opacity']    = $overlay_opacity;
+							} else {
+								if ( '' !== $bg_img ) {
+									$gen_bg_css['background-image'] = 'linear-gradient(to right, ' . $bg_image_color . ', ' . $bg_image_color . '), url(' . $bg_img . ')';
+								} else {
+									$gen_bg_css['background'] = $bg_image_color;
+								}
+							}
+						} elseif ( '' !== $bg_img ) {
+							$gen_bg_css['background-image'] = 'url(' . $bg_img . ')';
 						}
 						
 						$gen_bg_css['background-clip'] = 'padding-box';
@@ -1858,10 +1899,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				}
 				$gen_bg_overlay_css['background-clip'] = 'padding-box';
 				$gen_bg_overlay_css['opacity']         = $overlay_opacity;
-			};
+			}
 			
 			return 'yes' === $css_for_overlay ? $gen_bg_overlay_css : $gen_bg_css;
 		}
+
 
 		/**
 		 * Border attribute generation Function.
