@@ -1,70 +1,23 @@
-name: PHPUnit
+name: PHPUnit Tests
 
 on:
-  push:
-    branches:
-      - no-branch
+  workflow_dispatch:
 
 jobs:
-  phpunit:
-    name: PHPUnit (PHP ${{ matrix.php }} with WordPress ${{ matrix.wordpress }})
+  test:
     runs-on: ubuntu-latest
 
-    services:
-      mysql:
-        image: mysql:5.7
-        ports:
-          - 3306/tcp
-        env:
-          MYSQL_ROOT_PASSWORD: password
-        # Set health checks to wait until mysql has started
-        options: >-
-          --health-cmd "mysqladmin ping"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 3
-
-    strategy:
-      fail-fast: false
-      matrix:
-        php: ['7.4']
-        wordpress: ['trunk']
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup PHP
+      - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php }}
-          coverage: none
-          tools: composer, cs2pr
+          php-version: '8.2'
+          extensions: mbstring, intl
 
-      - name: Install WordPress test setup
-        env:
-          WP_VERSION: ${{ matrix.wordpress }}
-          MYSQL_PORT: ${{ job.services.mysql.ports[3306] }}
-        run: bash bin/install-wp-tests.sh wordpress_test root password "127.0.0.1:$MYSQL_PORT" "$WP_VERSION"
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
 
-      - name: Get Composer cache directory
-        id: composer-cache
-        run: |
-          echo "::set-output name=dir::$(composer config cache-files-dir)"
-
-      - name: Setup cache
-        uses: pat-s/always-upload-cache@v1.1.4
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-composer-
-
-      - name: Install dependencies
-        run: composer config github-oauth.github.com ${{ secrets.PRIVATE_ACCESS_TOKEN }} && composer install --no-progress --prefer-dist --optimize-autoloader
-
-      - name: Setup problem matchers for PHPUnit
-        run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
-
-      - name: Run tests
-        run: composer run test
+      - name: Run Spectra V3 PHPUnit testsuite
+        run: composer test:spectra-v3
