@@ -228,6 +228,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### 2.19.19 ###
+* Fix: Global - Resolved a conflict causing the "spectra" store to be registered multiple times.
+
 ### 2.19.18 - Tuesday, 20th January 2026 ###
 * This update addressed a security bug. Props to Wordfence and Patchstack for reporting it responsibly to our team.
 Please make sure you are using the latest version on your website.

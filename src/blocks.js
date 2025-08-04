@@ -11,7 +11,9 @@
 
 import { registerPlugin } from '@wordpress/plugins';
 
-import './store'; // Spectra Redux store initialized.
+import { store as spectraStore } from '@Store'; // Spectra Redux store initialized.
+import { register } from '@wordpress/data';
+register( spectraStore );
 
 import SpectraLoadGlobalGoogleFonts from '@Components/global-block-link/load-google-fonts'; // Spectra Global Block Styles Font Loader.
 
