@@ -1396,23 +1396,25 @@ class UAGB_Post_Assets {
 		if ( empty( $this_post ) || empty( $this_post->ID ) ) {
 			return;
 		}
+		// Store the original post content into dummy variable.
+		$this_post_post_content = $this_post->post_content;
 
 		$surecart_template_parts = array( 'single_product', 'product_collection', 'cart', 'upsell' );
 
 		foreach ( $surecart_template_parts as $template_part_name ) {
 			$template_part_content = $this->get_surecart_template_part_content( $this_post->ID, $template_part_name );
 	
-			if ( ! empty( $template_part_content ) && has_blocks( $template_part_content ) && isset( $this_post->post_content ) ) {
+			if ( ! empty( $template_part_content ) && has_blocks( $template_part_content ) && isset( $this_post_post_content ) ) {
 				$template_contents[] = $template_part_content;
 			}
 		}
-
-		if ( ! empty( $template_contents ) && isset( $this_post->post_content ) ) {
-			$this_post->post_content .= implode( '', $template_contents );
+		// Combine all template part contents into a dummy variable.
+		if ( ! empty( $template_contents ) && isset( $this_post_post_content ) ) {
+			$this_post_post_content .= implode( '', $template_contents );
 		}
-
+		// Prepare assets.
 		if ( $this_post instanceof WP_Post && ( has_blocks( $this_post->ID ) || has_blocks( $this_post ) ) ) {
-			$this->common_function_for_assets_preparation( $this_post->post_content );
+			$this->common_function_for_assets_preparation( $this_post_post_content );
 		}
 	}
 
