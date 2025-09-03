@@ -230,8 +230,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 = 2.19.12 - Wednesday, 3rd September 2025 =
 * Improvement: Info Box - Alignment options now hide smartly based on icon/image settings.
 * Fix: Post - Corrected behavior where invalid pagination on single posts prevented expected redirects.
-* Global - Improved block condition checks for better control and safety.
-* Global - Resolved a conflict where editor upsell assets were interfering with the SureCart price selector block.
+* Fix: Global - Resolved a conflict where editor upsell assets were interfering with the SureCart price selector block.
 
 = 2.19.11 - Tuesday, 15th July 2025 =
 * Fix: Buttons - Resolved an issue wherein the  gap between buttons would not work as intended for mobile.
