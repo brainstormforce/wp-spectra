@@ -227,7 +227,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= 2.19.12 - Monday, 1st September 2025 =
+= 2.19.12 - Wednesday, 3rd September 2025 =
 * Improvement: Info Box - Alignment options now hide smartly based on icon/image settings.
 * Fix: Post - Corrected behavior where invalid pagination on single posts prevented expected redirects.
 * Global - Improved block condition checks for better control and safety.
