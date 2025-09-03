@@ -570,9 +570,13 @@ const Settings = ( props ) => {
 							},
 						] }
 					/>
-				{ ( false === showIcon ||
-					( iconimgPosition &&
-						( iconimgPosition === 'above-title' || iconimgPosition === 'below-title' ) ) ) && (
+				{ ( false === showIcon && 
+                    !( iconimgPosition === 'left-title' || 
+                      iconimgPosition === 'right-title' || 
+                      iconimgPosition === 'left' || 
+                      iconimgPosition === 'right' ) ) ||
+					( showIcon && iconimgPosition &&
+						( iconimgPosition === 'above-title' || iconimgPosition === 'below-title' ) ) ? (
 					<MultiButtonsControl
 						setAttributes={ setAttributes }
 						label={ __( 'Alignment', 'ultimate-addons-for-gutenberg' ) }
@@ -611,7 +615,7 @@ const Settings = ( props ) => {
 						] }
 						showIcons={ true }
 					/>
-				) }
+				) : null }
 
 				<ToggleControl
 					checked={ showPrefix }

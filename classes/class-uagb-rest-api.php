@@ -555,10 +555,12 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 		 * @since 1.10.0
 		 */
 		public function add_cpts_to_api( $args, $post_type ) {
-			if ( 'wpcf7_contact_form' === $post_type ) {
-				$args['show_in_rest'] = true;
+			if ( 'wpcf7_contact_form' !== $post_type || ! is_admin() ) {
+				return $args; // Don't change anything for other post types.
 			}
 
+			// Modify args only for wpcf7_contact_form.
+			$args['show_in_rest'] = true;
 			return $args;
 		}
 
