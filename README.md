@@ -227,6 +227,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### 2.19.13 - Wednesday, 17th September 2025 ###
+* Improvement: Popup Builder - Limit user roles to create popups directly from REST.
+
 ### 2.19.12 - Wednesday, 3rd September 2025 ###
 * Improvement: Info Box - Alignment options now hide smartly based on icon/image settings.
 * Fix: Post - Corrected behavior where invalid pagination on single posts prevented expected redirects.
