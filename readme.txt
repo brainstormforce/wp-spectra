@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.8
-Stable tag: 2.19.12
+Stable tag: 2.19.13
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -228,7 +228,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = 2.19.13 - Wednesday, 17th September 2025 =
-* Improvement: Popup Builder - Limit user roles to create popups directly from REST.
+* Improvement: Popup Builder – Improved popup creation through REST with role flexibility.
 
 = 2.19.12 - Wednesday, 3rd September 2025 =
 * Improvement: Info Box - Alignment options now hide smartly based on icon/image settings.
