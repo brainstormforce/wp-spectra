@@ -142,6 +142,17 @@ class UAGB_Init_Blocks {
 				'with-front' => false,
 				'pages'      => false,
 			),
+			'capabilities'      => array(
+				'edit_post'          => 'manage_options',
+				'read_post'          => 'manage_options',
+				'delete_post'        => 'manage_options',
+				'edit_posts'         => 'manage_options',
+				'edit_others_posts'  => 'manage_options',
+				'publish_posts'      => 'manage_options',
+				'read_private_posts' => 'manage_options',
+				'delete_posts'       => 'manage_options',
+				'create_posts'       => 'manage_options',
+			),
 		);
 
 		$meta_args_popup_type = array(

@@ -34,6 +34,13 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		public $post_assets_objs = array();
 
 		/**
+		 * Block analytics instance
+		 *
+		 * @var UAGB_Block_Analytics
+		 */
+		public $block_analytics;
+
+		/**
 		 *  Initiator
 		 */
 		public static function get_instance() {
@@ -112,6 +119,9 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			}
 
 			add_filter( 'bsf_core_stats', array( $this, 'spectra_get_specific_stats' ) );
+
+			// Initialize block analytics after BSF analytics is set up.
+			$this->block_analytics = UAGB_Block_Analytics::get_instance();
 		}
 
 		/**
@@ -123,7 +133,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '2.19.12' );
+			define( 'UAGB_VER', '2.19.13' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'spectra' );
@@ -172,6 +182,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			require_once UAGB_DIR . 'classes/class-uagb-block.php';
 			require_once UAGB_DIR . 'classes/migration/class-spectra-migrate-blocks.php';
 			require_once UAGB_DIR . 'classes/migration/class-uagb-background-process.php';
+			require_once UAGB_DIR . 'classes/analytics/class-uagb-block-analytics.php';
 
 
 			/**
@@ -796,6 +807,15 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			);
 			$default_stats['plugin_data']['spectra'] = array_merge_recursive( $default_stats['plugin_data']['spectra'], $this->global_settings_data() );
 			$default_stats['plugin_data']['spectra'] = array_merge_recursive( $default_stats['plugin_data']['spectra'], $this->create_block_status_array() );
+			
+			// Add advanced block usage statistics.
+			if ( is_object( $this->block_analytics ) ) {
+				$advanced_stats = $this->block_analytics->get_block_stats_for_analytics();
+				if ( ! empty( $advanced_stats ) ) {
+					$default_stats['plugin_data']['spectra'] = array_merge_recursive( $default_stats['plugin_data']['spectra'], $advanced_stats );
+				}
+			}
+
 			return $default_stats;
 		}
 	}
