@@ -209,6 +209,15 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 				return;
 			}
 
+			if( $this->is_tracking_enabled() ) {
+				return; // Don't need to display notice if any of our plugin already have the permission.
+			}
+
+			// If the user has opted out of tracking, don't show the notice till 7 days. 
+			if ( get_site_option( 'bsf_analytics_last_displayed_time' ) > time() -  ( 7 * DAY_IN_SECONDS ) ) {
+				return; // Don't display the notice if it was displayed recently.
+			}
+
 			foreach ( $this->entities as $key => $data ) {
 
 				$time_to_display = isset( $data['time_to_display'] ) ? $data['time_to_display'] : '+24 hours';
@@ -225,8 +234,12 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 				}
 
 				/* translators: %s product name */
-				$notice_string = sprintf( __( 'Want to help make %1s even more awesome? Allow us to collect non-sensitive diagnostic data and usage information. ', 'ultimate-addons-for-gutenberg' ), '<strong>' . esc_html( $data['product_name'] ) . '</strong>' );
-
+				$notice_string = sprintf(
+					__(
+						'Help us improve %1$s and our other products!<br><br>With your permission, we\'d like to collect <strong>non-sensitive information</strong> from your website — like your PHP version and which features you use — so we can fix bugs faster, make smarter decisions, and build features that actually matter to you. <em>No personal info. Ever.</em>', 'ultimate-addons-for-gutenberg' ),
+					'<strong>' . esc_html( $data['product_name'] ) . '</strong>'
+				);
+				
 				if ( is_multisite() ) {
 					$notice_string .= __( 'This will be applicable for all sites from the network.', 'ultimate-addons-for-gutenberg' );
 				}
@@ -252,7 +265,7 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 									</div>
 								</div>',
 							/* translators: %s usage doc link */
-							sprintf( $notice_string . '<span dir="%1s"><a href="%2s" target="_blank" rel="noreferrer noopener">%3s</a><span>', $language_dir, esc_url( $usage_doc_link ), __( ' Know More.', 'ultimate-addons-for-gutenberg' ) ),
+							sprintf( $notice_string . '<span dir="%1s"><a href="%2s" target="_blank" rel="noreferrer noopener">%3s</a><span><br><br>', $language_dir, esc_url( $usage_doc_link ), __( ' Know More.', 'ultimate-addons-for-gutenberg' ) ),
 							esc_url(
 								add_query_arg(
 									array(
@@ -281,6 +294,8 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 						'display-with-other-notices' => true,
 					)
 				);
+
+				return;
 			}
 		}
 
@@ -344,6 +359,7 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 		 */
 		private function optout( $source ) {
 			update_site_option( $source . '_analytics_optin', 'no' );
+			update_site_option( 'bsf_analytics_last_displayed_time', time() );
 		}
 
 		/**
@@ -371,6 +387,17 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 
 				if ( ! apply_filters( $key . '_tracking_enabled', true ) || $this->is_white_label_enabled( $key ) ) {
 					return;
+				}
+
+				/**
+				 * Introducing a new key 'hide_optin_checkbox, which allows individual plugin  to hide optin checkbox
+				 * If they are providing providing in-plugin option to manage this option.
+				 * from General > Settings page.
+				 * 
+				 * @since 1.1.14
+				 */
+				if( ! empty( $data['hide_optin_checkbox'] ) && true === $data['hide_optin_checkbox'] ) {
+					continue;
 				}
 
 				$usage_doc_link = isset( $data['usage_doc_link'] ) ? $data['usage_doc_link'] : $this->usage_doc_link;
@@ -489,7 +516,7 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 		}
 
 		/**
-		 * Send analaytics track event if tracking is enabled.
+		 * Send analytics track event if tracking is enabled.
 		 *
 		 * @since 1.0.0
 		 */
@@ -541,7 +568,7 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 
 			if ( class_exists( 'Deactivation_Survey_Feedback' ) ) {
 				foreach ( $this->entities as $key => $data ) {
-					// If the deactibation_survery info in available then only add the form.
+					// If the deactivation_survey info in available then only add the form.
 					if ( ! empty( $data['deactivation_survey'] ) && is_array( $data['deactivation_survey'] ) ) {
 						foreach ( $data['deactivation_survey'] as $key => $survey_args ) {
 							Deactivation_Survey_Feedback::show_feedback_form(

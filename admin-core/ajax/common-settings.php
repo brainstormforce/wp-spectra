@@ -1067,7 +1067,7 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
-	 * Save setting - Usage tracking.
+	 * Save setting - Usage data.
 	 *
 	 * @since 2.19.5
 	 * @return void

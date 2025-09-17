@@ -2283,7 +2283,11 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					&& - 1 === $wp_query->current_post
 					&& true === $wp_query->is_paged
 				) {
-					$redirect_url = false;
+					// Only prevent redirect if we're on a valid archive/listing page with pagination.
+					// Don't prevent redirects for single posts with invalid pagination.
+					if ( ! is_single() ) {
+						$redirect_url = false;
+					}
 				}
 			}
 

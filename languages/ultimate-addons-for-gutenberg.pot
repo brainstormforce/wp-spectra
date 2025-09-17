@@ -2,20 +2,19 @@
 # This file is distributed under the same license as the Spectra plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spectra 2.19.8\n"
+"Project-Id-Version: Spectra 2.19.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-25T10:05:54+00:00\n"
+"POT-Creation-Date: 2025-04-30T13:22:25+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
 
 #. Plugin Name of the plugin
-#: ultimate-addons-for-gutenberg.php
 #: admin-core/inc/admin-menu.php:349
 #: admin-core/inc/admin-menu.php:350
 #: admin-core/inc/admin-menu.php:361
@@ -30,17 +29,14 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
-#: ultimate-addons-for-gutenberg.php
 msgid "https://www.brainstormforce.com"
 msgstr ""
 
 #. Description of the plugin
-#: ultimate-addons-for-gutenberg.php
 msgid "The Spectra extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster."
 msgstr ""
 
 #. Author of the plugin
-#: ultimate-addons-for-gutenberg.php
 msgid "Brainstorm Force"
 msgstr ""
 
@@ -9158,7 +9154,7 @@ msgstr ""
 #: lib/gutenberg-templates/inc/importer/plugin.php:270
 #: lib/gutenberg-templates/inc/importer/plugin.php:274
 #: lib/gutenberg-templates/inc/importer/plugin.php:445
-#: lib/zip-ai/classes/sidebar-configurations.php:267
+#: lib/zip-ai/classes/sidebar-configurations.php:268
 msgid "Something went wrong"
 msgstr ""
 
@@ -9230,23 +9226,23 @@ msgstr ""
 msgid "The ZipWP API server encountered an error."
 msgstr ""
 
-#: lib/zip-ai/classes/sidebar-configurations.php:187
+#: lib/zip-ai/classes/sidebar-configurations.php:188
 msgid "The message array was not supplied"
 msgstr ""
 
-#: lib/zip-ai/classes/sidebar-configurations.php:284
+#: lib/zip-ai/classes/sidebar-configurations.php:285
 msgid "Authentication failed. Invalid or missing bearer token."
 msgstr ""
 
-#: lib/zip-ai/classes/sidebar-configurations.php:286
-msgid "You’ve run out of credits."
+#: lib/zip-ai/classes/sidebar-configurations.php:287
+msgid "You've run out of credits."
 msgstr ""
 
-#: lib/zip-ai/classes/sidebar-configurations.php:288
+#: lib/zip-ai/classes/sidebar-configurations.php:289
 msgid "To continue using the assistant and access its full features, please purchase more credits."
 msgstr ""
 
-#: lib/zip-ai/classes/sidebar-configurations.php:290
+#: lib/zip-ai/classes/sidebar-configurations.php:291
 msgid "Buy more credits"
 msgstr ""
 
@@ -10094,15 +10090,17 @@ msgid "Enable the \"Inherit From Theme\" option to make all buttons in Spectra b
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:14
-msgid "Allow Brainstorm Force products to track non-sensitive usage tracking data. Please read "
+msgid "Help us improve Spectra by allowing non-sensitive usage tracking. "
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:14
-msgid "this article"
+#: dist/blocks.js:11
+#: lib/zip-ai/sidebar/build/sidebar-app.js:11
+msgid "Learn more"
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:14
-msgid " to learn more."
+msgid " about what we track."
 msgstr ""
 
 #: admin-core/assets/build/dashboard-app.js:14
@@ -11852,11 +11850,6 @@ msgstr ""
 
 #: dist/blocks.js:11
 msgid "Unique navigation slugs"
-msgstr ""
-
-#: dist/blocks.js:11
-#: lib/zip-ai/sidebar/build/sidebar-app.js:11
-msgid "Learn more"
 msgstr ""
 
 #: dist/blocks.js:11

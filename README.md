@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.8  
-**Stable tag:** 2.19.8  
+**Stable tag:** 2.19.13  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -215,11 +215,35 @@ Absolutely no! The Spectra is built with ease and performance in mind. Its modul
 
 When you use the Spectra along with the free Astra theme, you get a huge library of ready-to-use starter sites that can be imported and used to build your own. Read an article about the <a href="https://wpspectra.com/ready-websites-for-gutenberg/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Starter Sites with Gutenberg</a> to know more.
 
+### How can I report a security bug? ###
+
+We take plugin security extremely seriously. If you discover a security vulnerability, please report it in a safe and responsible manner.
+
+You can report the issue through our [Bug Bounty Program](https://brainstormforce.com/bug-bounty-program/).
+
 ## Credits ##
 
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT. Additionally, we incorporate [FontAwesome v6](https://fontawesome.com/license/free) under the CC BY 4.0 License, and [dnd kit](https://github.com/clauderic/dnd-kit) licensed under the MIT License.
 
 ## Changelog ##
+
+### 2.19.13 - Wednesday, 17th September 2025 ###
+* Improvement: Popup Builder – Improved popup creation through REST with role flexibility.
+
+### 2.19.12 - Wednesday, 3rd September 2025 ###
+* Improvement: Info Box - Alignment options now hide smartly based on icon/image settings.
+* Fix: Post - Corrected behavior where invalid pagination on single posts prevented expected redirects.
+* Fix: Global - Resolved a conflict where editor upsell assets were interfering with the SureCart price selector block.
+
+### 2.19.11 - Tuesday, 15th July 2025 ###
+* Fix: Buttons - Resolved an issue wherein the  gap between buttons would not work as intended for mobile.
+* Fix: Container - Resolved an issue wherein the advanced gradient locations 1 & 2 would not be applied on mobile & tablet.
+
+### 2.19.10 - Tuesday, 17th June 2025 ###
+* Updated the Zip AI Library.
+
+### 2.19.9 - Thursday, 1st May 2025 ###
+* Improvement: Added a WP-CLI command for regenerate the assets.
 
 ### 2.19.8 - Monday, 28th April 2025 ###
 * Fix: Container - Resolved an issue where dynamic content fallback images were not being properly applied in the frontend.

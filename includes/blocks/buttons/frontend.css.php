@@ -26,14 +26,15 @@ $button_mobile_padding  = array();
 
 if ( ! $attr['inheritGap'] ) {
 	if ( 'desktop' === $attr['stack'] ) {
-		$selectors[' .uagb-buttons__wrap ']   = array(
+		// High specificity needed here as to make it uniform as across all the device breakpoints as for other device breakpoints this was taking the higher specificity.
+		$selectors['.wp-block-uagb-buttons.uagb-buttons__outer-wrap .uagb-buttons__wrap ']   = array(
 			'flex-direction' => 'column',
 			'gap'            => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
 		);
-		$t_selectors[' .uagb-buttons__wrap '] = array(
+		$t_selectors['.wp-block-uagb-buttons.uagb-buttons__outer-wrap .uagb-buttons__wrap '] = array(
 			'gap' => UAGB_Helper::get_css_value( $attr['gapTablet'], 'px' ),
 		);
-		$m_selectors[' .uagb-buttons__wrap '] = array(
+		$m_selectors['.wp-block-uagb-buttons.uagb-buttons__outer-wrap .uagb-buttons__wrap '] = array(
 			'gap' => UAGB_Helper::get_css_value( $attr['gapMobile'], 'px' ),
 		);
 
@@ -42,11 +43,11 @@ if ( ! $attr['inheritGap'] ) {
 		$selectors['.wp-block-uagb-buttons.uagb-buttons__outer-wrap  .uagb-buttons__wrap '] = array(
 			'gap' => UAGB_Helper::get_css_value( $attr['gap'], 'px' ),
 		);
-		$t_selectors[' .uagb-buttons__wrap'] = array(
+		$t_selectors['.wp-block-uagb-buttons.uagb-buttons__outer-wrap .uagb-buttons__wrap'] = array(
 			'flex-direction' => 'column',
 			'gap'            => UAGB_Helper::get_css_value( $attr['gapTablet'], 'px' ),
 		);
-		$m_selectors[' .uagb-buttons__wrap'] = array(
+		$m_selectors['.wp-block-uagb-buttons.uagb-buttons__outer-wrap .uagb-buttons__wrap'] = array(
 			'flex-direction' => 'column',
 			'gap'            => UAGB_Helper::get_css_value( $attr['gapMobile'], 'px' ),
 		);
