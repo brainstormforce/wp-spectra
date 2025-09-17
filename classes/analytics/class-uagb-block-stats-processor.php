@@ -360,7 +360,7 @@ if ( ! class_exists( 'UAGB_Block_Stats_Processor' ) ) {
 		 * @since 2.19.13
 		 * @return bool Whether collection is processing.
 		 */
-		public static function is_processing() {
+		public static function is_collection_processing() {
 			$status = get_option( 'uagb_block_analytics_status', array() );
 
 			if ( ! is_array( $status ) ) {
