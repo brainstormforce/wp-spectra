@@ -433,7 +433,8 @@ if ( ! class_exists( 'UAGB_Incremental_Block_Tracker' ) ) {
 				$analytics_data['block_usage_stats'][ $block_name ] += $diff;
 
 				// Ensure we don't go below 0.
-				if ( $analytics_data['block_usage_stats'][ $block_name ] < 0 ) {
+				$current_count = $analytics_data['block_usage_stats'][ $block_name ];
+				if ( is_numeric( $current_count ) && $current_count < 0 ) {
 					$analytics_data['block_usage_stats'][ $block_name ] = 0;
 				}
 			}
@@ -462,7 +463,7 @@ if ( ! class_exists( 'UAGB_Incremental_Block_Tracker' ) ) {
 					'post_status'    => array( 'publish', 'private', 'draft' ),
 					'posts_per_page' => -1,
 					'fields'         => 'ids',
-					'meta_query'     => array(
+					'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Intentional one-time setup query.
 						array(
 							'key'     => '_uagb_previous_block_counts',
 							'compare' => 'NOT EXISTS',
@@ -474,8 +475,9 @@ if ( ! class_exists( 'UAGB_Incremental_Block_Tracker' ) ) {
 			foreach ( $posts as $post_id ) {
 				$post = get_post( $post_id );
 				if ( is_object( $post ) && has_blocks( $post->post_content ) ) {
-					$block_counts = $this->count_blocks_in_post( $post->post_content );
-					update_post_meta( (int) $post_id, '_uagb_previous_block_counts', $block_counts );
+					$block_counts   = $this->count_blocks_in_post( $post->post_content );
+					$actual_post_id = is_object( $post_id ) ? $post_id->ID : (int) $post_id;
+					update_post_meta( $actual_post_id, '_uagb_previous_block_counts', $block_counts );
 				}
 			}
 		}

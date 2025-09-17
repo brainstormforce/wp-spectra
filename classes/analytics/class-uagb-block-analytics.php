@@ -159,7 +159,7 @@ if ( ! class_exists( 'UAGB_Block_Analytics' ) ) {
 				$status = array();
 			}
 
-			$is_first_run      = empty( $status['first_run_check'] );
+			$is_first_run = empty( $status['first_run_check'] );
 
 			if ( ! $analytics_enabled && ! $is_first_run ) {
 				return;
@@ -171,7 +171,7 @@ if ( ! class_exists( 'UAGB_Block_Analytics' ) ) {
 			}
 
 			// Only run background scan if we don't have existing stats or this is forced refresh.
-			$analytics_data     = get_option( 'uagb_block_analytics_data', array() );
+			$analytics_data = get_option( 'uagb_block_analytics_data', array() );
 
 			if ( ! is_array( $analytics_data ) ) {
 				$analytics_data = array();
@@ -281,7 +281,7 @@ if ( ! class_exists( 'UAGB_Block_Analytics' ) ) {
 				$status = array();
 			}
 
-			$is_first_run      = empty( $status['first_run_check'] );
+			$is_first_run = empty( $status['first_run_check'] );
 
 			if ( ! $analytics_enabled && ! $is_first_run ) {
 				return;
