@@ -353,21 +353,5 @@ if ( ! class_exists( 'UAGB_Block_Stats_Processor' ) ) {
 
 			return isset( $status['last_collected'] ) ? $status['last_collected'] : false;
 		}
-
-		/**
-		 * Check if collection is currently processing.
-		 *
-		 * @since 2.19.13
-		 * @return bool Whether collection is processing.
-		 */
-		public static function is_processing() {
-			$status = get_option( 'uagb_block_analytics_status', array() );
-
-			if ( ! is_array( $status ) ) {
-				$status = array();
-			}
-
-			return ! empty( $status['is_processing'] );
-		}
 	}
 }
