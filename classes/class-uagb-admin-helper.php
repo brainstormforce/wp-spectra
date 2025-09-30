@@ -706,12 +706,6 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			$css = wp_strip_all_tags( $css );
 			$css = is_string( $css ) ? $css : '';
 			
-			// 2. Use WordPress's safe CSS filter (CRITICAL for inline styles).
-			if ( function_exists( 'safecss_filter_attr' ) ) {
-				$css = safecss_filter_attr( $css );
-				$css = is_string( $css ) ? $css : '';
-			}
-			
 			// 3. Additional XSS prevention.
 			$css = str_replace( array( '\\', '<', '>', '"', '&' ), '', $css );
 			

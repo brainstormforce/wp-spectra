@@ -1425,7 +1425,7 @@ class UAGB_Post_Assets {
 
 		if ( 'yes' === $enable_on_page_css_button ) {
 			$custom_css = get_post_meta( $this->post_id, '_uag_custom_page_level_css', true );
-		
+
 			$custom_css = ! empty( $custom_css ) && is_string( $custom_css ) ? $custom_css : '';
 
 			if ( ! empty( $custom_css ) && ! self::$custom_css_appended ) {
