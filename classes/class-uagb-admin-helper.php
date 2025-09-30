@@ -704,17 +704,16 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			
 			// 1. Strip all HTML/Script tags.
 			$css = wp_strip_all_tags( $css );
+			$css = is_string( $css ) ? $css : '';
 			
 			// 2. Use WordPress's safe CSS filter (CRITICAL for inline styles).
 			if ( function_exists( 'safecss_filter_attr' ) ) {
 				$css = safecss_filter_attr( $css );
+				$css = is_string( $css ) ? $css : '';
 			}
 			
 			// 3. Additional XSS prevention.
 			$css = str_replace( array( '\\', '<', '>', '"', '&' ), '', $css );
-			
-			// Ensure $css is still a string after WordPress functions (they can return null).
-			$css = is_string( $css ) ? $css : '';
 			
 			// 4. Remove any JavaScript execution attempts.
 			$xss_patterns = array(
@@ -730,10 +729,12 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			);
 			
 			foreach ( $xss_patterns as $pattern ) {
-				$css = preg_replace( $pattern, '', $css );
+				$result = preg_replace( $pattern, '', $css );
+				$css    = is_string( $result ) ? $result : $css;
 			}
 			
-			return $css;
+			// Final safety check to ensure we always return a string.
+			return is_string( $css ) ? $css : '';
 		}
 	}
 
