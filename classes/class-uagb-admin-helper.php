@@ -692,6 +692,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		/**
 		 * Sanitize inline css.
 		 * @param string $css User-provided CSS input.
+		 * 
 		 * @since x.x.x
 		 * @return string Sanitized CSS.
 		 */
