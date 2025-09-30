@@ -701,19 +701,19 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 				return '';
 			}
 			
-			// Essential security measures
-			$css = wp_strip_all_tags( $css );                     // Remove HTML
-			$css = sanitize_textarea_field( $css );               // Basic sanitization
+			// Essential security measures.
+			$css = wp_strip_all_tags( $css );                     // Remove HTML.
+			$css = sanitize_textarea_field( $css );               // Basic sanitization.
 			
 			// Ensure $css is still a string after WordPress functions (they can return null).
 			$css = is_string( $css ) ? $css : '';
 			
-			$css = preg_replace( '/javascript\s*:/i', '', $css ); // Block JS protocol
+			$css = preg_replace( '/javascript\s*:/i', '', $css ); // Block JS protocol.
 			
 			// Ensure $css is still a string after first preg_replace (can return null on error).
 			$css = is_string( $css ) ? $css : '';
 			
-			$css = preg_replace( '/expression\s*\(/i', '', $css ); // Block expressions
+			$css = preg_replace( '/expression\s*\(/i', '', $css ); // Block expressions.
 			
 			// Ensure $css is still a string before trim (preg_replace can return null on error).
 			$css = is_string( $css ) ? $css : '';
