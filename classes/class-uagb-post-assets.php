@@ -1429,7 +1429,7 @@ class UAGB_Post_Assets {
 			$custom_css = ! empty( $custom_css ) && is_string( $custom_css ) ? $custom_css : '';
 
 			if ( ! empty( $custom_css ) && ! self::$custom_css_appended ) {
-				$this->stylesheet         .= wp_strip_all_tags( $custom_css );
+				$this->stylesheet         .= UAGB_Admin_Helper::sanitize_inline_css( $custom_css );
 				self::$custom_css_appended = true;
 			}
 		}

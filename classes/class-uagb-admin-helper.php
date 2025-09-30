@@ -688,6 +688,51 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 			return $pricing_region;
 		}
+
+		/**
+		 * Sanitize inline css.
+		 * @param string $css User-provided CSS input.
+		 * @since x.x.x
+		 * @return string Sanitized CSS.
+		 */
+		public static function sanitize_inline_css( $css ) {
+			if ( empty( $css ) || ! is_string( $css ) ) {
+				return '';
+			}
+			
+			// 1. Strip all HTML/Script tags.
+			$css = wp_strip_all_tags( $css );
+			
+			// 2. Use WordPress's safe CSS filter (CRITICAL for inline styles).
+			if ( function_exists( 'safecss_filter_attr' ) ) {
+				$css = safecss_filter_attr( $css );
+			}
+			
+			// 3. Additional XSS prevention.
+			$css = str_replace( array( '\\', '<', '>', '"', '&' ), '', $css );
+			
+			// 4. Remove any JavaScript execution attempts.
+			$xss_patterns = array(
+				'/javascript\s*:/i',
+				'/expression\s*\(/i',
+				'/vbscript\s*:/i',
+				'/onload\s*=/i',
+				'/onclick\s*=/i',
+				'/onerror\s*=/i',
+				'/alert\s*\(/i',
+				'/script\s*:/i',
+				'/import\s*/i',
+			);
+			
+			foreach ( $xss_patterns as $pattern ) {
+				$css = preg_replace( $pattern, '', $css );
+			}
+			
+			// Ensure $css is still a string after WordPress functions (they can return null).
+			$css = is_string( $css ) ? $css : '';
+			
+			return $css;
+		}
 	}
 
 	/**

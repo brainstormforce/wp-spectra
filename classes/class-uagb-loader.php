@@ -530,7 +530,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 						return current_user_can( 'edit_posts' );
 					},
 					'sanitize_callback' => function( $meta_value ) {
-						return wp_strip_all_tags( $meta_value );
+						return UAGB_Admin_Helper::sanitize_inline_css( $meta_value );
 					},
 				)
 			);
