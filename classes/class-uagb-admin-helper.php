@@ -713,6 +713,9 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			// 3. Additional XSS prevention.
 			$css = str_replace( array( '\\', '<', '>', '"', '&' ), '', $css );
 			
+			// Ensure $css is still a string after WordPress functions (they can return null).
+			$css = is_string( $css ) ? $css : '';
+			
 			// 4. Remove any JavaScript execution attempts.
 			$xss_patterns = array(
 				'/javascript\s*:/i',
@@ -727,13 +730,8 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			);
 			
 			foreach ( $xss_patterns as $pattern ) {
-				// Ensure $css is still a string after WordPress functions (they can return null).
-				$css = is_string( $css ) ? $css : '';
 				$css = preg_replace( $pattern, '', $css );
 			}
-			
-			// Ensure $css is still a string after WordPress functions (they can return null).
-			$css = is_string( $css ) ? $css : '';
 			
 			return $css;
 		}
