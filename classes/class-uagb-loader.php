@@ -533,7 +533,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 						$meta_value = ! empty( $meta_value ) && is_string( $meta_value ) ? $meta_value : '';
 						// Security: Basic sanitization for output to prevent XSS attacks and ensure no harmful content is applied in CSS.
 						$sanitized_css = UAGB_Admin_Helper::basic_sanitize_css( $meta_value );
-						return wp_slash( $sanitized_css );
+						return $sanitized_css;
 					},
 				)
 			);
