@@ -1428,7 +1428,7 @@ class UAGB_Post_Assets {
 		
 			$custom_css = ! empty( $custom_css ) && is_string( $custom_css ) ? $custom_css : '';
 
-			// Security: Basic sanitization for output.
+			// Security: Basic sanitization for output to prevent XSS attacks and ensure no harmful content is applied in CSS.
 			$custom_css = UAGB_Admin_Helper::basic_sanitize_css( $custom_css );
 		
 			if ( ! empty( $custom_css ) && ! self::$custom_css_appended ) {
