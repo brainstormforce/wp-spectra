@@ -688,6 +688,27 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 			return $pricing_region;
 		}
+
+		/**
+		 * Basic CSS sanitization - minimalistic and widely applicable.
+		 *
+		 * @param string $css User-provided CSS input.
+		 * @return string Sanitized CSS.
+		 * @since x.x.x
+		 */
+		public static function basic_sanitize_css( $css ) {
+			if ( empty( $css ) || ! is_string( $css ) ) {
+				return '';
+			}
+			
+			// Essential security measures
+			$css = wp_strip_all_tags( $css );                     // Remove HTML
+			$css = sanitize_textarea_field( $css );               // Basic sanitization
+			$css = preg_replace( '/javascript\s*:/i', '', $css ); // Block JS protocol
+			$css = preg_replace( '/expression\s*\(/i', '', $css ); // Block expressions
+			
+			return trim( $css );
+		}
 	}
 
 	/**
