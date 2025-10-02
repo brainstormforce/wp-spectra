@@ -734,7 +734,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			$counter = 0;
 
 			// Match quoted strings (single and double quotes).
-			$css = preg_replace_callback(
+			$result = preg_replace_callback(
 				'/(["\'])((?:\\\\.|(?!\1)[^\\\\])*)(\1)/',
 				function( $matches ) use ( &$protected_strings, $placeholder_prefix, &$counter ) {
 					$placeholder = $placeholder_prefix . $counter . '___';
@@ -744,6 +744,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 				},
 				$css
 			);
+			$css = is_string( $result ) ? $result : $css;
 
 			// Apply XSS patterns only to unprotected (non-quoted) content.
 			$xss_patterns = array(
@@ -775,7 +776,8 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 
 			// Restore protected quoted strings.
 			foreach ( $protected_strings as $placeholder => $original ) {
-				$css = str_replace( $placeholder, $original, $css );
+				$result = str_replace( $placeholder, $original, $css );
+				$css    = is_string( $result ) ? $result : $css;
 			}
 
 			return $css;
