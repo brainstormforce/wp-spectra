@@ -729,22 +729,22 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			}
 
 			// Extract and protect quoted strings (including URLs in quotes).
-			$protected_strings = array();
+			$protected_strings  = array();
 			$placeholder_prefix = '___PROTECTED_STRING_';
-			$counter = 0;
+			$counter            = 0;
 
 			// Match quoted strings (single and double quotes).
 			$result = preg_replace_callback(
 				'/(["\'])((?:\\\\.|(?!\1)[^\\\\])*)(\1)/',
 				function( $matches ) use ( &$protected_strings, $placeholder_prefix, &$counter ) {
-					$placeholder = $placeholder_prefix . $counter . '___';
+					$placeholder                       = $placeholder_prefix . $counter . '___';
 					$protected_strings[ $placeholder ] = $matches[0];
 					$counter++;
 					return $placeholder;
 				},
 				$css
 			);
-			$css = is_string( $result ) ? $result : $css;
+			$css    = is_string( $result ) ? $result : $css;
 
 			// Apply XSS patterns only to unprotected (non-quoted) content.
 			$xss_patterns = array(
