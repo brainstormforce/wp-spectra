@@ -693,7 +693,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		 * Sanitize inline css.
 		 *
 		 * @param string $css User-provided CSS input.
-		 * 
+		 *
 		 * @since 2.19.15
 		 * @return string Sanitized CSS.
 		 */
@@ -701,34 +701,84 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			if ( empty( $css ) || ! is_string( $css ) ) {
 				return '';
 			}
-			
+
 			// 1. Strip all HTML/Script tags.
 			$css = wp_strip_all_tags( $css );
 			$css = is_string( $css ) ? $css : '';
-			
+
 			// 2. Additional XSS prevention.
-			$css = str_replace( array( '\\', '<', '>', '"', '&' ), '', $css );
-			
-			// 3. Remove any JavaScript execution attempts.
-			$xss_patterns = array(
-				'/javascript\s*:/i',
-				'/expression\s*\(/i',
-				'/vbscript\s*:/i',
-				'/onload\s*=/i',
-				'/onclick\s*=/i',
-				'/onerror\s*=/i',
-				'/alert\s*\(/i',
-				'/script\s*:/i',
-				'/import\s*/i',
+			$css = str_replace( array( '\\', '<', '&' ), '', $css );
+
+			// 3. Context-aware XSS prevention that preserves valid CSS.
+			$css = self::sanitize_css_with_context( $css );
+
+			// Final safety check to ensure we always return a string.
+			return is_string( $css ) ? $css : '';
+		}
+
+		/**
+		 * Context-aware CSS sanitization that preserves quoted content.
+		 *
+		 * @param string $css CSS content to sanitize.
+		 * @return string Sanitized CSS.
+		 * @since 2.19.15
+		 */
+		private static function sanitize_css_with_context( $css ) {
+			if ( empty( $css ) || ! is_string( $css ) ) {
+				return '';
+			}
+
+			// Extract and protect quoted strings (including URLs in quotes).
+			$protected_strings = array();
+			$placeholder_prefix = '___PROTECTED_STRING_';
+			$counter = 0;
+
+			// Match quoted strings (single and double quotes).
+			$css = preg_replace_callback(
+				'/(["\'])((?:\\\\.|(?!\1)[^\\\\])*)(\1)/',
+				function( $matches ) use ( &$protected_strings, $placeholder_prefix, &$counter ) {
+					$placeholder = $placeholder_prefix . $counter . '___';
+					$protected_strings[ $placeholder ] = $matches[0];
+					$counter++;
+					return $placeholder;
+				},
+				$css
 			);
-			
+
+			// Apply XSS patterns only to unprotected (non-quoted) content.
+			$xss_patterns = array(
+				// Dangerous CSS functions and protocols.
+				'/javascript\s*:/i',
+				'/vbscript\s*:/i',
+				'/data\s*:\s*[^;]*script/i',
+
+				// CSS expressions (IE specific).
+				'/expression\s*\(/i',
+
+				// Event handlers (shouldn't be in CSS but could be injected).
+				'/on\w+\s*=/i',
+
+				// Script execution attempts.
+				'/alert\s*\(/i',
+				'/eval\s*\(/i',
+
+				// @import with potentially dangerous URLs (but preserve normal @import).
+				'/@import\s+[^;]*javascript\s*:/i',
+				'/@import\s+[^;]*vbscript\s*:/i',
+				'/@import\s+[^;]*data\s*:\s*[^;]*script/i',
+			);
+
 			foreach ( $xss_patterns as $pattern ) {
 				$result = preg_replace( $pattern, '', $css );
 				$css    = is_string( $result ) ? $result : $css;
 			}
-			
-			// Final safety check to ensure we always return a string.
-			return is_string( $css ) ? $css : '';
+
+			// Restore protected quoted strings.
+			foreach ( $protected_strings as $placeholder => $original ) {
+				$css = str_replace( $placeholder, $original, $css );
+			}
+
+			return $css;
 		}
 	}
 
