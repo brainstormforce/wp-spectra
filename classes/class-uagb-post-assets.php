@@ -1425,18 +1425,11 @@ class UAGB_Post_Assets {
 
 		if ( 'yes' === $enable_on_page_css_button ) {
 			$custom_css = get_post_meta( $this->post_id, '_uag_custom_page_level_css', true );
-		
-			$custom_css = ! empty( $custom_css ) && is_string( $custom_css ) ? wp_slash( $custom_css ) : '';
 
-			// 1. Decode any HTML entities (like &gt;) before appending.
-			$custom_css = html_entity_decode( $custom_css );
-			// 2. Remove unnecessary backslashes before quotes
-			$custom_css = preg_replace( '/\\\\+(?=["\'])/', '', $custom_css );
-		
+			$custom_css = ! empty( $custom_css ) && is_string( $custom_css ) ? $custom_css : '';
+
 			if ( ! empty( $custom_css ) && ! self::$custom_css_appended ) {
-				// 3. Remove any excessive escaping
-				$custom_css                = stripslashes( $custom_css );
-				$this->stylesheet         .= $custom_css;
+				$this->stylesheet         .= UAGB_Admin_Helper::sanitize_inline_css( $custom_css );
 				self::$custom_css_appended = true;
 			}
 		}
@@ -1890,4 +1883,5 @@ class UAGB_Post_Assets {
 		return array();
 
 	}
+
 }
