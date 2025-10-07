@@ -56,9 +56,9 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-html-parser": "^2.0.2",
-    "react-redux": "^7.2.6",
-    "react-router-dom": "^5.2.0",
-    "redux": "^4.1.2",
+    "react-redux": "^8.0.0",
+    "react-router-dom": "^6.4.0",
+    "redux": "^5.0.0",
     "request": "^2.88.2",
     "@bsf/force-ui": "git+https://github.com/brainstormforce/force-ui.git#1.0.0"
   },
