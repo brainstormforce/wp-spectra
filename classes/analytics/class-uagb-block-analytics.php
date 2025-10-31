@@ -220,6 +220,11 @@ if ( ! class_exists( 'UAGB_Block_Analytics' ) ) {
 				array_values( $stats )
 			);
 
+			// Ensure array_combine succeeded, otherwise use empty array.
+			if ( false === $formatted_block_usage_stats ) {
+				$formatted_block_usage_stats = array();
+			}
+
 			// Prepare advanced stats structure.
 			$advanced_stats = array(
 				'numeric_values'             => $formatted_block_usage_stats,
@@ -232,11 +237,8 @@ if ( ! class_exists( 'UAGB_Block_Analytics' ) ) {
 			);
 
 			// Merge numeric_values by adding numbers if they already exist.
-			// Check if both numeric_values arrays exist in advanced_stats and existing_stats.
-			if ( isset( $advanced_stats['numeric_values'], $existing_stats['numeric_values'] )
-				// Validate that both numeric_values are arrays before proceeding.
-				&& is_array( $advanced_stats['numeric_values'] )
-				&& is_array( $existing_stats['numeric_values'] ) ) {
+			// Check if numeric_values array exists in existing_stats and validate it's an array.
+			if ( isset( $existing_stats['numeric_values'] ) && is_array( $existing_stats['numeric_values'] ) ) {
 
 				// Loop through each block's usage count from advanced_stats.
 				foreach ( $advanced_stats['numeric_values'] as $key => $value ) {
