@@ -810,10 +810,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			
 			// Add advanced block usage statistics.
 			if ( is_object( $this->block_analytics ) ) {
-				$advanced_stats = $this->block_analytics->get_block_stats_for_analytics();
-				if ( ! empty( $advanced_stats ) ) {
-					$default_stats['plugin_data']['spectra'] = array_merge_recursive( $default_stats['plugin_data']['spectra'], $advanced_stats );
-				}
+				$default_stats['plugin_data']['spectra'] = $this->block_analytics->get_block_stats_for_analytics( $default_stats['plugin_data']['spectra'] );
 			}
 
 			return $default_stats;
