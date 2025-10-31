@@ -227,7 +227,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### 2.19.16 - Thursday, 30th October 2025 ###
+### 2.19.16 - Friday, 31th October 2025 ###
 * Fix: Slider - Resolved an issue wherein slider background image not applying in small devices when overlay color is set
 * Fix: Global - Resolved recursive pattern insertion issue that was causing a page getting slow error due to an infinite loop.
 
