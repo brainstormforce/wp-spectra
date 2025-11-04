@@ -291,6 +291,9 @@ The full changelog is available [here](https://wpspectra.com/whats-new/).
 
 ## Upgrade Notice ##
 
+### 3.0.0-beta.1 ###
+This is a beta release. Please backup your website before updating. We recommend testing on a staging site first and not using this version on a live production website.
+
 ### 2.18.2 ###
 The Google Fonts library in Spectra has been updated in this version. Please check your font selections to replace any deprecated fonts and explore the new additions.
 
