@@ -101,7 +101,7 @@ const BlocksSection = () => {
 				is_core: false,
 				is_extension: true,
 				is_pro: false,
-				link: 'animations',
+				link: 'animations-legacy',
 				slug: 'animations',
 				title: __( 'Animations', 'ultimate-addons-for-gutenberg' ),
 				extensionKey: 'enableAnimationsExtension',

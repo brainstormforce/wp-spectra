@@ -6,7 +6,7 @@ export const proBlocks = [
 	{
 		title: __( 'Login Form', 'ultimate-addons-for-gutenberg' ),
 		slug: 'login',
-		link: 'login-forms',
+		link: 'login-forms-legacy',
 		icon: React.cloneElement( UAGB_Block_Icons.login, { className: 'w-5 h-5' } ),
 		is_pro: true,
 		is_active: null,
@@ -17,7 +17,7 @@ export const proBlocks = [
 	{
 		title: __( 'Registration Form', 'ultimate-addons-for-gutenberg' ),
 		slug: 'register',
-		link: 'registration-form',
+		link: 'registration-form-legacy',
 		icon: React.cloneElement( UAGB_Block_Icons.register, { className: 'w-5 h-5' } ),
 		is_pro: true,
 		is_active: null,
@@ -28,7 +28,7 @@ export const proBlocks = [
 	{
 		title: __( 'Instagram Feed', 'ultimate-addons-for-gutenberg' ),
 		slug: 'instagram-feed',
-		link: 'instagram-feed',
+		link: 'instagram-feed-legacy',
 		icon: React.cloneElement( UAGB_Block_Icons[ 'instagram-feed' ], { className: 'w-5 h-5' } ),
 		is_pro: true,
 		is_active: null,
@@ -39,7 +39,7 @@ export const proBlocks = [
 	{
 		title: __( 'Loop Builder', 'ultimate-addons-for-gutenberg' ),
 		slug: 'loop-builder',
-		link: 'loop-builder',
+		link: 'advanced-loop-builder-legacy',
 		icon: React.cloneElement( UAGB_Block_Icons[ 'loop-builder' ], { className: 'w-5 h-5' } ),
 		is_pro: true,
 		is_active: null,
@@ -102,7 +102,7 @@ export const proBlocks = [
 	{
 		title: __( 'Advanced Animations', 'ultimate-addons-for-gutenberg' ),
 		slug: 'animations-extension',
-		link: 'animations',
+		link: 'animations-legacy',
 		icon: React.cloneElement( UAGB_Block_Icons[ 'animations-extension' ], { className: 'w-5 h-5' } ),
 		is_pro: true,
 		is_active: null,
