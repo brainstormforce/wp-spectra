@@ -5,8 +5,8 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.8  
-**Stable tag:** 2.19.15
-**Beta tag:** 3.0.0-beta.1
+**Stable tag:** 2.19.16  
+**Beta tag:** 3.0.0-beta.1  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -227,6 +227,11 @@ You can report the issue through our [Bug Bounty Program](https://brainstormforc
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT. Additionally, we incorporate [FontAwesome v6](https://fontawesome.com/license/free) under the CC BY 4.0 License, and [dnd kit](https://github.com/clauderic/dnd-kit) licensed under the MIT License.
 
 ## Changelog ##
+
+### 2.19.16 - Wednesday, 12th November 2025 ###
+* Improvement: Added Dashboard section to stay updated with Beta releases.
+* Fix: Slider - Resolved an issue wherein slider background image not applying in small devices when overlay color is set
+* Fix: Global - Resolved recursive pattern insertion issue that was causing a page getting slow error due to an infinite loop.
 
 ### 2.19.15 - Friday, 3rd October 2025 ###
 * This update addressed a security bug. Props to Wordfence for reporting it responsibly to our team.

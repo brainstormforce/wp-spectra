@@ -1525,25 +1525,24 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$device_type = 'Desktop';
 			}
 
-			// Implement fallback logic: Desktop is the fallback for Tablet and Mobile.
-			$background_image_key = 'backgroundImageDesktop'; // Default for Desktop.
-			
-			if ( 'Tablet' === $device_type ) {
-				// Use tablet image if it exists, otherwise fallback to desktop.
-				$background_image_key = ! empty( $attr['backgroundImageTablet'] ) ? 'backgroundImageTablet' : 'backgroundImageDesktop';
-			} elseif ( 'Mobile' === $device_type ) {
-				// Mobile fallback chain: Mobile → Tablet → Desktop.
-				if ( ! empty( $attr['backgroundImageMobile'] ) ) {
-					$background_image_key = 'backgroundImageMobile';
-				} elseif ( ! empty( $attr['backgroundImageTablet'] ) ) {
-					$background_image_key = 'backgroundImageTablet';
-				}
-				// If both fail, the default 'backgroundImageDesktop' value is retained.
+					// Implement proper fallback logic for each device type.
+			// Desktop always uses desktop image.
+			$desktop_bg_image = $attr['backgroundImageDesktop'];
+		
+			// Tablet uses tablet image if it exists, otherwise fallback to desktop.
+			$tablet_bg_image = ! empty( $attr['backgroundImageTablet'] ) ? $attr['backgroundImageTablet'] : $attr['backgroundImageDesktop'];
+		
+			// Mobile fallback chain: Mobile → Tablet → Desktop.
+			$mobile_bg_image = $attr['backgroundImageDesktop']; // Default fallback.
+			if ( ! empty( $attr['backgroundImageMobile'] ) ) {
+				$mobile_bg_image = $attr['backgroundImageMobile'];
+			} elseif ( ! empty( $attr['backgroundImageTablet'] ) ) {
+				$mobile_bg_image = $attr['backgroundImageTablet'];
 			}
-			
+		
 			$bg_obj = array(
 				'backgroundType'                  => $attr['backgroundType'],
-				'backgroundImage'                 => $attr[ $background_image_key ],
+				'backgroundImage'                 => $desktop_bg_image,
 				'backgroundColor'                 => $attr['backgroundColor'],
 				'gradientValue'                   => $attr['gradientValue'],
 				'gradientColor1'                  => $attr['gradientColor1'],
@@ -1586,108 +1585,108 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'backgroundVideoFallbackImage'    => $attr['backgroundVideoFallbackImage'],
 			);
 
-			$bg_obj_tablet = array(
-				'backgroundType'                  => $attr['backgroundType'],
-				'backgroundImage'                 => $attr[ $background_image_key ],
-				'backgroundColor'                 => $attr['backgroundColor'],
-				'gradientValue'                   => $attr['gradientValue'],
-				'gradientColor1'                  => $attr['gradientColor1'],
-				'gradientColor2'                  => $attr['gradientColor2'],
-				'gradientType'                    => $attr['gradientType'],
-				'gradientLocation1'               => isset( $attr['gradientLocationTablet1'] ) && is_numeric( $attr['gradientLocationTablet1'] ) ? $attr['gradientLocationTablet1'] : $bg_obj['gradientLocation1'],
-				'gradientLocation2'               => isset( $attr['gradientLocationTablet2'] ) && is_numeric( $attr['gradientLocationTablet2'] ) ? $attr['gradientLocationTablet2'] : $bg_obj['gradientLocation2'],
-				'gradientAngle'                   => isset( $attr['gradientAngleTablet'] ) && is_numeric( $attr['gradientAngleTablet'] ) ? $attr['gradientAngleTablet'] : $bg_obj['gradientAngle'],
-				'selectGradient'                  => $attr['selectGradient'],
-				'backgroundRepeat'                => $attr[ 'backgroundRepeat' . $device_type ],
-				'backgroundPosition'              => $attr[ 'backgroundPosition' . $device_type ],
-				'backgroundSize'                  => $attr[ 'backgroundSize' . $device_type ],
-				'backgroundAttachment'            => $attr[ 'backgroundAttachment' . $device_type ],
-				'backgroundImageColor'            => $attr['backgroundImageColor'],
-				'overlayType'                     => $attr['overlayType'],
-				'overlayOpacity'                  => $attr['overlayOpacity'],
-				'backgroundCustomSize'            => $attr[ 'backgroundCustomSize' . $device_type ],
-				'backgroundCustomSizeType'        => $attr['backgroundCustomSizeType'],
-				'backgroundVideo'                 => $attr['backgroundVideo'],
-				'backgroundVideoColor'            => $attr['backgroundVideoColor'],
-				'customPosition'                  => $attr['customPosition'],
-				'centralizedPosition'             => $attr['centralizedPosition'],
-				'xPosition'                       => $attr[ 'xPosition' . $device_type ],
-				'xPositionType'                   => $attr['xPositionType'],
-				'yPosition'                       => $attr[ 'yPosition' . $device_type ],
-				'yPositionType'                   => $attr['yPositionType'],
-				'backgroundOverlayImage'          => $attr[ 'backgroundOverlayImage' . $device_type ],
-				'backgroundOverlayRepeat'         => $attr[ 'backgroundRepeatOverlay' . $device_type ],
-				'backgroundOverlayPosition'       => $attr[ 'backgroundPositionOverlay' . $device_type ],
-				'backgroundOverlaySize'           => $attr[ 'backgroundSizeOverlay' . $device_type ],
-				'backgroundOverlayAttachment'     => $attr[ 'backgroundAttachmentOverlay' . $device_type ],
-				'backgroundOverlayCustomSize'     => $attr[ 'backgroundCustomSizeOverlay' . $device_type ],
-				'backgroundOverlayCustomSizeType' => $attr['backgroundCustomOverlaySizeType'],
-				'customOverlayPosition'           => $attr['customOverlayPosition'],
-				'xOverlayPosition'                => $attr[ 'xPositionOverlay' . $device_type ],
-				'xOverlayPositionType'            => $attr['xPositionOverlayType'],
-				'yOverlayPosition'                => $attr[ 'yPositionOverlay' . $device_type ],
-				'yOverlayPositionType'            => $attr['yPositionOverlayType'],
-				'blendMode'                       => $attr['overlayBlendMode'],
-				'backgroundVideoFallbackImage'    => $attr['backgroundVideoFallbackImage'],
-			);
+					$bg_obj_tablet = array(
+						'backgroundType'                  => $attr['backgroundType'],
+						'backgroundImage'                 => $tablet_bg_image,
+						'backgroundColor'                 => $attr['backgroundColor'],
+						'gradientValue'                   => $attr['gradientValue'],
+						'gradientColor1'                  => $attr['gradientColor1'],
+						'gradientColor2'                  => $attr['gradientColor2'],
+						'gradientType'                    => $attr['gradientType'],
+						'gradientLocation1'               => isset( $attr['gradientLocationTablet1'] ) && is_numeric( $attr['gradientLocationTablet1'] ) ? $attr['gradientLocationTablet1'] : $bg_obj['gradientLocation1'],
+						'gradientLocation2'               => isset( $attr['gradientLocationTablet2'] ) && is_numeric( $attr['gradientLocationTablet2'] ) ? $attr['gradientLocationTablet2'] : $bg_obj['gradientLocation2'],
+						'gradientAngle'                   => isset( $attr['gradientAngleTablet'] ) && is_numeric( $attr['gradientAngleTablet'] ) ? $attr['gradientAngleTablet'] : $bg_obj['gradientAngle'],
+						'selectGradient'                  => $attr['selectGradient'],
+						'backgroundRepeat'                => $attr[ 'backgroundRepeat' . $device_type ],
+						'backgroundPosition'              => $attr[ 'backgroundPosition' . $device_type ],
+						'backgroundSize'                  => $attr[ 'backgroundSize' . $device_type ],
+						'backgroundAttachment'            => $attr[ 'backgroundAttachment' . $device_type ],
+						'backgroundImageColor'            => $attr['backgroundImageColor'],
+						'overlayType'                     => $attr['overlayType'],
+						'overlayOpacity'                  => $attr['overlayOpacity'],
+						'backgroundCustomSize'            => $attr[ 'backgroundCustomSize' . $device_type ],
+						'backgroundCustomSizeType'        => $attr['backgroundCustomSizeType'],
+						'backgroundVideo'                 => $attr['backgroundVideo'],
+						'backgroundVideoColor'            => $attr['backgroundVideoColor'],
+						'customPosition'                  => $attr['customPosition'],
+						'centralizedPosition'             => $attr['centralizedPosition'],
+						'xPosition'                       => $attr[ 'xPosition' . $device_type ],
+						'xPositionType'                   => $attr['xPositionType'],
+						'yPosition'                       => $attr[ 'yPosition' . $device_type ],
+						'yPositionType'                   => $attr['yPositionType'],
+						'backgroundOverlayImage'          => $attr[ 'backgroundOverlayImage' . $device_type ],
+						'backgroundOverlayRepeat'         => $attr[ 'backgroundRepeatOverlay' . $device_type ],
+						'backgroundOverlayPosition'       => $attr[ 'backgroundPositionOverlay' . $device_type ],
+						'backgroundOverlaySize'           => $attr[ 'backgroundSizeOverlay' . $device_type ],
+						'backgroundOverlayAttachment'     => $attr[ 'backgroundAttachmentOverlay' . $device_type ],
+						'backgroundOverlayCustomSize'     => $attr[ 'backgroundCustomSizeOverlay' . $device_type ],
+						'backgroundOverlayCustomSizeType' => $attr['backgroundCustomOverlaySizeType'],
+						'customOverlayPosition'           => $attr['customOverlayPosition'],
+						'xOverlayPosition'                => $attr[ 'xPositionOverlay' . $device_type ],
+						'xOverlayPositionType'            => $attr['xPositionOverlayType'],
+						'yOverlayPosition'                => $attr[ 'yPositionOverlay' . $device_type ],
+						'yOverlayPositionType'            => $attr['yPositionOverlayType'],
+						'blendMode'                       => $attr['overlayBlendMode'],
+						'backgroundVideoFallbackImage'    => $attr['backgroundVideoFallbackImage'],
+					);
 			
-			$bg_obj_mobile = array(
-				'backgroundType'                  => $attr['backgroundType'],
-				'backgroundImage'                 => $attr[ $background_image_key ],
-				'backgroundColor'                 => $attr['backgroundColor'],
-				'gradientValue'                   => $attr['gradientValue'],
-				'gradientColor1'                  => $attr['gradientColor1'],
-				'gradientColor2'                  => $attr['gradientColor2'],
-				'gradientType'                    => $attr['gradientType'],
-				'gradientLocation1'               => isset( $attr['gradientLocationMobile1'] ) && is_numeric( $attr['gradientLocationMobile1'] ) ? $attr['gradientLocationMobile1'] : $bg_obj_tablet['gradientLocation1'],
-				'gradientLocation2'               => isset( $attr['gradientLocationMobile2'] ) && is_numeric( $attr['gradientLocationMobile2'] ) ? $attr['gradientLocationMobile2'] : $bg_obj_tablet['gradientLocation2'],
-				'gradientAngle'                   => isset( $attr['gradientAngleMobile'] ) && is_numeric( $attr['gradientAngleMobile'] ) ? $attr['gradientAngleMobile'] : $bg_obj_tablet['gradientAngle'],
-				'selectGradient'                  => $attr['selectGradient'],
-				'backgroundRepeat'                => $attr[ 'backgroundRepeat' . $device_type ],
-				'backgroundPosition'              => $attr[ 'backgroundPosition' . $device_type ],
-				'backgroundSize'                  => $attr[ 'backgroundSize' . $device_type ],
-				'backgroundAttachment'            => $attr[ 'backgroundAttachment' . $device_type ],
-				'backgroundImageColor'            => $attr['backgroundImageColor'],
-				'overlayType'                     => $attr['overlayType'],
-				'overlayOpacity'                  => $attr['overlayOpacity'],
-				'backgroundCustomSize'            => $attr[ 'backgroundCustomSize' . $device_type ],
-				'backgroundCustomSizeType'        => $attr['backgroundCustomSizeType'],
-				'backgroundVideo'                 => $attr['backgroundVideo'],
-				'backgroundVideoColor'            => $attr['backgroundVideoColor'],
-				'customPosition'                  => $attr['customPosition'],
-				'centralizedPosition'             => $attr['centralizedPosition'],
-				'xPosition'                       => $attr[ 'xPosition' . $device_type ],
-				'xPositionType'                   => $attr['xPositionType'],
-				'yPosition'                       => $attr[ 'yPosition' . $device_type ],
-				'yPositionType'                   => $attr['yPositionType'],
-				'backgroundOverlayImage'          => $attr[ 'backgroundOverlayImage' . $device_type ],
-				'backgroundOverlayRepeat'         => $attr[ 'backgroundRepeatOverlay' . $device_type ],
-				'backgroundOverlayPosition'       => $attr[ 'backgroundPositionOverlay' . $device_type ],
-				'backgroundOverlaySize'           => $attr[ 'backgroundSizeOverlay' . $device_type ],
-				'backgroundOverlayAttachment'     => $attr[ 'backgroundAttachmentOverlay' . $device_type ],
-				'backgroundOverlayCustomSize'     => $attr[ 'backgroundCustomSizeOverlay' . $device_type ],
-				'backgroundOverlayCustomSizeType' => $attr['backgroundCustomOverlaySizeType'],
-				'customOverlayPosition'           => $attr['customOverlayPosition'],
-				'xOverlayPosition'                => $attr[ 'xPositionOverlay' . $device_type ],
-				'xOverlayPositionType'            => $attr['xPositionOverlayType'],
-				'yOverlayPosition'                => $attr[ 'yPositionOverlay' . $device_type ],
-				'yOverlayPositionType'            => $attr['yPositionOverlayType'],
-				'blendMode'                       => $attr['overlayBlendMode'],
-				'backgroundVideoFallbackImage'    => $attr['backgroundVideoFallbackImage'],
-			);
+					$bg_obj_mobile = array(
+						'backgroundType'                  => $attr['backgroundType'],
+						'backgroundImage'                 => $mobile_bg_image,
+						'backgroundColor'                 => $attr['backgroundColor'],
+						'gradientValue'                   => $attr['gradientValue'],
+						'gradientColor1'                  => $attr['gradientColor1'],
+						'gradientColor2'                  => $attr['gradientColor2'],
+						'gradientType'                    => $attr['gradientType'],
+						'gradientLocation1'               => isset( $attr['gradientLocationMobile1'] ) && is_numeric( $attr['gradientLocationMobile1'] ) ? $attr['gradientLocationMobile1'] : $bg_obj_tablet['gradientLocation1'],
+						'gradientLocation2'               => isset( $attr['gradientLocationMobile2'] ) && is_numeric( $attr['gradientLocationMobile2'] ) ? $attr['gradientLocationMobile2'] : $bg_obj_tablet['gradientLocation2'],
+						'gradientAngle'                   => isset( $attr['gradientAngleMobile'] ) && is_numeric( $attr['gradientAngleMobile'] ) ? $attr['gradientAngleMobile'] : $bg_obj_tablet['gradientAngle'],
+						'selectGradient'                  => $attr['selectGradient'],
+						'backgroundRepeat'                => $attr[ 'backgroundRepeat' . $device_type ],
+						'backgroundPosition'              => $attr[ 'backgroundPosition' . $device_type ],
+						'backgroundSize'                  => $attr[ 'backgroundSize' . $device_type ],
+						'backgroundAttachment'            => $attr[ 'backgroundAttachment' . $device_type ],
+						'backgroundImageColor'            => $attr['backgroundImageColor'],
+						'overlayType'                     => $attr['overlayType'],
+						'overlayOpacity'                  => $attr['overlayOpacity'],
+						'backgroundCustomSize'            => $attr[ 'backgroundCustomSize' . $device_type ],
+						'backgroundCustomSizeType'        => $attr['backgroundCustomSizeType'],
+						'backgroundVideo'                 => $attr['backgroundVideo'],
+						'backgroundVideoColor'            => $attr['backgroundVideoColor'],
+						'customPosition'                  => $attr['customPosition'],
+						'centralizedPosition'             => $attr['centralizedPosition'],
+						'xPosition'                       => $attr[ 'xPosition' . $device_type ],
+						'xPositionType'                   => $attr['xPositionType'],
+						'yPosition'                       => $attr[ 'yPosition' . $device_type ],
+						'yPositionType'                   => $attr['yPositionType'],
+						'backgroundOverlayImage'          => $attr[ 'backgroundOverlayImage' . $device_type ],
+						'backgroundOverlayRepeat'         => $attr[ 'backgroundRepeatOverlay' . $device_type ],
+						'backgroundOverlayPosition'       => $attr[ 'backgroundPositionOverlay' . $device_type ],
+						'backgroundOverlaySize'           => $attr[ 'backgroundSizeOverlay' . $device_type ],
+						'backgroundOverlayAttachment'     => $attr[ 'backgroundAttachmentOverlay' . $device_type ],
+						'backgroundOverlayCustomSize'     => $attr[ 'backgroundCustomSizeOverlay' . $device_type ],
+						'backgroundOverlayCustomSizeType' => $attr['backgroundCustomOverlaySizeType'],
+						'customOverlayPosition'           => $attr['customOverlayPosition'],
+						'xOverlayPosition'                => $attr[ 'xPositionOverlay' . $device_type ],
+						'xOverlayPositionType'            => $attr['xPositionOverlayType'],
+						'yOverlayPosition'                => $attr[ 'yPositionOverlay' . $device_type ],
+						'yOverlayPositionType'            => $attr['yPositionOverlayType'],
+						'blendMode'                       => $attr['overlayBlendMode'],
+						'backgroundVideoFallbackImage'    => $attr['backgroundVideoFallbackImage'],
+					);
 
-			switch ( $device_type ) {
-				case 'Tablet':
-					$container_bg_css = self::uag_get_background_obj( $bg_obj_tablet, $overlay );
-					break;
-				case 'Mobile':
-					$container_bg_css = self::uag_get_background_obj( $bg_obj_mobile, $overlay );
-					break;
-				default:
-					$container_bg_css = self::uag_get_background_obj( $bg_obj, $overlay );
-			}
+					switch ( $device_type ) {
+						case 'Tablet':
+							$container_bg_css = self::uag_get_background_obj( $bg_obj_tablet, $overlay );
+							break;
+						case 'Mobile':
+							$container_bg_css = self::uag_get_background_obj( $bg_obj_mobile, $overlay );
+							break;
+						default:
+							$container_bg_css = self::uag_get_background_obj( $bg_obj, $overlay );
+					}
 
-			return $container_bg_css;
+					return $container_bg_css;
 		}
 
 		/**
