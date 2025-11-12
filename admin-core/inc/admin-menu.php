@@ -529,12 +529,16 @@ class Admin_Menu {
 				'plugin_installed_text'    => esc_html__( 'Installed', 'ultimate-addons-for-gutenberg' ),
 				'plugin_activating_text'   => esc_html__( 'Activating', 'ultimate-addons-for-gutenberg' ),
 				'plugin_activated_text'    => esc_html__( 'Activated', 'ultimate-addons-for-gutenberg' ),
-				'plugin_activate_text'     => esc_html__( 'Activate', 'ultimate-addons-for-gutenberg' ),
-				'plugin_manager_nonce'     => wp_create_nonce( 'spectra_plugin_manager_nonce' ),
-				'installer_nonce'          => wp_create_nonce( 'updates' ),
-				'pro_installed_status'     => 'inactive' === self::get_plugin_status( 'spectra-pro/spectra-pro.php' ) ? true : false,
-				'pro_plugin_status'        => self::get_plugin_status( 'spectra-pro/spectra-pro.php' ),
-				'contry_code'              => \UAGB_Admin_Helper::get_user_country_code(),
+				'plugin_activate_text'              => esc_html__( 'Activate', 'ultimate-addons-for-gutenberg' ),
+				'plugin_manager_nonce'              => wp_create_nonce( 'spectra_plugin_manager_nonce' ),
+				'installer_nonce'                   => wp_create_nonce( 'updates' ),
+				'enable_beta_updates_nonce'         => wp_create_nonce( 'uag_enable_beta_updates' ),
+				'check_beta_update_available_nonce' => wp_create_nonce( 'uag_check_beta_update_available' ),
+				'force_check_plugin_updates_nonce'  => wp_create_nonce( 'uag_force_check_plugin_updates' ),
+				'update_beta_plugin_nonce'          => wp_create_nonce( 'uag_update_beta_plugin' ),
+				'pro_installed_status'              => 'inactive' === self::get_plugin_status( 'spectra-pro/spectra-pro.php' ) ? true : false,
+				'pro_plugin_status'                 => self::get_plugin_status( 'spectra-pro/spectra-pro.php' ),
+				'contry_code'                       => \UAGB_Admin_Helper::get_user_country_code(),
 			)
 		);
 
