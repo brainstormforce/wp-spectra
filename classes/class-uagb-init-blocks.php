@@ -208,7 +208,10 @@ class UAGB_Init_Blocks {
 	public function render_block( $block_content, $block ) {
 		// Register block on server-side to avoid "Unregistered Block" issue. And to support WP Hide blocks feature introduce in WP 6.9.
 		$registry = WP_Block_Type_Registry::get_instance();
-		$registry->register( $block['blockName'], $block['attrs'] );
+		// Register only UAG blocks.
+		if ( ! empty( $block['blockName'] ) && strpos( $block['blockName'], 'uagb/' ) !== false ) {
+			$registry->register( $block['blockName'], $block['attrs'] );
+		}
 
 		if ( ! empty( $block['attrs']['UAGDisplayConditions'] ) ) {
 			switch ( $block['attrs']['UAGDisplayConditions'] ) {
