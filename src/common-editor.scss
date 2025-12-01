@@ -780,8 +780,14 @@ button.components-button.uagb-review-select-btn.is-secondary {
 }
 
 // WordPress 6.6 compatibility fix.
-.editor-editor-interface .interface-navigable-region.interface-interface-skeleton__footer {
-	z-index: 1000000;
+.editor-editor-interface {
+
+	.interface-navigable-region, .admin-ui-navigable-region {
+
+		&.interface-interface-skeleton__footer{
+			z-index: 1000000;
+		}
+	}
 }
 
 /* Breadcrumbs css */
