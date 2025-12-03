@@ -44,8 +44,13 @@ jobs:
           coverage: none
           tools: composer, cs2pr
 
+      - name: Set composer token
+        env:
+          COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.BSF_PRODUCTS_REPO_TOKEN }}"}}'
+          run: composer config github-oauth.github.com ${{ secrets.BSF_PRODUCTS_REPO_TOKEN }}
+
       - name: Install composer dependencies
-        run: composer config github-oauth.github.com ${{ secrets.PRIVATE_ACCESS_TOKEN }} && composer install --prefer-dist --no-suggest --no-progress
+        run: composer install --prefer-dist --no-suggest --no-progress
 
       - name: Run phpcs
         id: phpcs
