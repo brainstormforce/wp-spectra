@@ -221,7 +221,7 @@ if ( ! class_exists( 'UAGB_Block_Analytics' ) ) {
 			);
 
 			// Ensure array_combine succeeded, otherwise use empty array.
-			if ( false === $formatted_block_usage_stats ) {
+			if ( ! is_array( $formatted_block_usage_stats ) ) {
 				$formatted_block_usage_stats = array();
 			}
 

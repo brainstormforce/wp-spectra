@@ -719,14 +719,14 @@ class Common_Settings extends Ajax_Base {
 			);
 		}
 
-		// Note: Removed beta enabled check to allow dashboard notice to show
-		// Users can check for beta updates even if not enabled yet
+		// Note: Removed beta enabled check to allow dashboard notice to show.
+		// Users can check for beta updates even if not enabled yet.
 
 		// Get the beta version from WordPress.org with timeout.
 		$response = wp_remote_get(
 			'https://plugins.svn.wordpress.org/ultimate-addons-for-gutenberg/trunk/readme.txt',
 			array(
-				'timeout'   => 15,
+				'timeout'   => 15, //phpcs:ignore WordPressVIPMinimum.Performance.RemoteRequestTimeout.timeout_timeout
 				'sslverify' => true,
 			)
 		);
@@ -927,7 +927,7 @@ class Common_Settings extends Ajax_Base {
 		}
 
 		// Check if update is available.
-		if ( ! isset( $update_plugins->response[ $plugin_slug ] ) ) {
+		if ( ! is_object( $update_plugins ) || ! isset( $update_plugins->response[ $plugin_slug ] ) ) {
 			wp_send_json_error(
 				array(
 					'messsage' => __( 'No updates available to install.', 'ultimate-addons-for-gutenberg' ),
