@@ -228,7 +228,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
-### 2.19.17 - Wednesday, 3rd December 2025 ###
+### 2.19.17 - Thursday, 4th December 2025 ###
 * Improvement: Added compatibility with WordPress v6.9.
 
 ### 2.19.16 - Wednesday, 12th November 2025 ###

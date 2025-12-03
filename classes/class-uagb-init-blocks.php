@@ -210,7 +210,10 @@ class UAGB_Init_Blocks {
 		if ( ! empty( $block['blockName'] ) && strpos( $block['blockName'], 'uagb/' ) !== false ) {
 			// Register block on server-side to support WP Hide blocks feature introduce in WP 6.9.
 			$registry = WP_Block_Type_Registry::get_instance();
-			$registry->register( $block['blockName'], $block['attrs'] );
+			// Only register if the block is NOT already registered.
+			if ( ! $registry->is_registered( $block['blockName'] ) ) {
+				$registry->register( $block['blockName'], $block['attrs'] );
+			}
 		}
 
 		if ( ! empty( $block['attrs']['UAGDisplayConditions'] ) ) {
