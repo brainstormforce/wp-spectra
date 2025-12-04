@@ -166,6 +166,17 @@
 	height: auto;
 }
 
+body.version-6-9 .uagb-select-control--layout-inline .components-select-control {
+	grid-template-columns: 100%;
+
+	.components-input-base {
+		align-items: center;
+		display: grid;
+		grid-template-columns: 50% 50%;
+		gap: 0;
+	}
+}
+
 /* Tabs Pabel CSS for .uagb-size-type-field-tabs START*/
 .uagb-size-type-field-tabs .components-tab-panel__tabs {
 	display: block;
@@ -780,8 +791,15 @@ button.components-button.uagb-review-select-btn.is-secondary {
 }
 
 // WordPress 6.6 compatibility fix.
-.editor-editor-interface .interface-navigable-region.interface-interface-skeleton__footer {
-	z-index: 1000000;
+.editor-editor-interface {
+
+	.interface-navigable-region,
+	.admin-ui-navigable-region {
+
+		&.interface-interface-skeleton__footer {
+			z-index: 1000000;
+		}
+	}
 }
 
 /* Breadcrumbs css */

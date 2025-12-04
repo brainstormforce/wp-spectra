@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
-Tested up to: 6.8
-Stable tag: 2.19.16
+Tested up to: 6.9
+Stable tag: 2.19.17
 Beta tag: 3.0.0-beta.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -228,6 +228,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
+= 2.19.17 - Thursday, 4th December 2025 =
+* Improvement: Added compatibility with WordPress v6.9.
+
 = 2.19.16 - Wednesday, 12th November 2025 =
 * Improvement: Added Dashboard section to stay updated with Beta releases.
 * Fix: Slider - Resolved an issue wherein slider background image not applying in small devices when overlay color is set
@@ -239,58 +242,6 @@ Please make sure you are using the latest version on your website.
 
 = 2.19.14 - Wednesday, 17th September 2025 =
 * Fix: Removed unused dependencies from the Block Stats Processor.
-
-= 2.19.13 - Wednesday, 17th September 2025 =
-* Improvement: Popup Builder – Improved popup creation through REST with role flexibility.
-
-= 2.19.12 - Wednesday, 3rd September 2025 =
-* Improvement: Info Box - Alignment options now hide smartly based on icon/image settings.
-* Fix: Post - Corrected behavior where invalid pagination on single posts prevented expected redirects.
-* Fix: Global - Resolved a conflict where editor upsell assets were interfering with the SureCart price selector block.
-
-= 2.19.11 - Tuesday, 15th July 2025 =
-* Fix: Buttons - Resolved an issue wherein the  gap between buttons would not work as intended for mobile.
-* Fix: Container - Resolved an issue wherein the advanced gradient locations 1 & 2 would not be applied on mobile & tablet.
-
-= 2.19.10 - Tuesday, 17th June 2025 =
-* Updated the Zip AI Library.
-
-= 2.19.9 - Thursday, 1st May 2025 =
-* Improvement: Added a WP-CLI command for regenerate the assets.
-
-= 2.19.8 - Monday, 28th April 2025 =
-* Fix: Container - Resolved an issue where dynamic content fallback images were not being properly applied in the frontend.
-* Fix: File Generation documentation link now redirects correctly instead of showing a 404 error.
-
-= 2.19.7 - Wednesdays, 16th April 2025 =
-* Improvement: Added compatibility with WordPress v6.8.
-* Fix: Tabs - Resolved an issue where the tabs block headers, was not translatable.
-* Global: Removed the Spectra banner from the editor based on user feedback to provide a cleaner editing experience.
-
-= 2.19.6 - Thursday, 10th April 2025 =
-* Updated the Zip AI Library.
-
-= 2.19.5 - Monday, 31st March 2025 =
-* Improvement: Improved code quality.
-* Fix: Image Gallery - Resolved an issue wherein lightbox functionality was broken when Imagify's Next-Gen format option enabled.
-* Fix: Global - Optimized block ID processing logic to prevent `Allowed memory size` errors when nesting patterns.
-* Fix: Global - Resolved an issue where custom CSS for background images was not applying correctly on the frontend.
-* Fix: Global - Resolved an issue wherein assets were not loading in SureCart's template parts.
-
-= 2.19.4 - Tuesday, 18th March 2025 =
-* Updated the Astra Notices Library.
-* Fix: Popup Builder - Resolved an issue wherein the Popup Builder pattern was giving block encountered error message.
-
-= 2.19.3 - Tuesday, 11th March 2025 =
-* This update addressed a security bug. Please make sure you are using the latest version on your website.
-* Fix: Resolved the asset loading conflict in the SureForms editor.
-
-= 2.19.2 - Monday, 10th March 2025 =
-* Improvement: Lottie - Added help text to inform users about the `ALLOW_UNFILTERED_UPLOADS` constant for JSON file uploads.
-* Fix: Forms - Resolved an issue wherein the submit button hover background color is not working as intended on frontend.
-* Fix: Popup Builder - Resolved an issue wherein the popup builder page in the admin dashboard throws a console error.
-* Fix: Post Masonry - Resolved an issue wherein the Post Masonry block was getting a block recovery issue.
-* Fix: Global - Resolved an issue where the Pro installation was not detected when WPML CMS was active.
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 

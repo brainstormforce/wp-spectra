@@ -6,3 +6,5 @@ define( 'UAGB_VER', '' );
 define( 'UAGB_ASSET_VER', '' );
 define( 'UAGB_DIR', '' );
 define( 'UAGB_URL', '' );
+define( 'UAGB_BASE', '' );
+define( 'WP_PLUGIN_DIR', '' );

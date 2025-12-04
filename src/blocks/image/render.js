@@ -1,7 +1,7 @@
 import { useLayoutEffect, memo, useEffect, useState, useRef } from '@wordpress/element';
 import classnames from 'classnames';
 import { isBlobURL, getBlobByURL, revokeBlobURL } from '@wordpress/blob';
-import { ToolbarButton } from '@wordpress/components';
+import { ToolbarButton, Placeholder } from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { upload } from '@wordpress/icons';
 import {
@@ -9,7 +9,6 @@ import {
 	store as blockEditorStore,
 	BlockIcon,
 	MediaPlaceholder,
-	useBlockProps,
 	__experimentalImageURLInputUI as ImageURLInputUI,
 } from '@wordpress/block-editor';
 import { store as coreStore } from '@wordpress/core-data';
@@ -403,9 +402,55 @@ const Render = ( props ) => {
 		setAttributes( props );
 	}
 
-	const blockProps = useBlockProps( {
+	// Create custom placeholder following core image block pattern.
+	const placeholder = ( content ) => {
+		return (
+			<Placeholder
+				className={ classnames( 'block-editor-media-placeholder', {
+					'is-appender': false,
+				} ) }
+				icon={ <BlockIcon icon={ UAGB_Block_Icons.image } /> }
+				label={ __( 'Image', 'ultimate-addons-for-gutenberg' ) }
+				instructions={ __(
+					'Upload an image file, pick one from your media library, or add one with a URL.',
+					'ultimate-addons-for-gutenberg'
+				) }
+				style={ {
+					// Inherit styles for responsive behavior
+					aspectRatio: 'inherit',
+					width: '100%',
+					height: 'inherit',
+				} }
+			>
+				{ content }
+			</Placeholder>
+		);
+	};
+
+	const blockProps = {
 		ref,
-	} );
+		className: `${className} uagb-editor-preview-mode-${deviceType.toLowerCase()} uagb-block-${block_id} wp-block-uagb-image--layout-${layout} wp-block-uagb-image--effect-${imageHoverEffect} wp-block-uagb-image--align-${align ? align : 'none'}`,
+	};
+
+	if ( !( temporaryURL || url ) ) {
+		return (
+			<div className='wp-block-uagb-image uagb-image-placeholder-wrapper'>
+				<MediaPlaceholder
+					icon={<BlockIcon icon={UAGB_Block_Icons.image} />}
+					onSelect={onSelectImage}
+					onSelectURL={onSelectURL}
+					onError={onUploadError}
+					onClose={onCloseModal}
+					placeholder={placeholder}
+					accept="image/*"
+					allowedTypes={ALLOWED_MEDIA_TYPES}
+					value={{ id, src }}
+					mediaPreview={mediaPreview}
+					disableMediaButtons={temporaryURL || url}
+				/>
+			</div>
+		);
+	}
 
 	return (
 		<>
@@ -426,14 +471,6 @@ const Render = ( props ) => {
 			</BlockControls>
 			<div
 				{ ...blockProps }
-				className={ classnames(
-					className,
-					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-					`uagb-block-${ block_id }`,
-					`wp-block-uagb-image--layout-${ layout }`,
-					`wp-block-uagb-image--effect-${ imageHoverEffect }`,
-					`wp-block-uagb-image--align-${ align ? align : 'none' }`
-				) }
 			>
 				{ ( temporaryURL || url ) && (
 					<figure className="wp-block-uagb-image__figure">
@@ -461,25 +498,6 @@ const Render = ( props ) => {
 						/>
 					</figure>
 				) }
-				<MediaPlaceholder
-					icon={ <BlockIcon icon={ UAGB_Block_Icons.image } /> }
-					labels={ {
-						title: __( 'Image', 'ultimate-addons-for-gutenberg' ),
-						instructions: __(
-							'Upload an image file, pick one from your media library, or add one with a URL.',
-							'ultimate-addons-for-gutenberg'
-						),
-					} }
-					onSelect={ onSelectImage }
-					onSelectURL={ onSelectURL }
-					onError={ onUploadError }
-					onClose={ onCloseModal }
-					accept="image/*"
-					allowedTypes={ ALLOWED_MEDIA_TYPES }
-					value={ { id, src } }
-					mediaPreview={ mediaPreview }
-					disableMediaButtons={ temporaryURL || url }
-				/>
 			</div>
 		</>
 	);
