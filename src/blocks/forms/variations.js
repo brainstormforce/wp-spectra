@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 
-import { __experimentalBlockVariationPicker as BlockVariationPicker, useBlockProps } from '@wordpress/block-editor';
+import { __experimentalBlockVariationPicker as BlockVariationPicker } from '@wordpress/block-editor';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import { __ } from '@wordpress/i18n';
 import { useDispatch } from '@wordpress/data';
@@ -121,7 +121,7 @@ export const VariationPicker = ( props ) => {
 	};
 
 	return (
-		<div {...useBlockProps()} className="uagb-forms-variations uagb-variation-picker uagb-variation-picker--fill">
+		<div className="uagb-forms-variations uagb-variation-picker uagb-variation-picker--fill">
 			<BlockVariationPicker
 				icon={ UAGB_Block_Icons.forms }
 				label={ __( 'Forms', 'ultimate-addons-for-gutenberg' ) }

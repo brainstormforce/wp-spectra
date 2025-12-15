@@ -217,6 +217,8 @@ class UAGB_Post_Assets {
 	 * @param int $post_id Post ID.
 	 */
 	public function __construct( $post_id ) {
+		// Reset seen refs for each new post.
+		self::$seen_refs = array();
 
 		$this->post_id = intval( $post_id );
 
@@ -1236,33 +1238,38 @@ class UAGB_Post_Assets {
 		if ( isset( $block['innerBlocks'] ) ) {
 			foreach ( $block['innerBlocks'] as $j => $inner_block ) {
 				if ( 'core/block' === $inner_block['blockName'] ) {
-					$id            = ( isset( $inner_block['attrs']['ref'] ) ) ? $inner_block['attrs']['ref'] : 0;
-					$is_block_seen = in_array( $id, self::$seen_refs, true );
-					if ( $id && ! $is_block_seen ) {
-						self::$seen_refs[] = $id;
-						$assets            = $this->get_assets_using_post_content( $id );
-						if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
-							$reuse_block_css             = array(
-								'desktop' => '',
-								'tablet'  => '',
-								'mobile'  => '',
-							);
-							$reuse_block_css['desktop'] .= $assets['css'];
-							$css                         = $this->merge_array_string_values( $css, $reuse_block_css );
-							$js                         .= $assets['js'];
-						} else {
-							$this->stylesheet .= $assets['css'];
-							$this->script     .= $assets['js'];
+					$id = ( isset( $inner_block['attrs']['ref'] ) ) ? $inner_block['attrs']['ref'] : 0;
+					if ( $id ) {
+						// Check if we've already processed this block ID to prevent infinite recursion.
+						if ( ! in_array( $id, self::$seen_refs, true ) ) {
+							self::$seen_refs[] = $id;
+							$assets            = $this->get_assets_using_post_content( $id );
+							if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
+								$reuse_block_css             = array(
+									'desktop' => '',
+									'tablet'  => '',
+									'mobile'  => '',
+								);
+								$reuse_block_css['desktop'] .= $assets['css'];
+								$css                         = $this->merge_array_string_values( $css, $reuse_block_css );
+								$js                         .= $assets['js'];
+							} else {
+								$this->stylesheet .= $assets['css'];
+								$this->script     .= $assets['js'];
+							}
 						}
 					}
 				} elseif ( 'core/template-part' === $inner_block['blockName'] ) {
-					$id            = $this->get_fse_template_part( $inner_block );
-					$is_block_seen = in_array( $id, self::$seen_refs, true );
-					if ( $id && ! $is_block_seen ) {
-						self::$seen_refs[] = $id;
-						$assets            = $this->get_assets_using_post_content( $id );
-						$this->stylesheet .= $assets['css'];
-						$this->script     .= $assets['js'];
+					$id = $this->get_fse_template_part( $inner_block );
+
+					if ( $id ) {
+						// Check if we've already processed this template part ID.
+						if ( ! in_array( $id, self::$seen_refs, true ) ) {
+							self::$seen_refs[] = $id;
+							$assets            = $this->get_assets_using_post_content( $id );
+							$this->stylesheet .= $assets['css'];
+							$this->script     .= $assets['js'];
+						}
 					}
 				} else {
 					// Get CSS for the Block.
@@ -1416,6 +1423,8 @@ class UAGB_Post_Assets {
 	 * @since 2.0.0
 	 */
 	public function common_function_for_assets_preparation( $post_content ) {
+		// Reset seen refs for each new content processing.
+		self::$seen_refs = array();
 
 		$blocks = $this->parse_blocks( $post_content );
 
@@ -1450,18 +1459,6 @@ class UAGB_Post_Assets {
 
 		$this->stylesheet .= $assets['css'];
 		$this->script     .= $assets['js'];
-
-		// Check if self::$seen_refs is not empty before iterating.
-		if ( ! empty( self::$seen_refs ) ) {
-			foreach ( self::$seen_refs as $ref_id ) {
-				// Retrieve the CSS and JS assets for the given post content reference ID.
-				$assets = $this->get_assets_using_post_content( $ref_id );
-
-				// Append the retrieved CSS and JS to the existing stylesheet and script properties.
-				$this->stylesheet .= $assets['css'];
-				$this->script     .= $assets['js'];
-			}
-		}
 
 		// Update fonts.
 		$this->gfonts = array_merge( $this->gfonts, UAGB_Helper::$gfonts );
@@ -1508,12 +1505,12 @@ class UAGB_Post_Assets {
 	 * @since 2.4.1
 	 */
 	public function get_assets_using_post_content( $id ) {
+		// Add to seen refs to prevent processing the same block multiple times.
+		self::$seen_refs[] = $id;
 
-		$content = get_post_field( 'post_content', $id );
-
+		$content         = get_post_field( 'post_content', $id );
 		$reusable_blocks = $this->parse_blocks( $content );
-
-		$assets = $this->get_blocks_assets( $reusable_blocks );
+		$assets          = $this->get_blocks_assets( $reusable_blocks );
 
 		return $assets;
 	}
@@ -1525,6 +1522,7 @@ class UAGB_Post_Assets {
 	 * @since 1.1.0
 	 */
 	public function get_blocks_assets( $blocks ) {
+		// Ensure we're not processing the same blocks repeatedly.
 		$static_and_dynamic_assets = $this->get_static_and_dynamic_assets( $blocks );
 		return array(
 			'css' => $static_and_dynamic_assets['static'] . $static_and_dynamic_assets['dynamic'],
@@ -1559,23 +1557,26 @@ class UAGB_Post_Assets {
 				}
 
 				if ( 'core/block' === $block['blockName'] ) {
-					$id            = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
-					$is_block_seen = in_array( $id, self::$seen_refs, true );
+					$id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
 
-					if ( $id && ! $is_block_seen ) {
-						self::$seen_refs[] = $id;
-						$assets            = $this->get_assets_using_post_content( $id );
-						$this->stylesheet .= $assets['css'];
-						$this->script     .= $assets['js'];
+					if ( $id ) {
+						// Check if we've already processed this block ID.
+						if ( ! in_array( $id, self::$seen_refs, true ) ) {
+							$assets            = $this->get_assets_using_post_content( $id );
+							$this->stylesheet .= $assets['css'];
+							$this->script     .= $assets['js'];
+						}
 					}
 				} elseif ( 'core/template-part' === $block['blockName'] ) {
-					$id            = $this->get_fse_template_part( $block );
-					$is_block_seen = in_array( $id, self::$seen_refs, true );
-					if ( $id && ! $is_block_seen ) {
-						self::$seen_refs[] = $id;
-						$assets            = $this->get_assets_using_post_content( $id );
-						$block_css        .= $assets['css'];
-						$js               .= $assets['js'];
+					$id = $this->get_fse_template_part( $block );
+
+					if ( $id ) {
+						// Check if we've already processed this template part ID.
+						if ( ! in_array( $id, self::$seen_refs, true ) ) {
+							$assets     = $this->get_assets_using_post_content( $id );
+							$block_css .= $assets['css'];
+							$js        .= $assets['js'];
+						}
 					}
 				} elseif ( 'core/pattern' === $block['blockName'] ) {
 					$get_assets = $this->get_core_pattern_assets( $block );
@@ -1862,6 +1863,8 @@ class UAGB_Post_Assets {
 	 * @return array of Static and dynamic css and js.
 	 */
 	public function get_static_and_dynamic_css( $post_id ) {
+		// Reset seen refs for each new post processing.
+		self::$seen_refs = array();
 
 		$this_post = get_post( $post_id );
 

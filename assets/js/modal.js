@@ -71,6 +71,10 @@ window.UAGBModal = {
 
 					if ( 'disable' !== closeOverlayClick ) {
 						innerModal.addEventListener( 'click', function ( e ) {
+							// Don't close modal if clicking on buttons or form elements
+							if ( e.target.matches( 'button, input[type="submit"], input[type="button"]' ) || e.target.closest( 'button' ) ) {
+								return;
+							}
 							if (
 								'enable' === closeOverlayClick &&
 								innerModal.classList.contains( 'active' ) &&

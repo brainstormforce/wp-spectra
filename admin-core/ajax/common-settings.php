@@ -56,6 +56,9 @@ class Common_Settings extends Ajax_Base {
 
 		$ajax_events = array(
 			'enable_beta_updates',
+			'check_beta_update_available',
+			'force_check_plugin_updates',
+			'update_beta_plugin',
 			'enable_file_generation',
 			'regenerate_assets',
 			'enable_templates_button',
@@ -683,6 +686,323 @@ class Common_Settings extends Ajax_Base {
 		$this->check_permission_nonce( 'uag_enable_beta_updates' );
 		$value = $this->check_post_value();
 		$this->save_admin_settings( 'uagb_beta', sanitize_text_field( $value ) );
+
+		// If enabling beta updates, clear update transients to force a fresh check.
+		if ( 'yes' === $value ) {
+			delete_site_transient( 'update_plugins' );
+			delete_transient( 'update_plugins' );
+
+			// Delete the beta version transient.
+			$transient_key = md5( 'uagb_beta_testers_response_key' );
+			delete_site_transient( $transient_key );
+
+			// Trigger WordPress to check for updates.
+			wp_update_plugins();
+		}
+	}
+
+	/**
+	 * Check if beta update is available.
+	 *
+	 * @since 2.19.16
+	 * @return void
+	 */
+	public function check_beta_update_available() {
+		$this->check_permission_nonce( 'uag_check_beta_update_available' );
+
+		// Validate required constants exist.
+		if ( ! defined( 'UAGB_VER' ) ) {
+			wp_send_json_error(
+				array(
+					'messsage' => __( 'Plugin version not defined.', 'ultimate-addons-for-gutenberg' ),
+				)
+			);
+		}
+
+		// Note: Removed beta enabled check to allow dashboard notice to show.
+		// Users can check for beta updates even if not enabled yet.
+
+		// Get the beta version from WordPress.org with timeout.
+		$response = wp_remote_get(
+			'https://plugins.svn.wordpress.org/ultimate-addons-for-gutenberg/trunk/readme.txt',
+			array(
+				'timeout'   => 15, //phpcs:ignore WordPressVIPMinimum.Performance.RemoteRequestTimeout.timeout_timeout
+				'sslverify' => true,
+			)
+		);
+
+		if ( is_wp_error( $response ) ) {
+			wp_send_json_error(
+				array(
+					'messsage' => __( 'Unable to check for beta updates.', 'ultimate-addons-for-gutenberg' ),
+				)
+			);
+		}
+
+		// Validate response status code.
+		$response_code = wp_remote_retrieve_response_code( $response );
+		if ( 200 !== $response_code ) {
+			wp_send_json_error(
+				array(
+					'messsage' => __( 'Unable to check for beta updates.', 'ultimate-addons-for-gutenberg' ),
+				)
+			);
+		}
+
+		$beta_version = 'false';
+		$body         = wp_remote_retrieve_body( $response );
+
+		if ( ! empty( $body ) && is_string( $body ) ) {
+			preg_match( '/Beta tag:\s*([0-9.]+)/i', $body, $matches );
+			if ( isset( $matches[1] ) ) {
+				$beta_version = sanitize_text_field( trim( $matches[1] ) );
+				// Validate version format (x.x.x or x.x.x-beta.x).
+				if ( ! preg_match( '/^[0-9]+\.[0-9]+(\.[0-9]+)?(-[a-z0-9.]+)?$/i', $beta_version ) ) {
+					$beta_version = 'false';
+				}
+			}
+		}
+
+		$current_version = sanitize_text_field( UAGB_VER );
+
+		// Compare with current version.
+		if ( 'false' !== $beta_version && version_compare( $beta_version, $current_version, '>' ) ) {
+			wp_send_json_success(
+				array(
+					'has_update'      => true,
+					'beta_version'    => $beta_version,
+					'current_version' => $current_version,
+					'messsage'        => sprintf(
+						// Translators: %1$s is the beta version number, %2$s is the current version.
+						__( 'Beta version %1$s is available (current: %2$s).', 'ultimate-addons-for-gutenberg' ),
+						esc_html( $beta_version ),
+						esc_html( $current_version )
+					),
+				)
+			);
+		} else {
+			wp_send_json_success(
+				array(
+					'has_update'      => false,
+					'current_version' => $current_version,
+					'messsage'        => __( 'You are running the latest version.', 'ultimate-addons-for-gutenberg' ),
+				)
+			);
+		}
+	}
+
+	/**
+	 * Force check for plugin updates.
+	 *
+	 * @since 2.19.16
+	 * @return void
+	 */
+	public function force_check_plugin_updates() {
+		$this->check_permission_nonce( 'uag_force_check_plugin_updates' );
+
+		// Validate required constants exist.
+		if ( ! defined( 'UAGB_BASE' ) ) {
+			wp_send_json_error(
+				array(
+					'messsage' => __( 'Plugin identifier not defined.', 'ultimate-addons-for-gutenberg' ),
+				)
+			);
+		}
+
+		// Delete the update transients to force a fresh check.
+		delete_site_transient( 'update_plugins' );
+		delete_transient( 'update_plugins' );
+
+		// Delete the beta version transient.
+		$transient_key = md5( 'uagb_beta_testers_response_key' );
+		delete_site_transient( $transient_key );
+
+		// Trigger WordPress to check for updates.
+		wp_update_plugins();
+
+		// Get the update information.
+		$update_plugins = get_site_transient( 'update_plugins' );
+		$plugin_slug    = UAGB_BASE;
+
+		// Validate transient structure.
+		if ( ! is_object( $update_plugins ) || ! isset( $update_plugins->response ) || ! is_array( $update_plugins->response ) ) {
+			wp_send_json_success(
+				array(
+					'has_update' => false,
+					'messsage'   => __( 'No updates available.', 'ultimate-addons-for-gutenberg' ),
+				)
+			);
+			return;
+		}
+
+		if ( isset( $update_plugins->response[ $plugin_slug ] ) && is_object( $update_plugins->response[ $plugin_slug ] ) ) {
+			$update_info = $update_plugins->response[ $plugin_slug ];
+
+			// Validate update info has required properties.
+			$new_version = isset( $update_info->new_version ) ? sanitize_text_field( $update_info->new_version ) : '';
+			$package     = isset( $update_info->package ) ? esc_url_raw( $update_info->package ) : '';
+
+			if ( empty( $new_version ) ) {
+				wp_send_json_success(
+					array(
+						'has_update' => false,
+						'messsage'   => __( 'No updates available.', 'ultimate-addons-for-gutenberg' ),
+					)
+				);
+				return;
+			}
+
+			wp_send_json_success(
+				array(
+					'has_update'  => true,
+					'new_version' => $new_version,
+					'package'     => $package,
+					'update_url'  => esc_url( admin_url( 'plugins.php' ) ),
+					'messsage'    => sprintf(
+						// Translators: %s is the new version number.
+						__( 'Update available: %s', 'ultimate-addons-for-gutenberg' ),
+						esc_html( $new_version )
+					),
+				)
+			);
+		} else {
+			wp_send_json_success(
+				array(
+					'has_update' => false,
+					'messsage'   => __( 'No updates available.', 'ultimate-addons-for-gutenberg' ),
+				)
+			);
+		}
+	}
+
+	/**
+	 * Update the beta plugin automatically.
+	 *
+	 * @since 2.19.16
+	 * @return void
+	 */
+	public function update_beta_plugin() {
+		$this->check_permission_nonce( 'uag_update_beta_plugin' );
+
+		// Validate required constants and user capabilities.
+		if ( ! defined( 'UAGB_BASE' ) ) {
+			wp_send_json_error(
+				array(
+					'messsage' => __( 'Plugin identifier not defined.', 'ultimate-addons-for-gutenberg' ),
+				)
+			);
+		}
+
+		// Check if user has permission to update plugins.
+		if ( ! current_user_can( 'update_plugins' ) ) {
+			wp_send_json_error(
+				array(
+					'messsage' => __( 'You do not have permission to update plugins.', 'ultimate-addons-for-gutenberg' ),
+				)
+			);
+		}
+
+		// Delete the update transients to force a fresh check.
+		delete_site_transient( 'update_plugins' );
+		delete_transient( 'update_plugins' );
+
+		// Delete the beta version transient.
+		$transient_key = md5( 'uagb_beta_testers_response_key' );
+		delete_site_transient( $transient_key );
+
+		// Trigger WordPress to check for updates.
+		wp_update_plugins();
+
+		// Get the update information.
+		$update_plugins = get_site_transient( 'update_plugins' );
+		$plugin_slug    = UAGB_BASE;
+
+		// Validate transient structure.
+		if ( ! is_object( $update_plugins ) || ! isset( $update_plugins->response ) || ! is_array( $update_plugins->response ) ) {
+			wp_send_json_error(
+				array(
+					'messsage' => __( 'No updates available to install.', 'ultimate-addons-for-gutenberg' ),
+				)
+			);
+		}
+
+		// Check if update is available.
+		if ( ! is_object( $update_plugins ) || ! isset( $update_plugins->response[ $plugin_slug ] ) ) {
+			wp_send_json_error(
+				array(
+					'messsage' => __( 'No updates available to install.', 'ultimate-addons-for-gutenberg' ),
+				)
+			);
+		}
+
+		// Check if plugin is currently active.
+		$was_active = is_plugin_active( $plugin_slug );
+
+		// Include required WordPress files for plugin update.
+		require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		require_once ABSPATH . 'wp-admin/includes/file.php';
+		require_once ABSPATH . 'wp-admin/includes/misc.php';
+
+		// Create a custom skin to suppress output.
+		$skin = new \WP_Ajax_Upgrader_Skin();
+
+		// Create the upgrader instance.
+		$upgrader = new \Plugin_Upgrader( $skin );
+
+		// Perform the plugin update.
+		$result = $upgrader->upgrade( $plugin_slug );
+
+		// Check if update was successful.
+		if ( is_wp_error( $result ) ) {
+			wp_send_json_error(
+				array(
+					'messsage' => sprintf(
+						// Translators: %s is the error message.
+						__( 'Update failed: %s', 'ultimate-addons-for-gutenberg' ),
+						$result->get_error_message()
+					),
+				)
+			);
+		} elseif ( false === $result ) {
+			wp_send_json_error(
+				array(
+					'messsage' => __( 'Update failed. Please try again or update manually from the plugins page.', 'ultimate-addons-for-gutenberg' ),
+				)
+			);
+		}
+
+		// Reactivate the plugin if it was active before.
+		if ( $was_active ) {
+			$activate_result = activate_plugin( $plugin_slug );
+			if ( is_wp_error( $activate_result ) ) {
+				wp_send_json_error(
+					array(
+						'messsage' => sprintf(
+							// Translators: %s is the error message.
+							__( 'Plugin updated but reactivation failed: %s', 'ultimate-addons-for-gutenberg' ),
+							$activate_result->get_error_message()
+						),
+					)
+				);
+			}
+		}
+
+		// Get the new version after update.
+		$plugin_data = get_plugin_data( WP_PLUGIN_DIR . '/' . $plugin_slug );
+		$new_version = isset( $plugin_data['Version'] ) ? $plugin_data['Version'] : '';
+
+		wp_send_json_success(
+			array(
+				'messsage'    => sprintf(
+					// Translators: %s is the new version number.
+					__( 'Successfully updated to version %s!', 'ultimate-addons-for-gutenberg' ),
+					esc_html( $new_version )
+				),
+				'new_version' => $new_version,
+				'reload'      => true,
+			)
+		);
 	}
 
 	/**

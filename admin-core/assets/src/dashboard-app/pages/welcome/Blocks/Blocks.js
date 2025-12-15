@@ -29,7 +29,7 @@ const Blocks = () => {
 			icon: UAGB_Block_Icons.register,
 			is_pro: true,
 			is_active: false,
-			link: 'registration-form'
+			link: 'registration-form-legacy'
 		},
 		{
 			title: __( 'Instagram Feed', 'ultimate-addons-for-gutenberg' ),
@@ -37,7 +37,7 @@ const Blocks = () => {
 			icon: UAGB_Block_Icons[ 'instagram-feed' ],
 			is_pro: true,
 			is_active: false,
-			link: 'instagram-feed'
+			link: 'instagram-feed-legacy'
 		},
 		{
 			title: __( 'Loop Builder', 'ultimate-addons-for-gutenberg' ),
@@ -45,7 +45,7 @@ const Blocks = () => {
 			icon: UAGB_Block_Icons[ 'loop-builder' ],
 			is_pro: true,
 			is_active: false,
-			link: 'loop-builder'
+			link: 'advanced-loop-builder-legacy'
 		},
 		{
 			title: __( 'Dynamic Content', 'ultimate-addons-for-gutenberg' ),
@@ -53,7 +53,7 @@ const Blocks = () => {
 			icon: UAGB_Block_Icons[ 'dynamic-content' ],
 			is_pro: true,
 			is_active: false,
-			link: 'dynamic-content'
+			link: 'dynamic-content-legacy'
 		},
 		{
 			title: __( 'FAQ', 'ultimate-addons-for-gutenberg' ),
@@ -61,7 +61,7 @@ const Blocks = () => {
 			icon: UAGB_Block_Icons.faq,
 			is_pro: false,
 			is_active: true,
-			link: 'faq'
+			link: 'faq-schema-legacy'
 		},
 		{
 			title: __( 'Counter', 'ultimate-addons-for-gutenberg' ),
@@ -69,7 +69,7 @@ const Blocks = () => {
 			icon: UAGB_Block_Icons.counter,
 			is_pro: false,
 			is_active: true,
-			link: 'counter'
+			link: 'counter-legacy'
 		},
 		{
 			title: __( 'Slider', 'ultimate-addons-for-gutenberg' ),
@@ -77,7 +77,7 @@ const Blocks = () => {
 			icon: UAGB_Block_Icons.slider,
 			is_pro: false,
 			is_active: true,
-			link: 'slider'
+			link: 'slider-legacy'
 		},
 		{
 			title: __( 'Modal', 'ultimate-addons-for-gutenberg' ),
@@ -85,7 +85,7 @@ const Blocks = () => {
 			icon: UAGB_Block_Icons.modal,
 			is_pro: false,
 			is_active: true,
-			link: 'modal'
+			link: 'modal-legacy'
 		},
 		{
 			title: __( 'Tabs', 'ultimate-addons-for-gutenberg' ),
@@ -93,7 +93,7 @@ const Blocks = () => {
 			icon: UAGB_Block_Icons.tabs,
 			is_pro: false,
 			is_active: true,
-			link: 'tabs'
+			link: 'tabs-legacy'
 		},
 		{
 			title: __( 'Image Gallery', 'ultimate-addons-for-gutenberg' ),
@@ -101,7 +101,7 @@ const Blocks = () => {
 			icon: UAGB_Block_Icons[ 'image-gallery' ],
 			is_pro: false,
 			is_active: true,
-			link: 'image-gallery'
+			link: 'image-gallery-legacy'
 		},
 		{
 			title: __( 'Animations', 'ultimate-addons-for-gutenberg' ),
@@ -109,7 +109,7 @@ const Blocks = () => {
 			icon: UAGB_Block_Icons[ 'animations-extension' ],
 			is_pro: false,
 			is_active: true,
-			link: 'animations'
+			link: 'animations-legacy'
 		},
 	];
 

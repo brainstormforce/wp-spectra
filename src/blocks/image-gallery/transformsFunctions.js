@@ -58,16 +58,16 @@ export const pickRelevantMediaFiles = ( image, thumbnailSize, mediumSize, largeS
     // Populate image properties
     imageProps.alt = get( image, ['alt_text'] ) || get( image, ['alt'] ) || '';
     imageProps.caption = image?.caption?.raw || '';
-    imageProps.url = image.url || image.source_url;
-    imageProps.mime = image.mime_type;
-    imageProps.type = image.media_type;
+    imageProps.url = image?.url || image?.source_url;
+    imageProps.mime = image?.mime_type;
+    imageProps.type = image?.media_type;
     imageProps.link = image?.link || '';
-    imageProps.subtype = image.mime_type.split( '/' )[1];
+    imageProps.subtype = image?.mime_type?.split( '/' )[1];
   
     sizes.thumbnail = {
       height: get( image, ['sizes', thumbnailSize, 'height'] ) || get( image, ['media_details', 'sizes', thumbnailSize, 'height'] ) || undefined,
       width: get( image, ['sizes', thumbnailSize, 'width'] ) || get( image, ['media_details', 'sizes', thumbnailSize, 'width'] ) || undefined,
-      url: get( image, ['sizes', thumbnailSize, 'url'] ) || get( image, ['media_details', 'sizes', thumbnailSize, 'source_url'] ) || oldThumbnailSize || image.url || image.source_url,
+      url: get( image, ['sizes', thumbnailSize, 'url'] ) || get( image, ['media_details', 'sizes', thumbnailSize, 'source_url'] ) || oldThumbnailSize || image?.url || image?.source_url,
       orientation: getOrientation(
         get( image, ['media_details', 'sizes', thumbnailSize, 'width'] ),
         get( image, ['media_details', 'sizes', thumbnailSize, 'height'] )
@@ -77,7 +77,7 @@ export const pickRelevantMediaFiles = ( image, thumbnailSize, mediumSize, largeS
     sizes.medium = {
       height: get( image, ['sizes', mediumSize, 'height'] ) || get( image, ['media_details', 'sizes', mediumSize, 'height'] ) || undefined,
       width: get( image, ['sizes', mediumSize, 'width'] ) || get( image, ['media_details', 'sizes', mediumSize, 'width'] ) || undefined,
-      url: get( image, ['sizes', mediumSize, 'url'] ) || get( image, ['media_details', 'sizes', mediumSize, 'source_url'] ) || oldMediumSize || image.url || image.source_url,
+      url: get( image, ['sizes', mediumSize, 'url'] ) || get( image, ['media_details', 'sizes', mediumSize, 'source_url'] ) || oldMediumSize || image?.url || image?.source_url,
       orientation: getOrientation(
         get( image, ['media_details', 'sizes', mediumSize, 'width'] ),
         get( image, ['media_details', 'sizes', mediumSize, 'height'] )
@@ -87,7 +87,7 @@ export const pickRelevantMediaFiles = ( image, thumbnailSize, mediumSize, largeS
     sizes.large = {
       height: get( image, ['sizes', largeSize, 'height'] ) || get( image, ['media_details', 'sizes', largeSize, 'height'] ) || undefined,
       width: get( image, ['sizes', largeSize, 'width'] ) || get( image, ['media_details', 'sizes', largeSize, 'width'] ) || undefined,
-      url: get( image, ['sizes', largeSize, 'url'] ) || get( image, ['media_details', 'sizes', largeSize, 'source_url'] ) || oldLargeSize || image.url || image.source_url,
+      url: get( image, ['sizes', largeSize, 'url'] ) || get( image, ['media_details', 'sizes', largeSize, 'source_url'] ) || oldLargeSize || image?.url || image?.source_url,
       orientation: getOrientation(
         get( image, ['media_details', 'sizes', largeSize, 'width'] ),
         get( image, ['media_details', 'sizes', largeSize, 'height'] )
@@ -95,7 +95,7 @@ export const pickRelevantMediaFiles = ( image, thumbnailSize, mediumSize, largeS
     };
   
     sizes.full = {
-      url: get( image, ['sizes', fullSize, 'url'] ) || get( image, ['media_details', 'sizes', fullSize, 'source_url'] ) || image.url || image.source_url,
+      url: get( image, ['sizes', fullSize, 'url'] ) || get( image, ['media_details', 'sizes', fullSize, 'source_url'] ) || image?.url || image?.source_url,
       height: get( image, ['sizes', fullSize, 'height'] ) || get( image, ['media_details', 'sizes', fullSize, 'height'] ) || undefined,
       width: get( image, ['sizes', fullSize, 'width'] ) || get( image, ['media_details', 'sizes', fullSize, 'width'] ) || undefined,
       orientation: getOrientation(

@@ -10,11 +10,11 @@ import UAGMediaPicker from '@Components/image';
 import UAGTabsControl from '@Components/tabs';
 import { InspectorControls, BlockControls, MediaReplaceFlow } from '@wordpress/block-editor';
 
-import { ToggleControl, ToolbarGroup, Icon, ExternalLink } from '@wordpress/components';
+import { ToggleControl, ToolbarGroup, Icon } from '@wordpress/components';
 
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
 import UAGTextControl from '@Components/text-control';
-import { memo } from '@wordpress/element';
+import { memo, createInterpolateElement } from '@wordpress/element';
 
 const Settings = ( props ) => {
 
@@ -56,23 +56,23 @@ const Settings = ( props ) => {
 	const controlsSettings = (
 		<>
 			<UAGAdvancedPanelBody title={ __( 'General', 'ultimate-addons-for-gutenberg' ) } initialOpen={ true }>
-				<p className="uagb-form-notice">
-					{
-						<>
-							{__(
-								'Note: You can see sample Lottie animations ',
-								'ultimate-addons-for-gutenberg'
-							)}
-							<ExternalLink
-								href={
-									'https://lottiefiles.com/'
-								}
-							>
-								{__( 'here on this', 'ultimate-addons-for-gutenberg' )}
-							</ExternalLink>
-							{__( ' website.', 'ultimate-addons-for-gutenberg' )}
-						</>
-					}
+				<p className="uagb-lotie-editor-notice">
+					{createInterpolateElement(
+						__(
+							'<span>Note: You can see sample Lottie animations <a>here on this</a> website.</span>',
+							'ultimate-addons-for-gutenberg'
+						),
+						{
+							span: <span />,
+							a: ( // eslint-disable-next-line jsx-a11y/anchor-has-content
+								<a
+									href={'https://lottiefiles.com/'}
+									target="_blank"
+									rel="noopener noreferrer"
+								/>
+							),
+						}
+					)}
 				</p>
 				<MultiButtonsControl
 					setAttributes={ setAttributes }

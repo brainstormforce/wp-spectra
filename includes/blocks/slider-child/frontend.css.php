@@ -80,7 +80,7 @@ $selectors = array(
 
 $bg_obj_tablet        = array(
 	'backgroundType'           => $attr['backgroundType'],
-	'backgroundImage'          => $attr['backgroundImageTablet'],
+	'backgroundImage'          => ! empty( $attr['backgroundImageTablet'] ) ? $attr['backgroundImageTablet'] : $attr['backgroundImageDesktop'], // Tablet uses tablet image if it exists, otherwise fallback to desktop.
 	'backgroundColor'          => $attr['backgroundColor'],
 	'gradientValue'            => $attr['gradientValue'],
 	'gradientColor1'           => $attr['gradientColor1'],
@@ -125,7 +125,7 @@ $t_selectors = array(
 
 $bg_obj_mobile        = array(
 	'backgroundType'           => $attr['backgroundType'],
-	'backgroundImage'          => $attr['backgroundImageMobile'],
+	'backgroundImage'          => ! empty( $attr['backgroundImageMobile'] ) ? $attr['backgroundImageMobile'] : ( ! empty( $attr['backgroundImageTablet'] ) ? $attr['backgroundImageTablet'] : $attr['backgroundImageDesktop'] ),
 	'backgroundColor'          => $attr['backgroundColor'],
 	'gradientValue'            => $attr['gradientValue'],
 	'gradientColor1'           => $attr['gradientColor1'],

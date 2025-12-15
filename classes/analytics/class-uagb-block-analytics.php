@@ -192,22 +192,42 @@ if ( ! class_exists( 'UAGB_Block_Analytics' ) ) {
 		/**
 		 * Get block usage statistics for analytics reporting.
 		 *
+		 * This method merges block usage statistics with existing spectra stats,
+		 * ensuring numeric_values are added (not replaced) if they already exist.
+		 *
 		 * @since 2.19.13
-		 * @return array Block usage statistics formatted for analytics.
+		 * @param array $existing_stats Existing spectra stats to merge with.
+		 * @return array Merged stats with block usage data.
 		 */
-		public function get_block_stats_for_analytics() {
+		public function get_block_stats_for_analytics( $existing_stats = array() ) {
 			// Only return stats if analytics is enabled.
 			if ( get_option( 'spectra_analytics_optin', 'no' ) !== 'yes' ) {
-				return array();
+				return $existing_stats;
 			}
 
 			$stats               = UAGB_Block_Stats_Processor::get_block_stats();
 			$collection_complete = UAGB_Block_Stats_Processor::is_collection_complete();
 			$last_collection     = UAGB_Block_Stats_Processor::get_last_collection_time();
 
+			// Format block usage stats to add 'block_usage_' prefix to the keys.
+			$formatted_block_usage_stats = array_combine(
+				array_map(
+					function ( $key ) {
+						return 'block_usage_' . $key;
+					},
+					array_keys( $stats )
+				),
+				array_values( $stats )
+			);
+
+			// Ensure array_combine succeeded, otherwise use empty array.
+			if ( ! is_array( $formatted_block_usage_stats ) ) {
+				$formatted_block_usage_stats = array();
+			}
+
 			// Prepare advanced stats structure.
 			$advanced_stats = array(
-				'block_usage_stats'          => $stats,
+				'numeric_values'             => $formatted_block_usage_stats,
 				'block_usage_stats_metadata' => array(
 					'collection_complete'  => $collection_complete,
 					'last_collected'       => $last_collection ? gmdate( 'Y-m-d H:i:s', $last_collection ) : null,
@@ -216,7 +236,26 @@ if ( ! class_exists( 'UAGB_Block_Analytics' ) ) {
 				),
 			);
 
-			return $advanced_stats;
+			// Merge numeric_values by adding numbers if they already exist.
+			// Check if numeric_values array exists in existing_stats and validate it's an array.
+			if ( isset( $existing_stats['numeric_values'] ) && is_array( $existing_stats['numeric_values'] ) ) {
+
+				// Loop through each block's usage count from advanced_stats.
+				foreach ( $advanced_stats['numeric_values'] as $key => $value ) {
+					// If the key exists in existing_stats and both values are numeric, add them together.
+					// Otherwise, use the new value from advanced_stats (either new key or non-numeric value).
+					$existing_stats['numeric_values'][ $key ] = ( isset( $existing_stats['numeric_values'][ $key ] )
+						&& is_numeric( $value )
+						&& is_numeric( $existing_stats['numeric_values'][ $key ] ) )
+						? $existing_stats['numeric_values'][ $key ] + $value
+						: $value;
+				}
+				// Remove numeric_values from advanced_stats to prevent duplication in array_merge_recursive below.
+				unset( $advanced_stats['numeric_values'] );
+			}
+
+			// Merge remaining advanced stats (metadata, etc.) with existing stats.
+			return array_merge_recursive( $existing_stats, $advanced_stats );
 		}
 
 		/**
@@ -231,7 +270,7 @@ if ( ! class_exists( 'UAGB_Block_Analytics' ) ) {
 			// Filter out blocks with 0 usage and sort by usage count.
 			$filtered_stats = array_filter( $stats );
 			arsort( $filtered_stats );
-			
+
 			// Return top blocks.
 			return array_slice( $filtered_stats, 0, $limit, true );
 		}

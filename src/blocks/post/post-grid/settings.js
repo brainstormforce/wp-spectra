@@ -20,12 +20,12 @@ import BoxShadowControl from '@Components/box-shadow';
 import { decodeEntities } from '@wordpress/html-entities';
 import UAGNumberControl from '@Components/number-control';
 import UAGTextControl from '@Components/text-control';
-import { memo } from '@wordpress/element';
+import { memo, createInterpolateElement } from '@wordpress/element';
 import UpgradeComponent from '@Components/upgrade-to-pro-cta';
 
 const MAX_POSTS_COLUMNS = 8;
 
-import { ToggleControl, ToolbarGroup, Icon, ExternalLink } from '@wordpress/components';
+import { ToggleControl, ToolbarGroup, Icon } from '@wordpress/components';
 
 import { InspectorControls, BlockControls } from '@wordpress/block-editor';
 
@@ -481,19 +481,22 @@ const Settings = ( props ) => {
 					help={
 						<>
 							{ ! enableOffset && (
-								<>
-									{ __(
-										'Note: Enabling this will disable the Pagination. Setting the offset parameter overrides/ignores the paged parameter and breaks pagination. ',
+								createInterpolateElement(
+									__(
+										'<span>Note: Enabling this will disable the Pagination. Setting the offset parameter overrides/ignores the paged parameter and breaks pagination.</span> <a>Read more</a>',
 										'ultimate-addons-for-gutenberg'
-									) }
-									<ExternalLink
-										href={
-											'https://developer.wordpress.org/reference/classes/wp_query/#pagination-parameters:~:text=Warning%3A%20Setting%20the%20offset%20parameter%20overrides/ignores%20the%20paged%20parameter%20and%20breaks%20pagination.%20The%20%27offset%27%20parameter%20is%20ignored%20when%20%27posts_per_page%27%3D%3E%2D1%20(show%20all%20posts)%20is%20used.'
-										}
-									>
-										{ __( 'Read more', 'ultimate-addons-for-gutenberg' ) }
-									</ExternalLink>
-								</>
+									),
+									{
+										span: <span />,
+										a: ( // eslint-disable-next-line jsx-a11y/anchor-has-content
+											<a
+												href={'https://developer.wordpress.org/reference/classes/wp_query/#pagination-parameters:~:text=Warning%3A%20Setting%20the%20offset%20parameter%20overrides/ignores%20the%20paged%20parameter%20and%20breaks%20pagination.%20The%20%27offset%27%20parameter%20is%20ignored%20when%20%27posts_per_page%27%3D%3E%2D1%20(show%20all%20posts)%20is%20used.'}
+												target="_blank"
+												rel="noopener noreferrer"
+											/>
+										),
+									}
+								)
 							) }
 						</>
 					}
