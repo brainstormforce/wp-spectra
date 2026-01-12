@@ -6,7 +6,7 @@ Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.9
 Stable tag: 2.19.17
-Beta tag: 3.0.0-beta.1
+Beta tag: 3.0.0-beta.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -247,7 +247,7 @@ The full changelog is available [here](https://wpspectra.com/whats-new/).
 
 == Upgrade Notice ==
 
-= 3.0.0-beta.1 =
+= 3.0.0-beta.2 =
 This is a beta release. Please backup your website before updating. We recommend testing on a staging site first and not using this version on a live production website.
 
 = 2.18.2 =
