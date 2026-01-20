@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.9
-Stable tag: 2.19.17
+Stable tag: 2.19.18
 Beta tag: 3.0.0-beta.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -228,7 +228,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-### x.x.x ###
+= 2.19.18 - Tuesday, 20th January 2026 =
 * This update addressed a security bug. Props to Wordfence and Patchstack for reporting it responsibly to our team.
 Please make sure you are using the latest version on your website.
 
@@ -243,9 +243,6 @@ Please make sure you are using the latest version on your website.
 = 2.19.15 - Friday, 3rd October 2025 =
 * This update addressed a security bug. Props to Wordfence for reporting it responsibly to our team.
 Please make sure you are using the latest version on your website.
-
-= 2.19.14 - Wednesday, 17th September 2025 =
-* Fix: Removed unused dependencies from the Block Stats Processor.
 
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 

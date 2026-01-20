@@ -227,7 +227,7 @@ class UAGB_Init_Blocks {
 	 * @param WP_Error|null|bool $result Error from another authentication handler, null if not errors, true if authenticated.
 	 * @return WP_Error|null|bool Modified result.
 	 *
-	 * @since 2.6.0
+	 * @since 2.19.18
 	 */
 	public static function restrict_popup_rest_access( $result ) {
 		// If there's already an error, return it.
@@ -261,7 +261,7 @@ class UAGB_Init_Blocks {
 	 * @param WP_REST_Request $request REST request object.
 	 * @return array Modified query arguments.
 	 *
-	 * @since 2.6.0
+	 * @since 2.19.18
 	 */
 	public static function filter_rest_popup_query( $args, $request ) {
 		// Allow admin users with manage_options to see all popups.
@@ -292,7 +292,7 @@ class UAGB_Init_Blocks {
 	 * @param WP_REST_Request  $request  Request object.
 	 * @return WP_REST_Response|WP_Error Modified response or error.
 	 *
-	 * @since 2.6.0
+	 * @since 2.19.18
 	 */
 	public static function filter_rest_popup_response( $response, $post, $request ) {
 		// Allow admin users with manage_options to see all popups.
