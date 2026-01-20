@@ -1403,6 +1403,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function uagb_get_excerpt( $post_id, $content, $length_fallback ) {
 
+			if ( post_password_required( $post_id ) ) {
+				return __( 'There is no excerpt because this is a protected post.', 'ultimate-addons-for-gutenberg' );
+			}
+
 			// If there's an excerpt provided from meta, use it.
 			$excerpt = get_post_field( 'post_excerpt', $post_id );
 

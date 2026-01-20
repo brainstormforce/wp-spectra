@@ -133,6 +133,7 @@ class UAGB_Init_Blocks {
 			'show_in_admin_bar' => true,
 			'show_ui'           => true,
 			'show_in_rest'      => true,
+			'rest_base'         => 'spectra-popup',
 			'template_lock'     => 'all',
 			'template'          => array(
 				array( 'uagb/popup-builder', array() ),
@@ -159,24 +160,42 @@ class UAGB_Init_Blocks {
 			'single'        => true,
 			'type'          => 'string',
 			'default'       => 'unset',
-			'auth_callback' => '__return_true',
-			'show_in_rest'  => true,
+			'auth_callback' => function() {
+				return current_user_can( 'manage_options' );
+			},
+			'show_in_rest'  => array(
+				'schema' => array(
+					'type' => 'string',
+				),
+			),
 		);
 
 		$meta_args_popup_enabled = array(
 			'single'        => true,
 			'type'          => 'boolean',
 			'default'       => false,
-			'auth_callback' => '__return_true',
-			'show_in_rest'  => true,
+			'auth_callback' => function() {
+				return current_user_can( 'manage_options' );
+			},
+			'show_in_rest'  => array(
+				'schema' => array(
+					'type' => 'boolean',
+				),
+			),
 		);
 
 		$meta_args_popup_repetition = array(
 			'single'        => true,
 			'type'          => 'number',
 			'default'       => 1,
-			'auth_callback' => '__return_true',
-			'show_in_rest'  => true,
+			'auth_callback' => function() {
+				return current_user_can( 'manage_options' );
+			},
+			'show_in_rest'  => array(
+				'schema' => array(
+					'type' => 'number',
+				),
+			),
 		);
 
 		register_post_type( 'spectra-popup', $type_args );
@@ -195,6 +214,105 @@ class UAGB_Init_Blocks {
 
 		add_filter( 'manage_spectra-popup_posts_columns', array( $spectra_popup_dashboard, 'popup_builder_admin_headings' ) );
 		add_action( 'manage_spectra-popup_posts_custom_column', array( $spectra_popup_dashboard, 'popup_builder_admin_content' ), 10, 2 );
+
+		// Add REST API access control for spectra-popup post type.
+		add_filter( 'rest_spectra-popup_query', array( __CLASS__, 'filter_rest_popup_query' ), 10, 2 );
+		add_filter( 'rest_prepare_spectra-popup', array( __CLASS__, 'filter_rest_popup_response' ), 10, 3 );
+		add_filter( 'rest_authentication_errors', array( __CLASS__, 'restrict_popup_rest_access' ), 99 );
+	}
+
+	/**
+	 * Restrict REST API access to spectra-popup for non-authenticated users.
+	 *
+	 * @param WP_Error|null|bool $result Error from another authentication handler, null if not errors, true if authenticated.
+	 * @return WP_Error|null|bool Modified result.
+	 *
+	 * @since 2.19.18
+	 */
+	public static function restrict_popup_rest_access( $result ) {
+		// If there's already an error, return it.
+		if ( is_wp_error( $result ) ) {
+			return $result;
+		}
+
+		// Only apply to spectra-popup endpoints.
+		$route = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
+		if ( false === strpos( $route, '/wp/v2/spectra-popup' ) ) {
+			return $result;
+		}
+
+		// Allow authenticated admin users with manage_options.
+		if ( is_user_logged_in() && current_user_can( 'manage_options' ) ) {
+			return $result;
+		}
+
+		// Block unauthenticated users and non-admin users.
+		return new WP_Error(
+			'rest_forbidden',
+			__( 'Sorry, you are not allowed to access popups.', 'ultimate-addons-for-gutenberg' ),
+			array( 'status' => rest_authorization_required_code() )
+		);
+	}
+
+	/**
+	 * Filter REST API query to only include enabled popups for non-admin users.
+	 *
+	 * @param array           $args    Array of query arguments.
+	 * @param WP_REST_Request $request REST request object.
+	 * @return array Modified query arguments.
+	 *
+	 * @since 2.19.18
+	 */
+	public static function filter_rest_popup_query( $args, $request ) {
+		// Allow admin users with manage_options to see all popups.
+		if ( current_user_can( 'manage_options' ) ) {
+			return $args;
+		}
+
+		// For non-admin users, only show enabled popups.
+		if ( ! isset( $args['meta_query'] ) ) {
+			$args['meta_query'] = array(); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+		}
+
+		$args['meta_query'][] = array(
+			'key'     => 'spectra-popup-enabled',
+			'value'   => true,
+			'compare' => '=',
+			'type'    => 'BOOLEAN',
+		);
+
+		return $args;
+	}
+
+	/**
+	 * Filter REST API response to hide disabled popups from non-admin users.
+	 *
+	 * @param WP_REST_Response $response Response object.
+	 * @param WP_Post          $post     Post object.
+	 * @param WP_REST_Request  $request  Request object.
+	 * @return WP_REST_Response|WP_Error Modified response or error.
+	 *
+	 * @since 2.19.18
+	 */
+	public static function filter_rest_popup_response( $response, $post, $request ) {
+		// Allow admin users with manage_options to see all popups.
+		if ( current_user_can( 'manage_options' ) ) {
+			return $response;
+		}
+
+		// Check if popup is enabled.
+		$popup_enabled = get_post_meta( $post->ID, 'spectra-popup-enabled', true );
+
+		// If popup is not enabled, return 403 error.
+		if ( ! $popup_enabled ) {
+			return new WP_Error(
+				'rest_forbidden',
+				__( 'You do not have permission to view this popup.', 'ultimate-addons-for-gutenberg' ),
+				array( 'status' => 403 )
+			);
+		}
+
+		return $response;
 	}
 
 	/**
