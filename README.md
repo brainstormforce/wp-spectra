@@ -229,7 +229,8 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### x.x.x ###
-* This update addressed a security bug. Props to Patchstack for reporting it responsibly to our team.
+* This update addressed a security bug. Props to Wordfence and Patchstack for reporting it responsibly to our team.
+Please make sure you are using the latest version on your website.
 
 ### 2.19.17 - Thursday, 4th December 2025 ###
 * Improvement: Added compatibility with WordPress v6.9.

@@ -2201,6 +2201,15 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			global $post;
 
+			if ( post_password_required( $post ) ) {
+				?>
+				<div class='uagb-post__text uagb-post__excerpt'>
+					<?php echo esc_html__( 'There is no excerpt because this is a protected post.', 'ultimate-addons-for-gutenberg' ); ?>
+				</div>
+				<?php
+				return;
+			}
+
 			if ( 'full_post' === $attributes['displayPostContentRadio'] ) {
 				$excerpt = get_the_content();
 			} else {
