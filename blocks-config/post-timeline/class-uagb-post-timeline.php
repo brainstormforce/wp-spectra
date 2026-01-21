@@ -1112,6 +1112,15 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 
 			global $post;
 
+			if ( post_password_required( $post ) ) {
+				?>
+				<div class="uagb-timeline-desc-content">
+					<?php echo esc_html__( 'There is no excerpt because this is a protected post.', 'ultimate-addons-for-gutenberg' ); ?>
+				</div>
+				<?php
+				return;
+			}
+
 			$excerpt_length_fallback = UAGB_Block_Helper::get_fallback_number( $attributes['exerptLength'], 'exerptLength', $attributes['blockName'] );
 
 			$excerpt = UAGB_Helper::uagb_get_excerpt( $post->ID, $post->post_content, $excerpt_length_fallback );
