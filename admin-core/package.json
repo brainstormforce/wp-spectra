@@ -13,7 +13,7 @@
 		"@heroicons/react": "^1.0.5",
 		"@tailwindcss/forms": "^0.4.0",
 		"@tailwindcss/typography": "^0.5.1",
-		"@wordpress/plugins": "^7.14.0",
+		"@wordpress/plugins": "^7.33.0",
 		"browser-sync": "^2.26.14",
 		"browser-sync-webpack-plugin": "^2.2.2",
 		"classnames": "^2.2.6",
