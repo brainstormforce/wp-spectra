@@ -10,7 +10,7 @@ const attributes = {
 	},
 	itemType: {
 		type: 'string',
-		default: __( 'Product', 'ultimate-addons-for-gutenberg' ),
+		default: __('Product', 'ultimate-addons-for-gutenberg'),
 	},
 	itemSubtype: {
 		type: 'string',
@@ -83,7 +83,7 @@ const attributes = {
 	mainimage: {
 		type: 'object',
 		default: {
-			url: `${ uagb_blocks_info.uagb_url }/admin/assets/images/placeholder.png`,
+			url: `${uagb_blocks_info.uagb_url}/admin/assets/images/placeholder.png`,
 		},
 	},
 	imgSize: {
@@ -126,7 +126,7 @@ const attributes = {
 	},
 	parts: {
 		type: 'array',
-		default: [ { label: '', value: 0 } ],
+		default: [{ label: '', value: 0 }],
 	},
 	starCount: {
 		type: 'number',
@@ -134,7 +134,7 @@ const attributes = {
 	},
 	summaryTitle: {
 		type: 'string',
-		default: __( 'Summary', 'ultimate-addons-for-gutenberg' ),
+		default: __('Summary', 'ultimate-addons-for-gutenberg'),
 	},
 	summaryDescription: {
 		type: 'string',
@@ -290,11 +290,11 @@ const attributes = {
 	},
 	featuresTitle: {
 		type: 'string',
-		default: __( 'List Of Features:', 'ultimate-addons-for-gutenberg' ),
+		default: __('List Of Features:', 'ultimate-addons-for-gutenberg'),
 	},
 	featuresAvgText: {
 		type: 'string',
-		default: __( 'Average Ratings', 'ultimate-addons-for-gutenberg' ),
+		default: __('Average Ratings', 'ultimate-addons-for-gutenberg'),
 	},
 	feature_count: {
 		type: 'number',
@@ -357,11 +357,11 @@ const attributes = {
 	},
 	availabilityvalue: {
 		type: 'string',
-		default: __( 'Instock', 'ultimate-addons-for-gutenberg' ),
+		default: __('Instock', 'ultimate-addons-for-gutenberg'),
 	},
 	availabilitytext: {
 		type: 'string',
-		default: __( 'Availability', 'ultimate-addons-for-gutenberg' ),
+		default: __('Availability', 'ultimate-addons-for-gutenberg'),
 	},
 	contentVrPadding: {
 		type: 'number',
