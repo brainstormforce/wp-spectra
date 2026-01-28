@@ -8,7 +8,7 @@ import Stars from './star';
 
 import { RichText } from '@wordpress/block-editor';
 
-export default function save(props) {
+export default function save( props ) {
 	const { attributes, className } = props;
 
 	const {
@@ -38,24 +38,24 @@ export default function save(props) {
 		imgTagWidth,
 	} = attributes;
 
-	const newAverage = parts.map((i) => i.value).reduce((total, v) => total + v) / parts.length;
+	const newAverage = parts.map( ( i ) => i.value ).reduce( ( total, v ) => total + v ) / parts.length;
 
 	let urlChk = '';
 	let title = '';
 	let defaultedAlt = '';
 
-	if ('undefined' !== typeof attributes.mainimage && null !== attributes.mainimage && '' !== attributes.mainimage) {
+	if ( 'undefined' !== typeof attributes.mainimage && null !== attributes.mainimage && '' !== attributes.mainimage ) {
 		urlChk = attributes.mainimage.url;
 		title = attributes.mainimage.title;
 		defaultedAlt = props.attributes.mainimage?.alt ? props.attributes.mainimage?.alt : '';
 	}
 
 	let url = '';
-	if ('' !== urlChk) {
+	if ( '' !== urlChk ) {
 		const size = attributes.mainimage.sizes;
 		const imageSize = attributes.imgSize;
 
-		if ('undefined' !== typeof size && 'undefined' !== typeof size[imageSize]) {
+		if ( 'undefined' !== typeof size && 'undefined' !== typeof size[imageSize] ) {
 			url = size[imageSize].url;
 		} else {
 			url = urlChk;
@@ -64,7 +64,7 @@ export default function save(props) {
 
 	let imageIconHtml = '';
 
-	if (mainimage && mainimage.url) {
+	if ( mainimage && mainimage.url ) {
 		imageIconHtml = (
 			<img
 				className="uagb-howto__source-image"
@@ -80,19 +80,19 @@ export default function save(props) {
 
 	const rel = 'noopener noreferrer';
 	let target = '';
-	if (ctaTarget) {
+	if ( ctaTarget ) {
 		target = '_blank';
 	}
 
 	return (
 		<div
-			className={classnames(className, 'uagb-ratings__outer-wrap', `uagb-block-${block_id}`)}
+			className={classnames( className, 'uagb-ratings__outer-wrap', `uagb-block-${block_id}` )}
 		>
 			{enableSchema && <script type="application/ld+json">{schema}</script>}
 			<div className="uagb_review_block">
 				<a
 					href={ctaLink}
-					className={classnames('uagb-rating-link-wrapper')}
+					className={classnames( 'uagb-rating-link-wrapper' )}
 					target={target}
 					rel={rel}
 				>
@@ -106,7 +106,7 @@ export default function save(props) {
 				)}
 				{enableImage === true && <div className="uagb-rating__source-wrap">{imageIconHtml}</div>}
 				{parts.map(
-					(j, i) =>
+					( j, i ) =>
 						showFeature === true && (
 							<div className="uagb_review_entry">
 								<RichText.Content tagName="div" value={j.label} />
@@ -140,7 +140,7 @@ export default function save(props) {
 							value={summaryDescription}
 						/>
 						<div className="uagb_review_average">
-							<span className="uagb_review_rating">{Math.round(newAverage * 10) / 10}</span>
+							<span className="uagb_review_rating">{Math.round( newAverage * 10 ) / 10}</span>
 							<Stars
 								id={`${block_id}-average`}
 								className="uagb_review_average_stars"

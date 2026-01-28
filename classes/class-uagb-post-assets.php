@@ -1393,7 +1393,7 @@ class UAGB_Post_Assets {
 	 */
 	public function prepare_assets( $this_post ) {
 
-		if ( empty( $this_post ) || empty( $this_post->ID ) ) {
+		if ( ! $this_post instanceof WP_Post ) {
 			return;
 		}
 		// Store the original post content into dummy variable.

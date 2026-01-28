@@ -4,26 +4,26 @@
  * This component renders clickable stars that allow users to set ratings for review features.
  * It supports both full stars (1-5) and half stars (0.5 increments) with immediate visual feedback.
  *
- * @param props
+ * @param {Object} props - Component props
  */
-const EditorStars = (props) => {
+const EditorStars = ( props ) => {
 	// Destructure all required props from the parent component
-	const { limit, id, className, inactiveStarColor, onClick, style, starOutlineColor, value, activeStarColor, selectedStarColor, setValue } = props;
+	const { limit, id, className, inactiveStarColor, onClick, style, starOutlineColor, value, activeStarColor, setValue } = props;
 
 	/**
 	 * mouseClick - Handles star click events to set new rating values
 	 *
 	 * @param {number} i - Zero-based index of the clicked star (0-4 for 5-star rating)
 	 */
-	const mouseClick = (i) => {
+	const mouseClick = ( i ) => {
 		// Calculate new value: if clicking same star as current value, set to half star, otherwise set to full star
 		// Example: if current value is 3 and user clicks star index 2 (3rd star), set to 2.5
 		// If current value is 2 and user clicks star index 2 (3rd star), set to 3
 		const newValue = value === i + 1 ? i + 0.5 : i + 1;
 
 		// Only update value if setValue function is available (not available for read-only average stars)
-		if (setValue) {
-			setValue(newValue);
+		if ( setValue ) {
+			setValue( newValue );
 		}
 	};
 
@@ -41,7 +41,7 @@ const EditorStars = (props) => {
 			)}
 		>
 			{/* Generate array of stars based on the limit prop (usually 5 stars) */}
-			{[...Array(limit).keys()].map((i) => (
+			{[...Array( limit ).keys()].map( ( i ) => (
 				// Clickable wrapper div for each star - provides reliable click events
 				<div
 					key={i}
@@ -51,12 +51,12 @@ const EditorStars = (props) => {
 					}}
 					onClick={() => {
 						// Check if custom onClick handler is provided (used for read-only average stars)
-						if (onClick) {
+						if ( onClick ) {
 							// Call custom onClick handler (e.g., () => null for disabled stars)
-							onClick(i);
-						} else if (setValue) {
+							onClick( i );
+						} else if ( setValue ) {
 							// Call our mouseClick handler to update the rating value
-							mouseClick(i);
+							mouseClick( i );
 						}
 						// If neither onClick nor setValue is available, do nothing (fallback safety)
 					}}
@@ -78,12 +78,15 @@ const EditorStars = (props) => {
 									height="150"  // Full height of the star viewBox
 									width={
 										// Calculate fill width based on current value and star position
-										(value - i > 0  // If this star should have some fill
-											? value - i < 1  // If it's a partial star (half-star)
-												? value - i   // Use the fractional part (0.5 for half star)
-												: 1           // Full star (width = 1 = 100%)
-											: 0              // No fill for this star
-										) * 150              // Convert to viewBox units (150 = 100% width)
+										( () => {
+											if ( value - i <= 0 ) {
+												return 0; // No fill for this star
+											}
+											if ( value - i < 1 ) {
+												return value - i; // Use the fractional part (0.5 for half star)
+											}
+											return 1; // Full star (width = 1 = 100%)
+										} )() * 150 // Convert to viewBox units (150 = 100% width)
 									}
 									y="0"         // Position at top of viewBox
 									x="0"         // Position at left of viewBox
@@ -112,7 +115,7 @@ const EditorStars = (props) => {
 					</svg>
 					{/* End of clickable wrapper div */}
 				</div>
-			))}
+			) )}
 			{/* End of star array mapping */}
 		</div>
 		// End of main container

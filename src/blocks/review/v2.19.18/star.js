@@ -1,22 +1,22 @@
-const Stars = (props) => {
-	const mouseHover = (i) => {
-		props.setStateValue({
-			displayValue: i + (props.value - i === 1 ? 0.5 : 1),
+const Stars = ( props ) => {
+	const mouseHover = ( i ) => {
+		props.setStateValue( {
+			displayValue: i + ( props.value - i === 1 ? 0.5 : 1 ),
 			displayColor: props.selectedStarColor,
-		});
+		} );
 	};
 	const mouseLeave = () => {
-		props.setStateValue({
+		props.setStateValue( {
 			displayValue: props.value,
 			displayColor: props.activeStarColor,
-		});
+		} );
 	};
-	const mouseClick = (i) => {
+	const mouseClick = ( i ) => {
 		const { setValue, value } = props;
-		setValue(value === i + 1 ? i + 0.5 : i + 1);
-		props.setStateValue({
+		setValue( value === i + 1 ? i + 0.5 : i + 1 );
+		props.setStateValue( {
 			displayValue: value === i + 1 ? i + 0.5 : i + 1,
-		});
+		} );
 	};
 
 	const { limit, id, className, inactiveStarColor, onClick, style, starOutlineColor, value, activeStarColor } = props;
@@ -32,27 +32,27 @@ const Stars = (props) => {
 				style
 			)}
 		>
-			{[...Array(limit).keys()].map((i) => (
+			{[...Array( limit ).keys()].map( ( i ) => (
 				<svg
 					xmlns="https://www.w3.org/2000/svg"
 					key={i}
 					height="20"
 					width="20"
 					viewBox="0 0 150 150"
-					onMouseOver={() => mouseHover(i)}
+					onMouseOver={() => mouseHover( i )}
 					onMouseOut={() => mouseLeave()}
-					onClick={() => onClick || mouseClick(i)}
+					onClick={() => onClick || mouseClick( i )}
 				>
 					<defs>
 						<mask id={`uagb_review_star_filter-${id}-${i}`}>
 							<rect
 								height="150"
 								width={
-									(value - i > 0 // eslint-disable-line no-nested-ternary
+									( value - i > 0 // eslint-disable-line no-nested-ternary
 										? value - i < 1
 											? value - i
 											: 1
-										: 0) * 150
+										: 0 ) * 150
 								}
 								y="0"
 								x="0"
@@ -77,7 +77,7 @@ const Stars = (props) => {
 						stroke={starOutlineColor}
 					/>
 				</svg>
-			))}
+			) )}
 		</div>
 	);
 };
