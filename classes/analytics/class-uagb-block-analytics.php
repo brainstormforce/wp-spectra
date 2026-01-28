@@ -225,6 +225,9 @@ if ( ! class_exists( 'UAGB_Block_Analytics' ) ) {
 				$formatted_block_usage_stats = array();
 			}
 
+			// Get site activity level for Active Site / Super Site KPIs.
+			$site_activity = $this->get_site_activity_level();
+
 			// Prepare advanced stats structure.
 			$advanced_stats = array(
 				'numeric_values'             => $formatted_block_usage_stats,
@@ -234,6 +237,7 @@ if ( ! class_exists( 'UAGB_Block_Analytics' ) ) {
 					'total_blocks_tracked' => count( array_filter( $stats ) ),
 					'most_used_blocks'     => $this->get_most_used_blocks( $stats, 10 ),
 				),
+				'site_activity'              => $site_activity,
 			);
 
 			// Merge numeric_values by adding numbers if they already exist.
@@ -361,6 +365,58 @@ if ( ! class_exists( 'UAGB_Block_Analytics' ) ) {
 				'has_stats'            => ! empty( $analytics_data['block_usage_stats'] ),
 				'tracking_method'      => 'incremental', // Now using incremental tracking instead of batch processing.
 				'total_tracked_blocks' => ! empty( $analytics_data['block_usage_stats'] ) && is_array( $analytics_data['block_usage_stats'] ) ? count( array_filter( $analytics_data['block_usage_stats'] ) ) : 0,
+			);
+		}
+
+		/**
+		 * Get site activity level based on Spectra block edits in the last 180 days.
+		 *
+		 * Calculates KPIs for:
+		 * - Active Site: Spectra blocks manually added/edited on at least 1 page in last 180 days
+		 * - Super Site: Spectra blocks manually added/edited on at least 15 pages in last 180 days
+		 *
+		 * @since x.x.x
+		 * @return array Site activity data with classification.
+		 */
+		public function get_site_activity_level() {
+			$days_threshold = 180;
+			$cutoff_time    = time() - ( $days_threshold * DAY_IN_SECONDS );
+
+			$post_types = get_post_types( array( 'public' => true ), 'names' );
+
+			// Query posts where Spectra blocks have been edited in the last 180 days.
+			$posts = get_posts(
+				array(
+					'post_type'      => $post_types,
+					'post_status'    => array( 'publish', 'private', 'draft' ),
+					'posts_per_page' => -1,
+					'fields'         => 'ids',
+					'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required for site activity KPI calculation.
+						array(
+							'key'     => '_uagb_last_spectra_edit',
+							'value'   => $cutoff_time,
+							'compare' => '>=',
+							'type'    => 'NUMERIC',
+						),
+					),
+				)
+			);
+
+			$active_pages_count = count( $posts );
+
+			// Determine site classification.
+			$site_type = 'inactive';
+			if ( $active_pages_count >= 15 ) {
+				$site_type = 'super_site';
+			} elseif ( $active_pages_count >= 1 ) {
+				$site_type = 'active_site';
+			}
+
+			return array(
+				'active_pages_180d' => $active_pages_count,
+				'site_type'         => $site_type,
+				'is_active_site'    => $active_pages_count >= 1,
+				'is_super_site'     => $active_pages_count >= 15,
 			);
 		}
 	}
