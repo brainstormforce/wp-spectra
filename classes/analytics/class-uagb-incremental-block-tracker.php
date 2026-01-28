@@ -374,7 +374,7 @@ if ( ! class_exists( 'UAGB_Incremental_Block_Tracker' ) ) {
 		 *
 		 * @param array $previous_blocks Block counts before saving.
 		 * @param array $current_blocks  Block counts after saving.
-		 * @since x.x.x
+		 * @since 2.19.19
 		 * @return bool True if blocks have changed, false otherwise.
 		 */
 		private function has_blocks_changed( $previous_blocks, $current_blocks ) {
@@ -531,7 +531,7 @@ if ( ! class_exists( 'UAGB_Incremental_Block_Tracker' ) ) {
 		 * Check if block counts contain any Spectra blocks.
 		 *
 		 * @param array $block_counts Array of block counts.
-		 * @since x.x.x
+		 * @since 2.19.19
 		 * @return bool True if any Spectra blocks are present, false otherwise.
 		 */
 		private function has_spectra_blocks( $block_counts ) {

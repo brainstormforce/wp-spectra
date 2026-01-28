@@ -375,7 +375,7 @@ if ( ! class_exists( 'UAGB_Block_Analytics' ) ) {
 		 * - Active Site: Spectra blocks manually added/edited on at least 1 page in last 180 days
 		 * - Super Site: Spectra blocks manually added/edited on at least 15 pages in last 180 days
 		 *
-		 * @since x.x.x
+		 * @since 2.19.19
 		 * @return array Site activity data with classification.
 		 */
 		public function get_site_activity_level() {

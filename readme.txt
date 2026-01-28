@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.9
-Stable tag: 2.19.18
+Stable tag: 2.19.19
 Beta tag: 3.0.0-beta.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -228,7 +228,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 == Changelog ==
 
-= 2.19.19 =
+= 2.19.19 - Thursday, 29th January 2026 =
 * Fix: Review schema - Resolved an issue where user enable to change star rating.
 * Fix: Global - Resolved a conflict causing the "spectra" store to be registered multiple times.
 * Fix: Global - Better handling of template content to avoid content merging issues for SureCart.
