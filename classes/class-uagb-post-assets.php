@@ -1402,7 +1402,7 @@ class UAGB_Post_Assets {
 		$surecart_template_parts = array( 'single_product', 'product_collection', 'cart', 'upsell' );
 
 		foreach ( $surecart_template_parts as $template_part_name ) {
-			$template_part_content = $this->get_surecart_template_part_content( $this_post->ID, $template_part_name );
+			$template_part_content = $this->get_surecart_template_part_content( (string) $this_post->ID, $template_part_name );
 	
 			if ( ! empty( $template_part_content ) && has_blocks( $template_part_content ) && isset( $this_post_post_content ) ) {
 				$template_contents[] = $template_part_content;
