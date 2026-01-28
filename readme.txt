@@ -229,6 +229,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 = 2.19.19 =
+* Fix: Review schema - Resolved an issue where user enable to change star rating.
 * Fix: Global - Resolved a conflict causing the "spectra" store to be registered multiple times.
 * Fix: Global - Better handling of template content to avoid content merging issues for SureCart.
 
