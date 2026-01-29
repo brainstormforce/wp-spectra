@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-01-28T13:04:07+00:00\n"
+"POT-Creation-Date: 2026-01-29T10:22:39+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: ultimate-addons-for-gutenberg\n"
@@ -9036,41 +9036,41 @@ msgstr ""
 msgid "Every %d Minutes"
 msgstr ""
 
-#: lib/bsf-analytics/class-bsf-analytics.php:238
+#: lib/bsf-analytics/class-bsf-analytics.php:242
 msgid "Help us improve %1$s and our other products!<br><br>With your permission, we'd like to collect <strong>non-sensitive information</strong> from your website — like your PHP version and which features you use — so we can fix bugs faster, make smarter decisions, and build features that actually matter to you. <em>No personal info. Ever.</em>"
 msgstr ""
 
-#: lib/bsf-analytics/class-bsf-analytics.php:244
+#: lib/bsf-analytics/class-bsf-analytics.php:248
 msgid "This will be applicable for all sites from the network."
 msgstr ""
 
 #. translators: %s usage doc link
-#: lib/bsf-analytics/class-bsf-analytics.php:268
+#: lib/bsf-analytics/class-bsf-analytics.php:272
 msgid " Know More."
 msgstr ""
 
-#: lib/bsf-analytics/class-bsf-analytics.php:278
+#: lib/bsf-analytics/class-bsf-analytics.php:282
 msgid "Yes! Allow it"
 msgstr ""
 
-#: lib/bsf-analytics/class-bsf-analytics.php:289
+#: lib/bsf-analytics/class-bsf-analytics.php:293
 msgid "No Thanks"
 msgstr ""
 
-#: lib/bsf-analytics/class-bsf-analytics.php:414
+#: lib/bsf-analytics/class-bsf-analytics.php:461
 msgid "Usage Tracking"
 msgstr ""
 
 #. translators: %s Product title
-#: lib/bsf-analytics/class-bsf-analytics.php:458
+#: lib/bsf-analytics/class-bsf-analytics.php:506
 msgid "Allow %s products to track non-sensitive usage tracking data."
 msgstr ""
 
-#: lib/bsf-analytics/class-bsf-analytics.php:461
+#: lib/bsf-analytics/class-bsf-analytics.php:509
 msgid " This will be applicable for all sites from the network."
 msgstr ""
 
-#: lib/bsf-analytics/class-bsf-analytics.php:466
+#: lib/bsf-analytics/class-bsf-analytics.php:514
 msgid "Learn More."
 msgstr ""
 

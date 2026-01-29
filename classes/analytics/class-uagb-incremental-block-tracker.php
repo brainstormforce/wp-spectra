@@ -171,7 +171,7 @@ if ( ! class_exists( 'UAGB_Incremental_Block_Tracker' ) ) {
 		 */
 		public function track_block_changes_on_save( $post_id, $post ) {
 			// Skip if analytics is not enabled.
-			if ( get_option( 'spectra_analytics_optin', 'no' ) !== 'yes' ) {
+			if ( get_option( 'spectra_usage_optin', 'no' ) !== 'yes' ) {
 				return;
 			}
 
@@ -235,7 +235,7 @@ if ( ! class_exists( 'UAGB_Incremental_Block_Tracker' ) ) {
 		 */
 		public function track_block_removal_on_delete( $post_id ) {
 			// Skip if analytics is not enabled.
-			if ( get_option( 'spectra_analytics_optin', 'no' ) !== 'yes' ) {
+			if ( get_option( 'spectra_usage_optin', 'no' ) !== 'yes' ) {
 				return;
 			}
 
@@ -290,7 +290,7 @@ if ( ! class_exists( 'UAGB_Incremental_Block_Tracker' ) ) {
 		 */
 		public function track_block_addition_on_untrash( $post_id ) {
 			// Skip if analytics is not enabled.
-			if ( get_option( 'spectra_analytics_optin', 'no' ) !== 'yes' ) {
+			if ( get_option( 'spectra_usage_optin', 'no' ) !== 'yes' ) {
 				return;
 			}
 
@@ -399,7 +399,7 @@ if ( ! class_exists( 'UAGB_Incremental_Block_Tracker' ) ) {
 		 */
 		private function update_global_stats_correctly( $previous_blocks, $current_blocks ) {
 			// Get existing analytics data.
-			$analytics_data = get_option( 'uagb_block_analytics_data', array() );
+			$analytics_data = get_option( 'uagb_block_usage_data', array() );
 
 			if ( ! is_array( $analytics_data ) ) {
 				$analytics_data = array();
@@ -438,7 +438,7 @@ if ( ! class_exists( 'UAGB_Incremental_Block_Tracker' ) ) {
 			$analytics_data['last_updated'] = time();
 
 			// Save the updated analytics data.
-			update_option( 'uagb_block_analytics_data', $analytics_data );
+			update_option( 'uagb_block_usage_data', $analytics_data );
 		}
 
 		/**
@@ -450,7 +450,7 @@ if ( ! class_exists( 'UAGB_Incremental_Block_Tracker' ) ) {
 		 */
 		private function update_global_stats( $block_diff ) {
 			// Get existing analytics data.
-			$analytics_data = get_option( 'uagb_block_analytics_data', array() );
+			$analytics_data = get_option( 'uagb_block_usage_data', array() );
 
 			if ( ! is_array( $analytics_data ) ) {
 				$analytics_data = array();
@@ -479,7 +479,7 @@ if ( ! class_exists( 'UAGB_Incremental_Block_Tracker' ) ) {
 			$analytics_data['last_updated'] = time();
 
 			// Save the updated analytics data.
-			update_option( 'uagb_block_analytics_data', $analytics_data );
+			update_option( 'uagb_block_usage_data', $analytics_data );
 		}
 
 		/**
