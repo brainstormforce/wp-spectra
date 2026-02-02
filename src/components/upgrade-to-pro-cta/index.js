@@ -183,6 +183,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 	const [ productsList, setProductsList ] = useState( '' );
 	const [ productKey, setProductKey ] = useState( '' );
 	const [ selectedTitle, setSelectedTitle ] = useState( 'Spectra Pro' );
+	// eslint-disable-next-line no-unused-vars
 	const contryCode = uagb_blocks_info.contry_code;
 	const { title, Image, header, description, features } = modalData[ selectedTitle ];
 
@@ -275,6 +276,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 	};
 
 	// Define UTM parameters
+	// eslint-disable-next-line no-unused-vars
 	const utmParams = '&utm_medium=spectra-editor&utm_campaign=upsell-popup-buy-now';
 
 	return (
@@ -382,7 +384,8 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 						</div>
 
 						<div className="flex items-center justify-between gap-2">
-							{ productsList && productKey && (
+							{/* eslint-disable */}
+							{/* { productsList && productKey && (
 								<>
 									<button
 										className=""
@@ -441,7 +444,35 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 										</button>
 									</a>
 								</>
-							) }
+							) } */}
+							{/* eslint-enable */}
+							<a
+								href="https://wpspectra.com/pricing/?utm_medium=spectra-editor&utm_campaign=upsell-popup-buy-now"
+								target="_blank"
+								rel="noreferrer"
+								className="no-underline text-text-on-color"
+							>
+								<button
+									className=""
+									tag="button"
+									type="button"
+									style={ {
+										padding: '10px 14px',
+										color: 'white',
+										fontSize: '14px',
+										fontWeight: '600',
+										backgroundColor: '#6005FF',
+										borderRadius: '8px',
+										outline: 'none !important',
+										boxShadow: 'unset !important',
+										cursor: 'pointer',
+										border: 'none',
+										lineHeight: '20px',
+									} }
+								>
+									{ __( 'Buy Now', 'ultimate-addons-for-gutenberg' ) }
+								</button>
+							</a>
 						</div>
 					</div>
 

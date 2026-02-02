@@ -8,6 +8,8 @@ import { __ } from '@wordpress/i18n';
 import DeprecatedStars from './deprecatedStars';
 import attributes from './attributes';
 import DeprecatedStarsV_2_0_13 from './deprecatedStarsV_2_0_13';
+import newAttributesV2_19_18 from './v2.19.18/attributes';
+import newSaveV2_19_18 from './v2.19.18/save';
 
 import { RichText } from '@wordpress/block-editor';
 
@@ -947,6 +949,10 @@ const deprecated = [
 				</div>
 			);
 		},
+	},
+	{
+		attributes: newAttributesV2_19_18,
+		save: newSaveV2_19_18,
 	},
 ];
 
