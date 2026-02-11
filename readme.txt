@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 6.9
-Stable tag: 2.19.19
+Stable tag: 2.19.20
 Beta tag: 3.0.0-beta.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -227,6 +227,9 @@ You can report the issue through our [Bug Bounty Program](https://brainstormforc
 Our external packages use [Rating Star Component](https://github.com/n49/react-stars) that are distributed under the terms of the ISC. While [Slick](https://github.com/akiran/react-slick), [Lottie](https://github.com/chenqingspring/react-lottie) and [Striptags](https://github.com/ericnorris/striptags) is distributed under the terms of the MIT. Additionally, we incorporate [FontAwesome v6](https://fontawesome.com/license/free) under the CC BY 4.0 License, and [dnd kit](https://github.com/clauderic/dnd-kit) licensed under the MIT License.
 
 == Changelog ==
+
+= 2.19.20 - Thursday, 12th February 2026 =
+* Fix: Global - An edge case where automated requests caused missing Spectra CSS and layout issues.
 
 = 2.19.19 - Monday, 2nd February 2026 =
 * Fix: Review schema - Resolved an issue where user enable to change star rating.
