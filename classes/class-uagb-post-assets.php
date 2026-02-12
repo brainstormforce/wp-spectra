@@ -670,21 +670,17 @@ class UAGB_Post_Assets {
 				$js_file_path  = $js_asset_info['js'];
 			}
 
-			if ( $version_updated ) {
-				$uagb_filesystem = uagb_filesystem();
+			/**
+			 * CRITICAL FIX: Don't delete files OR meta on version mismatch.
+			 *
+			 * The _uag_page_assets meta is already deleted (line 705).
+			 * This triggers regeneration without orphaning files.
+			 * file_write() will overwrite existing files safely.
+			 * If regeneration fails, old files remain accessible → No 404 error.
+			 */
 
-				if ( ! empty( $css_file_path ) ) {
-					$uagb_filesystem->delete( $css_file_path );
-				}
-
-				if ( ! empty( $js_file_path ) ) {
-					$uagb_filesystem->delete( $js_file_path );
-				}
-
-				// Delete keys.
-				delete_post_meta( $this->post_id, '_uag_css_file_name' );
-				delete_post_meta( $this->post_id, '_uag_js_file_name' );
-			}
+			// Don't delete file name meta - keeps file referenced in DB
+			// Regeneration triggered by _uag_page_assets deletion (line 705).
 
 			if ( empty( $css_file_path ) || ! file_exists( $css_file_path ) ) {
 				return true;
@@ -1653,16 +1649,13 @@ class UAGB_Post_Assets {
 
 		$result = false;
 
-		// TODO: This old_assets removal code need to be removed after 3 major releases. from v2.11.0.
-		// Remove if any old file exists for same post.
-		$old_assets = glob( $base_file_path . 'uag-' . $type . '-' . $this->post_id . '-*' );
-		if ( ! empty( $old_assets ) && is_array( $old_assets ) ) {
-			foreach ( $old_assets as $old_asset ) {
-				if ( file_exists( $old_asset ) ) {
-					$file_system->delete( $old_asset );
-				}
-			}
-		}
+		/**
+		 * LEGACY CLEANUP REMOVED (v3.0.0+)
+		 *
+		 * Previously deleted old timestamped files (uag-css-123-1234567890.css).
+		 * Removed as scheduled after 3 major releases from v2.11.0.
+		 * Current format uses static names (uag-css-123.css) that safely overwrite.
+		 */
 
 		if ( wp_mkdir_p( $base_file_path ) ) {
 
@@ -1702,18 +1695,28 @@ class UAGB_Post_Assets {
 
 		if ( '' === $file_data ) {
 			/**
-			 * This is when the generated CSS/JS is blank.
-			 * This means this page does not use UAG block.
-			 * In this scenario we need to delete the existing file.
-			 * This will ensure there are no extra files added for user.
-			*/
+			 * When CSS/JS generation returns empty, KEEP existing file.
+			 *
+			 * CRITICAL FIX: Empty output could mean:
+			 * 1. Page has no Spectra blocks (legitimate)
+			 * 2. Generation failed (parse error, memory limit, cache issue)
+			 *
+			 * We cannot distinguish between these cases, so we keep the old file.
+			 * Better to serve old CSS than no CSS (404 error with page cache).
+			 */
 
-			if ( ! empty( $file_name ) && file_exists( $file_path ) ) {
-				// Delete old file.
-				wp_delete_file( $file_path );
+			if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+				// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
+				error_log(
+					sprintf(
+						'Spectra: CSS/JS generation returned empty for post %d (type: %s). Keeping existing file to prevent 404.',
+						$this->post_id,
+						$type
+					) 
+				);
 			}
 
-			return true;
+			return false; // Signal that generation did not produce new content.
 		}
 
 		/**
@@ -1761,10 +1764,15 @@ class UAGB_Post_Assets {
 
 			if ( $old_data !== $file_data ) {
 
-				// Delete old file.
-				wp_delete_file( $file_path );
+				/**
+				 * CRITICAL FIX: Don't delete old file before creating new one.
+				 *
+				 * Method create_file() uses put_contents() which overwrites existing files.
+				 * If write fails, old file remains intact → No 404 error.
+				 * This prevents CSS 404s with page-level caching.
+				 */
 
-				// Create a new file.
+				// Create a new file (will overwrite existing).
 				$did_create = $this->create_file( $file_data, $type );
 
 				if ( $did_create ) {
