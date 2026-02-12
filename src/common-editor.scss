@@ -166,14 +166,19 @@
 	height: auto;
 }
 
-body.version-6-9 .uagb-select-control--layout-inline .components-select-control {
-	grid-template-columns: 100%;
+body {
+	&.version-6-9,
+	&.version-6-9-1 {
+		.uagb-select-control--layout-inline .components-select-control {
+			grid-template-columns: 100%;
 
-	.components-input-base {
-		align-items: center;
-		display: grid;
-		grid-template-columns: 50% 50%;
-		gap: 0;
+			.components-input-base {
+				align-items: center;
+				display: grid;
+				grid-template-columns: 50% 50%;
+				gap: 0;
+			}
+		}
 	}
 }
 
