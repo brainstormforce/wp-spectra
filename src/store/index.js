@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-import { createReduxStore, register } from '@wordpress/data';
+import { createReduxStore } from '@wordpress/data';
 
 /**
  * Internal dependencies
@@ -24,5 +24,4 @@ export const store = createReduxStore( storeName, {
     selectors,
 } );
 
-register( store );
 setInitialState();

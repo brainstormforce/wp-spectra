@@ -11,6 +11,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 	const [ selectedTitle, setSelectedTitle ] = useState( 'Spectra Pro' );
 
 	const { title, Image, header, description, features } = modalData[ selectedTitle ];
+	// eslint-disable-next-line no-unused-vars
 	const contryCode = uag_admin_react.contry_code;
 	useEffect( () => {
 		// Fetch pricing data from the API
@@ -129,6 +130,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 	};
 
 	// Define UTM parameters
+	// eslint-disable-next-line no-unused-vars
 	const utmParams = '&utm_medium=spectra-dashboard&utm_campaign=upsell-popup-buy-now';
 
 	return (
@@ -228,7 +230,8 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 								</div>
 
 								<div className="flex items-center justify-between sm:gap-0 gap-[88px]">
-									<Button variant="ghost" size="md" className="uagb-remove-ring">
+									{/* eslint-disable */}
+									{/* <Button variant="ghost" size="md" className="uagb-remove-ring">
 											{'$' + productsList[selectedProduct]?.price?.[contryCode]?.discounted }
 										{ productsList[ selectedProduct ]?.variant?.includes( 'Annual Subscription' ) ||
 										productsList[ selectedProduct ]?.product?.includes( 'Annual Subscription' ) ? (
@@ -240,6 +243,24 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 
 									<a
 										href={ productsList[ selectedProduct ]?.checkout_url + utmParams }
+										target="_blank"
+										rel="noreferrer"
+										className="no-underline text-text-on-color relative"
+									>
+										<Button
+											className=""
+											size="sm"
+											tag="button"
+											type="button"
+											variant="primary"
+											onClick={ () => setIsModalOpen( false ) }
+										>
+											{ __( 'Buy Now', 'ultimate-addons-for-gutenberg' ) }
+										</Button>
+									</a> */}
+									{/* eslint-enable */}
+									<a
+										href="https://wpspectra.com/pricing/?utm_medium=spectra-dashboard&utm_campaign=uag-dashboard"
 										target="_blank"
 										rel="noreferrer"
 										className="no-underline text-text-on-color relative"

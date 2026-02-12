@@ -165,7 +165,7 @@ if ( ! class_exists( 'UAGB_Block_Stats_Processor' ) ) {
 			$block_counts = $this->count_blocks_in_post( $post->post_content );
 
 			// Get existing analytics data.
-			$analytics_data = get_option( 'uagb_block_analytics_data', array() );
+			$analytics_data = get_option( 'uagb_block_usage_data', array() );
 
 			if ( ! is_array( $analytics_data ) ) {
 				$analytics_data = array();
@@ -184,7 +184,7 @@ if ( ! class_exists( 'UAGB_Block_Stats_Processor' ) ) {
 			}
 
 			// Update the consolidated analytics data.
-			update_option( 'uagb_block_analytics_data', $analytics_data );
+			update_option( 'uagb_block_usage_data', $analytics_data );
 
 			return false;
 		}
@@ -247,7 +247,7 @@ if ( ! class_exists( 'UAGB_Block_Stats_Processor' ) ) {
 			parent::complete();
 
 			// Update analytics status with completion data.
-			$status = get_option( 'uagb_block_analytics_status', array() );
+			$status = get_option( 'uagb_block_usage_status', array() );
 
 			if ( ! is_array( $status ) ) {
 				$status = array();
@@ -256,7 +256,7 @@ if ( ! class_exists( 'UAGB_Block_Stats_Processor' ) ) {
 			$status['collection_complete'] = true;
 			$status['last_collected']      = time();
 			$status['is_processing']       = false;
-			update_option( 'uagb_block_analytics_status', $status );
+			update_option( 'uagb_block_usage_status', $status );
 		}
 
 		/**
@@ -267,7 +267,7 @@ if ( ! class_exists( 'UAGB_Block_Stats_Processor' ) ) {
 		 */
 		public function start_collection() {
 			// Check if already processing.
-			$status = get_option( 'uagb_block_analytics_status', array() );
+			$status = get_option( 'uagb_block_usage_status', array() );
 
 			if ( ! is_array( $status ) ) {
 				$status = array();
@@ -280,10 +280,10 @@ if ( ! class_exists( 'UAGB_Block_Stats_Processor' ) ) {
 			// Set processing flag and reset completion status.
 			$status['is_processing']       = true;
 			$status['collection_complete'] = false;
-			update_option( 'uagb_block_analytics_status', $status );
+			update_option( 'uagb_block_usage_status', $status );
 
 			// Reset analytics data.
-			update_option( 'uagb_block_analytics_data', array() );
+			update_option( 'uagb_block_usage_data', array() );
 
 			// Get all posts with blocks.
 			$post_types = get_post_types( array( 'public' => true ), 'names' );
@@ -313,7 +313,7 @@ if ( ! class_exists( 'UAGB_Block_Stats_Processor' ) ) {
 		 * @return array Block usage statistics.
 		 */
 		public static function get_block_stats() {
-			$analytics_data = get_option( 'uagb_block_analytics_data', array() );
+			$analytics_data = get_option( 'uagb_block_usage_data', array() );
 
 			if ( ! is_array( $analytics_data ) ) {
 				$analytics_data = array();
@@ -329,7 +329,7 @@ if ( ! class_exists( 'UAGB_Block_Stats_Processor' ) ) {
 		 * @return bool Whether stats collection is complete.
 		 */
 		public static function is_collection_complete() {
-			$status = get_option( 'uagb_block_analytics_status', array() );
+			$status = get_option( 'uagb_block_usage_status', array() );
 
 			if ( ! is_array( $status ) ) {
 				$status = array();
@@ -345,7 +345,7 @@ if ( ! class_exists( 'UAGB_Block_Stats_Processor' ) ) {
 		 * @return int|false Last collection timestamp or false if never collected.
 		 */
 		public static function get_last_collection_time() {
-			$status = get_option( 'uagb_block_analytics_status', array() );
+			$status = get_option( 'uagb_block_usage_status', array() );
 
 			if ( ! is_array( $status ) ) {
 				$status = array();

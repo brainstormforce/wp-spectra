@@ -8,6 +8,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 	const [ productsList, setProductsList ] = useState( [] );
 	const [ selectedProduct, setSelectedProduct ] = useState( '' );
 	const [ loading, setLoading ] = useState( true );
+	// eslint-disable-next-line no-unused-vars
 	const contryCode = uag_admin_react.contry_code;
 	useEffect( () => {
 		// Fetch pricing data from the API
@@ -54,6 +55,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 	}, [] );
 
 	// Define UTM parameters
+	// eslint-disable-next-line no-unused-vars
 	const utmParams = '&utm_medium=spectra-dashboard&utm_campaign=upsell-free-vs-pro-buy-now';
 
 	if ( loading && freeVPro && smallCol )
@@ -155,7 +157,8 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 							</div>
 
 							<div className="flex items-center justify-between gap-3">
-								<Button variant="ghost" size="md">
+								{/* eslint-disable */}
+								{/* <Button variant="ghost" size="md">
 									{'$' + productsList[selectedProduct]?.price?.[contryCode]?.discounted }
 									{ productsList[ selectedProduct ]?.variant?.includes( 'Annual Subscription' ) ||
 									productsList[ selectedProduct ]?.product?.includes( 'Annual Subscription' ) ? (
@@ -167,6 +170,17 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 
 								<a
 									href={ productsList[ selectedProduct ]?.checkout_url + utmParams }
+									target="_blank"
+									rel="noreferrer"
+									className="no-underline text-text-on-color"
+								>
+									<Button className="" size="sm" tag="button" type="button" variant="primary">
+										{ __( 'Buy Now', 'ultimate-addons-for-gutenberg' ) }
+									</Button>
+								</a> */}
+								{/* eslint-enable */}
+								<a
+									href="https://wpspectra.com/pricing/?utm_medium=spectra-dashboard&utm_campaign=uag-dashboard"
 									target="_blank"
 									rel="noreferrer"
 									className="no-underline text-text-on-color"
@@ -320,7 +334,8 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 						</div>
 
 						<div className="flex items-center justify-between gap-3">
-							<Button variant="ghost" size="md">
+							{/* eslint-disable */}
+							{/* <Button variant="ghost" size="md">
 								{'$' + productsList[selectedProduct]?.price?.[contryCode]?.discounted }
 								{ productsList[ selectedProduct ]?.variant?.includes( 'Annual Subscription' ) ||
 								productsList[ selectedProduct ]?.product?.includes( 'Annual Subscription' ) ? (
@@ -332,6 +347,17 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 
 							<a
 								href={ productsList[ selectedProduct ]?.checkout_url + utmParams }
+								target="_blank"
+								rel="noreferrer"
+								className="no-underline text-text-on-color"
+							>
+								<Button className="" size="sm" tag="button" type="button" variant="primary">
+									{ __( 'Buy Now', 'ultimate-addons-for-gutenberg' ) }
+								</Button>
+							</a> */}
+							{/* eslint-enable */}
+							<a
+								href="https://wpspectra.com/pricing/?utm_medium=spectra-dashboard&utm_campaign=uag-dashboard"
 								target="_blank"
 								rel="noreferrer"
 								className="no-underline text-text-on-color"

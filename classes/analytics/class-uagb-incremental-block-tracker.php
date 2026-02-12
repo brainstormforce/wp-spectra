@@ -171,7 +171,7 @@ if ( ! class_exists( 'UAGB_Incremental_Block_Tracker' ) ) {
 		 */
 		public function track_block_changes_on_save( $post_id, $post ) {
 			// Skip if analytics is not enabled.
-			if ( get_option( 'spectra_analytics_optin', 'no' ) !== 'yes' ) {
+			if ( get_option( 'spectra_usage_optin', 'no' ) !== 'yes' ) {
 				return;
 			}
 
@@ -201,6 +201,9 @@ if ( ! class_exists( 'UAGB_Incremental_Block_Tracker' ) ) {
 			// Count current blocks in the post (what's in this post after saving).
 			$current_blocks = $this->count_blocks_in_post( $post->post_content );
 
+			// Check if Spectra blocks have changed (for site activity tracking).
+			$has_spectra_blocks_changed = $this->has_blocks_changed( $previous_blocks, $current_blocks );
+
 			// Update global stats with the correct logic:
 			// 1. Subtract the old blocks from global count (remove what this post had before)
 			// 2. Add the new blocks to global count (add what this post has now).
@@ -208,6 +211,19 @@ if ( ! class_exists( 'UAGB_Incremental_Block_Tracker' ) ) {
 
 			// Store current block counts for next comparison.
 			update_post_meta( $post_id, '_uagb_previous_block_counts', $current_blocks );
+
+			// Update the edit timestamp for Active Site / Super Site KPIs.
+			// Only set timestamp if the post currently has Spectra blocks.
+			// Delete the meta if all Spectra blocks have been removed.
+			if ( $has_spectra_blocks_changed ) {
+				if ( $this->has_spectra_blocks( $current_blocks ) ) {
+					// Post still has Spectra blocks, update the timestamp.
+					update_post_meta( $post_id, '_uagb_last_spectra_edit', time() );
+				} else {
+					// All Spectra blocks were removed, delete the timestamp.
+					delete_post_meta( $post_id, '_uagb_last_spectra_edit' );
+				}
+			}
 		}
 
 		/**
@@ -219,7 +235,7 @@ if ( ! class_exists( 'UAGB_Incremental_Block_Tracker' ) ) {
 		 */
 		public function track_block_removal_on_delete( $post_id ) {
 			// Skip if analytics is not enabled.
-			if ( get_option( 'spectra_analytics_optin', 'no' ) !== 'yes' ) {
+			if ( get_option( 'spectra_usage_optin', 'no' ) !== 'yes' ) {
 				return;
 			}
 
@@ -274,7 +290,7 @@ if ( ! class_exists( 'UAGB_Incremental_Block_Tracker' ) ) {
 		 */
 		public function track_block_addition_on_untrash( $post_id ) {
 			// Skip if analytics is not enabled.
-			if ( get_option( 'spectra_analytics_optin', 'no' ) !== 'yes' ) {
+			if ( get_option( 'spectra_usage_optin', 'no' ) !== 'yes' ) {
 				return;
 			}
 
@@ -354,6 +370,26 @@ if ( ! class_exists( 'UAGB_Incremental_Block_Tracker' ) ) {
 		}
 
 		/**
+		 * Check if Spectra blocks have changed between previous and current counts.
+		 *
+		 * @param array $previous_blocks Block counts before saving.
+		 * @param array $current_blocks  Block counts after saving.
+		 * @since 2.19.19
+		 * @return bool True if blocks have changed, false otherwise.
+		 */
+		private function has_blocks_changed( $previous_blocks, $current_blocks ) {
+			foreach ( $this->spectra_blocks as $block_name ) {
+				$previous_count = isset( $previous_blocks[ $block_name ] ) ? $previous_blocks[ $block_name ] : 0;
+				$current_count  = isset( $current_blocks[ $block_name ] ) ? $current_blocks[ $block_name ] : 0;
+
+				if ( $previous_count !== $current_count ) {
+					return true;
+				}
+			}
+			return false;
+		}
+
+		/**
 		 * Update global analytics stats with the correct incremental logic.
 		 *
 		 * @param array $previous_blocks Block counts that were in the post before saving.
@@ -363,7 +399,7 @@ if ( ! class_exists( 'UAGB_Incremental_Block_Tracker' ) ) {
 		 */
 		private function update_global_stats_correctly( $previous_blocks, $current_blocks ) {
 			// Get existing analytics data.
-			$analytics_data = get_option( 'uagb_block_analytics_data', array() );
+			$analytics_data = get_option( 'uagb_block_usage_data', array() );
 
 			if ( ! is_array( $analytics_data ) ) {
 				$analytics_data = array();
@@ -402,7 +438,7 @@ if ( ! class_exists( 'UAGB_Incremental_Block_Tracker' ) ) {
 			$analytics_data['last_updated'] = time();
 
 			// Save the updated analytics data.
-			update_option( 'uagb_block_analytics_data', $analytics_data );
+			update_option( 'uagb_block_usage_data', $analytics_data );
 		}
 
 		/**
@@ -414,7 +450,7 @@ if ( ! class_exists( 'UAGB_Incremental_Block_Tracker' ) ) {
 		 */
 		private function update_global_stats( $block_diff ) {
 			// Get existing analytics data.
-			$analytics_data = get_option( 'uagb_block_analytics_data', array() );
+			$analytics_data = get_option( 'uagb_block_usage_data', array() );
 
 			if ( ! is_array( $analytics_data ) ) {
 				$analytics_data = array();
@@ -443,12 +479,13 @@ if ( ! class_exists( 'UAGB_Incremental_Block_Tracker' ) ) {
 			$analytics_data['last_updated'] = time();
 
 			// Save the updated analytics data.
-			update_option( 'uagb_block_analytics_data', $analytics_data );
+			update_option( 'uagb_block_usage_data', $analytics_data );
 		}
 
 		/**
 		 * Initialize tracking for existing posts (one-time setup).
 		 * This method populates the _uagb_previous_block_counts meta for existing posts.
+		 * Also sets _uagb_last_spectra_edit timestamp for posts that have Spectra blocks.
 		 *
 		 * @since 2.19.13
 		 * @return void
@@ -472,14 +509,38 @@ if ( ! class_exists( 'UAGB_Incremental_Block_Tracker' ) ) {
 				)
 			);
 
+			$current_time = time();
+
 			foreach ( $posts as $post_id ) {
 				$post = get_post( $post_id );
 				if ( is_object( $post ) && has_blocks( $post->post_content ) ) {
 					$block_counts   = $this->count_blocks_in_post( $post->post_content );
 					$actual_post_id = is_object( $post_id ) ? $post_id->ID : (int) $post_id;
 					update_post_meta( $actual_post_id, '_uagb_previous_block_counts', $block_counts );
+
+					// Set the edit timestamp if the post has any Spectra blocks.
+					// This ensures existing posts are counted in Active Site / Super Site KPIs.
+					if ( $this->has_spectra_blocks( $block_counts ) ) {
+						update_post_meta( $actual_post_id, '_uagb_last_spectra_edit', $current_time );
+					}
 				}
 			}
+		}
+
+		/**
+		 * Check if block counts contain any Spectra blocks.
+		 *
+		 * @param array $block_counts Array of block counts.
+		 * @since 2.19.19
+		 * @return bool True if any Spectra blocks are present, false otherwise.
+		 */
+		private function has_spectra_blocks( $block_counts ) {
+			foreach ( $block_counts as $block_name => $count ) {
+				if ( $count > 0 && in_array( $block_name, $this->spectra_blocks, true ) ) {
+					return true;
+				}
+			}
+			return false;
 		}
 
 		/**
