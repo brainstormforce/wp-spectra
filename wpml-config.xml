@@ -61,10 +61,13 @@
 			<xpath>//span[@class="uagb-icon-list__label"]</xpath>
 			<xpath>//div[contains(@class, "wp-block-uagb-icon-list-child")]/a/@href</xpath>
 		</gutenberg-block>
-	    <gutenberg-block type="uagb/tabs" translate="1">
-		    <key name="tabHeaders" label="Tab Headers"/>
-      		<xpath>//div/ul/li/a/div</xpath>
-	   </gutenberg-block>
+		<gutenberg-block type="uagb/tabs" translate="1">
+			<xpath>//*[contains(@class, "uagb-tab")]/a/div</xpath>
+			<key name="tabHeaders">
+				<key name="*" />
+			</key>
+		</gutenberg-block>
+		<gutenberg-block type="uagb/tabs-child" translate="0" />
 		<gutenberg-block type="uagb/restaurant-menu" translate="1">
 			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
 			<xpath>//div[@class="uagb-rm__desc"]</xpath>
@@ -115,8 +118,11 @@
 			<key name="headingTitle" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/modal" translate="1">
-			<key name="triggerText" />
-			<key name="buttonText" />
+			<xpath>//span[contains(@class, "uagb-inline-editing")]</xpath>
+			<xpath>//span[contains(@class, "uagb-modal-text")]</xpath>
+			<xpath type="link">//a[contains(@class, "uagb-modal-button-link")]/@href</xpath>
+			<key name="buttonText"/>
+			<key name="triggerText"/>
 		</gutenberg-block>
 		<gutenberg-block type="uagb/counter" translate="1">
 			<xpath>//*[@class="uagb-counter-block-prefix"]</xpath>
@@ -129,9 +135,14 @@
 		<gutenberg-block type="uagb/image-gallery" translate="1">
 			<key name="paginateButtonText" />
 			<key name="imageDefaultCaption" />
-			<xpath>//div[@class="spectra-image-gallery__media-thumbnail-caption"]</xpath>
-			<xpath>//div[@class="spectra-image-gallery__control-lightbox--caption"]</xpath>
-			<xpath>//div[@class="spectra-image-gallery__control-lightbox--count"]</xpath>
+			<key name="mediaGallery">
+				<key name="*">
+					<key name="url" type="link" />
+					<key name="alt" />
+					<key name="link" type="link" />
+					<key name="caption" />
+				</key>
+			</key>
 		</gutenberg-block>
 		<gutenberg-block type="uagb/countdown" translate="1">
 			<key name="labelDays" />
