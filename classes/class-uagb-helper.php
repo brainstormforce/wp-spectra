@@ -398,13 +398,34 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static function get_query( $attributes, $block_type ) {
 			$fallback_for_posts_to_show = UAGB_Block_Helper::get_fallback_number( $attributes['postsToShow'], 'postsToShow', $attributes['blockName'] );
 			$fallback_for_offset        = UAGB_Block_Helper::get_fallback_number( $attributes['postsOffset'], 'postsOffset', $attributes['blockName'] );
+
+			// SECURITY: Validate post type against public post types to prevent information disclosure.
+			$post_type     = ( isset( $attributes['postType'] ) ) ? sanitize_text_field( $attributes['postType'] ) : 'post';
+			$allowed_types = get_post_types( array( 'public' => true ) );
+			if ( ! in_array( $post_type, $allowed_types, true ) ) {
+				$post_type = 'post';
+			}
+
+			// SECURITY: Validate orderBy against allowed WP_Query values.
+			$order_by        = ( isset( $attributes['orderBy'] ) ) ? sanitize_text_field( $attributes['orderBy'] ) : 'date';
+			$allowed_orderby = array( 'date', 'modified', 'ID', 'author', 'title', 'rand', 'menu_order', 'comment_count' );
+			if ( ! in_array( $order_by, $allowed_orderby, true ) ) {
+				$order_by = 'date';
+			}
+
+			// SECURITY: Validate order direction.
+			$order = ( isset( $attributes['order'] ) ) ? sanitize_text_field( $attributes['order'] ) : 'desc';
+			if ( ! in_array( strtolower( $order ), array( 'asc', 'desc' ), true ) ) {
+				$order = 'desc';
+			}
+
 			// Block type is grid/masonry/carousel/timeline.
 			$query_args = array(
 				'posts_per_page'      => $fallback_for_posts_to_show,
 				'post_status'         => 'publish',
-				'post_type'           => ( isset( $attributes['postType'] ) ) ? $attributes['postType'] : 'post',
-				'order'               => ( isset( $attributes['order'] ) ) ? $attributes['order'] : 'desc',
-				'orderby'             => ( isset( $attributes['orderBy'] ) ) ? $attributes['orderBy'] : 'date',
+				'post_type'           => $post_type,
+				'order'               => $order,
+				'orderby'             => $order_by,
 				'ignore_sticky_posts' => 1,
 				'paged'               => 1,
 			);

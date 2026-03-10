@@ -183,8 +183,22 @@ class Common_Settings extends Ajax_Base {
 		if ( ! isset( $_POST[ $key ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 			wp_send_json_error( array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) ) );
 		}
-		// security validation done as per data type in function save_admin_settings.
-		return $_POST[ $key ]; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.NonceVerification.Missing
+		return sanitize_text_field( wp_unslash( $_POST[ $key ] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+	}
+
+	/**
+	 * Returns raw POST value for JSON fields that need json_decode().
+	 * Callers MUST sanitize individual elements after decoding.
+	 *
+	 * @param string $key The POST key to retrieve.
+	 * @return string Raw unslashed POST value.
+	 */
+	private function check_post_value_json( $key = 'value' ) {
+		// nonce verification done in function check_permission_nonce.
+		if ( ! isset( $_POST[ $key ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			wp_send_json_error( array( 'messsage' => __( 'No post data found!', 'ultimate-addons-for-gutenberg' ) ) );
+		}
+		return wp_unslash( $_POST[ $key ] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 	}
 
 	/**
@@ -395,8 +409,14 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function select_font_globally() {
 		$this->check_permission_nonce( 'uag_select_font_globally' );
-		$value = $this->check_post_value();
-		$value = json_decode( stripslashes( $value ), true );
+		$value = $this->check_post_value_json();
+		$value = json_decode( $value, true );
+
+		// SECURITY: Validate JSON decode was successful.
+		if ( null === $value && JSON_ERROR_NONE !== json_last_error() ) {
+			wp_send_json_error( array( 'messsage' => __( 'Invalid JSON data received.', 'ultimate-addons-for-gutenberg' ) ) );
+		}
+
 		$this->save_admin_settings( 'uag_select_font_globally', $this->sanitize_form_inputs( $value ) );
 	}
 
@@ -408,8 +428,14 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function fse_font_globally_delete() {
 		$this->check_permission_nonce( 'uag_fse_font_globally_delete' );
-		$value = $this->check_post_value();
-		$value = json_decode( stripslashes( $value ), true );
+		$value = $this->check_post_value_json();
+		$value = json_decode( $value, true );
+
+		// SECURITY: Validate JSON decode was successful.
+		if ( null === $value && JSON_ERROR_NONE !== json_last_error() ) {
+			wp_send_json_error( array( 'messsage' => __( 'Invalid JSON data received.', 'ultimate-addons-for-gutenberg' ) ) );
+		}
+
 		\UAGB_FSE_Fonts_Compatibility::delete_theme_font_family( $value );
 	}
 
@@ -421,8 +447,13 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function fse_font_globally() {
 		$this->check_permission_nonce( 'uag_fse_font_globally' );
-		$value = $this->check_post_value();
-		$value = json_decode( stripslashes( $value ), true );
+		$value = $this->check_post_value_json();
+		$value = json_decode( $value, true );
+
+		// SECURITY: Validate JSON decode was successful.
+		if ( null === $value && JSON_ERROR_NONE !== json_last_error() ) {
+			wp_send_json_error( array( 'messsage' => __( 'Invalid JSON data received.', 'ultimate-addons-for-gutenberg' ) ) );
+		}
 
 		$spectra_global_fse_fonts = \UAGB_Admin_Helper::get_admin_settings_option( 'spectra_global_fse_fonts', array() );
 
@@ -513,16 +544,16 @@ class Common_Settings extends Ajax_Base {
 		);
 		// nonce verification is done in above function check_permission_nonce.
 		if ( isset( $_POST['socialRegister'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
-			$social['socialRegister'] = rest_sanitize_boolean( sanitize_text_field( $_POST['socialRegister'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			$social['socialRegister'] = rest_sanitize_boolean( sanitize_text_field( wp_unslash( $_POST['socialRegister'] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		}
 		if ( isset( $_POST['googleClientId'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
-			$social['googleClientId'] = sanitize_text_field( $_POST['googleClientId'] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			$social['googleClientId'] = sanitize_text_field( wp_unslash( $_POST['googleClientId'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		}
 		if ( isset( $_POST['facebookAppId'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
-			$social['facebookAppId'] = sanitize_text_field( $_POST['facebookAppId'] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			$social['facebookAppId'] = sanitize_text_field( wp_unslash( $_POST['facebookAppId'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		}
 		if ( isset( $_POST['facebookAppSecret'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
-			$social['facebookAppSecret'] = sanitize_text_field( $_POST['facebookAppSecret'] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			$social['facebookAppSecret'] = sanitize_text_field( wp_unslash( $_POST['facebookAppSecret'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		}
 
 		$this->save_admin_settings( 'uag_social', $social );
@@ -631,13 +662,18 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function blocks_activation_and_deactivation() {
 		$this->check_permission_nonce( 'uag_blocks_activation_and_deactivation' );
-		$value  = $this->check_post_value();
+		$value  = $this->check_post_value_json();
 		$status = $this->check_post_value( 'status' );
 		if ( '' !== $status ) {
 			$status_value = 'disabled' === $status ? 'disabled' : 'enabled';
 		}
 		// will sanitize $value in later stage.
-		$value = json_decode( stripslashes( $value ), true );
+		$value = json_decode( $value, true );
+
+		// SECURITY: Validate JSON decode was successful.
+		if ( null === $value && JSON_ERROR_NONE !== json_last_error() ) {
+			wp_send_json_error( array( 'messsage' => __( 'Invalid JSON data received.', 'ultimate-addons-for-gutenberg' ) ) );
+		}
 
 		if ( 'disabled' === \UAGB_Helper::$file_generation ) {
 			\UAGB_Admin_Helper::create_specific_stylesheet(); // Get Specific Stylesheet.
@@ -1133,8 +1169,14 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function insta_linked_accounts() {
 		$this->check_permission_nonce( 'uag_insta_linked_accounts' );
-		$value = $this->check_post_value();
-		$value = json_decode( stripslashes( $value ), true );
+		$value = $this->check_post_value_json();
+		$value = json_decode( $value, true );
+
+		// SECURITY: Validate JSON decode was successful.
+		if ( null === $value && JSON_ERROR_NONE !== json_last_error() ) {
+			wp_send_json_error( array( 'messsage' => __( 'Invalid JSON data received.', 'ultimate-addons-for-gutenberg' ) ) );
+		}
+
 		// The previous $value is not sanitized, as the array sanitization is handled in the class method used below.
 		$this->save_admin_settings( 'uag_insta_linked_accounts', $this->sanitize_form_inputs( $value ) );
 	}
@@ -1148,8 +1190,13 @@ class Common_Settings extends Ajax_Base {
 	 */
 	public function insta_all_users_media() {
 		$this->check_permission_nonce( 'uag_insta_all_users_media' );
-		$value = $this->check_post_value();
-		$value = json_decode( stripslashes( $value ), true );
+		$value = $this->check_post_value_json();
+		$value = json_decode( $value, true );
+
+		// SECURITY: Validate JSON decode was successful.
+		if ( null === $value && JSON_ERROR_NONE !== json_last_error() ) {
+			wp_send_json_error( array( 'messsage' => __( 'Invalid JSON data received.', 'ultimate-addons-for-gutenberg' ) ) );
+		}
 		// The previous $value is not sanitized, as the array sanitization is handled in the class method used below.
 		$this->save_admin_settings( 'uag_insta_all_users_media', $this->sanitize_form_inputs( $value ) );
 	}

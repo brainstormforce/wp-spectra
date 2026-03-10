@@ -676,6 +676,9 @@ class UAGB_Init_Blocks {
 		check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
 		// security validation done in later stage.
 		$value = isset( $_POST['value'] ) ? json_decode( wp_unslash( $_POST['value'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		if ( ! is_array( $value ) ) {
+			$value = array();
+		}
 
 		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_recaptcha_secret_key_v2', sanitize_text_field( $value['reCaptchaSecretKeyV2'] ) );
 		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_recaptcha_secret_key_v3', sanitize_text_field( $value['reCaptchaSecretKeyV3'] ) );
@@ -1249,8 +1252,8 @@ class UAGB_Init_Blocks {
 			'container_elements_gap'                  => $container_elements_gap,
 			'recaptcha_site_key_v2'                   => UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v2', '' ),
 			'recaptcha_site_key_v3'                   => UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v3', '' ),
-			'recaptcha_secret_key_v2'                 => UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v2', '' ),
-			'recaptcha_secret_key_v3'                 => UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v3', '' ),
+			'recaptcha_secret_key_v2'                 => '', // Secret keys removed from client-side — used server-side only.
+			'recaptcha_secret_key_v3'                 => '', // Secret keys removed from client-side — used server-side only.
 			'blocks_editor_spacing'                   => apply_filters( 'uagb_default_blocks_editor_spacing', UAGB_Admin_Helper::get_admin_settings_option( 'uag_blocks_editor_spacing', 0 ) ),
 			'load_font_awesome_5'                     => UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_font_awesome_5' ),
 			'auto_block_recovery'                     => UAGB_Admin_Helper::get_admin_settings_option( 'uag_auto_block_recovery' ),
