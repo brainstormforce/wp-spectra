@@ -228,6 +228,9 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 ## Changelog ##
 
+### x.x.x ###
+* Fix: Global - Block CSS not generated when blocks are placed inside SureCart template parts on classic themes.
+
 ### 2.19.20 - Thursday, 12th February 2026 ###
 * Fix: Global - An edge case where automated requests caused missing Spectra CSS and layout issues.
 
