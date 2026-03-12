@@ -19,9 +19,7 @@ $default_email   = $curr_user->user_email;
  * - reCaptchaEnable (bool): Whether reCAPTCHA is enabled. Default: false.
  * - reCaptchaType (string): Type of reCAPTCHA ('v2' or 'v3'). Default: 'v2'.
  * - reCaptchaSiteKeyV2 (string): Site key for reCAPTCHA v2. Default: ''.
- * - reCaptchaSecretKeyV2 (string): Secret key for reCAPTCHA v2. Default: ''.
  * - reCaptchaSiteKeyV3 (string): Site key for reCAPTCHA v3. Default: ''.
- * - reCaptchaSecretKeyV3 (string): Secret key for reCAPTCHA v3. Default: ''.
  * - afterSubmitToEmail (string): Email address for submissions. Default: $default_email (sanitized).
  * - afterSubmitCcEmail (string): CC email address for submissions. Default: ''.
  * - afterSubmitBccEmail (string): BCC email address for submissions. Default: ''.
@@ -31,15 +29,18 @@ $default_email   = $curr_user->user_email;
  * - hidereCaptchaBatch (bool): Whether to hide reCAPTCHA for batch submissions. Default: false.
  * - captchaMessage (string): Custom message for CAPTCHA validation. Default: 'Please fill up the above captcha.'.
  * - confirmationUrl (string): Redirect URL for confirmation. Default: ''.
+ *
+ * Note: reCAPTCHA secret keys are intentionally NOT included here as they must never be exposed in frontend JavaScript.
+ * Secret keys are used server-side only for verification.
  */
 $js_attr = array(
 	'block_id'                => $attr['block_id'],
 	'reCaptchaEnable'         => isset( $attr['reCaptchaEnable'] ) ? filter_var( $attr['reCaptchaEnable'], FILTER_VALIDATE_BOOLEAN ) : false,
 	'reCaptchaType'           => isset( $attr['reCaptchaType'] ) && is_string( $attr['reCaptchaType'] ) ? sanitize_text_field( $attr['reCaptchaType'] ) : 'v2',
 	'reCaptchaSiteKeyV2'      => isset( $attr['reCaptchaSiteKeyV2'] ) && is_string( $attr['reCaptchaSiteKeyV2'] ) ? sanitize_text_field( $attr['reCaptchaSiteKeyV2'] ) : '',
-	'reCaptchaSecretKeyV2'    => isset( $attr['reCaptchaSecretKeyV2'] ) && is_string( $attr['reCaptchaSecretKeyV2'] ) ? sanitize_text_field( $attr['reCaptchaSecretKeyV2'] ) : '',
+	// SECURITY: reCaptchaSecretKeyV2 removed - secret keys must never be exposed in frontend JavaScript.
 	'reCaptchaSiteKeyV3'      => isset( $attr['reCaptchaSiteKeyV3'] ) && is_string( $attr['reCaptchaSiteKeyV3'] ) ? sanitize_text_field( $attr['reCaptchaSiteKeyV3'] ) : '',
-	'reCaptchaSecretKeyV3'    => isset( $attr['reCaptchaSecretKeyV3'] ) && is_string( $attr['reCaptchaSecretKeyV3'] ) ? sanitize_text_field( $attr['reCaptchaSecretKeyV3'] ) : '',
+	// SECURITY: reCaptchaSecretKeyV3 removed - secret keys must never be exposed in frontend JavaScript.
 	'afterSubmitToEmail'      => isset( $attr['afterSubmitToEmail'] ) && is_string( $attr['afterSubmitToEmail'] ) && '' !== trim( $attr['afterSubmitToEmail'] ) ? sanitize_email( $attr['afterSubmitToEmail'] ) : sanitize_email( $default_email ),
 	'afterSubmitCcEmail'      => isset( $attr['afterSubmitCcEmail'] ) && is_string( $attr['afterSubmitCcEmail'] ) && '' !== trim( $attr['afterSubmitCcEmail'] ) ? sanitize_email( $attr['afterSubmitCcEmail'] ) : '',
 	'afterSubmitBccEmail'     => isset( $attr['afterSubmitBccEmail'] ) && is_string( $attr['afterSubmitBccEmail'] ) && '' !== trim( $attr['afterSubmitBccEmail'] ) ? sanitize_email( $attr['afterSubmitBccEmail'] ) : '',

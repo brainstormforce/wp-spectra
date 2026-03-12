@@ -94,7 +94,7 @@ class Spectra_Migrate_Blocks {
 		add_action( 'spectra_blocks_migration_event', array( $this, 'blocks_migration' ) );
 		add_action( 'admin_init', array( $this, 'query_migrate_to_new' ) );
 		add_action( 'wp_ajax_check_migration_status', array( $this, 'check_migration_status' ) );
-		add_action( 'wp_ajax_nopriv_check_migration_status', array( $this, 'check_migration_status' ) );
+		// Removed wp_ajax_nopriv_check_migration_status - migration status should only be accessible to authenticated users.
 
 		if ( 'yes' === get_option( 'uag_migration_status', 'no' ) && 'yes' === get_option( 'uagb-old-user-less-than-2', false ) ) {
 			add_action( 'admin_footer', array( $this, 'add_migration_status_script' ) );
@@ -194,6 +194,18 @@ class Spectra_Migrate_Blocks {
 	 * @return void
 	 */
 	public function check_migration_status() {
+		// Check user capability first.
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error(
+				array(
+					'status' => 'fail',
+					'type'   => 'error',
+					'msg'    => 'Unauthorized access',
+				)
+			);
+			return;
+		}
+
 		// Sanitize and check if the nonce is valid.
 		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( $_POST['nonce'] ) : '';
 		if ( ! wp_verify_nonce( $nonce, 'check_migration_status_nonce' ) ) {

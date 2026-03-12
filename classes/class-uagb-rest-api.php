@@ -238,6 +238,7 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 						'methods'             => 'GET',
 						'callback'            => array( $this, 'check_custom_fields_support' ),
 						'permission_callback' => array( $this, 'get_items_permissions_check' ),
+						'args'                => $this->check_custom_fields_support_args(),
 					),
 				)
 			);
@@ -574,8 +575,25 @@ if ( ! class_exists( 'UAGB_Rest_API' ) ) {
 			$args = array();
 
 			$args['post_type'] = array(
-				'type'     => 'string',
-				'required' => false,
+				'type'              => 'string',
+				'required'          => false,
+				'sanitize_callback' => 'sanitize_text_field',
+				'validate_callback' => function ( $value ) {
+					// Allow empty value since required is false.
+					if ( empty( $value ) ) {
+						return true;
+					}
+					// Validate that it's a string.
+					if ( ! is_string( $value ) ) {
+						return new \WP_Error( 'invalid_type', __( 'Post type must be a string.', 'ultimate-addons-for-gutenberg' ) );
+					}
+					// Validate against registered post types.
+					$post_types = get_post_types( array( 'public' => true ) );
+					if ( ! in_array( $value, $post_types, true ) ) {
+						return new \WP_Error( 'invalid_post_type', __( 'Invalid post type.', 'ultimate-addons-for-gutenberg' ) );
+					}
+					return true;
+				},
 			);
 
 			return $args;

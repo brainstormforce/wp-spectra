@@ -356,7 +356,10 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 			}
 			// sanitizing form_data elements in later stage.
 			$form_data = isset( $_POST['form_data'] ) ? json_decode( wp_unslash( $_POST['form_data'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-			
+			if ( ! is_array( $form_data ) ) {
+				$form_data = array();
+			}
+
 			$body  = '';
 			$body .= '<div style="border: 50px solid #f6f6f6;">';
 			$body .= '<div style="padding: 15px;">';
@@ -383,7 +386,9 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 			$body .= '<p style="text-align:center;">This e-mail was sent from a ' . get_bloginfo( 'name' ) . ' ( ' . site_url() . ' )</p>';
 			$body .= '</div>';
 			$body .= '</div>';
-			$this->send_email( $body, $form_data, $current_block_attributes );
+			if ( is_array( $current_block_attributes ) ) {
+				$this->send_email( $body, $form_data, $current_block_attributes );
+			}
 
 		}
 
@@ -416,9 +421,9 @@ if ( ! class_exists( 'UAGB_Forms' ) ) {
 		 *
 		 * Trigger Mail.
 		 *
-		 * @param object $body Email Body.
-		 * @param object $form_data Email Body Array.
-		 * @param object $args Extra Data.
+		 * @param string $body Email Body.
+		 * @param array  $form_data Form data array.
+		 * @param array  $args Extra Data.
 		 *
 		 * @since 1.22.0
 		 */

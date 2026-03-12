@@ -1305,9 +1305,16 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			check_ajax_referer( 'uagb_grid_ajax_nonce', 'nonce' );
 
 			if ( isset( $_POST['attr'] ) ) {
+				// SECURITY: First decode JSON, then sanitize individual values.
+				// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized after json_decode via required_attribute_for_query.
+				$attr = json_decode( wp_unslash( $_POST['attr'] ), true );
 
-				$attr          = json_decode( stripslashes( sanitize_text_field( $_POST['attr'] ) ), true );
-				$attr['paged'] = isset( $_POST['page_number'] ) ? sanitize_text_field( $_POST['page_number'] ) : '';
+				// Validate JSON decode was successful.
+				if ( ! is_array( $attr ) ) {
+					wp_send_json_error( 'Invalid JSON data received.' );
+				}
+
+				$attr['paged'] = isset( $_POST['page_number'] ) ? absint( $_POST['page_number'] ) : 1;
 				$html          = $this->post_grid_callback( $attr );
 				wp_send_json_success( $html );
 
@@ -1577,6 +1584,9 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 				// $_POST['attributes'] is sanitized in later stage.
 				$attr = isset( $_POST['attributes'] ) ? json_decode( wp_unslash( $_POST['attributes'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+				if ( ! is_array( $attr ) ) {
+					$attr = array();
+				}
 
 				$post_attribute_array = $this->required_attribute_for_query( $attr );
 
@@ -1598,18 +1608,49 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since 2.0.0
 		 */
 		public function required_attribute_for_query( $attributes ) {
+			// SECURITY: Validate post type against public post types to prevent information disclosure.
+			$post_type     = ( isset( $attributes['postType'] ) ) ? sanitize_text_field( $attributes['postType'] ) : 'post';
+			$allowed_types = get_post_types( array( 'public' => true ) );
+			if ( ! in_array( $post_type, $allowed_types, true ) ) {
+				$post_type = 'post';
+			}
+
+			// SECURITY: Validate orderBy against allowed WP_Query values.
+			$order_by        = ( isset( $attributes['orderBy'] ) ) ? sanitize_text_field( $attributes['orderBy'] ) : 'date';
+			$allowed_orderby = array( 'date', 'modified', 'ID', 'author', 'title', 'rand', 'menu_order', 'comment_count' );
+			if ( ! in_array( $order_by, $allowed_orderby, true ) ) {
+				$order_by = 'date';
+			}
+
+			// SECURITY: Validate order direction.
+			$order = ( isset( $attributes['order'] ) ) ? sanitize_text_field( $attributes['order'] ) : 'desc';
+			if ( ! in_array( strtolower( $order ), array( 'asc', 'desc' ), true ) ) {
+				$order = 'desc';
+			}
+
+			// SECURITY: Validate taxonomy type against registered public taxonomies.
+			$taxonomy_type = 'category'; // Default fallback.
+			if ( isset( $attributes['taxonomyType'] ) ) {
+				$requested_taxonomy = sanitize_text_field( $attributes['taxonomyType'] );
+				$taxonomy_obj       = get_taxonomy( $requested_taxonomy );
+				// Only allow public taxonomies.
+				if ( $taxonomy_obj && $taxonomy_obj->public ) {
+					$taxonomy_type = $requested_taxonomy;
+				}
+			}
+
 			return array(
-				'postsOffset'        => ( isset( $attributes['postsOffset'] ) ) ? sanitize_text_field( $attributes['postsOffset'] ) : 0,
-				'postsToShow'        => ( isset( $attributes['postsToShow'] ) ) ? sanitize_text_field( $attributes['postsToShow'] ) : 6,
-				'postType'           => ( isset( $attributes['postType'] ) ) ? sanitize_text_field( $attributes['postType'] ) : 'post',
-				'order'              => ( isset( $attributes['order'] ) ) ? sanitize_text_field( $attributes['order'] ) : 'desc',
-				'orderBy'            => ( isset( $attributes['orderBy'] ) ) ? sanitize_text_field( $attributes['orderBy'] ) : 'date',
-				'excludeCurrentPost' => ( ! empty( $attr['excludeCurrentPost'] ) ) ? sanitize_text_field( $attributes['excludeCurrentPost'] ) : false,
+				'postsOffset'        => ( isset( $attributes['postsOffset'] ) ) ? absint( $attributes['postsOffset'] ) : 0,
+				'postsToShow'        => ( isset( $attributes['postsToShow'] ) ) ? absint( $attributes['postsToShow'] ) : 6,
+				'postType'           => $post_type,
+				'order'              => $order,
+				'orderBy'            => $order_by,
+				'excludeCurrentPost' => ( ! empty( $attributes['excludeCurrentPost'] ) ) ? (bool) $attributes['excludeCurrentPost'] : false,
 				'categories'         => ( isset( $attributes['categories'] ) && '' !== $attributes['categories'] ) ? sanitize_text_field( $attributes['categories'] ) : '',
-				'taxonomyType'       => ( isset( $attributes['taxonomyType'] ) ) ? sanitize_text_field( $attributes['taxonomyType'] ) : 'category',
-				'postPagination'     => ( isset( $attributes['postPagination'] ) && true === $attributes['postPagination'] ) ? sanitize_text_field( $attributes['postPagination'] ) : false,
+				'taxonomyType'       => $taxonomy_type,
+				'postPagination'     => ( isset( $attributes['postPagination'] ) && true === $attributes['postPagination'] ) ? true : false,
 				'paginationType'     => ( isset( $attributes['paginationType'] ) && 'none' !== $attributes['paginationType'] ) ? sanitize_text_field( $attributes['paginationType'] ) : 'none',
-				'paged'              => ( isset( $attributes['paged'] ) ) ? sanitize_text_field( $attributes['paged'] ) : '',
+				'paged'              => ( isset( $attributes['paged'] ) ) ? absint( $attributes['paged'] ) : 1,
 				'blockName'          => ( isset( $attributes['blockName'] ) ) ? sanitize_text_field( $attributes['blockName'] ) : '',
 			);
 		}
@@ -1626,6 +1667,9 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$post_attribute_array = array();
 			// $_POST['attr'] is sanitized in later stage.
 			$attr = isset( $_POST['attr'] ) ? json_decode( wp_unslash( $_POST['attr'] ), true ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			if ( ! is_array( $attr ) ) {
+				$attr = array();
+			}
 
 			$attr['paged'] = isset( $_POST['page_number'] ) ? sanitize_text_field( $_POST['page_number'] ) : '';
 

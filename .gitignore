@@ -47,3 +47,7 @@ auth.json
 
 # Artifact
 artifact/
+
+# Claude Code
+CLAUDE.md
+.claude/
