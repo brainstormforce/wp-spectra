@@ -1409,7 +1409,7 @@ class UAGB_Post_Assets {
 			$this_post_post_content .= implode( '', $template_contents );
 		}
 		// Prepare assets.
-		if ( $this_post instanceof WP_Post && ( has_blocks( $this_post->ID ) || has_blocks( $this_post ) ) ) {
+		if ( $this_post instanceof WP_Post && ( has_blocks( $this_post->ID ) || has_blocks( $this_post_post_content ) ) ) {
 			$this->common_function_for_assets_preparation( $this_post_post_content );
 		}
 	}
