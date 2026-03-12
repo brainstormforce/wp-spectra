@@ -88,6 +88,8 @@ class UAGB_Init_Blocks {
 		add_action( 'init', array( $this, 'register_popup_builder' ) );
 		add_filter( 'srfm_enable_redirect_activation', '__return_false' );
 
+		add_filter( 'admin_body_class', array( $this, 'add_wp_compat_body_class' ) );
+
 		add_action( 'wp_ajax_uagb_sureforms', array( $this, 'sureforms_plugin_activator' ) );
 		add_action( 'wp_ajax_uagb_surecart', array( $this, 'surecart_plugin_activator' ) );
 
@@ -1034,6 +1036,24 @@ class UAGB_Init_Blocks {
 		} else {
 			return 'Installed';
 		}
+	}
+
+	/**
+	 * Add a version-independent body class for WP >= 6.9 compat CSS.
+	 *
+	 * Replaces version-specific body classes (version-6-9, version-6-9-1)
+	 * with a single class that persists across future WordPress updates.
+	 *
+	 * @since x.x.x
+	 *
+	 * @param string $classes Admin body classes.
+	 * @return string Modified admin body classes.
+	 */
+	public function add_wp_compat_body_class( $classes ) {
+		if ( version_compare( get_bloginfo( 'version' ), '6.9', '>=' ) ) {
+			$classes .= ' spectra-wp-gte-6-9';
+		}
+		return $classes;
 	}
 
 	/**

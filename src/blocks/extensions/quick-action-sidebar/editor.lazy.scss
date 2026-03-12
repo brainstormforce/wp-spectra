@@ -493,8 +493,7 @@ div#widgets-editor {
 }
 
 body {
-	&.version-6-9,
-	&.version-6-9-1 {
+	&.spectra-wp-gte-6-9 {
 		.spectra-ee-quick-access__sidebar { // To resolve the QAB not aligned with WP BAR in the editor with WP 6.9.
 			width: 64px;
 		}
