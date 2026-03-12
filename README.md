@@ -229,7 +229,7 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 ## Changelog ##
 
 ### 2.19.21 - Thursday, 12th March 2026 ###
-* Security: Fixed a security issue.
+* This update addressed a security bug. Please make sure you are using the latest version on your website.
 * Fix: WPML - Resolved translation issues for Tabs, Modal, and Image Gallery blocks.
 * Fix: Global - Block CSS not generated when blocks are placed inside SureCart template parts on classic themes.
 
