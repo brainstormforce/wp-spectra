@@ -343,7 +343,7 @@ const BlocksSection = () => {
 							prefix={ <Search className='text-icon-secondary' /> }
 							size="sm"
 							type="text"
-							placeholder="Search…"
+							placeholder={ __( 'Search…', 'ultimate-addons-for-gutenberg' ) }
 						/>
 
 						<div
