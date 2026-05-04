@@ -8,6 +8,10 @@
 
 namespace ZipWP_Images;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Zipwp_Images_Loader
  *
@@ -63,6 +67,7 @@ class Zipwp_Images_Loader {
 		$class_to_load = $class;
 
 		$filename = strtolower(
+			// phpcs:ignore Generic.PHP.ForbiddenFunctions.FoundWithAlternative -- /e modifier not used, safe in autoloader
 			(string) preg_replace(
 				[ '/^' . __NAMESPACE__ . '\\\/', '/([a-z])([A-Z])/', '/_/', '/\\\/' ],
 				[ '', '$1-$2', '-', DIRECTORY_SEPARATOR ],
@@ -92,50 +97,18 @@ class Zipwp_Images_Loader {
 
 	/**
 	 * Load Plugin Text Domain.
-	 * This will load the translation textdomain depending on the file priorities.
-	 *      1. Global Languages /wp-content/languages/zipwp-images/ folder
-	 *      2. Local dorectory /wp-content/plugins/zipwp-images/languages/ folder
+	 *
+	 * Uses load_plugin_textdomain() which automatically handles:
+	 * - Loading from global WP_LANG_DIR/plugins/ directory (translate.wordpress.org translations).
+	 * - Falling back to the plugin's local languages/ directory.
+	 * - User locale detection (since WordPress 4.7).
 	 *
 	 * @since 1.0.0
 	 * @return void
 	 */
 	public function load_textdomain(): void {
-		// Default languages directory.
-		$lang_dir = ZIPWP_IMAGES_DIR . 'languages/';
-
-		/**
-		 * Filters the languages directory path to use for plugin.
-		 *
-		 * @param string $lang_dir The languages directory path.
-		 */
-		$lang_dir = apply_filters( 'zipwp_images_languages_directory', $lang_dir );
-
-		// Traditional WordPress plugin locale filter.
-		global $wp_version;
-
-		$get_locale = get_locale();
-
-		if ( $wp_version >= 4.7 ) {
-			$get_locale = get_user_locale();
-		}
-
-		$locale = apply_filters( 'plugin_locale', $get_locale, 'zipwp-images' );
-		$mofile = sprintf( '%1$s-%2$s.mo', 'zipwp-images', $locale );
-
-		// Setup paths to current locale file.
-		$mofile_global = WP_LANG_DIR . '/plugins/' . $mofile;
-		$mofile_local  = $lang_dir . $mofile;
-
-		if ( file_exists( $mofile_global ) ) {
-			// Look in global /wp-content/languages/zipwp-images/ folder.
-			load_textdomain( 'zipwp-images', $mofile_global );
-		} elseif ( file_exists( $mofile_local ) ) {
-			// Look in local /wp-content/plugins/zipwp-images/languages/ folder.
-			load_textdomain( 'zipwp-images', $mofile_local );
-		} else {
-			// Load the default language files.
-			load_plugin_textdomain( 'zipwp-images', false, $lang_dir );
-		}
+		// load_plugin_textdomain removed — WordPress auto-loads translations since 4.6.
+		// See: https://make.wordpress.org/core/2016/07/06/i18n-improvements-in-4-6/.
 	}
 }
 

@@ -368,8 +368,9 @@ const AIPage = () => {
 				</div>
 			</DropdownMenu.Trigger>
 
-			<DropdownMenu.Content className="w-60">
-				<DropdownMenu.List className="font-[Figtree]">
+			<DropdownMenu.ContentWrapper>
+				<DropdownMenu.Content className="w-60">
+					<DropdownMenu.List className="font-[Figtree]">
 					{ uag_react?.zip_ai_is_authorized && (
 						<>
 							<DropdownMenu.Item>
@@ -462,8 +463,9 @@ const AIPage = () => {
 							</div>
 						</DropdownMenu.Item>
 					) }
-				</DropdownMenu.List>
-			</DropdownMenu.Content>
+					</DropdownMenu.List>
+				</DropdownMenu.Content>
+			</DropdownMenu.ContentWrapper>
 		</DropdownMenu>
 	);
 

@@ -234,11 +234,25 @@ module.exports = withTW( {
             },
 		},
 	},
+	safelist: [
+		'size-2', 'size-3', 'size-4', 'size-5', 'size-6', 'size-7', 'size-8',
+		'ring-0', 'ring-1', 'ring-2',
+		'ring-brand-primary-600', 'ring-border-subtle', 'ring-transparent',
+	],
 	variants: {
 		extend: {},
 	},
 	plugins: [
 		require( '@tailwindcss/forms' ),
+		// Polyfill size-* utility for Tailwind < 3.3 (used by force-ui).
+		function ( { matchUtilities, theme } ) {
+			matchUtilities(
+				{
+					size: ( value ) => ( { width: value, height: value } ),
+				},
+				{ values: theme( 'spacing' ) }
+			);
+		},
 	],
 	corePlugins: {
 		preflight: false,

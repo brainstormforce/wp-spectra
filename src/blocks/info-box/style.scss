@@ -551,3 +551,47 @@ a.uagb-infbox__link-to-all {
 .uagb-ifb-content .uagb-ifb-desc p:last-child {
 	margin-bottom: 0;
 }
+
+/* ============================================================
+ * RTL OVERRIDES — Info Box
+ *
+ * The existing html[dir="rtl"] block (lines ~329-361) handles
+ * icon-wrap margins and infobox-left/right alignment.
+ * This delta closes the remaining static-CSS gaps:
+ *   - inline SVG icon margins (icon-left / icon-right variants)
+ *   - link icon before/after margins
+ *   - icon-after float direction (deprecated but still present)
+ *
+ * Additive only — no existing LTR rule modified.
+ * ============================================================ */
+/* stylelint-disable-next-line no-duplicate-selectors */
+html[dir="rtl"] {
+	/* Inline SVG icon spacing — mirror of lines 101-109 */
+	.uagb-infobox-icon-left-title .uagb-ifb-content > svg,
+	.uagb-infobox-icon-left .uagb-ifb-content > svg {
+		margin-right: 0;
+		margin-left: 10px;
+	}
+
+	.uagb-infobox-icon-right-title .uagb-ifb-content > svg,
+	.uagb-infobox-icon-right .uagb-ifb-content > svg {
+		margin-left: 0;
+		margin-right: 10px;
+	}
+
+	/* Link icon position — mirror of lines 178-186 */
+	.uagb-infobox-link-icon-after {
+		margin-right: 5px;
+		margin-left: 0;
+	}
+
+	.uagb-infobox-link-icon-before {
+		margin-right: 0;
+		margin-left: 5px;
+	}
+
+	/* Deprecated icon-after float — mirror of line 534 */
+	.uagb-ifb-button-icon.uagb-ifb-align-icon-after {
+		float: left;
+	}
+}

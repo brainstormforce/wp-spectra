@@ -332,7 +332,7 @@ class UAGB_Init_Blocks {
 			$registry = WP_Block_Type_Registry::get_instance();
 			// Only register if the block is NOT already registered.
 			if ( ! $registry->is_registered( $block['blockName'] ) ) {
-				$registry->register( $block['blockName'], $block['attrs'] );
+				$registry->register( $block['blockName'], array() );
 			}
 		}
 
@@ -1044,7 +1044,7 @@ class UAGB_Init_Blocks {
 	 * Replaces version-specific body classes (version-6-9, version-6-9-1)
 	 * with a single class that persists across future WordPress updates.
 	 *
-	 * @since x.x.x
+	 * @since 2.19.22
 	 *
 	 * @param string $classes Admin body classes.
 	 * @return string Modified admin body classes.

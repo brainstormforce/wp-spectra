@@ -138,7 +138,12 @@ class UAGB_Popup_Builder {
 		}
 
 		$popup = get_post( $attr['id'] );
-		if ( empty( $popup ) ) {
+		if ( ! ( $popup instanceof WP_Post ) ) {
+			return;
+		}
+
+		// Prevent unauthorized access to non-published (private/draft) popups via shortcode.
+		if ( 'publish' !== $popup->post_status && ! current_user_can( 'read_post', $popup->ID ) ) {
 			return;
 		}
 		

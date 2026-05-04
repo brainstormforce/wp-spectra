@@ -208,7 +208,7 @@ class Admin_Configurations {
 		}
 
 		// Get the nonce.
-		$nonce = ( isset( $_GET['nonce'] ) ) ? sanitize_key( $_GET['nonce'] ) : '';
+		$nonce = ( isset( $_GET['nonce'] ) ) ? sanitize_key( wp_unslash( $_GET['nonce'] ) ) : '';
 
 		// If the nonce is not valid, or if there's no token, then abandon ship.
 		if ( false === wp_verify_nonce( $nonce, 'zip_ai_auth_nonce' ) ) {
@@ -216,7 +216,7 @@ class Admin_Configurations {
 		}
 
 		// Redirect to the settings page if the user is trying to revoke the token.
-		if ( isset( $_GET['revoke_zip_ai_authorization_token'] ) && 'definitely' === sanitize_text_field( $_GET['revoke_zip_ai_authorization_token'] ) ) {
+		if ( isset( $_GET['revoke_zip_ai_authorization_token'] ) && 'definitely' === sanitize_text_field( wp_unslash( $_GET['revoke_zip_ai_authorization_token'] ) ) ) {
 
 			// Clear out the Zip AI settings and disconnect the user.
 			Helper::update_admin_settings_option( 'zip_ai_settings', [ 'status' => 'disconnected' ] );
@@ -240,17 +240,17 @@ class Admin_Configurations {
 
 		// Update the auth token if needed.
 		if ( isset( $_GET['credit_token'] ) && is_string( $_GET['credit_token'] ) ) {
-			$db_settings_options['auth_token'] = Utils::encrypt( sanitize_text_field( $_GET['credit_token'] ) );
+			$db_settings_options['auth_token'] = Utils::encrypt( sanitize_text_field( wp_unslash( $_GET['credit_token'] ) ) );
 		}
 
 		// Update the Zip token if needed.
 		if ( isset( $_GET['token'] ) && is_string( $_GET['token'] ) ) {
-			$db_settings_options['zip_token'] = Utils::encrypt( sanitize_text_field( $_GET['token'] ) );
+			$db_settings_options['zip_token'] = Utils::encrypt( sanitize_text_field( wp_unslash( $_GET['token'] ) ) );
 		}
 
 		// Update the email if needed.
 		if ( isset( $_GET['email'] ) && is_string( $_GET['email'] ) ) {
-			$db_settings_options['email'] = sanitize_email( $_GET['email'] );
+			$db_settings_options['email'] = sanitize_email( wp_unslash( $_GET['email'] ) );
 		}
 
 		// Update the Zip AI settings.
@@ -319,7 +319,7 @@ class Admin_Configurations {
 		$is_module_toggled = false;
 
 		// Update the enabled status.
-		if ( 'enabled' === sanitize_text_field( $_POST['enable_zip_chat'] ) ) {
+		if ( 'enabled' === sanitize_text_field( wp_unslash( $_POST['enable_zip_chat'] ) ) ) {
 			$is_module_toggled = Module::enable( 'ai_assistant' );
 		} else {
 			$is_module_toggled = Module::disable( 'ai_assistant' );
@@ -386,11 +386,11 @@ class Admin_Configurations {
 			}
 		}
 
-		// Enqueue the admin Google Fonts and WP Components.
+		// Enqueue the admin font (Inter, self-hosted) and WP Components.
 		$admin_slug = 'zip-ai-admin';
 		wp_enqueue_style(
 			$admin_slug . '-font',
-			'https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap',
+			ZIP_AI_URL . 'assets/fonts/fonts.css',
 			array(),
 			ZIP_AI_VERSION
 		);
@@ -479,10 +479,10 @@ class Admin_Configurations {
 			ZIP_AI_VERSION
 		);
 
-		// Register the admin Google Fonts.
+		// Register the admin font (Inter, self-hosted).
 		wp_register_style(
-			'zip-ai-admin-google-fonts',
-			'https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap',
+			'zip-ai-admin-font',
+			ZIP_AI_URL . 'assets/fonts/fonts.css',
 			array(),
 			ZIP_AI_VERSION
 		);
@@ -491,8 +491,8 @@ class Admin_Configurations {
 		wp_enqueue_script( $handle );
 		// Set the script translations.
 		wp_set_script_translations( $handle, apply_filters( 'zip_ai_library_textdomain', 'zip-ai' ) );
-		// Enqueue the Google Fonts.
-		wp_enqueue_style( 'zip-ai-admin-google-fonts' );
+		// Enqueue the bundled font.
+		wp_enqueue_style( 'zip-ai-admin-font' );
 		// Enqueue the admin styles.
 		wp_enqueue_style( $handle );
 		// Set the RTL styles.
@@ -510,7 +510,7 @@ class Admin_Configurations {
 	public function add_footer_link() {
 		return '<span id="footer-thankyou">' . sprintf(
 			/* translators: %1$s: HTML link start tag, %2$s: HTML link end tag. */
-			__( 'Thank you for using %1$sZip AI.%2$s', 'ultimate-addons-for-gutenberg' ),
+			__( 'Thank you for using %1$sZip AI.%2$s' ),
 			'<a href="https://wpspectra.com/zip-ai/" class="focus:text-spec-hover active:text-spec-hover hover:text-spec-hover" target="_blank" rel="noopener noreferrer">',
 			'</a>'
 		) . '</span>';

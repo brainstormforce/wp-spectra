@@ -7025,11 +7025,11 @@ namespace {
         }
     }
     /**
-     * Astra_Notices
+     * BSF_Admin_Notices
      *
-     * @since 1.0.0
+     * @since 1.2.0
      */
-    class Astra_Notices
+    class BSF_Admin_Notices
     {
         /**
          * Initiator

@@ -848,4 +848,37 @@ $combined_selectors = UAGB_Helper::get_combined_selectors(
 
 $base_selector = '.uagb-block-';
 
-return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
+$css_output = UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
+
+// Touch device caption fix: on devices without hover (phones/tablets),
+// "Hide On Hover" captions must stay visible (users can't hover to hide them).
+// "Show On Hover" is left as-is — respects user's intent to keep captions hidden.
+// Transition + GPU fix for 'antiHover' and 'always' prevents iOS Safari flicker.
+if ( $attr['imageDisplayCaption'] && 'hover' !== $attr['captionVisibility'] ) {
+	$block_sel  = $base_selector . $id;
+	$touch_sel  = '.spectra-touch-device' . $block_sel;
+	$caption_bg = $attr['captionBackgroundColor'] ? $attr['captionBackgroundColor'] : $attr['overlayColor'];
+
+	$rules = '';
+	// Color overrides: force visible caption colors on :hover for 'antiHover' mode.
+	if ( 'antiHover' === $attr['captionVisibility'] ) {
+		$rules .= '{sel} .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-caption{color:' . $attr['captionColor'] . ' !important;}';
+		$rules .= '{sel} .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-caption a{color:' . $attr['captionColor'] . ' !important;}';
+		$rules .= '{sel} .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-caption-wrapper--overlay{background-color:' . $caption_bg . ' !important;}';
+		$rules .= '{sel} .spectra-image-gallery__media-wrapper:hover .spectra-image-gallery__media-thumbnail-caption--bar-inside{background-color:' . $attr['captionBackgroundColor'] . ' !important;}';
+	}
+
+	// Transition + GPU compositing fix (prevents iOS Safari repaint flash
+	// during Slick carousel translate3d slide animation).
+	$rules .= '{sel} .spectra-image-gallery__media-thumbnail-caption,'
+		. '{sel} .spectra-image-gallery__media-thumbnail-caption-wrapper{transition:none !important;-webkit-backface-visibility:hidden;backface-visibility:hidden;}';
+	$rules .= '{sel} .spectra-image-gallery__media-thumbnail-caption-wrapper--overlay,'
+		. '{sel} .spectra-image-gallery__media-thumbnail-caption--bar-inside{-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-transform:translateZ(0);transform:translateZ(0);}';
+
+	// JS class-based detection (matchMedia for hover:none).
+	$css_output['desktop'] .= str_replace( '{sel}', $touch_sel, $rules );
+	// CSS media query fallback: covers all touch-only devices.
+	$css_output['desktop'] .= '@media(hover:none),(pointer:coarse){' . str_replace( '{sel}', $block_sel, $rules ) . '}';
+}
+
+return $css_output;

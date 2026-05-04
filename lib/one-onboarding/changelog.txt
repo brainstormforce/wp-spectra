@@ -1,0 +1,14 @@
+== Changelog ==
+
+v1.0.3 - 21st April 2026
+- Fix: Use fully-qualified class names in class_exists() guards to prevent fatal errors when another plugin defines a global Api, Admin, Ajax, Plugin, or Register class.
+
+v1.0.2 - 16th April 2026
+- Fix: Opt-in checkbox now defaults to checked.
+- Fix: First name fallback to display_name then user_login when first_name is empty.
+
+v1.0.1 - 7th April 2026
+- New: Added configurable opt-in checkbox to the User Information screen.
+
+v1.0.0 - 9th September 2025
+- Initial release

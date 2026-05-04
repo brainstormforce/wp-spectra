@@ -313,3 +313,21 @@
 		}
 	}
 }
+
+/* ============================================================
+ * RTL OVERRIDES — Testimonial
+ *
+ * Existing `[dir="rtl"]` block above already handles slick-prev /
+ * slick-next arrow positions for desktop + tablet breakpoints.
+ * This delta covers the remaining static-CSS gap:
+ *   - image-position-bottom padding direction
+ *
+ * Additive only — no existing LTR rule modified.
+ * ============================================================ */
+/* stylelint-disable-next-line no-duplicate-selectors */
+[dir="rtl"] {
+	.uagb-tm__image-position-bottom .uagb-tm__image-content {
+		padding-right: 0;
+		padding-left: 10px;
+	}
+}

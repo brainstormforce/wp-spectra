@@ -8,6 +8,10 @@
 
 namespace ZipWP_Images\Classes;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Ai_Builder
  */
@@ -88,11 +92,11 @@ class Zipwp_Images_Script {
 		}
 		$current_screen = get_current_screen();
 
-		if ( ! is_object( $current_screen ) ) {
-			return;
-		}
-
-		if ( in_array( $current_screen->post_type, $exclude_post_types, true ) ) {
+		if ( is_object( $current_screen ) ) {
+			if ( in_array( $current_screen->post_type, $exclude_post_types, true ) ) {
+				return;
+			}
+		} elseif ( ! isset( $_GET['fl_builder'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Fetching GET parameter, no nonce associated with this action.
 			return;
 		}
 
@@ -112,12 +116,13 @@ class Zipwp_Images_Script {
 				'is_bb_editor'         => class_exists( '\FLBuilderModel' ) ? \FLBuilderModel::is_builder_active() : false,
 				'is_brizy_editor'      => class_exists( 'Brizy_Editor_Post' ) ? ( isset( $_GET['brizy-edit'] ) || isset( $_GET['brizy-edit-iframe'] ) ) : false, // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Fetching GET parameter, no nonce associated with this action.
 				'saved_images'         => get_option( 'zipwp-images-saved-images', array() ),
-				'title'                => apply_filters( 'zipwp_images_tab_title', __( 'Search Images', 'ultimate-addons-for-gutenberg' ) ),
-				'search_placeholder'   => __( 'Search - Ex: flowers', 'ultimate-addons-for-gutenberg' ),
-				'downloading'          => __( 'Downloading...', 'ultimate-addons-for-gutenberg' ),
-				'validating'           => __( 'Validating...', 'ultimate-addons-for-gutenberg' ),
+				'title'                => apply_filters( 'zipwp_images_tab_title', __( 'Search Images', 'zipwp-images' ) ),
+				'search_placeholder'   => __( 'Search - Ex: flowers', 'zipwp-images' ),
+				'downloading'          => __( 'Downloading...', 'zipwp-images' ),
+				'validating'           => __( 'Validating...', 'zipwp-images' ),
 				'_ajax_nonce'          => wp_create_nonce( 'zipwp-images' ),
 				'rest_api_nonce'       => current_user_can( 'edit_posts' ) ? wp_create_nonce( 'wp_rest' ) : '',
+				'image_engines'        => self::get_images_engines(),
 			)
 		);
 
@@ -130,28 +135,17 @@ class Zipwp_Images_Script {
 
 		// Enqueue CSS.
 		wp_enqueue_style( 'zipwp-images-style', ZIPWP_IMAGES_URL . 'dist/style-main.css', array(), ZIPWP_IMAGES_VER );
-		wp_enqueue_style( 'zipwp-images-google-fonts', $this->google_fonts_url(), array(), 'all' );
+		wp_enqueue_style( 'zipwp-images-fonts', ZIPWP_IMAGES_URL . 'assets/fonts/figtree.css', array(), ZIPWP_IMAGES_VER );
 	}
 
 	/**
-	 * Generate and return the Google fonts url.
+	 * Get Images Engines
 	 *
-	 * @since 1.0.0
-	 * @return string
+	 * @since 1.0.20
+	 * @return array<string> Image Engine.s
 	 */
-	public function google_fonts_url() {
-
-		$fonts_url     = '';
-		$font_families = array(
-			'Figtree:400,500,600,700',
-		);
-
-		$query_args = array(
-			'family' => rawurlencode( implode( '|', $font_families ) ),
-			'subset' => rawurlencode( 'latin,latin-ext' ),
-		);
-
-		return add_query_arg( $query_args, '//fonts.googleapis.com/css' );
+	public static function get_images_engines() {
+		return [ 'pexels', 'pixabay' ];
 	}
 }
 

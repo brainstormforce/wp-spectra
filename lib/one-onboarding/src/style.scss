@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Figtree font from Google Fonts */
+/* stylelint-disable-next-line no-invalid-position-at-import-rule */
+@import url( "https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" );
+
+/* Set the admin bar height to 0 for onboarding pages */
+:root:has( .one-onboarding-wrapper ) {
+	--wp-admin--admin-bar--height: 0;
+
+	/* Default color variables for onboarding pages */
+	--oo-default-primary-background: #fff;
+	--oo-default-secondary-background: #f9fafb;
+	--oo-default-primary-brand: #5630d5;
+	--oo-default-secondary-brand: #4d21ca;
+	--oo-default-primary-text: #111827;
+	--oo-default-secondary-text: #4f4e7c;
+	--oo-default-tertiary-text: #6f6b99;
+
+	#wpbody-content {
+		padding: 0;
+	}
+
+	/* Hide Admin Bar and WordPress Sidebar Menu for onboarding pages */
+	:is( #adminmenumain, #wpadminbar, #adminmenuback, #adminmenuwrap, #wpfooter ) {
+		@apply hidden;
+	}
+
+	/* Remove padding and margin from the main content area */
+	:is( #wpcontent, #wpbody ) {
+		@apply p-0 m-0;
+	}
+}

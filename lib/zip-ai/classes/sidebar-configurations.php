@@ -158,7 +158,7 @@ class Sidebar_Configurations {
 		if ( ! empty( $last_message_tone ) ) {
 			$current_options['last_used']['changeTone'] = [
 				'value' => $last_message_tone,
-				'label' => __( ucfirst( $last_message_tone ), 'ultimate-addons-for-gutenberg' ), //phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
+				'label' => self::get_tone_label( $last_message_tone ),
 			];
 		}
 
@@ -185,7 +185,7 @@ class Sidebar_Configurations {
 
 		// If the nessage array doesn't exist, abandon ship.
 		if ( empty( $params['message_array'] ) || ! is_array( $params['message_array'] ) ) {
-			wp_send_json_error( array( 'message' => __( 'The message array was not supplied', 'ultimate-addons-for-gutenberg' ) ) );
+			wp_send_json_error( array( 'message' => __( 'The message array was not supplied' ) ) );
 		}
 
 		// Set the character count to 0, and create messages array.
@@ -267,7 +267,7 @@ class Sidebar_Configurations {
 			// If you've reached here, then something has definitely gone amuck. Abandon ship.
 			wp_send_json_error(
 				array(
-					'message' => __( 'Something went wrong', 'ultimate-addons-for-gutenberg' ),
+					'message' => __( 'Something went wrong' ),
 					'code'    => $response['code'],
 				)
 			);
@@ -284,13 +284,13 @@ class Sidebar_Configurations {
 	 */
 	private function custom_message( $code ) {
 		$message_array = array(
-			'no_auth'              => __( 'Authentication failed. Invalid or missing bearer token.', 'ultimate-addons-for-gutenberg' ),
+			'no_auth'              => __( 'Authentication failed. Invalid or missing bearer token.' ),
 			'insufficient_credits' => array(
-				'title'          => __( 'You\'ve run out of credits.', 'ultimate-addons-for-gutenberg' ),
+				'title'          => __( 'You\'ve run out of credits.', 'zip-ai' ),
 				'type'           => 'assemble-error',
-				'content'        => __( 'To continue using the assistant and access its full features, please purchase more credits.', 'ultimate-addons-for-gutenberg' ),
+				'content'        => __( 'To continue using the assistant and access its full features, please purchase more credits.', 'zip-ai' ),
 				'button_content' => array(
-					'text' => __( 'Buy more credits', 'ultimate-addons-for-gutenberg' ),
+					'text' => __( 'Buy more credits', 'zip-ai' ),
 					'url'  => 'https://app.zipwp.com/credits-pricing?source=spectra',
 				),
 			),
@@ -440,7 +440,7 @@ class Sidebar_Configurations {
 		}
 
 		// Get the ID based on the current URL - this will avoid incorrectly getting popups as the page.
-		$current_url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		$current_url = esc_url_raw( home_url( isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '' ) );
 		$post_id     = url_to_postid( set_url_scheme( $current_url ) );
 		// If this is an editor page, this won't work - so if it doesn't, try getting the ID.
 		if ( empty( $post_id ) ) {
@@ -509,7 +509,7 @@ class Sidebar_Configurations {
 
 		wp_enqueue_style(
 			'zip-ai-sidebar-fonts',
-			'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Courier+Prime:wght@400&display=swap',
+			ZIP_AI_URL . 'assets/fonts/fonts.css',
 			array(),
 			ZIP_AI_VERSION
 		);
@@ -750,7 +750,34 @@ class Sidebar_Configurations {
 	}
 
 	/**
-	 * A small private function to take in any given content, and return a formatted array for OpenAI as a system message.
+	 * Get a translatable label for a message tone value.
+	 *
+	 * @since 2.0.9
+	 *
+	 * @param string $tone The tone key (e.g. 'formal', 'casual').
+	 * @return string Translated tone label, or escaped ucfirst fallback.
+	 */
+	private static function get_tone_label( $tone ) {
+		$labels = array(
+			'formal'       => __( 'Formal', 'zip-ai' ),
+			'casual'       => __( 'Casual', 'zip-ai' ),
+			'friendly'     => __( 'Friendly', 'zip-ai' ),
+			'informative'  => __( 'Informative', 'zip-ai' ),
+			'professional' => __( 'Professional', 'zip-ai' ),
+			'playful'      => __( 'Playful', 'zip-ai' ),
+			'serious'      => __( 'Serious', 'zip-ai' ),
+			'humorous'     => __( 'Humorous', 'zip-ai' ),
+			'polite'       => __( 'Polite', 'zip-ai' ),
+			'emotional'    => __( 'Emotional', 'zip-ai' ),
+		);
+
+		// Safety net for legacy or unknown tone values (e.g. stale DB entries from older plugin versions).
+		// Not translatable by design — add new tones to $labels above instead.
+		return isset( $labels[ $tone ] ) ? $labels[ $tone ] : esc_html( ucfirst( $tone ) );
+	}
+
+	/**
+	 * Format content as a system role message for OpenAI.
 	 *
 	 * @param string $content The content to be put as the message.
 	 * @param string $role    The role of the message, as per OpenAI standards.

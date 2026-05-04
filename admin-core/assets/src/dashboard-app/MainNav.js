@@ -21,6 +21,13 @@ const Navigation = () => {
 		},
 	];
 
+	// Add Learn tab.
+	menus.push( {
+		name: __( 'Learn', 'ultimate-addons-for-gutenberg' ),
+		slug: uag_react.home_slug,
+		path: 'learn',
+	} );
+
 	// Conditionally add the Free vs Pro menu item
 	if ( uag_react.pro_plugin_status === 'Install' ) {
 		menus.push( {

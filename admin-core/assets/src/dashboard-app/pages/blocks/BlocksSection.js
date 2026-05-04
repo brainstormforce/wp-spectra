@@ -21,7 +21,6 @@ const BlocksSection = () => {
 	const [ formattedBlocks, setFormattedBlocks ] = useState( [] );
 	const [ searchInput, setSearchInput ] = useState( '' );
 	const [ filteredBlocks, setFilteredBlocks ] = useState( [] );
-	const [ isDropOpen, setIsDropOpen ] = useState( false );
 	const [ filterCount, setFilterCount ] = useState( 0 );
 	const [ filterState, setFilterState ] = useState( {
 		type: null,
@@ -370,7 +369,7 @@ const BlocksSection = () => {
 							</div>
 						</div>
 
-						<DropdownMenu placement="bottom-end" isOpen={ isDropOpen } onOpenChange={ setIsDropOpen }>
+						<DropdownMenu placement="bottom-end">
 							<DropdownMenu.Trigger>
 								<Button
 									className="flex justify-center items-center relative uagb-input-border"
@@ -388,8 +387,9 @@ const BlocksSection = () => {
 								</Button>
 								<span className="sr-only">{ __( 'Open Menu', 'ultimate-addons-for-gutenberg' ) }</span>
 							</DropdownMenu.Trigger>
-							<DropdownMenu.Content>
-								<DropdownMenu.List>
+							<DropdownMenu.ContentWrapper>
+								<DropdownMenu.Content>
+									<DropdownMenu.List>
 									<CustomRadioGroup
 										options={ [
 											{
@@ -444,7 +444,8 @@ const BlocksSection = () => {
 										onChange={ ( value ) => updateFilterState( 'category', value ) }
 									/>
 								</DropdownMenu.List>
-							</DropdownMenu.Content>
+								</DropdownMenu.Content>
+							</DropdownMenu.ContentWrapper>
 						</DropdownMenu>
 					</div>
 				</div>

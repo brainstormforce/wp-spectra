@@ -397,8 +397,8 @@
 	}
 
 	.uagb-timeline__line {
-		right: auto;
-		left: 20px;
+		inset-inline-start: 20px;
+		inset-inline-end: auto;
 	}
 
 	.uagb-timeline__day-new {
@@ -559,63 +559,10 @@
 }
 
 .uagb-timeline__right-block .uagb-timeline__line {
-	right: 1.5em;
+	inset-inline-end: 1.5em;
 }
 
-.rtl {
-	.uagb-timeline__center-block {
-		.uagb-timeline__day-right .uagb-timeline__arrow::after {
-			border-right: 13px solid #eee;
-			border-left: none;
-		}
-
-		.uagb-timeline__day-left .uagb-timeline__arrow::after {
-			border-right: none;
-			border-left: 13px solid #eee;
-		}
-	}
-
-	.uagb-timeline__left-block {
-		.uagb-timeline__line {
-			right: auto;
-			left: 16px;
-		}
-
-		.uagb-timeline__field {
-			flex-direction: row-reverse;
-		}
-
-		.uagb-timeline__day-left .uagb-timeline__arrow::after {
-			border-right: 13px solid #eee;
-			right: -3px;
-		}
-
-		.uagb-timeline__day-right .uagb-timeline__arrow::after {
-			border-right: 13px solid #eee;
-			right: -3px;
-		}
-	}
-
-	.uagb-timeline__right-block {
-		.uagb-timeline__line {
-			right: auto;
-			left: 1.5em;
-		}
-
-		.uagb-timeline__field {
-			flex-direction: row;
-		}
-
-		.uagb-timeline__day-right .uagb-timeline__arrow::after {
-			border-left: 13px solid #eee;
-		}
-
-		.uagb-timeline__day-left .uagb-timeline__arrow::after {
-			border-left: 13px solid #eee;
-			right: -17px;
-		}
-	}
-}
+/* RTL overrides consolidated at the end of this file — see `.rtl { ... }` below. */
 
 @media screen and ( max-width: 1023px ) {
 	.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline-res-right .uagb-timeline__line {
@@ -1688,6 +1635,304 @@
 	.uagb-timeline__link_parent {
 		.uagb-timeline__link.wp-block-button__link {
 			width: auto;
+		}
+	}
+}
+
+/* ============================================================
+ * RTL OVERRIDES — Content Timeline / Post Timeline
+ *
+ * Consolidated RTL section. Mirrors every LTR physical-direction
+ * property (left/right, margin-left/right, text-align, arrow
+ * border direction, triangle pseudo position) so the full layout
+ * flips in RTL. Additive — no LTR rule is modified.
+ *
+ * Intentionally NOT overridden: `justify-content` on
+ * `.uagb-timeline__date-new`. Flex alignment is already
+ * direction-aware under `direction: rtl`, so the LTR values
+ * `flex-start` / `flex-end` produce the correct mirrored
+ * alignment automatically. Overriding them double-flips and
+ * pushes the date text away from the marker.
+ *
+ * Both `.rtl` (frontend + admin body) and `[dir="rtl"]` (editor
+ * iframe at tablet/mobile preview — which sets dir on <html> but
+ * omits the .rtl class) are targeted so the overrides apply in
+ * every context.
+ * ============================================================ */
+.rtl,
+[dir="rtl"] {
+	/* ---------- CENTER BLOCK ---------- */
+	.uagb-timeline__center-block {
+		.uagb-timeline__right .uagb-timeline__arrow {
+			right: auto;
+			left: -10px;
+		}
+
+		.uagb-timeline__left .uagb-timeline__arrow {
+			left: auto;
+			right: -10px;
+		}
+
+		.uagb-timeline__day-right .uagb-timeline__arrow::after {
+			right: auto;
+			left: 0;
+			border-left: none;
+			border-right: 13px solid #eee;
+		}
+
+		.uagb-timeline__day-left .uagb-timeline__arrow::after {
+			left: auto;
+			right: 0;
+			border-right: none;
+			border-left: 13px solid #eee;
+		}
+
+		.uagb-timeline__right .uagb-timeline__day-left .uagb-timeline__arrow::after {
+			right: auto;
+			left: 0;
+		}
+	}
+
+	/* ---------- LEFT BLOCK (mirrors to a right-anchored timeline) ---------- */
+	/* Line position is handled via inset-inline-start in the static rule above — no RTL override needed. */
+	.uagb-timeline__left-block {
+		.uagb-timeline__day-new {
+			margin-left: 0;
+			margin-right: 14px;
+		}
+
+		.uagb-timeline__date-new {
+			margin-right: 0;
+			margin-left: 10px;
+		}
+
+		.uagb-timeline__right,
+		.uagb-timeline__left {
+			.uagb-timeline__events-inner-new {
+				text-align: right;
+			}
+		}
+
+		.uagb-timeline__right .uagb-timeline__arrow {
+			left: auto;
+			right: -10px;
+		}
+
+		.uagb-timeline__left .uagb-timeline__arrow {
+			left: auto;
+			right: -12px;
+		}
+
+		.uagb-timeline__day-right .uagb-timeline__arrow::after {
+			right: auto;
+			left: 0;
+			border-right: none;
+			border-left: 13px solid #eee;
+		}
+
+		.uagb-timeline__day-left .uagb-timeline__arrow::after {
+			left: auto;
+			right: 0;
+			border-right: none;
+			border-left: 13px solid #eee;
+		}
+	}
+
+	/* ---------- RIGHT BLOCK (mirrors to a left-anchored timeline) ---------- */
+	/* Line position is handled via inset-inline-end in the static rule above — no RTL override needed. */
+	.uagb-timeline__right-block {
+		.uagb-timeline__date-new {
+			margin-left: 0;
+			margin-right: 10px;
+		}
+
+		.uagb-timeline__day-new {
+			margin-right: 0;
+			margin-left: 14px;
+		}
+
+		.uagb-timeline__right,
+		.uagb-timeline__left {
+			.uagb-timeline__events-inner-new {
+				text-align: left;
+			}
+		}
+
+		.uagb-timeline__right .uagb-timeline__arrow {
+			right: auto;
+			left: -12px;
+		}
+
+		.uagb-timeline__left .uagb-timeline__arrow {
+			right: auto;
+			left: -10px;
+		}
+
+		.uagb-timeline__day-right .uagb-timeline__arrow::after {
+			right: auto;
+			left: 0;
+			border-left: none;
+			border-right: 13px solid #eee;
+		}
+
+		.uagb-timeline__day-left .uagb-timeline__arrow::after {
+			left: auto;
+			right: 0;
+			border-left: none;
+			border-right: 13px solid #eee;
+		}
+	}
+
+	/* ---------- STANDALONE / TOP-LEVEL ALIGNMENT ---------- */
+	.uagb-timeline__day-right .uagb-timeline__events-inner {
+		text-align: left;
+	}
+
+	.uagb-timeline__day-left .uagb-timeline__events-inner {
+		text-align: right;
+	}
+
+	.uagb-timeline__left {
+		text-align: right;
+	}
+
+	.uagb-timeline__right {
+		text-align: left;
+	}
+
+	/* ---------- CONTENT TIMELINE CHILD LAYOUT (frontend + editor) ---------- */
+	.wp-block-uagb-content-timeline .uagb-timeline__content-wrap {
+		&.uagb-timeline__center-block {
+			.uagb-timeline__right .uagb-timeline__day-new {
+				padding-left: 12px;
+				padding-right: 0;
+			}
+
+			.uagb-timeline__left .uagb-timeline__day-new {
+				padding-right: 12px;
+				padding-left: 0;
+			}
+
+			.uagb-timeline__right .uagb-timeline__arrow {
+				right: auto;
+				left: 0;
+			}
+
+			.uagb-timeline__left .uagb-timeline__arrow {
+				left: auto;
+				right: 0;
+			}
+		}
+	}
+
+	/* ---------- RESPONSIVE: TABLET ---------- */
+	@media screen and ( max-width: 1023px ) {
+		.uagb-timeline__center-block.uagb-timeline__responsive-tablet {
+			.uagb-timeline__day-new {
+				margin-left: 0;
+				margin-right: 16px;
+			}
+
+			.uagb-timeline__line {
+				left: auto;
+				right: 20px;
+			}
+
+			.uagb-timeline__right .uagb-timeline__arrow {
+				left: auto;
+				right: -10px;
+			}
+
+			.uagb-timeline__left .uagb-timeline__arrow {
+				left: auto;
+				right: -12px;
+			}
+
+			.uagb-timeline__day-right .uagb-timeline__arrow::after,
+			.uagb-timeline__day-left .uagb-timeline__arrow::after {
+				right: auto;
+				left: 0;
+				border-right: none;
+				border-left: 13px solid #eee;
+			}
+
+			/* res-right variant: stacks opposite side; in RTL this mirrors to left-anchored */
+			.uagb-timeline-res-right {
+				.uagb-timeline__line {
+					right: auto;
+					left: 20px;
+				}
+
+				.uagb-timeline__day-new {
+					margin-right: 0;
+					margin-left: 16px;
+				}
+
+				.uagb-timeline__right .uagb-timeline__arrow {
+					right: auto;
+					left: -12px;
+				}
+
+				.uagb-timeline__left .uagb-timeline__arrow {
+					right: auto;
+					left: -10px;
+				}
+
+				.uagb-timeline__day-right .uagb-timeline__arrow::after,
+				.uagb-timeline__day-left .uagb-timeline__arrow::after {
+					left: auto;
+					right: 0;
+					border-left: none;
+					border-right: 13px solid #eee;
+				}
+			}
+		}
+	}
+
+	/* ---------- RESPONSIVE: MOBILE ---------- */
+	@media screen and ( max-width: 767px ) {
+		.uagb-timeline__center-block.uagb-timeline__responsive-mobile {
+			.uagb-timeline__day-new {
+				margin-left: 0;
+				margin-right: 16px;
+			}
+
+			.uagb-timeline__right .uagb-timeline__arrow {
+				left: auto;
+				right: -10px;
+			}
+
+			.uagb-timeline__left .uagb-timeline__arrow {
+				left: auto;
+				right: -12px;
+			}
+
+			/* res-right variant: mirrored to left-anchored under RTL */
+			.uagb-timeline-res-right {
+				.uagb-timeline__day-new {
+					margin-right: 0;
+					margin-left: 16px;
+				}
+
+				.uagb-timeline__right .uagb-timeline__arrow {
+					right: auto;
+					left: -12px;
+				}
+
+				.uagb-timeline__left .uagb-timeline__arrow {
+					right: auto;
+					left: -10px;
+				}
+			}
+		}
+
+		.uagb-timeline__day-left .uagb-timeline__events-inner-new {
+			text-align: right;
+		}
+
+		.uagb-timeline__left-block .uagb-timeline__date-new {
+			margin-right: 0;
+			margin-left: 10px;
 		}
 	}
 }

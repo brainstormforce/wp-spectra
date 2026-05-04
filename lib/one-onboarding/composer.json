@@ -1,0 +1,48 @@
+{
+	"name": "brainstormforce/one-onboarding",
+	"type": "wordpress-plugin",
+	"description": "One Onboarding is a comprehensive library designed to create seamless onboarding experiences for Brainstorm Force (BSF) products including Astra theme, Spectra plugin, and other WordPress products.",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+		{
+			"name": "Brainstorm Force",
+			"homepage": "https://brainstormforce.com"
+		}
+	],
+	"require": {
+		"php": ">=7.4"
+	},
+	"require-dev": {
+		"squizlabs/php_codesniffer": "^3.5",
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+		"phpcompatibility/php-compatibility": "^9.3",
+		"wp-coding-standards/wpcs": "^2.2",
+		"phpstan/phpstan": "^1.9",
+		"szepeviktor/phpstan-wordpress": "^1.1",
+		"php-stubs/wordpress-stubs": "^6.1",
+		"php-stubs/generator": "^0.8.2",
+		"automattic/vipwpcs": "^2.3",
+		"nunomaduro/phpinsights": "^2.10"
+	},
+	"autoload": {
+		"psr-4": {
+			"One_Onboarding\\": "includes/"
+		}
+	},
+	"scripts": {
+		"test": "vendor/bin/phpunit",
+		"phpcs": "vendor/bin/phpcs",
+		"phpcbf": "vendor/bin/phpcbf",
+		"phpstan": "vendor/bin/phpstan --memory-limit=2048M analyse",
+		"insights": "./vendor/bin/phpinsights analyse -v --no-interaction",
+		"insights:fix": "./vendor/bin/phpinsights analyse --fix --no-interaction",
+		"gen-stubs": "vendor/bin/generate-stubs artifacts/phpstan/one-onboarding/ --out=tests/php/stubs/one-onboarding-stubs.php && rm -rf artifacts/phpstan",
+		"update-stubs": "rm -f tests/php/stubs/one-onboarding-stubs.php && bash bin/build-folder-phpstan.sh && composer gen-stubs"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"composer/installers": true
+		}
+	}
+}

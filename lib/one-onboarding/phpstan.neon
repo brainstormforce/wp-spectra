@@ -1,0 +1,60 @@
+# Start command: composer update --classmap-authoritative && vendor/bin/phpstan analyze
+
+includes:
+	- phpstan-baseline.neon # Baseline to ignore error temporary
+	# https://github.com/phpstan/phpstan/blob/master/conf/bleedingEdge.neon
+	# - vendor/phpstan/phpstan/conf/bleedingEdge.neon
+	# - phar://phpstan.phar/conf/bleedingEdge.neon
+	- vendor/szepeviktor/phpstan-wordpress/extension.neon
+	# - vendor/php-stubs/wordpress-stubs/wordpress-stubs.php
+	# - vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
+parameters:
+	level: 9
+	inferPrivatePropertyTypeFromConstructor: true
+	tmpDir: artifacts/phpstan
+	stubFiles:
+		- tests/php/stubs/wordpress-override.php
+	scanFiles:
+		- tests/php/stubs/one-onboarding-stubs.php
+	bootstrapFiles:
+		- vendor/php-stubs/wordpress-stubs/wordpress-stubs.php
+		- tests/php/stubs/wpb-constants.php
+		- tests/php/stubs/wpb-stubs.php
+		- tests/php/stubs/one-onboarding-constants.php
+	paths:
+		- one-onboarding.php
+		- loader.php
+		- includes/
+	excludePaths:
+		- vendor/
+		- node_modules/
+		- dist/
+		- build/
+		- includes/lib/
+		- tests/php/stubs/
+		- assets/
+		- '*.min.js'
+		- '*.asset.php'
+
+#    autoload_files:
+#        # Missing constants, function and class stubs
+#        - %currentWorkingDirectory%/tests/phpstan/bootstrap.php
+#        # Plugin stubs
+#        - %currentWorkingDirectory%/tests/phpstan/PLUGIN-stubs.php
+#        # Procedural code
+#        - %currentWorkingDirectory%/myplugin-functions.php
+#    autoload_directories:
+#        - %currentWorkingDirectory%/inc/
+	ignoreErrors:
+		# Uses func_get_args()
+		# - '#^Function apply_filters invoked with [34567] parameters, 2 required\.$#'
+		# - '#^Function do_action invoked with [3456] parameters, 1-2 required\.$#'
+		# - '#^Function current_user_can invoked with 2 parameters, 1 required\.$#'
+		# - '#^Function add_query_arg invoked with [123] parameters?, 0 required\.$#'
+		# - '#^Function add_theme_support invoked with [2345] parameters, 1 required\.$#'
+		# - '#^Function wp_sprintf invoked with [23456] parameters, 1 required\.$#'
+		# https://core.trac.wordpress.org/ticket/43304
+		# - '/^Parameter #2 \$deprecated of function load_plugin_textdomain expects string, false given\.$/'
+		# WP-CLI accepts a class as callable
+		# - '/^Parameter #2 \$callable of static method WP_CLI::add_command\(\) expects callable\(\): mixed, \S+ given\.$/'
+		# Please consider commenting ignores: issue URL or reason of ignore

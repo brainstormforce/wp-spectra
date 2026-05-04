@@ -132,7 +132,7 @@ class Helper {
 		// If the endpoint is not a string, then abandon ship.
 		if ( ! is_string( $endpoint ) ) {
 			return array(
-				'error' => __( 'The Zip AI Endpoint was not declared', 'ultimate-addons-for-gutenberg' ),
+				'error' => __( 'The Zip AI Endpoint was not declared' ),
 			);
 		}
 
@@ -142,7 +142,7 @@ class Helper {
 		// If the Zip Auth Token is not set, then abandon ship.
 		if ( empty( $auth_token ) || ! is_string( $auth_token ) ) {
 			return array(
-				'error' => __( 'The Zip AI Auth Token is not set.', 'ultimate-addons-for-gutenberg' ),
+				'error' => __( 'The Zip AI Auth Token is not set.' ),
 			);
 		}
 
@@ -176,8 +176,8 @@ class Helper {
 
 		// If the response was an error.
 		if ( is_wp_error( $response ) || empty( $response ) ) {
-			$error_message = __( 'Empty response from API.', 'ultimate-addons-for-gutenberg' );
-			$error_code    = __( 'empty_response', 'ultimate-addons-for-gutenberg' );
+			$error_message = __( 'Empty response from API.' );
+			$error_code    = __( 'empty_response' );
 
 			if ( is_wp_error( $response ) ) {
 				$error_message = $response->get_error_message();
@@ -197,7 +197,7 @@ class Helper {
 
 		// Check if the status code is 403 or 401 error.
 		if ( 401 === $status_code || 403 === $status_code ) {
-			$error_message = isset( $response_body['error'] ) ? $response_body['error'] : __( 'You do not have permission to perform this action.', 'ultimate-addons-for-gutenberg' );
+			$error_message = isset( $response_body['error'] ) ? $response_body['error'] : __( 'You do not have permission to perform this action.' );
 			$error_code    = isset( $response_body['code'] ) ? $response_body['code'] : 'forbidden';
 
 			return array(
@@ -208,7 +208,7 @@ class Helper {
 
 		// If the response body is not a JSON, then abandon ship.
 		if ( 200 !== $status_code || empty( $response_body ) ) {
-			$error_message = __( 'Encountered an error while processing your request. Please try again.', 'ultimate-addons-for-gutenberg' );
+			$error_message = __( 'Encountered an error while processing your request. Please try again.' );
 			$error_code    = 'unknown_error';
 
 			return array(
@@ -232,7 +232,7 @@ class Helper {
 		// If the endpoint is not a string, then abandon ship.
 		if ( ! is_string( $endpoint ) ) {
 			return array(
-				'error' => __( 'The ZipWP Endpoint was not declared', 'ultimate-addons-for-gutenberg' ),
+				'error' => __( 'The ZipWP Endpoint was not declared' ),
 			);
 		}
 
@@ -242,7 +242,7 @@ class Helper {
 		// If the ZipWP Token is not set, then abandon ship.
 		if ( empty( $zipwp_token ) || ! is_string( $zipwp_token ) ) {
 			return array(
-				'error' => __( 'The ZipWP Token is not set.', 'ultimate-addons-for-gutenberg' ),
+				'error' => __( 'The ZipWP Token is not set.' ),
 			);
 		}
 
@@ -266,7 +266,7 @@ class Helper {
 		// If the response was an error, or not a 200 status code, then abandon ship.
 		if ( is_wp_error( $response ) || empty( $response['response'] ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
 			return array(
-				'error' => __( 'The ZipWP API server is not responding.', 'ultimate-addons-for-gutenberg' ),
+				'error' => __( 'The ZipWP API server is not responding.' ),
 			);
 		}
 
@@ -276,7 +276,7 @@ class Helper {
 		// If the response body is not a JSON, then abandon ship.
 		if ( empty( $response_body ) || ! json_decode( $response_body ) ) {
 			return array(
-				'error' => __( 'The ZipWP API server encountered an error.', 'ultimate-addons-for-gutenberg' ),
+				'error' => __( 'The ZipWP API server encountered an error.' ),
 			);
 		}
 

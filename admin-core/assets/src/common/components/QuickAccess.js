@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import { Container, Label, Badge } from '@bsf/force-ui';
-import { Headset, CircleHelp, MessageSquare, Star } from 'lucide-react';
+import { Headset, CircleHelp, MessageSquare, Star, Rocket } from 'lucide-react';
 
 const QuickAccess = () => {
 	return (
@@ -16,6 +16,21 @@ const QuickAccess = () => {
 				</Label>
 			</Container.Item>
 			<Container.Item className="flex flex-col md:w-full lg:w-full bg-field-primary-background gap-1 p-1 rounded-lg">
+				<div className="p-2 gap-1 items-center flex bg-background-primary rounded-md shadow-soft-shadow-inner">
+					<a
+						className="no-underline hover:underline hover:text-field-label"
+						href={ uag_react.admin_url + '?page=spectra-onboarding' }
+					>
+						<Container align="center" className="gap-1 p-1" containerType="flex" direction="row">
+							<Container.Item className="flex">
+								<Rocket size={ 14 } className="m-1 no-underline text-text-primary" />
+							</Container.Item>
+							<Container.Item className="flex">
+								<Label className="py-0 px-1 font-normal cursor-pointer">{ __( 'Setup Wizard', 'ultimate-addons-for-gutenberg' ) }</Label>
+							</Container.Item>
+						</Container>
+					</a>
+				</div>
 				<div className="p-2 gap-1 items-center flex bg-background-primary rounded-md shadow-soft-shadow-inner">
 					<a
 						className="no-underline hover:underline hover:text-field-label"

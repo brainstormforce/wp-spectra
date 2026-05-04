@@ -400,6 +400,16 @@ class Admin_Menu {
 			array( $this, 'render' )
 		);
 
+		// Add the Learn tab in Submenu.
+		add_submenu_page(
+			$menu_slug,
+			__( 'Spectra', 'ultimate-addons-for-gutenberg' ),
+			__( 'Learn', 'ultimate-addons-for-gutenberg' ),
+			$capability,
+			$menu_slug . '&path=learn',
+			array( $this, 'render' )
+		);
+
 		// Add the Free vs Pro Submenu.
 		if ( ! file_exists( UAGB_DIR . '../spectra-pro/spectra-pro.php' ) ) {
 			add_submenu_page(
@@ -539,6 +549,7 @@ class Admin_Menu {
 				'pro_installed_status'              => 'inactive' === self::get_plugin_status( 'spectra-pro/spectra-pro.php' ) ? true : false,
 				'pro_plugin_status'                 => self::get_plugin_status( 'spectra-pro/spectra-pro.php' ),
 				'contry_code'                       => \UAGB_Admin_Helper::get_user_country_code(),
+				'onboarding_completed'              => \UAGB_Onboarding::is_onboarding_completed(),
 			)
 		);
 
@@ -740,6 +751,13 @@ class Admin_Menu {
 			$build_url . 'dashboard-app.css',
 			array(),
 			UAGB_VER
+		);
+
+		// Fix: Tailwind 3.4 dropped implicit border-style and cursor on DropdownMenu triggers.
+		wp_add_inline_style(
+			$handle,
+			':is(.uag-dashboard-app) [aria-haspopup="menu"] { cursor: pointer; }
+			:is(.uag-dashboard-app) .border-border-subtle[aria-haspopup="menu"] { border-width: 1px; border-style: solid; }'
 		);
 
 		wp_register_style(

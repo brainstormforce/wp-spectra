@@ -1,0 +1,66 @@
+# Dependency directories
+vendor/
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Artifacts directories
+artifacts/
+
+# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+.env.test
+
+# Mac files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Composer
+composer.phar
+
+# PHPUnit
+.phpunit.result.cache
+
+# PHPCS
+phpcs-report.xml
+
+# Other
+*.zip
+*.tar.gz
+*.bak
+*.swp
+*~
+
+# Source maps
+*.map
+
+# Claude Code
+.claude/settings.local.json

@@ -37,13 +37,13 @@
 
 	.uagb-timeline__outer-wrap {
 		&.uagb-timeline__left-block .uagb-timeline__line {
-			right: auto;
-			left: 34px;
+			inset-inline-start: 34px;
+			inset-inline-end: auto;
 		}
 
 		&.uagb-timeline__right-block .uagb-timeline__line {
-			right: 31px;
-			left: auto;
+			inset-inline-end: 31px;
+			inset-inline-start: auto;
 		}
 	}
 }

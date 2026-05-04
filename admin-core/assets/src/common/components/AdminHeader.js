@@ -37,8 +37,6 @@ const AdminHeader = ( props ) => {
 	const { children } = props;
 
 	const [ clicked, setClicked ] = useState( false );
-	const [ isDropOpen1, setIsDropOpen1 ] = useState( false );
-	const [ isDropOpen2, setIsDropOpen2 ] = useState( false );
 	const [ showHeader, setShowHeader ] = useState( true );
 
 	const creditDetails = uag_react.zip_ai_credit_details;
@@ -273,7 +271,7 @@ const AdminHeader = ( props ) => {
 				</Topbar.Middle>
 				<Topbar.Right gap="md" className="lg:px-4 lg:pr-8 md:px-2 px-1">
 					<Topbar.Item>
-						<DropdownMenu placement="bottom-end" isOpen={ isDropOpen1 } onOpenChange={ setIsDropOpen1 }>
+						<DropdownMenu placement="bottom-end">
 							<DropdownMenu.Trigger>
 								<Badge
 									label={
@@ -292,39 +290,41 @@ const AdminHeader = ( props ) => {
 								/>
 								<span className="sr-only">{ __( 'Open Menu', 'ultimate-addons-for-gutenberg' ) }</span>
 							</DropdownMenu.Trigger>
-							<DropdownMenu.Content className="w-60">
-								<DropdownMenu.List>
-									<DropdownMenu.Item>
-										<div className="text-text-tertiary font-[Figtree]">
-											{ __( 'Version', 'ultimate-addons-for-gutenberg' ) }
-										</div>
-									</DropdownMenu.Item>
-									<DropdownMenu.Item>
-										<div className="flex justify-between w-full font-[Figtree]">
-											{ `${ uag_react.plugin_ver }` }
-											<Badge
-												label={ __( 'Core', 'ultimate-addons-for-gutenberg' ) }
-												size="xs"
-												variant="neutral"
-												className="font-[Figtree]"
-											/>
-										</div>
-									</DropdownMenu.Item>
-									{ uag_react.spectra_pro_status && (
+							<DropdownMenu.ContentWrapper>
+								<DropdownMenu.Content className="w-60">
+									<DropdownMenu.List>
+										<DropdownMenu.Item>
+											<div className="text-text-tertiary font-[Figtree]">
+												{ __( 'Version', 'ultimate-addons-for-gutenberg' ) }
+											</div>
+										</DropdownMenu.Item>
 										<DropdownMenu.Item>
 											<div className="flex justify-between w-full font-[Figtree]">
-												{ `${ uag_react.spectra_pro_ver }` }
+												{ `${ uag_react.plugin_ver }` }
 												<Badge
-													label={ __( 'Pro', 'ultimate-addons-for-gutenberg' ) }
+													label={ __( 'Core', 'ultimate-addons-for-gutenberg' ) }
 													size="xs"
-													variant="inverse"
+													variant="neutral"
 													className="font-[Figtree]"
 												/>
 											</div>
 										</DropdownMenu.Item>
-									) }
-								</DropdownMenu.List>
-							</DropdownMenu.Content>
+										{ uag_react.spectra_pro_status && (
+											<DropdownMenu.Item>
+												<div className="flex justify-between w-full font-[Figtree]">
+													{ `${ uag_react.spectra_pro_ver }` }
+													<Badge
+														label={ __( 'Pro', 'ultimate-addons-for-gutenberg' ) }
+														size="xs"
+														variant="inverse"
+														className="font-[Figtree]"
+													/>
+												</div>
+											</DropdownMenu.Item>
+										) }
+									</DropdownMenu.List>
+								</DropdownMenu.Content>
+							</DropdownMenu.ContentWrapper>
 						</DropdownMenu>
 					</Topbar.Item>
 
@@ -342,7 +342,7 @@ const AdminHeader = ( props ) => {
 					<div id="spectra-whats-new" size={ 16 }></div>
 
 					<Topbar.Item className="relative after:content-[''] after:inline-block after:size-1.5 after:bg-background-important after:rounded-full after:absolute after:-top-0.5 after:left-5">
-						<DropdownMenu placement="bottom-end" isOpen={ isDropOpen2 } onOpenChange={ setIsDropOpen2 }>
+						<DropdownMenu placement="bottom-end">
 							<DropdownMenu.Trigger>
 								{ /* <Avatar size="xs"> */ }
 								{ uag_react.spectra_pro_installed &&
@@ -359,61 +359,63 @@ const AdminHeader = ( props ) => {
 								{ /* </Avatar> */ }
 								<span className="sr-only">{ __( 'Open Menu', 'ultimate-addons-for-gutenberg' ) }</span>
 							</DropdownMenu.Trigger>
-							<DropdownMenu.Content className="w-60">
-								<DropdownMenu.List>
-									<DropdownMenu.Item>
-										<div className="flex w-full justify-between items-center font-[Figtree]">
-											<div className="flex gap-1 font-[Figtree]">
-												{ license() }
-												{ __( 'License Status', 'ultimate-addons-for-gutenberg' ) }
+							<DropdownMenu.ContentWrapper>
+								<DropdownMenu.Content className="w-60">
+									<DropdownMenu.List>
+										<DropdownMenu.Item>
+											<div className="flex w-full justify-between items-center font-[Figtree]">
+												<div className="flex gap-1 font-[Figtree]">
+													{ license() }
+													{ __( 'License Status', 'ultimate-addons-for-gutenberg' ) }
+												</div>
+
+												<Badge
+													label={ sprintf(
+														/* translators: credits in k format */
+														__( ' %s', 'ultimate-addons-for-gutenberg' ),
+														uag_react.license_status ? 'Active' : 'Inactive'
+													) }
+													size="xxs"
+													variant={ uag_react.license_status ? 'green' : 'yellow' }
+												/>
 											</div>
+										</DropdownMenu.Item>
 
-											<Badge
-												label={ sprintf(
-													/* translators: credits in k format */
-													__( ' %s', 'ultimate-addons-for-gutenberg' ),
-													uag_react.license_status ? 'Active' : 'Inactive'
-												) }
-												size="xxs"
-												variant={ uag_react.license_status ? 'green' : 'yellow' }
-											/>
-										</div>
-									</DropdownMenu.Item>
+										<DropdownMenu.Item>
+											<div className="flex w-full justify-between items-center font-[Figtree]">
+												<div className="flex gap-1">
+													{ ai() }
 
-									<DropdownMenu.Item>
-										<div className="flex w-full justify-between items-center font-[Figtree]">
-											<div className="flex gap-1">
-												{ ai() }
+													<div>{ __( 'AI Credits', 'ultimate-addons-for-gutenberg' ) }</div>
+												</div>
 
-												<div>{ __( 'AI Credits', 'ultimate-addons-for-gutenberg' ) }</div>
+												<Badge
+													label={ sprintf(
+														/* translators: credits in k format */
+														__( ' %s', 'ultimate-addons-for-gutenberg' ),
+														formattedCredits()
+													) }
+													size="xxs"
+													variant="green"
+												/>
 											</div>
+										</DropdownMenu.Item>
+										<DropdownMenu.Item
+											onClick={ () => openLink( 'https://app.zipwp.com/org/billing' ) }
+										>
+											<div className="flex w-full justify-between items-center font-[Figtree]">
+												<div className="flex gap-1">
+													{ plan() }
 
-											<Badge
-												label={ sprintf(
-													/* translators: credits in k format */
-													__( ' %s', 'ultimate-addons-for-gutenberg' ),
-													formattedCredits()
-												) }
-												size="xxs"
-												variant="green"
-											/>
-										</div>
-									</DropdownMenu.Item>
-									<DropdownMenu.Item
-										onClick={ () => openLink( 'https://app.zipwp.com/org/billing' ) }
-									>
-										<div className="flex w-full justify-between items-center font-[Figtree]">
-											<div className="flex gap-1">
-												{ plan() }
+													{ __( 'Manage Plan', 'ultimate-addons-for-gutenberg' ) }
+												</div>
 
-												{ __( 'Manage Plan', 'ultimate-addons-for-gutenberg' ) }
+												<SquareArrowOutUpRight size={ 16 } className="text-text-tertiary" />
 											</div>
-
-											<SquareArrowOutUpRight size={ 16 } className="text-text-tertiary" />
-										</div>
-									</DropdownMenu.Item>
-								</DropdownMenu.List>
-							</DropdownMenu.Content>
+										</DropdownMenu.Item>
+									</DropdownMenu.List>
+								</DropdownMenu.Content>
+							</DropdownMenu.ContentWrapper>
 						</DropdownMenu>
 					</Topbar.Item>
 				</Topbar.Right>

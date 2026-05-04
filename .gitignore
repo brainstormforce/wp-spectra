@@ -24,10 +24,6 @@ phpcs-full.log
 vendor/
 ultimate-addons-for-gutenberg.zip
 
-# Exclude mirror specific folder that aren't required.
-.github/
-.scripts/
-
 # Exclude webpack files.
 # config/webpack.config.dev.js
 # config/webpack.config.prod.js
@@ -51,3 +47,6 @@ artifact/
 # Claude Code
 CLAUDE.md
 .claude/
+
+# BSF Analytics audit working files
+.analytics-audit/

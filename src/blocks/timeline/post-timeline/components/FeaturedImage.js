@@ -1,8 +1,26 @@
 import { decodeEntities } from '@wordpress/html-entities';
 import { __ } from '@wordpress/i18n';
 import { memo } from '@wordpress/element';
+import { getLogicalTextAlign } from '@Utils/Helpers';
+
+// Pick the alignment attribute that matches the current editor preview
+// breakpoint, falling back up the chain the way the rest of the block's
+// responsive attributes do (Mobile → Tablet → Desktop).
+const pickAlignForDevice = ( attributes, deviceType ) => {
+	if ( 'Mobile' === deviceType && attributes.alignMobile ) {
+		return attributes.alignMobile;
+	}
+	if (
+		( 'Mobile' === deviceType || 'Tablet' === deviceType ) &&
+		attributes.alignTablet
+	) {
+		return attributes.alignTablet;
+	}
+	return attributes.align;
+};
+
 const FeaturedImage = ( props ) => {
-	const { post, attributes } = props;
+	const { post, attributes, deviceType } = props;
 
 	if (
 		attributes.displayPostImage &&
@@ -21,7 +39,7 @@ const FeaturedImage = ( props ) => {
 				target={ target }
 				rel="noopener noreferrer"
 				style={ {
-					textAlign: attributes.align,
+					textAlign: getLogicalTextAlign( pickAlignForDevice( attributes, deviceType ) ),
 				} }
 				className="uagb-timeline__image"
 			>

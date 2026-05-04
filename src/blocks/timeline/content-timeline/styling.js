@@ -5,6 +5,7 @@
 import generateCSS from '@Controls/generateCSS';
 import generateCSSUnit from '@Controls/generateCSSUnit';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import { getLogicalTextAlign } from '@Utils/Helpers';
 
 function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 	const blockName = name.replace( 'uagb/', '' );
@@ -152,7 +153,7 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 			'font-family': headFontFamily,
 			'font-weight': headFontWeight,
 			'line-height': generateCSSUnit( headLineHeight, headLineHeightType ),
-			'text-align': align,
+			'text-align': getLogicalTextAlign( align ),
 			'color': headingColor,
 			'font-style': headFontStyle,
 			'text-decoration': headDecoration,
@@ -164,7 +165,7 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 			'font-family': headFontFamily,
 			'font-weight': headFontWeight,
 			'line-height': generateCSSUnit( headLineHeight, headLineHeightType ),
-			'text-align': align,
+			'text-align': getLogicalTextAlign( align ),
 			'color': headingColor,
 			'font-style': headFontStyle,
 			'text-decoration': headDecoration,
@@ -179,7 +180,7 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 			'font-family': subHeadFontFamily,
 			'font-weight': subHeadFontWeight,
 			'line-height': generateCSSUnit( subHeadLineHeight, subHeadLineHeightType ),
-			'text-align': align,
+			'text-align': getLogicalTextAlign( align ),
 			'color': subHeadingColor,
 			'font-style': subHeadFontStyle,
 			'text-decoration': subHeadDecoration,
@@ -187,10 +188,10 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 			'letter-spacing': generateCSSUnit( subHeadLetterSpacing, subHeadLetterSpacingType ),
 		},
 		' .uagb-timeline__day-new': {
-			'text-align': align,
+			'text-align': getLogicalTextAlign( align ),
 		},
 		' .uagb-timeline__date-inner': {
-			'text-align': align,
+			'text-align': getLogicalTextAlign( align ),
 		},
 		' .uagb-timeline__day-right .uagb-timeline__arrow:after': {
 			'border-left-color': backgroundColor,
@@ -223,13 +224,10 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 			'width': generateCSSUnit( separatorWidthFallback, 'px' ),
 		},
 		'.uagb-timeline__right-block .uagb-timeline__line': {
-			'right': 'calc( ' + connectorBgsizeFallback + 'px / 2 )',
+			'inset-inline-end': 'calc( ' + connectorBgsizeFallback + 'px / 2 )',
 		},
 		'.uagb-timeline__left-block .uagb-timeline__line': {
-			'left': 'calc( ' + connectorBgsizeFallback + 'px / 2 )',
-		},
-		'.uagb-timeline__center-block .uagb-timeline__line': {
-			'right': 'calc( ' + connectorBgsizeFallback + 'px / 2 )',
+			'inset-inline-start': 'calc( ' + connectorBgsizeFallback + 'px / 2 )',
 		},
 		' .uagb-timeline__marker': {
 			'background-color': separatorBg,
@@ -268,7 +266,7 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 			'font-family': dateFontFamily,
 			'font-weight': dateFontWeight,
 			'line-height': generateCSSUnit( dateLineHeight, dateLineHeightType ),
-			'text-align': align,
+			'text-align': getLogicalTextAlign( align ),
 			'font-style': dateFontStyle,
 			'text-decoration': dateDecoration,
 			'text-transform': dateTransform,
@@ -281,7 +279,7 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 			'font-family': dateFontFamily,
 			'font-weight': dateFontWeight,
 			'line-height': generateCSSUnit( dateLineHeight, dateLineHeightType ),
-			'text-align': align,
+			'text-align': getLogicalTextAlign( align ),
 			'font-style': dateFontStyle,
 			'text-decoration': dateDecoration,
 			'text-transform': dateTransform,
@@ -337,7 +335,7 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 	/* Generate Responsive CSS for timeline */
 	const tabletSelectors = {
 		' .uagb-timeline__heading.rich-text': {
-			'text-align': alignTablet,
+			'text-align': getLogicalTextAlign( alignTablet ),
 		},
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner': {
 			'font-size': generateCSSUnit( dateFontSizeTablet, dateFontSizeType ),
@@ -353,7 +351,7 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 			'font-size': generateCSSUnit( dateFontSizeTablet, dateFontSizeType ),
 			'line-height': generateCSSUnit( dateLineHeightTablet, dateLineHeightType ),
 			'margin-bottom': generateCSSUnit( dateBottomspaceTablet, 'px' ),
-			'text-align': alignTablet,
+			'text-align': getLogicalTextAlign( alignTablet ),
 			'letter-spacing': generateCSSUnit( dateLetterSpacingTablet, dateLetterSpacingType ),
 		},
 		' .uagb-timeline__date-new': {
@@ -363,7 +361,7 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 			'letter-spacing': generateCSSUnit( dateLetterSpacingTablet, dateLetterSpacingType ),
 		},
 		' .uagb-timeline__heading': {
-			'text-align': alignTablet,
+			'text-align': getLogicalTextAlign( alignTablet ),
 			'font-size': generateCSSUnit( headFontSizeTablet, headFontSizeType ),
 			'line-height': generateCSSUnit( headLineHeightTablet, headLineHeightType ),
 			'margin-bottom': generateCSSUnit( headSpaceTablet, 'px' ),
@@ -372,13 +370,13 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 		' .uagb-timeline__heading a': {
 			'font-size': generateCSSUnit( headFontSizeTablet, headFontSizeType ),
 			'line-height': generateCSSUnit( headLineHeightTablet, headLineHeightType ),
-			'text-align': alignTablet,
+			'text-align': getLogicalTextAlign( alignTablet ),
 			'letter-spacing': generateCSSUnit( headLetterSpacingTablet, headLetterSpacingType ),
 		},
 		' p.uagb-timeline-desc-content': {
 			'font-size': generateCSSUnit( subHeadFontSizeTablet, subHeadFontSizeType ),
 			'line-height': generateCSSUnit( subHeadLineHeightTablet, subHeadLineHeightType ),
-			'text-align': alignTablet,
+			'text-align': getLogicalTextAlign( alignTablet ),
 			'letter-spacing': generateCSSUnit( subHeadLetterSpacingTablet, subHeadLetterSpacingType ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__marker': {
@@ -410,46 +408,43 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 			'padding-bottom': generateCSSUnit( bottomPaddingTablet, tabletPaddingUnit ),
 		},
 		' .uagb-timeline__day-new': {
-			'text-align': alignTablet,
+			'text-align': getLogicalTextAlign( alignTablet ),
 		},
 		' .uagb-timeline__date-inner': {
-			'text-align': alignTablet,
+			'text-align': getLogicalTextAlign( alignTablet ),
 		},
 		' .uagb-timeline__center-block .uagb-timeline__heading': {
-			'text-align': alignTablet,
+			'text-align': getLogicalTextAlign( alignTablet ),
 		},
 		' .uagb-timeline__center-block p.uagb-timeline-desc-content': {
-			'text-align': alignTablet,
+			'text-align': getLogicalTextAlign( alignTablet ),
 		},
 		' .uagb-timeline__center-block .uagb-timeline__day-new': {
-			'text-align': alignTablet,
+			'text-align': getLogicalTextAlign( alignTablet ),
 		},
 		' .uagb-timeline__center-block .uagb-timeline__date-inner': {
-			'text-align': alignTablet,
+			'text-align': getLogicalTextAlign( alignTablet ),
 		},
 		' .uagb-timeline__center-block .uagb-timeline__date-hide.uagb-timeline__date-inner': {
-			'text-align': alignTablet,
+			'text-align': getLogicalTextAlign( alignTablet ),
 		},
 		' .uagb-timeline__center-block .uagb-timeline__author-link': {
-			'text-align': alignTablet,
+			'text-align': getLogicalTextAlign( alignTablet ),
 		},
 		' .uagb-timeline__center-block .uagb-timeline__link_parent': {
-			'text-align': alignTablet,
+			'text-align': getLogicalTextAlign( alignTablet ),
 		},
 		' .uagb-timeline__center-block .uagb-timeline__image a': {
-			'text-align': alignTablet,
+			'text-align': getLogicalTextAlign( alignTablet ),
 		},
 		' .uagb-timeline__center-block a.uagb-timeline__image': {
-			'text-align': alignTablet,
+			'text-align': getLogicalTextAlign( alignTablet ),
 		},
 		'.uagb-timeline__right-block .uagb-timeline__line': {
-			'right': 'calc( ' + connectorBgsizeTabletFallback + 'px / 2 )',
+			'inset-inline-end': 'calc( ' + connectorBgsizeTabletFallback + 'px / 2 )',
 		},
 		'.uagb-timeline__left-block .uagb-timeline__line': {
-			'left': 'calc( ' + connectorBgsizeTabletFallback + 'px / 2 )',
-		},
-		'.uagb-timeline__center-block .uagb-timeline__line': {
-			'right': 'calc( ' + connectorBgsizeTabletFallback + 'px / 2 )',
+			'inset-inline-start': 'calc( ' + connectorBgsizeTabletFallback + 'px / 2 )',
 		},
 		' .uagb-timeline__marker': {
 			'min-height': generateCSSUnit( connectorBgsizeTabletFallback, 'px' ),
@@ -472,7 +467,7 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 
 	const mobileSelectors = {
 		' .uagb-timeline__heading.rich-text': {
-			'text-align': alignMobile,
+			'text-align': getLogicalTextAlign( alignMobile ),
 		},
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner': {
 			'font-size': generateCSSUnit( dateFontSizeMobile, dateFontSizeType ),
@@ -488,7 +483,7 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 			'font-size': generateCSSUnit( dateFontSizeMobile, dateFontSizeType ),
 			'line-height': generateCSSUnit( dateLineHeightMobile, dateLineHeightType ),
 			'margin-bottom': generateCSSUnit( dateBottomspaceMobile, 'px' ),
-			'text-align': alignMobile,
+			'text-align': getLogicalTextAlign( alignMobile ),
 			'letter-spacing': generateCSSUnit( dateLetterSpacingMobile, dateLetterSpacingType ),
 		},
 		' .uagb-timeline__date-new': {
@@ -501,19 +496,19 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 			'font-size': generateCSSUnit( headFontSizeMobile, headFontSizeType ),
 			'line-height': generateCSSUnit( headLineHeightMobile, headLineHeightType ),
 			'margin-bottom': generateCSSUnit( headSpaceMobile, 'px' ),
-			'text-align': alignMobile,
+			'text-align': getLogicalTextAlign( alignMobile ),
 			'letter-spacing': generateCSSUnit( headLetterSpacingMobile, headLetterSpacingType ),
 		},
 		' .uagb-timeline__heading a': {
 			'font-size': generateCSSUnit( headFontSizeMobile, headFontSizeType ),
 			'line-height': generateCSSUnit( headLineHeightMobile, headLineHeightType ),
-			'text-align': alignMobile,
+			'text-align': getLogicalTextAlign( alignMobile ),
 			'letter-spacing': generateCSSUnit( headLetterSpacingMobile, headLetterSpacingType ),
 		},
 		' p.uagb-timeline-desc-content': {
 			'font-size': generateCSSUnit( subHeadFontSizeMobile, subHeadFontSizeType ),
 			'line-height': generateCSSUnit( subHeadLineHeightMobile, subHeadLineHeightType ),
-			'text-align': alignMobile,
+			'text-align': getLogicalTextAlign( alignMobile ),
 			'letter-spacing': generateCSSUnit( subHeadLetterSpacingMobile, subHeadLetterSpacingType ),
 		},
 		'.uagb-timeline__center-block .uagb-timeline__marker': {
@@ -545,46 +540,43 @@ function contentTimelineStyle( attributes, clientId, name, deviceType ) {
 			'margin-bottom': generateCSSUnit( verticalSpaceMobile, verticalSpaceUnitMobile ),
 		},
 		' .uagb-timeline__day-new': {
-			'text-align': alignMobile,
+			'text-align': getLogicalTextAlign( alignMobile ),
 		},
 		' .uagb-timeline__date-inner': {
-			'text-align': alignMobile,
+			'text-align': getLogicalTextAlign( alignMobile ),
 		},
 		' .uagb-timeline__center-block .uagb-timeline__heading': {
-			'text-align': alignMobile,
+			'text-align': getLogicalTextAlign( alignMobile ),
 		},
 		' .uagb-timeline__center-block p.uagb-timeline-desc-content': {
-			'text-align': alignMobile,
+			'text-align': getLogicalTextAlign( alignMobile ),
 		},
 		' .uagb-timeline__center-block .uagb-timeline__day-new': {
-			'text-align': alignMobile,
+			'text-align': getLogicalTextAlign( alignMobile ),
 		},
 		' .uagb-timeline__center-block .uagb-timeline__date-inner': {
-			'text-align': alignMobile,
+			'text-align': getLogicalTextAlign( alignMobile ),
 		},
 		' .uagb-timeline__center-block .uagb-timeline__date-hide.uagb-timeline__date-inner': {
-			'text-align': alignMobile,
+			'text-align': getLogicalTextAlign( alignMobile ),
 		},
 		' .uagb-timeline__center-block .uagb-timeline__author-link': {
-			'text-align': alignMobile,
+			'text-align': getLogicalTextAlign( alignMobile ),
 		},
 		' .uagb-timeline__center-block .uagb-timeline__link_parent': {
-			'text-align': alignMobile,
+			'text-align': getLogicalTextAlign( alignMobile ),
 		},
 		' .uagb-timeline__center-block .uagb-timeline__image a': {
-			'text-align': alignMobile,
+			'text-align': getLogicalTextAlign( alignMobile ),
 		},
 		' .uagb-timeline__center-block a.uagb-timeline__image': {
-			'text-align': alignMobile,
+			'text-align': getLogicalTextAlign( alignMobile ),
 		},
 		'.uagb-timeline__right-block .uagb-timeline__line': {
-			'right': 'calc( ' + connectorBgsizeMobileFallback + 'px / 2 )',
+			'inset-inline-end': 'calc( ' + connectorBgsizeMobileFallback + 'px / 2 )',
 		},
 		'.uagb-timeline__left-block .uagb-timeline__line': {
-			'left': 'calc( ' + connectorBgsizeMobileFallback + 'px / 2 )',
-		},
-		'.uagb-timeline__center-block .uagb-timeline__line': {
-			'right': 'calc( ' + connectorBgsizeMobileFallback + 'px / 2 )',
+			'inset-inline-start': 'calc( ' + connectorBgsizeMobileFallback + 'px / 2 )',
 		},
 		' .uagb-timeline__marker': {
 			'min-height': generateCSSUnit( connectorBgsizeMobileFallback, 'px' ),

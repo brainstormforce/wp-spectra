@@ -1,60 +1,56 @@
 const paths = require( './paths' );
 const fs = require( 'fs' );
-const sass = require( 'node-sass' );
+const sass = require( 'sass' );
 
 /* Generate common editor */
-sass.render(
-	{
-		file: paths.pluginSrc + '/common-editor.scss',
-		outputStyle: 'compressed',
-		outFile: paths.pluginDist + '/common-editor.css',
+try {
+	const result = sass.compile( paths.pluginSrc + '/common-editor.scss', {
+		style: 'compressed',
 		sourceMap: false,
-	},
-	function ( error, result ) {
-		if ( null !== result && ! error ) {
-			fs.writeFile( paths.pluginDist + '/common-editor.css', result.css, function ( err ) {
-				if ( err ) {
-					throw err;
-				}
-
-				console.log( '\n\nCommon editor generated!' ); // eslint-disable-line
-			} );
+	} );
+	fs.writeFile( paths.pluginDist + '/common-editor.css', result.css, function ( err ) {
+		if ( err ) {
+			throw err;
 		}
-	}
-);
+		console.log( '\n\nCommon editor generated!' ); // eslint-disable-line
+	} );
+} catch ( error ) {
+	console.error( error ); // eslint-disable-line
+}
 
 //Generate individual block's css files
 fs.readdir( paths.pluginSrc + '/blocks', function ( readError, items ) {
 	for ( const item of items ) {
-		sass.render(
-			{
-				file: paths.pluginSrc + '/blocks/' + item + '/style.scss',
-				outputStyle: 'compressed',
-				outFile: './assets/css/blocks/' + item + '.css',
+		const filePath = paths.pluginSrc + '/blocks/' + item + '/style.scss';
+		if ( ! fs.existsSync( filePath ) ) {
+			continue;
+		}
+		try {
+			const result = sass.compile( filePath, {
+				style: 'compressed',
 				sourceMap: false,
-			},
-			function ( error, result ) {
-				if ( result && ! error ) {
-					let file_name = item;
+			} );
 
-					switch ( item ) {
-						case 'cf7-designer':
-							file_name = 'cf7-styler';
-							break;
-						case 'gf-designer':
-							file_name = 'gf-styler';
-							break;
-						default:
-							file_name = item;
-							break;
-					}
+			let file_name = item;
 
-					fs.writeFile( './assets/css/blocks/' + file_name + '.css', result.css, function ( err ) {
-						if ( err ) throw err;
-					} );
-				}
+			switch ( item ) {
+				case 'cf7-designer':
+					file_name = 'cf7-styler';
+					break;
+				case 'gf-designer':
+					file_name = 'gf-styler';
+					break;
+				default:
+					file_name = item;
+					break;
 			}
-		);
+
+			fs.writeFile( './assets/css/blocks/' + file_name + '.css', result.css, function ( err ) {
+				if ( err ) throw err;
+			} );
+		} catch ( error ) {
+			// Skip blocks without valid SCSS
+		}
 	}
 
 	if ( readError ) {

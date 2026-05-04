@@ -209,23 +209,25 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 												</div>
 											</div>
 										</DropdownMenu.Trigger>
-										<DropdownMenu.Content className="w-60 dropdown-list">
-											<DropdownMenu.List
-											// style={ { zIndex: '99999999' } }
-											>
-												{ Object.entries( productsList ).map( ( [ key, value ] ) => (
-													<DropdownMenu.Item
-														onClick={ () => setSelectedProduct( key ) }
-														// style={ { zIndex: '99999999' } }
-														key={ value.product + value.variant }
-													>
-														{ value.product
-															.split( ' - ' )[ 0 ]
-															.replace( ' for Spectra', '' ) }
-													</DropdownMenu.Item>
-												) ) }
-											</DropdownMenu.List>
-										</DropdownMenu.Content>
+										<DropdownMenu.ContentWrapper>
+											<DropdownMenu.Content className="w-60 dropdown-list">
+												<DropdownMenu.List
+												// style={ { zIndex: '99999999' } }
+												>
+													{ Object.entries( productsList ).map( ( [ key, value ] ) => (
+														<DropdownMenu.Item
+															onClick={ () => setSelectedProduct( key ) }
+															// style={ { zIndex: '99999999' } }
+															key={ value.product + value.variant }
+														>
+															{ value.product
+																.split( ' - ' )[ 0 ]
+																.replace( ' for Spectra', '' ) }
+														</DropdownMenu.Item>
+													) ) }
+												</DropdownMenu.List>
+											</DropdownMenu.Content>
+										</DropdownMenu.ContentWrapper>
 									</DropdownMenu>
 								</div>
 

@@ -108,6 +108,11 @@
 	bottom: -30px !important;
 }
 
+// Fix inline-block baseline gap inside carousel slides (Slick sets inline-block via inline style).
+.spectra-image-gallery__layout--carousel .slick-slide .spectra-image-gallery__media-wrapper {
+	display: block !important;
+}
+
 .spectra-image-gallery__control-lightbox {
 	position: absolute;
 	opacity: 1;

@@ -1,0 +1,26 @@
+// Spectra Onboarding — Full Screen Support (matches SureForms pattern).
+html:has( > body.spectra-onboarding-page ).wp-toolbar {
+	padding-top: 0 !important;
+	box-sizing: border-box;
+}
+
+body.spectra-onboarding-page #wpcontent,
+body.spectra-onboarding-page #wpbody {
+	padding: 0;
+	margin: 0;
+}
+
+body.spectra-onboarding-page #wpadminbar,
+body.spectra-onboarding-page #adminmenuwrap,
+body.spectra-onboarding-page #adminmenuback,
+body.spectra-onboarding-page #wpfooter,
+body.spectra-onboarding-page .notice,
+body.spectra-onboarding-page .updated,
+body.spectra-onboarding-page .update-nag,
+body.spectra-onboarding-page .error {
+	display: none !important;
+}
+
+body.spectra-onboarding-page #wpbody-content {
+	padding-bottom: 0;
+}

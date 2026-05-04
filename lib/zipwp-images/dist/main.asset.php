@@ -1,1 +1,5 @@
-<?php return array('dependencies' => array('react', 'react-dom', 'wp-api-fetch', 'wp-element', 'wp-i18n'), 'version' => 'aad13e1c6e4f53f94ada');
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+return array('dependencies' => array('react', 'react-dom', 'wp-api-fetch', 'wp-element', 'wp-i18n'), 'version' => '8b0c444b31ecf68e49ec');

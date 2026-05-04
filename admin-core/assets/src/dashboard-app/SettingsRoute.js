@@ -6,7 +6,7 @@ import Blocks from '@DashboardApp/pages/blocks/Blocks';
 import Settings from '@DashboardApp/pages/settings/Settings';
 import AiFeatures from '@DashboardApp/pages/ai-features/AiFeatures';
 import FreeVPro from './pages/free-vs-pro/Comparison';
-
+import Learn from '@DashboardApp/pages/learn/Learn';
 function SettingsRoute() {
 	const query = new URLSearchParams( useLocation().search );
 	const page = query.get( 'page' );
@@ -47,6 +47,9 @@ function SettingsRoute() {
 					break;
 				case 'free-vs-pro':
 					routePage = <FreeVPro />;
+					break;
+				case 'learn':
+					routePage = <Learn />;
 					break;
 				default:
 					routePage = <Welcome/>;

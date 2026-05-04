@@ -40,15 +40,15 @@ const BSFAnalyticsOption = () => {
 
 	const renderText = () => (
 		<p className='m-0'>
-			{__( 'Collect non-sensitive information from your website, such as the PHP version and features used, to help us fix bugs faster, make smarter decisions, and build features that actually matter to you. Please read ', 'ultimate-addons-for-gutenberg' )}
-
+			{__( 'Help shape the future of Spectra. Share how you use the plugin so we can build features that matter, fix issues faster, and make smarter decisions.', 'ultimate-addons-for-gutenberg' )}
+			{' '}
 			<a
-				href={'https://store.brainstormforce.com/usage-tracking/?utm_source=uag_dashboard&utm_medium=general_settings&utm_campaign=usage_tracking'}
+				href={'https://store.brainstormforce.com/usage-tracking/?utm_source=spectra_dashboard&utm_medium=settings&utm_campaign=usage_tracking'}
 				target="_blank"
 				rel="noreferrer"
 				className="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover"
 			>
-				{__( 'more about what we track.', 'ultimate-addons-for-gutenberg' )}
+				{__( 'Learn more.', 'ultimate-addons-for-gutenberg' )}
 			</a>
 		</p>
 	);

@@ -141,18 +141,20 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 											</div>
 										</div>
 									</DropdownMenu.Trigger>
-									<DropdownMenu.Content className="w-60" style={ { zIndex: '99999999' } }>
-										<DropdownMenu.List className="dropdown-list">
-											{ Object.entries( productsList ).map( ( [ key, value ] ) => (
-												<DropdownMenu.Item
-													key={ value.product + value.variant }
-													onClick={ () => setSelectedProduct( key ) }
-												>
-													{ value.product.split( ' - ' )[ 0 ].replace( ' for Spectra', '' ) }
-												</DropdownMenu.Item>
-											) ) }
-										</DropdownMenu.List>
-									</DropdownMenu.Content>
+									<DropdownMenu.ContentWrapper>
+										<DropdownMenu.Content className="w-60" style={ { zIndex: '99999999' } }>
+											<DropdownMenu.List className="dropdown-list">
+												{ Object.entries( productsList ).map( ( [ key, value ] ) => (
+													<DropdownMenu.Item
+														key={ value.product + value.variant }
+														onClick={ () => setSelectedProduct( key ) }
+													>
+														{ value.product.split( ' - ' )[ 0 ].replace( ' for Spectra', '' ) }
+													</DropdownMenu.Item>
+												) ) }
+											</DropdownMenu.List>
+										</DropdownMenu.Content>
+									</DropdownMenu.ContentWrapper>
 								</DropdownMenu>
 							</div>
 
@@ -318,18 +320,20 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 										</div>
 									</div>
 								</DropdownMenu.Trigger>
-								<DropdownMenu.Content className="w-60" style={ { zIndex: '99999999' } }>
-									<DropdownMenu.List className="dropdown-list">
-										{ Object.entries( productsList ).map( ( [ key, value ] ) => (
-											<DropdownMenu.Item
-												key={ value.product + value.variant }
-												onClick={ () => setSelectedProduct( key ) }
-											>
-												{ value.product?.split( ' - ' )[ 0 ]?.replace( ' for Spectra', '' ) }
-											</DropdownMenu.Item>
-										) ) }
-									</DropdownMenu.List>
-								</DropdownMenu.Content>
+								<DropdownMenu.ContentWrapper>
+									<DropdownMenu.Content className="w-60" style={ { zIndex: '99999999' } }>
+										<DropdownMenu.List className="dropdown-list">
+											{ Object.entries( productsList ).map( ( [ key, value ] ) => (
+												<DropdownMenu.Item
+													key={ value.product + value.variant }
+													onClick={ () => setSelectedProduct( key ) }
+												>
+													{ value.product?.split( ' - ' )[ 0 ]?.replace( ' for Spectra', '' ) }
+												</DropdownMenu.Item>
+											) ) }
+										</DropdownMenu.List>
+									</DropdownMenu.Content>
+								</DropdownMenu.ContentWrapper>
 							</DropdownMenu>
 						</div>
 

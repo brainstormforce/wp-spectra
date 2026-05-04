@@ -229,6 +229,13 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				update_option( '__uagb_do_redirect', false );
 
 				if ( ! is_multisite() ) {
+					// Redirect to onboarding wizard if not completed yet,
+					// otherwise to the Spectra dashboard.
+					if ( ! UAGB_Onboarding::is_onboarding_completed() ) {
+						wp_safe_redirect( admin_url( 'admin.php?page=spectra-onboarding' ) );
+						exit;
+					}
+
 					wp_safe_redirect(
 						add_query_arg(
 							array(
@@ -238,7 +245,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 							admin_url( 'admin.php' )
 						)
 					);
-					exit();
+					exit;
 				}
 			}
 		}
@@ -275,7 +282,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			if ( ! get_option( 'uag_migration_status', false ) && 'yes' === get_option( 'uagb-old-user-less-than-2' ) && 'in-progress' !== get_option( 'uag_migration_progress_status', '' ) ) {
 
-				Astra_Notices::add_notice(
+				BSF_Admin_Notices::add_notice(
 					array(
 
 						'id'                         => 'uagb-block-migration_status',
@@ -312,7 +319,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 					)
 				);
 			} elseif ( 'yes' !== get_option( 'uag_migration_complete', 0 ) && 'yes' === get_option( 'uagb-old-user-less-than-2' ) ) {
-				Astra_Notices::add_notice(
+				BSF_Admin_Notices::add_notice(
 					array(
 						'id'                         => 'uag_migration_in_progress',
 						'type'                       => 'info',
@@ -339,7 +346,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 					)
 				);
 			} elseif ( 'yes' === get_option( 'uag_migration_complete', 0 ) ) {
-				Astra_Notices::add_notice(
+				BSF_Admin_Notices::add_notice(
 					array(
 						'id'                         => 'uag_migration_success',
 						'type'                       => 'success',
@@ -370,7 +377,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			if ( class_exists( 'Classic_Editor' ) ) {
 				$editor_option = get_option( 'classic-editor-replace' );
 				if ( 'block' !== $editor_option ) {
-					Astra_Notices::add_notice(
+					BSF_Admin_Notices::add_notice(
 						array(
 							'id'                         => 'uagb-classic-editor',
 							'type'                       => 'warning',
@@ -399,7 +406,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 					: 'not-installed';
 
 			if ( 'not-installed' === $status && isset( $_GET['post_type'] ) && 'spectra-popup' === $_GET['post_type'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- $_GET['post_type'] does not provide nonce.
-				Astra_Notices::add_notice(
+				BSF_Admin_Notices::add_notice(
 					array(
 						'id'                         => 'uagb-spectra-pro-popup-note',
 						'type'                       => '',
@@ -475,7 +482,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 								upgradeLink.setAttribute('rel', 'noreferrer');
 								upgradeLink.addEventListener('click', function(e) {
 									e.preventDefault();
-									window.open( <?php echo esc_url( \UAGB_Admin_Helper::get_spectra_pro_url( '/pricing/', 'free-plugin', 'dashboard', 'setting' ) ); ?>, '_blank', 'noopener,noreferrer' );
+									window.open( '<?php echo esc_url( \UAGB_Admin_Helper::get_spectra_pro_url( '/pricing/', 'free-plugin', 'dashboard', 'setting' ) ); ?>', '_blank', 'noopener,noreferrer' );
 								});
 							}
 						});

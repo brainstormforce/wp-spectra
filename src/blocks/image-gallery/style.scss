@@ -186,6 +186,11 @@
 				align-items: center;
 			}
 
+			// Fix inline-block baseline gap inside slick slides (Slick sets inline-block via inline style).
+			.slick-slide .spectra-image-gallery__media-wrapper {
+				display: block !important;
+			}
+
 			.slick-dots {
 				padding: 0;
 				position: relative !important; // Override Slick Slider Positioning.

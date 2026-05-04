@@ -1028,6 +1028,35 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		}
 
 		/**
+		 * Flip physical `left`/`right` text-align values under RTL locales.
+		 *
+		 * Used by Post Timeline so user-selected Text Alignment mirrors the
+		 * reading direction (left→right, right→left). Empty and `center`
+		 * pass through unchanged.
+		 *
+		 * Uses an explicit `is_rtl()` swap (rather than CSS logical
+		 * `start`/`end`) so the mapping stays consistent between the frontend
+		 * and the Gutenberg editor canvas, where the iframe does not reliably
+		 * inherit `direction: rtl`.
+		 *
+		 * @param string $value Attribute value.
+		 * @return string
+		 * @since 2.19.26
+		 */
+		public static function get_logical_text_align( $value ) {
+			if ( ! is_rtl() ) {
+				return $value;
+			}
+			if ( 'left' === $value ) {
+				return 'right';
+			}
+			if ( 'right' === $value ) {
+				return 'left';
+			}
+			return $value;
+		}
+
+		/**
 		 * Get Timeline Block Desktop Selectors CSS
 		 *
 		 * @param array $attr The block attributes.
@@ -1059,13 +1088,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-timeline__heading'               => array(
 					'margin-top'    => UAGB_Helper::get_css_value( $head_top_spacing_fallback, 'px' ),
 					'margin-bottom' => UAGB_Helper::get_css_value( $head_space_fallback, 'px' ),
+					'text-align'    => self::get_logical_text_align( $attr['align'] ),
 				),
 				' .uagb-timeline-desc-content'           => array(
-					'text-align' => $attr['align'],
+					'text-align' => self::get_logical_text_align( $attr['align'] ),
 					'color'      => $attr['subHeadingColor'],
 				),
 				' .uagb-timeline__day-new'               => array(
-					'text-align' => $attr['align'],
+					'text-align' => self::get_logical_text_align( $attr['align'] ),
 				),
 				' .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
 					'border-left-color' => $attr['backgroundColor'],
@@ -1087,13 +1117,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'width'            => UAGB_Helper::get_css_value( $separator_width_fallback, 'px' ),
 				),
 				'.uagb-timeline__right-block .uagb-timeline__line' => array(
-					'right' => 'calc( ' . $connector_bg_size_fallback . 'px / 2 )',
+					'inset-inline-end' => 'calc( ' . $connector_bg_size_fallback . 'px / 2 )',
 				),
 				'.uagb-timeline__left-block .uagb-timeline__line' => array(
-					'left' => 'calc( ' . $connector_bg_size_fallback . 'px / 2 )',
-				),
-				'.uagb-timeline__center-block .uagb-timeline__line' => array(
-					'right' => 'calc( ' . $connector_bg_size_fallback . 'px / 2 )',
+					'inset-inline-start' => 'calc( ' . $connector_bg_size_fallback . 'px / 2 )',
 				),
 				' .uagb-timeline__marker'                => array(
 					'background-color' => $attr['separatorBg'],
@@ -1125,12 +1152,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array( // For New User.
 					'margin-bottom' => UAGB_Helper::get_css_value( $date_bottom_space_fallback, 'px' ),
 					'color'         => $attr['dateColor'],
-					'text-align'    => $attr['align'],
+					'text-align'    => self::get_logical_text_align( $attr['align'] ),
 				),
 				' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $date_bottom_space_fallback, 'px' ),
 					'color'         => $attr['dateColor'],
-					'text-align'    => $attr['align'],
+					'text-align'    => self::get_logical_text_align( $attr['align'] ),
 				),
 				'.uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
 					'margin-left' => UAGB_Helper::get_css_value( $left_margin, $attr['marginUnit'] ),
@@ -1151,6 +1178,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-right'  => UAGB_Helper::get_css_value( $right_padding, $attr['paddingUnit'] ),
 					'padding-top'    => UAGB_Helper::get_css_value( $top_padding, $attr['paddingUnit'] ),
 					'padding-bottom' => UAGB_Helper::get_css_value( $bottom_padding, $attr['paddingUnit'] ),
+					'text-align'     => self::get_logical_text_align( $attr['align'] ),
 				),
 				' svg'                                   => array(
 					'color'     => $attr['iconColor'],
@@ -1186,6 +1214,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-timeline__heading'               => array(
 					'margin-top'    => UAGB_Helper::get_css_value( $attr['headTopSpacingTablet'], 'px' ),
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceTablet'], 'px' ),
+					'text-align'    => self::get_logical_text_align( $attr['alignTablet'] ),
 				),
 				' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspaceTablet'], 'px' ),
@@ -1201,7 +1230,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-right-color' => $attr['backgroundColor'],
 				),
 				'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__line' => array(
-					'left' => 'calc( ' . $connector_bg_size_fallback . 'px / 2 )',
+					'inset-inline-start' => 'calc( ' . $connector_bg_size_fallback . 'px / 2 )',
 				),
 				'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
 					'margin-left'   => UAGB_Helper::get_css_value( $attr['leftMarginTablet'], $attr['tabletMarginUnit'] ),
@@ -1221,6 +1250,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingTablet'], $attr['tabletPaddingUnit'] ),
 					'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingTablet'], $attr['tabletPaddingUnit'] ),
 					'border-radius'  => UAGB_Helper::get_css_value( $attr['borderRadiusTablet'], 'px' ),
+					'text-align'     => self::get_logical_text_align( $attr['alignTablet'] ),
 				),
 			);
 
@@ -1242,6 +1272,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-timeline__heading'               => array(
 					'margin-top'    => UAGB_Helper::get_css_value( $attr['headTopSpacingMobile'], 'px' ),
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceMobile'], 'px' ),
+					'text-align'    => self::get_logical_text_align( $attr['alignMobile'] ),
 				),
 				' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspaceMobile'], 'px' ),
@@ -1260,7 +1291,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-right-color' => $attr['backgroundColor'],
 				),
 				'.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__line' => array(
-					'left' => 'calc( ' . $connector_bg_size_fallback . 'px / 2 )',
+					'inset-inline-start' => 'calc( ' . $connector_bg_size_fallback . 'px / 2 )',
 				),
 				'.uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
 					'margin-left'   => UAGB_Helper::get_css_value( $attr['leftMarginMobile'], $attr['mobileMarginUnit'] ),
@@ -1280,6 +1311,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingMobile'], $attr['mobilePaddingUnit'] ),
 					'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingMobile'], $attr['mobilePaddingUnit'] ),
 					'border-radius'  => UAGB_Helper::get_css_value( $attr['borderRadiusMobile'], 'px' ),
+					'text-align'     => self::get_logical_text_align( $attr['alignMobile'] ),
 				),
 			);
 			return $m_selectors;

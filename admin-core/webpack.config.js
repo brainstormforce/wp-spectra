@@ -45,6 +45,13 @@ const commonConfig = {
 		rules: [
 			...defaultConfig.module.rules,
 			{
+				test: /\.m?js$/,
+				include: /node_modules/,
+				resolve: {
+					fullySpecified: false,
+				},
+			},
+			{
                 test: /\.(png|jpg|jpeg|gif|ico|svg)$/,
                 use: [
                     'file-loader'

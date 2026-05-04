@@ -75,6 +75,7 @@ function styling( attributes, clientId, name, deviceType ) {
 
 		// Carousel Specific Settings.
 		carouselSquares,
+		mediaGallery,
 
 		// Pagination Settings.
 		feedPagination,
@@ -310,7 +311,7 @@ function styling( attributes, clientId, name, deviceType ) {
 				feedMarginUnit,
 				feedMarginTopFallback,
 				feedMarginRightFallback,
-				'carousel' === feedLayout ? feedMarginBottomFallback + 5 : feedMarginBottomFallback, // Editor Only Fix for the Carousel Dots.
+				'carousel' === feedLayout && mediaGallery?.length > 1 ? feedMarginBottomFallback + 5 : feedMarginBottomFallback, // Editor Only Fix for the Carousel Dots.
 				feedMarginLeftFallback
 			),
 		},
@@ -403,13 +404,13 @@ function styling( attributes, clientId, name, deviceType ) {
 		},
 		' .spectra-image-gallery__layout--carousel': {
 			// Override Slick Slider Margin and add a Base Margin Bottom for Dots with Calc.
-			'margin-bottom': `${ generateCSSUnit( paginateDotDistanceFallback, 'px' ) } !important`,
+			'margin-bottom': mediaGallery?.length > 1 ? `${ generateCSSUnit( paginateDotDistanceFallback, 'px' ) } !important` : '0px !important',
 		},
 		' .spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper': {
-			'padding': generateSpacing( gridImageGapUnit, 0, gridImageGapFallback / 2 ),
+			'padding': mediaGallery?.length > 1 ? generateSpacing( gridImageGapUnit, 0, gridImageGapFallback / 2 ) : undefined,
 		},
 		' .spectra-image-gallery__layout--carousel .slick-list': {
-			'margin': generateSpacing( gridImageGapUnit, 0, -( gridImageGapFallback / 2 ) ),
+			'margin': mediaGallery?.length > 1 ? generateSpacing( gridImageGapUnit, 0, -( gridImageGapFallback / 2 ) ) : undefined,
 		},
 		' .spectra-image-gallery__layout--tiled': {
 			'grid-gap': generateCSSUnit( gridImageGapFallback, gridImageGapUnit ),
@@ -593,7 +594,7 @@ function styling( attributes, clientId, name, deviceType ) {
 				feedMarginUnitTab,
 				feedMarginTopTabFallback,
 				feedMarginRightTabFallback,
-				'carousel' === feedLayout ? feedMarginBottomTabFallback + 5 : feedMarginBottomTabFallback, // Editor Only Fix for the Carousel Dots.
+				'carousel' === feedLayout && mediaGallery?.length > 1 ? feedMarginBottomTabFallback + 5 : feedMarginBottomTabFallback, // Editor Only Fix for the Carousel Dots.
 				feedMarginLeftTabFallback
 			),
 		},
@@ -622,10 +623,10 @@ function styling( attributes, clientId, name, deviceType ) {
 			'padding': generateSpacing( gridImageGapUnitTab, gridImageGapTabFallback / 2 ),
 		},
 		' .spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper': {
-			'padding': generateSpacing( gridImageGapUnitTab, 0, gridImageGapTabFallback / 2 ),
+			'padding': mediaGallery?.length > 1 ? generateSpacing( gridImageGapUnitTab, 0, gridImageGapTabFallback / 2 ) : undefined,
 		},
 		' .spectra-image-gallery__layout--carousel .slick-list': {
-			'margin': generateSpacing( gridImageGapUnitTab, 0, -( gridImageGapTabFallback / 2 ) ),
+			'margin': mediaGallery?.length > 1 ? generateSpacing( gridImageGapUnitTab, 0, -( gridImageGapTabFallback / 2 ) ) : undefined,
 		},
 		' .spectra-image-gallery__layout--tiled': {
 			'grid-gap': generateCSSUnit( gridImageGapTabFallback, gridImageGapUnitTab ),
@@ -685,7 +686,7 @@ function styling( attributes, clientId, name, deviceType ) {
 				feedMarginUnitMob,
 				feedMarginTopMobFallback,
 				feedMarginRightMobFallback,
-				'carousel' === feedLayout ? feedMarginBottomMobFallback + 5 : feedMarginBottomMobFallback, // Editor Only Fix for the Carousel Dots.
+				'carousel' === feedLayout && mediaGallery?.length > 1 ? feedMarginBottomMobFallback + 5 : feedMarginBottomMobFallback, // Editor Only Fix for the Carousel Dots.
 				feedMarginLeftMobFallback
 			),
 		},
@@ -714,10 +715,10 @@ function styling( attributes, clientId, name, deviceType ) {
 			'padding': generateSpacing( gridImageGapUnitMob, gridImageGapMobFallback / 2 ),
 		},
 		' .spectra-image-gallery__layout--carousel .spectra-image-gallery__media-wrapper': {
-			'padding': generateSpacing( gridImageGapUnitMob, 0, gridImageGapMobFallback / 2 ),
+			'padding': mediaGallery?.length > 1 ? generateSpacing( gridImageGapUnitMob, 0, gridImageGapMobFallback / 2 ) : undefined,
 		},
 		' .spectra-image-gallery__layout--carousel .slick-list': {
-			'margin': generateSpacing( gridImageGapUnitMob, 0, -( gridImageGapMobFallback / 2 ) ),
+			'margin': mediaGallery?.length > 1 ? generateSpacing( gridImageGapUnitMob, 0, -( gridImageGapMobFallback / 2 ) ) : undefined,
 		},
 		' .spectra-image-gallery__layout--tiled': {
 			'grid-gap': generateCSSUnit( gridImageGapMobFallback, gridImageGapUnitMob ),

@@ -1,3 +1,5 @@
+import { isRTL } from '@wordpress/i18n';
+
 /**
  * Get Image Sizes and return an array of Size.
  *
@@ -244,4 +246,31 @@ export const debounce = ( func, delay ) => {
 			func( ...args );
 		}, delay );
 	};
+};
+
+// JS counterpart of UAGB_Block_Helper::get_logical_text_align(). Flips
+// user-selected Text Alignment under RTL so left↔right mirror the reading
+// direction; empty and `center` pass through unchanged.
+//
+// Uses an explicit physical swap (rather than CSS logical `start`/`end`)
+// because the Gutenberg editor iframe does not reliably inherit
+// `direction: rtl` onto the block wrapper. The DOM `dir` check covers
+// switch-direction plugins that toggle `dir="rtl"` without changing locale.
+export const getLogicalTextAlign = ( value ) => {
+	const rtlContext =
+		isRTL() ||
+		( typeof document !== 'undefined' &&
+			( 'rtl' === document.documentElement?.dir ||
+				'rtl' === document.body?.dir ) );
+
+	if ( ! rtlContext ) {
+		return value;
+	}
+	if ( 'left' === value ) {
+		return 'right';
+	}
+	if ( 'right' === value ) {
+		return 'left';
+	}
+	return value;
 };

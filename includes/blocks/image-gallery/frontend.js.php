@@ -118,4 +118,10 @@ if ( $attr['mediaGallery'] ) {
 	}
 }
 
+// Touch device detection: add class for CSS overrides on phones/tablets.
+// Only for 'antiHover' and 'always' — 'hover' (Show On Hover) stays hidden by design.
+if ( $attr['imageDisplayCaption'] && 'hover' !== $attr['captionVisibility'] ) {
+	$js .= 'jQuery(document).ready(function(){if(window.matchMedia&&window.matchMedia("(hover:none)").matches){jQuery(".wp-block-uagb-image-gallery' . $selector . '").addClass("spectra-touch-device");}});';
+}
+
 return $js;

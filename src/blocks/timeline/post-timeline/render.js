@@ -75,7 +75,7 @@ const Render = ( props ) => {
 										attributes={ attributes }
 										dateClass="uagb-timeline__date-hide uagb-timeline__inner-date-new"
 									/>
-									{ <FeaturedImage post={ post } attributes={ attributes } /> }
+									{ <FeaturedImage post={ post } attributes={ attributes } deviceType={ deviceType } /> }
 									{ <Title post={ post } attributes={ attributes } /> }
 									{ <Author post={ post } attributes={ attributes } /> }
 									{ <Excerpt post={ post } attributes={ attributes } /> }

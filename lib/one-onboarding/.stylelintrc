@@ -1,0 +1,18 @@
+{
+	"extends": "@wordpress/stylelint-config",
+	"rules": {
+		"font-family-name-quotes": "always-where-recommended",
+		"function-url-quotes": "always",
+		"declaration-property-unit-allowed-list": {
+			"/^line-height/": [ "em", "rem", "px" ]
+		},
+		"rule-empty-line-before": null,
+		"comment-empty-line-before": null,
+		"selector-class-pattern": null,
+		"selector-id-pattern": null,
+		"no-descending-specificity": null,
+		"no-duplicate-selectors": null,
+		"at-rule-no-unknown": null,
+		"at-rule-empty-line-before": null
+	}
+}

@@ -28,7 +28,7 @@ $date_font_size_type = '' !== $attr['dateFontSizeType'] ? $attr['dateFontSizeTyp
 
 $selectors = array(
 	' .uagb-timeline__heading'                             => array(
-		'text-align'    => $attr['align'],
+		'text-align'    => UAGB_Block_Helper::get_logical_text_align( $attr['align'] ),
 		'color'         => $attr['headingColor'],
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 	),
@@ -40,11 +40,11 @@ $selectors = array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpace'], 'px' ),
 	),
 	' .uagb-timeline-desc-content'                         => array(
-		'text-align' => $attr['align'],
+		'text-align' => UAGB_Block_Helper::get_logical_text_align( $attr['align'] ),
 		'color'      => $attr['subHeadingColor'],
 	),
 	' .uagb-timeline__day-new'                             => array(
-		'text-align' => $attr['align'],
+		'text-align' => UAGB_Block_Helper::get_logical_text_align( $attr['align'] ),
 	),
 	' .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
 		'border-left-color'  => $attr['backgroundColor'],
@@ -96,13 +96,10 @@ $selectors = array(
 		'width'            => UAGB_Helper::get_css_value( $attr['separatorwidth'], 'px' ),
 	),
 	'.uagb-timeline__right-block .uagb-timeline__line'     => array(
-		'right' => 'calc( ' . $attr['connectorBgsize'] . 'px / 2 )',
+		'inset-inline-end' => 'calc( ' . $attr['connectorBgsize'] . 'px / 2 )',
 	),
 	'.uagb-timeline__left-block .uagb-timeline__line'      => array(
-		'left' => 'calc( ' . $attr['connectorBgsize'] . 'px / 2 )',
-	),
-	'.uagb-timeline__center-block .uagb-timeline__line'    => array(
-		'right' => 'calc( ' . $attr['connectorBgsize'] . 'px / 2 )',
+		'inset-inline-start' => 'calc( ' . $attr['connectorBgsize'] . 'px / 2 )',
 	),
 	' .uagb-timeline__marker'                              => array(
 		'background-color' => $attr['separatorBg'],
@@ -137,12 +134,12 @@ $selectors = array(
 	' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspace'], 'px' ),
 		'color'         => $attr['dateColor'],
-		'text-align'    => $attr['align'],
+		'text-align'    => UAGB_Block_Helper::get_logical_text_align( $attr['align'] ),
 	),
 	' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array(
 		'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspace'], 'px' ),
 		'color'         => $attr['dateColor'],
-		'text-align'    => $attr['align'],
+		'text-align'    => UAGB_Block_Helper::get_logical_text_align( $attr['align'] ),
 	),
 	'.uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
 		'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], $attr['horizontalSpaceUnit'] ),
@@ -192,24 +189,24 @@ $selectors = array(
 
 	$m_selectors = array(
 		' .uagb-timeline__heading'                => array(
-			'text-align'    => $attr['alignMobile'],
+			'text-align'    => UAGB_Block_Helper::get_logical_text_align( $attr['alignMobile'] ),
 			'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceMobile'], 'px' ),
 		),
 		' .uagb-timeline-desc-content'            => array(
-			'text-align' => $attr['alignMobile'],
+			'text-align' => UAGB_Block_Helper::get_logical_text_align( $attr['alignMobile'] ),
 		),
 		' .uagb-timeline__day-new'                => array(
-			'text-align' => $attr['alignMobile'],
+			'text-align' => UAGB_Block_Helper::get_logical_text_align( $attr['alignMobile'] ),
 		),
 		' .uagb-timeline__heading-text'           => array(
 			'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceMobile'], 'px' ),
 		),
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
-			'text-align'    => $attr['alignMobile'],
+			'text-align'    => UAGB_Block_Helper::get_logical_text_align( $attr['alignMobile'] ),
 			'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspaceMobile'], 'px' ),
 		),
 		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array(
-			'text-align'    => $attr['alignMobile'],
+			'text-align'    => UAGB_Block_Helper::get_logical_text_align( $attr['alignMobile'] ),
 			'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspaceMobile'], 'px' ),
 		),
 		'.uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
@@ -243,7 +240,7 @@ $selectors = array(
 			'border-radius'  => UAGB_Helper::get_css_value( $attr['borderRadiusMobile'], 'px' ),
 		),
 		'.uagb-timeline__right'                   => array(
-			'text-align' => $attr['alignMobile'],
+			'text-align' => UAGB_Block_Helper::get_logical_text_align( $attr['alignMobile'] ),
 		),
 		' .uagb-timeline__marker svg'             => array(
 			'width' => UAGB_Helper::get_css_value( $attr['iconSizeMobile'], 'px' ),
@@ -277,24 +274,24 @@ $selectors = array(
 			'width' => UAGB_Helper::get_css_value( $attr['iconSizeTablet'], 'px' ),
 		),
 		' .uagb-timeline__heading'                => array(
-			'text-align'    => $attr['alignTablet'],
+			'text-align'    => UAGB_Block_Helper::get_logical_text_align( $attr['alignTablet'] ),
 			'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceTablet'], 'px' ),
 		),
 		' .uagb-timeline__heading-text'           => array(
 			'margin-bottom' => UAGB_Helper::get_css_value( $attr['headSpaceTablet'], 'px' ),
 		),
 		' .uagb-timeline-desc-content'            => array(
-			'text-align' => $attr['alignTablet'],
+			'text-align' => UAGB_Block_Helper::get_logical_text_align( $attr['alignTablet'] ),
 		),
 		' .uagb-timeline__day-new'                => array(
-			'text-align' => $attr['alignTablet'],
+			'text-align' => UAGB_Block_Helper::get_logical_text_align( $attr['alignTablet'] ),
 		),
 		' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
-			'text-align'    => $attr['alignTablet'],
+			'text-align'    => UAGB_Block_Helper::get_logical_text_align( $attr['alignTablet'] ),
 			'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspaceTablet'], 'px' ),
 		),
 		' .uagb-timeline__date-hide.uagb-timeline__inner-date-new' => array(
-			'text-align'    => $attr['alignTablet'],
+			'text-align'    => UAGB_Block_Helper::get_logical_text_align( $attr['alignTablet'] ),
 			'margin-bottom' => UAGB_Helper::get_css_value( $attr['dateBottomspaceTablet'], 'px' ),
 		),
 		'.uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
@@ -328,7 +325,7 @@ $selectors = array(
 			'border-radius'  => UAGB_Helper::get_css_value( $attr['borderRadiusTablet'], 'px' ),
 		),
 		'.uagb-timeline__right'                   => array(
-			'text-align' => $attr['alignTablet'],
+			'text-align' => UAGB_Block_Helper::get_logical_text_align( $attr['alignTablet'] ),
 		),
 		' .uagb-timeline__marker svg'             => array(
 			'width' => UAGB_Helper::get_css_value( $attr['iconSizeTablet'], 'px' ),

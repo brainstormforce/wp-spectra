@@ -1,3 +1,38 @@
+v1.0.28 - 27-April-2026
+- Fix: Self-host the Figtree font used by the image-picker UI instead of fetching from fonts.googleapis.com on every editor load. Required for WordPress.org compliance.
+
+v1.0.27 - 23-April-2026
+- Fix: Removed server-IP geolocation lookups (ipify + ipwho.is) used to switch image sources by region. Required for WordPress.org compliance — the block-editor image picker now shows Pexels and Pixabay consistently for all users, including Russian-hosted sites that previously saw an Unsplash-only fallback.
+
+v1.0.26 - 25-March-2026
+- Security: Replaced wp_remote_get() with wp_safe_remote_get() for external HTTP requests (ipify, geolocation API).
+
+v1.0.25 - 24-March-2026
+- Fix: Added `function_exists()` guards around core file includes for WordPress.org compliance.
+
+v1.0.24 - 24-March-2026
+- Improvement: Updated build process to add ABSPATH guards to generated .asset.php files.
+- Improvement: Added README.md documenting external service usage (ipinfo.io, ipify, ipwhois, ipapi, api.zipwp.com).
+- Fix: Removed deprecated `load_plugin_textdomain()` call — WordPress auto-loads translations since 4.6.
+- Security: Added `wp_unslash()` before sanitization on `$_POST` superglobal accesses.
+
+v1.0.23 - 23-March-2026
+- Fix: Replaced `unlink()` with `wp_delete_file()` for WordPress coding standards compliance.
+
+v1.0.22 - 20-March-2026
+- Fix: Replaced custom translation loading with `load_plugin_textdomain()` for proper WordPress.org translation support.
+- Security: Added missing ABSPATH guards to class files to prevent direct file access.
+
+v1.0.21 - 03-March-2026
+- ABSPATH guard added to zipwp-images.php — prevents direct file access by exiting early if ABSPATH is not defined.
+
+v1.0.20 - 30-December-2025
+- Improvement: Automatically use Unsplash image engine for Russian users as Pexels is blocked in Russia.
+- Fix: Media Uploader select button text now displays correctly by resolving the media API frame conflict from other plugins.
+
+v1.0.19 - 09-September-2025
+- Improvement: Added Beaver Builder plugin compatibility.
+
 v1.0.18 - 27-March-2025
 - Improvement: Optimized asset loading logic to prevent unnecessary script and style loading in non-essential backend areas, improving performance.
 
