@@ -45,11 +45,19 @@ $slider_options = apply_filters(
 
 ob_start();
 ?>
-window.addEventListener("DOMContentLoaded", function(){
-	var swiper = new Swiper( "<?php echo esc_attr( $selector ); ?>",
-		<?php echo wp_json_encode( $slider_options ); ?>
-	);
-});
+( function() {
+	function uagbInitSlider() {
+		var swiper = new Swiper( "<?php echo esc_attr( $selector ); ?>",
+			<?php echo wp_json_encode( $slider_options ); ?>
+		);
+	}
+
+	if ( "loading" === document.readyState ) {
+		document.addEventListener( "DOMContentLoaded", uagbInitSlider );
+	} else {
+		uagbInitSlider();
+	}
+} )();
 
 <?php
 
