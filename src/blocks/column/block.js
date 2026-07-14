@@ -17,6 +17,7 @@ let columnCommonData = {};
 columnCommonData = applyFilters( 'uagb/column', addCommonDataToSpectraBlocks( columnCommonData ) );
 registerBlockType( 'uagb/column', {
 	...columnCommonData,
+	apiVersion: 3,
 	title: __( 'Column', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Immediate child of Advanced Columns', 'ultimate-addons-for-gutenberg' ),
 	icon: renderLegacyBlockEditorIcon( 'column' ),

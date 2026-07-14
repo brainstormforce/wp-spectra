@@ -19,6 +19,7 @@ let tabsCommonData = {};
 tabsCommonData = applyFilters( 'uagb/tabs', addCommonDataToSpectraBlocks( tabsCommonData ) );
 registerBlockType( 'uagb/tabs', {
 	...tabsCommonData,
+	apiVersion: 3,
 	title: __( 'Tabs', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Display your content under different tabs.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.tabs,

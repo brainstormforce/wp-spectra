@@ -7,7 +7,7 @@ import { getFallbackNumber } from '@Controls/getAttributeFallback';
 const Blog = ( props ) => {
 	const blockName = props.name.replace( 'uagb/', '' );
 	const article = useRef();
-	const { attributes, className, latestPosts, block_id, setAttributes } = props;
+	const { attributes, className, latestPosts, block_id, setAttributes, blockProps } = props;
 	const deviceType = useDeviceType();
 	const {
 		columns,
@@ -39,7 +39,9 @@ const Blog = ( props ) => {
 		: '';
 	return (
 		<div
+			{ ...blockProps }
 			className={ classnames(
+				blockProps?.className,
 				'is-grid',
 				`uagb-post__columns-${ columnsFallback }`,
 				`uagb-post__columns-tablet-${ tcolumnsFallback }`,

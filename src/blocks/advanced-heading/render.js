@@ -1,4 +1,5 @@
 import { memo } from '@wordpress/element';
+import { useBlockProps } from '@wordpress/block-editor';
 import { uagbClassNames } from '@Utils/Helpers';
 import Renderer from './renderer';
 import RendererDesc from './renderer-desc';
@@ -8,17 +9,22 @@ const Render = ( props ) => {
 		attributes: {
 			block_id,
 			headingTitleToggle,
-			headingDescToggle, 
+			headingDescToggle,
 			seperatorStyle,
 			seperatorPosition,
 			headingDescPosition,
 			headingWrapper,
 		},
-		className,
 		deviceType
 	} = props;
 
 	const Element = headingWrapper || 'div';
+	const blockProps = useBlockProps( {
+		className: uagbClassNames( [
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+			`uagb-block-${ block_id }`,
+		] ),
+	} );
 	const separator = seperatorStyle !== 'none' && (
 		<div className="uagb-separator-wrap">
 			<div className="uagb-separator"></div>
@@ -43,11 +49,7 @@ const Render = ( props ) => {
 
 	return (
 		<Element
-			className={ uagbClassNames( [
-				className,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ block_id }`,
-			] ) }
+			{ ...blockProps }
 		>
 			{ headingDescToggle && 'above-heading' === headingDescPosition ? descText : '' }
 			{ headingTitleToggle && headingText }

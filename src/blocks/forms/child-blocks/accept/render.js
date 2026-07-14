@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import { useLayoutEffect, memo } from '@wordpress/element';
+import { useBlockProps } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
 
 const Render = ( props ) => {
@@ -18,10 +19,14 @@ const Render = ( props ) => {
 	const isRequired = acceptRequired ? 'required' : '';
 	const target = linkInNewTab ? '_blank' : '_self';
 
+	const blockProps = useBlockProps( {
+		className: classnames( 'uagb-forms-accept-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ),
+	} );
+
 	return (
 		<>
 			<div
-				className={ classnames( 'uagb-forms-accept-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ) }
+				{ ...blockProps }
 			>
 				{ showLink && (
 					<div className="uagb-forms-accept-privacy-link">

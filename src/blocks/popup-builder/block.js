@@ -22,7 +22,7 @@ if ( 'spectra-popup' === window.typenow ) {
 
 	registerBlockType( 'uagb/popup-builder', {
 		...popupCommonData,
-		apiVersion: 2,
+		apiVersion: 3,
 		title: __( 'Popup Builder', 'ultimate-addons-for-gutenberg' ),
 		description: __(
 			'This block allows you to build a site-wide popup.',

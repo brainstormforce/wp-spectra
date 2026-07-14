@@ -172,6 +172,20 @@
 		border-radius: $spectra-control-border-radius;
 	}
 
+	// Fix for animation dropdown spacing in WordPress 7.0+.
+	// Increases height from 30px to 40px to prevent extra space above options.
+	// This fix only applies to WordPress 7.0 and later versions.
+	body.spectra-wp-gte-7-0 & {
+		.uagb-animation-type-select__control {
+			height: 40px;
+			min-height: 40px;
+		}
+
+		.uagb-animation-type-select__value-container {
+			height: 40px;
+		}
+	}
+
 	.uagb-animation-type-select__indicator-separator {
 		display: none;
 	}

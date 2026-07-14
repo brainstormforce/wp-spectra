@@ -7,7 +7,7 @@ import shapes from './shapes';
 import { useMemo, memo } from '@wordpress/element';
 
 const ALLOWED_BLOCKS = [ 'uagb/column' ];
-import { InnerBlocks } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
 
@@ -89,23 +89,29 @@ const Render = ( props ) => {
 
 	const alignType = undefined !== align ? `align${ align }` : '';
 
+	const blockProps = useBlockProps( {
+		'className': classnames(
+			className,
+			'uagb-columns__wrap',
+			`${ bgType }`,
+			`uagb-columns__edit-${ active }`,
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+			`uagb-columns__stack-${ stack }`,
+			`${ verticalAlign }`,
+			`uagb-columns__gap-${ columnGap }`,
+			`${ alignType }`,
+			reverseTabletClass,
+			reverseMobileClass,
+			`uagb-block-${ block_id }`,
+			`uagb-columns__max_width-${ contentWidth }`
+		),
+		'data-align': align,
+		'data-valign': vAlign,
+	} );
+
 	return (
 		<CustomTag
-			className={ classnames(
-				className,
-				'uagb-columns__wrap',
-				`${ bgType }`,
-				`uagb-columns__edit-${ active }`,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-columns__stack-${ stack }`,
-				`${ verticalAlign }`,
-				`uagb-columns__gap-${ columnGap }`,
-				`${ alignType }`,
-				reverseTabletClass,
-				reverseMobileClass,
-				`uagb-block-${ block_id }`,
-				`uagb-columns__max_width-${ contentWidth }`
-			) }
+			{ ...blockProps }
 		>
 			<div className="uagb-columns__overlay"></div>
 			{ topDividerHtml }

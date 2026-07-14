@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import { useLayoutEffect, memo, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 import { createBlock } from '@wordpress/blocks';
 import getImageHeightWidth from '@Controls/getImageHeightWidth';
 
@@ -113,13 +113,17 @@ const Render = ( props ) => {
 			) }
 		</div>
 	);
+	const blockProps = useBlockProps( {
+		className: classnames(
+			'uagb-how-to-step-wrap',
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+			`uagb-block-${ block_id }`
+		),
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				'uagb-how-to-step-wrap',
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ block_id }`
-			) }
+			{ ...blockProps }
 		>
 			{ ( 'all' === urlType || 'none' === urlType ) && (
 				<>

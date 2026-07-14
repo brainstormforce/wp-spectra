@@ -3,7 +3,7 @@ import { useLayoutEffect, memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 import { Button } from '@wordpress/components';
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -120,10 +120,14 @@ const Render = ( props ) => {
 
 	const isRequired = radioRequired ? 'required' : '';
 
+	const blockProps = useBlockProps( {
+		className: classnames( 'uagb-forms-radio-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ),
+	} );
+
 	return (
 		<>
 			<div
-				className={ classnames( 'uagb-forms-radio-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ) }
+				{ ...blockProps }
 			>
 				<RichText
 					tagName="div"

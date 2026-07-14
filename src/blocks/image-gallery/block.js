@@ -16,6 +16,7 @@ let imageGalleryCommonData = {};
 imageGalleryCommonData = applyFilters( 'uagb/image-gallery', addCommonDataToSpectraBlocks( imageGalleryCommonData ) );
 registerBlockType( 'uagb/image-gallery', {
 	...imageGalleryCommonData,
+	apiVersion: 3,
 	title: __( 'Image Gallery', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Create a highly customizable image gallery', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.image_gallery,

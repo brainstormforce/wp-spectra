@@ -2,8 +2,7 @@
  * BLOCK: Star Rating - Save Block
  */
 
-import classnames from 'classnames';
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { rating, block_id, title, range, displayTitle } = props.attributes;
@@ -17,8 +16,12 @@ export default function save( props ) {
 			</span>
 		);
 	}
+	const blockProps = useBlockProps.save( {
+		className: `uagb-block-${ block_id }`,
+	} );
+
 	return (
-		<div className={ classnames( props.className, `uagb-block-${ block_id }` ) }>
+		<div { ...blockProps }>
 			{ displayTitle && title && (
 				<RichText.Content tagName="p" value={ title } className="uag-star-rating__title" />
 			) }

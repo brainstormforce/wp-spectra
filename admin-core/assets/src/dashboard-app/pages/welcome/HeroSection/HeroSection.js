@@ -53,17 +53,17 @@ const HeroSection = () => {
 						title={
 							'Activated' === uag_react.pro_plugin_status
 								? translatedString
-								: __( 'Welcome To Spectra', 'ultimate-addons-for-gutenberg' )
+								: __( 'Welcome To Spectra Legacy', 'ultimate-addons-for-gutenberg' )
 						}
 					/>
 					<p className="text-sm text-text-secondary m-0">
 						{ 'Activated' === uag_react.pro_plugin_status
 							? __(
-									"Thanks for choosing Spectra Pro! You're now part of an exclusive community of website builders. Enjoy exploring the new features and creating something amazing. Let's take your site to the next level together.",
+									"Thanks for choosing Spectra Pro Legacy! You're now part of an exclusive community of website builders. Enjoy exploring the new features and creating something amazing. Let's take your site to the next level together.",
 									'ultimate-addons-for-gutenberg'
 							  )
 							: __(
-									'We designed Spectra to be intuitive but we do recommend learning how it works by checking our comprehensive documentation and watching the video below. Enjoy your time with Spectra!',
+									'We designed Spectra Legacy to be intuitive but we do recommend learning how it works by checking our comprehensive documentation and watching the video below. Enjoy your time with Spectra Legacy!',
 									'ultimate-addons-for-gutenberg'
 							  ) }
 					</p>

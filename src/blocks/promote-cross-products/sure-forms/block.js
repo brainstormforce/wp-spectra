@@ -18,6 +18,7 @@ sureFormsCommonData = applyFilters( 'uagb/sure-forms', addCommonDataToSpectraBlo
 // Always register the block
 registerBlockType( 'uagb/sure-forms', {
 	...sureFormsCommonData,
+	apiVersion: 3,
 	title: __( 'SureForms - Create Forms', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Collect and Manage data effortlessly with customizable forms.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.sure_forms,

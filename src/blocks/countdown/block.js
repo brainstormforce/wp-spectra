@@ -18,7 +18,7 @@ let countdownCommonData = {};
 countdownCommonData = applyFilters( 'uagb/countdown', addCommonDataToSpectraBlocks( countdownCommonData ) );
 registerBlockType( 'uagb/countdown', {
 	...countdownCommonData,
-	apiVersion: 2,
+	apiVersion: 3,
 	title: __( 'Countdown', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Create a sense of urgency among your visitors.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.countdown,

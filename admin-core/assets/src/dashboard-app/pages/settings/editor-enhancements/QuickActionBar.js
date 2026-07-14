@@ -50,7 +50,7 @@ const QuickActionBar = () => {
 			<SettingsItem
 				title={ __( 'Enable Quick Action Bar', 'ultimate-addons-for-gutenberg' ) }
 				settingText={ __(
-					'The Spectra Quick Action Bar lets you have all your frequently used Spectra blocks right at your fingertips!',
+					'The Spectra Legacy Quick Action Bar lets you have all your frequently used Spectra Legacy blocks right at your fingertips!',
 					'ultimate-addons-for-gutenberg'
 				) }
 			>

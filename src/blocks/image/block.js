@@ -18,6 +18,7 @@ let imageCommonData = {};
 imageCommonData = applyFilters( 'uagb/image', addCommonDataToSpectraBlocks( imageCommonData ) );
 registerBlockType( 'uagb/image', {
 	...imageCommonData,
+	apiVersion: 3,
 	title: __( 'Image', 'ultimate-addons-for-gutenberg' ),
 	description: __(
 		'Add images on your webpage with multiple customization options.',

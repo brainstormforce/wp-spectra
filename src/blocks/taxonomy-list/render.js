@@ -4,6 +4,7 @@ import styles from './editor.lazy.scss';
 import { decodeEntities } from '@wordpress/html-entities';
 import { useEntityRecords } from '@wordpress/core-data';
 import { __ } from '@wordpress/i18n';
+import { useBlockProps } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -105,14 +106,18 @@ const Render = ( props ) => {
 		}
 	};
 
+	const blockProps = useBlockProps( {
+		className: uagbClassNames( [
+			'uagb-taxonomy__outer-wrap',
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+			`uagb-layout-${ layout }`,
+			`uagb-block-${ block_id }`,
+		] ),
+	} );
+
 	return categoriesList.length ? (
 		<div
-			className={ uagbClassNames( [
-				'uagb-taxonomy__outer-wrap',
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-layout-${ layout }`,
-				`uagb-block-${ block_id }`
-			] ) }
+			{ ...blockProps }
 		>
 			{ 'grid' === layout &&
 				categoriesList.map( ( p, index ) => (
@@ -152,12 +157,7 @@ const Render = ( props ) => {
 		</div>
 	) : (
 		<div
-			className={ uagbClassNames( [
-				'uagb-taxonomy__outer-wrap',
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-layout-${ layout }`,
-				`uagb-block-${ block_id }`
-			] ) }
+			{ ...blockProps }
 		>
 			<div className="uagb-tax-not-available">{ noTaxDisplaytext }</div>
 		</div>

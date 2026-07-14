@@ -6,6 +6,7 @@ import { useEffect, useMemo } from '@wordpress/element';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { select, dispatch } from '@wordpress/data';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+import { useBlockProps } from '@wordpress/block-editor';
 import Settings from './settings';
 import Render from './render';
 import styling from './styling';
@@ -47,13 +48,15 @@ const UAGBIconList = ( props ) => {
 			} );
 	}, [ attributes.parentIcon, attributes.hideLabel, attributes.size ] );
 
+	const blockProps = useBlockProps();
+
 	return (
-		<>
+		<div { ...blockProps }>
 			<DynamicCSSLoader { ...{ blockStyling } } />
 			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings { ...props } /> }
 			<Render { ...props } />
-		</>
+		</div>
 	);
 };
 

@@ -22,6 +22,7 @@ let CallToActionCommonData = {};
 CallToActionCommonData = applyFilters( 'uagb/call-to-action', addCommonDataToSpectraBlocks( CallToActionCommonData ) );
 registerBlockType( 'uagb/call-to-action', {
 	...CallToActionCommonData,
+	apiVersion: 3,
 	title: __( 'Call To Action', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add a button along with heading and description.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.call_to_action,

@@ -4,7 +4,7 @@
 
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { attributes, className, setAttributes } = props;
@@ -59,14 +59,18 @@ export default function save( props ) {
 	};
 	const openNewWindow = opensInNewTab ? '_blank' : '_self';
 	
+	const blockProps = useBlockProps.save( {
+		className: classnames(
+			className,
+			'uagb-buttons__outer-wrap',
+			`uagb-block-${ block_id }`,
+			'wp-block-button'
+		),
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				className,
-				'uagb-buttons__outer-wrap',
-				`uagb-block-${ block_id }`,
-				'wp-block-button'
-			) }
+			{ ...blockProps }
 		>
 			<div className="uagb-button__wrapper">
 				<a // eslint-disable-line jsx-a11y/anchor-is-valid

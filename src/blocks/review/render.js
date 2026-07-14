@@ -2,6 +2,7 @@
 import classnames from 'classnames';
 import ReviewBody from './review-body';
 import { useEffect, useState, useLayoutEffect, memo } from '@wordpress/element';
+import { useBlockProps } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
 import getImageHeightWidth from '@Controls/getImageHeightWidth';
 
@@ -44,7 +45,6 @@ const Render = ( props ) => {
 		},
 		setAttributes,
 		isSelected,
-		className,
 		deviceType
 	} = props;
 
@@ -108,14 +108,19 @@ const Render = ( props ) => {
 			/>
 		);
 	}
+	const { blockRef } = props;
+	const blockProps = useBlockProps( {
+		className: classnames(
+			'uagb-ratings__outer-wrap',
+			`uagb-block-${ block_id }`,
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
+		),
+		ref: blockRef,
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				className,
-				'uagb-ratings__outer-wrap',
-				`uagb-block-${ block_id }`,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
-			) }
+			{ ...blockProps }
 		>
 			<ReviewBody
 				rTitle={ rTitle }

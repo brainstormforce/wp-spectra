@@ -1,4 +1,4 @@
-import { useInnerBlocksProps } from '@wordpress/block-editor';
+import { useInnerBlocksProps, useBlockProps } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 import { memo } from '@wordpress/element';
 
@@ -45,6 +45,10 @@ const Render = ( props ) => {
 		template: TEMPLATE,
 	};
 
+	const blockProps = useBlockProps( {
+		className: 'uagb-slider-child-wrap swiper-slide',
+	} );
+
 	const innerBlocksProps = useInnerBlocksProps(
 		{
 			className: `swiper-content`,
@@ -53,7 +57,11 @@ const Render = ( props ) => {
 		innerBlockOptions
 	);
 
-	return <div { ...innerBlocksProps } />;
+	return (
+		<div { ...blockProps }>
+			<div { ...innerBlocksProps } />
+		</div>
+	);
 };
 
 export default memo( Render );

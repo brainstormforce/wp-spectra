@@ -19,6 +19,7 @@ let teamCommonData = {};
 teamCommonData = applyFilters( 'uagb/team', addCommonDataToSpectraBlocks( teamCommonData ) );
 registerBlockType( 'uagb/team', {
 	...teamCommonData,
+	apiVersion: 3,
 	title: __( 'Team', 'ultimate-addons-for-gutenberg' ),
 	description: __(
 		'Showcase your team by displaying info and social media profiles.',

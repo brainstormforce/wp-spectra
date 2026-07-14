@@ -43,7 +43,7 @@ const CopyPasteStyles = () => {
 			<SettingsItem
 				title={ __( 'Copy Paste Styles', 'ultimate-addons-for-gutenberg' ) }
 				settingText={ __(
-					'Enable the "Copy Paste Styles" option to have the ability to copy & paste Spectra & Core Gutenberg Blocks Styles.',
+					'Enable the "Copy Paste Styles" option to have the ability to copy & paste Spectra Legacy & Core Gutenberg Blocks Styles.',
 					'ultimate-addons-for-gutenberg'
 				) }
 			>

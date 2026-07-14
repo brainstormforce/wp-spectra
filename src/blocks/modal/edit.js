@@ -1,4 +1,5 @@
 import { useEffect, useMemo } from '@wordpress/element';
+import { useBlockProps } from '@wordpress/block-editor';
 import styling from './styling';
 import Settings from './settings';
 import Render from './render';
@@ -58,13 +59,15 @@ const UAGBModalEdit = ( props ) => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
+	const blockProps = useBlockProps();
+
 	return (
-		<>
+		<div { ...blockProps }>
 			<DynamicCSSLoader { ...{ blockStyling } } />
 			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings { ...props } /> }
 			<Render { ...props } />
-		</>
+		</div>
 	);
 };
 

@@ -182,7 +182,7 @@ const AdminHeader = ( props ) => {
 				<Container align="center" justify="center" className="py-2 relative bg-[#E9E4FF]">
 					<div className="space-x-1 text-text-primary text-xs">
 						<span className="font-semibold">
-							{ __( "Unlock Spectra's Full Potential!", 'ultimate-addons-for-gutenberg' ) }
+							{ __( "Unlock Spectra Legacy's Full Potential!", 'ultimate-addons-for-gutenberg' ) }
 						</span>
 						<span className="font-normal">
 							{ __(

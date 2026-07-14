@@ -5,10 +5,10 @@
 import classnames from 'classnames';
 import shapes from './shapes';
 
-import { InnerBlocks } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
 export default function save( props ) {
-	const { attributes, className } = props;
+	const { attributes } = props;
 
 	const {
 		block_id,
@@ -32,6 +32,16 @@ export default function save( props ) {
 	} = attributes;
 
 	const CustomTag = `${ tag }`;
+
+	const reverseTabletClass = reverseTablet ? 'uagb-columns__reverse-tablet' : '';
+
+	const reverseMobileClass = reverseMobile ? 'uagb-columns__reverse-mobile' : '';
+
+	const bgType = undefined !== backgroundType ? `uagb-columns__background-${ backgroundType }` : '';
+
+	const verticalAlign = undefined !== vAlign ? `uagb-columns__valign-${ vAlign }` : '';
+
+	const alignType = undefined !== align ? `align${ align }` : '';
 
 	const topDividerHtml = topType !== 'none' && (
 		<div
@@ -64,32 +74,25 @@ export default function save( props ) {
 		</div>
 	);
 
-	const reverseTabletClass = reverseTablet ? 'uagb-columns__reverse-tablet' : '';
-
-	const reverseMobileClass = reverseMobile ? 'uagb-columns__reverse-mobile' : '';
-
-	const bgType = undefined !== backgroundType ? `uagb-columns__background-${ backgroundType }` : '';
-
-	const verticalAlign = undefined !== vAlign ? `uagb-columns__valign-${ vAlign }` : '';
-
-	const alignType = undefined !== align ? `align${ align }` : '';
+	const blockProps = useBlockProps.save( {
+		className: classnames(
+			'uagb-columns__wrap',
+			`${ bgType }`,
+			`uagb-columns__stack-${ stack }`,
+			`${ verticalAlign }`,
+			`uagb-columns__gap-${ columnGap }`,
+			`${ alignType }`,
+			reverseTabletClass,
+			reverseMobileClass,
+			`uagb-block-${ block_id }`,
+			`uagb-columns__columns-${ columns }`,
+			`uagb-columns__max_width-${ contentWidth }`
+		),
+	} );
 
 	return (
 		<CustomTag
-			className={ classnames(
-				className,
-				'uagb-columns__wrap',
-				`${ bgType }`,
-				`uagb-columns__stack-${ stack }`,
-				`${ verticalAlign }`,
-				`uagb-columns__gap-${ columnGap }`,
-				`${ alignType }`,
-				reverseTabletClass,
-				reverseMobileClass,
-				`uagb-block-${ block_id }`,
-				`uagb-columns__columns-${ columns }`,
-				`uagb-columns__max_width-${ contentWidth }`
-			) }
+			{ ...blockProps }
 		>
 			<div className="uagb-columns__overlay"></div>
 			{ topDividerHtml }

@@ -8,7 +8,7 @@ import countryOptions from './country-option';
 
 import { __ } from '@wordpress/i18n';
 
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { attributes } = props;
@@ -51,8 +51,12 @@ export default function save( props ) {
 
 	const isRequired = phoneRequired ? 'required' : '';
 
+	const blockProps = useBlockProps.save( {
+		className: classnames( 'uagb-forms-phone-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ),
+	} );
+
 	return (
-		<div className={ classnames( 'uagb-forms-phone-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ) }>
+		<div { ...blockProps }>
 			<RichText.Content
 				tagName="div"
 				value={ phoneName }

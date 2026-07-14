@@ -213,20 +213,21 @@ const Settings = ( props ) => {
 	const closeClassRef = useCallback( ( node ) => {
 		if ( canUseClipboard && node ) {
 			node.addEventListener( 'click', () => {
+				const { ownerDocument } = node;
 				node.style.pointerEvents = 'none';
-				const hiddenInput = document.createElement( 'input' );
-		
+				const hiddenInput = ownerDocument.createElement( 'input' );
+
 				hiddenInput.style.display = 'none';
 				hiddenInput.setAttribute( 'value', `spectra-popup-close-${ uagb_blocks_info.current_post_id }` );
-				document.body.appendChild( hiddenInput );
-		
+				ownerDocument.body.appendChild( hiddenInput );
+
 				hiddenInput.select();
 				hiddenInput.setSelectionRange( 0, 99999 );
 				navigator.clipboard.writeText( hiddenInput.value );
-		
+
 				setIsCopied( true );
 				setTimeout( () => {
-					document.body.removeChild( hiddenInput );
+					ownerDocument.body.removeChild( hiddenInput );
 					setIsCopied( false );
 					node.style.pointerEvents = '';
 				}, 750 );

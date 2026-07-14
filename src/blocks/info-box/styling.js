@@ -457,6 +457,22 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			'margin-left': generateCSSUnit( headLeftMargin, headSpaceUnit ),
 			'margin-right': generateCSSUnit( headRightMargin, headSpaceUnit ),
 		},
+		// Frontend Title Style
+		' .uagb-ifb-content .uagb-ifb-title': {
+			'font-size': generateCSSUnit( headFontSize, headFontSizeType ),
+			'font-family': headFontFamily,
+			'font-weight': headFontWeight,
+			'line-height': generateCSSUnit( headLineHeight, headLineHeightType ),
+			'font-style': headFontStyle,
+			'text-decoration': headDecoration,
+			'text-transform': headTransform,
+			'letter-spacing': generateCSSUnit( headLetterSpacing, headLetterSpacingType ),
+			'color': headingColor,
+			'margin-top': generateCSSUnit( headTopMargin, headSpaceUnit ),
+			'margin-bottom': generateCSSUnit( headSpace, headSpaceUnit ),
+			'margin-left': generateCSSUnit( headLeftMargin, headSpaceUnit ),
+			'margin-right': generateCSSUnit( headRightMargin, headSpaceUnit ),
+		},
 		// Description Style
 		' .uagb-ifb-desc.block-editor-block-list__layout p': {
 			'color': subHeadingColor,
@@ -483,6 +499,25 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			'line-height': generateCSSUnit( subHeadLineHeight, subHeadLineHeightType ),
 			'font-style': subHeadFontStyle,
 			'text-decoration': subHeadDecoration,
+			'text-transform': subHeadTransform,
+			'letter-spacing': generateCSSUnit( subHeadLetterSpacing, subHeadLetterSpacingType ),
+			'color': subHeadingColor,
+			'margin-bottom': generateCSSUnit( subHeadSpace, subHeadSpaceUnit ),
+			'margin-top': generateCSSUnit( subHeadTopMargin, subHeadSpaceUnit ),
+			'margin-left': generateCSSUnit( subHeadLeftMargin, subHeadSpaceUnit ),
+			'margin-right': generateCSSUnit( subHeadRightMargin, subHeadSpaceUnit ),
+		},
+		// Frontend Description Style
+		' .uagb-ifb-content .uagb-ifb-desc p': {
+			'color': subHeadingColor,
+			'line-height': generateCSSUnit( subHeadLineHeight, subHeadLineHeightType ),
+			'text-decoration': subHeadDecoration,
+		},
+		' .uagb-ifb-content .uagb-ifb-desc': {
+			'font-size': generateCSSUnit( subHeadFontSize, subHeadFontSizeType ),
+			'font-family': subHeadFontFamily,
+			'font-weight': subHeadFontWeight,
+			'font-style': subHeadFontStyle,
 			'text-transform': subHeadTransform,
 			'letter-spacing': generateCSSUnit( subHeadLetterSpacing, subHeadLetterSpacingType ),
 			'color': subHeadingColor,
@@ -1036,7 +1071,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 		tabletSelectors[ ' .uagb-infobox-cta-link.wp-block-button__link' ] = ctaBorderCSSTablet;
 	}
 
-	const base_selector = '.editor-styles-wrapper ' + ( gbsSelector ? gbsSelector + ' ' : `#block-${ clientId } .uagb-block-${ block_id }` );
+	const base_selector = '.editor-styles-wrapper ' + ( gbsSelector ? gbsSelector + ' ' : `.uagb-block-${ block_id }` );
 	let stylingCss = generateCSS( selectors, base_selector );
 
 	if( 'tablet' === previewType || 'mobile' === previewType || gbsSelector ) {

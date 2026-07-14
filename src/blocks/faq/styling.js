@@ -282,11 +282,11 @@ function styling( attributes, clientId, name, deviceType ) {
 			'color': answerTextColor,
 			'letter-spacing': generateCSSUnit( answerLetterSpacing, answerLetterSpacingType ),
 		},
-		'.uagb-faq__outer-wrap': {
-			'margin-top': generateCSSUnit( blockTopMargin, blockMarginUnit ),
-			'margin-right': generateCSSUnit( blockRightMargin, blockMarginUnit ),
-			'margin-bottom': generateCSSUnit( blockBottomMargin, blockMarginUnit ),
-			'margin-left': generateCSSUnit( blockLeftMargin, blockMarginUnit ),
+		'.wp-block-uagb-faq.uagb-faq__outer-wrap': {
+			'margin-top': generateCSSUnit( blockTopMargin, blockMarginUnit, true ),
+			'margin-right': generateCSSUnit( blockRightMargin, blockMarginUnit, true ),
+			'margin-bottom': generateCSSUnit( blockBottomMargin, blockMarginUnit, true ),
+			'margin-left': generateCSSUnit( blockLeftMargin, blockMarginUnit, true ),
 			'padding-top': generateCSSUnit( blockTopPadding, blockPaddingUnit ),
 			'padding-right': generateCSSUnit( blockRightPadding, blockPaddingUnit ),
 			'padding-bottom': generateCSSUnit( blockBottomPadding, blockPaddingUnit ),
@@ -347,11 +347,11 @@ function styling( attributes, clientId, name, deviceType ) {
 			'grid-column-gap': generateCSSUnit( columnsGapTablet, columnsGapUnit ),
 			'grid-row-gap': generateCSSUnit( rowsGapTablet, rowsGapUnit ),
 		},
-		'.uagb-faq__outer-wrap': {
-			'margin-top': generateCSSUnit( blockTopMarginTablet, blockMarginUnitTablet ),
-			'margin-right': generateCSSUnit( blockRightMarginTablet, blockMarginUnitTablet ),
-			'margin-bottom': generateCSSUnit( blockBottomMarginTablet, blockMarginUnitTablet ),
-			'margin-left': generateCSSUnit( blockLeftMarginTablet, blockMarginUnitTablet ),
+		'.wp-block-uagb-faq.uagb-faq__outer-wrap': {
+			'margin-top': generateCSSUnit( blockTopMarginTablet, blockMarginUnitTablet, true ),
+			'margin-right': generateCSSUnit( blockRightMarginTablet, blockMarginUnitTablet, true ),
+			'margin-bottom': generateCSSUnit( blockBottomMarginTablet, blockMarginUnitTablet, true ),
+			'margin-left': generateCSSUnit( blockLeftMarginTablet, blockMarginUnitTablet, true ),
 			'padding-top': generateCSSUnit( blockTopPaddingTablet, blockPaddingUnitTablet ),
 			'padding-right': generateCSSUnit( blockRightPaddingTablet, blockPaddingUnitTablet ),
 			'padding-bottom': generateCSSUnit( blockBottomPaddingTablet, blockPaddingUnitTablet ),
@@ -412,11 +412,11 @@ function styling( attributes, clientId, name, deviceType ) {
 			'grid-column-gap': generateCSSUnit( columnsGapMobile, columnsGapUnit ),
 			'grid-row-gap': generateCSSUnit( rowsGapMobile, rowsGapUnit ),
 		},
-		'.uagb-faq__outer-wrap': {
-			'margin-top': generateCSSUnit( blockTopMarginMobile, blockMarginUnitMobile ),
-			'margin-right': generateCSSUnit( blockRightMarginMobile, blockMarginUnitMobile ),
-			'margin-bottom': generateCSSUnit( blockBottomMarginMobile, blockMarginUnitMobile ),
-			'margin-left': generateCSSUnit( blockLeftMarginMobile, blockMarginUnitMobile ),
+		'.wp-block-uagb-faq.uagb-faq__outer-wrap': {
+			'margin-top': generateCSSUnit( blockTopMarginMobile, blockMarginUnitMobile, true ),
+			'margin-right': generateCSSUnit( blockRightMarginMobile, blockMarginUnitMobile, true ),
+			'margin-bottom': generateCSSUnit( blockBottomMarginMobile, blockMarginUnitMobile, true ),
+			'margin-left': generateCSSUnit( blockLeftMarginMobile, blockMarginUnitMobile, true ),
 			'padding-top': generateCSSUnit( blockTopPaddingMobile, blockPaddingUnitMobile ),
 			'padding-right': generateCSSUnit( blockRightPaddingMobile, blockPaddingUnitMobile ),
 			'padding-bottom': generateCSSUnit( blockBottomPaddingMobile, blockPaddingUnitMobile ),
@@ -443,19 +443,23 @@ function styling( attributes, clientId, name, deviceType ) {
 	}
 	if ( 'accordion' === layout && true === expandFirstItem ) {
 		selectors[
-			' .block-editor-block-list__layout > div:first-child > .uagb-faq-child__outer-wrap .uagb-faq-content '
+			' .block-editor-block-list__layout > .uagb-faq-child__outer-wrap:first-child .uagb-faq-content '
 		] = {
 			'display': 'block',
 		};
 		selectors[
-			' .block-editor-block-list__layout > div:first-child > .uagb-faq-child__outer-wrap.uagb-faq-item .uagb-faq-questions-button .uagb-icon-active '
+			' .block-editor-block-list__layout > .uagb-faq-child__outer-wrap.uagb-faq-item:first-child .uagb-faq-questions-button .uagb-icon-active '
 		] = {
 			'display': 'flex',
+			'width': 'auto',
+			'height': 'auto',
 		};
 		selectors[
-			' .block-editor-block-list__layout > div:first-child > .uagb-faq-child__outer-wrap.uagb-faq-item .uagb-faq-questions-button .uagb-icon '
+			' .block-editor-block-list__layout > .uagb-faq-child__outer-wrap.uagb-faq-item:first-child .uagb-faq-questions-button .uagb-icon '
 		] = {
 			'display': 'none',
+			'width': '0',
+			'height': '0',
 		};
 	}
 	if ( true === enableSeparator ) {

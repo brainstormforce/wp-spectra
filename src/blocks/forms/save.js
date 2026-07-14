@@ -4,7 +4,7 @@
 
 import classnames from 'classnames';
 
-import { InnerBlocks, RichText } from '@wordpress/block-editor';
+import { InnerBlocks, RichText, useBlockProps } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { attributes } = props;
@@ -46,13 +46,18 @@ export default function save( props ) {
 	if ( ! variationSelected ) { // If no preset selected then return.
 		return;
 	}
+
+	const blockProps = useBlockProps.save( {
+		className: classnames(
+			'uagb-forms__outer-wrap',
+			`uagb-block-${ block_id }`,
+			`uagb-forms__${ buttonSize }-btn`
+		),
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				'uagb-forms__outer-wrap',
-				`uagb-block-${ block_id }`,
-				`uagb-forms__${ buttonSize }-btn`
-			) }
+			{ ...blockProps }
 		>
 			<form className="uagb-forms-main-form" method="post" autoComplete="on" name={ `uagb-form-${ block_id }` }>
 				<InnerBlocks.Content />

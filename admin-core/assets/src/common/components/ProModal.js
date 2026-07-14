@@ -29,11 +29,14 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 				// Filter products based on required names
 				const filteredData = Object.entries( data.data ).reduce( ( acc, [ key, value ] ) => {
 					if (
-						( value.product.includes( 'Spectra Pro - Annual Subscription' ) &&
+						( value.product.includes( 'Spectra Pro' ) &&
+							value.variant.includes( 'Annual Subscription' ) &&
 							value.variant.includes( '1 Site' ) ) ||
-						( value.product.includes( 'Essential Toolkit for Spectra - Annual Subscription' ) &&
+						( value.product.includes( 'Essential Toolkit for Spectra' ) &&
+							value.variant.includes( 'Annual Subscription' ) &&
 							value.variant.includes( '1 Site' ) ) ||
-						( value.product.includes( 'Business Toolkit - Annual Subscription' ) &&
+						( value.product.includes( 'Business Toolkit' ) &&
+							value.variant.includes( 'Annual Subscription' ) &&
 							value.variant.includes( '1 Site' ) )
 					) {
 						acc[ key ] = value;
@@ -51,6 +54,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 				setLoading( false );
 			} catch ( error ) {
 				setSelectedProduct( '' );
+				setLoading( false );
 			}
 		};
 
@@ -116,7 +120,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 	useEffect( () => {
 		const productName = productsList[ selectedProduct ]?.product || '';
 		const titleMapping = {
-			'Spectra Pro': 'Spectra Pro',
+			'Spectra Pro': 'Spectra Pro Legacy',
 			'Essential Toolkit': 'Essential Toolkit',
 		};
 
@@ -232,37 +236,8 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 								</div>
 
 								<div className="flex items-center justify-between sm:gap-0 gap-[88px]">
-									{/* eslint-disable */}
-									{/* <Button variant="ghost" size="md" className="uagb-remove-ring">
-											{'$' + productsList[selectedProduct]?.price?.[contryCode]?.discounted }
-										{ productsList[ selectedProduct ]?.variant?.includes( 'Annual Subscription' ) ||
-										productsList[ selectedProduct ]?.product?.includes( 'Annual Subscription' ) ? (
-											<span className="text-text-tertiary">
-												{ __( '/year', 'ultimate-addons-for-gutenberg' ) }
-											</span>
-										) : null }
-									</Button>
-
 									<a
 										href={ productsList[ selectedProduct ]?.checkout_url + utmParams }
-										target="_blank"
-										rel="noreferrer"
-										className="no-underline text-text-on-color relative"
-									>
-										<Button
-											className=""
-											size="sm"
-											tag="button"
-											type="button"
-											variant="primary"
-											onClick={ () => setIsModalOpen( false ) }
-										>
-											{ __( 'Buy Now', 'ultimate-addons-for-gutenberg' ) }
-										</Button>
-									</a> */}
-									{/* eslint-enable */}
-									<a
-										href="https://wpspectra.com/pricing/?utm_medium=spectra-dashboard&utm_campaign=uag-dashboard"
 										target="_blank"
 										rel="noreferrer"
 										className="no-underline text-text-on-color relative"

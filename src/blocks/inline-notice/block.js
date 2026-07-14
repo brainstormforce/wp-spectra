@@ -17,6 +17,7 @@ let inlineNoticeCommonData = {};
 inlineNoticeCommonData = applyFilters( 'uagb/inline-notice', addCommonDataToSpectraBlocks( inlineNoticeCommonData ) );
 registerBlockType( 'uagb/inline-notice', {
 	...inlineNoticeCommonData,
+	apiVersion: 3,
 	title: __( 'Inline Notice', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Highlight important information using inline notice block.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.inline_notice,

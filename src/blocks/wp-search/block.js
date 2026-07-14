@@ -19,6 +19,7 @@ searchCommonData = applyFilters( 'uagb/wp-search', addCommonDataToSpectraBlocks(
 if ( 'yes' === uagb_blocks_info.enable_legacy_blocks ) {
 	registerBlockType( 'uagb/wp-search', {
 		...searchCommonData,
+		apiVersion: 3,
 		title: __( 'Search', 'ultimate-addons-for-gutenberg' ),
 		description: __(
 			'Add a search widget to let users search posts from your website.',

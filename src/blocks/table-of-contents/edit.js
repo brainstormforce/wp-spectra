@@ -3,13 +3,13 @@
  */
 
 import styling from './styling';
-import { useEffect, useMemo } from '@wordpress/element';
+import { useEffect, useMemo, useState } from '@wordpress/element';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
-import { compose } from '@wordpress/compose';
+import { compose, useRefEffect } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 import addInitialAttr from '@Controls/addInitialAttr';
 import Settings from './settings';
@@ -37,19 +37,32 @@ const UAGBTableOfContentsEdit = ( props ) => {
 		deviceType,
 	} = props;
 
-	useEffect( () => {
+	const [ ownerDoc, setOwnerDoc ] = useState( null );
 
-		const scrollElement = document.querySelector( '.uagb-toc__scroll-top' );
+	const captureOwnerDocRef = useRefEffect( ( element ) => {
+		setOwnerDoc( element.ownerDocument );
+		return () => {
+			setOwnerDoc( null );
+		};
+	}, [] );
+
+	useEffect( () => {
+		const ownerDocument = ownerDoc;
+		if ( ! ownerDocument ) {
+			return;
+		}
+
+		const scrollElement = ownerDocument.querySelector( '.uagb-toc__scroll-top' );
 
 		// Pushing Scroll To Top div
 		const scrollToTopSvg =
 			'<svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="26px" height="16.043px" viewBox="57 35.171 26 16.043" enable-background="new 57 35.171 26 16.043" xml:space="preserve"><path d="M57.5,38.193l12.5,12.5l12.5-12.5l-2.5-2.5l-10,10l-10-10L57.5,38.193z"/></svg>';
 
 		if ( scrollElement === null ) {
-			const scrollToTopDiv = document.createElement( 'div' );
+			const scrollToTopDiv = ownerDocument.createElement( 'div' );
 			scrollToTopDiv.classList.add( 'uagb-toc__scroll-top' );
 			scrollToTopDiv.innerHTML = scrollToTopSvg;
-			document.body.appendChild( scrollToTopDiv );
+			ownerDocument.body.appendChild( scrollToTopDiv );
 		}
 
 		// Pushing Style tag for this block css.
@@ -85,7 +98,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 				attributes
 			);
 		}
-	}, [] );
+	}, [ ownerDoc ] );
 
 	useEffect( () => {
 		responsiveConditionPreview( props );
@@ -125,17 +138,13 @@ const UAGBTableOfContentsEdit = ( props ) => {
 
 		let headerArray = [];
 
-		const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
-		let locateRootContainerInsideIframe;
-		if ( iframeEl ) {
-			locateRootContainerInsideIframe = iframeEl.contentDocument.getElementsByClassName( 'is-root-container' );
-			headerArray = locateRootContainerInsideIframe[ 0 ]?.querySelectorAll( 'h1, h2, h3, h4, h5, h6' );
-		} else {
-			headerArray = document.body
-				.getElementsByClassName( 'is-root-container' )[ 0 ]
-				?.querySelectorAll( 'h1, h2, h3, h4, h5, h6' );
-		}
-		const excludeBlock = document.querySelectorAll( '.uagb-toc-hide-heading' );
+		// Determine the correct document to query: if running inside the editor iframe,
+		// ownerDoc is the iframe's document; otherwise fall back to the global document.
+		const editorDoc = ownerDoc || document;
+		headerArray = editorDoc.body
+			?.getElementsByClassName( 'is-root-container' )[ 0 ]
+			?.querySelectorAll( 'h1, h2, h3, h4, h5, h6' );
+		const excludeBlock = editorDoc.querySelectorAll( '.uagb-toc-hide-heading' );
 		if ( excludeBlock ) {
 			excludeBlock.forEach( function ( heading ) {
 				const innerHeading = heading.querySelectorAll( 'h1, h2, h3, h4, h5, h6' );
@@ -200,8 +209,9 @@ const UAGBTableOfContentsEdit = ( props ) => {
 		};
 	} );
 
+	const editorDoc = ownerDoc || document;
 	/* eslint-disable no-undef */
-	scrollElement = document.querySelector( '.uagb-toc__scroll-top' );
+	const scrollElement = editorDoc.querySelector( '.uagb-toc__scroll-top' );
 	if ( null !== scrollElement ) {
 		if ( scrollToTop ) {
 			scrollElement.classList.add( 'uagb-toc__show-scroll' );
@@ -214,6 +224,7 @@ const UAGBTableOfContentsEdit = ( props ) => {
 
 	return (
 		<>
+			<span ref={ captureOwnerDocRef } style={ { display: 'none' } } />
 			<DynamicCSSLoader { ...{ blockStyling } } />
 			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings { ...props } /> }

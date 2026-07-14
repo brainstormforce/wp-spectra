@@ -1,0 +1,106 @@
+#!/bin/sh
+
+# Check PHPCS before commit
+# Ref -
+#    https://github.com/smgladkovskiy/phpcs-git-pre-commit/blob/master/src/pre-commit
+#    https://dev.to/akdevcraft/git-pre-hook-pre-commit-hook-with-npm-project-44p2
+
+echo "***** Running pre-commit ******"
+
+PROJECT=$(php -r "echo dirname(dirname(dirname(realpath('$0'))));")
+STAGED_FILES_CMD=$(git diff --cached --name-only --diff-filter=ACMR HEAD | grep \\.php)
+UNSTAGED_FILES_CMD=$(git diff --name-only --diff-filter=ACMR | grep \\.php)
+
+# Determine if a file list is passed
+if [ "$#" -eq 1 ]
+then
+    oIFS=$IFS
+    IFS='
+    '
+    SFILES="$1"
+    IFS=$oIFS
+fi
+
+SFILES=${SFILES:-$STAGED_FILES_CMD}
+
+STAGED_BUT_MODIFIED_FILES=$(php -r "\$sfiles=(explode(\"\\n\", '$SFILES'));\$usfiles=(explode(\"\\n\", '$UNSTAGED_FILES_CMD'));echo implode(\"\\n\",array_intersect(\$usfiles,\$sfiles));")
+
+if [ -z "$STAGED_BUT_MODIFIED_FILES" ]; then
+    echo "OK"
+else
+    echo "Files staged but then modified:\n"
+    echo "${STAGED_BUT_MODIFIED_FILES}"
+    exit 1
+fi
+
+# echo $PROJECT
+# echo $SFILES
+
+echo "Checking files for PHP Lint..."
+for FILE in $SFILES
+do
+	# echo "$PROJECT/$FILE"
+    php -l -d display_errors=0 "./$FILE"
+    if [ $? != 0 ]
+    then
+        echo "Fix the error before commit."
+        exit 1
+    fi
+    FILES="$FILES ./$FILE"
+done
+
+if [ "$FILES" = "" ]
+then
+    echo "All good..."
+    exit 0
+fi
+
+if [ "$FILES" != "" ]
+then
+    echo "Running PHPCS (Code Sniffer) Check..."
+    composer lint -n $FILES
+    if [ $? != 0 ]
+    then
+        echo "Please fix the PHPCS errors before commit!"
+        echo " => Run this command for automatic fixes."
+        echo "		composer format-- $FILES"
+        exit 1
+    fi
+fi
+
+if [ "$FILES" != "" ]
+then
+    echo "Running PHPStan Check..."
+    composer phpstan
+    if [ $? != 0 ]
+    then
+        echo "Please fix the PHPStan errors before commit!"
+        echo " => Run this command to check PHPStan errors."
+        echo "		composer phpstan"
+        exit 1
+    fi
+fi
+
+if [ "$FILES" != "" ]
+then
+    echo "Running CSS linting issues..."
+    npm run lint-css
+    if [ $? != 0 ]
+    then
+        echo "Please fix the CSS issues before commit!"
+        exit 1
+    fi
+fi
+
+if [ "$FILES" != "" ]
+then
+    echo "Running JS linting issues..."
+    npm run lint-js
+    if [ $? != 0 ]
+    then
+        echo "Please fix the JS issues before commit!"
+        exit 1
+    fi
+fi
+
+exit $?

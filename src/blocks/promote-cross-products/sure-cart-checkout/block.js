@@ -19,6 +19,7 @@ sureCartCommonData = applyFilters( 'uagb/sure-cart-checkout', addCommonDataToSpe
 // Always register the block
 registerBlockType( 'uagb/sure-cart-checkout', {
 	...sureCartCommonData,
+	apiVersion: 3,
 	title: __( 'SureCart - Checkout', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Display a checkout form.', 'ultimate-addons-for-gutenberg' ),
 	icon: <Icon icon={store} color='#0063a1' />,

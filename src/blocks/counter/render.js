@@ -1,7 +1,7 @@
 import { useEffect } from '@wordpress/element';
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import CounterIcon from './component/CounterIcon';
 import getImageHeightWidth from '@Controls/getImageHeightWidth';
@@ -11,7 +11,7 @@ const propTypes = {};
 const defaultProps = {};
 
 const Render = ( props ) => {
-	const { attributes, setAttributes, className, deviceType, name } = props;
+	const { attributes, setAttributes, deviceType, name } = props;
 
 	const {
 		block_id,
@@ -151,16 +151,19 @@ const Render = ( props ) => {
 		</div>
 	);
 
+	const blockProps = useBlockProps( {
+		className: classnames(
+			`uagb-block-${ block_id }`,
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+			'wp-block-uagb-counter',
+			`wp-block-uagb-counter--${ layout }`
+		),
+	} );
+
 	return (
 		<>
 			<div
-				className={ classnames(
-					className,
-					`uagb-block-${ block_id }`,
-					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-					'wp-block-uagb-counter',
-					`wp-block-uagb-counter--${ layout }`
-				) }
+				{ ...blockProps }
 			>
 				{ layout === 'number' && number }
 				{ layout === 'bars' && bars }

@@ -450,7 +450,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		};
 	}
 
-	const id = `.block-editor-block-list__block .uagb-block-${ block_id }`;
+	const id = `.uagb-block-${ block_id }`;
 
 	let styling_css = generateCSS( selectors, id );
 

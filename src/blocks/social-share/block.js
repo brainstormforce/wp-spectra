@@ -18,6 +18,7 @@ let socialShareCommonData = {};
 socialShareCommonData = applyFilters( 'uagb/social-share', addCommonDataToSpectraBlocks( socialShareCommonData ) );
 registerBlockType( 'uagb/social-share', {
 	...socialShareCommonData,
+	apiVersion: 3,
 	title: __( 'Social Share', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Share your content on different social media platforms.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.social_share,

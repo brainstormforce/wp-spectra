@@ -3,7 +3,7 @@
  */
 
 import classnames from 'classnames';
-import { InnerBlocks } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import { useLayoutEffect, memo, useMemo } from '@wordpress/element';
 
 import styles from './editor.lazy.scss';
@@ -36,18 +36,22 @@ const Render = ( props ) => {
 
 	const equalHeightClass = equalHeight ? 'uagb-faq-equal-height' : '';
 
+	const blockProps = useBlockProps( {
+		className: classnames(
+			'uagb-faq__outer-wrap',
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+			`uagb-block-${ block_id }`,
+			`uagb-faq-icon-${ attributes.iconAlign }`,
+			`uagb-faq-layout-${ attributes.layout }`,
+			`uagb-faq-expand-first-${ attributes.expandFirstItem }`,
+			`uagb-faq-inactive-other-${ attributes.inactiveOtherItems }`,
+			equalHeightClass
+		),
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				'uagb-faq__outer-wrap',
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ block_id }`,
-				`uagb-faq-icon-${ attributes.iconAlign }`,
-				`uagb-faq-layout-${ attributes.layout }`,
-				`uagb-faq-expand-first-${ attributes.expandFirstItem }`,
-				`uagb-faq-inactive-other-${ attributes.inactiveOtherItems }`,
-				equalHeightClass
-			) }
+			{ ...blockProps }
 			data-faqtoggle={ attributes.enableToggle }
 			role="tablist"
 		>

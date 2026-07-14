@@ -23,6 +23,7 @@ if (
 ) {
 	registerBlockType( 'uagb/cf7-styler', {
 		...CF7CommonData,
+		apiVersion: 3,
 		title: __( 'Contact Form 7 Designer', 'ultimate-addons-for-gutenberg' ), // Block title.
 		description: __( 'Highly customize and style your Contact Form 7 forms .', 'ultimate-addons-for-gutenberg' ), // Block description.
 		icon: renderLegacyBlockEditorIcon( 'cf7_styler' ),

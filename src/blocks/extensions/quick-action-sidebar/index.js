@@ -2,10 +2,9 @@
  * The Quick Access React App for Spectra Enhanced Editor.
  */
 import domReady from '@wordpress/dom-ready';
-import { createRoot } from 'react-dom';
+import { createRoot, useEffect } from '@wordpress/element';
 import Sidebar from './components/sidebar';
 import { useSelect } from '@wordpress/data';
-import { useEffect } from '@wordpress/element';
 
 /**
  * The AddEventCommandForQAB component is responsible for creating a custom

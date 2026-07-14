@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
-import { RichText, InnerBlocks } from '@wordpress/block-editor';
+import { RichText, InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 
 export default function Save( props ) {
@@ -91,11 +91,15 @@ export default function Save( props ) {
 		</div>
 	);
 
+	const blockProps = useBlockProps.save( {
+		'className': classnames( `uagb-block-${ block_id }`, 'uagb-modal-wrapper' ),
+		'data-escpress': escPress ? 'enable' : 'disable',
+		'data-overlayclick': overlayClick ? 'enable' : 'disable',
+	} );
+
 	return (
 		<div
-			className={ classnames( `uagb-block-${ block_id }`, 'uagb-modal-wrapper' ) }
-			data-escpress={ escPress ? 'enable' : 'disable' }
-			data-overlayclick={ overlayClick ? 'enable' : 'disable' }
+			{ ...blockProps }
 		>
 			{ 'text' === modalTrigger && textHTML }
 			{ 'icon' === modalTrigger && iconHTML }

@@ -30,7 +30,7 @@ const PluginStats = () => {
 
 			// Wait for the API call to complete, update the state to show a notification, and reload the page
 			getApiFetchData.then( () => {
-				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Spectra Pro Activated!' } );
+				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Spectra Pro Legacy Activated!' } );
 				setTimeout( ()=>{
 					window.location.reload();
 				}, 500 );
@@ -89,7 +89,7 @@ const PluginStats = () => {
 					onClick={ activatePro }
 					onKeyDown={ activatePro }
 				>
-					{ __( 'Activate Spectra Pro', 'ultimate-addons-for-gutenberg' ) }
+					{ __( 'Activate Spectra Pro Legacy', 'ultimate-addons-for-gutenberg' ) }
 				</div>
 			)
 		) : (

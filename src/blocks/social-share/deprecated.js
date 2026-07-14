@@ -12,6 +12,27 @@ import { InnerBlocks } from '@wordpress/block-editor';
 const deprecated = [
 	{
 		attributes,
+		save( props ) {
+			const { className } = props;
+
+			const { block_id, social_layout } = props.attributes;
+
+			return (
+				<div
+					className={ classnames(
+						className,
+						'uagb-social-share__outer-wrap',
+						`uagb-social-share__layout-${ social_layout }`,
+						`uagb-block-${ block_id }`
+					) }
+				>
+					<InnerBlocks.Content />
+				</div>
+			);
+		},
+	},
+	{
+		attributes,
 		save: ( props ) => {
 			const { attributes, className } = props;
 

@@ -3,13 +3,13 @@
  */
 
 import classnames from 'classnames';
-import { RichText, InnerBlocks } from '@wordpress/block-editor';
+import { RichText, InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
 export default function save( props ) {
 	const blockName = 'how-to';
 
-	const { attributes, className } = props;
+	const { attributes } = props;
 
 	const {
 		block_id,
@@ -89,8 +89,12 @@ export default function save( props ) {
 		: time;
 	const minslabel = minsValue > 1 ? ' Minutes ' : ' Minute ';
 
+	const blockProps = useBlockProps.save( {
+		className: classnames( `uagb-block-${ block_id }`, 'uagb-how-to-main-wrap' ),
+	} );
+
 	return (
-		<div className={ classnames( className, `uagb-block-${ block_id }`, 'uagb-how-to-main-wrap' ) }>
+		<div { ...blockProps }>
 			<script type="application/ld+json">{ schema }</script>
 			<RichText.Content value={ headingTitle } tagName={ headingTag } className="uagb-howto-heading-text" />
 			<RichText.Content value={ headingDesc } tagName="p" className="uagb-howto-desc-text" />

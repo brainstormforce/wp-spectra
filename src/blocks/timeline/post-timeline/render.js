@@ -12,6 +12,7 @@ import Icon from './components/Icon';
 import { __ } from '@wordpress/i18n';
 import { Placeholder, Spinner } from '@wordpress/components';
 import { useLayoutEffect, memo } from '@wordpress/element';
+import { useBlockProps } from '@wordpress/block-editor';
 import styles from '../editor.lazy.scss';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
@@ -24,7 +25,7 @@ const Render = ( props ) => {
 		};
 	}, [] );
 	
-	const { latestPosts, attributes, className, setAttributes, deviceType, name } = props;
+	const { latestPosts, attributes, setAttributes, deviceType, name } = props;
 
 	const blockName = name.replace( 'uagb/', '' );
 
@@ -112,17 +113,20 @@ const Render = ( props ) => {
 		ctaEnable = 'uagb_timeline__cta-enable';
 	}
 
+	const blockProps = useBlockProps( {
+		className: classnames(
+			'uagb-timeline__outer-wrap',
+			'uagb-timeline__content-wrap',
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+			`uagb-block-${ block_id }`,
+			ctaEnable,
+			...ContentTmClasses( props.attributes, deviceType )
+		),
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				className,
-				'uagb-timeline__outer-wrap',
-				'uagb-timeline__content-wrap',
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ block_id }`,
-				ctaEnable,
-				...ContentTmClasses( props.attributes, deviceType )
-			) }
+			{ ...blockProps }
 		>
 			{ getContent() }
 			<div className="uagb-timeline__line">

@@ -1,7 +1,7 @@
 // Import block dependencies and components.
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
 import { useLayoutEffect, memo } from '@wordpress/element';
 
@@ -16,7 +16,6 @@ const Render = ( props ) => {
 
 	// Setup the attributes
 	const {
-		className,
 		setAttributes,
 		attributes: { rating, range, title, displayTitle, block_id },
 		deviceType,
@@ -32,13 +31,16 @@ const Render = ( props ) => {
 		);
 	}
 
+	const blockProps = useBlockProps( {
+		className: classnames(
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+			`uagb-block-${ block_id }`
+		),
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				className,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ block_id }`
-			) }
+			{ ...blockProps }
 		>
 			{ displayTitle && (
 				<RichText

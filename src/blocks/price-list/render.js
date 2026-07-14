@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import { useMemo, useLayoutEffect, memo } from '@wordpress/element';
-import { InnerBlocks } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
 const ALLOWED_BLOCKS = [ 'uagb/restaurant-menu-child' ];
 
@@ -28,17 +28,19 @@ const Render = ( props ) => {
 		return childList;
 	}, [ menu_item_count ] );
 
+	const blockProps = useBlockProps( {
+		className: classnames(
+			className,
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+			`uagb-block-${ block_id }`,
+			`uagb-rm__desk-column-${ columns }`,
+			`uagb-rm__tablet-column-${ tcolumns }`,
+			`uagb-rm__mobile-column-${ mcolumns }`
+		),
+	} );
+
 	return (
-		<div
-			className={ classnames(
-				className,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ block_id }`,
-				`uagb-rm__desk-column-${ columns }`,
-				`uagb-rm__tablet-column-${ tcolumns }`,
-				`uagb-rm__mobile-column-${ mcolumns }`
-			) }
-		>
+		<div { ...blockProps }>
 			<InnerBlocks
 				template={ getPriceListTemplate }
 				templateLock={ false }

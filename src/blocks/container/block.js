@@ -19,7 +19,7 @@ let containerCommonData = {};
 containerCommonData = applyFilters( 'uagb/container', addCommonDataToSpectraBlocks( containerCommonData ) );
 registerBlockType( 'uagb/container', {
 	...containerCommonData,
-	apiVersion: 2,
+	apiVersion: 3,
 	title: __( 'Container', 'ultimate-addons-for-gutenberg' ),
 	description: __(
 		'Create beautiful layouts with flexbox powered container block.',

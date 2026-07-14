@@ -19,6 +19,7 @@ let sliderChildCommonData = {};
 sliderChildCommonData = applyFilters( 'uagb/slider-child', addCommonDataToSpectraBlocks( sliderChildCommonData ) );
 registerBlockType( 'uagb/slider-child', {
 	...sliderChildCommonData,
+	apiVersion: 3,
 	title: __( 'Slider Child', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add and customize content of this slide.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.slider_child,

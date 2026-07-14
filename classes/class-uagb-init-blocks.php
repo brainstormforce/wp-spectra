@@ -52,6 +52,9 @@ class UAGB_Init_Blocks {
 		// Hook: Editor assets.
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_assets' ) );
 
+		// Hook: Editor styles via enqueue_block_assets so they load inside the iframe editor (apiVersion 3 / WP 7.0+).
+		add_action( 'enqueue_block_assets', array( $this, 'editor_iframe_styles' ) );
+
 		if ( version_compare( get_bloginfo( 'version' ), '5.8', '>=' ) ) {
 			add_filter( 'block_categories_all', array( $this, 'register_block_category' ), 999999, 2 );
 		} else {
@@ -79,7 +82,16 @@ class UAGB_Init_Blocks {
 
 			// For Spectra Global Block Styles.
 			add_filter( 'render_block', array( $this, 'add_gbs_class' ), 10, 2 );
+
+			// Re-apply Info Box root props for content saved during the apiVersion 3 transition (2.19.27 - 2.19.28).
+			add_filter( 'render_block', array( $this, 'info_box_apiversion_compat' ), 10, 2 );
 		}
+
+		// uagb/container stores `layout` as a bare string ("flex"/"grid"). WP core's
+		// wp_add_parent_layout_to_parsed_block() (priority 10) propagates it to child
+		// blocks as parentLayout, then layout.php:600 calls array_intersect_key() on it
+		// and fatals. Runs at priority 11 to normalise after WP core sets parentLayout.
+		add_filter( 'render_block_data', array( $this, 'fix_non_array_parent_layout' ), 11 );
 
 		if ( current_user_can( 'edit_posts' ) ) {
 			add_action( 'wp_ajax_uagb_svg_confirmation', array( $this, 'confirm_svg_upload' ) );
@@ -315,6 +327,24 @@ class UAGB_Init_Blocks {
 		}
 
 		return $response;
+	}
+
+	/**
+	 * Prevent a PHP fatal when uagb/container's string `layout` attribute is
+	 * propagated to child blocks as parentLayout by WP core. Core's layout.php
+	 * calls array_intersect_key() on parentLayout and expects an array; if it
+	 * receives a string the call fatals. We unset parentLayout on any block
+	 * where it is not an array so core's layout support degrades gracefully.
+	 *
+	 * @param array $parsed_block The parsed block data from render_block_data.
+	 * @since x.x.x
+	 * @return array The parsed block data with parentLayout normalised.
+	 */
+	public function fix_non_array_parent_layout( $parsed_block ) {
+		if ( isset( $parsed_block['parentLayout'] ) && ! is_array( $parsed_block['parentLayout'] ) ) {
+			unset( $parsed_block['parentLayout'] );
+		}
+		return $parsed_block;
 	}
 
 	/**
@@ -953,7 +983,7 @@ class UAGB_Init_Blocks {
 			array(
 				array(
 					'slug'  => 'uagb',
-					'title' => __( 'Spectra', 'ultimate-addons-for-gutenberg' ),
+					'title' => __( 'Spectra Legacy', 'ultimate-addons-for-gutenberg' ),
 				),
 			),
 			$categories
@@ -1039,6 +1069,55 @@ class UAGB_Init_Blocks {
 	}
 
 	/**
+	 * Enqueue editor styles via enqueue_block_assets so they are injected into the
+	 * iframe editor canvas (apiVersion 3 / WordPress 7.0+). Using enqueue_block_editor_assets
+	 * for styles causes a console warning in WP 7.0 because that hook targets the outer
+	 * admin shell, not the iframe.
+	 *
+	 * @since 2.19.27
+	 * @return void
+	 */
+	public function editor_iframe_styles() {
+		if ( ! is_admin() ) {
+			return;
+		}
+
+		if ( UAGB_Admin_Helper::should_exclude_assets_for_cpt() ) {
+			return;
+		}
+
+		// Common editor style.
+		wp_enqueue_style(
+			'uagb-block-common-editor-css',
+			UAGB_URL . 'dist/common-editor.css',
+			array( 'wp-edit-blocks' ),
+			UAGB_VER
+		);
+
+		// Block base styles.
+		UAGB_Scripts_Utils::enqueue_blocks_styles();
+
+		// RTL styles.
+		UAGB_Scripts_Utils::enqueue_blocks_rtl_styles();
+
+		// Block dependency CSS (e.g. block positioning).
+		$block_assets = UAGB_Block_Module::get_block_dependencies();
+		foreach ( $block_assets as $handle => $asset ) {
+			if ( isset( $asset['type'] ) && 'css' === $asset['type'] ) {
+				if ( ! wp_style_is( $handle, 'registered' ) ) {
+					wp_register_style(
+						$handle,
+						$asset['src'],
+						isset( $asset['dep'] ) ? $asset['dep'] : array(),
+						UAGB_VER
+					);
+				}
+				wp_enqueue_style( $handle );
+			}
+		}
+	}
+
+	/**
 	 * Add a version-independent body class for WP >= 6.9 compat CSS.
 	 *
 	 * Replaces version-specific body classes (version-6-9, version-6-9-1)
@@ -1050,8 +1129,16 @@ class UAGB_Init_Blocks {
 	 * @return string Modified admin body classes.
 	 */
 	public function add_wp_compat_body_class( $classes ) {
+		// Add class for WordPress 6.9+.
 		if ( version_compare( get_bloginfo( 'version' ), '6.9', '>=' ) ) {
 			$classes .= ' spectra-wp-gte-6-9';
+		}
+
+		// Add class for WordPress 7.0+ for animation dropdown height fix.
+		// Check both '7.0' and '7.0.x' formats (including RC/Beta versions).
+		$wp_version = get_bloginfo( 'version' );
+		if ( version_compare( $wp_version, '7.0', '>=' ) || strpos( $wp_version, '7.0' ) === 0 ) {
+			$classes .= ' spectra-wp-gte-7-0';
 		}
 		return $classes;
 	}
@@ -1101,14 +1188,6 @@ class UAGB_Init_Blocks {
 		);
 
 		wp_set_script_translations( 'uagb-block-editor-js', 'ultimate-addons-for-gutenberg' );
-
-		// Common Editor style.
-		wp_enqueue_style(
-			'uagb-block-common-editor-css', // Handle.
-			UAGB_URL . 'dist/common-editor.css', // Block editor CSS.
-			array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
-			UAGB_VER
-		);
 
 		wp_localize_script( 'uagb-block-editor-js', 'uag_react', array( 'pro_plugin_status' => self::get_plugin_status( 'spectra-pro/spectra-pro.php' ) ) );
 
@@ -1326,12 +1405,8 @@ class UAGB_Init_Blocks {
 		);
 
 		// To match the editor with frontend.
-		// Scripts Dependency.
+		// Scripts Dependency (JS only; CSS is enqueued via editor_iframe_styles on enqueue_block_assets).
 		UAGB_Scripts_Utils::enqueue_blocks_dependency_both();
-		// Style.
-		UAGB_Scripts_Utils::enqueue_blocks_styles();
-		// RTL Styles.
-		UAGB_Scripts_Utils::enqueue_blocks_rtl_styles();
 
 		// Add svg icons in chunks.
 		$this->add_svg_icon_assets();
@@ -1484,6 +1559,86 @@ class UAGB_Init_Blocks {
 		$html               = str_replace( $block_id, $replacement_string, $block_content );
 
 		return $html;
+	}
+
+	/**
+	 * Re-apply Info Box root element props on the frontend.
+	 *
+	 * Info Box moved to apiVersion 3 in 2.19.27, but its save() did not call
+	 * useBlockProps.save() until a later release. For apiVersion 2+ blocks
+	 * WordPress only applies the block-supports and `blocks.getSaveContent.extraProps`
+	 * props (generated class, custom className, anchor id, uag-hide-* classes)
+	 * through useBlockProps.save(), so Info Box content saved in between is
+	 * missing them on the root element. This re-applies those props from the
+	 * stored attributes at render time, so existing content is corrected on the
+	 * frontend without requiring a re-save. New saves already contain them and
+	 * re-applying is idempotent.
+	 *
+	 * @param mixed                $block_content The block default content.
+	 * @param array<string, mixed> $block         The full block, including name and attributes.
+	 *
+	 * @since 2.19.29
+	 * @return mixed The filtered block content.
+	 */
+	public function info_box_apiversion_compat( $block_content, $block ) {
+		if (
+			empty( $block['blockName'] ) ||
+			'uagb/info-box' !== $block['blockName'] ||
+			! is_string( $block_content ) ||
+			'' === trim( $block_content ) ||
+			! class_exists( 'WP_HTML_Tag_Processor' )
+		) {
+			return $block_content;
+		}
+
+		$attrs     = isset( $block['attrs'] ) && is_array( $block['attrs'] ) ? $block['attrs'] : array();
+		$processor = new WP_HTML_Tag_Processor( $block_content );
+
+		// Bail if the markup has no root tag to update.
+		if ( ! $processor->next_tag() ) {
+			return $block_content;
+		}
+
+		// Generated block class (WordPress adds this automatically only for apiVersion 1 blocks).
+		$processor->add_class( 'wp-block-uagb-info-box' );
+
+		// Additional CSS Class(es).
+		if ( ! empty( $attrs['className'] ) && is_string( $attrs['className'] ) ) {
+			$class_names = preg_split( '/\s+/', trim( $attrs['className'] ) );
+
+			if ( is_array( $class_names ) ) {
+				foreach ( $class_names as $class_name ) {
+					if ( '' !== $class_name ) {
+						$processor->add_class( $class_name );
+					}
+				}
+			}
+		}
+
+		// HTML Anchor.
+		if ( ! empty( $attrs['anchor'] ) && is_string( $attrs['anchor'] ) ) {
+			$processor->set_attribute( 'id', $attrs['anchor'] );
+		}
+
+		// Responsive-visibility classes (mirrors ApplyExtraClass in the advanced-settings extension).
+		$display_conditions   = isset( $attrs['UAGDisplayConditions'] ) ? $attrs['UAGDisplayConditions'] : '';
+		$responsive_condition = ! empty( $attrs['UAGResponsiveConditions'] );
+
+		if ( 'responsiveVisibility' === $display_conditions || $responsive_condition ) {
+			if ( ! empty( $attrs['UAGHideDesktop'] ) ) {
+				$processor->add_class( 'uag-hide-desktop' );
+			}
+
+			if ( ! empty( $attrs['UAGHideTab'] ) ) {
+				$processor->add_class( 'uag-hide-tab' );
+			}
+
+			if ( ! empty( $attrs['UAGHideMob'] ) ) {
+				$processor->add_class( 'uag-hide-mob' );
+			}
+		}
+
+		return $processor->get_updated_html();
 	}
 
 	/**

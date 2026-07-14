@@ -9,7 +9,7 @@ import { __ } from '@wordpress/i18n';
 
 import { createBlock } from '@wordpress/blocks';
 
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -85,13 +85,17 @@ const Render = ( props ) => {
 		displayInnerDate = true;
 	}
 
+	const blockProps = useBlockProps( {
+		className: classnames(
+			'uagb-timeline__field',
+			`uagb-timeline-child-${ block_id }`,
+			props.attributes.content_class
+		),
+	} );
+
 	return (
 		<article
-			className={ classnames(
-				'wp-block-uagb-content-timeline-child uagb-timeline__field',
-				`uagb-timeline-child-${ block_id }`,
-				props.attributes.content_class
-			) }
+			{ ...blockProps }
 		>
 			<div className="uagb-timeline__marker uagb-timeline__out-view-icon">
 				{ renderSVG( icon, setAttributes ) }

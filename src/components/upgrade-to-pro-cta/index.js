@@ -210,11 +210,14 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 
 				const filteredData = Object.entries( data.data ).reduce( ( acc, [ key, value ] ) => {
 					if (
-						( value.product.includes( 'Spectra Pro - Annual Subscription' ) &&
+						( value.product.includes( 'Spectra Pro' ) &&
+							value.variant.includes( 'Annual Subscription' ) &&
 							value.variant.includes( '1 Site' ) ) ||
-						( value.product.includes( 'Essential Toolkit for Spectra - Annual Subscription' ) &&
+						( value.product.includes( 'Essential Toolkit for Spectra' ) &&
+							value.variant.includes( 'Annual Subscription' ) &&
 							value.variant.includes( '1 Site' ) ) ||
-						( value.product.includes( 'Business Toolkit - Annual Subscription' ) &&
+						( value.product.includes( 'Business Toolkit' ) &&
+							value.variant.includes( 'Annual Subscription' ) &&
 							value.variant.includes( '1 Site' ) )
 					) {
 						acc[ key ] = value;
@@ -230,6 +233,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 				setLoading( false );
 			} catch ( error ) {
 				setProductsList( '' );
+				setLoading( false );
 			}
 		};
 
@@ -384,70 +388,8 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 						</div>
 
 						<div className="flex items-center justify-between gap-2">
-							{/* eslint-disable */}
-							{/* { productsList && productKey && (
-								<>
-									<button
-										className=""
-										tag="button"
-										type="button"
-										style={ {
-											padding: '10px 14px',
-											color: 'white',
-											fontSize: '14px',
-											fontWeight: '600',
-											backgroundColor: '#F9FAFB',
-											borderRadius: '8px',
-											outline: 'none !important',
-											boxShadow: 'unset !important',
-											cursor: 'pointer',
-											border: 'none',
-											lineHeight: '20px',
-										} }
-									>
-										<span style={ { color: 'black' } }>
-												${productsList[productKey]?.price?.[contryCode]?.discounted }
-										</span>
-										{ productsList[ productKey ]?.variant?.includes( 'Annual Subscription' ) ||
-										productsList[ productKey ]?.product?.includes( 'Annual Subscription' ) ? (
-											<span className="text-text-tertiary font-normal">
-												{ __( '/year', 'ultimate-addons-for-gutenberg' ) }
-											</span>
-										) : null }
-									</button>
-
-									<a
-										href={ productsList[ productKey ].checkout_url + utmParams }
-										target="_blank"
-										rel="noreferrer"
-										className="no-underline text-text-on-color"
-									>
-										<button
-											className=""
-											tag="button"
-											type="button"
-											style={ {
-												padding: '10px 14px',
-												color: 'white',
-												fontSize: '14px',
-												fontWeight: '600',
-												backgroundColor: '#6005FF',
-												borderRadius: '8px',
-												outline: 'none !important',
-												boxShadow: 'unset !important',
-												cursor: 'pointer',
-												border: 'none',
-												lineHeight: '20px',
-											} }
-										>
-											{ __( 'Buy Now', 'ultimate-addons-for-gutenberg' ) }
-										</button>
-									</a>
-								</>
-							) } */}
-							{/* eslint-enable */}
 							<a
-								href="https://wpspectra.com/pricing/?utm_medium=spectra-editor&utm_campaign=upsell-popup-buy-now"
+								href={ productsList[ productKey ]?.checkout_url + utmParams }
 								target="_blank"
 								rel="noreferrer"
 								className="no-underline text-text-on-color"

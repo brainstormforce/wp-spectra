@@ -6,6 +6,7 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import links from './links';
+import { useBlockProps } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { className } = props;
@@ -34,8 +35,12 @@ export default function save( props ) {
 			/>
 		);
 	}
+	const blockProps = useBlockProps.save( {
+		className: classnames( 'uagb-ss-repeater', 'uagb-ss__wrapper', className, `uagb-block-${ block_id }` ),
+	} );
+
 	return (
-		<div className={ classnames( 'uagb-ss-repeater', 'uagb-ss__wrapper', className, `uagb-block-${ block_id }` ) }>
+		<div { ...blockProps }>
 			<span
 				className="uagb-ss__link"
 				data-href={ url }

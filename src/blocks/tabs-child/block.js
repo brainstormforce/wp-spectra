@@ -19,6 +19,7 @@ let tabsChildCommonData = {};
 tabsChildCommonData = applyFilters( 'uagb/tabs-child', addCommonDataToSpectraBlocks( tabsChildCommonData ) );
 registerBlockType( 'uagb/tabs-child', {
 	...tabsChildCommonData,
+	apiVersion: 3,
 	title: __( 'Tabs child', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Display your content in a tab.', 'ultimate-addons-for-gutenberg' ),
 	parent: [ 'uagb/tabs' ],

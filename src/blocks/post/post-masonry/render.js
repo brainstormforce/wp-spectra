@@ -6,7 +6,7 @@ import {
 } from '../function';
 
 import { createBlock } from '@wordpress/blocks';
-import { InnerBlocks } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import { Placeholder, Button, Tip } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { useLayoutEffect, memo } from '@wordpress/element';
@@ -27,6 +27,8 @@ const Render = ( props ) => {
 	const { state, setState, togglePreview, categoriesList, latestPosts, replaceInnerBlocks, block } = props;
 
 	const { attributes, deviceType, name, setAttributes, clientId, className } = props;
+
+	const blockProps = useBlockProps();
 
 	const renderEditMode = () => {
 		const onDone = () => {
@@ -95,6 +97,7 @@ const Render = ( props ) => {
 
 	const renderViewMode = (
 		<Blog
+			blockProps={ blockProps }
 			attributes={ attributes }
 			className={ className }
 			latestPosts={ latestPosts }
@@ -106,7 +109,11 @@ const Render = ( props ) => {
 		/>
 	);
 
-	return <>{ state.isEditing ? renderEditMode() : renderViewMode }</>;
+	if ( state.isEditing ) {
+		return <div { ...blockProps }>{ renderEditMode() }</div>;
+	}
+
+	return renderViewMode;
 };
 
 export default memo( Render );

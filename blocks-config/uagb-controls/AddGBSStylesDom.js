@@ -6,7 +6,7 @@ const AddGBSStylesDom = ( globalBlockStyleId, styleText ) => {
 
         const isExistTag = current_document.getElementById( tagId );
         if( ! isExistTag ){
-            const node = document.createElement( 'style' )
+            const node = current_document.createElement( 'style' )
             node.setAttribute( 'id', tagId );
             node.textContent = rawStyle;
             current_document.head.appendChild( node )

@@ -7,7 +7,7 @@ import { select, useSelect, useDispatch, withDispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { createBlocksFromInnerBlocksTemplate } from '@wordpress/blocks';
 import { useEntityProp } from '@wordpress/core-data';
-import { compose } from '@wordpress/compose';
+import { compose, useRefEffect } from '@wordpress/compose';
 import {
 	__experimentalBlockVariationPicker as BlockVariationPicker,
 } from '@wordpress/block-editor';
@@ -80,12 +80,21 @@ const SpectraPopupBuilderEdit = ( props ) => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	if ( isParentOfSelectedBlock ) {
-		const emptyBlockInserter = document.querySelector( '.block-editor-block-list__empty-block-inserter' );
-		if ( emptyBlockInserter ) {
-			emptyBlockInserter.style.display = 'none';
+	const emptyInserterRef = useRefEffect( ( element ) => {
+		const { ownerDocument } = element;
+		if ( isParentOfSelectedBlock ) {
+			const emptyBlockInserter = ownerDocument.querySelector( '.block-editor-block-list__empty-block-inserter' );
+			if ( emptyBlockInserter ) {
+				emptyBlockInserter.style.display = 'none';
+			}
 		}
-	}
+		return () => {
+			const emptyBlockInserter = ownerDocument.querySelector( '.block-editor-block-list__empty-block-inserter' );
+			if ( emptyBlockInserter ) {
+				emptyBlockInserter.style.display = '';
+			}
+		};
+	}, [ isParentOfSelectedBlock ] );
 
 	const blockVariationPickerOnSelect = (
 		nextVariation = defaultVariation
@@ -154,7 +163,7 @@ const SpectraPopupBuilderEdit = ( props ) => {
 		<>
 			<DynamicCSSLoader { ...{ blockStyling } } />
 			{ isSelected && <Settings { ...props } /> }
-			<Render { ...props } />
+			<Render { ...props } blockRef={ emptyInserterRef } />
 		</>
 	);
 }

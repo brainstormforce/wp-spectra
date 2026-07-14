@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { Player } from '@lottiefiles/react-lottie-player';
 import styles from './editor.lazy.scss';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
-import { MediaPlaceholder, BlockIcon } from '@wordpress/block-editor';
+import { MediaPlaceholder, BlockIcon, useBlockProps } from '@wordpress/block-editor';
 import UAGB_Block_Icons from '@Controls/block-icons';
 
 const Render = ( props ) => {
@@ -16,7 +16,7 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	const { className, attributes, setAttributes, deviceType, lottieplayer, name } = props;
+	const { attributes, setAttributes, deviceType, lottieplayer, name } = props;
 
 	const blockName = name.replace( 'uagb/', '' );
 
@@ -54,6 +54,18 @@ const Render = ( props ) => {
 		setAttributes( { lottieURl: mediaURL, lottieSource: 'url' } );
 	};
 
+	const blockProps = useBlockProps( {
+		className: classnames(
+			`uagb-block-${ attributes.block_id }`,
+			'uagb-lottie__outer-wrap',
+			`uagb-lottie__${ align }`,
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
+		),
+		onMouseEnter: 'hover' === playOn ? handleLottieMouseEnter : toStopPlayAnimation,
+		onMouseLeave: 'hover' === playOn ? handleLottieMouseLeave : toStopPlayAnimation,
+		onClick: 'click' === playOn ? handleLottieMouseEnter : toStopPlayAnimation,
+	} );
+
 	if ( validJsonPath === 'invalid' ) {
 		return (
 			<div className="uagb-lottie_upload_wrap">
@@ -78,16 +90,7 @@ const Render = ( props ) => {
 
 	return (
 		<div // eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-			className={ classnames(
-				className,
-				`uagb-block-${ attributes.block_id }`,
-				'uagb-lottie__outer-wrap',
-				`uagb-lottie__${ align }`,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
-			) }
-			onMouseEnter={ 'hover' === playOn ? handleLottieMouseEnter : toStopPlayAnimation }
-			onMouseLeave={ 'hover' === playOn ? handleLottieMouseLeave : toStopPlayAnimation }
-			onClick={ 'click' === playOn ? handleLottieMouseEnter : toStopPlayAnimation }
+			{ ...blockProps }
 		>
 			<Player
 				autoplay={ true }

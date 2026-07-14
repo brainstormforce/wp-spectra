@@ -19,6 +19,7 @@ let formsCommonData = {};
 formsCommonData = applyFilters( 'uagb/forms', addCommonDataToSpectraBlocks( formsCommonData ) );
 registerBlockType( 'uagb/forms', {
 	...formsCommonData,
+	apiVersion: 3,
 	title: __( 'Form', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add easily customizable forms to gather information.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.forms,

@@ -2,13 +2,14 @@ import classnames from 'classnames';
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import { getBlockTypes } from '@wordpress/blocks';
 import { memo } from '@wordpress/element';
+import { useRefEffect } from '@wordpress/compose';
 import shapes from './shapes';
 import { select, useSelect } from '@wordpress/data';
 import backgroundCss from './backgroundCss';
 
 const Render = ( props ) => {
 
-	const { attributes, clientId, deviceType, hasSliderParent, hasPopupParent } = props;
+	const { attributes, clientId, deviceType, hasSliderParent, hasPopupParent, isParentOfSelectedBlock } = props;
 
 	const {
 		block_id,
@@ -74,9 +75,27 @@ const Render = ( props ) => {
 	const hasChildren = 0 !== select( 'core/block-editor' ).getBlocks( clientId ).length;
 	const hasChildrenClass = hasChildren ? 'uagb-container-has-children' : '';
 	const isRootContainerClass = isBlockRootParent ? `${ contentWidth } uagb-is-root-container` : '';
+
+	const emptyInserterRef = useRefEffect( ( element ) => {
+		const { ownerDocument } = element;
+		if ( isParentOfSelectedBlock ) {
+			const emptyBlockInserter = ownerDocument.querySelector( '.block-editor-block-list__empty-block-inserter' );
+			if ( emptyBlockInserter ) {
+				emptyBlockInserter.style.display = 'none';
+			}
+		}
+		return () => {
+			const emptyBlockInserter = ownerDocument.querySelector( '.block-editor-block-list__empty-block-inserter' );
+			if ( emptyBlockInserter ) {
+				emptyBlockInserter.style.display = '';
+			}
+		};
+	}, [ isParentOfSelectedBlock ] );
+
 	const blockProps = useBlockProps( {
 		className: `uagb-block-${ block_id } ${ hasChildrenClass } uagb-editor-preview-mode-${ deviceType.toLowerCase() } ${ isRootContainerClass }`,
 		style: getContainerBGStyle,
+		ref: emptyInserterRef,
 	} );
 
 	const innerBlocksParams = {

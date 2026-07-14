@@ -107,7 +107,10 @@ function TableOfContents( props ) {
 			}
 
 			// Add collapsibility span based on the calculated depth and children.
-			const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
+			// If running inside the editor iframe (WP 7.0+), window.self !== window.top.
+			// If running in the parent frame, look for the canvas iframe element instead.
+			const isInsideIframe = window.self !== window.top;
+			const iframeEl = ! isInsideIframe && document.querySelector( `iframe[name='editor-canvas']` );
 			const collapsibleClass = ( hasChildren[index] && depthMapping[index] <= collapsibleListDepth )
                 ? 'uagb-toc__list--expandable'
                 : '';
@@ -117,7 +120,7 @@ function TableOfContents( props ) {
                 : '';
 
             // Replace # with JavaScript:void(0) to avoid page refresh in FSE on click.
-            if ( iframeEl ) {
+            if ( isInsideIframe || iframeEl ) {
                 toc += `<li class="uagb-toc__list ${collapsibleClass}">${collapsibleSpan}<a href="JavaScript:void(0);">${title.trim()}</a></li>`;
             } else {
                 toc += `<li class="uagb-toc__list ${collapsibleClass}">${collapsibleSpan}<a href="#">${title.trim()}</a></li>`;

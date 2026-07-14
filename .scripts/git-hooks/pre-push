@@ -1,0 +1,53 @@
+#!/bin/sh
+
+# Check PHPCS before push
+echo "***** Running pre-push ******"
+
+UNSTAGED_FILES_CMD=$(git diff --name-only )
+
+if [ "$UNSTAGED_FILES_CMD" != "" ]
+then
+    echo "Found some unstaged changes first add them or restore changes"
+    exit 1
+fi
+
+# Check PHP files for Composer lint and PHPStan
+echo "Running PHPCS (Code Sniffer) Check..."
+composer lint
+if [ $? != 0 ]
+then
+	echo "Please fix the PHPCS errors before commit!"
+	echo " => Run this command for automatic fixes."
+	echo "		composer format-- $FILES"
+	exit 1
+fi
+
+echo "Running PHPStan Check..."
+composer phpstan
+if [ $? != 0 ]
+then
+	echo "Please fix the PHPStan errors before commit!"
+	echo " => Run this command to check PHPStan errors."
+	echo "		composer phpstan"
+	exit 1
+fi
+
+echo "Running CSS linting issues..."
+npm run lint-css
+if [ $? != 0 ]
+then
+	echo "Please fix the CSS issues before commit!"
+	exit 1
+fi
+
+# Check JS files for linting
+echo "Running JS linting issues..."
+npm run lint-js
+if [ $? != 0 ]
+then
+	echo "Please fix the JS issues before commit!"
+	exit 1
+fi
+
+echo "All checks passed."
+exit 0

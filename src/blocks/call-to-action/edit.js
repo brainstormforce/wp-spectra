@@ -4,6 +4,7 @@
 
 import CtaStyle from './inline-styles';
 import { useEffect, useMemo } from '@wordpress/element';
+import { useBlockProps } from '@wordpress/block-editor';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
@@ -108,13 +109,15 @@ const UAGBCallToAction = ( props ) => {
 		deviceType,
 	] );
 
+	const blockProps = useBlockProps();
+
 	return (
-		<>
+		<div { ...blockProps }>
 			<DynamicCSSLoader { ...{ blockStyling } } />
 			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings { ...props } /> }
 			<Render { ...props } />
-		</>
+		</div>
 	);
 };
 

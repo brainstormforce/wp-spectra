@@ -3,7 +3,7 @@ import { useLayoutEffect, memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -20,10 +20,14 @@ const Render = ( props ) => {
 
 	const isRequired = toggleRequired ? 'required' : '';
 
+	const blockProps = useBlockProps( {
+		className: classnames( 'uagb-forms-toggle-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ),
+	} );
+
 	return (
 		<>
 			<div
-				className={ classnames( 'uagb-forms-toggle-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ) }
+				{ ...blockProps }
 			>
 				<RichText
 					tagName="div"

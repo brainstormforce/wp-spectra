@@ -39,7 +39,7 @@ const InheritFromThemeRender = () => {
 			<SettingsItem
 				title={ __( 'Button - Inherit From Theme', 'ultimate-addons-for-gutenberg' ) }
 				settingText={ __(
-					'Enable the "Inherit From Theme" option to make all buttons in Spectra blocks across your website inherit their styles from the theme.',
+					'Enable the "Inherit From Theme" option to make all buttons in Spectra Legacy blocks across your website inherit their styles from the theme.',
 					'ultimate-addons-for-gutenberg'
 				) }
 			>

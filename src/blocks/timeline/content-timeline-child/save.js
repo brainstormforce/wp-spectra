@@ -7,7 +7,7 @@ import renderSVG from '@Controls/renderIcon';
 
 import { format } from '@wordpress/date';
 
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const {
@@ -37,8 +37,12 @@ export default function save( props ) {
 		contentClass = props.attributes.content_class;
 		dayalignClass = props.attributes.dayalign_class;
 	}
+	const blockProps = useBlockProps.save( {
+		className: classnames( 'uagb-timeline__field', `uagb-timeline-child-${ block_id }`, contentClass ),
+	} );
+
 	return (
-		<article className={ classnames( 'uagb-timeline__field', `uagb-timeline-child-${ block_id }`, contentClass ) }>
+		<article { ...blockProps }>
 			<div className={ classnames( 'uagb-timeline__marker out-view-uagb-timeline__icon' ) }>
 				{ renderSVG( icon ) ? renderSVG( icon ) : <svg xmlns="" viewBox="0 0 256 512"></svg> }
 			</div>

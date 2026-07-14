@@ -17,10 +17,80 @@ import SecondCTAButton from './components/SecondCTAButton';
 import saveV2_7_0 from './deprecated/v2_7_0/save';
 import saveV2_13_1 from './deprecated/v2_13_1/save';
 import newAttributesV2_13_1 from './deprecated/v2_13_1/attributes';
+import DescriptionCurrent from './components/Description';
+import { InnerBlocks } from '@wordpress/block-editor';
 
 import { __ } from '@wordpress/i18n';
 
 const deprecated = [
+	{
+		save( props ) {
+			const {
+				block_id,
+				htmlTag,
+				ctaType,
+				ctaLink,
+				ctaTarget,
+				ctaTitle,
+				description,
+				enabledSecondCtaButton,
+				enableMultilineParagraph,
+			} = props.attributes;
+
+			const isCta = <CTANew attributes={ props.attributes } setAttributes="not_set" />;
+
+			const secondCtaButton =
+				'button' === ctaType && enabledSecondCtaButton ? (
+					<SecondCTAButton attributes={ props.attributes } setAttributes="not_set" />
+				) : (
+					''
+				);
+
+			const desc = enableMultilineParagraph
+				? <div className='uagb-cta__desc'> <InnerBlocks.Content /> </div>
+				: '' !== description && <DescriptionCurrent attributes={ props.attributes } setAttributes="not_set" />;
+
+			const titleText = <>{ '' !== ctaTitle && <Title attributes={ props.attributes } setAttributes="not_set" /> }</>;
+
+			const CustomTag = htmlTag || 'div';
+
+			const output = (
+				<>
+					<div className="uagb-cta__wrap">
+						{ titleText }
+						{ desc }
+					</div>
+					<div className="uagb-cta__buttons">
+						{ isCta }
+						{ secondCtaButton }
+					</div>
+				</>
+			);
+
+			let target = '';
+			if ( ctaTarget ) {
+				target = '_blank';
+			}
+
+			return (
+				<CustomTag className={ classnames( `uagb-block-${ block_id }`, 'button' === ctaType ? 'wp-block-button' : '' ) }>
+					{ ctaType === 'all' && (
+						<>
+							{ /* eslint-disable-next-line */ }
+							<a
+								href={ ctaLink }
+								className="uagb-cta__link-to-all"
+								target={ target }
+								rel="noopener noreferrer"
+							></a>
+							{ output }
+						</>
+					) }
+					{ ctaType !== 'all' && output }
+				</CustomTag>
+			);
+		},
+	},
 	{
 		attributes,
 		save( props ) {

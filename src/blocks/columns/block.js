@@ -21,6 +21,7 @@ columnsCommonData = applyFilters( 'uagb/columns', addCommonDataToSpectraBlocks( 
 if ( 'yes' === uagb_blocks_info.enable_legacy_blocks ) {
 	registerBlockType( 'uagb/columns', {
 		...columnsCommonData,
+		apiVersion: 3,
 		title: __( 'Advanced Columns', 'ultimate-addons-for-gutenberg' ),
 		description: __( 'Insert a number of columns within a single row.', 'ultimate-addons-for-gutenberg' ),
 		icon: renderLegacyBlockEditorIcon( 'columns' ),
@@ -34,12 +35,6 @@ if ( 'yes' === uagb_blocks_info.enable_legacy_blocks ) {
 		variations,
 		edit: ( props ) =>
 			props.attributes.isPreview ? <PreviewImage image="advanced-columns" /> : <Edit { ...props } />,
-		getEditWrapperProps( attribute ) {
-			return {
-				'data-align': attribute.align,
-				'data-valign': attribute.vAlign,
-			};
-		},
 		supports: {
 			// Add EditorsKit block navigator toolbar
 			editorsKitBlockNavigator: true,

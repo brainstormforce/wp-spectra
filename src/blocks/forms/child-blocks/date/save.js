@@ -3,7 +3,7 @@
  */
 
 import classnames from 'classnames';
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { attributes } = props;
@@ -61,8 +61,12 @@ export default function save( props ) {
 	}
 	const isRequired = dateRequired ? 'required' : '';
 
+	const blockProps = useBlockProps.save( {
+		className: classnames( 'uagb-forms-date-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ),
+	} );
+
 	return (
-		<div className={ classnames( 'uagb-forms-date-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ) }>
+		<div { ...blockProps }>
 			<RichText.Content
 				tagName="div"
 				value={ name }

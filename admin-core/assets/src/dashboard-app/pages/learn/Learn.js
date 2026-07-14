@@ -24,11 +24,11 @@ const Learn = () => {
 				>
 					<section className="p-4 bg-background-primary rounded-xl flex flex-col gap-3 flex flex-col gap-6 sm:gap-8">
 						<div className="px-1 flex items-left justify-between relative flex-col items-start gap-2">
-							<Text size={16} weight={600}>{__( 'Learn Spectra', 'ultimate-addons-for-gutenberg' )}</Text>
+							<Text size={16} weight={600}>{__( 'Learn Spectra Legacy', 'ultimate-addons-for-gutenberg' )}</Text>
 
 							<Text size={14}>
 								{__(
-									'Edit your pages using Spectra with step-by-step guide and make them live with confidence.',
+									'Edit your pages using Spectra Legacy with step-by-step guide and make them live with confidence.',
 									'ultimate-addons-for-gutenberg'
 								)}
 							</Text>

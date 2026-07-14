@@ -17,6 +17,22 @@ import { RichText } from '@wordpress/block-editor';
 const deprecated = [
 	{
 		attributes,
+		save( props ) {
+			const { attributes, className } = props;
+
+			const { block_id } = attributes;
+
+			return (
+				<div className={ classnames( className, `uagb-block-${ block_id }` ) }>
+					<div className="uagb-icon-list__wrap">
+						<InnerBlocks.Content />
+					</div>
+				</div>
+			);
+		},
+	},
+	{
+		attributes,
 		save: ( props ) => {
 			const { attributes, className } = props;
 

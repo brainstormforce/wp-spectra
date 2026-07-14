@@ -6,10 +6,10 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 
-import { RichText, InnerBlocks } from '@wordpress/block-editor';
+import { RichText, InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
 export default function save( props ) {
-	const { attributes, className } = props;
+	const { attributes } = props;
 
 	const {
 		block_id,
@@ -31,15 +31,19 @@ export default function save( props ) {
 	if ( true === cookies ) {
 		active = 'uagb-notice__active';
 	}
+
+	const blockProps = useBlockProps.save( {
+		className: classnames(
+			`${noticeDismiss}`,
+			`uagb-inline_notice__align-${noticeAlignment}`,
+			`uagb-block-${block_id}`,
+			`${active}`
+		),
+	} );
+
 	return (
 		<div
-			className={classnames(
-				className,
-				`${noticeDismiss}`,
-				`uagb-inline_notice__align-${noticeAlignment}`,
-				`uagb-block-${block_id}`,
-				`${active}`
-			)}
+			{ ...blockProps }
 		>
 			<button className="uagb-notice-close-button" type="button" aria-label="Close">
 				{imageIconHtml}

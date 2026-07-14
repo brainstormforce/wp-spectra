@@ -8,6 +8,7 @@ import TweetButton from './components/TweetButton';
 import Description from './components/Description';
 import AuthorText from './components/AuthorText';
 import AuthorImage from './components/deprecatedAuthorImage';
+import CurrentAuthorImage from './components/AuthorImage';
 import DeprecatedAuthorImageV2_0_14 from './components/DeprecatedAuthorImageV2_0_14';
 import TweetButtonCTA from './components/TweetButtonCTA';
 import newAttributesV2_0_13 from './attributes';
@@ -398,6 +399,63 @@ export const attributes = {
 };
 
 const deprecated = [
+	{
+		attributes: newAttributesV2_0_13,
+		save( props ) {
+			const {
+				block_id,
+				skinStyle,
+				align,
+				quoteStyle,
+				iconSkin,
+				authorImage,
+				enableTweet,
+				iconView,
+				author,
+				descriptionText,
+				authorImgPosition,
+				stack,
+			} = props.attributes;
+			return (
+				<div
+					className={ classnames(
+						props.className,
+						`uagb-block-${ block_id }`,
+						`uagb-blockquote__skin-${ skinStyle }`,
+						skinStyle !== 'border' ? `uagb-blockquote__align-${ align }` : '',
+						skinStyle === 'quotation' ? `uagb-blockquote__style-${ quoteStyle }` : '',
+						enableTweet
+							? `uagb-blockquote__with-tweet uagb-blockquote__tweet-style-${ iconSkin } uagb-blockquote__tweet-${ iconView }`
+							: '',
+						`uagb-blockquote__stack-img-${ stack }`
+					) }
+				>
+					<blockquote className="uagb-blockquote">
+						{ skinStyle === 'quotation' && (
+							<span className="uagb-blockquote__icon">{ UAGB_Block_Icons.quote_inline_icon }</span>
+						) }
+						{ descriptionText !== '' && (
+							<Description attributes={ props.attributes } setAttributes="not_set" props={ props } />
+						) }
+						<footer>
+							<div
+								className={ classnames(
+									'uagb-blockquote__author-wrap',
+									authorImage !== '' ? `uagb-blockquote__author-at-${ authorImgPosition }` : ''
+								) }
+							>
+								<CurrentAuthorImage attributes={ props.attributes } />
+								{ author !== '' && (
+									<AuthorText attributes={ props.attributes } setAttributes="not_set" props={ props } />
+								) }
+							</div>
+							{ enableTweet && <TweetButtonCTA attributes={ props.attributes } /> }
+						</footer>
+					</blockquote>
+				</div>
+			);
+		},
+	},
 	{
 		attributes,
 		save( props ) {

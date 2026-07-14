@@ -48,7 +48,7 @@ const addBlockEditorDynamicStyles = () => {
 				if ( ! clonedTag ) return;
 				const isExistTag = iframeDocument.getElementById( tagId );
 				if( ! isExistTag ){
-					const node = document.createElement( 'style' )
+					const node = iframeDocument.createElement( 'style' )
 					node.setAttribute( 'id', tagId );
 					node.textContent = clonedTag;
 					iframeDocument.head.appendChild( node )

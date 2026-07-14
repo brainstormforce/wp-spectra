@@ -68,20 +68,20 @@ if ( ! class_exists( 'UAGB_Onboarding' ) ) {
 			\One_Onboarding\Core\Register::register_product(
 				'spectra',
 				array(
-					'title'       => __( 'Spectra Onboarding', 'ultimate-addons-for-gutenberg' ),
+					'title'       => __( 'Spectra Legacy Onboarding', 'ultimate-addons-for-gutenberg' ),
 					'product'     => array(
 						'id'   => 'spectra',
-						'name' => __( 'Spectra', 'ultimate-addons-for-gutenberg' ),
+						'name' => __( 'Spectra Legacy', 'ultimate-addons-for-gutenberg' ),
 					),
 					'logo'        => UAGB_URL . 'assets/images/logos/spectra.svg',
 					'screens'     => array(
 						'welcome'   => array(
-							'heading'     => __( 'Welcome to Spectra', 'ultimate-addons-for-gutenberg' ),
+							'heading'     => __( 'Welcome to Spectra Legacy', 'ultimate-addons-for-gutenberg' ),
 							'description' => __( 'Build a fast, beautiful WordPress site—effortlessly.', 'ultimate-addons-for-gutenberg' ),
 							'banner'      => array(
 								'type'      => 'video',
 								'url'       => 'https://www.youtube-nocookie.com/embed/GLNzTxArR6Y?showinfo=0&autoplay=1&modestbranding=1&rel=0',
-								'title'     => __( 'Getting Started with Spectra', 'ultimate-addons-for-gutenberg' ),
+								'title'     => __( 'Getting Started with Spectra Legacy', 'ultimate-addons-for-gutenberg' ),
 								'thumbnail' => UAGB_URL . 'admin-core/assets/images/onboarding-video-bg.png',
 							),
 							'items'       => array(
@@ -92,7 +92,7 @@ if ( ! class_exists( 'UAGB_Onboarding' ) ) {
 							),
 						),
 						'user-info' => array(
-							'description'    => __( 'Get helpful updates, new features, and tips to make your website better—while helping us improve Spectra.', 'ultimate-addons-for-gutenberg' ),
+							'description'    => __( 'Get helpful updates, new features, and tips to make your website better—while helping us improve Spectra Legacy.', 'ultimate-addons-for-gutenberg' ),
 							'sourceOptions'  => array(
 								'wordpress' => __( 'WordPress Plugin Directory', 'ultimate-addons-for-gutenberg' ),
 								'google'    => __( 'Google Search', 'ultimate-addons-for-gutenberg' ),
@@ -113,12 +113,12 @@ if ( ! class_exists( 'UAGB_Onboarding' ) ) {
 								'label' => __( 'Privacy Policy', 'ultimate-addons-for-gutenberg' ),
 							),
 							'optIn'          => array(
-								'description'  => __( 'Stay in the loop and help shape Spectra! Get feature updates, and help us build a better Spectra by sharing how you use the plugin.', 'ultimate-addons-for-gutenberg' ),
+								'description'  => __( 'Stay in the loop and help shape Spectra Legacy! Get feature updates, and help us build a better Spectra Legacy by sharing how you use the plugin.', 'ultimate-addons-for-gutenberg' ),
 								'learnMoreUrl' => 'https://store.brainstormforce.com/usage-tracking/?utm_source=spectra_dashboard&utm_medium=onboarding&utm_campaign=link',
 							),
 						),
 						'features'  => array(
-							'description' => __( 'Enable the features you need to design faster and build better with Spectra.', 'ultimate-addons-for-gutenberg' ),
+							'description' => __( 'Enable the features you need to design faster and build better with Spectra Legacy.', 'ultimate-addons-for-gutenberg' ),
 							'featureList' => self::get_feature_list(),
 							'upgradeUrl'  => 'https://wpspectra.com/pricing/?utm_source=spectra_dashboard&utm_medium=onboarding&utm_campaign=pro-features',
 						),
@@ -435,7 +435,7 @@ if ( ! class_exists( 'UAGB_Onboarding' ) ) {
 		 */
 		public function register_data_exporter( $exporters ) {
 			$exporters['spectra-onboarding'] = array(
-				'exporter_friendly_name' => __( 'Spectra Onboarding Data', 'ultimate-addons-for-gutenberg' ),
+				'exporter_friendly_name' => __( 'Spectra Legacy Onboarding Data', 'ultimate-addons-for-gutenberg' ),
 				'callback'               => array( $this, 'export_personal_data' ),
 			);
 			return $exporters;
@@ -450,7 +450,7 @@ if ( ! class_exists( 'UAGB_Onboarding' ) ) {
 		 */
 		public function register_data_eraser( $erasers ) {
 			$erasers['spectra-onboarding'] = array(
-				'eraser_friendly_name' => __( 'Spectra Onboarding Data', 'ultimate-addons-for-gutenberg' ),
+				'eraser_friendly_name' => __( 'Spectra Legacy Onboarding Data', 'ultimate-addons-for-gutenberg' ),
 				'callback'             => array( $this, 'erase_personal_data' ),
 			);
 			return $erasers;
@@ -471,7 +471,7 @@ if ( ! class_exists( 'UAGB_Onboarding' ) ) {
 			if ( ! empty( $user_info['email'] ) && $email_address === $user_info['email'] ) {
 				$data[] = array(
 					'group_id'    => 'spectra-onboarding',
-					'group_label' => __( 'Spectra Onboarding', 'ultimate-addons-for-gutenberg' ),
+					'group_label' => __( 'Spectra Legacy Onboarding', 'ultimate-addons-for-gutenberg' ),
 					'item_id'     => 'spectra-onboarding-details',
 					'data'        => array(
 						array(

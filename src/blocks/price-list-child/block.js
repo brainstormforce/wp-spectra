@@ -20,6 +20,7 @@ priceListChildCommonData = applyFilters(
 );
 registerBlockType( 'uagb/restaurant-menu-child', {
 	...priceListChildCommonData,
+	apiVersion: 3,
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
 	title: __( 'Price List-Child', 'ultimate-addons-for-gutenberg' ), // Block title.
 	description: __( 'Add information for this product.', 'ultimate-addons-for-gutenberg' ), // Block description.

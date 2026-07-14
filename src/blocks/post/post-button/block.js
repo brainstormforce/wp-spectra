@@ -5,6 +5,7 @@
 // Import block dependencies and components
 import { PostButton } from './edit';
 import save from './save';
+import deprecated from './deprecated';
 import UAGB_Block_Icons from '@Controls/block-icons';
 
 // Components
@@ -15,6 +16,7 @@ import { registerBlockType } from '@wordpress/blocks';
 
 // Register the block
 registerBlockType( 'uagb/post-button', {
+	apiVersion: 3,
 	title: __( 'Post Button', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Customize this post button.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.post_grid,
@@ -22,4 +24,5 @@ registerBlockType( 'uagb/post-button', {
 	keywords: [ __( 'post', 'ultimate-addons-for-gutenberg' ), __( 'button', 'ultimate-addons-for-gutenberg' ), __( 'uag', 'ultimate-addons-for-gutenberg' ) ],
 	PostButton,
 	save,
+	deprecated,
 } );

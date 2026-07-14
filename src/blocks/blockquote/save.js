@@ -8,6 +8,7 @@ import TweetButtonCTA from './components/TweetButtonCTA';
 import Description from './components/Description';
 import AuthorText from './components/AuthorText';
 import AuthorImage from './components/AuthorImage';
+import { useBlockProps } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const {
@@ -24,19 +25,22 @@ export default function save( props ) {
 		authorImgPosition,
 		stack,
 	} = props.attributes;
+	const blockProps = useBlockProps.save( {
+		className: classnames(
+			`uagb-block-${ block_id }`,
+			`uagb-blockquote__skin-${ skinStyle }`,
+			skinStyle !== 'border' ? `uagb-blockquote__align-${ align }` : '',
+			skinStyle === 'quotation' ? `uagb-blockquote__style-${ quoteStyle }` : '',
+			enableTweet
+				? `uagb-blockquote__with-tweet uagb-blockquote__tweet-style-${ iconSkin } uagb-blockquote__tweet-${ iconView }`
+				: '',
+			`uagb-blockquote__stack-img-${ stack }`
+		),
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				props.className,
-				`uagb-block-${ block_id }`,
-				`uagb-blockquote__skin-${ skinStyle }`,
-				skinStyle !== 'border' ? `uagb-blockquote__align-${ align }` : '',
-				skinStyle === 'quotation' ? `uagb-blockquote__style-${ quoteStyle }` : '',
-				enableTweet
-					? `uagb-blockquote__with-tweet uagb-blockquote__tweet-style-${ iconSkin } uagb-blockquote__tweet-${ iconView }`
-					: '',
-				`uagb-blockquote__stack-img-${ stack }`
-			) }
+			{ ...blockProps }
 		>
 			<blockquote className="uagb-blockquote">
 				{ skinStyle === 'quotation' && (

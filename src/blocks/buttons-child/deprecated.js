@@ -9,6 +9,7 @@ import renderSVG from '@Controls/deprecatedRenderIcon';
 import { getBorderAttributes } from '@Controls/generateAttributes';
 import newAttributesV2_0_14 from './deprecated/v2.0.14/attributes';
 import newSaveV2_0_14 from './deprecated/v2.0.14/save';
+import currentAttributes from './attributes';
 
 import newAttributesV2_1_1 from './deprecated/v2.1.1/attributes';
 import newAttributesV2_7_11 from './deprecated/v2.7.11/attributes';
@@ -178,6 +179,92 @@ const attributes = {
 };
 
 const deprecated = [
+	{
+		attributes: currentAttributes,
+		save( props ) {
+			const { attributes, className, setAttributes } = props;
+
+			const {
+				block_id,
+				opensInNewTab,
+				link,
+				label,
+				icon,
+				iconPosition,
+				removeText,
+				noFollow,
+				showIcon,
+				dynamicContent,
+				buttonType,
+				inheritFromTheme,
+			} = attributes;
+
+			const inheritAstraSecondary = inheritFromTheme && 'secondary' === buttonType;
+			const buttonTypeClass = inheritAstraSecondary ? 'ast-outline-button' : 'wp-block-button__link';
+			//border-width is added to revert the border related styles by default.
+			const borderStyle = inheritAstraSecondary ? { borderWidth: 'revert-layer' } : {};
+
+			const btnText = () => {
+				if ( ! removeText ) {
+					return (
+						<RichText.Content
+							value={ label }
+							tagName="div"
+							className="uagb-button__link"
+						/>
+					);
+				}
+				return '';
+			};
+
+			const extraProps = {
+				'aria-hidden': 'true',
+				'focussable':'false',
+			};
+
+			const iconHtml = ( curr_position ) => {
+				if ( showIcon && '' !== icon && curr_position === iconPosition ) {
+					return (
+						<span className={ classnames( 'uagb-button__icon', `uagb-button__icon-position-${ iconPosition }` ) }>
+							{ renderSVG( icon, setAttributes, extraProps ) }
+						</span>
+					);
+				}
+				return null;
+			};
+			const openNewWindow = opensInNewTab ? '_blank' : '_self';
+
+			return (
+				<div
+					className={ classnames(
+						className,
+						'uagb-buttons__outer-wrap',
+						`uagb-block-${ block_id }`,
+						'wp-block-button'
+					) }
+				>
+					<div className="uagb-button__wrapper">
+						<a // eslint-disable-line jsx-a11y/anchor-is-valid
+							className={ classnames(
+								'uagb-buttons-repeater',
+								`${ buttonTypeClass }`,
+							) }
+							aria-label={ removeText ? label : '' }
+							style={ borderStyle }
+							href={ ( '' === link || dynamicContent?.link?.enable ) ? '#' : link }
+							rel={ noFollow ? 'nofollow noopener' : 'follow noopener' }
+							target={ openNewWindow }
+							role="button"
+						>
+							{ iconHtml( 'before' ) }
+							{ btnText() }
+							{ iconHtml( 'after' ) }
+						</a>
+					</div>
+				</div>
+			);
+		},
+	},
 	{
 		attributes,
 		save: ( props ) => {

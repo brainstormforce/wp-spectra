@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { useInnerBlocksProps } from '@wordpress/block-editor';
+import { useInnerBlocksProps, useBlockProps } from '@wordpress/block-editor';
 import { useLayoutEffect, useMemo, memo } from '@wordpress/element';
 
 import styles from './editor.lazy.scss';
@@ -16,8 +16,9 @@ const Render = ( props ) => {
 	}, [] );
 
 	const { attributes, deviceType } = props;
-	const { 
+	const {
 		className,
+		align,
 		btn_count,
 		buttons,
 		stack,
@@ -27,6 +28,19 @@ const Render = ( props ) => {
 		block_id,
 		inheritGap,
 	} = attributes;
+
+	const blockProps = useBlockProps( {
+		'className': classnames(
+			className,
+			'uagb-buttons__outer-wrap',
+			`uagb-btn__${ buttonSize }-btn`,
+			`uagb-btn-tablet__${ buttonSizeTablet }-btn`,
+			`uagb-btn-mobile__${ buttonSizeMobile }-btn`,
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+			`uagb-block-${ block_id }`
+		),
+		'data-btn-width': align,
+	} );
 
 	const getButtonTemplate = useMemo( () => {
 		const childButtons = [];
@@ -55,15 +69,7 @@ const Render = ( props ) => {
 
 	return (
 		<div
-			className={ classnames(
-				className,
-				'uagb-buttons__outer-wrap',
-				`uagb-btn__${ buttonSize }-btn`,
-				`uagb-btn-tablet__${ buttonSizeTablet }-btn`,
-				`uagb-btn-mobile__${ buttonSizeMobile }-btn`,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ block_id }`
-			) }
+			{ ...blockProps }
 		>
 			<div className={ classnames( 'uagb-buttons__wrap', `uagb-buttons-stack-${ stack }` ) }>
 				<div className='block-editor-inner-blocks'>

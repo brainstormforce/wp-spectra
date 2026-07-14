@@ -15,9 +15,11 @@ import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks
 let acceptCommonData = {};
 acceptCommonData = applyFilters( 'uagb/forms-accept', addCommonDataToSpectraBlocks( acceptCommonData ) );
 import Version2_7_2 from './2_7_2';
+import preApiVersion3Save from './save-v1';
 
 registerBlockType( 'uagb/forms-accept', {
 	...acceptCommonData,
+	apiVersion: 3,
 	title: __( 'Accept', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add a consent statement with a checkbox in your form.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.accept,
@@ -31,5 +33,5 @@ registerBlockType( 'uagb/forms-accept', {
 		html: false,
 	},
 	save,
-	deprecated : [ Version2_7_2 ],
+	deprecated : [ { attributes, save: preApiVersion3Save }, Version2_7_2 ],
 } );

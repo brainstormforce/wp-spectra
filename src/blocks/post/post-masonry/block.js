@@ -23,6 +23,7 @@ if ( 'yes' === uagb_blocks_info.enable_legacy_blocks ) {
 	// Register the block
 	registerBlockType( 'uagb/post-masonry', {
 		...postMasonryCommonData,
+		apiVersion: 3,
 		title: __( 'Post Masonry', 'ultimate-addons-for-gutenberg' ),
 		description: __( 'Display your posts in a masonary layout.', 'ultimate-addons-for-gutenberg' ),
 		icon: renderLegacyBlockEditorIcon( 'post_masonry' ),

@@ -2,8 +2,9 @@ import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 import { useLayoutEffect, memo } from '@wordpress/element';
+import { useSelect } from '@wordpress/data';
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -13,8 +14,31 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	const { attributes, setAttributes, state, isSelected } = props;
+	const { attributes, setAttributes, state, isSelected, context, clientId } = props;
 	const { question, answer, icon, iconActive, layout, headingTag, block_id } = attributes;
+
+	const expandFirstItem = ( context && context[ 'uagb/faqExpandFirstItem' ] ) || false;
+	const faqLayout = ( context && context[ 'uagb/faqLayout' ] ) || 'accordion';
+
+	const isFirstChild = useSelect( ( select ) => {
+		const { getBlockOrder, getBlockRootClientId } = select( 'core/block-editor' );
+		const rootClientId = getBlockRootClientId( clientId );
+		const siblings = getBlockOrder( rootClientId );
+		return siblings.length > 0 && siblings[ 0 ] === clientId;
+	}, [ clientId ] );
+
+	const isExpandedInEditor = 'accordion' === faqLayout && expandFirstItem && isFirstChild;
+
+	const blockProps = useBlockProps( {
+		className: classnames(
+			'uagb-faq-child__outer-wrap',
+			'uagb-faq-item',
+			`uagb-block-${ block_id }`,
+			( isSelected && false !== state.isFocused ) || isExpandedInEditor ? 'uagb-faq__active' : ''
+		),
+		role: 'tab',
+		tabIndex: '0',
+	} );
 
 
 	// Reset the heading tag to it's default if it somehow has a value other than the valid tag types.
@@ -60,14 +84,7 @@ const Render = ( props ) => {
 
 	return (
 		<div
-			className={ classnames(
-				'uagb-faq-child__outer-wrap',
-				'uagb-faq-item',
-				`uagb-block-${ block_id }`,
-				isSelected && false !== state.isFocused ? 'uagb-faq__active' : ''
-			) }
-			role="tab"
-			tabIndex="0"
+			{ ...blockProps }
 		>
 			{ faqRenderHtml() }
 		</div>

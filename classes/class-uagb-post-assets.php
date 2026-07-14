@@ -1848,6 +1848,16 @@ class UAGB_Post_Assets {
 
 		$slug = $block['attrs']['slug'];
 
+		// Prevent infinite recursion when a pattern references itself directly or
+		// through a cycle of patterns. Mirrors the reusable-block / template-part
+		// guard so a cyclic core/pattern cannot exhaust memory during asset
+		// generation. Slug is prefixed to avoid collision with reusable-block IDs.
+		$pattern_ref = 'pattern:' . $slug;
+		if ( in_array( $pattern_ref, self::$seen_refs, true ) ) {
+			return array();
+		}
+		self::$seen_refs[] = $pattern_ref;
+
 		// Check class and function exists.
 		if ( ! class_exists( 'WP_Block_Patterns_Registry' ) || ! method_exists( 'WP_Block_Patterns_Registry', 'get_instance' ) ) {
 			return array();

@@ -1,12 +1,19 @@
-const responsiveConditionPreview = ( props ) => {
-	// Desktop.
-	const element = document.getElementById( 'block-' + props.clientId );
+const getEditorDocument = () => {
+	const editorIframe = document.querySelector( 'iframe[name="editor-canvas"]' );
+	return editorIframe?.contentDocument || document;
+};
 
-	const desktopStyle = document.getElementById( props.clientId + '-desktop-hide-block' );
+const responsiveConditionPreview = ( props ) => {
+	const currentDocument = getEditorDocument();
+
+	// Desktop.
+	const element = currentDocument.getElementById( 'block-' + props.clientId );
+
+	const desktopStyle = currentDocument.getElementById( props.clientId + '-desktop-hide-block' );
 	if ( props.attributes.UAGHideDesktop ) {
 		if ( null !== element && undefined !== element ) {
 			if ( null === desktopStyle || undefined === desktopStyle ) {
-				const $style = document.createElement( 'style' );
+				const $style = currentDocument.createElement( 'style' );
 				$style.setAttribute( 'id', props.clientId + '-desktop-hide-block' );
 
 				$style.innerHTML =
@@ -18,7 +25,7 @@ const responsiveConditionPreview = ( props ) => {
 					props.clientId.substr( 0, 8 ) +
 					'.uagb-editor-preview-mode-desktop:before{ content: ""; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;  background-color: rgba(255, 255, 255, 0.6); z-index: 9997; } ';
 
-				document.head.appendChild( $style );
+				currentDocument.head.appendChild( $style );
 			}
 		}
 	} else if ( null !== desktopStyle && undefined !== desktopStyle ) {
@@ -45,7 +52,7 @@ const responsiveConditionPreview = ( props ) => {
 
 		if ( props.attributes.UAGHideTab ) {
 			if ( null === iframeTabletElement || undefined === iframeTabletElement ) {
-				const $style = document.createElement( 'style' );
+				const $style = iframeDocument.createElement( 'style' );
 				$style.setAttribute( 'id', props.clientId + '-tablet-hide-block' );
 
 				$style.innerHTML =
@@ -67,7 +74,7 @@ const responsiveConditionPreview = ( props ) => {
 		const iframeMobileElement = iframeDocument.getElementById( props.clientId + '-mobile-hide-block' );
 		if ( props.attributes.UAGHideMob ) {
 			if ( null === iframeMobileElement || undefined === iframeMobileElement ) {
-				const $style = document.createElement( 'style' );
+				const $style = iframeDocument.createElement( 'style' );
 				$style.setAttribute( 'id', props.clientId + '-mobile-hide-block' );
 
 				$style.innerHTML =

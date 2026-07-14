@@ -22,6 +22,7 @@ taxonomyListCommonData = applyFilters( 'uagb/taxonomy-list', addCommonDataToSpec
 // Register the block
 registerBlockType( 'uagb/taxonomy-list', {
 	...taxonomyListCommonData,
+	apiVersion: 3,
 	title: __( 'Taxonomy List', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Display your content categorized as per post type.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.taxonomy_list,

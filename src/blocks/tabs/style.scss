@@ -82,6 +82,17 @@
 
 // Hide add new tab button on mobile and tablet.
 
+// Editor controls: hidden by default, shown on hover (loaded synchronously to prevent FOUC).
+.editor-styles-wrapper .uagb-tabs__wrap {
+	.uagb-tabs-editor-controls {
+		display: none;
+	}
+
+	li.uagb-tab:hover .uagb-tabs-editor-controls {
+		display: flex;
+	}
+}
+
 .editor-styles-wrapper .uagb-editor-preview-mode-tablet.uagb-tabs__wrap li.uagb-tab.uagb-tabs__add-tab,
 .editor-styles-wrapper .uagb-editor-preview-mode-mobile.uagb-tabs__wrap li.uagb-tab.uagb-tabs__add-tab {
 	display: none;

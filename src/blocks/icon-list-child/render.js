@@ -17,7 +17,7 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	const { attributes, setAttributes, className, deviceType, onReplace, mergeBlocks } = props;
+	const { attributes, setAttributes, deviceType, onReplace, mergeBlocks } = props;
 	const {
 		label,
 		image_icon,
@@ -71,7 +71,7 @@ const Render = ( props ) => {
 	return (
 		<div
 			className={ classnames(
-				className,
+				'wp-block-uagb-icon-list-child',
 				`uagb-block-${ block_id }`,
 				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
 			) }

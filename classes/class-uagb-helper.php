@@ -152,18 +152,21 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * Constructor
 		 */
 		public function __construct() {
-			require UAGB_DIR . 'classes/class-uagb-block-helper.php';
-			require UAGB_DIR . 'classes/class-uagb-block-js.php';
+			// Use require_once to make repeat instantiation safe (no "Cannot redeclare class" fatal).
+			require_once UAGB_DIR . 'classes/class-uagb-block-helper.php';
+			require_once UAGB_DIR . 'classes/class-uagb-block-js.php';
 
-			/**
-			 * Add action hook to initialize block list during WordPress initialization.
-			 * This hook is needed to ensure that the block list is populated before any other actions are taken.
-			 * The block list is used to generate the CSS and JS files for the blocks, and is also used to generate the block categories.
-			 */
-			add_action( 'init', array( $this, 'initialize_block_list' ) );
 			self::$file_generation = self::allow_file_generation();
-			// Condition is only needed when we are using block based theme and Reading setting is updated.
-			$this->reading_page();
+
+			// `initialize_block_list` continues to run on `init` (unchanged behaviour).
+			add_action( 'init', array( $this, 'initialize_block_list' ) );
+
+			// `reading_page` previously ran in the constructor and called `UAGB_Admin_Helper::update_admin_settings_option()`
+			// directly. If `UAGB_Helper::get_instance()` was first invoked before `UAGB_Admin_Helper` was loaded
+			// (e.g. on the Settings → Reading save request under a block theme), this produced a fatal
+			// `Class "UAGB_Admin_Helper" not found`. Hooking it to `admin_init` ensures all helper classes are
+			// already loaded before the option write runs.
+			add_action( 'admin_init', array( $this, 'reading_page' ) );
 		}
 
 		/**
@@ -225,16 +228,16 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 					if ( ! empty( $val ) || ( empty( $val ) && 'content' === $j ) || 0 === $val ) {
 						if ( 'font-family' === $j ) {
-							$css .= $j . ': "' . $val . '";';
+							$css .= $j . ': "' . self::sanitize_css_value( $val ) . '";';
 						} else {
 							if ( is_array( $val ) ) {
 								// Convert $val array property to string.
 								foreach ( $val as $index => $property ) {
 									$properties = is_string( $property ) ? $property : (string) $property;
-									$css       .= $j . ': ' . $properties . ';';
+									$css       .= $j . ': ' . self::sanitize_css_value( $properties ) . ';';
 								}
 							} else {
-								$css .= $j . ': ' . $val . ';';
+								$css .= $j . ': ' . self::sanitize_css_value( $val ) . ';';
 							}
 						}
 					}
@@ -248,6 +251,24 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			return $styling_css;
+		}
+
+		/**
+		 * Sanitize a CSS property value to prevent rule injection.
+		 *
+		 * Strips characters that can break out of a CSS declaration block
+		 * ({ } ;) and HTML angle brackets that could be used for injection.
+		 * Applied centrally so every block style attribute is covered.
+		 *
+		 * @since x.x.x
+		 * @param mixed $value Raw CSS value from block attributes.
+		 * @return mixed Sanitized value (string stripped; non-strings returned as-is).
+		 */
+		public static function sanitize_css_value( $value ) {
+			if ( ! is_string( $value ) ) {
+				return $value;
+			}
+			return str_replace( array( '{', '}', ';', '<', '>' ), '', $value );
 		}
 
 		/**
@@ -347,7 +368,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$json = self::backend_load_font_awesome_icons();
 
 			if ( ! empty( $json ) ) {
-				if ( empty( $icon_array_merged ) ) {
+				// Previously checked an undefined local `$icon_array_merged`, so the cache was never read
+				// and the full merge loop ran on every call. Use the static property.
+				if ( empty( self::$icon_array_merged ) ) {
 					foreach ( $json as $value ) {
 						self::$icon_array_merged = array_merge( self::$icon_array_merged, $value );
 					}

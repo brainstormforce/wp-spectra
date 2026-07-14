@@ -18,6 +18,7 @@ let buttonsCommonData = {};
 buttonsCommonData = applyFilters( 'uagb/buttons', addCommonDataToSpectraBlocks( buttonsCommonData ) );
 registerBlockType( 'uagb/buttons', {
 	...buttonsCommonData,
+	apiVersion: 3,
 	title: __( 'Buttons', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add multiple buttons to redirect user to different webpages.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.buttons,
@@ -25,9 +26,6 @@ registerBlockType( 'uagb/buttons', {
 	supports: {
 		anchor: true,
 		html: false,
-	},
-	getEditWrapperProps( attribute ) {
-		return { 'data-btn-width': attribute.align };
 	},
 	attributes,
 	category: uagb_blocks_info.category,

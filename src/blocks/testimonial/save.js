@@ -9,6 +9,7 @@ import Description from './components/Description';
 import PositionClasses from './classes';
 import TestimonialImage from './components/newImage';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import { useBlockProps } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const {
@@ -26,17 +27,20 @@ export default function save( props ) {
 	const isGridLayout = test_item_count === columns ? 'uagb-post__carousel_notset' : '';
 	const isGridLayoutTablet = test_item_count === tcolumns ? 'uagb-post__carousel_notset-tablet' : '';
 	const isGridLayoutMobile = test_item_count === mcolumns ? 'uagb-post__carousel_notset-mobile' : '';
+	const blockProps = useBlockProps.save( {
+		className: classnames(
+			className,
+			'uagb-slick-carousel uagb-tm__arrow-outside',
+			`uagb-block-${ block_id }`,
+			`${ equalHeightClass }`,
+			isGridLayout,
+			isGridLayoutTablet,
+			isGridLayoutMobile
+		),
+	} );
 	return (
 		<div
-			className={ classnames(
-				className,
-				'uagb-slick-carousel uagb-tm__arrow-outside',
-				`uagb-block-${ block_id }`,
-				`${ equalHeightClass }`,
-				isGridLayout,
-				isGridLayoutTablet,
-				isGridLayoutMobile
-			) }
+			{ ...blockProps }
 		>
 			<div
 				className={ classnames(

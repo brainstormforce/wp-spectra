@@ -141,7 +141,7 @@ const BlockItem = ( { block, is_extension } ) => {
 										arrow
 										content={
 											<span>
-												{ __( 'Core blocks are essential for Spectra\'s operation and cannot be turned off.', 'ultimate-addons-for-gutenberg' ) }
+												{ __( 'Core blocks are essential for Spectra Legacy\'s operation and cannot be turned off.', 'ultimate-addons-for-gutenberg' ) }
 											</span>
 										}
 										placement="bottom"

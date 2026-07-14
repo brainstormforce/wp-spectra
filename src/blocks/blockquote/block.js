@@ -18,6 +18,7 @@ let blockquoteCommonData = {};
 blockquoteCommonData = applyFilters( 'uagb/blockquote', addCommonDataToSpectraBlocks( blockquoteCommonData ) );
 registerBlockType( 'uagb/blockquote', {
 	...blockquoteCommonData,
+	apiVersion: 3,
 	title: __( 'Blockquote', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Display qoutes/quoted texts using blockquote.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.blockquote,

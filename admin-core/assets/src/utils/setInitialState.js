@@ -12,7 +12,6 @@ const setInitialState = ( store ) => {
             enableFileGeneration : data.enable_file_generation,
             enableTemplates : data.enable_templates_button,
 			enableOnPageCSS : data.enable_on_page_css_button,
-            enableBeta : data.enable_beta_updates,
             enableSelectedFontFamilies : data.load_select_font_globally,
             selectedFontFamilies :  data.select_font_globally,
             enableFSEFontFamilies : data.load_fse_font_globally,

@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import { useLayoutEffect, memo } from '@wordpress/element';
-import { InnerBlocks } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
 
 const Render = ( props ) => {
@@ -27,17 +27,28 @@ const Render = ( props ) => {
 		}
 	}
 
+	const dataAlign =
+		( 'left' === align || 'right' === align || 'wide' === align || 'full' === align ) &&
+		'full_width' === contentWidth
+			? align
+			: undefined;
+
+	const blockProps = useBlockProps( {
+		'className': classnames(
+			className,
+			'uagb-section__wrap',
+			`uagb-section__background-${ backgroundType }`,
+			`uagb-section__edit-${ active }`,
+			blockControlsClass,
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+			`uagb-block-${ block_id }`
+		),
+		'data-align': dataAlign,
+	} );
+
 	return (
 		<CustomTag
-			className={ classnames(
-				className,
-				'uagb-section__wrap',
-				`uagb-section__background-${ backgroundType }`,
-				`uagb-section__edit-${ active }`,
-				blockControlsClass,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ block_id }`
-			) }
+			{ ...blockProps }
 		>
 			<div className="uagb-section__overlay"></div>
 			{ 'video' === backgroundType && (

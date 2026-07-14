@@ -5,19 +5,26 @@ import isInvalid from './isInvalid';
 // Flag to Detect if At Least One Block was Recovered.
 let recoveryDone = false;
 
+const getEditorDocument = () => {
+	const editorIframe = document.querySelector( 'iframe[name="editor-canvas"]' );
+	return editorIframe?.contentDocument || document;
+};
+
 // Create Recovery CSS to Hide All Errornous Blocks.
 const createRecoveryCSS = () => {
-	const recoveryCSS = document.createElement( 'style' );
+	const currentDocument = getEditorDocument();
+	const recoveryCSS = currentDocument.createElement( 'style' );
 	recoveryCSS.setAttribute( 'id', 'uagb-recovery-styles' );
 	recoveryCSS.innerHTML = '.has-warning[data-type^="uagb/"] { opacity: 0 !important; }';
-	document.body.appendChild( recoveryCSS );
+	currentDocument.body.appendChild( recoveryCSS );
 };
 
 // Destroy the Recovery CSS to Restore the Editor to its Original State.
 const destroyRecoveryCSS = () => {
-	const recoveryCSS = document.querySelector( '#uagb-recovery-styles' );
+	const currentDocument = getEditorDocument();
+	const recoveryCSS = currentDocument.querySelector( '#uagb-recovery-styles' );
 	if ( recoveryCSS ) {
-		document.body.removeChild( recoveryCSS );
+		currentDocument.body.removeChild( recoveryCSS );
 	}
 };
 

@@ -18,6 +18,7 @@ let tocCommonData = {};
 tocCommonData = applyFilters( 'uagb/table-of-contents', addCommonDataToSpectraBlocks( tocCommonData ) );
 registerBlockType( 'uagb/table-of-contents', {
 	...tocCommonData,
+	apiVersion: 3,
 	title: __( 'Table Of Contents', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add a table of contents to allow page navigation.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.table_of_contents,

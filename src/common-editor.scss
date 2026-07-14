@@ -794,6 +794,70 @@ button.components-button.uagb-review-select-btn.is-secondary {
 	}
 }
 
+// Fix for toolbar icon colors in WordPress 7.0+.
+// WordPress 7.0 sets stroke:none, so we need to override it.
+// This only affects block toolbar icons, not sidebar QAB icons.
+body.spectra-wp-gte-7-0 {
+	// Fix for toolbar popover icons - using wildcard selector
+	.components-popover.block-editor-block-popover:not(.block-editor-block-popover__inbetween,.block-editor-block-popover__drop-zone,.block-editor-block-list__block-side-inserter-popover) {
+		.components-popover__content {
+			* {
+				svg.uagb-editor-icons {
+					stroke: #000;
+					fill: none;
+
+					path,
+					rect,
+					circle,
+					ellipse,
+					line {
+						stroke: #000;
+						fill: none;
+					}
+				}
+			}
+		}
+	}
+
+	// Toolbar icon color set to black when in toolbar
+	[data-toolbar-item="true"] {
+		.block-editor-block-icon.has-colors svg.uagb-editor-icons {
+			stroke: #000;
+			fill: none;
+
+			path,
+			rect,
+			circle,
+			ellipse,
+			line {
+				stroke: #000;
+				fill: none;
+			}
+		}
+
+		// Fix for toolbar popover icons - using wildcard selector
+		.components-popover.block-editor-block-popover:not(.block-editor-block-popover__inbetween,.block-editor-block-popover__drop-zone,.block-editor-block-list__block-side-inserter-popover) {
+			.components-popover__content {
+				* {
+					svg.uagb-editor-icons {
+						stroke: #000;
+						fill: none;
+
+						path,
+						rect,
+						circle,
+						ellipse,
+						line {
+							stroke: #000;
+							fill: none;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 // WordPress 6.6 compatibility fix.
 .editor-editor-interface {
 

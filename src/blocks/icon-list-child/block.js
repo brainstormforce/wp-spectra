@@ -20,6 +20,7 @@ iconListChildCommonData = applyFilters(
 );
 registerBlockType( 'uagb/icon-list-child', {
 	...iconListChildCommonData,
+	apiVersion: 3,
 	title: __( 'List Item', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add and customize content for this list component.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.icon_list_child,

@@ -16,9 +16,11 @@ let dateCommonData = {};
 dateCommonData = applyFilters( 'uagb/forms-date', addCommonDataToSpectraBlocks( dateCommonData ) );
 import Version2_4_1 from './2_4_1';
 import Version2_7_2 from './2_7_2';
+import preApiVersion3Save from './save-v1';
 
 registerBlockType( 'uagb/forms-date', {
 	...dateCommonData,
+	apiVersion: 3,
 	title: __( 'Datepicker', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add a calendar based date picker in your form.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.datepicker,
@@ -32,5 +34,5 @@ registerBlockType( 'uagb/forms-date', {
 		html: false,
 	},
 	save,
-	deprecated : [ Version2_7_2, Version2_4_1 ],
+	deprecated : [ { attributes, save: preApiVersion3Save }, Version2_7_2, Version2_4_1 ],
 } );

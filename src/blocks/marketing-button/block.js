@@ -21,6 +21,7 @@ marketingButtonCommonData = applyFilters(
 );
 registerBlockType( 'uagb/marketing-button', {
 	...marketingButtonCommonData,
+	apiVersion: 3,
 	title: __( 'Marketing Button', 'ultimate-addons-for-gutenberg' ),
 	description: __(
 		'Add a marketing call to action button with a short description.',

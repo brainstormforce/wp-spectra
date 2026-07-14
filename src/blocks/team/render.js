@@ -3,7 +3,7 @@ import { useLayoutEffect, memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
 import { createBlock } from '@wordpress/blocks';
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
 
 const Render = ( props ) => {
@@ -15,7 +15,7 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	const { className, setAttributes, attributes, mergeBlocks, insertBlocksAfter, onReplace, deviceType } = props;
+	const { setAttributes, attributes, mergeBlocks, insertBlocksAfter, onReplace, deviceType } = props;
 
 	const {
 		align,
@@ -168,16 +168,19 @@ const Render = ( props ) => {
 		);
 	}
 
+	const blockProps = useBlockProps( {
+		className: classnames(
+			`uagb-team__image-position-${ imgPosition }`,
+			`uagb-team__align-${ align }`,
+			`uagb-team__stack-${ stack }`,
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+			`uagb-block-${ block_id }`
+		),
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				className,
-				`uagb-team__image-position-${ imgPosition }`,
-				`uagb-team__align-${ align }`,
-				`uagb-team__stack-${ stack }`,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ block_id }`
-			) }
+			{ ...blockProps }
 		>
 			{ imgPosition === 'left' && imageHtml }
 

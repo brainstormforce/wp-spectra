@@ -3,7 +3,7 @@ import { useLayoutEffect, memo } from '@wordpress/element';
 import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -94,14 +94,18 @@ const Render = ( props ) => {
 		return '';
 	};
 
+	const blockProps = useBlockProps( {
+		className: classnames(
+			'uagb-wp-search__outer-wrap',
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+			`uagb-block-${ block_id }`,
+			`uagb-layout-${ layout }`
+		),
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				'uagb-wp-search__outer-wrap',
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ block_id }`,
-				`uagb-layout-${ layout }`
-			) }
+			{ ...blockProps }
 		>
 			{ renderClassic() }
 			{ renderMinimal() }

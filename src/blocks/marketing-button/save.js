@@ -5,7 +5,7 @@
 // Import block dependencies and components.
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { attributes, className } = props;
@@ -47,16 +47,20 @@ export default function save( props ) {
 		</>
 	);
 
+	const blockProps = useBlockProps.save( {
+		className: classnames(
+			className,
+			`uagb-marketing-btn__align-${ align }`,
+			`uagb-marketing-btn__align-text-${ textAlign }`,
+			`uagb-marketing-btn__icon-${ iconPosition }`,
+			`uagb-block-${ block_id }`,
+			'wp-block-button'
+		),
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				className,
-				`uagb-marketing-btn__align-${ align }`,
-				`uagb-marketing-btn__align-text-${ textAlign }`,
-				`uagb-marketing-btn__icon-${ iconPosition }`,
-				`uagb-block-${ block_id }`,
-				'wp-block-button'
-			) }
+			{ ...blockProps }
 		>
 			<a
 				href={ link }

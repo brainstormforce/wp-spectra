@@ -11,7 +11,7 @@ import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
-import { compose } from '@wordpress/compose';
+import { compose, useRefEffect } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 import addInitialAttr from '@Controls/addInitialAttr';
 
@@ -242,29 +242,40 @@ const ReviewComponent = ( props ) => {
 			}
 		}
 
-		const postSaveButton = document.getElementsByClassName( 'editor-post-publish-button' )?.[ 0 ];
+		// editor-post-publish-button is in the top-level admin chrome, not the block iframe.
+		const adminDocument = window.top ? window.top.document : document;
+		const postSaveButton = adminDocument.getElementsByClassName( 'editor-post-publish-button' )?.[ 0 ];
 
 		if ( postSaveButton ) {
 			postSaveButton.addEventListener( 'click', updatePageSchema );
 		}
 	}, [] );
 
-	useEffect( () => {
-		const ratingLinkWrapper = document.querySelector( '.uagb-rating-link-wrapper' );
+	const reviewRef = useRefEffect( ( element ) => {
+		const { ownerDocument } = element;
+
+		const ratingLinkWrapper = ownerDocument.querySelector( '.uagb-rating-link-wrapper' );
+		const preventClick = ( event ) => event.preventDefault();
 		if ( ratingLinkWrapper !== null ) {
-			ratingLinkWrapper.addEventListener( 'click', function ( event ) {
-				event.preventDefault();
-			} );
+			ratingLinkWrapper.addEventListener( 'click', preventClick );
 		}
 
-		const postSaveButton = document.getElementsByClassName( 'editor-post-publish-button' )?.[ 0 ];
+		// editor-post-publish-button is in the top-level admin chrome, not the block iframe.
+		const adminDocument = ownerDocument.defaultView?.top?.document || ownerDocument;
+		const postSaveButton = adminDocument.getElementsByClassName( 'editor-post-publish-button' )?.[ 0 ];
 
 		if ( postSaveButton ) {
 			postSaveButton.addEventListener( 'click', updatePageSchema );
-			return () => {
-				postSaveButton?.removeEventListener( 'click', updatePageSchema );
-			};
 		}
+
+		return () => {
+			if ( ratingLinkWrapper !== null ) {
+				ratingLinkWrapper.removeEventListener( 'click', preventClick );
+			}
+			if ( postSaveButton ) {
+				postSaveButton.removeEventListener( 'click', updatePageSchema );
+			}
+		};
 	}, [ attributes, deviceType ] );
 
 	useEffect( () => {
@@ -326,7 +337,7 @@ const ReviewComponent = ( props ) => {
 			<DynamicCSSLoader { ...{ blockStyling } } />
 			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings { ...props } /> }
-			<Render { ...props } />
+			<Render { ...props } blockRef={ reviewRef } />
 		</>
 	);
 };

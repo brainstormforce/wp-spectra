@@ -8,7 +8,6 @@ import AssetsGeneration from '@DashboardApp/pages/settings/AssetsGeneration';
 import RegenerateAssets from '@DashboardApp/pages/settings/RegenerateAssets';
 import OnPageCSS from '@DashboardApp/pages/settings/OnPageCSS';
 import RollBack from '@DashboardApp/pages/settings/RollBack';
-import BetaUpdates from '@DashboardApp/pages/settings/BetaUpdates';
 import LegacyBlocks from '@DashboardApp/pages/settings/LegacyBlocks';
 import SelectedFontFamilies from '@DashboardApp/pages/settings/SelectedFontFamilies';
 import FSEFontFamilies from '@DashboardApp/pages/settings/FSEFontFamilies';
@@ -195,9 +194,9 @@ const Settings = () => {
 	const accountModalData = {
 		title: __( 'Unlock Pro Features', 'ultimate-addons-for-gutenberg' ),
 		Image: AccountModalImage,
-		header: __( 'Limitless Design with Spectra Pro!', 'ultimate-addons-for-gutenberg' ),
+		header: __( 'Limitless Design with Spectra Pro Legacy!', 'ultimate-addons-for-gutenberg' ),
 		description: __(
-			'Experience design freedom with Spectra Pro. Utilize advanced blocks, extensions, and premium features to create a websites that stands out!',
+			'Experience design freedom with Spectra Pro Legacy. Utilize advanced blocks, extensions, and premium features to create a websites that stands out!',
 			'ultimate-addons-for-gutenberg'
 		),
 		features: [
@@ -333,7 +332,6 @@ const Settings = () => {
 						{ 'version-control' === currentTab && (
 							<>
 								<RollBack />
-								<BetaUpdates />
 								<LegacyBlocks />
 							</>
 						) }
