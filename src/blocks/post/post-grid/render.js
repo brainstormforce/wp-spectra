@@ -15,7 +15,7 @@ import { createBlock } from '@wordpress/blocks';
 
 import { Placeholder, Button, Tip } from '@wordpress/components';
 
-import { InnerBlocks } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import styles from '.././editor.lazy.scss';
 
 const Render = ( props ) => {
@@ -32,6 +32,8 @@ const Render = ( props ) => {
 
 	// Caching all Props.
 	const { attributes, deviceType, name, setAttributes, clientId, className } = props;
+
+	const blockProps = useBlockProps();
 
 	const renderEditMode = () => {
 		const onDone = () => {
@@ -100,12 +102,13 @@ const Render = ( props ) => {
 	};
 
 	if ( isEditing ) {
-		return <>{ renderEditMode() }</>;
+		return <div { ...blockProps }>{ renderEditMode() }</div>;
 	}
 
 	const renderViewMode = () => {
 		return (
 			<Blog
+				blockProps={ blockProps }
 				attributes={ attributes }
 				className={ className }
 				latestPosts={ latestPosts }
@@ -118,7 +121,7 @@ const Render = ( props ) => {
 		);
 	};
 
-	return <>{ renderViewMode() }</>;
+	return renderViewMode();
 };
 
 export default memo( Render );

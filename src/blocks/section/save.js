@@ -4,10 +4,10 @@
 
 import classnames from 'classnames';
 
-import { InnerBlocks } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
 export default function save( props ) {
-	const { attributes, className } = props;
+	const { attributes } = props;
 
 	const { block_id, tag, backgroundType, backgroundVideo, contentWidth, align } = attributes;
 
@@ -21,15 +21,18 @@ export default function save( props ) {
 
 	const CustomTag = `${ tag }`;
 
+	const blockProps = useBlockProps.save( {
+		className: classnames(
+			'uagb-section__wrap',
+			`uagb-section__background-${ backgroundType }`,
+			blockControlsClass,
+			`uagb-block-${ block_id }`
+		),
+	} );
+
 	return (
 		<CustomTag
-			className={ classnames(
-				className,
-				'uagb-section__wrap',
-				`uagb-section__background-${ backgroundType }`,
-				blockControlsClass,
-				`uagb-block-${ block_id }`
-			) }
+			{ ...blockProps }
 		>
 			<div className="uagb-section__overlay"></div>
 			{ 'video' === backgroundType && (

@@ -17,7 +17,7 @@ const separatorCommonData = applyFilters( 'uagb/separator', addCommonDataToSpect
 
 registerBlockType( 'uagb/separator', {
 	...separatorCommonData,
-	apiVersion: 2,
+	apiVersion: 3,
 	title: __( 'Separator', 'ultimate-addons-for-gutenberg' ),
 	description: __(
 		'Add a modern separator to divide your page content with icon/text.',

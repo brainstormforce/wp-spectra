@@ -35,8 +35,8 @@ const MAX_POSTS_COLUMNS = 8;
 import addInitialAttr from '@Controls/addInitialAttr';
 import Settings from './settings';
 import Render from './render';
-import { Placeholder, Spinner, ToggleControl, Icon } from '@wordpress/components';
-import { InspectorControls } from '@wordpress/block-editor';
+import { ToggleControl, Icon } from '@wordpress/components';
+import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import { useSelect, useDispatch } from '@wordpress/data';
 import UpgradeComponent from '@Components/upgrade-to-pro-cta';
 
@@ -284,6 +284,8 @@ const UAGBPostCarousel = ( props ) => {
 		deviceType,
 		clientId,
 	} = props;
+
+	const blockProps = useBlockProps();
 
 	const [ state, setState ] = useState( {
 		isEditing: false,
@@ -2236,22 +2238,15 @@ const UAGBPostCarousel = ( props ) => {
 		</InspectorControls>
 	);
 
-	if ( ! hasPosts ) {
-		return (
-			<>
-				{ inspectorControls }
-				<Placeholder icon="admin-post" label={ __( 'Post Carousel', 'ultimate-addons-for-gutenberg' ) }>
-					{ ! Array.isArray( latestPosts ) ? <Spinner /> : postDisplaytext }
-				</Placeholder>
-			</>
-		);
-	}
-
 	return (
 		<>
-			<DynamicCSSLoader { ...{ blockStyling } } />
-			<DynamicFontLoader { ...{ attributes } } />
-			{ isSelected && (
+			{ hasPosts && (
+				<>
+					<DynamicCSSLoader { ...{ blockStyling } } />
+					<DynamicFontLoader { ...{ attributes } } />
+				</>
+			) }
+			{ isSelected && hasPosts && (
 				<Settings
 					state={ state }
 					togglePreview={ togglePreview }
@@ -2261,6 +2256,9 @@ const UAGBPostCarousel = ( props ) => {
 			) }
 			<Render
 				{ ...props }
+				blockProps={ blockProps }
+				hasPosts={ hasPosts }
+				inspectorControls={ inspectorControls }
 				state={ state }
 				setState={ setState }
 				togglePreview={ togglePreview }

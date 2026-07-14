@@ -5,6 +5,7 @@
 import SchemaNotices from './schema-notices';
 import styling from './styling';
 import './style.scss';
+import { useBlockProps } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
 import { useState, useEffect, useMemo } from '@wordpress/element';
 import scrollBlockToView from '@Controls/scrollBlockToView';
@@ -175,8 +176,10 @@ const HowToComponent = ( props ) => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
+	const blockProps = useBlockProps();
+
 	return (
-		<>
+		<div { ...blockProps }>
 			<DynamicCSSLoader { ...{ blockStyling } } />
 			<DynamicFontLoader { ...{ attributes } } />
 			<SchemaNotices
@@ -200,7 +203,7 @@ const HowToComponent = ( props ) => {
 			/>
 			{ isSelected && <Settings { ...props } /> }
 			<Render { ...props } />
-		</>
+		</div>
 	);
 };
 

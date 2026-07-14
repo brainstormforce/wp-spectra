@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import ContentTmClasses from '.././classes';
 import { useMemo, useLayoutEffect, memo } from '@wordpress/element';
-import { InnerBlocks } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
 
 const ALLOWED_BLOCKS = [ 'uagb/content-timeline-child' ];
@@ -33,16 +33,20 @@ const Render = ( props ) => {
 		return childTimeline;
 	}, [ timelineItem, tm_content ] );
 
+	const blockProps = useBlockProps( {
+		className: classnames(
+			className,
+			'uagb-timeline__outer-wrap',
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+			`uagb-block-${ block_id }`,
+			'uagb-timeline__content-wrap',
+			...ContentTmClasses( attributes, deviceType )
+		),
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				className,
-				'uagb-timeline__outer-wrap',
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ block_id }`,
-				'uagb-timeline__content-wrap',
-				...ContentTmClasses( attributes, deviceType )
-			) }
+			{ ...blockProps }
 		>
 			<InnerBlocks
 				template={ getContentTimelineTemplate }

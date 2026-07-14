@@ -6,6 +6,7 @@
 import styling from './styling';
 import { useEffect, useMemo } from '@wordpress/element';
 import scrollBlockToView from '@Controls/scrollBlockToView';
+import { useBlockProps } from '@wordpress/block-editor';
 import Settings from './settings';
 import Render from './render';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
@@ -25,12 +26,14 @@ const UAGBIconListChild = ( props ) => {
 		scrollBlockToView();
 	}, [ deviceType ] );
 
+	const blockProps = useBlockProps();
+
 	return (
-		<>
+		<div { ...blockProps }>
 			<DynamicCSSLoader { ...{ blockStyling } } />
 			{ isSelected && <Settings { ...props } hideLabel={ hideLabel } /> }
 			<Render { ...props } />
-		</>
+		</div>
 	);
 };
 

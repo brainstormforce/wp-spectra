@@ -19,6 +19,7 @@ let infoBoxCommonData = {};
 infoBoxCommonData = applyFilters( 'uagb/info-box', addCommonDataToSpectraBlocks( infoBoxCommonData ) );
 registerBlockType( 'uagb/info-box', {
 	...infoBoxCommonData,
+	apiVersion: 3,
 	title: __( 'Info Box', 'ultimate-addons-for-gutenberg' ),
 	description: __(
 		'Add image/icon, separator and text description using a single block.',

@@ -20,6 +20,7 @@ let headingCommonData = {};
 headingCommonData = applyFilters( 'uagb/advanced-heading', addCommonDataToSpectraBlocks( headingCommonData ) );
 registerBlockType( 'uagb/advanced-heading', {
 	...headingCommonData,
+	apiVersion: 3,
 	title: __( 'Heading', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add heading, sub heading and a separator using one block.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.advanced_heading,

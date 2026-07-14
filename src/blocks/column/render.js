@@ -3,7 +3,7 @@
  */
 
 import classnames from 'classnames';
-import { InnerBlocks } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import { useLayoutEffect, memo } from '@wordpress/element';
 
 import styles from './editor.lazy.scss';
@@ -30,19 +30,23 @@ const Render = ( props ) => {
 	const alignClassMobile = '' === alignMobile ? '' : `uagb-column__align-mobile-${ alignMobile }`;
 	const alignClassTablet = '' === alignTablet ? '' : `uagb-column__align-tablet-${ alignTablet }`;
 
+	const blockProps = useBlockProps( {
+		className: classnames(
+			className,
+			'uagb-column__wrap',
+			`uagb-column__background-${ backgroundType }`,
+			`uagb-column__edit-${ active }`,
+			alignClass,
+			alignClassMobile,
+			alignClassTablet,
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+			`uagb-block-${ block_id }`
+		),
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				className,
-				'uagb-column__wrap',
-				`uagb-column__background-${ backgroundType }`,
-				`uagb-column__edit-${ active }`,
-				alignClass,
-				alignClassMobile,
-				alignClassTablet,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ block_id }`
-			) }
+			{ ...blockProps }
 		>
 			<div className="uagb-column__overlay"></div>
 			<InnerBlocks templateLock={ false } />

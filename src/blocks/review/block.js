@@ -16,6 +16,7 @@ let reviewCommonData = {};
 reviewCommonData = applyFilters( 'uagb/review', addCommonDataToSpectraBlocks( reviewCommonData ) );
 registerBlockType( 'uagb/review', {
 	...reviewCommonData,
+	apiVersion: 3,
 	title: __( 'Review', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add reviews to items with Schema support.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.review,

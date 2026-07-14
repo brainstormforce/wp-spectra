@@ -6,10 +6,10 @@
 import classnames from 'classnames';
 import Stars from './star';
 
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 export default function save( props ) {
-	const { attributes, className } = props;
+	const { attributes } = props;
 
 	const {
 		enableSchema,
@@ -84,9 +84,13 @@ export default function save( props ) {
 		target = '_blank';
 	}
 
+	const blockProps = useBlockProps.save( {
+		className: classnames( 'uagb-ratings__outer-wrap', `uagb-block-${ block_id }` ),
+	} );
+
 	return (
 		<div
-			className={ classnames( className, 'uagb-ratings__outer-wrap', `uagb-block-${ block_id }` ) }
+			{ ...blockProps }
 		>
 			{ enableSchema && <script type="application/ld+json">{ schema }</script> }
 			<div className="uagb_review_block">

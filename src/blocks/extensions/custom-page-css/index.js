@@ -3,8 +3,17 @@ import { useRef, useEffect, useState, useLayoutEffect } from '@wordpress/element
 import { __ } from '@wordpress/i18n';
 import editorStyles from './editor.lazy.scss';
 
+const getEditorDocument = () => {
+	const editorIframe = document.querySelector( 'iframe[name="editor-canvas"]' );
+	return editorIframe?.contentDocument || document;
+};
+
 export const applyScopedCSS = ( customCSS ) => {
 	if ( 'string' !== typeof customCSS ) {
+        return;
+    }
+    const editorDoc = getEditorDocument();
+    if ( ! editorDoc?.head ) {
         return;
     }
 	// This makes sure CSS only gets applied to blocks and not the editor elements.
@@ -13,14 +22,13 @@ export const applyScopedCSS = ( customCSS ) => {
         .split( '}' )
         .map( rule => rule.trim() ? `.block-editor-block-list__layout ${rule}}` : '' )
         .join( ' ' );
+    const isExistStyle = editorDoc.getElementById( 'uagb-blocks-editor-custom-css' );
 
-    const isExistStyle = document.getElementById( 'uagb-blocks-editor-custom-css' );
-    
     if ( !isExistStyle ) {
-        const node = document.createElement( 'style' );
+        const node = editorDoc.createElement( 'style' );
         node.setAttribute( 'id', 'uagb-blocks-editor-custom-css' );
         node.textContent = scopedCSS;
-        document.head.appendChild( node );
+        editorDoc.head.appendChild( node );
     } else {
         isExistStyle.textContent = scopedCSS;
     }

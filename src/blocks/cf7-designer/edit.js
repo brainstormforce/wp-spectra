@@ -9,7 +9,7 @@ import Render from './render';
 
 import getApiData from '@Controls/getApiData';
 
-import { compose } from '@wordpress/compose';
+import { compose, useRefEffect } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 import addInitialAttr from '@Controls/addInitialAttr';
 import { useSelect } from '@wordpress/data';
@@ -268,13 +268,18 @@ const UAGBCF7 = ( props ) => {
 		}
 	}, [] );
 
-	useEffect( () => {
-		const submitButton = document.querySelector( '.wpcf7-submit' );
+	const cf7Ref = useRefEffect( ( element ) => {
+		const { ownerDocument } = element;
+		const submitButton = ownerDocument.querySelector( '.wpcf7-submit' );
+		const preventClick = ( event ) => event.preventDefault();
 		if ( submitButton !== null ) {
-			submitButton.addEventListener( 'click', function ( event ) {
-				event.preventDefault();
-			} );
+			submitButton.addEventListener( 'click', preventClick );
 		}
+		return () => {
+			if ( submitButton !== null ) {
+				submitButton.removeEventListener( 'click', preventClick );
+			}
+		};
 	}, [ props ] );
 
 
@@ -293,7 +298,7 @@ const UAGBCF7 = ( props ) => {
 			<DynamicCSSLoader { ...{ blockStyling } } />
 			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings { ...props } /> }
-			<Render { ...props } />
+			<Render { ...props } blockRef={ cf7Ref } />
 		</>
 	);
 };

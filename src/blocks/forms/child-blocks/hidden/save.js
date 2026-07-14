@@ -3,13 +3,19 @@
  */
 
 import classnames from 'classnames';
+import { useBlockProps } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { attributes } = props;
 
 	const { block_id, hidden_field_value, hidden_field_name } = attributes;
+
+	const blockProps = useBlockProps.save( {
+		className: classnames( 'uagb-forms-hidden-wrap', `uagb-block-${ block_id }` ),
+	} );
+
 	return (
-		<div className={ classnames( 'uagb-forms-hidden-wrap', `uagb-block-${ block_id }` ) }>
+		<div { ...blockProps }>
 			<input
 				type="hidden"
 				id="hidden"

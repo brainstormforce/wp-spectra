@@ -10,6 +10,7 @@ import {
 	BlockIcon,
 	MediaPlaceholder,
 	__experimentalImageURLInputUI as ImageURLInputUI,
+	useBlockProps,
 } from '@wordpress/block-editor';
 import { store as coreStore } from '@wordpress/core-data';
 import { __ } from '@wordpress/i18n';
@@ -41,7 +42,7 @@ const defaultProps = {};
 const Render = ( props ) => {
 
 	let { attributes } = props;
-	const { setAttributes, className, isSelected, insertBlocksAfter, onReplace, context, clientId, deviceType } = props;
+	const { setAttributes, isSelected, insertBlocksAfter, onReplace, context, clientId, deviceType } = props;
 
 	if ( props?.loopUrl ) {
 		attributes = { ...attributes, url: props.loopUrl };
@@ -427,10 +428,10 @@ const Render = ( props ) => {
 		);
 	};
 
-	const blockProps = {
+	const blockProps = useBlockProps( {
 		ref,
-		className: `${className} uagb-editor-preview-mode-${deviceType.toLowerCase()} uagb-block-${block_id} wp-block-uagb-image--layout-${layout} wp-block-uagb-image--effect-${imageHoverEffect} wp-block-uagb-image--align-${align ? align : 'none'}`,
-	};
+		className: `uagb-editor-preview-mode-${deviceType.toLowerCase()} uagb-block-${block_id} wp-block-uagb-image--layout-${layout} wp-block-uagb-image--effect-${imageHoverEffect} wp-block-uagb-image--align-${align ? align : 'none'}`,
+	} );
 
 	if ( !( temporaryURL || url ) ) {
 		return (

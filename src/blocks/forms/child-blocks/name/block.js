@@ -13,11 +13,13 @@ import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
 import Version from './deprecated/';
 import Version2_7_2 from './2_7_2';
+import preApiVersion3Save from './save-v1';
 
 let nameCommonData = {};
 nameCommonData = applyFilters( 'uagb/forms-name', addCommonDataToSpectraBlocks( nameCommonData ) );
 registerBlockType( 'uagb/forms-name', {
 	...nameCommonData,
+	apiVersion: 3,
 	title: __( 'Name', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add a name field in your form.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.name,
@@ -31,5 +33,5 @@ registerBlockType( 'uagb/forms-name', {
 		html: false,
 	},
 	save,
-	deprecated : [ Version2_7_2, Version ],
+	deprecated : [ { attributes, save: preApiVersion3Save }, Version2_7_2, Version ],
 } );

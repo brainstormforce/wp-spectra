@@ -12,6 +12,32 @@ const deprecated = [
 	{
 		attributes,
 		save( props ) {
+			const { rating, block_id, title, range, displayTitle } = props.attributes;
+
+			const rangeValue = parseInt( range );
+			const stars = [];
+			for ( let i = 1; i <= rangeValue; i++ ) {
+				stars.push(
+					<span key={ i } className="uag-star">
+						★
+					</span>
+				);
+			}
+			return (
+				<div className={ classnames( props.className, `uagb-block-${ block_id }` ) }>
+					{ displayTitle && title && (
+						<RichText.Content tagName="p" value={ title } className="uag-star-rating__title" />
+					) }
+					<div className="uag-star-rating" title={ `${ rating }/${ range }` }>
+						{ stars }
+					</div>
+				</div>
+			);
+		},
+	},
+	{
+		attributes,
+		save( props ) {
 			const { block_id, layout, title, rating, range } = props.attributes;
 			const rangeValue = parseInt( range );
 			const stars = [];

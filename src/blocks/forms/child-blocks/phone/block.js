@@ -14,11 +14,13 @@ import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks
 import Version from './deprecated/';
 import Version2_7_2 from './2_7_2';
 import Version_2_13_2 from './2_13_2/index';
+import preApiVersion3Save from './save-v1';
 
 let phoneCommonData = {};
 phoneCommonData = applyFilters( 'uagb/forms-phone', addCommonDataToSpectraBlocks( phoneCommonData ) );
 registerBlockType( 'uagb/forms-phone', {
 	...phoneCommonData,
+	apiVersion: 3,
 	title: __( 'Phone', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add a phone number field in your form.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.phone,
@@ -32,5 +34,5 @@ registerBlockType( 'uagb/forms-phone', {
 		html: false,
 	},
 	save,
-	deprecated : [ Version2_7_2, Version, Version_2_13_2 ],
+	deprecated : [ { attributes, save: preApiVersion3Save }, Version2_7_2, Version, Version_2_13_2 ],
 } );

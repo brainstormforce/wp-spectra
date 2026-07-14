@@ -4,7 +4,7 @@
 
 import classnames from 'classnames';
 
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const {
@@ -54,8 +54,12 @@ export default function save( props ) {
 		);
 	}
 
+	const blockProps = useBlockProps.save( {
+		className: classnames( `uagb-block-${ block_id }` ),
+	} );
+
 	return (
-		<Element className={ classnames( props.className, `uagb-block-${ block_id }` ) }>
+		<Element { ...blockProps }>
 			{ headingDescToggle && 'above-heading' === headingDescPosition ? descText : '' }
 			{ headingTitleToggle && headingText }
 			{ headingDescToggle && 'below-heading' === headingDescPosition ? descText : '' }

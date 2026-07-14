@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from '@wordpress/element';
 /* Main Component */
 import '@Common/all-config.scss';
 import SettingsWrap from '@DashboardApp/SettingsWrap';
@@ -14,9 +14,11 @@ if ( ! currentState.initialStateSetFlag ) {
 	setInitialState( globalDataStore );
 }
 
-ReactDOM.render(
-	<Provider store={globalDataStore}>
-		<SettingsWrap/>
-	</Provider>,
-	document.getElementById( 'uag-dashboard-app' )
-);
+const rootElement = document.getElementById( 'uag-dashboard-app' );
+if ( rootElement ) {
+	createRoot( rootElement ).render(
+		<Provider store={globalDataStore}>
+			<SettingsWrap/>
+		</Provider>
+	);
+}

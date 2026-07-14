@@ -3,7 +3,7 @@ import styles from './editor.lazy.scss';
 import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
 import { useLayoutEffect, memo } from '@wordpress/element';
-import { InnerBlocks, RichText } from '@wordpress/block-editor';
+import { InnerBlocks, RichText, useBlockProps } from '@wordpress/block-editor';
 import { Tooltip, Dashicon } from '@wordpress/components';
 import { createBlock } from '@wordpress/blocks';
 import { select, dispatch } from '@wordpress/data';
@@ -112,17 +112,21 @@ const Render = ( props ) => {
 		childBlocks.forEach( ( childBlockId ) => updateBlockAttributes( childBlockId, attrs ) );
 	};
 
+	const blockProps = useBlockProps( {
+		className: classnames(
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+			`uagb-block-${ clientId.substr( 0, 8 ) }`,
+			'uagb-tabs__wrap',
+			`uagb-tabs__${ tabsStyleD }-desktop`,
+			`uagb-tabs__${ tabsStyleT }-tablet`,
+			`uagb-tabs__${ tabsStyleM }-mobile`
+		),
+	} );
+
 	return (
 		<>
 			<div
-				className={ classnames(
-					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-					`uagb-block-${ clientId.substr( 0, 8 ) }`,
-					'uagb-tabs__wrap',
-					`uagb-tabs__${ tabsStyleD }-desktop`,
-					`uagb-tabs__${ tabsStyleT }-tablet`,
-					`uagb-tabs__${ tabsStyleM }-mobile`
-				) }
+				{ ...blockProps }
 			>
 				<ul className={ `uagb-tabs__panel uagb-tabs__align-${ tabAlign }` }>
 					{ tabHeaders.map( ( header, index ) => (

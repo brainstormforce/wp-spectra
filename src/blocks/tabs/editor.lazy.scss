@@ -43,12 +43,19 @@
 
 	li.uagb-tab.uagb-tabs__add-tab {
 		cursor: pointer;
-		display: block;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 6px 12px;
+		box-sizing: border-box;
+		min-height: 39.852px;
 
-		> span {
+		> .dashicons {
 			width: auto;
-			height: 39.852px;
-			padding: 6px 12px;
+			height: auto;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 	}
 
@@ -64,13 +71,15 @@
 	}
 
 	.uagb-tab.uagb-tabs__add-tab {
-		> span {
+		> .dashicons {
 			width: auto;
-			height: 39.852px;
-			padding: 6px 12px;
+			height: auto;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 
-		.dashicon::before {
+		.dashicons::before {
 			vertical-align: middle;
 		}
 	}

@@ -51,6 +51,7 @@ contentTimelineCommonData = applyFilters(
 );
 registerBlockType( 'uagb/content-timeline', {
 	...contentTimelineCommonData,
+	apiVersion: 3,
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
 	title: __( 'Content Timeline', 'ultimate-addons-for-gutenberg' ), // Block title.
 	description: __( 'Create a timeline displaying contents of your site.', 'ultimate-addons-for-gutenberg' ), // Block description.

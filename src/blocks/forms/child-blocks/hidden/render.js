@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import { memo } from '@wordpress/element';
+import { useBlockProps } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
 
@@ -14,9 +15,13 @@ const Render = ( props ) => {
 		setAttributes( { hidden_field_name: value.target.value } );
 	};
 
+	const blockProps = useBlockProps( {
+		className: classnames( 'uagb-forms-hidden-wrap', `uagb-block-${ block_id }` ),
+	} );
+
 	return (
 		<>
-			<div className={ classnames( 'uagb-forms-hidden-wrap', `uagb-block-${ block_id }` ) }>
+			<div { ...blockProps }>
 				{ /* Edit View */ }
 				{ isSelected && (
 					<input

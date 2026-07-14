@@ -17,6 +17,7 @@ let starRatingCommonData = {};
 starRatingCommonData = applyFilters( 'uagb/star-rating', addCommonDataToSpectraBlocks( starRatingCommonData ) );
 registerBlockType( 'uagb/star-rating', {
 	...starRatingCommonData,
+	apiVersion: 3,
 	title: __( 'Star Ratings', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Display customizable star ratings on your page.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.star_rating,

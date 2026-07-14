@@ -13,10 +13,12 @@ import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
 import Version from './deprecated/';
 import Version2_7_2 from './2_7_2';
+import preApiVersion3Save from './save-v1';
 let selectCommonData = {};
 selectCommonData = applyFilters( 'uagb/forms-select', addCommonDataToSpectraBlocks( selectCommonData ) );
 registerBlockType( 'uagb/forms-select', {
 	...selectCommonData,
+	apiVersion: 3,
 	title: __( 'Select', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add a select dropdown to list choices.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.select,
@@ -29,5 +31,5 @@ registerBlockType( 'uagb/forms-select', {
 	edit: ( props ) =>
 		props.attributes.isPreview ? <PreviewImage image="form-field" isChildren={ true } /> : <Edit { ...props } />,
 	save,
-	deprecated : [ Version2_7_2, Version ],
+	deprecated : [ { attributes, save: preApiVersion3Save }, Version2_7_2, Version ],
 } );

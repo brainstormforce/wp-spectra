@@ -307,10 +307,10 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
                                 </div>
                                 </div><br />',
 							$image_path,
-							__( 'Spectra database update required', 'ultimate-addons-for-gutenberg' ),
-							__( "We've detected that some of your pages were created with an older version of Spectra. To ensure your designs remain unaffected, we recommend updating the Spectra database now. Updating the Spectra database will not impact any other parts of your website.", 'ultimate-addons-for-gutenberg' ),
+							__( 'Spectra Legacy database update required', 'ultimate-addons-for-gutenberg' ),
+							__( "We've detected that some of your pages were created with an older version of Spectra Legacy. To ensure your designs remain unaffected, we recommend updating the Spectra Legacy database now. Updating the Spectra Legacy database will not impact any other parts of your website.", 'ultimate-addons-for-gutenberg' ),
 							__( 'To be on the safer side, please be sure to back up your site before updating.', 'ultimate-addons-for-gutenberg' ),
-							__( 'Update Spectra Database', 'ultimate-addons-for-gutenberg' ),
+							__( 'Update Spectra Legacy Database', 'ultimate-addons-for-gutenberg' ),
 							esc_url( 'https://wpspectra.com/docs/spectra-database-update-instructions/' ),
 							__( 'Learn More About This', 'ultimate-addons-for-gutenberg' )
 						),
@@ -337,7 +337,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
                                     </div>
                                 </div><br />',
 							$image_path,
-							__( 'Spectra database update in progress', 'ultimate-addons-for-gutenberg' ),
+							__( 'Spectra Legacy database update in progress', 'ultimate-addons-for-gutenberg' ),
 							__( 'Great! This should only take a few minutes. Thanks for hanging in there.', 'ultimate-addons-for-gutenberg' )
 						),
 						'dismissible'                => false,
@@ -364,7 +364,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 							</div><br />',
 							$image_path,
 							__( 'Update Successful!', 'ultimate-addons-for-gutenberg' ),
-							__( 'Your Spectra database is now up-to-date. Your website will continue to function as before.', 'ultimate-addons-for-gutenberg' ) . ' <a href="' . esc_url( admin_url( 'admin-post.php?action=uag_download_log' ) ) . '">' . __( 'View Log', 'ultimate-addons-for-gutenberg' ) . '</a>'
+							__( 'Your Spectra Legacy database is now up-to-date. Your website will continue to function as before.', 'ultimate-addons-for-gutenberg' ) . ' <a href="' . esc_url( admin_url( 'admin-post.php?action=uag_download_log' ) ) . '">' . __( 'View Log', 'ultimate-addons-for-gutenberg' ) . '</a>'
 						),
 						'dismissible'                => true,
 						'priority'                   => 20,
@@ -383,7 +383,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 							'type'                       => 'warning',
 							'message'                    => sprintf(
 								/* translators: %s: html tags */
-								__( 'Spectra requires&nbsp;%3$sBlock Editor%4$s. You can change your editor settings to Block Editor from&nbsp;%1$shere%2$s. Plugin is currently NOT RUNNING.', 'ultimate-addons-for-gutenberg' ),
+								__( 'Spectra Legacy requires&nbsp;%3$sBlock Editor%4$s. You can change your editor settings to Block Editor from&nbsp;%1$shere%2$s. Plugin is currently NOT RUNNING.', 'ultimate-addons-for-gutenberg' ),
 								'<a href="' . admin_url( 'options-writing.php' ) . '">',
 								'</a>',
 								'<strong>',
@@ -429,7 +429,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 								</div>',
 							$image_path,
 							__( 'Want to do more with Popup Builder?', 'ultimate-addons-for-gutenberg' ),
-							__( 'Maximize your popup potential with Spectra Pro. Unlock enhanced features, intuitive design options, and increased conversions!', 'ultimate-addons-for-gutenberg' ),
+							__( 'Maximize your popup potential with Spectra Pro Legacy. Unlock enhanced features, intuitive design options, and increased conversions!', 'ultimate-addons-for-gutenberg' ),
 							esc_url( \UAGB_Admin_Helper::get_spectra_pro_url( '/pricing/', 'free-plugin', 'popup-builder', 'popup-builder-banner' ) ),
 							__( 'Upgrade Now', 'ultimate-addons-for-gutenberg' )
 						),

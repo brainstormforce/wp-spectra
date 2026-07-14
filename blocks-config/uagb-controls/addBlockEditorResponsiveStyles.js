@@ -1,6 +1,13 @@
+const getEditorDocument = () => {
+	const editorIframe = document.querySelector( 'iframe[name="editor-canvas"]' );
+	return editorIframe?.contentDocument || document;
+};
+
 const addBlockEditorResponsiveStyles = ( clientId, styling, deviceTypeClass ) => {
+	const currentDocument = getEditorDocument();
+
 	// Desktop.
-	const findResponsiveElement = document.getElementById( `block-${ clientId }` );
+	const findResponsiveElement = currentDocument.getElementById( `block-${ clientId }` );
 
 	if ( null !== findResponsiveElement && undefined !== findResponsiveElement ) {
 		findResponsiveElement.classList.remove( 'uag-hide-desktop' ); // To remove uag-hide-desktop when toggle click.

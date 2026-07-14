@@ -30,14 +30,14 @@ export const sections = [
 			},
 			{
 				id: 5,
-				content: __( 'Dynamic image support (for Spectra core blocks only)', 'ultimate-addons-for-gutenberg' ),
+				content: __( 'Dynamic image support (for Spectra Legacy core blocks only)', 'ultimate-addons-for-gutenberg' ),
 				iconFree: false,
 				iconPro: true,
 			},
 			{
 				id: 6,
 				content: __(
-					'Text & link field dynamic content support (for Spectra core blocks only)',
+					'Text & link field dynamic content support (for Spectra Legacy core blocks only)',
 					'ultimate-addons-for-gutenberg'
 				),
 				iconFree: false,
@@ -136,7 +136,7 @@ export const sections = [
 			{
 				id: 1,
 				content: __(
-					'Uniform styling across your entire site with Spectra core blocks',
+					'Uniform styling across your entire site with Spectra Legacy core blocks',
 					'ultimate-addons-for-gutenberg'
 				),
 				iconFree: false,
@@ -437,7 +437,7 @@ export const sections = [
 			},
 			{
 				id: 2,
-				content: __( 'Drag-and-drop design with Spectra blocks', 'ultimate-addons-for-gutenberg' ),
+				content: __( 'Drag-and-drop design with Spectra Legacy blocks', 'ultimate-addons-for-gutenberg' ),
 				iconFree: false,
 				iconPro: true,
 			},

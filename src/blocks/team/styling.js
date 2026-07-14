@@ -355,7 +355,7 @@ function styling( attributes, clientId, name, deviceType ) {
 	};
 
 	let stylingCss = '';
-	const id = `#block-${ clientId } .uagb-block-${ block_id }`;
+	const id = `.editor-styles-wrapper .uagb-block-${ block_id }`;
 
 	stylingCss = generateCSS( selectors, id );
 

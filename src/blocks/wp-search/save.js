@@ -5,7 +5,7 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { block_id, layout, placeholder, buttonType, buttonText } = props.attributes;
@@ -75,13 +75,17 @@ export default function save( props ) {
 		return '';
 	};
 
+	const blockProps = useBlockProps.save( {
+		className: classnames(
+			'uagb-wp-search__outer-wrap',
+			`uagb-block-${ block_id }`,
+			`uagb-layout-${ layout }`
+		),
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				'uagb-wp-search__outer-wrap',
-				`uagb-block-${ block_id }`,
-				`uagb-layout-${ layout }`
-			) }
+			{ ...blockProps }
 		>
 			{ renderClassic() }
 			{ renderMinimal() }

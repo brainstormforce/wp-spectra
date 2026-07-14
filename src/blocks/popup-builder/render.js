@@ -65,6 +65,7 @@ const Render = ( props ) => {
 		'uagb/popup-builder',
 	];
 
+	const { blockRef } = props;
 	const blockProps = useBlockProps( {
 		className: uagbClassNames( [
 			className,
@@ -72,6 +73,7 @@ const Render = ( props ) => {
 			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
 			'uagb-popup-builder',
 		] ),
+		ref: blockRef,
 	} );
 
 	const ariaLabel = ( 'popup' === variantType ) ?  __( 'Close Popup', 'ultimate-addons-for-gutenberg' ) : __( 'Close Info Bar', 'ultimate-addons-for-gutenberg' );

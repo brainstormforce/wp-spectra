@@ -42,7 +42,7 @@ const UAGBRestaurantMenu = ( props ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( pricelistChild ) => {
-			pricelistChild.attributes.imageAlignment = imageAlignment;
+			dispatch( 'core/block-editor' ).updateBlockAttributes( pricelistChild.clientId, { imageAlignment } );
 		} );
 	}, [] );
 

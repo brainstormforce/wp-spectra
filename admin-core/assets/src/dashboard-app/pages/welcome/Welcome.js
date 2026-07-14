@@ -9,7 +9,6 @@ import VideoTutorials from '@Common/components/VideoTutorials';
 import HeroSection from './HeroSection/HeroSection';
 import Blocks from './Blocks/Blocks';
 import ProFeatures from './ProFeatures/ProFeatures';
-import BetaUpdateNotice from './BetaUpdateNotice/BetaUpdateNotice';
 
 const Welcome = () => {
 	return (
@@ -17,8 +16,6 @@ const Welcome = () => {
 			<Container className="md:p-8 sm:p-6 p-[0.7rem]" cols={ 12 } containerType="grid" gap="2xl">
 				<Container.Item className="flex flex-col gap-8" colSpan={ { lg: 8, md: 12, sm: 12 } }>
 					<HeroSection />
-
-					<BetaUpdateNotice />
 
 					{ 'Activated' === uag_react.pro_plugin_status && <ProFeatures /> }
 

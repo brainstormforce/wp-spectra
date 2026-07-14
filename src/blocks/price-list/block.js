@@ -52,6 +52,7 @@ let priceListCommonData = {};
 priceListCommonData = applyFilters( 'uagb/restaurant-menu', addCommonDataToSpectraBlocks( priceListCommonData ) );
 registerBlockType( 'uagb/restaurant-menu', {
 	...priceListCommonData,
+	apiVersion: 3,
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
 	title: __( 'Price List', 'ultimate-addons-for-gutenberg' ), // Block title.
 	description: __( 'Create an attractive price list for your products.', 'ultimate-addons-for-gutenberg' ), // Block description.

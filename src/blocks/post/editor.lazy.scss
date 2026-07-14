@@ -207,3 +207,9 @@
 .editor-styles-wrapper .uagb-post-grid.uagb-post__items.is-carousel {
 	visibility: visible;
 }
+
+.editor-styles-wrapper .uagb-slick-carousel ul.slick-dots {
+	transform: unset;
+	position: relative;
+	padding: unset;
+}

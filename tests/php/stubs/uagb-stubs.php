@@ -3105,44 +3105,6 @@ namespace {
         }
     }
     /**
-     * Class UAGB_Beta_Updates.
-     */
-    final class UAGB_Beta_Updates
-    {
-        /**
-         *  Initiator
-         */
-        public static function get_instance()
-        {
-        }
-        /**
-         * Constructor
-         *
-         * @since 1.23.0
-         */
-        public function __construct()
-        {
-        }
-        /**
-         * Check version.
-         *
-         * Checks whether a beta version exist, and retrieve the version data.
-         *
-         * Fired by `pre_set_site_transient_update_plugins` filter, before WordPress
-         * runs the plugin update checker.
-         *
-         * @since 1.23.0
-         * @access public
-         *
-         * @param object $transient Plugin version data.
-         *
-         * @return array Plugin version data.
-         */
-        public function check_version($transient)
-        {
-        }
-    }
-    /**
      * Class UAGB_Admin.
      */
     final class UAGB_Admin
@@ -5739,14 +5701,6 @@ namespace UagAdmin\Ajax {
          * @return void
          */
         public function blocks_activation_and_deactivation()
-        {
-        }
-        /**
-         * Save setting - Enables beta updates.
-         *
-         * @return void
-         */
-        public function enable_beta_updates()
         {
         }
         /**

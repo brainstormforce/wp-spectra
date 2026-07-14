@@ -18,6 +18,7 @@ let testimonialCommonData = {};
 testimonialCommonData = applyFilters( 'uagb/testimonial', addCommonDataToSpectraBlocks( testimonialCommonData ) );
 registerBlockType( 'uagb/testimonial', {
 	...testimonialCommonData,
+	apiVersion: 3,
 	title: __( 'Testimonials', 'ultimate-addons-for-gutenberg' ), // Block title.
 	description: __( 'Display customer testimonials in customizable layouts.', 'ultimate-addons-for-gutenberg' ), // Block description.
 	icon: UAGB_Block_Icons.testimonial, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.

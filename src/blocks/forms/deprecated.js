@@ -6,6 +6,7 @@ import saveV2_6_7 from './v2.6.7/save';
 import saveV2_7_10 from './v2.7.10/save';
 import newAttributesV2_12_2 from './v2.12.2/attributes';
 import saveV2_12_2 from './v2.12.2/save';
+import currentAttributes from './attributes';
 const inputBorderAttributes = getBorderAttributes( 'field' );
 const submitBorderAttributes = getBorderAttributes( 'btn' );
 const toggleBorderAttributes = getBorderAttributes( 'checkBoxToggle' );
@@ -433,6 +434,97 @@ const attributes = {
 };
 
 const deprecated = [
+	{
+		attributes: currentAttributes,
+		save( props ) {
+			const { attributes } = props;
+
+			const {
+				block_id,
+				formLabel,
+				submitButtonText,
+				confirmationType,
+				confirmationMessage,
+				failedMessage,
+				reCaptchaEnable,
+				reCaptchaType,
+				buttonSize,
+				variationSelected,
+				inheritFromTheme,
+				submitButtonType,
+			} = attributes;
+
+			const inheritAstraSecondary = inheritFromTheme && 'secondary' === submitButtonType;
+			const buttonTypeClass = inheritAstraSecondary ? 'ast-outline-button' : 'wp-block-button__link';
+			//border-width is added to revert the border related styles by default.
+			const borderStyle = inheritAstraSecondary ? { borderWidth: 'revert-layer' } : {};
+
+			const submitBtnClass = `uagb-forms-main-submit-button ${buttonTypeClass}`;
+
+			const renderButtonHtml = () => {
+				return (
+					<button className={ submitBtnClass } style={ borderStyle }>
+						<RichText.Content
+							tagName="div"
+							value={ submitButtonText.replace( /<(?!br\s*V?)[^>]+>/g, '' ) }
+							className="uagb-forms-main-submit-button-text"
+						/>
+					</button>
+				);
+			};
+
+			if ( ! variationSelected ) { // If no preset selected then return.
+				return;
+			}
+			return (
+				<div
+					className={ classnames(
+						'uagb-forms__outer-wrap',
+						`uagb-block-${ block_id }`,
+						`uagb-forms__${ buttonSize }-btn`
+					) }
+				>
+					<form className="uagb-forms-main-form" method="post" autoComplete="on" name={ `uagb-form-${ block_id }` }>
+						<InnerBlocks.Content />
+						<div className="uagb-forms-form-hidden-data">
+							{ reCaptchaEnable && (
+								<input type="hidden" id="g-recaptcha-response" className="uagb-forms-recaptcha" />
+							) }
+							<input type="hidden" className="uagb_forms_form_label" value={ formLabel } />
+							<input type="hidden" className="uagb_forms_form_id" value={ `uagb-form-${ block_id }` } />
+						</div>
+						{ reCaptchaEnable && 'v2' === reCaptchaType && (
+							<>
+								<div className="g-recaptcha uagb-forms-field-set" data-sitekey=""></div>
+							</>
+						) }
+						<div className={ `uagb-form-reacaptcha-error-${ block_id }` }></div>
+						<div className="uagb-forms-main-submit-button-wrap wp-block-button">{ renderButtonHtml() }</div>
+					</form>
+					{ confirmationType && (
+						<>
+							<div
+								className={ classnames(
+									`uagb-forms-success-message-${ block_id }`,
+									'uagb-forms-submit-message-hide'
+								) }
+							>
+								<span>{ confirmationMessage }</span>
+							</div>
+							<div
+								className={ classnames(
+									`uagb-forms-failed-message-${ block_id }`,
+									'uagb-forms-submit-message-hide'
+								) }
+							>
+								<span>{ failedMessage }</span>
+							</div>
+						</>
+					) }
+				</div>
+			);
+		},
+	},
 	{
 		attributes,
 		save( props ) {

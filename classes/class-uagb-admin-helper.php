@@ -57,7 +57,6 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 			$content_width = self::get_global_content_width();
 
 			$options = array(
-				'uagb_beta'                         => self::get_admin_settings_option( 'uagb_beta', 'no' ),
 				'uag_enable_legacy_blocks'          => self::get_admin_settings_option( 'uag_enable_legacy_blocks' ),
 				'_uagb_allow_file_generation'       => self::get_admin_settings_option( '_uagb_allow_file_generation', 'enabled' ),
 				'uag_enable_templates_button'       => self::get_admin_settings_option( 'uag_enable_templates_button', 'yes' ),
@@ -603,19 +602,27 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 				}
 			}
 
-			// Detect IP address country if Cloudflare header is not available.
-			$tokens = array(
-				'c1578516a7378c', // rohitp@bsf.io.
-				'abeeb8e41600b5', // lawaca8819@cashbn.com.
-				'0f5ba880c5ee80', // tern0@mailshan.com.
-			);
+			/**
+			 * Token lookup for the ipinfo.io fallback.
+			 *
+			 * Tokens are no longer hardcoded in source. Site owners can supply one via the
+			 * `uagb_ipinfo_token` WP option or the matching filter; with no token configured,
+			 * the outbound request is skipped entirely and the default currency code is returned.
+			 *
+			 * @since 2.19.28
+			 */
+			$token = apply_filters( 'uagb_ipinfo_token', get_option( 'uagb_ipinfo_token', '' ) );
+
+			// Filters are typed `mixed` — narrow defensively. A non-string value (e.g. a hostile mu-plugin
+			// returning an array) skips the outbound request entirely.
+			if ( ! is_string( $token ) || '' === $token ) {
+				return $default_currency_code;
+			}
 
 			$user_ip = static::get_user_ip();
 			if ( ! empty( $user_ip ) ) {
 
-				$token = $tokens[ array_rand( $tokens ) ];
-				$url   = "https://ipinfo.io/{$user_ip}?token={$token}";
-
+				$url     = 'https://ipinfo.io/' . rawurlencode( $user_ip ) . '?token=' . rawurlencode( $token );
 				$request = wp_remote_get( $url );
 				if ( ! is_wp_error( $request ) && wp_remote_retrieve_response_code( $request ) === 200 ) {
 					$response = json_decode( wp_remote_retrieve_body( $request ), true );

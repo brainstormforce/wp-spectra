@@ -7,7 +7,6 @@ const initialState = {
 	blocksStatuses : [],
 	enableFileGeneration : '',
 	enableTemplates : '',
-	enableBeta : '',
 	enableSelectedFontFamilies : '',
 	selectedFontFamilies : '',
 	enableFSEFontFamilies : '',

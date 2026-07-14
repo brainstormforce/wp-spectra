@@ -32,6 +32,7 @@ import newAttributesV2_13_1 from './deprecated/v2_13_1/attributes';
 import newSaveV2_13_1 from './deprecated/v2_13_1/save';
 import newAttributesV2_13_3 from './deprecated/v2_13_3/attributes';
 import newSaveV2_13_3 from './deprecated/v2_13_3/save'
+import newSaveV2_19_29 from './deprecated/v2_19_29/save';
 import InfoBoxIconImageNewVer from './components/DeprecatedIconImagesV_2_0_13';
 import AttributesNewVer from './attributes';
 import InfoBoxSeparatorNewVer from './components/Separator';
@@ -528,6 +529,19 @@ const attributes = {
 };
 
 const deprecated = [
+	// v2.19.27 - v2.19.29 — block was apiVersion 3 but save() did not call
+	// useBlockProps.save(), so the saved markup is missing the generated
+	// `wp-block-uagb-info-box` class, custom className, anchor id and
+	// `uag-hide-*` classes. `apiVersion: 3` is required on this entry so the
+	// legacy extraProps injection stays disabled and the output matches.
+	{
+		apiVersion: 3,
+		attributes: AttributesNewVer,
+		supports: {
+			anchor: true,
+		},
+		save: newSaveV2_19_29,
+	},
 	{
 		attributes,
 		save( props ) {

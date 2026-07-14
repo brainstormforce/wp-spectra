@@ -19,6 +19,7 @@ sectionCommonData = applyFilters( 'uagb/section', addCommonDataToSpectraBlocks( 
 if ( 'yes' === uagb_blocks_info.enable_legacy_blocks ) {
 	registerBlockType( 'uagb/section', {
 		...sectionCommonData,
+		apiVersion: 3,
 		title: __( 'Advanced Row', 'ultimate-addons-for-gutenberg' ),
 		description: __(
 			'Outer wrap section that allows you to add other blocks within it.',
@@ -38,14 +39,6 @@ if ( 'yes' === uagb_blocks_info.enable_legacy_blocks ) {
 		category: uagb_blocks_info.category,
 		edit: ( props ) =>
 			props.attributes.isPreview ? <PreviewImage image="advanced-row" /> : <Edit { ...props } />,
-		getEditWrapperProps( attribute ) {
-			const { align, contentWidth } = attribute;
-			if ( 'left' === align || 'right' === align || 'wide' === align || 'full' === align ) {
-				if ( 'full_width' === contentWidth ) {
-					return { 'data-align': align };
-				}
-			}
-		},
 		save,
 		deprecated,
 	} );

@@ -10,7 +10,7 @@ import { InnerBlockLayoutContextProvider, renderPostLayout } from '.././function
 function Blog( props ) {
 	const blockName = props.name.replace( 'uagb/', '' );
 	const article = useRef();
-	const { attributes, className, latestPosts, block_id, setAttributes } = props;
+	const { attributes, className, latestPosts, block_id, setAttributes, blockProps } = props;
 	const deviceType = useDeviceType();
 	const {
 		columns,
@@ -102,7 +102,9 @@ function Blog( props ) {
 
 	return (
 		<div
+			{ ...blockProps }
 			className={ classnames(
+				blockProps?.className,
 				className,
 				'uagb-post-grid',
 				'uagb-post__arrow-outside',

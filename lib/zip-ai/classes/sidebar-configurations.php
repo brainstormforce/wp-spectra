@@ -185,7 +185,7 @@ class Sidebar_Configurations {
 
 		// If the nessage array doesn't exist, abandon ship.
 		if ( empty( $params['message_array'] ) || ! is_array( $params['message_array'] ) ) {
-			wp_send_json_error( array( 'message' => __( 'The message array was not supplied' ) ) );
+			wp_send_json_error( array( 'message' => __( 'The message array was not supplied', 'ultimate-addons-for-gutenberg' ) ) );
 		}
 
 		// Set the character count to 0, and create messages array.
@@ -267,7 +267,7 @@ class Sidebar_Configurations {
 			// If you've reached here, then something has definitely gone amuck. Abandon ship.
 			wp_send_json_error(
 				array(
-					'message' => __( 'Something went wrong' ),
+					'message' => __( 'Something went wrong', 'ultimate-addons-for-gutenberg' ),
 					'code'    => $response['code'],
 				)
 			);
@@ -284,13 +284,13 @@ class Sidebar_Configurations {
 	 */
 	private function custom_message( $code ) {
 		$message_array = array(
-			'no_auth'              => __( 'Authentication failed. Invalid or missing bearer token.' ),
+			'no_auth'              => __( 'Authentication failed. Invalid or missing bearer token.', 'ultimate-addons-for-gutenberg' ),
 			'insufficient_credits' => array(
-				'title'          => __( 'You\'ve run out of credits.', 'zip-ai' ),
+				'title'          => __( 'You\'ve run out of credits.', 'ultimate-addons-for-gutenberg' ),
 				'type'           => 'assemble-error',
-				'content'        => __( 'To continue using the assistant and access its full features, please purchase more credits.', 'zip-ai' ),
+				'content'        => __( 'To continue using the assistant and access its full features, please purchase more credits.', 'ultimate-addons-for-gutenberg' ),
 				'button_content' => array(
-					'text' => __( 'Buy more credits', 'zip-ai' ),
+					'text' => __( 'Buy more credits', 'ultimate-addons-for-gutenberg' ),
 					'url'  => 'https://app.zipwp.com/credits-pricing?source=spectra',
 				),
 			),
@@ -759,16 +759,16 @@ class Sidebar_Configurations {
 	 */
 	private static function get_tone_label( $tone ) {
 		$labels = array(
-			'formal'       => __( 'Formal', 'zip-ai' ),
-			'casual'       => __( 'Casual', 'zip-ai' ),
-			'friendly'     => __( 'Friendly', 'zip-ai' ),
-			'informative'  => __( 'Informative', 'zip-ai' ),
-			'professional' => __( 'Professional', 'zip-ai' ),
-			'playful'      => __( 'Playful', 'zip-ai' ),
-			'serious'      => __( 'Serious', 'zip-ai' ),
-			'humorous'     => __( 'Humorous', 'zip-ai' ),
-			'polite'       => __( 'Polite', 'zip-ai' ),
-			'emotional'    => __( 'Emotional', 'zip-ai' ),
+			'formal'       => __( 'Formal', 'ultimate-addons-for-gutenberg' ),
+			'casual'       => __( 'Casual', 'ultimate-addons-for-gutenberg' ),
+			'friendly'     => __( 'Friendly', 'ultimate-addons-for-gutenberg' ),
+			'informative'  => __( 'Informative', 'ultimate-addons-for-gutenberg' ),
+			'professional' => __( 'Professional', 'ultimate-addons-for-gutenberg' ),
+			'playful'      => __( 'Playful', 'ultimate-addons-for-gutenberg' ),
+			'serious'      => __( 'Serious', 'ultimate-addons-for-gutenberg' ),
+			'humorous'     => __( 'Humorous', 'ultimate-addons-for-gutenberg' ),
+			'polite'       => __( 'Polite', 'ultimate-addons-for-gutenberg' ),
+			'emotional'    => __( 'Emotional', 'ultimate-addons-for-gutenberg' ),
 		);
 
 		// Safety net for legacy or unknown tone values (e.g. stale DB entries from older plugin versions).

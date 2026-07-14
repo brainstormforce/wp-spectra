@@ -4,10 +4,10 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 
-import { InnerBlocks, RichText } from '@wordpress/block-editor';
+import { InnerBlocks, RichText, useBlockProps } from '@wordpress/block-editor';
 
 export default function save( props ) {
-	const { attributes, className } = props;
+	const { attributes } = props;
 	const {
 		block_id,
 		tabHeaders,
@@ -21,16 +21,19 @@ export default function save( props ) {
 		tabAlign,
 	} = attributes;
 
+	const blockProps = useBlockProps.save( {
+		className: classnames(
+			`uagb-block-${ block_id }`,
+			'uagb-tabs__wrap',
+			`uagb-tabs__${ tabsStyleD }-desktop`,
+			`uagb-tabs__${ tabsStyleT }-tablet`,
+			`uagb-tabs__${ tabsStyleM }-mobile`
+		),
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				className,
-				`uagb-block-${ block_id }`,
-				'uagb-tabs__wrap',
-				`uagb-tabs__${ tabsStyleD }-desktop`,
-				`uagb-tabs__${ tabsStyleT }-tablet`,
-				`uagb-tabs__${ tabsStyleM }-mobile`
-			) }
+			{ ...blockProps }
 			data-tab-active={ tabActiveFrontend }
 		>
 			<ul className={ `uagb-tabs__panel uagb-tabs__align-${ tabAlign }` } role="tablist">

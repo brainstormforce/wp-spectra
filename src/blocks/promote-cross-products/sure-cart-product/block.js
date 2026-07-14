@@ -17,6 +17,7 @@ sureCartCommonData = applyFilters( 'uagb/sure-cart-product', addCommonDataToSpec
 // Always register the block
 registerBlockType( 'uagb/sure-cart-product', {
 	...sureCartCommonData,
+	apiVersion: 3,
 	title: __( 'SureCart - Product List', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Display a list of products.', 'ultimate-addons-for-gutenberg' ),
 	icon: <Icon icon={grid} color='#0063a1' />,

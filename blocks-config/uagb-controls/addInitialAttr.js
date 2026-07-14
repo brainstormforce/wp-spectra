@@ -1,6 +1,11 @@
 import { useEffect } from '@wordpress/element';
 import { select } from '@wordpress/data';
 
+const getEditorDocument = () => {
+	const editorIframe = document.querySelector( 'iframe[name="editor-canvas"]' );
+	return editorIframe?.contentDocument || document;
+};
+
 const headingDescToggleDefault = 'yes' === uagb_blocks_info.uagb_old_user_less_than_2;
 
 const getUniqId = ( blocks ) => blocks
@@ -41,7 +46,7 @@ const addInitialAttr = ( ChildComponent ) => {
 
 		useEffect( () => {
 			if ( uagb_blocks_info.is_customize_preview && ( '0' === block_id || undefined === block_id ) && listOfParentBlock.includes( name ) ) {
-				document.addEventListener( `UAG-${name}-${clientId.substr( 0, 8 )}-BlockCustomizeWidgetEditor`, function ( e ) {
+				getEditorDocument().addEventListener( `UAG-${name}-${clientId.substr( 0, 8 )}-BlockCustomizeWidgetEditor`, function ( e ) {
 					setAttributes( { block_id: e.detail.id, classMigrate: e.detail.classMigrate, childMigrate: e.detail.childMigrate } );
 				} );
 			}
@@ -50,7 +55,7 @@ const addInitialAttr = ( ChildComponent ) => {
 		useEffect( () => {
 			if ( uagb_blocks_info.is_customize_preview && ( '0' === block_id || undefined === block_id ) && listOfParentBlock.includes( name ) ) {
 				const loadCustomEvent = new CustomEvent( `UAG-${name}-${clientId.substr( 0, 8 )}-BlockCustomizeWidgetEditor`, { detail: { id: clientId.substr( 0, 8 ), classMigrate: true, childMigrate: true }, } );
-				document.dispatchEvent( loadCustomEvent );
+				getEditorDocument().dispatchEvent( loadCustomEvent );
 			}
 		}, [ props.attributes ] );
 

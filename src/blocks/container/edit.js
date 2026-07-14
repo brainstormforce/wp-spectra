@@ -48,7 +48,6 @@ const UAGBContainer = ( props ) => {
 	} = props;
 
 	const {
-		isParentOfSelectedBlock,
 		variations,
 		defaultVariation,
 		getBlockParents,
@@ -63,7 +62,6 @@ const UAGBContainer = ( props ) => {
 		return {
 			defaultVariation: coreBlocks?.getDefaultBlockVariation( name ),
 			variations: coreBlocks?.getBlockVariations( name ),
-			isParentOfSelectedBlock: coreBlockEditor?.hasSelectedInnerBlock( clientId, true ),
 			getBlockParents : getBlockParentStore,
 			parentBlocks : coreBlockEditor?.getBlocksByClientId( getBlockParentStore ),
 			parentAttributes : coreBlockEditor.getBlockAttributes( parentClientId ),
@@ -110,13 +108,6 @@ const UAGBContainer = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
-
-	if ( isParentOfSelectedBlock ) {
-		const emptyBlockInserter = document.querySelector( '.block-editor-block-list__empty-block-inserter' );
-		if ( emptyBlockInserter ) {
-			emptyBlockInserter.style.display = 'none';
-		}
-	}
 
 	useEffect( () => {
     	const gridCssInParent = 'grid' === parentAttributes?.layout;

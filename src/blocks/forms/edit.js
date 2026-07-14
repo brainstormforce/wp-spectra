@@ -7,8 +7,9 @@ import scrollBlockToView from '@Controls/scrollBlockToView';
 import Settings from './settings';
 import Render from './render';
 import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
+import { useBlockProps } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
-import { compose, createHigherOrderComponent } from '@wordpress/compose';
+import { compose, createHigherOrderComponent, useRefEffect } from '@wordpress/compose';
 import { withNotices } from '@wordpress/components';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
 import styles from './editor.lazy.scss';
@@ -98,9 +99,7 @@ const UAGBFormsEdit = ( props ) => {
 			}
 		}
 
-		const id = clientId;
-
-		window.addEventListener( 'load', renderReadyClasses( id ) );
+		// renderReadyClasses is now called via formsRef / useRefEffect below.
 
 		if ( reCaptchaEnable ) {
 			const keys = {};
@@ -233,25 +232,15 @@ const UAGBFormsEdit = ( props ) => {
 
 	useEffect( () => {
 		scrollBlockToView();
-		const id = clientId;
-		window.addEventListener( 'load', renderReadyClasses( id ) );
 	}, [ deviceType ] );
 
 	useEffect( () => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	const renderReadyClasses = useCallback( ( id ) => {
-		const iframeEl = document.querySelector( `iframe[name='editor-canvas']` );
-		let mainDiv;
-		let formscope;
-		if ( iframeEl ) {
-			mainDiv = iframeEl.contentDocument.getElementById( 'block-' + id );
-			formscope = mainDiv.getElementsByClassName( 'uagb-forms__outer-wrap' );
-		} else {
-			mainDiv = document.getElementById( 'block-' + id );
-			formscope = mainDiv?.getElementsByClassName( 'uagb-forms__outer-wrap' );
-		}
+	const renderReadyClasses = useCallback( ( ownerDocument, id ) => {
+		const mainDiv = ownerDocument.getElementById( 'block-' + id );
+		const formscope = mainDiv?.getElementsByClassName( 'uagb-forms__outer-wrap' );
 
 		if ( formscope && formscope[ 0 ] ) {
 			const editorwrap = formscope[ 0 ].children;
@@ -264,7 +253,7 @@ const UAGBFormsEdit = ( props ) => {
 					sibling[ index ]?.classList.contains( 'uag-col-2' ) &&
 					sibling[ index + 1 ]?.classList.contains( 'uag-col-2' )
 				) {
-					const div = document.createElement( 'div' );
+					const div = ownerDocument.createElement( 'div' );
 					div.className = 'uag-col-2-wrap uag-col-wrap-' + index;
 					sibling[ index + 1 ].after( div );
 					const wrapper_div = formscope[ 0 ].getElementsByClassName( 'uag-col-wrap-' + index );
@@ -275,7 +264,7 @@ const UAGBFormsEdit = ( props ) => {
 					sibling[ index + 1 ]?.classList.contains( 'uag-col-3' ) &&
 					sibling[ index + 2 ]?.classList.contains( 'uag-col-3' )
 				) {
-					const div = document.createElement( 'div' );
+					const div = ownerDocument.createElement( 'div' );
 					div.className = 'uag-col-3-wrap uag-col-wrap-' + index;
 					sibling[ index + 2 ].after( div );
 					const wrapper_div = formscope[ 0 ].getElementsByClassName( 'uag-col-wrap-' + index );
@@ -288,7 +277,7 @@ const UAGBFormsEdit = ( props ) => {
 					sibling[ index + 2 ]?.classList.contains( 'uag-col-4' ) &&
 					sibling[ index + 3 ]?.classList.contains( 'uag-col-4' )
 				) {
-					const div = document.createElement( 'div' );
+					const div = ownerDocument.createElement( 'div' );
 					div.className = 'uag-col-4-wrap uag-col-wrap-' + index;
 					sibling[ index + 3 ].after( div );
 					const wrapper_div = formscope[ 0 ].getElementsByClassName( 'uag-col-wrap-' + index );
@@ -301,17 +290,30 @@ const UAGBFormsEdit = ( props ) => {
 		}
 	} );
 
+	const formsRef = useRefEffect( ( element ) => {
+		const { ownerDocument } = element;
+		const defaultView = ownerDocument.defaultView;
+		const handleLoad = () => renderReadyClasses( ownerDocument, clientId );
+		defaultView.addEventListener( 'load', handleLoad );
+		renderReadyClasses( ownerDocument, clientId );
+		return () => {
+			defaultView.removeEventListener( 'load', handleLoad );
+		};
+	}, [ clientId ] );
+
+	const blockProps = useBlockProps( { ref: formsRef } );
+
 	if ( ! hasInnerBlocks ) {
 		return <VariationPicker {...{ ...props, variations, defaultVariation }} />;
 	}
 
 	return (
-		<>
+		<div { ...blockProps }>
 			<DynamicCSSLoader { ...{ blockStyling } } />
 			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings { ...props } /> }
 			<Render { ...props } />
-		</>
+		</div>
 	);
 };
 

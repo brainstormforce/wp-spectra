@@ -8,6 +8,7 @@ import Edit from './edit';
 import save from './save';
 import { __ } from '@wordpress/i18n';
 import deprecated from './deprecated';
+import preApiVersion3Save from './save-v1';
 import { registerBlockType } from '@wordpress/blocks';
 import PreviewImage from '@Controls/previewImage';
 import { applyFilters } from '@wordpress/hooks';
@@ -16,6 +17,7 @@ let hiddenCommonData = {};
 hiddenCommonData = applyFilters( 'uagb/forms-hidden', addCommonDataToSpectraBlocks( hiddenCommonData ) );
 registerBlockType( 'uagb/forms-hidden', {
 	...hiddenCommonData,
+	apiVersion: 3,
 	title: __( 'Hidden', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add a hidden field in your form to pass data.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.hidden,
@@ -29,5 +31,5 @@ registerBlockType( 'uagb/forms-hidden', {
 		html: false,
 	},
 	save,
-	deprecated,
+	deprecated: [ { attributes, save: preApiVersion3Save }, ...deprecated ],
 } );

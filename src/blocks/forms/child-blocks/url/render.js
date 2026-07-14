@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { memo } from '@wordpress/element';
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
 
@@ -11,9 +11,13 @@ const Render = ( props ) => {
 
 	const isRequired = required ? 'required' : '';
 
+	const blockProps = useBlockProps( {
+		className: classnames( 'uagb-forms-url-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ),
+	} );
+
 	return (
 		<>
-			<div className={ classnames( 'uagb-forms-url-wrap', 'uagb-forms-field-set', `uagb-block-${ block_id }` ) }>
+			<div { ...blockProps }>
 				<RichText
 					tagName="div"
 					placeholder={ __( 'URL Name', 'ultimate-addons-for-gutenberg' ) }

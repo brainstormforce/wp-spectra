@@ -11,6 +11,22 @@ const deprecated = [
 	{
 		attributes,
 		save( props ) {
+			const { attributes } = props;
+			const { id } = attributes;
+
+			return (
+				<div
+					className={ `uagb-tabs__body-container uagb-inner-tab-${ id }` }
+					aria-labelledby={ `uagb-tabs__tab${ id }` }
+				>
+					<InnerBlocks.Content />
+				</div>
+			);
+		},
+	},
+	{
+		attributes,
+		save( props ) {
 			const { attributes, className } = props;
 
 			const { id, block_id } = attributes;

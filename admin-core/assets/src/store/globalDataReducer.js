@@ -34,11 +34,6 @@ const globalDataReducer = ( state = {}, action ) => {
 				...state,
 				enableOnPageCSS: action.payload,
 			};
-        case 'UPDATE_BETA':
-            return {
-                ...state,
-                enableBeta: action.payload,
-            };
 		case 'UPDATE_LEGACY_BLOCKS':
 			return {
 				...state,

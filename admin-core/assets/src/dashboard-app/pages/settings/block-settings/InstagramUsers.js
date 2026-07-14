@@ -298,7 +298,7 @@ const InstagramUsers = () => {
 					</p>
 					<p className="text-sm text-slate-400">
 						{ __(
-							'Please link an Instagram Account to start using it with Spectra!',
+							'Please link an Instagram Account to start using it with Spectra Legacy!',
 							'ultimate-addons-for-gutenberg'
 						) }
 					</p>
@@ -428,7 +428,7 @@ const InstagramUsers = () => {
 				</p>
 				<p className="text-sm text-red-600 pl-2">
 					{ __(
-						'3. The Instagram Account was unused on Spectra for 60 days.',
+						'3. The Instagram Account was unused on Spectra Legacy for 60 days.',
 						'ultimate-addons-for-gutenberg'
 					) }
 				</p>

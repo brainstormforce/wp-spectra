@@ -18,7 +18,7 @@ let iconCommonData = {};
 iconCommonData = applyFilters( 'uagb/icon', addCommonDataToSpectraBlocks( iconCommonData ) );
 registerBlockType( 'uagb/icon', {
 	...iconCommonData,
-	apiVersion: 2,
+	apiVersion: 3,
 	title: __( 'Icon', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add stunning customizable icons to your website.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.icon,

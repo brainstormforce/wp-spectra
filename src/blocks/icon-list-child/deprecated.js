@@ -6,6 +6,7 @@ import classnames from 'classnames';
 import renderSVG from '@Controls/deprecatedRenderIcon';
 import { RichText } from '@wordpress/block-editor';
 import newrenderSVG from '@Controls/renderIcon';
+import currentAttributes from './attributes';
 import newAttributesV2_0_13 from './attributes';
 import newAttributesV2_0_14 from './deprecated/v2_0_14/attributes';
 import newSaveV2_0_14 from './deprecated/v2_0_14/save';
@@ -78,6 +79,70 @@ const attributes = {
 };
 
 const deprecated = [
+	{
+		attributes: currentAttributes,
+		save( props ) {
+			const { attributes, className } = props;
+
+			const {
+				label,
+				image_icon,
+				icon,
+				image,
+				block_id,
+				link,
+				target,
+				disableLink,
+				hideLabel,
+				fromParentIcon,
+				imageSizeChild,
+				imgTagHeight,
+			} = attributes;
+
+			const defaultedAlt = image && image?.alt ? image?.alt : '';
+
+			let imageIconHtml = '';
+
+			if ( image_icon === 'icon' ) {
+				if ( icon || fromParentIcon ) {
+					imageIconHtml = icon ? newrenderSVG( icon ) : newrenderSVG( fromParentIcon );
+				}
+			} else if ( image && image.url && image_icon !== 'none' ) {
+				imageIconHtml = (
+					<img
+						className="uagb-icon-list__source-image"
+						src={ image.url }
+						width={ imageSizeChild }
+						height={ imgTagHeight }
+						loading="lazy"
+						alt={ defaultedAlt }
+					/>
+				);
+			}
+
+			const targetVal = target ? '_blank' : '_self';
+			const linkUrl = disableLink ? link : '/';
+
+			return (
+				<div className={ classnames( className, `uagb-block-${ block_id }` ) }>
+					{ disableLink && (
+						<a
+							target={ targetVal }
+							aria-label={ label.replace( /(<([^>]+)>)/gi, '' ) }
+							rel="noopener noreferrer"
+							href={ linkUrl }
+						>
+							{ ' ' }
+						</a>
+					) }
+					{ imageIconHtml && <span className="uagb-icon-list__source-wrap">{ imageIconHtml }</span> }
+					{ ! hideLabel && '' !== label && (
+						<RichText.Content tagName="span" value={ label } className="uagb-icon-list__label" />
+					) }
+				</div>
+			);
+		},
+	},
 	{
 		attributes,
 		save( props ) {

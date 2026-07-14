@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { useBlockProps } from '@wordpress/block-editor';
 import { useEffect, memo } from '@wordpress/element';
 import RestMenuImage from './components/RestMenuImage';
 import Title from './components/Title';
@@ -46,13 +47,17 @@ const Render = ( props ) => {
 		}
 	}, [ image, imageWidth ] );
 
+	const blockProps = useBlockProps( {
+		className: classnames(
+			className,
+			'uagb-rest_menu__wrap',
+			`uagb-block-${ block_id }`
+		),
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				className,
-				'uagb-rest_menu__wrap',
-				`uagb-block-${ block_id }`
-			) }
+			{ ...blockProps }
 		>
 			{ imgAlignment === 'top' && (
 				<>

@@ -40,7 +40,7 @@ const BSFAnalyticsOption = () => {
 
 	const renderText = () => (
 		<p className='m-0'>
-			{__( 'Help shape the future of Spectra. Share how you use the plugin so we can build features that matter, fix issues faster, and make smarter decisions.', 'ultimate-addons-for-gutenberg' )}
+			{__( 'Help shape the future of Spectra Legacy. Share how you use the plugin so we can build features that matter, fix issues faster, and make smarter decisions.', 'ultimate-addons-for-gutenberg' )}
 			{' '}
 			<a
 				href={'https://store.brainstormforce.com/usage-tracking/?utm_source=spectra_dashboard&utm_medium=settings&utm_campaign=usage_tracking'}
@@ -55,7 +55,7 @@ const BSFAnalyticsOption = () => {
 
 	return (
 		<SettingsItem
-			title={__( 'Contribute to Spectra', 'ultimate-addons-for-gutenberg' )}
+			title={__( 'Contribute to Spectra Legacy', 'ultimate-addons-for-gutenberg' )}
 			settingText={renderText}
 		>
 			<Switch

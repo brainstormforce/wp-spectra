@@ -4,7 +4,7 @@
 
 import classnames from 'classnames';
 
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { attributes } = props;
@@ -74,8 +74,11 @@ export default function save( props ) {
 			) }
 		</div>
 	);
+	const blockProps = useBlockProps.save( {
+		className: classnames( 'uagb-how-to-step-wrap', `uagb-block-${ block_id }` ),
+	} );
 	return (
-		<div className={ classnames( 'uagb-how-to-step-wrap', `uagb-block-${ block_id }` ) }>
+		<div { ...blockProps }>
 			{ ( 'all' === urlType || 'none' === urlType ) && (
 				<>
 					{ '' !== url && 'all' === urlType && (

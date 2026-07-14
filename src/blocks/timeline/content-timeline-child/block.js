@@ -23,6 +23,7 @@ contentTimelineChildCommonData = applyFilters(
 );
 registerBlockType( 'uagb/content-timeline-child', {
 	...contentTimelineChildCommonData,
+	apiVersion: 3,
 	title: __( 'Content Timeline Child', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add and customize content of this timeline.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.content_timeline_child,

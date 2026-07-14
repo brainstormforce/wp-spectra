@@ -20,6 +20,7 @@ postTimelineCommonData = applyFilters( 'uagb/post-timeline', addCommonDataToSpec
 // Register the block.
 registerBlockType( 'uagb/post-timeline', {
 	...postTimelineCommonData,
+	apiVersion: 3,
 	title: __( 'Post Timeline', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Create an attractive timeline to display your posts.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.post_timeline,

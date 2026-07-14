@@ -15,9 +15,11 @@ let checkboxCommonData = {};
 checkboxCommonData = applyFilters( 'uagb/forms-checkbox', addCommonDataToSpectraBlocks( checkboxCommonData ) );
 import Version from './deprecated/';
 import Version2_7_2 from './2_7_2';
+import preApiVersion3Save from './save-v1';
 
 registerBlockType( 'uagb/forms-checkbox', {
 	...checkboxCommonData,
+	apiVersion: 3,
 	title: __( 'Checkbox', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add checkboxes to allow multiple choices from options.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.checkbox,
@@ -31,5 +33,5 @@ registerBlockType( 'uagb/forms-checkbox', {
 		html: false,
 	},
 	save,
-	deprecated : [ Version2_7_2, Version ],
+	deprecated : [ { attributes, save: preApiVersion3Save }, Version2_7_2, Version ],
 } );

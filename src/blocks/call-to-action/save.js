@@ -4,7 +4,7 @@
 
 // Import block dependencies and components.
 import classnames from 'classnames';
-import { InnerBlocks } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
 // Import icon.
 import Title from './components/Title';
@@ -44,6 +44,10 @@ export default function save( props ) {
 
 	const CustomTag = htmlTag || 'div';
 
+	const blockProps = useBlockProps.save( {
+		className: classnames( `uagb-block-${ block_id }`, 'button' === ctaType ? 'wp-block-button' : '' ),
+	} );
+
 	const output = (
 		<>
 			<div className="uagb-cta__wrap">
@@ -63,7 +67,7 @@ export default function save( props ) {
 	}
 
 	return (
-		<CustomTag className={ classnames( `uagb-block-${ block_id }`, 'button' === ctaType ? 'wp-block-button' : '' ) }>
+		<CustomTag { ...blockProps }>
 			{ ctaType === 'all' && (
 				<>
 					{ /* eslint-disable-next-line */ }

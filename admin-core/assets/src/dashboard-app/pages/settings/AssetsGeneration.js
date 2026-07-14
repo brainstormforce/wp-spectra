@@ -65,7 +65,7 @@ const AssetsGeneration = () => {
 			<SettingsItem
 				title={ __( 'File Generation', 'ultimate-addons-for-gutenberg' ) }
 				settingText={ __(
-					'Spectra loads the CSS and JS inline on the page by default. If you want to generate separate CSS and JS files for Spectra blocks, enable this option. ',
+					'Spectra Legacy loads the CSS and JS inline on the page by default. If you want to generate separate CSS and JS files for Spectra Legacy blocks, enable this option. ',
 					'ultimate-addons-for-gutenberg'
 				) }
 				currentSetting={ renderText }

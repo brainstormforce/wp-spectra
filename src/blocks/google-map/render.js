@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
+import { useBlockProps } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -14,7 +15,6 @@ const Render = ( props ) => {
 	}, [] );
 
 	const {
-		className,
 		attributes: { zoom, address, language, height, block_id, enableSatelliteView, },
 		deviceType,
 		name,
@@ -28,14 +28,17 @@ const Render = ( props ) => {
 
 	const url = `https://maps.google.com/maps?q=${ encoded_address }&z=${ getFallbackNumber( zoom, 'zoom', blockName ) }&hl=${ lang_par }&t=${ mapType }&output=embed&iwloc=near`;
 
+	const blockProps = useBlockProps( {
+		className: classnames(
+			'uagb-google-map__wrap',
+			`uagb-block-${ block_id }`,
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
+		),
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				className,
-				'uagb-google-map__wrap',
-				`uagb-block-${ block_id }`,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
-			) }
+			{ ...blockProps }
 		>
 			<embed
 				className="uagb-google-map__iframe"

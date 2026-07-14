@@ -17,6 +17,7 @@ let lottieCommonData = {};
 lottieCommonData = applyFilters( 'uagb/lottie', addCommonDataToSpectraBlocks( lottieCommonData ) );
 registerBlockType( 'uagb/lottie', {
 	...lottieCommonData,
+	apiVersion: 3,
 	title: __( 'Lottie Animation', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add customizable lottie animation on your page.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.lottie,

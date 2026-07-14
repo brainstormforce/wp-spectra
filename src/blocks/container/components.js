@@ -1,7 +1,7 @@
 import Range from '@Components/range/Range';
 import { __ } from '@wordpress/i18n';
 import { BaseControl, Icon } from '@wordpress/components';
-import { useState, useEffect } from '@wordpress/element';
+import { useState, useEffect, useRef } from '@wordpress/element';
 import MultiButtonsControl from '@Components/multi-buttons-control';
 import renderSVG from '@Controls/renderIcon';
 import renderCustomIcon from '@Controls/renderCustomIcon';
@@ -39,13 +39,20 @@ export const GridSettings = ( props ) => {
     } = props;
     const [ openGridSettings, setOpenGridSettings ] = useState( false );
     const [ openGridSettingsRow, setOpenGridSettingsRow ] = useState( false );
+    const wrapperRef = useRef( null );
 
     const gridColumnWithDevice = attributes['gridColumn' + deviceType];
     const gridRowWithDevice = attributes['gridRow' + deviceType];
 
     useEffect( () => {
+        const wrapperEl = wrapperRef.current;
+        if ( ! wrapperEl ) {
+            return;
+        }
+        const ownerDocument = wrapperEl.ownerDocument;
+
         // If click on outside of grid setting div then close all settings.
-        document.addEventListener( 'click', ( event ) => {
+        const handleClick = ( event ) => {
             const checkClosestToPopup = event.target.closest( '#grid-properties-setting-wrap' );
             const checkOpenerColumnContent = event.target.closest( '.uagb-grid-Column-opener' );
             const checkOpenerRowContent = event.target.closest( '.uagb-grid-Row-opener' );
@@ -61,10 +68,12 @@ export const GridSettings = ( props ) => {
                     setOpenGridSettingsRow( false );
                 }
             }
-        } );
+        };
+
+        ownerDocument.addEventListener( 'click', handleClick );
 
         // Add clean up function.
-        return () => document.removeEventListener( 'click', ()=> {} );
+        return () => ownerDocument.removeEventListener( 'click', handleClick );
     }, [ openGridSettings, openGridSettingsRow ] );
 
     const commonRangeAttr = ( value, unit ) => {
@@ -363,7 +372,7 @@ export const GridSettings = ( props ) => {
         }
     }
     return (
-        <>
+        <div ref={ wrapperRef }>
             <BaseControl
                 className="uagb-grid-repeater-container"
             >
@@ -592,6 +601,6 @@ export const GridSettings = ( props ) => {
                 responsive={ true }
                 help={ __( 'Define the horizontal alignment of the entire grid within its container.', 'ultimate-addons-for-gutenberg' ) }
             />
-        </>
+        </div>
     )
 }

@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import CounterIcon from './component/CounterIcon';
 
@@ -86,14 +86,17 @@ export default function Save( props ) {
 		</div>
 	);
 
+	const blockProps = useBlockProps.save( {
+		className: classnames(
+			`uagb-block-${ block_id }`,
+			'wp-block-uagb-counter',
+			`wp-block-uagb-counter--${ layout }`
+		),
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				props.className,
-				`uagb-block-${ block_id }`,
-				'wp-block-uagb-counter',
-				`wp-block-uagb-counter--${ layout }`
-			) }
+			{ ...blockProps }
 		>
 			{ layout === 'number' && number }
 			{ layout === 'bars' && bars }

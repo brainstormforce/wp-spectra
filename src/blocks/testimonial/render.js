@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import PositionClasses from './classes';
 import UAGB_Block_Icons from '@Controls/block-icons';
 import TestimonialImage from './components/newImage';
+import { useBlockProps } from '@wordpress/block-editor';
 import { useEffect, useLayoutEffect, memo, useRef } from '@wordpress/element';
 import AuthorName from './components/AuthorName';
 import Company from './components/Company';
@@ -153,18 +154,22 @@ const Render = ( props ) => {
 		getImageHeightWidth( url, setAttributes, { type: 'width', value: imageWidth } );
 	}, [ imageWidth, url ] );
 
+	const blockProps = useBlockProps( {
+		className: classnames(
+			className,
+			'uagb-slick-carousel uagb-tm__arrow-outside',
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+			`uagb-block-${ block_id }`,
+			`${ equalHeightClass }`,
+			isGridLayout,
+			isGridLayoutTablet,
+			isGridLayoutMobile
+		),
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				className,
-				'uagb-slick-carousel uagb-tm__arrow-outside',
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ block_id }`,
-				`${ equalHeightClass }`,
-				isGridLayout,
-				isGridLayoutTablet,
-				isGridLayoutMobile
-			) }
+			{ ...blockProps }
 		>
 			<Slider
 				className={ classnames(

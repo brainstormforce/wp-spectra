@@ -46,6 +46,11 @@ let faqCommonData = {};
 faqCommonData = applyFilters( 'uagb/faq', addCommonDataToSpectraBlocks( faqCommonData ) );
 registerBlockType( 'uagb/faq', {
 	...faqCommonData,
+	apiVersion: 3,
+	providesContext: {
+		'uagb/faqExpandFirstItem': 'expandFirstItem',
+		'uagb/faqLayout': 'layout',
+	},
 	title: __( 'FAQ', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add accordions/FAQ schema to your page.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.faq,

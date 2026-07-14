@@ -5,6 +5,7 @@
 // Import block dependencies and components
 import { PostImage } from './edit';
 import save from './save';
+import deprecated from './deprecated';
 import UAGB_Block_Icons from '@Controls/block-icons';
 // Components
 import { __ } from '@wordpress/i18n';
@@ -15,6 +16,7 @@ import { registerBlockType } from '@wordpress/blocks';
 
 // Register the block
 registerBlockType( 'uagb/post-image', {
+	apiVersion: 3,
 	title: __( 'Post Image', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Customize your post image.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.post_grid,
@@ -22,4 +24,5 @@ registerBlockType( 'uagb/post-image', {
 	keywords: [ __( 'post', 'ultimate-addons-for-gutenberg' ), __( 'image', 'ultimate-addons-for-gutenberg' ), __( 'uag', 'ultimate-addons-for-gutenberg' ) ],
 	PostImage,
 	save,
+	deprecated,
 } );

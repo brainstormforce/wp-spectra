@@ -6,7 +6,7 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import { __ } from '@wordpress/i18n';
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 import { memo } from '@wordpress/element';
 import { applyFilters } from '@wordpress/hooks';
 
@@ -77,15 +77,19 @@ const Render = ( props ) => {
 		return '';
 	};
 
+	const blockProps = useBlockProps( {
+		className: classnames(
+			className,
+			'uagb-buttons__outer-wrap',
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+			`uagb-block-${ block_id }`,
+			'wp-block-button'
+		),
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				className,
-				'uagb-buttons__outer-wrap',
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ block_id }`,
-				'wp-block-button'
-			) }
+			{ ...blockProps }
 		>
 			<div className="uagb-button__wrapper">
 				<div

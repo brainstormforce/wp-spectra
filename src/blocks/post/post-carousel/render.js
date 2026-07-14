@@ -10,7 +10,7 @@ import { __ } from '@wordpress/i18n';
 
 import { createBlock } from '@wordpress/blocks';
 
-import { Placeholder, Button, Tip } from '@wordpress/components';
+import { Placeholder, Button, Tip, Spinner } from '@wordpress/components';
 
 import { InnerBlocks } from '@wordpress/block-editor';
 import styles from '.././editor.lazy.scss';
@@ -24,7 +24,7 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	const { state, setState, togglePreview, categoriesList, latestPosts, replaceInnerBlocks, block, clientId,  attributes, deviceType, name, setAttributes, className } = props;
+	const { state, setState, togglePreview, categoriesList, latestPosts, replaceInnerBlocks, block, clientId,  attributes, deviceType, name, setAttributes, className, blockProps, hasPosts, inspectorControls } = props;
 
 	const renderEditMode = () => {
 		const onDone = () => {
@@ -91,8 +91,24 @@ const Render = ( props ) => {
 		);
 	};
 
-	const renderViewMode = (
+	if ( ! hasPosts ) {
+		return (
+			<div { ...blockProps }>
+				{ inspectorControls }
+				<Placeholder icon="admin-post" label={ __( 'Post Carousel', 'ultimate-addons-for-gutenberg' ) }>
+					{ ! Array.isArray( latestPosts ) ? <Spinner /> : attributes.postDisplaytext }
+				</Placeholder>
+			</div>
+		);
+	}
+
+	if ( state.isEditing ) {
+		return <div { ...blockProps }>{ renderEditMode() }</div>;
+	}
+
+	return (
 		<Blog
+			blockProps={ blockProps }
 			attributes={ attributes }
 			className={ className }
 			latestPosts={ latestPosts }
@@ -103,8 +119,6 @@ const Render = ( props ) => {
 			setAttributes={ setAttributes }
 		/>
 	);
-
-	return <>{ state.isEditing ? renderEditMode() : renderViewMode }</>;
 };
 
 export default memo( Render );

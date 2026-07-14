@@ -6,7 +6,7 @@
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { attributes, className } = props;
@@ -50,8 +50,12 @@ export default function save( props ) {
 	const targetVal = target ? '_blank' : '_self';
 	const linkUrl = disableLink ? link : '/';
 
+	const blockProps = useBlockProps.save( {
+		className: classnames( className, `uagb-block-${ block_id }` ),
+	} );
+
 	return (
-		<div className={ classnames( className, `uagb-block-${ block_id }` ) }>
+		<div { ...blockProps }>
 			{ disableLink && (
 				<a
 					target={ targetVal }

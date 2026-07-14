@@ -16,6 +16,7 @@ let faqChildCommonData = {};
 faqChildCommonData = applyFilters( 'uagb/faq-child', addCommonDataToSpectraBlocks( faqChildCommonData ) );
 registerBlockType( 'uagb/faq-child', {
 	...faqChildCommonData,
+	apiVersion: 3,
 	title: __( 'FAQ Child', 'ultimate-addons-for-gutenberg' ),
 	description: __(
 		'Add a frequently asked question/accordion to display information.',
@@ -23,6 +24,7 @@ registerBlockType( 'uagb/faq-child', {
 	),
 	icon: UAGB_Block_Icons.faq_child,
 	parent: [ 'uagb/faq' ],
+	usesContext: [ 'uagb/faqExpandFirstItem', 'uagb/faqLayout' ],
 	attributes,
 	category: uagb_blocks_info.category,
 	edit: ( props ) =>

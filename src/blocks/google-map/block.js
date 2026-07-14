@@ -19,6 +19,7 @@ let googleMapCommonData = {};
 googleMapCommonData = applyFilters( 'uagb/google-map', addCommonDataToSpectraBlocks( googleMapCommonData ) );
 registerBlockType( 'uagb/google-map', {
 	...googleMapCommonData,
+	apiVersion: 3,
 	title: __( 'Google Maps', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Show a Google Map location on your website.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.google_map,

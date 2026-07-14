@@ -61,17 +61,14 @@ final class UAGB_Scripts_Utils {
 							}
 						} elseif ( 'css' === $asset['type'] ) {
 
-							// Styles.
+							// Register only. Enqueueing happens via editor_iframe_styles() on
+							// the enqueue_block_assets hook for iframe compatibility (WP 7.0+).
 							wp_register_style(
 								$handle, // Handle.
 								$asset['src'],
 								$asset['dep'],
 								UAGB_VER
 							);
-
-							if ( is_admin() ) {
-								wp_enqueue_style( $handle );
-							}
 						}
 					}
 				}

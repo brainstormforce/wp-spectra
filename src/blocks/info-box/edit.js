@@ -2,6 +2,7 @@
  * BLOCK: Info Box - Edit Class
  */
 import { useEffect, useMemo } from '@wordpress/element';
+import { useBlockProps } from '@wordpress/block-editor';
 import styling from './styling';
 import scrollBlockToView from '@Controls/scrollBlockToView';
 import { migrateBorderAttributes } from '@Controls/generateAttributes';
@@ -112,13 +113,15 @@ const UAGBInfoBox = ( props ) => {
 		scrollBlockToView();
 	}, [ deviceType ] );
 
+	const blockProps = useBlockProps();
+
 	return (
-		<>
+		<div { ...blockProps }>
 			<DynamicCSSLoader { ...{ blockStyling } } />
 			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings { ...props } /> }
 			<Render { ...props } />
-		</>
+		</div>
 	);
 };
 

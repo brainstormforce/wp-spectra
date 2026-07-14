@@ -9,7 +9,7 @@ import InfoBoxPositionClasses from './style-classes';
 import InfoBoxSeparator from './components/Separator';
 import CallToAction from './components/CTA';
 import InfoBoxIconImage from './components/IconImages';
-import { RichText, InnerBlocks } from '@wordpress/block-editor';
+import { RichText, InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { attributes } = props; 
@@ -210,16 +210,21 @@ export default function save( props ) {
 		</>
 	)
 
+	// useBlockProps.save() runs the block-supports and `blocks.getSaveContent.extraProps`
+	// filters (anchor id, custom className, generated class, uag-hide-* classes) which
+	// Gutenberg no longer applies automatically to the save output of apiVersion 2+ blocks.
+	const blockProps = useBlockProps.save( {
+		className: uagbClassNames( [
+			`uagb-block-${ block_id }`,
+			'uagb-infobox__content-wrap',
+			ctaType === 'all' ? ' uagb-infobox_cta-type-all' : '',
+			...InfoBoxPositionClasses( attributes ),
+			hasMargin ? 'wp-block-uagb-info-box--has-margin' : '',
+		] ),
+	} );
+
 	return (
-		<CustomTag
-			className={ uagbClassNames( [
-				`uagb-block-${ block_id }`,
-				'uagb-infobox__content-wrap',
-				ctaType === 'all' ? ' uagb-infobox_cta-type-all' : '',
-				...InfoBoxPositionClasses( attributes ),
-				hasMargin ? 'wp-block-uagb-info-box--has-margin' : '',
-			] ) }
-		>
+		<CustomTag { ...blockProps }>
 			{ hasMargin ? (
 			<div className='uagb-infobox-margin-wrapper'>
 				{ ifbInnerContent }

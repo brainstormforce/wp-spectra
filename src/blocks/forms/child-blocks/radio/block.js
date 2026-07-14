@@ -13,11 +13,13 @@ import { applyFilters } from '@wordpress/hooks';
 import addCommonDataToSpectraBlocks from '@Controls/addCommonDataToSpectraBlocks';
 import Version from './deprecated/';
 import Version2_7_2 from './2_7_2';
+import preApiVersion3Save from './save-v1';
 
 let radioCommonData = {};
 radioCommonData = applyFilters( 'uagb/forms-radio', addCommonDataToSpectraBlocks( radioCommonData ) );
 registerBlockType( 'uagb/forms-radio', {
 	...radioCommonData,
+	apiVersion: 3,
 	title: __( 'Radio', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add radio select boxes to allow a single choice from options.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.radio,
@@ -31,5 +33,5 @@ registerBlockType( 'uagb/forms-radio', {
 		html: false,
 	},
 	save,
-	deprecated : [ Version2_7_2, Version ],
+	deprecated : [ { attributes, save: preApiVersion3Save }, Version2_7_2, Version ],
 } );

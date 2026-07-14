@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
 import { useLayoutEffect, memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
 
 const Render = ( props ) => {
@@ -68,17 +68,21 @@ const Render = ( props ) => {
 		</>
 	);
 
+	const blockProps = useBlockProps( {
+		className: classnames(
+			className,
+			`uagb-marketing-btn__align-${ align }`,
+			`uagb-marketing-btn__align-text-${ textAlign }`,
+			`uagb-marketing-btn__icon-${ iconPosition }`,
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+			`uagb-block-${ block_id }`,
+			'wp-block-button'
+		),
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				className,
-				`uagb-marketing-btn__align-${ align }`,
-				`uagb-marketing-btn__align-text-${ textAlign }`,
-				`uagb-marketing-btn__icon-${ iconPosition }`,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ block_id }`,
-				'wp-block-button'
-			) }
+			{ ...blockProps }
 		>
 			<CustomTag // eslint-disable-line jsx-a11y/anchor-is-valid
 				className={ marketingBtnClass }

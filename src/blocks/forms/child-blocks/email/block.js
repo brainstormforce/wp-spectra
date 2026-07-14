@@ -15,9 +15,11 @@ let emailCommonData = {};
 emailCommonData = applyFilters( 'uagb/forms-email', addCommonDataToSpectraBlocks( emailCommonData ) );
 import Version from './deprecated/';
 import Version2_7_2 from './2_7_2';
+import preApiVersion3Save from './save-v1';
 
 registerBlockType( 'uagb/forms-email', {
 	...emailCommonData,
+	apiVersion: 3,
 	title: __( 'Email', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Add an email address field in your form.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.email,
@@ -31,5 +33,5 @@ registerBlockType( 'uagb/forms-email', {
 		html: false,
 	},
 	save,
-	deprecated : [ Version2_7_2, Version ],
+	deprecated : [ { attributes, save: preApiVersion3Save }, Version2_7_2, Version ],
 } );

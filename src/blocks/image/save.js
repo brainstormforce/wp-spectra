@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 export default function Save( props ) {
 	const { attributes } = props;
@@ -103,16 +103,19 @@ export default function Save( props ) {
 			rel={ getRel() }
 		></a>
 	);
+	const blockProps = useBlockProps.save( {
+		className: classnames(
+			`uagb-block-${ block_id }`,
+			'wp-block-uagb-image',
+			`wp-block-uagb-image--layout-${ layout }`,
+			`wp-block-uagb-image--effect-${ imageHoverEffect }`,
+			`wp-block-uagb-image--align-${ align ? align : 'none' }`
+		),
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				props.className,
-				`uagb-block-${ block_id }`,
-				'wp-block-uagb-image',
-				`wp-block-uagb-image--layout-${ layout }`,
-				`wp-block-uagb-image--effect-${ imageHoverEffect }`,
-				`wp-block-uagb-image--align-${ align ? align : 'none' }`
-			) }
+			{ ...blockProps }
 		>
 			<figure className="wp-block-uagb-image__figure">
 				{ figureImage }

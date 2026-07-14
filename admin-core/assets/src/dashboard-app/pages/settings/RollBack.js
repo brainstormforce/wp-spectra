@@ -22,7 +22,7 @@ const RollBack = () => {
 				settingText={ sprintf(
 					/* translators: abbreviation for units */
 					__(
-						'Experiencing an issue with Spectra version %s? Roll back to a previous version to help troubleshoot the issue.',
+						'Experiencing an issue with Spectra Legacy version %s? Roll back to a previous version to help troubleshoot the issue.',
 						'ultimate-addons-for-gutenberg'
 					),
 					uag_react.plugin_ver
@@ -90,7 +90,7 @@ const RollBack = () => {
 						description: sprintf(
 							// translators: %1$s: selected version of Spectra.
 							__(
-								'Are you sure you want to rollback to Spectra v%1$s?',
+								'Are you sure you want to rollback to Spectra Legacy v%1$s?',
 								'ultimate-addons-for-gutenberg'
 							),
 							previousVersionSelect

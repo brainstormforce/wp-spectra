@@ -1,7 +1,7 @@
 import { useEffect, memo } from '@wordpress/element';
 import TypographyControl from '@Components/typography';
 import { __ } from '@wordpress/i18n';
-import { select } from '@wordpress/data';
+import { select, dispatch } from '@wordpress/data';
 import Range from '@Components/range/Range.js';
 import ResponsiveSlider from '@Components/responsive-slider';
 import AdvancedPopColorControl from '@Components/color-control/advanced-pop-color-control.js';
@@ -158,7 +158,7 @@ const Settings = ( props ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( pricelistChild ) => {
-			pricelistChild.attributes.imgAlign = value;
+			dispatch( 'core/block-editor' ).updateBlockAttributes( pricelistChild.clientId, { imgAlign: value } );
 		} );
 		setAttributes( { imgAlign: value } );
 	};
@@ -167,7 +167,7 @@ const Settings = ( props ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( pricelistChild ) => {
-			pricelistChild.attributes.showImage = value;
+			dispatch( 'core/block-editor' ).updateBlockAttributes( pricelistChild.clientId, { showImage: value } );
 		} );
 		setAttributes( { showImage: value } );
 	};
@@ -176,7 +176,7 @@ const Settings = ( props ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( pricelistChild ) => {
-			pricelistChild.attributes.imageSize = value;
+			dispatch( 'core/block-editor' ).updateBlockAttributes( pricelistChild.clientId, { imageSize: value } );
 		} );
 		setAttributes( { imageSize: value } );
 	};
@@ -185,7 +185,7 @@ const Settings = ( props ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( pricelistChild ) => {
-			pricelistChild.attributes.headingTag = value;
+			dispatch( 'core/block-editor' ).updateBlockAttributes( pricelistChild.clientId, { headingTag: value } );
 		} );
 		setAttributes( { headingTag: value } );
 	};
@@ -194,7 +194,7 @@ const Settings = ( props ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( pricelistChild ) => {
-			pricelistChild.attributes.imagePosition = value;
+			dispatch( 'core/block-editor' ).updateBlockAttributes( pricelistChild.clientId, { imagePosition: value } );
 		} );
 		setAttributes( { imagePosition: value } );
 	};
@@ -202,9 +202,7 @@ const Settings = ( props ) => {
 	const setColumns = ( column, tcolumn, mcolumn ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 		getChildBlocks.forEach( ( pricelistChild ) => {
-			pricelistChild.attributes.columns = column;
-			pricelistChild.attributes.tcolumns = tcolumn;
-			pricelistChild.attributes.mcolumns = mcolumn;
+			dispatch( 'core/block-editor' ).updateBlockAttributes( pricelistChild.clientId, { columns: column, tcolumns: tcolumn, mcolumns: mcolumn } );
 		} );
 	};
 
@@ -212,7 +210,7 @@ const Settings = ( props ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( pricelistChild ) => {
-			pricelistChild.attributes.imageAlignment = value;
+			dispatch( 'core/block-editor' ).updateBlockAttributes( pricelistChild.clientId, { imageAlignment: value } );
 		} );
 		setAttributes( { imageAlignment: value } );
 	};
@@ -221,7 +219,7 @@ const Settings = ( props ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( pricelistChild ) => {
-			pricelistChild.attributes.stack = value;
+			dispatch( 'core/block-editor' ).updateBlockAttributes( pricelistChild.clientId, { stack: value } );
 		} );
 		setAttributes( { stack: value } );
 	};
@@ -230,7 +228,7 @@ const Settings = ( props ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( pricelistChild ) => {
-			pricelistChild.attributes.imageWidth = imageWidth;
+			dispatch( 'core/block-editor' ).updateBlockAttributes( pricelistChild.clientId, { imageWidth } );
 		} );
 	};
 
@@ -242,7 +240,7 @@ const Settings = ( props ) => {
 		const getChildBlocks = select( 'core/block-editor' ).getBlocks( clientId );
 
 		getChildBlocks.forEach( ( pricelistChild ) => {
-			pricelistChild.attributes.headingAlign = value;
+			dispatch( 'core/block-editor' ).updateBlockAttributes( pricelistChild.clientId, { headingAlign: value } );
 		} );
 		setAttributes( { headingAlign: value } );
 	};

@@ -11,7 +11,7 @@ import responsiveConditionPreview from '@Controls/responsiveConditionPreview';
 import getApiData from '@Controls/getApiData';
 import DynamicCSSLoader from '@Components/dynamic-css-loader';
 import DynamicFontLoader from './dynamicFontLoader';
-import { compose } from '@wordpress/compose';
+import { compose, useRefEffect } from '@wordpress/compose';
 import AddStaticStyles from '@Controls/AddStaticStyles';
 import addInitialAttr from '@Controls/addInitialAttr';
 
@@ -140,13 +140,18 @@ const UAGBGF = ( props ) => {
 		responsiveConditionPreview( props );
 	}, [ UAGHideDesktop, UAGHideTab, UAGHideMob, deviceType ] );
 
-	useEffect( () => {
-		const submitButton = document.querySelector( '.wpgf-submit' );
+	const gfRef = useRefEffect( ( element ) => {
+		const { ownerDocument } = element;
+		const submitButton = ownerDocument.querySelector( '.wpgf-submit' );
+		const preventClick = ( event ) => event.preventDefault();
 		if ( submitButton !== null ) {
-			submitButton.addEventListener( 'click', function ( event ) {
-				event.preventDefault();
-			} );
+			submitButton.addEventListener( 'click', preventClick );
 		}
+		return () => {
+			if ( submitButton !== null ) {
+				submitButton.removeEventListener( 'click', preventClick );
+			}
+		};
 	}, [ attributes ] );
 
 	const blockStyling = useMemo( () => styling( attributes, clientId, name, deviceType ), [ attributes, deviceType ] );
@@ -181,7 +186,7 @@ const UAGBGF = ( props ) => {
 			<DynamicCSSLoader { ...{ blockStyling } } />
 			<DynamicFontLoader { ...{ attributes } } />
 			{ isSelected && <Settings { ...props } /> }
-			<Render { ...props } />
+			<Render { ...props } blockRef={ gfRef } />
 		</>
 	);
 };

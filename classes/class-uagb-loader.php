@@ -140,7 +140,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '2.19.26' );
+			define( 'UAGB_VER', '2.20.0' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'spectra' );
@@ -181,6 +181,11 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 */
 		public function loader() {
 
+			require_once UAGB_DIR . 'classes/class-uagb-scripts-utils.php';
+			require_once UAGB_DIR . 'classes/class-uagb-block-module.php';
+			require_once UAGB_DIR . 'classes/class-uagb-helper.php';
+			require_once UAGB_DIR . 'classes/class-uagb-admin-helper.php';
+			require_once UAGB_DIR . 'classes/class-uagb-post-assets.php';
 			require_once UAGB_DIR . 'classes/utils.php';
 			require_once UAGB_DIR . 'classes/class-spectra-block-prioritization.php';
 			require_once UAGB_DIR . 'classes/class-uagb-install.php';
@@ -209,7 +214,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			}
 
 			if ( is_admin() ) {
-				require_once UAGB_DIR . 'classes/class-uagb-beta-updates.php';
 				require_once UAGB_DIR . 'classes/class-uagb-rollback.php';
 			}
 		}
@@ -223,10 +227,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 */
 		public function load_plugin() {
 
-			require_once UAGB_DIR . 'classes/class-uagb-scripts-utils.php';
-			require_once UAGB_DIR . 'classes/class-uagb-block-module.php';
-			require_once UAGB_DIR . 'classes/class-uagb-admin-helper.php';
-			require_once UAGB_DIR . 'classes/class-uagb-helper.php';
 			require_once UAGB_DIR . 'blocks-config/blocks-config.php';
 			require_once UAGB_DIR . 'lib/astra-notices/class-bsf-admin-notices.php';
 			require_once UAGB_DIR . 'lib/class-uagb-zipwp-images.php';
@@ -240,7 +240,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 				require_once UAGB_DIR . 'classes/class-uagb-admin.php';
 			}
 
-			require_once UAGB_DIR . 'classes/class-uagb-post-assets.php';
 			require_once UAGB_DIR . 'classes/class-uagb-front-assets.php';
 			require_once UAGB_DIR . 'classes/class-uagb-init-blocks.php';
 			require_once UAGB_DIR . 'classes/class-uagb-rest-api.php';
@@ -465,7 +464,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			$class = 'notice notice-error';
 			/* translators: %s: html tags */
-			$message = sprintf( __( 'The %1$sSpectra%2$s plugin requires %1$sGutenberg%2$s plugin installed & activated.', 'ultimate-addons-for-gutenberg' ), '<strong>', '</strong>' );
+			$message = sprintf( __( 'The %1$sSpectra Legacy%2$s plugin requires %1$sGutenberg%2$s plugin installed & activated.', 'ultimate-addons-for-gutenberg' ), '<strong>', '</strong>' );
 
 			$action_url   = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=gutenberg' ), 'install-plugin_gutenberg' );
 			$button_label = __( 'Install Gutenberg', 'ultimate-addons-for-gutenberg' );
@@ -551,8 +550,11 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 				)
 			);
 
-			// This class is loaded from blocks config.
-			UAGB_Popup_Builder::generate_scripts();
+			// This class is loaded from blocks config (load_plugin). Guard for
+			// environments where init fires before plugins_loaded (e.g. WP.com Atomic).
+			if ( class_exists( 'UAGB_Popup_Builder' ) ) {
+				UAGB_Popup_Builder::generate_scripts();
+			}
 
 			UAGB_Update::migrate_visibility_mode();
 
@@ -758,7 +760,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			$global_data['internal_referer']              = isset( $bsf_internal_referrer['ultimate-addons-for-gutenberg'] ) 
 				? $bsf_internal_referrer['ultimate-addons-for-gutenberg'] 
 				: '';
-			$global_data['beta']                          = get_option( 'uagb_beta' );
 			$global_data['enable_legacy_blocks']          = get_option( 'uag_enable_legacy_blocks' );
 			$global_data['file_generation']               = get_option( '_uagb_allow_file_generation' );
 			$global_data['templates_button']              = get_option( 'uag_enable_templates_button' );
@@ -806,7 +807,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			}
 			// Structured boolean values for analytics backend.
 			$global_data['boolean_values'] = array(
-				'beta'                      => 'yes' === get_option( 'uagb_beta' ),
 				'enable_legacy_blocks'      => 'enabled' === get_option( 'uag_enable_legacy_blocks' ),
 				'file_generation'           => 'enabled' === get_option( '_uagb_allow_file_generation' ),
 				'templates_button'          => 'yes' === get_option( 'uag_enable_templates_button' ),

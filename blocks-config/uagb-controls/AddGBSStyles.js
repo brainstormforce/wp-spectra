@@ -2,7 +2,6 @@ import { useEffect, useMemo } from '@wordpress/element';
 import { STORE_NAME as storeName } from '@Store/constants';
 import { useSelect } from '@wordpress/data';
 import getGBSEditorStyles from '@Controls/getGBSEditorStyles';
-import AddGBSStylesDom from './AddGBSStylesDom';
 import { GBS_RANDOM_NUMBER } from '@Utils/Helpers';
 import { blocksAttributes } from '@Attributes/getBlocksDefaultAttributes';
 import getAttributeFallback, { getFallbackNumber } from '@Controls/getAttributeFallback';
@@ -34,12 +33,14 @@ const AddGBSStyles = ( ChildComponent )=> {
 			return globalBlockStyleId && style?.value === globalBlockStyleId;
 		} ), [ globalBlockStyleId, globalBlockStyles ] );
 
-		useEffect( () => {
+		const editorStyles = useMemo( () => {
 			if ( uagb_blocks_info?.spectra_pro_status && 'enabled' === uagb_blocks_info?.uag_enable_gbs_extension ) {
-				const editorStyles = getGBSEditorStyles( globalBlockStyles, globalBlockStyleId );
-				AddGBSStylesDom( globalBlockStyleId, editorStyles );
+				return getGBSEditorStyles( globalBlockStyles, globalBlockStyleId );
 			}
+			return '';
+		}, [ globalBlockStyles, globalBlockStyleId ] );
 
+		useEffect( () => {
 			// Don't set attribute is extension is not enabled.
 			if ( 'disabled' === uagb_blocks_info?.uag_enable_gbs_extension ){
 				return;
@@ -102,7 +103,14 @@ const AddGBSStyles = ( ChildComponent )=> {
 
 		props = { ...props, ...{ attributes: updatedAttributes, isGBSPresent } };
 
-		return <ChildComponent { ...props }/>
+			return (
+			<>
+				{ globalBlockStyleId && editorStyles && (
+					<style>{ editorStyles }</style>
+				) }
+				<ChildComponent { ...props }/>
+			</>
+		);
 	}
 
     return WrapWithStyle;

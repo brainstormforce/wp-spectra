@@ -1,7 +1,7 @@
 // Import block dependencies and components
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
-import { RichText, useInnerBlocksProps } from '@wordpress/block-editor';
+import { RichText, useInnerBlocksProps, useBlockProps } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 import { useLayoutEffect, memo } from '@wordpress/element';
 import styles from './editor.lazy.scss';
@@ -50,15 +50,19 @@ const Render = ( props ) => {
 		innerBlockOptions
 	);
 
+	const blockProps = useBlockProps( {
+		className: classnames(
+			className,
+			`${ noticeDismiss }`,
+			`uagb-inline_notice__align-${ noticeAlignment }`,
+			`uagb-block-${ block_id }`,
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
+		),
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				className,
-				`${ noticeDismiss }`,
-				`uagb-inline_notice__align-${ noticeAlignment }`,
-				`uagb-block-${ block_id }`,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`
-			) }
+			{ ...blockProps }
 		>
 			<button className="uagb-notice-close-button" type="button" aria-label="Close">
 				{imageIconHtml}

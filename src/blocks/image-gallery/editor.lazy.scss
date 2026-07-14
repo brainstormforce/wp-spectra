@@ -4,6 +4,40 @@
 
 /* stylelint-disable at-rule-no-unknown */
 
+@mixin masonry-columns {
+	&-1 {
+		column-count: 1;
+	}
+
+	&-2 {
+		column-count: 2;
+	}
+
+	&-3 {
+		column-count: 3;
+	}
+
+	&-4 {
+		column-count: 4;
+	}
+
+	&-5 {
+		column-count: 5;
+	}
+
+	&-6 {
+		column-count: 6;
+	}
+
+	&-7 {
+		column-count: 7;
+	}
+
+	&-8 {
+		column-count: 8;
+	}
+}
+
 @mixin grid-columns {
 	&-1 {
 		grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -68,7 +102,7 @@
 		& > &__help-text {
 			font-size: 13px;
 			margin-top: 0;
-			margin-bottom: 32px !important;  // !important is for editor styling usage, so can be overridden.
+			margin-bottom: 32px !important; // !important is for editor styling usage, so can be overridden.
 		}
 
 		& .components-input-control__container {
@@ -122,53 +156,73 @@
 	max-height: 100% !important;
 }
 
-// Applies for the Masonry Layout in the following situations.
-// Twenty Twenty-Two and Spectra One.
-// Responsive Gutenberg Editor.
+// Masonry editor fix for apiVersion 3.
+// masonry-layout (react-masonry-component) cannot measure item widths in the
+// iframe before styles load. CSS multi-column is used as an editor preview —
+// items flow into columns without row-height alignment, closely matching masonry.
+.editor-styles-wrapper {
+	.spectra-image-gallery__layout--masonry {
+		display: block !important;
+		height: auto !important;
+		column-gap: 0;
+
+		.spectra-image-gallery__media-wrapper--isotope {
+			break-inside: avoid;
+			display: block !important;
+			width: 100% !important;
+			transform: none !important;
+		}
+	}
+
+	.spectra-image-gallery__layout--masonry-col {
+
+		@include masonry-columns;
+	}
+
+	.spectra-image-gallery__layout--carousel {
+		display: block;
+	}
+}
+
+// Masonry multi-column for Twenty Twenty-Two, Spectra One, and responsive preview.
 .editor-styles-wrapper .is-root-container.edit-site-block-editor__block-list.wp-site-blocks,
 .uagb-editor-preview-mode-tablet,
 .uagb-editor-preview-mode-mobile {
 	.spectra-image-gallery__layout--masonry {
-		height: initial !important;
-		display: grid;
+		display: block !important;
+		height: auto !important;
+		column-gap: 0;
 
-		.spectra-image-gallery__media-wrapper,
 		.spectra-image-gallery__media-wrapper--isotope {
-			width: auto !important;
-			height: auto !important;
-			aspect-ratio: 1;
-
-			.spectra-image-gallery__media--masonry,
-			.spectra-image-gallery__media-thumbnail--masonry {
-				width: 100% !important;
-				height: 100% !important;
-				object-fit: cover;
-			}
+			break-inside: avoid;
+			display: block !important;
+			width: 100% !important;
+			transform: none !important;
 		}
 	}
 }
 
-// Tablet Grid for the Masonry Layout in Responsive Gutenberg Editor.
+// Tablet column count for responsive Gutenberg editor.
 .uagb-editor-preview-mode-tablet {
 	.spectra-image-gallery__layout--masonry-col-tab {
 
-		@include grid-columns;
+		@include masonry-columns;
 	}
 }
 
-// Mobile Grid for the Masonry Layout in Responsive Gutenberg Editor.
+// Mobile column count for responsive Gutenberg editor.
 .uagb-editor-preview-mode-mobile {
 	.spectra-image-gallery__layout--masonry-col-mob {
 
-		@include grid-columns;
+		@include masonry-columns;
 	}
 }
 
-// Desktop Masonry Grid Compatibility for FSE Themes like Twenty Twenty-Two and Spectra One.
+// Desktop masonry column count for FSE themes (Twenty Twenty-Two, Spectra One).
 .editor-styles-wrapper .is-root-container.edit-site-block-editor__block-list.wp-site-blocks {
 	.spectra-image-gallery__layout--masonry-col {
 
-		@include grid-columns;
+		@include masonry-columns;
 	}
 }
 

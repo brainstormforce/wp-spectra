@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 import { memo } from '@wordpress/element';
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
 	
@@ -14,14 +14,18 @@ const Render = ( props ) => {
 
 	const isRequired = textareaRequired ? 'required' : '';
 
+	const blockProps = useBlockProps( {
+		className: classnames(
+			'uagb-forms-textarea-wrap',
+			'uagb-forms-field-set',
+			`uagb-block-${ block_id }`
+		),
+	} );
+
 	return (
 		<>
 			<div
-				className={ classnames(
-					'uagb-forms-textarea-wrap',
-					'uagb-forms-field-set',
-					`uagb-block-${ block_id }`
-				) }
+				{ ...blockProps }
 			>
 				<RichText
 					tagName="div"

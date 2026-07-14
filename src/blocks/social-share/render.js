@@ -3,7 +3,7 @@
  */
 
 import classnames from 'classnames';
-import { InnerBlocks } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import { useLayoutEffect, memo } from '@wordpress/element';
 import styles from './editor.lazy.scss';
 
@@ -77,15 +77,19 @@ const Render = ( props ) => {
 		],
 	];
 
+	const blockProps = useBlockProps( {
+		className: classnames(
+			className,
+			'uagb-social-share__outer-wrap',
+			`uagb-social-share__layout-${ social_layout }`,
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+			`uagb-block-${ block_id }`
+		),
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				className,
-				'uagb-social-share__outer-wrap',
-				`uagb-social-share__layout-${ social_layout }`,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ block_id }`
-			) }
+			{ ...blockProps }
 		>
 			<InnerBlocks
 				template={ getSocialShareTemplate }

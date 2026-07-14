@@ -5,6 +5,7 @@
 // Import block dependencies and components
 import { PostExcerpt } from './edit';
 import save from './save';
+import deprecated from './deprecated';
 import UAGB_Block_Icons from '@Controls/block-icons';
 // Components
 import { __ } from '@wordpress/i18n';
@@ -15,6 +16,7 @@ import { registerBlockType } from '@wordpress/blocks';
 
 // Register the block
 registerBlockType( 'uagb/post-excerpt', {
+	apiVersion: 3,
 	title: __( 'Post Excerpt', 'ultimate-addons-for-gutenberg' ),
 	description: __( "Show your post's excerpt.", 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.post_grid,
@@ -22,4 +24,5 @@ registerBlockType( 'uagb/post-excerpt', {
 	keywords: [ __( 'post', 'ultimate-addons-for-gutenberg' ), __( 'excerpt', 'ultimate-addons-for-gutenberg' ), __( 'uag', 'ultimate-addons-for-gutenberg' ) ],
 	PostExcerpt,
 	save,
+	deprecated,
 } );

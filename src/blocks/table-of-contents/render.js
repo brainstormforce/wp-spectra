@@ -4,7 +4,7 @@ import TableOfContentCollapsable from './tocCollapsable';
 import { useEffect, useRef, useLayoutEffect, memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import renderSVG from '@Controls/renderIcon';
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 import styles from './editor.lazy.scss';
 import { getFallbackNumber } from '@Controls/getAttributeFallback';
 
@@ -17,7 +17,7 @@ const Render = ( props ) => {
 		};
 	}, [] );
 	const { headers } = props;
-	const { attributes, setAttributes, className, deviceType, name } = props;
+	const { attributes, setAttributes, deviceType, name } = props;
 	const blockName = name.replace( 'uagb/', '' );
 
 	const {
@@ -59,16 +59,17 @@ const Render = ( props ) => {
 	useEffect( () => {
 		const selector = '.uagb-block-' + block_id;
 		const block_element = UAGBTableOfContents._getDocumentElement().querySelector( selector );
-		// Set computed margin for collapsable marker in editor.			
-		if ( UAGBTableOfContents?._setCollapseIconMargin && enableCollapsableList ) {
-			// Set initial styles on the block_element itself.
-			block_element.style.transition = 'opacity 200ms';
-			block_element.style.opacity = '0.25';
+		if ( block_element ) {
 			// Set computed margin for collapsable marker in editor.
-			UAGBTableOfContents._setCollapseIconMargin( selector, attributes );
+			if ( UAGBTableOfContents?._setCollapseIconMargin && enableCollapsableList ) {
+				// Set initial styles on the block_element itself.
+				block_element.style.transition = 'opacity 200ms';
+				block_element.style.opacity = '0.25';
+				// Set computed margin for collapsable marker in editor.
+				UAGBTableOfContents._setCollapseIconMargin( selector, attributes );
+			}
+			block_element.style.opacity = '';
 		}
-		block_element.style.opacity = '';
-		
 	}, [ fontSize, fontSizeTablet, fontSizeMobile, markerView, headers.length, enableCollapsableList, deviceType ] );
 
 	let iconHtml = '';
@@ -77,18 +78,21 @@ const Render = ( props ) => {
 		iconHtml = renderSVG( icon, setAttributes );
 	}
 
+	const blockProps = useBlockProps( {
+		className: uagbClassNames( [
+			`uagb-toc__align-${ align }`,
+			`uagb-toc__columns-${ getFallbackNumber( tColumnsDesktop, 'tColumnsDesktop', blockName ) }`,
+			makeCollapsible && initialCollapse ? 'uagb-toc__collapse' : '',
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+			`uagb-block-${ block_id }`,
+			enableCollapsableList && 'uagb-toc__collapse--list',
+		] ),
+		ref: tocRoot,
+	} );
+
 	return (
 		<div
-			className={ uagbClassNames( [
-				className,
-				`uagb-toc__align-${ align }`,
-				`uagb-toc__columns-${ getFallbackNumber( tColumnsDesktop, 'tColumnsDesktop', blockName ) }`,
-				makeCollapsible && initialCollapse ? 'uagb-toc__collapse' : '',
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ block_id }`,
-				enableCollapsableList && 'uagb-toc__collapse--list',
-			] ) }
-			ref={ tocRoot }
+			{ ...blockProps }
 		>
 			<div className="uagb-toc__wrap">
 				<div className="uagb-toc__title">

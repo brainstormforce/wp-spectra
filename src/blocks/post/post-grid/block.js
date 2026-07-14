@@ -21,6 +21,7 @@ postGridCommonData = applyFilters( 'uagb/post-grid', addCommonDataToSpectraBlock
 // Register the block
 registerBlockType( 'uagb/post-grid', {
 	...postGridCommonData,
+	apiVersion: 3,
 	title: __( 'Post Grid', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Display your posts in a structured grid-based layout.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.post_grid,

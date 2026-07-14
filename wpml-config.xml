@@ -37,7 +37,9 @@
 		<gutenberg-block type="uagb/column" translate="0"/>
 		<gutenberg-block type="uagb/social-share" translate="0"/>
 		<gutenberg-block type="uagb/social-share-child" translate="0"/>
-		<gutenberg-block type="uagb/google-map" translate="0"/>
+		<gutenberg-block type="uagb/google-map" translate="1">
+			<key name="language" />
+		</gutenberg-block>
 		<gutenberg-block type="uagb/info-box" translate="1">
 			<xpath>//span[@class="uagb-ifb-title-prefix"]</xpath>
 			<xpath type="link">//a/@href</xpath>
@@ -61,13 +63,21 @@
 			<xpath>//span[@class="uagb-icon-list__label"]</xpath>
 			<xpath>//div[contains(@class, "wp-block-uagb-icon-list-child")]/a/@href</xpath>
 		</gutenberg-block>
+		<gutenberg-block type="uagb/icon" translate="1">
+			<key type="link" name="link" />
+		</gutenberg-block>
 		<gutenberg-block type="uagb/tabs" translate="1">
 			<xpath>//*[contains(@class, "uagb-tab")]/a/div</xpath>
 			<key name="tabHeaders">
 				<key name="*" />
 			</key>
 		</gutenberg-block>
-		<gutenberg-block type="uagb/tabs-child" translate="0" />
+		<gutenberg-block type="uagb/tabs-child" translate="1">
+			<key name="header"/>
+			<key name="tabHeaders">
+				<key name="*"/>
+			</key>
+		</gutenberg-block>
 		<gutenberg-block type="uagb/restaurant-menu" translate="1">
 			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
 			<xpath>//div[@class="uagb-rm__desc"]</xpath>
@@ -91,6 +101,7 @@
 			<key name="iconLabel" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/marketing-button" translate="1">
+			<key name="link" type="link"></key>
 		    <xpath type="link">//a/@href</xpath>
 			<xpath>//a[@class="uagb-marketing-btn__link"]/@href</xpath>
 			<xpath>//*[@class="uagb-marketing-btn__title"]</xpath>
@@ -135,8 +146,12 @@
 		<gutenberg-block type="uagb/image-gallery" translate="1">
 			<key name="paginateButtonText" />
 			<key name="imageDefaultCaption" />
+			<xpath>//div[@class="spectra-image-gallery__media-thumbnail-caption"]</xpath>
+			<xpath>//div[@class="spectra-image-gallery__control-lightbox--caption"]</xpath>
+			<xpath>//div[@class="spectra-image-gallery__control-lightbox--count"]</xpath>
 			<key name="mediaGallery">
 				<key name="*">
+					<key type="post-ids" sub-type="attachment" name="id"/>
 					<key name="url" type="link" />
 					<key name="alt" />
 					<key name="link" type="link" />
@@ -153,14 +168,39 @@
 		<gutenberg-block type="uagb/container" translate="0"></gutenberg-block>
 		<gutenberg-block type="uagb/how-to" translate="1">
 		    <xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
+			<xpath>//img/@alt</xpath>
+			<xpath>//img/@title</xpath>
 			<xpath>//p[@class="uagb-howto-desc-text"]</xpath>
+			<xpath>//div/p/span</xpath>
 			<key name="headingTitle"/>
 			<key name="headingDesc"/>
-			<xpath>//div/p/span</xpath>
+			<key name="materials">
+				<key name="*">
+					<key name="add_required_materials" />
+				</key>
+			</key>
+			<key name="tools">
+				<key name="*">
+					<key name="add_required_tools"/>
+				</key>
+			</key>
+			<key name="timeNeeded"/>
+			<key name="cost"/>
+		</gutenberg-block>
+		<gutenberg-block type="uagb/how-to-step" translate="1">
+			<key name="name"/>
+			<key name="description"/>
+			<key name="url" type="link"/>
+			<xpath>//div[@class="uagb-how-to-step-name"]</xpath>
+			<xpath>//p[@class="uagb-how-to-step-description"]</xpath>
+			<xpath>//a[@class="uagb-step-link-all"]/@href</xpath>
 		</gutenberg-block>
 		<gutenberg-block type="uagb/forms" translate="1">
 		    <key name="submitButtonText"/>
+			<key name="confirmationMessage"/>
+			<key name="failedMessage"/>
 			<xpath>//button/div</xpath>
+			<xpath>//span</xpath>
 			<xpath>//div[@class="wp-block-button__link"]</xpath>
 			<xpath>//div/div[@class="uagb-forms-main-submit-button-text"]</xpath>
 		</gutenberg-block>

@@ -3,6 +3,7 @@ import { useLayoutEffect, memo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import styles from './editor.lazy.scss';
 import { SelectControl, Placeholder, Spinner } from '@wordpress/components';
+import { useBlockProps } from '@wordpress/block-editor';
 
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
@@ -13,7 +14,7 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	const { className, attributes, deviceType } = props;
+	const { attributes, deviceType } = props;
 
 	const {
 		block_id,
@@ -29,6 +30,16 @@ const Render = ( props ) => {
 		validationMsgPosition,
 		enableHighlightBorder,
 	} = attributes;
+
+	const { blockRef } = props;
+	const blockProps = useBlockProps( {
+		className: classnames(
+			'uagb-cf7-styler__outer-wrap',
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+			`uagb-block-${ block_id }`
+		),
+		ref: blockRef,
+	} );
 
 	/*
 	 * Event to set Image as while adding.
@@ -62,12 +73,7 @@ const Render = ( props ) => {
 
 	return (
 		<div
-			className={ classnames(
-				className,
-				'uagb-cf7-styler__outer-wrap',
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ block_id }`
-			) }
+			{ ...blockProps }
 		>
 			<div
 				className={ classnames(

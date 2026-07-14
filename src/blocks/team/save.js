@@ -4,7 +4,7 @@
 
 import classnames from 'classnames';
 import renderSVG from '@Controls/renderIcon';
-import { RichText } from '@wordpress/block-editor';
+import { RichText, useBlockProps } from '@wordpress/block-editor';
 
 function social_html( icon, link, target ) {
 	const target_value = target ? '_blank' : '_self';
@@ -70,15 +70,18 @@ export default function save( props ) {
 		);
 	}
 
+	const blockProps = useBlockProps.save( {
+		className: classnames(
+			`uagb-team__image-position-${ imgPosition }`,
+			`uagb-team__align-${ align }`,
+			`uagb-team__stack-${ stack }`,
+			`uagb-block-${ block_id }`
+		),
+	} );
+
 	return (
 		<div
-			className={ classnames(
-				props.className,
-				`uagb-team__image-position-${ imgPosition }`,
-				`uagb-team__align-${ align }`,
-				`uagb-team__stack-${ stack }`,
-				`uagb-block-${ block_id }`
-			) }
+			{ ...blockProps }
 		>
 			{ imgPosition === 'left' && image_html }
 

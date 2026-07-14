@@ -20,6 +20,7 @@ socialShareChildCommonData = applyFilters(
 );
 registerBlockType( 'uagb/social-share-child', {
 	...socialShareChildCommonData,
+	apiVersion: 3,
 	title: __( 'Social Share Child', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Share your content on this social media platform .', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.social_share_child,

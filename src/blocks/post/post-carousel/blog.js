@@ -11,7 +11,7 @@ import Slider from 'react-slick';
 function Blog( props ) {
 	const blockName = props.name.replace( 'uagb/', '' );
 	const article = useRef();
-	const { attributes, className, latestPosts, block_id, setAttributes } = props;
+	const { attributes, className, latestPosts, block_id, setAttributes, blockProps } = props;
 	const deviceType = useDeviceType();
 
 	const {
@@ -179,7 +179,9 @@ function Blog( props ) {
 	if ( columnsFallback >= displayPosts.length ) {
 		return (
 			<div
+				{ ...blockProps }
 				className={ classnames(
+					blockProps?.className,
 					'is-carousel',
 					`uagb-post__columns-${ columnsFallback }`,
 					`uagb-post__columns-tablet-${ tcolumnsFallback }`,
@@ -204,27 +206,29 @@ function Blog( props ) {
 	}
 
 	return (
-		<Slider
-			className={ classnames(
-				'is-carousel',
-				`uagb-post__columns-${ columnsFallback }`,
-				'uagb-post__items',
-				className,
-				'uagb-post-grid',
-				'uagb-post__arrow-outside',
-				'uagb-slick-carousel',
-				`uagb-post__image-position-${ imgPosition }`,
-				`${ equalHeightClass }`,
-				isImageEnabled,
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ block_id }`,
-			) }
-			data-blog-id={ block_id }
-			style={ 'dots' === arrowDots ? { padding: '0 0 35px 0' } : {} }
-			{ ...settings }
-		>
-			{ all_posts }
-		</Slider>
+		<div { ...blockProps } className={ classnames( blockProps?.className, `uagb-block-${ block_id }` ) }>
+			<Slider
+				className={ classnames(
+					'is-carousel',
+					`uagb-post__columns-${ columnsFallback }`,
+					'uagb-post__items',
+					className,
+					'uagb-post-grid',
+					'uagb-post__arrow-outside',
+					'uagb-slick-carousel',
+					`uagb-post__image-position-${ imgPosition }`,
+					`${ equalHeightClass }`,
+					isImageEnabled,
+					`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+					`uagb-block-${ block_id }`,
+				) }
+				data-blog-id={ block_id }
+				style={ 'dots' === arrowDots ? { padding: '0 0 35px 0' } : {} }
+				{ ...settings }
+			>
+				{ all_posts }
+			</Slider>
+		</div>
 	);
 }
 

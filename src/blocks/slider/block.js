@@ -16,7 +16,7 @@ let sliderCommonData = {};
 sliderCommonData = applyFilters( 'uagb/slider', addCommonDataToSpectraBlocks( sliderCommonData ) );
 registerBlockType( 'uagb/slider', {
 	...sliderCommonData,
-	apiVersion: 2,
+	apiVersion: 3,
 	title: __( 'Slider', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'Create beautiful sliders with slider block.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.slider,

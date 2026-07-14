@@ -8,12 +8,17 @@ import Title from './components/Title';
 import Price from './components/Price';
 import Description from './components/Description';
 import RestMenuImage from './components/RestMenuImage';
+import { useBlockProps } from '@wordpress/block-editor';
 
 export default function save( props ) {
 	const { imagePosition, headingAlign, imgAlign, showImage } = props.attributes;
 
+	const blockProps = useBlockProps.save( {
+		className: classnames( 'uagb-rest_menu__wrap' ),
+	} );
+
 	return (
-		<div className={ classnames( 'uagb-rest_menu__wrap' ) }>
+		<div { ...blockProps }>
 			{ imgAlign === 'top' && (
 				<>
 					{ showImage && <RestMenuImage attributes={ props.attributes } /> }

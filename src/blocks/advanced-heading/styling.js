@@ -421,7 +421,7 @@ function styling( attributes, clientId, name, deviceType, gbsSelector = false ) 
 			'margin-bottom': generateCSSUnit( getFallbackNumber( headSpaceMobile, 'headSpaceMobile', blockName ), 'px' ),
 		};
 	}
-	const base_selector = '.editor-styles-wrapper ' + ( gbsSelector ? gbsSelector + ' ' : `#block-${ clientId } .uagb-block-${ block_id }` );
+	const base_selector = '.editor-styles-wrapper ' + ( gbsSelector ? gbsSelector + ' ' : `.uagb-block-${ block_id }` );
 
 	selectors = applyFilters( `spectra.${ blockName }.styling`, selectors, attributes );
 	tablet_selectors = applyFilters( `spectra.${ blockName }.tabletStyling`, tablet_selectors, attributes );

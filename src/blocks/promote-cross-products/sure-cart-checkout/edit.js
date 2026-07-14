@@ -7,7 +7,7 @@ import AddStaticStyles from '@Controls/AddStaticStyles';
 import addInitialAttr from '@Controls/addInitialAttr';
 import { useState, useLayoutEffect, useEffect } from '@wordpress/element';
 import styles from '../editor.lazy.scss';
-import { InspectorControls } from '@wordpress/block-editor';
+import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import InspectorTabs from '@Components/inspector-tabs/InspectorTabs.js';
 import InspectorTab, { UAGTabs } from '@Components/inspector-tabs/InspectorTab.js';
 import UAGAdvancedPanelBody from '@Components/advanced-panel-body';
@@ -92,9 +92,13 @@ const Edit = ( props ) => {
 			styles.unuse();
 		};
 	}, [] );
+	const blockProps = useBlockProps( {
+		className: 'uagb-sure-cart-checkout-container',
+		style: { backgroundImage: `url(${imgUrl})`, backgroundSize: ( 'Mobile' === deviceType ) ? 'contain' : 'auto' },
+	} );
 	return (
 		<>
-			<div className="uagb-sure-cart-checkout-container" style={{ backgroundImage: `url(${imgUrl})`, backgroundSize: ( 'Mobile' === deviceType ) ? 'contain' : 'auto' }}>
+			<div { ...blockProps }>
 		</div>
 		{ isSelected && 
 			<InspectorControls>

@@ -20,6 +20,7 @@ if (
 ) {
 	registerBlockType( 'uagb/gf-styler', {
 		...gfStylerCommonData,
+		apiVersion: 3,
 		title: __( 'Gravity Form Designer', 'ultimate-addons-for-gutenberg' ), // Block title.
 		description: __(
 			'Highly customize and style your forms created by Gravity Forms.',

@@ -422,7 +422,7 @@ function styling( attributes, clientId, name, deviceType ) {
 		};
 	}
 
-	const baseSelector = `.editor-styles-wrapper #block-${ clientId } .uagb-block-${ block_id }`;
+	const baseSelector = `.editor-styles-wrapper .uagb-block-${ block_id }`;
 
 	let stylingCss = generateCSS( selectors, baseSelector );
 

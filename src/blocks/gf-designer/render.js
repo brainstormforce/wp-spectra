@@ -3,6 +3,7 @@ import { SelectControl, Placeholder, Spinner } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { useLayoutEffect, memo } from '@wordpress/element';
 import styles from './editor.lazy.scss';
+import { useBlockProps } from '@wordpress/block-editor';
 const Render = ( props ) => {
 	// Add and remove the CSS on the drop and remove of the component.
 	useLayoutEffect( () => {
@@ -12,7 +13,7 @@ const Render = ( props ) => {
 		};
 	}, [] );
 
-	const { className, attributes, setAttributes, deviceType } = props;
+	const { attributes, setAttributes, deviceType } = props;
 	// Setup the attributes.
 	const {
 		formId,
@@ -29,6 +30,16 @@ const Render = ( props ) => {
 		advancedValidationSettings,
 		block_id,
 	} = attributes;
+
+	const { blockRef } = props;
+	const blockProps = useBlockProps( {
+		className: classnames(
+			'uagb-gf-styler__outer-wrap',
+			`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
+			`uagb-block-${ block_id }`
+		),
+		ref: blockRef,
+	} );
 
 	/*
 	 * Event to set Image as while adding.
@@ -57,12 +68,7 @@ const Render = ( props ) => {
 	}
 	return (
 		<div
-			className={ classnames(
-				className,
-				'uagb-gf-styler__outer-wrap',
-				`uagb-editor-preview-mode-${ deviceType.toLowerCase() }`,
-				`uagb-block-${ block_id }`
-			) }
+			{ ...blockProps }
 		>
 			<div
 				className={ classnames(

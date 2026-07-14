@@ -17,6 +17,7 @@ let modalCommonData = {};
 modalCommonData = applyFilters( 'uagb/modal', addCommonDataToSpectraBlocks( modalCommonData ) );
 registerBlockType( 'uagb/modal', {
 	...modalCommonData,
+	apiVersion: 3,
 	title: __( 'Modal', 'ultimate-addons-for-gutenberg' ),
 	description: __( 'This block allows you to add modal popup.', 'ultimate-addons-for-gutenberg' ),
 	icon: UAGB_Block_Icons.modal,
