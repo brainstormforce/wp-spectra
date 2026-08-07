@@ -260,7 +260,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * ({ } ;) and HTML angle brackets that could be used for injection.
 		 * Applied centrally so every block style attribute is covered.
 		 *
-		 * @since x.x.x
+		 * @since 2.20.1
 		 * @param mixed $value Raw CSS value from block attributes.
 		 * @return mixed Sanitized value (string stripped; non-strings returned as-is).
 		 */

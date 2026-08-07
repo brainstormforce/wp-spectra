@@ -40,7 +40,7 @@ const UpgradeNotices = ( { title, description, upgradeText, upgradeBold, modalDa
 
 			// Wait for the API call to complete, update the state to show a notification, and reload the page
 			getApiFetchData.then( () => {
-				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Spectra Pro Legacy Activated!' } );
+				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Spectra Legacy Pro Activated!' } );
 				setTimeout( () => {
 					window.location.reload();
 				}, 500 );
@@ -72,7 +72,7 @@ const UpgradeNotices = ( { title, description, upgradeText, upgradeBold, modalDa
 	const allPlansData = {
 		'Spectra Pro': modalData,
 		'Essential Toolkit': { ...modalData, features: [
-			__( 'Spectra Pro Legacy', 'ultimate-addons-for-gutenberg' ),
+			__( 'Spectra Legacy Pro', 'ultimate-addons-for-gutenberg' ),
 			__( 'Astra Pro', 'ultimate-addons-for-gutenberg' ),
 			__( 'Premium Starter Templates', 'ultimate-addons-for-gutenberg' ),
 			__( 'Ultimate Addons for Elementor', 'ultimate-addons-for-gutenberg' ),

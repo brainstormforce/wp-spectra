@@ -59,7 +59,7 @@ const HeroSection = () => {
 					<p className="text-sm text-text-secondary m-0">
 						{ 'Activated' === uag_react.pro_plugin_status
 							? __(
-									"Thanks for choosing Spectra Pro Legacy! You're now part of an exclusive community of website builders. Enjoy exploring the new features and creating something amazing. Let's take your site to the next level together.",
+									"Thanks for choosing Spectra Legacy Pro! You're now part of an exclusive community of website builders. Enjoy exploring the new features and creating something amazing. Let's take your site to the next level together.",
 									'ultimate-addons-for-gutenberg'
 							  )
 							: __(

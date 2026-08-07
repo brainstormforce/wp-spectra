@@ -1,0 +1,37 @@
+name: Simple Asset Size Reporter
+
+# Run the deployment only when code is committed to the branch.
+on:
+  pull_request:
+
+# Cancels all previous workflow runs for pull requests that have not completed.
+concurrency:
+    # The concurrency group contains the workflow name and the branch name for pull requests
+    # or the commit hash for any other events.
+    group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
+    cancel-in-progress: true
+
+jobs:
+  assetSizeReporter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use desired version of NodeJS
+        uses: actions/setup-node@v4
+        with:
+            node-version: '16'
+            cache: 'npm'
+
+      - uses: preactjs/compressed-size-action@v2
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          install-script: "npm install --legacy-peer-deps"
+          # Any JS files anywhere within a dist directory:
+          pattern: "{assets/**/*.js,assets/**/*.css,dist/**/*.js,dist/**/*.css}"
+
+          # Always ignore SourceMaps and node_modules:
+          exclude: "{**/*.map,**/node_modules/**}"
+          # build-script: "dynamic-css"

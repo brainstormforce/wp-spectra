@@ -5,7 +5,7 @@
 **Requires at least:** 5.6  
 **Requires PHP:** 7.4  
 **Tested up to:** 7.0  
-**Stable tag:** 2.20.0  
+**Stable tag:** 2.20.1  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -124,9 +124,12 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 
 Spectra Legacy receives maintenance updates only: security fixes, WordPress and PHP compatibility, and critical bug fixes. New features ship in Spectra Blocks.
 
+### 2.20.1 - Friday, 31st July 2026 ###
+* Fix: This update addressed a security bug. Props to Wordfence for reporting it responsibly to our team. Please make sure you are using the latest version on your website.
+
 ### 2.20.0 - Tuesday, 14th July 2026 ###
 * Renamed to "Spectra Legacy"; all blocks, settings, and content remain fully intact.
-* Fix: This update addressed a security bug. Props to WPScan for the responsible disclosure.
+* Fix: This update addressed a security bug. Props to Muni Nitish Kumar Yaddala and WPScan for the responsible disclosure.
 * Fix: Info Box — anchor, custom CSS classes, and responsive conditions missing on the frontend after the apiVersion 3 migration.
 * Fix: Raw CSS text printed below the Image block in Customizer preview.
 
@@ -195,6 +198,9 @@ Please make sure you are using the latest version on your website.
 The full changelog is available [here](https://wpspectra.com/whats-new/).
 
 ## Upgrade Notice ##
+
+### 2.20.1 ###
+Security fix. Please update to the latest version.
 
 ### 2.20.0 ###
 Renamed to "Spectra Legacy". Includes a security fix. No data is changed — your blocks and settings remain intact.
