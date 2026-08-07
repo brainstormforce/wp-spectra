@@ -16,7 +16,7 @@ jobs:
       current_version: ${{ steps.get_version.outputs.current_version }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: master
 
@@ -35,7 +35,7 @@ jobs:
         run: bash ./bin/build-zip.sh
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: uag-plugin
           path: ./artifact/ultimate-addons-for-gutenberg.zip
@@ -52,13 +52,13 @@ jobs:
         run: echo "version=$(echo $VERSION | cut -d / -f 3 | sed 's/-rc./ RC/' )" >> $GITHUB_OUTPUT
 
       - name: Download Plugin Zip Artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: uag-plugin
 
       - name: Create Release Draft
         id: create_release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
