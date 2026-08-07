@@ -89,7 +89,7 @@ if ( ! class_exists( 'UAGB_Image' ) ) {
 		 * emits: rel="stylesheet" with a Google Fonts href. The frontend allowlist
 		 * remains unchanged.
 		 *
-		 * @since x.x.x
+		 * @since 2.20.1
 		 * @param string $block_content Rendered block HTML.
 		 * @return string Sanitized HTML.
 		 */
@@ -132,7 +132,7 @@ if ( ! class_exists( 'UAGB_Image' ) ) {
 		 * survives sanitize_block_output() is the Google Fonts URL emitted by
 		 * UAGB_Rest_API::content_pre_render().
 		 *
-		 * @since x.x.x
+		 * @since 2.20.1
 		 * @param string $value The href attribute value.
 		 * @return bool True when the URL host is fonts.googleapis.com.
 		 */

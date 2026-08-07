@@ -1,0 +1,59 @@
+name: Sync Block Docs to Wiki
+
+on:
+  push:
+    branches: ['**']              # Trigger on any branch
+    paths:
+      - 'spectra-v3/src/blocks/*/*.md'  # Only when block MD files change
+  workflow_dispatch:   
+  
+permissions:
+  contents: write
+
+jobs:
+  sync-wiki:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check for markdown files
+        run: |
+          echo "Checking for markdown files..."
+          find spectra-v3/src/blocks -name "*.md" -type f || echo "No markdown files found"
+
+      - name: Clone Wiki repo
+        run: |
+          git clone https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.wiki.git wiki
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Copy docs to Wiki
+        run: |
+          if [ -d "spectra-v3/src/blocks" ]; then
+            echo "Copying markdown files..."
+            find spectra-v3/src/blocks -name "*.md" -type f -exec cp {} wiki/ \;
+            echo "Files copied to wiki:"
+            ls -la wiki/*.md || echo "No markdown files copied"
+          else
+            echo "Source directory not found"
+            exit 1
+          fi
+
+      - name: Commit and push to Wiki
+        run: |
+          cd wiki
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -m "Sync block docs from ${{ github.ref_name }} - ${{ github.sha }}"
+            git push
+            echo "Wiki updated successfully"
+          else
+            echo "No changes to commit"
+          fi

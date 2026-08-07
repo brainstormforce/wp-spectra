@@ -84,7 +84,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 					</div>
 
 					<div>
-						<Title className="text-text-primary" tag="h1" title="Limitless Design With Spectra Pro Legacy!" />
+						<Title className="text-text-primary" tag="h1" title="Limitless Design With Spectra Legacy Pro!" />
 						<p className="text-sm text-text-secondary m-0">
 							{ __(
 								'Utilize advanced blocks, extensions, and premium features to create a websites that stands out!',
@@ -241,7 +241,7 @@ const UnlockProFeatures = ( { freeVPro = false, smallCol = false } ) => {
 				</div>
 
 				<div>
-					<Title className="text-text-primary mb-1" tag="h1" title="Limitless Design With Spectra Pro Legacy!" />
+					<Title className="text-text-primary mb-1" tag="h1" title="Limitless Design With Spectra Legacy Pro!" />
 					<p className="text-sm text-text-secondary m-0">
 						{ __(
 							'Utilize advanced blocks, extensions, and premium features to create a websites that stands out!',

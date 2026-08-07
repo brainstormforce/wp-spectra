@@ -1,4 +1,6 @@
 import SettingsIcons from './SettingsIcons';
+import { applyFilters } from '@wordpress/hooks';
+import { useState as useForceUpdate, useEffect } from '@wordpress/element';
 
 import { __ } from '@wordpress/i18n';
 
@@ -37,7 +39,6 @@ import QuickActionBar from '@DashboardApp/pages/settings/editor-enhancements/Qui
 import CollapsePanels from '@DashboardApp/pages/settings/editor-enhancements/CollapsePanels';
 
 import { useLocation, useHistory } from 'react-router-dom';
-import { useEffect } from '@wordpress/element';
 
 import UagbSidebar from './Sidebar';
 import { useState } from 'react';
@@ -85,6 +86,15 @@ const Settings = () => {
 	const spectraIsBlockTheme = useSelector( ( state ) => state.spectraIsBlockTheme );
 
 	const [ currentTab, setCurrentTab ] = useState();
+
+	// Re-render once after mount so filters registered by late-loaded scripts
+	// (e.g. spectra-pro) are applied to navigation and tab titles.
+	const [ , forceUpdate ] = useForceUpdate( 0 );
+	useEffect( () => {
+		const handler = () => forceUpdate( ( n ) => n + 1 );
+		document.addEventListener( 'uag_filters_registered', handler, { once: true } );
+		return () => document.removeEventListener( 'uag_filters_registered', handler );
+	}, [] );
 
 	const navigation = [
 		{
@@ -160,6 +170,8 @@ const Settings = () => {
 		'license': __( 'My Account', 'ultimate-addons-for-gutenberg' ),
 	};
 
+	const filteredTabTitles = applyFilters( 'uag.adminSettings.tabTitles', tabTitles );
+
 	if ( spectraIsBlockTheme ) {
 		navigation[ 3 ].children.unshift( {
 			name: __( 'Theme Fonts', 'ultimate-addons-for-gutenberg' ),
@@ -167,6 +179,8 @@ const Settings = () => {
 			icon: SettingsIcons.font,
 		} )
 	}
+
+	const filteredNavigation = applyFilters( 'uag.adminSettings.navigation', navigation );
 
 	useEffect( () => {
 		// Activate Setting Active Tab from "settingsTab" Hash in the URl is present.
@@ -194,9 +208,9 @@ const Settings = () => {
 	const accountModalData = {
 		title: __( 'Unlock Pro Features', 'ultimate-addons-for-gutenberg' ),
 		Image: AccountModalImage,
-		header: __( 'Limitless Design with Spectra Pro Legacy!', 'ultimate-addons-for-gutenberg' ),
+		header: __( 'Limitless Design with Spectra Legacy Pro!', 'ultimate-addons-for-gutenberg' ),
 		description: __(
-			'Experience design freedom with Spectra Pro Legacy. Utilize advanced blocks, extensions, and premium features to create a websites that stands out!',
+			'Experience design freedom with Spectra Legacy Pro. Utilize advanced blocks, extensions, and premium features to create a websites that stands out!',
 			'ultimate-addons-for-gutenberg'
 		),
 		features: [
@@ -227,7 +241,7 @@ const Settings = () => {
 
 	return (
 		<Container className="lg:grid lg:grid-cols-[16rem_1fr] flex gap-4 bg-background-secondary flex-auto">
-			<UagbSidebar navigation={ navigation } />
+			<UagbSidebar navigation={ filteredNavigation } />
 
 			{ 'block-settings' === currentTab ? (
 				<Container className="w-full max-w-[696px] mx-auto h-full pt-8 pr-4" direction="column" gap="xl">
@@ -235,7 +249,7 @@ const Settings = () => {
 						<Title
 							className="[&_h2]:text-text-primary text-xl"
 							size="md"
-							title={ tabTitles[ currentTab ] || __( 'Settings', 'ultimate-addons-for-gutenberg' ) }
+							title={ filteredTabTitles[ currentTab ] || __( 'Settings', 'ultimate-addons-for-gutenberg' ) }
 						/>
 					</Container>
 
@@ -292,7 +306,7 @@ const Settings = () => {
 						<Title
 							className="[&_h2]:text-text-primary text-xl"
 							size="md"
-							title={ tabTitles[ currentTab ] || __( 'Settings', 'ultimate-addons-for-gutenberg' ) }
+							title={ filteredTabTitles[ currentTab ] || __( 'Settings', 'ultimate-addons-for-gutenberg' ) }
 						/>
 					</Container>
 
@@ -365,6 +379,7 @@ const Settings = () => {
 								{ uag_react.spectra_pro_status && uag_react.spectra_pro_licensing && <MyAccount /> }
 							</>
 						) }
+						{ applyFilters( 'uag.adminSettings.tabContent', null, currentTab ) }
 					</Container>
 				</Container>
 			) }

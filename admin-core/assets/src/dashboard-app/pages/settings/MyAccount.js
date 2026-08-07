@@ -19,7 +19,7 @@ export default function MyAccount() {
 		: __( 'Paste your license key here', 'ultimate-addons-for-gutenberg' );
 	const licenseMessage = licenseStatus
 		? __( 'License successfully validated!', 'ultimate-addons-for-gutenberg' )
-		: __( 'Please enter your valid license key below to activate Spectra Pro Legacy!', 'ultimate-addons-for-gutenberg' );
+		: __( 'Please enter your valid license key below to activate Spectra Legacy Pro!', 'ultimate-addons-for-gutenberg' );
 
 	const activateHandler = () => {
 		if ( ! licenseKey ) {
@@ -114,7 +114,7 @@ export default function MyAccount() {
 								sprintf(
 									// translators: %1$s: first anchor tag start, %2$s: first anchor tag end, %3$s second anchor tag start, %4$s second anchor tag end.
 									__(
-										"Activate %1$sSpectra Pro Legacy%2$s to get professional support and automatic updates from your WordPress dashboard. If you don't have a license, you can %3$sget it here »%4$s",
+										"Activate %1$sSpectra Legacy Pro%2$s to get professional support and automatic updates from your WordPress dashboard. If you don't have a license, you can %3$sget it here »%4$s",
 										'ultimate-addons-for-gutenberg'
 									),
 									'<a href="https://wpspectra.com/pricing" class="text-spectra focus:text-spectra-hover active:text-spectra-hover hover:text-spectra-hover" target="_blank" rel="noreferrer">',

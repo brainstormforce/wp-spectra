@@ -1,0 +1,96 @@
+name: Fix build conflict - Run build commands
+on:
+  pull_request:
+    types: [labeled]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-run:
+    if: ${{ github.event.label.name == 'conflict' }}
+    runs-on: ubuntu-latest
+    name: 'Run npm build commands'
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+
+      - name: Use desired version of NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Initialize mandatory git config
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "noreply@github.com"
+
+      # - name: Dump GitHub context
+      #   env:
+      #     GITHUB_CONTEXT: ${{ toJson(github) }}
+      #   run: echo "$GITHUB_CONTEXT"
+
+      - name: Get PR number
+        id: get_pr_number
+        run: echo "pr_number=${{ github.event.pull_request.number }}" >> $GITHUB_OUTPUT
+
+      - name: Extract current branch name
+        id: extract_branch
+        run: echo "branch=$(echo $GITHUB_HEAD_REF)" >> $GITHUB_OUTPUT
+
+      - name: Branch name
+        run: |
+          echo "${{ steps.extract_branch.outputs.branch }}"
+          echo "${{ github.head_ref }}"
+          echo "$GITHUB_HEAD_REF"
+
+      - name: Get Composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install dependencies and build
+        run: composer install --prefer-dist --no-suggest --no-progress && npm ci && npm run build
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v7
+        with:
+          add-paths: |
+            *.js
+            *.php
+            *.css
+          commit-message: Auto build generated
+          base: ${{ github.head_ref }}
+          branch: ${{ github.head_ref }}-build
+          delete-branch: true
+          title: Updated the build files - \#${{ steps.get_pr_number.outputs.pr_number }}
+          body: |
+            Build Created!
+            Hi! This PR was created in response to workflow running.
+
+      - name: Check outputs
+        run: |
+          echo "Pull Request - ${{ steps.cpr.outputs.pull-request-url }}"
+
+      - name: Create a new comment with a new PR url
+        uses: sandeshjangam/comment-actions@v1
+        with:
+          type: create
+          number: ${{ steps.get_pr_number.outputs.pr_number }}
+          body: |
+            Hi, I have fixed the conflict on your request.
+            Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}
+          reactions: hooray
+
+      - uses: andymckay/labeler@1.0.4
+        with:
+          remove-labels: 'conflict'

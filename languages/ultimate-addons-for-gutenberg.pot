@@ -8241,7 +8241,7 @@ msgid "Want to do more with Popup Builder?"
 msgstr ""
 
 #: classes/class-uagb-admin.php:432
-msgid "Maximize your popup potential with Spectra Pro. Unlock enhanced features, intuitive design options, and increased conversions!"
+msgid "Maximize your popup potential with Spectra Legacy Pro. Unlock enhanced features, intuitive design options, and increased conversions!"
 msgstr ""
 
 #: classes/class-uagb-admin.php:434

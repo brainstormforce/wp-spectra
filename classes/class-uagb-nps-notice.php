@@ -76,6 +76,9 @@ if ( ! class_exists( 'UAGB_NPS_Notice' ) ) :
 			$allowed_screens = array( 'toplevel_page_spectra', 'edit-spectra-popup' );
 
 			// Display the NPS survey.
+			$nps_logo     = apply_filters( 'uag_nps_logo', plugin_dir_url( __DIR__ ) . 'assets/images/logos/spectra.svg' );
+			$nps_logo_url = is_string( $nps_logo ) ? esc_url( $nps_logo ) : '';
+
 			Nps_Survey::show_nps_notice(
 				'nps-survey-ultimate-addons-for-gutenberg',
 				array(
@@ -87,7 +90,7 @@ if ( ! class_exists( 'UAGB_NPS_Notice' ) ) :
 					'show_on_screens'  => $allowed_screens,
 					'message'          => array(
 
-						'logo'                        => esc_url( plugin_dir_url( __DIR__ ) . 'assets/images/logos/spectra.svg' ),
+						'logo'                        => $nps_logo_url,
 						'plugin_name'                 => __( 'Spectra Legacy', 'ultimate-addons-for-gutenberg' ),
 						'nps_rating_message'          => __( 'How likely are you to recommend Spectra Legacy to your friends or colleagues?', 'ultimate-addons-for-gutenberg' ),
 						'feedback_title'              => __( 'Thanks a lot for your feedback! 😍', 'ultimate-addons-for-gutenberg' ),

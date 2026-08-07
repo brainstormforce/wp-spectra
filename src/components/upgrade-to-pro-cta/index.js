@@ -56,7 +56,7 @@ const SpectraSupport = ( { campaign } ) => {
 		'Essential Toolkit': {
 			...supportModalData,
 			features: [
-				__( 'Spectra Pro', 'ultimate-addons-for-gutenberg' ),
+				__( 'Spectra Legacy Pro', 'ultimate-addons-for-gutenberg' ),
 				__( 'Astra Pro', 'ultimate-addons-for-gutenberg' ),
 				__( 'Premium Starter Templates', 'ultimate-addons-for-gutenberg' ),
 				__( 'Ultimate Addons for Elementor', 'ultimate-addons-for-gutenberg' ),

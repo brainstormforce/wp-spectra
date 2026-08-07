@@ -120,7 +120,7 @@ const ProModal = ( { modalData, setIsModalOpen } ) => {
 	useEffect( () => {
 		const productName = productsList[ selectedProduct ]?.product || '';
 		const titleMapping = {
-			'Spectra Pro': 'Spectra Pro Legacy',
+			'Spectra Pro': 'Spectra Legacy Pro',
 			'Essential Toolkit': 'Essential Toolkit',
 		};
 

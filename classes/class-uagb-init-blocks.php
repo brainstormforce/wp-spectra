@@ -337,7 +337,7 @@ class UAGB_Init_Blocks {
 	 * where it is not an array so core's layout support degrades gracefully.
 	 *
 	 * @param array $parsed_block The parsed block data from render_block_data.
-	 * @since x.x.x
+	 * @since 2.20.1
 	 * @return array The parsed block data with parentLayout normalised.
 	 */
 	public function fix_non_array_parent_layout( $parsed_block ) {
@@ -1365,7 +1365,7 @@ class UAGB_Init_Blocks {
 				'ultimate-addons-for-gutenberg'
 			),
 			'is_rtl'                                  => is_rtl(),
-			'insta_linked_accounts'                   => UAGB_Admin_Helper::get_admin_settings_option( 'uag_insta_linked_accounts', array() ),
+			'insta_linked_accounts'                   => current_user_can( 'manage_options' ) ? UAGB_Admin_Helper::get_admin_settings_option( 'uag_insta_linked_accounts', array() ) : array(),
 			'insta_all_users_media'                   => apply_filters( 'uag_instagram_transients', array() ),
 			'is_site_editor'                          => $screen->id,
 			'current_post_id'                         => get_the_ID(),

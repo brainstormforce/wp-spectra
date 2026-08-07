@@ -1,5 +1,6 @@
 /* This popup handles all the setting update notifications */
 import { Fragment, useEffect } from '@wordpress/element';
+import { addAction, removeAction } from '@wordpress/hooks';
 import { Transition } from '@headlessui/react';
 import { CheckCircleIcon, ExclamationCircleIcon, XCircleIcon } from '@heroicons/react/outline';
 import { XIcon } from '@heroicons/react/solid';
@@ -7,6 +8,15 @@ import { useSelector, useDispatch } from 'react-redux';
 
 export default function SettingsSavedNotification() {
 	const dispatch = useDispatch();
+
+	// Allow external scripts (e.g. spectra-pro) to trigger the notification
+	// via wp.hooks.doAction( 'uag_show_notification', 'Message' ).
+	useEffect( () => {
+		const handler = ( message ) =>
+			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: message } );
+		addAction( 'uag_show_notification', 'spectra/notification', handler );
+		return () => removeAction( 'uag_show_notification', 'spectra/notification' );
+	}, [ dispatch ] );
 
 	let settingsSavedNotification = useSelector( ( state ) => state.settingsSavedNotification );
 	let messageType;

@@ -1,0 +1,158 @@
+name: Code Analysis
+
+on:
+  pull_request:
+    paths:
+      - "**.php"
+      - "**.js"
+      - "**.jsx"
+      - "**.ts"
+      - "**.tsx"
+      - "**.css"
+      - "**.scss"
+      - "composer.json"
+      - "composer.lock"
+      - "package.json"
+      - "package-lock.json"
+      - "phpcs.xml"
+      - "phpstan.neon"
+      - ".github/workflows/code-analysis.yml"
+
+# Cancels all previous workflow runs for pull requests that have not completed.
+concurrency:
+    # The concurrency group contains the workflow name and the branch name for pull requests
+    # or the commit hash for any other events.
+    group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
+    cancel-in-progress: true
+
+jobs:
+  phpcs:
+    name: PHPCS
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          coverage: none
+          tools: composer, cs2pr
+
+      - name: Get Composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install composer dependencies
+        env:
+          COMPOSER_TOKEN: ${{ secrets.BSF_PRODUCTS_REPO_TOKEN }}
+        run: |
+          if [ -n "$COMPOSER_TOKEN" ]; then
+            composer config github-oauth.github.com "$COMPOSER_TOKEN"
+          else
+            echo "::warning::BSF_PRODUCTS_REPO_TOKEN is not set — private package installs may fail"
+          fi
+          composer install --prefer-dist --no-suggest --no-progress
+
+      - name: Run phpcs
+        id: phpcs
+        if: always()
+        run: ./vendor/bin/phpcs --report-full --report-checkstyle=./phpcs-report.xml
+
+      - name: Show PHPCS results in PR
+        if: ${{ always() && steps.phpcs.outcome == 'failure' }}
+        run: cs2pr ./phpcs-report.xml
+
+  phpstan:
+    name: PHPStan
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          coverage: none
+          tools: composer
+
+      - name: Get Composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install composer dependencies
+        env:
+          COMPOSER_TOKEN: ${{ secrets.BSF_PRODUCTS_REPO_TOKEN }}
+        run: |
+          if [ -n "$COMPOSER_TOKEN" ]; then
+            composer config github-oauth.github.com "$COMPOSER_TOKEN"
+          else
+            echo "::warning::BSF_PRODUCTS_REPO_TOKEN is not set — private package installs may fail"
+          fi
+          composer install --prefer-dist --no-suggest --no-progress
+
+      - name: PHP static analysis
+        if: always()
+        run: composer run phpstan
+
+  js-lint:
+    name: JS Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use desired version of NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Lint JS
+        if: always()
+        run: npm run lint-js
+
+  css-lint:
+    name: CSS Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use desired version of NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Lint CSS
+        if: always()
+        run: npm run lint-css

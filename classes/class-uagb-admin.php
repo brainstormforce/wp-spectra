@@ -429,7 +429,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 								</div>',
 							$image_path,
 							__( 'Want to do more with Popup Builder?', 'ultimate-addons-for-gutenberg' ),
-							__( 'Maximize your popup potential with Spectra Pro Legacy. Unlock enhanced features, intuitive design options, and increased conversions!', 'ultimate-addons-for-gutenberg' ),
+							__( 'Maximize your popup potential with Spectra Legacy Pro. Unlock enhanced features, intuitive design options, and increased conversions!', 'ultimate-addons-for-gutenberg' ),
 							esc_url( \UAGB_Admin_Helper::get_spectra_pro_url( '/pricing/', 'free-plugin', 'popup-builder', 'popup-builder-banner' ) ),
 							__( 'Upgrade Now', 'ultimate-addons-for-gutenberg' )
 						),

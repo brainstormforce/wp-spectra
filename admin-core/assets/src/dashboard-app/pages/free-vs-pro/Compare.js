@@ -32,7 +32,7 @@ const Compare = () => {
 	const getSpectraProTitle = () => {
 		return 'Installed' === uag_react.pro_plugin_status
 			? __( 'Activate Now', 'ultimate-addons-for-gutenberg' )
-			: __( 'Get Spectra Pro Legacy Now', 'ultimate-addons-for-gutenberg' );
+			: __( 'Get Spectra Legacy Pro Now', 'ultimate-addons-for-gutenberg' );
 	};
 
 	const activatePro = () => {
@@ -54,7 +54,7 @@ const Compare = () => {
 
 			// Wait for the API call to complete, update the state to show a notification, and reload the page
 			getApiFetchData.then( () => {
-				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Spectra Pro Legacy Activated!' } );
+				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: 'Spectra Legacy Pro Activated!' } );
 				setTimeout( () => {
 					window.location.reload();
 				}, 500 );
