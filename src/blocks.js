@@ -120,6 +120,7 @@ import './blocks/testimonial/block.js';
 // Extensions.
 import './blocks/extensions/attributes.js';
 import './blocks/extensions/block.js';
+import './blocks/extensions/responsive-state-notice';
 // Legacy Blocks.
 import './blocks/columns/block.js';
 import './blocks/section/block.js';

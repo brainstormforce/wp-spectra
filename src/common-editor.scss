@@ -12,6 +12,26 @@
 /* Gutenberg Reset CSS */
 .block-editor-block-inspector {
 	.uagb-inspector-tab {
+		/**
+		 * WP 7.1 migrated @wordpress/components Button to the new --wpds-* design
+		 * system: `.components-button` gained `border: 1px solid transparent` and
+		 * `.components-button-group .components-button` switched its segment
+		 * separators from `box-shadow: inset` to a real `border-color`, while
+		 * focus moved from `box-shadow` to `outline`/`outline-offset`. That leaks
+		 * a visible border + focus ring through UAGB's segmented controls. Reset
+		 * both here so UAGB's own inset box-shadow separators render as pre-7.1.
+		 * Scoped to the inspector so core/other-plugin buttons are unaffected.
+		 */
+		.components-button-group .components-button {
+			border: 0;
+
+			&:focus,
+			&:focus:not( :active ) {
+				outline: none;
+				outline-offset: 0;
+			}
+		}
+
 		.components-notice.is-warning {
 			margin-top: 20px;
 			margin-bottom: 20px;
@@ -558,9 +578,14 @@ button.components-button.uagb-reset.is-secondary.is-small {
 	background: 0 0;
 	color: $spectra-color-icon-disabled;
 
+	/* WP 7.1 --wpds-* Button: is-secondary now paints a real border-color. */
+	border: 0;
+
 	&.is-pressed,
 	&:focus:not(:disabled) {
 		border: 0;
+		outline: none;
+		outline-offset: 0;
 	}
 }
 
@@ -989,3 +1014,32 @@ body.spectra-wp-gte-7-0 {
 @import "styles/control-variation-picker";
 @import "styles/spectra-change-indicators";
 @import "styles/spectra-legacy";
+
+
+/* WP 7.1 responsive style-state notice for Spectra Legacy blocks.
+ * The notice renders into a core block-support group slot ( the only slots core keeps
+ * mounted while editing a style state ), which forces a section header such as
+ * "Typography". Hide that header for the panel that only hosts our notice, and let the
+ * notice span the panel full width with comfortable spacing.
+ * Flattened compound selectors ( no wrapping `.block-editor-block-inspector {}` ) to
+ * satisfy stylelint no-duplicate-selectors. */
+.block-editor-block-inspector .components-tools-panel:has( .uagb-responsive-state-notice-wrap ) .components-tools-panel-header,
+.block-editor-block-inspector .components-panel__body:has( .uagb-responsive-state-notice-wrap ) > .components-panel__body-title {
+	display: none;
+}
+
+.block-editor-block-inspector .uagb-responsive-state-notice-wrap {
+	grid-column: 1 / -1;
+	margin: 4px 0;
+}
+
+.block-editor-block-inspector .uagb-responsive-state-notice-wrap .uagb-responsive-state-notice.components-notice {
+	width: 100%;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.block-editor-block-inspector .uagb-responsive-state-notice-wrap .uagb-responsive-state-notice.components-notice .components-notice__content {
+	margin: 8px 0;
+	line-height: 1.5;
+}
