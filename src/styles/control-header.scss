@@ -34,6 +34,8 @@
 			&.is-pressed,
 			&:focus:not(:disabled) {
 				border: 0;
+				outline: none;
+				outline-offset: 0;
 			}
 
 			&:only-child,
@@ -66,9 +68,16 @@
 				cursor: pointer;
 				padding-right: 5px;
 
+				// WP 7.1 moved @wordpress/components Button to --wpds-* tokens:
+				// unit toggles gained a real border. Neutralize it to keep the
+				// flat pre-7.1 look.
+				border: 0;
+
 				&.is-pressed,
 				&:focus:not(:disabled) {
 					border: 0;
+					outline: none;
+					outline-offset: 0;
 				}
 
 				&:first-child {

@@ -107,7 +107,6 @@ class UAGB_Init_Blocks {
 
 	}
 
-
 	/**
 	 * Register the Popup Builder CPT.
 	 *
@@ -1087,11 +1086,14 @@ class UAGB_Init_Blocks {
 		}
 
 		// Common editor style.
+		// Version by file mtime so CDN/edge caches (e.g. Cloudflare) bust when the
+		// compiled CSS changes without a plugin version bump; falls back to UAGB_VER.
+		$common_editor_css_path = dirname( UAGB_FILE ) . '/dist/common-editor.css';
 		wp_enqueue_style(
 			'uagb-block-common-editor-css',
 			UAGB_URL . 'dist/common-editor.css',
 			array( 'wp-edit-blocks' ),
-			UAGB_VER
+			file_exists( $common_editor_css_path ) ? (string) filemtime( $common_editor_css_path ) : UAGB_VER
 		);
 
 		// Block base styles.
@@ -1179,11 +1181,17 @@ class UAGB_Init_Blocks {
 
 		// Scripts.
 		$blocks_script = file_exists( UAGB_DIR . 'dist/blocks.min.js' ) ? 'blocks.min.js' : 'blocks.js';
+		// Version the editor bundle by file mtime so CDN/edge + browser caches bust
+		// when dist/blocks.min.js is rebuilt without a plugin version bump; falls back
+		// to the asset-file version. Prevents a stale editor bundle (which can inject
+		// dynamic styles outside the iframe canvas) from lingering after an update.
+		$blocks_script_path = UAGB_DIR . 'dist/' . $blocks_script;
+		$blocks_script_ver  = file_exists( $blocks_script_path ) ? (string) filemtime( $blocks_script_path ) : $script_info['version'];
 		wp_enqueue_script(
 			'uagb-block-editor-js', // Handle.
 			UAGB_URL . 'dist/' . $blocks_script,
 			$script_dep, // Dependencies, defined above.
-			$script_info['version'], // UAGB_VER.
+			$blocks_script_ver, // File mtime (cache-bust) or asset version.
 			true // Enqueue the script in the footer.
 		);
 
