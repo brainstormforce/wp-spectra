@@ -26,6 +26,9 @@ jobs:
           coverage: none
           tools: composer, cs2pr
 
+      - name: Set composer token
+        run: composer config github-oauth.github.com ${{ secrets.PRIVATE_ACCESS_TOKEN }}
+
       - name: Use desired version of NodeJS
         uses: actions/setup-node@v4.4.0
         with:

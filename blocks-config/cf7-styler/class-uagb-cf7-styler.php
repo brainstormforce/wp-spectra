@@ -890,7 +890,7 @@ if ( ! class_exists( 'UAGB_CF7_Styler' ) ) {
 		 */
 		public function render_html( $attributes ) {
 
-			$form = $attributes['formId'];
+			$form = isset( $attributes['formId'] ) ? intval( $attributes['formId'] ) : 0;
 
 			$classes = array(
 				'uagb-cf7-styler__align-' . $attributes['align'],

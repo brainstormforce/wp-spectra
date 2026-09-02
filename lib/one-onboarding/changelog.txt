@@ -1,5 +1,18 @@
 == Changelog ==
 
+v1.0.7 - 13th August 2026
+- New: Lock Pro feature checkboxes (shown checked and non-interactive) when the Pro plugin is active, so already-available features can't be toggled off. Opt-in per product via the `select_all_pro_features` config flag.
+- Improvement: Recommended Essentials (add-ons) now show install/active status immediately by seeding it server-side, instead of flashing while the client-side status check resolves.
+
+v1.0.6 - 13th August 2026
+- New: Option for a product to have toggling any single Pro feature select or clear the entire Pro set, via the `select_all_pro_features` config flag.
+
+v1.0.5 - TBD
+- Fix: Prevented a fatal error when the onboarding library files are missing or incomplete.
+
+v1.0.4 - 16th July 2026
+- Improvement: Suppressed the standalone Spectra Blocks plugin activation redirect during onboarding.
+
 v1.0.3 - 21st April 2026
 - Fix: Use fully-qualified class names in class_exists() guards to prevent fatal errors when another plugin defines a global Api, Admin, Ajax, Plugin, or Register class.
 

@@ -4,14 +4,14 @@ namespace WPB {
     /**
      * Loader
      *
-     * @since 2.19.23
+     * @since X.X.X
      */
     class Loader
     {
         /**
          * Initiator
          *
-         * @since 2.19.23
+         * @since X.X.X
          * @return self initialized object of class.
          */
         public static function get_instance()
@@ -28,7 +28,7 @@ namespace WPB {
         /**
          * Constructor
          *
-         * @since 2.19.23
+         * @since X.X.X
          */
         public function __construct()
         {
@@ -39,7 +39,7 @@ namespace WPB {
          *      1. Global Languages /wp-content/languages/one-onboarding/ folder
          *      2. Local directory /wp-content/plugins/one-onboarding/languages/ folder
          *
-         * @since 2.19.23
+         * @since X.X.X
          * @return void
          */
         public function load_textdomain()

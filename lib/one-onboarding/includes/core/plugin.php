@@ -102,6 +102,11 @@ if ( ! class_exists( '\One_Onboarding\Core\Plugin' ) ) {
 				update_option( '__uagb_do_redirect', false );
 			}
 
+			// Spectra Blocks.
+			if ( $plugin_slug === 'spectra-blocks' ) {
+				update_option( '__spectra_blocks_do_redirect', false );
+			}
+
 			// Ultimate Addons for Elementor Lite.
 			if ( $plugin_slug === 'header-footer-elementor' ) {
 				delete_option( 'hfe_start_onboarding' );

@@ -212,6 +212,11 @@ if ( ! class_exists( '\One_Onboarding\Admin\Admin' ) ) {
 				? $onboarding_data['exit']
 				: [];
 
+			// Safely extract the add-on list (screens → add-ons → addonList).
+			$screens       = is_array( $onboarding_data['screens'] ?? null ) ? $onboarding_data['screens'] : [];
+			$addons_screen = is_array( $screens['add-ons'] ?? null ) ? $screens['add-ons'] : [];
+			$addon_list    = is_array( $addons_screen['addonList'] ?? null ) ? $addons_screen['addonList'] : [];
+
 			/**
 			 * One Onboarding localized data
 			 *
@@ -222,22 +227,22 @@ if ( ! class_exists( '\One_Onboarding\Admin\Admin' ) ) {
 			$localized_data = apply_filters(
 				'one_onboarding_localized_data',
 				array(
-					'productId'        => $product_id,
-					'ajaxUrl'          => admin_url( 'admin-ajax.php' ),
-					'nonce'            => wp_create_nonce( esc_attr( $product_id . '_onboarding_nonce' ) ),
+					'productId'            => $product_id,
+					'ajaxUrl'              => admin_url( 'admin-ajax.php' ),
+					'nonce'                => wp_create_nonce( esc_attr( $product_id . '_onboarding_nonce' ) ),
 					// User information.
-					'userInfo'         => self::get_current_user_info(),
+					'userInfo'             => self::get_current_user_info(),
 					// Product specific data.
-					'title'            => $onboarding_data['title'] ?? '',
-					'logoSvg'          => $onboarding_data['logo_svg'] ?? '',
-					'logoUrl'          => esc_url( is_string( $onboarding_data['logo'] ) ? $onboarding_data['logo'] : ONE_ONBOARDING_URL . 'assets/images/bsf.png' ),
-					'product'          => $onboarding_data['product'] ?? [],
-					'screens'          => $onboarding_data['screens'] ?? [],
-					'exit'             => [
+					'title'                => $onboarding_data['title'] ?? '',
+					'logoSvg'              => $onboarding_data['logo_svg'] ?? '',
+					'logoUrl'              => esc_url( is_string( $onboarding_data['logo'] ) ? $onboarding_data['logo'] : ONE_ONBOARDING_URL . 'assets/images/bsf.png' ),
+					'product'              => $onboarding_data['product'] ?? [],
+					'screens'              => $onboarding_data['screens'] ?? [],
+					'exit'                 => [
 						'url'   => $onboarding_exit_data['url'] ?? admin_url(),
 						'label' => $onboarding_exit_data['label'] ?? '',
 					],
-					'starterTemplates' => [
+					'starterTemplates'     => [
 						'aiBuilder' => [
 							'enabled' => true,
 							'url'     => admin_url( 'admin.php?page=ai-builder' ),
@@ -247,13 +252,20 @@ if ( ! class_exists( '\One_Onboarding\Admin\Admin' ) ) {
 							'url'     => admin_url( 'admin.php?page=starter-templates&ci=1' ),
 						],
 					],
-					'doneImageUrl'     => ONE_ONBOARDING_URL . 'assets/images/done.jpg',
-					'proStatus'        => $onboarding_data['pro_status'] ?? '',
-					'proSlug'          => $onboarding_data['pro_slug'] ?? '',
+					'doneImageUrl'         => ONE_ONBOARDING_URL . 'assets/images/done.jpg',
+					'proStatus'            => $onboarding_data['pro_status'] ?? '',
+					'proSlug'              => $onboarding_data['pro_slug'] ?? '',
+					'selectAllProFeatures' => ! empty( $onboarding_data['select_all_pro_features'] ),
+					'addonStatuses'        => self::get_addon_statuses( $addon_list ),
 				)
 			);
 
 			wp_localize_script( 'one-onboarding-script', 'oneOnboardingData', $localized_data );
+			wp_set_script_translations(
+				'one-onboarding-script',
+				apply_filters( 'one_onboarding_textdomain', 'one-onboarding' ),
+				apply_filters( 'one_onboarding_languages_directory', '' ),
+			);
 
 			// Enqueue CSS.
 			$css_file = is_rtl() ? 'style-main-rtl.css' : 'style-main.css';
@@ -320,6 +332,54 @@ if ( ! class_exists( '\One_Onboarding\Admin\Admin' ) ) {
 				'firstName' => $first_name,
 				'lastName'  => $user->user_lastname ?? '',
 			);
+		}
+
+		/**
+		 * Build a slug → status map for the add-on ("Recommended Essentials") list.
+		 *
+		 * Computed server-side so already installed/active add-ons render their
+		 * status immediately, instead of flashing blank (or being mis-handled as
+		 * not-installed on Continue) while the client-side status check resolves.
+		 *
+		 * Status values match the AddOns screen: 'active', 'inactive'
+		 * (installed but not active), or '' (not installed).
+		 *
+		 * @since 1.0.7
+		 *
+		 * @param array<int|string, mixed> $addon_list The onboarding add-on list (each item may have a `slug`).
+		 * @return array<string,string> Map of plugin slug (folder) to status.
+		 */
+		private static function get_addon_statuses( array $addon_list ): array {
+			if ( empty( $addon_list ) ) {
+				return array();
+			}
+
+			if ( ! function_exists( 'get_plugins' ) ) {
+				require_once ABSPATH . 'wp-admin/includes/plugin.php';
+			}
+
+			// Map plugin folder slug → plugin file (e.g. 'akismet' => 'akismet/akismet.php').
+			$file_by_slug = array();
+			foreach ( array_keys( get_plugins() ) as $plugin_file ) {
+				$file_by_slug[ dirname( $plugin_file ) ] = $plugin_file;
+			}
+
+			$statuses = array();
+			foreach ( $addon_list as $addon ) {
+				if ( ! is_array( $addon ) || empty( $addon['slug'] ) || ! is_string( $addon['slug'] ) ) {
+					continue;
+				}
+
+				$slug = $addon['slug'];
+				if ( ! isset( $file_by_slug[ $slug ] ) ) {
+					$statuses[ $slug ] = ''; // Not installed.
+					continue;
+				}
+
+				$statuses[ $slug ] = is_plugin_active( $file_by_slug[ $slug ] ) ? 'active' : 'inactive';
+			}
+
+			return $statuses;
 		}
 	}
 }

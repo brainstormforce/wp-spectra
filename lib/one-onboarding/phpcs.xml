@@ -34,6 +34,7 @@
 	<config name="testVersion" value="7.4-"/>
 
 	<!-- Rules -->
+	<rule ref="BSFCommonSecurity"/>
 	<rule ref="WordPress-Core">
 		<!-- Exclude the class file name rule as we use different naming convention -->
 		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />

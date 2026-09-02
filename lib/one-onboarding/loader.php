@@ -135,8 +135,12 @@ if ( ! class_exists( '\One_Onboarding\Loader' ) ) {
 			// Load text domain.
 			$this->load_textdomain();
 
-			// Load helper functions.
-			require_once ONE_ONBOARDING_DIR . 'includes/helpers/functions.php';
+			// Load helper functions. Bail if the file is missing to avoid a fatal on incomplete installs.
+			$helper_functions = ONE_ONBOARDING_DIR . 'includes/helpers/functions.php';
+			if ( ! file_exists( $helper_functions ) ) {
+				return;
+			}
+			require_once $helper_functions;
 
 			// Initialize the plugin.
 			Core\Plugin::get_instance();
@@ -191,7 +195,8 @@ if ( ! class_exists( '\One_Onboarding\Loader' ) ) {
 		public function load_onboarding(): void {
 			if ( ! empty( self::$onboarding_paths ) ) {
 				foreach ( self::$onboarding_paths as $path ) {
-					if ( file_exists( $path . '/version.json' ) ) {
+					// Skip incomplete/corrupt copies missing required files.
+					if ( file_exists( $path . '/version.json' ) && file_exists( $path . '/includes/helpers/functions.php' ) ) {
 						$file_contents      = file_get_contents( $path . '/version.json' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 						$onboarding_version = json_decode( (string) $file_contents, true );
 						$onboarding_version = is_array( $onboarding_version ) ? $onboarding_version['version'] : '';
