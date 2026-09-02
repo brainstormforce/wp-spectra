@@ -40,6 +40,9 @@ jobs:
                   coverage: none
                   tools: composer, cs2pr, phpcs
 
+            - name: Set composer token
+              run: composer config github-oauth.github.com ${{ secrets.PRIVATE_ACCESS_TOKEN }}
+
             - name: Install dependencies
               run: composer install --prefer-dist --no-suggest --no-progress && npm install
 

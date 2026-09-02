@@ -9,6 +9,12 @@
 			"homepage": "https://brainstormforce.com"
 		}
 	],
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/brainstormforce/bsf-phpcs-rules.git"
+		}
+	],
 	"require": {
 		"php": ">=7.4"
 	},
@@ -17,6 +23,7 @@
 		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
 		"phpcompatibility/php-compatibility": "^9.3",
 		"wp-coding-standards/wpcs": "^2.2",
+		"brainstormforce/bsf-phpcs-rules": "^1.0",
 		"phpstan/phpstan": "^1.9",
 		"szepeviktor/phpstan-wordpress": "^1.1",
 		"php-stubs/wordpress-stubs": "^6.1",

@@ -167,7 +167,7 @@ if ( ! class_exists( '\One_Onboarding\Api\Api' ) ) {
 			if ( empty( $plugin_slug ) ) {
 				return new \WP_Error(
 					'missing_plugin',
-					__( 'Plugin slug is required', 'ultimate-addons-for-gutenberg' ),
+					__( 'Plugin slug is required', 'one-onboarding' ),
 					array( 'status' => 400 )
 				);
 			}
@@ -199,7 +199,7 @@ if ( ! class_exists( '\One_Onboarding\Api\Api' ) ) {
 			if ( empty( $plugin_slug ) ) {
 				return new \WP_Error(
 					'missing_plugin',
-					__( 'Plugin slug is required', 'ultimate-addons-for-gutenberg' ),
+					__( 'Plugin slug is required', 'one-onboarding' ),
 					array( 'status' => 400 )
 				);
 			}
@@ -210,7 +210,7 @@ if ( ! class_exists( '\One_Onboarding\Api\Api' ) ) {
 				return rest_ensure_response(
 					array(
 						'success'     => true,
-						'message'     => __( 'Plugin is already installed', 'ultimate-addons-for-gutenberg' ),
+						'message'     => __( 'Plugin is already installed', 'one-onboarding' ),
 						'plugin_file' => $plugin_file,
 					)
 				);
@@ -240,7 +240,7 @@ if ( ! class_exists( '\One_Onboarding\Api\Api' ) ) {
 				return new \WP_Error(
 					'plugin_not_found',
 					// translators: %s: plugin slug.
-					sprintf( __( 'Plugin %s not found in repository', 'ultimate-addons-for-gutenberg' ), $plugin_slug ),
+					sprintf( __( 'Plugin %s not found in repository', 'one-onboarding' ), $plugin_slug ),
 					array( 'status' => 404 )
 				);
 			}
@@ -263,7 +263,7 @@ if ( ! class_exists( '\One_Onboarding\Api\Api' ) ) {
 			return rest_ensure_response(
 				array(
 					'success'     => true,
-					'message'     => __( 'Plugin installed successfully', 'ultimate-addons-for-gutenberg' ),
+					'message'     => __( 'Plugin installed successfully', 'one-onboarding' ),
 					'plugin_file' => $plugin_file,
 				)
 			);
@@ -283,7 +283,7 @@ if ( ! class_exists( '\One_Onboarding\Api\Api' ) ) {
 			if ( empty( $plugin_slug ) ) {
 				return new \WP_Error(
 					'missing_plugin',
-					__( 'Plugin slug is required', 'ultimate-addons-for-gutenberg' ),
+					__( 'Plugin slug is required', 'one-onboarding' ),
 					array( 'status' => 400 )
 				);
 			}
@@ -293,7 +293,7 @@ if ( ! class_exists( '\One_Onboarding\Api\Api' ) ) {
 			if ( ! $plugin_file ) {
 				return new \WP_Error(
 					'plugin_not_installed',
-					__( 'Plugin is not installed', 'ultimate-addons-for-gutenberg' ),
+					__( 'Plugin is not installed', 'one-onboarding' ),
 					array( 'status' => 404 )
 				);
 			}
@@ -302,7 +302,7 @@ if ( ! class_exists( '\One_Onboarding\Api\Api' ) ) {
 				return rest_ensure_response(
 					array(
 						'success' => true,
-						'message' => __( 'Plugin is already active', 'ultimate-addons-for-gutenberg' ),
+						'message' => __( 'Plugin is already active', 'one-onboarding' ),
 					)
 				);
 			}
@@ -330,7 +330,7 @@ if ( ! class_exists( '\One_Onboarding\Api\Api' ) ) {
 			return rest_ensure_response(
 				array(
 					'success' => true,
-					'message' => __( 'Plugin activated successfully', 'ultimate-addons-for-gutenberg' ),
+					'message' => __( 'Plugin activated successfully', 'one-onboarding' ),
 				)
 			);
 		}
@@ -349,7 +349,7 @@ if ( ! class_exists( '\One_Onboarding\Api\Api' ) ) {
 			if ( empty( $onboarding_state ) ) {
 				return new \WP_Error(
 					'missing_onboarding_state',
-					__( 'Onboarding state is required', 'ultimate-addons-for-gutenberg' ),
+					__( 'Onboarding state is required', 'one-onboarding' ),
 					array( 'status' => 400 )
 				);
 			}
@@ -414,7 +414,7 @@ if ( ! class_exists( '\One_Onboarding\Api\Api' ) ) {
 			if ( empty( $onboarding_state ) ) {
 				return new \WP_Error(
 					'missing_onboarding_state',
-					__( 'Onboarding state is required', 'ultimate-addons-for-gutenberg' ),
+					__( 'Onboarding state is required', 'one-onboarding' ),
 					array( 'status' => 400 )
 				);
 			}

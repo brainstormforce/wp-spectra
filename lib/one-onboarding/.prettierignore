@@ -16,4 +16,5 @@ artifacts
 wordpress/
 tests
 *.map
+auth.json
 *.md

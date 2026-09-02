@@ -1002,7 +1002,7 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 		 */
 		public function render_html( $attributes ) {
 
-			$form = $attributes['formId'];
+			$form = isset( $attributes['formId'] ) ? intval( $attributes['formId'] ) : 0;
 
 			$classes = array(
 				'uagb-gf-styler__align-' . $attributes['align'],
@@ -1058,7 +1058,7 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 				$shortcode_attrs = array(
 					'id'       => $form,
 					'ajax'     => ( $attributes['enableAjax'] ) ? 'true' : 'false',
-					'tabindex' => ( $attributes['enableTabSupport'] ) ? $attributes['formTabIndex'] : '',
+					'tabindex' => ( $attributes['enableTabSupport'] ) ? intval( $attributes['formTabIndex'] ) : '',
 				);
 
 				if ( isset( $attributes['titleDescStyle'] ) && 'none' === $attributes['titleDescStyle'] ) {
