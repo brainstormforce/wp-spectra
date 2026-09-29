@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 5.6
 Requires PHP: 7.4
 Tested up to: 7.1
-Stable tag: 2.20.3
+Stable tag: 2.20.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -123,6 +123,10 @@ Our external packages use [Rating Star Component](https://github.com/n49/react-s
 == Changelog ==
 
 Spectra Legacy receives maintenance updates only: security fixes, WordPress and PHP compatibility, and critical bug fixes. New features ship in Spectra Blocks.
+
+= 2.20.4 - Monday, 28th September 2026 =
+* Fix: This update addressed a security bug. Props to Wordfence for reporting it responsibly to our team. Please make sure you are using the latest version on your website.
+* Fix: Resolved a performance issue where saving navigation menus could trigger unnecessary asset cache regeneration.
 
 = 2.20.3 - Wednesday, 26th August 2026 =
 * Fix: This update addressed a security bug. Props to Manisha Dilshan for the responsible disclosure. Please make sure you are using the latest version on your website.

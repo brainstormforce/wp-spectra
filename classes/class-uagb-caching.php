@@ -59,6 +59,16 @@ class UAGB_Caching {
 	 * @return void
 	 */
 	public function clear_cache() {
+		// Purge the host cache at most once per request. Multiple block posts
+		// saved in one request would otherwise each trigger a full purge, and
+		// each Breeze purge stacks another Breeze_Admin instance/hook, so the
+		// work compounds with every post in the request. See #6082.
+		static $cache_cleared = false;
+		if ( $cache_cleared ) {
+			return;
+		}
+		$cache_cleared = true;
+
 		self::clear_siteground_cache();
 		self::clear_cloudways_cache();
 	}

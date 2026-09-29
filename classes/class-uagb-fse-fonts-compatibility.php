@@ -94,6 +94,11 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 				return;
 			}
 
+			// Bail if the request is not from a logged-in admin. This routine deletes theme font files and rewrites theme.json, so it must never run for unauthenticated or unprivileged visitors.
+			if ( ! is_admin() || ! current_user_can( 'manage_options' ) ) {
+				return;
+			}
+
 			$uagb_filesystem   = uagb_filesystem();
 			$fonts_folder_path = get_stylesheet_directory() . '/assets/fonts/spectra';
 
