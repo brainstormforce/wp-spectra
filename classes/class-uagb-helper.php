@@ -1531,6 +1531,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since 1.23.0
 		 */
 		public static function delete_page_assets( $post_id ) {
+			// Autosaves and revisions are not user-facing saves, so skip them to
+			// avoid needless asset regeneration and host cache purges.
+			if ( wp_is_post_autosave( $post_id ) || wp_is_post_revision( $post_id ) ) {
+				return;
+			}
+
 			$current_post_type = get_post_type( $post_id );
 			if ( 'wp_template_part' === $current_post_type || 'wp_template' === $current_post_type ) {
 
@@ -1541,6 +1547,16 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				/* Update the asset version */
 				UAGB_Admin_Helper::update_admin_settings_option( '__uagb_asset_version', time() );
+				return;
+			}
+
+			// Bail for post types that never carry Spectra block assets but can
+			// be written many times in a single request. WordPress saves one
+			// nav_menu_item per menu item, so without this a large-menu save
+			// fires a full asset delete and host cache purge once per item and
+			// times out. See #6082. Filterable so other such types can opt out.
+			$skip_post_types = (array) apply_filters( 'uagb_delete_page_assets_skip_post_types', array( 'nav_menu_item' ) );
+			if ( in_array( $current_post_type, $skip_post_types, true ) ) {
 				return;
 			}
 
