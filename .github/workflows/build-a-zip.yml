@@ -37,10 +37,10 @@ jobs:
       branch_name: ${{ steps.get_current_branch.outputs.branch_name }}
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Use desired version of NodeJS
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
             node-version: '20'
             cache: 'npm'
@@ -65,7 +65,7 @@ jobs:
           mv ${{ env.ZIP_NAME }} ${{ steps.get_current_branch.outputs.branch_name }}/
 
       - name: Upload a zip to server
-        uses: burnett01/rsync-deployments@4.1
+        uses: burnett01/rsync-deployments@5.2
         with:
           # switches: -avzr --delete --delete-excluded --exclude-from=".distignore" --include="" --filter=""
           switches: -avzr
@@ -129,7 +129,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Extract current branch name
         id: get_current_branch
@@ -139,7 +139,7 @@ jobs:
 
       - name: Execute a delete command using password
         if: ${{ steps.get_current_branch.outputs.branch_name != '' }}
-        uses: appleboy/ssh-action@v1.0.3
+        uses: appleboy/ssh-action@v1.2.5
         with:
           host: ${{ secrets.SSH_HOST }}
           port: ${{ secrets.SSH_PORT }}

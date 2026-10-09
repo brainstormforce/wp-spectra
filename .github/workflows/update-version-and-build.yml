@@ -31,7 +31,7 @@ jobs:
           sudo mv wp-cli.phar /usr/local/bin/wp
 
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: next-release
 
@@ -56,7 +56,7 @@ jobs:
           cat <<< $(jq --tab --arg version "${VERSION}" '.version = $version' package-lock.json) > package-lock.json
 
       - name: Use desired version of NodeJS
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: '20'
           cache: 'npm'
@@ -78,7 +78,7 @@ jobs:
 
       - name: Create Pull Request
         id: cpr
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           commit-message: Version & build files updated
           base: next-release
