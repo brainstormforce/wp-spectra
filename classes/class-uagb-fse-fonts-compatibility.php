@@ -90,15 +90,42 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 
 			$this->base_url = UAGB_UPLOAD_URL . 'assets/';
 
-			if ( empty( $_GET['page'] ) || 'spectra' !== $_GET['page'] || empty( $_GET['path'] ) || 'settings' !== $_GET['path'] || empty( $_GET['settings'] ) || 'fse-support' !== $_GET['settings'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended -- $_GET['settings'] does not provide nonce.
+			// Carry the globally selected FSE fonts into a newly activated theme.
+			// Fonts live in each theme's own theme.json, so switching themes would
+			// otherwise leave them behind in the previous theme. Theme switching is
+			// an admin-only, nonce-protected action, so this is a safe trigger.
+			add_action( 'after_switch_theme', array( $this, 'sync_fonts_on_theme_switch' ) );
+
+			if ( empty( $_GET['page'] ) || 'spectra' !== $_GET['page'] || empty( $_GET['path'] ) || 'settings' !== $_GET['path'] || empty( $_GET['settings'] ) || 'fse-support' !== $_GET['settings'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Routing check only; the nonce is verified below before any action runs.
 				return;
 			}
 
-			// Bail if the request is not from a logged-in admin. This routine deletes theme font files and rewrites theme.json, so it must never run for unauthenticated or unprivileged visitors.
+			// Verify the nonce first. This routine deletes theme font files and rewrites theme.json, so a forged GET link — even one a logged-in admin is tricked into clicking — must be rejected before anything else. Only the Spectra dashboard mints this nonce, so a capability check alone cannot stop the CSRF.
+			$fse_sync_nonce = isset( $_GET['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ) : '';
+			if ( ! wp_verify_nonce( $fse_sync_nonce, 'uagb_fse_fonts_sync' ) ) {
+				return;
+			}
+
+			// Then require an administrator: the routine must never run for unprivileged users even with a valid nonce.
 			if ( ! is_admin() || ! current_user_can( 'manage_options' ) ) {
 				return;
 			}
 
+			$this->sync_theme_fonts();
+		}
+
+		/**
+		 * Delete the theme's Spectra fonts and resync them from the saved global list.
+		 *
+		 * Called by the capability-and-nonce-checked dashboard AJAX handlers after a
+		 * font setting changes, and by the nonce-protected GET handler, so the font
+		 * files and theme.json stay in step with the Spectra dashboard. Must only be
+		 * reached from those authorized admin contexts.
+		 *
+		 * @since 2.20.5
+		 * @return void
+		 */
+		public function sync_theme_fonts() {
 			$uagb_filesystem   = uagb_filesystem();
 			$fonts_folder_path = get_stylesheet_directory() . '/assets/fonts/spectra';
 
@@ -108,11 +135,24 @@ if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
 
 			self::delete_all_theme_font_family();
 
-			$load_fse_font_globally = UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_fse_font_globally', 'disabled' );
+			if ( 'disabled' !== UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_fse_font_globally', 'disabled' ) ) {
+				$this->save_google_fonts_to_theme();
+			}
+		}
 
-			if ( 'disabled' !== $load_fse_font_globally ) {
-
-				add_action( 'admin_init', array( $this, 'save_google_fonts_to_theme' ) );
+		/**
+		 * Resync the global FSE fonts into the theme that was just activated.
+		 *
+		 * Hooked on after_switch_theme so the admin's selected fonts follow the
+		 * active theme. Skipped entirely when the feature is off, to avoid touching
+		 * the new theme's theme.json.
+		 *
+		 * @since 2.20.5
+		 * @return void
+		 */
+		public function sync_fonts_on_theme_switch() {
+			if ( 'disabled' !== UAGB_Admin_Helper::get_admin_settings_option( 'uag_load_fse_font_globally', 'disabled' ) ) {
+				$this->sync_theme_fonts();
 			}
 		}
 

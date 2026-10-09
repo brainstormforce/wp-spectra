@@ -543,6 +543,7 @@ class Admin_Menu {
 				'plugin_manager_nonce'             => wp_create_nonce( 'spectra_plugin_manager_nonce' ),
 				'installer_nonce'                  => wp_create_nonce( 'updates' ),
 				'force_check_plugin_updates_nonce' => wp_create_nonce( 'uag_force_check_plugin_updates' ),
+				'fse_fonts_sync_nonce'             => wp_create_nonce( 'uagb_fse_fonts_sync' ),
 				'pro_installed_status'             => 'inactive' === self::get_plugin_status( 'spectra-pro/spectra-pro.php' ) ? true : false,
 				'pro_plugin_status'                => self::get_plugin_status( 'spectra-pro/spectra-pro.php' ),
 				'contry_code'                      => \UAGB_Admin_Helper::get_user_country_code(),
