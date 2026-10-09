@@ -387,6 +387,28 @@ class Common_Settings extends Ajax_Base {
 	}
 
 	/**
+	 * Resync the FSE theme fonts after a font setting changes.
+	 *
+	 * The font-file deletion and theme.json rewrite live in
+	 * UAGB_FSE_Fonts_Compatibility. Running it here keeps the sync inside this
+	 * capability-and-nonce-checked handler, rather than the former
+	 * unauthenticated GET request.
+	 *
+	 * @since 2.20.5
+	 * @return void
+	 */
+	private function sync_fse_theme_fonts() {
+		if ( ! class_exists( 'UAGB_FSE_Fonts_Compatibility' ) ) {
+			return;
+		}
+
+		$fse_fonts = \UAGB_FSE_Fonts_Compatibility::get_instance();
+		if ( $fse_fonts instanceof \UAGB_FSE_Fonts_Compatibility ) {
+			$fse_fonts->sync_theme_fonts();
+		}
+	}
+
+	/**
 	 * Save setting - Loads selected font globally.
 	 *
 	 * @since 2.5.1
@@ -395,7 +417,9 @@ class Common_Settings extends Ajax_Base {
 	public function load_fse_font_globally() {
 		$this->check_permission_nonce( 'uag_load_fse_font_globally' );
 		$value = $this->check_post_value();
-		$this->save_admin_settings( 'uag_load_fse_font_globally', sanitize_text_field( $value ) );
+		\UAGB_Admin_Helper::update_admin_settings_option( 'uag_load_fse_font_globally', sanitize_text_field( $value ) );
+		$this->sync_fse_theme_fonts();
+		wp_send_json_success( array( 'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ) ) );
 	}
 
 	/**
@@ -460,7 +484,9 @@ class Common_Settings extends Ajax_Base {
 
 		$spectra_global_fse_fonts[] = $value;
 
-		$this->save_admin_settings( 'spectra_global_fse_fonts', $this->sanitize_form_inputs( $spectra_global_fse_fonts ) );
+		\UAGB_Admin_Helper::update_admin_settings_option( 'spectra_global_fse_fonts', $this->sanitize_form_inputs( $spectra_global_fse_fonts ) );
+		$this->sync_fse_theme_fonts();
+		wp_send_json_success( array( 'messsage' => __( 'Successfully saved data!', 'ultimate-addons-for-gutenberg' ) ) );
 	}
 
 	/**
