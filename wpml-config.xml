@@ -1,5 +1,16 @@
 
 <wpml-config>
+	<!-- Make the Spectra popup post type translatable. Without this WPML shows the
+	     original popup in every language. -->
+	<custom-types>
+		<custom-type translate="1">spectra-popup</custom-type>
+	</custom-types>
+	<!-- Copy the popup display settings to every translation, otherwise the translated
+	     popup has no type/enabled flag and never shows. -->
+	<custom-fields>
+		<custom-field action="copy">spectra-popup-type</custom-field>
+		<custom-field action="copy">spectra-popup-enabled</custom-field>
+	</custom-fields>
 	<gutenberg-blocks>
 		<gutenberg-block type="uagb/advanced-heading" translate="1">
 			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
@@ -53,18 +64,30 @@
 			<xpath>//div[@class="uagb-tm__desc"]</xpath>
 			<xpath>//span[@class="uagb-tm__author-name"]</xpath>
 			<xpath>//span[@class="uagb-tm__company"]</xpath>
+			<key name="test_block">
+				<key name="*">
+					<key name="description" />
+					<key name="name" />
+					<key name="company" />
+				</key>
+			</key>
 		</gutenberg-block>
 		<gutenberg-block type="uagb/team" translate="1">
 			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
 			<xpath>//span[@class="uagb-team__prefix"]</xpath>
 			<xpath>//p[@class="uagb-team__desc"]</xpath>
+			<key name="title" />
+			<key name="prefix" />
+			<key name="description_text" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/icon-list-child" translate="1">
 			<xpath>//span[@class="uagb-icon-list__label"]</xpath>
 			<xpath>//div[contains(@class, "wp-block-uagb-icon-list-child")]/a/@href</xpath>
+			<key name="label" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/icon" translate="1">
 			<key type="link" name="link" />
+			<key name="iconAccessabilityDesc" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/tabs" translate="1">
 			<xpath>//*[contains(@class, "uagb-tab")]/a/div</xpath>
@@ -82,23 +105,44 @@
 			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
 			<xpath>//div[@class="uagb-rm__desc"]</xpath>
 			<xpath>//span[@class="uagb-rm__price"]</xpath>
+			<key name="rest_menu_item_arr">
+				<key name="*">
+					<key name="title" />
+					<key name="description" />
+					<key name="price" />
+				</key>
+			</key>
 		</gutenberg-block>
 		<gutenberg-block type="uagb/content-timeline" translate="1">
 			<xpath>//div[@class="uagb-timeline__date-new"]/div</xpath>
 			<xpath>//div[@class="uagb-timeline__inner-date-new"]</xpath>
 			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
 			<xpath>//p[@class="uagb-timeline-desc-content"]</xpath>
+			<key name="tm_content">
+				<key name="*">
+					<key name="time_heading" />
+					<key name="time_desc" />
+				</key>
+			</key>
 		</gutenberg-block>
 		<gutenberg-block type="uagb/call-to-action" translate="1">
 			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
 			<xpath>//p[@class="uagb-cta__desc"]</xpath>
 			<xpath>//*[@class="uagb-cta__buttons"]</xpath>
+			<key name="ctaTitle" />
+			<key name="description" />
+			<key name="ctaText" />
+			<key name="secondCtaLabel" />
+			<key name="secondCtaLink" type="link" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/blockquote" translate="1">
 			<xpath>//div[@class="uagb-blockquote__content"]</xpath>
 			<xpath>//cite[@class="uagb-blockquote__author"]</xpath>
+			<xpath>//a[contains(@class, "uagb-blockquote__tweet-button")]</xpath>
 			<key name="iconView" />
 			<key name="iconLabel" />
+			<key name="descriptionText" />
+			<key name="author" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/marketing-button" translate="1">
 			<key name="link" type="link"></key>
@@ -119,11 +163,15 @@
             <xpath>//*[@class="uagb-button__link"]</xpath>
 			<xpath>//*[@class="uagb-button__wrapper"]</xpath>
 			<xpath>//div//a</xpath>
+			<key name="label" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/image" translate="1">
 			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
 			<xpath>//figcaption[@class="uagb-image-caption"]</xpath>
 			<xpath>//figure/figcaption</xpath>
+			<xpath>//img/@alt</xpath>
+			<key name="alt" />
+			<key type="post-ids" sub-type="attachment" name="id" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/taxonomy-list" translate="1">
 			<key name="headingTitle" />
@@ -164,6 +212,7 @@
 			<key name="labelHours" />
 			<key name="labelMinutes" />
 			<key name="labelSeconds" />
+			<xpath>//div[@class="wp-block-uagb-countdown__label"]</xpath>
 		</gutenberg-block>
 		<gutenberg-block type="uagb/container" translate="0"></gutenberg-block>
 		<gutenberg-block type="uagb/how-to" translate="1">
@@ -172,6 +221,12 @@
 			<xpath>//img/@title</xpath>
 			<xpath>//p[@class="uagb-howto-desc-text"]</xpath>
 			<xpath>//div/p/span</xpath>
+			<xpath>//h4[@class="uagb-howto-req-tools-text"]</xpath>
+			<xpath>//h4[@class="uagb-howto-req-materials-text"]</xpath>
+			<xpath>//h4[@class="uagb-howto-timeNeeded-text"]</xpath>
+			<xpath>//h4[@class="uagb-howto-estcost-text"]</xpath>
+			<xpath>//div[@class="uagb-tools__label"]</xpath>
+			<xpath>//div[@class="uagb-materials__label"]</xpath>
 			<key name="headingTitle"/>
 			<key name="headingDesc"/>
 			<key name="materials">
@@ -203,6 +258,26 @@
 			<xpath>//span</xpath>
 			<xpath>//div[@class="wp-block-button__link"]</xpath>
 			<xpath>//div/div[@class="uagb-forms-main-submit-button-text"]</xpath>
+		</gutenberg-block>
+		<gutenberg-block type="uagb/faq-child" translate="1">
+			<xpath>//*[contains(@class, "uagb-question")]</xpath>
+			<xpath>//*[contains(@class, "uagb-faq-content")]</xpath>
+			<key name="question" />
+			<key name="answer" />
+		</gutenberg-block>
+		<gutenberg-block type="uagb/review" translate="1">
+			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
+			<xpath>//p[@class="uagb-rating-desc"]</xpath>
+			<xpath>//p[@class="uagb-rating-author"]</xpath>
+			<key name="rTitle" />
+			<key name="rContent" />
+			<key name="rAuthor" />
+			<key name="summaryTitle" />
+			<key name="summaryDescription" />
+		</gutenberg-block>
+		<gutenberg-block type="uagb/inline-notice" translate="1">
+			<xpath>//*[contains(@class, "uagb-notice-title")]</xpath>
+			<key name="noticeTitle" />
 		</gutenberg-block>
 	</gutenberg-blocks>
 </wpml-config>
