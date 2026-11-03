@@ -72,6 +72,12 @@ class UAGB_Visibility {
 	public function set_visibility_page() {
 		$visibility_page_id = intval( UAGB_Admin_Helper::get_admin_settings_option( 'uag_visibility_page', false ) );
 
+		// Map the saved page to its translation in the current language so multilingual
+		// Coming Soon / Maintenance pages don't redirect to themselves in an endless loop.
+		// Returns the same ID when WPML (or a plugin honouring this filter) is not active.
+		$translated_page_id = apply_filters( 'wpml_object_id', $visibility_page_id, 'page', true );
+		$visibility_page_id = is_numeric( $translated_page_id ) ? (int) $translated_page_id : $visibility_page_id;
+
 		$current_page_id = get_the_ID();
 
 		if ( $visibility_page_id !== $current_page_id && 'publish' === get_post_status( $visibility_page_id ) ) {

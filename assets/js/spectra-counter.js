@@ -77,7 +77,7 @@ UAGBCounter = {
 			const countUp = new window.countUp.CountUp( el, that._getEndNumber( data ), {
 				startVal: that._getStartNumber( data ),
 				duration: that._getAnimationDuration( data ),
-				separator: data.thousandSeparator,
+				separator: that._sanitizeSeparator( data.thousandSeparator ),
 				useEasing: false,
 				decimalPlaces: data.decimalPlaces,
 			} );
@@ -181,18 +181,17 @@ UAGBCounter = {
 
 		return ( data.totalNumber || parseFloat( data.startNumber ) === parseFloat( 0 ) ) ? parseFloat( data.totalNumber ) : parseFloat( 100 );
 	},
-	_getCounterData( element,data ){
-		
-		// Getting data from html attribute data-counter and overwrite data which comes from php.
-		let getCounterData = element?.getAttribute( 'data-counter' );
-		if( ! getCounterData ){
-			return data;
-		}
-
-		getCounterData = JSON.parse( getCounterData );
-		if( getCounterData ){
-			data = { ...data, ...getCounterData};
-		}
+	_getCounterData( element, data ){
+		// The counter options are always supplied by UAGBCounter.init() — the server generates them
+		// from sanitised block attributes (frontend) or the editor passes the live attributes.
+		// The data-counter DOM attribute is attacker-controllable (a Contributor can add it to the
+		// saved block HTML), so it must never override the trusted options passed to init().
 		return data;
+	},
+	// Strip any markup from the thousand separator before it reaches CountUp, which writes the
+	// formatted number with innerHTML. A separator is only ever a short plain string, so removing
+	// angle brackets prevents stored XSS while preserving locale separators ( , . ' space ).
+	_sanitizeSeparator( separator ){
+		return typeof separator === 'string' ? separator.replace( /[<>]/g, '' ) : separator;
 	}
 };

@@ -162,9 +162,23 @@ if ( ! class_exists( 'UAGB_Google_Map' ) ) {
 				( is_array( $attributes ) && isset( $attributes['className'] ) ) ? $attributes['className'] : '',
 			);
 
-			$address  = ! empty( $attributes['address'] ) ? rawurlencode( $attributes['address'] ) : rawurlencode( 'Brainstorm Force' );
-			$zoom     = ! empty( $attributes['zoom'] ) ? $attributes['zoom'] : 12;
-			$language = ! empty( $attributes['language'] ) ? $attributes['language'] : 'en';
+			$address = ! empty( $attributes['address'] ) ? rawurlencode( $attributes['address'] ) : rawurlencode( 'Brainstorm Force' );
+			$zoom    = ! empty( $attributes['zoom'] ) ? $attributes['zoom'] : 12;
+			// Fall back to the current site/WPML language instead of forcing English, so the
+			// embedded map matches the page language. The 'language' attribute defaults to 'en',
+			// so treat 'en' (and empty) as "not explicitly set" and follow the current language
+			// when one is available. Keeps 'en' as the final fallback (e.g. WPML inactive).
+			$current_language = apply_filters( 'wpml_current_language', null );
+			// 'all' is WPML's "All languages" context (feeds/REST/some archives), not a valid
+			// Google Maps hl value, so ignore it and keep the existing fallback.
+			if ( 'all' === $current_language ) {
+				$current_language = '';
+			}
+			$map_language = ! empty( $attributes['language'] ) ? $attributes['language'] : '';
+			if ( ( '' === $map_language || 'en' === $map_language ) && ! empty( $current_language ) ) {
+				$map_language = $current_language;
+			}
+			$language = ! empty( $map_language ) ? $map_language : 'en';
 			$height   = ! empty( $attributes['height'] ) ? $attributes['height'] : 300;
 			$map_type = 'm';
 
