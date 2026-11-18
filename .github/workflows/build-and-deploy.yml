@@ -13,10 +13,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     - name: Use Node.js 20
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v7
       with:
         node-version: '20'
         cache: 'npm'
@@ -39,7 +39,7 @@ jobs:
           fi
 
     - name: Rsync Deployment
-      uses: burnett01/rsync-deployments@4.1
+      uses: burnett01/rsync-deployments@5.2
       with:
         # switches: -avzr --delete
         switches: -avzr
@@ -50,7 +50,7 @@ jobs:
         remote_key: ${{ secrets.SSH_KEY }}
 
     - name: Rsync Drive Deployment
-      uses: burnett01/rsync-deployments@4.1
+      uses: burnett01/rsync-deployments@5.2
       if: env.ENVIRONMENT == 'RELEASE_CANDIDATE'
       with:
         # switches: -avzr --delete
