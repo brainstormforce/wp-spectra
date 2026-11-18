@@ -67,7 +67,7 @@ class Sites extends Api_Base {
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 			return new \WP_Error(
 				'gt_rest_cannot_access',
-				__( 'Sorry, you are not allowed to do that.', 'ultimate-addons-for-gutenberg' ),
+				__( 'Sorry, you are not allowed to do that.', 'ast-block-templates' ),
 				array( 'status' => rest_authorization_required_code() )
 			);
 		}
@@ -90,7 +90,7 @@ class Sites extends Api_Base {
 			return new \WP_REST_Response(
 				array(
 					'success' => false,
-					'data'    => __( 'Nonce verification failed.', 'ultimate-addons-for-gutenberg' ),
+					'data'    => __( 'Nonce verification failed.', 'ast-block-templates' ),
 				),
 				403
 			);

@@ -11,6 +11,10 @@ namespace Gutenberg_Templates\Inc\Classes;
 use Gutenberg_Templates\Inc\Traits\Helper;
 use Gutenberg_Templates\Inc\Traits\Instance;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * AST Block Templates ZipWP API
  *
@@ -74,7 +78,7 @@ class Ast_Block_Templates_Zipwp_Api {
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 			return new \WP_Error(
 				'gt_rest_cannot_access',
-				__( 'Sorry, you are not allowed to do that.', 'ultimate-addons-for-gutenberg' ),
+				__( 'Sorry, you are not allowed to do that.', 'ast-block-templates' ),
 				array( 'status' => rest_authorization_required_code() )
 			);
 		}
@@ -133,12 +137,10 @@ class Ast_Block_Templates_Zipwp_Api {
 		$nonce = (string) $request->get_header( 'X-WP-Nonce' );
 		// Verify the nonce.
 		if ( ! wp_verify_nonce( sanitize_text_field( $nonce ), 'wp_rest' ) ) {
-			wp_send_json_error(
-				array(
-					'data' => __( 'Nonce verification failed.', 'ultimate-addons-for-gutenberg' ),
-					'status'  => false,
-
-				)
+			return new \WP_Error(
+				'nonce_verification_failed',
+				__( 'Nonce verification failed.', 'ast-block-templates' ),
+				array( 'status' => 403 )
 			);
 		}
 
@@ -151,33 +153,27 @@ class Ast_Block_Templates_Zipwp_Api {
 		);
 		$response = wp_safe_remote_get( $api_endpoint, $request_args );
 		if ( is_wp_error( $response ) ) {
-			// There was an error in the request.
-			wp_send_json_error(
-				array(
-					'data' => 'Failed ' . $response->get_error_message(),
-					'status'  => false,
-
-				)
+			return new \WP_Error(
+				'remote_request_failed',
+				'Failed ' . $response->get_error_message(),
+				array( 'status' => 500 )
 			);
 		}
 		$response_code = wp_remote_retrieve_response_code( $response );
 		$response_body = wp_remote_retrieve_body( $response );
 		if ( 200 === $response_code ) {
 			$response_data = json_decode( $response_body, true );
-			wp_send_json_success(
+			return rest_ensure_response(
 				array(
-					'data' => $response_data['results'],
-					'status'  => true,
+					'data'   => $response_data['results'],
+					'status' => true,
 				)
 			);
-
 		} else {
-			wp_send_json_error(
-				array(
-					'data' => 'Failed - ' . $response_body,
-					'status'  => false,
-
-				)
+			return new \WP_Error(
+				'api_error',
+				'Failed - ' . $response_body,
+				array( 'status' => 500 )
 			);
 		}
 	}
@@ -192,12 +188,10 @@ class Ast_Block_Templates_Zipwp_Api {
 		$nonce = (string) $request->get_header( 'X-WP-Nonce' );
 		// Verify the nonce.
 		if ( ! wp_verify_nonce( sanitize_text_field( $nonce ), 'wp_rest' ) ) {
-			wp_send_json_error(
-				array(
-					'data' => __( 'Nonce verification failed.', 'ultimate-addons-for-gutenberg' ),
-					'status'  => false,
-
-				)
+			return new \WP_Error(
+				'nonce_verification_failed',
+				__( 'Nonce verification failed.', 'ast-block-templates' ),
+				array( 'status' => 403 )
 			);
 		}
 
@@ -209,13 +203,10 @@ class Ast_Block_Templates_Zipwp_Api {
 		$response = wp_safe_remote_get( $api_endpoint, $request_args );
 
 		if ( is_wp_error( $response ) ) {
-			// There was an error in the request.
-			wp_send_json_error(
-				array(
-					'data' => 'Failed ' . $response->get_error_message(),
-					'status'  => false,
-
-				)
+			return new \WP_Error(
+				'remote_request_failed',
+				'Failed ' . $response->get_error_message(),
+				array( 'status' => 500 )
 			);
 		}
 		$response_code = wp_remote_retrieve_response_code( $response );
@@ -223,27 +214,24 @@ class Ast_Block_Templates_Zipwp_Api {
 		if ( 200 === $response_code ) {
 			$response_data = json_decode( $response_body, true );
 			if ( $response_data ) {
-				wp_send_json_success(
+				$languages = isset( $response_data['data'] ) && is_array( $response_data['data'] ) ? $response_data['data'] : array();
+				return rest_ensure_response(
 					array(
-						'data' => $response_data['data'],
-						'status'  => true,
+						'data'   => $languages,
+						'status' => true,
 					)
 				);
 			}
-			wp_send_json_error(
-				array(
-					'data' => $response_data,
-					'status'  => false,
-
-				)
+			return new \WP_Error(
+				'api_error',
+				'Failed',
+				array( 'status' => 500 )
 			);
 		}
-		wp_send_json_error(
-			array(
-				'data' => 'Failed ' . $response_body,
-				'status'  => false,
-
-			)
+		return new \WP_Error(
+			'api_error',
+			'Failed ' . $response_body,
+			array( 'status' => 500 )
 		);
 	}
 }

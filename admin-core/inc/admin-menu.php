@@ -322,6 +322,14 @@ class Admin_Menu {
 	 */
 	public function settings_admin_scripts() {
 
+		// The dashboard asset loader exposes admin-only data (server secrets, the Zip AI auth nonce),
+		// and the Spectra dashboard and the spectra-popup post type both require manage_options. The
+		// page / post_type values below come from $_GET, so without this check any logged-in user could
+		// queue the dashboard scripts on any admin page.
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
 		// Enqueue admin scripts.
 		if ( ! empty( $_GET['page'] ) && ( $this->menu_slug === $_GET['page'] || false !== strpos( sanitize_text_field( $_GET['page'] ), $this->menu_slug . '_' ) ) || ( array_key_exists( 'post_type', $_GET ) && 'spectra-popup' === $_GET['post_type'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended -- $_GET['page'] does not provide nonce.
 			add_action( 'admin_enqueue_scripts', array( $this, 'styles_scripts' ) );
@@ -717,6 +725,14 @@ class Admin_Menu {
 	 * @param array $localize Variable names.
 	 */
 	public function settings_app_scripts( $localize ) {
+		// Only users who can manage the site may receive the dashboard app data, which contains
+		// server-side secrets and the Zip AI auth nonce. The screen check below is populated from
+		// $_REQUEST (where POST overrides GET) and is a UI guard, not an access control, so it must
+		// not be the only barrier before the data is localized.
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
 		// Check if we're on the popup builder page.
 		$current_screen = get_current_screen();
 		if ( isset( $current_screen ) && 'spectra-popup' === $current_screen->post_type ) {

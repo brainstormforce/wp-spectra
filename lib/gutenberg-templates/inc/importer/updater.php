@@ -143,7 +143,7 @@ class Updater {
 			Sync_Library::instance()->set_default_assets();
 
 			// Update new files.
-			wp_schedule_single_event( time() + 1, 'sync_blocks' );
+			wp_schedule_single_event( time() + 1, 'ast_block_templates_sync_blocks' );
 			
 			// Delete older options data.
 			$options = Sync_Library::instance()->get_default_assets();

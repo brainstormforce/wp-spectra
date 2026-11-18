@@ -20,6 +20,10 @@ namespace Gutenberg_Templates\Inc\Importer;
 use Gutenberg_Templates\Inc\Traits\Instance;
 use Gutenberg_Templates\Inc\Traits\Helper;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Ast_Block Templates Image Importer
  *

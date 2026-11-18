@@ -50,6 +50,7 @@
 		<gutenberg-block type="uagb/social-share-child" translate="0"/>
 		<gutenberg-block type="uagb/google-map" translate="1">
 			<key name="language" />
+			<key name="address" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/info-box" translate="1">
 			<xpath>//span[@class="uagb-ifb-title-prefix"]</xpath>
@@ -82,8 +83,10 @@
 		</gutenberg-block>
 		<gutenberg-block type="uagb/icon-list-child" translate="1">
 			<xpath>//span[@class="uagb-icon-list__label"]</xpath>
-			<xpath>//div[contains(@class, "wp-block-uagb-icon-list-child")]/a/@href</xpath>
+			<xpath type="link">//div[contains(@class, "wp-block-uagb-icon-list-child")]/a/@href</xpath>
+			<xpath>//div[contains(@class, "wp-block-uagb-icon-list-child")]/a/@aria-label</xpath>
 			<key name="label" />
+			<key name="link" type="link" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/icon" translate="1">
 			<key type="link" name="link" />
@@ -113,6 +116,16 @@
 				</key>
 			</key>
 		</gutenberg-block>
+		<!-- Restaurant Menu item text lives in the child block, so the item keys
+		     must be declared here or the translated block is invalid in the editor. -->
+		<gutenberg-block type="uagb/restaurant-menu-child" translate="1">
+			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
+			<xpath>//div[@class="uagb-rm__desc"]</xpath>
+			<xpath>//span[@class="uagb-rm__price"]</xpath>
+			<key name="title" />
+			<key name="description" />
+			<key name="price" />
+		</gutenberg-block>
 		<gutenberg-block type="uagb/content-timeline" translate="1">
 			<xpath>//div[@class="uagb-timeline__date-new"]/div</xpath>
 			<xpath>//div[@class="uagb-timeline__inner-date-new"]</xpath>
@@ -124,6 +137,16 @@
 					<key name="time_desc" />
 				</key>
 			</key>
+		</gutenberg-block>
+		<!-- Content Timeline item text lives in the child block, so the item keys
+		     must be declared here or the translated block is invalid in the editor. -->
+		<gutenberg-block type="uagb/content-timeline-child" translate="1">
+			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
+			<xpath>//div[@class="uagb-timeline__date-new"]/div</xpath>
+			<xpath>//div[@class="uagb-timeline__inner-date-new"]</xpath>
+			<xpath>//p[@class="uagb-timeline-desc-content"]</xpath>
+			<key name="time_heading" />
+			<key name="time_desc" />
 		</gutenberg-block>
 		<gutenberg-block type="uagb/call-to-action" translate="1">
 			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
@@ -225,8 +248,12 @@
 			<xpath>//h4[@class="uagb-howto-req-materials-text"]</xpath>
 			<xpath>//h4[@class="uagb-howto-timeNeeded-text"]</xpath>
 			<xpath>//h4[@class="uagb-howto-estcost-text"]</xpath>
-			<xpath>//div[@class="uagb-tools__label"]</xpath>
-			<xpath>//div[@class="uagb-materials__label"]</xpath>
+			<xpath>//p[@class="uagb-howto-timeNeeded-value"]</xpath>
+			<xpath>//p[@class="uagb-howto-estcost-value"]</xpath>
+			<!-- The tool/material label class carries an index suffix (e.g. "uagb-tools__label 0"),
+			     so an exact class match never fires; use contains(). -->
+			<xpath>//div[contains(@class, "uagb-tools__label")]</xpath>
+			<xpath>//div[contains(@class, "uagb-materials__label")]</xpath>
 			<key name="headingTitle"/>
 			<key name="headingDesc"/>
 			<key name="materials">
@@ -239,8 +266,14 @@
 					<key name="add_required_tools"/>
 				</key>
 			</key>
-			<key name="timeNeeded"/>
+			<key name="time"/>
 			<key name="cost"/>
+			<key name="estCost"/>
+			<key name="timeNeeded"/>
+			<key name="timeIn"/>
+			<key name="toolsTitle"/>
+			<key name="materialTitle"/>
+			<key name="stepsTitle"/>
 		</gutenberg-block>
 		<gutenberg-block type="uagb/how-to-step" translate="1">
 			<key name="name"/>
@@ -267,13 +300,24 @@
 		</gutenberg-block>
 		<gutenberg-block type="uagb/review" translate="1">
 			<xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
+			<xpath>//*[contains(@class, "uagb-rating-title")]</xpath>
 			<xpath>//p[@class="uagb-rating-desc"]</xpath>
 			<xpath>//p[@class="uagb-rating-author"]</xpath>
+			<xpath>//p[@class="uagb_review_summary_title"]</xpath>
+			<xpath>//p[@class="uagb_review_summary_desc"]</xpath>
+			<xpath>//div[@class="uagb_review_entry"]/div</xpath>
 			<key name="rTitle" />
 			<key name="rContent" />
 			<key name="rAuthor" />
 			<key name="summaryTitle" />
 			<key name="summaryDescription" />
+			<key name="featuresTitle" />
+			<key name="featuresAvgText" />
+			<key name="items">
+				<key name="*">
+					<key name="label" />
+				</key>
+			</key>
 		</gutenberg-block>
 		<gutenberg-block type="uagb/inline-notice" translate="1">
 			<xpath>//*[contains(@class, "uagb-notice-title")]</xpath>

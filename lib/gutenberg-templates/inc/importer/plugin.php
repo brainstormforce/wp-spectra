@@ -56,17 +56,19 @@ class Plugin {
 		add_action( 'admin_init', array( $this, 'init' ), 999 );
 		add_action( 'admin_init', array( $this, 'add_custom_capabilities' ), 10 );
 
-		if ( ( isset( $_GET['action'] ) && 'edit' === $_GET['action'] ) || ( isset( $_SERVER['PHP_SELF'] ) && 'site-editor.php' === basename( sanitize_text_field( $_SERVER['PHP_SELF'] ) ) ) || ( isset( $_SERVER['REQUEST_URI'] ) && strpos( esc_url_raw( $_SERVER['REQUEST_URI'] ), 'post-new.php' ) !== false ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( ( isset( $_GET['action'] ) && 'edit' === $_GET['action'] ) || ( isset( $_SERVER['PHP_SELF'] ) && 'site-editor.php' === basename( sanitize_text_field( wp_unslash( $_SERVER['PHP_SELF'] ) ) ) ) || ( isset( $_SERVER['REQUEST_URI'] ) && strpos( sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ), 'post-new.php' ) !== false ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			add_filter( 'zip_ai_auth_redirection_flag', '__return_false', 999 );
 		}
 		add_action( 'wp_ajax_ast_block_templates_importer', array( $this, 'template_importer' ) );
 		add_action( 'wp_ajax_ast_block_templates_activate_plugin', array( $this, 'activate_plugin' ) );
 		add_action( 'wp_ajax_ast_block_templates_import_wpforms', array( $this, 'import_wpforms' ) );
+		add_action( 'wp_ajax_ast_block_templates_import_sureforms', array( $this, 'import_sureforms' ) );
 		add_action( 'wp_ajax_ast_block_templates_import_block', array( $this, 'import_block' ) );
 		add_action( 'wp_ajax_ast_block_templates_color_palette', array( $this, 'get_color_palette' ) );
 		add_action( 'wp_ajax_ast_block_templates_hide_notices', array( $this, 'hide_notices' ) );
 		add_filter( 'upload_mimes', array( $this, 'custom_upload_mimes' ) );
 		add_action( 'wp_ajax_ast_block_templates_data_option', array( $this, 'api_request' ) );
+		add_action( 'wp_ajax_ast_block_templates_save_auto_open_setting', array( $this, 'save_auto_open_setting' ) );
 		$this->get_default_color_palette();
 	}
 
@@ -175,8 +177,13 @@ class Plugin {
 	public function init() {
 		// Add token when user authorized from GT library.
 		if ( isset( $_GET['ast_action'] ) && 'auth' === $_GET['ast_action'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			// Only users who can manage the site are allowed to store site-wide credentials.
+			if ( ! current_user_can( 'manage_options' ) ) {
+				return;
+			}
+
 			// Get the nonce.
-			$nonce = ( isset( $_GET['nonce'] ) ) ? sanitize_key( $_GET['nonce'] ) : '';
+			$nonce = ( isset( $_GET['nonce'] ) ) ? sanitize_key( wp_unslash( $_GET['nonce'] ) ) : '';
 
 			// If the nonce is not valid, or if there's no token, then abandon ship.
 			if ( false === wp_verify_nonce( $nonce, 'zip_ai_auth_nonce' ) ) {
@@ -188,17 +195,17 @@ class Plugin {
 
 			// Update the auth token if needed.
 			if ( isset( $_GET['credit_token'] ) && is_string( $_GET['credit_token'] ) ) {
-				$spec_ai_settings['auth_token'] = Helper::encrypt( sanitize_text_field( $_GET['credit_token'] ) );
+				$spec_ai_settings['auth_token'] = Helper::encrypt( sanitize_text_field( wp_unslash( $_GET['credit_token'] ) ) );
 			}
 
 			// Update the Zip token if needed.
 			if ( isset( $_GET['token'] ) && is_string( $_GET['token'] ) ) {
-				$spec_ai_settings['zip_token'] = Helper::encrypt( sanitize_text_field( $_GET['token'] ) );
+				$spec_ai_settings['zip_token'] = Helper::encrypt( sanitize_text_field( wp_unslash( $_GET['token'] ) ) );
 			}
 
 			// Update the email if needed.
 			if ( isset( $_GET['email'] ) && is_string( $_GET['email'] ) ) {
-				$spec_ai_settings['email'] = sanitize_email( $_GET['email'] );
+				$spec_ai_settings['email'] = sanitize_email( wp_unslash( $_GET['email'] ) );
 			}
 
 			update_option( 'zip_ai_settings', $spec_ai_settings );
@@ -242,13 +249,13 @@ class Plugin {
 	public function api_request() {
 
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
-			wp_send_json_error( __( 'You are not allowed to perform this action', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
 		}
 
 		// Verify Nonce.
 		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
 		$block_id     = isset( $_REQUEST['id'] ) ? absint( $_REQUEST['id'] ) : '';
-		$block_type   = isset( $_REQUEST['type'] ) ? sanitize_text_field( $_REQUEST['type'] ) : '';
+		$block_type   = isset( $_REQUEST['type'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['type'] ) ) : '';
 
 		if ( 'site-pages' === $block_type ) {
 			// Use this for premium pages.
@@ -260,6 +267,11 @@ class Plugin {
 				)
 			);
 
+			// If Premium Starter Templates is not active, get the purchase key from Gutenberg Templates License class for Spectra plugin.
+			if ( ! is_plugin_active( 'astra-pro-sites/astra-pro-sites.php' ) && empty( $request_params['purchase_key'] ) ) {
+				$request_params['purchase_key'] = \Gutenberg_Templates\Inc\Api\License::bsf_get_product_info( 'astra-pro-sites', 'purchase_key' );
+			}
+
 			$complete_url = add_query_arg( $request_params, trailingslashit( AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-json/wp/v2/' . $block_type . '/' . $block_id ) );
 		} else {
 			$complete_url = AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-json/wp/v2/' . $block_type . '/' . $block_id . '/?site_url=' . site_url();
@@ -267,11 +279,25 @@ class Plugin {
 		$response = wp_safe_remote_get( $complete_url );
 
 		if ( is_wp_error( $response ) ) {
-			wp_send_json_error( __( 'Something went wrong', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error(
+				array(
+					'message' => __( 'Something went wrong', 'ast-block-templates' ),
+					'error' => $response->get_error_message(),
+					'url' => $complete_url,
+				)
+			);
 		}
 
 		if ( 200 !== $response['response']['code'] ) {
-			wp_send_json_error( __( 'Something went wrong', 'ultimate-addons-for-gutenberg' ) );
+			$error_message = wp_remote_retrieve_body( $response );
+			wp_send_json_error(
+				array(
+					'message' => __( 'Something went wrong', 'ast-block-templates' ),
+					'status_code' => $response['response']['code'],
+					'response' => $error_message,
+					'url' => $complete_url,
+				)
+			);
 		}
 
 		$body = json_decode( wp_remote_retrieve_body( $response ) );
@@ -290,12 +316,12 @@ class Plugin {
 	public function hide_notices() {
 
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
-			wp_send_json_error( __( 'You are not allowed to perform this action', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
 		}
 
 		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
 
-		$notice_type = isset( $_REQUEST['notice_type'] ) ? sanitize_text_field( $_REQUEST['notice_type'] ) : '';
+		$notice_type = isset( $_REQUEST['notice_type'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['notice_type'] ) ) : '';
 
 		if ( ! empty( $notice_type ) ) {
 
@@ -334,7 +360,7 @@ class Plugin {
 	public function get_color_palette() {
 
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
-			wp_send_json_error( __( 'You are not allowed to perform this action', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
 		}
 
 		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
@@ -358,7 +384,7 @@ class Plugin {
 	public function import_wpforms( $wpforms_url = '' ) {
 
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
-			wp_send_json_error( __( 'You are not allowed to perform this action', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
 		}
 		// Verify Nonce.
 		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
@@ -390,15 +416,15 @@ class Plugin {
 					$ext = strtolower( pathinfo( $file_path['data']['file'], PATHINFO_EXTENSION ) );
 
 					if ( 'json' === $ext ) {
-						/** 
-						 * 
+						/**
+						 *
 						 * Retrieves the contents of a file using the specified file system.
 						 *
-						 * @var \WP_Filesystem_Base $filesystem 
+						 * @var \WP_Filesystem_Base|null $filesystem
 						 * */
-						$filesystem = Helper::instance()->ast_block_templates_get_filesystem();
-						$file_content = $filesystem->get_contents( $file_path['data']['file'] );
-						$forms = json_decode( $file_content ? $file_content : '', true );
+						$filesystem   = Helper::instance()->ast_block_templates_get_filesystem();
+						$file_content = $filesystem ? $filesystem->get_contents( $file_path['data']['file'] ) : '';
+						$forms        = json_decode( $file_content ? $file_content : '', true );
 
 						if ( ! empty( $forms ) ) {
 
@@ -442,10 +468,104 @@ class Plugin {
 				wp_send_json_error( $file_path );
 			}
 		} else {
-			wp_send_json_error( __( 'Something went wrong', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( __( 'Something went wrong', 'ast-block-templates' ) );
 		}
 
 		update_option( 'ast_block_templates_wpforms_ids_mapping', $ids_mapping );
+
+		wp_send_json_success( $ids_mapping );
+	}
+
+	/**
+	 * Import SureForms
+	 *
+	 * @since 2.4.11
+	 * @return void
+	 */
+	public function import_sureforms() {
+		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
+		}
+		// Verify Nonce.
+		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
+
+		$block_id   = isset( $_REQUEST['id'] ) ? absint( $_REQUEST['id'] ) : '';
+		$block_data = get_option( 'ast-block-templates_data-' . $block_id );
+		$block_data = null !== $block_data ? $block_data : '';
+
+		$sureforms_url = '';
+		if ( 'astra-blocks' === $block_data->{'type'} ) {
+			$sureforms_url = $block_data->{'post-meta'}->{'astra-site-sureforms-path'};
+		}
+
+		if ( 'site-pages' === $block_data->{'type'} ) {
+			$sureforms_url = $block_data->{'astra-site-sureforms-path'};
+		}
+
+		if ( empty( $sureforms_url ) ) {
+			wp_send_json_error( __( 'Empty SureForms URL', 'ast-block-templates' ) );
+		}
+
+		// Download JSON file.
+		$file_path = $this->download_file( $sureforms_url );
+
+		if ( ! $file_path['success'] ) {
+			wp_send_json_error(
+				array(
+					'message' => $file_path['data'],
+					'url'     => $sureforms_url,
+				)
+			);
+		}
+
+		$ids_mapping = array();
+		if ( isset( $file_path['data']['file'] ) ) {
+			$ext = strtolower( pathinfo( $file_path['data']['file'], PATHINFO_EXTENSION ) );
+			if ( 'json' === $ext ) {
+				/**
+				 *
+				 * Retrieves the contents of a file using the specified file system.
+				 *
+				 * @var \WP_Filesystem_Base|null $filesystem
+				 * */
+				$filesystem   = Helper::instance()->ast_block_templates_get_filesystem();
+				$file_content = $filesystem ? $filesystem->get_contents( $file_path['data']['file'] ) : '';
+
+				// Apply the form color for sureforms.
+				$adaptive_mode = $this->get_adaptive_mode();
+				if ( ! $adaptive_mode && $file_content ) {
+					$color_palettes = $this->get_block_palette_colors()['style-1']['colors'];
+					for ( $i = 0; $i < 9; $i++ ) {
+						$target = $color_palettes[ $i ];
+						$file_content = str_replace( 'var(--ast-global-color-' . $i . ')', $target, $file_content );
+					}
+				}
+				$forms = json_decode( $file_content ? $file_content : '', true );
+
+				if ( ! empty( $forms ) && defined( 'SRFM_VER' ) && class_exists( '\SRFM\Inc\Export' ) && is_callable( '\SRFM\Inc\Export::get_instance' ) ) {
+
+					/**
+					 * Instance of SureForms Export class.
+					 *
+					 * @var \SRFM\Inc\Export $import_instance
+					 */
+					$import_instance = \SRFM\Inc\Export::get_instance();
+
+					if ( is_object( $import_instance ) && is_callable( array( $import_instance, 'import_forms_with_meta' ) ) ) {
+						$response = \SRFM\Inc\Export::get_instance()->import_forms_with_meta( $forms, 'publish' );
+						if ( is_wp_error( $response ) ) {
+							wp_send_json_error( $response->get_error_message() );
+						}
+
+						if ( is_array( $response ) && ! empty( $response ) ) {
+							$ids_mapping = $response;
+						}
+					}
+				}
+			}
+		}
+
+		update_option( 'ast_block_templates_sureforms_ids_mapping', $ids_mapping );
 
 		wp_send_json_success( $ids_mapping );
 	}
@@ -458,7 +578,7 @@ class Plugin {
 	public function import_block() {
 		
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
-			wp_send_json_error( __( 'You are not allowed to perform this action', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
 		}
 		// Verify Nonce.
 		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
@@ -468,9 +588,18 @@ class Plugin {
 
 		$ids_mapping = get_option( 'ast_block_templates_wpforms_ids_mapping', array() );
 
-		// Post content.
-		$content = isset( $_REQUEST['content'] ) ? stripslashes( $_REQUEST['content'] ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		// Gutenberg serialized block markup cannot be pre-sanitized with wp_kses_post() because that would
+		// strip the <!-- wp:block {...} --> comment delimiters that parse_blocks() requires. Do NOT use
+		// sanitize_post_field( 'post_content', ..., 'raw' ) here — the 'raw' context is a no-op in WP core
+		// (returns the value unchanged), so it provides no actual sanitization. This handler never writes
+		// to the DB — it returns processed content to the browser via wp_send_json_success(). The content
+		// is sanitized by WordPress core (wp_kses_post()) when the user saves the post.
+		$raw_content = isset( $_REQUEST['content'] ) ? wp_unslash( $_REQUEST['content'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$content     = force_balance_tags( (string) ( is_array( $raw_content ) ? implode( '', $raw_content ) : $raw_content ) );
 		$category = isset( $_REQUEST['category'] ) ? intval( $_REQUEST['category'] ) : '';
+
+		// Fix invalid escaped single quotes.
+		$content = str_replace( "\\'", "'", $content );
 
 		$block_id = isset( $_REQUEST['id'] ) ? absint( $_REQUEST['id'] ) : '';
 
@@ -479,66 +608,163 @@ class Plugin {
 			// Replace ID's.
 			foreach ( $ids_mapping as $old_id => $new_id ) {
 				$content = str_replace( '[wpforms id="' . $old_id, '[wpforms id="' . $new_id, $content );
+				$content = str_replace( '[wpforms id=' . $old_id, '[wpforms id=' . $new_id, $content );
+				$content = str_replace( "[wpforms id='" . $old_id, "[wpforms id='" . $new_id, $content );
 				$content = str_replace( '{"formId":"' . $old_id . '"}', '{"formId":"' . $new_id . '"}', $content );
 			}
 		}
 
-		$style = isset( $_REQUEST['style'] ) ? sanitize_text_field( $_REQUEST['style'] ) : 'style-1';
-		$block_type = isset( $_REQUEST['block_type'] ) ? sanitize_text_field( $_REQUEST['block_type'] ) : 'block';
+		// SureForms ID's mapping.
+		$sureforms_ids_mapping = get_option( 'ast_block_templates_sureforms_ids_mapping', array() );
+		if ( ! empty( $sureforms_ids_mapping ) ) {
+			// Replace ID's.
+			foreach ( $sureforms_ids_mapping as $old_id => $new_id ) {
+				$content = str_replace( '[sureforms id="' . $old_id, '[sureforms id="' . $new_id, $content );
+				$content = str_replace( '[sureforms id=' . $old_id, '[sureforms id=' . $new_id, $content );
+				$content = str_replace( "[sureforms id='" . $old_id, "[sureforms id='" . $new_id, $content );
+				$content = str_replace( '<!-- wp:srfm/form {"id":' . $old_id . '}', '<!-- wp:srfm/form {"id":' . $new_id . '}', $content );
+			}
+		}
+
+		$style = isset( $_REQUEST['style'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['style'] ) ) : 'style-1';
+		$block_type = isset( $_REQUEST['block_type'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['block_type'] ) ) : 'block';
+		$adaptive_mode = $this->get_adaptive_mode();
 
 		$color_palettes = array();
 		$is_astra_theme = class_exists( 'Astra_Global_Palette' );
 
+		// If Astra 4.8.0+ color compatibility is enabled, remap the palette indexes.
+		// Swap color positions: 4 ↔ 5 and 6 ↔ 7 to match the new palette order.
+		$reorganize = class_exists( '\Astra_Dynamic_CSS' ) && is_callable( '\Astra_Dynamic_CSS::astra_4_8_0_compatibility' ) && \Astra_Dynamic_CSS::astra_4_8_0_compatibility();
+
 		if ( 'block' === $block_type ) {
 			$mapping_palette = array(
-				'style-1' => array( 0, 1, 2, 3, 5, 5, 6, 7, 8 ),
-				'style-2' => array( 0, 1, 2, 3, 4, 5, 6, 7, 8 ),
-				'style-3' => array( 3, 2, 5, 4, 0, 1, 6, 7, 8 ),
+				'style-1' => $reorganize ? array( 0, 1, 2, 3, 4, 5, 7, 6, 8 ) : array( 0, 1, 2, 3, 5, 4, 6, 7, 8 ),
+				'style-2' => $reorganize ? array( 0, 1, 2, 3, 5, 4, 7, 6, 8 ) : array( 0, 1, 2, 3, 4, 5, 6, 7, 8 ),
+				'style-3' => $reorganize ? array( 3, 2, 4, 5, 0, 1, 7, 0, 8 ) : array( 3, 2, 5, 4, 0, 1, 6, 0, 8 ),
 			);
-
-			$color_palettes = ! $is_astra_theme ? $this->get_block_palette_colors()[ $style ]['colors'] : $color_palettes;
 		} else {
 			$mapping_palette = array(
-				'style-1' => array( 0, 1, 2, 3, 4, 5, 6, 7, 8 ),
-				'style-2' => array( 0, 1, 5, 4, 3, 2, 6, 7, 8 ),
+				'style-1' => $reorganize ? array( 0, 1, 2, 3, 5, 4, 7, 6, 8 ) : array( 0, 1, 2, 3, 4, 5, 6, 7, 8 ),
+				'style-2' => $reorganize ? array( 0, 1, 4, 5, 3, 2, 7, 6, 8 ) : array( 0, 1, 5, 4, 3, 2, 6, 7, 8 ),
 			);
-
-			$color_palettes = ! $is_astra_theme ? $this->get_page_palette_colors()[ $style ]['colors'] : $color_palettes;
 		}
-
-		if ( ! $is_astra_theme ) {
+		$color_palettes = $this->get_block_palette_colors()[ $style ]['colors'];
+		
+		if ( ! $adaptive_mode ) {
 			for ( $i = 0; $i < 9; $i++ ) {
 				$target = $color_palettes[ $i ];
 				$content = str_replace( 'var(\u002d\u002dast-global-color-' . $i . ')', $target, $content );
 				$content = str_replace( 'var(--ast-global-color-' . $i . ')', $target, $content );
+				$content = str_replace( 'var:preset|color|ast-global-color-' . $i, $target, $content );
+				$content = str_replace( 'ast-global-color-' . $i, $target, $content );
+			}
+
+			$blocks = parse_blocks( $content );
+			// Recursively update the button colors.
+			$this->walk_blocks_and_update_buttons( $blocks );
+			$content = serialize_blocks( $blocks );
+
+			// Add border radius properties after inheritFromTheme is set to false.
+			if ( $content && is_string( $content ) ) {
+				$border_properties = ',"btnBorderBottomLeftRadius":4,"btnBorderBottomRightRadius":4,"btnBorderTopLeftRadius":4,"btnBorderTopRightRadius":4';
+				$content = preg_replace_callback(
+					'/("inheritFromTheme"\s*:\s*false)/', function( $matches ) use ( $border_properties ) {
+						return $matches[1] . $border_properties;
+					}, $content 
+				);
 			}
 		} else {
 			for ( $i = 0; $i < 9; $i++ ) {
 				$target = $mapping_palette[ $style ][ $i ];
 				$content = str_replace( 'var(\u002d\u002dast-global-color-' . $i . ')', 'var(\u002d\u002dast-global-color-temp-' . $target . ')', $content );
 				$content = str_replace( 'var(--ast-global-color-' . $i . ')', 'var(--ast-global-color-temp-' . $target . ')', $content );
+				$content = str_replace( 'ast-global-color-' . $i, 'ast-global-color-temp-' . $target, $content );
 			}
 			$content = str_replace( 'var(\u002d\u002dast-global-color-temp-', 'var(\u002d\u002dast-global-color-', $content );
 			$content = str_replace( 'var(--ast-global-color-temp-', 'var(--ast-global-color-', $content );
+			$content = str_replace( 'ast-global-color-temp-', 'ast-global-color-', $content );
 		}
 
-		$disable_ai = isset( $_REQUEST['disableAI'] ) ? 'true' === $_REQUEST['disableAI'] : false;
+		$disable_ai = isset( $_REQUEST['disableAI'] ) ? 'true' === sanitize_text_field( wp_unslash( $_REQUEST['disableAI'] ) ) : false;
 
 		if ( ! $disable_ai && ! empty( Importer_Helper::get_business_details( 'business_description' ) ) ) {
 			$category_content = get_option( 'ast-templates-ai-content', array() );
 			$dynamic_content = ( isset( $category_content[ $category ] ) ) ? $category_content[ $category ] : array();
-			$content = $this->replace( $content, $dynamic_content );
+			$content = $this->replace( $content ?? '', $dynamic_content );
 		} else {
-			$content = $this->maybe_import_images( $content );
+			$content = $this->maybe_import_images( $content ?? '' );
 		}
 
 		// Flush the object when import is successful.
 		delete_option( 'ast-block-templates_data-' . $block_id );
 
+		/**
+		 * Fires after a block is successfully imported.
+		 *
+		 * @since 2.4.21
+		 *
+		 * @param int|string $block_id   The ID of the imported block.
+		 * @param string     $block_type The type of the block (e.g., 'block' or 'site').
+		 * @param int|string $category   The category ID of the imported block.
+		 */
+		do_action( 'ast_block_templates_after_block_import', $block_id, $block_type, $category );
+
 		// Update content.
 		wp_send_json_success( $content );
 
 	}
+
+
+	/**
+	 * Walk blocks and update buttons.
+	 *
+	 * @param array<mixed> $node Block node.
+	 * @return void;
+	 */
+	public function walk_blocks_and_update_buttons( &$node ) {
+		// Skips for normal arrays and non-block nodes.
+		if ( is_array( $node ) && ! isset( $node['blockName'] ) ) {
+			foreach ( $node as &$child ) {
+				$this->walk_blocks_and_update_buttons( $child );
+			}
+			return;
+		}
+
+		// Checks blocks that are not buttons.
+		if ( isset( $node['blockName'] ) && 'spectra/button' != $node['blockName'] ) {
+			$this->walk_blocks_and_update_buttons( $node['innerBlocks'] );
+			return;
+		}
+
+		// Work on buttons.
+		if (
+			isset( $node['blockName'] ) &&
+			'spectra/button' === $node['blockName']
+		) {
+			// Force custom color (no preset remap).
+			if ( isset( $node['attrs']['backgroundColor'] ) && $node['attrs']['backgroundColor'] ) {
+				$node['attrs']['style']['color']['background'] = $node['attrs']['backgroundColor']; // Applying string replaced color.
+			}
+			if ( isset( $node['attrs']['borderColor'] ) && $node['attrs']['borderColor'] ) {
+				$node['attrs']['style']['border']['color'] = $node['attrs']['borderColor']; // Applying string replaced color.
+			}
+
+			// Remove conflicting preset-based attrs.
+			unset(
+				$node['attrs']['backgroundColor'],
+				$node['attrs']['borderColor'],
+				$node['attrs']['borderHover']
+			);
+
+			// Update responsive controls colors.
+			foreach ( $node['attrs']['responsiveControls'] as $key => $res_ctrl ) { 
+				$node['attrs']['responsiveControls'][ $key ]['style']['border']['color'] = $node['attrs']['responsiveControls'][ $key ]['borderColor'];
+				unset( $node['attrs']['responsiveControls'][ $key ]['borderColor'] );
+			}
+		}
+	}
+
 
 	/**
 	 * Import Images if required.
@@ -607,6 +833,18 @@ class Plugin {
 			$new_url = str_replace( '/', '/\\', $new_url );
 			$content = str_replace( $old_url, $new_url, $content );
 		}
+
+		foreach ( $other_links as $link ) {
+			// Replace the library URL with site URL if link static link from Spectra plugin.
+			if ( strpos( $link, '/wp-content/plugins/ultimate-addons-for-gutenberg/' ) !== false ) {
+				$content = str_replace( AST_BLOCK_TEMPLATES_LIBRARY_URL, site_url( '/' ), $content );
+			}
+			// Replace the library URL with site URL if link static link from Spectra Blocks plugin.
+			if ( strpos( $link, '/wp-content/plugins/spectra-blocks/' ) !== false ) {
+				$content = str_replace( AST_BLOCK_TEMPLATES_LIBRARY_URL, site_url( '/' ), $content );
+			}
+		}
+
 		return $content;
 	}
 
@@ -618,6 +856,20 @@ class Plugin {
 	 * @return string                  Content.
 	 */
 	public function replace( $content, $dynamic_content ) {
+		// Replace the library URL with site URL if link is static link from Spectra plugin.
+		$content = str_replace(
+			AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-content/plugins/ultimate-addons-for-gutenberg/',
+			site_url( '/wp-content/plugins/ultimate-addons-for-gutenberg/' ),
+			$content
+		);
+
+		// Replace the library URL with site URL if link is static link from Spectra Blocks plugin.
+		$content = str_replace(
+			AST_BLOCK_TEMPLATES_LIBRARY_URL . 'wp-content/plugins/spectra-blocks/',
+			site_url( '/wp-content/plugins/spectra-blocks/' ),
+			$content
+		);
+
 		$blocks = parse_blocks( $content );
 		return apply_filters( 'aist/replace_content', serialize_blocks( $this->get_updated_blocks( $blocks, $dynamic_content ) ) ); // phpcs:ignore
 	}
@@ -673,6 +925,14 @@ class Plugin {
 					case 'uagb/icon-list':
 						$block = BlockEditor::instance()->parse_spectra_social_icons( $block );
 						break;
+
+					case 'spectra/container':
+						$block = BlockEditor::instance()->parse_spectra_v3_container( $block );
+						break;
+
+					case 'core/image':
+						$block = BlockEditor::instance()->parse_core_image( $block );
+						break;
 				}
 
 				if ( ! empty( $block['innerBlocks'] ) ) {
@@ -681,7 +941,9 @@ class Plugin {
 				} else {
 					foreach ( $dynamic_content as $key => $value ) {
 						$ai_content = $value;
-						if ( ! str_contains( $block['innerHTML'], $key ) ) {
+						// For v2: Check if the key exists in the block content
+						// For v3: Check if the block is from Spectra v3.
+						if ( ! str_contains( $block['innerHTML'], $key ) && ! str_contains( $block['blockName'], 'spectra/' ) ) { // phpcs:ignore
 							continue;
 						}
 
@@ -769,22 +1031,66 @@ class Plugin {
 		return $allowedposttags;
 	}
 
+
 	/**
-	 * Activate Plugin
+	 * Activate a plugin required by the imported pattern.
 	 *
+	 * Restricted to an allow-list of plugins the library can require (Spectra,
+	 * Spectra Blocks and the supported form plugins). Called only on a
+	 * user-initiated "Insert" action with capability and nonce checks, so the
+	 * install/activation happens with the user's explicit consent.
+	 *
+	 * @since 2.4.31
 	 * @return void
 	 */
 	public function activate_plugin() {
 
 		if ( ! current_user_can( 'activate_plugins' ) ) {
-			wp_send_json_error( __( 'You are not allowed to perform this action.', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( __( 'You are not allowed to perform this action.', 'ast-block-templates' ) );
 		}
-		// Verify Nonce.
+
 		check_ajax_referer( 'ast-block-templates-ajax-nonce', 'security' );
 
-		wp_clean_plugins_cache();
+		$plugin_init = ( isset( $_POST['init'] ) ) ? sanitize_text_field( wp_unslash( $_POST['init'] ) ) : '';
 
-		$plugin_init = ( isset( $_POST['init'] ) ) ? sanitize_text_field( $_POST['init'] ) : '';
+		if ( empty( $plugin_init ) ) {
+			wp_send_json_error( __( 'Plugin slug is missing.', 'ast-block-templates' ) );
+		}
+
+		/**
+		 * Plugins the library is allowed to activate on the user's behalf.
+		 *
+		 * @since 2.4.31
+		 * @param array $plugins List of plugin basenames.
+		 */
+		$allowed_plugins = apply_filters(
+			'ast_block_templates_installable_plugins',
+			array(
+				'ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php',
+				'spectra-blocks/spectra-blocks.php',
+				'wpforms-lite/wpforms.php',
+				'sureforms/sureforms.php',
+			)
+		);
+
+		if ( ! in_array( $plugin_init, $allowed_plugins, true ) ) {
+			wp_send_json_error( __( 'This plugin is not allowed to be activated.', 'ast-block-templates' ) );
+		}
+
+		if ( ! function_exists( 'is_plugin_active' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
+
+		// Nothing to do when the plugin is already active.
+		if ( is_plugin_active( $plugin_init ) ) {
+			wp_send_json_success(
+				array(
+					'message' => 'Plugin already active.',
+				)
+			);
+		}
+
+		wp_clean_plugins_cache();
 
 		$activate = activate_plugin( $plugin_init, '', false, true );
 
@@ -808,7 +1114,7 @@ class Plugin {
 	public function template_importer() {
 
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
-			wp_send_json_error( __( 'You are not allowed to perform this action', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
 		}
 		// Verify Nonce.
 		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
@@ -820,7 +1126,7 @@ class Plugin {
 
 		// Early return.
 		if ( '' == $api_uri ) {
-			wp_send_json_error( __( 'Something wrong', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( __( 'Something wrong', 'ast-block-templates' ) );
 		}
 
 		$api_args = apply_filters(
@@ -872,23 +1178,40 @@ class Plugin {
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 			return;
 		}
-		
-		$exclude_post_types = apply_filters( 'ast_block_templates_exclude_post_types', array() );
-		$post_types = array_diff( get_post_types( array( 'public' => true ), 'names' ), $exclude_post_types );
 
+		$exclude_post_types = apply_filters( 'ast_block_templates_exclude_post_types', array( 'sureforms_form' ) );
+		if ( ! function_exists( 'get_current_screen' ) ) {
+			require_once ABSPATH . '/wp-admin/includes/screen.php';
+		}
 		$current_screen = get_current_screen();
 
 		if ( ! is_object( $current_screen ) && is_null( $current_screen ) ) {
 			return;
 		}
 
-		if ( 'site-editor' !== $current_screen->base && ! array_key_exists( $current_screen->post_type, $post_types ) ) {
+		if ( 'site-editor' !== $current_screen->base && in_array( $current_screen->post_type, $exclude_post_types, true ) ) {
 			return;
 		}
 
 		$is_white_label = $this->is_white_label();
 
 		if ( $is_white_label ) {
+			return;
+		}
+
+		/**
+		 * Allows plugins to disable only the Design Library editor button and its
+		 * assets without disabling the full library (sync, import, REST API, etc.).
+		 *
+		 * Unlike `ast_block_templates_disable` which stops the entire plugin, this
+		 * filter targets only the `enqueue_block_editor_assets` callback so that
+		 * background sync and other non-UI functionality continue to work.
+		 *
+		 * @since 2.4.29
+		 *
+		 * @param bool $disable Whether to disable the editor button. Default false.
+		 */
+		if ( apply_filters( 'ast_block_templates_disable_editor_button', false ) ) {
 			return;
 		}
 
@@ -908,12 +1231,16 @@ class Plugin {
 			true
 		);
 
-		// Google fonts.
-		wp_enqueue_style( 'ast-block-templates-google-fonts', $this->google_fonts_url(), array( 'ast-block-templates' ), 'all' );
+		// Self-hosted fonts (Inter + Figtree).
+		wp_enqueue_style( 'ast-block-templates-fonts', AST_BLOCK_TEMPLATES_URI . 'assets/fonts/fonts.css', array( 'ast-block-templates' ), AST_BLOCK_TEMPLATES_VER );
 
 		$license_status = false;
+		// Check for BSF Core License Manager from any pro plugin.
 		if ( class_exists( 'BSF_License_Manager' ) && is_callable( 'BSF_License_Manager::bsf_is_active_license' ) ) {
 			$license_status = \BSF_License_Manager::bsf_is_active_license( 'astra-pro-sites' );
+		} else {
+			// Fallback to Gutenberg Templates BSF Core license check.
+			$license_status = \Gutenberg_Templates\Inc\Api\License::bsf_is_active_license( 'astra-pro-sites' );
 		}
 
 		$upload_dir = wp_upload_dir();
@@ -944,6 +1271,11 @@ class Plugin {
 			$server_astra_customizer_css = Helper::instance()->get_block_template_customiser_css();
 		}
 
+		// Get global class based styles for Spectra v3.
+		$global_styles                = Helper::instance()->get_block_template_global_styles();
+		$astra_customizer_css        .= $global_styles;
+		$server_astra_customizer_css .= $global_styles;
+
 		$settings = get_option( 'ast_block_templates_ai_settings', array() );
 		$disable_ai = isset( $settings['disable_ai'] ) ? $settings['disable_ai'] : false;
 		$adaptive_mode = isset( $settings['adaptive_mode'] ) ? $settings['adaptive_mode'] : true;
@@ -959,7 +1291,7 @@ class Plugin {
 		);
 
 		$credit_request_params = array(
-			'success_url' => isset( $_SERVER['REQUEST_URI'] ) ? urlencode( $this->remove_query_params( network_home_url() . $_SERVER['REQUEST_URI'], $remove_parameters ) . '&ast_action=credits' ) : '', // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			'success_url' => isset( $_SERVER['REQUEST_URI'] ) ? urlencode( $this->remove_query_params( network_home_url() . sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ), $remove_parameters ) . '&ast_action=credits' ) : '',
 			'source' => 'spectra',
 		);
 
@@ -978,13 +1310,32 @@ class Plugin {
 		}
 		$pro_url = apply_filters( 'ast_block_templates_pro_url', 'https://wpastra.com/starter-templates-plans/?utm_source=gutenberg-templates&utm_medium=dashboard&utm_campaign=Starter-Template-Backend' );
 
-		$wp_stylesheet_path = ABSPATH . 'wp-includes/css/dist/block-library/style.min.css';
+		$wp_stylesheet_path = wp_normalize_path( ABSPATH . WPINC . '/css/dist/block-library/style.min.css' );
 
 		$wp_stylesheet = '';
 		if ( file_exists( $wp_stylesheet_path ) ) {
-			$wp_stylesheet = file_get_contents( $wp_stylesheet_path ); //phpcs:ignore
-			$wp_stylesheet = preg_replace( '/html/i', '.st-block-container', (string) $wp_stylesheet );
+			global $wp_filesystem;
+			if ( ! function_exists( 'WP_Filesystem' ) ) {
+				require_once ABSPATH . 'wp-admin/includes/file.php';
+			}
+			if ( WP_Filesystem() && $wp_filesystem ) {
+				$wp_stylesheet = (string) $wp_filesystem->get_contents( $wp_stylesheet_path );
+			}
+			$wp_stylesheet = preg_replace_callback(
+				'/html/i',
+				function( $matches ) {
+					return '.st-block-container';
+				},
+				(string) $wp_stylesheet
+			);
 		}
+
+		// Design library modal auto open.
+		$modal_auto_open = get_user_meta(
+			get_current_user_id(),
+			'ast_block_templates_auto_open_design_library',
+			true
+		);
 
 		wp_localize_script(
 			'ast-block-templates',
@@ -996,12 +1347,19 @@ class Plugin {
 					'ajax_url'                => admin_url( 'admin-ajax.php' ),
 					'uri'                     => AST_BLOCK_TEMPLATES_URI,
 					'wpforms_status'          => $this->get_plugin_status( 'wpforms-lite/wpforms.php' ),
+					'sureforms_status'        => $this->get_plugin_status( 'sureforms/sureforms.php' ),
 					'spectra_status'          => $this->get_plugin_status( 'ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php' ),
+					'spectra_blocks_status'   => $this->get_plugin_status( 'spectra-blocks/spectra-blocks.php' ),
+					'spectra_blocks_pro_status' => $this->get_plugin_status( apply_filters( 'ast_block_templates_spectra_blocks_pro_basename', 'spectra-blocks-pro/spectra-blocks-pro.php' ) ),
 					'spectra_pro_status'      => $this->get_plugin_status( 'spectra-pro/spectra-pro.php' ),
+					'spectra_version'         => $this->get_spectra_version(),
+					'show_version_toggle'     => $this->should_show_version_toggle(),
+					'version_toggle_labels'   => $this->get_version_toggle_labels(),
+					'user_migration_status'   => $this->get_uagb_user_migration_status(),
 					'astra_sites_pro_status'  => $this->get_plugin_status( 'astra-pro-sites/astra-pro-sites.php' ),
 					'astra_sites_status'          => $this->get_plugin_status( 'astra-sites/astra-sites.php' ),
 					'_ajax_nonce'             => wp_create_nonce( 'ast-block-templates-ajax-nonce' ),
-					'button_text'             => esc_html__( 'Design Library', 'ultimate-addons-for-gutenberg' ),
+					'button_text'             => esc_html__( 'Design Library', 'ast-block-templates' ),
 					'display_button_logo'     => true,
 					'popup_logo_uri'          => AST_BLOCK_TEMPLATES_URI . 'dist/spectra-logo.svg',
 					'button_logo'             => AST_BLOCK_TEMPLATES_URI . 'dist/spectra.svg',
@@ -1011,11 +1369,23 @@ class Plugin {
 					'suggestion_link'         => 'https://wpastra.com/sites-suggestions/?utm_source=demo-import-panel&utm_campaign=astra-sites&utm_medium=suggestions',
 					'license_status'          => $license_status,
 					'isPro'                   => defined( 'ASTRA_PRO_SITES_NAME' ) ? true : false,
-					'getProURL'               => esc_url( defined( 'ASTRA_PRO_SITES_NAME' ) ? ( admin_url( 'plugins.php?bsf-inline-license-form=astra-pro-sites' ) ) : $pro_url ),
+					'getProURL'               => $pro_url,
 					'site_url'                => site_url(),
 					'home_url'                => home_url(),
-					'global-styles'           => preg_replace( '/(?<!-)(\\bbody\\b)(?!-)/i', '.st-block-container', wp_get_global_stylesheet() ),
-					'spectra_common_styles'   => preg_replace( '/(?<!-)(\\bbody\\b)(?!-)/i', '.st-block-container', $common_css_content ) . ' .st-block-container .uagb-button__wrapper a { text-decoration: none; }',
+					'global-styles'           => preg_replace_callback(
+						'/(?<!-)(\\bbody\\b)(?!-)/i',
+						function( $matches ) {
+							return '.st-block-container';
+						},
+						wp_get_global_stylesheet()
+					),
+					'spectra_common_styles'   => preg_replace_callback(
+						'/(?<!-)(\\bbody\\b)(?!-)/i',
+						function( $matches ) {
+							return '.st-block-container';
+						},
+						$common_css_content
+					) . ' .st-block-container .uagb-button__wrapper a { text-decoration: none; }',
 					'block_color_palette'     => $this->get_block_palette_colors(),
 					'page_color_palette'      => $this->get_page_palette_colors(),
 					'ai_content_ajax_nonce'             => wp_create_nonce( 'ast-block-templates-ai-content' ),
@@ -1024,8 +1394,6 @@ class Plugin {
 					'rest_api_nonce' => wp_create_nonce( 'wp_rest' ),
 					'default_ai_categories' => Helper::instance()->get_default_ai_categories(),
 					'user_email' => get_option( 'admin_email' ),
-					'skip_zip_ai_onboarding_nonce'             => wp_create_nonce( 'skip-spectra-pro-onboarding-nonce' ),
-					'skip_zip_ai_onboarding' => get_option( 'ast_skip_zip_ai_onboarding', false ),
 					'show_onboarding' => ( 'no' !== get_option( 'ast-block-templates-show-onboarding', true ) ),
 					'dynamic_content' => get_option( 'ast-templates-ai-content', array() ),
 					'favorites' => get_option(
@@ -1035,7 +1403,14 @@ class Plugin {
 							'site' => array(),
 						)
 					),
-					'astra_customizer_css' => preg_replace( '/(?<!-)(\\bbody\\b)(?!-)/i', '.st-block-container', defined( 'ASTRA_THEME_VERSION' ) ? $astra_customizer_css : $server_astra_customizer_css ),
+					'astra_customizer_css' => preg_replace_callback(
+						'/(?<!-)(\bbody\b)(?!-)|--wp--preset--color/i',
+						function( $matches ) {
+							// If the match is --wp--preset--color, replace it with empty string to avoid issues with color variables.
+							return stripos( $matches[0], '--wp--preset--color' ) !== false ? '' : '.st-block-container';
+						},
+						defined( 'ASTRA_THEME_VERSION' ) ? $astra_customizer_css : $server_astra_customizer_css
+					),
 					'disable_ai' => $disable_ai,
 					'adaptive_mode' => $adaptive_mode,
 					'debug_mode' => Helper::instance()->is_debug_mode() ? 'yes' : 'no',
@@ -1043,8 +1418,8 @@ class Plugin {
 					'images' => AST_BLOCK_TEMPLATES_URI . 'admin-assets/images/',
 					'spec_ai_auth_url' => $spec_ai_auth_url,
 					'spec_ai_signup_url' => $spec_ai_signup_url,
-					'open_ai_auth' => isset( $_GET['ast_action'] ) && 'auth' === sanitize_text_field( $_GET['ast_action'] ) ? true : false, // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-					'credit_purchased' => isset( $_GET['ast_action'] ) && 'credits' === sanitize_text_field( $_GET['ast_action'] ) ? true : false, // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+					'open_ai_auth' => isset( $_GET['ast_action'] ) && 'auth' === sanitize_text_field( wp_unslash( $_GET['ast_action'] ) ) ? true : false, // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+					'credit_purchased' => isset( $_GET['ast_action'] ) && 'credits' === sanitize_text_field( wp_unslash( $_GET['ast_action'] ) ) ? true : false, // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 					'show_pages_onboarding' => get_option( 'ast-show-pages-onboarding', 'yes' ) === 'yes',
 					'flat_rates' => array(
 						'patterns_library' => 5000,
@@ -1062,44 +1437,27 @@ class Plugin {
 					'header_markup' => $ast_header,
 					'footer_markup' => $ast_footer,
 					'astra_static_css_path' => $static_css_path,
-					'server_astra_customizer_css' => preg_replace( '/(?<!-)(\\bbody\\b)(?!-)/i', '.st-block-container', $server_astra_customizer_css ),
+					'server_astra_customizer_css' => preg_replace_callback(
+						'/(?<!-)(\\bbody\\b)(?!-)/i',
+						function( $matches ) {
+							return '.st-block-container';
+						},
+						$server_astra_customizer_css
+					),
 					'is_rtl' => is_rtl(),
 					'ai_design_copilot' => isset( $ai_features['ai_design_copilot']['status'] ) ? $ai_features['ai_design_copilot']['status'] : 'disabled',
 					'ai_assistant' => isset( $ai_features['ai_assistant']['status'] ) ? $ai_features['ai_assistant']['status'] : 'disabled',
 					'hide_notice' => $this->is_show_personalize_ai_notice(),
 					'is_sync_business_details' => get_option( 'ast-templates-business-details-synced', false ),
-					'bypassAuth' => apply_filters( 'ast_block_templates_bypass_auth', false ),
 					'zipwp_ai_auth_nonce' => wp_create_nonce( 'zip_ai_auth_nonce' ),
 					'gutenberg_plugin_status' => is_plugin_active( 'gutenberg/gutenberg.php' ),
 					'is_personalized' => get_option( 'ast-templates-ai-content', false ),
 					'wp_stylesheet' => $wp_stylesheet,
+					'images_engines' => Helper::instance()->get_images_engines(),
+					'auto_open_design_library' => '' === $modal_auto_open ? true : (bool) $modal_auto_open, // passing true for new users otherwise 1 or 0.
 				)
 			)
 		);
-	}
-
-		/**
-		 * Generate and return the Google fonts url.
-		 *
-		 * @since 1.0.1
-		 * @return string
-		 */
-	public function google_fonts_url() {
-
-		$fonts_url     = '';
-		$font_families = array(
-			'Inter:400,500,600',
-			'Figtree:400,500,600,700',
-		);
-
-		$query_args = array(
-			'family' => rawurlencode( implode( '|', $font_families ) ),
-			'subset' => rawurlencode( 'latin,latin-ext' ),
-		);
-
-		$fonts_url = add_query_arg( $query_args, '//fonts.googleapis.com/css' );
-
-		return $fonts_url;
 	}
 
 	/**
@@ -1214,7 +1572,7 @@ class Plugin {
 		$default_palette_color = self::$color_palette;
 		// Checking the nonce already.
 		if ( isset( $_REQUEST['adaptive_mode'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$adaptive_mode = 'true' === sanitize_text_field( $_REQUEST['adaptive_mode'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$adaptive_mode = 'true' === sanitize_text_field( wp_unslash( $_REQUEST['adaptive_mode'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		} else {
 			$settings = get_option( 'ast_block_templates_ai_settings', array() );
 			$adaptive_mode = isset( $settings['adaptive_mode'] ) ? $settings['adaptive_mode'] : true;
@@ -1225,37 +1583,70 @@ class Plugin {
 			$default_palette_color = $astra_palette_colors['palettes'][ $astra_palette_colors['currentPalette'] ];
 		}
 
+		$reorganize = class_exists( '\Astra_Dynamic_CSS' ) && is_callable( '\Astra_Dynamic_CSS::astra_4_8_0_compatibility' ) && \Astra_Dynamic_CSS::astra_4_8_0_compatibility();
+
 		$palette_one = $default_palette_color;
+
+		// Reorganize palette indexes for Astra 4.8.0+ compatibility.
+		if ( $reorganize ) {
+			// Swap color positions: 4 ↔ 5.
+			$temp           = $palette_one[4];
+			$palette_one[4] = $palette_one[5];
+			$palette_one[5] = $temp;
+
+			// Swap color positions: 6 ↔ 7.
+			$temp           = $palette_one[6];
+			$palette_one[6] = $palette_one[7];
+			$palette_one[7] = $temp;
+		}
 
 		$palette_two = array(
 			$default_palette_color[0],
 			$default_palette_color[1],
-			$default_palette_color[5],
-			$default_palette_color[4],
+			$default_palette_color[ $reorganize ? 4 : 5 ],
+			$default_palette_color[ $reorganize ? 5 : 4 ],
 			$default_palette_color[3],
 			$default_palette_color[2],
-			$default_palette_color[6],
-			$default_palette_color[7],
+			$default_palette_color[ $reorganize ? 7 : 6 ],
+			$default_palette_color[ $reorganize ? 6 : 7 ],
 			$default_palette_color[8],
 		);
 
 		$color_palettes = array(
 			'style-1' =>
 				array(
-					'slug' => 'style-1',
-					'title' => 'Light',
-					'default_color' => $default_palette_color[4],
-					'colors' => $palette_one,
+					'slug'          => 'style-1',
+					'title'         => __( 'Light', 'ast-block-templates' ),
+					'default_color' => $default_palette_color[ $reorganize ? 5 : 4 ],
+					'colors'        => $palette_one,
 				),
 			'style-2' => array(
-				'slug' => 'style-2',
-				'title' => 'Dark',
+				'slug'          => 'style-2',
+				'title'         => __( 'Dark', 'ast-block-templates' ),
 				'default_color' => '#1E293B',
-				'colors' => $palette_two,
+				'colors'        => $palette_two,
 			),
 		);
 
 		return $color_palettes;
+	}
+
+	/**
+	 * Get adaptive mode
+	 *
+	 * @since 2.4.21
+	 *
+	 * @return boolean
+	 */
+	public function get_adaptive_mode() {
+		// Checking the nonce already.
+		if ( isset( $_REQUEST['adaptive_mode'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$adaptive_mode = 'true' === sanitize_text_field( wp_unslash( $_REQUEST['adaptive_mode'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		} else {
+			$settings = get_option( 'ast_block_templates_ai_settings', array() );
+			$adaptive_mode = isset( $settings['adaptive_mode'] ) ? $settings['adaptive_mode'] : true;
+		}
+		return $adaptive_mode;
 	}
 
 	/**
@@ -1269,65 +1660,73 @@ class Plugin {
 
 		$default_palette_color = self::$color_palette;
 
-		// Checking the nonce already.
-		if ( isset( $_REQUEST['adaptive_mode'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$adaptive_mode = 'true' === sanitize_text_field( $_REQUEST['adaptive_mode'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		} else {
-			$settings = get_option( 'ast_block_templates_ai_settings', array() );
-			$adaptive_mode = isset( $settings['adaptive_mode'] ) ? $settings['adaptive_mode'] : true;
-		}
+		$adaptive_mode = $this->get_adaptive_mode();
 
 		if ( class_exists( 'Astra_Global_Palette' ) && $adaptive_mode && function_exists( 'astra_get_palette_colors' ) ) {
 			$astra_palette_colors = astra_get_palette_colors();
 			$default_palette_color = $astra_palette_colors['palettes'][ $astra_palette_colors['currentPalette'] ];
 		}
 
+		$reorganize = class_exists( '\Astra_Dynamic_CSS' ) && is_callable( '\Astra_Dynamic_CSS::astra_4_8_0_compatibility' ) && \Astra_Dynamic_CSS::astra_4_8_0_compatibility();
+
 		$palette_one = array(
 			$default_palette_color[0],
 			$default_palette_color[1],
 			$default_palette_color[2],
 			$default_palette_color[3],
-			$default_palette_color[5],
-			$default_palette_color[5],
-			$default_palette_color[6],
-			$default_palette_color[7],
+			$default_palette_color[ $reorganize ? 4 : 5 ],
+			$default_palette_color[ $reorganize ? 5 : 4 ],
+			$default_palette_color[ $reorganize ? 7 : 6 ],
+			$default_palette_color[ $reorganize ? 6 : 7 ],
 			$default_palette_color[8],
 		);
 
 		$palette_two = $default_palette_color;
 
+		// Reorganize palette indexes for Astra 4.8.0+ compatibility.
+		if ( $reorganize ) {
+			// Swap color positions: 4 ↔ 5.
+			$temp           = $palette_two[4];
+			$palette_two[4] = $palette_two[5];
+			$palette_two[5] = $temp;
+
+			// Swap color positions: 6 ↔ 7.
+			$temp           = $palette_two[6];
+			$palette_two[6] = $palette_two[7];
+			$palette_two[7] = $temp;
+		}
+
 		$palette_three = array(
 			$default_palette_color[3],
 			$default_palette_color[2],
-			$default_palette_color[5],
-			$default_palette_color[4],
+			$default_palette_color[ $reorganize ? 4 : 5 ],
+			$default_palette_color[ $reorganize ? 5 : 4 ],
 			$default_palette_color[0],
 			$default_palette_color[1],
-			$default_palette_color[6],
-			$default_palette_color[7],
+			$default_palette_color[ $reorganize ? 7 : 6 ],
+			$default_palette_color[0],
 			$default_palette_color[8],
 		);
-
 
 		$color_palettes = array(
 			'style-1' =>
 				array(
-					'slug' => 'style-1',
-					'title' => 'Light',
-					'default_color' => $default_palette_color[5],
-					'colors' => $palette_one,
+					'slug'          => 'style-1',
+					'title'         => __( 'Light', 'ast-block-templates' ),
+					'default_color' => $default_palette_color[ $reorganize ? 4 : 5 ],
+					'colors'        => $palette_one,
 				),
 			'style-2' => array(
-				'slug' => 'style-2',
-				'title' => 'Dark',
-				'default_color' => $default_palette_color[4],
-				'colors' => $palette_two,
+				'slug'          => 'style-2',
+				'title'         => __( 'Dark', 'ast-block-templates' ),
+				'default_color' => $default_palette_color[ $reorganize ? 5 : 4 ],
+				'colors'        => $palette_two,
 			),
 			'style-3' => array(
-				'slug' => 'style-3',
-				'title' => 'Highlight',
+				'slug'          => 'style-3',
+				'title'         => __( 'Highlight', 'ast-block-templates' ),
 				'default_color' => $default_palette_color[0],
-				'colors' => $palette_three,
+				'colors'        => $palette_three,
 			),
 		);
 
@@ -1354,6 +1753,198 @@ class Plugin {
 			return 'inactive';
 		}
 	}
+
+	/**
+	 * Get Spectra version
+	 *
+	 * @since 2.4.10
+	 *
+	 * @return string
+	 */
+	public function get_spectra_version() {
+		$pro_version = null;
+		$free_version = null;
+
+		// Check for Spectra Pro.
+		if ( is_plugin_active( 'spectra-pro/spectra-pro.php' ) ) {
+			if ( ! function_exists( 'get_plugin_data' ) ) {
+				require_once ABSPATH . 'wp-admin/includes/plugin.php';
+			}
+			$plugin_data = get_plugin_data( wp_normalize_path( WP_PLUGIN_DIR . '/spectra-pro/spectra-pro.php' ) );
+			if ( ! empty( $plugin_data['Version'] ) ) {
+				$pro_version = $plugin_data['Version'];
+			}
+		}
+
+		// Check for Spectra Free (UAGB).
+		if ( is_plugin_active( 'ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php' ) ) {
+			if ( ! function_exists( 'get_plugin_data' ) ) {
+				require_once ABSPATH . 'wp-admin/includes/plugin.php';
+			}
+			$plugin_data = get_plugin_data( wp_normalize_path( WP_PLUGIN_DIR . '/ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php' ) );
+			if ( ! empty( $plugin_data['Version'] ) ) {
+				$free_version = $plugin_data['Version'];
+			}
+		}
+
+		// If EITHER plugin is >= 3.0.0-beta.1, return v3.
+		if ( $pro_version && version_compare( $pro_version, '3.0.0-beta.1', '>=' ) ) {
+			return 'v3';
+		}
+		if ( $free_version && version_compare( $free_version, '3.0.0-beta.1', '>=' ) ) {
+			return 'v3';
+		}
+
+		// Spectra Blocks (standalone v3-only plugin) is always v3.
+		if ( is_plugin_active( 'spectra-blocks/spectra-blocks.php' ) ) {
+			return 'v3';
+		}
+
+		// Legacy Spectra installed (UAGB or Spectra Pro < 3.0.0-beta.1) — only the
+		// v2 (uagb/) blocks are available, so the site's capability is v2.
+		if (
+			is_plugin_active( 'ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php' ) ||
+			is_plugin_active( 'spectra-pro/spectra-pro.php' )
+		) {
+			return 'v2';
+		}
+
+		// No Spectra plugin installed — default the library to v3 (Spectra Blocks).
+		return 'v3';
+	}
+
+	/**
+	 * Get the installed UAGB (ultimate-addons-for-gutenberg) version string, or null if not active.
+	 *
+	 * @since 2.4.29
+	 * @return string|null
+	 */
+	public function get_uagb_version() {
+		if ( ! is_plugin_active( 'ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php' ) ) {
+			return null;
+		}
+		if ( ! function_exists( 'get_plugin_data' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
+		$plugin_data = get_plugin_data( wp_normalize_path( WP_PLUGIN_DIR . '/ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php' ) );
+		return ! empty( $plugin_data['Version'] ) ? $plugin_data['Version'] : null;
+	}
+
+	/**
+	 * Check if version toggle should be available
+	 *
+	 * @since 2.4.10
+	 *
+	 * @return bool
+	 */
+	public function should_show_version_toggle() {
+		// v2 blocks require UAGB to be active — stale database options left behind
+		// by a previous install (e.g. from ZipWP site creation) must not trigger
+		// the toggle when UAGB is no longer running.
+		if ( ! is_plugin_active( 'ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php' ) ) {
+			/**
+			 * Filter to modify the visibility of version toggle.
+			 *
+			 * @param bool $flag Whether to show the version toggle.
+			 *
+			 * @since 2.4.32
+			 */
+			return apply_filters( 'ast_block_templates_show_version_toggle', false );
+		}
+
+		// UAGB is active — respect explicit opt-in flags for the legacy v2 library.
+		$register_v2_blocks    = get_option( 'register-v2-blocks', 'no' );
+		$enable_legacy_library = get_option( 'uag_enable_legacy_design_library', 'disabled' );
+
+		if ( 'yes' === $register_v2_blocks || 'enabled' === $enable_legacy_library ) {
+			return apply_filters( 'ast_block_templates_show_version_toggle', true );
+		}
+
+		/**
+		 * Filter to modify the visibility of version toggle.
+		 *
+		 * @param bool $flag Whether to show the version toggle.
+		 *
+		 * @since 2.4.15
+		 */
+		return apply_filters( 'ast_block_templates_show_version_toggle', true );
+	}
+
+	/**
+	 * Get the labels to use for the version toggle.
+	 *
+	 * The toggle is only shown when Spectra Legacy (UAGB) is active, letting the
+	 * user switch between the legacy v2 pattern library and the default Spectra
+	 * Blocks (v3) patterns, so the labels are named accordingly.
+	 *
+	 * @since 2.4.18
+	 *
+	 * @return array{v2: string, v3: string}
+	 */
+	public function get_version_toggle_labels() {
+		return array(
+			'v2' => __( 'Spectra Legacy', 'ast-block-templates' ),
+			'v3' => __( 'Spectra Blocks', 'ast-block-templates' ),
+		);
+	}
+
+	/**
+	 * Get user migration status using UAGB's Enable Legacy Design Library setting
+	 *
+	 * Uses UAGB's 'uag_enable_legacy_design_library' option to determine if user
+	 * is upgraded (from < 3.0.0) or fresh (new installation of 3.0.0+)
+	 *
+	 * @since 2.4.10
+	 *
+	 * @return array<string, bool>  Associative array with keys:
+	 *                              - is_upgraded_user (bool): True if user has legacy library enabled.
+	 *                              - is_fresh_user (bool): True if user is a fresh installation.
+	 *                              - show_premium_filter (bool): True if premium filter should be shown.
+	 */
+	public function get_uagb_user_migration_status() {
+		$spectra_version = $this->get_spectra_version();
+		$status = array(
+			'is_upgraded_user' => false,
+			'is_fresh_user' => false,
+			'show_premium_filter' => false,
+		);
+
+		// Only proceed if Spectra 3.0.0-beta.1+ is active.
+		if ( 'v3' !== $spectra_version ) {
+			return $status;
+		}
+
+		// Premium filter is available for all 3.0.0-beta.1+ users.
+		$status['show_premium_filter'] = true;
+
+		// Spectra Blocks (standalone) has no legacy v2 library — always a fresh v3 user.
+		if ( is_plugin_active( 'spectra-blocks/spectra-blocks.php' ) && ! is_plugin_active( 'ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php' ) ) {
+			$status['is_fresh_user'] = true;
+			return $status;
+		}
+
+		// Spectra Blocks + UAGB both active — uagb/ blocks are present so the user
+		// has access to legacy v2 templates via the Spectra Legacy toggle.
+		if ( is_plugin_active( 'spectra-blocks/spectra-blocks.php' ) && is_plugin_active( 'ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php' ) ) {
+			$status['is_upgraded_user'] = true;
+			return $status;
+		}
+
+		// Use UAGB's Enable Legacy Design Library setting.
+		// Users with legacy library enabled are considered upgraded users.
+		$enable_legacy_library = get_option( 'uag_enable_legacy_design_library', 'disabled' );
+
+		if ( 'enabled' === $enable_legacy_library ) {
+			// User has enabled legacy design library - they're an upgraded user.
+			$status['is_upgraded_user'] = true;
+		} else {
+			// Fresh installation of Spectra 3.0.0+ - they're a fresh user.
+			$status['is_fresh_user'] = true;
+		}
+
+		return $status;
+	}
+
 
 	/**
 	 * Check if white label enabled
@@ -1506,7 +2097,9 @@ class Plugin {
 	public function download_file( $file = '', $overrides = array(), $timeout_seconds = 300 ) {
 
 		// Gives us access to the download_url() and wp_handle_sideload() functions.
-		require_once ABSPATH . 'wp-admin/includes/file.php';
+		if ( ! function_exists( 'download_url' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/file.php';
+		}
 
 		// Download file to temp dir.
 		$temp_file = download_url( $file, $timeout_seconds );
@@ -1537,6 +2130,10 @@ class Plugin {
 				// will be no form fields
 				// Default is true.
 				'test_form'   => false,
+
+				// Setting this to false lets WordPress not to check for the file type to prevent JSON file not allowed error.
+				// Default is true.
+				'test_type'   => false,
 
 				// Setting this to false lets WordPress allow empty files, not recommended.
 				// Default is true.
@@ -1584,7 +2181,16 @@ class Plugin {
 		$query = array();
 
 		if ( isset( $parts['query'] ) ) {
-			parse_str( $parts['query'], $query );
+			// Safely parse query string without using parse_str directly.
+			$query_pairs = explode( '&', $parts['query'] );
+			foreach ( $query_pairs as $pair ) {
+				if ( strpos( $pair, '=' ) !== false ) {
+					list( $key, $value ) = explode( '=', $pair, 2 );
+					$query[ urldecode( $key ) ] = urldecode( $value );
+				} else {
+					$query[ urldecode( $pair ) ] = '';
+				}
+			}
 		}
 
 		foreach ( $params as $param ) {
@@ -1637,5 +2243,63 @@ class Plugin {
 		}
 
 		return false;
+	}
+	
+	/**
+	 * Save auto-open design library setting via AJAX
+	 *
+	 * @since 2.4.20
+	 * @return void
+	 */
+	public function save_auto_open_setting() {
+		// Verify nonce.
+		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'ast-block-templates-ajax-nonce' ) ) {
+			wp_send_json_error( array( 'message' => 'Security check failed' ) );
+		}
+
+		// Check user capabilities.
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			wp_send_json_error( array( 'message' => 'Insufficient permissions' ) );
+		}
+
+		// Get and validate the value from POST.
+		$raw = isset( $_POST['auto_open'] ) ? sanitize_text_field( wp_unslash( $_POST['auto_open'] ) ) : null;
+		if ( null === $raw ) {
+			$auto_open = null;
+		} else {
+			$auto_open = wp_validate_boolean( $raw );
+		}
+
+		if ( null === $auto_open ) {
+			wp_send_json_error( array( 'message' => 'Invalid value send!' ) );
+		}
+
+		// Save the user meta.
+		$user_id = get_current_user_id();
+		$result  = update_user_meta( $user_id, 'ast_block_templates_auto_open_design_library', (int) $auto_open );
+
+		// Send response based on the actual saved value.
+		if ( false === $result ) {
+			wp_send_json_error( array( 'message' => 'No change in value!' ) );
+		}
+
+		// Check what was actually saved.
+		$saved_value = (bool) get_user_meta( $user_id, 'ast_block_templates_auto_open_design_library', true );
+		if ( $saved_value === $auto_open ) {
+			wp_send_json_success(
+				array(
+					'message' => 'Setting saved successfully',
+					'value'   => $saved_value,
+				)
+			);
+		}
+ 
+		wp_send_json_error(
+			array(
+				'message'        => 'Failed to save setting - value mismatch',
+				'saved_value'    => $saved_value,
+				'expected_value' => $auto_open,
+			)
+		);
 	}
 }

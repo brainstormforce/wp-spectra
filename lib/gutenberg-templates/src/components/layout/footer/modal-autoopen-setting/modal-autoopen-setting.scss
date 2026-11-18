@@ -1,0 +1,15 @@
+.modal-autoopen-setting {
+	padding: 21px 24px;
+	border-top: 1px solid rgb( 209, 213, 219, var( --tw-border-opacity, 1 ) );
+	background: #fff;
+
+	.auto-open-toggle-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+
+		.components-checkbox-control__input[type="checkbox"]:checked {
+			background: rgb( 37, 99, 235, var( --tw-bg-opacity, 1 ) );
+		}
+	}
+}

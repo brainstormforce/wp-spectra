@@ -2256,6 +2256,13 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			if ( 'full_post' === $attributes['displayPostContentRadio'] ) {
 				$excerpt = get_the_content();
+				// Strip Display-Condition-hidden Spectra blocks before the full post content is
+				// printed, so User State (and User Role/Browser/OS/Day) hidden container text is not
+				// leaked to logged-out visitors. get_the_content() returns the raw block markup, which
+				// bypasses the render_block Display Conditions check applied on the normal render path.
+				if ( class_exists( 'UAGB_Init_Blocks' ) ) {
+					$excerpt = UAGB_Init_Blocks::get_instance()->remove_hidden_blocks( $excerpt );
+				}
 			} else {
 				$excerpt_length_fallback = UAGB_Block_Helper::get_fallback_number( $attributes['excerptLength'], 'excerptLength', 'post-timeline' );
 				$excerpt                 = UAGB_Helper::uagb_get_excerpt( $post->ID, $post->post_content, $excerpt_length_fallback );

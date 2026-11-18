@@ -1458,6 +1458,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$max_excerpt = 100;
 				// If the content present on post, then trim it and use that.
 				if ( ! empty( $content ) ) {
+					// Drop Spectra blocks hidden by their Display Conditions before trimming, so
+					// User State (and User Role/Browser/OS/Day) hidden content does not leak into
+					// the excerpt for logged-out visitors. This helper builds excerpts directly for
+					// the Post Grid, Post Carousel and Post Timeline blocks, which bypass the core
+					// get_the_excerpt pipeline that the render path is otherwise guarded on.
+					if ( class_exists( 'UAGB_Init_Blocks' ) ) {
+						$content = UAGB_Init_Blocks::get_instance()->remove_hidden_blocks( $content );
+					}
 					$excerpt = apply_filters( 'the_excerpt', wp_trim_words( $content, $max_excerpt ) );
 				}
 			}

@@ -8,6 +8,10 @@
 
 namespace Gutenberg_Templates\Inc\Api;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Api_Base
  *

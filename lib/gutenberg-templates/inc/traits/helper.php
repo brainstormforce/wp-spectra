@@ -10,6 +10,10 @@ namespace Gutenberg_Templates\Inc\Traits;
 
 use Gutenberg_Templates\Inc\Traits\Instance;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Trait Instance.
  */
@@ -47,17 +51,25 @@ class Helper {
 	}
 
 	/**
-	 * Get an instance of WP_Filesystem_Direct.
+	 * Get an instance of WP_Filesystem.
+	 *
+	 * Returns null when WP_Filesystem() fails to initialise (e.g. FTP method
+	 * selected without valid credentials), preventing fatal errors when callers
+	 * invoke filesystem methods on a partially initialised global.
 	 *
 	 * @since 1.0.0
-	 * @return object A WP_Filesystem_Direct instance.
+	 * @return \WP_Filesystem_Base|null Filesystem instance, or null on failure.
 	 */
 	public function ast_block_templates_get_filesystem() {
 		global $wp_filesystem;
 
-		require_once ABSPATH . '/wp-admin/includes/file.php';
+		if ( ! function_exists( 'WP_Filesystem' ) ) {
+			require_once ABSPATH . '/wp-admin/includes/file.php';
+		}
 
-		WP_Filesystem();
+		if ( ! WP_Filesystem() ) {
+			return null;
+		}
 
 		return $wp_filesystem;
 	}
@@ -222,7 +234,7 @@ class Helper {
 		// If the endpoint is not a string, then abandon ship.
 		if ( ! is_string( $endpoint ) ) {
 			return array(
-				'error' => __( 'The Zip AI Endpoint was not declared', 'ultimate-addons-for-gutenberg' ),
+				'error' => __( 'The Zip AI Endpoint was not declared', 'ast-block-templates' ),
 			);
 		}
 
@@ -232,7 +244,7 @@ class Helper {
 		// If the Zip Auth Token is not set, then abandon ship.
 		if ( empty( $auth_token ) || ! is_string( $auth_token ) ) {
 			return array(
-				'error' => __( 'The Zip AI Auth Token is not set.', 'ultimate-addons-for-gutenberg' ),
+				'error' => __( 'The Zip AI Auth Token is not set.', 'ast-block-templates' ),
 			);
 		}
 
@@ -254,7 +266,7 @@ class Helper {
 		// If the response was an error, or not a 200 status code, then abandon ship.
 		if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
 			return array(
-				'error' => __( 'The Zip AI Middleware is not responding.', 'ultimate-addons-for-gutenberg' ),
+				'error' => __( 'The Zip AI Middleware is not responding.', 'ast-block-templates' ),
 			);
 		}
 
@@ -264,7 +276,7 @@ class Helper {
 		// If the response body is not a JSON, then abandon ship.
 		if ( empty( $response_body ) || ! json_decode( $response_body ) ) {
 			return array(
-				'error' => __( 'The Zip AI Middleware encountered an error.', 'ultimate-addons-for-gutenberg' ),
+				'error' => __( 'The Zip AI Middleware encountered an error.', 'ast-block-templates' ),
 			);
 		}
 
@@ -344,10 +356,11 @@ class Helper {
 	 */
 	public function create_single_file( $file ) {
 		if ( wp_mkdir_p( $file['file_base'] ) && ! file_exists( trailingslashit( $file['file_base'] ) . $file['file_name'] ) ) {
-			$file_handle = @fopen( trailingslashit( $file['file_base'] ) . $file['file_name'], 'w' ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged, WordPress.WP.AlternativeFunctions.file_system_read_fopen
-			if ( $file_handle ) {
-				fwrite( $file_handle, $file['file_content'] ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_read_fwrite, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_fwrite
-				fclose( $file_handle ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_read_fclose
+			global $wp_filesystem;
+			if ( ! function_exists( 'WP_Filesystem' ) ) {
+				require_once ABSPATH . 'wp-admin/includes/file.php';
+			}
+			if ( WP_Filesystem() && $wp_filesystem && $wp_filesystem->put_contents( trailingslashit( $file['file_base'] ) . $file['file_name'], $file['file_content'], FS_CHMOD_FILE ) ) {
 				self::ast_block_templates_log( 'File: ' . $file['file_name'] . ' Created Successfully!' );
 			}
 		}
@@ -356,9 +369,9 @@ class Helper {
 	/**
 	 * Update files/directories.
 	 * 
-	 * @param string     $file_name The file path.
-	 * @param string|int $file_content The file content.
-	 * 
+	 * @param string $file_name The file path.
+	 * @param mixed  $file_content The file content, JSON-encoded before writing.
+	 *
 	 * @return void
 	 */
 	public function update_json_file( $file_name, $file_content ) {
@@ -375,7 +388,12 @@ class Helper {
 			$this->create_single_file( $file_data );
 		}
 
-		if ( file_exists( AST_BLOCK_TEMPLATES_JSON_DIR . $file_name ) && file_put_contents( AST_BLOCK_TEMPLATES_JSON_DIR . $file_name, wp_json_encode( $file_content ) ) !== false ) { //phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_file_put_contents
+		global $wp_filesystem;
+		if ( ! function_exists( 'WP_Filesystem' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/file.php';
+		}
+		$filesystem_ready = WP_Filesystem() && $wp_filesystem;
+		if ( $filesystem_ready && file_exists( AST_BLOCK_TEMPLATES_JSON_DIR . $file_name ) && $wp_filesystem->put_contents( AST_BLOCK_TEMPLATES_JSON_DIR . $file_name, wp_json_encode( $file_content ), FS_CHMOD_FILE ) ) {
 			self::ast_block_templates_log( 'File: ' . $file_name . ' Updated Successfully!' );
 		} else {
 			self::ast_block_templates_log( 'File: ' . $file_name . ' Not Updated!' );
@@ -423,7 +441,16 @@ class Helper {
 	 */
 	public function get_block_template_customiser_css() {
 		return trim( self::get_json_file_content( 'ast-block-templates-customizer-css.json', false ), '"' );
-	}   
+	}
+
+	/**
+	 * Get global styles for Spectra v3.
+	 *
+	 * @return string
+	 */
+	public function get_block_template_global_styles() {
+		return trim( self::get_json_file_content( 'ast-block-templates-global-styles.json', false ), '"' );
+	}
 
 	/**
 	 * Get last exported checksum.
@@ -470,6 +497,16 @@ class Helper {
 	 */
 	public function get_sites_templates( $page = 0 ) {
 		return self::get_json_file_content( 'ast-block-templates-sites-' . $page . '.json', true );
+	}
+
+	/**
+	 * Get Images Engines
+	 *
+	 * @since 2.4.11
+	 * @return array<string> Image Engines.
+	 */
+	public static function get_images_engines() {
+		return array( 'pexels', 'unsplash' );
 	}
 }
 

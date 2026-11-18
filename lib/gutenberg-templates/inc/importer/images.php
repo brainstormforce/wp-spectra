@@ -12,6 +12,10 @@ use Gutenberg_Templates\Inc\Traits\Instance;
 use Gutenberg_Templates\Inc\Traits\Helper;
 use Gutenberg_Templates\Inc\Importer\Importer_Helper;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Images
  *
@@ -88,7 +92,13 @@ class Images {
 
 		$description = isset( $image['description'] ) ? $image['description'] : '';
 
-		$name = preg_replace( '/\.[^.]+$/', '', $name ) . '.jpg';
+		$name = preg_replace_callback(
+			'/\.[^.]+$/',
+			function( $matches ) {
+				return '';
+			},
+			$name
+		) . '.jpg';
 
 		Helper::instance()->ast_block_templates_log( 'Downloading Image as "' . $name . '" : ' . $url );
 
@@ -110,9 +120,15 @@ class Images {
 	 * @see http://codex.wordpress.org/Function_Reference/wp_insert_attachment#Example
 	 */
 	public function create_image_from_url( $url, $name, $photo_id, $description ) {
-		require_once ABSPATH . 'wp-admin/includes/media.php';
-		require_once ABSPATH . 'wp-admin/includes/file.php';
-		require_once ABSPATH . 'wp-admin/includes/image.php';
+		if ( ! function_exists( 'media_handle_sideload' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/media.php';
+		}
+		if ( ! function_exists( 'wp_handle_sideload' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/file.php';
+		}
+		if ( ! function_exists( 'wp_generate_attachment_metadata' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/image.php';
+		}
 		$file_array         = array();
 		$file_array['name'] = wp_basename( $name );
 
@@ -129,7 +145,7 @@ class Images {
 
 		// If error storing permanently, unlink.
 		if ( is_wp_error( $id ) ) {
-			@unlink( $file_array['tmp_name'] ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged, WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_unlink -- Deleting the file from temp location.
+			wp_delete_file( $file_array['tmp_name'] );
 			return $id;
 		}
 

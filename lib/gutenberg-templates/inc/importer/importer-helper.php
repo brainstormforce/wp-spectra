@@ -11,6 +11,10 @@ namespace Gutenberg_Templates\Inc\Importer;
 use Gutenberg_Templates\Inc\Traits\Helper;
 use WP_Query;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Importer Helper
  *
@@ -132,20 +136,37 @@ class Importer_Helper {
 	 * @since {{since}}
 	 */
 	public static function get_image_orientation( $url ): string {
-		// Use `@` to suppress warnings from `getimagesize` if the file is not valid or accessible.
-		$size = getimagesize( $url );
+		// Use WordPress HTTP API instead of getimagesize() for remote URLs.
+		$response = wp_safe_remote_get(
+			$url,
+			array(
+				'timeout'  => 10,
+				'redirect' => 5,
+			)
+		);
+
+		if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
+			return 'landscape';
+		}
+
+		$image_data = wp_remote_retrieve_body( $response );
+
+		if ( empty( $image_data ) ) {
+			return 'landscape';
+		}
+
+		$size = @getimagesizefromstring( $image_data ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged -- Suppress warnings for invalid image data.
 
 		if ( $size && is_array( $size ) ) {
 			list( $width, $height ) = $size;
-			
-			// Determine orientation based on width and height.
+
 			if ( $width > $height ) {
 				return 'landscape';
-			} else {
-				return 'portrait';
 			}
-		} else {
-			return 'landscape';
+
+			return 'portrait';
 		}
+
+		return 'landscape';
 	}
 }

@@ -1,3 +1,124 @@
+v.2.4.37 - 28-October-2026
+- Fix: Library sync no longer replaces saved patterns, sites or categories with empty data when the library server returns an error, so the last good copy is kept.
+
+v.2.4.36 - 19-October-2026
+- Fix: Design Library no longer drops some template kits, such as Law, when the Spectra version toggle is on, as total kit pages are now fetched with the same Spectra version.
+
+v.2.4.35 - 30-September-2026
+- Improvement: Removed the Pages filter option from the Favorites dropdown when the standalone Spectra Blocks plugin is active, as it does not provide page patterns.
+
+v.2.4.34 - 21-September-2026
+- Fix: Resolved a PHP deprecation notice on PHP 8.1 and above that appeared in the error log when the licensing product list had not been created yet.
+- Fix: Premium pattern Get Access / Upgrade Now buttons now open the Premium Starter Templates license popup on Spectra Blocks (V3) sites instead of redirecting to the pricing page.
+
+v.2.4.33 - 19-August-2026
+- Improvement: Spectra Blocks plugin is now installed from the WordPress.org repository, removing the temporary hardcoded download URL.
+- Fix: Restricted the ZipWP authentication return handler to users who can manage the site, so lower-privileged roles can no longer overwrite the site-wide ZipWP credentials.
+- Fix: Design Library button in the editor toolbar no longer sits shorter than the adjacent wp-admin and page builder buttons.
+
+v.2.4.32 - 16-July-2026
+- Fix: Version toggle no longer appears when UAGB is inactive, even if stale database options from a previous install are present.
+
+v.2.4.31 - 8-July-2026
+- New: Added a consent popup that installs and activates the required Spectra and form plugins before a pattern is inserted, with a tooltip on the Insert button listing the required plugin.
+- Improvement: Show Spectra Blocks (v3) patterns by default in all cases, and only show the version toggle when Spectra Legacy is active, with Spectra Blocks selected by default.
+- Improvement: Pattern import no longer shows the upfront ZipWP connection prompt.
+- Improvement: Added standalone Spectra Blocks plugin compatibility for asset URL rewriting in imported block and pattern content.
+- Fix: Prevented a crash on the AI Personalization language step when the site-languages API returned a non-array response.
+- Fix: Avoided an unnecessary page reload after block import on sites running the standalone Spectra Blocks plugin.
+- Fix: Auto-open Design Library no longer closes third-party plugin modals.
+- Fix: Prevented PHP fatal in filesystem helpers when running on FTP-based hosts without WordPress credentials.
+
+v.2.4.30 - 19-June-2026
+- New: Added compatibility for the Spectra Blocks plugin.
+
+v.2.4.29 - 19-May-2026
+- Fix: Reverted no-op sanitize_post_field( 'raw' ) in block/template-kit importers; block content is sanitized by wp_insert_post() before DB write.
+
+v.2.4.28 - 19-May-2026
+- Fix: Improved sanitization of imported block content in the block and template-kit importers. Use raw context in sanitize_post_field to preserve Gutenberg block comment delimiters.
+- Fix: Converted REST API callbacks to return WP_REST_Response/WP_Error instead of wp_send_json_success/error. Required for WordPress.org compliance.
+- Fix: Updated JS response handling to match REST-compliant response format (removed success wrapper checks).
+- Fix: Replaced filter_var() with wp_validate_boolean() for WPCS compliance.
+- Fix: Removed stale ipinfo.io and ipify entries from External Services readme; added missing Privacy Policy and Terms of Use links for websitedemos.net.
+
+v.2.4.27 - 27-April-2026
+- Fix: Self-host the Inter and Figtree fonts used by the Design Library / template importer UI instead of fetching from fonts.googleapis.com. Required for WordPress.org compliance.
+
+v.2.4.26 - 23-April-2026
+- Fix: Removed server-IP geolocation lookups (ipify + ipwho.is) used to pick the Design Library / AI wizard image sources by region. Required for WordPress.org compliance — the template library now surfaces Pexels and Unsplash to all users regardless of server location.
+
+v.2.4.25 - 31-March-2026
+Fix: Resolved click behavior issue on AI dropdown toggle options.
+
+v.2.4.24 - 25-March-2026
+- Security: Removed host plugin activation — Spectra/UAG is always active. Dependency plugins (forms) still activate on user-initiated import.
+- Security: Added force_balance_tags() sanitization for block content imports.
+- Security: Replaced file_get_contents() with WP_Filesystem API for core stylesheet reading.
+- Fix: Added wp_normalize_path() to core CSS file path.
+- Fix: Removed "Activate Spectra & Insert" CTA — replaced with direct "Insert" button.
+
+v.2.4.23 - 24-March-2026
+- Improvement: Updated build process to add ABSPATH guards to generated .asset.php files.
+- Improvement: Added README.md documenting external service usage (support.brainstormforce.com, ipinfo.io, and others).
+- Fix: Removed deprecated `load_plugin_textdomain()` call — WordPress auto-loads translations since 4.6.
+- Fix: Fixed broken `$_POST['block_type']` reference in ai-content.php.
+- Security: Added `wp_unslash()` before sanitization on all `$_GET`/`$_POST`/`$_REQUEST` superglobal accesses.
+- Security: Updated BSF API URL from http:// to https:// in license.php.
+- Fix: Added `function_exists()` guards around core file includes for WordPress.org compliance.
+
+v.2.4.22 - 23-March-2026
+Fix: WordPress.org plugin compliance improvements including ABSPATH guards, input sanitization, WP_Filesystem usage, and textdomain fixes.
+
+v.2.4.21 - 02-March-2026
+Improvement: Added `ast_block_templates_after_block_import` action hook fired after a block is imported.
+Improvement: Added `ast_block_templates_after_kit_import` action hook fired after a template kit is imported.
+Improvement: Added `ast_block_templates_remote_ajax_path` filter to allow customizing the remote API ajax endpoint path.
+Fix: Resolved issue with color palette when adaptive mode is turned off.
+
+v.2.4.20 - 03-February-2026
+New: Show Design Library patterns for newly created pages.
+Improvement: Improved ZipWP connection setup in the new window to retain Design Library state and improve UX.
+Improvement: Enabled Design library pattern import to inner containers and popup builder.
+
+v.2.4.19 - 10-January-2026
+Fix: Fixed cache conflicts in lazy-loaded chunks during the base plugin version rollbacks.
+
+v.2.4.18 - 07-January-2026
+Improvement: Enhanced Design Library sync to ensure proper compatibility with Spectra v2 legacy options.
+Fix: Resolved an issue where some Spectra v3 Premium patterns were not appearing in the Design Library.
+
+v.2.4.17 - 30-December-2025
+Improvement: Added Astra Color Palette reorganization compatibility.
+
+v.2.4.16 - 05-December-2025
+Improvement: Added automatic library sync when the Spectra plugin is installed, updated, or deleted to ensure proper version switching between v2 and v3.
+
+v.2.4.15 - 03-November-2025
+Improvement: Streamlined Spectra version handling by unifying multiple version filters into a single state and refining the toggle UX for the Pages tab.
+Improvement: Enhanced premium patterns import flow.
+Fix: Corrected hover height issue in Notice blocks.
+
+v.2.4.14 - 03-November-2025
+Improvement: Added spectra-blocks-ver parameter to API requests for better version-based content filtering.
+
+v.2.4.13 - 03-November-2025
+Improvement: Enhanced the licensing flow to provide a smoother activation experience for premium patterns and starter kits.
+
+v.2.4.12 - 29-October-2025
+Misc: Updated Spectra plugin version.
+
+v.2.4.11 - 28-October-2025
+New: Added compatibility for Spectra v3.
+New: Added SureForms compatibility for block patterns and pages.
+Improvement: Use only Unsplash image engine for Russian users, as Pexels is blocked in Russia.
+
+v.2.4.10 - 21-August-2025
+New: Added compatibility with Spectra version 3.
+
+v.2.4.9 - 28-March-2025
+Improvement: Optimized asset loading logic to prevent unnecessary script and style loading in non-essential backend areas, improving performance.
+
 v.2.4.8 - 29-November-2024
 Improvement: Improved business description screen for better user experience.
 Improvement: UI enhancements for better usability.
@@ -292,7 +413,7 @@ v1.1.8 - 19-January-2023
 v1.1.7 - 01-September-2022
 - Fix: Install and Activate Spectra for light category patterns only.
 
-v1.1.6 - 22-Auguest-2022
+v1.1.6 - 22-August-2022
 - Improvement: Install Spectra while importing Block Patterns and Wireframe Pattern.
 
 v1.1.3 - 19-May-2022

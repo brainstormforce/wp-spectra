@@ -420,6 +420,76 @@ if ( ! class_exists( 'Spectra_Icon' ) ) {
 			return ( ! empty( $url ) && ! self::get_protocol( $url ) ) ? 'http://' . $url : $url;
 		}
 
+		/**
+		 * Allowed HTML for the inline icon SVG markup.
+		 *
+		 * Deliberately omits every event-handler (on*) attribute so no script handler can survive
+		 * wp_kses(), while permitting the SVG primitives the icon set and anchor wrapper emit.
+		 *
+		 * @since x.x.x
+		 * @return array<string, array<string, bool>> Allowed tags and attributes for wp_kses().
+		 */
+		public static function get_allowed_svg_html() {
+			$svg_attrs = array(
+				'xmlns'       => true,
+				'viewbox'     => true,
+				'role'        => true,
+				'aria-hidden' => true,
+				'aria-label'  => true,
+				'class'       => true,
+				'width'       => true,
+				'height'      => true,
+				'fill'        => true,
+				'stroke'      => true,
+				'tabindex'    => true,
+				'focusable'   => true,
+				'style'       => true,
+			);
+
+			$shape_attrs = array(
+				'd'            => true,
+				'fill'         => true,
+				'fill-rule'    => true,
+				'clip-rule'    => true,
+				'stroke'       => true,
+				'stroke-width' => true,
+				'class'        => true,
+				'cx'           => true,
+				'cy'           => true,
+				'r'            => true,
+				'rx'           => true,
+				'ry'           => true,
+				'x'            => true,
+				'y'            => true,
+				'x1'           => true,
+				'y1'           => true,
+				'x2'           => true,
+				'y2'           => true,
+				'points'       => true,
+				'transform'    => true,
+			);
+
+			return array(
+				'a'        => array(
+					'href'   => true,
+					'rel'    => true,
+					'target' => true,
+					'class'  => true,
+				),
+				'svg'      => $svg_attrs,
+				'g'        => $shape_attrs,
+				'path'     => $shape_attrs,
+				'circle'   => $shape_attrs,
+				'ellipse'  => $shape_attrs,
+				'rect'     => $shape_attrs,
+				'line'     => $shape_attrs,
+				'polygon'  => $shape_attrs,
+				'polyline' => $shape_attrs,
+				'title'    => array(),
+				'desc'     => array(),
+			);
+		}
+
 
 		/**
 		 * Renders the icon block.
@@ -518,10 +588,19 @@ if ( ! class_exists( 'Spectra_Icon' ) ) {
 				$role_attr        = ( 'image' === $attributes['iconAccessabilityMode'] ) ? ' role="img"' : ( ( 'svg' === $attributes['iconAccessabilityMode'] ) ? ' role="graphics-symbol"' : '' );
 				$aria_hidden_attr = ( 'presentation' === $attributes['iconAccessabilityMode'] ) ? 'true' : 'false';
 				$aria_label_attr  = ( 'presentation' !== $attributes['iconAccessabilityMode'] ) ? ' aria-label="' . esc_attr( $attributes['iconAccessabilityDesc'] ) . '"' : '';
-			
-				$iconHtml = preg_replace(
+
+				// Build the attributes to inject, then insert them via a callback. The accessibility
+				// description is user input, so it must never be placed in a preg_replace replacement
+				// string where a literal `$1`/`\1` would be read as a back-reference (esc_attr() does
+				// not neutralise `$`), expanding to raw SVG attribute text that breaks out of the
+				// aria-label attribute. A callback inserts the value as a literal.
+				$svg_injected_attrs = $role_attr . ' aria-hidden="' . $aria_hidden_attr . '"' . $aria_label_attr;
+
+				$iconHtml = preg_replace_callback(
 					'/<svg(.*?)>/',
-					'<svg$1' . $role_attr . ' aria-hidden="' . $aria_hidden_attr . '"' . $aria_label_attr . '>',
+					function( $matches ) use ( $svg_injected_attrs ) {
+						return '<svg' . $matches[1] . $svg_injected_attrs . '>';
+					},
 					$iconHtml
 				);
 			}
@@ -535,13 +614,24 @@ if ( ! class_exists( 'Spectra_Icon' ) ) {
 			}
 			
 			if ( $iconHtml && $disableLink && $linkUrl ) {
-				// Wrap the SVG content with an anchor tag.
-				$iconHtml = preg_replace(
+				// Wrap the SVG content with an anchor tag. Use a callback so the escaped URL and the
+				// captured SVG markup are inserted literally and never read as `$n` back-references.
+				$anchor_open = '<a rel="noopener noreferrer" href="' . esc_url( $linkUrl ) . '" target="' . esc_attr( $targetVal ) . '">';
+
+				$iconHtml = preg_replace_callback(
 					'/<svg(.*?)>(.*?)<\/svg>/s',
-					'<a rel="noopener noreferrer" href="' . esc_url( $linkUrl ) . '" target="' . esc_attr( $targetVal ) . '"><svg$1>$2</svg></a>',
+					function( $matches ) use ( $anchor_open ) {
+						return $anchor_open . '<svg' . $matches[1] . '>' . $matches[2] . '</svg></a>';
+					},
 					$iconHtml
 				);
-				
+
+			}
+
+			// Defence in depth: strip anything outside a strict inline-SVG allowlist (no event-handler
+			// attributes) before the markup is echoed, so no on* handler can ever reach the page.
+			if ( $iconHtml ) {
+				$iconHtml = wp_kses( $iconHtml, self::get_allowed_svg_html() );
 			}
 
 			ob_start();

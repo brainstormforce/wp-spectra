@@ -36,7 +36,7 @@
 	},
 	"require": {
 		"brainstormforce/astra-notices": "^1.2",
-		"brainstormforce/gutenberg-templates": "~2",
+		"brainstormforce/gutenberg-templates": "dev-master",
 		"brainstormforce/zip-ai": "~2",
 		"brainstormforce/zipwp-images": "^1",
 		"brainstormforce/bsf-analytics": "^1",

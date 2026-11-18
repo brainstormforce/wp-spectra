@@ -9,6 +9,12 @@
         "email": "hello@bsf.io"
       }
     ],
+    "repositories": [
+      {
+        "type": "vcs",
+        "url": "https://github.com/brainstormforce/bsf-phpcs-rules.git"
+      }
+    ],
     "require": {
       "composer/installers": "^2",
       "automattic/vipwpcs": "^2.3"
@@ -23,7 +29,8 @@
         "php-stubs/wordpress-stubs": "^6.1",
         "php-stubs/generator": "^0.8.2",
         "automattic/vipwpcs": "^2.3",
-        "php-stubs/wp-cli-stubs": "^2.9"
+        "php-stubs/wp-cli-stubs": "^2.9",
+        "brainstormforce/bsf-phpcs-rules": "^1.0"
     },
     "minimum-stability": "stable",
     "scripts": {

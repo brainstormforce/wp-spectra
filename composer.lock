@@ -4,7 +4,7 @@
 		"Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
 		"This file is @generated automatically"
 	],
-	"content-hash": "56548d338831ce14735184ca4dc95ed7",
+	"content-hash": "87d7b7dcf47ac3666cad4bc7c570a1dc",
 	"packages": [
 		{
 			"name": "automattic/vipwpcs",
@@ -160,16 +160,16 @@
 		},
 		{
 			"name": "brainstormforce/gutenberg-templates",
-			"version": "2.4.8",
+			"version": "dev-master",
 			"source": {
 				"type": "git",
 				"url": "git@github.com:brainstormforce/gutenberg-templates.git",
-				"reference": "45ce5563916e7304e5b26aba6ce46d16836a5f0b"
+				"reference": "2fa5323f92339dea0ef1b00d22274c79abef3b62"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/brainstormforce/gutenberg-templates/zipball/45ce5563916e7304e5b26aba6ce46d16836a5f0b",
-				"reference": "45ce5563916e7304e5b26aba6ce46d16836a5f0b",
+				"url": "https://api.github.com/repos/brainstormforce/gutenberg-templates/zipball/2fa5323f92339dea0ef1b00d22274c79abef3b62",
+				"reference": "2fa5323f92339dea0ef1b00d22274c79abef3b62",
 				"shasum": ""
 			},
 			"require": {
@@ -178,6 +178,7 @@
 			},
 			"require-dev": {
 				"automattic/vipwpcs": "^2.3",
+				"brainstormforce/bsf-phpcs-rules": "^1.0",
 				"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
 				"php-stubs/generator": "^0.8.2",
 				"php-stubs/wordpress-stubs": "^6.1",
@@ -188,6 +189,7 @@
 				"szepeviktor/phpstan-wordpress": "^1.1",
 				"wp-coding-standards/wpcs": "^2.3"
 			},
+			"default-branch": true,
 			"type": "wordpress-plugin",
 			"scripts": {
 				"format": [
@@ -223,10 +225,10 @@
 			],
 			"description": "Gutenberg single page templates, and blocks library to imported your website easily.",
 			"support": {
-				"source": "https://github.com/brainstormforce/gutenberg-templates/tree/2.4.8",
+				"source": "https://github.com/brainstormforce/gutenberg-templates/tree/master",
 				"issues": "https://github.com/brainstormforce/gutenberg-templates/issues"
 			},
-			"time": "2024-11-29T08:22:39+00:00"
+			"time": "2026-10-28T06:19:02+00:00"
 		},
 		{
 			"name": "brainstormforce/nps-survey",
@@ -7229,6 +7231,7 @@
 	"aliases": [],
 	"minimum-stability": "stable",
 	"stability-flags": {
+		"brainstormforce/gutenberg-templates": 20,
 		"brainstormforce/one-onboarding": 20
 	},
 	"prefer-stable": false,
