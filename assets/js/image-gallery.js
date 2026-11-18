@@ -68,7 +68,6 @@ const UAGBImageGalleryMasonry = {
 		const lightboxSwiper = new Swiper( `${$selector}+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--main`,
 			lightboxSettings
 		)
-		lightboxSwiper.lazy.load();
 		loadLightBoxImages( $scope, lightboxSwiper, null, $attr, thumbnailSwiper );
 		const loader = $scope?.querySelector( '.spectra-image-gallery__control-loader' );
 		const loadButton = $scope?.querySelector( '.spectra-image-gallery__control-button' );
@@ -232,7 +231,6 @@ const UAGBImageGalleryPagedGrid = {
 		const lightboxSwiper = new Swiper( `${$selector}+.spectra-image-gallery__control-lightbox .spectra-image-gallery__control-lightbox--main`,
 			lightboxSettings
 		)
-		lightboxSwiper.lazy.load();
 		loadLightBoxImages( $scope, lightboxSwiper, count, $attr, thumbnailSwiper );
 		const arrows = $scope?.querySelectorAll( '.spectra-image-gallery__control-arrows--grid' );
 		const dots = $scope?.querySelectorAll( '.spectra-image-gallery__control-dot' );
@@ -414,10 +412,22 @@ const cycleInLightbox = ( selector, e ) => {
 }
 
 
+// Swiper 9+ has no Lazy module. Load the active lightbox slide's image from its data-src the way
+// Swiper 8's lazy.load() did; Swiper still removes the slide's preloader once the image loads.
+const loadActiveLightboxImage = ( swiperInstance ) => {
+	const image = swiperInstance?.slides?.[ swiperInstance.activeIndex ]?.querySelector( 'img[data-src]' );
+	if ( ! image ) {
+		return;
+	}
+	image.src = image.getAttribute( 'data-src' );
+	image.removeAttribute( 'data-src' );
+};
+
 const loadLightBoxImages = ( blockScope, lightboxSwiper, pageNum, attr, thumbnailSwiper ) => {
 	if ( ! blockScope ) {
 		return;
 	}
+	loadActiveLightboxImage( lightboxSwiper );
 	const pageLimit = attr.paginateLimit;
 	
 	const theBody = document.querySelector( 'body' );
@@ -435,7 +445,7 @@ const loadLightBoxImages = ( blockScope, lightboxSwiper, pageNum, attr, thumbnai
 		if ( attr.lightboxDisplayCount ) {
 			updateCounter( swiperInstance.activeIndex );
 		}
-		lightboxSwiper.lazy.load();
+		loadActiveLightboxImage( swiperInstance );
 	} )
 	if ( attr.lightboxThumbnails ) {
 		thumbnailSwiper.on( 'activeIndexChange', ( swiperInstance ) => {

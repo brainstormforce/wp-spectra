@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from '@wordpress/element';
 import { applyFilters } from '@wordpress/hooks';
 import renderSVG from '@Controls/renderIcon';
-import Swiper, { Lazy, Navigation, Thumbs } from 'swiper';
+import Swiper from 'swiper';
+import { Navigation, Thumbs } from 'swiper/modules';
 
 const Lightbox = ( { attributes, setAttributes, setLightboxPreview } ) => {
 	const {
@@ -71,11 +72,12 @@ const Lightbox = ( { attributes, setAttributes, setLightboxPreview } ) => {
 	const initLightboxSwiper = () => {
 		// Lightbox Swiper Settings.
 		const settings = {
-			lazy: true,
 			slidesPerView: 1,
 			navigation: {
 				nextEl: '.swiper-button-next',
 				prevEl: '.swiper-button-prev',
+				// Keep the icon-font arrows; Swiper 12 would otherwise inject its own SVG.
+				addIcons: false,
 			},
 			on: {
 				beforeInit( swiperInstance ) {
@@ -96,7 +98,7 @@ const Lightbox = ( { attributes, setAttributes, setLightboxPreview } ) => {
 		// Lightbox Swiper Creation with Modules.
 		new Swiper( lightboxRef.current, {
 			...settings,
-			modules: [ Lazy, Navigation, Thumbs ],
+			modules: [ Navigation, Thumbs ],
 		} );
 	};
 
@@ -128,7 +130,7 @@ const Lightbox = ( { attributes, setAttributes, setLightboxPreview } ) => {
 			<div className="swiper-wrapper">
 				{ mediaGallery.map( ( media ) => (
 					<div className="swiper-slide" key={ media.id }>
-						<img className="swiper-lazy" data-src={ media.url } alt={ media.alt } />
+						<img src={ media.url } loading="lazy" alt={ media.alt } />
 						<div className="swiper-lazy-preloader swiper-lazy-preloader-white" />
 						{ lightboxDisplayCaptions && (
 							<div

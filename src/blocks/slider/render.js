@@ -5,7 +5,7 @@ const ALLOWED_BLOCKS = [ 'uagb/slider-child' ];
 import { __ } from '@wordpress/i18n';
 import { doAction } from '@wordpress/hooks';
 
-import { Navigation, Pagination, Autoplay, Manipulation } from 'swiper';
+import { Navigation, Pagination, Autoplay, Manipulation } from 'swiper/modules';
 import { Swiper } from 'swiper/react';
 
 const Render = ( props ) => {
@@ -244,6 +244,8 @@ const Render = ( props ) => {
 						? {
 								nextEl: '#block-' + clientId + ' .swiper-button-next',
 								prevEl: '#block-' + clientId + ' .swiper-button-prev',
+								// Keep the icon-font arrows; Swiper 12 would otherwise inject its own SVG.
+								addIcons: false,
 						  }
 						: false
 				}

@@ -89,7 +89,7 @@ class Settings extends Api_Base {
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
 			return new \WP_Error(
 				'gt_rest_cannot_access',
-				__( 'Sorry, you are not allowed to do that.', 'ultimate-addons-for-gutenberg' ),
+				__( 'Sorry, you are not allowed to do that.', 'ast-block-templates' ),
 				array( 'status' => rest_authorization_required_code() )
 			);
 		}
@@ -126,12 +126,10 @@ class Settings extends Api_Base {
 		$nonce = (string) $request->get_header( 'X-WP-Nonce' );
 		// Verify the nonce.
 		if ( ! wp_verify_nonce( sanitize_text_field( $nonce ), 'wp_rest' ) ) {
-			wp_send_json_error(
-				array(
-					'data' => __( 'Nonce verification failed.', 'ultimate-addons-for-gutenberg' ),
-					'status'  => false,
-
-				)
+			return new \WP_Error(
+				'nonce_verification_failed',
+				__( 'Nonce verification failed.', 'ast-block-templates' ),
+				array( 'status' => 403 )
 			);
 		}
 
@@ -179,8 +177,8 @@ class Settings extends Api_Base {
 		
 		return new \WP_Error(
 			'failed',
-			__( 'Sorry, settings are not saved.', 'ultimate-addons-for-gutenberg' ),
-			array( 'status' => 'fail' )
+			__( 'Sorry, settings are not saved.', 'ast-block-templates' ),
+			array( 'status' => 400 )
 		);
 	}
 }

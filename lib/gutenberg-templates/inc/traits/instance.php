@@ -8,6 +8,10 @@
 
 namespace Gutenberg_Templates\Inc\Traits;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Trait Instance.
  */

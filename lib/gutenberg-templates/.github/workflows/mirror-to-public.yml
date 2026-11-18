@@ -1,0 +1,75 @@
+name: Mirror to Public Repository
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup SSH key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.MIRROR_REPO_SSH_KEY }}
+
+      - name: Clone mirror repository
+        run: git clone git@github.com:brainstormforce/bsf-gutenberg-templates.git mirror-repo
+
+      - name: Sync files to mirror
+        run: |
+          rsync -av --delete \
+            --exclude='.github/' \
+            --exclude='.git/' \
+            --exclude='.DS_Store' \
+            --exclude='.vscode/' \
+            --exclude='bin/' \
+            --exclude='tests/' \
+            --exclude='internal-docs/' \
+            --exclude='node_modules/' \
+            --exclude='vendor/' \
+            --exclude='mirror-repo/' \
+            --exclude='.claude/' \
+            --exclude='CLAUDE.md' \
+            --exclude='.cursorrules' \
+            --exclude='.cursor/' \
+            --exclude='.windsurfrules' \
+            --exclude='.aider*' \
+            --exclude='.aider.conf.yml' \
+            --exclude='.aiderignore' \
+            --exclude='.cline/' \
+            --exclude='.clinerules' \
+            --exclude='.continue/' \
+            --exclude='.github/copilot-instructions.md' \
+            --exclude='.codex/' \
+            --exclude='.copilot/' \
+            --exclude='.tabnine/' \
+            --exclude='.sourcery.yaml' \
+            --exclude='.devin/' \
+            --exclude='.bolt/' \
+            --exclude='.v0/' \
+            ./ mirror-repo/
+
+      - name: Commit and push changes
+        working-directory: mirror-repo
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          VERSION=$(jq -r '.version' ../package.json)
+          git commit -m "Released Gutenberg Templates ${VERSION}"
+          git push origin master

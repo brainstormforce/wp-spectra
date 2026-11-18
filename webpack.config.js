@@ -47,11 +47,28 @@ module.exports = {
 			'@Blocks': path.resolve( __dirname, 'src/blocks/' ),
 			'@Attributes': path.resolve( __dirname, 'blocks-config/blocks-attributes/' ),
 			'@Store': path.resolve( __dirname, 'src/store/' ),
+			// Swiper 12 maps its subpaths through package.json "exports", which webpack 4 does not read.
+			'swiper/react$': path.resolve( __dirname, 'node_modules/swiper/swiper-react.mjs' ),
 		},
 	},
 	module: {
 		rules: [
 			...wp_rules,
+			{
+				// Swiper 12 ships untranspiled ES2020 (?. and ??) that webpack 4 cannot parse.
+				// javascript/auto lets its .mjs files import named exports from the external React.
+				test: /\.m?js$/,
+				include: /node_modules[\\/]swiper[\\/]/,
+				type: 'javascript/auto',
+				use: {
+					loader: 'babel-loader',
+					options: {
+						babelrc: false,
+						configFile: false,
+						presets: [ [ '@babel/preset-env', { modules: false, targets: { esmodules: true } } ] ],
+					},
+				},
+			},
 			{
 				test: /\.(scss|css)$/,
 				exclude: [ /node_modules/, /style/, /common.scss/ ],

@@ -17,6 +17,10 @@ use Gutenberg_Templates\Inc\Traits\Instance;
 use WP_CLI;
 use WP_CLI_Command;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Ast_Block Templates WP CLI
  */

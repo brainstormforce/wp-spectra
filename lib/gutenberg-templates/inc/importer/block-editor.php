@@ -13,6 +13,10 @@ use Gutenberg_Templates\Inc\Traits\Helper;
 use Gutenberg_Templates\Inc\Importer\Importer_Helper;
 use Gutenberg_Templates\Inc\Importer\Images;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Block Editor Blocks Replacer
  *
@@ -44,7 +48,7 @@ class BlockEditor {
 	 * @return array<mixed> $block Block.
 	 */
 	public function parse_spectra_container( $block ) {
-		
+
 		if (
 			! isset( $block['attrs']['backgroundImageDesktop'] ) ||
 			empty( $block['attrs']['backgroundImageDesktop'] ) ||
@@ -461,6 +465,117 @@ class BlockEditor {
 
 			$block['innerBlocks'] = array_values( $block['innerBlocks'] );
 		}
+		return $block;
+	}
+
+	/**
+	 * Parses images and other content in the Spectra v3 Container block.
+	 *
+	 * @since 2.4.11
+	 * @param array<mixed> $block Block.
+	 * @return array<mixed> $block Block.
+	 */
+	public function parse_spectra_v3_container( $block ) {
+		
+		if (
+			! isset( $block['attrs']['background'] ) ||
+			empty( $block['attrs']['background'] ) ||
+			Importer_Helper::is_skipable( $block['attrs']['background']['media']['url'] )
+		) {
+			return $block;
+		}
+
+		$image = Images::instance()->get_image( Images::$image_index );
+		if ( empty( $image ) || ! is_array( $image ) ) {
+			return $block;
+		}
+
+		$image = Images::instance()->download_image( $image );
+
+		if ( is_wp_error( $image ) ) {
+			Helper::instance()->ast_block_templates_log( 'Replacing Image problem : ' . $block['attrs']['background']['url'] . ' Warning: ' . wp_json_encode( $image ) );
+			return $block;
+		}
+
+		$attachment = wp_prepare_attachment_for_js( absint( $image ) );
+		if ( ! is_array( $attachment ) ) {
+			return $block;
+		}
+
+		self::$old_images[] = $block['attrs']['background']['media']['id'];
+
+		Helper::instance()->ast_block_templates_log( 'Replacing Image from ' . $block['attrs']['background']['media']['url'] . 'to "' . $attachment['url'] . '" for ' . $block['blockName'] . '" with index "' . Images::$image_index . '"' );
+		$block['attrs']['background']['media'] = $attachment;
+
+		$block['attrs']['responsiveControls']['lg']['background']['media'] = $attachment;
+		Images::$image_index++;
+
+		return $block;
+	}
+
+	/**
+	 * Parses images and other content in the Spectra Image block.
+	 *
+	 * @since 2.4.11
+	 * @param array<mixed> $block Block.
+	 * @return array<mixed> $block Block.
+	 */
+	public function parse_core_image( $block ) {
+
+		if (
+			! isset( $block['attrs']['id'] ) ||
+			Importer_Helper::is_skipable( $block['attrs']['id'] )
+		) {
+			return $block;
+		}
+
+		$image = Images::instance()->get_image( Images::$image_index );
+		if ( empty( $image ) || ! is_array( $image ) ) {
+			return $block;
+		}
+
+		$image = Images::instance()->download_image( $image );
+
+		if ( is_wp_error( $image ) ) {
+			Helper::instance()->ast_block_templates_log( 'Replacing Image problem : ' . $block['attrs']['id'] . ' Warning: ' . wp_json_encode( $image ) );
+			return $block;
+		}
+
+		$attachment = wp_prepare_attachment_for_js( absint( $image ) );
+		if ( ! is_array( $attachment ) ) {
+			return $block;
+		}
+
+		self::$old_images[] = $block['attrs']['id'];
+		Helper::instance()->ast_block_templates_log( 'Replacing Image from ' . $block['attrs']['id'] . ' to "' . $attachment['url'] . '" for ' . $block['blockName'] . '" with index "' . Images::$image_index . '"' );
+
+		preg_match( '/src=(["\'])(.*?)\1/i', $block['innerHTML'], $m );
+		$url = count( $m ) ? $m[0] : '';
+
+		// Skip if URL is skipable.
+		if ( Importer_Helper::is_skipable( $url ) ) {
+			return $block;
+		}
+
+		$block['innerHTML'] = str_replace( $url, 'src="' . $attachment['url'] . '"', $block['innerHTML'] );
+		$block['innerHTML'] = str_replace( $block['attrs']['id'], (string) $attachment['id'], $block['innerHTML'] );
+
+		$block['innerContent'] = str_replace( $url, 'src="' . $attachment['url'] . '"', $block['innerContent'] );
+		$block['innerContent'] = str_replace( $block['attrs']['id'], (string) $attachment['id'], $block['innerContent'] );
+
+		$block['attrs']['id'] = $attachment['id'];
+
+		// Replace URL in Spectra Mask attribute if exists.
+		if ( ! empty( $block['attrs']['spectraMask']['image']['url'] ) ) {
+			$block['attrs']['spectraMask']['image']['url'] = str_replace(
+				AST_BLOCK_TEMPLATES_LIBRARY_URL,
+				site_url( '/' ),
+				$block['attrs']['spectraMask']['image']['url']
+			);
+		}
+
+		Images::$image_index++;
+
 		return $block;
 	}
 }

@@ -52,8 +52,15 @@ $selector      = $base_selector . $id;
 ob_start();
 ?>
 jQuery( document ).ready( function() {
-	if( jQuery( '<?php echo esc_html( $selector ); ?>' ).length > 0 ){
-	jQuery( '<?php echo esc_html( $selector ); ?>' ).find( ".is-carousel" ).slick( <?php echo wp_json_encode( $slick_options ); ?> );
+	var $uagbCarousels = jQuery( '<?php echo esc_js( $selector ); ?>' ).find( '.is-carousel' );
+	if( $uagbCarousels.length > 0 ){
+	// Strip any data-slick attribute before initialising. The bundled Slick reads data-slick from
+	// the element and builds prevArrow/nextArrow from its HTML, so forged page content (for example
+	// an element placed inside a visitor comment that the core Latest Comments block renders on the
+	// same page) could otherwise supply markup that runs script in the viewer's browser. Spectra
+	// never sets data-slick - every option comes from the server-generated options passed to
+	// .slick() below - so removing it has no effect on Spectra's own carousels.
+	$uagbCarousels.removeAttr( 'data-slick' ).slick( <?php echo wp_json_encode( $slick_options ); ?> );
 	}
 	var $scope = jQuery('.uagb-block-<?php echo esc_html( $id ); ?>');
 	var enableEqualHeight = ( '<?php echo esc_html( $equal_height ); ?>' );

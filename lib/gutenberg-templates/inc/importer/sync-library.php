@@ -12,6 +12,10 @@ use Gutenberg_Templates\Inc\Traits\Instance;
 use Gutenberg_Templates\Inc\Traits\Helper;
 use Gutenberg_Templates\Inc\Importer\Plugin;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Sync Library
  *
@@ -38,9 +42,39 @@ class Sync_Library {
 	public function __construct() {
 		add_action( 'wp_ajax_ast-block-templates-check-sync-library-status', array( $this, 'sync_via_ajax' ) );
 		add_action( 'wp_ajax_ast-block-templates-import-blocks', array( $this, 'ajax_import_blocks' ) );
-		add_action( 'sync_blocks', array( $this, 'sync_blocks' ) );
+		add_action( 'ast_block_templates_sync_blocks', array( $this, 'sync_blocks' ) );
 		add_action( 'wp_ajax_ast-block-templates-get-sites-request-count', array( $this, 'ajax_sites_requests_count' ) );
 		add_action( 'wp_ajax_ast-block-templates-import-sites', array( $this, 'ajax_import_sites' ) );
+
+		// To force sync library after Spectra plugin installation, update or deletion for switching between v2 and v3.
+		add_action( 'upgrader_process_complete', array( $this, 'handle_spectra_install_update' ), 10, 2 );
+		add_action( 'deleted_plugin', array( $this, 'handle_spectra_deletion' ), 10, 1 );
+		// Force re-sync on activation — upgrader_process_complete fires before the plugin is active
+		// so the version-negotiation isn't accurate at install time.
+		add_action( 'activated_plugin', array( $this, 'handle_spectra_activation' ), 10, 1 );
+
+		// To force sync library after Spectra v3 update and legacy design library option change.
+		add_action( 'uagb_update_after', array( __CLASS__, 'enable_force_sync' ) );
+		add_action( 'add_option_register-v2-blocks', array( $this, 'handle_spectra_options_add' ) );
+		add_action( 'update_option_register-v2-blocks', array( $this, 'handle_spectra_options_update' ), 10, 2 );
+		add_action( 'add_option_uag_enable_legacy_design_library', array( $this, 'handle_spectra_options_add' ) );
+		add_action( 'update_option_uag_enable_legacy_design_library', array( $this, 'handle_spectra_options_update' ), 10, 2 );
+	}
+
+	/**
+	 * Get spectra blocks version for API requests.
+	 *
+	 * @since 2.4.14
+	 * @return string
+	 */
+	public function get_spectra_blocks_version() {
+		$spectra_blocks_ver = 'v2';
+		if ( Plugin::instance()->should_show_version_toggle() ) {
+			$spectra_blocks_ver = 'v2,v3';
+		} else {
+			$spectra_blocks_ver = Plugin::instance()->get_spectra_version();
+		}
+		return $spectra_blocks_ver;
 	}
 
 	/**
@@ -63,12 +97,18 @@ class Sync_Library {
 
 		$response = wp_safe_remote_get( $api_url, $api_args );
 
-		if ( ! is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) === 200 ) {
+		if ( ! is_wp_error( $response ) && wp_remote_retrieve_response_code( $response ) === 200 ) {
 			$res_data = json_decode( wp_remote_retrieve_body( $response ), true );
 
 			if ( isset( $res_data['data']['customizer_css'] ) ) {
 				Helper::instance()->update_json_file( 'ast-block-templates-customizer-css', $res_data['data']['customizer_css'] );
 				do_action( 'ast_block_templates_customizer_css', $res_data['data']['customizer_css'] );
+			}
+
+			// Set global styles for Spectra v3.
+			if ( isset( $res_data['data']['global_styles'] ) ) {
+				Helper::instance()->update_json_file( 'ast-block-templates-global-styles', $res_data['data']['global_styles'] );
+				do_action( 'ast_block_templates_global_styles', $res_data['data']['global_styles'] );
 			}
 		}
 	}
@@ -100,7 +140,7 @@ class Sync_Library {
 
 		$response = wp_safe_remote_get( $api_url, $api_args );
 
-		if ( ! is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) === 200 ) {
+		if ( ! is_wp_error( $response ) && wp_remote_retrieve_response_code( $response ) === 200 ) {
 			$res_data = json_decode( wp_remote_retrieve_body( $response ), true );
 
 			if ( isset( $res_data['data']['spectra-common-styles'] ) ) {
@@ -233,7 +273,7 @@ class Sync_Library {
 
 		$response = wp_safe_remote_get( $api_url, $api_args );
 
-		if ( ! is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) === 200 ) {
+		if ( ! is_wp_error( $response ) && wp_remote_retrieve_response_code( $response ) === 200 ) {
 			$result = json_decode( wp_remote_retrieve_body( $response ), true );
 			$result_data = isset( $result['data'] ) ? $result['data'] : '';
 			return $result_data;
@@ -303,6 +343,7 @@ class Sync_Library {
 			'ast-block-templates-site-requests',
 			'ast-block-templates-last-export-checksums',
 			'ast-block-templates-customizer-css',
+			'ast-block-templates-global-styles',
 		);
 	}
 
@@ -317,7 +358,7 @@ class Sync_Library {
 		if ( ! Helper::instance()->ast_block_templates_doing_wp_cli() ) {
 
 			if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
-				wp_send_json_error( __( 'You are not allowed to perform this action', 'ultimate-addons-for-gutenberg' ) );
+				wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
 			}
 			// Verify Nonce.
 			check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
@@ -404,7 +445,7 @@ class Sync_Library {
 
 		$response = wp_safe_remote_get( $api_url, $api_args );
 
-		if ( ! is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) === 200 ) {
+		if ( ! is_wp_error( $response ) && wp_remote_retrieve_response_code( $response ) === 200 ) {
 			$result = json_decode( wp_remote_retrieve_body( $response ), true );
 
 			// Set last export checksums.
@@ -444,7 +485,7 @@ class Sync_Library {
 	public function ajax_import_categories() {
 
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
-			wp_send_json_error( __( 'You are not allowed to perform this action', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
 		}
 		// Verify Nonce.
 		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
@@ -469,7 +510,7 @@ class Sync_Library {
 	public function ajax_import_blocks() {
 
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
-			wp_send_json_error( __( 'You are not allowed to perform this action', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
 		}
 		// Verify Nonce.
 		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
@@ -484,7 +525,7 @@ class Sync_Library {
 				'data'    => array(),
 			);
 
-			if ( isset( $_POST['total'] ) && $_POST['total'] === $_POST['page_no'] ) {
+			if ( isset( $_POST['total'] ) && absint( $_POST['total'] ) === $page_no ) {
 				$data['data']['allBlocks'] = Plugin::instance()->get_all_blocks();
 				$data['data']['categories'] = Helper::instance()->get_block_template_category();
 			}
@@ -512,7 +553,7 @@ class Sync_Library {
 	public function ajax_blocks_requests_count() {
 
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
-			wp_send_json_error( __( 'You are not allowed to perform this action', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
 		}
 		// Verify Nonce.
 		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
@@ -567,7 +608,7 @@ class Sync_Library {
 
 		$response = wp_safe_remote_get( $api_url, $api_args );
 
-		if ( ! is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) === 200 ) {
+		if ( ! is_wp_error( $response ) && wp_remote_retrieve_response_code( $response ) === 200 ) {
 			$total_requests = json_decode( wp_remote_retrieve_body( $response ), true );
 
 			if ( isset( $total_requests['pages'] ) ) {
@@ -581,6 +622,21 @@ class Sync_Library {
 		// returning 0 pages as no return statement exist.
 		return 0;
 
+	}
+
+	/**
+	 * Get a log message for a failed remote request.
+	 *
+	 * @since 2.4.37
+	 * @param array<string, mixed>|\WP_Error $response Remote request response.
+	 * @return string
+	 */
+	public function get_response_error_message( $response ) {
+		if ( is_wp_error( $response ) ) {
+			return $response->get_error_message();
+		}
+
+		return 'HTTP ' . wp_remote_retrieve_response_code( $response );
 	}
 
 	/**
@@ -609,10 +665,10 @@ class Sync_Library {
 
 		$response = wp_safe_remote_get( $api_url, $api_args );
 
-		if ( ! is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) === 200 ) {
+		if ( ! is_wp_error( $response ) && wp_remote_retrieve_response_code( $response ) === 200 ) {
 			$all_categories = json_decode( wp_remote_retrieve_body( $response ), true );
 
-			if ( isset( $all_categories['code'] ) ) {
+			if ( ! is_array( $all_categories ) || isset( $all_categories['code'] ) ) {
 				$message = isset( $all_categories['message'] ) ? $all_categories['message'] : '';
 				if ( ! empty( $message ) ) {
 					Helper::instance()->ast_block_templates_log( 'CATEGORY:HTTP Request Error: ' . $message );
@@ -631,7 +687,7 @@ class Sync_Library {
 				}
 			}
 		} else {
-			Helper::instance()->ast_block_templates_log( 'CATEGORY:API Error: ' . $response->get_error_message() );
+			Helper::instance()->ast_block_templates_log( 'CATEGORY:API Error: ' . $this->get_response_error_message( $response ) );
 		}
 
 		Helper::instance()->ast_block_templates_log( 'CATEGORY:Completed category import.' );
@@ -655,10 +711,11 @@ class Sync_Library {
 		$query_args = apply_filters(
 			'ast_block_templates_blocks_args',
 			array(
-				'page_builder' => 'gutenberg',
-				'per_page'     => 30,
-				'page'         => $page,
-				'wireframe'    => 'yes',
+				'page_builder'       => 'gutenberg',
+				'per_page'           => 30,
+				'page'               => $page,
+				'wireframe'          => 'yes',
+				'spectra-blocks-ver' => $this->get_spectra_blocks_version(),
 			)
 		);
 
@@ -668,10 +725,10 @@ class Sync_Library {
 
 		$response = wp_safe_remote_get( $api_url, $api_args );
 
-		if ( ! is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) === 200 ) {
+		if ( ! is_wp_error( $response ) && wp_remote_retrieve_response_code( $response ) === 200 ) {
 			$all_blocks = json_decode( wp_remote_retrieve_body( $response ), true );
 
-			if ( isset( $all_blocks['code'] ) ) {
+			if ( ! is_array( $all_blocks ) || isset( $all_blocks['code'] ) ) {
 				$message = isset( $all_blocks['message'] ) ? $all_blocks['message'] : '';
 				if ( ! empty( $message ) ) {
 					Helper::instance()->ast_block_templates_log( 'BLOCK: HTTP Request Error: ' . $message );
@@ -690,7 +747,7 @@ class Sync_Library {
 				}
 			}
 		} else {
-			Helper::instance()->ast_block_templates_log( 'BLOCK: API Error: ' . $response->get_error_message() );
+			Helper::instance()->ast_block_templates_log( 'BLOCK: API Error: ' . $this->get_response_error_message( $response ) );
 		}
 
 		Helper::instance()->ast_block_templates_log( 'BLOCK: Completed request ' . $page );
@@ -712,8 +769,9 @@ class Sync_Library {
 		$query_args = apply_filters(
 			'ast_block_templates_get_total_pages_args',
 			array(
-				'page_builder' => 'gutenberg',
-				'per_page' => 30,
+				'page_builder'       => 'gutenberg',
+				'per_page'           => 30,
+				'spectra-blocks-ver' => $this->get_spectra_blocks_version(),
 			)
 		);
 
@@ -723,7 +781,7 @@ class Sync_Library {
 
 		$response = wp_safe_remote_get( $api_url, $api_args );
 
-		if ( ! is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) === 200 ) {
+		if ( ! is_wp_error( $response ) && wp_remote_retrieve_response_code( $response ) === 200 ) {
 			$total_requests = json_decode( wp_remote_retrieve_body( $response ), true );
 
 			if ( isset( $total_requests['pages'] ) ) {
@@ -756,9 +814,10 @@ class Sync_Library {
 		$query_args = apply_filters(
 			'ast_block_templates_get_sites_and_pages_args',
 			array(
-				'per_page'     => 30,
-				'page'         => $page,
-				'page-builder' => 'gutenberg',
+				'per_page'           => 30,
+				'page'               => $page,
+				'page-builder'       => 'gutenberg',
+				'spectra-blocks-ver' => $this->get_spectra_blocks_version(),
 			)
 		);
 
@@ -768,10 +827,10 @@ class Sync_Library {
 
 		$response = wp_safe_remote_get( $api_url, $api_args );
 
-		if ( ! is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) === 200 ) {
+		if ( ! is_wp_error( $response ) && wp_remote_retrieve_response_code( $response ) === 200 ) {
 			$all_blocks = json_decode( wp_remote_retrieve_body( $response ), true );
 
-			if ( isset( $all_blocks['code'] ) ) {
+			if ( ! is_array( $all_blocks ) || isset( $all_blocks['code'] ) ) {
 				$message = isset( $all_blocks['message'] ) ? $all_blocks['message'] : '';
 				if ( ! empty( $message ) ) {
 					Helper::instance()->ast_block_templates_log( 'SITE: HTTP Request Error: ' . $message );
@@ -791,7 +850,7 @@ class Sync_Library {
 				}
 			}
 		} else {
-			Helper::instance()->ast_block_templates_log( 'SITE: API Error: ' . $response->get_error_message() );
+			Helper::instance()->ast_block_templates_log( 'SITE: API Error: ' . $this->get_response_error_message( $response ) );
 		}
 
 		Helper::instance()->ast_block_templates_log( 'SITE: Completed request ' . $page );
@@ -806,7 +865,7 @@ class Sync_Library {
 	public function ajax_sites_requests_count() {
 
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
-			wp_send_json_error( __( 'You are not allowed to perform this action', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
 		}
 		// Verify Nonce.
 		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
@@ -841,7 +900,7 @@ class Sync_Library {
 	public function ajax_import_sites() {
 
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
-			wp_send_json_error( __( 'You are not allowed to perform this action', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
 		}
 		// Verify Nonce.
 		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
@@ -855,7 +914,7 @@ class Sync_Library {
 				'data'    => array(),
 			);
 
-			if ( isset( $_POST['total'] ) && $_POST['total'] === $_POST['page_no'] ) {
+			if ( isset( $_POST['total'] ) && absint( $_POST['total'] ) === $page_no ) {
 				$data['data']['allBlocks'] = Plugin::instance()->get_all_blocks();
 				$data['data']['categories'] = Helper::instance()->get_block_template_category();
 				$data['data']['allSites'] = Plugin::instance()->get_all_sites();
@@ -875,4 +934,152 @@ class Sync_Library {
 		);
 	}
 
+	/**
+	 * Enable force sync
+	 *
+	 * Sets the force sync flag to 'yes'.
+	 *
+	 * @since 2.4.16
+	 * @return void
+	 */
+	public static function enable_force_sync() {
+		delete_site_option( 'ast-block-templates-last-export-checksums-time' );
+		Helper::instance()->update_json_file( 'ast-block-templates-last-export-checksums', '' );
+
+		/**
+		 * Action to trigger force sync of block templates.
+		 *
+		 * @since 2.4.16
+		 * @return void
+		 */
+		do_action( 'ast_block_templates_enable_force_sync' );
+	}
+
+	/**
+	 * Handle Spectra plugin deletion.
+	 *
+	 * Sets the force sync flag when Spectra plugin is deleted.
+	 *
+	 * @since 2.4.16
+	 * @param string $plugin Path to the plugin file relative to the plugins directory.
+	 * @return void
+	 */
+	public function handle_spectra_deletion( $plugin ) {
+		$watched = array(
+			'ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php',
+			'spectra-blocks/spectra-blocks.php',
+		);
+		if ( in_array( $plugin, $watched, true ) ) {
+			self::enable_force_sync();
+		}
+	}
+
+	/**
+	 * Handle Spectra plugin activation.
+	 *
+	 * Forces a library re-sync when spectra-blocks or UAGB is activated so that
+	 * the spectra-blocks-ver parameter reflects the now-active plugin combination.
+	 * upgrader_process_complete fires before the plugin is active so its sync
+	 * uses stale version negotiation; this hook corrects that.
+	 *
+	 * @since 2.4.29
+	 *
+	 * @param string $plugin Path to the plugin file relative to the plugins directory.
+	 * @return void
+	 */
+	public function handle_spectra_activation( $plugin ) {
+		$watched = array(
+			'ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php',
+			'spectra-blocks/spectra-blocks.php',
+		);
+		if ( in_array( $plugin, $watched, true ) ) {
+			self::enable_force_sync();
+		}
+	}
+
+	/**
+	 * Handle Spectra plugin options add.
+	 *
+	 * Sets the force sync flag when Spectra plugin options are added for the first time.
+	 *
+	 * @since 2.4.18
+	 * @return void
+	 */
+	public function handle_spectra_options_add() {
+		self::enable_force_sync();
+	}
+
+	/**
+	 * Handle Spectra plugin options update.
+	 *
+	 * Sets the force sync flag when Spectra plugin options are updated.
+	 *
+	 * @since 2.4.18
+	 * @param mixed $old_value The old value of the option.
+	 * @param mixed $new_value The new value of the option.
+	 * @return void
+	 */
+	public function handle_spectra_options_update( $old_value, $new_value ) {
+		// Run only if value actually changed (optional but recommended).
+		if ( $old_value === $new_value ) {
+			return;
+		}
+
+		self::enable_force_sync();
+	}
+
+	/**
+	 * Handle Spectra plugin installation or update.
+	 *
+	 * Sets the force sync flag when Spectra plugin is installed or updated.
+	 *
+	 * @since 2.4.16
+	 * @param \WP_Upgrader         $upgrader_object WP_Upgrader instance.
+	 * @param array<string, mixed> $options         Array of bulk item update data.
+	 * @return void
+	 */
+	public function handle_spectra_install_update( $upgrader_object, $options ) {
+		/**
+		 * Filter to disable force sync on Spectra plugin install or update.
+		 *
+		 * @param bool $disable_sync True to disable sync, false to enable.
+		 *
+		 * @since 2.4.16
+		 * @return bool True to disable sync, false to enable.
+		 */
+		if ( apply_filters( 'ast_block_templates_disable_force_sync', false ) ) {
+			return;
+		}
+
+		// Bail early if not a plugin install or update action.
+		if ( empty( $options['type'] ) || 'plugin' !== $options['type'] || ! in_array( $options['action'], array( 'install', 'update' ), true ) ) {
+			return;
+		}
+
+		$watched_plugins = array(
+			'ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php',
+			'spectra-blocks/spectra-blocks.php',
+		);
+		$watched_destinations = array(
+			'ultimate-addons-for-gutenberg',
+			'spectra-blocks',
+		);
+
+		// Handle bulk plugin install/update.
+		if ( isset( $options['plugins'] ) && is_array( $options['plugins'] ) ) {
+			foreach ( $options['plugins'] as $plugin ) {
+				if ( in_array( $plugin, $watched_plugins, true ) ) {
+					self::enable_force_sync();
+					break;
+				}
+			}
+		} elseif ( isset( $options['plugin'] ) ) {
+			// Handle single plugin update.
+			if ( in_array( $options['plugin'], $watched_plugins, true ) ) {
+				self::enable_force_sync();
+			}
+		} elseif ( is_array( $upgrader_object->result ) && in_array( $upgrader_object->result['destination_name'], $watched_destinations, true ) ) {
+			self::enable_force_sync();
+		}
+	}
 }

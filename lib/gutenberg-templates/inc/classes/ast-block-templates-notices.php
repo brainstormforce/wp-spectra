@@ -10,6 +10,10 @@ namespace Gutenberg_Templates\Inc\Classes;
 
 use Gutenberg_Templates\Inc\Traits\Instance;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if ( ! class_exists( 'Ast_Block_Templates_Notices' ) ) :
 
 	/**
@@ -33,7 +37,8 @@ if ( ! class_exists( 'Ast_Block_Templates_Notices' ) ) :
 
 			$upload_dir = self::log_dir();
 
-			$file_created = self::get_filesystem()->put_contents( $upload_dir['path'] . 'index.html', '' );
+			$filesystem   = self::get_filesystem();
+			$file_created = $filesystem ? $filesystem->put_contents( $upload_dir['path'] . 'index.html', '' ) : false;
 			if ( ! $file_created ) {
 				add_action( 'admin_notices', array( $this, 'file_permission_notice' ) );
 				return false;
@@ -50,28 +55,36 @@ if ( ! class_exists( 'Ast_Block_Templates_Notices' ) ) :
 		 */
 		public function file_permission_notice() {
 			
-			$notice = __( 'File Permissions Needed - Importing patterns, pages, and templates from Design Library requires proper file permissions. For guidance on resolving this issue and ensuring smooth importing processes, please refer to the accompanying documentation.', 'ultimate-addons-for-gutenberg' );
+			$notice = __( 'File Permissions Needed - Importing patterns, pages, and templates from Design Library requires proper file permissions. For guidance on resolving this issue and ensuring smooth importing processes, please refer to the accompanying documentation.', 'ast-block-templates' );
 			?>
 			<div class="notice notice-error ast-block-templates-must-notices ast-block-templates-file-permission-issue">
 				<p><?php echo esc_html( $notice ); ?></p>
-				<p><?php echo esc_html( __( 'Doc: ', 'ultimate-addons-for-gutenberg' ) ); ?><a href="https://wpastra.com/docs/could-not-store-files-in-wp-content-folder/" target="__blank"><?php echo esc_html( __( 'Resolve file permission issue', 'ultimate-addons-for-gutenberg' ) ); ?></a></p>
+				<p><?php echo esc_html( __( 'Doc: ', 'ast-block-templates' ) ); ?><a href="https://wpastra.com/docs/could-not-store-files-in-wp-content-folder/" target="__blank"><?php echo esc_html( __( 'Resolve file permission issue', 'ast-block-templates' ) ); ?></a></p>
 			</div>
 			<?php
 		}
 
 
 		/**
-		 * Get an instance of WP_Filesystem_Direct.
+		 * Get an instance of WP_Filesystem.
+		 *
+		 * Returns null when WP_Filesystem() fails to initialise (e.g. FTP method
+		 * selected without valid credentials), preventing fatal errors when callers
+		 * invoke filesystem methods on a partially initialised global.
 		 *
 		 * @since 2.0.0
-		 * @return mixed A WP_Filesystem_Direct instance.
+		 * @return \WP_Filesystem_Base|null Filesystem instance, or null on failure.
 		 */
 		public static function get_filesystem() {
 			global $wp_filesystem;
 
-			require_once ABSPATH . '/wp-admin/includes/file.php';
+			if ( ! function_exists( 'WP_Filesystem' ) ) {
+				require_once ABSPATH . '/wp-admin/includes/file.php';
+			}
 
-			WP_Filesystem();
+			if ( ! WP_Filesystem() ) {
+				return null;
+			}
 
 			return $wp_filesystem;
 		}
@@ -99,11 +112,14 @@ if ( ! class_exists( 'Ast_Block_Templates_Notices' ) ) :
 				// Create the directory.
 				wp_mkdir_p( $dir_info['path'] );
 
-				// Add an index file for security.
-				self::get_filesystem()->put_contents( $dir_info['path'] . 'index.html', '' );
+				$filesystem = self::get_filesystem();
+				if ( $filesystem ) {
+					// Add an index file for security.
+					$filesystem->put_contents( $dir_info['path'] . 'index.html', '' );
 
-				// Add an .htaccess for security.
-				self::get_filesystem()->put_contents( $dir_info['path'] . '.htaccess', 'deny from all' );
+					// Add an .htaccess for security.
+					$filesystem->put_contents( $dir_info['path'] . '.htaccess', 'deny from all' );
+				}
 			}
 
 			return $dir_info;

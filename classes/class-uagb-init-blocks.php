@@ -35,6 +35,26 @@ class UAGB_Init_Blocks {
 	private $active_blocks;
 
 	/**
+	 * Holds the original post content while an excerpt is generated.
+	 *
+	 * Keyed by post ID so the content can be restored after wp_trim_excerpt() runs.
+	 *
+	 * @since x.x.x
+	 * @var array
+	 */
+	private $excerpt_content_backup = array();
+
+	/**
+	 * Whether the last remove_hidden_blocks() call actually dropped a block.
+	 *
+	 * Lets the method return content unchanged (no re-serialisation) when nothing is hidden.
+	 *
+	 * @since x.x.x
+	 * @var bool
+	 */
+	private $hidden_blocks_removed = false;
+
+	/**
 	 *  Initiator
 	 */
 	public static function get_instance() {
@@ -92,6 +112,16 @@ class UAGB_Init_Blocks {
 		// blocks as parentLayout, then layout.php:600 calls array_intersect_key() on it
 		// and fatals. Runs at priority 11 to normalise after WP core sets parentLayout.
 		add_filter( 'render_block_data', array( $this, 'fix_non_array_parent_layout' ), 11 );
+
+		// Enforce Display Conditions in the post-excerpt pipeline. Spectra registers its
+		// containers as excerpt wrapper blocks, but WordPress core's excerpt_remove_blocks()
+		// renders a wrapper's inner blocks directly and never calls render_block() on the
+		// wrapper, so the container's UAGDisplayConditions check is skipped. Hidden content can
+		// then leak into REST excerpts, the uagb_excerpt field, and RSS/Atom feeds. Strip the
+		// hidden blocks from the content before wp_trim_excerpt() (priority 10) builds the
+		// excerpt, then restore the original content afterwards.
+		add_filter( 'get_the_excerpt', array( $this, 'strip_hidden_blocks_before_excerpt' ), 9, 2 );
+		add_filter( 'get_the_excerpt', array( $this, 'restore_content_after_excerpt' ), 11, 2 );
 
 		if ( current_user_can( 'edit_posts' ) ) {
 			add_action( 'wp_ajax_uagb_svg_confirmation', array( $this, 'confirm_svg_upload' ) );
@@ -540,6 +570,196 @@ class UAGB_Init_Blocks {
 		// Check in restricted day.
 		return ! in_array( $current_day, $block_attributes['UAGDay'] ) ? $block_content : '';
 
+	}
+
+	/**
+	 * Determine whether a block is hidden for the current request by its Display Conditions.
+	 *
+	 * Reuses the same visibility checks as render_block() so the two code paths cannot drift.
+	 *
+	 * @param array $block_attributes The block attributes.
+	 * @since x.x.x
+	 * @return bool True when the block should be hidden from the current visitor.
+	 */
+	public function is_block_hidden( $block_attributes ) {
+
+		if ( ! is_array( $block_attributes ) || empty( $block_attributes['UAGDisplayConditions'] ) ) {
+			return false;
+		}
+
+		// Non-empty sentinel: the visibility helpers return '' when a block is hidden and the
+		// passed content otherwise, so an empty result means "hidden".
+		$sentinel = '__uagb_visible__';
+
+		switch ( $block_attributes['UAGDisplayConditions'] ) {
+			case 'userstate':
+				return '' === $this->user_state_visibility( $block_attributes, $sentinel );
+			case 'userRole':
+				return '' === $this->user_role_visibility( $block_attributes, $sentinel );
+			case 'browser':
+				return '' === $this->browser_visibility( $block_attributes, $sentinel );
+			case 'os':
+				return '' === $this->os_visibility( $block_attributes, $sentinel );
+			case 'day':
+				return '' === $this->day_visibility( $block_attributes, $sentinel );
+			default:
+				return false;
+		}
+	}
+
+	/**
+	 * Check whether a parsed block is hidden by its Display Conditions.
+	 *
+	 * Spectra exposes Display Conditions on core blocks as well as uagb blocks, and render_block()
+	 * enforces them on any block that carries UAGDisplayConditions. This check must mirror that
+	 * exactly (not just uagb/* blocks) so the raw-content paths cannot leak a hidden core block.
+	 *
+	 * @param array $block A single parsed block.
+	 * @since x.x.x
+	 * @return bool True when the block should be hidden from the current visitor.
+	 */
+	private function is_display_condition_hidden( $block ) {
+		return ! empty( $block['blockName'] )
+			&& ! empty( $block['attrs'] )
+			&& is_array( $block['attrs'] )
+			&& $this->is_block_hidden( $block['attrs'] );
+	}
+
+	/**
+	 * Recursively drop a block's inner blocks that are hidden by their Display Conditions.
+	 *
+	 * Keeps innerBlocks and innerContent in sync so the block can be re-serialised safely.
+	 *
+	 * @param array $block A single parsed block.
+	 * @since x.x.x
+	 * @return array The block with hidden descendants removed.
+	 */
+	private function filter_hidden_inner_blocks( $block ) {
+
+		if ( empty( $block['innerBlocks'] ) || empty( $block['innerContent'] ) ) {
+			return $block;
+		}
+
+		$new_inner_blocks  = array();
+		$new_inner_content = array();
+		$index             = 0;
+
+		foreach ( $block['innerContent'] as $chunk ) {
+
+			// String chunks are literal markup and have no matching inner block.
+			if ( is_string( $chunk ) ) {
+				$new_inner_content[] = $chunk;
+				continue;
+			}
+
+			// A null chunk is a placeholder for the next inner block, in order.
+			$inner_block = isset( $block['innerBlocks'][ $index ] ) ? $block['innerBlocks'][ $index ] : null;
+			$index++;
+
+			if ( null === $inner_block ) {
+				continue;
+			}
+
+			// Drop the placeholder and the block together when it is hidden.
+			if ( $this->is_display_condition_hidden( $inner_block ) ) {
+				$this->hidden_blocks_removed = true;
+				continue;
+			}
+
+			$new_inner_blocks[]  = $this->filter_hidden_inner_blocks( $inner_block );
+			$new_inner_content[] = null;
+		}
+
+		$block['innerBlocks']  = $new_inner_blocks;
+		$block['innerContent'] = $new_inner_content;
+
+		return $block;
+	}
+
+	/**
+	 * Remove Spectra blocks hidden by their Display Conditions from a block of content.
+	 *
+	 * @param string $content The post content.
+	 * @since x.x.x
+	 * @return string The content with hidden Spectra blocks removed.
+	 */
+	public function remove_hidden_blocks( $content ) {
+
+		if ( ! is_string( $content ) || '' === $content || ! has_blocks( $content ) ) {
+			return $content;
+		}
+
+		$this->hidden_blocks_removed = false;
+		$blocks                      = parse_blocks( $content );
+		$filtered                    = array();
+
+		foreach ( $blocks as $block ) {
+
+			if ( $this->is_display_condition_hidden( $block ) ) {
+				$this->hidden_blocks_removed = true;
+				continue;
+			}
+
+			$filtered[] = $this->filter_hidden_inner_blocks( $block );
+		}
+
+		// Only re-serialise when a hidden block was actually removed. For content with no failing
+		// Display Conditions this returns the input byte-for-byte unchanged - serialize_blocks()
+		// would otherwise normalise the block-delimiter JSON (the same normalisation WP applies on
+		// save) and needlessly alter the stored markup on every excerpt / grid / TOC render.
+		return $this->hidden_blocks_removed ? serialize_blocks( $filtered ) : $content;
+	}
+
+	/**
+	 * Strip Display-Condition-hidden Spectra blocks before an excerpt is generated.
+	 *
+	 * Hooked on get_the_excerpt at priority 9, before wp_trim_excerpt() (priority 10). Only
+	 * auto-generated excerpts run through excerpt_remove_blocks(), so posts with a manual
+	 * excerpt are left untouched. The original content is restored by
+	 * restore_content_after_excerpt() at priority 11.
+	 *
+	 * @param string  $excerpt The post excerpt.
+	 * @param WP_Post $post    The post object.
+	 * @since x.x.x
+	 * @return string The unchanged excerpt (content is mutated on the post object).
+	 */
+	public function strip_hidden_blocks_before_excerpt( $excerpt, $post ) {
+
+		if ( ! $post instanceof WP_Post ) {
+			return $excerpt;
+		}
+
+		// A manual excerpt is returned verbatim by core and never built from the content.
+		if ( '' !== trim( (string) $post->post_excerpt ) ) {
+			return $excerpt;
+		}
+
+		if ( ! has_blocks( $post->post_content ) ) {
+			return $excerpt;
+		}
+
+		$this->excerpt_content_backup[ $post->ID ] = $post->post_content;
+		$post->post_content                        = $this->remove_hidden_blocks( $post->post_content );
+
+		return $excerpt;
+	}
+
+	/**
+	 * Restore the original post content after an excerpt has been generated.
+	 *
+	 * @param string  $excerpt The post excerpt.
+	 * @param WP_Post $post    The post object.
+	 * @since x.x.x
+	 * @return string The unchanged excerpt.
+	 */
+	public function restore_content_after_excerpt( $excerpt, $post ) {
+
+		if ( $post instanceof WP_Post && isset( $this->excerpt_content_backup[ $post->ID ] ) ) {
+			$post->post_content = $this->excerpt_content_backup[ $post->ID ];
+			unset( $this->excerpt_content_backup[ $post->ID ] );
+		}
+
+		return $excerpt;
 	}
 
 	/**

@@ -1104,3 +1104,7 @@ body .wp-block-post-content > .wp-block-uagb-image-gallery + .spectra-image-gall
 		transform: scale(1);
 	}
 }
+
+// Last on purpose: Sass starts this file with a BOM when it has non-ASCII text, and the BOM
+// would invalidate a leading @font-face once the file is concatenated into per-post CSS.
+@import "../../styles/swiper-navigation-compat";

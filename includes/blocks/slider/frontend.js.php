@@ -36,8 +36,10 @@ $slider_options = apply_filters(
 			'hideOnClick' => false,
 		) : false,
 		'navigation' => (bool) $attr['displayArrows'] ? array(
-			'nextEl' => '.uagb-block-' . $id . ' .swiper-button-next',
-			'prevEl' => '.uagb-block-' . $id . ' .swiper-button-prev',
+			'nextEl'   => '.uagb-block-' . $id . ' .swiper-button-next',
+			'prevEl'   => '.uagb-block-' . $id . ' .swiper-button-prev',
+			// Keep the icon-font arrows; Swiper 12 would otherwise inject its own SVG.
+			'addIcons' => false,
 		) : false,
 	),
 	$attr

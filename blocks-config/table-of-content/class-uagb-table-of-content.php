@@ -443,11 +443,22 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 			foreach ( $blocks_array as $key => $block ) {
 
 				if ( 'core/block' === $blocks_array[ $key ]['blockName'] ) {
-					if ( $blocks_array[ $key ]['attrs'] ) {
-						$reusable_block   = get_post( $blocks_array[ $key ]['attrs']['ref'] );
-						$reusable_heading = $this->table_of_contents_get_headings_from_content( $reusable_block->post_content );
-						if ( isset( $reusable_heading[0] ) ) {
-							$final_reusable_array = array_merge( $final_reusable_array, $reusable_heading );
+					if ( ! empty( $blocks_array[ $key ]['attrs']['ref'] ) ) {
+						$reusable_block = get_post( $blocks_array[ $key ]['attrs']['ref'] );
+						// Only read headings from a reusable block that exists, is published and is not
+						// password protected, so content from non-public reusable blocks is never pulled
+						// into the table of contents.
+						if ( $reusable_block instanceof WP_Post && 'publish' === $reusable_block->post_status && ! post_password_required( $reusable_block ) ) {
+							$reusable_content = $reusable_block->post_content;
+							// Strip Display-Condition-hidden blocks from the reusable block too, so a
+							// hidden heading inside a referenced block is not pulled into the TOC.
+							if ( class_exists( 'UAGB_Init_Blocks' ) ) {
+								$reusable_content = UAGB_Init_Blocks::get_instance()->remove_hidden_blocks( $reusable_content );
+							}
+							$reusable_heading = $this->table_of_contents_get_headings_from_content( $reusable_content );
+							if ( isset( $reusable_heading[0] ) ) {
+								$final_reusable_array = array_merge( $final_reusable_array, $reusable_heading );
+							}
 						}
 					}
 				} else {
@@ -477,18 +488,37 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 
 			global $post;
 			$result = array();
-			if ( ! isset( $post->ID ) ) {
+			if ( ! $post instanceof WP_Post ) {
 				return '';
 			}
 
-			$uagb_toc_options         = get_post_meta( $post->ID, '_uagb_toc_options', true );
+			// Do not expose the headings of a password-protected post until the visitor has entered
+			// the password. Headings are otherwise read from the cached _uagb_toc_options meta and
+			// from the raw post content / current template, leaking the protected post's heading text
+			// to unauthenticated visitors. post_password_required() returns false once the correct
+			// password cookie is set, so the table of contents renders normally after the post is
+			// unlocked.
+			if ( post_password_required( $post ) ) {
+				return '';
+			}
+
+			global $_wp_current_template_content;
+
+			// Display Conditions (User State / Role / Browser / OS / Day) are evaluated per visitor,
+			// so headings behind them must never be served from the shared _uagb_toc_options cache -
+			// whichever visitor renders first would otherwise fix the cached headings for everyone.
+			// When the post content or the current template carries Display Conditions, bypass the
+			// cache and rebuild from content with the hidden blocks stripped on every request.
+			$has_display_conditions = ( false !== strpos( (string) $post->post_content, 'UAGDisplayConditions' ) )
+				|| ( ! empty( $_wp_current_template_content ) && false !== strpos( (string) $_wp_current_template_content, 'UAGDisplayConditions' ) );
+
+			$uagb_toc_options         = $has_display_conditions ? array() : get_post_meta( $post->ID, '_uagb_toc_options', true );
 			$uagb_toc_version         = ! empty( $uagb_toc_options['_uagb_toc_version'] ) ? $uagb_toc_options['_uagb_toc_version'] : '';
 			$uagb_toc_heading_content = ! empty( $uagb_toc_options['_uagb_toc_headings'] ) ? $uagb_toc_options['_uagb_toc_headings'] : '';
 			$enable_collapsible_list  = isset( $attributes['enableCollapsableList'] ) ? (bool) $attributes['enableCollapsableList'] : false;
 			$initialCollapse          = isset( $attributes['initialCollapse'] ) ? (bool) $attributes['initialCollapse'] : false;
 
 			if ( empty( $uagb_toc_heading_content ) || UAGB_ASSET_VER !== $uagb_toc_version ) {
-				global $_wp_current_template_content;
 				$custom_post  = get_post( $post->ID );
 				$post_content = '';
 				if ( $custom_post instanceof WP_Post ) {
@@ -500,18 +530,28 @@ if ( ! class_exists( 'UAGB_Table_Of_Content' ) ) {
 				} else {
 					$content = $post_content;
 				}
+
+				// Strip Display-Condition-hidden blocks before extracting headings, so a hidden
+				// container's (or a hidden core heading's) text is not disclosed to visitors who fail
+				// the conditions. Mirrors the render_block enforcement via the shared helper.
+				if ( class_exists( 'UAGB_Init_Blocks' ) ) {
+					$content = UAGB_Init_Blocks::get_instance()->remove_hidden_blocks( $content );
+				}
+
 				$uagb_toc_heading_content          = $this->table_of_contents_get_headings_from_content( $content );
 				$blocks                            = parse_blocks( $content );
 				$uagb_toc_reusable_heading_content = $this->toc_recursive_reusable_heading( $blocks );
 				$uagb_toc_heading_content          = array_merge( $uagb_toc_heading_content, $uagb_toc_reusable_heading_content );
 
-				$meta_array = array(
-					'_uagb_toc_version'  => UAGB_ASSET_VER,
-					'_uagb_toc_headings' => $uagb_toc_heading_content,
-				);
+				// Only persist to the shared cache when the result is identical for every visitor.
+				if ( ! $has_display_conditions ) {
+					$meta_array = array(
+						'_uagb_toc_version'  => UAGB_ASSET_VER,
+						'_uagb_toc_headings' => $uagb_toc_heading_content,
+					);
 
-				update_post_meta( $post->ID, '_uagb_toc_options', $meta_array );
-
+					update_post_meta( $post->ID, '_uagb_toc_options', $meta_array );
+				}
 			}
 
 			$uagb_toc_heading_content = $this->filter_headings_by_mapping_headers( $uagb_toc_heading_content, $attributes['mappingHeaders'] );

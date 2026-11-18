@@ -12,6 +12,10 @@ use Gutenberg_Templates\Inc\Traits\Instance;
 use Gutenberg_Templates\Inc\Traits\Helper;
 use Gutenberg_Templates\Inc\Importer\Image_Importer;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Ast_Block Templates Kit Importer
  *
@@ -40,12 +44,12 @@ class Template_Kit_Importer {
 	public function template_importer() {
 
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
-			wp_send_json_error( __( 'You are not allowed to perform this action', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
 		}
 		// Verify Nonce.
 		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
 
-		$api_uri = ( isset( $_REQUEST['api_uri'] ) ) ? esc_url_raw( $_REQUEST['api_uri'] ) : '';
+		$api_uri = ( isset( $_REQUEST['api_uri'] ) ) ? esc_url_raw( wp_unslash( $_REQUEST['api_uri'] ) ) : '';
 
 		$block_id = isset( $_REQUEST['id'] ) ? absint( $_REQUEST['id'] ) : 0;
 
@@ -53,7 +57,7 @@ class Template_Kit_Importer {
 			wp_send_json_error(
 				array(
 					/* Translators: %s is API URL. */
-					'message' => sprintf( __( 'Invalid Request URL - %s', 'ultimate-addons-for-gutenberg' ), $api_uri ),
+					'message' => sprintf( __( 'Invalid Request URL - %s', 'ast-block-templates' ), $api_uri ),
 					'code'    => 'Error',
 				)
 			);
@@ -106,7 +110,7 @@ class Template_Kit_Importer {
 	public function import_template_kit() {
 
 		if ( ! current_user_can( 'manage_ast_block_templates' ) ) {
-			wp_send_json_error( __( 'You are not allowed to perform this action', 'ultimate-addons-for-gutenberg' ) );
+			wp_send_json_error( __( 'You are not allowed to perform this action', 'ast-block-templates' ) );
 		}
 		// Verify Nonce.
 		check_ajax_referer( 'ast-block-templates-ajax-nonce', '_ajax_nonce' );
@@ -116,8 +120,14 @@ class Template_Kit_Importer {
 
 		$ids_mapping = get_option( 'ast_block_templates_wpforms_ids_mapping', array() );
 
-		// Post content.
-		$content = isset( $_REQUEST['content'] ) ? stripslashes( $_REQUEST['content'] ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		// Gutenberg serialized block markup cannot be pre-sanitized with wp_kses_post() because that would
+		// strip the <!-- wp:block {...} --> comment delimiters that parse_blocks() requires. Do NOT use
+		// sanitize_post_field( 'post_content', ..., 'raw' ) here — the 'raw' context is a no-op in WP core
+		// (returns the value unchanged), so it provides no actual sanitization. This handler never writes
+		// to the DB — it returns processed content to the browser via wp_send_json_success(). The content
+		// is sanitized by WordPress core (wp_kses_post()) when the user saves the post.
+		$raw_content = isset( $_REQUEST['content'] ) ? wp_unslash( $_REQUEST['content'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$content     = force_balance_tags( (string) ( is_array( $raw_content ) ? implode( '', $raw_content ) : $raw_content ) );
 
 		// Empty mapping? Then return.
 		if ( ! empty( $ids_mapping ) ) {
@@ -135,6 +145,15 @@ class Template_Kit_Importer {
 		// @todo This affect for normal page content too. Detect only Gutenberg pages and process only on it.
 		// $content = str_replace( '&amp;', "\u0026amp;", $content );
 		$content = $this->get_content( $content );
+
+		/**
+		 * Fires after a template kit is successfully imported.
+		 *
+		 * @since 2.4.21
+		 *
+		 * @param string $content The imported content after processing (e.g., hotlink replacement).
+		 */
+		do_action( 'ast_block_templates_after_kit_import', $content );
 
 		// Update content.
 		wp_send_json_success( $content );

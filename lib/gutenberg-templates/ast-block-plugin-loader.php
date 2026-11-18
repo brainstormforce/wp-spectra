@@ -15,11 +15,14 @@ use Gutenberg_Templates\Inc\Importer\Plugin;
 use Gutenberg_Templates\Inc\Importer\Image_Importer;
 use Gutenberg_Templates\Inc\Importer\Updater;
 use Gutenberg_Templates\Inc\Content\Ai_Content;
-use Gutenberg_Templates\Inc\Traits\Upgrade;
 use Gutenberg_Templates\Inc\Importer\Template_Kit_Importer;
 use Gutenberg_Templates\Inc\Block\Spectra_AI_Block;
 use Gutenberg_Templates\Inc\Classes\Ast_Block_Templates_Zipwp_Api;
 use Gutenberg_Templates\Inc\Classes\Ast_Block_Templates_Notices;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Ast_Block_Plugin_Loader
@@ -65,6 +68,7 @@ class Ast_Block_Plugin_Loader {
 		$class_to_load = $class;
 
 		$filename = strtolower(
+			// phpcs:ignore Generic.PHP.ForbiddenFunctions.FoundWithAlternative -- /e modifier not used, safe in autoloader
 			(string) preg_replace(
 				array( '/^' . __NAMESPACE__ . '\\\/', '/([a-z])([A-Z])/', '/_/', '/\\\/' ),
 				array( '', '$1-$2', '-', DIRECTORY_SEPARATOR ),
@@ -115,7 +119,6 @@ class Ast_Block_Plugin_Loader {
 		Sync_Library::instance();
 		Sync_Library_WP_CLI::instance();
 		Ai_Content::instance();
-		Upgrade::instance();
 		Updater::instance();
 		//phpcs:disable Squiz
 		// Spectra_AI_Block::get_instance();
@@ -125,57 +128,13 @@ class Ast_Block_Plugin_Loader {
 
 	/**
 	 * Load Plugin Text Domain.
-	 * This will load the translation textdomain depending on the file priorities.
-	 *      1. Global Languages /wp-content/languages/gutenberg-templates/ folder
-	 *      2. Local dorectory /wp-content/plugins/gutenberg-templates/languages/ folder
 	 *
 	 * @since 2.0.0
 	 * @return void
 	 */
 	public function load_textdomain() {
-		// Default languages directory.
-		$lang_dir = AST_BLOCK_TEMPLATES_DIR . 'languages/';
-
-		/**
-		 * Filters the languages directory path to use for plugin.
-		 *
-		 * @param string $lang_dir The languages directory path.
-		 */
-		$lang_dir = apply_filters( 'wpb_languages_directory', $lang_dir );
-
-		// Traditional WordPress plugin locale filter.
-		global $wp_version;
-
-		$get_locale = get_locale();
-
-		if ( $wp_version >= 4.7 ) {
-			$get_locale = get_user_locale();
-		}
-
-		/**
-		 * Language Locale for plugin
-		 *
-		 * @var string $get_locale The locale to use.
-		 * Uses get_user_locale()` in WordPress 4.7 or greater,
-		 * otherwise uses `get_locale()`.
-		 */
-		$locale = apply_filters( 'plugin_locale', $get_locale, 'ast-block-templates' );
-		$mofile = sprintf( '%1$s-%2$s.mo', 'ast-block-templates', $locale );
-
-		// Setup paths to current locale file.
-		$mofile_global = WP_LANG_DIR . '/plugins/' . $mofile;
-		$mofile_local  = $lang_dir . $mofile;
-
-		if ( file_exists( $mofile_global ) ) {
-			// Look in global /wp-content/languages/gutenberg-templates/ folder.
-			load_textdomain( 'ast-block-templates', $mofile_global );
-		} elseif ( file_exists( $mofile_local ) ) {
-			// Look in local /wp-content/plugins/gutenberg-templates/languages/ folder.
-			load_textdomain( 'ast-block-templates', $mofile_local );
-		} else {
-			// Load the default language files.
-			load_plugin_textdomain( 'ast-block-templates', false, $lang_dir );
-		}
+		// load_plugin_textdomain removed — WordPress auto-loads translations since 4.6.
+		// See: https://make.wordpress.org/core/2016/07/06/i18n-improvements-in-4-6/.
 	}
 }
 

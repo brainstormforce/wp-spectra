@@ -50,11 +50,12 @@ $slick_options = apply_filters(
 $lightbox_options = apply_filters(
 	'uagb_image_gallery_lightbox_options',
 	array(
-		'lazy'          => true,
 		'slidesPerView' => 1,
 		'navigation'    => array(
-			'nextEl' => $selector . '+.spectra-image-gallery__control-lightbox .swiper-button-next',
-			'prevEl' => $selector . '+.spectra-image-gallery__control-lightbox .swiper-button-prev',
+			'nextEl'   => $selector . '+.spectra-image-gallery__control-lightbox .swiper-button-next',
+			'prevEl'   => $selector . '+.spectra-image-gallery__control-lightbox .swiper-button-prev',
+			// Keep the icon-font arrows; Swiper 12 would otherwise inject its own SVG.
+			'addIcons' => false,
 		),
 		'keyboard'      => array(
 			'enabled' => true,

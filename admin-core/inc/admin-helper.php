@@ -56,6 +56,23 @@ class Admin_Helper {
 
 		$inherit_from_theme = false !== get_option( 'uag_btn_inherit_from_theme_fallback' ) ? 'disabled' : \UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' );
 
+		// Server-side secrets must only be exposed to users who can manage the site. Lower-privileged
+		// users receive empty values, matching how insta_linked_accounts is already gated below.
+		$can_manage_options = current_user_can( 'manage_options' );
+
+		$social = \UAGB_Admin_Helper::get_admin_settings_option(
+			'uag_social',
+			array(
+				'socialRegister'    => false,
+				'googleClientId'    => '',
+				'facebookAppId'     => '',
+				'facebookAppSecret' => '',
+			)
+		);
+		if ( ! $can_manage_options && is_array( $social ) && isset( $social['facebookAppSecret'] ) ) {
+			$social['facebookAppSecret'] = '';
+		}
+
 		$options = array(
 			'rollback_to_previous_version'       => isset( $uag_versions[0]['value'] ) ? $uag_versions[0]['value'] : '',
 			'enable_file_generation'             => \UAGB_Admin_Helper::get_admin_settings_option( '_uagb_allow_file_generation', 'enabled' ),
@@ -78,15 +95,7 @@ class Admin_Helper {
 			'preload_local_fonts'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_preload_local_fonts', 'disabled' ),
 			'btn_inherit_from_theme'             => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_btn_inherit_from_theme', 'disabled' ),
 			'btn_inherit_from_theme_fallback'    => $inherit_from_theme,
-			'social'                             => \UAGB_Admin_Helper::get_admin_settings_option(
-				'uag_social',
-				array(
-					'socialRegister'    => false,
-					'googleClientId'    => '',
-					'facebookAppId'     => '',
-					'facebookAppSecret' => '',
-				)
-			),
+			'social'                             => $social,
 			'dynamic_content_mode'               => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_dynamic_content_mode', 'popup' ),
 			'preload_local_fonts'                => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_preload_local_fonts', 'disabled' ),
 			'visibility_mode'                    => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_visibility_mode', 'disabled' ),
@@ -94,10 +103,10 @@ class Admin_Helper {
 			'uag_previous_versions'              => $uag_versions,
 			'uagb_old_user_less_than_2'          => get_option( 'uagb-old-user-less-than-2' ),
 			'recaptcha_site_key_v2'              => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v2', '' ),
-			'recaptcha_secret_key_v2'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v2', '' ),
+			'recaptcha_secret_key_v2'            => $can_manage_options ? \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v2', '' ) : '',
 			'recaptcha_site_key_v3'              => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_site_key_v3', '' ),
-			'recaptcha_secret_key_v3'            => \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v3', '' ),
-			'insta_linked_accounts'              => current_user_can( 'manage_options' ) ? \UAGB_Admin_Helper::get_admin_settings_option( 'uag_insta_linked_accounts', array() ) : array(),
+			'recaptcha_secret_key_v3'            => $can_manage_options ? \UAGB_Admin_Helper::get_admin_settings_option( 'uag_recaptcha_secret_key_v3', '' ) : '',
+			'insta_linked_accounts'              => $can_manage_options ? \UAGB_Admin_Helper::get_admin_settings_option( 'uag_insta_linked_accounts', array() ) : array(),
 			'spectra_global_fse_fonts'           => \UAGB_Admin_Helper::get_admin_settings_option( 'spectra_global_fse_fonts', array() ),
 			'theme_fonts'                        => $theme_font_families,
 			'zip_ai_modules'                     => $zip_ai_modules,
