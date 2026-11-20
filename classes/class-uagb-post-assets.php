@@ -1044,7 +1044,15 @@ class UAGB_Post_Assets {
 			$extra_attr .= '&subset=latin';
 		}
 
-		$display = apply_filters( 'uag_font_disaply', 'fallback' );
+		$display = apply_filters_deprecated( 'uag_font_disaply', array( 'fallback' ), '2.21.0', 'uag_font_display' );
+
+		/**
+		 * Filters the font display query parameter.
+		 *
+		 * @see https://developers.google.com/fonts/docs/getting_started#use_font-display
+		 * @param string $display The global post.
+		 */
+		$display = apply_filters( 'uag_font_display', $display );
 
 		if ( ! empty( $display ) ) {
 			$extra_attr .= '&display=' . $display;
