@@ -77,7 +77,9 @@ const Navigation = () => {
 					target="_blank"
 					rel="noreferrer"
 				>
-					<span>Unlock Pro Features</span>
+					<span>
+						{ __( 'Unlock Pro Features', 'ultimate-addons-for-gutenberg' ) }
+					</span>
 					<ArrowUpRight className="size-5" strokeWidth="1.5" />
 				</a>
 			) }
